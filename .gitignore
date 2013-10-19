@@ -10,9 +10,14 @@ lib-cov
 .idea
 *.iml
 
+dist
+
 pids
 logs
 results
+
+app/bower_components
+
 
 npm-debug.log
 node_modules
