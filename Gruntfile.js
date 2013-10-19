@@ -283,7 +283,6 @@ module.exports = function (grunt) {
             dist: [
                 'coffee',
                 'compass:dist',
-                'imagemin',
                 'htmlmin'
             ]
         },
