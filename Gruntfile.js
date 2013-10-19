@@ -195,18 +195,18 @@ module.exports = function (grunt) {
                 dirs: ['<%= yeoman.dist %>']
             }
         },
-        imagemin: {
-            dist: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '<%= yeoman.app %>/images',
-                        src: '{,*/}*.{png,jpg,jpeg}',
-                        dest: '<%= yeoman.dist %>/images'
-                    }
-                ]
-            }
-        },
+//        imagemin: {
+//            dist: {
+//                files: [
+//                    {
+//                        expand: true,
+//                        cwd: '<%= yeoman.app %>/images',
+//                        src: '{,*/}*.{png,jpg,jpeg}',
+//                        dest: '<%= yeoman.dist %>/images'
+//                    }
+//                ]
+//            }
+//        },
         cssmin: {
             // By default, your `index.html` <!-- Usemin Block --> will take care of
             // minification. This option is pre-configured if you do not wish to use
@@ -256,7 +256,7 @@ module.exports = function (grunt) {
                             '*.{ico,png,txt}',
                             '.htaccess',
                             'bower_components/**/*',
-                            'images/{,*/}*.{gif,webp,svg}',
+                            'images/{,*/}*.{gif,webp,svg,png,jpg,jpeg}',
                             'styles/fonts/*'
                         ]
                     },
