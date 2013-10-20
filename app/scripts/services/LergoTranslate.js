@@ -11,7 +11,7 @@ angular.module('lergoApp').service('LergoTranslate',
 
 
         $(['en','he']).each( function(index,item){
-            $http.get('/scripts/translations/' + item + '.json').then(function(data){
+            $http.get('/translations/' + item + '.json').then(function(data){
                 console.log(data.data);
                 translations[item] = data.data;
 
