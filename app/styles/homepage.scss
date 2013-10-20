@@ -242,8 +242,24 @@ body div.container{ width:100% ;}
   }
 
   #footer {
+    padding-top:$HEADER_HEIGHT/2;
+    margin-bottom:-$HEADER_HEIGHT/2;
     height: $HEADER_HEIGHT;
     background-color: #296CA1;
     width:100%;
+    .footer-links{
+      ul,li{list-style:none; padding:0; margin:0;}
+      li{
+        float:left;
+        padding-right:40px;
+
+        &, a{ color:white}
+      }
+    }
+    .copyrights{
+      float:right;
+      color:#A6BBCF;
+
+    }
   }
 }
