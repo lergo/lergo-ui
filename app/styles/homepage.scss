@@ -200,6 +200,28 @@ body div.container{ width:100% ;}
 
       }
 
+      .tags{
+        margin-left:-5px;
+        padding-bottom:10px;
+        text-transform: capitalize;
+        .tag{
+          background-color:#5FB9FF;
+          padding:5px 5px 5px 5px;
+          margin-left:5px;
+          margin-top:5px;
+          border-radius: 10px;
+          floating:left;
+          color:white;
+          width:auto;
+          display:inline-block;
+          span:after{ display:inline-block; content:"|"}
+        i{vertical-align:middle;}
+
+        }
+
+
+      }
+
       .filters{
         .filter{
           .label{

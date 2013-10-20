@@ -13,6 +13,9 @@ angular.module('lergoApp')
             { 'label' : 'subject', 'options':['subject.spelling','subject.math','subject.art'], 'translate':true, 'select':null}
         ];
 
+
+        $scope.tags = [ 'confusing words', 'tricks', 'visual', 'fun' ];
+
         $scope.labels = [
             'adding and subtracting',
             'audio',
