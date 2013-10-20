@@ -4,7 +4,7 @@ angular.module('lergoApp')
     .controller('HomepageCtrl', function ($scope) {
 
         function getRandomWeight(){
-
+            return Math.floor(Math.random() * 100 % 14 + 10);
         }
 
         $scope.labels = [
@@ -110,6 +110,8 @@ angular.module('lergoApp')
             ]}
 
         ];
+
+
 
         for ( var i =0; i < $scope.labels.length; i++ ){
             $scope.labels[i] = { text : $scope.labels[i], weight: getRandomWeight()};

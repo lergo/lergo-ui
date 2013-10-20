@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div id="content">
+    <div id="content" class="centered-content">
           <div class="article"></div>
           <div class="sidebar">
               <div class="filters">
@@ -66,9 +66,12 @@
 
               </div>
               <div class="labels">
-                  <span ng-repeat="label in labels" class="weight{{label.weight}}">{{label}}</span>
+                  <ul>
+                    <li ng-repeat="label in labels" class="weight{{label.weight}}">{{label.text}}</li>
+                  </ul>
               </div>
           </div>
+        <div class="push"></div>
     </div>
     <div id="footer">
         <div class="footer-links">

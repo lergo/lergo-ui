@@ -1,4 +1,4 @@
-* {
+*, body, html {
   padding: 0;
   margin: 0;
 }
@@ -11,7 +11,36 @@ $HEADER_HEIGHT: 110px;
   margin-right: auto;
 }
 
+.weight10{font-size:10px;}
+.weight11{font-size:11px;}
+.weight12{font-size:12px;}
+.weight13{font-size:13px;}
+.weight14{font-size:14px;}
+.weight15{font-size:15px;}
+.weight16{font-size:16px;}
+.weight17{font-size:17px;}
+.weight18{font-size:18px;}
+.weight19{font-size:19px;}
+.weight20{font-size:20px;}
+.weight21{font-size:21px;}
+.weight22{font-size:22px;}
+.weight23{font-size:23px;}
+.weight24{font-size:24px;}
+.weight25{font-size:25px;}
+.weight26{font-size:26px;}
+.weight27{font-size:27px;}
+.weight28{font-size:28px;}
+.weight29{font-size:29px;}
+.weight30{font-size:30px;}
+
+body div.container{ width:100% ;}
 #homepage {
+
+  .push{
+    height:$HEADER_HEIGHT;
+  }
+
+  #footer, .push{ clear : both; }
   #header {
     background: #91CFFF;
     padding-left: 200px;
@@ -56,6 +85,8 @@ $HEADER_HEIGHT: 110px;
         }
       }
     }
+
+
 
     .header-login{
       float:right;
@@ -137,17 +168,22 @@ $HEADER_HEIGHT: 110px;
     }
   }
   #content {
+    height:auto !important;
+    height:100%;
     padding-top: $HEADER_HEIGHT + 200px;
     padding-bottom: $HEADER_HEIGHT;
+
+    .labels{
+      ul, li{ list-style: none; padding:0; margin:0; }
+      li{ float:left; padding:10px; }
+      width:100px;
+    }
 
   }
 
   #footer {
     height: $HEADER_HEIGHT;
     background-color: #296CA1;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    width:100%;
   }
 }
