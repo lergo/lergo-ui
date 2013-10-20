@@ -1,0 +1,17 @@
+
+{
+    "languages":{"he":"Hebrew","en":"English"},
+    "angles":{
+        "title": "Angles - 101",
+        "description":"This is the first of a series of four lessons on the topic of angles for 3rd graders. In this lesson we will..."
+    },
+    "confusingWords":{
+        "title":"Confusing Words: They're, Their, There",
+        "description":"The goal of this lesson is to identify and then practice when is the right time to use each of..."
+    },
+    "introScience":{
+        "title":"Intro to Science & Technology",
+        "description":"In this inspiring lesson, given from the point of view of a scientist, kids will learn what a scientist ... "
+    }
+
+}

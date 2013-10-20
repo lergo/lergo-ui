@@ -1,13 +1,24 @@
 'use strict';
 
 angular.module('lergoApp').service('LergoTranslate',
-    function ( $routeParams ) { /*LergoTranslate */
+    function ( $routeParams, $http ) { /*LergoTranslate */
         // AngularJS will instantiate a singleton by calling "new" on this function
 
-        var language = $routeParams.hasOwnProperty('language') ? $routeParams['language'] : 'en';
+        var language = $routeParams.hasOwnProperty('language') ? $routeParams.language : 'en';
 
 
-        var translations = { 'en' : { 'name' : 'guy' }, 'he' : { 'name' : 'גיא' }};
+        var translations = {};
+
+
+        $(['en','he']).each( function(index,item){
+            $http.get('/scripts/translations/' + item + '.json').then(function(data){
+                console.log(data.data);
+                translations[item] = data.data;
+
+            });
+        });
+
+
 
         this.setLanguage = function (_language) {
             language = _language;
@@ -21,7 +32,7 @@ angular.module('lergoApp').service('LergoTranslate',
             var args = key.split('.');
             var t = translations[language];
             for ( var i = 0; i < args.length; i ++ ){
-                if ( t.hasOwnProperty(args[i]))
+                if ( !!t && t.hasOwnProperty(args[i]))
                 {
                     t = t[args[i]];
                 }

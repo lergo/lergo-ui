@@ -7,6 +7,10 @@ angular.module('lergoApp', [])
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
+            .when('/homepage', {
+                templateUrl: 'views/homepage.html',
+                controller: 'HomepageCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
