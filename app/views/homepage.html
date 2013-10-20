@@ -50,16 +50,20 @@
                       <div class="label"> {{filter.label}}</div>
                       <div class="input"><select ng-options="op | i18n:{skip:!filter.translate} for op in filter.options" ng-model="filter.selected"> </select></div>
                   </div>
-              </div>
-              <div class="tags">
-                  <div class="tag" ng-repeat="tag in tags">
+                  <div class="filter">
+                      <div class="label">tags</div>
+                  </div>
+                  <div class="tags">
+                      <div class="tag" ng-repeat="tag in tags">
                       <span>
                           {{tag}}
                       </span>
-                      <i class="icon-remove"></i>
-                  </div>
+                          <i class="icon-remove"></i>
+                      </div>
 
+                  </div>
               </div>
+
               <div class="labels">
                     <span ng-repeat="label in labels" class="weight{{label.weight}}"><a href="#">{{label.text}} </a></span>
               </div>
