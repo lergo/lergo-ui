@@ -47,14 +47,8 @@
                       filter lessons
                   </div>
                   <div class="filter" ng-repeat="filter in filters">
-                      <div class="label">
-                          {{filter.label}}
-                      </div>
-                      <div class="input">
-                          <select>
-                              <option ng-repeat="option in filter.options">All</option>
-                          </select>
-                      </div>
+                      <div class="label"> {{filter.label}}</div>
+                      <div class="input"><select ng-options="op | i18n:{skip:!filter.translate} for op in filter.options" ng-model="filter.selected"> </select></div>
                   </div>
               </div>
               <div class="tags">
@@ -66,9 +60,7 @@
 
               </div>
               <div class="labels">
-                  <ul>
-                    <li ng-repeat="label in labels" class="weight{{label.weight}}">{{label.text}}</li>
-                  </ul>
+                    <span ng-repeat="label in labels" class="weight{{label.weight}}"><a href="#">{{label.text}} </a></span>
               </div>
           </div>
         <div class="push"></div>

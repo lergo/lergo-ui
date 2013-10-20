@@ -7,6 +7,12 @@ angular.module('lergoApp')
             return Math.floor(Math.random() * 100 % 14 + 10);
         }
 
+        $scope.filters = [
+            { 'label' : 'age range', 'options':['1-6','6-10','10-15','15-20','Custom'], 'select':null},
+            { 'label' : 'language', 'options':['languages.en','languages.he','languages.ru'], 'translate':true, 'select':null},
+            { 'label' : 'subject', 'options':['subject.spelling','subject.math','subject.art'], 'translate':true, 'select':null}
+        ];
+
         $scope.labels = [
             'adding and subtracting',
             'audio',
