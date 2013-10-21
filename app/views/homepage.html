@@ -53,7 +53,7 @@
                   </div>
                   <div class="lessons">
                       <div class="lesson" ng-repeat="lesson in getLessons(section)">
-                          <div class="age-limit">
+                          <div class="age-limit age-limit-{{lesson.age}}">
                               <div class="value">{{lesson.age}}</div>
                               <div class="units">
                                   <i class="icon-arrow-up"></i>
