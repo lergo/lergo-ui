@@ -61,9 +61,55 @@
                               </div>
                           </div> <!-- age limit -->
                           <div class="image">
+                              <img src="/images/homepage/logo.png"/>
+
+                              <div class="stats">
+                                  <span class="time">
+                                        <i class="icon-time"></i>
+                                        <span> {{lesson.time}} </span>
+                                  </span>
+                                  <span class="questions">
+                                        <i class="icon-question-sign"></i>
+                                        <span> {{lesson.questions}} </span>
+                                  </span>
+
+                              </div>
+                          </div>
+                          <div class="title">
+                              {{ lesson.title + ".title" | i18n }}
+                          </div>
+
+                          <div class="description" multiline-ellipsis text="{{lesson.title + '.description' | i18n }}">
 
                           </div>
-                          {{lesson}}
+                          <div class="info">
+                              <div class="by">
+                                  <div class="label">by</div>
+                                  <ul class="value">
+                                      <li ng-repeat="by in lesson.by"><a href="#">{{by}}</a></li>
+                                    </ul>
+                              </div>
+                              <div class="at">
+                                  {{lesson.at}}
+                              </div>
+                          </div>
+                          <div class="lesson-stats">
+                              <div class="lesson-stats-item" >
+
+                                  <div class="{{stat.type}} item" ng-repeat="stat in lesson.stats">
+                                      <i ng-class="{'icon-thumbs-up' : stat.type == 'likes', 'icon-eye-open':stat.type == 'views', 'icon-comment': stat.type == 'comments'}">                                  </i>
+
+                                  </div>
+                              </div>
+                              <div class="lesson-stats-item" >
+                                  <div class="{{stat.type}} item" ng-repeat="stat in lesson.stats">
+                                      {{stat.value}}
+
+
+
+                                  </div>
+                              </div>
+                          </div>
                       </div>
                   </div>
               </div>

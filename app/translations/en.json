@@ -3,7 +3,7 @@
     "featured":"Featured", "popular":"Popular", "new":"New",
     "languages":{"he":"Hebrew","en":"English", "ru":"Russian"},
     "subject":{"spelling":"Spelling","math":"Math", "art":"Art"},
-    "angles":{
+    "angles101":{
         "title": "Angles - 101",
         "description":"This is the first of a series of four lessons on the topic of angles for 3rd graders. In this lesson we will..."
     },

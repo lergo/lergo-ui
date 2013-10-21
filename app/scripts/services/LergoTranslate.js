@@ -12,9 +12,7 @@ angular.module('lergoApp').service('LergoTranslate',
 
         $(['en','he']).each( function(index,item){
             $http.get('/translations/' + item + '.json').then(function(data){
-                console.log(data.data);
                 translations[item] = data.data;
-
             });
         });
 
