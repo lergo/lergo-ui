@@ -40,7 +40,32 @@
         </div>
     </div>
     <div id="content" class="centered-content">
-          <div class="article"></div>
+          <div class="article">
+              <div class="section" ng-repeat="section in sections">
+                  <div class="title">
+                      <div class="section-label">
+                          {{section.label|i18n}}
+                      </div>
+                      <div class="controls">
+                          <i class="icon-chevron-left" ng-class="{'disabled':section.index ==0}" ng-click="flipSection(section,false)"></i>
+                          <i class="icon-chevron-right" ng-click="flipSection(section,true)"></i>
+                      </div>
+                  </div>
+                  <div class="lessons">
+                      <div class="lesson" ng-repeat="lesson in getLessons(section)">
+                          <div class="age-limit">
+                              <div class="value">{{lesson.age}}</div>
+                              <div class="units">
+                                  <i class="icon-arrow-up"></i>
+                                  years
+                              </div>
+
+                          </div>
+                          {{lesson}}
+                      </div>
+                  </div>
+              </div>
+          </div>
           <div class="sidebar">
               <div class="filters">
                 <div class="title">

@@ -1,5 +1,6 @@
 
 {
+    "featured":"Featured", "popular":"Popular", "new":"New",
     "languages":{"he":"Hebrew","en":"English", "ru":"Russian"},
     "subject":{"spelling":"Spelling","math":"Math", "art":"Art"},
     "angles":{

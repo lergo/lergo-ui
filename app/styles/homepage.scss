@@ -177,6 +177,70 @@ body div.container{ width:100% ;}
     padding-top: $HEADER_HEIGHT + 200px;
     padding-bottom: $HEADER_HEIGHT;
 
+    .article{
+      width:700px;
+      float:left;
+      .title{
+        line-height:60px;
+        clear:both;
+        padding-bottom:60px;
+        .section-label{
+          float:left;
+        }
+        .controls{
+          float:right;
+          .disabled{
+            display:none;
+          }
+        }
+      }
+      .lessons{
+        overflow-x:hidden;
+        padding-top:20px;
+        .lesson{
+            height:350px;
+          width:215px;
+          float:left;
+          &:not(:first-child){margin-left:25px;}
+          border-radius: 10px;
+          background-color:#EFEFEF;
+          &:hover{ background-color:white;}
+
+          .age-limit{
+            width:70px;
+            z-index:10;
+
+            margin-top:10px;
+            margin-left:10px;
+            background-color:#6B9BEA;
+            padding:10px;
+            border-radius: 10px;
+            color:white;
+            overflow-x:hidden;
+            white-space: nowrap;
+            .value{
+              display:inline-block;
+              font-size:30px;
+              width:38px;
+              vertical-align: top;
+              margin-top:10px;
+              padding-right:5px;
+            }
+            .units{
+              white-space: normal;
+              width:35px;
+              text-align: center;
+              display:inline-block;
+              line-height:15px;
+              margin-left:-10px;
+
+            }
+          }
+        }
+      }
+
+    }
+
     .title{
       font-size:22px;
       white-space: nowrap;

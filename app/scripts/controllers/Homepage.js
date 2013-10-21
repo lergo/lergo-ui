@@ -101,18 +101,38 @@ angular.module('lergoApp')
         ];
 
 
+        // true == next, false == prev
+        $scope.flipSection = function (section, direction) {
+
+            if (direction) {
+                section.index++;
+            } else {
+                if (section.index > 0) {
+                    section.index--;
+                }
+            }
+
+
+        };
+
+        $scope.getLessons = function(section){
+            var l = section.lessons;
+            var i = section.index;
+            var ll = section.lessons.length;
+            return [ l[i%ll], l[(i+1)%ll], l[(i+2)%ll]];
+        };
         $scope.sections = [
-            { 'label':'featured', lessons:[
+            { 'label':'featured', 'index':0, lessons:[
                 { 'age' : 9, 'time':'07:00', 'questions':9, 'title':'angles101', 'by':['Sally'], 'at':'5 months ago', 'languages':['en','ar','ru'], 'stats': [ {'type':'views','value':129},{'type':'likes', 'value':13}, {'type':'comments', 'value':5}]},
                 { 'age' : 8, 'time':'15:00', 'questions':23, 'title':'confusingWords', 'by':['Liat','Tony'], 'at':'2 months ago', 'languages':['en','he'], 'stats':[{'type':'views','value':52},{'type':'likes', 'value':3}, {'type':'comments', 'value':3}]},
                 { 'age' : 10, 'time':'23:30', 'questions':5, 'title':'introScience', 'by':['Jlevym','Nava'], 'at':'11 months ago', 'languages':['en','he','fr'], 'stats':[{'type':'views','value':437},{'type':'likes', 'value':36}, {'type':'comments', 'value':7}]}
             ]},
-            { 'label':'popular', lessons:[
+            { 'label':'popular', 'index':0,lessons:[
                 { 'age' : 6, 'time':'06:00', 'questions':5, 'title':'gravity', 'by':['Albert'], 'at':'6 months ago', 'languages':['en','ar','ru','he'], 'stats': [ {'type':'views','value':129},{'type':'likes', 'value':13}, {'type':'comments', 'value':5}]},
                 { 'age' : 11, 'time':'23:30', 'questions':23, 'title':'buildRobots', 'by':['Barak'], 'at':'10 months ago', 'languages':['en'], 'stats':[{'type':'views','value':52},{'type':'likes', 'value':3}, {'type':'comments', 'value':3}]},
                 { 'age' : 9, 'time':'26:00', 'questions':8, 'title':'energy', 'by':['Tracy'], 'at':'1 months ago', 'languages':['en','he'], 'stats':[{'type':'views','value':437},{'type':'likes', 'value':36}, {'type':'comments', 'value':7}]}
             ]},
-            { 'label':'new', lessons:[
+            { 'label':'new', 'index':0,lessons:[
                 { 'age' : 10, 'time':'06:00', 'questions':5, 'title':'gravity', 'by':['Albert'], 'at':'6 months ago', 'languages':['en','ar','ru','he'], 'stats': [ {'type':'views','value':129},{'type':'likes', 'value':13}, {'type':'comments', 'value':5}]},
                 { 'age' : 13, 'time':'23:30', 'questions':23, 'title':'buildRobots', 'by':['Barak'], 'at':'10 months ago', 'languages':['en'], 'stats':[{'type':'views','value':52},{'type':'likes', 'value':3}, {'type':'comments', 'value':3}]},
                 { 'age' : 9, 'time':'26:00', 'questions':8, 'title':'energy', 'by':['Tracy'], 'at':'1 months ago', 'languages':['en','he'], 'stats':[{'type':'views','value':437},{'type':'likes', 'value':36}, {'type':'comments', 'value':7}]}
