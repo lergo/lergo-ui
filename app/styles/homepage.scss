@@ -57,17 +57,21 @@ body div.container{ width:100% ;}
     }
 
     .header-links {
-      width: 400px;
+      padding-top:10px;
+      padding-bottom:10px;
+      width: 535px;
       display: block;
       margin-top: -100px;
-      margin-left: 200px;
+      margin-left: 230px;
+      white-space: nowrap;
+      overflow: visible;
       ul {
         list-style: none;
         padding: 0;
         margin: 0;
         li {
           list-style: none;
-          padding: 0 10px 0 0;
+          padding: 0 26px 0 0;
           margin: 0;
           float: left;
           &, a {
@@ -76,7 +80,7 @@ body div.container{ width:100% ;}
           &:after {
             display: inline-block;
             content: "|";
-            padding-left: 10px;
+            padding-left: 31px;
           }
           &:last-child:after {
             display: none;
@@ -89,8 +93,27 @@ body div.container{ width:100% ;}
 
     .header-login{
       float:right;
-      a{ color:white; font-size:20px; text-decoration: none; padding: 10px 20px; border-radius:20px; &:hover{ background-color:rgba(0,0,0,0.3)}}
-      margin-top:-30px;
+      width:225px;
+      margin-right:0;
+      margin-top:-92px;
+      a {
+        color: white;
+        display:inline-block;
+        border-top:2px solid white;
+        width:74px;
+        font-size: 18px;
+        width:90px;
+        text-decoration: none;
+        padding: 10px 0;
+        text-align: center;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.3)
+        }
+        &:last-child{
+          float:right;
+        }
+      }
+
 
     }
 
@@ -107,13 +130,13 @@ body div.container{ width:100% ;}
           display: inline-block;
           vertical-align: middle;
           padding-right:20px;
-          .amount{ font-size:42px;  }
-          .type{ font-size:16px; text-transform: uppercase; margin-top:10px; text-align: right}
+          .amount{ font-size:34px;  }
+          .type{ font-size:14px; text-transform: uppercase; margin-top:10px; text-align: right}
         }
-        .and-counting{ font-size:42px; vertical-align: top; font-weight: bold;  text-transform: uppercase;}
+        .and-counting{ font-size:34px; vertical-align: top; font-weight: bold;  text-transform: uppercase;}
       }
       .sidebar{
-        width:200px;
+        width:225px;
         font-size:13px;
         line-height: 35px;
         text-transform: uppercase;
@@ -142,16 +165,37 @@ body div.container{ width:100% ;}
     }
 
     .header-search{
-      width:360px;
+      width:495px; /*guy*/
+      height:35px;
       margin-top:30px;
-      margin-left:200px;
+      margin-left:230px;
       background:#2BA2FF;
       color:white;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+      border-top:2px solid #87A3B7;
+      border-left: 1px solid #69BEFF;
+      border-right: 1px solid #69BEFF;
+      border-bottom: 1px solid #69BEFF;
       i{
         font-size:20px;
         padding-left:5px;
+        &:before{ display:none}
+        width:26px;
+        height:24px;
+        display:inline-block;
+        background: url('/images/homepage/search-icon.png') no-repeat;
+        margin-left:7px;
       }
       input{
+        border-top-left-radius: 8px;
+        height:35px;
+        width:430px;
+        font-weight: bold;
+        border-bottom-left-radius: 3px;
+        border:none;
         background:#C5E6FF;
         color:white;
         &::-webkit-input-placeholder { /* WebKit browsers */
@@ -166,8 +210,8 @@ body div.container{ width:100% ;}
         &:-ms-input-placeholder { /* Internet Explorer 10+ */
           color:    white;
         }
-        padding:10px;
-        width:300px;
+        padding: 0 10px;
+
       }
     }
   }
@@ -178,7 +222,8 @@ body div.container{ width:100% ;}
     padding-bottom: $HEADER_HEIGHT;
 
     .article{
-      width:700px;
+
+      width:725px;
       float:left;
       .title{
         line-height:60px;
@@ -411,7 +456,7 @@ body div.container{ width:100% ;}
     }
     .sidebar{
       float:right;
-      width:200px;
+      width:225px;
       .labels{
         text-align: justify;
         line-height: 20px;

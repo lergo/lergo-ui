@@ -1,3 +1,5 @@
+body{color:red;}
+$iconSpritePath:"../eliran_and_guy_are_testing_something/";
 @import "bootstrap-sass/lib/bootstrap";
 
 /* Put your CSS here */
@@ -7,7 +9,7 @@ html, body {
 
 body {
     background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Ubuntu, sans-serif;
     color: #333;
 }
 
