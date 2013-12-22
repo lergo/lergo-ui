@@ -6,6 +6,7 @@
                 >
             {{$index+1}}
         </div>
+
         <i class="fa fa-plus lergo-icon" ng-click="addQuestion(selected.step)"></i>
     </div>
 
@@ -85,10 +86,12 @@
                 </div>
                 <div class="options">
                     <div ng-repeat="option in selected.question.options"
-                         class="option"
-                         ng-class="{'active':!!option.correct}"
+                         class="option-wrapper"
                          ng-click="markOptionAsCorrect(selected.question, option)">
+                        <div class="option"
+                             ng-class="{'active':!!option.correct}">
                             <i class="fa fa-check"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -179,24 +182,10 @@
 
     </div>
 
+
     <div  modal-background flag="selected.showPreview" ng-show="!!selected.showPreview">
-        <div class="show-preview dialog-container">
-            <button ng-click="selected.showPreview=false">close</button>
-            {{showPreview}}
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
-            This is the preview<br/>
+        <div class="show-preview dialog-container" style="height:500px; width:500px ;">
+            <div question="selected.question"></div>
         </div>
 
     </div>

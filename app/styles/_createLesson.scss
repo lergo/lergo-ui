@@ -170,6 +170,18 @@
           width:570px;
         }
         .options{
+          .option-wrapper {
+            color:white;
+            border-radius: 3px;
+            cursor: pointer;
+            background: transparent;
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
+            &:first-child {
+              margin-top: 0;
+            }
+          }
           .option{
             .index{
                display:inline-block;
@@ -184,37 +196,12 @@
 
             }
         }
-        .correct-answer{
-          .option {
-            border-radius: 3px;
-            padding: 5px;
-            cursor: pointer;
-            background: transparent;
-            border: 1px solid $LERGO_INPUT_BORDER_COLOR;
-            width: 30px;
-            height: 30px;
-            margin-top: 10px;
-            box-sizing:border-box;
-            &:first-child {
-              margin-top: 0;
-            }
-
-            i {
-              display: none;
-            }
-            &.active {
-              background: $LERGO_BACKGROUND;
-              i {
-
-                display: inline-block;
-              }
-            }
-          }
-        }
       }
     }
   }
 }
+
+
 
 
 

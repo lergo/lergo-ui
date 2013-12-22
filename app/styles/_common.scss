@@ -192,18 +192,16 @@ button.action-item {
   width:100%;
 }
 
+
+
 .dialog-container{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 200px;
-  margin-left: -100px; /* negative half of width */
-  min-height: 200px;
-  margin-top: -100px; /* negative half of height */
+  position: relative;
+  margin:100px auto 0 auto;
   z-index:1000;
-  max-height:200px;
-  overflow:auto;
-  background:green;
+  background:white;
+  padding:30px;
+  border-radius:4px;
+  background:$LERGO_BODY_BACKGROUND;
 }
 
 .modal-cover{

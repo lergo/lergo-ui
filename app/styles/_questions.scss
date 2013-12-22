@@ -1,0 +1,41 @@
+.correct-answer{
+  .option {
+    color:white;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid $LERGO_INPUT_BORDER_COLOR;
+    width: 30px;
+    height: 30px;
+    box-sizing:border-box;
+    display:inline-block;
+    &:first-child {
+      margin-top: 0;
+    }
+
+    i {
+      display: none;
+    }
+    &.active {
+      background: $LERGO_BACKGROUND;
+      i {
+
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
+
+.question{
+  &.multiple-choices{
+     .option{
+       vertical-align: middle;
+       span{
+         padding:0 5px;
+       }
+     }
+  }
+}

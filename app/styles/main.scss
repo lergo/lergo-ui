@@ -1,4 +1,8 @@
 @import "bootstrap-sass/lib/bootstrap";
+$HEADER_HEIGHT: 110px;
+$FOOTER_HEIGHT: 110px;
+@import "./variables";
+@import "./common";
 
 /* Put your CSS here */
 
@@ -23,8 +27,8 @@ body, body * {
 }
 
 body {
-  background: #fafafa;
-  color: #333;
+  background: $LERGO_BODY_BACKGROUND;
+  color: $LERGO_BODY_COLOR;
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -53,10 +57,8 @@ body div.container {
   letter-spacing: -1px;
 }
 
-$HEADER_HEIGHT: 110px;
-$FOOTER_HEIGHT: 110px;
-@import "./variables";
-@import "./common";
+
 @import "./homepage";
 @import "./baseLayout";
 @import "./createLesson";
+@import "./questions";

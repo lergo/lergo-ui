@@ -1,8 +1,10 @@
 
-$LERGO_BACKGROUND:#5FB9FF !default;
+$LERGO_BACKGROUND:#5FB9FF !default; /** background for highlighted content: header, buttons **/
+$LERGO_BODY_BACKGROUND: #fafafa !default; /** background for text content **/
 $LERGO_ACTION_BACKGROUND:#FFE509 !default;
 
-$LERGO_TEXT_COLOR:#D8D8D8 !default;
+$LERGO_TEXT_COLOR:#D8D8D8 !default; /** title color **/
+$LERGO_BODY_COLOR: #333 !default; /** reading text color **/
 $LERGO_MENU_TEXT_COLOR:#939393 !default;
 $LERGO_MENU_TEXT_COLOR_ACTIVE:#676767 !default;
 $LERGO_MENU_GRAY_TITLE:#676767 !default;
