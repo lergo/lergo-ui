@@ -11,13 +11,13 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
         <!-- build:css({.tmp,app}) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
       <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 </head>
-  <body ng-app="lergoApp">
+  <body ng-app="lergoApp" ng-view="" style="position:relative">
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -28,7 +28,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -71,6 +71,9 @@
         <script src="scripts/filters/i18n.js"></script>
         <script src="scripts/directives/MultilineEllipsis.js"></script>
         <script src="scripts/directives/baseLayout.js"></script>
+        <script src="scripts/controllers/CreateLesson.js"></script>
+        <script src="scripts/services/LessonService.js"></script>
+        <script src="scripts/directives/modalBackground.js"></script>
         <!-- endbuild -->
 </body>
 </html>

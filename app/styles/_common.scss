@@ -1,0 +1,218 @@
+ul.lergo-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li {
+    float: left;
+    color: $LERGO_MENU_TEXT_COLOR;
+    font-size: 17px;
+    &.active {
+      color: $LERGO_MENU_TEXT_COLOR_ACTIVE;
+      font-weight: bold;
+    }
+    text-transform: uppercase;
+    &:not(:first-child) {
+      margin-left: 20px;
+      &:before {
+        display: inline-block;
+        content: "|";
+        padding-right: 20px;
+      }
+    }
+
+  }
+
+}
+
+button.action-item {
+  background: $LERGO_ACTION_BACKGROUND;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+.lergo-toggle-switch {
+  .active {
+    border: 2px solid red;
+  }
+}
+
+.hr {
+  height: 2px;
+  background: #D2E8FA;
+  &.dark{
+    background:#DEDEDE;
+  }
+}
+
+.lergo-form {
+  textarea {
+    width: $LERGO_POST_MAIN_CONTENT_WIDTH;
+    padding: 0;
+    background: $LERGO_INPUT_BACKGROUND;
+    height: $LERGO_FORM_TEXTAREA_HEIGHT;
+    @include input-block-level();
+  }
+
+  input {
+    background: $LERGO_INPUT_BACKGROUND;
+    border:1px solid $LERGO_INPUT_BORDER_COLOR;
+    padding:5px;
+    border-radius:5px;
+    @include input-block-level();
+  }
+
+  select {
+    background: $LERGO_INPUT_BACKGROUND;
+  }
+
+  .section {
+    &.horizontal{
+      margin-top:10px;
+      .label{
+        width:200px;
+      }
+     .input{
+       display:inline-block;
+     }
+    }
+    .label {
+      color: $LERGO_H3_COLOR;
+      font-size: 17px;
+      background: none;
+      text-shadow: none;
+      text-transform: uppercase;
+    }
+  }
+
+  .actions {
+    text-align: center;
+    button {
+
+      background: $LERGO_BACKGROUND;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 10px;
+    }
+  }
+
+}
+
+.lergo-h2 {
+  color: $LERGO_H2_COLOR;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.lergo-h3 {
+  color: $LERGO_H3_COLOR;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+
+.lergo-icon {
+  color: $LERGO_ICON_COLOR;
+}
+
+/** a toggle widget that uses pressed/unpressed look and feel for active **/
+.buttons-selector {
+  $BORDER_RADIUS: 10px;
+  padding: 10px;
+  background: $LERGO_INPUT_BACKGROUND;
+  display: inline-block;
+  .buttons-selector-item {
+    color: $LERGO_BACKGROUND;
+    padding:5px 10px;
+    min-width:50px;
+    text-transform: uppercase;
+    border:none;
+    background-color: white;
+    &.active {
+      color: white;
+      background-color: $LERGO_BACKGROUND;
+    }
+    &:first {
+      border-top-left-radius: $BORDER_RADIUS;
+      border-bottom-left-radius: $BORDER_RADIUS;
+    }
+
+    &:last {
+      border-top-right-radius: $BORDER_RADIUS;
+      border-bottom-right-radius: $BORDER_RADIUS;
+    }
+  }
+}
+
+/** a toggle widget that marks active by border **/
+.border-selector {
+  padding:20px;
+  background-color:$LERGO_INPUT_BACKGROUND;
+  display:inline-block;
+    .border-selector-item{
+      position:relative;
+
+      border:5px solid transparent;
+      &.active{
+        &:after{
+          content:"";
+          display:inline-block;
+          border:10px solid $LERGO_BACKGROUND;
+          border-radius: 10px;
+          background-color:transparent;
+          height:57px;
+          width:60px;
+          position:absolute;
+          z-index:20;
+          left:-10px;
+          top:-27px;
+        }
+      }
+    }
+}
+
+.left{
+  float:left;
+}
+
+.right{
+  float:right;
+}
+
+.clearfix{
+  &,&:before,&:after{
+    clear:both;
+  }
+}
+
+.wide{
+  width:100%;
+}
+
+.dialog-container{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  margin-left: -100px; /* negative half of width */
+  min-height: 200px;
+  margin-top: -100px; /* negative half of height */
+  z-index:1000;
+  max-height:200px;
+  overflow:auto;
+  background:green;
+}
+
+.modal-cover{
+  position:fixed;
+  z-index:2;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.5);
+}
+

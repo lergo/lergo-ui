@@ -12,7 +12,7 @@ angular.module('lergoApp')
                     return text.replace(/\W*\s(\S)*$/, '...');
                 }
 
-                scope.$watch(function(){ return element.text() }, function(){
+                scope.$watch(function(){ return element.text(); }, function(){
                     var $p = $(element.find('p'));
                     var divh = $(element).height();
                     while ($p.outerHeight() > divh) {

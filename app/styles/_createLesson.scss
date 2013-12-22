@@ -1,0 +1,220 @@
+#createLesson {
+
+  .wide-column {
+    width: $LERGO_POST_MAIN_CONTENT_WIDTH;
+  }
+
+  .narrow-column {
+    width: $LERGO_POST_SIDE_COLUMN_WIDTH;
+    float:right;
+  }
+  .wide-column, .narrow-column {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .lesson-title {
+    font-size: 25px;
+    color: $LERGO_MENU_GRAY_TITLE;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+    i {
+      float: right;
+      color: $LERGO_BACKGROUND;
+    }
+  }
+
+  .navigation {
+    margin-top: 30px;
+    height: 50px;
+    width: $LERGO_POST_MAIN_CONTENT_WIDTH;
+    .actions {
+      float: right;
+    }
+  }
+
+  .lesson-steps {
+    background: white;
+    padding-top: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
+    .steps-header {
+      .lergo-icon {
+        float: right;
+      }
+      padding-bottom:10px;
+    }
+
+    .lesson-step-row {
+      border-bottom: 1px dashed #E5F3FD;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+    }
+
+    .lesson-step-item {
+      position:relative;
+      color: $LERGO_BACKGROUND;
+      padding:30px 20px;
+      text-transform: capitalize;
+      &.active {
+        width:184px;
+        margin-left:-26px;
+        span{
+          margin-left:30px;
+        }
+        &:before{
+          position:absolute;
+          content:"";
+          border:17px solid transparent;
+          left:-32px;
+          top:20px;
+          border-right-color: $LERGO_BACKGROUND;
+          height:0;
+          width:0;
+          display:inline-block;
+        }
+        background: $LERGO_BACKGROUND;
+        color:white;
+
+      }
+    }
+  }
+
+
+  .star-icon{
+    cursor:pointer;
+    color:#A8D5F5;
+      &.active{
+        color:$LERGO_BACKGROUND;
+      }
+    &:before{
+      font-size:35px;
+      padding:0 10px;
+
+    }
+    span{
+      position:absolute;
+      color:white;
+      margin-top:-26px;
+      margin-left:23px;
+    }
+  }
+
+  /* quiz-step */
+  .quiz-form {
+    margin-top:10px;
+
+    .index-bar {
+      float:left;
+      width: 20px;
+      text-align: center;
+      .index-bar-item {
+        background: white;
+        text-align: center;
+        cursor: pointer;
+        width: 15px;
+        display: inline-block;
+        padding: 4px;
+        color: $LERGO_BACKGROUND;
+        border: 1px solid #CECECE;
+        border-radius: 5px;
+        &.active {
+          background: $LERGO_BACKGROUND;
+          color: white;
+          position: relative;
+          &:after {
+            content: "";
+            border: 8px solid transparent;
+            border-left-color: $LERGO_BACKGROUND;
+            position: absolute;
+            right: -14px;
+            top: 6px;
+          }
+        }
+      }
+
+      .lergo-icon{
+        font-size:17px;
+
+      }
+    }
+
+    .section-with-preview{
+      .preview{
+        float:right;
+       }
+       input{
+         width:540px;
+       }
+     }
+
+    .edit-quiz-container{
+      background:#EFEFEF;
+      border:2px solid #DEDEDE;
+      border-radius:3px;
+      padding:20px;
+      width:670px;
+      display:inline-block;
+      float:right;
+
+      .actions{
+        margin-top:10px;
+      }
+
+      .answers-options-section{
+        .possible-answers{
+          width:570px;
+        }
+        .options{
+          .option{
+            .index{
+               display:inline-block;
+               width:20px;
+               padding-left:4px;
+            }
+            .input{
+              display:inline-block;
+              width:540px;
+            }
+
+
+            }
+        }
+        .correct-answer{
+          .option {
+            border-radius: 3px;
+            padding: 5px;
+            cursor: pointer;
+            background: transparent;
+            border: 1px solid $LERGO_INPUT_BORDER_COLOR;
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
+            box-sizing:border-box;
+            &:first-child {
+              margin-top: 0;
+            }
+
+            i {
+              display: none;
+            }
+            &.active {
+              background: $LERGO_BACKGROUND;
+              i {
+
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+

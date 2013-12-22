@@ -7,6 +7,10 @@ angular.module('lergoApp', [])
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
+            .when('/lesson/create',{
+                'templateUrl':'views/lesson/create.html',
+                'controller':'CreateLessonCtrl'
+            })
             .when('/homepage', {
                 templateUrl: 'views/homepage.html',
                 controller: 'HomepageCtrl'

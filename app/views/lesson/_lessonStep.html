@@ -1,0 +1,75 @@
+<div class="edit-lesson-form lergo-form">
+
+    <div class="section horizontal">
+        <div class="label">
+            name
+        </div>
+        <div class="input">
+            <input ng-model="selected.step.name"/>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <span class="label">Description</span><br/>
+        <textarea ng-model="lesson.description"> </textarea>
+    </div>
+
+    <div class="section horizontal">
+        <div class="label">
+            add animated intro
+        </div>
+        <div class="input buttons-selector">
+            <button ng-class="{'active':selected.step.showAnimated == value}"
+                    ng-click="selected.step.showAnimated=value"
+                    class="buttons-selector-item"
+                    ng-repeat="value in ['yes','no']">
+                {{value}}
+            </button>
+        </div>
+    </div>
+
+    <div class="section horizontal">
+        <div class="label">
+            choose character
+        </div>
+        <div class="input border-selector">
+                        <span class="border-selector-item"
+                              ng-repeat="character in characters"
+                              ng-class="{'active':character==selected.step.character}"
+                              ng-click="selected.step.character=character">
+                        <img
+
+
+                                ng-src="{{character.img}}"
+                                />
+                         </span>
+        </div>
+    </div>
+
+    <div class="section horizontal">
+        <div class="label">
+            choose language
+        </div>
+        <div class="input">
+            <select ng-model="lesson.language" ng-options="l as l for l in lesson.languages">
+            </select>
+        </div>
+    </div>
+
+    <div class="section horizontal">
+        <div class="label">
+            choose subject
+        </div>
+        <div class="input">
+            <select ng-model="lesson.subject" ng-options="i as i for i in availableSubjects">
+            </select>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button>apply</button>
+        <button>remove step</button>
+        <button>delete lesson</button>
+    </div>
+</div>

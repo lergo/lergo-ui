@@ -1,0 +1,204 @@
+<div class="quiz-form lergo-form">
+    <div class="index-bar">
+        <div class="index-bar-item" ng-repeat="question in selected.step.questions"
+             ng-class="{'active':selected.question == question}"
+             ng-click="selected.question = question"
+                >
+            {{$index+1}}
+        </div>
+        <i class="fa fa-plus lergo-icon" ng-click="addQuestion(selected.step)"></i>
+    </div>
+
+    <div class="edit-quiz-container" ng-show="!!selected.question">
+         <i class="fa fa-trash-o right" ng-click="removeQuestion(selected.step, selected.question)"></i>
+        <div class="section">
+            <span class="label">Question</span><br/>
+            <input type="text" class="wide" ng-model="selected.question.question"/>
+        </div>
+
+        <div class="section-with-preview">
+            <div class="sections">
+                <div class="preview" ng-show="selected.question.useMedia">
+                    <img ng-src="{{selected.question.mediaSource}}" style="height:100px; width:100px;"/>
+                </div>
+                <div class="section horizontal">
+                    <div class="label">
+                        use media
+                    </div>
+                    <div class="input buttons-selector">
+                        <button ng-class="{'active':selected.question.useMedia == value}"
+                                ng-click="selected.question.useMedia=value"
+                                class="buttons-selector-item"
+                                ng-repeat="value in ['yes','no']">
+                            {{value}}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section" ng-show="selected.question.useMedia">
+                    <div class="label">
+                        media source
+                    </div>
+                    <div class="input">
+                        <input type="text" ng-model="selected.question.mediaSource"/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section horizontal">
+            <div class="label">
+                question type
+            </div>
+            <div class="input buttons-selector">
+                <button ng-class="{'active':selected.question.type == value.id}"
+                        ng-click="selected.question.type=value.id"
+                        class="buttons-selector-item"
+                        ng-repeat="value in questionTypeOptions">
+                    {{value.label}}
+                </button>
+            </div>
+        </div>
+
+
+        <div class="answers-options-section section clearfix">
+            <div class="left possible-answers" >
+                <div class="label">
+                    possible answers
+                </div>
+                <div class="options">
+                    <div ng-repeat="option in selected.question.options" class="option">
+                        <div class="index">
+                            {{$index+1}}
+                        </div>
+                        <div class="input">
+                            <input type="text" ng-model="option.answer"/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="right correct-answer">
+                <div class="label">
+                    correct
+                </div>
+                <div class="options">
+                    <div ng-repeat="option in selected.question.options"
+                         class="option"
+                         ng-class="{'active':!!option.correct}"
+                         ng-click="markOptionAsCorrect(selected.question, option)">
+                            <i class="fa fa-check"></i>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div>
+            <i class="fa fa-plus" ng-click="addAnswerOption(selected.question)"> </i>
+        </div>
+
+        <div class="hr dark">
+
+        </div>
+
+
+        <div class="section horizontal">
+            <div class="label">
+                add hint
+            </div>
+            <div class="input buttons-selector">
+                <button ng-class="{'active':selected.question.addHint == value}"
+                        ng-click="selected.question.addHint=value"
+                        class="buttons-selector-item"
+                        ng-repeat="value in ['yes','no']">
+                    {{value}}
+                </button>
+            </div>
+        </div>
+
+        <div class="section horizontal" ng-show="selected.question.addHint == 'yes'">
+            <div class="label">
+                hint
+            </div>
+            <div class="input">
+                <textarea ng-model="selected.question.hint"></textarea>
+            </div>
+        </div>
+
+        <div class="section horizontal">
+            <div class="label">
+                add explanation
+            </div>
+            <div class="input buttons-selector">
+                <button ng-class="{'active':selected.question.addExplanation == value}"
+                        ng-click="selected.question.addExplanation=value"
+                        class="buttons-selector-item"
+                        ng-repeat="value in ['yes','no']">
+                    {{value}}
+                </button>
+            </div>
+        </div>
+
+        <div class="section horizontal" ng-show="selected.question.addExplanation == 'yes'">
+            <div class="label">
+                explanation
+            </div>
+            <div class="input">
+                <textarea ng-model="selected.question.explanation"></textarea>
+            </div>
+        </div>
+
+
+        <div class="hr dark"></div>
+
+        <div class="section horizontal">
+            <div class="label">
+                difficulty
+            </div>
+            <div class="input buttons-selector">
+
+                <i ng-class="{'active': selected.question.difficulty >= value}"
+                   class="fa fa-star star-icon"
+                   ng-click="selected.question.difficulty=value"
+                   class="buttons-selector-item"
+                   ng-repeat="value in [1,2,3,4,5]">
+                    <span class="star-text">{{value}}</span>
+                </i>
+            </div>
+        </div>
+        {{showPreview}}
+
+        <div class="hr dark"></div>
+
+        <div class="actions">
+            <button>apply</button>
+            <button ng-click="selected.showPreview=true">preview</button>
+        </div>
+
+    </div>
+
+    <div  modal-background flag="selected.showPreview" ng-show="!!selected.showPreview">
+        <div class="show-preview dialog-container">
+            <button ng-click="selected.showPreview=false">close</button>
+            {{showPreview}}
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+            This is the preview<br/>
+        </div>
+
+    </div>
+
+</div>

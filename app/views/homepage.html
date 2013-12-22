@@ -1,4 +1,24 @@
-<div class="base-layout">
+<div class="base-layout" id="homepage">
+    <div class="header-stats">
+        <div class="article">
+            <div class="item">
+                <div class="amount">2305</div>
+                <div class="type">lessons</div>
+            </div>
+            <div class="item">
+                <div class="amount">17456</div>
+                <div class="type">questions</div>
+            </div>
+            <div class="and-counting item">
+                and counting...
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="title">Create Your Own Lessons</div>
+            <div class="start">start</div>
+            <div class="free">it's free!</div>
+        </div>
+    </div>
           <div class="article">
               <div class="section" ng-repeat="section in sections">
                   <div class="title">
@@ -6,8 +26,8 @@
                           {{section.label|i18n}}
                       </div>
                       <div class="controls">
-                          <i class="icon-chevron-left" ng-class="{'disabled':section.index ==0}" ng-click="flipSection(section,false)"></i>
-                          <i class="icon-chevron-right" ng-click="flipSection(section,true)"></i>
+                          <i class="fa fa-chevron-left" ng-class="{'disabled':section.index ==0}" ng-click="flipSection(section,false)"></i>
+                          <i class="fa fa-chevron-right" ng-click="flipSection(section,true)"></i>
                       </div>
                   </div>
                   <div class="lessons">
@@ -15,7 +35,7 @@
                           <div class="age-limit age-limit-{{lesson.age}}">
                               <div class="value">{{lesson.age}}</div>
                               <div class="units">
-                                  <i class="icon-arrow-up"></i>
+                                  <i class="fa fa-arrow-up"></i>
                                   years
                               </div>
                           </div> <!-- age limit -->
@@ -24,11 +44,11 @@
 
                               <div class="stats">
                                   <span class="time">
-                                        <i class="icon-time"></i>
+                                        <i class="fa fa-clock-o"></i>
                                         <span> {{lesson.time}} </span>
                                   </span>
                                   <span class="questions">
-                                        <i class="icon-question-sign"></i>
+                                        <i class="fa fa-question-circle"></i>
                                         <span> {{lesson.questions}} </span>
                                   </span>
 
@@ -56,7 +76,7 @@
                               <div class="lesson-stats-item" >
 
                                   <div class="{{stat.type}} item" ng-repeat="stat in lesson.stats">
-                                      <i ng-class="{'icon-thumbs-up' : stat.type == 'likes', 'icon-eye-open':stat.type == 'views', 'icon-comment': stat.type == 'comments'}">                                  </i>
+                                      <i ng-class="{'fa fa-thumbs-up' : stat.type == 'likes', 'fa fa-eye':stat.type == 'views', 'fa fa-comment': stat.type == 'comments'}">                                  </i>
 
                                   </div>
                               </div>
@@ -100,5 +120,5 @@
                     <span ng-repeat="label in labels" class="weight{{label.weight}}"><a href="#">{{label.text}} </a></span>
               </div>
           </div>
-        <div class="push"></div>
+
 </div>

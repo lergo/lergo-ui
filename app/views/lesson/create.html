@@ -1,0 +1,40 @@
+<div class="base-layout" id="createLesson">
+    <div class="navigation">
+        <ul class="lergo-menu">
+            <li class="active">Edit</li>
+            <li>Review</li>
+            <li>Tutorial</li>
+        </ul>
+        <div class="actions">
+            <button class="action-item">publish</button>
+        </div>
+    </div>
+
+    <div class="lesson-title">
+        {{lesson.title}}
+        <i class="fa fa-cog"></i>
+    </div>
+    <div class="hr">
+
+    </div>
+
+    <div class="wide-column">
+        <div ng-include="getTemplateName(selected.step)"></div>
+
+
+
+    </div>
+    <div class="narrow-column">
+        <div class="lesson-steps">
+        <ul>
+            <li class="steps-header lergo-h2 lesson-step-row" ng-click="addStep(lesson)">Steps <i class="fa fa-plus lergo-icon"></i></li>
+            <li ng-class="{'active':lessonStep == selected.step}" class="lesson-step-row lesson-step-item" ng-repeat="lessonStep in lesson.steps"
+                ng-click="selected.step = lessonStep"><span>{{lessonStep.name}}</span>
+            </li>
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+
