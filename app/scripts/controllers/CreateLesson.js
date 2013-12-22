@@ -97,6 +97,67 @@ angular.module('lergoApp')
             }
             option.correct = true;
         };
+        $("body").bind("drop", function(){
+            console.log("I am dropping");
+        });
+
+        var isDragging = false;
+        $('body').on('dragstart','[draggable]', function(e){
+            e.originalEvent.dataTransfer.dropEffect = 'move';  // See the section on the
+            e.originalEvent.dataTransfer.setData("Text",$(this).attr("data-index"));
+            console.log("I am dragging!");
+          isDragging = true;
+        }).on('dragenter', '[dropzone] *',function(){
+                $("[dropzone]").removeClass("drag-over");
+                    $(this).closest("[dropzone]").addClass("drag-over");
+        }).on('dragover', function(e){
+                console.log("preventing default");
+                e.originalEvent.stopPropagation();
+                e.originalEvent.preventDefault();
+            }).on('dragenter','.label',function(){
+                console.log("scroll leave");
+                $("[dropzone]").removeClass("drag-over");
+        }).on('drop','[dropzone]',function(e){
+                e.originalEvent.stopPropagation();
+                e.originalEvent.preventDefault();
+
+                var index1 = e.originalEvent.dataTransfer.getData("Text");
+                var index2 = $(this).attr("data-index");
+                console.log(["dropping", index1, index2]);
+                if ( isNaN(parseInt(index2))){
+                    return false; // nothing to do
+                }else{
+                    index2 = parseInt(index2);
+                }
+
+                if (isNaN(parseInt(index1))) {
+                    return false;
+                } else {
+                    index1 = parseInt(index1);
+
+                }
+
+                $scope.$apply(function(){
+                    if ( !$scope.selected.question){
+                        return;
+                    }
+                    var options = $scope.selected.question.options;
+                    if ( !options){
+                        return;
+                    }else{
+                        var object1 = options[index1];
+                        var object2 = options[index2];
+                        options[index1] = object2;
+                        options[index2] = object1;
+                    }
+                });
+
+
+                return false;
+            }).on('dragend', function(){
+
+                $("[dropzone]").removeClass("drag-over");
+            });
 
         $scope.questionTypeOptions = [{'id':1, 'label':'multiple choice'},{'id':2, 'label':'fill in the blank'}];
 

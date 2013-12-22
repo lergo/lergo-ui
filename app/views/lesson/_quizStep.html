@@ -63,41 +63,37 @@
         </div>
 
 
-        <div class="answers-options-section section clearfix">
-            <div class="left possible-answers" >
-                <div class="label">
+        <div class="answers-options-section section clearfix possible-answers correct-answer">
+            <div class=" clearfix">
+                <div class="label left">
                     possible answers
                 </div>
-                <div class="options">
-                    <div ng-repeat="option in selected.question.options" class="option">
-                        <div class="index">
-                            {{$index+1}}
-                        </div>
-                        <div class="input">
-                            <input type="text" ng-model="option.answer"/>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="right correct-answer">
-                <div class="label">
+                <div class="label right">
                     correct
                 </div>
-                <div class="options">
-                    <div ng-repeat="option in selected.question.options"
-                         class="option-wrapper"
-                         ng-click="markOptionAsCorrect(selected.question, option)">
-                        <div class="option"
-                             ng-class="{'active':!!option.correct}">
-                            <i class="fa fa-check"></i>
-                        </div>
+            </div>
+            <div class="options">
+                <div ng-repeat="option in selected.question.options" class="option" draggable="true" dropzone data-index="{{$index}}">
+                    <div class="index">
+                        {{$index+1}}
                     </div>
+                    <div class="input">
+                        <input type="text" ng-model="option.answer"/>
+                    </div>
+                    <div class="select" ng-class="{'active':!!option.correct}" ng-click="markOptionAsCorrect(selected.question, option)" >
+                        <i class="fa fa-check"></i>
+                    </div>
+
+                </div>
+                <div class="last-option" style="height:40px; background-color:red;" dropzone data-index="tail"> <!-- for dropping to the last question-->
+
                 </div>
             </div>
 
 
-        </div>
+
+
+
         <div>
             <i class="fa fa-plus" ng-click="addAnswerOption(selected.question)"> </i>
         </div>

@@ -170,19 +170,13 @@
           width:570px;
         }
         .options{
-          .option-wrapper {
-            color:white;
-            border-radius: 3px;
-            cursor: pointer;
-            background: transparent;
-            width: 30px;
-            height: 30px;
-            margin-top: 10px;
-            &:first-child {
-              margin-top: 0;
-            }
-          }
+          margin-top:20px;
           .option{
+            &.drag-over{
+              padding-top:10px;
+
+              border-top:2px dashed $LERGO_TEXT_COLOR;
+            }
             .index{
                display:inline-block;
                width:20px;
@@ -190,9 +184,12 @@
             }
             .input{
               display:inline-block;
-              width:540px;
+              width:580px;
             }
 
+            .select{
+
+            }
 
             }
         }

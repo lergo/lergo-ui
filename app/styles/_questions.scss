@@ -1,8 +1,8 @@
 .correct-answer{
-  .option {
+  &.select, .select {
     color:white;
     border-radius: 3px;
-    padding: 5px;
+    padding: 0;
     cursor: pointer;
     background: transparent;
     border: 1px solid $LERGO_INPUT_BORDER_COLOR;
@@ -10,18 +10,19 @@
     height: 30px;
     box-sizing:border-box;
     display:inline-block;
-    &:first-child {
-      margin-top: 0;
-    }
-
+    text-align: center;
+    vertical-align: top;
     i {
+      margin:auto;
       display: none;
+      vertical-align: middle;
+      margin-top:5px;
     }
     &.active {
+      color:white;
       background: $LERGO_BACKGROUND;
-      i {
-
-        display: inline-block;
+      i{
+        display:block;
       }
     }
   }
