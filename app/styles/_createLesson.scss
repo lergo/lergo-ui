@@ -171,12 +171,15 @@
         }
         .options{
           margin-top:20px;
+          [dropzone].drag-over{
+            padding-top:10px;
+            border-top:2px dashed $LERGO_TEXT_COLOR;
+          }
+          .last-option{
+            height:10px;
+          }
           .option{
-            &.drag-over{
-              padding-top:10px;
 
-              border-top:2px dashed $LERGO_TEXT_COLOR;
-            }
             .index{
                display:inline-block;
                width:20px;

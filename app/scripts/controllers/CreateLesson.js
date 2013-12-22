@@ -101,15 +101,54 @@ angular.module('lergoApp')
             console.log("I am dropping");
         });
 
+        function _switchElements( index1, index2 ){
+            if ( !$scope.selected.question){
+                return;
+            }
+            var options = $scope.selected.question.options;
+            if ( !options){
+                return;
+            }else{
+                if ( !object1 || !object2){
+                    return;
+                }
+                var object1 = options[index1];
+                var object2 = options[index2];
+                options[index1] = object2;
+                options[index2] = object1;
+            }
+        }
+
+        function _moveToTail( index1 ){
+            if ( !$scope.selected.question){
+                return;
+            }
+            var options = $scope.selected.question.options;
+            if ( !options){
+                return;
+            }else{
+                var object1 = options[index1];
+                if ( !object1 ){
+                    return;
+                }
+                options.splice(index1,1);
+                options.push(object1);
+            }
+        }
+
+        function _isNumber( n ){
+            return !isNaN(parseInt(n));
+        }
+
         var isDragging = false;
         $('body').on('dragstart','[draggable]', function(e){
             e.originalEvent.dataTransfer.dropEffect = 'move';  // See the section on the
             e.originalEvent.dataTransfer.setData("Text",$(this).attr("data-index"));
             console.log("I am dragging!");
           isDragging = true;
-        }).on('dragenter', '[dropzone] *',function(){
+        }).on('dragenter', '[dropzone]',function(){
                 $("[dropzone]").removeClass("drag-over");
-                    $(this).closest("[dropzone]").addClass("drag-over");
+                    $(this).addClass("drag-over");
         }).on('dragover', function(e){
                 console.log("preventing default");
                 e.originalEvent.stopPropagation();
@@ -124,31 +163,14 @@ angular.module('lergoApp')
                 var index1 = e.originalEvent.dataTransfer.getData("Text");
                 var index2 = $(this).attr("data-index");
                 console.log(["dropping", index1, index2]);
-                if ( isNaN(parseInt(index2))){
-                    return false; // nothing to do
-                }else{
-                    index2 = parseInt(index2);
-                }
-
-                if (isNaN(parseInt(index1))) {
-                    return false;
-                } else {
-                    index1 = parseInt(index1);
-
-                }
 
                 $scope.$apply(function(){
-                    if ( !$scope.selected.question){
-                        return;
+                    if ( _isNumber(index1) && _isNumber(index2)){
+                        _switchElements(index1,index2);
                     }
-                    var options = $scope.selected.question.options;
-                    if ( !options){
-                        return;
-                    }else{
-                        var object1 = options[index1];
-                        var object2 = options[index2];
-                        options[index1] = object2;
-                        options[index2] = object1;
+
+                    if ( index2 == "tail"){
+                        _moveToTail(index1);
                     }
                 });
 
