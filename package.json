@@ -1,6 +1,7 @@
 {
-  "name": "lergo",
+  "name": "lergo-ui",
   "version": "0.0.0",
+  "private":true,
   "dependencies": {
     "karma-chrome-launcher": "~0.1.0",
     "karma-script-launcher": "~0.1.0",

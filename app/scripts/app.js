@@ -15,6 +15,10 @@ angular.module('lergoApp', [])
                 templateUrl: 'views/homepage.html',
                 controller: 'HomepageCtrl'
             })
+            .when('/kitchenSink', {
+                templateUrl: 'views/kitchenSink.html'
+
+            })
             .otherwise({
                 redirectTo: '/'
             });

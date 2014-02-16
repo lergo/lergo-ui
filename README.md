@@ -1,4 +1,5 @@
-lergo-project-draft
+Lergo-UI
 ===================
 
-A draft project for lergo
+ * Discussion on [Lergo Google Group](https://groups.google.com/forum/#!forum/lergo-dev)
+

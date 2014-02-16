@@ -1,3 +1,96 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0b1 | 201101
+   NOTE: WORK IN PROGRESS
+   USE WITH CAUTION AND TEST WITH ABANDON */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* remember to define visible focus styles!
+:focus {
+	outline: ?????;
+} */
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*, body, html {
+  padding: 0;
+  margin: 0;
+
+}
+
+html, body {
+  height: 100%;
+}
+
+.centered-content {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body, body * {
+  font-family: Ubuntu, sans-serif;
+}
+
+body {
+  background: $LERGO_BODY_BACKGROUND;
+  color: $LERGO_BODY_COLOR;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  background-image: none;
+  margin: 0;
+}
+
 ul.lergo-menu {
   list-style: none;
   padding: 0;
@@ -22,6 +115,11 @@ ul.lergo-menu {
 
   }
 
+}
+
+
+body div.container {
+  width: 100%;
 }
 
 button.action-item {
@@ -102,6 +200,15 @@ button.action-item {
 
 }
 
+.lergo-h1{
+  font-size: 22px;
+  white-space: nowrap;
+  text-align: justify;
+  color: $LERGO_H1_COLOR;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .lergo-h2 {
   color: $LERGO_H2_COLOR;
   font-size: 20px;
@@ -125,8 +232,11 @@ button.action-item {
   background: $LERGO_INPUT_BACKGROUND;
   display: inline-block;
   .buttons-selector-item {
+    outline:none;
     color: $LERGO_BACKGROUND;
     padding:5px 10px;
+    margin:0;
+    border:none;
     min-width:50px;
     text-transform: uppercase;
     border:none;
@@ -135,12 +245,12 @@ button.action-item {
       color: white;
       background-color: $LERGO_BACKGROUND;
     }
-    &:first {
+    &:first-child {
       border-top-left-radius: $BORDER_RADIUS;
       border-bottom-left-radius: $BORDER_RADIUS;
     }
 
-    &:last {
+    &:last-child {
       border-top-right-radius: $BORDER_RADIUS;
       border-bottom-right-radius: $BORDER_RADIUS;
     }

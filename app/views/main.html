@@ -1,17 +1,5 @@
-<div class="hero-unit">
-  <h1>Lergo Pages</h1>
-  <p>Please select a page below</p>
-  <ul>
-      <li ng-repeat="page in pages"><a href="{{page.href}}">{{page.title}}</a></li>
-  </ul>
-    <h2> I18N POC</h2>
-    <p>
-        Below is a POC on the I18N capabilities. <br/>
-        Click on Hebrew/English to change the languages names <br/>
-
-    </p>
-    <a href="?language=he#/?language=he">{{"languages.he"|i18n}}</a> , <a href="?language=en#/?language=en">{{"languages.en"|i18n}}</a>
-
+<div class="base-layout" id="mainPage">
+    <div ng-include="'views/_loginForm.html'"/>
 </div>
 
 

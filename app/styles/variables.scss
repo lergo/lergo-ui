@@ -1,21 +1,36 @@
 
-$LERGO_BACKGROUND:#5FB9FF !default; /** background for highlighted content: header, buttons **/
-$LERGO_BODY_BACKGROUND: #fafafa !default; /** background for text content **/
-$LERGO_ACTION_BACKGROUND:#FFE509 !default;
+/** Theme colors **/
+$COLOR_1:  #5FB9FF !default;
+$COLOR_2:  #fafafa !default;
+$COLOR_3:  #FFE509 !default;
+$COLOR_4:  #D8D8D8 !default;
+$COLOR_5:  #333 !default;
+$COLOR_6:  #939393 !default;
+$COLOR_7:  #676767 !default;
+$COLOR_8:  #EFEFEF !default;
+$COLOR_9:  #CECECE !default;
+$COLOR_10: #7C7C7C !default;
+$COLOR_11: #C5C5C5 !default;
+$COLOR_12: #5FB9FF !default;
 
-$LERGO_TEXT_COLOR:#D8D8D8 !default; /** title color **/
-$LERGO_BODY_COLOR: #333 !default; /** reading text color **/
-$LERGO_MENU_TEXT_COLOR:#939393 !default;
-$LERGO_MENU_TEXT_COLOR_ACTIVE:#676767 !default;
-$LERGO_MENU_GRAY_TITLE:#676767 !default;
+$LERGO_BACKGROUND:$COLOR_1 !default; /** background for highlighted content: header, buttons **/
+$LERGO_BODY_BACKGROUND:$COLOR_2  !default; /** background for text content **/
+$LERGO_ACTION_BACKGROUND:$COLOR_3 !default;
 
-$LERGO_INPUT_BACKGROUND:#EFEFEF !default;
-$LERGO_INPUT_BORDER_COLOR:#CECECE !default;
+$LERGO_TEXT_COLOR:$COLOR_4 !default; /** title color **/
+$LERGO_BODY_COLOR: $COLOR_5 !default; /** reading text color **/
+$LERGO_MENU_TEXT_COLOR: $COLOR_6 !default;
+$LERGO_MENU_TEXT_COLOR_ACTIVE: $COLOR_7 !default;
+$LERGO_MENU_GRAY_TITLE:$COLOR_7 !default;
 
-$LERGO_H2_COLOR:#7C7C7C !default;
-$LERGO_H3_COLOR:#C5C5C5 !default;
+$LERGO_INPUT_BACKGROUND:$COLOR_8 !default;
+$LERGO_INPUT_BORDER_COLOR:$COLOR_9 !default;
 
-$LERGO_ICON_COLOR:#5FB9FF !default;
+$LERGO_H1_COLOR:$COLOR_1 !default;
+$LERGO_H2_COLOR:$COLOR_10 !default;
+$LERGO_H3_COLOR:$COLOR_11 !default;
+
+$LERGO_ICON_COLOR:$COLOR_12 !default;
 
 
 

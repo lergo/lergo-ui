@@ -1,0 +1,38 @@
+
+#kitchen-sink{
+  #content{
+    width:70%;
+    margin:0 auto;
+    padding:0 20px;
+  }
+
+  & > #wrapper > #content > .lergo-h1{
+
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-top:10px;
+    padding-bottom:10px;
+    background-color:$COLOR_1;
+    color:$COLOR_2;
+    text-align:center;
+  }
+
+  .lergo-ks-demo{
+    display:table;
+    width:100%;
+    .lergo-ks-demo-wrapper{
+      display:table-row;
+
+      .lergo-ks-preview, .lergo-ks-code{
+        display:table-cell;
+      }
+
+      .lergo-ks-preview{
+        padding:0 20px;
+      }
+    }
+
+
+  }
+
+}
