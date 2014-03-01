@@ -19,6 +19,10 @@ angular.module('lergoApp', [])
                 templateUrl: 'views/kitchenSink.html'
 
             })
+            .when('/session/signup', {
+                templateUrl: 'views/session/signup.html',
+                controller:'SignupCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
