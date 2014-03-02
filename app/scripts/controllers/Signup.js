@@ -8,12 +8,15 @@ angular.module('lergoApp')
             'passwordConfirm': null
         };
 
-        LergoClient.signup($scope.signupForm).then(
-            function () {
-                $log.info('got success');
-            },
-            function () {
-                $log.error('got error');
-            }
-        );
-    });
+        $scope.submit = function () {
+            LergoClient.signup($scope.signupForm).then(
+                function () {
+                    $log.info('got success');
+                },
+                function () {
+                    $log.error('got error');
+                }
+            );
+        }
+    }
+);
