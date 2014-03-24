@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp')
-    .controller('SignupCtrl', function ($scope, $log, LergoClient) {
+    .controller('SignupCtrl', function ($scope, $log, LergoClient, $location ) {
         $scope.signupForm = {
             'username': null,
             'password': null,
@@ -12,6 +12,7 @@ angular.module('lergoApp')
             LergoClient.signup($scope.signupForm).then(
                 function () {
                     $log.info('got success');
+                    $location.path('/login');
                 },
                 function () {
                     $log.error('got error');

@@ -1,6 +1,6 @@
 <div>
     <div id="wrapper" class="clearfix">
-        <div id="header">
+        <div id="header" ng-controller="LoginCtrl">
             <div class="centered-content">
                 <div class="header-main">
                     <div class="logo"></div>
@@ -13,9 +13,12 @@
                         <input placeholder="What would you like to learn about?"/>
                         <i class="icon-search"></i>
                     </div>
-                    <div class="header-login">
+                    <div class="header-login" ng-show="!!loggedOut">
                         <a href="#">Log in</a>
                         <a href="#">Sign up</a>
+                    </div>
+                    <div class="header-login" ng-show="!!loggedIn">
+                        <a href="#"> Logout </a>
                     </div>
                 </div>
 

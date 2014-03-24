@@ -5,7 +5,19 @@ angular.module('lergoApp')
         // AngularJS will instantiate a singleton by calling "new" on this function
 
         this.signup = function( signupForm ){
-            $http.post('/backend/users/signup', signupForm).then( function(){ $log.info('got result from server'); }, function(){ $log.error('got error from server ')})
+            return $http.post('/backend/users/signup', signupForm);
+        };
+
+        this.isLoggedIn = function(){
+            return $http.get('/backend/user/loggedin');
+        };
+
+        this.logout = function( ){
+            return $http.post('backend/users/logout');
+        }
+
+        this.login = function( loginCredentials ){
+            return $http.post('/backend/users/login', loginCredentials) ;
         }
 
     }

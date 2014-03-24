@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('lergoApp', [])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, $httpProvider) {
+
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
@@ -23,7 +24,47 @@ angular.module('lergoApp', [])
                 templateUrl: 'views/session/signup.html',
                 controller:'SignupCtrl'
             })
+            .when('/session/login', {
+                templateUrl: 'views/session/login.html',
+                controller:'LoginCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
+
+
+
+
+
+        var interceptor = ['$rootScope', '$q', '$location', function (scope, $q, $location) {
+
+            function success(response) {
+                return response;
+            }
+
+            function error(response) {
+                var status = response.status;
+                console.log($location.path);
+                if (status == 401 && $location.path() != "/session/login") {
+                    $location.path( "/session/login");
+                    return;
+                }
+
+                if ( !!response.message ){
+                    scope.pageError = message;
+                }
+                // otherwise
+                return $q.reject(response);
+
+            }
+
+            return function (promise) {
+                return promise.then(success, error);
+            }
+
+        }];
+        $httpProvider.responseInterceptors.push(interceptor);
+
+
+
     });
