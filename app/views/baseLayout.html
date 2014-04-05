@@ -18,6 +18,7 @@
                         <a href="#">Sign up</a>
                     </div>
                     <div class="header-login" ng-show="!!user">
+                        {{user.username}}
                         <button ng-click="logout()">logout</button>
                     </div>
                 </div>
@@ -33,7 +34,7 @@
             <div class="footer-links">
                 <ul>
                     <li> Privacy & Terms</li>
-                    <li> About LetGO</li>
+                    <li> <a href="#/about">About LerGO</a></li>
                     <li> Home Page</li>
                     <li> Contact Us</li>
                     <li> <a href="#/kitchenSink">Kitchen Sink</a></li>

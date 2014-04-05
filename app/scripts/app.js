@@ -28,6 +28,9 @@ angular.module('lergoApp', [])
                 templateUrl: 'views/session/login.html',
                 controller:'LoginCtrl'
             })
+            .when('/about', {
+                templateUrl: 'views/about.html'
+            })
             .otherwise({
                 templateUrl: 'views/errors/notFound.html'
 
