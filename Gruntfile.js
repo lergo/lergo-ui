@@ -278,6 +278,13 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
+                        dest: '<%= yeoman.dist %>',
+                        src: [
+                            'package.json'
+                        ]
+                    },
+                    {
+                        expand: true,
                         cwd: '.tmp/images',
                         dest: '<%= yeoman.dist %>/images',
                         src: [
