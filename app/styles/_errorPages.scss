@@ -1,0 +1,13 @@
+#errorPage{
+
+  .notFound{
+
+  }
+
+  &.common-content, .common-content{
+    margin: 100px auto;
+    width:400px;
+    text-align: center;
+    line-height: 30px;
+  }
+}

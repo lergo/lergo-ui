@@ -29,7 +29,9 @@ angular.module('lergoApp', [])
                 controller:'LoginCtrl'
             })
             .otherwise({
-                redirectTo: '/'
+                templateUrl: 'views/errors/notFound.html'
+
+//                redirectTo: '/'
             });
 
 
@@ -44,7 +46,6 @@ angular.module('lergoApp', [])
 
             function error(response) {
                 var status = response.status;
-                console.log($location.path);
                 if (status == 401 && $location.path() != "/session/login") {
                     $location.path( "/session/login");
                     return;

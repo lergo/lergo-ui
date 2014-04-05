@@ -324,3 +324,13 @@ button.action-item {
   background:rgba(0,0,0,0.5);
 }
 
+
+
+.logo{
+  &.transparent{
+    width:251px;
+    height:146px;
+    display:inline-block;
+    background:url('images/logos/transparent.png')
+  }
+}
