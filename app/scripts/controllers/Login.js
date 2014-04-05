@@ -7,8 +7,10 @@ angular.module('lergoApp')
 
         LergoClient.isLoggedIn().then(
             function ( result ) {
-                $rootScope.user = result.data;
-                $location.path('/homepage');
+                if ( !!result ){
+                    $rootScope.user = result.data;
+                    $location.path('/homepage');
+                }
             },
             function(){
                 $scope.showLoginPage = true;

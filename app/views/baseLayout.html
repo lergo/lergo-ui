@@ -13,12 +13,12 @@
                         <input placeholder="What would you like to learn about?"/>
                         <i class="icon-search"></i>
                     </div>
-                    <div class="header-login" ng-show="!!loggedOut">
+                    <div class="header-login" ng-show="!user">
                         <a href="#">Log in</a>
                         <a href="#">Sign up</a>
                     </div>
-                    <div class="header-login" ng-show="!!loggedIn">
-                        <a href="#"> Logout </a>
+                    <div class="header-login" ng-show="!!user">
+                        <button ng-click="logout()">logout</button>
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
                 </ul>
             </div>
             <div class="copyrights">
-                &copy; LerGO 2013 All Rights Reserved
+                &copy; LerGO 2013-2014 All Rights Reserved
             </div>
         </div>
     </div>
