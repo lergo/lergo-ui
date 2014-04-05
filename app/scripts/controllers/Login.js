@@ -5,17 +5,19 @@ angular.module('lergoApp')
 
         $scope.showLoginPage = false;
 
-        LergoClient.isLoggedIn().then(
-            function ( result ) {
-                if ( !!result ){
-                    $rootScope.user = result.data;
-                    $location.path('/homepage');
+        if ($location.path() == '/login') {
+            LergoClient.isLoggedIn().then(
+                function (result) {
+                    if (!!result) {
+                        $rootScope.user = result.data;
+                        $location.path('/homepage');
+                    }
+                },
+                function () {
+                    $scope.showLoginPage = true;
                 }
-            },
-            function(){
-                $scope.showLoginPage = true;
-            }
-        );
+            );
+        }
 
         $scope.login = function () {
 

@@ -4,36 +4,32 @@ angular.module('lergoApp', [])
     .config(function ($routeProvider, $httpProvider) {
 
         $routeProvider
-            .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
-            })
-            .when('/lesson/create',{
+            .when('/user/lesson/create',{
                 'templateUrl':'views/lesson/create.html',
                 'controller':'CreateLessonCtrl'
             })
-            .when('/homepage', {
+            .when('/user/homepage', {
                 templateUrl: 'views/homepage.html',
                 controller: 'HomepageCtrl'
             })
-            .when('/kitchenSink', {
+            .when('/public/kitchenSink', {
                 templateUrl: 'views/kitchenSink.html'
 
             })
-            .when('/session/signup', {
+            .when('/public/session/signup', {
                 templateUrl: 'views/session/signup.html',
                 controller:'SignupCtrl'
             })
-            .when('/session/login', {
+            .when('/public/session/login', {
                 templateUrl: 'views/session/login.html',
                 controller:'LoginCtrl'
             })
-            .when('/about', {
-                templateUrl: 'views/about.html'
+            .when('/public/about', {
+                templateUrl: 'views/about.html',
+                controller: 'SignupCtrl'
             })
             .otherwise({
                 templateUrl: 'views/errors/notFound.html'
-
 //                redirectTo: '/'
             });
 
@@ -49,7 +45,7 @@ angular.module('lergoApp', [])
 
             function error(response) {
                 var status = response.status;
-                if (status == 401 && $location.path() != "/session/login") {
+                if (status == 401 && $location.path().startsWith("/public") ) {
                     $location.path( "/session/login");
                     return;
                 }
