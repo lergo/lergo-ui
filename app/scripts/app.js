@@ -28,6 +28,9 @@ angular.module('lergoApp', [])
                 templateUrl: 'views/about.html',
                 controller: 'SignupCtrl'
             })
+            .when('/', {
+                redirectTo: '/public/session/login'
+            })
             .otherwise({
                 templateUrl: 'views/errors/notFound.html'
 //                redirectTo: '/'
@@ -45,8 +48,9 @@ angular.module('lergoApp', [])
 
             function error(response) {
                 var status = response.status;
-                if (status === 401 && $location.path().startsWith('/public') ) {
-                    $location.path( '/session/login');
+
+                if (status === 401 && $location.path().indexOf('/public') !== 0 ) {
+                    $location.path( '/public/session/login');
                     return;
                 }
 

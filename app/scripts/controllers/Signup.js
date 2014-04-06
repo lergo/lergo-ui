@@ -12,7 +12,7 @@ angular.module('lergoApp')
             LergoClient.signup($scope.signupForm).then(
                 function () {
                     $log.info('got success');
-                    $location.path('/login');
+                    $location.path('/public/session/login');
                 },
                 function () {
                     $log.error('got error');
