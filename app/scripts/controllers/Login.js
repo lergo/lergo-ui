@@ -5,7 +5,7 @@ angular.module('lergoApp')
 
         $scope.showLoginPage = false;
 
-        if ($location.path() == '/login') {
+        if ($location.path() === '/login') {
             LergoClient.isLoggedIn().then(
                 function (result) {
                     if (!!result) {
@@ -24,11 +24,11 @@ angular.module('lergoApp')
             LergoClient.login($scope.form).then(
                 function success( result ) {
                     $rootScope.user = result.data;
-                    $location.path( "/homepage" );
+                    $location.path( '/homepage' );
                 },
                 function error(result) {
                     $log.info('error logging in [%s]', result.data);
                 }
             );
-        }
+        };
     });

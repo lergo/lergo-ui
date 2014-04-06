@@ -45,13 +45,13 @@ angular.module('lergoApp', [])
 
             function error(response) {
                 var status = response.status;
-                if (status == 401 && $location.path().startsWith("/public") ) {
-                    $location.path( "/session/login");
+                if (status === 401 && $location.path().startsWith('/public') ) {
+                    $location.path( '/session/login');
                     return;
                 }
 
                 if ( !!response.message ){
-                    scope.pageError = message;
+                    scope.pageError = response.message;
                 }
                 // otherwise
                 return $q.reject(response);
@@ -60,7 +60,7 @@ angular.module('lergoApp', [])
 
             return function (promise) {
                 return promise.then(success, error);
-            }
+            };
 
         }];
         $httpProvider.responseInterceptors.push(interceptor);

@@ -18,6 +18,6 @@ angular.module('lergoApp')
                     $log.error('got error');
                 }
             );
-        }
+        };
     }
 );

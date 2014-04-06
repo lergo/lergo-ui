@@ -21,7 +21,7 @@ angular.module('lergoApp')
                         $rootScope.user = null;
                         $location.path('/');
                     });
-                }
+                };
             }
         };
     });
