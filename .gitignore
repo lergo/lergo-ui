@@ -21,3 +21,6 @@ app/bower_components
 
 npm-debug.log
 node_modules
+
+.sass-cache
+.tmp
