@@ -24,7 +24,7 @@ angular.module('lergoApp')
             LergoClient.login($scope.form).then(
                 function success( result ) {
                     $rootScope.user = result.data;
-                    $location.path( '/homepage' );
+                    $location.path( '/user/homepage' );
                 },
                 function error(result) {
                     $log.info('error logging in [%s]', result.data);
