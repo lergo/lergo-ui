@@ -1,10 +1,11 @@
 <div class="login-form lergo-form" ng-controller="LoginCtrl">
+<form ng-submit='login()'>
     <div class="form-section">
         <div class="lergo-label">
             Username
         </div>
         <div class="lergo-input">
-            <input ng-model="form.username"/>
+            <input ng-model="form.username" required/>
         </div>
     </div>
 
@@ -13,7 +14,7 @@
             Password
         </div>
         <div class="lergo-input">
-            <input ng-model="form.password" type="password"/>
+            <input ng-model="form.password" required type="password"/>
         </div>
     </div>
 
@@ -27,5 +28,6 @@
     </div>
 
     <button ng-click="login()"> Login </button>
-    <a href="#/session/signup">Signup</a>
+    <a href="#/public/session/signup">Signup</a>
+    </form>
 </div>
