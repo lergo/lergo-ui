@@ -4,6 +4,7 @@ angular.module('lergoApp')
     .controller('SignupCtrl', function ($scope, $log, LergoClient, $location ) {
         $scope.signupForm = {
             'username': null,
+            'email':null,
             'password': null,
             'passwordConfirm': null
         };

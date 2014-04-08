@@ -1,7 +1,32 @@
+<div class="base-layout" id="signUpPage" >
+		<form ng-submit='submit()' class="Signup-form lergo-form">
+			<div class="form-section">
+				<div class="lergo-label">Username</div>
+				<div class="lergo-input">
+					<input ng-model="signupForm.username" required />
+				</div>
+			</div>
+			<div class="form-section">
+				<div class="lergo-label">Email</div>
+				<div class="lergo-input">
+					<input ng-model="signupForm.email" required />
+				</div>
+			</div>
 
-<h1>Signup</h1>
+			<div class="form-section">
+				<div class="lergo-label">Password</div>
+				<div class="lergo-input">
+					<input ng-model="signupForm.password" required type="password" />
+				</div>
+			</div>
 
-Username (email): <input ng-model="signupForm.username">
-Password : <input ng-model="signupForm.password" type="password">
-Confirm Password : <input ng-model="signupForm.passwordConfirm" type="password">
-<button ng-click="submit()">Submit</button>
+			<div class="form-section">
+				<div class="lergo-label">Confirm Password</div>
+				<div class="lergo-input">
+					<input ng-model="signupForm.passwordConfirm" required
+						type="password" />
+				</div>
+			</div>
+			<button ng-click="submit()">Submit</button>
+		</form>
+	</div>
