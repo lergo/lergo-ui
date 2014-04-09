@@ -7,7 +7,7 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 	$scope.lessons = null;
 
 	$scope.create = function() {
-		LergoClient.createLesson($scope.lesson).then(function(result) {
+		LergoClient.createLesson($scope.lesson).then(function() {
 			$log.info('got success');
 			$location.path('/public/user/Lessons');
 		}, function() {
