@@ -24,6 +24,14 @@ angular.module('lergoApp', [])
                 templateUrl: 'views/session/login.html',
                 controller:'LoginCtrl'
             })
+            .when('/public/user/lesson/create', {
+                templateUrl: 'views/lesson/createlesson.html',
+                controller:'LessonCtrl'
+            })
+            .when('/public/user/Lessons', {
+                templateUrl: 'views/lesson/mylessons.html',
+                controller:'LessonCtrl'
+            })
             .when('/public/about', {
                 templateUrl: 'views/about.html',
                 controller: 'SignupCtrl'

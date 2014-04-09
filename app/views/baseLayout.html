@@ -1,51 +1,55 @@
 <div>
-    <div id="wrapper" class="clearfix">
-        <div id="header" ng-controller="LoginCtrl">
-            <div class="centered-content">
-                <div class="header-main">
-                    <div class="logo"></div>
-                    <div class="header-links">
-                        <ul>
-                            <li ng-repeat="item in ['Learn','Create','Parents','Teachers','Contribute']"> <a href="#">{{item}}</a></li>
-                        </ul>
-                    </div>
-                    <div class="header-search">
-                        <input placeholder="What would you like to learn about?"/>
-                        <i class="icon-search"></i>
-                    </div>
-                    <div class="header-login" ng-show="!user">
-                        <a href="#">Log in</a>
-                        <a href="#/public/session/signup">Sign up</a>
-                    </div>
-                    <div class="header-login" ng-show="!!user">
-                        {{user.username}}
-                        <button ng-click="logout()">logout</button>
-                    </div>
-                </div>
+	<div id="wrapper" class="clearfix">
+		<div id="header" ng-controller="LoginCtrl">
+			<div class="centered-content">
+				<div class="header-main">
+					<div class="logo"></div>
+					<div class="header-links">
+						<ul>
+							<li
+								ng-repeat="item in ['Learn','Create','Parents','Teachers','Contribute','Lessons']">
+								<a href="#/public/user/{{item}}">{{item}}</a>
+							
+							</li>
+						</ul>
+					</div>
+					<div class="header-search">
+						<input placeholder="What would you like to learn about?" /> <i
+							class="icon-search"></i>
+					</div>
+					
+					<div class="header-login" ng-show="!user">
+						<a href="#">Log in</a> <a href="#/public/session/signup">Sign
+							up</a>
+					</div>
+					<div class="header-login" ng-show="!!user">
+						{{user.username}}
+						<button ng-click="logout()">logout</button>
+					</div>
+				</div>
 
-            </div>
-        </div>
-        <div id="content" class="centered-content clearfix" ng-transclude="">
-        </div>
-        <div class="push"></div>
-    </div>
-    <div id="footer">
-        <div class="centered-content">
-            <div class="footer-links">
-                <ul>
-                    <li> Privacy & Terms</li>
-                    <li> <a href="#/public/about">About LerGO</a></li>
-                    <li> Home Page</li>
-                    <li> Contact Us</li>
-                    <li> <a href="#/public/kitchenSink">Kitchen Sink</a></li>
+			</div>
+		</div>
+		<div id="content" class="centered-content clearfix" ng-transclude="">
+		</div>
+		<div class="push"></div>
+	</div>
+	<div id="footer">
+		<div class="centered-content">
+			<div class="footer-links">
+				<ul>
+					<li>Privacy & Terms</li>
+					<li><a href="#/public/about">About LerGO</a></li>
+					<li>Home Page</li>
+					<li>Contact Us</li>
+					<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
 
-                </ul>
-            </div>
-            <div class="copyrights">
-                &copy; LerGO 2013-2014 All Rights Reserved
-            </div>
-        </div>
-    </div>
+				</ul>
+			</div>
+			<div class="copyrights">&copy; LerGO 2013-2014 All Rights
+				Reserved</div>
+		</div>
+	</div>
 
 </div>
 
