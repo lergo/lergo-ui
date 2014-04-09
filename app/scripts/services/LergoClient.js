@@ -16,7 +16,9 @@ angular.module('lergoApp')
         this.logout = function( ){
             return $http.post('backend/users/logout');
         };
-
+        this.login = function( loginCredentials ){
+            return $http.post('/backend/users/login', loginCredentials) ;
+        };
         this.createLesson = function( lesson ){
             return $http.post('/backend/user/lessons', lesson) ;
         };
