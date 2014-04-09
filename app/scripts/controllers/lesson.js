@@ -31,7 +31,7 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 		});
 	};
 	$scope.edit = function(id) {
-		LergoClient.updateLesson(id).then(function(result) {
+		LergoClient.updateLesson(id).then(function() {
 			$log.info('got success');
 			$scope.getAll();
 		}, function() {
