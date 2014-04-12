@@ -7,10 +7,13 @@
 					<div class="header-links">
 						<ul>
 							<li
-								ng-repeat="item in ['Learn','Create','Parents','Teachers','Contribute','Lessons']">
-								<a href="#/public/user/{{item}}">{{item}}</a>
+								ng-repeat="item in ['Learn','Create','Parents','Teachers','Contribute']">
+								<a href="#/user/{{item}}">{{item}}</a>
 							
 							</li>
+                            <li>
+                                <a href="#/user/lessons">Lessons</a>
+                            </li>
 						</ul>
 					</div>
 					<div class="header-search">

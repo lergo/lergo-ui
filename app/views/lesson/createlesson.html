@@ -6,6 +6,33 @@
 					<input ng-model="lesson.name" required />
 				</div>
 			</div>
+            <div class="form-section">
+                <div class="lergo-label">Lesson Description</div>
+                <div class="lergo-input">
+                    <textarea ng-model="lesson.name" required ></textarea>
+                </div>
+            </div>
+            <button ng-click="addStep(lesson)">Add Step</button>
+            <div ng-repeat="step in lesson.steps">
+                <hr/>
+                <div class="form-section">
+                    <div class="form-section">
+                        <div class="lergo-label">Step Title</div>
+                        <div class="lergo-input">
+                            <input ng-model="step.title" required />
+                        </div>
+                    </div>
+                    <div class="lergo-label">Step Type</div>
+                    <div class="lergo-input">
+                        <select ng-model="step.type" ng-options="t.label for t in stepTypes">
+                        </select>
+                    </div>
+                </div>
+                view by type = {{getStepViewByType(step)}}
+                <div ng-include="getStepViewByType(step)"></div>
+            </div>
+
+
 			<button type='submit'>Create</button>
 		</form>
 	</div>
