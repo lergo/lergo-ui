@@ -24,11 +24,11 @@ angular.module('lergoApp', [])
                 templateUrl: 'views/session/login.html',
                 controller:'LoginCtrl'
             })
-            .when('/public/user/lesson/create', {
+            .when('/public/user/lesson/:id/update', {
                 templateUrl: 'views/lesson/createlesson.html',
                 controller:'LessonCtrl'
             })
-            .when('/public/user/Lessons', {
+            .when('/public/user/lessons', {
                 templateUrl: 'views/lesson/mylessons.html',
                 controller:'LessonCtrl'
             })

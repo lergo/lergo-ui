@@ -1,15 +1,17 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, LergoClient, $location) {
+angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, LergoClient, $location, $routeParams) {
 	$scope.lesson = {
-		'name' : null
+		'name' : undefined
 	};
+
 	$scope.lessons = null;
 
 	$scope.create = function() {
-		LergoClient.createLesson($scope.lesson).then(function() {
+		LergoClient.createLesson($scope.lesson).then(function(result) {
 			$log.info('got success');
-			$location.path('/public/user/Lessons');
+			$scope.lesson = result.data.Lesson;
+			$location.path('/public/user/lesson/' + $scope.lesson._id + '/update');
 		}, function() {
 			$log.error('got error');
 		});
@@ -24,7 +26,7 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 	};
 	$scope.deleteLesson = function(lesson) {
 
-		var canDelete = confirm('Are yoy sure to delete Lesson : ' + lesson.name);
+		var canDelete = confirm('Are yoy sure to delete Lesson : ' + lesson.name + ' ?');
 		if (canDelete) {
 			LergoClient.deleteLesson(lesson._id).then(function() {
 				$log.info('Deleted sucessfully');
@@ -34,8 +36,18 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 			});
 		}
 	};
-	$scope.edit = function(id) {
-		LergoClient.updateLesson(id).then(function() {
+	$scope.edit = function() {
+		if ($routeParams.id) {
+			LergoClient.getLessonById($routeParams.id).then(function(result) {
+				$scope.lesson = result.data.Lesson;
+				$log.info('get the lesson' + result.data.Lesson);
+			}, function() {
+
+			});
+		}
+	};
+	$scope.save = function(lesson) {
+		LergoClient.updateLesson($routeParams.id, lesson).then(function() {
 			$log.info('got success');
 			$scope.getAll();
 		}, function() {
@@ -43,4 +55,13 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 		});
 	};
 	$scope.getAll();
+	$scope.edit();
+	$scope.doneWithUpdating = function(lesson) {
+		$scope.save($scope.lesson);
+		$location.path('/public/user/lessons');
+	};
+
+	$scope.$watch('lesson', function() {
+		// $scope.save($scope.lesson);
+	}, true);
 });
