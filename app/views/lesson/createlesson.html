@@ -1,12 +1,13 @@
 <div class="base-layout" id="createLessonPage" >
-		<form ng-submit='create()' class="CreateLesson-form lergo-form">
-			<div class="form-section">
-				<div class="lergo-label">Lesson Name</div>
-				<div class="lergo-input">
-					<input ng-model="lesson.name" required />
-				</div>
+	<form ng-submit='doneWithUpdating()'
+		class="CreateLesson-form lergo-form">
+		<div class="form-section">
+			<div class="lergo-label">Lesson Name</div>
+			<div class="lergo-input">
+				<input ng-model="lesson.name" required />
 			</div>
-			<button type='submit'>Create</button>
-		</form>
-	</div>
+		</div>
+		<button type='submit'>Done</button>
+	</form>
+</div>
 
