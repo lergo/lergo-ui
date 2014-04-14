@@ -22,13 +22,17 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 			$log.error('got error');
 		});
 	};
-	$scope.deleteLesson = function(id) {
-		LergoClient.deleteLesson(id).then(function() {
-			$log.info('Deleted sucessfully');
-			$scope.getAll();
-		}, function() {
-			$log.error('got error');
-		});
+	$scope.deleteLesson = function(lesson) {
+
+		var canDelete = confirm('Are yoy sure to delete Lesson : ' + lesson.name);
+		if (canDelete) {
+			LergoClient.deleteLesson(lesson._id).then(function() {
+				$log.info('Deleted sucessfully');
+				$scope.getAll();
+			}, function() {
+				$log.error('got error');
+			});
+		}
 	};
 	$scope.edit = function(id) {
 		LergoClient.updateLesson(id).then(function() {
