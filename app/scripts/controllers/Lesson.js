@@ -5,7 +5,7 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 		'name' : 'New Lesson'
 	};
 	$scope.isSaved = true;
-	var timeout = undefined;
+	var timeout;
 
 	$scope.create = function() {
 		LergoClient.createLesson($scope.lesson).then(function(result) {
@@ -60,13 +60,13 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 			});
 		}
 	});
-	
-	 $scope.$on('$locationChangeStart',function(event) {
-		    if(!$scope.isSaved){   
-		        var answer = confirm("You have unsaved changes.Are you sure you want to leave this page?");
-		            if (!answer) {
-		            event.preventDefault();
-		        }
-		 }
-	 });
+
+	$scope.$on('$locationChangeStart', function(event) {
+		if (!$scope.isSaved) {
+			var answer = confirm("You have unsaved changes.Are you sure you want to leave this page?");
+			if (!answer) {
+				event.preventDefault();
+			}
+		}
+	});
 });
