@@ -5,7 +5,7 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 		'name' : 'New Lesson'
 	};
 	$scope.isSaved = true;
-	var timeout;
+	var timeout=null;
 
 	$scope.create = function() {
 		LergoClient.createLesson($scope.lesson).then(function(result) {
@@ -38,7 +38,7 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 	};
 	var localUpdate = function(newVal, oldVal) {
 		if ($routeParams.id) {
-			if (newVal != oldVal) {
+			if (newVal !== oldVal) {
 				$scope.isSaved = false;
 				localStorageService.add($routeParams.id, newVal);
 				if (timeout) {
