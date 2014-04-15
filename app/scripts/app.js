@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp', [])
+angular.module('lergoApp', ['LocalStorageModule'])
     .config(function ($routeProvider, $httpProvider) {
 
         $routeProvider
@@ -30,7 +30,7 @@ angular.module('lergoApp', [])
             })
             .when('/public/user/lessons', {
                 templateUrl: 'views/lesson/mylessons.html',
-                controller:'LessonCtrl'
+                controller:'LessonsIndexCtrl'
             })
             .when('/public/about', {
                 templateUrl: 'views/about.html',
