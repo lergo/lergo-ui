@@ -8,7 +8,7 @@ angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, Lerg
     $scope.lessons = null;
 
 
-    $scope.create = function (lesson) {
+    $scope.create = function (  ) {
         LergoClient.createLesson().then(function () {
             $log.info('got success');
             $location.path('/user/lessons');
@@ -51,7 +51,7 @@ angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, Lerg
         return 'views/lesson/steps/_' + type + '.html';
     };
 
-    $scope.getAll = function (lesson) {
+    $scope.getAll = function ( ) {
         LergoClient.getLessons().then(function (result) {
             $scope.lessons = result.data.Lessons;
             $log.info('got success');
