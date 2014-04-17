@@ -8,13 +8,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="lesson in lessons">
-				<td>{{ lesson.name }}</td>
-				<td><a ng-click="deleteLesson(lesson._id)"
-					class="btn btn-small btn-danger">delete</a></td>
+			<tr ng-repeat="les in lessons">
+				<td>{{ les.name }}</td>
+				<td><a ng-href="#/public/user/lesson/{{les._id}}/update">edit</a></td>
+				<td><a ng-click="deleteLesson(les)"
+					ng-controller="LessonCtrl" class="btn btn-small btn-danger">X</a></td>
 
 			</tr>
 		</tbody>
 	</table>
-	<a href="#/user/lesson/create">Create New Lesson</a>
+	<a ng-click="create()" class="btn" ng-controller="LessonCtrl">Create
+		New Lesson</a>
 </div>
