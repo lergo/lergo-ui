@@ -16,6 +16,10 @@ angular.module('lergoApp', ['LocalStorageModule'])
                 templateUrl: 'views/homepage.html',
                 controller: 'HomepageCtrl'
             })
+            .when('/user/lesson/:id/update', {
+                templateUrl: 'views/lesson/createlesson.html',
+                controller:'LessonCtrl'
+            })
             .when('/public/kitchenSink', {
                 templateUrl: 'views/kitchenSink.html'
 
@@ -28,10 +32,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
                 templateUrl: 'views/session/login.html',
                 controller:'LoginCtrl'
             })
-            .when('/public/user/lesson/:id/update', {
-                templateUrl: 'views/lesson/createlesson.html',
-                controller:'LessonCtrl'
-            })
+
 
             .when('/public/about', {
                 templateUrl: 'views/about.html',
