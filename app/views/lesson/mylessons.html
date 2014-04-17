@@ -10,7 +10,7 @@
 		<tbody>
 			<tr ng-repeat="les in lessons">
 				<td>{{ les.name }}</td>
-				<td><a ng-href="#/public/user/lesson/{{les._id}}/update">edit</a></td>
+				<td><a ng-href="#/user/lesson/{{les._id}}/update">edit</a></td>
 				<td><a ng-click="deleteLesson(les)"
 					ng-controller="LessonCtrl" class="btn btn-small btn-danger">X</a></td>
 
