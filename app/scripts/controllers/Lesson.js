@@ -3,7 +3,7 @@
 angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, LergoClient, $location, $routeParams, localStorageService, $timeout) {
 	$scope.lesson = {
 		'name' : 'New Lesson',
-		'steps' : [],
+		'steps' : []
 	};
 	$scope.isSaved = true;
 	var timeout = null;
