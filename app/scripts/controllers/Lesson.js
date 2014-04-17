@@ -2,7 +2,8 @@
 
 angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, LergoClient, $location, $routeParams, localStorageService, $timeout) {
 	$scope.lesson = {
-		'name' : 'New Lesson'
+		'name' : 'New Lesson',
+        'steps': []
 	};
 	$scope.isSaved = true;
 	var timeout=null;
@@ -11,13 +12,53 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 		LergoClient.createLesson($scope.lesson).then(function(result) {
 			$log.info('got success');
 			$scope.lesson = result.data.Lesson;
-			$location.path('/public/user/lesson/' + $scope.lesson._id + '/update');
+			$location.path('/user/lesson/' + $scope.lesson._id + '/update');
 		}, function() {
 			$log.error('got error');
 		});
 	};
 
-	$scope.deleteLesson = function(lesson) {
+
+    $scope.stepTypes = [
+        {
+            'id' : 'video',
+            'label' : 'Video'
+        },
+        {
+            'id' : 'quiz',
+            'label' : 'Quiz'
+        }
+    ];
+
+    $scope.quizTypes = [
+        {
+            'id' : 'test',
+            'label' : 'Test'
+        },
+        {
+            'id' : 'exercise',
+            'label' : 'Exercise'
+        }
+    ];
+
+    $scope.addStep = function (lesson) {
+        if ( !lesson.steps ){
+            lesson.steps = [];
+        }
+
+        lesson.steps.push({});
+    };
+
+    $scope.getStepViewByType = function (step) {
+        var type = 'none';
+        if ( !!step && !!step.type ){
+            type = step.type.id;
+        }
+        return 'views/lesson/steps/_' + type + '.html';
+    };
+
+
+    $scope.deleteLesson = function(lesson) {
 		var canDelete = window.confirm('Are yoy sure to delete Lesson : ' + lesson.name + ' ?');
 		if (canDelete) {
 			LergoClient.deleteLesson(lesson._id).then(function() {
@@ -28,12 +69,31 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 			});
 		}
 	};
+
+    // TODO: return true iff lesson from backend and lesson in localstorage have the same version
+    function versionMatch(){
+        return true;
+    }
+
 	$scope.save = function() {
-		$scope.isSaved = true;
+        if ( $scope.saving ){
+            return; // already saving
+        }
+        $scope.saving = true;
 		LergoClient.updateLesson($routeParams.id, localStorageService.get($routeParams.id)).then(function() {
+
+
+            if ( versionMatch() ){
+                $scope.isSaved = true;
+            }
+
+            $scope.saving = false;
 			$log.info('got success');
+            $timeout($scope.save, 2000);
 		}, function() {
 			$log.error('got error');
+            $scope.saving = false;
+            $timeout($scope.save, 2000);
 		});
 	};
 	var localUpdate = function(newVal, oldVal) {

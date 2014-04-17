@@ -8,6 +8,10 @@ angular.module('lergoApp', ['LocalStorageModule'])
                 'templateUrl':'views/lesson/create.html',
                 'controller':'CreateLessonCtrl'
             })
+            .when('/user/lessons', {
+                templateUrl: 'views/lesson/mylessons.html',
+                controller:'LessonsIndexCtrl'
+            })
             .when('/user/homepage', {
                 templateUrl: 'views/homepage.html',
                 controller: 'HomepageCtrl'
@@ -28,10 +32,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
                 templateUrl: 'views/lesson/createlesson.html',
                 controller:'LessonCtrl'
             })
-            .when('/public/user/lessons', {
-                templateUrl: 'views/lesson/mylessons.html',
-                controller:'LessonsIndexCtrl'
-            })
+
             .when('/public/about', {
                 templateUrl: 'views/about.html',
                 controller: 'SignupCtrl'
