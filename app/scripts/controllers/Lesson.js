@@ -3,10 +3,10 @@
 angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, LergoClient, $location, $routeParams, localStorageService, $timeout) {
 	$scope.lesson = {
 		'name' : 'New Lesson',
-        'steps': []
+		'steps' : [],
 	};
 	$scope.isSaved = true;
-	var timeout=null;
+	var timeout = null;
 
 	$scope.create = function() {
 		LergoClient.createLesson($scope.lesson).then(function(result) {
@@ -18,47 +18,53 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 		});
 	};
 
+	$scope.stepTypes = [ {
+		'id' : 'video',
+		'label' : 'Video'
+	}, {
+		'id' : 'quiz',
+		'label' : 'Quiz'
+	} ];
 
-    $scope.stepTypes = [
-        {
-            'id' : 'video',
-            'label' : 'Video'
-        },
-        {
-            'id' : 'quiz',
-            'label' : 'Quiz'
-        }
-    ];
+	$scope.quizTypes = [ {
+		'id' : 'test',
+		'label' : 'Test'
+	}, {
+		'id' : 'exercise',
+		'label' : 'Exercise'
+	} ];
 
-    $scope.quizTypes = [
-        {
-            'id' : 'test',
-            'label' : 'Test'
-        },
-        {
-            'id' : 'exercise',
-            'label' : 'Exercise'
-        }
-    ];
+	$scope.addStep = function(lesson) {
+		if (!lesson.steps) {
+			lesson.steps = [];
+		}
 
-    $scope.addStep = function (lesson) {
-        if ( !lesson.steps ){
-            lesson.steps = [];
-        }
+		lesson.steps.push({});
+	};
+	$scope.moveStepUp = function(index) {
+		var temp = $scope.lesson.steps[index - 1];
+		if (temp) {
+			$scope.lesson.steps[index - 1] = $scope.lesson.steps[index];
+			$scope.lesson.steps[index] = temp;
+		}
+	};
+	$scope.moveStepDown = function(index) {
+		var temp = $scope.lesson.steps[index + 1];
+		if (temp) {
+			$scope.lesson.steps[index + 1] = $scope.lesson.steps[index];
+			$scope.lesson.steps[index] = temp;
+		}
 
-        lesson.steps.push({});
-    };
+	};
+	$scope.getStepViewByType = function(step) {
+		var type = 'none';
+		if (!!step && !!step.type) {
+			type = step.type.id;
+		}
+		return 'views/lesson/steps/_' + type + '.html';
+	};
 
-    $scope.getStepViewByType = function (step) {
-        var type = 'none';
-        if ( !!step && !!step.type ){
-            type = step.type.id;
-        }
-        return 'views/lesson/steps/_' + type + '.html';
-    };
-
-
-    $scope.deleteLesson = function(lesson) {
+	$scope.deleteLesson = function(lesson) {
 		var canDelete = window.confirm('Are yoy sure to delete Lesson : ' + lesson.name + ' ?');
 		if (canDelete) {
 			LergoClient.deleteLesson(lesson._id).then(function() {
@@ -70,32 +76,34 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 		}
 	};
 
-    // TODO: return true iff lesson from backend and lesson in localstorage have the same version
-    function versionMatch(){
-        return true;
-    }
+	// TODO: return true iff lesson from backend and lesson in localstorage have
+	// the same version
+	function versionMatch() {
+		return true;
+	}
 
 	$scope.save = function() {
-        if ( $scope.saving ){
-            return; // already saving
-        }
-        $scope.saving = true;
+		if ($scope.saving) {
+			return; // already saving
+		}
+		$scope.saving = true;
 		LergoClient.updateLesson($routeParams.id, localStorageService.get($routeParams.id)).then(function() {
 
-
-            if ( versionMatch() ){
-                $scope.isSaved = true;
-            }
-
-            $scope.saving = false;
+			if (versionMatch()) {
+				$scope.isSaved = true;
+			}
+			$scope.saving = false;
 			$log.info('got success');
-            $timeout($scope.save, 2000);
 		}, function() {
 			$log.error('got error');
-            $scope.saving = false;
-            $timeout($scope.save, 2000);
+			$scope.saving = false;
+			if (timeout) {
+				$timeout.cancel(timeout);
+			}
+			timeout = $timeout($scope.save, 100);
 		});
 	};
+
 	var localUpdate = function(newVal, oldVal) {
 		if ($routeParams.id) {
 			if (newVal !== oldVal) {
@@ -108,7 +116,6 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 			}
 		}
 	};
-
 	$scope.$watch('lesson', localUpdate, true);
 	$scope.$on('$viewContentLoaded', function() {
 		if ($routeParams.id) {
