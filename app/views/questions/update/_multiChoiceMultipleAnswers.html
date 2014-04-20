@@ -1,0 +1,19 @@
+<div>
+    Question <input ng-model="quizItem.question"/>
+    Correct Answers:
+
+    <div ng-repeat="correctAnswer in quizItem.answers">
+        <input ng-model="answers"/><br/>
+        <button ng-click="quizItem.answers.splice(quizItem.answers.indexOf(correctAnswer),1)"/>
+    </div>
+    <button ng-click="quizItem.answers.push('')">Add Correct Answer</button>
+
+
+    Incorrect Answers:
+    <div ng-repeat="option in quizItem.options">
+        <input ng-model="option"/><br/>
+        <button ng-click="quizItem.options.splice(quizItem.options.indexOf(option),1)"/>
+    </div>
+
+    <button ng-click="quizItem.options.push('')">Add Incorrect Answer</button>
+</div>

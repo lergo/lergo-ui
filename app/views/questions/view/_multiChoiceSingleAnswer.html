@@ -1,0 +1,11 @@
+<div>
+    Question <input ng-model="quizItem.question"/>
+    Correct Answer: <input ng-model="quizItem.answer"/><br/>
+    Other options:
+
+    <div ng-repeat="option in quizItem.options">
+        <input ng-model="option"/><br/>
+    </div>
+
+    <button ng-click="addAnswerOption(quizItem)"></button>
+</div>
