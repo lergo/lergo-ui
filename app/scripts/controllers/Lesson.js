@@ -1,12 +1,20 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, LergoClient, $location, $routeParams, localStorageService, $timeout) {
+angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, LergoClient, $location , ContinuousSave ) {
+
+    var saveLesson = new ContinuousSave( {
+        'saveFn' : function( value ){
+            return LergoClient.updateLesson(value);
+        }
+    });
+
 	$scope.lesson = {
 		'name' : 'New Lesson',
 		'steps' : []
 	};
-	$scope.isSaved = true;
-	var timeout = null;
+
+
+    $scope.$watch('lesson', saveLesson.onValueChange, true);
 
 	$scope.create = function() {
 		LergoClient.createLesson($scope.lesson).then(function(result) {
