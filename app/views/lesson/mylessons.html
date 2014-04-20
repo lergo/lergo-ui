@@ -1,4 +1,4 @@
-<div class="base-layout" id="signUpPage">
+<div class="base-layout" id="lessonsIndex">
 	<p>Available Lessons</p>
 	<table class="table table-striped table-condensed">
 		<thead>
@@ -9,14 +9,14 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="les in lessons">
-				<td>{{ les.name }}</td>
+				<td>{{les._id}} - {{ les.name }}</td>
 				<td><a ng-href="#/user/lesson/{{les._id}}/update">edit</a></td>
 				<td><a ng-click="deleteLesson(les)"
-					ng-controller="LessonCtrl" class="btn btn-small btn-danger">X</a></td>
+					 class="btn btn-small btn-danger">X</a></td>
 
 			</tr>
 		</tbody>
 	</table>
-	<a ng-click="create()" class="btn" ng-controller="LessonCtrl">Create
+	<a ng-click="create()" class="btn">Create
 		New Lesson</a>
 </div>
