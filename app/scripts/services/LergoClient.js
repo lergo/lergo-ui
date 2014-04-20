@@ -27,8 +27,8 @@ angular.module('lergoApp').service('LergoClient', function LergoClient($http, $l
 	this.deleteLesson = function(id) {
 		return $http.post('/backend/user/lessons/' + id + '/delete');
 	};
-	this.updateLesson = function(id, lesson) {
-		return $http.post('/backend/user/lessons/' + id, lesson);
+	this.updateLesson = function(lesson) {
+		return $http.post('/backend/user/lessons/' + lesson._id, lesson);
 	};
 	this.getLessonById = function(id) {
 		return $http.get('/backend/user/lessons/' + id);

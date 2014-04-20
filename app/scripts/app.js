@@ -29,7 +29,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
                 templateUrl: 'views/homepage.html',
                 controller: 'HomepageCtrl'
             })
-            .when('/user/lesson/:id/update', {
+            .when('/user/lesson/:lessonId/update', {
                 templateUrl: 'views/lesson/createlesson.html',
                 controller:'LessonCtrl'
             })

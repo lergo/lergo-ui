@@ -98,7 +98,7 @@ angular.module('lergoApp')
                     return; //already saving
                 }
 
-                if ( _localVersion.lastUpdate < _remoteVersion.lastUpdate ){
+                if ( !!_localVersion && !!_remoteVersion && _localVersion.lastUpdate < _remoteVersion.lastUpdate ){
                     $log.info('local version is outdated');
                     return;
                 }

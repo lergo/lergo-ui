@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, LergoClient, $location , ContinuousSave ) {
-
-    $log.info('i am here');
+angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, LergoClient, $location , $routeParams, ContinuousSave ) {
 
     var saveLesson = new ContinuousSave( {
         'saveFn' : function( value ){
@@ -10,13 +8,11 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
         }
     });
 
-	$scope.lesson = {
-		'name' : 'New Lesson',
-		'steps' : []
-	};
 
-
-    $scope.$watch('lesson', saveLesson.onValueChange, true);
+    LergoClient.getLessonById( $routeParams.lessonId).then( function(result){
+        $scope.lesson = result.data;
+        $scope.$watch('lesson', saveLesson.onValueChange, true);
+    });
 
 
 
@@ -61,7 +57,7 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 	$scope.getStepViewByType = function(step) {
 		var type = 'none';
 		if (!!step && !!step.type) {
-			type = step.type.id;
+			type = step.type;
 		}
 		return 'views/lesson/steps/_' + type + '.html';
 	};
