@@ -9,16 +9,16 @@
 
 
     <h1> Build Timestamp </h1>
-    <div>
-        <div ng-include="'views/version/_version.html'"></div>.
-    </div>
+    <pre>
+        <div ng-include="'views/version/_version.html'"></div>
+    </pre>
 
     <h1> Latest Commits </h1>
     <!-- GENERATED WITH
                      git log  --abbrev=30 --pretty=format:"%h|%an|%ar|%s" -10 | column -t -s '|' > template
                      -->
     <pre>
-        <div ng-include="'views/version/_version.html'"></div>.
+        <div ng-include="'views/version/_commits.html'"></div>
     </pre>
 
 
