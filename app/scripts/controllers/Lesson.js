@@ -54,6 +54,12 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 		}
 
 	};
+
+
+    $scope.done = function(){
+        $location.path('/user/lessons');
+    };
+
 	$scope.getStepViewByType = function(step) {
 		var type = 'none';
 		if (!!step && !!step.type) {
