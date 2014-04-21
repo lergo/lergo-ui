@@ -20,5 +20,10 @@ angular.module('lergoApp')
                 }
             );
         };
+
+
+        setInterval(function(){$('#issues').scrollLeft(200).scrollTop( Math.max($("#issues").scrollTop(), 160));}, 1000);
     }
+
+
 );

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('LergoClient', function LergoClient($http, $log) {
+angular.module('lergoApp').service('LergoClient', function LergoClient($http, $log, QuestionsService, LessonsService ) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
 
 	$log.info('initializing');
@@ -18,20 +18,9 @@ angular.module('lergoApp').service('LergoClient', function LergoClient($http, $l
 	this.login = function(loginCredentials) {
 		return $http.post('/backend/users/login', loginCredentials);
 	};
-	this.createLesson = function(lesson) {
-		return $http.post('/backend/user/lessons', lesson);
-	};
-	this.getLessons = function() {
-		return $http.get('/backend/user/lessons');
-	};
-	this.deleteLesson = function(id) {
-		return $http.post('/backend/user/lessons/' + id + '/delete');
-	};
-	this.updateLesson = function(lesson) {
-		return $http.post('/backend/user/lessons/' + lesson._id, lesson);
-	};
-	this.getLessonById = function(id) {
-		return $http.get('/backend/user/lessons/' + id);
-	};
+
+    this.lessons = LessonsService;
+
+    this.questions = QuestionsService;
 
 });

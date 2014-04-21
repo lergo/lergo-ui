@@ -1,1 +1,6 @@
-this is a quiz
+<select ng-model="selectedQuestion" ng-options="item.id as item.question for item in quizItems"> </select>
+        <button ng-click="addItemToStep( item, step )">Add Item To Step</button>
+
+<div ng-repeat="item in step.items">
+    {{item}}
+</div>

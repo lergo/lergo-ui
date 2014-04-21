@@ -4,12 +4,12 @@ angular.module('lergoApp').controller('LessonCtrl', function($scope, $log, Lergo
 
     var saveLesson = new ContinuousSave( {
         'saveFn' : function( value ){
-            return LergoClient.updateLesson(value);
+            return LergoClient.lessons.update(value);
         }
     });
 
 
-    LergoClient.getLessonById( $routeParams.lessonId).then( function(result){
+    LergoClient.lessons.getById( $routeParams.lessonId).then( function(result){
         $scope.lesson = result.data;
         $scope.$watch('lesson', saveLesson.onValueChange, true);
     });

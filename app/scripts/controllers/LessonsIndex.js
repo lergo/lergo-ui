@@ -3,7 +3,7 @@
 angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location) {
 	$scope.lessons = null;
 	$scope.getAll = function() {
-		LergoClient.getLessons().then(function(result) {
+		LergoClient.lessons.getAll().then(function(result) {
 			$scope.lessons = result.data;
 			$log.info('got success');
 		}, function() {
@@ -16,7 +16,7 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 
 
     $scope.create = function() {
-        LergoClient.createLesson($scope.lesson).then(function(result) {
+        LergoClient.lessons.create().then(function(result) {
             var lesson = result.data;
             $location.path('/user/lesson/' + lesson._id + '/update');
         }, function() {
@@ -27,7 +27,7 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
     $scope.deleteLesson = function(lesson) {
         var canDelete = window.confirm('Are yoy sure to delete Lesson : ' + lesson.name + ' ?');
         if (canDelete) {
-            LergoClient.deleteLesson(lesson._id).then(function() {
+            LergoClient.lessons.delete(lesson._id).then(function() {
                 $log.info('Deleted sucessfully');
                 $scope.getAll();
             }, function() {
