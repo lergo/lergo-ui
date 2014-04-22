@@ -17,10 +17,15 @@ angular.module('lergoApp')
 
         $scope.types = QuestionsService.questionsType;
 
-        QuestionsService.getUserQuestionById( questionId ).then(function(result){
-            $scope.quizItem = result.data;
-
-        });
+	    QuestionsService.getUserQuestionById(questionId).then(
+	    		function(result) {
+	    			$scope.quizItem = result.data;
+	    			$scope.errorMessage = null;
+	    		}, function(result) {
+	    			$scope.error = result.data;
+	    			$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
+	    			$log.error($scope.errorMessage);
+	    		});
 
         $scope.$watch('quizItem', saveQuestion.onValueChange, true);
 
@@ -29,9 +34,9 @@ angular.module('lergoApp')
         $scope.getQuestionUpdateTemplate = function(){
             if ( !!$scope.quizItem && !!$scope.quizItem.type ) {
                 var type = QuestionsService.getTypeById($scope.quizItem.type);
-                return type.updateTemplate
+                return type.updateTemplate;
             }
             return '';
-        }
+        };
 
   });
