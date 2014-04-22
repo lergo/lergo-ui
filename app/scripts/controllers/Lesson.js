@@ -87,7 +87,7 @@ angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, Lerg
         step.quizItems = step.quizItems || [];
 
         step.quizItems.push( itemId );
-    }
+    };
 
 
 });
