@@ -18,19 +18,16 @@ angular.module('lergoApp')
                 }
             );
         }
+	
+        $scope.login = function() {
 
-        $scope.login = function () {
-
-            LergoClient.login($scope.form).then(
-                function success( result ) {
-                    $rootScope.user = result.data;
-                    $scope.errorMessage=null;
-                    $location.path( '/user/homepage' );
-                },
-                function error(result) {
-                	$scope.errorMessage=result.data.message;
-                    $log.info('error logging in [%s]', result.data);
-                }
-            );
-        };
+		LergoClient.login($scope.form).then(function success(result) {
+			$rootScope.user = result.data;
+			$scope.errorMessage = null;
+			$location.path('/user/homepage');
+		}, function error(result) {
+			$scope.errorMessage = result.data.message;
+			$log.info('error logging in [%s]', result.data);
+		});
+	};
     });

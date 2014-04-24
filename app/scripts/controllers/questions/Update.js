@@ -17,15 +17,14 @@ angular.module('lergoApp')
 
         $scope.types = QuestionsService.questionsType;
 
-	    QuestionsService.getUserQuestionById(questionId).then(
-	    		function(result) {
-	    			$scope.quizItem = result.data;
-	    			$scope.errorMessage = null;
-	    		}, function(result) {
-	    			$scope.error = result.data;
-	    			$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
-	    			$log.error($scope.errorMessage);
-	    		});
+	    QuestionsService.getUserQuestionById(questionId).then(function(result) {
+		$scope.quizItem = result.data;
+		$scope.errorMessage = null;
+	}, function(result) {
+		$scope.error = result.data;
+		$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
+		$log.error($scope.errorMessage);
+	});
 
         $scope.$watch('quizItem', saveQuestion.onValueChange, true);
 
