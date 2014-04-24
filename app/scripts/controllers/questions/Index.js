@@ -1,10 +1,8 @@
 'use strict';
 
-angular.module('lergoApp')
-  .controller('QuestionsIndexCtrl', function ($scope, QuestionsService, $location ) {
+angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, $location) {
 
-	   
-	 $scope.createNewQuestion = function() {
+	$scope.createNewQuestion = function() {
 		QuestionsService.createQuestion({}).then(function(result) {
 			$scope.errorMessage = null;
 			$location.path('/user/questions/' + result.data._id + '/update');
@@ -14,8 +12,8 @@ angular.module('lergoApp')
 			$log.error($scope.errorMessage);
 		});
 	};
-	
-    QuestionsService.getUserQuestions().then(function(result) {
+
+	QuestionsService.getUserQuestions().then(function(result) {
 		$scope.items = result.data;
 		$scope.errorMessage = null;
 	}, function(result) {
@@ -23,4 +21,4 @@ angular.module('lergoApp')
 		$scope.errorMessage = 'Error in fetching questions : ' + result.data.message;
 		$log.error($scope.errorMessage);
 	});
-  });
+});

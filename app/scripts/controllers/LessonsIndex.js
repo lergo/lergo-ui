@@ -3,7 +3,6 @@
 angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location) {
 	$scope.lessons = null;
 
-		
 	$scope.getAll = function() {
 		LergoClient.lessons.getAll().then(function(result) {
 			$scope.lessons = result.data;
@@ -17,9 +16,8 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 	$scope.$on('$viewContentLoaded', function() {
 		$scope.getAll();
 	});
-	
 
-    $scope.create = function() {
+	$scope.create = function() {
 		LergoClient.lessons.create().then(function(result) {
 			var lesson = result.data;
 			$scope.errorMessage = null;
@@ -29,8 +27,8 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 			$log.error($scope.errorMessage);
 		});
 	};
-	
-    $scope.deleteLesson = function(lesson) {
+
+	$scope.deleteLesson = function(lesson) {
 		var canDelete = window.confirm('Are yoy sure to delete Lesson : ' + lesson.name + ' ?');
 		if (canDelete) {
 			LergoClient.lessons.delete(lesson._id).then(function() {

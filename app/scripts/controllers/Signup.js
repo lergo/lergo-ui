@@ -1,17 +1,14 @@
 'use strict';
 
-angular.module('lergoApp')
-    .controller('SignupCtrl', function ($scope, $log, LergoClient, $location ) {
-        $scope.signupForm = {
-            'username': null,
-            'email':null,
-            'password': null,
-            'passwordConfirm': null
-        };
-     
+angular.module('lergoApp').controller('SignupCtrl', function($scope, $log, LergoClient, $location) {
+	$scope.signupForm = {
+		'username' : null,
+		'email' : null,
+		'password' : null,
+		'passwordConfirm' : null
+	};
 
-	
-        $scope.submit = function() {
+	$scope.submit = function() {
 
 		if ($scope.signupForm.password != $scope.signupForm.passwordConfirm) {
 			$scope.errorMessage = "Confirm Passowrd doesnot match the password";
@@ -29,9 +26,9 @@ angular.module('lergoApp')
 		});
 	};
 
-
-        setInterval(function(){$('#issues').scrollLeft(200).scrollTop( Math.max($('#issues').scrollTop(), 160));}, 1000);
-    }
-
+	setInterval(function() {
+		$('#issues').scrollLeft(200).scrollTop(Math.max($('#issues').scrollTop(), 160));
+	}, 1000);
+}
 
 );
