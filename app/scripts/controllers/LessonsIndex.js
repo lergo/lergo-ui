@@ -39,7 +39,6 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 				$scope.errorMessage = 'Error in deleting Lesson : ' + result.data.message;
 				$log.error($scope.errorMessage);
 			});
-		}
-		;
+		};
 	};
 });
