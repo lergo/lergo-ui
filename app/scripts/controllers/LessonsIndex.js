@@ -5,9 +5,11 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 	$scope.getAll = function() {
 		LergoClient.lessons.getAll().then(function(result) {
 			$scope.lessons = result.data;
-			$log.info('got success');
-		}, function() {
-			$log.error('got error');
+			$scope.errorMessage=null;
+			$log.info('Lesson fetched sucessfully');
+		}, function(result) {
+			$scope.errorMessage='Error in fetching Lessons : '+result.data.message;
+			$log.error($scope.errorMessage);
 		});
 	};
 	$scope.$on('$viewContentLoaded', function() {
@@ -18,9 +20,11 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
     $scope.create = function() {
         LergoClient.lessons.create().then(function(result) {
             var lesson = result.data;
+            $scope.errorMessage=null;
             $location.path('/user/lesson/' + lesson._id + '/update');
-        }, function() {
-            $log.error('got error');
+        }, function(result) {
+        	$scope.errorMessage='Error in creating Lesson : '+ result.data.message;
+            $log.error($scope.errorMessage);
         });
     };
 
@@ -28,11 +32,13 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
         var canDelete = window.confirm('Are yoy sure to delete Lesson : ' + lesson.name + ' ?');
         if (canDelete) {
             LergoClient.lessons.delete(lesson._id).then(function() {
-                $log.info('Deleted sucessfully');
+            	$scope.errorMessage=null;
+                $log.info('Lesson deleted sucessfully');
                 $scope.getAll();
-            }, function() {
-                $log.error('got error');
+            }, function(result) {
+            	$scope.errorMessage='Error in deleting Lesson : '+ result.data.message;
+                $log.error($scope.errorMessage);
             });
-        }
+        };
     };
 });

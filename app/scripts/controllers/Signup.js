@@ -8,14 +8,25 @@ angular.module('lergoApp')
             'password': null,
             'passwordConfirm': null
         };
+     
 
         $scope.submit = function () {
+        	
+        	if($scope.signupForm.password != $scope.signupForm.passwordConfirm){
+        		$scope.errorMessage = "Confirm Passowrd doesnot match the password";
+        		return;
+        	}
+        	else{
+        		$scope.errorConfirmPassword = null;
+        	}
             LergoClient.signup($scope.signupForm).then(
                 function () {
                     $log.info('got success');
+                    $scope.errorMessage=null;
                     $location.path('/public/session/login');
                 },
-                function () {
+                function (result) {
+                	$scope.errorMessage=result.data.message;
                     $log.error('got error');
                 }
             );

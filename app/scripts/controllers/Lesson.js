@@ -16,7 +16,11 @@ angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, Lerg
 
     LergoClient.lessons.getById($routeParams.lessonId).then(function (result) {
         $scope.lesson = result.data;
+        $scope.errorMessage=null;
         $scope.$watch('lesson', saveLesson.onValueChange, true);
+    }, function(result) {
+    	$scope.errorMessage='Error in fetching Lesson by id : '+ result.data.message;
+        $log.error($scope.errorMessage);
     });
 
 
@@ -80,6 +84,10 @@ angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, Lerg
 
     LergoClient.questions.getUserQuestions().then(function (result) {
         $scope.quizItems = result.data;
+        $scope.errorMessage=null;
+    }, function(result) {
+    	$scope.errorMessage='Error in fetching questions for user : '+ result.data.message;
+        $log.error($scope.errorMessage);
     });
 
 
