@@ -8,62 +8,74 @@ angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, Lerg
         }
     });
 
+	$scope.isSaving = function() {
+		return !!saveLesson.getStatus().saving;
+	};
 
-    $scope.isSaving = function () {
-        return !!saveLesson.getStatus().saving;
-    };
+	LergoClient.lessons.getById($routeParams.lessonId).then(function(result) {
+		$scope.lesson = result.data;
+		$scope.errorMessage = null;
+		$scope.$watch('lesson', saveLesson.onValueChange, true);
+	}, function(result) {
+		$scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
+		$log.error($scope.errorMessage);
+	});
 
+	$scope.stepTypes = [ {
+		'id' : 'video',
+		'label' : 'Video'
+	}, {
+		'id' : 'quiz',
+		'label' : 'Quiz'
+	} ];
 
     LergoClient.lessons.getById($routeParams.lessonId).then(function (result) {
         $scope.lesson = result.data;
         $scope.$watch('lesson', saveLesson.onValueChange, true);
     });
 
+	$scope.addStep = function(lesson) {
+		if (!lesson.steps) {
+			lesson.steps = [];
+		}
 
-    $scope.stepTypes = [
-        {
-            'id': 'video',
-            'label': 'Video'
-        },
-        {
-            'id': 'quiz',
-            'label': 'Quiz'
-        }
-    ];
+		lesson.steps.push({});
+	};
+	$scope.moveStepUp = function(index) {
+		var temp = $scope.lesson.steps[index - 1];
+		if (temp) {
+			$scope.lesson.steps[index - 1] = $scope.lesson.steps[index];
+			$scope.lesson.steps[index] = temp;
+		}
+	};
+	$scope.moveStepDown = function(index) {
+		var temp = $scope.lesson.steps[index + 1];
+		if (temp) {
+			$scope.lesson.steps[index + 1] = $scope.lesson.steps[index];
+			$scope.lesson.steps[index] = temp;
+		}
 
-    $scope.quizTypes = [
-        {
-            'id': 'test',
-            'label': 'Test'
-        },
-        {
-            'id': 'exercise',
-            'label': 'Exercise'
-        }
-    ];
+	};
 
-    $scope.addStep = function (lesson) {
-        if (!lesson.steps) {
-            lesson.steps = [];
-        }
+	$scope.done = function() {
+		$location.path('/user/lessons');
+	};
 
-        lesson.steps.push({});
-    };
-    $scope.moveStepUp = function (index) {
-        var temp = $scope.lesson.steps[index - 1];
-        if (temp) {
-            $scope.lesson.steps[index - 1] = $scope.lesson.steps[index];
-            $scope.lesson.steps[index] = temp;
-        }
-    };
-    $scope.moveStepDown = function (index) {
-        var temp = $scope.lesson.steps[index + 1];
-        if (temp) {
-            $scope.lesson.steps[index + 1] = $scope.lesson.steps[index];
-            $scope.lesson.steps[index] = temp;
-        }
+	$scope.getStepViewByType = function(step) {
+		var type = 'none';
+		if (!!step && !!step.type) {
+			type = step.type;
+		}
+		return 'views/lesson/steps/_' + type + '.html';
+	};
 
-    };
+	LergoClient.questions.getUserQuestions().then(function(result) {
+		$scope.quizItems = result.data;
+		$scope.errorMessage = null;
+	}, function(result) {
+		$scope.errorMessage = 'Error in fetching questions for user : ' + result.data.message;
+		$log.error($scope.errorMessage);
+	});
 
     var quizItemsWatch = [];
     $scope.quizItemsData = {};
