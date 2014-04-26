@@ -11,6 +11,10 @@ angular.module('lergoApp')
             return $http.get('/backend/user/questions/' + questionId);
         };
 
+        this.findQuestionsById = function( ids ){
+            return $http({ 'url' : '/backend/questions/find', 'method' : 'GET', params : { 'ids' : ids }});
+        };
+
         this.createQuestion = function (question) {
             return $http.post('/backend/user/questions', question);
         };

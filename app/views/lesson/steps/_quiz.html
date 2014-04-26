@@ -1,6 +1,9 @@
-<select ng-model="selectedQuestion" ng-options="item.id as item.question for item in quizItems"> </select>
-        <button ng-click="addItemToStep( item, step )">Add Item To Step</button>
+<select ng-model="selectedQuestion" ng-options="item._id as item.question for item in quizItems"> </select>
+        {{selectedQuestion}}
+        <button ng-click="addItemToQuiz( selectedQuestion, step )">Add Item To Step</button>
 
-<div ng-repeat="item in step.items">
-    {{item}}
-</div>
+        <ul>
+            <li ng-repeat="item in step.quizItems">
+                {{getQuestion(item)}} <button ng-click="removeItemFromQuiz( item, step )">Remove</button>
+            </li>
+        </ul>

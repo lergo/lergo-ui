@@ -9,8 +9,8 @@ angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, Lerg
     });
 
 
-    $scope.isSaving = function(){
-        return !! saveLesson.getStatus().saving;
+    $scope.isSaving = function () {
+        return !!saveLesson.getStatus().saving;
     };
 
 
@@ -65,6 +65,51 @@ angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, Lerg
 
     };
 
+    var quizItemsWatch = [];
+    $scope.quizItemsData = {};
+
+    $scope.getQuestion = function (item) {
+        if ($scope.quizItemsData.hasOwnProperty(item)) {
+            return $scope.quizItemsData[item].question;
+        }
+        return null;
+    };
+
+    /** watch questions in step. iterates over all steps of type 'quiz' and turns the quizItems arrays to a single array **/
+    $scope.$watch(function () {
+        if (!$scope.lesson) {
+            return quizItemsWatch;
+        }
+
+        quizItemsWatch.splice(0, quizItemsWatch.length);
+
+
+        $scope.lesson.steps.forEach(function (step/*, index*/) {
+            if (!!step.quizItems && step.quizItems.length > 0) {
+
+                step.quizItems.forEach(function (quizItem) {
+
+                    if (quizItemsWatch.indexOf(quizItem) < 0) {
+                        quizItemsWatch.push(quizItem);
+                    }
+
+                });
+            }
+        });
+        return quizItemsWatch;
+    }, function (newValue, oldValue) {
+        if (!!newValue && newValue.length > 0) {
+            $log.info('quizItems changed', newValue, oldValue);
+            LergoClient.questions.findQuestionsById(newValue).then(function (result) {
+                var newObj = {};
+                for (var i = 0; i < result.data.length; i++) {
+                    newObj[result.data[i]._id] = result.data[i];
+                }
+                $scope.quizItemsData = newObj;
+            });
+        }
+    }, true);
+
 
     $scope.done = function () {
         $location.path('/user/lessons');
@@ -82,11 +127,19 @@ angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, Lerg
         $scope.quizItems = result.data;
     });
 
+    $scope.removeItemFromQuiz = function (item, step) {
+        if (!!step.quizItems && step.quizItems.length > 0 && step.quizItems.indexOf(item) >= 0) {
+            step.quizItems.splice(step.quizItems.indexOf(item), 1);
+        }
+    };
 
-    $scope.addItemToQuiz = function( itemId , step ){
+
+    $scope.addItemToQuiz = function (itemId, step) {
+
         step.quizItems = step.quizItems || [];
-
-        step.quizItems.push( itemId );
+        if (step.quizItems.indexOf(itemId) < 0) {
+            step.quizItems.push(itemId);
+        }
     };
 
 
