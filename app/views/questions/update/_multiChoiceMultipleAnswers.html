@@ -1,19 +1,41 @@
 <div>
-    Question <input ng-model="quizItem.question"/>
-    Correct Answers:
+	Question: <input ng-model="quizItem.question" />
+	<div>
+		Answer Option : <input ng-model="newAnswer" />
+		<button ng-click="addOption(newAnswer)" class="btn">Add</button>
+	</div>
+	<div>
+		<table class="table table-striped table-condensed">
+			<thead>
+				<tr>
+					<th style="width: 40px;">Answer Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="option in quizItem.options">
+					<td>{{option}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		Correct Answer : <select ng-model="correctAnswer"ng-options="o for o in quizItem.options"></select>
+		<button ng-click="addCorrectAnswer(correctAnswer)" class="btn">Add</button>
+	</div>
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="width: 40px;">Correct Answers</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="answer in quizItem.answer;">
+					<td>{{answer}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-    <div ng-repeat="correctAnswer in quizItem.answers">
-        <input ng-model="answers"/><br/>
-        <button ng-click="quizItem.answers.splice(quizItem.answers.indexOf(correctAnswer),1)"/>
-    </div>
-    <button ng-click="quizItem.answers.push('')">Add Correct Answer</button>
-
-
-    Incorrect Answers:
-    <div ng-repeat="option in quizItem.options">
-        <input ng-model="option"/><br/>
-        <button ng-click="quizItem.options.splice(quizItem.options.indexOf(option),1)"/>
-    </div>
-
-    <button ng-click="quizItem.options.push('')">Add Incorrect Answer</button>
 </div>
+
