@@ -1,5 +1,8 @@
-<div class="base-layout" id="signUpPage">
-	<p>Available Lessons</p>
+<div class="base-layout" id="lessonsIndex">
+	<div class="lergo-label">
+		<span style="float:left;">Available Lessons</span>
+		<span class="errorMessage" ng-show='errorMessage' style="float:right; font-size:15px; color: red;">{{errorMessage}}</span>
+	</div>			
 	<table class="table table-striped table-condensed">
 		<thead>
 			<tr>
@@ -8,13 +11,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="lesson in lessons">
-				<td>{{ lesson.name }}</td>
-				<td><a ng-click="deleteLesson(lesson._id)"
-					class="btn btn-small btn-danger">delete</a></td>
-
+			<tr ng-repeat="les in lessons">
+				<td>{{les._id}} - {{ les.name }}</td>
+				<td><a ng-href="#/user/lesson/{{les._id}}/update">edit</a></td>
+				<td><a ng-click="deleteLesson(les)" class="btn btn-small btn-danger">X</a></td>
 			</tr>
 		</tbody>
 	</table>
-	<a href="#/public/user/lesson/create">Create New Lesson</a>
+	<a ng-click="create()" class="btn">Create New Lesson</a>
 </div>

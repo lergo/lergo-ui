@@ -1,0 +1,14 @@
+<div class="base-layout" >
+     <span class="error">{{error}}</span>
+    <button ng-click="createNewQuestion()">Create New Question</button>
+    <div ng-show="items.length > 0">
+        <div ng-repeat="item in items">
+            <a href = "#/user/questions/{{item._id}}/read"> {{item._id}}</a>
+            <a href="#/user/questions/{{item._id}}/update">Edit</a>
+        </div>
+    </div>
+    <div ng-show="!items || items.length == 0">
+        There are no questions to display
+    </div>
+
+</div>

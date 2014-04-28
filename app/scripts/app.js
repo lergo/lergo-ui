@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp', [])
+angular.module('lergoApp', ['LocalStorageModule'])
     .config(function ($routeProvider, $httpProvider) {
 
         $routeProvider
@@ -8,9 +8,30 @@ angular.module('lergoApp', [])
                 'templateUrl':'views/lesson/create.html',
                 'controller':'CreateLessonCtrl'
             })
+            .when('/user/lessons', {
+                templateUrl: 'views/lesson/mylessons.html',
+                controller:'LessonsIndexCtrl'
+            })
+            .when('/user/questions', {
+                templateUrl : 'views/questions/index.html',
+                controller: 'QuestionsIndexCtrl'
+            })
+
+            .when('/user/questions/:questionId/read', {
+                templateUrl : 'views/questions/read.html',
+                controller: 'QuestionsReadCtrl'
+            })
+            .when('/user/questions/:questionId/update', {
+                templateUrl : 'views/questions/update.html',
+                controller  : 'QuestionsUpdateCtrl'
+            })
             .when('/user/homepage', {
                 templateUrl: 'views/homepage.html',
                 controller: 'HomepageCtrl'
+            })
+            .when('/user/lesson/:lessonId/update', {
+                templateUrl: 'views/lesson/createlesson.html',
+                controller:'LessonCtrl'
             })
             .when('/public/kitchenSink', {
                 templateUrl: 'views/kitchenSink.html'
@@ -24,14 +45,8 @@ angular.module('lergoApp', [])
                 templateUrl: 'views/session/login.html',
                 controller:'LoginCtrl'
             })
-            .when('/public/user/lesson/create', {
-                templateUrl: 'views/lesson/createlesson.html',
-                controller:'LessonCtrl'
-            })
-            .when('/public/user/Lessons', {
-                templateUrl: 'views/lesson/mylessons.html',
-                controller:'LessonCtrl'
-            })
+
+
             .when('/public/about', {
                 templateUrl: 'views/about.html',
                 controller: 'SignupCtrl'
