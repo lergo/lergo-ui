@@ -1,11 +1,20 @@
 <div>
-    Question : <input ng-model="quizItem.question"/>
-    <textarea ng-model="quizItem.content"></textarea>
-    <div ng-repeat="answer in quizItem.answers">
+    Question : <textarea ng-model="quizItem.question"></textarea>
+    
+    <button ng-click="generateFillInTheBlanks()">Generate Fill In the Blanks</button>
+    <br>
+<div style="border:2px solid blue;">
+Example : 2+2 = [4] and [2,4,6,8] is a even number less then 10.
+<br>
+<br>
+ Output : 2+2 = <input type="text"/> and <input type="text"/> is a even number less then 10.
+</div>
+    
+    <!-- <div ng-repeat="answer in quizItem.answers">
         <input ng-model="answer" type="text"/>
         <button ng-click="moveOptionUp(question,option)">Move Up</button>
         <button ng-click="moveOptionDown(question,option)">Move Down</button>
         <button ng-click="quizItem.answers.splice(quizItem.indexOf(answer),1)">Remove</button>
     </div>
-    <button ng-click="quizItem.answers.push('')"></button>
+    <button ng-click="quizItem.answers.push('')"></button> -->
 </div>

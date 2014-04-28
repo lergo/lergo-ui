@@ -34,25 +34,34 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		}
 		return '';
 	};
-	$scope.newAnswer='New Answer';
-	$scope.addOption=function(answer){
-		if($scope.quizItem.options === undefined ){
-			$scope.quizItem.options=[];
+	$scope.newAnswer = 'New Answer';
+	$scope.addOption = function(answer) {
+		if ($scope.quizItem.options === undefined) {
+			$scope.quizItem.options = [];
 		}
 		$scope.quizItem.options.push(answer);
 	};
-	
-	$scope.correctAnswer=null;
-	$scope.addCorrectAnswer=function(answer){
-		if(answer===null){
+
+	$scope.correctAnswer = null;
+	$scope.addCorrectAnswer = function(answer) {
+		if (answer === null) {
 			return;
 		}
-		if($scope.quizItem.answer === undefined ){
-			$scope.quizItem.answer=[];
+		if ($scope.quizItem.answer === undefined) {
+			$scope.quizItem.answer = [];
 		}
 		$scope.quizItem.answer.push(answer);
 	};
-	
 
+	$scope.generateFillInTheBlanks = function() {
+		var question = $scope.quizItem.question;
+		var res =  $scope.quizItem.question;
+		var re = /\[(.*?)\]/g;
+		var answer = [];
+		for ( var m = re.exec(question); m; m = re.exec(question)) {
+			answer.push(m[1].split(","));
+		}
+		$scope.quizItem.answer= answer;
+	};
 
 });
