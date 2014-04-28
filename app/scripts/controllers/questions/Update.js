@@ -34,5 +34,25 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		}
 		return '';
 	};
+	$scope.newAnswer='New Answer';
+	$scope.addOption=function(answer){
+		if($scope.quizItem.options === undefined ){
+			$scope.quizItem.options=[];
+		}
+		$scope.quizItem.options.push(answer);
+	};
+	
+	$scope.correctAnswer=null;
+	$scope.addCorrectAnswer=function(answer){
+		if(answer===null){
+			return;
+		}
+		if($scope.quizItem.answer === undefined ){
+			$scope.quizItem.answer=[];
+		}
+		$scope.quizItem.answer.push(answer);
+	};
+	
+
 
 });

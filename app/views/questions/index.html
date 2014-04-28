@@ -3,7 +3,7 @@
     <button ng-click="createNewQuestion()">Create New Question</button>
     <div ng-show="items.length > 0">
         <div ng-repeat="item in items">
-            {{item._id}}
+            <a href = "#/user/questions/{{item._id}}/read"> {{item._id}}</a>
             <a href="#/user/questions/{{item._id}}/update">Edit</a>
         </div>
     </div>
