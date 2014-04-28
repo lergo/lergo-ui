@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log) {
+angular.module('lergoApp').service('QuestionsService', function QuestionsService($http) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
 	this.getUserQuestions = function() {
 		return $http.get('/backend/user/questions');
