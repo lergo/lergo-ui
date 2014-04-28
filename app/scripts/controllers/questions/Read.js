@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log) {
+angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log ,$compile) {
 
 	var questionId = $routeParams.questionId;
 	$scope.types = QuestionsService.questionsType;
@@ -21,17 +21,18 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		}
 		return '';
 	};
-	$scope.correctAnswer=[];
-	$scope.submit=function(answer){
-		$log.info('QUIZ :'+$scope.quizItem.answer );
-		$log.info('Local :'+answer);
-		if(angular.equals($scope.quizItem.answer,answer)){
-			$log.info('SUCESS');
-		}
-		else
-		$log.info('FAILED:');
-		//TODO : Delete above code and make below call work when backed support is there for check answer
-//		QuestionsService.submitAnswer($scope.quizItem,answer).then(function(result) {
+	$scope.correctAnswer = [];
+	$scope.submit = function(answer) {
+		 $log.info('QUIZ :'+$scope.quizItem.answer );
+		 $log.info('Local :'+answer);
+		 if(angular.equals($scope.quizItem.answer,answer)){
+		 $log.info('SUCESS');
+		 }
+		 else
+		 $log.info('FAILED:');
+		// TODO : Delete above code and make below call work when backed support
+		// is there for check answer
+//		QuestionsService.submitAnswer($scope.quizItem, answer).then(function(result) {
 //			$scope.result = result.data;
 //			$scope.errorMessage = null;
 //		}, function(result) {
@@ -41,17 +42,27 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 //		});
 
 	};
-	
-	$scope.updateSelection = function($event, answer) {
-		  var checkbox = $event.target;
-		  if(checkbox.checked){
-			  $scope.correctAnswer.push(answer);
-		  }
-		  else{
-			  $scope.correctAnswer.splice($scope.correctAnswer.indexOf(answer), 1);
-		  }
-			  
-		};
-	
 
+	$scope.updateSelection = function($event, answer) {
+		var checkbox = $event.target;
+		if (checkbox.checked) {
+			$scope.correctAnswer.push(answer);
+		} else {
+			$scope.correctAnswer.splice($scope.correctAnswer.indexOf(answer), 1);
+		}
+
+	};
+
+	$scope.fillInTheBlanks = function() {
+		var question = $scope.quizItem.question;
+		var res = $scope.quizItem.question;
+		var re = /\[(.*?)\]/g;
+		var i=0;
+		for ( var m = re.exec(question); m; m = re.exec(question)) {
+			$scope.correctAnswer[i]='wow';
+			res = res.replace('[' + m[1] + ']', '<input  type="text"  ng-model= "correctAnswer['+i+']" />');
+			i=i+1;
+		}
+		return res;
+	};
 });

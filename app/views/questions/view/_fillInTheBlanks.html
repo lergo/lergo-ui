@@ -1,11 +1,5 @@
-<div>
-    Question : <input ng-model="quizItem.question"/>
-    <textarea ng-model="quizItem.content"></textarea>
-    <div ng-repeat="answer in quizItem.answers">
-        <input ng-model="answer" type="text"/>
-        <button ng-click="moveOptionUp(question,option)">Move Up</button>
-        <button ng-click="moveOptionDown(question,option)">Move Down</button>
-        <button ng-click="quizItem.answers.splice(quizItem.indexOf(answer),1)">Remove</button>
-    </div>
-    <button ng-click="quizItem.answers.push('')"></button>
-</div>
+<form name="MCFillInTheBlanksForm" ng-submit="submit(correctAnswer)">
+	Question :
+    <div ng-bind-html-unsafe="fillInTheBlanks()"></div>
+	<button type="submit">Submit</button>
+</form>
