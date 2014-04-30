@@ -1,12 +1,44 @@
-<div class="base-layout" id="createLessonPage" >
-		<form ng-submit='create()' class="CreateLesson-form lergo-form">
+<div class="base-layout" id="createLessonPage">
+	<form ng-submit='create()' class="CreateLesson-form lergo-form">
+	<div class="lergo-label">
+		<span class="errorMessage" ng-show='errorMessage' style="float:right; font-size:15px; color: red;">{{errorMessage}}</span>
+	</div>	
+		<div class="form-section">
+			<div class="lergo-label">Lesson Name</div>
+			<div class="lergo-input">
+				<input ng-model="lesson.name" />
+			</div>
+		</div>
+		<div class="form-section">
+			<div class="lergo-label">Lesson Description</div>
+			<div class="lergo-input">
+				<textarea ng-model="lesson.description"></textarea>
+			</div>
+		</div>
+		<button ng-click="addStep(lesson)">Add Step</button>
+		<div ng-repeat="step in lesson.steps">
+			<hr />
+			<a ng-click="moveStepUp($index)" ng-show="!$first" class="btn btn-small">up</a>
+			<a ng-click="moveStepDown($index)" ng-show="!$last" class="btn btn-small">down</a>
+			<a ng-click="deleteStep(step)" class="btn btn-small">delete</a>
 			<div class="form-section">
-				<div class="lergo-label">Lesson Name</div>
+				<div class="form-section">
+					<div class="lergo-label">Step Title</div>
+					<div class="lergo-input">
+						<input ng-model="step.title" />
+					</div>
+				</div>
+				<div class="lergo-label">Step Type</div>
 				<div class="lergo-input">
-					<input ng-model="lesson.name" required />
+					<select ng-model="step.type"
+						ng-options="t.id as t.label for t in stepTypes">
+					</select>
 				</div>
 			</div>
-			<button type='submit'>Create</button>
-		</form>
-	</div>
+			view by type = {{getStepViewByType(step)}}
+			<div ng-include="getStepViewByType(step)"></div>
+		</div>
+		<button ng-click="done()" ng-disabled="isSaving()">{{ isSaving() && "Saving..." || "Done" }} </button>
+	</form>
+</div>
 

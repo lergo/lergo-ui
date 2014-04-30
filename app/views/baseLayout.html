@@ -7,12 +7,14 @@
 					<div class="header-links">
 						<ul>
 							<li
-								ng-repeat="item in ['Learn','Create','Parents','Teachers','Contribute','Lessons']">
-								<a href="#/public/user/{{item}}">{{item}}</a>
+								ng-repeat="item in ['Learn','Create','Parents','Teachers','Contribute']">
+								<a href="#/user/{{item}}">{{item}}</a>
 							
 							</li>
-						</ul>
-					</div>
+                            <li><a href="#/user/lessons">Lessons</a></li>
+                            <li><a href="#/user/questions">Questions</a></li>
+                        </ul>
+                    </div>
 					<div class="header-search">
 						<input placeholder="What would you like to learn about?" /> <i
 							class="icon-search"></i>
