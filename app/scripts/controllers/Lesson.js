@@ -56,6 +56,12 @@ angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, Lerg
 		}
 
 	};
+	$scope.deleteStep = function(step) {
+		var steps = $scope.lesson.steps;
+		if (!!steps && steps.length > 0 && steps.indexOf(step) >= 0) {
+			steps.splice(steps.indexOf(step), 1);
+		}
+	};
 
 	$scope.done = function() {
 		$location.path('/user/lessons');
