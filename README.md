@@ -4,7 +4,7 @@ Lergo-UI
 
 
 ## How to Help
-
+ * Read developers' guidelines on the [project GitHub wiki](https://github.com/lergo/lergo-ui/wiki)
  * Discussion on [Lergo Google Group](https://groups.google.com/forum/#!forum/lergo-dev)
  * [Lergo Campaign](http://www.indiegogo.com/projects/lergo-free-kids-education)
 
