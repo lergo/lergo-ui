@@ -1,3 +1,4 @@
+$HEADER_BACKGROUND_COLOR:$COLOR_13;
 $HEADER_HEIGHT: 110px !default;
 $FOOTER_HEIGHT: 110px !default;
 
@@ -18,7 +19,7 @@ $FOOTER_HEIGHT: 110px !default;
     clear: both;
   }
   #header {
-    background: #91CFFF;
+    background: $HEADER_BACKGROUND_COLOR;
 
 
     height: $HEADER_HEIGHT;

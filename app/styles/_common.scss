@@ -159,6 +159,11 @@ button.action-item {
     padding:5px;
     border-radius:5px;
     @include input-block-level();
+
+    &[type=checkbox]{
+      width:30px
+    }
+
   }
 
   select {
@@ -333,4 +338,10 @@ button.action-item {
     display:inline-block;
     background:url('../images/logos/transparent.png')
   }
+}
+
+
+
+.btn{
+
 }
