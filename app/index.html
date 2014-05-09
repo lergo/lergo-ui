@@ -18,7 +18,7 @@
         <!-- endbuild -->
       <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 </head>
-  <body ng-app="lergoApp" ng-view="" style="position:relative">
+  <body ng-app="lergoApp" ng-view="" style="position:relative" class="{{$root.lergoLanguage | i18nDirection }}">
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -94,6 +94,7 @@
         <script src="scripts/controllers/questions/Index.js"></script>
         <script src="scripts/services/ContinuousSave.js"></script>
         <script src="scripts/services/LessonsService.js"></script>
+        <script src="scripts/filters/i18nDirection.js"></script>
         <!-- endbuild -->
 </body>
 </html>

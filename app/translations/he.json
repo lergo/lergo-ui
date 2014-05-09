@@ -5,5 +5,19 @@
         "password" : "סיסמא",
         "login" : "כניסה",
         "signup" : "הרשמה"
+    },
+    "baseLayout" : {
+        "header" : {
+            "searchPlaceholder" : " מה תרצה ללמוד?",
+            "links" : {
+                "learn" : "למד",
+                "create" : "צור",
+                "parents" : "הורים",
+                "teachers" : "מורים",
+                "contribute" : "תרום",
+                "lessons" : "שיעורים",
+                "questions" : "שאלות"
+            }
+        }
     }
 }

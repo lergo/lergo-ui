@@ -4,7 +4,9 @@ angular.module('lergoApp').service('LergoTranslate',
     function ( $routeParams, $http, localStorageService, $log , $rootScope ) { /*LergoTranslate */
         // AngularJS will instantiate a singleton by calling "new" on this function
 
-        var supportedLanguages = ['en','he'];
+
+
+        var supportedLanguages = [ { 'id' : 'en', 'dir' : 'ltr' } , { 'id' : 'he', 'dir' : 'rtl' } ];
 
         var language = localStorageService.get('lergoLanguage');
         if ( !language ){
@@ -18,15 +20,22 @@ angular.module('lergoApp').service('LergoTranslate',
 
 
         $( supportedLanguages ).each( function(index,item){
-            $http.get('/translations/' + item + '.json').then(function(data){
-                translations[item] = data.data;
+            $http.get('/translations/' + item.id + '.json').then(function(data){
+                translations[item.id] = data.data;
             });
         });
 
 
 
         this.isSupported = function( language ){
-            return supportedLanguages.indexOf(language) >= 0;
+
+            try{
+
+                this.getLanguageObj( language  );
+                return true;
+            }catch(e){
+                return false;
+            }
         };
 
         this.setLanguage = function (_language) {
@@ -43,11 +52,18 @@ angular.module('lergoApp').service('LergoTranslate',
             return language;
         };
 
+        this.getLanguageObj = function( _language ){
+            var __language = _language || language;
+            return $.grep( supportedLanguages, function( item/*,index*/){ return item.id == __language })[0];
+        };
+
         this.getSupportedLanguages = function(){
             return supportedLanguages;
         };
 
         this.translate = function (key) {
+
+            $log.info('language is', language);
             var args = key.split('.');
             var t = translations[language];
             for ( var i = 0; i < args.length; i ++ ){
