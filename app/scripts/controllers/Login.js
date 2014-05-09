@@ -21,7 +21,7 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 			$rootScope.user = result.data;
 			$scope.errorMessage = null;
 			$location.path('/user/homepage');
-		}, function error(result) {
+		}, function error(/**result**/) {
             try {
 //                $scope.errorMessage = result.data.message;
 //                $log.info('error logging in [%s]', result.data);

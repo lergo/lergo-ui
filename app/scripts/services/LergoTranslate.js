@@ -54,7 +54,7 @@ angular.module('lergoApp').service('LergoTranslate',
 
         this.getLanguageObj = function( _language ){
             var __language = _language || language;
-            return $.grep( supportedLanguages, function( item/*,index*/){ return item.id == __language })[0];
+            return $.grep( supportedLanguages, function( item/*,index*/){ return item.id === __language; })[0];
         };
 
         this.getSupportedLanguages = function(){

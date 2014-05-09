@@ -63,7 +63,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
 
 
 
-        var interceptor = ['$rootScope', '$q', '$location', '$log',function (scope, $q, $location, $log) {
+        var interceptor = ['$rootScope', '$q', '$location', '$log',function (scope, $q, $location) {
 
             function success(response) {
                 return response;
@@ -72,9 +72,9 @@ angular.module('lergoApp', ['LocalStorageModule'])
             function error(response) {
                 var status = response.status;
 
-                if ( status == 500 ){
+                if ( status === 500 ){
 
-                    if ( typeof(response.data) == 'string' &&  response.data.indexOf('ECONNREFUSED') > 0 ){
+                    if ( typeof(response.data) === 'string' &&  response.data.indexOf('ECONNREFUSED') > 0 ){
                         scope.errorMessage = 'no connection to server';
                     }else{
                         try{
