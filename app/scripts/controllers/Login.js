@@ -22,8 +22,12 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 			$scope.errorMessage = null;
 			$location.path('/user/homepage');
 		}, function error(result) {
-			$scope.errorMessage = result.data.message;
-			$log.info('error logging in [%s]', result.data);
+            try {
+//                $scope.errorMessage = result.data.message;
+//                $log.info('error logging in [%s]', result.data);
+            }catch(e){
+//                $scope.errorMessage = 'unknown error';
+            }
 		});
 	};
 });

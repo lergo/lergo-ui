@@ -63,7 +63,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
 
 
 
-        var interceptor = ['$rootScope', '$q', '$location', function (scope, $q, $location) {
+        var interceptor = ['$rootScope', '$q', '$location', '$log',function (scope, $q, $location, $log) {
 
             function success(response) {
                 return response;
@@ -71,6 +71,21 @@ angular.module('lergoApp', ['LocalStorageModule'])
 
             function error(response) {
                 var status = response.status;
+
+                if ( status == 500 ){
+
+                    if ( typeof(response.data) == 'string' &&  response.data.indexOf('ECONNREFUSED') > 0 ){
+                        scope.errorMessage = 'no connection to server';
+                    }else{
+                        try{
+                            scope.errorMessage = response.data.message;
+                        }catch(e){
+                            scope.errorMessage = 'unknown error';
+                        }
+                    }
+
+
+                }
 
                 if (status === 401 && $location.path().indexOf('/public') !== 0 ) {
                     $location.path( '/public/session/login');
@@ -86,6 +101,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
             }
 
             return function (promise) {
+
                 return promise.then(success, error);
             };
 
