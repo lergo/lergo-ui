@@ -9,7 +9,7 @@
         </div>
 		<div class="section">
 			<div class="label">
-				<span style="float: left;">Username</span>
+				<span style="float: left;">{{ 'loginPage.username' | i18n }}</span>
 			</div>
 			<div class="lergo-input">
 				<input ng-model="form.username" required />
@@ -17,7 +17,7 @@
 		</div>
 
 		<div class="section">
-			<div class="label">Password</div>
+			<div class="label">{{ 'loginPage.password' | i18n }}</div>
 			<div class="lergo-input">
 				<input ng-model="form.password" required type="password" />
 			</div>
@@ -32,8 +32,8 @@
 		<!--</div>-->
 
         <div class="center">
-		    <button type="submit" class="btn">Login</button>
-		    <a href="#/public/session/signup">Signup</a>
+		    <button type="submit" class="btn">{{ 'loginPage.login' | i18n }}</button>
+		    <a href="#/public/session/signup">{{ 'loginPage.signup' | i18n }}</a>
         </div>
 	</form>
 </div>

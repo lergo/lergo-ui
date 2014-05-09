@@ -1,3 +1,9 @@
 {
-    "languages":{"he":"עברית", "en":"אנגלית"}
+    "languages":{"he":"עברית", "en":"אנגלית"},
+    "loginPage" : {
+        "username"  : "שם משתמש",
+        "password" : "סיסמא",
+        "login" : "כניסה",
+        "signup" : "הרשמה"
+    }
 }

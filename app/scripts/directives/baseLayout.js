@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp')
-    .directive('baseLayout', function ( $rootScope, $location, LergoClient ) {
+    .directive('baseLayout', function ( $rootScope, $log, $location, LergoClient, LergoTranslate ) {
         return {
             templateUrl: '/views/baseLayout.html',
             transclude: true,
@@ -15,6 +15,14 @@ angular.module('lergoApp')
                         }
                     }
                 );
+
+                $rootScope.lergoLanguages = [{'id': 'en', 'label':'English'}, {'id' : 'he', 'label' : 'Hebrew'}];
+
+                $rootScope.$watch('lergoLanguage', function(newValue, oldValue){
+                    $log.info('new language',newValue);
+                    LergoTranslate.setLanguage( newValue );
+                });
+
 
                 scope.logout = function(){
                     LergoClient.logout().then(function(){
