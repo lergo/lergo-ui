@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp', ['LocalStorageModule'])
+angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
     .config(function ($routeProvider, $httpProvider) {
 
         $routeProvider
