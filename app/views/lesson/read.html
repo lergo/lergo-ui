@@ -1,0 +1,20 @@
+<div class="base-layout">
+    Title : {{lesson.name}}
+    <br>
+    Description : {{lesson.description}}
+    
+    <table class="table table-striped table-condensed">
+		<thead>
+			<tr>
+				<th style="min-width: 80px;">Title</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="step in lesson.steps">
+				<td class="name">{{ step.title }}</td>
+				<td class="viewLink">
+                <button ng-click="getDisplayUrl(step)"> view </button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
