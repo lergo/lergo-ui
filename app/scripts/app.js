@@ -51,6 +51,10 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 templateUrl: 'views/about.html',
                 controller: 'SignupCtrl'
             })
+            .when('/public/session/resetPasswordRequest', {
+                templateUrl : 'views/session/resetPasswordRequest.html',
+                controller: 'SessionResetPasswordRequestCtrl'
+            })
             .when('/', {
                 redirectTo: '/public/session/login'
             })
