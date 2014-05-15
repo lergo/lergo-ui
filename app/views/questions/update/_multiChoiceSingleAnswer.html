@@ -11,7 +11,7 @@ Amswer Option: <input ng-model="newAnswer"/>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="option in quizItem.options">
+			<tr ng-repeat="option in quizItem.options track by $index">
 				<td >{{option}}</td>
 			</tr>
 		</tbody>
