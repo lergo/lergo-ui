@@ -10,17 +10,15 @@ angular.module('lergoApp').controller('LessonsReadCtrl', function($scope, $route
 	});
 	$scope.getDisplayUrl = function(step) {
 		LergoClient.lessons.selectedStep = step;
-		if (step === undefined)
-			return;
-		else if (step.type === 'video') {
+		if (step.type === 'video') {
 			var media = VideoService.getMedia(step.videoUrl);
 			if (media === undefined)
-				return;
+			    	return;
 			else {
 				$location.path('/user/lessons/step/video/' + media.id);
 			}
 		} else {
-			$location.path('/user/lessons/step/quiz/');
+			$location.url('/user/lessons/step/quiz?'  + $.param({data : JSON.stringify(step)}));
 		}
 	};
 

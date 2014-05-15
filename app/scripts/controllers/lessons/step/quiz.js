@@ -1,18 +1,21 @@
 'use strict';
 
 angular.module('lergoApp')
-  .controller('LessonsStepQuizCtrl', function ($scope,LergoClient,$log) {
-	  $scope.selectedStep = LergoClient.lessons.selectedStep;
+  .controller('LessonsStepQuizCtrl', function ($scope,LergoClient,$log, $routeParams) {
+	  $scope.selectedStep = JSON.parse($routeParams.data);
+      $scope.questions = {};
+
+        LergoClient.questions.findQuestionsById($scope.selectedStep.quizItems).then(function(result){
+
+            for ( var i = 0; i < result.data.length; i ++ ){
+                $scope.questions[result.data[i]._id] = result.data[i];
+            }
+        });
+
+        $scope.getQuestion = function(questionId ){
+            return $scope.questions[questionId];
+        };
 	  $scope.getQuizItemTemplate = function(id) {
-		  LergoClient.questions.getUserQuestionById(id).then(function(result) {
-				$scope.quizItem = result.data;
-				$scope.errorMessage = null;
-				return LergoClient.questions.getTypeById(quizItem.question.type).viewTemplate;
-			}, function(result) {
-				$scope.error = result.data;
-				$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
-				$log.error($scope.errorMessage);
-				return;
-			});
-		};
+          return LergoClient.questions.getTypeById( $scope.getQuestion(id).type).viewTemplate;
+      };
   });

@@ -1,7 +1,13 @@
+<div class="base-layout">
 Quiz Items
 <ul>
-	<li ng-repeat="item in getSelectedStep()">
+
+    {{selectedStep.quizItems}}
+    {{questions}}
+	<li ng-repeat="item in selectedStep.quizItems">
 	{{getQuizItemTemplate(item)}}
-	<!-- <div ng-include="getQuizItemTemplate(item)"></div> -->
+     {{item}}
+	 <div ng-include="getQuizItemTemplate(item)"></div>
 	</li>
 </ul>
+</div>
