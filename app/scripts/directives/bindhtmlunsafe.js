@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').directive('bindHtmlUnsafe', function( $compile) {
+angular.module('lergoApp').directive('bindHtmlUnsafe', function($compile) {
 	return function($scope, $element, $attrs) {
 		var compile = function(newHTML) {
 			newHTML = $compile(newHTML)($scope);
@@ -10,8 +10,9 @@ angular.module('lergoApp').directive('bindHtmlUnsafe', function( $compile) {
 		var htmlName = $attrs.bindHtmlUnsafe;
 
 		$scope.$watch(htmlName, function(newHTML) {
-			if (!newHTML)
+			if (!newHTML) {
 				return;
+			}
 			compile(newHTML);
 		});
 

@@ -2,7 +2,6 @@
 
 angular.module('lergoApp').service('LessonsService', function LessonsService($http) {
 
-	this.selectedStep;
 	this.create = function() {
 		return $http.post('/backend/user/lessons');
 	};
