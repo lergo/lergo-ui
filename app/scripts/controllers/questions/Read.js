@@ -58,16 +58,16 @@ angular.module('lergoApp').controller(
 
 			};
 
-			$scope.fillInTheBlanks = function() {
-				var question = $scope.quizItem.question;
-				var res = $scope.quizItem.question;
+			$scope.fillInTheBlanks = function(quizItem) {
+				var question = quizItem.question;
+				var res = quizItem.question;
+				$scope.correctAnswers[quizItem._id] = [];
 				var re = /\[(.*?)\]/g;
 				var i = 0;
 				for ( var m = re.exec(question); m; m = re.exec(question)) {
-					$scope.correctAnswers[i] = 'wow';
-					res = res.replace('[' + m[1] + ']', '<input  type="text"  ng-model= "correctAnswer[' + i + ']" />');
+					res = res.replace('[' + m[1] + ']', '<input ng-model= correctAnswers[quizItem._id][' + i + '] />');
 					i = i + 1;
 				}
-				return res;
+				return '<div>' + res + '<\div>';
 			};
 		});
