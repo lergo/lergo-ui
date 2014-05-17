@@ -21,6 +21,18 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 templateUrl : 'views/questions/read.html',
                 controller: 'QuestionsReadCtrl'
             })
+            .when('/user/lessons/:lessonId/read', {
+                templateUrl : 'views/lesson/read.html',
+                controller: 'LessonsReadCtrl'
+            })
+              .when('/user/lessons/step/video/:videoId', {
+                templateUrl : 'views/lesson/view/_video.html',
+                controller: 'LessonsStepVideoCtrl'
+            })
+             .when('/user/lessons/step/quiz', {
+                templateUrl : 'views/lesson/view/_quiz.html',
+                controller: 'LessonsStepQuizCtrl'
+            })
             .when('/user/questions/:questionId/update', {
                 templateUrl : 'views/questions/update.html',
                 controller  : 'QuestionsUpdateCtrl'

@@ -64,4 +64,9 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		$scope.quizItem.answer= answer;
 	};
 
+
+    $scope.removeOption = function( index ){
+        $scope.quizItem.options.splice(index,1);
+    }
+
 });

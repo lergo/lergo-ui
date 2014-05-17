@@ -1,28 +1,25 @@
 'use strict';
 
 angular.module('lergoApp').controller(
-		'QuestionsReadCtrl',
-		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile) {
+		'LessonsStepQuizCtrl',
+		function($scope, LergoClient, $log, $routeParams, QuestionsService) {
+			$scope.selectedStep = JSON.parse($routeParams.data);
+			$scope.questions = {};
 
-			var questionId = $routeParams.questionId;
-			$scope.types = QuestionsService.questionsType;
+			LergoClient.questions.findQuestionsById($scope.selectedStep.quizItems).then(function(result) {
 
-			QuestionsService.getUserQuestionById(questionId).then(function(result) {
-				$scope.quizItem = result.data;
-				$scope.errorMessage = null;
-			}, function(result) {
-				$scope.error = result.data;
-				$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
-				$log.error($scope.errorMessage);
+				for ( var i = 0; i < result.data.length; i++) {
+					$scope.questions[result.data[i]._id] = result.data[i];
+				}
 			});
 
-			$scope.getQuestionViewTemplate = function() {
-				if (!!$scope.quizItem && !!$scope.quizItem.type) {
-					var type = QuestionsService.getTypeById($scope.quizItem.type);
-					return type.viewTemplate;
-				}
-				return '';
+			$scope.getQuestion = function(questionId) {
+				return $scope.questions[questionId];
 			};
+			$scope.getQuizItemTemplate = function(id) {
+				return LergoClient.questions.getTypeById($scope.getQuestion(id).type).viewTemplate;
+			};
+
 			$scope.correctAnswers = {};
 			$scope.submit = function() {
 				QuestionsService.submitAnswers($scope.correctAnswers).then(function(result) {
@@ -57,7 +54,6 @@ angular.module('lergoApp').controller(
 				}
 
 			};
-
 			$scope.fillInTheBlanks = function(quizItem) {
 				var question = quizItem.question;
 				var res = quizItem.question;

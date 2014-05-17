@@ -1,8 +1,9 @@
-<div class="base-layout">
+<div class="base-layout" id="questions-update">
      Edit Your Questions
 
     <select ng-model="quizItem.type" ng-options="t.id as t.label for t in types"></select><br/>
 
 
-    <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
+        <div ng-include="getQuestionUpdateTemplate(quizItem)" class="{{quizItem.type}}"></div>
+
 </div>
