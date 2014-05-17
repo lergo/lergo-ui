@@ -2,7 +2,7 @@
 
 angular.module('lergoApp').controller(
 		'LessonsStepQuizCtrl',
-		function($scope, LergoClient, $log, $routeParams) {
+		function($scope, LergoClient, $log, $routeParams, QuestionsService) {
 			$scope.selectedStep = JSON.parse($routeParams.data);
 			$scope.questions = {};
 
