@@ -4,31 +4,31 @@
 		<span class="errorMessage" ng-show='errorMessage' style="float:right; font-size:15px; color: red;">{{errorMessage}}</span>
 	</div>	
 		<div class="form-section">
-			<div class="lergo-label">Lesson Name</div>
+			<div class="lergo-label">{{ 'lessons.createNew.title' | i18n }}</div>
 			<div class="lergo-input">
 				<input ng-model="lesson.name" />
 			</div>
 		</div>
 		<div class="form-section">
-			<div class="lergo-label">Lesson Description</div>
+			<div class="lergo-label">{{ 'lessons.createNew.description' | i18n }}</div>
 			<div class="lergo-input">
 				<textarea ng-model="lesson.description"></textarea>
 			</div>
 		</div>
-		<button ng-click="addStep(lesson)">Add Step</button>
+		<button ng-click="addStep(lesson)">{{ 'lessons.createNew.addStep' | i18n }}</button>
 		<div ng-repeat="step in lesson.steps">
 			<hr />
-			<a ng-click="moveStepUp($index)" ng-show="!$first" class="btn btn-small">up</a>
-			<a ng-click="moveStepDown($index)" ng-show="!$last" class="btn btn-small">down</a>
-			<a ng-click="deleteStep(step)" class="btn btn-small">delete</a>
+			<a ng-click="moveStepUp($index)" ng-show="!$first" class="btn btn-small">{{ 'lessons.createNew.step.up' | i18n }}</a>
+			<a ng-click="moveStepDown($index)" ng-show="!$last" class="btn btn-small">{{ 'lessons.createNew.step.down' | i18n }}</a>
+			<a ng-click="deleteStep(step)" class="btn btn-small">{{ 'lessons.createNew.step.delete' | i18n }}</a>
 			<div class="form-section">
 				<div class="form-section">
-					<div class="lergo-label">Step Title</div>
+					<div class="lergo-label">{{ 'lessons.createNew.step.name' | i18n }}</div>
 					<div class="lergo-input">
 						<input ng-model="step.title" />
 					</div>
 				</div>
-				<div class="lergo-label">Step Type</div>
+				<div class="lergo-label">{{ 'lessons.createNew.step.type' | i18n }}</div>
 				<div class="lergo-input">
 					<select ng-model="step.type"
 						ng-options="t.id as t.label for t in stepTypes">
@@ -38,7 +38,7 @@
 			view by type = {{getStepViewByType(step)}}
 			<div ng-include="getStepViewByType(step)"></div>
 		</div>
-		<button ng-click="done()" ng-disabled="isSaving()">{{ isSaving() && "Saving..." || "Done" }} </button>
+		<button ng-click="done()" ng-disabled="isSaving()">{{ (isSaving() && 'lessons.createNew.saving' || 'lessons.createNew.done') | i18n }} </button>
 	</form>
 </div>
 

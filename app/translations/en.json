@@ -60,6 +60,20 @@
             "invite": "Invite",
             "delete": "Delete",
             "view": "View"
+        },
+        "createNew": {
+            "title": "Lesson Title",
+            "description": "Lesson Description",
+            "addStep": "Add Step",
+            "done": "Done",
+            "saving": "Saving...",
+            "step": {
+                "name": "Step Name",
+                "type": "Step Type",
+                "delete": "Delete",
+                "up": "Up",
+                "down": "Down"
+            }
         }
     }
 
