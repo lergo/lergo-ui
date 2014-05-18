@@ -61,6 +61,13 @@
                 "types": {
                     "quiz": "מבדק",
                     "video": "וידאו"
+                },
+                "quiz": {
+                    "addQuestion": "הוסף שאלה",
+                    "remove": "הסר"
+                },
+                "video": {
+                    "url": "URL של וידאו"
                 }
             }
         }

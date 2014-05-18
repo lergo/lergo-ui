@@ -76,6 +76,13 @@
                 "types": {
                     "quiz": "Quiz",
                     "video": "Video"
+                },
+                "quiz": {
+                    "addQuestion": "Add Question",
+                    "remove": "Remove"
+                },
+                "video": {
+                    "url": "Video URL"
                 }
             }
         }

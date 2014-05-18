@@ -1,9 +1,9 @@
 <select ng-model="selectedQuestion" ng-options="item._id as item.question for item in quizItems"> </select>
         {{selectedQuestion}}
-        <button ng-click="addItemToQuiz( selectedQuestion, step )">Add Item To Step</button>
+        <button ng-click="addItemToQuiz( selectedQuestion, step )">{{ 'lessons.createNew.step.quiz.addQuestion' | i18n }}</button>
 
         <ul>
             <li ng-repeat="item in step.quizItems">
-                {{getQuestion(item)}} <button ng-click="removeItemFromQuiz( item, step )">Remove</button>
+                {{getQuestion(item)}} <button ng-click="removeItemFromQuiz( item, step )">{{ 'lessons.createNew.step.quiz.remove' | i18n }}</button>
             </li>
         </ul>
