@@ -162,7 +162,7 @@ button.action-item {
     padding:5px;
     border-radius:5px;
     @include input-block-level();
-
+//
     &[type=checkbox]{
       width:30px
     }
@@ -348,4 +348,23 @@ button.action-item {
 
 .btn{
 
+}
+
+
+.clickable{
+  cursor:pointer;
+}
+
+.loader-tall {
+  width:58px;
+  height:20px;
+  display:inline-block;
+  background:url('../images/loaders/loader1.gif') no-repeat;
+}
+
+.loader-short{
+  width:29px;
+  height:10px;
+  display:inline-block;
+  background:url('../images/loaders/loader2.gif') no-repeat;
 }

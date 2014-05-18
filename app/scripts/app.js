@@ -45,8 +45,14 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 templateUrl: 'views/session/login.html',
                 controller:'LoginCtrl'
             })
-
-
+            .when('/public/user/validate', {
+                templateUrl: 'views/users/validate.html',
+                controller:'UsersValidateCtrl'
+            })
+            .when('/public/user/changePassword', {
+                templateUrl : 'views/users/changePassword.html',
+                controller: 'UsersChangePasswordCtrl'
+            })
             .when('/public/about', {
                 templateUrl: 'views/about.html',
                 controller: 'SignupCtrl'
@@ -56,7 +62,8 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 controller: 'SessionResetPasswordRequestCtrl'
             })
             .when('/', {
-                redirectTo: '/public/session/login'
+                redirectTo: '/user/lessons'
+//                redirectTo: '/public/session/login'
             })
             .otherwise({
                 templateUrl: 'views/errors/notFound.html'
@@ -80,11 +87,14 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
 
                     if ( typeof(response.data) === 'string' &&  response.data.indexOf('ECONNREFUSED') > 0 ){
                         scope.errorMessage = 'no connection to server';
+                        scope.pageError = { 'code' : -1, 'key' : 'no.connection.to.server', 'message' : 'no connection to server'};
                     }else{
                         try{
                             scope.errorMessage = response.data.message;
+                            scope.pageError = response.data;
                         }catch(e){
                             scope.errorMessage = 'unknown error';
+                            scope.pageError = { 'code' : -2, 'key' : 'unknown.error'  , 'message'  : 'unknown error' };
                         }
                     }
 
@@ -111,6 +121,7 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
 
         }];
         $httpProvider.responseInterceptors.push(interceptor);
+        $httpProvider.interceptors.push('RequestProgressInterceptor');
 
 
 

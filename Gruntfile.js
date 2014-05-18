@@ -273,6 +273,7 @@ module.exports = function (grunt) {
                             'bower_components/**/*',
                             'translations/**/*',
                             'images/{,*/}*.{gif,webp,svg,png,jpg,jpeg}',
+                            'emailResources/**/*',
                             'styles/fonts/*'
                         ]
                     },
