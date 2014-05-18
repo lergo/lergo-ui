@@ -1,3 +1,23 @@
 {
-    "languages":{"he":"עברית", "en":"אנגלית"}
+    "languages":{"he":"עברית", "en":"אנגלית"},
+    "loginPage" : {
+        "username"  : "שם משתמש",
+        "password" : "סיסמא",
+        "login" : "כניסה",
+        "signup" : "הרשמה"
+    },
+    "baseLayout" : {
+        "header" : {
+            "searchPlaceholder" : " מה תרצה ללמוד?",
+            "links" : {
+                "learn" : "למד",
+                "create" : "צור",
+                "parents" : "הורים",
+                "teachers" : "מורים",
+                "contribute" : "תרום",
+                "lessons" : "שיעורים",
+                "questions" : "שאלות"
+            }
+        }
+    }
 }

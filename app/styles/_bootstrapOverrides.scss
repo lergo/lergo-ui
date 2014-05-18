@@ -1,0 +1,48 @@
+
+* { /** reset chrome's outline **/
+  outline: none;
+}
+
+.btn, .btn:hover, .btn:active, .btn:focus{
+  outline:none;
+  border:none;
+  text-shadow:none;
+  background-image:none;
+  background-color:#5fb9ff;
+  padding:10px;
+  text-transform: uppercase;
+  color:white;
+  font-weight: bold;
+  border-radius: 10px;
+  &.btn-default{
+    background-color:$COLOR_10;
+  }
+  &.btn-primary{
+    background-color:#4169E1;
+  }
+
+  &.btn-success{
+    background-color:#3CB371;
+  }
+
+  &.btn-info{
+    background-color:#BC8F8F;
+  }
+
+  &.btn-warning{
+    background-color:#EE9A00;
+  }
+
+  &.btn-danger{
+    background-color: #B22222;
+  }
+
+  &.btn-link{
+    color: #2a6496;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+
+}
+
+

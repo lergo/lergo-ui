@@ -1,4 +1,4 @@
-<div>
-    Question : <input ng-model="quizItem.question"/> <br/>
-    Answer : <input ng-model="quizItem.answer"/>
+<div style="border: 2px solid black;">
+    <p class="label">{{quizItem.question}}</p> <br/>
+    <textarea ng-model="correctAnswers[quizItem._id]"></textarea>
 </div>

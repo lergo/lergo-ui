@@ -117,6 +117,10 @@ angular.module('lergoApp')
                         setTimeout(_save, 0);
                     }
 
+                }, function( result ){
+                    $log.error('unable to save ', result);
+                    _status.saving = false;
+
                 });
 
 

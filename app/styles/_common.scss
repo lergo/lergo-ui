@@ -30,6 +30,9 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
+  direction:ltr;
+  &.rtl { direction:rtl; }
+
 }
 ol, ul {
   list-style: none;
@@ -159,6 +162,11 @@ button.action-item {
     padding:5px;
     border-radius:5px;
     @include input-block-level();
+
+    &[type=checkbox]{
+      width:30px
+    }
+
   }
 
   select {
@@ -166,6 +174,7 @@ button.action-item {
   }
 
   .section {
+    margin-bottom:20px;
     &.horizontal{
       margin-top:10px;
       .label{
@@ -333,4 +342,10 @@ button.action-item {
     display:inline-block;
     background:url('../images/logos/transparent.png')
   }
+}
+
+
+
+.btn{
+
 }

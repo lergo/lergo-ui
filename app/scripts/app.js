@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp', ['LocalStorageModule'])
+angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
     .config(function ($routeProvider, $httpProvider) {
 
         $routeProvider
@@ -20,6 +20,18 @@ angular.module('lergoApp', ['LocalStorageModule'])
             .when('/user/questions/:questionId/read', {
                 templateUrl : 'views/questions/read.html',
                 controller: 'QuestionsReadCtrl'
+            })
+            .when('/user/lessons/:lessonId/read', {
+                templateUrl : 'views/lesson/read.html',
+                controller: 'LessonsReadCtrl'
+            })
+              .when('/user/lessons/step/video/:videoId', {
+                templateUrl : 'views/lesson/view/_video.html',
+                controller: 'LessonsStepVideoCtrl'
+            })
+             .when('/user/lessons/step/quiz', {
+                templateUrl : 'views/lesson/view/_quiz.html',
+                controller: 'LessonsStepQuizCtrl'
             })
             .when('/user/questions/:questionId/update', {
                 templateUrl : 'views/questions/update.html',
@@ -63,7 +75,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
 
 
 
-        var interceptor = ['$rootScope', '$q', '$location', function (scope, $q, $location) {
+        var interceptor = ['$rootScope', '$q', '$location', '$log',function (scope, $q, $location) {
 
             function success(response) {
                 return response;
@@ -71,6 +83,21 @@ angular.module('lergoApp', ['LocalStorageModule'])
 
             function error(response) {
                 var status = response.status;
+
+                if ( status === 500 ){
+
+                    if ( typeof(response.data) === 'string' &&  response.data.indexOf('ECONNREFUSED') > 0 ){
+                        scope.errorMessage = 'no connection to server';
+                    }else{
+                        try{
+                            scope.errorMessage = response.data.message;
+                        }catch(e){
+                            scope.errorMessage = 'unknown error';
+                        }
+                    }
+
+
+                }
 
                 if (status === 401 && $location.path().indexOf('/public') !== 0 ) {
                     $location.path( '/public/session/login');
@@ -86,6 +113,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
             }
 
             return function (promise) {
+
                 return promise.then(success, error);
             };
 

@@ -1,5 +1,2 @@
-<form name="MCFillInTheBlanksForm" ng-submit="submit(correctAnswer)">
-	Question :
-    <div ng-bind-html-unsafe="fillInTheBlanks()"></div>
-	<button type="submit">Submit</button>
-</form>
+<div style="border: 2px solid black;"
+	bind-html-unsafe="fillInTheBlanks(quizItem)"></div>
