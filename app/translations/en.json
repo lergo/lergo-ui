@@ -50,6 +50,17 @@
         "password": "Password",
         "confirmPassword": "Confirm Password",
         "submit": "Submit"
+    },
+    "lessons": {
+        "myLessons": {
+            "lessons": "Available Lessons",
+            "title": "Title",
+            "createNew": "Create new lesson",
+            "edit": "Edit",
+            "invite": "Invite",
+            "delete": "Delete",
+            "view": "View"
+        }
     }
 
 }

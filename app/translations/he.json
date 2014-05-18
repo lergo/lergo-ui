@@ -35,5 +35,16 @@
             "homepage": "דף הבית",
             "contact": "צור קשר"
         }
+    },
+    "lessons": {
+        "myLessons": {
+            "lessons": "שיעורים קיימים",
+            "title": "שם",
+            "createNew": "יצירת שיעור חדש",
+            "edit": "עריכה",
+            "invite": "הזמנה",
+            "delete": "מחיקה",
+            "view": "הצגה"
+        }
     }
 }

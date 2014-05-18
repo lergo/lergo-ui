@@ -1,12 +1,12 @@
 <div class="base-layout" id="lessonsIndex">
 	<div class="lergo-label">
-		<span style="float:left;">Available Lessons</span>
+		<span style="float:left;">{{ 'lessons.myLessons.lessons' | i18n }}</span>
 		<span class="errorMessage" ng-show='errorMessage' style="float:right; font-size:15px; color: red;">{{errorMessage}}</span>
 	</div>			
 	<table class="table table-striped table-condensed">
 		<thead>
 			<tr>
-				<th style="min-width: 80px;">Name</th>
+				<th style="min-width: 80px;">{{ 'lessons.myLessons.title' | i18n }}</th>
 				<th style="width: 20px;"></th>
 			</tr>
 		</thead>
@@ -14,12 +14,12 @@
 			<tr ng-repeat="les in lessons">
 				<td class="name">{{ les.name }}</td>
 				<td class="viewLink">
-                <a href = "#/user/lessons/{{les._id}}/read"> view </a></td>
-				<td class="edit"><a ng-href="#/user/lesson/{{les._id}}/update">edit</a></td>
-				<td class="invite"><a ng-href="#/user/lesson/{{les._id}}/invitations">invite</a></td>
-				<td class="delete"><a ng-click="deleteLesson(les)">delete</a></td>
+                <a href = "#/user/lessons/{{les._id}}/read">{{ 'lessons.myLessons.view' | i18n }}</a></td>
+				<td class="edit"><a ng-href="#/user/lesson/{{les._id}}/update">{{ 'lessons.myLessons.edit' | i18n }}</a></td>
+				<td class="invite"><a ng-href="#/user/lesson/{{les._id}}/invitations">{{ 'lessons.myLessons.invite' | i18n }}</a></td>
+				<td class="delete"><a ng-click="deleteLesson(les)">{{ 'lessons.myLessons.delete' | i18n }}</a></td>
 			</tr>
 		</tbody>
 	</table>
-	<a ng-click="create()" class="btn">Create New Lesson</a>
+	<a ng-click="create()" class="btn">{{ 'lessons.myLessons.createNew' | i18n }}</a>
 </div>
