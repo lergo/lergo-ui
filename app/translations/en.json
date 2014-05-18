@@ -26,7 +26,10 @@
                 "contribute" : "contribute",
                 "lessons" : "lessons",
                 "questions" : "questions"
-            }
+            },
+            "signup": "Signup",
+            "login": "Login",
+            "logout": "Logout"
         }
     },
     "loginPage" : {

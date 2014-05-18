@@ -24,7 +24,10 @@
                 "contribute" : "תרום",
                 "lessons" : "שיעורים",
                 "questions" : "שאלות"
-            }
+            },
+            "signup": "הרשמה",
+            "login": "כניסה",
+            "logout": "יציאה"
         }
     }
 }
