@@ -37,6 +37,10 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 templateUrl: 'views/kitchenSink.html'
 
             })
+            .when('/public/translations/diff', {
+                templateUrl: 'views/translations/diff.html',
+                controller: 'TranslationsDiffCtrl'
+            })
             .when('/public/session/signup', {
                 templateUrl: 'views/session/signup.html',
                 controller:'SignupCtrl'

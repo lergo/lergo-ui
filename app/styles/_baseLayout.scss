@@ -215,6 +215,13 @@ body.rtl{
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
 
+        i {
+          float:left;
+          margin-left:22px;
+          margin-right:0;
+
+        }
+
       }
     }
   }
