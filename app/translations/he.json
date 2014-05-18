@@ -6,6 +6,13 @@
         "login" : "כניסה",
         "signup" : "הרשמה"
     },
+    "signupPage": {
+        "username": "שם משתמש",
+        "email": "אימייל (דואר אלקטרוני)",
+        "password": "סיסמה",
+        "confirmPassword": "אישור סיסמה",
+        "submit": "שליחה"
+    },
     "baseLayout" : {
         "header" : {
             "searchPlaceholder" : " מה תרצה ללמוד?",
