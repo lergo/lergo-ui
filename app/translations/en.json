@@ -30,6 +30,12 @@
             "signup": "Signup",
             "login": "Login",
             "logout": "Logout"
+        },
+        "footer": {
+            "privacy": "Privacy & Terms",
+            "about": "About LerGO",
+            "homepage": "Home Page",
+            "contact": "Contact Us"
         }
     },
     "loginPage" : {

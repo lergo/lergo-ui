@@ -40,10 +40,10 @@
 		<div class="centered-content">
 			<div class="footer-links">
 				<ul>
-					<li>Privacy & Terms</li>
-					<li><a href="#/public/about">About LerGO</a></li>
-					<li>Home Page</li>
-					<li>Contact Us</li>
+					<li>{{ 'baseLayout.footer.privacy' | i18n }}</li>
+					<li><a href="#/public/about">{{ 'baseLayout.footer.about' | i18n }}</a></li>
+					<li>{{ 'baseLayout.footer.homepage' | i18n }}</li>
+					<li>{{ 'baseLayout.footer.contact' | i18n }}</li>
 					<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
 
                     <select ng-model="$root.lergoLanguage" ng-options="lang.id as lang.label for lang in $root.lergoLanguages"></select>
