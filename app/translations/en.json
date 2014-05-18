@@ -86,6 +86,10 @@
                 }
             }
         }
+    },
+    "notFound": {
+        "pageNotFound": "Could not find the requested page.",
+        "homepageRedirect": "Go to Homepage"
     }
 
 }
