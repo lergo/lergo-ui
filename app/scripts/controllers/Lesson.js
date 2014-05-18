@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave) {
+angular.module('lergoApp').controller('LessonCtrl', function ($scope, $log, LergoClient, $location, $routeParams,
+                                                              ContinuousSave) {
 
     var saveLesson = new ContinuousSave({
         'saveFn': function (value) {
