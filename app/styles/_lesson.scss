@@ -1,0 +1,47 @@
+
+.lesson-step {
+  .lesson-step-title {
+    text-align:center;
+    padding-bottom: 50px;
+  }
+}
+
+.lesson-step-video{
+  text-align:center;
+  padding-top:50px;
+
+  .lesson-step-video-content{
+    display:inline-block;
+  }
+}
+
+
+.lesson-step-quiz{
+
+  .lesson-step-quiz-next{
+    text-align:center;
+    padding: 20px 0;
+  }
+
+ .question-true-false{
+   .true-false-options{
+     .true-false-option{
+       padding:15px;
+       margin-left:5px;
+
+     }
+     text-align:center;
+
+   }
+ }
+
+  margin-top:50px;
+  .lergo-h2{
+    text-align:center;
+    padding:10px 0;
+  }
+  .lesson-step-quiz-content, .lesson-step-quiz-next{
+    width:400px;
+    margin:0 auto;
+  }
+}

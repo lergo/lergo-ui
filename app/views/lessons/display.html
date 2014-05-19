@@ -1,0 +1,6 @@
+<div class="base-layout">
+    <div ng-include="getStepDisplayUrl(currentStep)"></div>
+    <div ng-show="hasNextStep()">
+        <button ng-click="nextStep()">nextStep</button>
+    </div>
+</div>

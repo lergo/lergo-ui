@@ -1,12 +1,9 @@
 
-<div style="border: 2px solid black;">
-	<p class="label">{{quizItem.question}}</p>
-	<table class="table">
-		<tbody>
-			<tr ng-repeat="option in ['True','False']">
-				<td><input type="radio" name="TrueFalseForm"
-					ng-click="$parent.updateAnswer($event,option,quizItem)"/>{{option}}</td>
-			</tr>
-		</tbody>
-	</table>
+<div class="question-true-false">
+
+	<p class="lergo-h2">{{quizItem.question}}</p>
+
+    <div class="true-false-options">
+            <button  ng-repeat="option in ['True','False']" class="true-false-option" ng-click="updateAnswer($event,option,quizItem)" ng-class="{'active' : quizItem.userAnswer === option }">{{ 'quizItem.answer.' + option | i18n  }}</button>
+    </div>
 </div>

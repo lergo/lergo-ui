@@ -32,6 +32,11 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		return $http.get('/backend/user/questions/' + question._id + '/usages');
 	};
 
+    this.checkAnswer = function( question ){
+        return $http.post('/backend/questions/checkAnswer', question );
+
+    };
+
 	this.submitAnswers = function(answers) {
 		return $http({
 			'url' : '/backend/questions/submitAnswers',

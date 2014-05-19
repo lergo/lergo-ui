@@ -349,3 +349,49 @@ button.action-item {
 .btn{
 
 }
+
+$COLOR_14: #4169E1 !default;
+$COLOR_15: #3CB371 !default;
+$COLOR_16: #BC8F8F !default;
+$COLOR_17: #EE9A00 !default;
+$COLOR_18: #B22222 !default;
+$COLOR_19: #2a6496 !default;
+
+.bg-info {
+  padding:10px;
+  text-align:center;
+  background-color: $COLOR_16;
+  color:white;
+}
+
+.bg-primary{
+  padding:10px;
+  text-align:center;
+  background-color:$COLOR_14;
+  color:white;
+}
+.bg-success {
+  padding:10px;
+  text-align:center;
+  background-color: $COLOR_15;
+  color:white;
+}
+
+.bg-warning {
+  padding:10px;
+  text-align:center;
+  background-color: $COLOR_17;
+  color:white;
+}
+
+.bg-danger {
+  padding:10px;
+  text-align:center;
+  background-color: $COLOR_18;
+  color:white;
+
+}
+
+.active{
+  border:3px solid $COLOR_14;
+}

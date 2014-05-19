@@ -9,7 +9,7 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 'controller':'CreateLessonCtrl'
             })
             .when('/user/lessons', {
-                templateUrl: 'views/lesson/mylessons.html',
+                templateUrl: 'views/lessons/index.html',
                 controller:'LessonsIndexCtrl'
             })
             .when('/user/questions', {
@@ -21,18 +21,16 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 templateUrl : 'views/questions/read.html',
                 controller: 'QuestionsReadCtrl'
             })
-            .when('/user/lessons/:lessonId/read', {
-                templateUrl : 'views/lesson/read.html',
-                controller: 'LessonsReadCtrl'
+            .when('/user/lessons/step/display', {
+                templateUrl : 'views/lessons/stepDisplay.html',
+                controller: 'LessonsStepDisplayCtrl'
             })
-              .when('/user/lessons/step/video/:videoId', {
-                templateUrl : 'views/lesson/view/_video.html',
-                controller: 'LessonsStepVideoCtrl'
+            .when('/user/lessons/:lessonId/display', {
+                templateUrl : 'views/lessons/display.html',
+                controller : 'LessonsDisplayCtrl'
             })
-             .when('/user/lessons/step/quiz', {
-                templateUrl : 'views/lesson/view/_quiz.html',
-                controller: 'LessonsStepQuizCtrl'
-            })
+
+
             .when('/user/questions/:questionId/update', {
                 templateUrl : 'views/questions/update.html',
                 controller  : 'QuestionsUpdateCtrl'
@@ -42,8 +40,8 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 controller: 'HomepageCtrl'
             })
             .when('/user/lesson/:lessonId/update', {
-                templateUrl: 'views/lesson/createlesson.html',
-                controller:'LessonCtrl'
+                templateUrl: 'views/lessons/update.html',
+                controller:'LessonsUpdateCtrl'
             })
             .when('/public/kitchenSink', {
                 templateUrl: 'views/kitchenSink.html'

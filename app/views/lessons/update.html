@@ -35,8 +35,8 @@
 					</select>
 				</div>
 			</div>
-			view by type = {{getStepViewByType(step)}}
 			<div ng-include="getStepViewByType(step)"></div>
+            <button ng-click="displayStep(step)">Display Step</button>
 		</div>
 		<button ng-click="done()" ng-disabled="isSaving()">{{ isSaving() && "Saving..." || "Done" }} </button>
 	</form>
