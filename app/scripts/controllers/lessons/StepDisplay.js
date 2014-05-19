@@ -4,22 +4,34 @@ angular.module('lergoApp')
   .controller('LessonsStepDisplayCtrl', function ($scope, $log, $routeParams, $sce, LergoClient ) {
         $log.info('showing step');
 
-        $scope.step = JSON.parse($routeParams.data);
-        $scope.currentIndex = 0;
-        $scope.answers = {};
-
-
-        if ( $scope.step.hasOwnProperty('quizItems')){
-
-            LergoClient.questions.findQuestionsById( $scope.step.quizItems).then(function( result ){
-                var questions = {};
-                for ( var i in result.data ){
-                    questions[result.data[i]._id]  = result.data[i];
-                }
-                $scope.questions = questions;
-            })
-
+        if ( !!$routeParams.data ) {
+            $scope.step = JSON.parse($routeParams.data);
+            $log.info($scope.step);
         }
+
+        function reload() {
+            if ( !$scope.step ){
+                return;
+            }
+            $scope.currentIndex = 0;
+            $scope.answers = {};
+
+
+            if ($scope.step.hasOwnProperty('quizItems')) {
+
+                LergoClient.questions.findQuestionsById($scope.step.quizItems).then(function (result) {
+                    var questions = {};
+                    for (var i in result.data) {
+                        questions[result.data[i]._id] = result.data[i];
+                    }
+                    $scope.questions = questions;
+                })
+
+            }
+        }
+
+        $scope.
+            $watch('step', reload );
 
 
         $scope.getQuizItemTemplate = function(id) {
@@ -86,7 +98,7 @@ angular.module('lergoApp')
         $scope.getVideoId = function(step){
             var value = null;
             if ( step.videoUrl.toLocaleLowerCase().indexOf('youtu.be') > 0 ){
-                value = step.videoUrl.substring( step.videoUrl.lastIndexOf('/'));
+                value = step.videoUrl.substring( step.videoUrl.lastIndexOf('/') +1 );
             }else{
                 value = step.videoUrl.split('?')[1].split('v=')[1];
             }

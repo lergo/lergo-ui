@@ -23,7 +23,7 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
             })
             .when('/user/lessons/step/display', {
                 templateUrl : 'views/lessons/stepDisplay.html',
-                controller: 'LessonsStepDisplayCtrl'
+                controller: 'LessonsStepDisplayPageCtrl'
             })
             .when('/user/lessons/:lessonId/display', {
                 templateUrl : 'views/lessons/display.html',

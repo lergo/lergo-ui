@@ -45,3 +45,77 @@
     margin:0 auto;
   }
 }
+
+
+#lessonDisplay{
+
+  .done-step {
+    padding-top: 100px;
+
+    .message {
+      float: right;
+      margin-top: 200px;
+      margin-right: 320px;
+      font-size:30px;
+    }
+
+    .image {
+      float: left;
+      .user {
+        margin-top: 100px;
+        color: #91cfff;
+        .fa-user {
+          font-size: 240px;
+        }
+      }
+
+      .cap {
+        margin-top: -310px;
+        color: #296CA1;
+        .fa-graduation-cap {
+          font-size: 140px;
+        }
+      }
+    }
+  }
+
+
+  .start-step{
+    padding-top:100px;
+    .image{
+      float:left;
+      .fa{
+        font-size:240px;
+        color:#296CA1;
+      }
+    }
+    .message{
+      float:right;
+      margin-right:250px;
+      .welcome{
+        font-size:30px;
+      }
+      .name{
+        padding:20px 0;
+        font-weight:bold;
+        font-size:20px;
+        text-align:center;
+      }
+      .description{
+        padding:5px 0;
+        width:400px;
+
+
+      }
+      .button{
+        padding:20px;
+        text-align:center;
+      }
+    }
+  }
+
+  .next-step{
+    padding:30px;
+    text-align:center;
+  }
+}
