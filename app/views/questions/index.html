@@ -1,12 +1,12 @@
 <div class="base-layout" id="questionsIndex">
      <span class="error">{{error}}</span>
-    <button ng-click="createNewQuestion()">Create New Question</button>
+    <button ng-click="createNewQuestion()">{{ 'questions.index.createNew' | i18n }}</button>
     <table ng-show="items.length > 0" class="table">
         <thead>
         <tr>
-            <th>Question</th>
-            <th>View</th>
-            <th>Edit</th>
+            <th>{{ 'questions.index.question' | i18n }}</th>
+            <th>{{ 'questions.index.view' | i18n }}</th>
+            <th>{{ 'questions.index.edit' | i18n }}</th>
         </tr>
         </thead>
         <tr ng-repeat="item in items">
@@ -14,16 +14,16 @@
                 {{item.question | limitTo:30 }} [{{item.answer | limitTo:10}}]
             </td>
             <td class="viewLink">
-                <a href = "#/user/questions/{{item._id}}/read"> view </a>
+                <a href = "#/user/questions/{{item._id}}/read">{{ 'questions.index.view' | i18n }}</a>
             </td>
             <td class="editLink">
-                <a href="#/user/questions/{{item._id}}/update">Edit</a>
+                <a href="#/user/questions/{{item._id}}/update">{{ 'questions.index.edit' | i18n }}</a>
             </td>
 
         </tr>
     </table>
     <div ng-show="!items || items.length == 0">
-        There are no questions to display
+        {{ 'questions.index.noQuestions' | i18n }}
     </div>
 
 </div>

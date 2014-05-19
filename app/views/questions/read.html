@@ -2,6 +2,6 @@
 	<form name="QuestionForm" class="lergo-form"
 		ng-submit="submit()">
 		<div ng-include="getQuestionViewTemplate(quizItem)"></div>
-		<button type="submit">Submit</button>
+		<button type="submit">{{ 'questions.read.submit' | i18n }}</button>
 	</form>
 </div>

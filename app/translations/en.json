@@ -97,6 +97,26 @@
             }
         }
     },
+    "questions": {
+        "index": {
+            "createNew": "Create New Question",
+            "question": "Question",
+            "view": "View",
+            "edit": "Edit",
+            "noQuestions": "There are no questions to display"
+        },
+        "update": {
+            "edit": "Edit Your Question",
+            "trueFalse": "True or False",
+            "multipleChoiceSingleAnswer": "Multiple Choices Single Answer",
+            "multipleChoicesMultipleAnswers": "Multiple Choices Multiple Answers",
+            "exactMatch": "Exact Match",
+            "fillInTheBlanks": "Fill In The Blanks"
+        },
+        "read": {
+            "submit": "Submit"
+        }
+    },
     "notFound": {
         "pageNotFound": "Could not find the requested page.",
         "homepageRedirect": "Go to Homepage"

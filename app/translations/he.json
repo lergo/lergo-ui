@@ -82,6 +82,26 @@
             }
         }
     },
+    "questions": {
+        "index": {
+            "createNew": "יצירת שאלה חדשה",
+            "question": "שאלה",
+            "view": "הצגה",
+            "edit": "עריכה",
+            "noQuestions": "אין שאלות להצגה"
+        },
+        "update": {
+            "edit": "עריכת השאלה",
+            "trueFalse": "אמת או שקר",
+            "multipleChoiceSingleAnswer": "בחירה מרובה עם תשובה יחידה",
+            "multipleChoicesMultipleAnswers": "בחירה מרובה עם תשובות מרובות",
+            "exactMatch": "בחירה מדויקת",
+            "fillInTheBlanks": "השלמת החסר"
+        },
+        "read": {
+            "submit": "שליחה"
+        }
+    },
     "notFound": {
         "pageNotFound": "הדף המבוקש לא נמצא.",
         "homepageRedirect": "חזור לדף הבית"

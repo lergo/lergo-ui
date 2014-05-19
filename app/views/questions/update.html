@@ -1,7 +1,7 @@
 <div class="base-layout" id="questions-update">
-     Edit Your Questions
+     {{ 'questions.update.edit' | i18n }}
 
-    <select ng-model="quizItem.type" ng-options="t.id as t.label for t in types"></select><br/>
+    <select ng-model="quizItem.type" ng-options="t.id as ('questions.update.' + t.id | i18n) for t in types"></select><br/>
 
 
         <div ng-include="getQuestionUpdateTemplate(quizItem)" class="{{quizItem.type}}"></div>
