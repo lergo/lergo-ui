@@ -85,6 +85,16 @@
                     "url": "Video URL"
                 }
             }
+        },
+        "view": {
+            "quiz": {
+                "submit": "Submit"
+            },
+            "read": {
+                "title": "Title",
+                "description": "Description",
+                "view": "View"
+            }
         }
     },
     "notFound": {

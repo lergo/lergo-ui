@@ -70,6 +70,16 @@
                     "url": "URL של וידאו"
                 }
             }
+        },
+        "view": {
+            "quiz": {
+                "submit": "שליחה"
+            },
+            "read": {
+                "title": "כותרת",
+                "description": "תיאור",
+                "view": "הצגה"
+            }
         }
     },
     "notFound": {
