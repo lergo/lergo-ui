@@ -30,9 +30,9 @@
 				</div>
 				<div class="lergo-label">{{ 'lessons.createNew.step.type' | i18n }}</div>
 				<div class="lergo-input">
-					<select ng-model="step.type"
-						ng-options="t.id as t.label for t in stepTypes">
-					</select>
+                    <select ng-model="step.type"
+                            ng-options="t.id as ('lessons.createNew.step.types.' + t.id | i18n) for t in stepTypes">
+                    </select>
 				</div>
 			</div>
 			view by type = {{getStepViewByType(step)}}
