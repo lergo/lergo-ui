@@ -96,7 +96,22 @@
             "multipleChoiceSingleAnswer": "בחירה מרובה עם תשובה יחידה",
             "multipleChoicesMultipleAnswers": "בחירה מרובה עם תשובות מרובות",
             "exactMatch": "בחירה מדויקת",
-            "fillInTheBlanks": "השלמת החסר"
+            "fillInTheBlanks": "השלמת החסר",
+            "question": "שאלה",
+            "answer": "תשובה",
+            "answerOption": "תשובה אפשרית",
+            "answerOptions": "תשובות אפשריות",
+            "correctAnswer": "תשובה נכונה",
+            "correctAnswers": "תשובות נכונות",
+            "add": "הוספה",
+            "remove": "הסרה",
+            "fillBlanks": {
+                "fillBlanks": "יצירת \"השלם את החסר\"",
+                "example": "דוגמה: 2+2 = [4] ו- [2,4,6,8] הם המספרים הזוגיים הקטנים מ- 10",
+                "outputBegin": "פלט: 2+2 = ",
+                "and": "ו- ",
+                "outputEnd": "הם המספרים הזוגיים הקטנים מ- 10."
+            }
         },
         "read": {
             "submit": "שליחה"

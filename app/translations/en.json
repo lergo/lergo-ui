@@ -111,7 +111,22 @@
             "multipleChoiceSingleAnswer": "Multiple Choices Single Answer",
             "multipleChoicesMultipleAnswers": "Multiple Choices Multiple Answers",
             "exactMatch": "Exact Match",
-            "fillInTheBlanks": "Fill In The Blanks"
+            "fillInTheBlanks": "Fill In The Blanks",
+            "question": "Question",
+            "answer": "Answer",
+            "answerOption": "Answer Option",
+            "answerOptions": "Answer Options",
+            "correctAnswer": "Correct Answer",
+            "correctAnswers": "Correct Answers",
+            "add": "Add",
+            "remove": "Remove",
+            "fillBlanks": {
+                "fillBlanks": "Generate Fill In the Blanks",
+                "example": "Example : 2+2 = [4] and [2,4,6,8] are the even numbers less then 10.",
+                "outputBegin": "Output : 2+2 =",
+                "and": "and",
+                "outputEnd": "are the even numbers less then 10."
+            }
         },
         "read": {
             "submit": "Submit"

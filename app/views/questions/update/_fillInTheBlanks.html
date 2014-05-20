@@ -1,13 +1,14 @@
 <div>
-    Question : <textarea ng-model="quizItem.question"></textarea>
+    {{ 'questions.update.question' | i18n }} : <textarea ng-model="quizItem.question"></textarea>
     
-    <button ng-click="generateFillInTheBlanks()">Generate Fill In the Blanks</button>
+    <button ng-click="generateFillInTheBlanks()">{{ 'questions.update.fillBlanks.fillBlanks' | i18n }}</button>
     <br>
 <div style="border:2px solid blue;">
-Example : 2+2 = [4] and [2,4,6,8] is a even number less then 10.
+{{ 'questions.update.fillBlanks.example' | i18n }}
 <br>
 <br>
- Output : 2+2 = <input type="text"/> and <input type="text"/> is a even number less then 10.
+    {{ 'questions.update.fillBlanks.outputBegin' | i18n }} <input type="text"/>
+    {{ 'questions.update.fillBlanks.and' | i18n }} <input type="text"/> {{ 'questions.update.fillBlanks.outputEnd' | i18n }}
 </div>
     
     <!-- <div ng-repeat="answer in quizItem.answers">

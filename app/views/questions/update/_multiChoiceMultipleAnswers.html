@@ -1,14 +1,14 @@
 <div>
-	Question: <input ng-model="quizItem.question" />
+    {{ 'questions.update.question' | i18n }} : <input ng-model="quizItem.question" />
 	<div>
-		Answer Option : <input ng-model="newAnswer" />
-		<button ng-click="addOption(newAnswer)" class="btn">Add</button>
+        {{ 'questions.update.answerOption' | i18n }} : <input ng-model="newAnswer" />
+		<button ng-click="addOption(newAnswer)" class="btn">{{ 'questions.update.add' | i18n }}</button>
 	</div>
 	<div>
 		<table class="table table-striped table-condensed">
 			<thead>
 				<tr>
-					<th style="width: 40px;">Answer Options</th>
+					<th style="width: 40px;">{{ 'questions.update.answerOptions' | i18n }}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -19,14 +19,14 @@
 		</table>
 	</div>
 	<div>
-		Correct Answer : <select ng-model="correctAnswer"ng-options="o for o in quizItem.options"></select>
-		<button ng-click="addCorrectAnswer(correctAnswer)" class="btn">Add</button>
+        {{ 'questions.update.correctAnswer' | i18n }} : <select ng-model="correctAnswer"ng-options="o for o in quizItem.options"></select>
+		<button ng-click="addCorrectAnswer(correctAnswer)" class="btn">{{ 'questions.update.add' | i18n }}</button>
 	</div>
 	<div>
 		<table class="table">
 			<thead>
 				<tr>
-					<th style="width: 40px;">Correct Answers</th>
+					<th style="width: 40px;">{{ 'questions.update.correctAnswers' | i18n }}</th>
 				</tr>
 			</thead>
 			<tbody>

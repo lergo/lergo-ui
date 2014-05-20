@@ -1,6 +1,6 @@
 <div>
-    Question <input ng-model="quizItem.question"/> <br/>
-    Correct Answer:
+    {{ 'questions.update.question' | i18n }} <input ng-model="quizItem.question"/> <br/>
+    {{ 'questions.update.correctAnswer' | i18n }} :
     <select ng-model="quizItem.answer" ng-options="o as o for o in ['True','False']">
     </select>
 
