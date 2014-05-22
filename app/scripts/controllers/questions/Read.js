@@ -1,68 +1,73 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log ,$compile) {
+angular.module('lergoApp').controller(
+		'QuestionsReadCtrl',
+		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile) {
 
-	var questionId = $routeParams.questionId;
-	$scope.types = QuestionsService.questionsType;
+			var questionId = $routeParams.questionId;
+			$scope.types = QuestionsService.questionsType;
 
-	QuestionsService.getUserQuestionById(questionId).then(function(result) {
-		$scope.quizItem = result.data;
-		$scope.errorMessage = null;
-	}, function(result) {
-		$scope.error = result.data;
-		$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
-		$log.error($scope.errorMessage);
-	});
+			QuestionsService.getUserQuestionById(questionId).then(function(result) {
+				$scope.quizItem = result.data;
+				$scope.errorMessage = null;
+			}, function(result) {
+				$scope.error = result.data;
+				$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
+				$log.error($scope.errorMessage);
+			});
 
-	$scope.getQuestionViewTemplate = function() {
-		if (!!$scope.quizItem && !!$scope.quizItem.type) {
-			var type = QuestionsService.getTypeById($scope.quizItem.type);
-			return type.viewTemplate;
-		}
-		return '';
-	};
-	$scope.correctAnswer = [];
-	$scope.submit = function(answer) {
-		 $log.info('QUIZ :'+$scope.quizItem.answer );
-		 $log.info('Local :'+answer);
-		 if(angular.equals($scope.quizItem.answer,answer)){
-		 $log.info('SUCESS');
-		 }
-		 else
-		 $log.info('FAILED:');
-		// TODO : Delete above code and make below call work when backed support
-		// is there for check answer
-//		QuestionsService.submitAnswer($scope.quizItem, answer).then(function(result) {
-//			$scope.result = result.data;
-//			$scope.errorMessage = null;
-//		}, function(result) {
-//			$scope.error = result.data;
-//			$scope.errorMessage = 'Error in submitting questions  : ' + result.data.message;
-//			$log.error($scope.errorMessage);
-//		});
+			$scope.getQuestionViewTemplate = function() {
+				if (!!$scope.quizItem && !!$scope.quizItem.type) {
+					var type = QuestionsService.getTypeById($scope.quizItem.type);
+					return type.viewTemplate;
+				}
+				return '';
+			};
+			$scope.correctAnswers = {};
+			$scope.submit = function() {
+				QuestionsService.submitAnswers($scope.correctAnswers).then(function(result) {
+					$scope.result = result.data;
+					$scope.errorMessage = null;
+				}, function(result) {
+					$scope.error = result.data;
+					$scope.errorMessage = 'Error in submitting questions : ' + result.data.message;
+					$log.error($scope.errorMessage);
+				});
 
-	};
+			};
 
-	$scope.updateSelection = function($event, answer) {
-		var checkbox = $event.target;
-		if (checkbox.checked) {
-			$scope.correctAnswer.push(answer);
-		} else {
-			$scope.correctAnswer.splice($scope.correctAnswer.indexOf(answer), 1);
-		}
+			$scope.updateAnswer = function($event, answer, quizItem) {
+				var checkbox = $event.target;
+				var correctAnswer = $scope.correctAnswers[quizItem._id];
+				if (correctAnswer === undefined) {
+					correctAnswer = [];
+					$scope.correctAnswers[quizItem._id] = correctAnswer;
+				}
+				if (QuestionsService.getTypeById(quizItem.type).id === 'multipleChoicesMultipleAnswers') {
+					if (checkbox.checked) {
+						correctAnswer.push(answer);
+					} else {
+						correctAnswer.splice(correctAnswer.indexOf(answer), 1);
+					}
+				} else if (QuestionsService.getTypeById(quizItem.type).id === 'multipleChoiceSingleAnswer'
+						|| QuestionsService.getTypeById(quizItem.type).id === 'trueFalse'
+						|| QuestionsService.getTypeById(quizItem.type).id === 'exactMatch') {
+					correctAnswer.splice(0, correctAnswer.length);
+					correctAnswer.push(answer);
+				}
 
-	};
+			};
 
-	$scope.fillInTheBlanks = function() {
-		var question = $scope.quizItem.question;
-		var res = $scope.quizItem.question;
-		var re = /\[(.*?)\]/g;
-		var i=0;
-		for ( var m = re.exec(question); m; m = re.exec(question)) {
-			$scope.correctAnswer[i]='wow';
-			res = res.replace('[' + m[1] + ']', '<input  type="text"  ng-model= "correctAnswer['+i+']" />');
-			i=i+1;
-		}
-		return res;
-	};
-});
+			$scope.fillInTheBlanks = function(quizItem) {
+				var question = quizItem.question;
+				var res = quizItem.question;
+				$scope.correctAnswers[quizItem._id] = [];
+				var re = /\[(.*?)\]/g;
+				var i = 0;
+				for ( var m = re.exec(question); m; m = re.exec(question)) {
+					res = res.replace('[' + m[1] + ']', '<input ng-model= correctAnswers[quizItem._id][' + i + '] />');
+					i = i + 1;
+				}
+				return '<div>' + res + '<\div>';
+			};
+		});

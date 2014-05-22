@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp', ['LocalStorageModule'])
+angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
     .config(function ($routeProvider, $httpProvider) {
 
         $routeProvider
@@ -9,7 +9,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
                 'controller':'CreateLessonCtrl'
             })
             .when('/user/lessons', {
-                templateUrl: 'views/lesson/mylessons.html',
+                templateUrl: 'views/lessons/index.html',
                 controller:'LessonsIndexCtrl'
             })
             .when('/user/questions', {
@@ -21,6 +21,16 @@ angular.module('lergoApp', ['LocalStorageModule'])
                 templateUrl : 'views/questions/read.html',
                 controller: 'QuestionsReadCtrl'
             })
+            .when('/user/lessons/step/display', {
+                templateUrl : 'views/lessons/stepDisplay.html',
+                controller: 'LessonsStepDisplayPageCtrl'
+            })
+            .when('/user/lessons/:lessonId/display', {
+                templateUrl : 'views/lessons/display.html',
+                controller : 'LessonsDisplayCtrl'
+            })
+
+
             .when('/user/questions/:questionId/update', {
                 templateUrl : 'views/questions/update.html',
                 controller  : 'QuestionsUpdateCtrl'
@@ -30,8 +40,8 @@ angular.module('lergoApp', ['LocalStorageModule'])
                 controller: 'HomepageCtrl'
             })
             .when('/user/lesson/:lessonId/update', {
-                templateUrl: 'views/lesson/createlesson.html',
-                controller:'LessonCtrl'
+                templateUrl: 'views/lessons/update.html',
+                controller:'LessonsUpdateCtrl'
             })
             .when('/public/kitchenSink', {
                 templateUrl: 'views/kitchenSink.html'
@@ -63,7 +73,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
 
 
 
-        var interceptor = ['$rootScope', '$q', '$location', function (scope, $q, $location) {
+        var interceptor = ['$rootScope', '$q', '$location', '$log',function (scope, $q, $location) {
 
             function success(response) {
                 return response;
@@ -71,6 +81,21 @@ angular.module('lergoApp', ['LocalStorageModule'])
 
             function error(response) {
                 var status = response.status;
+
+                if ( status === 500 ){
+
+                    if ( typeof(response.data) === 'string' &&  response.data.indexOf('ECONNREFUSED') > 0 ){
+                        scope.errorMessage = 'no connection to server';
+                    }else{
+                        try{
+                            scope.errorMessage = response.data.message;
+                        }catch(e){
+                            scope.errorMessage = 'unknown error';
+                        }
+                    }
+
+
+                }
 
                 if (status === 401 && $location.path().indexOf('/public') !== 0 ) {
                     $location.path( '/public/session/login');
@@ -86,6 +111,7 @@ angular.module('lergoApp', ['LocalStorageModule'])
             }
 
             return function (promise) {
+
                 return promise.then(success, error);
             };
 

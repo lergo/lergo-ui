@@ -1,31 +1,39 @@
 <div class="login-form lergo-form" ng-controller="LoginCtrl">
 	<form ng-submit='login()'>
-		<div class="form-section">
-			<div class="lergo-label">
-				<span style="float: left;">Username</span> <span
-					class="errorMessage" ng-show='errorMessage'
-					style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
+        <div class="section">
+            <div class="label">
+            <span
+                    class="errorMessage" ng-show='errorMessage'
+                    style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
+            </div>
+        </div>
+		<div class="section">
+			<div class="label">
+				<span style="float: left;">{{ 'loginPage.username' | i18n }}</span>
 			</div>
 			<div class="lergo-input">
 				<input ng-model="form.username" required />
 			</div>
 		</div>
 
-		<div class="form-section">
-			<div class="lergo-label">Password</div>
+		<div class="section">
+			<div class="label">{{ 'loginPage.password' | i18n }}</div>
 			<div class="lergo-input">
 				<input ng-model="form.password" required type="password" />
 			</div>
 		</div>
 
-		<div class="form-section">
-			<div class="lergo-label">Keep Me Logged In</div>
-			<div class="lergo-input">
-				<input ng-model="form.rememberMe" type="checkbox" />
-			</div>
-		</div>
+		<!--<div class="section horizontal ">-->
+            <!--<div class="input">-->
+                <!--<input ng-model="form.rememberMe" type="checkbox" />-->
+            <!--</div>-->
+			<!--<div class="label">Keep Me Logged In</div>-->
 
-		<button type='submit'>Login</button>
-		<a href="#/public/session/signup">Signup</a>
+		<!--</div>-->
+
+        <div class="center">
+		    <button type="submit" class="btn">{{ 'loginPage.login' | i18n }}</button>
+		    <a href="#/public/session/signup">{{ 'loginPage.signup' | i18n }}</a>
+        </div>
 	</form>
 </div>

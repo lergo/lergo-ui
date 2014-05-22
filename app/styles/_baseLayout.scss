@@ -1,3 +1,4 @@
+$HEADER_BACKGROUND_COLOR:$COLOR_13;
 $HEADER_HEIGHT: 110px !default;
 $FOOTER_HEIGHT: 110px !default;
 
@@ -10,7 +11,7 @@ $FOOTER_HEIGHT: 110px !default;
 .base-layout {
   margin-bottom:-$HEADER_HEIGHT;
   .push {
-    height: $HEADER_HEIGHT;
+    height: $HEADER_HEIGHT + 20px;
     //margin-bottom:-$HEADER_HEIGHT;
   }
 
@@ -18,7 +19,7 @@ $FOOTER_HEIGHT: 110px !default;
     clear: both;
   }
   #header {
-    background: #91CFFF;
+    background: $HEADER_BACKGROUND_COLOR;
 
 
     height: $HEADER_HEIGHT;
@@ -36,6 +37,7 @@ $FOOTER_HEIGHT: 110px !default;
       width: 535px;
       display: block;
       margin-top: -100px;
+      margin-right:0;
       margin-left: 230px;
       white-space: nowrap;
       overflow: visible;
@@ -55,6 +57,7 @@ $FOOTER_HEIGHT: 110px !default;
             display: inline-block;
             content: "|";
             padding-left: 31px;
+            padding-right:0;
           }
           &:last-child:after {
             display: none;
@@ -72,7 +75,6 @@ $FOOTER_HEIGHT: 110px !default;
         color: white;
         display: inline-block;
         border-top: 2px solid white;
-        width: 74px;
         font-size: 18px;
         width: 90px;
         text-decoration: none;
@@ -93,9 +95,11 @@ $FOOTER_HEIGHT: 110px !default;
     width:495px; /*guy*/
     height:35px;
     margin-top:30px;
+    margin-right:0;
     margin-left:230px;
     background:#2BA2FF;
     color:white;
+
     border-top-left-radius: 10px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
@@ -104,6 +108,7 @@ $FOOTER_HEIGHT: 110px !default;
     border-left: 1px solid #69BEFF;
     border-right: 1px solid #69BEFF;
     border-bottom: 1px solid #69BEFF;
+
     i{
       font-size:20px;
       padding-left:5px;
@@ -142,7 +147,7 @@ $FOOTER_HEIGHT: 110px !default;
 
   #footer {
     padding-top:$FOOTER_HEIGHT/2;
-    height: $FOOTER_HEIGHT/2;
+    height: $FOOTER_HEIGHT/2+20px;
 
     background-color: #296CA1;
     width:100%;
@@ -171,4 +176,43 @@ $FOOTER_HEIGHT: 110px !default;
 
 .container,.base-layout{
   height:100%;
+}
+
+
+body.rtl{
+  .base-layout{
+    #header{
+      .header-links{
+        margin-left:0;
+        margin-right:230px;
+        ul{
+          li{
+            float:right;
+            padding: 0  0 0 26px;
+            &:after{
+              padding-left:0;
+              padding-right:31px;
+            }
+          }
+
+
+        }
+      }
+      .header-login{
+        float:left;
+
+      }
+
+      .header-search{
+        margin-right:230px;
+        margin-left:0;
+
+        border-top-right-radius: 10px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+
+      }
+    }
+  }
 }
