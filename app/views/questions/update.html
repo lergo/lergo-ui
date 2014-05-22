@@ -1,9 +1,10 @@
 <div class="base-layout" id="questions-update">
-     Edit Your Questions
-
-    <select ng-model="quizItem.type" ng-options="t.id as t.label for t in types"></select><br/>
-
-
-        <div ng-include="getQuestionUpdateTemplate(quizItem)" class="{{quizItem.type}}"></div>
+	<div>
+		Question : <input class="lergo-form:input" ng-model="quizItem.question" />
+	</div>
+	Question Type: <select ng-model="quizItem.type"
+		ng-options="t.id as t.label for t in types"></select><br />
+	<div ng-include="getQuestionUpdateTemplate(quizItem)"
+		class="{{quizItem.type}}"></div>
 
 </div>
