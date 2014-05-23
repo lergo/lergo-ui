@@ -1,12 +1,27 @@
-<div class="base-layout" >
+<div class="base-layout" id="questionsIndex">
      <span class="error">{{error}}</span>
     <button ng-click="createNewQuestion()">Create New Question</button>
-    <div ng-show="items.length > 0">
-        <div ng-repeat="item in items">
-            <a href = "#/user/questions/{{item._id}}/read"> {{item._id}}</a>
-            <a href="#/user/questions/{{item._id}}/update">Edit</a>
-        </div>
-    </div>
+    <table ng-show="items.length > 0" class="table">
+        <thead>
+        <tr>
+            <th>Question</th>
+            <th>View</th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <tr ng-repeat="item in items |orderBy:'-lastUpdate'  ">
+            <td class="question">
+                {{item.question | limitTo:30 }} [{{item.answer | limitTo:10}}]
+            </td>
+            <td class="viewLink">
+                <a href = "#/user/questions/{{item._id}}/read"> view </a>
+            </td>
+            <td class="editLink">
+                <a href="#/user/questions/{{item._id}}/update">Edit</a>
+            </td>
+
+        </tr>
+    </table>
     <div ng-show="!items || items.length == 0">
         There are no questions to display
     </div>

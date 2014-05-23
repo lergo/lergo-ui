@@ -11,13 +11,14 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet"/>
+        <link href="bower_components/google-code-prettify/src/prettify.css" rel="stylesheet"/>
         <!-- build:css({.tmp,app}) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
       <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 </head>
-  <body ng-app="lergoApp" ng-view="" style="position:relative">
+  <body ng-app="lergoApp" ng-view="" style="position:relative" class="{{$root.lergoLanguage | i18nDirection }}">
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -60,13 +61,18 @@
         <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
         <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
         <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
+
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
+
+        <script src="bower_components/google-code-prettify/src/prettify.js"></script>
         <!-- endbuild -->
 
         <!-- build:js scripts/modules.js -->
-        <script src="bower_components/angular-resource/angular-resource.js"></script>
-        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-         <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
+
         <script src="scripts/services/LergoTranslate.js"></script>
         <script src="scripts/controllers/Homepage.js"></script>
         <script src="scripts/filters/i18n.js"></script>
@@ -75,20 +81,32 @@
         <script src="scripts/controllers/CreateLesson.js"></script>
         <script src="scripts/services/LessonService.js"></script>
         <script src="scripts/directives/modalBackground.js"></script>
-        <script src="scripts/directives/question.js"></script>
         <script src="scripts/controllers/FacebookLogin.js"></script>
         <script src="scripts/controllers/Signup.js"></script>
         <script src="scripts/services/LergoClient.js"></script>
         <script src="scripts/directives/lergoKsDemo.js"></script>
         <script src="scripts/controllers/Login.js"></script>
-        <script src="scripts/controllers/Lesson.js"></script>
-        <script src="scripts/controllers/LessonsIndex.js"></script>
+        <script src="scripts/controllers/lessons/Update.js"></script>
+        <script src="scripts/controllers/lessons/Index.js"></script>
         <script src="scripts/services/QuestionsService.js"></script>
         <script src="scripts/controllers/questions/Update.js"></script>
         <script src="scripts/controllers/questions/Read.js"></script>
         <script src="scripts/controllers/questions/Index.js"></script>
         <script src="scripts/services/ContinuousSave.js"></script>
         <script src="scripts/services/LessonsService.js"></script>
+        <script src="scripts/filters/i18nDirection.js"></script>
+        <script src="scripts/controllers/lessons/invites/Index.js"></script>
+        <script src="scripts/controllers/lessons/invites/Create.js"></script>
+        <script src="scripts/controllers/lessons/Read.js"></script>
+        <script src="scripts/controllers/lessons/step/quiz.js"></script>
+        <script src="scripts/controllers/lessons/step/video.js"></script>
+        <script src="scripts/services/VideoService.js"></script>
+        <script src="scripts/directives/bindhtmlunsafe.js"></script>
+        <script src="scripts/controllers/lessons/StepDisplay.js"></script>
+        <script src="scripts/controllers/lessons/Display.js"></script>
+        <script src="scripts/controllers/lessons/Update.js"></script>
+        <script src="scripts/controllers/StepDisplayPage.js"></script>
+        <script src="scripts/controllers/lessons/StepDisplayPage.js"></script>
         <!-- endbuild -->
 </body>
 </html>

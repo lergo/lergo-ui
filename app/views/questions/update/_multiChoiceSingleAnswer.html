@@ -1,5 +1,5 @@
+
 <div>
-    Question: <input ng-model="quizItem.question"/>
 <div>
 Amswer Option: <input ng-model="newAnswer"/>
 <button ng-click="addOption(newAnswer)" class="btn">Add</button>
@@ -8,11 +8,13 @@ Amswer Option: <input ng-model="newAnswer"/>
 		<thead>
 			<tr>
 				<th style="width: 40px;">Answer Options</th>
+                <th>Remove</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="option in quizItem.options">
-				<td >{{option}}</td>
+			<tr ng-repeat="option in quizItem.options track by $index">
+				<td class="optionValue">{{option}}</td>
+                <td class="optionDelete"><button class="btn-link btn" ng-click="removeOption($index)">Remove</button></td>
 			</tr>
 		</tbody>
 	</table>
@@ -20,3 +22,4 @@ Amswer Option: <input ng-model="newAnswer"/>
     <div>
     Correct Answer : <select ng-model="quizItem.answer" ng-options="o for o in quizItem.options"></select><br/>
 </div>
+

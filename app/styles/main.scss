@@ -1,16 +1,14 @@
+@import './bootstrapVariables';
 @import "bootstrap-sass/lib/bootstrap";
 $HEADER_HEIGHT: 110px;
 $FOOTER_HEIGHT: 110px;
 @import "./variables";
+@import './bootstrapOverrides';
+
 @import "./common";
 
-#mainPage {
-  #content{
-    width:200px;
-    margin:200px auto 0 auto;
-  }
 
-}
+
 
 
 @import "./homepage";
@@ -20,3 +18,6 @@ $FOOTER_HEIGHT: 110px;
 @import "./kitchenSink";
 @import "./errorPages";
 @import "./about";
+@import "./login";
+@import "./lessonsIndex";
+@import "./lesson";

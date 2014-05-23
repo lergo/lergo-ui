@@ -11,10 +11,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="les in lessons">
-				<td>{{les._id}} - {{ les.name }}</td>
-				<td><a ng-href="#/user/lesson/{{les._id}}/update">edit</a></td>
-				<td><a ng-click="deleteLesson(les)" class="btn btn-small btn-danger">X</a></td>
+			<tr ng-repeat="les in lessons |orderBy:'-lastUpdate' ">
+				<td class="name">{{ les.name }}</td>
+				<td class="viewLink">
+                <a href = "#/user/lessons/{{les._id}}/display"> view </a></td>
+				<td class="edit"><a ng-href="#/user/lesson/{{les._id}}/update">edit</a></td>
+				<td class="invite"><a ng-href="#/user/lesson/{{les._id}}/invitations">invite</a></td>
+				<td class="delete"><a ng-click="deleteLesson(les)">delete</a></td>
 			</tr>
 		</tbody>
 	</table>

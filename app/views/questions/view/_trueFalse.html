@@ -1,21 +1,9 @@
-<form name="TrueFalseForm" ng-submit="submit(correctAnswer)" class="lergo-form">
-	<div>
-		Question: <input ng-model="quizItem.question" />
-	</div>
-	<div>
-		<table class="table table-striped table-condensed">
-			<thead>
-				<tr>
-					<th style="width: 40px;">Answer Options</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="option in ['True','False']">
-					<td><input type="radio" name="TrueFalseForm" ng-model="$parent.correctAnswer"
-						ng-value="option"/>{{option}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<button type="submit">Submit</button>
-</form>
+
+<div class="question-true-false">
+
+	<p class="lergo-h4">{{quizItem.question}}</p>
+
+    <div class="true-false-options">
+            <button  ng-repeat="option in ['True','False']" class="true-false-option" ng-click="updateAnswer($event,option,quizItem)" ng-class="{'active' : quizItem.userAnswer === option }">{{ 'quizItem.answer.' + option | i18n  }}</button>
+    </div>
+</div>

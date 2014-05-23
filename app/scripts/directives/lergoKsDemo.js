@@ -17,9 +17,12 @@ angular.module('lergoApp')
                     $('<div></div>', {'class': 'lergo-ks-preview'}).html(html)
                 );
 
+                //escape HTML
+                // http://stackoverflow.com/a/374176
+                var escapedHtml = $('<div/>').text(html).html();
 
                 wrapper.append(
-                    $('<pre></pre>', {'class': 'lergo-ks-code'}).text(html)
+                    $('<pre></pre>', {'class': 'lergo-ks-code'}).html( prettyPrintOne(escapedHtml))
                 );
             }
         };

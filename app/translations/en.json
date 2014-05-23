@@ -11,9 +11,35 @@
         "title":"Confusing Words: They're, Their, There",
         "description":"The goal of this lesson is to identify and then practice when is the right time to use each of..."
     },
-    "introScience":{
-        "title":"Intro to Science & Technology",
-        "description":"In this inspiring lesson, given from the point of view of a scientist, kids will learn what a scientist ... "
+    "introScience": {
+        "title": "Intro to Science & Technology",
+        "description": "In this inspiring lesson, given from the point of view of a scientist, kids will learn what a scientist ... "
+    },
+    "baseLayout" : {
+        "header" : {
+            "searchPlaceholder" : "What would you like to learn about?",
+            "links" : {
+                "learn" : "learn",
+                "create" : "create",
+                "parents" : "parents",
+                "teachers" : "teachers",
+                "contribute" : "contribute",
+                "lessons" : "lessons",
+                "questions" : "questions"
+            }
+        }
+    },
+    "loginPage" : {
+        "username" : "username",
+        "password" : "password",
+        "login" : "login",
+        "signup" : "signup"
+    },
+    "quizItem" : {
+        "answer" : {
+            "True" : "true",
+            "False" : "false"
+        }
     }
 
 }
