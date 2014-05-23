@@ -9,7 +9,7 @@
             <th>Edit</th>
         </tr>
         </thead>
-        <tr ng-repeat="item in items">
+        <tr ng-repeat="item in items |orderBy:'-lastUpdate'  ">
             <td class="question">
                 {{item.question | limitTo:30 }} [{{item.answer | limitTo:10}}]
             </td>

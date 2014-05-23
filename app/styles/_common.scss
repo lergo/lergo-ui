@@ -348,6 +348,15 @@ button.action-item {
   }
 }
 
+.logo-beta{
+  &.transparent{
+    width:200px;
+    height:116px;
+    display:inline-block;
+    background:url('../images/logos/transparent-beta.png')
+  }
+}
+
 
 
 .btn{
