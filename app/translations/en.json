@@ -1,20 +1,10 @@
 
 {
-    "featured":"Featured", "popular":"Popular", "new":"New",
-    "languages":{"he":"Hebrew","en":"English", "ru":"Russian"},
-    "subject":{"spelling":"Spelling","math":"Math", "art":"Art"},
-    "angles101":{
-        "title": "Angles - 101",
-        "description":"This is the first of a series of four lessons on the topic of angles for 3rd graders. In this lesson we will..."
-    },
-    "confusingWords":{
-        "title":"Confusing Words: They're, Their, There",
-        "description":"The goal of this lesson is to identify and then practice when is the right time to use each of..."
-    },
-    "introScience": {
-        "title": "Intro to Science & Technology",
-        "description": "In this inspiring lesson, given from the point of view of a scientist, kids will learn what a scientist ... "
-    },
+    "featured":"Featured",
+    "popular":"Popular",
+    "new":"New",
+    "languages":{"he":"hebrew","en":"english", "ru":"russian"},
+
     "baseLayout" : {
         "header" : {
             "searchPlaceholder" : "What would you like to learn about?",
@@ -29,10 +19,28 @@
             }
         }
     },
-    "loginPage" : {
+    "input" : {
         "username" : "username",
         "password" : "password",
+        "confirmPassword" : "confirm password",
+        "email" : "email"
+    },
+    "button" : {
+        "submit" : "submit",
         "login" : "login",
+        "signup" : "signup",
+        "forgotPassword" : "forgot password?",
+        "resendValidationEmail" : "resend validation email"
+
+    } ,
+    "resetPassword" : {
+        "instructions" : "fill in username or email and submit the form.",
+        "success" : "you request dispatched successfully",
+        "error" : "there was an error submitting the request"
+    },
+    "changePassword" : {
+        "success" : "you successfully changed your password",
+        "error" : "there was an error changing your password"
         "signup" : "signup"
     },
     "quizItem" : {

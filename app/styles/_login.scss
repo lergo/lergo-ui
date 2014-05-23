@@ -1,14 +1,24 @@
 
-#loginPage, #signUpPage {
-  #content.centered-content{
-    .login-form {
+#loginPage, #signUpPage, #resetPasswordRequestPage, #changePassword {
+  #content {
+    .centered-content {
       width: 250px;
-      margin: 100px auto 0 auto;
-
+      margin: 30px auto 0 auto;
       .center {
         text-align: center;
       }
     }
+  }
+
+  .instructions {
+    margin: 10px auto;
+    padding:20px;
+    text-align: center;
+  }
+
+  .bg-warning, .bg-success{
+    padding:10px;
+    text-align:center;
   }
 
 }

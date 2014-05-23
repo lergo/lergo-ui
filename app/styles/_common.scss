@@ -350,6 +350,25 @@ button.action-item {
 
 }
 
+
+.clickable{
+  cursor:pointer;
+}
+
+.loader-tall {
+  width:58px;
+  height:20px;
+  display:inline-block;
+  background:url('../images/loaders/loader1.gif') no-repeat;
+}
+
+.loader-short{
+  width:29px;
+  height:10px;
+  display:inline-block;
+  background:url('../images/loaders/loader2.gif') no-repeat;
+}
+
 $COLOR_14: #4169E1 !default;
 $COLOR_15: #3CB371 !default;
 $COLOR_16: #BC8F8F !default;

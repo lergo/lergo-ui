@@ -1,0 +1,14 @@
+<div class="base-layout">
+    <div class="centered-content" style="width:144px; margin-top:100px; text-align: center">
+        <div ng-show="!!errorMessage">{{errorMessage}}</div>
+        <div class="center" ng-show="validationInProgress">
+            <div class="lergo-h1">Validating</div>
+            <div class="loader-tall centered-content"></div>
+        </div>
+        <div class="center" ng-show="validated">
+            Successfully Validated<br/><br/>
+
+            <a href="#/">Login</a>
+        </div>
+    </div>
+</div>

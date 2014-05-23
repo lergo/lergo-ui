@@ -1,4 +1,4 @@
-<div class="base-layout" id="signUpPage">
+<div class="base-layout" id="signupPage">
     <div class="centered-content">
 
         <form ng-submit='submit()' class="login-form Signup-form lergo-form">
@@ -9,7 +9,7 @@
             </div>
             <div class="section">
                 <div class="label">
-                    <span style="float:left;">Username</span>
+                    <span style="float:left;">{{ 'input.username' | i18n }} </span>
                 </div>
 
                 <div class="lergo-input">
@@ -17,27 +17,34 @@
                 </div>
             </div>
             <div class="section">
-                <div class="label">Email</div>
+                <div class="label">{{ 'input.email' | i18n }} </div>
                 <div class="lergo-input">
                     <input ng-model="signupForm.email" required/>
                 </div>
             </div>
 
             <div class="section">
-                <div class="label">Password</div>
+                <div class="label"> {{ 'input.pssword' | i18n }} </div>
                 <div class="lergo-input">
                     <input ng-model="signupForm.password" required type="password"/>
                 </div>
             </div>
 
             <div class="section">
-                <div class="label">Confirm Password</div>
+                <div class="label"> {{ 'input.fullName' | i18n }} </div>
+                <div class="lergo-input">
+                    <input ng-model="signupForm.fullName" required type="text"/>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="label"> {{ 'input.confirmPassword' | i18n }} </div>
                 <div class="lergo-input">
                     <input ng-model="signupForm.passwordConfirm" required
                            type="password"/>
                 </div>
             </div>
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" class="btn"> {{ 'button.submit' | i18n }} </button>
         </form>
     </div>
 </div>

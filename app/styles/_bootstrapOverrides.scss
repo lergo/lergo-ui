@@ -18,30 +18,60 @@
     background-color:$COLOR_10;
   }
   &.btn-primary{
-    background-color:#4169E1;
+    background-color:$COLOR_14;
   }
 
   &.btn-success{
-    background-color:#3CB371;
+    background-color:$COLOR_15;
   }
 
   &.btn-info{
-    background-color:#BC8F8F;
+    background-color:$COLOR_16;
   }
 
   &.btn-warning{
-    background-color:#EE9A00;
+    background-color:$COLOR_17;
   }
 
   &.btn-danger{
-    background-color: #B22222;
+    background-color: $COLOR_18;
   }
 
   &.btn-link{
-    color: #2a6496;
+    color: $COLOR_19;
     text-decoration: underline;
     background-color: transparent;
   }
+
+}
+
+.label{
+  padding:0;
+  display:inline-block;
+}
+
+.bg-info {
+  background-color: $COLOR_16;
+  color:white;
+}
+
+.bg-primary{
+  background-color:$COLOR_14;
+  color:white;
+}
+.bg-success {
+  background-color: $COLOR_15;
+  color:white;
+}
+
+.bg-warning {
+  background-color: $COLOR_17;
+  color:white;
+}
+
+.bg-danger {
+  background-color: $COLOR_18;
+  color:white;
 
 }
 

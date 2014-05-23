@@ -25,7 +25,14 @@ angular.module('lergoApp').service('LergoTranslate',
             });
         });
 
+        $http.get('/translations/general.json').then(function(data){
+            translations['general'] = data.data;
+        });
 
+
+        this.getTranslations = function(){
+            return translations;
+        };
 
         this.isSupported = function( language ){
 
@@ -61,21 +68,36 @@ angular.module('lergoApp').service('LergoTranslate',
             return supportedLanguages;
         };
 
-        this.translate = function (key) {
-
-            $log.info('language is', language);
+        // t - the translation
+        // key - the key to translate
+        function findTranslationInLanguage( t, key ){
             var args = key.split('.');
-            var t = translations[language];
             for ( var i = 0; i < args.length; i ++ ){
                 if ( !!t && t.hasOwnProperty(args[i]))
                 {
                     t = t[args[i]];
                 }
             }
+
             if ( !t || typeof(t) !== 'string' || $.trim(t).length === 0 ){
-                return '???' + key + '???';
+                return null;
             }
+
             return t;
+        }
+
+        this.translate = function (key) {
+            $log.info('translating' ,key);
+            var value = findTranslationInLanguage( translations[language], key );
+            if ( !value ){
+                value = findTranslationInLanguage( translations['general'] , key );
+            }
+
+            if ( !value ){
+                return '???' + key + '???'
+            }
+
+            return value;
         };
     }
 );

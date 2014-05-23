@@ -45,8 +45,9 @@
 					<li>Home Page</li>
 					<li>Contact Us</li>
 					<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
+					<li><a href="#/public/translations/diff">Translations Diff</a></li>
 
-                    <select ng-model="$root.lergoLanguage" ng-options="lang.id as ('languages.' + lang.id | i18n) for lang in $root.lergoLanguages"></select>
+                    <select ng-model="$root.lergoLanguage" ng-options="lang.id as lang.label for lang in $root.lergoLanguages"></select>
 
 				</ul>
 			</div>

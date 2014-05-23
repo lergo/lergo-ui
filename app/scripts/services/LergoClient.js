@@ -8,6 +8,11 @@ angular.module('lergoApp').service('LergoClient', function LergoClient($http, $l
 		return $http.post('/backend/users/signup', signupForm);
 	};
 
+
+    this.resendValidationEmail = function( loginCredentials ){
+        return $http.post('/backend/users/validate/resend', loginCredentials );
+    };
+
 	this.isLoggedIn = function() {
 		return $http.get('/backend/user/loggedin');
 	};
