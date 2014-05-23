@@ -29,7 +29,7 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 	};
 
 	$scope.deleteLesson = function(lesson) {
-		var canDelete = window.confirm('Are yoy sure to delete Lesson : ' + lesson.name + ' ?');
+		var canDelete = window.confirm('Are you sure you want to delete the lesson: ' + lesson.name + ' ?');
 		if (canDelete) {
 			LergoClient.lessons.delete(lesson._id).then(function() {
 				$scope.errorMessage = null;
