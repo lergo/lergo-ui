@@ -1,40 +1,29 @@
-<div>
-	<div>
-		Answer Option : <input ng-model="newAnswer" />
-		<button ng-click="addOption(newAnswer)" class="btn">Add</button>
-	</div>
-	<div>
-		<table class="table table-striped table-condensed">
-			<thead>
-				<tr>
-					<th style="width: 40px;">Answer Options</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="option in quizItem.options">
-					<td>{{option}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div>
-		Correct Answer : <select ng-model="correctAnswer"ng-options="o for o in quizItem.options"></select>
-		<button ng-click="addCorrectAnswer(correctAnswer)" class="btn">Add</button>
-	</div>
-	<div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th style="width: 40px;">Correct Answers</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="answer in quizItem.answer;">
-					<td>{{answer}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<table class="table lergo-form">
+	<tr>
+		<td style="border-top: none; align:right;  width: 15%">Possible Answer:</td>
+		<td style="border-top: none; align:left"><input
+			class="lergo-input" ng-model="newAnswer" /></td>
+		<td style="border-top: none;" align="right"><button
+				ng-click="addOption(newAnswer)" class="btn">Add</button></td>
+	</tr>
+</table>
 
-</div>
-
+<table class="table lergo-form" ng-show='quizItem.options.length > 0'>
+	<thead>
+		<tr>
+			<th >Possible Answers</th>
+			<th style="width: 15%">Correct Answers</th>
+			<th style="width: 10%">Remove</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="option in quizItem.options track by $index">
+			<td class="optionValue">{{option}}</td>
+			<td><input type="checkbox" ng-true-value="option"
+				ng-false-value="" ng-checked="isCorrectAnswer(option,quizItem)"
+				ng-click="$parent.updateAnswer($event,option,quizItem)" /></td>
+			<td class="optionDelete"><button class="btn-link btn"
+					ng-click="removeOption(option)">X</button></td>
+		</tr>
+	</tbody>
+</table>

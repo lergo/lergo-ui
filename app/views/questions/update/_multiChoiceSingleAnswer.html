@@ -1,7 +1,7 @@
 <table class="table lergo-form">
 	<tr>
-		<td style="border-top: none;" align="right">Possible Answer:</td>
-		<td style="border-top: none;" align="left"><input
+		<td style="border-top: none; align:right;  width: 15%">Possible Answer:</td>
+		<td style="border-top: none; align:left "><input
 			class="lergo-input" ng-model="newAnswer" /></td>
 		<td style="border-top: none;" align="right"><button
 				ng-click="addOption(newAnswer)" class="btn">Add</button></td>
@@ -12,8 +12,8 @@
 	<thead>
 		<tr>
 			<th>Possible Answers</th>
-			<th>Correct Answers</th>
-			<th>Remove</th>
+			<th style="width: 15%">Correct Answer</th>
+			<th style="width: 10%">Remove</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,7 +23,7 @@
 				ng-false-value="" ng-checked="isCorrectAnswer(option,quizItem)"
 				ng-click="$parent.updateAnswer($event,option,quizItem)" /></td>
 			<td class="optionDelete"><button class="btn-link btn"
-					ng-click="removeOption($index)">Remove</button></td>
+					ng-click="removeOption(option)">X</button></td>
 		</tr>
 	</tbody>
 </table>

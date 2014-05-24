@@ -1,22 +1,29 @@
 <div class="base-layout" id="questions-update">
 	<div>
 		<table class=" table lergo-form">
-			<tr>
-				<td style="border-top: none;" align="right">Question :</td>
-				<td style="border-top: none;" align="left"><input
-					class="lergo-input" ng-model="quizItem.question" /></td>
-			</tr>
-			<tr>
-				<td style="border-top: none;" align="right">Help Text :</td>
-				<td style="border-top: none;" align="left"><input
-					class="lergo-input" ng-model="quizItem.helpText" /></td>
-			</tr>
-			<tr>
-				<td style="border-top: none;" align="right">Question Type :</td>
-				<td style="border-top: none;" align="left"><select
-					ng-model="quizItem.type"
-					ng-options="t.id as t.label for t in types"></select></td>
-			</tr>
+			<thead>
+				<tr>
+					<th style="width: 15%"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td align="right">Question :</td>
+					<td style="border-top: none; align:left"><input
+						class="lergo-input" ng-model="quizItem.question" /></td>
+				</tr>
+				<tr>
+					<td style="border-top: none; align:right">Help Text :</td>
+					<td style="border-top: none; align:left"><input
+						class="lergo-input" ng-model="quizItem.helpText" /></td>
+				</tr>
+				<tr>
+					<td style="border-top: none; align:right">Question Type :</td>
+					<td style="border-top: none; align:left"><select
+						ng-model="quizItem.type"
+						ng-options="t.id as t.label for t in types"></select></td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 	<div ng-include="getQuestionUpdateTemplate(quizItem)"></div>

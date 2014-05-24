@@ -39,7 +39,9 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		if ($scope.quizItem.options === undefined) {
 			$scope.quizItem.options = [];
 		}
-		$scope.quizItem.options.push(answer);
+		if ($scope.quizItem.options.indexOf(answer) < 0) {
+			$scope.quizItem.options.push(answer);
+		}
 	};
 
 	$scope.updateAnswer = function($event, answer, quizItem) {
@@ -48,6 +50,9 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		}
 		var checkbox = $event.target;
 		if (checkbox.checked) {
+			if (quizItem.type === 'trueFalse' || quizItem.type === 'multipleChoiceSingleAnswer') {
+				quizItem.answer = [];
+			}
 			quizItem.answer.push(answer);
 		} else {
 			quizItem.answer.splice(quizItem.answer.indexOf(answer), 1);
@@ -70,8 +75,11 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		$scope.quizItem.answer = answer;
 	};
 
-	$scope.removeOption = function(index) {
-		$scope.quizItem.options.splice(index, 1);
+	$scope.removeOption = function(option) {
+		$scope.quizItem.options.splice($scope.quizItem.options.indexOf(option), 1);
+		if ($scope.quizItem.answer !== undefined) {
+			$scope.quizItem.answer.splice($scope.quizItem.answer.indexOf(option), 1);
+		}
 	}
 
 });
