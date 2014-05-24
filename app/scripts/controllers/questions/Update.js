@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log) {
+angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log,$location) {
 
 	var saveQuestion = new ContinuousSave({
 		'saveFn' : function(value) {
@@ -82,4 +82,12 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		}
 	}
 
+	$scope.isSaving = function() {
+		return !!saveQuestion.getStatus().saving;
+	};
+	
+	 $scope.done = function() {
+         $location.path('/user/questions');
+     };
+     
 });

@@ -9,17 +9,17 @@
 			<tbody>
 				<tr>
 					<td align="right">Question :</td>
-					<td style="border-top: none; align:left"><input
+					<td style="border-top: none; align: left"><input
 						class="lergo-input" ng-model="quizItem.question" /></td>
 				</tr>
 				<tr>
-					<td style="border-top: none; align:right">Help Text :</td>
-					<td style="border-top: none; align:left"><input
+					<td style="border-top: none; align: right">Help Text :</td>
+					<td style="border-top: none; align: left"><input
 						class="lergo-input" ng-model="quizItem.helpText" /></td>
 				</tr>
 				<tr>
-					<td style="border-top: none; align:right">Question Type :</td>
-					<td style="border-top: none; align:left"><select
+					<td style="border-top: none; align: right">Question Type :</td>
+					<td style="border-top: none; align: left"><select
 						ng-model="quizItem.type"
 						ng-options="t.id as t.label for t in types"></select></td>
 				</tr>
@@ -27,4 +27,10 @@
 		</table>
 	</div>
 	<div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
+	<div>
+		<button class="btn" ng-click="done()" ng-disabled="isSaving()">{{
+			isSaving() && "Saving..." || "Done" }}</button>
+		<a class="btn" href="#/user/questions/{{quizItem._id}}/read">
+			Preview </a>
+	</div>
 </div>
