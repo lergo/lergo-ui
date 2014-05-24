@@ -91,7 +91,7 @@ angular.module('lergoApp')
         };
 
         $scope.getYoutubeEmbedSource = function( step ){
-            var src =  '//www.youtube.com/embed/' + $scope.getVideoId(step);
+            var src =  '//www.youtube.com/embed/' + $scope.getVideoId(step) +'?autoplay=1&rel=0&iv_load_policy=3';
             return $sce.trustAsResourceUrl(src);
         };
 

@@ -230,6 +230,10 @@ button.action-item {
   text-transform: uppercase;
 }
 
+.lergo-h4 {
+  color: $LERGO_H2_COLOR;
+  font-size: 20px;
+}
 .lergo-icon {
   color: $LERGO_ICON_COLOR;
 }
@@ -341,6 +345,15 @@ button.action-item {
     height:146px;
     display:inline-block;
     background:url('../images/logos/transparent.png')
+  }
+}
+
+.logo-beta{
+  &.transparent{
+    width:200px;
+    height:116px;
+    display:inline-block;
+    background:url('../images/logos/transparent-beta.png')
   }
 }
 

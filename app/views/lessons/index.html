@@ -11,7 +11,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="les in lessons">
+			<tr ng-repeat="les in lessons |orderBy:'-lastUpdate' ">
 				<td class="name">{{ les.name }}</td>
 				<td class="viewLink">
                 <a href = "#/user/lessons/{{les._id}}/display"> view </a></td>
