@@ -26,7 +26,7 @@ angular.module('lergoApp').service('LergoTranslate',
         });
 
         $http.get('/translations/general.json').then(function(data){
-            translations['general'] = data.data;
+            translations.general = data.data;
         });
 
 
@@ -90,11 +90,11 @@ angular.module('lergoApp').service('LergoTranslate',
             $log.info('translating' ,key);
             var value = findTranslationInLanguage( translations[language], key );
             if ( !value ){
-                value = findTranslationInLanguage( translations['general'] , key );
+                value = findTranslationInLanguage( translations.general , key );
             }
 
             if ( !value ){
-                return '???' + key + '???'
+                return '???' + key + '???';
             }
 
             return value;

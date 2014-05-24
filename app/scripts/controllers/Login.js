@@ -32,7 +32,6 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 			$location.path('/user/homepage');
 		}, function error(result) {
             try {
-                debugger;
                 if ( result.data.code === 7 ){ // user not validated
                     $scope.resendValidation = true;
                 }
