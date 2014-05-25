@@ -23,7 +23,9 @@
         "username" : "username",
         "password" : "password",
         "confirmPassword" : "confirm password",
-        "email" : "email"
+        "email" : "email",
+        "fullName" : "full name"
+
     },
     "button" : {
         "submit" : "submit",
