@@ -1,6 +1,6 @@
 $HEADER_BACKGROUND_COLOR:$COLOR_13;
 $HEADER_HEIGHT: 110px !default;
-$FOOTER_HEIGHT: 110px !default;
+$FOOTER_HEIGHT: 170px !default;
 
 #wrapper{
   margin-bottom:-$HEADER_HEIGHT;
@@ -153,8 +153,8 @@ $FOOTER_HEIGHT: 110px !default;
   }
 
   #footer {
-    padding-top:$FOOTER_HEIGHT/2;
-    height: $FOOTER_HEIGHT/2+20px;
+    padding-top: 40px;
+    height: $FOOTER_HEIGHT/2+30px;
 
     background-color: #296CA1;
     width:100%;

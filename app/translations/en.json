@@ -40,7 +40,7 @@
     },
     "changePassword" : {
         "success" : "you successfully changed your password",
-        "error" : "there was an error changing your password"
+        "error" : "there was an error changing your password",
         "signup" : "signup"
     },
     "quizItem" : {
