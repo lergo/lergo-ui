@@ -1,25 +1,34 @@
 <div class="base-layout" id="lessonsIndex">
+
 	<div class="lergo-label">
-		<span style="float:left;">Available Lessons</span>
-		<span class="errorMessage" ng-show='errorMessage' style="float:right; font-size:15px; color: red;">{{errorMessage}}</span>
-	</div>			
-	<table class="table table-striped table-condensed">
+		<span class="errorMessage" ng-show='errorMessage'
+			style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
+	</div>
+	<div>
+		<p style="float: left" class="lergo-h1">MY Lessons</p>
+		<button ng-click="create()" style="float: right" class="btn">Create
+			New Lesson</button>
+	</div>
+	<table class="table">
 		<thead>
-			<tr>
+			<tr style="font-weight: bold">
 				<th style="min-width: 80px;">Name</th>
-				<th style="width: 20px;"></th>
+				<th style="width: 20px;">View</th>
+				<th style="width: 20px;">Edit</th>
+				<th style="width: 20px;">Invite</th>
+				<th style="width: 20px;">Delete</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="les in lessons |orderBy:'-lastUpdate' ">
 				<td class="name">{{ les.name }}</td>
-				<td class="viewLink">
-                <a href = "#/user/lessons/{{les._id}}/display"> view </a></td>
+				<td class="viewLink"><a
+					href="#/user/lessons/{{les._id}}/display"> view </a></td>
 				<td class="edit"><a ng-href="#/user/lesson/{{les._id}}/update">edit</a></td>
-				<td class="invite"><a ng-href="#/user/lesson/{{les._id}}/invitations">invite</a></td>
-				<td class="delete"><a ng-click="deleteLesson(les)">delete</a></td>
+				<td class="invite"><a
+					ng-href="#/user/lesson/{{les._id}}/invitations">invite</a></td>
+				<td class="delete"><button style="color: red;" class="btn-link" ng-click="deleteLesson(les)">X</button></td>
 			</tr>
 		</tbody>
 	</table>
-	<a ng-click="create()" class="btn">Create New Lesson</a>
 </div>
