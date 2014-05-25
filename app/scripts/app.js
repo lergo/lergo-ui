@@ -117,7 +117,7 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                     scope.clearError = function(){
                         scope.errorMessage = null;
                         scope.pageError = null;
-                    }
+                    };
 
                 }
 

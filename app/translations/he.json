@@ -27,7 +27,8 @@
         "email" : "אימייל",
         "username" : "שם משתמש",
         "password" : "סיסמא",
-        "confirmPassword" : "אישור סיסמא"
+        "confirmPassword" : "אישור סיסמא",
+        "fullName" : "שם מלא"
     },
     "button" : {
         "submit" : "שלח",
