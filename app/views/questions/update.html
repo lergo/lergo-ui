@@ -1,14 +1,10 @@
 <div class="base-layout" id="questions-update">
 	<div>
 		<table class=" table lergo-form">
-			<thead>
-				<tr>
-					<th style="width: 15%"></th>
-				</tr>
-			</thead>
 			<tbody>
 				<tr>
-					<td align="right">Question :</td>
+					<td style="border-top: none; align: right; width: 15%">Question
+						:</td>
 					<td style="border-top: none; align: left"><input
 						class="lergo-input" ng-model="quizItem.question" /></td>
 				</tr>
@@ -27,10 +23,11 @@
 		</table>
 	</div>
 	<div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
+	<div>{{isSaving() && "Saving..." || "Saved" }}</div>
 	<div>
-		<button class="btn" ng-click="done()" ng-disabled="isSaving()">{{
-			isSaving() && "Saving..." || "Done" }}</button>
-		<a class="btn" href="#/user/questions/{{quizItem._id}}/read">
+		<button class="btn" ng-click="done()"
+			ng-disabled="isSaving()||!quizItem.question">Done</button>
+		<a class="btn" ng-disabled="!quizItem.question" href="#/user/questions/{{quizItem._id}}/read">
 			Preview </a>
 	</div>
 </div>
