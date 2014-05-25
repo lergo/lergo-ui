@@ -26,8 +26,8 @@
 	<div>{{isSaving() && "Saving..." || "Saved" }}</div>
 	<div>
 		<button class="btn" ng-click="done()"
-			ng-disabled="isSaving()||!!quizItem.question||quizItem.question.length<=0">Done</button>
-		<a class="btn" href="#/user/questions/{{quizItem._id}}/read">
+			ng-disabled="isSaving()||!quizItem.question">Done</button>
+		<a class="btn" ng-disabled="!quizItem.question" href="#/user/questions/{{quizItem._id}}/read">
 			Preview </a>
 	</div>
 </div>
