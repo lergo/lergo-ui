@@ -14,9 +14,10 @@ angular.module('lergoApp')
         return {
             // optional method
             'request': function (config) {
+                $rootScope.pageRequestProgress.inProgress = true;
                 $rootScope.pageRequestProgress.config = config;
                 // do something on success
-                endRequest(false);
+//                endRequest(false);
                 return config || $q.when(config);
             },
 

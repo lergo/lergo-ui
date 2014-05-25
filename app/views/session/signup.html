@@ -44,7 +44,14 @@
                            type="password"/>
                 </div>
             </div>
-            <button type="submit" class="btn"> {{ 'button.submit' | i18n }} </button>
+
+            <div ng-show="!pageRequestProgress.inProgress">
+                <button type="submit" class="btn"> {{ 'button.submit' | i18n }} </button>
+            </div>
+            <div ng-show="!!pageRequestProgress.inProgress" class="loader-short">
+
+            </div>
+
         </form>
     </div>
 </div>
