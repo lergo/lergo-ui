@@ -1,6 +1,16 @@
-<div>
-    Correct Answer:
-    <select ng-model="quizItem.answer" ng-options="o as o for o in ['True','False']">
-    </select>
-
-</div>
+<table class="table lergo-form" ng-show='quizItem.options.length > 0'>
+	<thead>
+		<tr>
+			<th>Possible Answers</th>
+			<th>Correct Answer</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="option in ['True','False'] ">
+			<td class="optionValue">{{option}}</td>
+			<td><input type="checkbox" ng-true-value="option"
+				ng-false-value="" ng-checked="isCorrectAnswer(option,quizItem)"
+				ng-click="$parent.updateAnswer($event,option,quizItem)" /></td>
+		</tr>
+	</tbody>
+</table>

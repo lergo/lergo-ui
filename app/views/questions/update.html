@@ -1,10 +1,36 @@
 <div class="base-layout" id="questions-update">
 	<div>
-		Question : <input ng-model="quizItem.question" />
+		<table class=" table lergo-form">
+			<thead>
+				<tr>
+					<th style="width: 15%"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td align="right">Question :</td>
+					<td style="border-top: none; align: left"><input
+						class="lergo-input" ng-model="quizItem.question" /></td>
+				</tr>
+				<tr>
+					<td style="border-top: none; align: right">Help Text :</td>
+					<td style="border-top: none; align: left"><input
+						class="lergo-input" ng-model="quizItem.helpText" /></td>
+				</tr>
+				<tr>
+					<td style="border-top: none; align: right">Question Type :</td>
+					<td style="border-top: none; align: left"><select
+						ng-model="quizItem.type"
+						ng-options="t.id as t.label for t in types"></select></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	Question Type: <select ng-model="quizItem.type"
-		ng-options="t.id as t.label for t in types"></select><br />
-	<div ng-include="getQuestionUpdateTemplate(quizItem)"
-		class="{{quizItem.type}}"></div>
-
+	<div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
+	<div>
+		<button class="btn" ng-click="done()" ng-disabled="isSaving()">{{
+			isSaving() && "Saving..." || "Done" }}</button>
+		<a class="btn" href="#/user/questions/{{quizItem._id}}/read">
+			Preview </a>
+	</div>
 </div>

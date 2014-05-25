@@ -3,7 +3,7 @@
 angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, $location) {
 
 	$scope.createNewQuestion = function() {
-		QuestionsService.createQuestion({}).then(function(result) {
+		QuestionsService.createQuestion({'type':'trueFalse'}).then(function(result) {
 			$scope.errorMessage = null;
 			$location.path('/user/questions/' + result.data._id + '/update');
 		}, function(result) {
