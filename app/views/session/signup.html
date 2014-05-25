@@ -1,34 +1,50 @@
-<div class="base-layout" id="signUpPage" >
-		<form ng-submit='submit()' class="Signup-form lergo-form">
-			<div class="form-section">
-				<div class="lergo-label">
-				<span style="float:left;">Username</span>
-				<span class="errorMessage" ng-show='errorMessage' style="float:right; font-size:15px; color: red;">{{errorMessage}}</span>
-				<div class="lergo-input">
-					<input ng-model="signupForm.username" required />
-				</div>
-			</div>
-			<div class="form-section">
-				<div class="lergo-label">Email</div>
-				<div class="lergo-input">
-					<input ng-model="signupForm.email" required />
-				</div>
-			</div>
+<div class="base-layout" id="signupPage">
+    <div class="centered-content">
 
-			<div class="form-section">
-				<div class="lergo-label">Password</div>
-				<div class="lergo-input">
-					<input ng-model="signupForm.password" required type="password" />
-				</div>
-			</div>
+        <form ng-submit='submit()' class="login-form Signup-form lergo-form">
+            <div class="section">
+                <div class="label">
+                    <span class="errorMessage" ng-show='errorMessage' style="float:right; font-size:15px; color: red;">{{errorMessage}}</span>
+                </div>
+            </div>
+            <div class="section">
+                <div class="label">
+                    <span style="float:left;">{{ 'input.username' | i18n }} </span>
+                </div>
 
-			<div class="form-section">
-				<div class="lergo-label">Confirm Password</div>
-				<div class="lergo-input">
-					<input ng-model="signupForm.passwordConfirm" required
-						type="password" />
-				</div>
-			</div>
-			<button type='submit'>Submit</button>
-		</form>
-	</div>
+                <div class="lergo-input">
+                    <input ng-model="signupForm.username" required/>
+                </div>
+            </div>
+            <div class="section">
+                <div class="label">{{ 'input.email' | i18n }} </div>
+                <div class="lergo-input">
+                    <input ng-model="signupForm.email" required/>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="label"> {{ 'input.pssword' | i18n }} </div>
+                <div class="lergo-input">
+                    <input ng-model="signupForm.password" required type="password"/>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="label"> {{ 'input.fullName' | i18n }} </div>
+                <div class="lergo-input">
+                    <input ng-model="signupForm.fullName" required type="text"/>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="label"> {{ 'input.confirmPassword' | i18n }} </div>
+                <div class="lergo-input">
+                    <input ng-model="signupForm.passwordConfirm" required
+                           type="password"/>
+                </div>
+            </div>
+            <button type="submit" class="btn"> {{ 'button.submit' | i18n }} </button>
+        </form>
+    </div>
+</div>

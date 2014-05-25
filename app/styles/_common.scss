@@ -30,6 +30,9 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
+  direction:ltr;
+  &.rtl { direction:rtl; }
+
 }
 ol, ul {
   list-style: none;
@@ -159,6 +162,11 @@ button.action-item {
     padding:5px;
     border-radius:5px;
     @include input-block-level();
+
+    &[type=checkbox]{
+      width:30px
+    }
+
   }
 
   select {
@@ -166,6 +174,7 @@ button.action-item {
   }
 
   .section {
+    margin-bottom:20px;
     &.horizontal{
       margin-top:10px;
       .label{
@@ -221,6 +230,10 @@ button.action-item {
   text-transform: uppercase;
 }
 
+.lergo-h4 {
+  color: $LERGO_H2_COLOR;
+  font-size: 20px;
+}
 .lergo-icon {
   color: $LERGO_ICON_COLOR;
 }
@@ -333,4 +346,84 @@ button.action-item {
     display:inline-block;
     background:url('../images/logos/transparent.png')
   }
+}
+
+.logo-beta{
+  &.transparent{
+    width:200px;
+    height:116px;
+    display:inline-block;
+    background:url('../images/logos/transparent-beta.png')
+  }
+}
+
+
+
+.btn{
+
+}
+
+
+.clickable{
+  cursor:pointer;
+}
+
+.loader-tall {
+  width:58px;
+  height:20px;
+  display:inline-block;
+  background:url('../images/loaders/loader1.gif') no-repeat;
+}
+
+.loader-short{
+  width:29px;
+  height:10px;
+  display:inline-block;
+  background:url('../images/loaders/loader2.gif') no-repeat;
+}
+
+$COLOR_14: #4169E1 !default;
+$COLOR_15: #3CB371 !default;
+$COLOR_16: #BC8F8F !default;
+$COLOR_17: #EE9A00 !default;
+$COLOR_18: #B22222 !default;
+$COLOR_19: #2a6496 !default;
+
+.bg-info {
+  padding:10px;
+  text-align:center;
+  background-color: $COLOR_16;
+  color:white;
+}
+
+.bg-primary{
+  padding:10px;
+  text-align:center;
+  background-color:$COLOR_14;
+  color:white;
+}
+.bg-success {
+  padding:10px;
+  text-align:center;
+  background-color: $COLOR_15;
+  color:white;
+}
+
+.bg-warning {
+  padding:10px;
+  text-align:center;
+  background-color: $COLOR_17;
+  color:white;
+}
+
+.bg-danger {
+  padding:10px;
+  text-align:center;
+  background-color: $COLOR_18;
+  color:white;
+
+}
+
+.active{
+  border:3px solid $COLOR_14;
 }

@@ -15,15 +15,31 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 		});
 	}
 
-	$scope.login = function() {
 
+    $scope.resendValidationEmail = function(){
+        $log.info('resending validation email');
+        $scope.sendingValidationEmail = true;
+        LergoClient.resendValidationEmail( $scope.form).then(function(){
+            $scope.sendingValidationEmail = false;
+            $scope.validationEmailSentSuccess = true;
+        });
+    };
+
+	$scope.login = function() {
 		LergoClient.login($scope.form).then(function success(result) {
 			$rootScope.user = result.data;
 			$scope.errorMessage = null;
 			$location.path('/user/homepage');
 		}, function error(result) {
-			$scope.errorMessage = result.data.message;
-			$log.info('error logging in [%s]', result.data);
+            try {
+                if ( result.data.code === 7 ){ // user not validated
+                    $scope.resendValidation = true;
+                }
+//                $scope.errorMessage = result.data.message;
+//                $log.info('error logging in [%s]', result.data);
+            }catch(e){
+//                $scope.errorMessage = 'unknown error';
+            }
 		});
 	};
 });

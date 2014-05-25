@@ -3,20 +3,20 @@
 		<div id="header" ng-controller="LoginCtrl">
 			<div class="centered-content">
 				<div class="header-main">
-					<div class="logo"></div>
+					<div class="logo-beta"></div>
 					<div class="header-links">
 						<ul>
 							<li
 								ng-repeat="item in ['Learn','Create','Parents','Teachers','Contribute']">
-								<a href="#/user/{{item}}">{{item}}</a>
+								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | i18n }}</a>
 							
 							</li>
-                            <li><a href="#/user/lessons">Lessons</a></li>
-                            <li><a href="#/user/questions">Questions</a></li>
+                            <li><a href="#/user/lessons"> {{ 'baseLayout.header.links.lessons' | i18n }}</a></li>
+                            <li><a href="#/user/questions"> {{ 'baseLayout.header.links.questions' | i18n }}</a></li>
                         </ul>
                     </div>
 					<div class="header-search">
-						<input placeholder="What would you like to learn about?" /> <i
+						<input placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" /> <i
 							class="icon-search"></i>
 					</div>
 					
@@ -45,6 +45,9 @@
 					<li>Home Page</li>
 					<li>Contact Us</li>
 					<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
+					<li><a href="#/public/translations/diff">Translations Diff</a></li>
+
+                    <select ng-model="$root.lergoLanguage" ng-options="lang.id as lang.label for lang in $root.lergoLanguages"></select>
 
 				</ul>
 			</div>

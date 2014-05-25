@@ -1,0 +1,78 @@
+
+* { /** reset chrome's outline **/
+  outline: none;
+}
+
+.btn, .btn:hover, .btn:active, .btn:focus{
+  outline:none;
+  border:none;
+  text-shadow:none;
+  background-image:none;
+  background-color:#5fb9ff;
+  padding:10px;
+  text-transform: uppercase;
+  color:white;
+  font-weight: bold;
+  border-radius: 10px;
+  &.btn-default{
+    background-color:$COLOR_10;
+  }
+  &.btn-primary{
+    background-color:$COLOR_14;
+  }
+
+  &.btn-success{
+    background-color:$COLOR_15;
+  }
+
+  &.btn-info{
+    background-color:$COLOR_16;
+  }
+
+  &.btn-warning{
+    background-color:$COLOR_17;
+  }
+
+  &.btn-danger{
+    background-color: $COLOR_18;
+  }
+
+  &.btn-link{
+    color: $COLOR_19;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+
+}
+
+.label{
+  padding:0;
+  display:inline-block;
+}
+
+.bg-info {
+  background-color: $COLOR_16;
+  color:white;
+}
+
+.bg-primary{
+  background-color:$COLOR_14;
+  color:white;
+}
+.bg-success {
+  background-color: $COLOR_15;
+  color:white;
+}
+
+.bg-warning {
+  background-color: $COLOR_17;
+  color:white;
+}
+
+.bg-danger {
+  background-color: $COLOR_18;
+  color:white;
+
+}
+
+

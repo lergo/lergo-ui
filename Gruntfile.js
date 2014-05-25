@@ -68,8 +68,8 @@ module.exports = function (grunt) {
                     host: 'localhost',
                     port: 3000,
                     https: false,
-                    changeOrigin: false,
-                    xforward: false
+                    changeOrigin: true,
+                    xforward: true
                 }
             ],
             livereload: {
@@ -273,6 +273,7 @@ module.exports = function (grunt) {
                             'bower_components/**/*',
                             'translations/**/*',
                             'images/{,*/}*.{gif,webp,svg,png,jpg,jpeg}',
+                            'emailResources/**/*',
                             'styles/fonts/*'
                         ]
                     },
