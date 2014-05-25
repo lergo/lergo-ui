@@ -21,8 +21,7 @@
 					</div>
 					
 					<div class="header-login" ng-show="!user">
-						<a href="#">Log in</a> <a href="#/public/session/signup">Sign
-							up</a>
+						<a href="#"> {{ 'button.login' | i18n }}</a> <a href="#/public/session/signup"> {{ 'button.signup' | i18n }}</a>
 					</div>
 					<div class="header-login" ng-show="!!user">
 						{{user.username}}

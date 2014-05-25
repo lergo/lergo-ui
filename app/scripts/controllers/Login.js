@@ -19,9 +19,13 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
     $scope.resendValidationEmail = function(){
         $log.info('resending validation email');
         $scope.sendingValidationEmail = true;
+        $scope.clearError();
         LergoClient.resendValidationEmail( $scope.form).then(function(){
             $scope.sendingValidationEmail = false;
             $scope.validationEmailSentSuccess = true;
+            $scope.resendValidation = false;
+        }, function(){
+            $scope.sendingValidationEmail = false;
         });
     };
 

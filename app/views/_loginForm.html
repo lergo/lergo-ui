@@ -12,6 +12,14 @@
             <div ng-show="resendValidation">
                 <a class="clickable" ng-click="resendValidationEmail()">{{ 'button.resendValidationEmail' | i18n }}</a>
             </div>
+
+            <div ng-show="sendingValidationEmail">
+                <div class="loader-short"></div>
+            </div>
+
+            <div ng-show="validationEmailSentSuccess" class="bg-success">
+                {{ 'email.emailSentSuccessfully' | i18n }}
+            </div>
         </div>
 		<div class="section">
 			<div class="label">

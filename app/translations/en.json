@@ -23,7 +23,9 @@
         "username" : "username",
         "password" : "password",
         "confirmPassword" : "confirm password",
-        "email" : "email"
+        "email" : "email",
+        "fullName" : "full name"
+
     },
     "button" : {
         "submit" : "submit",
@@ -33,6 +35,9 @@
         "resendValidationEmail" : "resend validation email"
 
     } ,
+    "email" : {
+        "emailSentSuccessfully" : "Please check your inbox and follow instructions"
+    },
     "resetPassword" : {
         "instructions" : "fill in username or email and submit the form.",
         "success" : "you request dispatched successfully",
@@ -40,7 +45,7 @@
     },
     "changePassword" : {
         "success" : "you successfully changed your password",
-        "error" : "there was an error changing your password"
+        "error" : "there was an error changing your password",
         "signup" : "signup"
     },
     "quizItem" : {

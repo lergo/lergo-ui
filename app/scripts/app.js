@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
-    .config(function ($routeProvider, $httpProvider) {
+    .config(function ($routeProvider, $httpProvider, $logProvider) {
+
+        $logProvider.debugEnabled(false);
 
         $routeProvider
             .when('/user/lesson/create',{
@@ -112,6 +114,10 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                         }
                     }
 
+                    scope.clearError = function(){
+                        scope.errorMessage = null;
+                        scope.pageError = null;
+                    };
 
                 }
 

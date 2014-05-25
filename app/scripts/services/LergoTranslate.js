@@ -87,7 +87,7 @@ angular.module('lergoApp').service('LergoTranslate',
         }
 
         this.translate = function (key) {
-            $log.info('translating' ,key);
+            $log.debug('translating' ,key);
             var value = findTranslationInLanguage( translations[language], key );
             if ( !value ){
                 value = findTranslationInLanguage( translations.general , key );
