@@ -33,6 +33,9 @@
         "resendValidationEmail" : "resend validation email"
 
     } ,
+    "email" : {
+        "emailSentSuccessfully" : "Please check your inbox and follow instructions"
+    },
     "resetPassword" : {
         "instructions" : "fill in username or email and submit the form.",
         "success" : "you request dispatched successfully",
