@@ -2,11 +2,12 @@
 
 	<div class="lergo-label">
 		<span class="errorMessage" ng-show='errorMessage'
-			style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
+			style="float: right ; font-size: 15px; color: red;">{{errorMessage}}</span>
 	</div>
+	<br />
 	<div>
 		<p style="float: left" class="lergo-h1">MY Lessons</p>
-		<button ng-click="create()" style="float: right" class="btn">Create
+		<button ng-click="create()" style="float:right; margin-right: 5%" class="btn">Create
 			New Lesson</button>
 	</div>
 	<table class="table">
@@ -23,11 +24,12 @@
 			<tr ng-repeat="les in lessons |orderBy:'-lastUpdate' ">
 				<td class="name">{{ les.name }}</td>
 				<td class="viewLink"><a
-					href="#/user/lessons/{{les._id}}/display"> view </a></td>
-				<td class="edit"><a ng-href="#/user/lesson/{{les._id}}/update">edit</a></td>
+					href="#/user/lessons/{{les._id}}/display">View </a></td>
+				<td class="edit"><a ng-href="#/user/lesson/{{les._id}}/update">Edit</a></td>
 				<td class="invite"><a
-					ng-href="#/user/lesson/{{les._id}}/invitations">invite</a></td>
-				<td class="delete"><button style="color: red;" class="btn-link" ng-click="deleteLesson(les)">X</button></td>
+					ng-href="#/user/lesson/{{les._id}}/invitations">Invite</a></td>
+				<td class="delete"><button style="color: blue;" class="btn-link"
+						ng-click="deleteLesson(les)">X</button></td>
 			</tr>
 		</tbody>
 	</table>

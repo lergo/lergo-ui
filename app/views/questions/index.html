@@ -1,5 +1,6 @@
 <div class="base-layout" id="questionsIndex">
 	<span class="error">{{error}}</span>
+	<br/>
 	<div style="float: left; width: 80%">
 		<p class="lergo-h1">My Questions [ Total: {{items.length}} ]</p>
 	</div>
@@ -19,8 +20,8 @@
 		</thead>
 		<tr ng-repeat="item in items |orderBy:'-lastUpdate'  ">
 			<td><input type="checkbox" /></td>
-			<td class="question">{{item.question | limitTo:30 }}</td>
-			<td >{{item.answer.join(';') | limitTo:10}}</td>
+			<td class="question">{{item.question | limitTo:80 }}</td>
+			<td class="answer">{{!!item.answer[0] && item.answer.join('; ')||item.answer | limitTo:30}}</td>
 			<td class="viewLink"><a
 				href="#/user/questions/{{item._id}}/read"> view </a></td>
 			<td class="editLink"><a
