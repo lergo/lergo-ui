@@ -24,7 +24,7 @@
 			<button class="btn" ng-click="addStep(lesson)">Add Step</button>
 		</div>
 		<div ng-repeat="step in lesson.steps">
-			<hr />
+			<hr style="float: none"/>
 			<div style="float: right">
 				<a ng-click="moveStepUp($index)" ng-show="!$first"
 					class="btn btn-small">Up</a> <a ng-click="moveStepDown($index)"
@@ -46,11 +46,11 @@
 					</select></td>
 				</tr>
 			</table>
-			<div>
-				<button  style="float:left; margin-left: 50%" class="btn" ng-click="displayStep(step)">Display
-					Step</button>
-			</div>
 			<div ng-include="getStepViewByType(step)"></div>
+			<div>
+				<button style=" margin-left: 50%" class="btn"
+					ng-click="displayStep(step)">Display Step</button>
+			</div>
 		</div>
 
 	</form>

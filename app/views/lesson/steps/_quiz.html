@@ -1,12 +1,12 @@
 <table class="table lergo-form">
 	<tr>
-		<td style="border-top: none; align: left"><select
+		<td style="border-top: none; align: left; width: 80%"><select
 			ng-model="selectedQuestion"
 			ng-options="item._id as item.question for item in quizItems">
 		</select></td>
 		<td style="border-top: none; align: right">
 			<button class="btn"
-				ng-click="addItemToQuiz( selectedQuestion, step )">Add</button>
+				ng-click="addItemToQuiz( selectedQuestion, step )">Add Question To Quiz</button>
 		</td>
 	</tr>
 	<tr ng-repeat="item in step.quizItems">
