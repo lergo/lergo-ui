@@ -1,17 +1,22 @@
 <table class="table lergo-form">
 	<tr>
-		<td style="border-top: none; align: left; width: 80%"><select
+		<td style="border-top: none; float: left"><select
 			ng-model="selectedQuestion"
 			ng-options="item._id as item.question for item in quizItems">
 		</select></td>
-		<td style="border-top: none; align: right">
+		<td style="border-top: none; float: right">
 			<button class="btn"
-				ng-click="addItemToQuiz( selectedQuestion, step )">Add Question To Quiz</button>
+				ng-click="addItemToQuiz( selectedQuestion, step )">Add
+				Question To Quiz</button>
 		</td>
 	</tr>
 	<tr ng-repeat="item in step.quizItems">
-		<td style="border-top: none; align: left">{{getQuestion(item)}}</td>
-		<td style="border-top: none; align: right">
+		<td style="border-top: none; float: left">{{getQuestion(item)}}</td>
+		<td style="border-top: none;  float: right"><a
+			ng-click="moveQuizItemUp($index,step)" ng-show="!$first"
+			class="btn" style="margin-right: 5px">Up</a><a
+			ng-click="moveQuizItemDown($index,step)" ng-show="!$last"
+			class="btn">Down</a>
 			<button class="btn-link" ng-click="removeItemFromQuiz( item, step )">X</button>
 		</td>
 	</tr>
