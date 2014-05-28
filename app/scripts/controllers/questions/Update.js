@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log,$location) {
+angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $location) {
 
 	var saveQuestion = new ContinuousSave({
 		'saveFn' : function(value) {
@@ -34,13 +34,15 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		}
 		return '';
 	};
-	$scope.newAnswer = 'New Answer';
-	$scope.addOption = function(answer) {
+
+	$scope.addOption = function() {
 		if ($scope.quizItem.options === undefined) {
 			$scope.quizItem.options = [];
 		}
-		if ($scope.quizItem.options.indexOf(answer) < 0) {
-			$scope.quizItem.options.push(answer);
+		var newOption = 'Answer Option' + ($scope.quizItem.options.length + 1);
+		$scope.quizItem.options.push(newOption);
+		if ($scope.quizItem.type === 'exactMatch') {
+			$scope.quizItem.answer = $scope.quizItem.options;
 		}
 	};
 
@@ -50,7 +52,7 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		}
 		var checkbox = $event.target;
 		if (checkbox.checked) {
-			if (quizItem.type === 'trueFalse' || quizItem.type === 'multipleChoiceSingleAnswer') {
+			if (quizItem.type === 'trueFalse') {
 				quizItem.answer = [];
 			}
 			quizItem.answer.push(answer);
@@ -64,30 +66,20 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		}
 		return quizItem.answer.indexOf(answer) > -1;
 	};
-	$scope.generateFillInTheBlanks = function() {
-		var question = $scope.quizItem.question;
-		var res = $scope.quizItem.question;
-		var re = /\[(.*?)\]/g;
-		var answer = [];
-		for ( var m = re.exec(question); m; m = re.exec(question)) {
-			answer.push(m[1].split(","));
-		}
-		$scope.quizItem.answer = answer;
-	};
 
 	$scope.removeOption = function(option) {
 		$scope.quizItem.options.splice($scope.quizItem.options.indexOf(option), 1);
 		if ($scope.quizItem.answer !== undefined) {
 			$scope.quizItem.answer.splice($scope.quizItem.answer.indexOf(option), 1);
 		}
-	}
+	};
 
 	$scope.isSaving = function() {
 		return !!saveQuestion.getStatus().saving;
 	};
-	
-	 $scope.done = function() {
-         $location.path('/user/questions');
-     };
-     
+
+	$scope.done = function() {
+		$location.path('/user/questions');
+	};
+
 });
