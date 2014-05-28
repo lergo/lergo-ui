@@ -1,7 +1,6 @@
 <div class="base-layout">
-	<form name="QuestionForm" class="lergo-form"
-		ng-submit="submit()">
+	<form name="QuestionForm" class="lesson-step" ng-submit="submit()">
 		<div ng-include="getQuestionViewTemplate(quizItem)"></div>
-		<button type="submit">Submit</button>
+		<button class="btn" type="submit">Submit</button>
 	</form>
 </div>

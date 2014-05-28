@@ -1,23 +1,27 @@
 <div class="lesson-step-quiz">
-    <div class="lesson-step-title lergo-h1">
-        {{step.title}}
-    </div>
-    <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate(getQuizItem())"></div>
-    <div class="lesson-step-quiz-next">
-        <div ng-show="hasNextQuizItem()">
-            <button ng-click="nextQuizItem()" >Next</button>
-        </div>
-        <div ng-show="!hasNextQuizItem()">
-            <button disabled>No more questions</button>
-        </div>
-    </div>
-    <div ng-show="!!getAnswer(quizItem)">
-        <div class="bg-success" ng-show="getAnswer(quizItem).correct">You are correct!</div>
-        <div class="bg-warning" ng-show="!getAnswer(quizItem).correct">This is incorrect.</div>
-    </div>
-    <div ng-show="!getAnswer(quizItem)">
-        <div class="bg-primary">Select an answer</div>
-    </div>
+	<div class="lesson-step-title lergo-h1">{{step.title}}</div>
+	<div class="lesson-step-quiz-content">
+		<div class="lesson-step-quiz-content"
+			ng-include="getQuizItemTemplate(getQuizItem())"></div>
+		<div class="lesson-step-quiz-next">
+			<div ng-show="hasNextQuizItem()">
+				<button class="btn" ng-click="nextQuizItem()">Next >></button>
+			</div>
+			<div ng-show="!hasNextQuizItem()">
+				<button disabled>No more questions</button>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div ng-show="!!getAnswer(quizItem)">
+		<div class="bg-success" ng-show="getAnswer(quizItem).correct">You
+			are correct!</div>
+		<div class="bg-warning" ng-show="!getAnswer(quizItem).correct">This
+			is incorrect.</div>
+	</div>
+	<div ng-show="!getAnswer(quizItem)">
+		<div class="bg-primary">Select an answer</div>
+	</div>
 </div>
 
 
