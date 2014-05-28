@@ -1,15 +1,20 @@
 <div class="lesson-step-quiz">
 	<div class="lesson-step-title lergo-h1">{{step.title}}</div>
 	<div class="lesson-step-quiz-content">
-		<div class="lesson-step-quiz-content"
-			ng-include="getQuizItemTemplate(getQuizItem())"></div>
+		<div style="margin: 10px">
+			<br>
+			<p class="lergo-h4">{{quizItem.question}}</p>
+			<p style="color: grey; font-family: cursive">{{quizItem.helpText}}</p>
+			<div ng-include="getQuizItemTemplate(getQuizItem())"></div>
+		</div>
 		<div class="lesson-step-quiz-next">
-			<div ng-show="hasNextQuizItem()">
-				<button class="btn" ng-click="nextQuizItem()">Next >></button>
-			</div>
-			<div ng-show="!hasNextQuizItem()">
-				<button disabled>No more questions</button>
-			</div>
+			<button type="submit" class="btn"
+				ng-show="quizItem.type==='exactMatch' || quizItem.type==='openQuestion'"
+				ng-click="checkAnswer()">Submit</button>
+			<button ng-show="hasNextQuizItem()" class="btn"
+				ng-click="nextQuizItem()">Next >></button>
+			<button ng-show="!hasNextQuizItem()" class="btn" disabled>No
+				more questions</button>
 		</div>
 	</div>
 	<br>
