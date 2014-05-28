@@ -1,0 +1,26 @@
+<!-- To init option array by single element if its empty  -->
+{{ (quizItem.options===undefined) && addOption() || ""}}
+<table class="table lergo-form">
+	<thead>
+		<tr style="font-weight: bold">
+			<th>Required Answer</th>
+			<th style="width: 10%">Select</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-top: none; vertical-align: middle;">Short
+				Answer (A few words)</td>
+			<td style="border-top: none; vertical-align: middle;"><input
+				type="checkbox" ng-checked="quizItem.options[0]===0"
+				ng-click="quizItem.options[0]=0" /></td>
+		</tr>
+		<tr>
+			<td style="border-top: none; vertical-align: middle;">Long
+				Answer (paragraph)</td>
+			<td style="border-top: none; vertical-align: middle;"><input
+				type="checkbox" ng-checked="quizItem.options[0]===1"
+				ng-click="quizItem.options[0]=1" /></td>
+		</tr>
+	</tbody>
+</table>

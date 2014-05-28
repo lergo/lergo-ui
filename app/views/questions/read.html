@@ -1,6 +1,12 @@
 <div class="base-layout">
-	<form name="QuestionForm" class="lesson-step" ng-submit="submit()">
-		<div ng-include="getQuestionViewTemplate(quizItem)"></div>
-		<button class="btn" type="submit">Submit</button>
+	<form name="QuestionForm" class="lesson-step" ng-submit="checkAnswer()">
+		<div style="margin: 0 10px">
+			<br>
+			<p class="lergo-h4">{{quizItem.question}}</p>
+			<p style="color: grey; font-family: cursive">{{quizItem.helpText}}</p>
+			<div ng-include="getQuestionViewTemplate(quizItem)"></div>
+		</div>
+		<button class="btn" ng-hide="quizItem.type==='multipleChoices'"
+			type="submit">Submit</button>
 	</form>
 </div>
