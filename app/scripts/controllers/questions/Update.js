@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log,$location) {
+angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $location) {
 
 	var saveQuestion = new ContinuousSave({
 		'saveFn' : function(value) {
@@ -42,6 +42,7 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		if ($scope.quizItem.options.indexOf(answer) < 0) {
 			$scope.quizItem.options.push(answer);
 		}
+
 	};
 	$scope.addOption = function() {
 		if ($scope.quizItem.options === undefined) {
@@ -49,6 +50,9 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		}
 		var newOption = 'Answer Option' + ($scope.quizItem.options.length + 1);
 		$scope.quizItem.options.push(newOption);
+		if ($scope.quizItem.type === 'exactMatch') {
+			$scope.quizItem.answer = $scope.quizItem.options;
+		}
 	};
 	$scope.updateAnswer = function($event, answer, quizItem) {
 		if (quizItem.answer === undefined) {
@@ -91,9 +95,9 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 	$scope.isSaving = function() {
 		return !!saveQuestion.getStatus().saving;
 	};
-	
-	 $scope.done = function() {
-         $location.path('/user/questions');
-     };
-     
+
+	$scope.done = function() {
+		$location.path('/user/questions');
+	};
+
 });

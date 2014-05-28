@@ -39,7 +39,7 @@ angular.module('lergoApp')
             return LergoClient.questions.getTypeById($scope.questions[id].type).viewTemplate;
         };
 
-        function checkAnswer(){
+       $scope.checkAnswer= function(){
             var quizItem = $scope.quizItem;
             LergoClient.questions.checkAnswer( quizItem).then(function( result ){
                 $scope.answers[quizItem._id] = result.data;
@@ -52,7 +52,7 @@ angular.module('lergoApp')
         $scope.updateAnswer = function( event, answer, quizItem ){
             $log.info('updating answer', arguments );
             quizItem.userAnswer = answer;
-            checkAnswer();
+            $scope.checkAnswer();
         };
 
         $scope.getQuizItem = function(){

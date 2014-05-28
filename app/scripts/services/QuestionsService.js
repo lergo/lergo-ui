@@ -54,20 +54,17 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'viewTemplate' : 'views/questions/view/_trueFalse.html',
 		'alias' : []
 	},
-	//TODO: remove this and its corresponding template when no longer in use
-	/*{
-		'id' : 'multipleChoiceSingleAnswer',
-		'label' : 'Multiple Choices Single Answer',
-		'updateTemplate' : 'views/questions/update/_multiChoiceSingleAnswer.html',
-		'viewTemplate' : 'views/questions/view/_multiChoiceSingleAnswer.html',
-		'alias' : []
-	}, {
-		'id' : 'multipleChoicesMultipleAnswers',
-		'label' : 'Multiple Choices Multiple Answers',
-		'updateTemplate' : 'views/questions/update/_multiChoiceMultipleAnswers.html',
-		'viewTemplate' : 'views/questions/view/_multiChoiceMultipleAnswers.html',
-		'alias' : []
-	},*/{
+	// TODO: remove this and its corresponding template when no longer in use
+	/*
+	 * { 'id' : 'multipleChoiceSingleAnswer', 'label' : 'Multiple Choices Single
+	 * Answer', 'updateTemplate' :
+	 * 'views/questions/update/_multiChoiceSingleAnswer.html', 'viewTemplate' :
+	 * 'views/questions/view/_multiChoiceSingleAnswer.html', 'alias' : [] }, {
+	 * 'id' : 'multipleChoicesMultipleAnswers', 'label' : 'Multiple Choices
+	 * Multiple Answers', 'updateTemplate' :
+	 * 'views/questions/update/_multiChoiceMultipleAnswers.html', 'viewTemplate' :
+	 * 'views/questions/view/_multiChoiceMultipleAnswers.html', 'alias' : [] },
+	 */{
 		'id' : 'exactMatch',
 		'label' : 'Exact Match',
 		'updateTemplate' : 'views/questions/update/_exactMatch.html',
@@ -84,6 +81,12 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'Multiple Choice',
 		'updateTemplate' : 'views/questions/update/_multipleChoices.html',
 		'viewTemplate' : 'views/questions/view/_multipleChoices.html',
+		'alias' : []
+	}, {
+		'id' : 'openQuestion',
+		'label' : 'Open Question',
+		'updateTemplate' : 'views/questions/update/_openQuestion.html',
+		'viewTemplate' : 'views/questions/view/_openQuestion.html',
 		'alias' : []
 	}
 

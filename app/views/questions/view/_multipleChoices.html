@@ -1,19 +1,13 @@
 <div class="question-multi-choice">
-	<div style="margin: 0 10px">
-		<br>
-		<p class="lergo-h4">{{quizItem.question}}</p>
-		<p style="color: grey; font-family: cursive">Please choose the
-			best answer from below</p>
-		<table class="table">
-			<tbody>
-				<tr ng-repeat="option in quizItem.options">
-					<td style="border-top: none; width: 5%"><input type="checkbox"
-						ng-true-value="option" ng-false-value=""
-						ng-click="$parent.updateAnswer($event,option,quizItem)" /></td>
-					<td style="border-top: none; vertical-align: middle">{{option}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+	<table class="table">
+		<tbody>
+			<tr ng-repeat="option in quizItem.options">
+				<td style="border-top: none; width: 5%"><input type="checkbox"
+					ng-true-value="option" ng-false-value=""
+					ng-click="$parent.updateAnswer($event,option,quizItem)" /></td>
+				<td style="border-top: none; vertical-align: middle">{{option}}</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
