@@ -1,5 +1,5 @@
 <!-- To init option array by single element if its empty  -->
-{{ (quizItem.options===undefined) && addOption() }}
+{{ (quizItem.options===undefined) && addOption() || ""}}
 <table class="table lergo-form">
 	<thead>
 		<tr style="font-weight: bold">

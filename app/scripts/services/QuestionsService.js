@@ -53,7 +53,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'updateTemplate' : 'views/questions/update/_trueFalse.html',
 		'viewTemplate' : 'views/questions/view/_trueFalse.html',
 		'alias' : []
-	}, {
+	}, 
+	//TODO: remove this and its corresponding template when no longer in use
+	/*{
 		'id' : 'multipleChoiceSingleAnswer',
 		'label' : 'Multiple Choices Single Answer',
 		'updateTemplate' : 'views/questions/update/_multiChoiceSingleAnswer.html',
@@ -65,7 +67,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'updateTemplate' : 'views/questions/update/_multiChoiceMultipleAnswers.html',
 		'viewTemplate' : 'views/questions/view/_multiChoiceMultipleAnswers.html',
 		'alias' : []
-	}, {
+	},*/ {
 		'id' : 'exactMatch',
 		'label' : 'Exact Match',
 		'updateTemplate' : 'views/questions/update/_exactMatch.html',

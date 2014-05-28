@@ -1,23 +1,19 @@
-multiple choices
+<div class="question-multi-choice">
+	<div style="margin: 0 10px">
+		<br>
+		<p class="lergo-h4">{{quizItem.question}}</p>
+		<p style="color: grey; font-family: cursive">Please choose the
+			best answer from below</p>
+		<table class="table">
+			<tbody>
+				<tr ng-repeat="option in quizItem.options">
+					<td style="border-top: none; width: 5%"><input type="checkbox"
+						ng-true-value="option" ng-false-value=""
+						ng-click="$parent.updateAnswer($event,option,quizItem)" /></td>
+					<td style="border-top: none; vertical-align: middle">{{option}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 
-<div class="top-actions right">
-    <i class="fa fa-times lergo-icon" ng-click="selected.showPreview=false"></i>
-    <i class="fa  lergo-icon" ng-click="selected.showPreview=false">&nbsp</i>
-</div>
-<div class="question-preview question multiple-choices">
-    <div class="title">{{selected.question.question}}</div>
-    <div class="body">
-        <div class="options left correct-answer">
-            <div ng-repeat="option in selected.question.options">
-                <div class="option"
-                     ng-class="{'active':!!option.correct}"
-                     ng-click="markOptionAsCorrect(selected.question, option)">
-                    <i class="fa fa-check"></i>
-                </div><span>{{option.answer}}</span>
-            </div>
-        </div>
-        <div class="media right">
-            <img ng-src="{{selected.question.mediaSource}}"/>
-        </div>
-    </div>
-</div>
