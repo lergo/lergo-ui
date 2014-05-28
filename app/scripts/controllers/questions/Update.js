@@ -43,7 +43,13 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 			$scope.quizItem.options.push(answer);
 		}
 	};
-
+	$scope.addOption = function() {
+		if ($scope.quizItem.options === undefined) {
+			$scope.quizItem.options = [];
+		}
+		var newOption = 'Answer Option' + ($scope.quizItem.options.length + 1);
+		$scope.quizItem.options.push(newOption);
+	};
 	$scope.updateAnswer = function($event, answer, quizItem) {
 		if (quizItem.answer === undefined) {
 			quizItem.answer = [];

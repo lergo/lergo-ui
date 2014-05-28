@@ -32,10 +32,10 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		return $http.get('/backend/user/questions/' + question._id + '/usages');
 	};
 
-    this.checkAnswer = function( question ){
-        return $http.post('/backend/questions/checkAnswer', question );
+	this.checkAnswer = function(question) {
+		return $http.post('/backend/questions/checkAnswer', question);
 
-    };
+	};
 
 	this.submitAnswers = function(answers) {
 		return $http({
@@ -76,6 +76,12 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'Fill In The Blanks',
 		'updateTemplate' : 'views/questions/update//_fillInTheBlanks.html',
 		'viewTemplate' : 'views/questions/view/_fillInTheBlanks.html',
+		'alias' : []
+	}, {
+		'id' : 'multipleChoices',
+		'label' : 'Multiple Choice',
+		'updateTemplate' : 'views/questions/update/_multipleChoices.html',
+		'viewTemplate' : 'views/questions/view/_multipleChoices.html',
 		'alias' : []
 	}
 
