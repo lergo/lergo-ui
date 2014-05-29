@@ -6,7 +6,6 @@
 			<p style="color: grey; font-family: cursive">{{quizItem.helpText}}</p>
 			<div ng-include="getQuestionViewTemplate(quizItem)"></div>
 		</div>
-		<button class="btn" ng-hide="quizItem.type==='multipleChoices'"
-			type="submit">Submit</button>
+		<button class="btn" type="submit">Submit</button>
 	</form>
 </div>

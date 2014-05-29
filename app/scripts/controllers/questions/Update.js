@@ -51,9 +51,6 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		}
 		var checkbox = $event.target;
 		if (checkbox.checked) {
-			if (quizItem.type === 'trueFalse') {
-				quizItem.answer = [];
-			}
 			quizItem.answer.push(answer);
 		} else {
 			quizItem.answer.splice(quizItem.answer.indexOf(answer), 1);
@@ -65,7 +62,6 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 		}
 		return quizItem.answer.indexOf(answer) > -1;
 	};
-
 
 	$scope.removeOption = function(option) {
 		$scope.quizItem.options.splice($scope.quizItem.options.indexOf(option), 1);
