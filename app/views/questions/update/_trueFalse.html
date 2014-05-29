@@ -1,4 +1,4 @@
-<table class="table lergo-form" >
+<table class="table lergo-form">
 	<thead>
 		<tr>
 			<th>Possible Answers</th>
@@ -9,8 +9,8 @@
 		<tr ng-repeat="option in ['True','False'] ">
 			<td class="optionValue">{{option}}</td>
 			<td><input type="checkbox" ng-true-value="option"
-				ng-false-value="" ng-checked="isCorrectAnswer(option,quizItem)"
-				ng-click="$parent.updateAnswer($event,option,quizItem)" /></td>
+				ng-false-value="" ng-checked="quizItem.answer===option"
+				ng-click="quizItem.answer = option" /></td>
 		</tr>
 	</tbody>
 </table>

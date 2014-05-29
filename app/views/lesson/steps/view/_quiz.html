@@ -1,4 +1,4 @@
-<div class="lesson-step-quiz" >
+<div class="lesson-step-quiz">
 	<div class="lesson-step-title lergo-h1">{{step.title}}</div>
 	<div class="lesson-step-quiz-content">
 		<div style="margin: 10px">
@@ -8,13 +8,12 @@
 			<div ng-include="getQuizItemTemplate(getQuizItem())"></div>
 		</div>
 		<div class="lesson-step-quiz-next">
-			<button type="submit" class="btn"
-				ng-show="quizItem.type==='exactMatch' || quizItem.type==='openQuestion'"
+			<button ng-show=" !getAnswer(quizItem)" type="submit" class="btn"
 				ng-click="checkAnswer()">Submit</button>
-			<button ng-show="hasNextQuizItem()" class="btn"
-				ng-click="nextQuizItem()">Next >></button>
-			<button ng-show="!hasNextQuizItem()" class="btn" disabled>No
-				more questions</button>
+			<button ng-show="hasNextQuizItem() && getAnswer(quizItem)"
+				class="btn" ng-click="nextQuizItem()">Next >></button>
+			<button ng-show="!hasNextQuizItem() && getAnswer(quizItem)"
+				class="btn" disabled>No more questions</button>
 		</div>
 	</div>
 	<br>
