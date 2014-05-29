@@ -37,44 +37,17 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 
 	};
 
-	this.submitAnswers = function(answers) {
-		return $http({
-			'url' : '/backend/questions/submitAnswers',
-			'method' : 'GET',
-			params : {
-				'answers' : answers
-			}
-		});
-	};
-
 	this.questionsType = [ {
 		'id' : 'trueFalse',
 		'label' : 'True or False',
 		'updateTemplate' : 'views/questions/update/_trueFalse.html',
 		'viewTemplate' : 'views/questions/view/_trueFalse.html',
 		'alias' : []
-	},
-	// TODO: remove this and its corresponding template when no longer in use
-	/*
-	 * { 'id' : 'multipleChoiceSingleAnswer', 'label' : 'Multiple Choices Single
-	 * Answer', 'updateTemplate' :
-	 * 'views/questions/update/_multiChoiceSingleAnswer.html', 'viewTemplate' :
-	 * 'views/questions/view/_multiChoiceSingleAnswer.html', 'alias' : [] }, {
-	 * 'id' : 'multipleChoicesMultipleAnswers', 'label' : 'Multiple Choices
-	 * Multiple Answers', 'updateTemplate' :
-	 * 'views/questions/update/_multiChoiceMultipleAnswers.html', 'viewTemplate' :
-	 * 'views/questions/view/_multiChoiceMultipleAnswers.html', 'alias' : [] },
-	 */{
+	},{
 		'id' : 'exactMatch',
 		'label' : 'Exact Match',
 		'updateTemplate' : 'views/questions/update/_exactMatch.html',
 		'viewTemplate' : 'views/questions/view/_exactMatch.html',
-		'alias' : []
-	}, {
-		'id' : 'fillInTheBlanks',
-		'label' : 'Fill In The Blanks',
-		'updateTemplate' : 'views/questions/update//_fillInTheBlanks.html',
-		'viewTemplate' : 'views/questions/view/_fillInTheBlanks.html',
 		'alias' : []
 	}, {
 		'id' : 'multipleChoices',
@@ -88,9 +61,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'updateTemplate' : 'views/questions/update/_openQuestion.html',
 		'viewTemplate' : 'views/questions/view/_openQuestion.html',
 		'alias' : []
-	}
-
-	];
+	}];
 
 	this.getTypeById = function(typeId) {
 		for ( var i = 0; i < this.questionsType.length; i++) {
