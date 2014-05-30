@@ -13,6 +13,8 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl', function($scope, Qu
 	var questionId = $routeParams.questionId;
 
 	$scope.types = QuestionsService.questionsType;
+	$scope.subjects = QuestionsService.subjects;
+	$scope.languages = QuestionsService.languages;
 
 	QuestionsService.getUserQuestionById(questionId).then(function(result) {
 		$scope.quizItem = result.data;

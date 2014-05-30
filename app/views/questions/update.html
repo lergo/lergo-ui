@@ -1,33 +1,32 @@
 <div class="base-layout" id="questions-update">
-	<div>
-		<table class=" table lergo-form">
-			<tbody>
-				<tr>
-					<td style="border-top: none; align: right; width: 15%">Question
-						:</td>
-					<td style="border-top: none; align: left"><input
-						class="lergo-input" ng-model="quizItem.question" /></td>
-				</tr>
-				<tr>
-					<td style="border-top: none; align: right">Help Text :</td>
-					<td style="border-top: none; align: left"><input
-						class="lergo-input" ng-model="quizItem.helpText" /></td>
-				</tr>
-				<tr>
-					<td style="border-top: none; align: right">Question Type :</td>
-					<td style="border-top: none; align: left"><select
-						ng-model="quizItem.type"
-						ng-options="t.id as t.label for t in types"></select></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
-	<div>{{isSaving() && "Saving..." || "Saved" }}</div>
-	<div>
-		<button class="btn" ng-click="done()"
-			ng-disabled="isSaving()||!quizItem.question">Done</button>
-		<a class="btn" ng-disabled="!quizItem.question" href="#/user/questions/{{quizItem._id}}/read">
-			Preview </a>
-	</div>
+   <div>
+      <table class="lergo-table lergo-form">
+         <tbody>
+            <tr>
+               <td>Question :</td>
+               <td colspan="7"><input ng-model="quizItem.question" /></td>
+            </tr>
+            <tr>
+               <td>Help Text :</td>
+               <td colspan="7"><input ng-model="quizItem.helpText" /></td>
+            </tr>
+            <tr>
+               <td>Question Type :</td>
+               <td><select ng-model="quizItem.type" ng-options="t.id as t.label for t in types"></select></td>
+               <td>Language :</td>
+               <td><select ng-model="quizItem.language" ng-options="l.id as l.label for l in languages"></select></td>
+               <td>Subject :</td>
+               <td><select ng-model="quizItem.subject" ng-options="s.id as s.label for s in subjects"></select></td>
+               <td>Age :</td>
+               <td><input type="number" min="4" max="18" step="1" ng-model="quizItem.age" /></td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
+   <div>{{isSaving() && "Saving..." || "Saved" }}</div>
+   <div>
+      <button class="btn" ng-click="done()" ng-disabled="isSaving()||!quizItem.question">Done</button>
+      <a class="btn" ng-disabled="!quizItem.question" href="#/user/questions/{{quizItem._id}}/read"> Preview </a>
+   </div>
 </div>

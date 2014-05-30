@@ -23,7 +23,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 	$scope.checkAnswer = function() {
 		var quizItem = $scope.quizItem;
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
-			$scope.answers[quizItem._id] = result.data;
+			$scope.answer = result.data;
 		}, function() {
 			$log.error('there was an error checking answer');
 				});
