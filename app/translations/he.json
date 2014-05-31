@@ -143,6 +143,9 @@
         "requiredAnswer": "מבנה התשובה הנדרש",
         "select": "בחירה",
         "shortAnswer": "תשובה קצרה (מספר מילים)",
-        "longAnswer": "תשובה ארוכה (פסקה)"
+        "longAnswer": "תשובה ארוכה (פסקה)",
+        "correctAnswerFilled": "תשובה נכונה!",
+        "incorrectAnswerFilled": "תשובה שגויה",
+        "thankYou": "תודה לך על תשובתך"
     }
 }

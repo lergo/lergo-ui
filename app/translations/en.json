@@ -132,7 +132,10 @@
         "requiredAnswer": "Required Answer Format",
         "select": "Select",
         "shortAnswer": "Short Answer (a few words)",
-        "longAnswer": "Long Answer (a paragraph)"
+        "longAnswer": "Long Answer (a paragraph)",
+        "correctAnswerFilled": "You are correct!",
+        "incorrectAnswerFilled": "This is incorrect",
+        "thankYou": "Thank you for your answer"
     }
 
 }
