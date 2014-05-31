@@ -1,11 +1,11 @@
 {
     "languages":{"he":"עברית","en":"אנגלית", "ru":"רוסית"},
     "featured" : "קיימים",
-    "popular" : "פופולרים",
+    "popular" : "פופולריים",
     "new" : "חדשים",
     "loginPage" : {
         "username"  : "שם משתמש",
-        "password" : "סיסמא",
+        "password" : "סיסמה",
         "login" : "כניסה",
         "signup" : "הרשמה"
     },
@@ -26,15 +26,15 @@
     "input" : {
         "email" : "אימייל",
         "username" : "שם משתמש",
-        "password" : "סיסמא",
-        "confirmPassword" : "אישור סיסמא",
+        "password" : "סיסמה",
+        "confirmPassword" : "אישור סיסמה",
         "fullName" : "שם מלא"
     },
     "button" : {
         "submit" : "שלח",
         "login" : "הכנס",
         "signup" : "הצטרף",
-        "forgotPassword" : "שכחתי סיסמא",
+        "forgotPassword" : "שכחתי סיסמה",
         "resendValidationEmail" : "שלח אימייל אימות שוב"
 
 
@@ -46,8 +46,8 @@
 
     },
     "changePassword" : {
-        "success" : "הסיסמא שונתה בהצלחה",
-        "error" : "הייתה בעיה בשינוי הסיסמא"
+        "success" : "הסיסמה שונתה בהצלחה",
+        "error" : "הייתה בעיה בשינוי הסיסמה"
     },
     "translation" : {
         "comparingTitle" : "משווה אנגלית עם",
