@@ -1,7 +1,23 @@
 <div class="base-layout">
-	<form name="QuestionForm" class="lergo-form"
-		ng-submit="submit()">
-		<div ng-include="getQuestionViewTemplate(quizItem)"></div>
-		<button type="submit">Submit</button>
+	<form name="QuestionForm" class="question-display"
+		ng-submit="checkAnswer()">
+		<div class="question-content">
+			<div style="margin: 0 10px">
+				<br>
+				<p class="lergo-h4">{{quizItem.question}}</p>
+				<p class="question-help-text">{{quizItem.helpText}}</p>
+				<div ng-include="getQuestionViewTemplate(quizItem)"></div>
+			</div>
+			<div class="question-submit">
+				<button class="btn" type="submit">Submit</button>
+			</div>
+		</div>
+		<div ng-show="!!answer">
+			<div class="bg-success" ng-show="answer.correct">{{(quizItem.type
+				=== 'openQuestion')&& "Thank you for your answer" || "You are
+				correct!"}}</div>
+			<div class="bg-warning" ng-show="!answer.correct">This is
+				incorrect.</div>
+		</div>
 	</form>
 </div>

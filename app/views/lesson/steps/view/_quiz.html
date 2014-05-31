@@ -1,23 +1,32 @@
 <div class="lesson-step-quiz">
-    <div class="lesson-step-title lergo-h1">
-        {{step.title}}
-    </div>
-    <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate(getQuizItem())"></div>
-    <div class="lesson-step-quiz-next">
-        <div ng-show="hasNextQuizItem()">
-            <button ng-click="nextQuizItem()" >Next</button>
-        </div>
-        <div ng-show="!hasNextQuizItem()">
-            <button disabled>No more questions</button>
-        </div>
-    </div>
-    <div ng-show="!!getAnswer(quizItem)">
-        <div class="bg-success" ng-show="getAnswer(quizItem).correct">You are correct!</div>
-        <div class="bg-warning" ng-show="!getAnswer(quizItem).correct">This is incorrect.</div>
-    </div>
-    <div ng-show="!getAnswer(quizItem)">
-        <div class="bg-primary">Select an answer</div>
-    </div>
+	<div class="lesson-step-title lergo-h1">{{step.title}}</div>
+	<div class="lesson-step-quiz-content">
+		<div style="margin: 10px">
+			<br>
+			<p class="lergo-h4">{{quizItem.question}}</p>
+			<p class="question-help-text">{{quizItem.helpText}}</p>
+			<div ng-include="getQuizItemTemplate(getQuizItem())"></div>
+		</div>
+		<div class="lesson-step-quiz-next">
+			<button ng-show=" !getAnswer(quizItem)" type="submit" class="btn"
+				ng-click="checkAnswer()">Submit</button>
+			<button ng-show="hasNextQuizItem() && getAnswer(quizItem)"
+				class="btn" ng-click="nextQuizItem()">Next >></button>
+			<button ng-show="!hasNextQuizItem() && getAnswer(quizItem)"
+				class="btn" disabled>No more questions</button>
+		</div>
+	</div>
+	<br>
+	<div ng-show="!!getAnswer(quizItem)">
+		<div class="bg-success" ng-show="getAnswer(quizItem).correct">{{(quizItem.type
+			=== 'openQuestion')&& "Thank you for your answer" || "You are
+			correct!"}}</div>
+		<div class="bg-warning" ng-show="!getAnswer(quizItem).correct">This
+			is incorrect.</div>
+	</div>
+	<div ng-show="!getAnswer(quizItem)">
+		<div class="bg-primary">Select an answer</div>
+	</div>
 </div>
 
 

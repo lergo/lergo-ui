@@ -32,19 +32,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		return $http.get('/backend/user/questions/' + question._id + '/usages');
 	};
 
-    this.checkAnswer = function( question ){
-        return $http.post('/backend/questions/checkAnswer', question );
+	this.checkAnswer = function(question) {
+		return $http.post('/backend/questions/checkAnswer', question);
 
-    };
-
-	this.submitAnswers = function(answers) {
-		return $http({
-			'url' : '/backend/questions/submitAnswers',
-			'method' : 'GET',
-			params : {
-				'answers' : answers
-			}
-		});
 	};
 
 	this.questionsType = [ {
@@ -54,32 +44,63 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'viewTemplate' : 'views/questions/view/_trueFalse.html',
 		'alias' : []
 	}, {
-		'id' : 'multipleChoiceSingleAnswer',
-		'label' : 'Multiple Choices Single Answer',
-		'updateTemplate' : 'views/questions/update/_multiChoiceSingleAnswer.html',
-		'viewTemplate' : 'views/questions/view/_multiChoiceSingleAnswer.html',
-		'alias' : []
-	}, {
-		'id' : 'multipleChoicesMultipleAnswers',
-		'label' : 'Multiple Choices Multiple Answers',
-		'updateTemplate' : 'views/questions/update/_multiChoiceMultipleAnswers.html',
-		'viewTemplate' : 'views/questions/view/_multiChoiceMultipleAnswers.html',
-		'alias' : []
-	}, {
 		'id' : 'exactMatch',
 		'label' : 'Exact Match',
 		'updateTemplate' : 'views/questions/update/_exactMatch.html',
 		'viewTemplate' : 'views/questions/view/_exactMatch.html',
 		'alias' : []
 	}, {
-		'id' : 'fillInTheBlanks',
-		'label' : 'Fill In The Blanks',
-		'updateTemplate' : 'views/questions/update//_fillInTheBlanks.html',
-		'viewTemplate' : 'views/questions/view/_fillInTheBlanks.html',
+		'id' : 'multipleChoices',
+		'label' : 'Multiple Choice',
+		'updateTemplate' : 'views/questions/update/_multipleChoices.html',
+		'viewTemplate' : 'views/questions/view/_multipleChoices.html',
 		'alias' : []
-	}
+	}, {
+		'id' : 'openQuestion',
+		'label' : 'Open Question',
+		'updateTemplate' : 'views/questions/update/_openQuestion.html',
+		'viewTemplate' : 'views/questions/view/_openQuestion.html',
+		'alias' : []
+	} ];
 
-	];
+	this.languages = [ {
+		'id' : 'english',
+		'label' : 'English'
+	}, {
+		'id' : 'hebrew',
+		'label' : 'Hebrew'
+	}, {
+		'id' : 'arabic',
+		'label' : 'Arabic'
+	}, {
+		'id' : 'russian',
+		'label' : 'Russian'
+	}, {
+		'id' : 'other',
+		'label' : 'Other'
+	} ];
+	this.subjects = [ {
+		'id' : 'english',
+		'label' : 'English'
+	}, {
+		'id' : 'math',
+		'label' : 'Math'
+	}, {
+		'id' : 'science',
+		'label' : 'Science'
+	}, {
+		'id' : 'grammar',
+		'label' : 'Grammar'
+	}, {
+		'id' : 'spelling',
+		'label' : 'Spelling'
+	}, {
+		'id' : 'Biology',
+		'label' : 'biology'
+	}, {
+		'id' : 'Other',
+		'label' : 'other'
+	} ];
 
 	this.getTypeById = function(typeId) {
 		for ( var i = 0; i < this.questionsType.length; i++) {

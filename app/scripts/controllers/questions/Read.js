@@ -1,11 +1,8 @@
 'use strict';
 
-angular.module('lergoApp').controller(
-		'QuestionsReadCtrl',
-		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile) {
+angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile,LergoClient) {
 
 			var questionId = $routeParams.questionId;
-			$scope.types = QuestionsService.questionsType;
 
 			QuestionsService.getUserQuestionById(questionId).then(function(result) {
 				$scope.quizItem = result.data;
@@ -23,51 +20,31 @@ angular.module('lergoApp').controller(
 				}
 				return '';
 			};
-			$scope.correctAnswers = {};
-			$scope.submit = function() {
-				QuestionsService.submitAnswers($scope.correctAnswers).then(function(result) {
-					$scope.result = result.data;
-					$scope.errorMessage = null;
-				}, function(result) {
-					$scope.error = result.data;
-					$scope.errorMessage = 'Error in submitting questions : ' + result.data.message;
-					$log.error($scope.errorMessage);
+	$scope.checkAnswer = function() {
+		var quizItem = $scope.quizItem;
+		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
+			$scope.answer = result.data;
+		}, function() {
+			$log.error('there was an error checking answer');
 				});
 
 			};
 
-			$scope.updateAnswer = function($event, answer, quizItem) {
+	$scope.updateAnswer = function(event, answer, quizItem) {
+		$log.info('updating answer', arguments);
+		if (quizItem.type === 'multipleChoices') {
+			if (quizItem.userAnswer === undefined) {
+				quizItem.userAnswer = [];
+			}
 				var checkbox = $event.target;
-				var correctAnswer = $scope.correctAnswers[quizItem._id];
-				if (correctAnswer === undefined) {
-					correctAnswer = [];
-					$scope.correctAnswers[quizItem._id] = correctAnswer;
-				}
-				if (QuestionsService.getTypeById(quizItem.type).id === 'multipleChoicesMultipleAnswers') {
 					if (checkbox.checked) {
-						correctAnswer.push(answer);
+				quizItem.userAnswer.push(answer);
 					} else {
-						correctAnswer.splice(correctAnswer.indexOf(answer), 1);
+				quizItem.userAnswer.splice(quizItem.answer.indexOf(answer), 1);
 					}
-				} else if (QuestionsService.getTypeById(quizItem.type).id === 'multipleChoiceSingleAnswer'
-						|| QuestionsService.getTypeById(quizItem.type).id === 'trueFalse'
-						|| QuestionsService.getTypeById(quizItem.type).id === 'exactMatch') {
-					correctAnswer.splice(0, correctAnswer.length);
-					correctAnswer.push(answer);
+		} else {
+			quizItem.userAnswer = answer;
 				}
-
-			};
-
-			$scope.fillInTheBlanks = function(quizItem) {
-				var question = quizItem.question;
-				var res = quizItem.question;
-				$scope.correctAnswers[quizItem._id] = [];
-				var re = /\[(.*?)\]/g;
-				var i = 0;
-				for ( var m = re.exec(question); m; m = re.exec(question)) {
-					res = res.replace('[' + m[1] + ']', '<input ng-model= correctAnswers[quizItem._id][' + i + '] />');
-					i = i + 1;
-				}
-				return '<div>' + res + '<\div>';
+		$scope.checkAnswer();
 			};
 		});

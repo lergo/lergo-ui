@@ -17,7 +17,6 @@
 
 
 .lesson-step-quiz{
-
   .lesson-step-quiz-next{
     text-align:center;
     padding: 20px 0;
@@ -41,6 +40,7 @@
     padding:10px 0;
   }
   .lesson-step-quiz-content, .lesson-step-quiz-next{
+  background-color: gainsboro;
     width:400px;
     margin:0 auto;
   }
@@ -51,7 +51,6 @@
 
   .done-step {
     padding-top: 100px;
-    display: none !important;
     .message {
       float: right;
       margin-top: 200px;
@@ -113,7 +112,6 @@
       }
     }
   }
-
   .next-step{
     padding:30px;
     text-align:center;

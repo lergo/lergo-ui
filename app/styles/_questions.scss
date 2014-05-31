@@ -48,12 +48,31 @@
 #questionsIndex{
   table{
     .question{
-      width:100%;
+      width:70%;
+    }
+    .answer{
+      width:30%;
     }
   }
 }
 
+.question-display {
+	.question-submit{
+    text-align:center;
+    padding: 20px 0;
+  }
+  .question-content, .question-submit{
+  background-color: gainsboro;
+    width:400px;
+    margin:0 auto;
+  }
 
+}
+
+.question-help-text{
+	color: grey; 
+	font-family: cursive;
+}
 
 #questions-update{
   .multipleChoiceSingleAnswer {
@@ -62,4 +81,6 @@
     };
 
   }
+  
+  
 }
