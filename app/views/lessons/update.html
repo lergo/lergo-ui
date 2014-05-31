@@ -11,45 +11,44 @@
 			</div>
 		</div>
 		<div class="form-section">
-			<div class="lergo-label">Lesson Description</div>
+			<div class="lergo-label">{{ 'lessons.description' | i18n }}</div>
 			<div class="lergo-input">
 				<textarea ng-model="lesson.description"></textarea>
 			</div>
 		</div>
-		<div style="margin-top: 5px; margin-bottom: 5px">{{isSaving() &&
-			"Saving..." || "Saved" }}</div>
+		<div style="margin-top: 5px; margin-bottom: 5px">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
 		<div>
 			<button class="btn" ng-click="done()" ng-disabled="isSaving()">
 				Done</button>
-			<button class="btn" ng-click="addStep(lesson)">Add Step</button>
+			<button class="btn" ng-click="addStep(lesson)">{{ 'steps.add' | i18n }}</button>
 		</div>
 		<div ng-repeat="step in lesson.steps">
 			<hr style="float: none"/>
 			<div style="float: right">
 				<a ng-click="moveStepUp($index)" ng-show="!$first"
-					class="btn btn-small">Up</a> <a ng-click="moveStepDown($index)"
-					ng-show="!$last" class="btn btn-small">Down</a> <a
-					ng-click="deleteStep(step)" class="btn-link">X</a>
+					class="btn btn-small">{{ 'up' | i18n }}</a>
+                <a ng-click="moveStepDown($index)"
+					ng-show="!$last" class="btn btn-small">{{ 'down' | i18n }}</a>
+                <a ng-click="deleteStep(step)" class="btn-link">X</a>
 			</div>
 			<table class="table lergo-form">
 				<tr>
-					<td style="border-top: none; align: left; width: 10%">Step
-						Title:</td>
+					<td style="border-top: none; align: left; width: 10%">{{ 'steps.title' | i18n }}</td>
 					<td style="border-top: none; align: right"><input
 						ng-model="step.title" /></td>
 				</tr>
 				<tr>
-					<td style="border-top: none; align: left">Step Type:</td>
+					<td style="border-top: none; align: left">{{ 'steps.type' | i18n }}</td>
 					<td style="border-top: none; align: left"><select
 						ng-model="step.type"
-						ng-options="t.id as t.label for t in stepTypes">
+						ng-options="t.id as ('steps.' + t.id | i18n) for t in stepTypes">
 					</select></td>
 				</tr>
 			</table>
 			<div ng-include="getStepViewByType(step)"></div>
 			<div>
 				<button style=" margin-left: 50%" class="btn"
-					ng-click="displayStep(step)">Display Step</button>
+					ng-click="displayStep(step)">{{ 'steps.display' | i18n }}</button>
 			</div>
 		</div>
 

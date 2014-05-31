@@ -11,6 +11,8 @@
     "saved": "Saved",
     "done": "Done",
     "preview": "Preview",
+    "up": "Up",
+    "down": "Down",
     "baseLayout" : {
         "header" : {
             "searchPlaceholder" : "What would you like to learn about?",
@@ -49,7 +51,17 @@
                 "language": "Language",
                 "subject": "Subject"
             }
-        }
+        },
+        "description": "Lesson Description"
+    },
+    "steps": {
+        "add": "Add Step",
+        "title": "Step Title",
+        "type": "Step Type",
+        "video": "Video",
+        "quiz": "Quiz",
+        "display": "Display Step"
+
     },
     "subject": {
         "spelling": "Spelling",

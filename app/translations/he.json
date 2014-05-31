@@ -10,6 +10,8 @@
     "saved": "נשמר",
     "done": "סיום",
     "preview": "הצגה",
+    "up": "למעלה",
+    "down": "למטה",
     "loginPage" : {
         "username"  : "שם משתמש",
         "password" : "סיסמה",
@@ -55,6 +57,15 @@
                 "subject": "נושא"
             }
         }
+    },
+    "steps": {
+        "add": "הוסף שלב",
+        "title": "כותרת השלב",
+        "type": "סוג השלב",
+        "video": "וידאו",
+        "quiz": "מבדק",
+        "display": "הצג שלב"
+
     },
     "subject": {
         "spelling": "איות",
@@ -146,6 +157,6 @@
         "longAnswer": "תשובה ארוכה (פסקה)",
         "correctAnswerFilled": "תשובה נכונה!",
         "incorrectAnswerFilled": "תשובה שגויה",
-        "thankYou": "תודה לך על תשובתך"
+        "thankYou": "תודה לך על תשובתך!"
     }
 }
