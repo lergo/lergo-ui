@@ -30,6 +30,14 @@
             "contact": "צור קשר"
         }
     },
+    "homepage": {
+        "lessons": "שיעורים",
+        "questions": "שאלות",
+        "andCounting": "וממשיכים לספור...",
+        "createYourOwn": "צור שיעורים משלך",
+        "start": "התחל",
+        "free": "זה בחינם!"
+    },
     "input" : {
         "email" : "אימייל",
         "username" : "שם משתמש",

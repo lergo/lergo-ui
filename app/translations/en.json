@@ -26,6 +26,14 @@
             "contact": "Contact Us"
         }
     },
+    "homepage": {
+        "lessons": "lessons",
+        "questions": "questions",
+        "andCounting": "and counting...",
+        "createYourOwn": "Create Your Own Lessons",
+        "start": "start",
+        "free": "it's free!"
+    },
     "input" : {
         "username" : "username",
         "password" : "password",
