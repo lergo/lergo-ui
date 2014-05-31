@@ -3,7 +3,7 @@
     "featured":"Featured",
     "popular":"Popular",
     "new":"New",
-    "languages":{"he":"hebrew","en":"english", "ru":"russian"},
+    "languages": { "he": "Hebrew", "en": "English", "ru": "Russian" },
 
     "baseLayout" : {
         "header" : {
@@ -44,6 +44,11 @@
                 "subject": "Subject"
             }
         }
+    },
+    "subject": {
+        "spelling": "Spelling",
+        "math": "Math",
+        "art": "Art"
     },
     "input" : {
         "username" : "username",

@@ -49,6 +49,11 @@
             }
         }
     },
+    "subject": {
+        "spelling": "איות",
+        "math": "מתמטיקה",
+        "art": "אמנות"
+    },
     "input" : {
         "email" : "אימייל",
         "username" : "שם משתמש",
