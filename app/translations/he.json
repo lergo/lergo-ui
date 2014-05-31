@@ -54,5 +54,8 @@
         "key" : "מפתח",
         "baseLanguage" : "שפת בסיס",
         "translation" : "תרגום"
+    },
+    "email": {
+        "emailSentSuccessfully": "האימייל נשלח בהצלחה"
     }
 }

@@ -53,6 +53,9 @@
             "True" : "true",
             "False" : "false"
         }
+    },
+    "email": {
+        "emailSentSuccessfully": "The email was sent successfully"
     }
 
 }
