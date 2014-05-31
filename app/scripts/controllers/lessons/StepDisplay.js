@@ -36,7 +36,7 @@ angular.module('lergoApp')
 
         $scope.getQuizItemTemplate = function(id) {
             $scope.quizItem = $scope.questions[id];
-            return LergoClient.questions.getTypeById($scope.questions[id].type).viewTemplate;
+            return !!$scope.quizItem  && LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate || "";
         };
 
         function checkAnswer(){
@@ -56,7 +56,8 @@ angular.module('lergoApp')
         };
 
         $scope.getQuizItem = function(){
-            if ( $scope.step.quizItems.length > $scope.currentIndex ) {
+
+            if ( !!$scope.step && $scope.step.quizItems.length > $scope.currentIndex ) {
                 return $scope.step.quizItems[$scope.currentIndex];
             }
             return null;
@@ -64,7 +65,8 @@ angular.module('lergoApp')
 
         $scope.getAnswer = function(){
             var quizItem = $scope.quizItem;
-            return $scope.answers.hasOwnProperty( quizItem._id ) ? $scope.answers[quizItem._id] : null;
+
+            return !!quizItem && $scope.answers.hasOwnProperty( quizItem._id ) ? $scope.answers[quizItem._id] : null;
         };
 
 
@@ -77,7 +79,7 @@ angular.module('lergoApp')
         };
 
         $scope.hasNextQuizItem = function(){
-            return $scope.currentIndex < $scope.step.quizItems.length -1 ;
+            return !!$scope.step && $scope.currentIndex < $scope.step.quizItems.length -1 ;
         };
 
 
@@ -90,6 +92,7 @@ angular.module('lergoApp')
             return 'views/lesson/steps/view/_' + type + '.html';
         };
 
+
         $scope.getYoutubeEmbedSource = function( step ){
             var src =  '//www.youtube.com/embed/' + $scope.getVideoId(step) +'?autoplay=1&rel=0&iv_load_policy=3';
             return $sce.trustAsResourceUrl(src);
@@ -97,10 +100,12 @@ angular.module('lergoApp')
 
         $scope.getVideoId = function(step){
             var value = null;
-            if ( step.videoUrl.toLocaleLowerCase().indexOf('youtu.be') > 0 ){
-                value = step.videoUrl.substring( step.videoUrl.lastIndexOf('/') +1 );
-            }else{
-                value = step.videoUrl.split('?')[1].split('v=')[1];
+            if ( !!step && !!step.videoUrl  ) {
+                if (step.videoUrl.toLocaleLowerCase().indexOf('youtu.be') > 0) {
+                    value = step.videoUrl.substring(step.videoUrl.lastIndexOf('/') + 1);
+                } else {
+                    value = step.videoUrl.split('?')[1].split('v=')[1];
+                }
             }
 
 

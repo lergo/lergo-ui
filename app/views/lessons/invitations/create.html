@@ -1,0 +1,42 @@
+<div class="base-layout">
+
+    <div class="top-padding col-md-3 center-block">
+        <div class="lergo-h1">Create New Invite</div>
+
+
+
+        <div class="lergo-form top-padding">
+            <form ng-submit="sendInvite()">
+                <div class="section">
+                    <div class="label">
+                        Email
+                    </div>
+                    <div class="input">
+                        <input ng-model="invite.invitee.email"/>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <input type="submit" class="btn" ng-show="!pageRequestProgress.inProgress"/>
+
+                    <div ng-show="!!pageRequestProgress.inProgress" class="loader-short"></div>
+                </div>
+            </form>
+        </div>
+
+        <div class="status top-padding">
+            <div ng-show="!!createSuccess" class="bg-success">
+                Invitation sent successfully
+            </div>
+
+            <div ng-show="!!pageRequestProgress.inProgress" class="bg-info">
+                Sending Invite. Please wait...
+            </div>
+
+            <div ng-show="!!createError" class="bg-warning">
+                Error sending invitation
+            </div>
+        </div>
+    </div>
+
+</div>
