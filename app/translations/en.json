@@ -6,6 +6,7 @@
     "languages": { "he": "Hebrew", "en": "English", "ru": "Russian" },
     "view": "View",
     "edit": "Edit",
+    "remove": "Remove",
     "saving": "Saving",
     "saved": "Saved",
     "done": "Done",
@@ -126,7 +127,12 @@
         },
         "possibleAnswers": "Possible Answers",
         "clickToAdd": "Click here to add an answer",
-        "correctAnswer": "Correct Answer"
+        "correctAnswer": "Correct Answer",
+        "correctAnswers": "Correct Answers",
+        "requiredAnswer": "Required Answer Format",
+        "select": "Select",
+        "shortAnswer": "Short Answer (a few words)",
+        "longAnswer": "Long Answer (a paragraph)"
     }
 
 }

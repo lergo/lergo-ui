@@ -5,6 +5,7 @@
     "new" : "חדשים",
     "view": "הצג",
     "edit": "ערוך",
+    "remove": "הסר",
     "saving": "שומר",
     "saved": "נשמר",
     "done": "סיום",
@@ -137,6 +138,11 @@
         },
         "possibleAnswers": "תשובות אפשריות",
         "clickToAdd": "לחץ כאן להוספת אפשרות לתשובה",
-        "correctAnswer": "התשובה הנכונה"
+        "correctAnswer": "התשובה הנכונה",
+        "correctAnswers": "התשובות הנכונות",
+        "requiredAnswer": "מבנה התשובה הנדרש",
+        "select": "בחירה",
+        "shortAnswer": "תשובה קצרה (מספר מילים)",
+        "longAnswer": "תשובה ארוכה (פסקה)"
     }
 }
