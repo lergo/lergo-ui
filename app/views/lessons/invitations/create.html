@@ -1,7 +1,7 @@
 <div class="base-layout">
 
     <div class="top-padding col-md-3 center-block">
-        <div class="lergo-h1">Create New Invite</div>
+        <div class="lergo-h1">{{ 'invitations.create' | i18n }}</div>
 
 
 
@@ -9,7 +9,7 @@
             <form ng-submit="sendInvite()">
                 <div class="section">
                     <div class="label">
-                        Email
+                        {{ 'email' | i18n }}
                     </div>
                     <div class="input">
                         <input ng-model="invite.invitee.email"/>
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="actions">
-                    <input type="submit" class="btn" ng-show="!pageRequestProgress.inProgress"/>
+                    <input type="submit" value="{{ 'button.submit' | i18n }}" class="btn" ng-show="!pageRequestProgress.inProgress"/>
 
                     <div ng-show="!!pageRequestProgress.inProgress" class="loader-short"></div>
                 </div>
@@ -26,15 +26,15 @@
 
         <div class="status top-padding">
             <div ng-show="!!createSuccess" class="bg-success">
-                Invitation sent successfully
+                {{ 'invitations.sent' | i18n }}
             </div>
 
             <div ng-show="!!pageRequestProgress.inProgress" class="bg-info">
-                Sending Invite. Please wait...
+                {{ 'invitations.sending' | i18n }}
             </div>
 
             <div ng-show="!!createError" class="bg-warning">
-                Error sending invitation
+                {{ 'invitations.error' | i18n }}
             </div>
         </div>
     </div>

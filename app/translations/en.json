@@ -21,6 +21,7 @@
     "title": "Title",
     "description": "Description",
     "next": "Next",
+    "email": "Email",
     "baseLayout" : {
         "header" : {
             "searchPlaceholder" : "What would you like to learn about?",
@@ -81,6 +82,12 @@
         "noMoreQuestions": "No More Questions",
         "selectAnAnswer": "Select an Answer"
     },
+    "invitations": {
+        "create": "Create New Invite",
+        "sent": "Invitation successfully sent",
+        "sending": "Sending invite, please wait...",
+        "error": "Error sending invitation :("
+    },
     "subject": {
         "spelling": "Spelling",
         "math": "Math",
@@ -102,13 +109,11 @@
         "resendValidationEmail" : "Resend validation email"
 
     } ,
-    "email" : {
-        "emailSentSuccessfully" : "Please check your inbox and follow instructions"
-    },
     "resetPassword" : {
         "instructions" : "Fill in username or email and submit the form.",
         "success" : "Your request was dispatched successfully",
-        "error" : "There was an error submitting the request"
+        "error" : "There was an error submitting the request",
+        "emailSentSuccessfully" : "Please check your inbox and follow instructions"
     },
     "changePassword" : {
         "success" : "You successfully changed your password",

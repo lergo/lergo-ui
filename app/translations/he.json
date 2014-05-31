@@ -20,6 +20,7 @@
     "title": "כותרת",
     "description": "תיאור",
     "next": "הבא בתור",
+    "email": "אימייל (דואר אלקטרוני)",
     "loginPage" : {
         "username"  : "שם משתמש",
         "password" : "סיסמה",
@@ -86,6 +87,12 @@
         "noMoreQuestions": "אין שאלות נוספות",
         "selectAnAnswer": "בחר תשובה"
     },
+    "invitations": {
+        "create": "צור הזמנה חדשה",
+        "sent": "ההזמנה נשלחה בהצלחה",
+        "sending": "שולח הזמנה, נא להמתין...",
+        "error": "שגיאה בשליחת ההזמנה :("
+    },
     "subject": {
         "spelling": "איות",
         "math": "מתמטיקה",
@@ -107,14 +114,11 @@
 
 
     },
-    "email": {
-        "emailSentSuccessfully": "אנא בדוק את תיבת המייל ועקוב אחר ההוראות"
-    },
     "resetPassword" : {
         "instructions" : "מלא שם משתמש או אימייל ועקוב אחר הוראות שנשלחו",
         "success" : "הבקשה נשלחה בהצלחה",
-        "error" : "הייתה בעיה בשליחת הבקשה"
-
+        "error" : "הייתה בעיה בשליחת הבקשה",
+        "emailSentSuccessfully": "אנא בדוק את תיבת המייל ועקוב אחר ההוראות"
     },
     "changePassword" : {
         "success" : "הסיסמה שונתה בהצלחה",
