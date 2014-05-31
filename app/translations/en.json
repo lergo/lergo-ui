@@ -3,7 +3,7 @@
     "featured":"Featured",
     "popular":"Popular",
     "new":"New",
-    "languages":{"he":"hebrew","en":"english", "ru":"russian"},
+    "languages": { "he": "Hebrew", "en": "English", "ru": "Russian" },
 
     "baseLayout" : {
         "header" : {
@@ -16,8 +16,39 @@
                 "contribute" : "contribute",
                 "lessons" : "lessons",
                 "questions" : "questions"
+            },
+            "logout": "Logout"
+        },
+        "footer": {
+            "privacyAndTerms": "Privacy and Terms",
+            "about": "About LerGO",
+            "homepage": "Homepage",
+            "contact": "Contact Us"
+        }
+    },
+    "homepage": {
+        "lessons": "lessons",
+        "questions": "questions",
+        "andCounting": "and counting...",
+        "createYourOwn": "Create Your Own Lessons",
+        "start": "start",
+        "free": "it's free!"
+    },
+    "lessons": {
+        "filter": "Filter Lessons",
+        "tags": "Tags",
+        "filters": {
+            "labels": {
+                "age range": "Age Range",
+                "language": "Language",
+                "subject": "Subject"
             }
         }
+    },
+    "subject": {
+        "spelling": "Spelling",
+        "math": "Math",
+        "art": "Art"
     },
     "input" : {
         "username" : "username",
@@ -53,9 +84,6 @@
             "True" : "true",
             "False" : "false"
         }
-    },
-    "email": {
-        "emailSentSuccessfully": "The email was sent successfully"
     }
 
 }

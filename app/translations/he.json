@@ -20,8 +20,39 @@
                 "contribute" : "תרום",
                 "lessons" : "שיעורים",
                 "questions" : "שאלות"
+            },
+            "logout": "התנתק"
+        },
+        "footer": {
+            "privacyAndTerms": "פרטיות ותנאי שימוש",
+            "about": "על אודות לרגו",
+            "homepage": "דף הבית",
+            "contact": "צור קשר"
+        }
+    },
+    "homepage": {
+        "lessons": "שיעורים",
+        "questions": "שאלות",
+        "andCounting": "וממשיכים לספור...",
+        "createYourOwn": "צור שיעורים משלך",
+        "start": "התחל",
+        "free": "זה בחינם!"
+    },
+    "lessons": {
+        "filter": "סנן שיעורים",
+        "tags": "תגים",
+        "filters": {
+            "labels": {
+                "age range": "טווח גילאים",
+                "language": "שפה",
+                "subject": "נושא"
             }
         }
+    },
+    "subject": {
+        "spelling": "איות",
+        "math": "מתמטיקה",
+        "art": "אמנות"
     },
     "input" : {
         "email" : "אימייל",
@@ -39,6 +70,9 @@
 
 
     },
+    "email": {
+        "emailSentSuccessfully": "אנא בדוק את תיבת המייל ועקוב אחר ההוראות"
+    },
     "resetPassword" : {
         "instructions" : "מלא שם משתמש או אימייל ועקוב אחר הוראות שנשלחו",
         "success" : "הבקשה נשלחה בהצלחה",
@@ -54,8 +88,5 @@
         "key" : "מפתח",
         "baseLanguage" : "שפת בסיס",
         "translation" : "תרגום"
-    },
-    "email": {
-        "emailSentSuccessfully": "האימייל נשלח בהצלחה"
     }
 }

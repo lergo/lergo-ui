@@ -3,20 +3,20 @@
         <div class="article">
             <div class="item">
                 <div class="amount">2305</div>
-                <div class="type">lessons</div>
+                <div class="type">{{ 'homepage.lessons' | i18n }}</div>
             </div>
             <div class="item">
                 <div class="amount">17456</div>
-                <div class="type">questions</div>
+                <div class="type">{{ 'homepage.questions' | i18n }}</div>
             </div>
             <div class="and-counting item">
-                and counting...
+                {{ 'homepage.andCounting' | i18n }}
             </div>
         </div>
         <div class="sidebar">
-            <div class="title">Create Your Own Lessons</div>
-            <div class="start">start</div>
-            <div class="free">it's free!</div>
+            <div class="title">{{ 'homepage.createYourOwn' | i18n }}</div>
+            <div class="start">{{ 'homepage.start' | i18n }}</div>
+            <div class="free">{{ 'homepage.free' | i18n }}</div>
         </div>
     </div>
           <div class="article">
@@ -96,14 +96,14 @@
           <div class="sidebar">
               <div class="filters">
                 <div class="title">
-                      filter lessons
+                      {{ 'lessons.filter' | i18n }}
                   </div>
                   <div class="filter" ng-repeat="filter in filters">
-                      <div class="label"> {{filter.label}}</div>
+                      <div class="label"> {{ 'lessons.filters.labels.' + filter.label | i18n }}</div>
                       <div class="input"><select ng-options="op | i18n:{skip:!filter.translate} for op in filter.options" ng-model="filter.selected"> </select></div>
                   </div>
                   <div class="filter">
-                      <div class="label">tags</div>
+                      <div class="label">{{ 'lessons.tags' | i18n }}</div>
                   </div>
                   <div class="tags">
                       <div class="tag" ng-repeat="tag in tags">
