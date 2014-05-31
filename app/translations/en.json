@@ -9,13 +9,13 @@
         "header" : {
             "searchPlaceholder" : "What would you like to learn about?",
             "links" : {
-                "learn" : "learn",
-                "create" : "create",
-                "parents" : "parents",
-                "teachers" : "teachers",
-                "contribute" : "contribute",
-                "lessons" : "lessons",
-                "questions" : "questions"
+                "learn" : "Learn",
+                "create" : "Create",
+                "parents" : "Parents",
+                "teachers" : "Teachers",
+                "contribute" : "Contribute",
+                "lessons" : "Lessons",
+                "questions" : "Questions"
             },
             "logout": "Logout"
         },
@@ -59,25 +59,25 @@
 
     },
     "button" : {
-        "submit" : "submit",
-        "login" : "login",
-        "signup" : "signup",
-        "forgotPassword" : "forgot password?",
-        "resendValidationEmail" : "resend validation email"
+        "submit" : "Submit",
+        "login" : "Login",
+        "signup" : "Signup",
+        "forgotPassword" : "Forgot password?",
+        "resendValidationEmail" : "Resend validation email"
 
     } ,
     "email" : {
         "emailSentSuccessfully" : "Please check your inbox and follow instructions"
     },
     "resetPassword" : {
-        "instructions" : "fill in username or email and submit the form.",
-        "success" : "you request dispatched successfully",
-        "error" : "there was an error submitting the request"
+        "instructions" : "Fill in username or email and submit the form.",
+        "success" : "Your request was dispatched successfully",
+        "error" : "There was an error submitting the request"
     },
     "changePassword" : {
-        "success" : "you successfully changed your password",
-        "error" : "there was an error changing your password",
-        "signup" : "signup"
+        "success" : "You successfully changed your password",
+        "error" : "There was an error changing your password",
+        "signup" : "Signup"
     },
     "quizItem" : {
         "answer" : {
