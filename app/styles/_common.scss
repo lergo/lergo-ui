@@ -147,7 +147,15 @@ button.action-item {
   }
 }
 
+.top-padding{
+  padding-top:20px;
+}
+
+.status{
+  height:100px;
+}
 .lergo-form {
+
   textarea {
     width: $LERGO_POST_MAIN_CONTENT_WIDTH;
     padding: 0;

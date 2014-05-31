@@ -3,12 +3,22 @@
   outline: none;
 }
 
+.center-block{
+  float:none;
+}
+
+.lergo-form input[type=submit]{
+  margin:0 auto;
+}
+
+.lergo-form input[type=submit],
 .btn, .btn:hover, .btn:active, .btn:focus{
   outline:none;
   border:none;
   text-shadow:none;
   background-image:none;
   background-color:#5fb9ff;
+  width:auto;
   padding:10px;
   text-transform: uppercase;
   color:white;

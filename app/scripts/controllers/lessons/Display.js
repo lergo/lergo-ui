@@ -1,18 +1,27 @@
 'use strict';
 
 angular.module('lergoApp')
-  .controller('LessonsDisplayCtrl', function ($scope, $routeParams, LergoClient, $log ) {
+  .controller('LessonsDisplayCtrl', function ($scope, $routeParams, LergoClient, $log, $controller ) {
 
-        LergoClient.lessons.getById( $routeParams.lessonId).then(function( result ){
-                $log.info('got lesson', result.data);
-                $scope.lesson = result.data;
-        },
-            function( result ){
-                $log.info('error while getting lesson', result.data);
-            }
-        );
+
+        $log.info('loading lesson display ctrl');
+        if ( !!$routeParams.lessonId ) {
+            LergoClient.lessons.getById($routeParams.lessonId).then(function (result) {
+                    $log.info('got lesson', result.data);
+                    $scope.lesson = result.data;
+                },
+                function (result) {
+                    $log.info('error while getting lesson', result.data);
+                }
+            );
+        }
+
+        $controller('LessonsStepDisplayCtrl', {$scope: $scope});
+
+
 
         $scope.currentStepIndex = -1;
+        $log.info('current step index', $scope.currentStepIndex);
 
         $scope.hasNextStep = function(){
             return !!$scope.lesson && $scope.lesson.steps &&  $scope.currentStepIndex < $scope.lesson.steps.length;
