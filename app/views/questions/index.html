@@ -1,33 +1,33 @@
 <div class="base-layout" id="questionsIndex">
-	<span class="error">{{error}}</span> <br />
-	<div style="float: left; width: 80%">
-		<p class="lergo-h1">{{ 'questions.myQuestions' | i18n }} [ {{ 'questions.total' | i18n }}: {{items.length}} ]</p>
-	</div>
-	<div style="float: right">
-		<button class="btn" ng-click="createNewQuestion()">{{ 'questions.createNew' | i18n }}</button>
-	</div>
-	<table ng-show="items.length > 0" class="table ">
-		<thead>
-			<tr style="font-weight: bold">
-				<th></th>
-				<th>{{ 'questions.question' | i18n }}</th>
-				<th>{{ 'questions.answer' | i18n }}</th>
-				<th>{{ 'view' | i18n }}</th>
-				<th>{{ 'edit' | i18n }}</th>
-			</tr>
-		</thead>
-		<tr ng-repeat="item in items |orderBy:'-lastUpdate'  ">
-			<td><input type="checkbox" /></td>
-			<td class="question">{{item.question | limitTo:80 }}</td>
-			<td class="answer">{{!!item.answer[0] && item.answer.join(';') ||
-                (item.type === "trueFalse" ? ('quizItem.answer.' + item.answer | i18n) : item.answer) | limitTo:30}}</td>
-			<td class="viewLink"><a
-				href="#/user/questions/{{item._id}}/read">{{ 'view' | i18n }}</a></td>
-			<td class="editLink"><a
-				href="#/user/questions/{{item._id}}/update">{{ 'edit' | i18n }}</a></td>
-
-		</tr>
-	</table>
-	<div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
-
+   <span class="error">{{error}}</span> <br />
+   <div style="float: left; width: 80%">
+      <p class="lergo-h1">{{ 'questions.myQuestions' | i18n }} [ {{ 'questions.total' | i18n }}: {{items.length}} ]</p>
+   </div>
+   <div style="float: right">
+      <button class="btn" ng-click="createNewQuestion()">{{ 'questions.createNew' | i18n }}</button>
+   </div>
+   <table ng-show="items.length > 0" class="table ">
+      <thead>
+         <tr style="font-weight: bold">
+            <th></th>
+            <th>{{ 'questions.question' | i18n }}</th>
+            <th>{{ 'questions.answer' | i18n }}</th>
+            <th>{{ 'language' | i18n}}</th>
+            <th>{{ 'subject' | i18n}}</th>
+            <th>{{ 'age' | i18n}}</th>
+            <th>{{ 'view' | i18n }}</th>
+            <th>{{ 'edit' | i18n }}</th>
+         </tr>
+      </thead>
+      <tr ng-repeat="item in items |orderBy:'-lastUpdate'  ">
+         <td class="question">{{item.question | limitTo:80 }}</td>
+         <td class="answer">{{getAnswers(item).join('; ') | limitTo:30}}</td>
+         <td class="answer">{{item.language}}</td>
+         <td class="answer">{{item.subject}}</td>
+         <td class="answer">{{item.age}}</td>
+         <td class="viewLink"><a href="#/user/questions/{{item._id}}/read">{{ 'view' | i18n }}</a></td>
+         <td class="editLink"><a href="#/user/questions/{{item._id}}/update">{{ 'edit' | i18n }}</a></td>
+      </tr>
+   </table>
+   <div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
 </div>
