@@ -3,9 +3,9 @@
 <table class="table lergo-form">
 	<thead>
 		<tr style="font-weight: bold">
-			<th>Possible Answers</th>
-			<th style="width: 10%">Correct Answer(s)</th>
-			<th style="width: 10%">Remove</th>
+			<th>{{ 'questions.possibleAnswers' | i18n }}</th>
+			<th style="width: 10%">{{ 'questions.correctAnswers' | i18n }}</th>
+			<th style="width: 10%">{{ 'remove' | i18n }}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td style="border-top: none; vertical-align: middle;"><input
-				type="text" value="Click here to add Option" readonly="True"
+				type="text" value="{{ 'questions.clickToAdd' | i18n }}" readonly="True"
 				ng-click="addOption()" style="color: gray" /></td>
 			<td style="border-top: none; vertical-align: middle;"><input
 				type="checkbox" disabled="True" /></td>
