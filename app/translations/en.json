@@ -13,6 +13,11 @@
     "preview": "Preview",
     "up": "Up",
     "down": "Down",
+    "name": "Name",
+    "invite": "Invite",
+    "delete": "Delete",
+    "welcome": "Welcome",
+    "congratulations": "Congratulations",
     "baseLayout" : {
         "header" : {
             "searchPlaceholder" : "What would you like to learn about?",
@@ -52,7 +57,14 @@
                 "subject": "Subject"
             }
         },
-        "description": "Lesson Description"
+        "description": "Lesson Description",
+        "name": "Lesson Name",
+        "available": "Available Lessons",
+        "create": "Create New Lesson",
+        "areYouReady": "Are you ready to start learning?",
+        "letsGo": "Let's LerGO!",
+        "letsContinue": "OK! Let's Continue",
+        "lessonCompleted": "You have completed the lesson."
     },
     "steps": {
         "add": "Add Step",

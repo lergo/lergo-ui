@@ -12,6 +12,11 @@
     "preview": "הצגה",
     "up": "למעלה",
     "down": "למטה",
+    "name": "שם",
+    "invite": "הזמנה",
+    "delete": "מחיקה",
+    "welcome": "ברוך הבא",
+    "congratulations": "מזל טוב",
     "loginPage" : {
         "username"  : "שם משתמש",
         "password" : "סיסמה",
@@ -56,7 +61,13 @@
                 "language": "שפה",
                 "subject": "נושא"
             }
-        }
+        },
+        "available": "שיעורים זמינים",
+        "create": "צור שיעור חדש",
+        "areYouReady": "אתה מוכן להתחיל ללמוד?",
+        "letsGo": "בוא נתחיל עם לרגו!",
+        "letsContinue": "קדימה - בוא נמשיך!",
+        "lessonCompleted": "השלמת את השיעור"
     },
     "steps": {
         "add": "הוסף שלב",
