@@ -9,23 +9,21 @@
 		</div>
 		<div class="lesson-step-quiz-next">
 			<button ng-show=" !getAnswer(quizItem)" type="submit" class="btn"
-				ng-click="checkAnswer()">Submit</button>
+				ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
 			<button ng-show="hasNextQuizItem() && getAnswer(quizItem)"
-				class="btn" ng-click="nextQuizItem()">Next >></button>
+				class="btn" ng-click="nextQuizItem()">{{ 'next' | i18n }} >></button>
 			<button ng-show="!hasNextQuizItem() && getAnswer(quizItem)"
-				class="btn" disabled>No more questions</button>
+				class="btn" disabled>{{ 'steps.noMoreQuestions' | i18n }}</button>
 		</div>
 	</div>
 	<br>
 	<div ng-show="!!getAnswer(quizItem)">
 		<div class="bg-success" ng-show="getAnswer(quizItem).correct">{{(quizItem.type
-			=== 'openQuestion')&& "Thank you for your answer" || "You are
-			correct!"}}</div>
-		<div class="bg-warning" ng-show="!getAnswer(quizItem).correct">This
-			is incorrect.</div>
+            === 'openQuestion') &&  ('questions.thankYou' | i18n) || ('questions.correctAnswerFilled' | i18n) }}</div>
+		<div class="bg-warning" ng-show="!getAnswer(quizItem).correct">{{ 'questions.incorrectAnswerFilled' | i18n }}</div>
 	</div>
 	<div ng-show="!getAnswer(quizItem)">
-		<div class="bg-primary">Select an answer</div>
+		<div class="bg-primary">{{ 'steps.selectAnAnswer' | i18n }}</div>
 	</div>
 </div>
 

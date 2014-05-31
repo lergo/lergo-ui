@@ -17,6 +17,9 @@
     "delete": "מחיקה",
     "welcome": "ברוך הבא",
     "congratulations": "מזל טוב",
+    "title": "כותרת",
+    "description": "תיאור",
+    "next": "הבא בתור",
     "loginPage" : {
         "username"  : "שם משתמש",
         "password" : "סיסמה",
@@ -62,12 +65,16 @@
                 "subject": "נושא"
             }
         },
+        "description": "תיאור השיעור",
+        "name": "שם השיעור",
         "available": "שיעורים זמינים",
         "create": "צור שיעור חדש",
         "areYouReady": "אתה מוכן להתחיל ללמוד?",
         "letsGo": "בוא נתחיל עם לרגו!",
         "letsContinue": "קדימה - בוא נמשיך!",
-        "lessonCompleted": "השלמת את השיעור"
+        "lessonCompleted": "השלמת את השיעור",
+        "addQuestion": "הוסף שאלה למבדק",
+        "videoURL": "ה- URL של הוידאו"
     },
     "steps": {
         "add": "הוסף שלב",
@@ -75,8 +82,9 @@
         "type": "סוג השלב",
         "video": "וידאו",
         "quiz": "מבדק",
-        "display": "הצג שלב"
-
+        "display": "הצג שלב",
+        "noMoreQuestions": "אין שאלות נוספות",
+        "selectAnAnswer": "בחר תשובה"
     },
     "subject": {
         "spelling": "איות",

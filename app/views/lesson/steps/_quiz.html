@@ -8,16 +8,15 @@
 	<tr>
 		<td style="border-top: none; float: right">
 			<button class="btn"
-				ng-click="addItemToQuiz( selectedQuestion, step )">Add
-				Question To Quiz</button>
+				ng-click="addItemToQuiz( selectedQuestion, step )">{{ 'lessons.addQuestion' | i18n }}</button>
 		</td>
 	<tr>
 	<tr ng-repeat="item in step.quizItems">
 		<td style="border-top: none; float: left">{{getQuestion(item)}}</td>
 		<td style="border-top: none; float: right"><a
 			ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="btn"
-			style="margin-right: 5px">Up</a><a
-			ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="btn">Down</a>
+			style="margin-right: 5px">{{ 'up' | i18n }}</a><a
+			ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="btn">{{ 'down' | i18n }}</a>
 			<button class="btn-link" ng-click="removeItemFromQuiz( item, step )">X</button>
 		</td>
 	</tr>

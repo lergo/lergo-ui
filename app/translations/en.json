@@ -18,6 +18,9 @@
     "delete": "Delete",
     "welcome": "Welcome",
     "congratulations": "Congratulations",
+    "title": "Title",
+    "description": "Description",
+    "next": "Next",
     "baseLayout" : {
         "header" : {
             "searchPlaceholder" : "What would you like to learn about?",
@@ -64,7 +67,9 @@
         "areYouReady": "Are you ready to start learning?",
         "letsGo": "Let's LerGO!",
         "letsContinue": "OK! Let's Continue",
-        "lessonCompleted": "You have completed the lesson."
+        "lessonCompleted": "You have completed the lesson.",
+        "addQuestion": "Add Question to Quiz",
+        "videoURL": "Video URL"
     },
     "steps": {
         "add": "Add Step",
@@ -72,8 +77,9 @@
         "type": "Step Type",
         "video": "Video",
         "quiz": "Quiz",
-        "display": "Display Step"
-
+        "display": "Display Step",
+        "noMoreQuestions": "No More Questions",
+        "selectAnAnswer": "Select an Answer"
     },
     "subject": {
         "spelling": "Spelling",
