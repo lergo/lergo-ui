@@ -8,7 +8,7 @@
             <div ng-include="getQuestionViewTemplate(quizItem)"></div>
          </div>
          <div class="question-submit">
-            <button class="btn" type="submit">{{ 'button.submit' | i18n }}</button>
+            <button class="btn" type="submit" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
          </div>
       </div>
       <div ng-show="!!answer">

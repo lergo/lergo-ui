@@ -12,14 +12,15 @@
             <th></th>
             <th>{{ 'questions.question' | i18n }}</th>
             <th>{{ 'questions.answer' | i18n }}</th>
-            <th>{{ 'language' | i18n}}</th>
-            <th>{{ 'subject' | i18n}}</th>
-            <th>{{ 'age' | i18n}}</th>
+            <th>{{ 'questions.language' | i18n}}</th>
+            <th>{{ 'questions.subject' | i18n}}</th>
+            <th>{{ 'questions.age' | i18n}}</th>
             <th>{{ 'view' | i18n }}</th>
             <th>{{ 'edit' | i18n }}</th>
          </tr>
       </thead>
       <tr ng-repeat="item in items |orderBy:'-lastUpdate'  ">
+         <td><input type="checkbox" /></td>
          <td class="question">{{item.question | limitTo:80 }}</td>
          <td class="answer">{{getAnswers(item).join('; ') | limitTo:30}}</td>
          <td class="answer">{{item.language}}</td>

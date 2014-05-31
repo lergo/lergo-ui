@@ -36,11 +36,11 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 				if (quizItem.userAnswer === undefined) {
 					quizItem.userAnswer = [];
 				}
-				var checkbox = $event.target;
+				var checkbox = event.target;
 				if (checkbox.checked) {
 					quizItem.userAnswer.push(answer);
 				} else {
-					quizItem.userAnswer.splice(quizItem.answer.indexOf(answer), 1);
+					quizItem.userAnswer.splice(quizItem.userAnswer.indexOf(answer), 1);
 				}
 			};
 		});
