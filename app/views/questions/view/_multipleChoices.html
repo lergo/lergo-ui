@@ -1,14 +1,10 @@
 <div class="question-multi-choice">
-	<table class="table">
-		<tbody>
-			<tr ng-repeat="option in quizItem.options">
-				<td style="border-top: none; width: 5%"><input type="checkbox"
-					ng-true-value="option" ng-false-value=""
-					ng-click="$parent.updateAnswer($event,option,quizItem)" /></td>
-				<td style="border-top: none; vertical-align: middle">{{option}}</td>
-			</tr>
-		</tbody>
-	</table>
+   <table class="lergo-table">
+      <tbody>
+         <tr ng-repeat="option in quizItem.options">
+            <td style="width: 5%"><input type="checkbox" ng-click="$parent.updateAnswer($event,option.label,quizItem)" /></td>
+            <td>{{option.label}}</td>
+         </tr>
+      </tbody>
+   </table>
 </div>
-
-

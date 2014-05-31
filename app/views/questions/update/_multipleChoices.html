@@ -1,31 +1,22 @@
 <!-- To init option array by single element if its empty  -->
 {{ (quizItem.options===undefined) && addOption() || ""}}
-<table class="table lergo-form">
-	<thead>
-		<tr style="font-weight: bold">
-			<th>Possible Answers</th>
-			<th style="width: 10%">Correct Answer(s)</th>
-			<th style="width: 10%">Remove</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="option in quizItem.options track by $index">
-			<td style="border-top: none; vertical-align: middle"><input
-				type="text" ng-model=quizItem.options[$index] /></td>
-			<td style="border-top: none; vertical-align: middle;"><input
-				type="checkbox" ng-true-value="option" ng-false-value=""
-				ng-checked="isCorrectAnswer(option,quizItem)"
-				ng-click="$parent.updateAnswer($event,option,quizItem)" /></td>
-			<td style="border-top: none; vertical-align: middle"><a
-				class="btn-link" ng-click="removeOption(option)"
-				ng-show="quizItem.options.length > 1">X</a></td>
-		</tr>
-		<tr>
-			<td style="border-top: none; vertical-align: middle;"><input
-				type="text" value="Click here to add Option" readonly="True"
-				ng-click="addOption()" style="color: gray" /></td>
-			<td style="border-top: none; vertical-align: middle;"><input
-				type="checkbox" disabled="True" /></td>
-		</tr>
-	</tbody>
+<table class="lergo-table lergo-form">
+   <thead>
+      <tr style="font-weight: bold">
+         <th>Possible Answers</th>
+         <th style="width: 10%">Correct Answer(s)</th>
+         <th style="width: 10%">Remove</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr ng-repeat="option in quizItem.options track by $index">
+         <td><input type="text" ng-model=quizItem.options[$index].label /></td>
+         <td><input type="checkbox" ng-model=quizItem.options[$index].checked /></td>
+         <td><a class="btn-link" ng-click="removeOption(option)" ng-show="quizItem.options.length > 1">X</a></td>
+      </tr>
+      <tr>
+         <td><input type="text" value="Click here to add Option" readonly="True" ng-click="addOption()" style="color: gray" /></td>
+         <td><input type="checkbox" disabled="True" /></td>
+      </tr>
+   </tbody>
 </table>
