@@ -4,7 +4,8 @@
     "popular":"Popular",
     "new":"New",
     "languages": { "he": "Hebrew", "en": "English", "ru": "Russian" },
-
+    "view": "View",
+    "edit": "Edit",
     "baseLayout" : {
         "header" : {
             "searchPlaceholder" : "What would you like to learn about?",
@@ -84,6 +85,14 @@
             "True" : "true",
             "False" : "false"
         }
+    },
+    "questions": {
+        "myQuestions": "My Questions",
+        "total": "Total",
+        "createNew": "Create New Question",
+        "question": "Question",
+        "answer": "Answer",
+        "noQuestions": "There are no questions to display"
     }
 
 }

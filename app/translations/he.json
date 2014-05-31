@@ -3,6 +3,8 @@
     "featured" : "קיימים",
     "popular" : "פופולריים",
     "new" : "חדשים",
+    "view": "הצג",
+    "edit": "ערוך",
     "loginPage" : {
         "username"  : "שם משתמש",
         "password" : "סיסמה",
@@ -88,5 +90,13 @@
         "key" : "מפתח",
         "baseLanguage" : "שפת בסיס",
         "translation" : "תרגום"
+    },
+    "questions": {
+        "myQuestions": "השאלות שלי",
+        "total": "סך הכל",
+        "createNew": "צור שאלה חדשה",
+        "question": "שאלה",
+        "answer": "תשובה",
+        "noQuestions": "אין שאלות להצגה"
     }
 }
