@@ -34,6 +34,17 @@
         "start": "start",
         "free": "it's free!"
     },
+    "lessons": {
+        "filter": "Filter Lessons",
+        "tags": "Tags",
+        "filters": {
+            "labels": {
+                "age range": "Age Range",
+                "language": "Language",
+                "subject": "Subject"
+            }
+        }
+    },
     "input" : {
         "username" : "username",
         "password" : "password",

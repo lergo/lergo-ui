@@ -38,6 +38,17 @@
         "start": "התחל",
         "free": "זה בחינם!"
     },
+    "lessons": {
+        "filter": "סנן שיעורים",
+        "tags": "תגים",
+        "filters": {
+            "labels": {
+                "age range": "טווח גילאים",
+                "language": "שפה",
+                "subject": "נושא"
+            }
+        }
+    },
     "input" : {
         "email" : "אימייל",
         "username" : "שם משתמש",

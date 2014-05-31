@@ -96,14 +96,14 @@
           <div class="sidebar">
               <div class="filters">
                 <div class="title">
-                      filter lessons
+                      {{ 'lessons.filter' | i18n }}
                   </div>
                   <div class="filter" ng-repeat="filter in filters">
-                      <div class="label"> {{filter.label}}</div>
+                      <div class="label"> {{ 'lessons.filters.labels.' + filter.label | i18n }}</div>
                       <div class="input"><select ng-options="op | i18n:{skip:!filter.translate} for op in filter.options" ng-model="filter.selected"> </select></div>
                   </div>
                   <div class="filter">
-                      <div class="label">tags</div>
+                      <div class="label">{{ 'lessons.tags' | i18n }}</div>
                   </div>
                   <div class="tags">
                       <div class="tag" ng-repeat="tag in tags">
