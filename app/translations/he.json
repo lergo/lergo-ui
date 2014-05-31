@@ -95,6 +95,12 @@
         "baseLanguage" : "שפת בסיס",
         "translation" : "תרגום"
     },
+    "quizItem" : {
+        "answer" : {
+            "True" : "אמת",
+            "False" : "שקר"
+        }
+    },
     "questions": {
         "myQuestions": "השאלות שלי",
         "total": "סך הכל",
@@ -128,6 +134,9 @@
             "spelling": "איות",
             "biology": "ביולוגיה",
             "other": "אחר"
-        }
+        },
+        "possibleAnswers": "תשובות אפשריות",
+        "clickToAdd": "לחץ כאן להוספת אפשרות לתשובה",
+        "correctAnswer": "התשובה הנכונה"
     }
 }

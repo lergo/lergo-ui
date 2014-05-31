@@ -1,13 +1,13 @@
 <table class="table lergo-form">
 	<thead>
 		<tr>
-			<th>Possible Answers</th>
-			<th>Correct Answer</th>
+			<th>{{ 'questions.possibleAnswers' | i18n }}</th>
+			<th>{{ 'questions.correctAnswer' | i18n }}</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="option in ['True','False'] ">
-			<td class="optionValue">{{option}}</td>
+			<td class="optionValue">{{ 'quizItem.answer.' + option | i18n }}</td>
 			<td><input type="checkbox" ng-true-value="option"
 				ng-false-value="" ng-checked="quizItem.answer===option"
 				ng-click="quizItem.answer = option" /></td>

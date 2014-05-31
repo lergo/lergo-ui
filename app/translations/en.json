@@ -86,8 +86,8 @@
     },
     "quizItem" : {
         "answer" : {
-            "True" : "true",
-            "False" : "false"
+            "True" : "True",
+            "False" : "False"
         }
     },
     "questions": {
@@ -123,7 +123,10 @@
             "spelling": "Spelling",
             "biology": "Biology",
             "other": "Other"
-        }
+        },
+        "possibleAnswers": "Possible Answers",
+        "clickToAdd": "Click here to add an answer",
+        "correctAnswer": "Correct Answer"
     }
 
 }
