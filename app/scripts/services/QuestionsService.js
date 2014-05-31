@@ -96,10 +96,10 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'Spelling'
 	}, {
 		'id' : 'biology',
-		'label' : 'biology'
+		'label' : 'Biology'
 	}, {
 		'id' : 'other',
-		'label' : 'other'
+		'label' : 'Other'
 	} ];
 
 	this.getTypeById = function(typeId) {

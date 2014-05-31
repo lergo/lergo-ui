@@ -1,43 +1,32 @@
 <div class="base-layout" id="questions-update">
-	<div>
-		<table class=" table lergo-form">
-			<tbody>
-				<tr>
-					<td style="border-top: none; width: 15%">{{ 'questions.question' | i18n }}</td>
-					<td style="border-top: none;" colspan="7"><input
-						class="lergo-input" ng-model="quizItem.question" /></td>
-				</tr>
-				<tr>
-					<td style="border-top: none;">{{ 'questions.help' | i18n }}</td>
-					<td style="border-top: none;" colspan="7"><input
-						class="lergo-input" ng-model="quizItem.helpText" /></td>
-				</tr>
-				<tr style="border-top: none;">
-					<td style="border-top: none;">{{ 'questions.questionType' | i18n }}</td>
-					<td style="border-top: none;"><select ng-model="quizItem.type"
-						ng-options="t.id as ('questions.types.' + t.id | i18n) for t in types"></select></td>
-					<td style="border-top: none;">{{ 'questions.language' | i18n }}</td>
-					<td style="border-top: none;"><select
-						ng-model="quizItem.language"
-						ng-options="t.id as ('questions.languages.' + t.id | i18n) for t in languages"></select></td>
-					<td style="border-top: none;">{{ 'questions.subject' | i18n }}</td>
-					<td style="border-top: none;"><select
-						ng-model="quizItem.subject"
-						ng-options="t.id as ('questions.subjects.' + t.id | i18n) for t in subjects"></select></td>
-					<td style="border-top: none;">{{ 'questions.age' | i18n }}</td>
-					<td style="border-top: none;"><input type="number" min="4"
-						max="18" step="1" size="2" ng-model="quizItem.age" />
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
-	<div>{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
-	<div>
-		<button class="btn" ng-click="done()"
-			ng-disabled="isSaving()||!quizItem.question"> {{ 'done' | i18n }} </button>
-		<a class="btn" ng-disabled="!quizItem.question"
-			href="#/user/questions/{{quizItem._id}}/read"> {{ 'preview' | i18n }} </a>
-	</div>
+   <div>
+      <table class=" lergo-table lergo-form">
+         <tbody>
+            <tr>
+               <td>{{ 'questions.question' | i18n }}</td>
+               <td colspan="7"><input ng-model="quizItem.question" /></td>
+            </tr>
+            <tr>
+               <td>{{ 'questions.help' | i18n }}</td>
+               <td colspan="7"><input ng-model="quizItem.helpText" /></td>
+            </tr>
+            <tr>
+               <td>{{ 'questions.questionType' | i18n }}</td>
+               <td><select ng-model="quizItem.type" ng-options="t.id as ('questions.types.' + t.id | i18n) for t in types"></select></td>
+               <td>{{ 'questions.language' | i18n }}</td>
+               <td><select ng-model="quizItem.language" ng-options="t.id as ('questions.languages.' + t.id | i18n) for t in languages"></select></td>
+               <td>{{ 'questions.subject' | i18n }}</td>
+               <td><select ng-model="quizItem.subject" ng-options="t.id as ('questions.subjects.' + t.id | i18n) for t in subjects"></select></td>
+               <td>{{ 'questions.age' | i18n }}</td>
+               <td><input type="number" min="4" max="18" step="1" size="2" ng-model="quizItem.age" /></td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
+   <div>{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+   <div>
+      <button class="btn" ng-click="done()" ng-disabled="isSaving()||!quizItem.question">{{ 'done' | i18n }}</button>
+      <a class="btn" ng-disabled="!quizItem.question" href="#/user/questions/{{quizItem._id}}/read"> {{ 'preview' | i18n }} </a>
+   </div>
 </div>

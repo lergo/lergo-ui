@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile,LergoClient) {
+angular.module('lergoApp').controller('QuestionsReadCtrl',
+		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient) {
 
 			var questionId = $routeParams.questionId;
 
@@ -20,31 +21,26 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 				}
 				return '';
 			};
-	$scope.checkAnswer = function() {
-		var quizItem = $scope.quizItem;
-		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
-			$scope.answer = result.data;
-		}, function() {
-			$log.error('there was an error checking answer');
+			$scope.checkAnswer = function() {
+				var quizItem = $scope.quizItem;
+				LergoClient.questions.checkAnswer(quizItem).then(function(result) {
+					$scope.answer = result.data;
+				}, function() {
+					$log.error('there was an error checking answer');
 				});
 
 			};
 
-	$scope.updateAnswer = function(event, answer, quizItem) {
-		$log.info('updating answer', arguments);
-		if (quizItem.type === 'multipleChoices') {
-			if (quizItem.userAnswer === undefined) {
-				quizItem.userAnswer = [];
-			}
-				var checkbox = $event.target;
-					if (checkbox.checked) {
-				quizItem.userAnswer.push(answer);
-					} else {
-				quizItem.userAnswer.splice(quizItem.answer.indexOf(answer), 1);
-					}
-		} else {
-			quizItem.userAnswer = answer;
+			$scope.updateAnswer = function(event, answer, quizItem) {
+				$log.info('updating answer', arguments);
+				if (quizItem.userAnswer === undefined) {
+					quizItem.userAnswer = [];
 				}
-		$scope.checkAnswer();
+				var checkbox = event.target;
+				if (checkbox.checked) {
+					quizItem.userAnswer.push(answer);
+				} else {
+					quizItem.userAnswer.splice(quizItem.userAnswer.indexOf(answer), 1);
+				}
 			};
 		});

@@ -21,4 +21,22 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		$scope.errorMessage = 'Error in fetching questions : ' + result.data.message;
 		$log.error($scope.errorMessage);
 	});
+
+	$scope.getAnswers = function(quizItem) {
+		var answers = [];
+		if (quizItem.type === 'multipleChoices') {
+			quizItem.options.forEach(function(value) {
+				if (value.checked === true) {
+					answers.push(value.label);
+				}
+			});
+		}
+		if (quizItem.type === 'exactMatch') {
+			quizItem.options.forEach(function(value) {
+				answers.push(value.label);
+			});
+		}
+		answers.push(quizItem.answer);
+		return answers;
+	};
 });
