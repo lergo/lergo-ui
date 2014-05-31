@@ -179,6 +179,9 @@ button.action-item {
 
   select {
     background: $LERGO_INPUT_BACKGROUND;
+    border:1px solid $LERGO_INPUT_BORDER_COLOR;
+    padding:5px;
+    border-radius:5px;
   }
 
   .section {
