@@ -20,7 +20,14 @@
                 "contribute" : "תרום",
                 "lessons" : "שיעורים",
                 "questions" : "שאלות"
-            }
+            },
+            "logout": "התנתק"
+        },
+        "footer": {
+            "privacyAndTerms": "פרטיות ותנאי שימוש",
+            "about": "על אודות לרגו",
+            "homepage": "דף הבית",
+            "contact": "צור קשר"
         }
     },
     "input" : {

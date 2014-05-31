@@ -16,7 +16,14 @@
                 "contribute" : "contribute",
                 "lessons" : "lessons",
                 "questions" : "questions"
-            }
+            },
+            "logout": "Logout"
+        },
+        "footer": {
+            "privacyAndTerms": "Privacy and Terms",
+            "about": "About LerGO",
+            "homepage": "Homepage",
+            "contact": "Contact Us"
         }
     },
     "input" : {
