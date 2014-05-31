@@ -6,6 +6,10 @@
     "languages": { "he": "Hebrew", "en": "English", "ru": "Russian" },
     "view": "View",
     "edit": "Edit",
+    "saving": "Saving",
+    "saved": "Saved",
+    "done": "Done",
+    "preview": "Preview",
     "baseLayout" : {
         "header" : {
             "searchPlaceholder" : "What would you like to learn about?",
@@ -92,7 +96,34 @@
         "createNew": "Create New Question",
         "question": "Question",
         "answer": "Answer",
-        "noQuestions": "There are no questions to display"
+        "noQuestions": "There are no questions to display",
+        "help": "Help Text",
+        "questionType": "Question Type",
+        "language": "Language",
+        "subject": "Subject",
+        "age": "Age",
+        "types": {
+            "trueFalse": "True or False",
+            "exactMatch": "Exact Match",
+            "multipleChoices": "Multiple Choices",
+            "openQuestion": "Open Question"
+        },
+        "languages": {
+            "english": "English",
+            "hebrew": "Hebrew",
+            "arabic": "Arabic",
+            "russian": "Russian",
+            "other": "Other"
+        },
+        "subjects": {
+            "english": "English",
+            "math": "Math",
+            "science": "Science",
+            "grammar": "Grammar",
+            "spelling": "Spelling",
+            "biology": "Biology",
+            "other": "Other"
+        }
     }
 
 }

@@ -95,10 +95,10 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'id' : 'spelling',
 		'label' : 'Spelling'
 	}, {
-		'id' : 'Biology',
+		'id' : 'biology',
 		'label' : 'biology'
 	}, {
-		'id' : 'Other',
+		'id' : 'other',
 		'label' : 'other'
 	} ];
 

@@ -5,6 +5,10 @@
     "new" : "חדשים",
     "view": "הצג",
     "edit": "ערוך",
+    "saving": "שומר",
+    "saved": "נשמר",
+    "done": "סיום",
+    "preview": "הצגה",
     "loginPage" : {
         "username"  : "שם משתמש",
         "password" : "סיסמה",
@@ -97,6 +101,33 @@
         "createNew": "צור שאלה חדשה",
         "question": "שאלה",
         "answer": "תשובה",
-        "noQuestions": "אין שאלות להצגה"
+        "noQuestions": "אין שאלות להצגה",
+        "help": "רמז",
+        "questionType": "סוג שאלה",
+        "language": "שפה",
+        "subject": "נושא",
+        "age": "גיל",
+        "types": {
+            "trueFalse": "אמת או שקר",
+            "exactMatch": "תשובה יחידה",
+            "multipleChoices": "תשובות מרובות",
+            "openQuestion": "שאלה פתוחה"
+        },
+        "languages": {
+            "english": "אנגלית",
+            "hebrew": "עברית",
+            "arabic": "ערבית",
+            "russian": "רוסית",
+            "other": "שפה אחרת"
+        },
+        "subjects": {
+            "english": "אנגלית",
+            "math": "מתמטיקה",
+            "science": "מדע",
+            "grammar": "דקדוק",
+            "spelling": "איות",
+            "biology": "ביולוגיה",
+            "other": "אחר"
+        }
     }
 }
