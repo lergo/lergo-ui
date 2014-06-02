@@ -1,6 +1,10 @@
 'use strict';
 
 angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, $location) {
+	
+	$scope.subjects = QuestionsService.subjects;
+	$scope.languages = QuestionsService.languages;
+	$scope.filter={};
 
 	$scope.createNewQuestion = function() {
 		QuestionsService.createQuestion().then(function(result) {

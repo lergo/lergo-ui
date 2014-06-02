@@ -52,6 +52,8 @@
         "free": "it's free!"
     },
     "lessons": {
+    	"myLessons" : "My Lessons",
+    	"total": "Total",
         "filter": "Filter Lessons",
         "tags": "Tags",
         "filters": {
@@ -129,6 +131,7 @@
     "questions": {
         "myQuestions": "My Questions",
         "total": "Total",
+        "filter": "Filter Questions",
         "createNew": "Create New Question",
         "question": "Question",
         "answer": "Answer",

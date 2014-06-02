@@ -1,34 +1,57 @@
 <div class="base-layout" id="questionsIndex">
    <span class="error">{{error}}</span> <br />
-   <div style="float: left; width: 80%">
-      <p class="lergo-h1">{{ 'questions.myQuestions' | i18n }} [ {{ 'questions.total' | i18n }}: {{items.length}} ]</p>
-   </div>
-   <div style="float: right">
-      <button class="btn" ng-click="createNewQuestion()">{{ 'questions.createNew' | i18n }}</button>
-   </div>
-   <table ng-show="items.length > 0" class="table ">
-      <thead>
-         <tr style="font-weight: bold">
-            <th></th>
-            <th>{{ 'questions.question' | i18n }}</th>
-            <th>{{ 'questions.answer' | i18n }}</th>
-            <th>{{ 'questions.language' | i18n}}</th>
-            <th>{{ 'questions.subject' | i18n}}</th>
-            <th>{{ 'questions.age' | i18n}}</th>
-            <th>{{ 'view' | i18n }}</th>
-            <th>{{ 'edit' | i18n }}</th>
+   <div style="float: left; width: 75%">
+      <div>
+         <p class="lergo-h1">{{ 'questions.myQuestions' | i18n }} [ {{ 'questions.total' | i18n }}: {{items.length}} ]</p>
+      </div>
+      <table ng-show="items.length > 0" class="table ">
+         <thead>
+            <tr style="font-weight: bold">
+               <th></th>
+               <th>{{ 'questions.question' | i18n }}</th>
+               <th>{{ 'questions.answer' | i18n }}</th>
+               <th>{{ 'questions.language' | i18n}}</th>
+               <th>{{ 'questions.subject' | i18n}}</th>
+               <th>{{ 'questions.age' | i18n}}</th>
+               <th>{{ 'view' | i18n }}</th>
+               <th>{{ 'edit' | i18n }}</th>
+            </tr>
+         </thead>
+         <tr ng-repeat="item in items |orderBy:'-lastUpdate' | filter:{language:filter.language,subject:filter.subject}  ">
+            <td><input type="checkbox" /></td>
+            <td class="question">{{item.question | limitTo:80 }}</td>
+            <td class="answer">{{getAnswers(item).join('; ') | limitTo:30}}</td>
+            <td class="answer">{{'questions.languages.' + item.language | i18n}}</td>
+            <td class="answer">{{'questions.languages.' + item.subject | i18n}}</td>
+            <td class="answer">{{ '+'+ item.age}}</td>
+            <td class="viewLink"><a href="#/user/questions/{{item._id}}/read">{{ 'view' | i18n }}</a></td>
+            <td class="editLink"><a href="#/user/questions/{{item._id}}/update">{{ 'edit' | i18n }}</a></td>
          </tr>
-      </thead>
-      <tr ng-repeat="item in items |orderBy:'-lastUpdate'  ">
-         <td><input type="checkbox" /></td>
-         <td class="question">{{item.question | limitTo:80 }}</td>
-         <td class="answer">{{getAnswers(item).join('; ') | limitTo:30}}</td>
-         <td class="answer">{{item.language}}</td>
-         <td class="answer">{{item.subject}}</td>
-         <td class="answer">{{item.age}}</td>
-         <td class="viewLink"><a href="#/user/questions/{{item._id}}/read">{{ 'view' | i18n }}</a></td>
-         <td class="editLink"><a href="#/user/questions/{{item._id}}/update">{{ 'edit' | i18n }}</a></td>
-      </tr>
-   </table>
-   <div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
+      </table>
+      <div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
+   </div>
+   <div style="float: right" class="sidebar">
+      <div>
+         <button class="btn" ng-click="createNewQuestion()">{{ 'questions.createNew' | i18n }}</button>
+      </div>
+      <hr />
+      <div class="filters">
+         <div class="lergo-h1">{{ 'questions.filter' | i18n }}</div>
+         <div class="label">{{'lessons.filters.labels.language' | i18n }}</div>
+         <div class="input">
+            <select ng-options="t.id as ('questions.languages.' + t.id | i18n) for t in languages" ng-model="filter.language">
+            </select>
+         </div>
+         <div class="label">{{'lessons.filters.labels.subject' | i18n }}</div>
+         <div class="input">
+            <select ng-options="t.id as ('questions.subjects.' + t.id | i18n) for t in subjects" ng-model="filter.subject">
+            </select>
+         </div>
+         <div class="label">{{'lessons.filters.labels.age range' | i18n }}</div>
+         <div class="input">
+            <select ng-options="a.id as a.label for a in ageRanges" ng-model="filter.age">
+            </select>
+         </div>
+      </div>
+   </div>
 </div>
