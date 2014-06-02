@@ -22,7 +22,7 @@
             <td class="question">{{item.question | limitTo:80 }}</td>
             <td class="answer">{{getAnswers(item).join('; ') | limitTo:30}}</td>
             <td class="answer">{{'questions.languages.' + item.language | i18n}}</td>
-            <td class="answer">{{'questions.languages.' + item.subject | i18n}}</td>
+            <td class="answer">{{'questions.subjects.' + item.subject | i18n}}</td>
             <td class="answer">{{ '+'+ item.age}}</td>
             <td class="viewLink"><a href="#/user/questions/{{item._id}}/read">{{ 'view' | i18n }}</a></td>
             <td class="editLink"><a href="#/user/questions/{{item._id}}/update">{{ 'edit' | i18n }}</a></td>
