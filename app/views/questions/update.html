@@ -17,7 +17,7 @@
                <td><select ng-model="quizItem.language" ng-options="t.id as ('questions.languages.' + t.id | i18n) for t in languages"></select></td>
                <td>{{ 'questions.subject' | i18n }}</td>
                <td><select ng-model="quizItem.subject" ng-options="t.id as ('questions.subjects.' + t.id | i18n) for t in subjects"></select></td>
-               <td>{{ 'questions.age' | i18n }}</td>
+               <td>{{ 'questions.fromAge' | i18n }}</td>
                <td><input type="number" min="4" max="18" step="1" size="2" ng-model="quizItem.age" /></td>
             </tr>
          </tbody>
