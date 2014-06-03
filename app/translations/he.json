@@ -1,4 +1,6 @@
 {
+    "tags": "תגים",
+    "tagHint": "הפרד תגים בעזרת פסיק (דוגמה: 'איות, דקדוק')",
     "languages":{"he":"עברית","en":"אנגלית", "ru":"רוסית"},
     "featured" : "קיימים",
     "popular" : "פופולריים",
@@ -57,6 +59,8 @@
         "free": "זה בחינם!"
     },
     "lessons": {
+        "myLessons": "השיעורים שלי",
+        "total": "סך הכל",
         "filter": "סנן שיעורים",
         "tags": "תגים",
         "filters": {
@@ -137,8 +141,12 @@
         }
     },
     "questions": {
+        "audioUrl":"URL של קובץ השמע",
+        "audioUrlHint":"על מנת להוסיף שמע לשאלה, אנא עדכן את ה- URL של קובץ השמע",
+        "fromAge": "החל מגיל",
         "myQuestions": "השאלות שלי",
         "total": "סך הכל",
+        "filter": "סנן שאלות",
         "createNew": "צור שאלה חדשה",
         "question": "שאלה",
         "answer": "תשובה",
@@ -181,5 +189,28 @@
         "correctAnswerFilled": "תשובה נכונה!",
         "incorrectAnswerFilled": "תשובה שגויה",
         "thankYou": "תודה לך על תשובתך!"
+    },
+    "filters": {
+        "labels": {
+            "ageRange": "טווח גילאים",
+            "language": "שפה",
+            "subject": "נושא"
+        },
+        "languages": {
+            "english": "אנגלית",
+            "hebrew": "עברית",
+            "arabic": "ערבית",
+            "russian": "רוסית",
+            "other": "אחרת"
+        },
+        "subjects": {
+            "english": "אנגלית",
+            "math": "מתמטיקה",
+            "science": "מדע",
+            "grammar": "דקדוק",
+            "spelling": "איות",
+            "biology": "ביולוגיה",
+            "other": "אחר"
+        }
     }
 }

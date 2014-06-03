@@ -1,6 +1,6 @@
 
 {   "tags" :"TAGS",
-   	"tagHint":"Seperate tags by commas (e.g. there Vs their , spelling , grammer )",
+   	"tagHint": "Seperate tags by commas (e.g. there Vs their , spelling , grammer )",
     "featured":"Featured",
     "popular":"Popular",
     "new":"New",
@@ -132,7 +132,7 @@
     "questions": {
     	"audioUrl":"Audio Url",
     	"audioUrlHint":"To add audio to question, please update audio url",
-    	"fromAge":"Form Age",
+    	"fromAge": "From Age",
         "myQuestions": "My Questions",
         "total": "Total",
         "filter": "Filter Questions",
