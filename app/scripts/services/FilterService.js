@@ -4,19 +4,19 @@ angular.module('lergoApp').service('FilterService', function Filterservice() {
 	this.languages = [ 'english', 'hebrew', 'arabic', 'russian', 'other', ];
 	this.subjects = [ 'english', 'math', 'science', 'grammar', 'spelling', 'biology', 'other' ];
 	this.ageRanges = [ {
-		"id" : "4-7",
+		'id' : '4-7',
 		'min' : 4,
 		'max' : 7
 	}, {
-		"id" : "8-11",
+		'id' : '8-11',
 		'min' : 8,
 		'max' : 11
 	}, {
-		"id" : "12-15",
+		'id' : '12-15',
 		'min' : 12,
 		'max' : 15
 	}, {
-		"id" : "16+",
+		'id' : '16+',
 		'min' : 16,
 		'max' : 100
 	} ];
