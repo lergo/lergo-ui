@@ -17,24 +17,24 @@
                <td><select ng-model="quizItem.language" ng-options="l as ('filters.languages.' + l | i18n) for l in languages"></select></td>
                <td>{{ 'filters.labels.subject' | i18n }}</td>
                <td><select ng-model="quizItem.subject" ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects"></select></td>
-               <td>{{ 'filters.labels.ageRange' | i18n }}</td>
+               <td>{{ 'fromAge' | i18n }}</td>
                <td><input type="number" min="4" max="18" step="1" size="2" ng-model="quizItem.age" /></td>
             </tr>
          </tbody>
       </table>
    </div>
    <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
-   <hr />
-   <div>
+   <div ng-show="!!quizItem.question && !!quizItem.type">
+      <hr />
       <table class=" lergo-table lergo-form">
          <tbody>
             <tr>
                <td style="width: 15%">{{ 'questions.audioUrl' | i18n }}</td>
-               <td ><input placeholder="{{'questions.audioUrlHint' | i18n}}" ng-model="quizItem.audioUrl" /></td>
+               <td><input placeholder="{{'questions.audioUrlHint' | i18n}}" ng-model="quizItem.audioUrl" /></td>
             </tr>
             <tr>
                <td>{{ 'tags' | i18n }}</td>
-               <td ><input  placeholder="{{'tagHint' | i18n}}" ng-model="quizItem.tags" /></td>
+               <td><input placeholder="{{'tagHint' | i18n}}" ng-model="quizItem.tags" /></td>
             </tr>
          </tbody>
       </table>

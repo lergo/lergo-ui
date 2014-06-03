@@ -4,7 +4,27 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 
 	$scope.subjects = FilterService.subjects;
 	$scope.languages = FilterService.languages;
+	$scope.ageRanges = FilterService.ageRanges;
 	$scope.filter = {};
+
+	$scope.ageFilter = function(quizItem) {
+		if (!$scope.filter.age) {
+			return true;
+		}
+		return FilterService.filterByAge($scope.filter.age, quizItem.age);
+	};
+	$scope.languageFilter = function(quizItem) {
+		if (!$scope.filter.language) {
+			return true;
+		}
+		return quizItem.language === $scope.filter.language;
+	};
+	$scope.subjectFilter = function(quizItem) {
+		if (!$scope.filter.subject) {
+			return true;
+		}
+		return quizItem.subject === $scope.filter.subject;
+	};
 
 	$scope.createNewQuestion = function() {
 		QuestionsService.createQuestion().then(function(result) {
@@ -27,20 +47,6 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	});
 
 	$scope.getAnswers = function(quizItem) {
-		var answers = [];
-		if (quizItem.type === 'multipleChoices') {
-			quizItem.options.forEach(function(value) {
-				if (value.checked === true) {
-					answers.push(value.label);
-				}
-			});
-		}
-		if (quizItem.type === 'exactMatch') {
-			quizItem.options.forEach(function(value) {
-				answers.push(value.label);
-			});
-		}
-		answers.push(quizItem.answer);
-		return answers;
+		return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
 	};
 });

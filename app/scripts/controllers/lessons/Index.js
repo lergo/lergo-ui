@@ -4,6 +4,27 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 	$scope.lessons = null;
 	$scope.subjects = FilterService.subjects;
 	$scope.languages = FilterService.languages;
+	$scope.ageRanges = FilterService.ageRanges;
+	$scope.filter = {};
+
+	$scope.ageFilter = function(lesson) {
+		if (!$scope.filter.age) {
+			return true;
+		}
+		return FilterService.filterByAge($scope.filter.age, lesson.age);
+	};
+	$scope.languageFilter = function(lesson) {
+		if (!$scope.filter.language) {
+			return true;
+		}
+		return lesson.language===$scope.filter.language;
+	};
+	$scope.subjectFilter = function(lesson) {
+		if (!$scope.filter.subject) {
+			return true;
+		}
+		return lesson.subject===$scope.filter.subject;
+	};
 	$scope.getAll = function() {
 		LergoClient.lessons.getAll().then(function(result) {
 			$scope.lessons = result.data;
