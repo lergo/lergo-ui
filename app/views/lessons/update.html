@@ -22,7 +22,7 @@
                <td><select ng-model="lesson.language" ng-options="l as ('filters.languages.' + l| i18n) for l in languages"></select></td>
                <td>{{ 'filters.labels.subject' | i18n }}</td>
                <td><select ng-model="lesson.subject" ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects"></select></td>
-               <td>{{ 'filters.labels.ageRange' | i18n }}</td>
+               <td>{{ 'fromAge' | i18n }}</td>
                <td><input type="number" min="4" max="18" step="1" size="2" ng-model="lesson.age" /></td>
             </tr>
             <tr>

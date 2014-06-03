@@ -44,7 +44,7 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
 				}
 				// UNTRANSLATED
 				var newOption = {
-					'label' : 'Answer Option' + ($scope.quizItem.options.length + 1)
+					'label' : ''
 				};
 				$scope.quizItem.options.push(newOption);
 

@@ -1,0 +1,20 @@
+<div class="filters">
+   <div class="label">{{'filters.labels.language' | i18n }}</div>
+   <div class="input">
+      <select ng-options="l as ('filters.languages.' + l | i18n) for l in languages" ng-model="filter.language">
+         <option value="">All</option>
+      </select>
+   </div>
+   <div class="label">{{'filters.labels.subject' | i18n }}</div>
+   <div class="input">
+      <select placeholder="Subjects" ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects" ng-model="filter.subject">
+         <option value="">All</option>
+      </select>
+   </div>
+   <div class="label">{{'filters.labels.ageRange' | i18n }}</div>
+   <div class="input">
+      <select ng-options="a.id as a.id for a in ageRanges" ng-model="filter.age">
+         <option value="">{{'filters.all'|i18n}}</option>
+      </select>
+   </div>
+</div>
