@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location) {
+angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location,FilterService) {
 	$scope.lessons = null;
-
+	$scope.subjects = FilterService.subjects;
+	$scope.languages = FilterService.languages;
 	$scope.getAll = function() {
 		LergoClient.lessons.getAll().then(function(result) {
 			$scope.lessons = result.data;

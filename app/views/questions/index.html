@@ -21,8 +21,8 @@
             <td><input type="checkbox" /></td>
             <td class="question">{{item.question | limitTo:80 }}</td>
             <td class="answer">{{getAnswers(item).join('; ') | limitTo:30}}</td>
-            <td class="answer">{{'questions.languages.' + item.language | i18n}}</td>
-            <td class="answer">{{'questions.subjects.' + item.subject | i18n}}</td>
+            <td class="answer">{{'filters.languages.' + item.language | i18n}}</td>
+            <td class="answer">{{'filters.subjects.' + item.subject | i18n}}</td>
             <td class="answer">{{ '+'+ item.age}}</td>
             <td class="viewLink"><a href="#/user/questions/{{item._id}}/read">{{ 'view' | i18n }}</a></td>
             <td class="editLink"><a href="#/user/questions/{{item._id}}/update">{{ 'edit' | i18n }}</a></td>
@@ -37,17 +37,17 @@
       <hr />
       <div class="filters">
          <div class="lergo-h1">{{ 'questions.filter' | i18n }}</div>
-         <div class="label">{{'lessons.filters.labels.language' | i18n }}</div>
+         <div class="label">{{'filters.labels.language' | i18n }}</div>
          <div class="input">
-            <select ng-options="t.id as ('questions.languages.' + t.id | i18n) for t in languages" ng-model="filter.language">
+            <select ng-options="l as ('filters.languages.' + l | i18n) for l in languages" ng-model="filter.language">
             </select>
          </div>
-         <div class="label">{{'lessons.filters.labels.subject' | i18n }}</div>
+         <div class="label">{{'filters.labels.subject' | i18n }}</div>
          <div class="input">
-            <select ng-options="t.id as ('questions.subjects.' + t.id | i18n) for t in subjects" ng-model="filter.subject">
+            <select ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects" ng-model="filter.subject">
             </select>
          </div>
-         <div class="label">{{'lessons.filters.labels.age range' | i18n }}</div>
+         <div class="label">{{'filters.labels.ageRange' | i18n }}</div>
          <div class="input">
             <select ng-options="a.id as a.label for a in ageRanges" ng-model="filter.age">
             </select>
