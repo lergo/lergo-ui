@@ -63,45 +63,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'alias' : []
 	} ];
 
-	this.languages = [ {
-		'id' : 'english',
-		'label' : 'English'
-	}, {
-		'id' : 'hebrew',
-		'label' : 'Hebrew'
-	}, {
-		'id' : 'arabic',
-		'label' : 'Arabic'
-	}, {
-		'id' : 'russian',
-		'label' : 'Russian'
-	}, {
-		'id' : 'other',
-		'label' : 'Other'
-	} ];
-	this.subjects = [ {
-		'id' : 'english',
-		'label' : 'English'
-	}, {
-		'id' : 'math',
-		'label' : 'Math'
-	}, {
-		'id' : 'science',
-		'label' : 'Science'
-	}, {
-		'id' : 'grammar',
-		'label' : 'Grammar'
-	}, {
-		'id' : 'spelling',
-		'label' : 'Spelling'
-	}, {
-		'id' : 'biology',
-		'label' : 'Biology'
-	}, {
-		'id' : 'other',
-		'label' : 'Other'
-	} ];
-
+	
 	this.getTypeById = function(typeId) {
 		for ( var i = 0; i < this.questionsType.length; i++) {
 			if (typeId === this.questionsType[i].id) {

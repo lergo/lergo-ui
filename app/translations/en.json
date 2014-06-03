@@ -1,5 +1,6 @@
 
-{
+{   "tags" :"TAGS",
+   	"tagHint":"Seperate tags by commas (e.g. there Vs their , spelling , grammer )",
     "featured":"Featured",
     "popular":"Popular",
     "new":"New",
@@ -129,6 +130,8 @@
         }
     },
     "questions": {
+    	"audioUrl":"Audio Url",
+    	"audioUrlHint":"To add audio to question, please update audio url",
     	"fromAge":"Form Age",
         "myQuestions": "My Questions",
         "total": "Total",
@@ -175,6 +178,29 @@
         "correctAnswerFilled": "You are correct!",
         "incorrectAnswerFilled": "This is incorrect",
         "thankYou": "Thank you for your answer"
+    },
+    "filters": {
+        "labels": {
+            "ageRange": "Age Range",
+            "language": "Language",
+            "subject": "Subject"
+        },
+        "languages": {
+            "english": "English",
+            "hebrew": "Hebrew",
+            "arabic": "Arabic",
+            "russian": "Russian",
+            "other": "Other"
+        },
+        "subjects": {
+            "english": "English",
+            "math": "Math",
+            "science": "Science",
+            "grammar": "Grammar",
+            "spelling": "Spelling",
+            "biology": "Biology",
+            "other": "Other"
+        }
     }
-
+   
 }
