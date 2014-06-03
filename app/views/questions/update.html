@@ -24,7 +24,7 @@
       </table>
    </div>
    <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
-   <div>
+   <div ng-show="!!quizItem.question && !!quizItem.type">
       <hr />
       <table class=" lergo-table lergo-form">
          <tbody>
