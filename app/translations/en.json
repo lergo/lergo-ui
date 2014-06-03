@@ -1,6 +1,5 @@
 
-{   "tags" :"Tags",
-	"fromAge":"Form Age",
+{   "tags" :"TAGS",
    	"tagHint":"Seperate tags by commas (e.g. there Vs their , spelling , grammer )",
     "featured":"Featured",
     "popular":"Popular",
@@ -131,9 +130,9 @@
         }
     },
     "questions": {
-    	"answerOption":"Answer Option ",
-    	"audioUrl":"Audio URL",
-    	"audioUrlHint":"To add audio to question, please update audio URL",
+    	"audioUrl":"Audio Url",
+    	"audioUrlHint":"To add audio to question, please update audio url",
+    	"fromAge":"Form Age",
         "myQuestions": "My Questions",
         "total": "Total",
         "filter": "Filter Questions",
@@ -181,7 +180,6 @@
         "thankYou": "Thank you for your answer"
     },
     "filters": {
-    	"all":"All",
         "labels": {
             "ageRange": "Age Range",
             "language": "Language",
