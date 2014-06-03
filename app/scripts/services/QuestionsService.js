@@ -84,7 +84,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'updateTemplate' : 'views/questions/update/_openQuestion.html',
 		'viewTemplate' : 'views/questions/view/_openQuestion.html',
 		'answers' : function(quizItem) {
-			return [];
+			var answers = [];
+			answers.push(quizItem.answer);
+			return answers;
 		},
 		'alias' : []
 	} ];
