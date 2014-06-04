@@ -18,11 +18,11 @@
     "name": "שם",
     "invite": "הזמנה",
     "delete": "מחיקה",
-    "welcome": "ברוך הבא",
+    "welcome": "ברוכים הבאים",
     "congratulations": "מזל טוב",
     "title": "כותרת",
     "description": "תיאור",
-    "next": "הבא בתור",
+    "next": "לשאלה הבאה",
     "email": "אימייל (דואר אלקטרוני)",
     "loginPage" : {
         "username"  : "שם משתמש",
@@ -32,7 +32,7 @@
     },
     "baseLayout" : {
         "header" : {
-            "searchPlaceholder" : " מה תרצה ללמוד?",
+            "searchPlaceholder" : "על מה תרצה ללמוד?",
             "links" : {
                 "learn" : "למד",
                 "create" : "צור",
@@ -55,14 +55,14 @@
         "lessons": "שיעורים",
         "questions": "שאלות",
         "andCounting": "וממשיכים לספור...",
-        "createYourOwn": "צור שיעורים משלך",
+        "createYourOwn": "ליצירת שיעור משלך",
         "start": "התחל",
         "free": "זה בחינם!"
     },
     "lessons": {
         "myLessons": "השיעורים שלי",
         "total": "סך הכל",
-        "filter": "סנן שיעורים",
+        "filter": "לסינון השיעורים",
         "tags": "תגים",
         "filters": {
             "labels": {
@@ -74,10 +74,10 @@
         "description": "תיאור השיעור",
         "name": "שם השיעור",
         "available": "שיעורים זמינים",
-        "create": "צור שיעור חדש",
-        "areYouReady": "אתה מוכן להתחיל ללמוד?",
-        "letsGo": "בוא נתחיל עם לרגו!",
-        "letsContinue": "קדימה - בוא נמשיך!",
+        "create": "ליצירת שיעור חדש",
+        "areYouReady": "אתם מוכנים להתחיל ללמוד?",
+        "letsGo": "בואו נתחיל עם לרגו!",
+        "letsContinue": "קדימה - בואו נמשיך!",
         "lessonCompleted": "השלמת את השיעור",
         "addQuestion": "הוסף שאלה למבדק",
         "videoURL": "ה- URL של הוידאו"
@@ -93,7 +93,7 @@
         "selectAnAnswer": "בחר תשובה"
     },
     "invitations": {
-        "create": "צור הזמנה חדשה",
+        "create": "ליצירת הזמנה חדשה",
         "sent": "ההזמנה נשלחה בהצלחה",
         "sending": "שולח הזמנה, נא להמתין...",
         "error": "שגיאה בשליחת ההזמנה :("
@@ -147,15 +147,15 @@
         "audioUrlHint":"על מנת להוסיף שמע לשאלה, אנא עדכן את ה- URL של קובץ השמע",
         "myQuestions": "השאלות שלי",
         "total": "סך הכל",
-        "filter": "סנן שאלות",
-        "createNew": "צור שאלה חדשה",
+        "filter": "לסינון השאלות",
+        "createNew": "ליצירת שאלה חדשה",
         "question": "שאלה",
         "answer": "תשובה",
         "noQuestions": "אין שאלות להצגה",
-        "help": "רמז",
+        "help": "טקסט עזרה",
         "questionType": "סוג שאלה",
         "language": "שפה",
-        "subject": "נושא",
+        "subject": "מקצוע",
         "age": "גיל",
         "types": {
             "trueFalse": "אמת או שקר",
