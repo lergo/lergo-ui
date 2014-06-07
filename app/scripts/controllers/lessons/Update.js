@@ -33,11 +33,6 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log
 		'label' : 'Quiz'
 	} ];
 
-	LergoClient.lessons.getById($routeParams.lessonId).then(function(result) {
-		$scope.lesson = result.data;
-		$scope.$watch('lesson', saveLesson.onValueChange, true);
-	});
-
 	$scope.addStep = function(lesson) {
 		if (!lesson.steps) {
 			lesson.steps = [];

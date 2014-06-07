@@ -11,6 +11,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 	};
 
 	this.findQuestionsById = function(ids) {
+        debugger;
 		return $http({
 			'url' : '/backend/questions/find',
 			'method' : 'GET',

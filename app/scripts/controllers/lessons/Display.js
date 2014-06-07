@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp')
-  .controller('LessonsDisplayCtrl', function ($scope, $routeParams, LergoClient, $log, $controller ) {
+  .controller('LessonsDisplayCtrl', function ($scope, $routeParams, LergoClient, $log, $controller, $rootScope ) {
 
 
         $log.info('loading lesson display ctrl');
@@ -22,6 +22,10 @@ angular.module('lergoApp')
 
         $scope.currentStepIndex = -1;
         $log.info('current step index', $scope.currentStepIndex);
+
+        $scope.$watch('currentStepIndex', function(oldValue, newValue){
+            $rootScope.$broadcast('nextStepClick', { 'old' : oldValue, 'new' : newValue } );
+        });
 
         $scope.hasNextStep = function(){
             return !!$scope.lesson && $scope.lesson.steps &&  $scope.currentStepIndex < $scope.lesson.steps.length;

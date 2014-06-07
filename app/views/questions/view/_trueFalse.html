@@ -1,9 +1,10 @@
 
 <div class="question-true-false">
 	<br>
+    {{quizItem}}
 	<div class="true-false-options">
 		<button ng-repeat="option in ['True','False']"
-			class="true-false-option" ng-click="quizItem.userAnswer = option"
+			class="true-false-option" ng-click="updateAnswer($event,option,quizItem)"
 			ng-class="{'active' : quizItem.userAnswer === option }">{{
 			'quizItem.answer.' + option | i18n }}</button>
 	</div>

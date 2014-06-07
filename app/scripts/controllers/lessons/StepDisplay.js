@@ -9,13 +9,15 @@ angular.module('lergoApp')
             $log.info($scope.step);
         }
 
+        $scope.currentIndex = 0;
+        $scope.answers = {};
+
         function reload() {
             if ( !$scope.step ){
                 return;
             }
             $scope.currentIndex = 0;
             $scope.answers = {};
-
 
             if ($scope.step.hasOwnProperty('quizItems')) {
 
@@ -30,8 +32,8 @@ angular.module('lergoApp')
             }
         }
 
-        $scope.
-            $watch('step', reload );
+//        $scope.
+//            $watch('step', reload );
 
 
         $scope.getQuizItemTemplate = function(id) {
@@ -50,7 +52,7 @@ angular.module('lergoApp')
 
 
         $scope.updateAnswer = function( event, answer, quizItem ){
-            $log.info('updating answer', arguments );
+
             quizItem.userAnswer = answer;
             checkAnswer();
         };
