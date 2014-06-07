@@ -7,10 +7,10 @@ angular.module('lergoApp').service('LergoTranslate',
 
 
         var supportedLanguages = [ { 'id' : 'en', 'dir' : 'ltr' } , { 'id' : 'he', 'dir' : 'rtl' } ];
-
+        var DEFAULT_LANGUAGE = 'en';
         var language = localStorageService.get('lergoLanguage');
         if ( !language ){
-            language = $routeParams.hasOwnProperty('language') ? $routeParams.language : 'en';
+            language = $routeParams.hasOwnProperty('language') ? $routeParams.language : DEFAULT_LANGUAGE;
         }
 
 
