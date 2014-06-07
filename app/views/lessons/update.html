@@ -1,57 +1,62 @@
 <div class="base-layout" id="createLessonPage">
-	<form ng-submit='create()' class="CreateLesson-form lergo-form">
-		<div class="lergo-label">
-			<span class="errorMessage" ng-show='errorMessage'
-				style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
-		</div>
-		<div class="form-section">
-			<div class="lergo-label">Lesson Name</div>
-			<div class="lergo-input">
-				<input ng-model="lesson.name" />
-			</div>
-		</div>
-		<div class="form-section">
-			<div class="lergo-label">Lesson Description</div>
-			<div class="lergo-input">
-				<textarea ng-model="lesson.description"></textarea>
-			</div>
-		</div>
-		<div style="margin-top: 5px; margin-bottom: 5px">{{isSaving() &&
-			"Saving..." || "Saved" }}</div>
-		<div>
-			<button class="btn" ng-click="done()" ng-disabled="isSaving()">
-				Done</button>
-			<button class="btn" ng-click="addStep(lesson)">Add Step</button>
-		</div>
-		<div ng-repeat="step in lesson.steps">
-			<hr style="float: none"/>
-			<div style="float: right">
-				<a ng-click="moveStepUp($index)" ng-show="!$first"
-					class="btn btn-small">Up</a> <a ng-click="moveStepDown($index)"
-					ng-show="!$last" class="btn btn-small">Down</a> <a
-					ng-click="deleteStep(step)" class="btn-link">X</a>
-			</div>
-			<table class="table lergo-form">
-				<tr>
-					<td style="border-top: none; align: left; width: 10%">Step
-						Title:</td>
-					<td style="border-top: none; align: right"><input
-						ng-model="step.title" /></td>
-				</tr>
-				<tr>
-					<td style="border-top: none; align: left">Step Type:</td>
-					<td style="border-top: none; align: left"><select
-						ng-model="step.type"
-						ng-options="t.id as t.label for t in stepTypes">
-					</select></td>
-				</tr>
-			</table>
-			<div ng-include="getStepViewByType(step)"></div>
-			<div>
-				<button style=" margin-left: 50%" class="btn"
-					ng-click="displayStep(step)">Display Step</button>
-			</div>
-		</div>
-
-	</form>
+   <form ng-submit='create()' class="CreateLesson-form lergo-form">
+      <div class="lergo-label">
+         <span class="errorMessage" ng-show='errorMessage' style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
+      </div>
+      <div class="form-section">
+         <div class="lergo-label">{{ 'lessons.name' | i18n }}</div>
+         <div class="lergo-input">
+            <input ng-model="lesson.name" />
+         </div>
+      </div>
+      <div class="form-section">
+         <div class="lergo-label">{{ 'lessons.description' | i18n }}</div>
+         <div class="lergo-input">
+            <textarea ng-model="lesson.description"></textarea>
+         </div>
+      </div>
+      <div>
+         <table class="lergo-table lergo-form">
+            <tr>
+               <td>{{ 'filters.labels.language' | i18n }}</td>
+               <td><select ng-model="lesson.language" ng-options="l as ('filters.languages.' + l| i18n) for l in languages"></select></td>
+               <td>{{ 'filters.labels.subject' | i18n }}</td>
+               <td><select ng-model="lesson.subject" ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects"></select></td>
+               <td>{{ 'fromAge' | i18n }}</td>
+               <td><input type="number" min="4" max="18" step="1" size="2" ng-model="lesson.age" /></td>
+            </tr>
+            <tr>
+               <td>{{ 'tags' | i18n }}</td>
+               <td colspan="5"><input placeholder="{{'tagHint' | i18n}}" ng-model="lesson.tags" /></td>
+            </tr>
+         </table>
+      </div>
+      <div style="margin-top: 5px; margin-bottom: 5px">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+      <div>
+         <button class="btn" ng-click="done()" ng-disabled="isSaving()">{{'done' | i18n }}</button>
+         <button class="btn" ng-click="addStep(lesson)">{{ 'steps.add' | i18n }}</button>
+      </div>
+      <div ng-repeat="step in lesson.steps">
+         <hr style="float: none" />
+         <div style="float: right">
+            <a ng-click="moveStepUp($index)" ng-show="!$first" class="btn btn-small">{{ 'up' | i18n }}</a> <a ng-click="moveStepDown($index)"
+               ng-show="!$last" class="btn btn-small">{{ 'down' | i18n }}</a> <a ng-click="deleteStep(step)" class="btn-link">X</a>
+         </div>
+         <table class="lergo-table lergo-form">
+            <tr>
+               <td style="width: 10%">{{ 'steps.title' | i18n }}</td>
+               <td><input ng-model="step.title" /></td>
+            </tr>
+            <tr>
+               <td>{{ 'steps.type' | i18n }}</td>
+               <td><select ng-model="step.type" ng-options="t.id as ('steps.' + t.id | i18n) for t in stepTypes">
+               </select></td>
+            </tr>
+         </table>
+         <div ng-include="getStepViewByType(step)"></div>
+         <div>
+            <button style="margin-left: 50%" class="btn" ng-click="displayStep(step)">{{ 'steps.display' | i18n }}</button>
+         </div>
+      </div>
+   </form>
 </div>

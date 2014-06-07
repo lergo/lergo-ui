@@ -1,21 +1,20 @@
 <div class="base-layout">
-	<form name="QuestionForm" class="question-display"
-		ng-submit="checkAnswer()">
-		<div class="question-content">
-			<div style="margin: 0 10px">
-				<br>
-				<p class="lergo-h4">{{quizItem.question}}</p>
-				<p class="question-help-text">{{quizItem.helpText}}</p>
-				<div ng-include="getQuestionViewTemplate(quizItem)"></div>
-			</div>
-			<div class="question-submit">
-				<button class="btn" type="submit">{{ 'button.submit' | i18n }}</button>
-			</div>
-		</div>
-		<div ng-show="!!answer">
-			<div class="bg-success" ng-show="answer.correct">{{(quizItem.type
-				=== 'openQuestion') &&  ('questions.thankYou' | i18n) || ('questions.correctAnswerFilled' | i18n) }}</div>
-			<div class="bg-warning" ng-show="!answer.correct">{{ 'questions.incorrectAnswerFilled' | i18n }}</div>
-		</div>
-	</form>
+   <form name="QuestionForm" class="question-display">
+      <div class="question-content">
+         <div style="margin: 0 10px">
+            <br>
+            <p class="lergo-h4">{{quizItem.question}}</p>
+            <p class="question-help-text">{{quizItem.helpText}}</p>
+            <div ng-include="getQuestionViewTemplate(quizItem)"></div>
+         </div>
+         <div class="question-submit">
+            <button class="btn" type="submit" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+         </div>
+      </div>
+      <div ng-show="!!answer">
+         <div class="bg-success" ng-show="answer.correct">{{(quizItem.type === 'openQuestion') && ('questions.thankYou' | i18n) ||
+            ('questions.correctAnswerFilled' | i18n) }}</div>
+         <div class="bg-warning" ng-show="!answer.correct">{{ 'questions.incorrectAnswerFilled' | i18n }}</div>
+      </div>
+   </form>
 </div>

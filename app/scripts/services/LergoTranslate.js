@@ -7,10 +7,10 @@ angular.module('lergoApp').service('LergoTranslate',
 
 
         var supportedLanguages = [ { 'id' : 'en', 'dir' : 'ltr' } , { 'id' : 'he', 'dir' : 'rtl' } ];
-
+        var DEFAULT_LANGUAGE = 'en';
         var language = localStorageService.get('lergoLanguage');
         if ( !language ){
-            language = $routeParams.hasOwnProperty('language') ? $routeParams.language : 'en';
+            language = $routeParams.hasOwnProperty('language') ? $routeParams.language : DEFAULT_LANGUAGE;
         }
 
 
@@ -91,6 +91,11 @@ angular.module('lergoApp').service('LergoTranslate',
             var value = findTranslationInLanguage( translations[language], key );
             if ( !value ){
                 value = findTranslationInLanguage( translations.general , key );
+            }
+            // Fallback to default language
+            if (!value && (language !== DEFAULT_LANGUAGE)) {
+                console.log('Translation key "' + key + '" is missing in locale "' + language + '", please contact LerGO');
+                value = findTranslationInLanguage(translations[DEFAULT_LANGUAGE], key);
             }
 
             if ( !value ){

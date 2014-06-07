@@ -43,64 +43,53 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'True or False',
 		'updateTemplate' : 'views/questions/update/_trueFalse.html',
 		'viewTemplate' : 'views/questions/view/_trueFalse.html',
+		'answers' : function(quizItem) {
+			var answers = [];
+			answers.push(quizItem.answer);
+			return answers;
+		},
 		'alias' : []
 	}, {
 		'id' : 'exactMatch',
 		'label' : 'Exact Match',
 		'updateTemplate' : 'views/questions/update/_exactMatch.html',
 		'viewTemplate' : 'views/questions/view/_exactMatch.html',
+		'answers' : function(quizItem) {
+			var answers = [];
+			quizItem.options.forEach(function(value) {
+				answers.push(value.label);
+			});
+			return answers;
+		},
 		'alias' : []
 	}, {
 		'id' : 'multipleChoices',
 		'label' : 'Multiple Choice',
 		'updateTemplate' : 'views/questions/update/_multipleChoices.html',
 		'viewTemplate' : 'views/questions/view/_multipleChoices.html',
+		'answers' : function(quizItem) {
+			var answers = [];
+			if (quizItem.type === 'multipleChoices') {
+				quizItem.options.forEach(function(value) {
+					if (value.checked === true) {
+						answers.push(value.label);
+					}
+				});
+			}
+			return answers;
+		},
 		'alias' : []
 	}, {
 		'id' : 'openQuestion',
 		'label' : 'Open Question',
 		'updateTemplate' : 'views/questions/update/_openQuestion.html',
 		'viewTemplate' : 'views/questions/view/_openQuestion.html',
+		'answers' : function(quizItem) {
+			var answers = [];
+			answers.push(quizItem.answer);
+			return answers;
+		},
 		'alias' : []
-	} ];
-
-	this.languages = [ {
-		'id' : 'english',
-		'label' : 'English'
-	}, {
-		'id' : 'hebrew',
-		'label' : 'Hebrew'
-	}, {
-		'id' : 'arabic',
-		'label' : 'Arabic'
-	}, {
-		'id' : 'russian',
-		'label' : 'Russian'
-	}, {
-		'id' : 'other',
-		'label' : 'Other'
-	} ];
-	this.subjects = [ {
-		'id' : 'english',
-		'label' : 'English'
-	}, {
-		'id' : 'math',
-		'label' : 'Math'
-	}, {
-		'id' : 'science',
-		'label' : 'Science'
-	}, {
-		'id' : 'grammar',
-		'label' : 'Grammar'
-	}, {
-		'id' : 'spelling',
-		'label' : 'Spelling'
-	}, {
-		'id' : 'biology',
-		'label' : 'biology'
-	}, {
-		'id' : 'other',
-		'label' : 'other'
 	} ];
 
 	this.getTypeById = function(typeId) {

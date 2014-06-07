@@ -1,5 +1,7 @@
 
-{
+{   "tags" :"Tags",
+	"fromAge":"From Age",
+   	"tagHint": "Separate tags by commas (e.g. there Vs their, spelling, grammar)",
     "featured":"Featured",
     "popular":"Popular",
     "new":"New",
@@ -11,6 +13,17 @@
     "saved": "Saved",
     "done": "Done",
     "preview": "Preview",
+    "up": "Up",
+    "down": "Down",
+    "name": "Name",
+    "invite": "Invite",
+    "delete": "Delete",
+    "welcome": "Welcome",
+    "congratulations": "Congratulations",
+    "title": "Title",
+    "description": "Description",
+    "next": "Next",
+    "email": "Email",
     "baseLayout" : {
         "header" : {
             "searchPlaceholder" : "What would you like to learn about?",
@@ -41,6 +54,8 @@
         "free": "it's free!"
     },
     "lessons": {
+    	"myLessons" : "My Lessons",
+    	"total": "Total",
         "filter": "Filter Lessons",
         "tags": "Tags",
         "filters": {
@@ -49,7 +64,33 @@
                 "language": "Language",
                 "subject": "Subject"
             }
-        }
+        },
+        "description": "Lesson Description",
+        "name": "Lesson Name",
+        "available": "Available Lessons",
+        "create": "Create New Lesson",
+        "areYouReady": "Are you ready to start learning?",
+        "letsGo": "Let's LerGO!",
+        "letsContinue": "OK! Let's Continue",
+        "lessonCompleted": "You have completed the lesson.",
+        "addQuestion": "Add Question to Quiz",
+        "videoURL": "Video URL"
+    },
+    "steps": {
+        "add": "Add Step",
+        "title": "Step Title",
+        "type": "Step Type",
+        "video": "Video",
+        "quiz": "Quiz",
+        "display": "Display Step",
+        "noMoreQuestions": "No More Questions",
+        "selectAnAnswer": "Select an Answer"
+    },
+    "invitations": {
+        "create": "Create New Invite",
+        "sent": "Invitation successfully sent",
+        "sending": "Sending invite, please wait...",
+        "error": "Error sending invitation :("
     },
     "subject": {
         "spelling": "Spelling",
@@ -72,13 +113,11 @@
         "resendValidationEmail" : "Resend validation email"
 
     } ,
-    "email" : {
-        "emailSentSuccessfully" : "Please check your inbox and follow instructions"
-    },
     "resetPassword" : {
         "instructions" : "Fill in username or email and submit the form.",
         "success" : "Your request was dispatched successfully",
-        "error" : "There was an error submitting the request"
+        "error" : "There was an error submitting the request",
+        "emailSentSuccessfully" : "Please check your inbox and follow instructions"
     },
     "changePassword" : {
         "success" : "You successfully changed your password",
@@ -92,8 +131,12 @@
         }
     },
     "questions": {
+    	"answerOption":"Answer Option ",
+    	"audioUrl":"Audio URL",
+    	"audioUrlHint":"To add audio to question, please update audio URL",
         "myQuestions": "My Questions",
         "total": "Total",
+        "filter": "Filter Questions",
         "createNew": "Create New Question",
         "question": "Question",
         "answer": "Answer",
@@ -136,6 +179,30 @@
         "correctAnswerFilled": "You are correct!",
         "incorrectAnswerFilled": "This is incorrect",
         "thankYou": "Thank you for your answer"
+    },
+    "filters": {
+    	"all":"All",
+        "labels": {
+            "ageRange": "Age Range",
+            "language": "Language",
+            "subject": "Subject"
+        },
+        "languages": {
+            "english": "English",
+            "hebrew": "Hebrew",
+            "arabic": "Arabic",
+            "russian": "Russian",
+            "other": "Other"
+        },
+        "subjects": {
+            "english": "English",
+            "math": "Math",
+            "science": "Science",
+            "grammar": "Grammar",
+            "spelling": "Spelling",
+            "biology": "Biology",
+            "other": "Other"
+        }
     }
-
+   
 }

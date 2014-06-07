@@ -24,18 +24,19 @@
             </div>
 
             <div class="section">
+                <div class="label"> {{ 'input.fullName' | i18n }} </div>
+                <div class="lergo-input">
+                    <input ng-model="signupForm.fullName" required type="text"/>
+                </div>
+            </div>
+
+            <div class="section">
                 <div class="label"> {{ 'input.password' | i18n }} </div>
                 <div class="lergo-input">
                     <input ng-model="signupForm.password" required type="password"/>
                 </div>
             </div>
 
-            <div class="section">
-                <div class="label"> {{ 'input.fullName' | i18n }} </div>
-                <div class="lergo-input">
-                    <input ng-model="signupForm.fullName" required type="text"/>
-                </div>
-            </div>
 
             <div class="section">
                 <div class="label"> {{ 'input.confirmPassword' | i18n }} </div>

@@ -5,8 +5,8 @@
     </div>
     <div class="message">
         <div class="welcome">
-            Welcome! <br/>
-            Are you ready to start learning<br/>
+            {{ 'welcome' | i18n }}! <br/>
+            {{ 'lessons.areYouReady' | i18n }}<br/>
         </div>
         <div class="name">
             {{lesson.name}}
@@ -15,7 +15,7 @@
             {{lesson.description}}
         </div>
         <div class="button">
-            <button ng-click="nextStep()" class="btn">Lets LerGO!</button>
+            <button ng-click="nextStep()" class="btn">{{ 'lessons.letsGo' | i18n }}</button>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
 <div ng-show="currentStepIndex >= 0 && hasNextStep() ">
     <div ng-include="'/views/lessons/_stepDisplay.html'"></div>
     <div ng-show="hasNextStep()" class="next-step">
-        <button ng-click="nextStep()" class="btn">OK! Lets Continue</button>
+        <button ng-click="nextStep()" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
     </div>
 </div>
 
@@ -38,6 +38,6 @@
         </div>
     </div>
     <div class="message">
-        Congratulations!<br/> You have completed the lesson.
+        {{ 'congratulations' | i18n }}!<br/> {{ 'lessons.lessonCompleted' | i18n }}
     </div>
 </div>

@@ -1,4 +1,7 @@
 {
+    "tags": "תגים",
+    "fromAge": "החל מגיל",
+    "tagHint": "הפרד תגים בעזרת פסיק (דוגמה: 'איות, דקדוק')",
     "languages":{"he":"עברית","en":"אנגלית", "ru":"רוסית"},
     "featured" : "קיימים",
     "popular" : "פופולריים",
@@ -10,6 +13,17 @@
     "saved": "נשמר",
     "done": "סיום",
     "preview": "הצגה",
+    "up": "למעלה",
+    "down": "למטה",
+    "name": "שם",
+    "invite": "הזמנה",
+    "delete": "מחיקה",
+    "welcome": "ברוכים הבאים",
+    "congratulations": "מזל טוב",
+    "title": "כותרת",
+    "description": "תיאור",
+    "next": "לשאלה הבאה",
+    "email": "אימייל (דואר אלקטרוני)",
     "loginPage" : {
         "username"  : "שם משתמש",
         "password" : "סיסמה",
@@ -18,7 +32,7 @@
     },
     "baseLayout" : {
         "header" : {
-            "searchPlaceholder" : " מה תרצה ללמוד?",
+            "searchPlaceholder" : "על מה תרצה ללמוד?",
             "links" : {
                 "learn" : "למד",
                 "create" : "צור",
@@ -41,20 +55,48 @@
         "lessons": "שיעורים",
         "questions": "שאלות",
         "andCounting": "וממשיכים לספור...",
-        "createYourOwn": "צור שיעורים משלך",
+        "createYourOwn": "ליצירת שיעור משלך",
         "start": "התחל",
         "free": "זה בחינם!"
     },
     "lessons": {
-        "filter": "סנן שיעורים",
+        "myLessons": "השיעורים שלי",
+        "total": "סך הכל",
+        "filter": "לסינון השיעורים",
         "tags": "תגים",
         "filters": {
             "labels": {
                 "age range": "טווח גילאים",
                 "language": "שפה",
-                "subject": "נושא"
+                "subject": "מקצוע"
             }
-        }
+        },
+        "description": "תיאור השיעור",
+        "name": "שם השיעור",
+        "available": "שיעורים זמינים",
+        "create": "ליצירת שיעור חדש",
+        "areYouReady": "אתם מוכנים להתחיל ללמוד?",
+        "letsGo": "בואו נתחיל עם לרגו!",
+        "letsContinue": "קדימה - בואו נמשיך!",
+        "lessonCompleted": "השלמת את השיעור",
+        "addQuestion": "הוסף שאלה למבדק",
+        "videoURL": "ה- URL של הוידאו"
+    },
+    "steps": {
+        "add": "הוסף שלב",
+        "title": "כותרת השלב",
+        "type": "סוג השלב",
+        "video": "וידאו",
+        "quiz": "מבדק",
+        "display": "הצג שלב",
+        "noMoreQuestions": "אין שאלות נוספות",
+        "selectAnAnswer": "בחר תשובה"
+    },
+    "invitations": {
+        "create": "ליצירת הזמנה חדשה",
+        "sent": "ההזמנה נשלחה בהצלחה",
+        "sending": "שולח הזמנה, נא להמתין...",
+        "error": "שגיאה בשליחת ההזמנה :("
     },
     "subject": {
         "spelling": "איות",
@@ -77,14 +119,11 @@
 
 
     },
-    "email": {
-        "emailSentSuccessfully": "אנא בדוק את תיבת המייל ועקוב אחר ההוראות"
-    },
     "resetPassword" : {
         "instructions" : "מלא שם משתמש או אימייל ועקוב אחר הוראות שנשלחו",
         "success" : "הבקשה נשלחה בהצלחה",
-        "error" : "הייתה בעיה בשליחת הבקשה"
-
+        "error" : "הייתה בעיה בשליחת הבקשה",
+        "emailSentSuccessfully": "אנא בדוק את תיבת המייל ועקוב אחר ההוראות"
     },
     "changePassword" : {
         "success" : "הסיסמה שונתה בהצלחה",
@@ -103,16 +142,20 @@
         }
     },
     "questions": {
+        "answerOption":"אפשרות תשובה ",
+        "audioUrl":"URL של קובץ השמע",
+        "audioUrlHint":"על מנת להוסיף שמע לשאלה, אנא עדכן את ה- URL של קובץ השמע",
         "myQuestions": "השאלות שלי",
         "total": "סך הכל",
-        "createNew": "צור שאלה חדשה",
+        "filter": "לסינון השאלות",
+        "createNew": "ליצירת שאלה חדשה",
         "question": "שאלה",
         "answer": "תשובה",
         "noQuestions": "אין שאלות להצגה",
-        "help": "רמז",
+        "help": "טקסט עזרה",
         "questionType": "סוג שאלה",
         "language": "שפה",
-        "subject": "נושא",
+        "subject": "מקצוע",
         "age": "גיל",
         "types": {
             "trueFalse": "אמת או שקר",
@@ -146,6 +189,30 @@
         "longAnswer": "תשובה ארוכה (פסקה)",
         "correctAnswerFilled": "תשובה נכונה!",
         "incorrectAnswerFilled": "תשובה שגויה",
-        "thankYou": "תודה לך על תשובתך"
+        "thankYou": "תודה לך על תשובתך!"
+    },
+    "filters": {
+        "all": "הכל",
+        "labels": {
+            "ageRange": "טווח גילאים",
+            "language": "שפה",
+            "subject": "מקצוע"
+        },
+        "languages": {
+            "english": "אנגלית",
+            "hebrew": "עברית",
+            "arabic": "ערבית",
+            "russian": "רוסית",
+            "other": "אחרת"
+        },
+        "subjects": {
+            "english": "אנגלית",
+            "math": "מתמטיקה",
+            "science": "מדע",
+            "grammar": "דקדוק",
+            "spelling": "איות",
+            "biology": "ביולוגיה",
+            "other": "אחר"
+        }
     }
 }
