@@ -92,6 +92,10 @@ angular.module('lergoApp').service('LergoTranslate',
             if ( !value ){
                 value = findTranslationInLanguage( translations.general , key );
             }
+            // Fallback to default language
+            if (!value && (language !== DEFAULT_LANGUAGE)) {
+                value = findTranslationInLanguage(translations[DEFAULT_LANGUAGE], key);
+            }
 
             if ( !value ){
                 return '???' + key + '???';
