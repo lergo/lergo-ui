@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $log, $routeParams, $sce, LergoClient) {
+angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient) {
 	$log.info('showing step');
 
 	if (!!$routeParams.data) {
@@ -8,14 +8,18 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		$log.info($scope.step);
 	}
 
+    $scope.currentIndex = 0;
+    $scope.answers = {};
 	function reload() {
 		if (!$scope.step) {
 			return;
 		}
-		$scope.currentIndex = 0;
-		$scope.answers = {};
 
-		if ($scope.step.hasOwnProperty('quizItems')) {
+        $scope.currentIndex = 0;
+        $scope.answers = {};
+
+        // guy - do not use 'hasOwnProperty' as scope might not have the property, but there is such a value.
+        if ( !!$scope.step && !!$scope.step.quizItems  && !$scope.questions) {
 
 			LergoClient.questions.findQuestionsById($scope.step.quizItems).then(function(result) {
 				var questions = {};
@@ -39,22 +43,37 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		var quizItem = $scope.quizItem;
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
 			$scope.answers[quizItem._id] = result.data;
+            $rootScope.$broadcast('questionAnswered', {
+                'userAnswer' : quizItem.userAnswer,
+                'checkAnswer' : result.data,
+                'quizItemId' : quizItem._id
+
+            });
 		}, function() {
 			$log.error('there was an error checking answer');
 		});
 	};
 
 	$scope.updateAnswer = function(event, answer, quizItem) {
-		$log.info('updating answer', arguments);
-		if (quizItem.userAnswer === undefined) {
-			quizItem.userAnswer = [];
-		}
-		var checkbox = event.target;
-		if (checkbox.checked) {
-			quizItem.userAnswer.push(answer);
-		} else {
-			quizItem.userAnswer.splice(quizItem.userAnswer.indexOf(answer), 1);
-		}
+
+
+        quizItem.userAnswer = answer;
+        $scope.checkAnswer();
+
+
+        // guy - commenting this code out. Doesn't seem to work.
+        // I don't know who wrote this, but please add documentation next time so others will know what it going on.
+
+//		$log.info('updating answer', arguments);
+//		if (quizItem.userAnswer === undefined) {
+//			quizItem.userAnswer = [];
+//		}
+//		var checkbox = event.target;
+//		if (checkbox.checked) {
+//			quizItem.userAnswer.push(answer);
+//		} else {
+//			quizItem.userAnswer.splice(quizItem.userAnswer.indexOf(answer), 1);
+//		}
 	};
 
 	$scope.getQuizItem = function() {

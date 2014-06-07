@@ -57,7 +57,6 @@ angular.module('lergoApp')
         }
 
         $scope.getTranslationValue = function( entry ){
-            debugger;
             return getField( $scope.translations[$rootScope.lergoLanguage], entry.split('.'));
 
         };

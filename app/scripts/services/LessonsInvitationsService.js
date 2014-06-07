@@ -8,8 +8,8 @@ angular.module('lergoApp')
             return $http.post('/backend/user/lessons/' + lessonId + '/invitations/create', invitation);
         };
 
-        this.update = function( invitation ){
-            return $http.post('/backend/lessonsinvitations/' + invitationId + '/update', invitation );
+        this.report = function( invitationId, report ){
+            return $http.post('/backend/lessonsinvitations/' + invitationId + '/report', report );
         };
 
         this.build = function (invitationId, constructLesson, forceConstruct) {

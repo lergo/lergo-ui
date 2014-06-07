@@ -35,7 +35,10 @@ angular.module('lergoApp')
             if ( $scope.hasNextStep() ) {
                 $scope.currentStepIndex++;
                 $scope.step = $scope.lesson.steps[$scope.currentStepIndex];
+
             }
+
+
         };
 
 

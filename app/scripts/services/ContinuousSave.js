@@ -1,5 +1,35 @@
 'use strict';
 
+
+/**
+ *
+ *
+ *
+ * This service helps you implement a continuous save.
+ *
+ * You have to do 3 things to use it:
+ *
+ *
+ *   Save an instance of continuous save
+ *   pass to it a function to implement on save
+ *
+ *   var saveLesson = new ContinuousSave({
+				'saveFn' : function(value) {
+					return LergoClient.lessons.update(value);
+				}
+			});
+ *
+ *
+ *
+ *
+ *   bind 'watch' event to onValueChange method. like this:
+ *
+ *   $scope.$watch('lesson', saveLesson.onValueChange, true);
+ *
+ *
+ *   make sure you model has an _id attribute  - this ID will be used as the key for the local storage
+ *
+ */
 angular.module('lergoApp')
     .factory('ContinuousSave', function (localStorageService, $timeout, $rootScope, $log) {
 
