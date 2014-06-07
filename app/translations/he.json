@@ -68,7 +68,7 @@
             "labels": {
                 "age range": "טווח גילאים",
                 "language": "שפה",
-                "subject": "נושא"
+                "subject": "מקצוע"
             }
         },
         "description": "תיאור השיעור",
@@ -196,7 +196,7 @@
         "labels": {
             "ageRange": "טווח גילאים",
             "language": "שפה",
-            "subject": "נושא"
+            "subject": "מקצוע"
         },
         "languages": {
             "english": "אנגלית",
