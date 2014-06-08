@@ -20,7 +20,9 @@
                 {{getBaseValue(entry)}}
 
             </td>
-            <td class="translation-column">
+            <td class="translation-column"
+                style=".empty-cell { background-color: brown; }"
+                ng-class="{ 'empty-cell': getTranslationValue(entry) === '' }">
                 {{getTranslationValue(entry)}}
 
             </td>
