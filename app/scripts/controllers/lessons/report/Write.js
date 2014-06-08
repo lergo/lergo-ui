@@ -41,12 +41,11 @@
 angular.module('lergoApp')
     .controller('LessonsReportWriteCtrl', function ($scope, $log ) {
 
-        debugger;
         var report = $scope.report;
         if ( !report.answers ){
             report.answers = [];
         }
-        var stepIndex = 0;
+        var stepIndex = -1;
 
         $scope.$on('startLesson', function(event, data){
             $log.info('starting lesson');

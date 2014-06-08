@@ -23,7 +23,6 @@ angular.module('lergoApp')
         }, function( newValue, oldValue ){
             if ( !!newValue ) {
                 $rootScope.$broadcast('endLesson');
-                debugger;
                 LergoClient.lessonsInvitations.sendReportReady($routeParams.invitationId);
             }
         });
