@@ -1,0 +1,9 @@
+<div class="quiz-step-report-view">
+
+    <div class="h1-lergo">{{step.title}}</div>
+    <div>
+        <div ng-repeat="item in getReportQuizItems(step, $index)">
+            {{item}}
+        </div>
+    </div>
+</div>

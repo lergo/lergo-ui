@@ -21,7 +21,11 @@ angular.module('lergoApp')
         $scope.$watch(function(){ // broadcast end of lesson if not next step
             return !!$scope.invitation && !$scope.hasNextStep();
         }, function( newValue, oldValue ){
-            $rootScope.$broadcast('endLesson');
+            if ( !!newValue ) {
+                $rootScope.$broadcast('endLesson');
+                debugger;
+                LergoClient.lessonsInvitations.sendReportReady($routeParams.invitationId);
+            }
         });
 
 
@@ -30,7 +34,7 @@ angular.module('lergoApp')
             $scope.invitation = result.data;
             $scope.lesson = result.data.lesson;
             $scope.questions = {};
-            $scope.report = { '_id' : result.data._id };
+            $scope.report = result.data.report || { '_id' : result.data._id };
 
 
             $scope.$watch( 'report', updateChange.onValueChange, true);

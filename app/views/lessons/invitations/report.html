@@ -1,0 +1,14 @@
+<div class="base-layout">
+    <div class="lergo-h1">{{report.data.lesson.name}}</div>
+    <div>
+        <span>Complete By:</span>
+        <span>{{report.data.invitee.email}}</span>
+    </div>
+    <div>
+        <span>Last update:</span>
+        <span>{{report.lastUpdate | date:'medium'}}</span>
+    </div>
+
+
+    <div lesson-view lesson="report.data.lesson" answers="report.answers" quiz-items="report.data.quizItems"></div>
+</div>
