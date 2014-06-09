@@ -1,5 +1,8 @@
 
-{   "tags" :"Tags",
+{   "advancedOptions":"Advanced options",
+	"explanation":"Explanation",
+	"hint": "Hint",
+	"tags" :"Tags",
 	"fromAge":"From Age",
    	"tagHint": "Separate tags by commas (e.g. there Vs their, spelling, grammar)",
     "featured":"Featured",
