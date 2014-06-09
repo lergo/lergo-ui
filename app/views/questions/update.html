@@ -24,8 +24,9 @@
       </table>
    </div>
    <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
-   <div ng-show="!!quizItem.question && !!quizItem.type">
-      <hr />
+   <button class="btn-link" ng-click="isCollapsed = !isCollapsed" ng-show="!!quizItem.question && !!quizItem.type">{{ 'advancedOptions' | i18n }}</button>
+   <hr />
+   <div collapse="!isCollapsed">
       <table class=" lergo-table lergo-form">
          <tbody>
             <tr>
@@ -36,10 +37,18 @@
                <td>{{ 'tags' | i18n }}</td>
                <td><input placeholder="{{'tagHint' | i18n}}" ng-model="quizItem.tags" /></td>
             </tr>
+            <tr>
+               <td>{{ 'hint' | i18n }}</td>
+               <td><input ng-model="quizItem.hint" /></td>
+            </tr>
+            <tr>
+               <td>{{ 'explanation' | i18n }}</td>
+               <td><input ng-model="quizItem.explanation" /></td>
+            </tr>
          </tbody>
       </table>
    </div>
-   <div>{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+   <div class="lergo-h3">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
    <div>
       <button class="btn" ng-click="done()" ng-disabled="isSaving()||!quizItem.question">{{ 'done' | i18n }}</button>
       <a class="btn" ng-disabled="!quizItem.question" href="#/user/questions/{{quizItem._id}}/read"> {{ 'preview' | i18n }} </a>

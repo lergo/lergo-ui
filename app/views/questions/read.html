@@ -3,8 +3,11 @@
       <div class="question-content">
          <div style="margin: 0 10px">
             <br>
-            <p class="lergo-h4">{{quizItem.question}}</p>
-            <p class="question-help-text">{{quizItem.helpText}}</p>
+            <div>
+               <p class="lergo-h4">{{quizItem.question}}</p>
+               <button ng-show="!!quizItem.hint" popover-placement="right" popover="{{quizItem.hint}}" class="btn-link">{{ 'hint' | i18n }}</button>
+               <p class="question-help-text">{{quizItem.helpText}}</p>
+            </div>
             <div ng-include="getQuestionViewTemplate(quizItem)"></div>
          </div>
          <div class="question-submit">
