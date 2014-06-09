@@ -35,8 +35,11 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.$watch('step', reload);
 
 	$scope.getQuizItemTemplate = function(id) {
-		$scope.quizItem = $scope.questions[id];
-		return !!$scope.quizItem && LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate || "";
+        if ( !!$scope.questions ) {
+            $scope.quizItem = $scope.questions[id];
+            return !!$scope.quizItem && LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate || "";
+        }
+        return '';
 	};
 
 	$scope.checkAnswer = function() {
@@ -91,6 +94,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	};
 
 	$scope.nextQuizItem = function() {
+        $log.info('next');
 		var quizItem = $scope.quizItem;
 		if ($scope.answers.hasOwnProperty(quizItem._id)) {
 			$scope.currentIndex++;
