@@ -23,6 +23,7 @@
     "title": "Title",
     "description": "Description",
     "next": "Next",
+    "nextQuestion": "Next Question",
     "email": "Email",
     "baseLayout" : {
         "header" : {

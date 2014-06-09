@@ -8,18 +8,19 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		$log.info($scope.step);
 	}
 
-    $scope.currentIndex = 0;
-    $scope.answers = {};
+	$scope.currentIndex = 0;
+	$scope.answers = {};
 	function reload() {
 		if (!$scope.step) {
 			return;
 		}
 
-        $scope.currentIndex = 0;
-        $scope.answers = {};
+		$scope.currentIndex = 0;
+		$scope.answers = {};
 
-        // guy - do not use 'hasOwnProperty' as scope might not have the property, but there is such a value.
-        if ( !!$scope.step && !!$scope.step.quizItems  && !$scope.questions) {
+		// guy - do not use 'hasOwnProperty' as scope might not have the
+		// property, but there is such a value.
+		if (!!$scope.step && !!$scope.step.quizItems && !$scope.questions) {
 
 			LergoClient.questions.findQuestionsById($scope.step.quizItems).then(function(result) {
 				var questions = {};
@@ -35,48 +36,41 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.$watch('step', reload);
 
 	$scope.getQuizItemTemplate = function(id) {
-        if ( !!$scope.questions ) {
-            $scope.quizItem = $scope.questions[id];
-            return !!$scope.quizItem && LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate || "";
-        }
-        return '';
+		if (!!$scope.questions) {
+			$scope.quizItem = $scope.questions[id];
+			return !!$scope.quizItem && LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate || "";
+		}
+		return '';
 	};
 
 	$scope.checkAnswer = function() {
 		var quizItem = $scope.quizItem;
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
 			$scope.answers[quizItem._id] = result.data;
-            $rootScope.$broadcast('questionAnswered', {
-                'userAnswer' : quizItem.userAnswer,
-                'checkAnswer' : result.data,
-                'quizItemId' : quizItem._id
+			$rootScope.$broadcast('questionAnswered', {
+				'userAnswer' : quizItem.userAnswer,
+				'checkAnswer' : result.data,
+				'quizItemId' : quizItem._id
 
-            });
+			});
 		}, function() {
 			$log.error('there was an error checking answer');
 		});
 	};
 
 	$scope.updateAnswer = function(event, answer, quizItem) {
-
-
-        quizItem.userAnswer = answer;
-        $scope.checkAnswer();
-
-
-        // guy - commenting this code out. Doesn't seem to work.
-        // I don't know who wrote this, but please add documentation next time so others will know what it going on.
-
-//		$log.info('updating answer', arguments);
-//		if (quizItem.userAnswer === undefined) {
-//			quizItem.userAnswer = [];
-//		}
-//		var checkbox = event.target;
-//		if (checkbox.checked) {
-//			quizItem.userAnswer.push(answer);
-//		} else {
-//			quizItem.userAnswer.splice(quizItem.userAnswer.indexOf(answer), 1);
-//		}
+		// This method will call only in the scenario of multiple choice
+		// question and where we can have more then one correct answer.
+		$log.info('updating answer', arguments);
+		if (quizItem.userAnswer === undefined) {
+			quizItem.userAnswer = [];
+		}
+		var checkbox = event.target;
+		if (checkbox.checked) {
+			quizItem.userAnswer.push(answer);
+		} else {
+			quizItem.userAnswer.splice(quizItem.userAnswer.indexOf(answer), 1);
+		}
 	};
 
 	$scope.getQuizItem = function() {
@@ -94,7 +88,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	};
 
 	$scope.nextQuizItem = function() {
-        $log.info('next');
+		$log.info('next');
 		var quizItem = $scope.quizItem;
 		if ($scope.answers.hasOwnProperty(quizItem._id)) {
 			$scope.currentIndex++;
