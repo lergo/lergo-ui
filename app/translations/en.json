@@ -135,6 +135,8 @@
         }
     },
     "questions": {
+    	"hintHelpText" : "You can add here a hint to the question. A student will see it if he clicks on \"hint\" button.",
+    	"explanationHelpText" : "You can add here an explanation to the question.",
     	"answerOption":"Answer Option ",
     	"audioUrl":"Audio URL",
     	"audioUrlHint":"To add audio to question, please update audio URL",
@@ -181,7 +183,7 @@
         "shortAnswer": "Short Answer (a few words)",
         "longAnswer": "Long Answer (a paragraph)",
         "correctAnswerFilled": "You are correct!",
-        "incorrectAnswerFilled": "This is incorrect",
+        "incorrectAnswerFilled": "This is incorrect, the correct answer is",
         "thankYou": "Thank you for your answer"
     },
     "filters": {
