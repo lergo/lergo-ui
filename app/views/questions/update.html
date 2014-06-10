@@ -42,11 +42,11 @@
             </tr>
             <tr>
                <td>{{ 'hint' | i18n }}</td>
-               <td><input ng-model="quizItem.hint" /></td>
+               <td><input placeholder="{{'questions.hintHelpText' | i18n}}" ng-model="quizItem.hint" /></td>
             </tr>
             <tr>
                <td>{{ 'explanation' | i18n }}</td>
-               <td><input ng-model="quizItem.explanation" /></td>
+               <td><input placeholder="{{'questions.explanationHelpText' | i18n}}" ng-model="quizItem.explanation" /></td>
             </tr>
          </tbody>
       </table>

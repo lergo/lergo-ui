@@ -9,7 +9,7 @@
                      <p class="question-help-text">{{quizItem.helpText}}</p>
                   </td>
                   <td>
-                     <button ng-show="!!quizItem.hint" popover-placement="right" popover="{{quizItem.hint}}" class="btn-link">{{ 'hint' |
+                     <button ng-show="!!quizItem.hint" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link">{{ 'hint' |
                         i18n }}</button>
                   </td>
                </tr>
@@ -29,7 +29,7 @@
             </div>
          </div>
          <div class="bg-warning" ng-show="!answer.correct">
-            {{ 'questions.incorrectAnswerFilled' | i18n }}
+            {{ 'questions.incorrectAnswerFilled' | i18n }}: {{getCorrectAnswers(quizItem)}}
             <div ng-show="!!quizItem.explanation">
                <button class="btn-link" ng-click="collapsed = !collapsed">{{ 'explanation' | i18n }}</button>
                <div collapse="!!collapsed">{{quizItem.explanation}}</div>

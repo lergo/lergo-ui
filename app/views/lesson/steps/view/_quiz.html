@@ -9,8 +9,8 @@
                   <p class="question-help-text">{{quizItem.helpText}}</p>
                </td>
                <td>
-                  <button ng-show="!!quizItem.hint" popover-placement="right" popover="{{quizItem.hint}}" class="btn-link">{{ 'hint' | i18n
-                     }}</button>
+                  <button ng-show="!!quizItem.hint" popover-placement="top" name="quizItem._id" popover-trigger="focus" popover="{{quizItem.hint}}"
+                     class="btn-link">{{ 'hint' | i18n }}</button>
                </td>
             </tr>
          </table>
@@ -33,7 +33,8 @@
          </div>
       </div>
       <div class="bg-warning" ng-show="!getAnswer(quizItem).correct">
-         {{ 'questions.incorrectAnswerFilled' | i18n }}
+         {{'questions.incorrectAnswerFilled' | i18n }}:
+         {{getCorrectAnswers(quizItem).join('; ')}}
          <div ng-show="!!quizItem.explanation">
             <button class="btn-link" ng-click="collapsed = !collapsed">{{ 'explanation' | i18n }}</button>
             <div collapse="!!collapsed">{{quizItem.explanation}}</div>
