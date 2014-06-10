@@ -2,12 +2,18 @@
    <form name="QuestionForm" class="question-display">
       <div class="question-content">
          <div style="margin: 0 10px">
-            <br>
-            <div>
-               <p class="lergo-h4">{{quizItem.question}}</p>
-               <button ng-show="!!quizItem.hint" popover-placement="right" popover="{{quizItem.hint}}" class="btn-link">{{ 'hint' | i18n }}</button>
-               <p class="question-help-text">{{quizItem.helpText}}</p>
-            </div>
+            <table class=lergo-table>
+               <tr>
+                  <td style="width: 100%">
+                     <p class="lergo-h4">{{quizItem.question}}</p>
+                     <p class="question-help-text">{{quizItem.helpText}}</p>
+                  </td>
+                  <td>
+                     <button ng-show="!!quizItem.hint" popover-placement="right" popover="{{quizItem.hint}}" class="btn-link">{{ 'hint' |
+                        i18n }}</button>
+                  </td>
+               </tr>
+            </table>
             <div ng-include="getQuestionViewTemplate(quizItem)"></div>
          </div>
          <div class="question-submit">
@@ -15,9 +21,20 @@
          </div>
       </div>
       <div ng-show="!!answer">
-         <div class="bg-success" ng-show="answer.correct">{{(quizItem.type === 'openQuestion') && ('questions.thankYou' | i18n) ||
-            ('questions.correctAnswerFilled' | i18n) }}</div>
-         <div class="bg-warning" ng-show="!answer.correct">{{ 'questions.incorrectAnswerFilled' | i18n }}</div>
+         <div class="bg-success" ng-show="answer.correct">
+            {{(quizItem.type === 'openQuestion') && ('questions.thankYou' | i18n) || ('questions.correctAnswerFilled' | i18n) }}
+            <div ng-show="!!quizItem.explanation">
+               <button class="btn-link" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+               <div collapse="!isCollapsed">{{quizItem.explanation}}</div>
+            </div>
+         </div>
+         <div class="bg-warning" ng-show="!answer.correct">
+            {{ 'questions.incorrectAnswerFilled' | i18n }}
+            <div ng-show="!!quizItem.explanation">
+               <button class="btn-link" ng-click="collapsed = !collapsed">{{ 'explanation' | i18n }}</button>
+               <div collapse="!!collapsed">{{quizItem.explanation}}</div>
+            </div>
+         </div>
       </div>
    </form>
 </div>
