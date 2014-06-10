@@ -24,7 +24,14 @@
       </table>
    </div>
    <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
-   <button class="btn-link" ng-click="isCollapsed = !isCollapsed" ng-show="!!quizItem.question && !!quizItem.type">{{ 'advancedOptions' | i18n }}</button>
+   <table class="lergo-table lergo-form" ng-show="!!quizItem.question && !!quizItem.type">
+      <tr>
+         <td style="width: 15%">{{ 'tags' | i18n }}</td>
+         <td><input placeholder="{{'tagHint' | i18n}}" ng-model="quizItem.tags" /></td>
+      </tr>
+   </table>
+   <button class="btn-link" ng-click="isCollapsed = !isCollapsed" ng-show="!!quizItem.question && !!quizItem.type">{{ 'advancedOptions' |
+      i18n }}</button>
    <hr />
    <div collapse="!isCollapsed">
       <table class=" lergo-table lergo-form">
@@ -32,10 +39,6 @@
             <tr>
                <td style="width: 15%">{{ 'questions.audioUrl' | i18n }}</td>
                <td><input placeholder="{{'questions.audioUrlHint' | i18n}}" ng-model="quizItem.audioUrl" /></td>
-            </tr>
-            <tr>
-               <td>{{ 'tags' | i18n }}</td>
-               <td><input placeholder="{{'tagHint' | i18n}}" ng-model="quizItem.tags" /></td>
             </tr>
             <tr>
                <td>{{ 'hint' | i18n }}</td>
