@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsUpdateCtrl',
-		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService) {
-
+		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, QuestionsService) {
 			$scope.subjects = FilterService.subjects;
 			$scope.languages = FilterService.languages;
 			var saveLesson = new ContinuousSave({
@@ -186,4 +185,84 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				}
 
 			};
+
+			$scope.createNewQuestion = function() {
+				var quizItem = null;
+				QuestionsService.createQuestion().then(function(result) {
+					$scope.errorMessage = null;
+					quizItem = result.data;
+				}, function(result) {
+					$scope.error = result.data;
+					$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
+					$log.error($scope.errorMessage);
+				});
+				return quizItem;
+			};
+			$scope.openQuestionBank = function(step) {
+				$modal.open({
+					templateUrl : 'views/questions/modalindex.html',
+					windowClass : 'question-bank-dialog',
+					controller : function($scope, $modalInstance, step, addItemToQuiz) {
+						$scope.ok = function(items) {
+							angular.forEach(items, function(item) {
+								if (item.selected === true) {
+									addItemToQuiz(item._id, step);
+								}
+							});
+							$modalInstance.close();
+						};
+
+						$scope.cancel = function() {
+							$modalInstance.dismiss('cancel');
+						};
+					},
+					resolve : {
+						step : function() {
+							return step;
+						},
+						addItemToQuiz : function() {
+							return $scope.addItemToQuiz;
+						}
+					}
+				});
+			};
+
+			$scope.openCreateQuestion = function(step) {
+				QuestionsService.createQuestion().then(function(result) {
+					$scope.errorMessage = null;
+					$scope.openCreateQuestionDialog(step, result.data);
+				}, function(result) {
+					$scope.error = result.data;
+					$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
+					$log.error($scope.errorMessage);
+				});
+			};
+			$scope.openCreateQuestionDialog = function(step, quizItem) {
+				$modal.open({
+					templateUrl : 'views/questions/modalupdate.html',
+					windowClass : 'question-create-dialog',
+					controller : function($scope, $modalInstance, step, addItemToQuiz, quizItem) {
+						$scope.qItem = quizItem;
+						$scope.ok = function(item) {
+							addItemToQuiz(item._id, step);
+							$modalInstance.close();
+						};
+						$scope.cancel = function() {
+							$modalInstance.dismiss('cancel');
+						};
+					},
+					resolve : {
+						quizItem : function() {
+							return quizItem;
+						},
+						step : function() {
+							return step;
+						},
+						addItemToQuiz : function() {
+							return $scope.addItemToQuiz;
+						}
+					}
+				});
+			};
+
 		});

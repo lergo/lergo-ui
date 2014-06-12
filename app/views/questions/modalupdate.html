@@ -1,0 +1,9 @@
+<div ng-controller="QuestionsUpdateCtrl" ng-init="quizItem=qItem">
+   <div class="modal-body" style="display: inline-block">
+      <div ng-include="'views/questions/_update.html'"></div>
+   </div>
+   <div class="modal-footer">
+      <button class="btn btn-primary" ng-disabled="isSaving()||!quizItem.question" ng-click="ok(quizItem)">Add</button>
+      <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+   </div>
+</div>

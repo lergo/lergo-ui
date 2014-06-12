@@ -1,5 +1,7 @@
 
-{   "advancedOptions":"Advanced options",
+{   "add":"Add",
+	"cancel":"Cancel",
+	"advancedOptions":"Advanced options",
 	"explanation":"Explanation",
 	"hint": "Hint",
 	"tags" :"Tags",

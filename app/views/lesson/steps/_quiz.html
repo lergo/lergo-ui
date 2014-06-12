@@ -1,23 +1,12 @@
-<table class="table lergo-form" style="width: 90%; float: left">
-	<tr>
-		<td style="border-top: none; float: left;"><select
-			ng-model="selectedQuestion"
-			ng-options="item._id as item.question for item in quizItems | orderBy:'-lastUpdate'">
-		</select></td>
-	</tr>
-	<tr>
-		<td style="border-top: none; float: right">
-			<button class="btn"
-				ng-click="addItemToQuiz( selectedQuestion, step )">{{ 'lessons.addQuestion' | i18n }}</button>
-		</td>
-	<tr>
-	<tr ng-repeat="item in step.quizItems">
-		<td style="border-top: none; float: left">{{getQuestion(item)}}</td>
-		<td style="border-top: none; float: right"><a
-			ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="btn"
-			style="margin-right: 5px">{{ 'up' | i18n }}</a><a
-			ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="btn">{{ 'down' | i18n }}</a>
-			<button class="btn-link" ng-click="removeItemFromQuiz( item, step )">X</button>
-		</td>
-	</tr>
+<table class="lergo-table" style="width: 90%; float: left">
+   <tr>
+      <td><button class="btn" ng-click="openQuestionBank(step)">{{ 'lessons.addQuestion' | i18n }}</button>
+         <button class="btn" ng-click="openCreateQuestion(step)">{{ 'questions.createNew' | i18n }}</button></td>
+   </tr>
+   <tr ng-repeat="item in step.quizItems">
+      <td class="question">{{getQuestion(item)}}</td>
+      <td><a ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="btn" style="margin-right: 5px">{{ 'up' | i18n }}</a><a
+         ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="btn">{{ 'down' | i18n }}</a>
+         <button class="btn-link" ng-click="removeItemFromQuiz( item, step )">X</button></td>
+   </tr>
 </table>

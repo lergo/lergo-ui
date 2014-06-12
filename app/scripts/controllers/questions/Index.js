@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, $location, FilterService) {
-
+	$scope.isModal = false;
 	$scope.subjects = FilterService.subjects;
 	$scope.languages = FilterService.languages;
 	$scope.ageRanges = FilterService.ageRanges;
@@ -52,5 +52,19 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 			return answers;
 		}
 		return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
+	};
+
+	$scope.selectAll = function(event) {
+		var checkbox = event.target;
+		if (checkbox.checked) {
+			angular.forEach($scope.items, function(item) {
+				item.selected = true;
+			});
+		} else {
+			angular.forEach($scope.items, function(item) {
+				item.selected = false;
+			});
+
+		}
 	};
 });
