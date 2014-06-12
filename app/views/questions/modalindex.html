@@ -1,0 +1,9 @@
+<div ng-controller="QuestionsIndexCtrl">
+   <div class="modal-body" style="display: inline-block">
+      <div  ng-include="'views/questions/_index.html'" ng-init="isModal=true"></div>
+   </div>
+   <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="ok(items)">Add</button>
+      <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+   </div>
+</div>
