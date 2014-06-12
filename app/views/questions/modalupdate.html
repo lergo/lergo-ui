@@ -3,7 +3,7 @@
       <div ng-include="'views/questions/_update.html'"></div>
    </div>
    <div class="modal-footer">
-      <button class="btn btn-primary" ng-click="ok(quizItem)">Add</button>
+      <button class="btn btn-primary" ng-disabled="isSaving()||!quizItem.question" ng-click="ok(quizItem)">Add</button>
       <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
    </div>
 </div>
