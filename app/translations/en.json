@@ -137,6 +137,7 @@
         }
     },
     "questions": {
+    	"addQuestionsToQuiz" :"Add questions to quiz",
     	"hintHelpText" : "You can add here a hint to the question. A student will see it if he clicks on \"hint\" button.",
     	"explanationHelpText" : "You can add here an explanation to the question.",
     	"answerOption":"Answer Option ",

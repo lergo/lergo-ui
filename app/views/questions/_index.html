@@ -2,12 +2,13 @@
 <br />
 <div style="float: left; width: 75%">
    <div>
-      <p class="lergo-h1">{{ 'questions.myQuestions' | i18n }} [ {{ 'questions.total' | i18n }}: {{items.length}} ]</p>
+      <p class="lergo-h1" ng-show="!isModal">{{ 'questions.myQuestions' | i18n }} [ {{ 'questions.total' | i18n }}: {{items.length}} ]</p>
+      <p class="lergo-h1" ng-show="isModal">{{'questions.addQuestionsToQuiz'|i18n}}
    </div>
    <table ng-show="items.length > 0" class="table ">
       <thead>
          <tr style="font-weight: bold">
-            <th ng-show="isModal"><input type="checkbox" ng-click="selectAll($event)"/></th>
+            <th ng-show="isModal"><input type="checkbox" ng-click="selectAll($event)" /></th>
             <th>{{ 'questions.question' | i18n }}</th>
             <th>{{ 'questions.answer' | i18n }}</th>
             <th>{{ 'questions.language' | i18n}}</th>
