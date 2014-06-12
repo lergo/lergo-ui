@@ -203,6 +203,7 @@ angular.module('lergoApp').controller(
 				$modal.open({
 					templateUrl : 'views/questions/modalindex.html',
 					windowClass : 'question-bank-dialog',
+					backdrop : 'static',
 					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', function($scope, $modalInstance, step, addItemToQuiz) {
 						$scope.ok = function(items) {
 							angular.forEach(items, function(item) {
@@ -242,6 +243,7 @@ angular.module('lergoApp').controller(
 				$modal.open({
 					templateUrl : 'views/questions/modalupdate.html',
 					windowClass : 'question-create-dialog',
+					backdrop : 'static',
 					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'quizItem',
 							function($scope, $modalInstance, step, addItemToQuiz, quizItem) {
 								$scope.qItem = quizItem;
