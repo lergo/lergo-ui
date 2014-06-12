@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsUpdateCtrl',
+angular.module('lergoApp').controller(
+		'LessonsUpdateCtrl',
 		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, QuestionsService) {
 			$scope.subjects = FilterService.subjects;
 			$scope.languages = FilterService.languages;
@@ -202,7 +203,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				$modal.open({
 					templateUrl : 'views/questions/modalindex.html',
 					windowClass : 'question-bank-dialog',
-					controller : function($scope, $modalInstance, step, addItemToQuiz) {
+					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', function($scope, $modalInstance, step, addItemToQuiz) {
 						$scope.ok = function(items) {
 							angular.forEach(items, function(item) {
 								if (item.selected === true) {
@@ -215,7 +216,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 						$scope.cancel = function() {
 							$modalInstance.dismiss('cancel');
 						};
-					},
+					} ],
 					resolve : {
 						step : function() {
 							return step;
@@ -241,16 +242,17 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				$modal.open({
 					templateUrl : 'views/questions/modalupdate.html',
 					windowClass : 'question-create-dialog',
-					controller : function($scope, $modalInstance, step, addItemToQuiz, quizItem) {
-						$scope.qItem = quizItem;
-						$scope.ok = function(item) {
-							addItemToQuiz(item._id, step);
-							$modalInstance.close();
-						};
-						$scope.cancel = function() {
-							$modalInstance.dismiss('cancel');
-						};
-					},
+					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'quizItem',
+							function($scope, $modalInstance, step, addItemToQuiz, quizItem) {
+								$scope.qItem = quizItem;
+								$scope.ok = function(item) {
+									addItemToQuiz(item._id, step);
+									$modalInstance.close();
+								};
+								$scope.cancel = function() {
+									$modalInstance.dismiss('cancel');
+								};
+							} ],
 					resolve : {
 						quizItem : function() {
 							return quizItem;
