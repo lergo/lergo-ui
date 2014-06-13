@@ -20,7 +20,8 @@ $FOOTER_HEIGHT: 170px !default;
   }
   #header {
     background: $HEADER_BACKGROUND_COLOR;
-
+    width:100%;
+    min-width:1000px;
 
     height: $HEADER_HEIGHT;
     .logo {
@@ -158,6 +159,7 @@ $FOOTER_HEIGHT: 170px !default;
 
     background-color: #296CA1;
     width:100%;
+    min-width:1000px;
     .footer-links{
       ul,li{list-style:none; padding:0; margin:0;}
       li{
