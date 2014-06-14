@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, $location, FilterService) {
+angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, $location, $log, FilterService) {
 	$scope.isModal = false;
 	$scope.subjects = FilterService.subjects;
 	$scope.languages = FilterService.languages;
