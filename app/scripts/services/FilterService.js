@@ -3,49 +3,39 @@
 angular.module('lergoApp').service('FilterService', function Filterservice() {
 	this.languages = [ 'english', 'hebrew', 'arabic', 'russian', 'other', ];
 	this.subjects = [ 'english', 'math', 'science', 'grammar', 'spelling', 'biology', 'other' ];
-	this.ageRanges = [ {
-		'id' : '4-7',
-		'min' : 4,
-		'max' : 7
-	}, {
-		'id' : '8-11',
-		'min' : 8,
-		'max' : 11
-	}, {
-		'id' : '12-15',
-		'min' : 12,
-		'max' : 15
-	}, {
-		'id' : '16+',
-		'min' : 16,
-		'max' : 100
-	} ];
 
-	this.getAgeRangeFilterById = function (id) {
-		for ( var i = 0; i < this.ageRanges.length; i++) {
-			if (id === this.ageRanges[i].id) {
-				return this.ageRanges[i];
-			}
-
-		}
-		throw new Error('Age Range ' + id + ' is unsupported ');
-	};
 	/**
-	 * This function require ageRange Id and age to verify that the age false
-	 * with in the range return true if age is in the range else return false
+	 * This function require ageRange and age to verify whether age is with in
+	 * the range. return true if age is in the range, else return false
 	 */
-	this.filterByAge = function(id, age) {
+	this.filterByAge = function(filter, age) {
+		if (!filter.ageRange || (!filter.ageRange.min && !filter.ageRange.max)) {
+			return true;
+		}
 		if (!age) {
 			return false;
 		}
-		var range = this.getAgeRangeFilterById(id);
-		if (!range) {
+		if (filter.ageRange.min && age < filter.ageRange.min) {
 			return false;
-		} else if (age < range.min) {
-			return false;
-		} else if (age > range.max) {
+		}
+		if (filter.ageRange.max && age > filter.ageRange.max) {
 			return false;
 		}
 		return true;
 	};
+
+	this.filterByLanguage = function(filter, language) {
+		if (!filter.language) {
+			return true;
+		}
+		return language === filter.language;
+	};
+
+	this.filterBySubject = function(filter, subject) {
+		if (!filter.subject) {
+			return true;
+		}
+		return subject === filter.subject;
+	};
+
 });
