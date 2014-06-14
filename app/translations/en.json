@@ -1,5 +1,6 @@
 
-{   "add":"Add",
+{   "signupMessage":"Thank you for signing in! In a few minutes you will receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO.",
+	"add":"Add",
 	"cancel":"Cancel",
 	"advancedOptions":"Advanced options",
 	"explanation":"Explanation",

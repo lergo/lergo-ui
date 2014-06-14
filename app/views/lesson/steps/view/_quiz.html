@@ -33,8 +33,8 @@
          </div>
       </div>
       <div class="bg-warning" ng-show="!getAnswer(quizItem).correct">
-         {{'questions.incorrectAnswerFilled' | i18n }}:
-         {{getCorrectAnswers(quizItem).join('; ')}}
+         {{'questions.incorrectAnswerFilled' | i18n }}: {{((quizItem.type==='trueFalse') && (getCorrectAnswers(quizItem) &&
+         ('quizItem.answer.'+getCorrectAnswers(quizItem)| i18n)||"") || getCorrectAnswers(quizItem) )}}
          <div ng-show="!!quizItem.explanation">
             <button class="btn-link" ng-click="collapsed = !collapsed">{{ 'explanation' | i18n }}</button>
             <div collapse="!!collapsed">{{quizItem.explanation}}</div>

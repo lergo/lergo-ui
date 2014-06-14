@@ -45,9 +45,8 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 			};
 
 			$scope.getCorrectAnswers = function(quizItem) {
-				var answers = [];
 				if (!quizItem || !quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
-					return answers;
+					return '';
 				}
 				return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
 			};
