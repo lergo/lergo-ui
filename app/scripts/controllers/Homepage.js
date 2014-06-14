@@ -5,8 +5,12 @@ angular.module('lergoApp')
 
 
         LergoClient.lessons.getPublicLessons().then( function( result ){
-            $scope.lessons = result.dat;
+            $scope.lessons = result.data;
         });
+
+        $scope.absoluteShareLink = function( lesson ){
+            return window.location.origin + '/#/public/lessons/' + lesson._id + '/share';
+        };
 
 
 

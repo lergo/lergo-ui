@@ -7,13 +7,22 @@
 
 <table>
     <tr>
-
+        <td>username</td>
         <td>title</td>
-        <td>actions</td>
+        <td>views</td>
+        <td>Share link</td>
     </tr>
     <tr ng-repeat="l in lessons">
 
-        <td>{{l.title}}</td>
+        <td>{{l.user.username}}</td>
+        <td>{{l.name}}</td>
+        <td>
+            {{ 0 + l.views}}
+        </td>
+        <td>
+            <a href="#/public/lessons/{{l._id}}/share"> {{absoluteShareLink(l)}}</a>
+
+        </td>
     </tr>
 </table>
 </div>
