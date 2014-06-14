@@ -96,13 +96,31 @@
 }
 
 .filters { 
+	
 	.label { 
 	text-transform:uppercase;
 	padding: 20px 0 10px 0;
 	color: #C5C5C5;
 	background: transparent;
-	font-size: 20px;}
-select {
-	width: 100%;
+	font-size: 20px;
+	}
+
+	.number {
+		width: 40px;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
+	select {
+		width: 100%;
+	}
 }
+.question-bank-dialog .modal-dialog {
+    width :85%;
+    min-width: 900px;
+}
+.question-create-dialog .modal-dialog{
+	 width :70%;
+    min-width: 650px;
+	
 }

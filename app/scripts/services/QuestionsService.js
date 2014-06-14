@@ -44,7 +44,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'viewTemplate' : 'views/questions/view/_trueFalse.html',
 		'answers' : function(quizItem) {
 			var answers = [];
-			answers.push(quizItem.answer);
+			if (!!quizItem.answer) {
+				answers.push(quizItem.answer);
+			}
 			return answers;
 		},
 		'alias' : []
@@ -84,9 +86,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'updateTemplate' : 'views/questions/update/_openQuestion.html',
 		'viewTemplate' : 'views/questions/view/_openQuestion.html',
 		'answers' : function(quizItem) {
-			var answers = [];
-			answers.push(quizItem.answer);
-			return answers;
+			return quizItem.answer;
 		},
 		'alias' : []
 	} ];

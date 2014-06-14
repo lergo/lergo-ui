@@ -1,29 +1,16 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, $location, FilterService) {
-
-	$scope.subjects = FilterService.subjects;
-	$scope.languages = FilterService.languages;
-	$scope.ageRanges = FilterService.ageRanges;
+angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, $location, $log, FilterService) {
+	$scope.isModal = false;
 	$scope.filter = {};
-
 	$scope.ageFilter = function(quizItem) {
-		if (!$scope.filter.age) {
-			return true;
-		}
-		return FilterService.filterByAge($scope.filter.age, quizItem.age);
+		return FilterService.filterByAge($scope.filter, quizItem.age);
 	};
 	$scope.languageFilter = function(quizItem) {
-		if (!$scope.filter.language) {
-			return true;
-		}
-		return quizItem.language === $scope.filter.language;
+		return FilterService.filterByLanguage($scope.filter, quizItem.language);
 	};
 	$scope.subjectFilter = function(quizItem) {
-		if (!$scope.filter.subject) {
-			return true;
-		}
-		return quizItem.subject === $scope.filter.subject;
+		return FilterService.filterBySubject($scope.filter, quizItem.subject);
 	};
 
 	$scope.createNewQuestion = function() {
@@ -47,6 +34,24 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	});
 
 	$scope.getAnswers = function(quizItem) {
+		var answers = [];
+		if (!quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
+			return answers;
+		}
 		return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
+	};
+
+	$scope.selectAll = function(event) {
+		var checkbox = event.target;
+		if (checkbox.checked) {
+			angular.forEach($scope.items, function(item) {
+				item.selected = true;
+			});
+		} else {
+			angular.forEach($scope.items, function(item) {
+				item.selected = false;
+			});
+
+		}
 	};
 });

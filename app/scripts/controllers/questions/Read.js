@@ -43,4 +43,12 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 					quizItem.userAnswer.splice(quizItem.userAnswer.indexOf(answer), 1);
 				}
 			};
+
+			$scope.getCorrectAnswers = function(quizItem) {
+				var answers = [];
+				if (!quizItem || !quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
+					return answers;
+				}
+				return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
+			};
 		});

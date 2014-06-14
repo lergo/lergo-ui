@@ -39,8 +39,8 @@
       <div ng-repeat="step in lesson.steps">
          <hr style="float: none" />
          <div style="float: right">
-            <a ng-click="moveStepUp($index)" ng-show="!$first" class="btn btn-small">{{ 'up' | i18n }}</a> <a ng-click="moveStepDown($index)"
-               ng-show="!$last" class="btn btn-small">{{ 'down' | i18n }}</a> <a ng-click="deleteStep(step)" class="btn-link">X</a>
+            <a ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a> <a ng-click="moveStepDown($index)" ng-show="!$last"
+               class="fa fa-arrow-down"></a> <a ng-click="deleteStep(step)" class="btn-link">X</a>
          </div>
          <table class="lergo-table lergo-form">
             <tr>
