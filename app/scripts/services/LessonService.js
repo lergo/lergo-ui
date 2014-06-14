@@ -17,6 +17,7 @@ angular.module('lergoApp')
             deferred.resolve(labels);
             return deferred.promise;
         }
+
         _getLabels(); // remove later
 
         function _getHomepageLessons() {

@@ -11,7 +11,7 @@ angular.module('lergoApp').controller('SignupCtrl', function($scope, $log, Lergo
 	$scope.submit = function() {
 
 		if ($scope.signupForm.password !== $scope.signupForm.passwordConfirm) {
-			$scope.errorMessage = 'Confirm Passowrd doesnot match the password';
+			$scope.errorMessage = 'Confirm Password does not match the password';
 			return;
 		} else {
 			$scope.errorConfirmPassword = null;
