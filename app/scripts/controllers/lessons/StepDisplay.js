@@ -126,9 +126,8 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	};
 
 	$scope.getCorrectAnswers = function(quizItem) {
-		var answers = [];
-		if (!quizItem|| !quizItem.type || !LergoClient.questions.getTypeById(quizItem.type).answers(quizItem)) {
-			return answers;
+		if (!quizItem || !quizItem.type || !LergoClient.questions.getTypeById(quizItem.type).answers(quizItem)) {
+			return '';
 		}
 		return LergoClient.questions.getTypeById(quizItem.type).answers(quizItem);
 	};

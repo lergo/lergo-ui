@@ -34,9 +34,8 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	});
 
 	$scope.getAnswers = function(quizItem) {
-		var answers = [];
 		if (!quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
-			return answers;
+			return '';
 		}
 		return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
 	};
