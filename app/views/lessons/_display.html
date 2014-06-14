@@ -1,5 +1,5 @@
 
-<div class="start-step" ng-show="currentStepIndex < 0 ">
+<div class="start-step" ng-show="showStart()">
     <div class="image">
         <i class="fa fa-university"></i>
     </div>
@@ -21,7 +21,7 @@
 
 
 </div>
-<div ng-show="currentStepIndex >= 0 && hasNextStep() ">
+<div ng-show="showSteps() && hasNextStep() ">
     <div ng-include="'/views/lessons/_stepDisplay.html'"></div>
     <div ng-show="hasNextStep()" class="next-step">
         <button ng-click="nextStep()" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
@@ -38,6 +38,8 @@
         </div>
     </div>
     <div class="message">
-        {{ 'congratulations' | i18n }}!<br/> {{ 'lessons.lessonCompleted' | i18n }}
+        {{ 'congratulations' | i18n }}!<br/> {{ 'lessons.lessonCompleted' | i18n }}<br/>
+        <a ng-show="!!invitation" ng-href="/#/public/lessons/invitations/{{invitation._id}}/report">{{ 'lessons.seeReport' | i18n }}</a>
+
     </div>
 </div>

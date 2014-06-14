@@ -29,12 +29,14 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
             })
             .when('/user/lessons/:lessonId/display', {
                 templateUrl : 'views/lessons/display.html',
-                controller : 'LessonsDisplayCtrl'
+                controller : 'LessonsDisplayCtrl',
+                reloadOnSearch: false
             })
 
             .when('/public/lessons/invitations/:invitationId/display', {
                 templateUrl: 'views/lessons/invitations/display.html',
-                controller: 'LessonsInvitationsDisplayCtrl'
+                controller: 'LessonsInvitationsDisplayCtrl',
+                reloadOnSearch: false
             })
             .when('/public/lessons/invitations/:invitationId/report', {
                 templateUrl: 'views/lessons/invitations/report.html',
