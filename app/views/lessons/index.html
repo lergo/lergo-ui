@@ -22,7 +22,7 @@
          </thead>
          <tbody>
             <tr ng-repeat="les in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter">
-               <td class="name">{{ les.name }}</td>
+               <td class="name">{{ les.name }}{{filters.ageFilter}}</td>
                <td class="answer">{{les.language && ('filters.languages.' + les.language | i18n) || ""}}</td>
                <td class="answer">{{les.subject && ('filters.subjects.' + les.subject | i18n) ||""}}</td>
                <td class="answer">{{les.age &&('+'+ les.age) || ""}}</td>

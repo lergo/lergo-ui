@@ -190,7 +190,11 @@
         "thankYou": "Thank you for your answer"
     },
     "filters": {
+    	"to":"To",
     	"all":"All",
+    	"age":{
+    		"error":"Maximum age should be greater then minimum age"
+    	},
         "labels": {
             "ageRange": "Age Range",
             "language": "Language",
