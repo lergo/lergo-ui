@@ -13,6 +13,9 @@
                      class="btn-link">{{ 'hint' | i18n }}</button>
                </td>
             </tr>
+            <tr>
+               <td><audio ng-show="!!quizItem.audioUrl" ng-src="{{getAudioUrl(quizItem)}}" audioplayer controls></audio></td>
+            </tr>
          </table>
          <div ng-include="getQuizItemTemplate(getQuizItem())"></div>
       </div>
