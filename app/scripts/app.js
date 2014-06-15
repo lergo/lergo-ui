@@ -74,6 +74,9 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 templateUrl: 'views/session/signup.html',
                 controller:'SignupCtrl'
             })
+            .when('/public/session/signupConfirmation', {
+                templateUrl: 'views/session/signupConfirmation.html',
+            })
             .when('/public/session/login', {
                 templateUrl: 'views/session/login.html',
                 controller:'LoginCtrl'
