@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('QuestionsReadCtrl',
-		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient) {
+		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient,$sce) {
 
 			var questionId = $routeParams.questionId;
 
@@ -43,7 +43,9 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 					quizItem.userAnswer.splice(quizItem.userAnswer.indexOf(answer), 1);
 				}
 			};
-
+			$scope.getAudioUrl = function(quizItem) {
+				return $sce.trustAsResourceUrl(quizItem.audioUrl);
+			};
 			$scope.getCorrectAnswers = function(quizItem) {
 				if (!quizItem || !quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
 					return '';
