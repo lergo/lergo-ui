@@ -111,7 +111,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		var src = '//www.youtube.com/embed/' + $scope.getVideoId(step) + '?autoplay=1&rel=0&iv_load_policy=3';
 		return $sce.trustAsResourceUrl(src);
 	};
-
+	$scope.getAudioUrl = function(quizItem) {
+		return $sce.trustAsResourceUrl(quizItem.audioUrl);
+	};
 	$scope.getVideoId = function(step) {
 		var value = null;
 		if (!!step && !!step.videoUrl) {

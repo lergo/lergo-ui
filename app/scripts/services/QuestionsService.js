@@ -77,7 +77,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			if (answers.length === 1) {
 				return answers[0];
 			}
-			return answers.join(' & ');
+			return answers.join(' / ');
 		},
 		'alias' : []
 	}, {
