@@ -8,6 +8,10 @@ angular.module('lergoApp')
             return $http.post('/backend/user/lessons/' + lessonId + '/invitations/create', invitation);
         };
 
+        this.createAnonymous = function( lessonId ){
+            return $http.post('/backend/public/lessons/' + lessonId + '/invitations/create');
+        };
+
         this.report = function( invitationId, report ){
             return $http.post('/backend/lessonsinvitations/' + invitationId + '/report', report );
         };

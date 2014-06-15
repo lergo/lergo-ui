@@ -38,6 +38,10 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 controller: 'LessonsInvitationsDisplayCtrl',
                 reloadOnSearch: false
             })
+            .when('/public/lessons/:lessonId/share', {
+                template: '',
+                controller: 'LessonsInvitesPublicShareCtrl'
+            })
             .when('/public/lessons/invitations/:invitationId/report', {
                 templateUrl: 'views/lessons/invitations/report.html',
                 controller: 'LessonsInvitationsReportCtrl'

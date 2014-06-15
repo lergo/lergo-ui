@@ -23,7 +23,11 @@ angular.module('lergoApp')
         }, function( newValue, oldValue ){
             if ( !!newValue ) {
                 $rootScope.$broadcast('endLesson');
-                LergoClient.lessonsInvitations.sendReportReady($routeParams.invitationId);
+                if ( !$scope.invitation.anonymous ) {
+                    LergoClient.lessonsInvitations.sendReportReady($routeParams.invitationId);
+                }else{
+                    $log.info('not sending report link because anonymous');
+                }
             }
         });
 
