@@ -14,12 +14,12 @@ angular.module('lergoApp').controller('SignupCtrl', function($scope, $log, Lergo
 			$scope.errorMessage = 'Confirm Password does not match the password';
 			return;
 		} else {
-			$scope.errorConfirmPassword = null;
+			$scope.errorMessage = null;
 		}
 		LergoClient.signup($scope.signupForm).then(function() {
 			$log.info('got success');
 			$scope.errorMessage = null;
-			$location.path('/public/session/login');
+			$location.path('/public/session/signupConfirmation');
 		}, function(result) {
 			$scope.errorMessage = result.data.message;
 			$log.error('got error');
