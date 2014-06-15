@@ -69,7 +69,6 @@ angular.module('lergoApp')
         };
 
         $scope.showStart = function () {
-            debugger;
             return  $scope.currentStepIndex < 0;
         };
 
