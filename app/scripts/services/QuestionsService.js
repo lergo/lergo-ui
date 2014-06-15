@@ -56,7 +56,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			quizItem.options.forEach(function(value) {
 				answers.push(value.label);
 			});
-			if (answers.length == 1) {
+			if (answers.length === 1) {
 				return answers[0];
 			}
 			return answers.join('; ');
@@ -69,14 +69,12 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'viewTemplate' : 'views/questions/view/_multipleChoices.html',
 		'answers' : function(quizItem) {
 			var answers = [];
-			if (quizItem.type === 'multipleChoices') {
-				quizItem.options.forEach(function(value) {
-					if (value.checked === true) {
-						answers.push(value.label);
-					}
-				});
-			}
-			if (answers.length == 1) {
+			quizItem.options.forEach(function(value) {
+				if (value.checked === true) {
+					answers.push(value.label);
+				}
+			});
+			if (answers.length === 1) {
 				return answers[0];
 			}
 			return answers.join(' & ');
