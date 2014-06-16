@@ -1,6 +1,5 @@
 
-{   "signupMessage":"Thank you for signing in! In a few minutes you will receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO.",
-	"add":"Add",
+{   "add":"Add",
 	"cancel":"Cancel",
 	"advancedOptions":"Advanced options",
 	"explanation":"Explanation",
@@ -218,6 +217,19 @@
             "biology": "Biology",
             "other": "Other"
         }
+    },
+    "signup":{
+    	"error":{
+    		"minLength":"Username should contain at least 3 characters.",
+    		"invalidChar":"Username should only contain alphanumeric characters and underscore.",
+    		"invalidEmail":"Enter valid email.",
+    		"nameRequired":"Name is required.",
+    		"passwordRequired":"Password is required.",
+    		"confPasswordRequired":"Confirm password is equired."
+    	},
+    	"confirmation":{
+    		"message":"Thank you for signing in! In a few minutes you will receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO."
+    	}
     }
    
 }

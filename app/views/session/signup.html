@@ -12,38 +12,38 @@
             </div>
             <div class="lergo-input">
                <input ng-model="signupForm.username" class="form-control" name="username" ng-minlength="3" required ng-pattern="/^[a-zA-Z0-9\_]+$/" />
-               <p ng-show="formSignup.username.$error.minlength" class="help-block">User name should not be lesser then 3 characters.</p>
-               <p ng-show="formSignup.username.$error.pattern" class="help-block">User name should only contain alphanumeric characters and
-                  underscore.</p>
+               <p ng-show="formSignup.username.$error.minlength" class="help-block">{{'signup.error.minLength' | i18n}}</p>
+               <p ng-show="formSignup.username.$error.pattern" class="help-block">{{'signup.error.invalidChar' | i18n}}</p>
             </div>
          </div>
          <div class="section form-group" ng-class="{ 'has-error' : formSignup.email.$invalid && !formSignup.email.$pristine }">
             <div class="label">{{ 'input.email' | i18n }}</div>
             <div class="lergo-input">
                <input ng-model="signupForm.email" name="email" class="form-control" type="email" required />
-               <p ng-show="formSignup.email.$invalid && !formSignup.email.$pristine" class="help-block">Enter valid email.</p>
+               <p ng-show="formSignup.email.$invalid && !formSignup.email.$pristine" class="help-block">{{'signup.error.invalidEmail' | i18n}}</p>
             </div>
          </div>
          <div class="section form-group" ng-class="{ 'has-error' : formSignup.name.$invalid && !formSignup.name.$pristine }">
             <div class="label">{{ 'input.fullName' | i18n }}</div>
             <div class="lergo-input">
                <input ng-model="signupForm.fullName" name="name" class="form-control" required type="text" />
-               <p ng-show="formSignup.name.$invalid && !formSignup.name.$pristine" class="help-block">Name is required.</p>
+               <p ng-show="formSignup.name.$invalid && !formSignup.name.$pristine" class="help-block">{{'signup.error.nameRequired' | i18n}}</p>
             </div>
          </div>
          <div class="section form-group" ng-class="{ 'has-error' : formSignup.password.$invalid && !formSignup.password.$pristine }">
             <div class="label">{{ 'input.password' | i18n }}</div>
             <div class="lergo-input">
                <input ng-model="signupForm.password" name="password" class="form-control" required type="password" />
-               <p ng-show="formSignup.password.$invalid && !formSignup.password.$pristine" class="help-block">Password is required.</p>
+               <p ng-show="formSignup.password.$invalid && !formSignup.password.$pristine" class="help-block">{{'signup.error.passwordRequired' |
+                  i18n}}</p>
             </div>
          </div>
          <div class="section form-group" ng-class="{ 'has-error' : formSignup.confPassword.$invalid && !formSignup.confPassword.$pristine }">
             <div class="label">{{ 'input.confirmPassword' | i18n }}</div>
             <div class="lergo-input">
                <input ng-model="signupForm.passwordConfirm" name="confPassword" class="form-control" required type="password" />
-               <p ng-show="formSignup.confPassword.$invalid && !formSignup.confPassword.$pristine" class="help-block">Confirm password is
-                  required.</p>
+               <p ng-show="formSignup.confPassword.$invalid && !formSignup.confPassword.$pristine" class="help-block">{{'signup.error.confPasswordRequired'
+                  | i18n}}</p>
             </div>
          </div>
          <div>
