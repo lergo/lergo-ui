@@ -23,7 +23,7 @@
 <div ng-show="showSteps() && hasNextStep() ">
     <div ng-include="'/views/lessons/_stepDisplay.html'"></div>
     <div ng-show="hasNextStep()" class="next-step">
-        <button ng-click="nextStep()" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
+        <button ng-click="nextStep()"  ng-disabled="!isQuizComplete" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
     </div>
 </div>
 
