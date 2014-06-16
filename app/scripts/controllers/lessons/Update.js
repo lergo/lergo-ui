@@ -244,15 +244,24 @@ angular.module('lergoApp').controller(
 					templateUrl : 'views/questions/modalupdate.html',
 					windowClass : 'question-create-dialog',
 					backdrop : 'static',
-					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'quizItem',
-							function($scope, $modalInstance, step, addItemToQuiz, quizItem) {
+					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'quizItem', 'QuestionsService',
+							function($scope, $modalInstance, step, addItemToQuiz, quizItem, QuestionsService) {
 								$scope.qItem = quizItem;
 								$scope.ok = function(item) {
 									addItemToQuiz(item._id, step);
 									$modalInstance.close();
 								};
-								$scope.cancel = function() {
+								$scope.cancel = function(item) {
+									if (!$scope.isValid(item)) {
+										QuestionsService.deleteQuestion(item._id);
+									}
 									$modalInstance.dismiss('cancel');
+								};
+								$scope.isValid = function(quizItem) {
+									if (!quizItem.type) {
+										return false;
+									}
+									return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
 								};
 							} ],
 					resolve : {
