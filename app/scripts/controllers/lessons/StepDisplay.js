@@ -31,6 +31,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			});
 
 		}
+		$scope.$emit('quizComplete', !$scope.hasNextQuizItem());
 	}
 
 	$scope.$watch('step', reload);
@@ -53,6 +54,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				'quizItemId' : quizItem._id
 
 			});
+			$scope.$emit('quizComplete', !$scope.hasNextQuizItem());
 		}, function() {
 			$log.error('there was an error checking answer');
 		});
@@ -75,7 +77,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.getQuizItem = function() {
 
-		if (!!$scope.step && $scope.step.quizItems.length > $scope.currentIndex) {
+		if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > $scope.currentIndex) {
 			return $scope.step.quizItems[$scope.currentIndex];
 		}
 		return null;
@@ -96,7 +98,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	};
 
 	$scope.hasNextQuizItem = function() {
-		return !!$scope.step && $scope.currentIndex < $scope.step.quizItems.length - 1;
+		return !!$scope.step && !!$scope.step.quizItems && $scope.currentIndex < $scope.step.quizItems.length - 1;
 	};
 
 	$scope.getStepViewByType = function(step) {
@@ -112,7 +114,10 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		return $sce.trustAsResourceUrl(src);
 	};
 	$scope.getAudioUrl = function(quizItem) {
-		return $sce.trustAsResourceUrl(quizItem.audioUrl);
+		if (!!quizItem && !!quizItem.audioUrl) {
+			return $sce.trustAsResourceUrl(quizItem.audioUrl);
+		}
+		return '';
 	};
 	$scope.getVideoId = function(step) {
 		var value = null;
