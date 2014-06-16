@@ -36,7 +36,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		return $http.post('/backend/questions/checkAnswer', question);
 
 	};
-
+	this.deleteQuestion = function(id) {
+		return $http.post('/backend/user/questions/' + id + '/delete');
+	};
 	this.questionsType = [ {
 		'id' : 'trueFalse',
 		'label' : 'True or False',
@@ -44,6 +46,12 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'viewTemplate' : 'views/questions/view/_trueFalse.html',
 		'answers' : function(quizItem) {
 			return quizItem.answer;
+		},
+		'isValid' : function(quizItem) {
+			if (!quizItem.question || !quizItem.answer) {
+				return false;
+			}
+			return true;
 		},
 		'alias' : []
 	}, {
@@ -60,6 +68,12 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 				return answers[0];
 			}
 			return answers.join(' / ');
+		},
+		'isValid' : function(quizItem) {
+			if (!quizItem.question || !quizItem.options) {
+				return false;
+			}
+			return true;
 		},
 		'alias' : []
 	}, {
@@ -79,6 +93,18 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			}
 			return answers.join(' ; ');
 		},
+		'isValid' : function(quizItem) {
+			if (!quizItem.question || !quizItem.options) {
+				return false;
+			}
+			var result = false;
+			quizItem.options.forEach(function(value) {
+				if (value.checked === true) {
+					result = true;
+				}
+			});
+			return result;
+		},
 		'alias' : []
 	}, {
 		'id' : 'openQuestion',
@@ -87,6 +113,12 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'viewTemplate' : 'views/questions/view/_openQuestion.html',
 		'answers' : function(quizItem) {
 			return quizItem.answer;
+		},
+		'isValid' : function(quizItem) {
+			if (!quizItem.question || !quizItem.options) {
+				return false;
+			}
+			return true;
 		},
 		'alias' : []
 	} ];
