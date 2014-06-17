@@ -58,6 +58,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		}, function() {
 			$log.error('there was an error checking answer');
 		});
+		$scope.updateProgressPercent();
 	};
 
 	$scope.updateAnswer = function(event, answer, quizItem) {
@@ -137,5 +138,13 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			return '';
 		}
 		return LergoClient.questions.getTypeById(quizItem.type).answers(quizItem);
+	};
+
+	$scope.updateProgressPercent = function() {
+		if (!$scope.step || !$scope.step.quizItems || $scope.step.quizItems.length < 1) {
+			$scope.progressPercentage = 0;
+		} else {
+			$scope.progressPercentage = Math.round((($scope.currentIndex+1) * 100) / $scope.step.quizItems.length);
+		}
 	};
 });
