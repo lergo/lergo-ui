@@ -258,7 +258,7 @@ angular.module('lergoApp').controller(
 									$modalInstance.dismiss('cancel');
 								};
 								$scope.isValid = function(quizItem) {
-									if (!quizItem.type) {
+									if (!quizItem || !quizItem.type) {
 										return false;
 									}
 									return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
