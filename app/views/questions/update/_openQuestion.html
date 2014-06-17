@@ -1,24 +1,18 @@
-<!-- To init option array by single element if its empty  -->
-{{ (quizItem.options===undefined) && addOption() || ""}}
-<table class="table lergo-form">
-	<thead>
-		<tr style="font-weight: bold">
-			<th>{{ 'questions.requiredAnswer' | i18n }}</th>
-			<th style="width: 10%">{{ 'questions.select' | i18n }}</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td style="border-top: none; vertical-align: middle;">{{ 'questions.shortAnswer' | i18n }}</td>
-			<td style="border-top: none; vertical-align: middle;"><input
-				type="checkbox" ng-checked="quizItem.options[0]===0"
-				ng-click="quizItem.options[0]=0" /></td>
-		</tr>
-		<tr>
-			<td style="border-top: none; vertical-align: middle;">{{ 'questions.longAnswer' | i18n }}</td>
-			<td style="border-top: none; vertical-align: middle;"><input
-				type="checkbox" ng-checked="quizItem.options[0]===1"
-				ng-click="quizItem.options[0]=1" /></td>
-		</tr>
-	</tbody>
+<table class="lergo-table lergo-form">
+   <thead>
+      <tr style="font-weight: bold">
+         <th>{{ 'questions.requiredAnswer' | i18n }}</th>
+         <th style="width: 10%">{{ 'questions.select' | i18n }}</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>{{ 'questions.shortAnswer' | i18n }}</td>
+         <td><input type="checkbox" ng-true-value="short" ng-false-value="1" ng-model="quizItem.subType" /></td>
+      </tr>
+      <tr>
+         <td>{{ 'questions.longAnswer' | i18n }}</td>
+         <td><input type="checkbox" ng-true-value="long" ng-false-value="0" ng-model="quizItem.subType" /></td>
+      </tr>
+   </tbody>
 </table>

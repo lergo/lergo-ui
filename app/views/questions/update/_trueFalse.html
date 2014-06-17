@@ -1,16 +1,18 @@
 <table class="lergo-table lergo-form">
-	<thead>
-		<tr>
-			<th>{{ 'questions.possibleAnswers' | i18n }}</th>
-			<th>{{ 'questions.correctAnswer' | i18n }}</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="option in ['True','False'] ">
-			<td class="optionValue">{{ 'quizItem.answer.' + option | i18n }}</td>
-			<td><input type="checkbox" ng-true-value="option"
-				ng-false-value="" ng-checked="quizItem.answer===option"
-				ng-click="quizItem.answer = option" /></td>
-		</tr>
-	</tbody>
+   <thead>
+      <tr>
+         <th>{{ 'questions.possibleAnswers' | i18n }}</th>
+         <th>{{ 'questions.correctAnswer' | i18n }}</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td class="optionValue">{{ 'quizItem.answer.True'| i18n }}</td>
+         <td><input type="checkbox" ng-true-value="True" ng-false-value="False" ng-model="quizItem.answer" /></td>
+      </tr>
+      <tr>
+         <td class="optionValue">{{ 'quizItem.answer.False'| i18n }}</td>
+         <td><input type="checkbox" ng-true-value="False" ng-false-value="True" ng-model="quizItem.answer" /></td>
+      </tr>
+   </tbody>
 </table>
