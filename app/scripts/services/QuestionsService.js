@@ -105,7 +105,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			}
 			var result = false;
 			quizItem.options.forEach(function(value) {
-				if (value.checked === true) {
+				if (!!value.label && value.checked === true) {
 					result = true;
 				}
 			});
