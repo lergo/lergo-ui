@@ -27,16 +27,16 @@
          <div class="bg-success" ng-show="answer.correct">
             {{(quizItem.type === 'openQuestion') && ('questions.thankYou' | i18n) || ('questions.correctAnswerFilled' | i18n) }}
             <div ng-show="!!quizItem.explanation">
-               <button class="btn-link" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
-               <div collapse="!isCollapsed">{{quizItem.explanation}}</div>
+               <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+               <div style="width: 400px;margin: auto" collapse="!isCollapsed">{{quizItem.explanation}}</div>
             </div>
          </div>
          <div class="bg-warning" ng-show="!answer.correct">
             {{ 'questions.incorrectAnswerFilled' | i18n }}: {{((quizItem.type==='trueFalse') && (getCorrectAnswers(quizItem) &&
             ('quizItem.answer.'+getCorrectAnswers(quizItem)| i18n)||"") || getCorrectAnswers(quizItem) )}}
             <div ng-show="!!quizItem.explanation">
-               <button class="btn-link" ng-click="collapsed = !collapsed">{{ 'explanation' | i18n }}</button>
-               <div collapse="!!collapsed">{{quizItem.explanation}}</div>
+               <button class="btn-link" style="color: white" ng-click="collapsed = !collapsed">{{ 'explanation' | i18n }}</button>
+               <div style="width: 400px;margin: auto" collapse="!!collapsed">{{quizItem.explanation}}</div>
             </div>
          </div>
       </div>
