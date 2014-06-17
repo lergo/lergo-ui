@@ -33,7 +33,7 @@
          {{(quizItem.type === 'openQuestion') && ('questions.thankYou' | i18n) || ('questions.correctAnswerFilled' | i18n) }}
          <div ng-show="!!quizItem.explanation">
             <a class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</a>
-            <div style="width: 400px" collapse="!isCollapsed">{{quizItem.explanation}}</div>
+            <div style="width: 400px;margin: auto" collapse="!isCollapsed">{{quizItem.explanation}}</div>
          </div>
       </div>
       <div class="bg-warning" ng-show="!getAnswer(quizItem).correct">
@@ -41,7 +41,7 @@
          i18n)||"") || getCorrectAnswers(quizItem) )}}
          <div ng-show="!!quizItem.explanation">
             <a class="btn-link" style="color: white" ng-click="collapsed = !collapsed">{{ 'explanation' | i18n }}</a>
-            <div style="width: 400px" collapse="!!collapsed">{{quizItem.explanation}}</div>
+            <div style="width: 400px;margin: auto" collapse="!!collapsed">{{quizItem.explanation}}</div>
          </div>
       </div>
    </div>
