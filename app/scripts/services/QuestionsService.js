@@ -73,7 +73,13 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			if (!quizItem.question || !quizItem.options) {
 				return false;
 			}
-			return true;
+			var result = false;
+			quizItem.options.forEach(function(value) {
+				if (!!value.label) {
+					result = true;
+				}
+			});
+			return result;
 		},
 		'alias' : []
 	}, {
@@ -115,7 +121,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			return quizItem.answer;
 		},
 		'isValid' : function(quizItem) {
-			if (!quizItem.question || !quizItem.options) {
+			if (!quizItem.question || !quizItem.subType) {
 				return false;
 			}
 			return true;

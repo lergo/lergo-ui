@@ -1,7 +1,7 @@
 <div class="base-layout" id="questions-update">
    <div ng-include="'views/questions/_update.html'"></div>
    <div>
-      <button class="btn" ng-click="done()" ng-disabled="isSaving()||!quizItem.question">{{ 'done' | i18n }}</button>
-      <a class="btn" ng-disabled="!quizItem.question" href="#/user/questions/{{quizItem._id}}/read"> {{ 'preview' | i18n }} </a>
+      <button class="btn" ng-click="done()" ng-disabled="isSaving()||!isValid(quizItem)">{{ 'done' | i18n }}</button>
+      <a class="btn" ng-disabled="isSaving()||!isValid(quizItem)" href="#/user/questions/{{quizItem._id}}/read"> {{ 'preview' | i18n }} </a>
    </div>
 </div>
