@@ -1,28 +1,76 @@
 <div class="base-layout">
-
-
-    <div admin-section>
-        <a href="#/admin/homepage">Admin Homepage</a>
-    </div>
-
-<table>
-    <tr>
-        <td>username</td>
-        <td>title</td>
-        <td>views</td>
-        <td>Share link</td>
-    </tr>
-    <tr ng-repeat="l in lessons">
-
-        <td>{{l.user.username}}</td>
-        <td>{{l.name}}</td>
-        <td>
-            {{ 0 + l.views}}
-        </td>
-        <td>
-            <a href="#/public/lessons/{{l._id}}/share"> {{absoluteShareLink(l)}}</a>
-
-        </td>
-    </tr>
-</table>
+   <div admin-section>
+      <a href="#/admin/homepage">Admin Homepage</a>
+   </div>
+   <div style="float: left; width: 75%">
+      <div class="article-header">
+         <table class="lergo-table">
+            <tr>
+               <td>
+                  <div class="amount">{{lessons.length}}</div>
+                  <div class="type">{{ 'homepage.lessons' | i18n }}</div>
+               </td>
+               <td>
+                  <div class="amount">{{questionsCount}}</div>
+                  <div class="type">{{ 'homepage.questions' | i18n }}</div>
+               </td>
+               <td>
+                  <div class="and-counting item">{{ 'homepage.andCounting' | i18n }}</div>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div class="lessons">
+         <div class="lesson" ng-repeat="lesson in lessons" style="height: 350px; width: 215px; background-color: #EFEFEF; float: left;">
+            <div class="age-limit age-limit-{{lesson.age}}">
+               <div class="value">{{lesson.age}}</div>
+               <div class="units">
+                  <i class="fa fa-arrow-up"></i> years
+               </div>
+            </div>
+            <!-- age limit -->
+            <div class="image" style="text-align: center;">
+               <i class="fa fa-university fa-5x"></i>
+            </div>
+            <div class="title">{{ lesson.name }}</div>
+            <div class="stats">
+               <span class="left-stat"><i class="fa fa-user fa-fw"></i>{{lesson.user.username}} </span> <span class="right-stat"><i
+                  class="fa fa-question-circle"></i> {{lesson.steps.length}} </span>
+            </div>
+            <div class="stats">
+               <span class="left-stat"> <i class="fa fa-language fa-fw"></i>{{lesson.language}}
+               </span> <span class="right-stat"><i class="fa fa-book fa-fw"></i>{{lesson.subject}}</span>
+            </div>
+            <div class="stats">
+               <span class="left-stat"><i class="fa fa-clock-o"></i>{{lesson.lastUpdate | date:'d-MMM-yyyy'}} </span> <a class="right-stat"
+                  href="#/public/lessons/{{lesson._id}}/share"><i class="fa fa-share"></i>Share</a>
+            </div>
+         </div>
+      </div>
+      <table>
+         <tr>
+            <td>username</td>
+            <td>title</td>
+            <td>views</td>
+            <td>Share link</td>
+         </tr>
+         <tr ng-repeat="l in lessons">
+            <td>{{l.user.username}}</td>
+            <td>{{l.name}}</td>
+            <td>{{ 0 + l.views}}</td>
+            <td><a href="#/public/lessons/{{l._id}}/share"> {{absoluteShareLink(l)}}</a></td>
+         </tr>
+      </table>
+   </div>
+   <div class="sidebar">
+      <div class="upper-section">
+         <div class="create">{{ 'homepage.createYourOwn' | i18n }}</div>
+         <hr />
+         <a class="start btn">{{ 'homepage.start' | i18n }}</a>
+         <div class="free">{{ 'homepage.free' | i18n }}</div>
+         <hr />
+      </div>
+      <div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
+      <div ng-include src="'views/filters/filter.html'"></div>
+   </div>
 </div>
