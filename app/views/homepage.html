@@ -33,38 +33,52 @@
 					</div>
 				</div>
 				<!-- age limit -->
-				<div class="image" style="text-align: center;">
+				<div class="image">
 					<a href="#/public/lessons/{{lesson._id}}/share" ng-init="getTitleImage(lesson)">
 						<img ng-show="!!lesson.image" ng-src="{{lesson.image}}" />
-						<i ng-show="!lesson.image" style="font-size: 120px" class="fa fa-university"></i>
+						<i ng-show="!lesson.image" class="fa fa-university"></i>
 					</a>
 				</div>
 				<div class="title">
 					<a href="#/public/lessons/{{lesson._id}}/share">
-						{{ lesson.name|limitTo:50 }}
-						<span ng-show="lesson.name.length >50">...</span>
+						{{ lesson.name|limitTo:40 }}
+						<span ng-show="lesson.name.length >40">...</span>
 					</a>
 				</div>
 				<div class="stats">
-					<span>
-						<i class="fa fa-user fa-fw" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
-						{{lesson.user.username}}
-					</span>
-					<span>
-						<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
-						{{getQuestionsCount(lesson)}}
-					</span>
-					<span>
-						<i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
-						{{0+lesson.views}}
-					</span>
-				</div>
-				<div class="stats">
-					<span>{{lesson.timeStamp | date:'d-MMM-yyyy'}} </span>
-					<span>
-						<i ng-show="!!lesson.subject" class="fa fa-book fa-fw" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
-						{{lesson.subject && ('filters.subjects.' + lesson.subject | i18n) ||""}}
-					</span>
+					<table class="stats-table">
+						<tr>
+							<td>
+								<span>
+									<i class="fa fa-user fa-fw" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
+									{{lesson.user.username}}
+								</span>
+							</td>
+							<td>
+								<span>
+									<i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
+									{{0+lesson.views}}
+								</span>
+							</td>
+							<td>
+								<span ng-show="!!lesson.questionsCount" ng-init="getQuestionsCount(lesson)">
+									<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
+									{{lesson.questionsCount}}
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span>{{lesson.timeStamp | date:'d-MMM-yyyy'}} </span>
+							</td>
+							<td colspan="2">
+								<span ng-show="!!lesson.subject">
+									<i class="fa fa-book fa-fw" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
+									{{lesson.subject && ('filters.subjects.' + lesson.subject | i18n) ||""}}
+								</span>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>

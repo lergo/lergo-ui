@@ -35,16 +35,18 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		return window.location.origin + '/#/public/lessons/' + lesson._id + '/share';
 	};
 	$scope.getQuestionsCount = function(lesson) {
-		var qCount = 0;
 		if (!lesson || !lesson.steps || lesson.steps.length < 1) {
-			return qCount;
+			return;
 		}
+		var qCount = 0;
 		lesson.steps.forEach(function(value) {
 			if (!!value.quizItems) {
 				qCount = qCount + value.quizItems.length;
 			}
 		});
-		return qCount;
+		if (qCount > 0) {
+			lesson.questionsCount = qCount;
+		}
 	};
 	$scope.getTitleImage = function(lesson) {
 		if (!lesson || !lesson.steps || lesson.steps.length < 1) {
