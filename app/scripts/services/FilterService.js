@@ -24,6 +24,22 @@ angular.module('lergoApp').service('FilterService', function Filterservice() {
 		return true;
 	};
 
+	this.filterByViews = function(filter, age) {
+		if (!filter.views || (!filter.views.min && !filter.views.max)) {
+			return true;
+		}
+		if (!age) {
+			return false;
+		}
+		if (filter.views.min && age < filter.views.min) {
+			return false;
+		}
+		if (filter.views.max && age > filter.views.max) {
+			return false;
+		}
+		return true;
+	};
+
 	this.filterByLanguage = function(filter, language) {
 		if (!filter.language) {
 			return true;

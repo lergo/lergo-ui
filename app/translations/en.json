@@ -55,10 +55,16 @@
         "lessons": "lessons",
         "questions": "questions",
         "andCounting": "and counting...",
-        "createYourOwn": "Create Your Own Lessons",
+        "createYourOwn": "Create Your Own Lesson",
         "start": "start",
         "free": "it's free!",
-        "years":"Years"
+        "years":"Years",
+        "tooltip":{
+			"views":"number of views",
+			"questions":"number of questions",
+			"user":"by",
+			"subject":"subject"
+        }
     },
     "lessons": {
     	"myLessons" : "My Lessons",
@@ -200,7 +206,8 @@
         "labels": {
             "ageRange": "Age Range",
             "language": "Language",
-            "subject": "Subject"
+            "subject": "Subject",
+            "views":"# of views"
         },
         "languages": {
             "english": "English",

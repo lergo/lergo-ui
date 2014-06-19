@@ -15,6 +15,9 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	$scope.subjectFilter = function(lesson) {
 		return FilterService.filterBySubject($scope.filter, lesson.subject);
 	};
+	$scope.viewsFilter = function(lesson) {
+		return FilterService.filterByViews($scope.filter, lesson.views);
+	};
 	LergoClient.questions.getQuestionsCount().then(function(result) {
 		$scope.questionsCount = result.data;
 	});
