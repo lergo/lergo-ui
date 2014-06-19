@@ -57,7 +57,8 @@
         "andCounting": "and counting...",
         "createYourOwn": "Create Your Own Lessons",
         "start": "start",
-        "free": "it's free!"
+        "free": "it's free!",
+        "years":"Years"
     },
     "lessons": {
     	"myLessons" : "My Lessons",
