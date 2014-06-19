@@ -21,56 +21,42 @@
          </table>
       </div>
       <div class="lessons">
-         <div class="lesson" ng-repeat="lesson in lessons" style="height: 350px; width: 215px; background-color: #EFEFEF; float: left;">
+         <div class="lergo-h1">featured</div>
+         <hr />
+         <div class="lesson" ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter">
             <div class="age-limit age-limit-{{lesson.age}}">
                <div class="value">{{lesson.age}}</div>
                <div class="units">
-                  <i class="fa fa-arrow-up"></i> years
+                  <i class="fa fa-arrow-up"></i> {{'homepage.years'|i18n}}
                </div>
             </div>
             <!-- age limit -->
             <div class="image" style="text-align: center;">
-               <i class="fa fa-university fa-5x"></i>
+               <a href="#/public/lessons/{{lesson._id}}/share" ng-init="getTitleImage(lesson)"><img ng-show="!!lesson.image"
+                  ng-src="{{lesson.image}}" /><i ng-show="!lesson.image" style="font-size: 120px" class="fa fa-university"></i></a>
             </div>
-            <div class="title">{{ lesson.name }}</div>
-            <div class="stats">
-               <span class="left-stat"><i class="fa fa-user fa-fw"></i>{{lesson.user.username}} </span> <span class="right-stat"><i
-                  class="fa fa-question-circle"></i> {{lesson.steps.length}} </span>
-            </div>
-            <div class="stats">
-               <span class="left-stat"> <i class="fa fa-language fa-fw"></i>{{lesson.language}}
-               </span> <span class="right-stat"><i class="fa fa-book fa-fw"></i>{{lesson.subject}}</span>
+            <div class="title">
+               <a href="#/public/lessons/{{lesson._id}}/share" tooltip="{{lesson.name}}">{{ lesson.name|limitTo:20 }}<span ng-show="lesson.name.length >20">...</span></a>
             </div>
             <div class="stats">
-               <span class="left-stat"><i class="fa fa-clock-o"></i>{{lesson.lastUpdate | date:'d-MMM-yyyy'}} </span> <a class="right-stat"
-                  href="#/public/lessons/{{lesson._id}}/share"><i class="fa fa-share"></i>Share</a>
+               <span><i class="fa fa-user fa-fw"></i>{{lesson.user.username}} </span> <span><i class="fa fa-question-circle fa-fw"></i>
+                  {{getQuestionsCount(lesson)}} </span> <span><i class="fa fa-eye fa-fw"></i> {{0+lesson.view}} </span>
+            </div>
+            <div class="stats">
+               <span><i class="fa fa-book fa-fw"></i>{{lesson.subject && ('filters.subjects.' + lesson.subject | i18n) ||""}}</span> <span><i
+                  class="fa fa-clock-o fa-fw"></i>{{lesson.lastUpdate | date:'d-MMM-yyyy'}} </span>
             </div>
          </div>
       </div>
-      <table>
-         <tr>
-            <td>username</td>
-            <td>title</td>
-            <td>views</td>
-            <td>Share link</td>
-         </tr>
-         <tr ng-repeat="l in lessons">
-            <td>{{l.user.username}}</td>
-            <td>{{l.name}}</td>
-            <td>{{ 0 + l.views}}</td>
-            <td><a href="#/public/lessons/{{l._id}}/share"> {{absoluteShareLink(l)}}</a></td>
-         </tr>
-      </table>
    </div>
    <div class="sidebar">
       <div class="upper-section">
          <div class="create">{{ 'homepage.createYourOwn' | i18n }}</div>
-         <hr />
-         <a class="start btn">{{ 'homepage.start' | i18n }}</a>
+         <a class="start btn" ng-click="create()">{{ 'homepage.start' | i18n }}</a>
          <div class="free">{{ 'homepage.free' | i18n }}</div>
-         <hr />
       </div>
       <div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
+      <hr />
       <div ng-include src="'views/filters/filter.html'"></div>
    </div>
 </div>

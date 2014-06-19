@@ -367,6 +367,7 @@
 	margin-top: 10px;
 	.upper-section {
 		line-height: 35px;	
+		min-height:100px;
 		color : #C5C5C5;
 		hr{
 		margin-top:10px;
@@ -395,7 +396,7 @@
 	margin-top:10px;
 	font-weight: bold;
     color:#D8D8D8;
-	 
+	min-height: 100px;
 	.amount{ 
 		font-size:34px; 
 	}
@@ -412,7 +413,7 @@
 
 
 .age-limit{
-	width:75px;
+	width:80px;
 	z-index:10;
 	position:relative;
 	margin-top:10px;
@@ -459,38 +460,21 @@
 	&, img {
 	  height:120px;
 	  width:180px;
+	  font-size:120px;
 	}
 	margin-top:-35px;
 	margin-left:20px;
 	z-index:0;
-	.stats{
-		background:rgba(0,0,0,0.7);
-		width:158px;
-		i { margin-top: 2px; }
-		margin:0 auto;
-		position:absolute;
-		bottom:10px;
-		left:5px;
-		padding:5px;
-		color:white;
-		text-align: justify;
-		.questions{
-			float:right;
-			margin-right:5px;
-		}
-		.time{
-			margin-left:5px;
-		}
-	}
 }
 .title{
 	color:#585858;
 	padding: 5px 0 5px 0;
-	font-size:18px;
+	font-size:15px;
 	white-space: normal;
 	font-weight: bold;
 	width:200px;
 	text-align: left;
+	line-height:30px;
 	margin:0 auto;
 }
 .stats{
@@ -499,6 +483,7 @@
 	margin:0 auto;
 	padding:5px;
 	color:white;
+	font-size:14px;
 	.left-stat{
 	width:100px;
 	text-align: left;
@@ -507,5 +492,15 @@
 	width:95px;
 	text-align: right;
 	}
+}
+.lesson{
+	position:relative;
+	height:250px;
+	width:215px;
+	float:left;
+	margin:0 0 10px 10px;
+	border-radius: 10px;
+	background-color:#EFEFEF;
+	&:hover{ background-color:white;}
 }
 
