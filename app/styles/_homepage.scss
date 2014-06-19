@@ -460,15 +460,15 @@
 
 .image{
 	position:relative;
-	display:inline-block;
+	margin:-35px auto 0 auto;
+	text-align:center;
+	z-index:0;
 	&, img {
 	  height:120px;
-	  width:180px;
-	  font-size:120px;
+	  width:180px;	  
 	}
-	margin-top:-35px;
-	margin-left:20px;
-	z-index:0;
+	i{font-size:120px;}
+	
 }
 .title{
 	color:#585858;
@@ -477,8 +477,7 @@
 	white-space: normal;
 	font-weight: bold;
 	width:200px;
-	text-align: left;
-	line-height:25px;
+	line-height:15px;
 	margin:0 auto;
 	min-height: 60px;
 	a{color:#585858;
@@ -490,6 +489,7 @@
 	padding:5px;
 	font-size:14px;
 	color:#585858;
+	display: inline-block;
 }
 .lesson{
 	position:relative;
@@ -502,3 +502,9 @@
 	&:hover{ background-color:white;}
 }
 
+.stats-table {
+   width: 100%;
+   td{
+   padding-bottom:5px;
+   }
+}
