@@ -6,14 +6,6 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		return $http.get('/backend/user/questions');
 	};
 
-	this.getQuestionsCount = function() {
-		return {'then' : function(callback){
-			callback({'data' : 100});
-		}};
-		// TODO : implement this call
-		// return $http.get('/backend/public/questions/count');
-	};
-
 	this.getUserQuestionById = function(questionId) {
 		return $http.get('/backend/user/questions/' + questionId);
 	};
