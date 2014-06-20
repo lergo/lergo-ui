@@ -68,6 +68,7 @@
     },
     "lessons": {
     	"myLessons" : "My Lessons",
+        "startLesson" : "Start Lesson",
         "seeReport": "See Report",
     	"total": "Total",
         "filter": "Filter Lessons",
