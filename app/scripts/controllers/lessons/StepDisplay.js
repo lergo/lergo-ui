@@ -11,6 +11,18 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.currentIndex = 0;
 	$scope.answers = {};
 	function reload() {
+        $log.info('reload display for step');
+
+        // guy - when we watch an invitation, we get all the questions for all steps pre-resolved.
+        // however, when we preview a lesson, this controller/scope are responsible for resolving the questions
+        // and they resolve it for each step anew.
+        // so we have 2 different algorithms for resolving questions for quiz.
+        // in order to align them, we need to nullify the "questions" on the scope but only (!!) if this
+        // controller and scope are responsible for resolving them.
+        if ( !!$scope.questions && $scope.hasOwnProperty('questions')){ // if this scope takes care
+            $scope.questions = null;
+        }
+
 		if (!$scope.step) {
 			return;
 		}
@@ -77,7 +89,6 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	};
 
 	$scope.getQuizItem = function() {
-
 		if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > $scope.currentIndex) {
 			return $scope.step.quizItems[$scope.currentIndex];
 		}
