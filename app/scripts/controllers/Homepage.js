@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, FilterService, $location, $log, $sce) {
+angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, FilterService, $location, $log) {
 
 	$scope.filter = {};
 	LergoClient.lessons.getPublicLessons().then(function(result) {
@@ -21,8 +21,8 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	$scope.viewsFilter = function(lesson) {
 		return FilterService.filterByViews($scope.filter, lesson.views);
 	};
-	LergoClient.questions.getQuestionsCount().then(function(result) {
-		$scope.questionsCount = result.data;
+	LergoClient.lessons.getStats().then(function(result) {
+		$scope.stats = result.data;
 	});
 	$scope.create = function() {
 		LergoClient.lessons.create().then(function(result) {

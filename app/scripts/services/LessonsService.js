@@ -22,6 +22,10 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
         return $http.get('/backend/public/lessons');
     };
     
+    this.getStats = function (){
+        return $http.get('/backend/public/system/statistics');
+    };
+    
     this.getTitleImage = function(lesson) {
 		if (!lesson || !lesson.steps || lesson.steps.length < 1) {
 			return;
