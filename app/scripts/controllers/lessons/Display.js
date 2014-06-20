@@ -7,6 +7,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 		LergoClient.lessons.getById($routeParams.lessonId).then(function(result) {
 			$log.info('got lesson', result.data);
 			$scope.lesson = result.data;
+			$scope.lesson.image= LergoClient.lessons.getTitleImage($scope.lesson);
 		}, function(result) {
 			$log.info('error while getting lesson', result.data);
 		});

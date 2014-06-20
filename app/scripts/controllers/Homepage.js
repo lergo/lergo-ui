@@ -5,6 +5,9 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	$scope.filter = {};
 	LergoClient.lessons.getPublicLessons().then(function(result) {
 		$scope.lessons = result.data;
+		$scope.lessons.forEach(function(value) {
+			value.image = LergoClient.lessons.getTitleImage(value);
+		});
 	});
 	$scope.ageFilter = function(lesson) {
 		return FilterService.filterByAge($scope.filter, lesson.age);
@@ -33,45 +36,6 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	};
 	$scope.absoluteShareLink = function(lesson) {
 		return window.location.origin + '/#/public/lessons/' + lesson._id + '/share';
-	};
-	$scope.getQuestionsCount = function(lesson) {
-		if (!lesson || !lesson.steps || lesson.steps.length < 1) {
-			return;
-		}
-		var qCount = 0;
-		lesson.steps.forEach(function(value) {
-			if (!!value.quizItems) {
-				qCount = qCount + value.quizItems.length;
-			}
-		});
-		if (qCount > 0) {
-			lesson.questionsCount = qCount;
-		}
-	};
-	$scope.getTitleImage = function(lesson) {
-		if (!lesson || !lesson.steps || lesson.steps.length < 1) {
-			return;
-		}
-		for ( var i = 0; i < lesson.steps.length; i++) {
-			var id = $scope.getVideoId(lesson.steps[i]);
-			if (id !== null) {
-				lesson.image = $sce.trustAsResourceUrl('http://img.youtube.com/vi/' + id + '/0.jpg');
-				break;
-			}
-		}
-	};
-
-	$scope.getVideoId = function(step) {
-		var value = null;
-		if (!!step && !!step.videoUrl) {
-			if (step.videoUrl.toLocaleLowerCase().indexOf('youtu.be') > 0) {
-				value = step.videoUrl.substring(step.videoUrl.lastIndexOf('/') + 1);
-			} else {
-				value = step.videoUrl.split('?')[1].split('v=')[1];
-			}
-		}
-
-		return value;
 	};
 
 	/** * MOCK CODE FOR REFERENCE - WILL BE REMOVED BY END OF JUNE ** */

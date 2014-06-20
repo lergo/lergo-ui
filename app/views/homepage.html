@@ -2,102 +2,104 @@
 	<div admin-section>
 		<a href="#/admin/homepage">Admin Homepage</a>
 	</div>
-	<div style="float: left; width: 75%">
-		<div class="article-header">
-			<table class="lergo-table">
-				<tr>
-					<td>
-						<div class="amount">{{lessons.length}}</div>
-						<div class="type">{{ 'homepage.lessons' | i18n }}</div>
-					</td>
-					<td>
-						<div class="amount">{{questionsCount}}</div>
-						<div class="type">{{ 'homepage.questions' | i18n }}</div>
-					</td>
-					<td>
-						<div class="and-counting item">{{ 'homepage.andCounting' | i18n }}</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div class="lessons">
-			<div class="lergo-h1">{{ 'featured' | i18n }}</div>
-			<hr />
-			<div class="lesson"
-				ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter">
-				<div class="age-limit age-limit-{{lesson.age}}">
-					<div class="value">{{lesson.age}}+</div>
-					<div class="units">
-						<i class="fa fa-arrow-up"></i>
-						{{'homepage.years'|i18n}}
+	<div class="homepage">
+		<div style="float: left; width: 75%">
+			<div class="article-header">
+				<table class="lergo-table">
+					<tr>
+						<td>
+							<div class="amount">{{lessons.length}}</div>
+							<div class="type">{{ 'homepage.lessons' | i18n }}</div>
+						</td>
+						<td>
+							<div class="amount">{{questionsCount}}</div>
+							<div class="type">{{ 'homepage.questions' | i18n }}</div>
+						</td>
+						<td>
+							<div class="and-counting item">{{ 'homepage.andCounting' | i18n }}</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="lessons">
+				<div class="lergo-h1">{{ 'featured' | i18n }}</div>
+				<hr />
+				<div class="lesson"
+					ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter">
+					<div class="age-limit age-limit-{{lesson.age}}">
+						<div class="value">{{lesson.age}}+</div>
+						<div class="units">
+							<i class="fa fa-arrow-up"></i>
+							{{'homepage.years'|i18n}}
+						</div>
 					</div>
-				</div>
-				<!-- age limit -->
-				<div class="image">
-					<a href="#/public/lessons/{{lesson._id}}/share" ng-init="getTitleImage(lesson)">
-						<img ng-show="!!lesson.image" ng-src="{{lesson.image}}" />
-						<i ng-show="!lesson.image" class="fa fa-university"></i>
-					</a>
-				</div>
-				<div class="title">
-					<a href="#/public/lessons/{{lesson._id}}/share">
-						{{ lesson.name|limitTo:40 }}
-						<span ng-show="lesson.name.length >40">...</span>
-					</a>
-				</div>
-				<div class="stats">
-					<table class="stats-table">
-						<tr>
-							<td>
-								<span>
-									<i class="fa fa-user fa-fw" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
-									{{lesson.user.username}}
-								</span>
-							</td>
-							<td>
-								<span>
-									<i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
-									{{0+lesson.views}}
-								</span>
-							</td>
-							<td>
-								<span ng-show="!!lesson.questionsCount" ng-init="getQuestionsCount(lesson)">
-									<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
-									{{lesson.questionsCount}}
-								</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span>{{lesson.timeStamp | date:'d-MMM-yyyy'}} </span>
-							</td>
-							<td colspan="2">
-								<span ng-show="!!lesson.subject">
-									<i class="fa fa-book fa-fw" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
-									{{lesson.subject && ('filters.subjects.' + lesson.subject | i18n) ||""}}
-								</span>
-							</td>
-						</tr>
-					</table>
+					<!-- age limit -->
+					<div class="image">
+						<a href="#/public/lessons/{{lesson._id}}/share">
+							<img ng-show="!!lesson.image" ng-src="{{lesson.image}}" />
+							<i ng-show="!lesson.image" class="fa fa-university"></i>
+						</a>
+					</div>
+					<div class="title">
+						<a href="#/public/lessons/{{lesson._id}}/share">
+							{{ lesson.name|limitTo:40 }}
+							<span ng-show="lesson.name.length >40">...</span>
+						</a>
+					</div>
+					<div class="stats">
+						<table class="stats-table">
+							<tr>
+								<td>
+									<span>
+										<i class="fa fa-user fa-fw" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
+										{{lesson.user.username}}
+									</span>
+								</td>
+								<td>
+									<span>
+										<i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
+										{{0+lesson.views}}
+									</span>
+								</td>
+								<td>
+									<span ng-show="!!lesson.questionsCount">
+										<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
+										{{lesson.questionsCount}}
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span>{{lesson.timeStamp | date:'d-MMM-yyyy'}} </span>
+								</td>
+								<td colspan="2">
+									<span ng-show="!!lesson.subject">
+										<i class="fa fa-book fa-fw" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
+										{{lesson.subject && ('filters.subjects.' + lesson.subject | i18n) ||""}}
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="sidebar">
-		<div class="upper-section">
-			<div class="create">{{ 'homepage.createYourOwn' | i18n }}</div>
-			<a class="start btn" ng-click="create()">{{ 'homepage.start' | i18n }}</a>
-			<div class="free">{{ 'homepage.free' | i18n }}</div>
-		</div>
-		<div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
-		<hr />
-		<div ng-include src="'views/filters/filter.html'"></div>
-		<div class="filters lergo-form">
-			<div class="label">{{'filters.labels.views' | i18n }}</div>
-			<div>
-				<input min="1" size="1" class="number" type="number" ng-model="$parent.filter.views.min" />
-				{{'filters.to'|i18n}}
-				<input min="1" size="1" class="number" type="number" ng-model="$parent.filter.views.max" />
+		<div class="sidebar">
+			<div class="upper-section">
+				<div class="create">{{ 'homepage.createYourOwn' | i18n }}</div>
+				<a class="start btn" ng-click="create()">{{ 'homepage.start' | i18n }}</a>
+				<div class="free">{{ 'homepage.free' | i18n }}</div>
+			</div>
+			<div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
+			<hr />
+			<div ng-include src="'views/filters/filter.html'"></div>
+			<div class="filters lergo-form">
+				<div class="label">{{'filters.labels.views' | i18n }}</div>
+				<div>
+					<input min="1" size="1" class="number" type="number" ng-model="$parent.filter.views.min" />
+					{{'filters.to'|i18n}}
+					<input min="1" size="1" class="number" type="number" ng-model="$parent.filter.views.max" />
+				</div>
 			</div>
 		</div>
 	</div>

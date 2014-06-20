@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('LessonsService', function LessonsService($http) {
+angular.module('lergoApp').service('LessonsService', function LessonsService($http,$sce) {
 
 	this.create = function() {
 		return $http.post('/backend/user/lessons');
@@ -21,4 +21,27 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
     this.getPublicLessons = function (){
         return $http.get('/backend/public/lessons');
     };
+    
+    this.getTitleImage = function(lesson) {
+		if (!lesson || !lesson.steps || lesson.steps.length < 1) {
+			return;
+		}
+		for ( var i = 0; i < lesson.steps.length; i++) {
+			var id = this.getVideoId(lesson.steps[i]);
+			if (id !== null) {
+				return  $sce.trustAsResourceUrl('http://img.youtube.com/vi/' + id + '/0.jpg');
+			}
+		}
+	};
+	this.getVideoId = function(step) {
+		var value = null;
+		if (!!step && !!step.videoUrl) {
+			if (step.videoUrl.toLocaleLowerCase().indexOf('youtu.be') > 0) {
+				value = step.videoUrl.substring(step.videoUrl.lastIndexOf('/') + 1);
+			} else {
+				value = step.videoUrl.split('?')[1].split('v=')[1];
+			}
+		}
+		return value;
+	};
 });

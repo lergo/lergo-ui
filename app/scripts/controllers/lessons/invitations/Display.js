@@ -36,6 +36,7 @@ angular.module('lergoApp')
         LergoClient.lessonsInvitations.build( $routeParams.invitationId, true, false).then(function(result){
             $scope.invitation = result.data;
             $scope.lesson = result.data.lesson;
+            $scope.lesson.image= LergoClient.lessons.getTitleImage($scope.lesson);
             $scope.questions = {};
             $scope.report = result.data.report || { '_id' : result.data._id };
 

@@ -110,19 +110,20 @@ angular.module('lergoApp').controller(
 				}
 
 				quizItemsWatch.splice(0, quizItemsWatch.length);
+				if (!!$scope.lesson.steps) {
+					$scope.lesson.steps.forEach(function(step/* , index */) {
+						if (!!step.quizItems && step.quizItems.length > 0) {
 
-				$scope.lesson.steps.forEach(function(step/* , index */) {
-					if (!!step.quizItems && step.quizItems.length > 0) {
+							step.quizItems.forEach(function(quizItem) {
 
-						step.quizItems.forEach(function(quizItem) {
+								if (quizItemsWatch.indexOf(quizItem) < 0) {
+									quizItemsWatch.push(quizItem);
+								}
 
-							if (quizItemsWatch.indexOf(quizItem) < 0) {
-								quizItemsWatch.push(quizItem);
-							}
-
-						});
-					}
-				});
+							});
+						}
+					});
+				}
 				return quizItemsWatch;
 			}, function(newValue, oldValue) {
 				if (!!newValue && newValue.length > 0) {
