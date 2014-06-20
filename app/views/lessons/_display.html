@@ -1,44 +1,115 @@
+<div ng-controller="HomepageCtrl" class="homepage">
+	<div style="float: left; width: 75%">
+		<div class="article-header">
+			<table class="lergo-table">
+				<tr>
+					<td>
+						<div class="amount">{{lessons.length}}</div>
+						<div class="type">{{ 'homepage.lessons' | i18n }}</div>
+					</td>
+					<td>
+						<div class="amount">{{questionsCount}}</div>
+						<div class="type">{{ 'homepage.questions' | i18n }}</div>
+					</td>
+					<td>
+						<div class="and-counting item">{{ 'homepage.andCounting' | i18n }}</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="sidebar">
+		<div class="upper-section">
+			<div class="create">{{ 'homepage.createYourOwn' | i18n }}</div>
+			<a class="start btn" ng-click="create()">{{ 'homepage.start' | i18n }}</a>
+			<div class="free">{{ 'homepage.free' | i18n }}</div>
+		</div>
+	</div>
+</div>
 <div class="start-step" ng-show="showStart()">
-    <div class="image">
-        <i class="fa fa-university"></i>
-    </div>
-    <div class="message">
-        <div class="welcome">
-            {{ 'welcome' | i18n }}! <br/>
-            {{ 'lessons.areYouReady' | i18n }}<br/>
-        </div>
-        <div class="name">
-            {{lesson.name}}
-        </div>
-        <div class="description">
-            {{lesson.description}}
-        </div>
-        <div class="button">
-            <button ng-click="nextStep()" class="btn">{{ 'lessons.letsGo' | i18n }}</button>
-        </div>
-    </div>
-
-
+	<div class="lesson">
+		<div class="image">
+			<span>
+				<img ng-show="!!lesson.image" ng-src="{{lesson.image}}" />
+				<i ng-show="!lesson.image" class="fa fa-university"></i>
+			</span>
+		</div>
+		<div class="button">
+			<a ng-click="nextStep()">
+				<i class="fa fa-play-circle-o "></i>
+			</a>
+		</div>
+		<div class="name">{{ lesson.name|limitTo:100 }}</div>
+		<table class="lergo-table stats">
+			<tr>
+				<td>
+					<span class="stats-button" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|i18n}} </span>
+				</td>
+				<td>
+					<span class="stats-button">
+						<i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
+						{{0+lesson.views}}
+					</span>
+				</td>
+				<td>
+					<span class="stats-button" ng-show="!!lesson.questionsCount">
+						<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
+						{{lesson.questionsCount}}
+					</span>
+				</td>
+				<td>
+					<table>
+						<tr>
+							<td>
+								<span>
+									<i class="fa fa-user fa-fw" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
+									{{lesson.user.username}}
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span ng-show="!!lesson.subject">
+									<i class="fa fa-book fa-fw" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
+									{{'filters.subjects.' + lesson.subject | i18n}}
+								</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<span>{{lesson.timeStamp | date:'d-MMM-yyyy'}} </span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="6">
+					<div class="description">{{lesson.description}}</div>
+				</td>
+			</tr>
+		</table>
+	</div>
 </div>
-<div ng-show="showSteps() && hasNextStep() ">
-    <div ng-include="'/views/lessons/_stepDisplay.html'"></div>
-    <div ng-show="hasNextStep()" class="next-step">
-        <button ng-click="nextStep()"  ng-disabled="!isQuizComplete" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
-    </div>
+<div ng-show="showSteps() && hasNextStep() " class="next-step">
+	<div ng-include="'/views/lessons/_stepDisplay.html'"></div>
+	<br/>
+	<div ng-show="hasNextStep()">
+		<button ng-click="nextStep()" ng-disabled="!isQuizComplete" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
+	</div>
 </div>
-
 <div ng-show="!hasNextStep() && lesson.steps.length>0" class="done-step">
-    <div class="image">
-        <div class="user">
-            <i class="fa fa-user"></i>
-        </div>
-        <div class="cap">
-            <i class="fa fa-graduation-cap"></i>
-        </div>
-    </div>
-    <div class="message">
-        {{ 'congratulations' | i18n }}!<br/> {{ 'lessons.lessonCompleted' | i18n }}<br/>
-        <a ng-show="!!invitation" ng-href="/#/public/lessons/invitations/{{invitation._id}}/report">{{ 'lessons.seeReport' | i18n }}</a>
-
-    </div>
+	<div class="image">
+		<div class="user">
+			<i class="fa fa-user"></i>
+		</div>
+		<div class="cap">
+			<i class="fa fa-graduation-cap"></i>
+		</div>
+	</div>
+	<div class="message">
+		{{ 'congratulations' | i18n }}!
+		<br />
+		{{ 'lessons.lessonCompleted' | i18n }}
+		<br />
+		<a ng-show="!!invitation" ng-href="/#/public/lessons/invitations/{{invitation._id}}/report">{{ 'lessons.seeReport' | i18n }}</a>
+	</div>
 </div>
