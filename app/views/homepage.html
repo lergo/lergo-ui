@@ -21,7 +21,7 @@
 			</table>
 		</div>
 		<div class="lessons">
-			<div class="lergo-h1">featured</div>
+			<div class="lergo-h1">{{ 'featured' | i18n }}</div>
 			<hr />
 			<div class="lesson"
 				ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter">
