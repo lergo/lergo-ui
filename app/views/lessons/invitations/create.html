@@ -9,10 +9,10 @@
             <form ng-submit="sendInvite()">
                 <div class="section">
                     <div class="label">
-                        {{ 'email' | i18n }}
+                        {{ 'name' | i18n }}
                     </div>
                     <div class="input">
-                        <input ng-model="invite.invitee.email"/>
+                        <input ng-model="invite.invitee.name"/>
                     </div>
                 </div>
 
@@ -26,7 +26,8 @@
 
         <div class="status top-padding">
             <div ng-show="!!createSuccess" class="bg-success">
-                {{ 'invitations.sent' | i18n }}
+                {{ 'invitations.createdSuccessfully' | i18n }} <br/>
+                link = {{ getLink()}}
             </div>
 
             <div ng-show="!!pageRequestProgress.inProgress" class="bg-info">

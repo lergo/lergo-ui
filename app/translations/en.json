@@ -102,6 +102,7 @@
         "selectAnAnswer": "Select an Answer"
     },
     "invitations": {
+        "createdSuccessfully" : "We created your invitation",
         "create": "Create New Invite",
         "sent": "Invitation successfully sent",
         "sending": "Sending invite, please wait...",
