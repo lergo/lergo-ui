@@ -45,7 +45,7 @@ angular.module('lergoApp')
         if ( !report.answers ){
             report.answers = [];
         }
-        var stepIndex = -1;
+        var stepIndex = 0;
 
         $scope.$on('startLesson', function(event, data){
             $log.info('starting lesson');
