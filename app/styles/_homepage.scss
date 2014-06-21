@@ -376,10 +376,10 @@
 
   .sidebar {
 	width: 225px;
-	float: right; 
+	float: right;
 	margin-top: 10px;
 	.upper-section {
-		line-height: 35px;	
+		line-height: 35px;
 		min-height:100px;
 		color : #C5C5C5;
 		.create {
@@ -410,15 +410,15 @@
 	font-weight: bold;
     color:#D8D8D8;
 	min-height: 100px;
-	.amount{ 
-		font-size:34px; 
+	.amount{
+		font-size:34px;
 	}
-	.type{ 
-	  font-size:14px; 
-	  text-transform: uppercase; 
+	.type{
+	  font-size:14px;
+	  text-transform: uppercase;
 	}
-	.and-counting{ 
-		font-size:34px; 
+	.and-counting{
+		font-size:34px;
 		text-transform: uppercase;
 	}
 }
@@ -471,7 +471,7 @@
 		z-index:0;
 		&, img {
 		  height:120px;
-		  width:180px;	  
+		  width:180px;
 		}
 		i{
 			font-size:120px;
@@ -505,7 +505,7 @@
 	.lesson{
 		position:relative;
 		height:250px;
-		width:215px;
+		width:233px;
 		float:left;
 		margin:0 0 20px 10px;
 		border-radius: 10px;
@@ -520,3 +520,47 @@
 	}
 }
 }
+
+.rtl{
+  .homepage{
+    .sidebar{
+      .upper-section{
+        .create{
+          font-size:27px;
+          text-align:justify;
+          width:400px;
+        }
+        .free{
+          margin-left:0;
+          margin-right:12px;
+          font-size:21px;
+        }
+        .start{
+          font-size:23px;
+        }
+      }
+    }
+  }
+}
+
+.he{
+  .homepage{
+    .age-limit{
+      margin-left:0;
+      margin-right:10px;
+    }
+    .lergo-h1{
+      font-size:34px;
+    }
+    .sidebar{
+      .upper-section{
+        .free{
+
+        }
+      }
+
+    }
+  }
+
+}
+
