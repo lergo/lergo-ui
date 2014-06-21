@@ -96,10 +96,17 @@
 }
 
 .filters { 
-	
-	.label { 
+
+
+    .label:nth-child(n+2) {
+      padding-top: 20px;
+    }
+
+
+	.label {
+      padding-bottom: 10px;
 	text-transform:uppercase;
-	padding: 20px 0 10px 0;
+
 	color: #C5C5C5;
 	background: transparent;
 	font-size: 20px;

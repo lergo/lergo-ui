@@ -15,6 +15,39 @@ $FOOTER_HEIGHT: 170px !default;
     //margin-bottom:-$HEADER_HEIGHT;
   }
 
+  /** standard widths for this layout **/
+  .page-content-width{
+    width:1000px;
+    min-width:1000px;
+
+    /* clearfix */
+    &:after{
+      content: "";
+      visibility: hidden;
+      display:block;
+      height:0;
+      clear:both;
+    }
+
+    .page-content-body{
+        display:inline-block;
+        width:730px;
+        min-width:730px;
+    }
+
+    .page-content-sidebar{
+        float:right;
+        width:225px;
+        min-width:225px;
+    }
+
+
+  }
+
+  .page-content-titles{
+    margin-bottom:25px;
+  }
+
   #footer, .push {
     clear: both;
   }
