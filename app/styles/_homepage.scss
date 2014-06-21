@@ -505,14 +505,23 @@
 		display: block;
 	}
 	.lesson{
+
+
 		position:relative;
 		height:250px;
 		width:233px;
 		float:left;
-		margin:0 0 20px 10px;
 		border-radius: 10px;
 		background-color:#EFEFEF;
 		&:hover{ background-color:white;}
+      margin-top:20px;
+
+      &:nth-child(3n+1){
+        margin-left:10px;
+        margin-right:10px;
+
+
+      }
 	}
 	.stats-table {
 	   width: 100%;
