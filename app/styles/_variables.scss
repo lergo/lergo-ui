@@ -19,9 +19,11 @@ $COLOR_16: #BC8F8F !default;
 $COLOR_17: #EE9A00 !default;
 $COLOR_18: #B22222 !default;
 $COLOR_19: #2a6496 !default;
+$COLOR_20: #D2E8FA !default;
 
 
 $LERGO_BACKGROUND:$COLOR_1 !default; /** background for highlighted content: header, buttons **/
+$LERGO_HR_COLOR: $COLOR_20;
 $LERGO_BODY_BACKGROUND:$COLOR_2  !default; /** background for text content **/
 $LERGO_ACTION_BACKGROUND:$COLOR_3 !default;
 

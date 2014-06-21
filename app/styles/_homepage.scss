@@ -362,7 +362,19 @@
 
 }
 .homepage{
-.sidebar {
+
+  hr{
+    margin-top:10px;
+    margin-bottom:10px;
+
+    color: $LERGO_HR_COLOR;
+    background-color: $LERGO_HR_COLOR;
+    border-color: $LERGO_HR_COLOR;
+    border-top: 1px solid  $LERGO_HR_COLOR;
+  }
+
+
+  .sidebar {
 	width: 225px;
 	float: right; 
 	margin-top: 10px;
@@ -370,30 +382,26 @@
 		line-height: 35px;	
 		min-height:100px;
 		color : #C5C5C5;
-		hr{
-			margin-top:10px;
-			margin-bottom:10px;
-		}
-		.create { 
+		.create {
 			font-weight : bold;
 			display: inline-block;
-			font-size: 18px;
+			font-size: 19px;
 			color:#676767;
 		}
 		.start{
 			background: #FFE509;
-			padding: 5px 30px;
+			padding: 5px 35px;
 			color: #968D56;
-			font-size: 14px;
+			font-size: 17px;
 		}
 		.free {
 			display: inline-block;
-			margin-left: 5px;
+			margin-left: 8px;
 			font-weight: bold;
 			text-transform: uppercase;
 			background: transparent;
 			color:#676767;
-			font-size: 14px;
+			font-size: 17px;
 		}
 	}
 }
