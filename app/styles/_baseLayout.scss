@@ -181,6 +181,9 @@ $FOOTER_HEIGHT: 170px !default;
 #content{
   height:auto !important;
   padding-bottom:20px;
+  div:first-child{ /* guy - written like this so that we can override if needed */
+    margin-top:40px;
+  }
 }
 
 .container,.base-layout{
