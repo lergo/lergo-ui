@@ -18,6 +18,10 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 		return $http.get('/backend/user/lessons/' + id);
 	};
 
+    this.getPublicById = function( id ) {
+        return $http.get('/backend/public/lessons/' + id);
+    };
+
     this.getPublicLessons = function (){
         return $http.get('/backend/public/lessons');
     };

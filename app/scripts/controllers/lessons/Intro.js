@@ -5,7 +5,7 @@ angular.module('lergoApp')
         var lessonId = $routeParams.lessonId;
         var invitationId = $routeParams.invitationId;
 
-        LergoClient.lessons.getById( lessonId).then(function(result){
+        LergoClient.lessons.getPublicById( lessonId).then(function(result){
             $scope.lesson = result.data;
         });
 
