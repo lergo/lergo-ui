@@ -35,13 +35,12 @@
 					</div>
 					<!-- age limit -->
 					<div class="image">
-						<a href="#/public/lessons/{{lesson._id}}/share">
-							<img ng-show="!!lesson.image" ng-src="{{lesson.image}}" />
-							<i ng-show="!lesson.image" class="fa fa-university"></i>
+						<a href="#/public/lessons/{{lesson._id}}/intro">
+                            <div lesson-title-image lesson="lesson"></div>
 						</a>
 					</div>
 					<div class="title">
-						<a href="#/public/lessons/{{lesson._id}}/share">
+						<a href="#/public/lessons/{{lesson._id}}/intro">
 							{{ lesson.name|limitTo:40 }}
 							<span ng-show="lesson.name.length >40">...</span>
 						</a>

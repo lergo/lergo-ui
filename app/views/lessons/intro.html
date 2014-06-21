@@ -1,0 +1,65 @@
+<div class="base-layout" id="lessonDisplay">
+<div class="start-step" >
+    <div class="lesson">
+        <div class="image">
+			<span>
+				<div lesson-title-image lesson="lesson" ></div>
+			</span>
+        </div>
+        <div class="button">
+            <a ng-click="startLesson()">
+                <i class="fa fa-play-circle-o "></i>
+            </a>
+        </div>
+        <div class="name">{{ lesson.name|limitTo:100 }}</div>
+        <table class="lergo-table stats">
+            <tr>
+                <td>
+                    <span class="stats-button" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|i18n}} </span>
+                </td>
+                <td>
+					<span class="stats-button">
+						<i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
+						{{0+lesson.views}}
+					</span>
+                </td>
+                <td>
+					<span class="stats-button" ng-show="!!lesson.questionsCount">
+						<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
+						{{lesson.questionsCount}}
+					</span>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+								<span>
+									<i class="fa fa-user fa-fw" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
+									{{lesson.user.username}}
+								</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+								<span ng-show="!!lesson.subject">
+									<i class="fa fa-book fa-fw" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
+									{{'filters.subjects.' + lesson.subject | i18n}}
+								</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <span>{{lesson.timeStamp | date:'d-MMM-yyyy'}} </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <div class="description">{{lesson.description}}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</div>

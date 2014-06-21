@@ -17,7 +17,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 		$scope : $scope
 	});
 
-	$scope.currentStepIndex = parseInt($routeParams.currentStepIndex || -1, 10);
+	$scope.currentStepIndex = parseInt($routeParams.currentStepIndex || 0, 10);
 	$log.info('current step index', $scope.currentStepIndex);
 
 	// will update step on scope
@@ -68,9 +68,6 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 		return $scope.currentStepIndex >= 0;
 	};
 
-	$scope.showStart = function() {
-		return $scope.currentStepIndex < 0;
-	};
 
 	$scope.nextStep = function() {
 		if ($scope.hasNextStep()) {
