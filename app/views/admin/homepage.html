@@ -1,14 +1,19 @@
-<div class="base-layout">
+<div class="base-layout admin" >
     <table>
         <tr>
             <td>Title</td>
+            <td>Username</td>
+            <td>Email</td>
             <td>public since</td>
             <td>Actions</td>
         </tr>
         <tr ng-repeat="l in lessons">
+
             <td>
                 {{l.name}}
             </td>
+            <td>{{getUser(l).username}}</td>
+            <td>{{getUser(l).email}}</td>
             <td>
                 {{l.public | date:'EEE dd,yyyy HH:mm:ss' }}
             </td>

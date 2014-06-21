@@ -7,6 +7,18 @@ angular.module('lergoApp')
             $scope.lessons = result.data;
         });
 
+        var users = {};
+
+        AdminClientService.getAllUsers().then(function(result){
+            result.data.forEach( function( user ){
+                users[user._id] = user;
+            })
+        });
+
+        $scope.getUser = function(lesson){
+            return users[lesson.userId];
+        };
+
         $scope.changing = [];
         var changing = $scope.changing;
 
