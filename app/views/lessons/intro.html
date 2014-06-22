@@ -29,7 +29,7 @@
 				</table>
 				<span class="button">
 					<a ng-click="startLesson()">
-						<i class="fa fa-play-circle-o "></i>
+						<i class="fa fa-play-circle-o " tooltip="{{'lessons.startLesson' | i18n}}"></i>
 					</a>
 				</span>
 			</div>
@@ -47,7 +47,7 @@
 						</span>
 					</td>
 					<td style="width: auto; display: inline; padding: 2px">
-						<i class="fa fa-calendar" tooltip="Created on"></i>
+						<i class="fa fa-calendar" tooltip="{{'lessons.createdOn' | i18n}}"></i>
 						<span>{{lesson.timeStamp | date:'d-MMM-yyyy'}} </span>
 					</td>
 					<td style="width: auto; display: inline; padding: 2px">
@@ -59,19 +59,19 @@
 					<td class="stats-link">
 						<a href="" ng-click="startLesson()">
 							<i class="fa fa-play-circle-o "></i>
-							Start
+							{{'start' | i18n}}
 						</a>
 					</td>
 					<td class="stats-link">
 						<a href="" ng-click="invite()">
 							<i class="fa fa-envelope "></i>
-							Invite
+							{{'invite' | i18n}}
 						</a>
 					</td>
 					<td class="stats-link">
 						<a href="" ng-click="share()">
 							<i class="fa fa-share-alt "></i>
-							Share
+							{{'share' | i18n}}
 						</a>
 					</td>
 				</tr>
@@ -83,8 +83,8 @@
 						<div style="text-align: center">
 							---------------------
 							<a href="" ng-click="more=!more">
-								<span ng-show="!more">Read More</span>
-								<span ng-show="!!more">Read Less</span>
+								<span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
+								<span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
 							</a>
 							---------------------
 						</div>
