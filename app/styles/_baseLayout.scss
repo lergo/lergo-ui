@@ -46,6 +46,21 @@ $FOOTER_HEIGHT: 170px !default;
 
   .page-content-titles{
     margin-bottom:25px;
+    .page-content-body, .page-content-sidebar{
+      border-bottom:1px solid $LERGO_HR_COLOR;
+      padding-bottom:15px;
+    }
+    .page-content-body .lergo-h1{
+
+      display:inline-block;
+    }
+    .page-content-titles-actions{
+      display:inline-block;
+      float: right;
+      margin-top: -5px;
+      margin-bottom: -5px;
+
+    }
   }
 
   #footer, .push {
