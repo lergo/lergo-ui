@@ -1,36 +1,7 @@
-<div ng-controller="HomepageCtrl" class="homepage">
-	<div style="float: left; width: 75%">
-		<div class="article-header">
-			<table class="lergo-table">
-				<tr>
-					<td>
-						<div class="amount">{{lessons.length}}</div>
-						<div class="type">{{ 'homepage.lessons' | i18n }}</div>
-					</td>
-					<td>
-						<div class="amount">{{questionsCount}}</div>
-						<div class="type">{{ 'homepage.questions' | i18n }}</div>
-					</td>
-					<td>
-						<div class="and-counting item">{{ 'homepage.andCounting' | i18n }}</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	<div class="sidebar">
-		<div class="upper-section">
-			<div class="create">{{ 'homepage.createYourOwn' | i18n }}</div>
-			<a class="start btn" ng-click="create()">{{ 'homepage.start' | i18n }}</a>
-			<div class="free">{{ 'homepage.free' | i18n }}</div>
-		</div>
-	</div>
-</div>
-
 <div ng-show="showSteps() && hasNextStep() " class="next-step">
 	<div ng-include="'/views/lessons/_stepDisplay.html'"></div>
 	<br/>
-	<div ng-show="hasNextStep()">
+	<div ng-show="hasNextStep()" style="text-align:center">
 		<button ng-click="nextStep()" ng-disabled="!isQuizComplete" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
 	</div>
 </div>

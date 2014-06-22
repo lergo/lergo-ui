@@ -1,65 +1,107 @@
 <div class="base-layout" id="lessonDisplay">
-<div class="start-step" >
-    <div class="lesson">
-        <div class="image">
-			<span>
-				<div lesson-title-image lesson="lesson" ></div>
-			</span>
-        </div>
-        <div class="button">
-            <a ng-click="startLesson()">
-                <i class="fa fa-play-circle-o "></i>
-            </a>
-        </div>
-        <div class="name">{{ lesson.name|limitTo:100 }}</div>
-        <table class="lergo-table stats">
-            <tr>
-                <td>
-                    <span class="stats-button" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|i18n}} </span>
-                </td>
-                <td>
-					<span class="stats-button">
-						<i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
-						{{0+lesson.views}}
-					</span>
-                </td>
-                <td>
-					<span class="stats-button" ng-show="!!lesson.questionsCount">
-						<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
-						{{lesson.questionsCount}}
-					</span>
-                </td>
-                <td>
-                    <table>
-                        <tr>
-                            <td>
-								<span>
-									<i class="fa fa-user fa-fw" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
-									{{lesson.user.username}}
-								</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-								<span ng-show="!!lesson.subject">
-									<i class="fa fa-book fa-fw" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
-									{{'filters.subjects.' + lesson.subject | i18n}}
-								</span>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <span>{{lesson.timeStamp | date:'d-MMM-yyyy'}} </span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <div class="description">{{lesson.description}}</div>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
-
+	<div style="float: left; width: 75%" class="start-step">
+		<div class="lesson">
+			<div class="image">
+				<div lesson-title-image lesson="lesson"></div>
+			</div>
+			<div class="stats">
+				<table class="lergo-table">
+					<tr>
+						<td>
+							<span class="stats-button age-limit-{{lesson.age}}" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|i18n}} </span>
+						</td>
+					<tr>
+						<td>
+							<span class="stats-button">
+								<i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
+								{{0+lesson.views}}
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="stats-button" ng-show="!!lesson.questionsCount">
+								<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
+								{{lesson.questionsCount}}
+							</span>
+						</td>
+					</tr>
+				</table>
+				<span class="button">
+					<a ng-click="startLesson()">
+						<i class="fa fa-play-circle-o "></i>
+					</a>
+				</span>
+			</div>
+			<table class="lergo-table">
+				<tr>
+					<td colspan="6">
+						<div class="name">{{ lesson.name|limitTo:160 }}</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: auto; display: inline; padding: 2px; margin-left: 8px">
+						<span>
+							<i class="fa fa-user" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
+							{{lesson.user.username}}
+						</span>
+					</td>
+					<td style="width: auto; display: inline; padding: 2px">
+						<i class="fa fa-calendar" tooltip="Created on"></i>
+						<span>{{lesson.timeStamp | date:'d-MMM-yyyy'}} </span>
+					</td>
+					<td style="width: auto; display: inline; padding: 2px">
+						<span ng-show="!!lesson.subject">
+							<i class="fa fa-book" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
+							{{'filters.subjects.' + lesson.subject | i18n}}
+						</span>
+					</td>
+					<td class="stats-link">
+						<a href="" ng-click="startLesson()">
+							<i class="fa fa-play-circle-o "></i>
+							Start
+						</a>
+					</td>
+					<td class="stats-link">
+						<a href="" ng-click="invite()">
+							<i class="fa fa-envelope "></i>
+							Invite
+						</a>
+					</td>
+					<td class="stats-link">
+						<a href="" ng-click="share()">
+							<i class="fa fa-share-alt "></i>
+							Share
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="6" class="description">
+						<hr />
+						<div ng-show="!more">{{ lesson.description|limitTo:320 }}</div>
+						<div ng-show="!!more">{{ lesson.description}}</div>
+						<div style="text-align: center">
+							---------------------
+							<a href="" ng-click="more=!more">
+								<span ng-show="!more">Read More</span>
+								<span ng-show="!!more">Read Less</span>
+							</a>
+							---------------------
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="homepage">
+		<div class="sidebar" ng-controller="HomepageCtrl">
+			<div class="upper-section">
+				<div class="create">{{ 'homepage.createYourOwn' | i18n }}</div>
+				<br />
+				<!-- guy - part of fix for newline on homepage.free -->
+				<a class="start btn" ng-click="create()">{{ 'homepage.create' | i18n }}</a>
+				<div class="free">{{ 'homepage.free' | i18n }}</div>
+			</div>
+		</div>
+	</div>
 </div>
