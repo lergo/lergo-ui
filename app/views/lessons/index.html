@@ -3,43 +3,50 @@
       <span class="errorMessage" ng-show='errorMessage' style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
    </div>
    <br />
-   <div style="float: left; width: 75%">
-      <div>
-         <p class="lergo-h1">{{ 'lessons.myLessons' | i18n }} [ {{ 'lessons.total' | i18n }}: {{lessons.length}} ]</p>
-      </div>
-      <table class="table">
-         <thead>
-            <tr style="font-weight: bold">
-               <td style="width: 100%">{{ 'name' | i18n }}</td>
-               <td>{{ 'questions.language' | i18n}}</td>
-               <td>{{ 'questions.subject' | i18n}}</td>
-               <td>{{ 'questions.age' | i18n}}</td>
-               <td style="width: 20px;">{{ 'preview' | i18n }}</td>
-               <td style="width: 20px;">{{ 'lessons.startLesson' | i18n }}</td>
-               <td style="width: 20px;">{{ 'invite' | i18n }}</td>
-               <td style="width: 20px;">{{ 'delete' | i18n }}</td>
-            </tr>
-         </thead>
-         <tbody>
-            <tr ng-repeat="les in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter">
-               <td class="name"><a ng-href="#/user/lesson/{{les._id}}/update">{{ les.name }}</a></td>
-               <td class="answer">{{les.language && ('filters.languages.' + les.language | i18n) || ""}}</td>
-               <td class="answer">{{les.subject && ('filters.subjects.' + les.subject | i18n) ||""}}</td>
-               <td class="answer">{{les.age &&('+'+ les.age) || ""}}</td>
-               <td><a href="#/user/lessons/{{les._id}}/display"> {{ 'preview' | i18n }} </a></td>
-               <td class="edit"><a href="#/public/lessons/{{les._id}}/share">{{ 'lessons.startLesson' | i18n }}</a></td>
-               <td class="invite"><a ng-href="#/user/lessons/{{les._id}}/invitations">{{ 'invite' | i18n }}</a></td>
-               <td class="delete"><a class="btn-link" ng-click="deleteLesson(les)">X</a></td>
-            </tr>
-         </tbody>
-      </table>
-   </div>
-   <div style="float: right">
-      <div>
-         <button ng-click="create()" class="btn">{{ 'lessons.create' | i18n }}</button>
-      </div>
-      <hr />
-      <div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
-      <div ng-include src="'views/filters/filter.html'"></div>
+    <div class="page-content-width page-content-titles">
+        <div class="page-content-body">
+            <div class="lergo-h1">{{ 'lessons.myLessons' | i18n }} [ {{ 'lessons.total' | i18n }}: {{lessons.length}} ]</div>
+            <div class="page-content-titles-actions">
+                <button ng-click="create()" class="btn">{{ 'lessons.create' | i18n }}</button>
+            </div>
+        </div>
+        <div class="page-content-sidebar">
+            <div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
+        </div>
+    </div>
+
+
+    <div class="page-content-width">
+        <div class="page-content-body">
+            <table class="table">
+                <thead>
+                <tr style="font-weight: bold">
+                    <td style="width: 100%">{{ 'name' | i18n }}</td>
+                    <td>{{ 'questions.language' | i18n}}</td>
+                    <td>{{ 'questions.subject' | i18n}}</td>
+                    <td>{{ 'questions.age' | i18n}}</td>
+                    <td style="width: 20px;">{{ 'preview' | i18n }}</td>
+                    <td style="width: 20px;">{{ 'lessons.startLesson' | i18n }}</td>
+                    <td style="width: 20px;">{{ 'invite' | i18n }}</td>
+                    <td style="width: 20px;">{{ 'delete' | i18n }}</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="les in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter">
+                    <td class="name"><a ng-href="#/user/lesson/{{les._id}}/update">{{ les.name }}</a></td>
+                    <td class="answer">{{les.language && ('filters.languages.' + les.language | i18n) || ""}}</td>
+                    <td class="answer">{{les.subject && ('filters.subjects.' + les.subject | i18n) ||""}}</td>
+                    <td class="answer">{{les.age &&('+'+ les.age) || ""}}</td>
+                    <td><a href="#/user/lessons/{{les._id}}/display"> {{ 'preview' | i18n }} </a></td>
+                    <td class="edit"><a href="#/public/lessons/{{les._id}}/share">{{ 'lessons.startLesson' | i18n }}</a></td>
+                    <td class="invite"><a ng-href="#/user/lessons/{{les._id}}/invitations">{{ 'invite' | i18n }}</a></td>
+                    <td class="delete"><a class="btn-link" ng-click="deleteLesson(les)">X</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="page-content-sidebar">
+            <div ng-include src="'views/filters/filter.html'"></div>
+        </div>
    </div>
 </div>
