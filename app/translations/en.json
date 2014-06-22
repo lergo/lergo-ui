@@ -1,5 +1,7 @@
 
-{   "add":"Add",
+{	"start":"Start",
+	"share":"Share",
+	"add":"Add",
 	"cancel":"Cancel",
 	"advancedOptions":"Advanced options",
 	"explanation":"Explanation",
@@ -67,6 +69,13 @@
         }
     },
     "lessons": {
+    	"readMore":"Read More",
+    	"readLess":"Read Less",
+    	"createdOn":"Created on",
+    	"recommenedNextLesson":"Recommended Next Lesson",
+    	"recommenedPriorLesson":"Recommended Prior Lesson",
+    	"recommenedNextLessonText":"Next recommended lesson",
+    	"recommenedPriorLessonText":"Prior recommended lesson",
     	"myLessons" : "My Lessons",
         "startLesson" : "Start Lesson",
         "seeReport": "See Report",
@@ -147,6 +156,8 @@
         }
     },
     "questions": {
+    	"editSummary":"Edit Summary",
+    	"editSummaryHelpText":"Enter Summary here",
     	"addQuestionsToQuiz" :"Add questions to quiz",
     	"hintHelpText" : "You can add here a hint to the question. A student will see it if he clicks on \"hint\" button.",
     	"explanationHelpText" : "You can add here an explanation to the question.",
