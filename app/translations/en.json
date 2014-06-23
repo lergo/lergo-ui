@@ -71,13 +71,14 @@
     "lessons": {
     	"shareLesson":"Share lesson",
     	"inviteLesson":"Invite to lesson",
-    	"inviteLessonHelpText":"to generate a link for the invite please enter student's name and press submit",
+    	"inviteLessonHelpText":"To generate a link for the invite please enter student's name and press submit",
+    	"inviteSuccessText":"Copy the link below to invite a student to the lesson",
     	"note":"Note",
     	"noteMessage":"You will receive your kid's/student's lesson report upon completion of lesson.",
     	"shareLessonTitle":"Copy the link below to share lesson with friends",
     	"readMore":"Read More",
     	"readLess":"Read Less",
-    	"createdOn":"Created on",
+    	"createdOn":"created on",
     	"recommenedNextLesson":"Recommended Next Lesson",
     	"recommenedPriorLesson":"Recommended Prior Lesson",
     	"recommenedNextLessonText":"Next recommended lesson",
@@ -88,6 +89,14 @@
     	"total": "Total",
         "filter": "Filter Lessons",
         "tags": "Tags",
+        "tooltip":{
+        	"invite":"invite students",
+        	"share":"share with friends",
+        	"start":"start lesson",
+        	"go":"go to lesson",
+        	"edit":"edit lesson",
+        	"delete":"delete lesson"
+        },
         "filters": {
             "labels": {
                 "age range": "Age Range",

@@ -58,19 +58,19 @@
 					</td>
 					<td class="stats-link">
 						<a href="" ng-click="startLesson()">
-							<i class="fa fa-play-circle-o "></i>
+							<i class="fa fa-play-circle-o " tooltip="{{'lessons.tooltip.start' | i18n}}"></i>
 							{{'start' | i18n}}
 						</a>
 					</td>
 					<td class="stats-link">
 						<a href="" ng-click="showHideInvite()">
-							<i class="fa fa-envelope "></i>
+							<i class="fa fa-envelope " tooltip="{{'lessons.tooltip.invite' | i18n}}"></i>
 							{{'invite' | i18n}}
 						</a>
 					</td>
 					<td class="stats-link">
 						<a href="" ng-click="absoluteShareLink(lesson)">
-							<i class="fa fa-share-alt "></i>
+							<i class="fa fa-share-alt " tooltip="{{'lessons.tooltip.share' | i18n}}"></i>
 							{{'share' | i18n}}
 						</a>
 					</td>
@@ -90,18 +90,15 @@
 							<div ng-controller="LessonsInvitesCreateCtrl" class="container">
 								<div>{{ 'name' | i18n }}</div>
 								<input type="text" ng-model="invite.invitee.name" />
+								<div ng-show="!!createSuccess">
+									<div>{{'lessons.inviteSuccessText' | i18n}}</div>
+									<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" />
+								</div>
 								<br />
 								<div class="button">
 									<button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | i18n }}</button>
 									<button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | i18n }}</button>
 								</div>
-								<div ng-show="!!createSuccess" class="bg-success">
-									{{ 'invitations.createdSuccessfully' | i18n }}
-									<br />
-									link = {{ getLink()}}
-								</div>
-								<div ng-show="!!pageRequestProgress.inProgress" class="bg-info">{{ 'invitations.sending' | i18n }}</div>
-								<div ng-show="!!createError" class="bg-warning">{{ 'invitations.error' | i18n }}</div>
 								<div>
 									<span class="lergo-h4">{{'lessons.note' | i18n}}:</span>
 									{{'lessons.noteMessage' | i18n}}
