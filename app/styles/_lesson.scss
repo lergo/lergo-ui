@@ -138,7 +138,10 @@ font-size:14px;
 	i{font-size:60px;}
 	}
 	}
-
+	.stats-no-edit{
+	display: inline-table;
+	margin-right:10px;
+	}
 	.stats-link{
 	padding:2px;
 	a{text-decoration:none;
