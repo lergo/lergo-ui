@@ -3,6 +3,7 @@
 angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $routeParams, LergoClient, $location,$modal) {
 	var lessonId = $routeParams.lessonId;
 	var invitationId = $routeParams.invitationId;
+    var preview = !!$routeParams.preview;
 
 	LergoClient.lessons.getPublicById(lessonId).then(function(result) {
 		$scope.lesson = result.data;
@@ -10,16 +11,23 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
 	function redirectToInvitation() {
 		$location.path('/public/lessons/invitations/' + invitationId + '/display');
-		$location.path();
 	}
 
+    function redirectToPreview(){
+        $location.path('/user/lessons/' + lessonId + '/display');
+
+    }
+
 	$scope.startLesson = function() {
-		if (!invitationId) {
+        if ( !!preview ){ // preview - no lesson report, no invitation
+            redirectToPreview();
+        }
+		else if (!invitationId) { // prepared invitation
 			LergoClient.lessonsInvitations.createAnonymous(lessonId).then(function(result) {
 				invitationId = result.data._id;
 				redirectToInvitation();
 			});
-		} else {
+		} else { // anonymous invitation
 			redirectToInvitation();
 		}
 	};

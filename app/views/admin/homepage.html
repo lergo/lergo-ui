@@ -22,7 +22,7 @@
                 <button ng-show="!isChanging(l)" ng-disabled="!!l.public" ng-click="makePublic(l)"> Make Public </button>
                 <button ng-show="!isChanging(l)" ng-disabled="!l.public" ng-click="makePrivate(l)"> Make Private </button>
                 <div ng-show="isChanging(l)" class="loader-short"></div>
-                <a href="#/user/lessons/{{l._id}}/display"> {{ 'preview' | i18n }} </a>
+                <a href="#/user/lessons/{{l._id}}/intro?preview=true"> {{ 'preview' | i18n }} </a>
 
 
             </td>
