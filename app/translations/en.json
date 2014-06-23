@@ -219,7 +219,7 @@
     	"to":"To",
     	"all":"All",
     	"age":{
-    		"error":"Maximum age should be greater then minimum age"
+    		"error":"Maximum age should be greater than minimum age"
     	},
         "labels": {
             "ageRange": "Age Range",
