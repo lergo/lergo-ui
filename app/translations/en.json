@@ -71,9 +71,10 @@
     "lessons": {
     	"shareLesson":"Share lesson",
     	"inviteLesson":"Invite to lesson",
+    	"inviteLessonHelpText":"to generate a link for the invite please enter student's name and press submit",
     	"note":"Note",
-    	"noteMessage":"You will recieve your kid's/student's lesson report upon completion upon completion.",
-    	"shareLessonTitle":"Copy below link to share lesson",
+    	"noteMessage":"You will receive your kid's/student's lesson report upon completion of lesson.",
+    	"shareLessonTitle":"Copy the link below to share lesson with friends",
     	"readMore":"Read More",
     	"readLess":"Read Less",
     	"createdOn":"Created on",
@@ -140,8 +141,8 @@
         "login" : "Login",
         "signup" : "Signup",
         "forgotPassword" : "Forgot password?",
-        "resendValidationEmail" : "Resend validation email"
-
+        "resendValidationEmail" : "Resend validation email",
+        "newInvite":"New Invite"
     } ,
     "resetPassword" : {
         "instructions" : "Fill in username or email and submit the form.",
