@@ -69,6 +69,11 @@
         }
     },
     "lessons": {
+    	"shareLesson":"Share lesson",
+    	"inviteLesson":"Invite to lesson",
+    	"note":"Note",
+    	"noteMessage":"You will recieve your kid's/student's lesson report upon completion upon completion.",
+    	"shareLessonTitle":"Copy below link to share lesson",
     	"readMore":"Read More",
     	"readLess":"Read Less",
     	"createdOn":"Created on",
