@@ -38,7 +38,7 @@
                     <td class="answer">{{les.subject && ('filters.subjects.' + les.subject | i18n) ||""}}</td>
                     <td class="answer">{{les.age &&('+'+ les.age) || ""}}</td>
                     <td><a href="#/user/lessons/{{les._id}}/display"> {{ 'preview' | i18n }} </a></td>
-                    <td class="edit"><a href="#/public/lessons/{{les._id}}/share">{{ 'lessons.startLesson' | i18n }}</a></td>
+                    <td class="edit"><a href="#/public/lessons/{{les._id}}/intro">{{ 'lessons.startLesson' | i18n }}</a></td>
                     <td class="invite"><a ng-href="#/user/lessons/{{les._id}}/invitations">{{ 'invite' | i18n }}</a></td>
                     <td class="delete"><a class="btn-link" ng-click="deleteLesson(les)">X</a></td>
                 </tr>
