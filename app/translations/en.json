@@ -180,6 +180,7 @@
     	"audioUrl":"Audio URL",
     	"audioUrlHint":"To add audio to question, please update audio URL",
         "myQuestions": "My Questions",
+        "selectQuestions" : "Select Questions",
         "total": "Total",
         "filter": "Filter Questions",
         "createNew": "Create New Question",

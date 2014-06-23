@@ -1,5 +1,6 @@
 body.rtl{
-  .base-layout {
+  /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
+  .base-layout, .base-layout-class {
     #header {
       .header-links {
         margin-left: 0;

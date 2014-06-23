@@ -4,6 +4,7 @@
     <div class="page-content-body">
         <div class="lergo-h1" ng-show="!isModal">{{ 'questions.myQuestions' | i18n }} [ {{ 'questions.total' | i18n }}:
             {{items.length}} ]</div>
+        <div class="lergo-h1" ng-show="!!isModal">{{ 'questions.selectQuestions' | i18n }}</div>
         <div class="page-content-titles-actions">
             <button class="btn" ng-show="!isModal" ng-click="createNewQuestion()">{{ 'questions.createNew' | i18n }}
         </div>

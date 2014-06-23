@@ -8,8 +8,11 @@ $FOOTER_HEIGHT: 170px !default;
 
 }
 
-.base-layout {
-  margin-bottom:-$HEADER_HEIGHT;
+/** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
+.base-layout, .base-layout-class {
+  &:not(.base-layout-modal) {
+    margin-bottom: -$HEADER_HEIGHT;
+  }
   .push {
     height: $HEADER_HEIGHT;
     //margin-bottom:-$HEADER_HEIGHT;
@@ -233,9 +236,11 @@ $FOOTER_HEIGHT: 170px !default;
     margin-top:40px;
   }
 }
-
-.container,.base-layout{
-  height:100%;
+/** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
+.container,.base-layout,.base-layout-class{
+  &:not(.base-layout-modal) {
+    height: 100%;
+  }
 }
 
 
