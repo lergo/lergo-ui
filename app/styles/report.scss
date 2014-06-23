@@ -10,7 +10,7 @@
 	.image {
 		float: left;
 		width: 150px;
-		height: 160px;
+		height: 190px;
 		background-color: #949494;
 		text-align: center;
 		border-radius: 10px;
@@ -33,9 +33,9 @@
       	}
 	}
 	.header{
-		height: 230px;
+		height: 190px;
 		padding: 10px;
-		background-color:#CECECE;
+		background-color:#EFEFEF;
 		margin-bottom:20px;
 		border-radius: 10px;
 		.lergo-h4{
@@ -49,7 +49,7 @@
 			.lergo-h1{
 				font-size:15px;
 			}
-			background-color:#CECECE;
+			background-color:#EFEFEF;
 			margin-bottom:20px;
 			border-radius: 10px;
 			.icon{
@@ -63,13 +63,43 @@
 			}
 		}
 	}
-	
+	.no-underline{
+	text-decoration: none;
+	}
 	.details{
 		.detail{
-			background-color:#CECECE;
+			background-color:#EFEFEF;
 			margin-bottom:20px;
 			border-radius: 10px;
 			padding: 10px;
+			
+			.quiz{
+					padding: 5px;
+					border-radius: 10px;
+				.quiz-correct{
+					border: 2px solid mediumseagreen;
+					border-radius: 10px;
+				}
+				.quiz-wrong{
+					border: 2px solid firebrick;
+					border-radius: 10px;
+				}
+				.wrong{
+					color:firebrick;
+				}
+				.correct{
+					color:mediumseagreen;
+				}
+				.bold{font-weight:bold;}
+				.bg-success{
+				text-align: left;
+				}
+				.bg-danger{
+				text-align: left;
+				}
+				.quiz-answers{
+				padding:10px;}
+			}
 		}
 	}
 }

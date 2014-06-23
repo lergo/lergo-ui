@@ -37,7 +37,7 @@ angular.module('lergoApp')
 
 
                 $scope.getQuizItemTemplate = function (type) {
-                    return LergoClient.questions.getTypeById(type).viewTemplate;
+                    return LergoClient.questions.getTypeById(type).reportTemplate;
                 };
 
 

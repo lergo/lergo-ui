@@ -217,6 +217,10 @@
         "clickToAdd": "Click here to add an answer",
         "correctAnswer": "Correct Answer",
         "correctAnswers": "Correct Answers",
+        "correct":"Correct",
+        "incorrect":"Incorrect",
+        "yourAnswer":"Your Answer",
+        "yourAnswers":"Your Answers",
         "requiredAnswer": "Required Answer Format",
         "select": "Select",
         "shortAnswer": "Short Answer (a few words)",
@@ -266,6 +270,14 @@
     	"confirmation":{
     		"message":"Thank you for signing in! In a few minutes you will receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO."
     	}
+    },
+    "report":{
+    	"lessonSteps":"Lesson Steps",
+    	"detailedReport":"Detailed Report",
+    	"description":"Lesson Description",
+    	"completed":"has completed lesson",
+    	"date":"Date",
+    	"questionsInQuiz":"questions in quiz"
     }
    
 }

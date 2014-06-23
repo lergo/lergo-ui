@@ -44,6 +44,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'True or False',
 		'updateTemplate' : 'views/questions/update/_trueFalse.html',
 		'viewTemplate' : 'views/questions/view/_trueFalse.html',
+		'reportTemplate' : 'views/questions/report/_trueFalse.html',
 		'answers' : function(quizItem) {
 			return quizItem.answer;
 		},
@@ -59,6 +60,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'Exact Match',
 		'updateTemplate' : 'views/questions/update/_exactMatch.html',
 		'viewTemplate' : 'views/questions/view/_exactMatch.html',
+		'reportTemplate' : 'views/questions/report/_exactMatch.html',
 		'answers' : function(quizItem) {
 			var answers = [];
 			quizItem.options.forEach(function(value) {
@@ -87,6 +89,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'Multiple Choice',
 		'updateTemplate' : 'views/questions/update/_multipleChoices.html',
 		'viewTemplate' : 'views/questions/view/_multipleChoices.html',
+		'reportTemplate' : 'views/questions/report/_multipleChoices.html',
 		'answers' : function(quizItem) {
 			var answers = [];
 			quizItem.options.forEach(function(value) {
@@ -117,6 +120,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'Open Question',
 		'updateTemplate' : 'views/questions/update/_openQuestion.html',
 		'viewTemplate' : 'views/questions/view/_openQuestion.html',
+		'reportTemplate' : 'views/questions/report/_openQuestion.html',
 		'answers' : function(quizItem) {
 			return quizItem.answer;
 		},

@@ -1,8 +1,18 @@
 <div class="quiz-step-report-view">
-	<div ng-repeat="quizItem in getReportQuizItems(step, $index)">
-		<div ng-show="!!quizItem.checkAnswer.correct" class="bg-success">CORRECT</div>
-		<div ng-show="!quizItem.checkAnswer.correct" class="bg-warning">INCORRECT</div>
-		<div>{{quizItem.question}}</div>
-		<div ng-include="getQuizItemTemplate(quizItem.type)"></div>
+	<div class="lergo-h1">
+		<a href="" class="no-underline" ng-click="quizCollapsed=!quizCollapsed">
+			<i ng-show="!quizCollapsed" class="fa fa-minus-square"></i>
+			<i ng-show="!!quizCollapsed" class="fa fa-plus-square"></i>
+			{{step.title}}
+		</a>
+	</div>
+	<div collapse="!!quizCollapsed" ng-repeat="quizItem in getReportQuizItems(step, $index)">
+		<div class="quiz">
+			<div class="{{!quizItem.checkAnswer.correct && 'quiz-wrong' || 'quiz-correct'}}">
+				<div ng-show="!!quizItem.checkAnswer.correct" class="bg-success" class="quiz">{{quizItem.question}} ({{'questions.correct'|i18n}})</div>
+				<div ng-show="!quizItem.checkAnswer.correct" class="bg-danger" class="quiz">{{quizItem.question}}({{'questions.incorrect'|i18n}})</div>
+				<div class="quiz-answers" ng-include="getQuizItemTemplate(quizItem.type)"></div>
+			</div>
+		</div>
 	</div>
 </div>
