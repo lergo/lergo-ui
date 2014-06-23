@@ -1,0 +1,75 @@
+.report{
+	.lergo-h1{
+			font-size:20px;
+		}
+	hr{	 
+		margin-top: 10px; 
+		margin-bottom: 10px;  
+		border-top: 2px solid #C0C0C0;
+	}
+	.image {
+		float: left;
+		width: 150px;
+		height: 160px;
+		background-color: #949494;
+		text-align: center;
+		border-radius: 10px;
+		padding: 10px;
+		margin-right:35px;
+		
+		.user {
+       		margin-top: 30px;
+       		color: #91cfff;
+       		.fa-user {
+         		font-size: 120px;
+       		}
+     	}
+     	.cap {
+        	margin-top: -155px;
+        	color: #296CA1;
+        	.fa-graduation-cap {
+          		font-size: 70px;
+        	}
+      	}
+	}
+	.header{
+		height: 230px;
+		padding: 10px;
+		background-color:#CECECE;
+		margin-bottom:20px;
+		border-radius: 10px;
+		.lergo-h4{
+			font-size:18px;
+			color: #949494;
+		}
+	}
+	.steps{
+	
+		.step{
+			.lergo-h1{
+				font-size:15px;
+			}
+			background-color:#CECECE;
+			margin-bottom:20px;
+			border-radius: 10px;
+			.icon{
+				width:10%;
+			}
+			.title{
+				width:40%;
+				}
+			.description{
+				width:50%;
+			}
+		}
+	}
+	
+	.details{
+		.detail{
+			background-color:#CECECE;
+			margin-bottom:20px;
+			border-radius: 10px;
+			padding: 10px;
+		}
+	}
+}

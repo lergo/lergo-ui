@@ -1,20 +1,8 @@
 <div class="quiz-step-report-view">
-
-    <div class="h1-lergo">{{step.title}}</div>
-    <div>
-        <div ng-repeat="quizItem in getReportQuizItems(step, $index)">
-
-            <div>
-                {{quizItem.question}}
-            </div>
-            <div ng-include="getQuizItemTemplate(quizItem.type)"></div>
-
-            <div ng-show="!!quizItem.checkAnswer.correct" class="bg-success">
-                User answered correctly
-            </div>
-            <div ng-show="!quizItem.checkAnswer.correct" class="bg-warning">
-                User was wrong
-            </div>
-        </div>
-    </div>
+	<div ng-repeat="quizItem in getReportQuizItems(step, $index)">
+		<div ng-show="!!quizItem.checkAnswer.correct" class="bg-success">CORRECT</div>
+		<div ng-show="!quizItem.checkAnswer.correct" class="bg-warning">INCORRECT</div>
+		<div>{{quizItem.question}}</div>
+		<div ng-include="getQuizItemTemplate(quizItem.type)"></div>
+	</div>
 </div>
