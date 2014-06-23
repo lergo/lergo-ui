@@ -18,7 +18,8 @@ angular.module('lergoApp').controller(
 			$scope.displayStep = function(step) {
 				$location.path('/user/lessons/step/display').search('data', JSON.stringify(step));
 			};
-
+			
+		
 			LergoClient.lessons.getById($routeParams.lessonId).then(function(result) {
 				$scope.lesson = result.data;
 				$scope.errorMessage = null;
@@ -64,10 +65,14 @@ angular.module('lergoApp').controller(
 
 			};
 			$scope.deleteStep = function(step) {
-				var steps = $scope.lesson.steps;
-				if (!!steps && steps.length > 0 && steps.indexOf(step) >= 0) {
-					steps.splice(steps.indexOf(step), 1);
-				}
+				var canDelete = window.confirm('Are you sure you want to delete the step: ' +step.title + ' ?');
+				if (canDelete) {
+						var steps = $scope.lesson.steps;
+						if (!!steps && steps.length > 0 && steps.indexOf(step) >= 0) {
+							steps.splice(steps.indexOf(step), 1);
+						}
+						$log.info('Step deleted sucessfully');
+					}		
 			};
 
 			$scope.done = function() {

@@ -40,17 +40,19 @@
 					</td>
 				</tr>
 				<tr>
-					<td style="width: auto; display: inline; padding: 2px; margin-left: 8px">
+					<td class="stats-no-edit">
 						<span>
 							<i class="fa fa-user" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
 							{{lesson.user.username}}
 						</span>
 					</td>
-					<td style="width: auto; display: inline; padding: 2px">
+					<td class="stats-no-edit">
+					<span>
 						<i class="fa fa-calendar" tooltip="{{'lessons.createdOn' | i18n}}"></i>
-						<span>{{lesson.timeStamp | date:'d-MMM-yyyy'}} </span>
+						{{lesson.timeStamp | date:'d-MMM-yyyy'}} 
+						</span>
 					</td>
-					<td style="width: auto; display: inline; padding: 2px">
+					<td class="stats-no-edit" >
 						<span ng-show="!!lesson.subject">
 							<i class="fa fa-book" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
 							{{'filters.subjects.' + lesson.subject | i18n}}
