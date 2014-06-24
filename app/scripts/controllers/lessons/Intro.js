@@ -18,8 +18,26 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
     }
 
+    $scope.preview = function(){
+        redirectToPreview();
+    };
+
     $scope.showActionItems = function(){
         return DisplayRoleService.canSeeActionItemsOnLessonIntroPage();
+    };
+
+    $scope.deleteLesson = function(lesson) {
+        var canDelete = window.confirm('Are you sure you want to delete the lesson: ' + lesson.name + ' ?');
+        if (canDelete) {
+            LergoClient.lessons.delete(lesson._id).then(function() {
+                $scope.errorMessage = null;
+                $log.info('Lesson deleted sucessfully');
+                $location.path('/user/lessons');
+            }, function(result) {
+                $scope.errorMessage = 'Error in deleting Lesson : ' + result.data.message;
+                $log.error($scope.errorMessage);
+            });
+        }
     };
 
 	$scope.startLesson = function() {

@@ -26,18 +26,25 @@
     .start-lesson {
       position: relative;
       width: 40px;
-      margin: -160px auto 140px;
+      margin: -190px auto 140px;
 
       i {
         font-size: 60px;
       }
     }
 
+    &>.action-items{
+      float:right;
+      margin-top:-320px;
+      margin-right:16px;
+      font-size:30px;
+    }
+
     .stats {
       z-index: 0;
       position: relative;
       display: block;
-      margin-top: -350px;
+      margin-top: -320px;
       margin-left: 20px;
       float: left;
       width: 50px;
@@ -160,7 +167,6 @@
 }
 
 .rtl{
-
   #lessonIntro {
     .lesson {
       .details {

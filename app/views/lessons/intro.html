@@ -14,19 +14,11 @@
                 </div>
 
 
-                <div class="action-items" ng-show="!!showActionItems()"
-                     style="margin-left:500px;margin-top:-310px; width:150px; margin-right:20px; z-index:20; cursor:pointer;">
-                    <a href="#/user/lesson/{{les._id}}/update" title="hello world">
-                        <i class="fa fa-pencil-square-o"></i> {{'lessons.tooltip.edit' | i18n}}
-                    </a><br/>
-                    <a class="btn-link" ng-click="deleteLesson(les)">
-                        <i class="fa fa-trash-o" title="{{'lessons.tooltip.delete' | i18n}}"></i>
-                        {{'lessons.tooltip.delete' | i18n}}
-                    </a><br/>
-                    <a class="btn-link" ng-click="deleteLesson(les)">
-                        <i class="fa fa-copy" title="{{'lessons.tooltip.copy' | i18n}}"></i> {{'lessons.tooltip.copy' |
-                        i18n}}
-                    </a><br/>
+                <div class="action-items" ng-show="!!showActionItems()">
+                <a href="#/user/lesson/{{lesson._id}}/update" title="{{'lessons.tooltip.edit' | i18n}}"><i class="fa fa-pencil-square-o"></i></a><br/>
+                    <a class="btn-link" ng-click="deleteLesson(lesson)"><i class="fa fa-trash-o" title="{{'lessons.tooltip.delete' | i18n}}"></i></a><br/>
+                    <a class="btn-link" ng-click="preview()"><i class="fa fa-eye" title="{{'lessons.tooltip.preview' | i18n}}"></i></a><br/>
+                    <!--<a class="btn-link" ng-click="copyLesson(les)"><i class="fa fa-copy" title="{{'lessons.tooltip.copy' | i18n}}"></i></a><br/>-->
                 </div>
 
 

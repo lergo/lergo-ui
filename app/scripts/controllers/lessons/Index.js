@@ -38,17 +38,5 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 		});
 	};
 
-	$scope.deleteLesson = function(lesson) {
-		var canDelete = window.confirm('Are you sure you want to delete the lesson: ' + lesson.name + ' ?');
-		if (canDelete) {
-			LergoClient.lessons.delete(lesson._id).then(function() {
-				$scope.errorMessage = null;
-				$log.info('Lesson deleted sucessfully');
-				$scope.getAll();
-			}, function(result) {
-				$scope.errorMessage = 'Error in deleting Lesson : ' + result.data.message;
-				$log.error($scope.errorMessage);
-			});
-		}
-	};
+
 });

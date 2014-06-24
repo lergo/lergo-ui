@@ -96,7 +96,8 @@
         	"go":"go to lesson",
         	"edit":"edit lesson",
         	"delete":"delete lesson",
-            "copy" : "copy lesson"
+            "copy" : "copy lesson",
+            "preview" : "preview lesson"
         },
         "filters": {
             "labels": {
