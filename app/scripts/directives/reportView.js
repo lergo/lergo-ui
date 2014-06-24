@@ -39,7 +39,25 @@ angular.module('lergoApp')
                 $scope.getQuizItemTemplate = function (type) {
                     return LergoClient.questions.getTypeById(type).reportTemplate;
                 };
+                // This will test in case of multi choice multi answer that which all answers are correct
+				$scope.isCorrectAnswer = function(quizItem, answer) {
 
+				for ( var i = 0; i < quizItem.options.length; i++) {
+					if (quizItem.options[i].label === answer) {
+						if (quizItem.options[i].checked === true) {
+							return true;
+						} else {
+							return false;
+						}
+					}
+				}
+				return false;
+			};
+			
+
+			
+
+				
 
                 /////////////////    construct a single object with question, user answer and answer check
 
@@ -71,8 +89,40 @@ angular.module('lergoApp')
                     }
                     $log.info('quizItems', results);
                     reportQuizItems['' + index] = results;
+                    $scope.getAnswerStats(results,index);
                     return results;
                 };
+                
+                $scope.getAnswerStats = function(quizItems,index) {
+            		if(!quizItems || quizItems.length < 1){
+            			return;
+            		}
+            		var stats = {
+            			'correct' : 0,
+            			'wrong' : 0,
+            			'correctPercentage' : 0,
+            			'wrongPercentage' : 0,
+            			'openQuestions' : 0
+            		};
+            		for ( var i = 0; i < quizItems.length; i++) {
+            			if (quizItems[i].type === 'openQuestion') {
+            				stats.openQuestions = stats.openQuestions + 1;
+            			} else if(!!quizItems[i].checkAnswer) {
+            				if (quizItems[i].checkAnswer.correct) {
+            					stats.correct = stats.correct + 1;
+            				} else {
+            					stats.wrong = stats.wrong + 1;
+            				}
+            			}
+            		}
+            		var correctPercentage = ((stats.correct * 100) / (quizItems.length - stats.openQuestions));
+            		stats.correctPercentage = Math.round(correctPercentage);
+
+            		var wrongPercentage = ((stats.wrong * 100) / (quizItems.length - stats.openQuestions));
+            		stats.wrongPercentage = Math.round(wrongPercentage);
+            		stats.index=index;
+            		$scope.$emit('stats', stats);
+            	};
 
                 $scope.getStepViewByType = function (step) {
                     var result = '/views/lessons/invitations/report/steps/_' + step.type + '.html';

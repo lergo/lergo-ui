@@ -56,10 +56,10 @@
 				width:10%;
 			}
 			.title{
-				width:40%;
+				width:30%;
 				}
 			.description{
-				width:50%;
+				width:60%;
 			}
 		}
 	}
@@ -81,7 +81,11 @@
 					border-radius: 10px;
 				}
 				.quiz-wrong{
-					border: 2px solid firebrick;
+					border: 2px solid #ee9a00;
+					border-radius: 10px;
+				}
+				.quiz-open{
+					border: 2px solid royalblue;
 					border-radius: 10px;
 				}
 				.wrong{
@@ -94,11 +98,14 @@
 				.bg-success{
 				text-align: left;
 				}
-				.bg-danger{
+				.bg-warning{
 				text-align: left;
 				}
-				.quiz-answers{
-				padding:10px;}
+				.bg-primary{
+				text-align: left;
+				}
+				.quiz-answer{padding:10px;}
+				
 			}
 		}
 	}

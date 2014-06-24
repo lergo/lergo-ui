@@ -8,11 +8,7 @@
 	</div>
 	<div collapse="!!quizCollapsed" ng-repeat="quizItem in getReportQuizItems(step, $index)">
 		<div class="quiz">
-			<div class="{{!quizItem.checkAnswer.correct && 'quiz-wrong' || 'quiz-correct'}}">
-				<div ng-show="!!quizItem.checkAnswer.correct" class="bg-success" class="quiz">{{quizItem.question}} ({{'questions.correct'|i18n}})</div>
-				<div ng-show="!quizItem.checkAnswer.correct" class="bg-danger" class="quiz">{{quizItem.question}}({{'questions.incorrect'|i18n}})</div>
-				<div class="quiz-answers" ng-include="getQuizItemTemplate(quizItem.type)"></div>
-			</div>
+			<div ng-include="getQuizItemTemplate(quizItem.type)"></div>
 		</div>
 	</div>
 </div>
