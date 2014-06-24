@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, FilterService, $location, $log) {
+angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, FilterService/*, $location, $log*/) {
 
 	$scope.filter = {};
 	LergoClient.lessons.getPublicLessons().then(function(result) {

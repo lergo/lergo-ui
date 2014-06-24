@@ -52,7 +52,7 @@
  *
  */
 angular.module('lergoApp')
-  .service('DisplayRoleService', function DisplayRoleService( $routeParams ) {
+    .service('DisplayRoleService', function DisplayRoleService($routeParams) {
 
         var currentRole = $routeParams.role;
 
@@ -62,30 +62,29 @@ angular.module('lergoApp')
         // a map between role and activities.
         // if the activity appears, the role is allowed to do it
         var roles = {
-            'user' : [
+            'user': [
                 editLesson
             ],
 
-            'admin' : [
+            'admin': [
                 editLesson
             ],
 
-            'public' : []
+            'public': []
 
         };
 
-        function role(){
+        function role() {
             return roles[currentRole];
         }
 
-        function can( activity ){
+        function can(activity) {
             return role().indexOf(activity) >= 0;
         }
 
-        this.canSeeActionItemsOnLessonIntroPage = function(){
+        this.canSeeActionItemsOnLessonIntroPage = function () {
             return can(editLesson);
-        }
+        };
 
 
-
-  });
+    });
