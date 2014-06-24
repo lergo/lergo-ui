@@ -42,12 +42,46 @@
 #lessonDisplay{
 
   .done-step {
-    padding-top: 100px;
+   margin: 0 auto;
+   	
+   	 .orange{
+      	color:#F7941E;
+      	position: relative;
+		z-index: 10;
+		font-size: 80px;
+      }
+      .green{
+      	color:#8CC63F;
+      	position: relative;
+		z-index: 10;
+		font-size: 60px;
+      }
+      .red{
+     	color:#EF3E36;
+      	position: relative;
+		z-index: 10;
+		font-size: 40px;
+      }
+   	
     .message {
-      float: right;
-      margin-top: 200px;
-      margin-right: 320px;
+    width:50%;
+      float: left;
+      margin-top: 50px;
       font-size:30px;
+      text-align:center;
+      .lergo-h1{
+      text-align:center;
+      white-space: normal;
+      text-transform: none;
+      }
+      .report{
+	      a{
+	      &:hover{
+	      text-decoration:none;}
+	      }
+      }
+      .recmmonded{ font-size:15px;
+      }
     }
 
     .image {
