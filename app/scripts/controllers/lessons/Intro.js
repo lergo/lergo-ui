@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $routeParams, LergoClient, $location,$modal) {
+angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $routeParams, LergoClient, $location, $modal, DisplayRoleService ) {
 	var lessonId = $routeParams.lessonId;
 	var invitationId = $routeParams.invitationId;
     var preview = !!$routeParams.preview;
@@ -17,6 +17,10 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
         $location.path('/user/lessons/' + lessonId + '/display');
 
     }
+
+    $scope.showActionItems = function(){
+        return DisplayRoleService.canSeeActionItemsOnLessonIntroPage();
+    };
 
 	$scope.startLesson = function() {
         if ( !!preview ){ // preview - no lesson report, no invitation

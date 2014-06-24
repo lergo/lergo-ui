@@ -1,137 +1,143 @@
-<div class="base-layout" id="lessonDisplay">
-	<div style="width: 75%" class="start-step">
-		<div class="lesson">
-			<div class="image">
-				<div lesson-title-image lesson="lesson"></div>
-			</div>
-			<div class="stats">
-				<table class="lergo-table">
-					<tr>
-						<td>
-							<span class="stats-button age-limit-{{lesson.age}}" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|i18n}} </span>
-						</td>
-					<tr>
-						<td>
-							<span class="stats-button">
-								<i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
-								{{0+lesson.views}}
-							</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="stats-button" ng-show="!!lesson.questionsCount">
-								<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
-								{{lesson.questionsCount}}
-							</span>
-						</td>
-					</tr>
-				</table>
-				<span class="button">
-					<a ng-click="startLesson()">
-						<i class="fa fa-play-circle-o " tooltip="{{'lessons.startLesson' | i18n}}"></i>
-					</a>
-				</span>
-			</div>
-			<table class="lergo-table">
-				<tr>
-					<td colspan="6">
-						<div class="name">{{ lesson.name|limitTo:160 }}</div>
-					</td>
-				</tr>
-				<tr>
-					<td class="stats-no-edit">
-						<span>
-							<i class="fa fa-user" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
-							{{lesson.user.username}}
-						</span>
-					</td>
-					<td class="stats-no-edit">
-					<span>
-						<i class="fa fa-calendar" tooltip="{{'lessons.createdOn' | i18n}}"></i>
-						{{lesson.timeStamp | date:'d-MMM-yyyy'}} 
-						</span>
-					</td>
-					<td class="stats-no-edit" >
-						<span ng-show="!!lesson.subject">
-							<i class="fa fa-book" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
-							{{'filters.subjects.' + lesson.subject | i18n}}
-						</span>
-					</td>
-					<td class="stats-link">
-						<a href="" ng-click="startLesson()">
-							<i class="fa fa-play-circle-o " tooltip="{{'lessons.tooltip.start' | i18n}}"></i>
-							{{'start' | i18n}}
-						</a>
-					</td>
-					<td class="stats-link">
-						<a href="" ng-click="showHideInvite()">
-							<i class="fa fa-envelope " tooltip="{{'lessons.tooltip.invite' | i18n}}"></i>
-							{{'invite' | i18n}}
-						</a>
-					</td>
-					<td class="stats-link">
-						<a href="" ng-click="absoluteShareLink(lesson)">
-							<i class="fa fa-share-alt " tooltip="{{'lessons.tooltip.share' | i18n}}"></i>
-							{{'share' | i18n}}
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="6" class="description">
-						<div ng-Show="!!share" class="lergo-form share">
-							<p class="lergo-h4">{{'lessons.shareLesson' | i18n}}</p>
-							<div class="container">
-								<span>{{'lessons.shareLessonTitle' | i18n}}</span>
-								<input type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)" />
-							</div>
-						</div>
-						<div ng-Show="!!invite" class="lergo-form invite">
-							<p class="lergo-h4">{{'lessons.inviteLesson'| i18n}}</p>
-							<p>{{'lessons.inviteLessonHelpText' | i18n}}</p>
-							<div ng-controller="LessonsInvitesCreateCtrl" class="container">
-								<div>{{ 'name' | i18n }}</div>
-								<input type="text" ng-model="invite.invitee.name" />
-								<div ng-show="!!createSuccess">
-									<div>{{'lessons.inviteSuccessText' | i18n}}</div>
-									<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" />
-								</div>
-								<br />
-								<div class="button">
-									<button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | i18n }}</button>
-									<button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | i18n }}</button>
-								</div>
-								<div>
-									<span class="lergo-h4">{{'lessons.note' | i18n}}:</span>
-									{{'lessons.noteMessage' | i18n}}
-								</div>
-							</div>
-						</div>
-						<hr />
-						<div ng-show="!more">{{ lesson.description|limitTo:320 }}</div>
-						<div ng-show="!!more">{{ lesson.description}}</div>
-						<div style="text-align: center">
-							---------------------
-							<a href="" ng-click="more=!more">
-								<span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
-								<span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
-							</a>
-							---------------------
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	<div class="homepage">
-		<div class="sidebar" ng-controller="HomepageCtrl">
-			<div class="upper-section">
-				<div class="create">{{ 'homepage.createYourOwn' | i18n }}</div>
-				<br />
-				<!-- guy - part of fix for newline on homepage.free -->
-				<a class="start btn" ng-click="create()">{{ 'homepage.create' | i18n }}</a>
-				<div class="free">{{ 'homepage.free' | i18n }}</div>
-			</div>
-		</div>
-	</div>
+<div class="base-layout" id="lessonIntro">
+    <div class="page-content-width">
+        <div class="page-content-body">
+            <div class="lesson">
+                <div class="image">
+                    <div lesson-title-image lesson="lesson"></div>
+                </div>
+                <div class="start-lesson">
+                    <span class="button">
+                        <a ng-click="startLesson()">
+                            <i class="fa fa-play-circle-o " tooltip="{{'lessons.startLesson' | i18n}}"></i>
+                        </a>
+                    </span>
+                </div>
+
+
+                <div class="action-items" ng-show="!!showActionItems()"
+                     style="margin-left:500px;margin-top:-310px; width:150px; margin-right:20px; z-index:20; cursor:pointer;">
+                    <a href="#/user/lesson/{{les._id}}/update" title="hello world">
+                        <i class="fa fa-pencil-square-o"></i> {{'lessons.tooltip.edit' | i18n}}
+                    </a><br/>
+                    <a class="btn-link" ng-click="deleteLesson(les)">
+                        <i class="fa fa-trash-o" title="{{'lessons.tooltip.delete' | i18n}}"></i>
+                        {{'lessons.tooltip.delete' | i18n}}
+                    </a><br/>
+                    <a class="btn-link" ng-click="deleteLesson(les)">
+                        <i class="fa fa-copy" title="{{'lessons.tooltip.copy' | i18n}}"></i> {{'lessons.tooltip.copy' |
+                        i18n}}
+                    </a><br/>
+                </div>
+
+
+                <div class="stats">
+                    <span class="stats-button age-limit-{{lesson.age}} no-color" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|i18n}} </span>
+                    <span class="stats-button">
+                        <i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
+                        {{0+lesson.views}}
+                    </span>
+                    <span class="stats-button" ng-show="!!lesson.questionsCount">
+                        <i class="fa fa-question-circle fa-fw"
+                           tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
+                        {{lesson.questionsCount}}
+                    </span>
+                </div>
+
+
+
+                <div class="details">
+                    <div class="name">{{ lesson.name|limitTo:160 }}</div>
+                    <div class="properties">
+                        <span>
+                            <i class="fa fa-user" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
+                            <span>{{lesson.user.username}}</span>
+                        </span>
+                        <span>
+                            <i class="fa fa-calendar" tooltip="{{'lessons.createdOn' | i18n}}"></i>
+                            <span>{{lesson.timeStamp | date:'d-MMM-yyyy'}}</span>
+                        </span>
+                        <span ng-show="!!lesson.subject">
+                            <i class="fa fa-book" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
+                            <span>{{'filters.subjects.' + lesson.subject | i18n}}</span>
+                        </span>
+                    </div>
+                    <div class="action-items">
+                        <a href="" ng-click="startLesson()">
+                            <i class="fa fa-play-circle-o " tooltip="{{'lessons.tooltip.start' | i18n}}"></i>
+                            {{'start' | i18n}}
+                        </a>
+                        <a href="" ng-click="showHideInvite()">
+                            <i class="fa fa-envelope " tooltip="{{'lessons.tooltip.invite' | i18n}}"></i>
+                            {{'invite' | i18n}}
+                        </a>
+                        <a href="" ng-click="absoluteShareLink(lesson)">
+                            <i class="fa fa-share-alt " tooltip="{{'lessons.tooltip.share' | i18n}}"></i>
+                            {{'share' | i18n}}
+                        </a>
+                    </div>
+                    <div class="forms">
+                        <div ng-Show="!!share" class="lergo-form share">
+                            <p class="lergo-h4">{{'lessons.shareLesson' | i18n}}</p>
+
+                            <div class="container">
+                                <span>{{'lessons.shareLessonTitle' | i18n}}</span>
+                                <input type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)"/>
+                            </div>
+                        </div>
+
+                        <div ng-Show="!!invite" class="lergo-form invite">
+                            <p class="lergo-h4">{{'lessons.inviteLesson'| i18n}}</p>
+
+                            <p>{{'lessons.inviteLessonHelpText' | i18n}}</p>
+
+                            <div ng-controller="LessonsInvitesCreateCtrl" class="container">
+                                <div>{{ 'name' | i18n }}</div>
+                                <input type="text" ng-model="invite.invitee.name"/>
+
+                                <div ng-show="!!createSuccess">
+                                    <div>{{'lessons.inviteSuccessText' | i18n}}</div>
+                                    <input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)"/>
+                                </div>
+                                <br/>
+
+                                <div class="button">
+                                    <button class="btn" ng-click="sendInvite()" ng-show="!createSuccess"
+                                            ng-disabled="!invite.invitee.name">{{ 'button.submit' | i18n }}
+                                    </button>
+                                    <button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' |
+                                        i18n }}
+                                    </button>
+                                </div>
+                                <div>
+                                    <span class="lergo-h4">{{'lessons.note' | i18n}}:</span>
+                                    {{'lessons.noteMessage' | i18n}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="description">
+                        <div ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}
+                        </div>
+
+                        <div ng-show="!!more">{{ lesson.description}}</div>
+                        <div class="read-more" style="text-align: center" ng-show="filteredDescription.length != lesson.description.length ">
+                            <a href="" ng-click="more=!more">
+                                <span class="dashes">---------------------</span>
+                                <span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
+                                <span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
+                                <span class="dashes">---------------------</span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content-sidebar">
+            <div create-your-own-box></div>
+        </div>
+
+    </div>
+
 </div>

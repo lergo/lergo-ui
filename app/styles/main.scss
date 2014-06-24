@@ -6,7 +6,7 @@
 
 @import './mixins';
 @import "./common";
-
+@import './components/index';
 
 @import "./homepage";
 @import "./rtl_homepage";
@@ -22,3 +22,4 @@
 @import "./translations";
 @import "./lesson";
 @import "./report";
+@import "./lessonIntro";

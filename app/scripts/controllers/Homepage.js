@@ -24,16 +24,7 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	LergoClient.lessons.getStats().then(function(result) {
 		$scope.stats = result.data;
 	});
-	$scope.create = function() {
-		LergoClient.lessons.create().then(function(result) {
-			var lesson = result.data;
-			$scope.errorMessage = null;
-			$location.path('/user/lesson/' + lesson._id + '/update');
-		}, function(result) {
-			$scope.errorMessage = 'Error in creating Lesson : ' + result.data.message;
-			$log.error($scope.errorMessage);
-		});
-	};
+
 	$scope.absoluteShareLink = function(lesson) {
 		return window.location.origin + '/#/public/lessons/' + lesson._id + '/share';
 	};
