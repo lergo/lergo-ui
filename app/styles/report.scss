@@ -77,11 +77,23 @@
 				}
 			.description{
 				width:100%;
+				.bg-success{
+					margin:5px;
+				}
+				.bg-warning{
+				margin:5px;
+					}
+				.bg-primary{
+					margin:5px;
+				}
 			}
 		}
 	}
 	.no-underline{
 	text-decoration: none;
+	}
+	.inline-table{
+	display: inline-table;
 	}
 	.details{
 		.detail{
@@ -113,13 +125,13 @@
 				}
 				.bold{font-weight:bold;}
 				.bg-success{
-				text-align: left;
+				text-align: inherit;
 				}
 				.bg-warning{
-				text-align: left;
+				text-align: inherit;
 				}
 				.bg-primary{
-				text-align: left;
+				text-align: inherit;
 				}
 				.quiz-answer{padding:10px;}
 				.help-text{font-style: italic;
