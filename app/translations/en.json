@@ -89,6 +89,7 @@
     	"total": "Total",
         "filter": "Filter Lessons",
         "tags": "Tags",
+        "lessonReport":"Lesson Report",
         "tooltip":{
         	"invite":"invite students",
         	"share":"share with friends",
