@@ -1,85 +1,128 @@
 'use strict';
 
-angular.module('lergoApp')
-    .directive('lessonView', function ($log, LergoClient) {
-        return {
-            templateUrl: '/views/lessons/invitations/report/_display.html',
-            restrict: 'A',
-            scope: {
-                'lesson': '=',
-                'answers': '=',
-                'quizItems': '='
-            },
-            link: function ($scope/*, element, attrs*/) {
+angular.module('lergoApp').directive('lessonView', function($log, LergoClient,$sce) {
+	return {
+		templateUrl : '/views/lessons/invitations/report/_display.html',
+		restrict : 'A',
+		scope : {
+			'lesson' : '=',
+			'answers' : '=',
+			'quizItems' : '='
+		},
+		link : function($scope/* , element, attrs */) {
 
+			$log.info('showing lesson report');
 
-                $log.info('showing lesson report');
+			function getAnswer(quizItemId, index) {
+				for ( var i = 0; i < $scope.answers.length; i++) {
+					var answer = $scope.answers[i];
+					if ((answer.quizItemId === quizItemId) && (answer.stepIndex === index)) {
+						return answer;
+					}
+				}
+				return null;
+			}
 
+			function getQuizItem(quizItemId) {
+				for ( var i = 0; i < $scope.quizItems.length; i++) {
+					if ($scope.quizItems[i]._id === quizItemId) {
+						return $scope.quizItems[i];
+					}
+				}
+				return null;
+			}
 
-                function getAnswer(quizItemId, index) {
-                    for (var i = 0; i < $scope.answers.length; i++) {
-                        var answer = $scope.answers[i];
-                        if (( answer.quizItemId === quizItemId ) && ( answer.stepIndex === index )) {
-                            return answer;
-                        }
-                    }
-                    return null;
-                }
+			$scope.getQuizItemTemplate = function(type) {
+				return LergoClient.questions.getTypeById(type).reportTemplate;
+			};
+			// This will test in case of multi choice multi answer that which
+			// all answers are correct
+			$scope.isCorrectAnswer = function(quizItem, answer) {
 
-                function getQuizItem(quizItemId) {
-                    for (var i = 0; i < $scope.quizItems.length; i++) {
-                        if ($scope.quizItems[i]._id === quizItemId) {
-                            return $scope.quizItems[i];
-                        }
-                    }
-                    return null;
-                }
+				for ( var i = 0; i < quizItem.options.length; i++) {
+					if (quizItem.options[i].label === answer) {
+						if (quizItem.options[i].checked === true) {
+							return true;
+						} else {
+							return false;
+						}
+					}
+				}
+				return false;
+			};
 
+			// /////////////// construct a single object with question, user
+			// answer and answer check
 
-                $scope.getQuizItemTemplate = function (type) {
-                    return LergoClient.questions.getTypeById(type).reportTemplate;
-                };
+			var reportQuizItems = {}; // cache
 
+			$scope.getReportQuizItems = function(step, index) {
 
-                /////////////////    construct a single object with question, user answer and answer check
+				if (reportQuizItems.hasOwnProperty('' + index)) {
+					return reportQuizItems['' + index];
+				}
 
-                var reportQuizItems = {}; // cache
+				var results = [];
 
-                $scope.getReportQuizItems = function (step, index) {
+				var quizItemsIds = $scope.lesson.steps[index].quizItems;
 
-                    if (reportQuizItems.hasOwnProperty('' + index)) {
-                        return reportQuizItems['' + index];
-                    }
+				$log.info('getting report quiz Items', step);
 
-                    var results = [];
+				for ( var i = 0; i < quizItemsIds.length; i++) {
+					var qiId = quizItemsIds[i];
 
+					var answer = getAnswer(qiId, index);
+					var qi = getQuizItem(qiId);
 
-                    var quizItemsIds = $scope.lesson.steps[index].quizItems;
+					results.push(_.merge({}, qi, answer));
 
-                    $log.info('getting report quiz Items', step);
+				}
+				$log.info('quizItems', results);
+				reportQuizItems['' + index] = results;
+				$scope.getAnswerStats(results, index);
+				return results;
+			};
 
-                    for (var i = 0; i < quizItemsIds.length; i++) {
-                        var qiId = quizItemsIds[i];
+			$scope.getAnswerStats = function(quizItems, index) {
+				if (!quizItems || quizItems.length < 1) {
+					return;
+				}
+				var stats = {
+					'correct' : 0,
+					'wrong' : 0,
+					'correctPercentage' : 0,
+					'wrongPercentage' : 0,
+					'openQuestions' : 0
+				};
+				for ( var i = 0; i < quizItems.length; i++) {
+					if (quizItems[i].type === 'openQuestion') {
+						stats.openQuestions = stats.openQuestions + 1;
+					} else if (!!quizItems[i].checkAnswer) {
+						if (quizItems[i].checkAnswer.correct) {
+							stats.correct = stats.correct + 1;
+						} else {
+							stats.wrong = stats.wrong + 1;
+						}
+					}
+				}
+				var correctPercentage = ((stats.correct * 100) / (quizItems.length - stats.openQuestions));
+				stats.correctPercentage = Math.round(correctPercentage);
 
+				var wrongPercentage = ((stats.wrong * 100) / (quizItems.length - stats.openQuestions));
+				stats.wrongPercentage = Math.round(wrongPercentage);
+				stats.index = index;
+				$scope.$emit('stats', stats);
+			};
 
-                        var answer = getAnswer(qiId, index);
-                        var qi = getQuizItem(qiId);
+			$scope.getStepViewByType = function(step) {
+				var result = '/views/lessons/invitations/report/steps/_' + step.type + '.html';
+				$log.info('result', result);
+				return result;
+			};
+			$scope.getAudioUrl = function(quizItem) {
+				return $sce.trustAsResourceUrl(quizItem.audioUrl);
+			};
+		}
 
-                        results.push(_.merge({}, qi, answer));
-
-
-                    }
-                    $log.info('quizItems', results);
-                    reportQuizItems['' + index] = results;
-                    return results;
-                };
-
-                $scope.getStepViewByType = function (step) {
-                    var result = '/views/lessons/invitations/report/steps/_' + step.type + '.html';
-                    $log.info('result', result);
-                    return  result;
-                };
-            }
-
-        };
-    });
+	};
+});

@@ -9,16 +9,22 @@
 			</div>
 		</div>
 		<div class="header">
-			<div class="lergo-h4">{{report.data.invitee.name}} {{'report.completed'|i18n}}:</div>
-			<br />
-			<div class="lergo-h1">{{report.data.lesson.name}}</div>
-			<div>
-				<span class="lergo-h4">{{'report.date'|i18n}}:</span>
-				<span>{{report.lastUpdate | date:'medium'}}</span>
+			<div class="header-name">
+				<div ng-show="!!report.data.invitee.name">
+					<div class="lergo-h1">{{report.data.invitee.name}}</div>
+					<div class="lergo-h4">{{'report.completed'|i18n}}:</div>
+					<br />
+				</div>
+				<div class="lergo-h1">{{report.data.lesson.name}}</div>
+				<div>
+					<span class="lergo-h4">{{'report.date'|i18n}}:</span>
+					<span>{{report.lastUpdate | date:'medium'}}</span>
+				</div>
 			</div>
-			<br />
-			<div class="lergo-h4">{{'report.description'|i18n}}</div>
-			<div>{{report.data.lesson.description | limitTo:440}}</div>
+			<div ng-show="!!report.data.lesson.description" class="header-desc">
+				<div class="lergo-h4">{{'report.description'|i18n}}</div>
+				<div>{{report.data.lesson.description | limitTo:440}}</div>
+			</div>
 		</div>
 		<div class=steps>
 			<div class="lergo-h1">
@@ -40,7 +46,20 @@
 							<td class="title lergo-h1">{{step.title}}</td>
 							<td class="description">
 								<a ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}"> {{step.videoUrl}}</a>
-								<a ng-show="!!step.quizItems"> {{step.quizItems.length}} {{'report.questionsInQuiz' | i18n}}</a>
+								<div ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+									<span class="inline-table">{{step.quizItems.length}} {{'report.questionsInQuiz' | i18n}} </span>
+									<Span ng-show="!!stats[$index].correct" class="bg-success">
+										<span class="inline-table">{{stats[$index].correct}} {{'questions.correct' | i18n}}</span>
+										<span class="inline-table">({{stats[$index].correctPercentage}}%)</Span>
+									</Span>
+									<span ng-show="!!stats[$index].wrong" class="bg-warning">
+										<span class="inline-table">{{stats[$index].wrong}} {{'questions.incorrect' | i18n}}</span>
+										<span class="inline-table">({{stats[$index].wrongPercentage}}%)</span>
+									</span>
+									<span ng-show="!!stats[$index].openQuestions" class="bg-primary">
+										<span class="inline-table">{{stats[$index].openQuestions}} {{'questions.openQuestion' | i18n}}</span>
+									</span>
+								</div>
 							</td>
 						</tr>
 					</table>

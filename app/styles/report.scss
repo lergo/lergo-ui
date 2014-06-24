@@ -42,6 +42,24 @@
 			font-size:18px;
 			color: #949494;
 		}
+		.lergo-h1{
+		white-space: normal;
+		text-align:center;
+		}
+		.header-name{
+			text-align:center;
+			border: 3px solid blue;
+			width: 30%;
+			border-radius: 10px;
+			padding: 30px;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.header-desc{
+			width: 50%;
+			padding-left: 10px;
+			display: inline-block;
+		}
 	}
 	.steps{
 	
@@ -53,18 +71,30 @@
 			margin-bottom:20px;
 			border-radius: 10px;
 			.icon{
-				width:10%;
+				width:5%;
 			}
 			.title{
-				width:40%;
+				width:20%;
 				}
 			.description{
-				width:50%;
+				width:100%;
+				.bg-success{
+					margin:5px;
+				}
+				.bg-warning{
+				margin:5px;
+					}
+				.bg-primary{
+					margin:5px;
+				}
 			}
 		}
 	}
 	.no-underline{
 	text-decoration: none;
+	}
+	.inline-table{
+	display: inline-table;
 	}
 	.details{
 		.detail{
@@ -81,7 +111,11 @@
 					border-radius: 10px;
 				}
 				.quiz-wrong{
-					border: 2px solid firebrick;
+					border: 2px solid #ee9a00;
+					border-radius: 10px;
+				}
+				.quiz-open{
+					border: 2px solid royalblue;
 					border-radius: 10px;
 				}
 				.wrong{
@@ -92,13 +126,19 @@
 				}
 				.bold{font-weight:bold;}
 				.bg-success{
-				text-align: left;
+				text-align: inherit;
 				}
-				.bg-danger{
-				text-align: left;
+				.bg-warning{
+				text-align: inherit;
 				}
-				.quiz-answers{
+				.bg-primary{
+				text-align: inherit;
+				}
+				.quiz-answer{padding:10px;}
+				.help-text{font-style: italic;
+				color:#949494;
 				padding:10px;}
+				
 			}
 		}
 	}

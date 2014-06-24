@@ -1,7 +1,7 @@
 <div ng-show="showSteps() && hasNextStep() " class="next-step">
 	<div ng-include="'/views/lessons/_stepDisplay.html'"></div>
-	<br/>
-	<div ng-show="hasNextStep()" style="text-align:center">
+	<br />
+	<div ng-show="hasNextStep()" style="text-align: center">
 		<button ng-click="nextStep()" ng-disabled="!isQuizComplete" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
 	</div>
 </div>
@@ -16,9 +16,34 @@
 	</div>
 	<div class="message">
 		{{ 'congratulations' | i18n }}!
-		<br />
-		{{ 'lessons.lessonCompleted' | i18n }}
-		<br />
-		<a ng-show="!!invitation" ng-href="/#/public/lessons/invitations/{{invitation._id}}/report">{{ 'lessons.seeReport' | i18n }}</a>
+		<br>
+		{{ 'lessons.lessonCompleted' | i18n }}:
+		<br>
+		<br>
+		<div class="lergo-h1">{{lesson.name}}</div>
+		<br>
+		<div class="report">
+			<a ng-show="!!invitation" ng-href="/#/public/lessons/invitations/{{invitation._id}}/report">
+				<i class="fa fa-bar-chart-o"></i>
+				{{ 'lessons.lessonReport' | i18n }}
+			</a>
+		</div>
+		<br>
+		<div class="recmmonded" ng-show="!!lesson.recommendedNextLesson">
+			<a ng-href="{{lesson.recommendedNextLesson}}"> <i class="fa fa-university"></i>{{ 'lessons.recommenedNextLesson' | i18n }} </a>
+		</div>
+	</div>
+	<div style="text-align: left">
+		<i class="fa fa-star red"></i>
+		<br>
+		<i class="fa fa-star green"></i>
+		<br>
+		<i class="fa fa-star orange"></i>
+		<br>
+		<i class="fa fa-star green"></i>
+		<i class="fa fa-star red"></i>
+		<br>
+		<i class="fa fa-star green"></i>
+		<br>
 	</div>
 </div>
