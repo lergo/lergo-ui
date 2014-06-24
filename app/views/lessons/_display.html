@@ -17,7 +17,7 @@
 	<div class="message">
 		{{ 'congratulations' | i18n }}!
 		<br>
-		{{ 'lessons.lessonCompleted' | i18n }}
+		{{ 'lessons.lessonCompleted' | i18n }}:
 		<br>
 		<br>
 		<div class="lergo-h1">{{lesson.name}}</div>
@@ -29,10 +29,8 @@
 			</a>
 		</div>
 		<br>
-		<br>
-		<br>
-		<div class="recmmonded">
-			<a ng-show="!!lesson.recommendedNextLesson" ng-href="{{lesson.recommendedNextLesson}}"> {{ 'lessons.recommenedNextLesson' | i18n }} </a>
+		<div class="recmmonded" ng-show="!!lesson.recommendedNextLesson">
+			<a ng-href="{{lesson.recommendedNextLesson}}"> <i class="fa fa-university"></i>{{ 'lessons.recommenedNextLesson' | i18n }} </a>
 		</div>
 	</div>
 	<div style="text-align: left">
