@@ -1,8 +1,14 @@
 
 <div class="question-true-false">
 	<div class="{{!quizItem.checkAnswer.correct && 'quiz-wrong' || 'quiz-correct'}}">
-		<div ng-show="!!quizItem.checkAnswer.correct" class="bg-success" class="quiz">{{quizItem.question}} ({{'questions.correct'|i18n}})</div>
-		<div ng-show="!quizItem.checkAnswer.correct" class="bg-warning" class="quiz">{{quizItem.question}} ({{'questions.incorrect'|i18n}})</div>
+		<div ng-show="!!quizItem.checkAnswer.correct" class="bg-success" class="quiz">
+			<span class="inline-table">{{quizItem.question}}</span>
+			<span class="inline-table">({{'questions.correct'|i18n}}) </span>
+		</div>
+		<div ng-show="!quizItem.checkAnswer.correct" class="bg-warning" class="quiz">
+			<span class="inline-table">{{quizItem.question}}</span>
+			<span class="inline-table">({{'questions.incorrect'|i18n}})</span>
+		</div>
 		<div ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
 		<div ng-show="!!quizItem.audioUrl" class="quiz-answer">
 			<audio ng-src="{{getAudioUrl(quizItem)}}" audioplayer controls></audio>

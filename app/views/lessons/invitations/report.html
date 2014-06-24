@@ -47,12 +47,18 @@
 							<td class="description">
 								<a ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}"> {{step.videoUrl}}</a>
 								<div ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
-									<span>{{step.quizItems.length}} {{'report.questionsInQuiz' | i18n}} </span>
-									<Span ng-show="!!stats[$index].correct" class="bg-success">{{stats[$index].correct}} {{'questions.correct' | i18n}}
-										({{stats[$index].correctPercentage}}%)</Span>
-									<span ng-show="!!stats[$index].wrong" class="bg-warning">{{stats[$index].wrong}} {{'questions.incorrect' | i18n}}
-										({{stats[$index].wrongPercentage}}%)</span>
-									<span ng-show="!!stats[$index].openQuestions" class="bg-primary">{{stats[$index].openQuestions}} {{'questions.openQuestion' | i18n}}</span>
+									<span class="inline-table">{{step.quizItems.length}} {{'report.questionsInQuiz' | i18n}} </span>
+									<Span ng-show="!!stats[$index].correct" class="bg-success">
+										<span class="inline-table">{{stats[$index].correct}} {{'questions.correct' | i18n}}</span>
+										<span class="inline-table">({{stats[$index].correctPercentage}}%)</Span>
+									</Span>
+									<span ng-show="!!stats[$index].wrong" class="bg-warning">
+										<span class="inline-table">{{stats[$index].wrong}} {{'questions.incorrect' | i18n}}</span>
+										<span class="inline-table">({{stats[$index].wrongPercentage}}%)</span>
+									</span>
+									<span ng-show="!!stats[$index].openQuestions" class="bg-primary">
+										<span class="inline-table">{{stats[$index].openQuestions}} {{'questions.openQuestion' | i18n}}</span>
+									</span>
 								</div>
 							</td>
 						</tr>
