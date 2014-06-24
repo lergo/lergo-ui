@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
+angular.module('lergoApp').directive('lessonView', function($log, LergoClient,$sce) {
 	return {
 		templateUrl : '/views/lessons/invitations/report/_display.html',
 		restrict : 'A',
@@ -118,6 +118,9 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 				var result = '/views/lessons/invitations/report/steps/_' + step.type + '.html';
 				$log.info('result', result);
 				return result;
+			};
+			$scope.getAudioUrl = function(quizItem) {
+				return $sce.trustAsResourceUrl(quizItem.audioUrl);
 			};
 		}
 

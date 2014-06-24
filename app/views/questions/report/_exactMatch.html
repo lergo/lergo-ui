@@ -2,9 +2,13 @@
 	<div class="{{!quizItem.checkAnswer.correct && 'quiz-wrong' || 'quiz-correct'}}">
 		<div ng-show="!!quizItem.checkAnswer.correct" class="bg-success" class="quiz">{{quizItem.question}} ({{'questions.correct'|i18n}})</div>
 		<div ng-show="!quizItem.checkAnswer.correct" class="bg-warning" class="quiz">{{quizItem.question}} ({{'questions.incorrect'|i18n}})</div>
+		<div ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
+		<div ng-show="!!quizItem.audioUrl" class="quiz-answer">
+			<audio ng-src="{{getAudioUrl(quizItem)}}" audioplayer controls></audio>
+		</div>
 		<div class="quiz-answer">
 			<div>
-				<div class="bold">{{'questions.correctAnswer'|i18n}}</div>
+				<div class="bold">{{'questions.correctAnswers'|i18n}}</div>
 				<div ng-repeat="option in quizItem.options">
 					{{option.label}}
 					<i ng-show="!!option.checked" class="fa fa-check correct"></i>

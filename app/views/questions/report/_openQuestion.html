@@ -1,5 +1,9 @@
 <div class="quiz-open">
 	<div class="bg-primary" class="quiz">{{quizItem.question}} ({{'questions.openQuestion'|i18n}})</div>
+	<div ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
+		<div ng-show="!!quizItem.audioUrl" class="quiz-answer">
+			<audio ng-src="{{getAudioUrl(quizItem)}}" audioplayer controls></audio>
+		</div>
 	<div class="quiz-answer">
 		<div class="bold">{{'questions.yourAnswer'|i18n}}</div>
 		<div class="questions-exact-match">{{quizItem.userAnswer}}</div>
