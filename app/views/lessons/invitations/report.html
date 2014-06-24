@@ -21,7 +21,7 @@
 					<span>{{report.lastUpdate | date:'medium'}}</span>
 				</div>
 			</div>
-			<div class="header-desc">
+			<div ng-show="!!report.data.lesson.description" class="header-desc">
 				<div class="lergo-h4">{{'report.description'|i18n}}</div>
 				<div>{{report.data.lesson.description | limitTo:440}}</div>
 			</div>

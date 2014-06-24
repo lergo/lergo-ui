@@ -1,4 +1,3 @@
-
 {	"start":"Start",
 	"share":"Share",
 	"add":"Add",
@@ -112,7 +111,7 @@
         "areYouReady": "Are you ready to start learning?",
         "letsGo": "Let's LerGO!",
         "letsContinue": "OK! Let's Continue",
-        "lessonCompleted": "You have completed the lesson.",
+        "lessonCompleted": "You have completed the lesson",
         "addQuestion": "Add Question to Quiz",
         "videoURL": "Video URL"
     },

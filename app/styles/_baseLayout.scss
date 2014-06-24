@@ -106,7 +106,7 @@ $FOOTER_HEIGHT: 170px !default;
         margin: 0;
         li {
           list-style: none;
-          padding: 0 26px 0 0;
+          padding: 0 22px 0 0;
           margin: 0;
           float: left;
           &, a {
@@ -115,7 +115,7 @@ $FOOTER_HEIGHT: 170px !default;
           &:after {
             display: inline-block;
             content: "|";
-            padding-left: 31px;
+            padding-left: 22px;
             padding-right:0;
           }
           &:last-child:after {
@@ -127,15 +127,14 @@ $FOOTER_HEIGHT: 170px !default;
 
     .header-login {
       float: right;
-      width: 225px;
+      width: 245px;
       margin-right: 0;
       margin-top: -92px;
       a {
         color: white;
         display: inline-block;
-        border-top: 2px solid white;
         font-size: 18px;
-        width: 90px;
+        width: 120px;
         text-decoration: none;
         padding: 10px 0;
         text-align: center;

@@ -3,16 +3,14 @@
 		<div id="header" ng-controller="LoginCtrl">
 			<div class="centered-content">
 				<div class="header-main">
-					<div class="logo-beta"></div>
+					<div><a href="#/user/homepage"><i class="logo-beta"></i></a></div>
 					<div class="header-links">
 						<ul>
+						<li><a href="#/user/homepage">{{ 'baseLayout.header.links.learn'| i18n }} </a></li>
 							<li
-								ng-repeat="item in ['Learn','Create','Parents','Teachers','Contribute']">
+								ng-repeat="item in ['Create','Parents','Teachers','Contribute']">
 								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | i18n }}</a>
-							
 							</li>
-                            <li><a href="#/user/lessons"> {{ 'baseLayout.header.links.lessons' | i18n }}</a></li>
-                            <li><a href="#/user/questions"> {{ 'baseLayout.header.links.questions' | i18n }}</a></li>
                         </ul>
                     </div>
 					<div class="header-search">
@@ -24,8 +22,8 @@
 						<a href="#"> {{ 'button.login' | i18n }}</a> <a href="#/public/session/signup"> {{ 'button.signup' | i18n }}</a>
 					</div>
 					<div class="header-login" ng-show="!!user">
-						{{user.username}}
-						<button ng-click="logout()">{{'baseLayout.header.logout' | i18n  }}</button>
+						<a href="#/user/lessons"><i class="fa fa-user fa-fw"></i> {{user.username}}</a>
+						<button class="btn" ng-click="logout()">{{'baseLayout.header.logout' | i18n  }}</button>
 					</div>
 				</div>
 
@@ -41,7 +39,7 @@
 				<ul>
 					<li>{{'baseLayout.footer.privacyAndTerms' | i18n  }}</li>
 					<li><a href="#/public/about">{{'baseLayout.footer.about' | i18n  }}</a></li>
-					<li>{{'baseLayout.footer.homepage' | i18n  }}</li>
+					<li><a href="#/user/homepage"> {{'baseLayout.footer.homepage' | i18n  }}</a></li>
 					<li>{{'baseLayout.footer.contact' | i18n  }}</li>
 					<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
 					<li><a href="#/public/translations/diff">Translations Diff</a></li>
