@@ -79,6 +79,24 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 templateUrl: 'views/translations/diff.html',
                 controller: 'TranslationsDiffCtrl'
             })
+            .when('/public/baselayout/feedback', {
+                templateUrl: 'views/baselayout/_feedback.html',
+            })
+            .when('/public/baselayout/abuse', {
+                templateUrl: 'views/baselayout/_abuse.html',
+            })
+            .when('/public/baselayout/contact', {
+                templateUrl: 'views/baselayout/_contact.html',
+            })
+            .when('/public/baselayout/privacy', {
+                templateUrl: 'views/baselayout/_privacy.html',
+            })
+            .when('/public/baselayout/problem', {
+                templateUrl: 'views/baselayout/_problem.html',
+            })
+            .when('/public/baselayout/suggest', {
+                templateUrl: 'views/baselayout/_suggest.html',
+            })
             .when('/public/session/signup', {
                 templateUrl: 'views/session/signup.html',
                 controller:'SignupCtrl'
