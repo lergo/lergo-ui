@@ -34,7 +34,8 @@
 				<tbody>
 					<tr ng-repeat="les in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter">
 						<td class="name">
-							<a tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#/user/lessons/{{les._id}}/intro">{{ les.name }}</a>
+							<a ng-show="!!les.name && les.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#/user/lessons/{{les._id}}/intro">{{ les.name }}</a>
+							<a ng-show="!les.name || les.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#/user/lessons/{{les._id}}/intro">[ no title ]</a>
 						</td>
 						<td class="answer">{{les.language && ('filters.languages.' + les.language | i18n) || ""}}</td>
 						<td class="answer">{{les.subject && ('filters.subjects.' + les.subject | i18n) ||""}}</td>
