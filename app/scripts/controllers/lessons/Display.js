@@ -55,8 +55,8 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	});
 
 	$scope.$watch(function() {
-		return $routeParams.currentStepIndex
-	}, function(newValue, oldValue) {
+		return $routeParams.currentStepIndex;
+	}, function(newValue/*, oldValue*/) {
 		if (newValue !== undefined) {
 			$scope.currentStepIndex = newValue;
 		}

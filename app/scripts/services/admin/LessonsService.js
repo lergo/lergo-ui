@@ -8,5 +8,5 @@ angular.module('lergoApp')
 
         this.update = function (lesson) {
             return $http.post('/backend/admin/lessons/' + lesson._id, lesson);
-        }
+        };
     });

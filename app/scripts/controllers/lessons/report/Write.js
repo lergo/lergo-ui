@@ -39,25 +39,25 @@
  */
 
 angular.module('lergoApp')
-    .controller('LessonsReportWriteCtrl', function ($scope, $log ) {
+    .controller('LessonsReportWriteCtrl', function ($scope, $log) {
 
         var report = $scope.report;
-        if ( !report.answers ){
+        if (!report.answers) {
             report.answers = [];
         }
         var stepIndex = 0;
 
-        $scope.$on('startLesson', function(event, data){
+        $scope.$on('startLesson', function (event, data) {
             $log.info('starting lesson');
-            if ( !report.data ) {
+            if (!report.data) {
                 report.data = data;
             }
         });
 
 
-        $scope.$on('endLesson', function(event ,data){
+        $scope.$on('endLesson', function (/*event, data*/) {
             $log.info('lesson ended');
-            if ( !report.data.finished ){
+            if (!report.data.finished) {
                 report.data.finished = true;
             }
         });
@@ -69,12 +69,11 @@ angular.module('lergoApp')
         });
 
 
-
         // in case user answered a question, and then changed the answer, we will need to find the answer again
-        function findAnswer( data ){
-            for ( var i = 0; i < report.answers.length; i++){
+        function findAnswer(data) {
+            for (var i = 0; i < report.answers.length; i++) {
                 var item = report.answers[i];
-                if ( ( item.quizItemId === data.quizItemId ) && ( i === stepIndex ) ){
+                if (( item.quizItemId === data.quizItemId ) && ( i === stepIndex )) {
                     return item;
                 }
             }
@@ -89,22 +88,22 @@ angular.module('lergoApp')
         // the report only adds the answers the user game and whether they are right or not.
         // in order to track down each answer and its correlating step
 
-        $scope.$on('questionAnswered', function( event, data ){
+        $scope.$on('questionAnswered', function (event, data) {
             $log.info('question was answered', data);
             // find answer
-            var answer = findAnswer( data );
+            var answer = findAnswer(data);
 
-            if ( !answer ){ // add if not exists
-               answer = {};
+            if (!answer) { // add if not exists
+                answer = {};
                 report.answers.push(answer);
             }
 
             // update the answer
             _.merge(answer, {
-                'stepIndex' : stepIndex,
-                'quizItemId' : data.quizItemId,
-                'userAnswer' : data.userAnswer,
-                'checkAnswer' : data.checkAnswer
+                'stepIndex': stepIndex,
+                'quizItemId': data.quizItemId,
+                'userAnswer': data.userAnswer,
+                'checkAnswer': data.checkAnswer
             });
         });
 

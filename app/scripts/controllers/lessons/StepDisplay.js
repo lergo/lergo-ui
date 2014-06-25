@@ -51,7 +51,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.getQuizItemTemplate = function(id) {
 		if (!!$scope.questions) {
 			$scope.quizItem = $scope.questions[id];
-			return !!$scope.quizItem && LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate || "";
+			return !!$scope.quizItem && LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate || '';
 		}
 		return '';
 	};

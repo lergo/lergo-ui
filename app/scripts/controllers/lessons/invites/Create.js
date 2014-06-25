@@ -30,5 +30,5 @@ angular.module('lergoApp').controller('LessonsInvitesCreateCtrl', function($scop
 		}, function() {
 			$scope.createError = true;
 		});
-	}
+	};
 });

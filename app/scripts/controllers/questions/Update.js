@@ -87,7 +87,7 @@ angular
 					};
 					$scope.$on('$locationChangeStart',function(event) {
 						if (!$scope.isValid($scope.quizItem)) {
-							var answer = confirm("For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost.");
+							var answer = confirm('For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost.');
 							if (!answer) {
 								event.preventDefault();
 							} else {

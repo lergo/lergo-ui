@@ -23,6 +23,7 @@
         "$": false,
         "d3": false,
         "prettyPrintOne": false,
-        "_": false
+        "_": false,
+        "confirm":false
     }
 }
