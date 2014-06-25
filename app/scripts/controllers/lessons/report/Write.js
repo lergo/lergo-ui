@@ -74,7 +74,7 @@ angular.module('lergoApp')
         function findAnswer( data ){
             for ( var i = 0; i < report.answers.length; i++){
                 var item = report.answers[i];
-                if ( ( item.quizItemId === data.quizItemId ) && ( stepIndex == stepIndex ) ){
+                if ( ( item.quizItemId === data.quizItemId ) && ( i === stepIndex ) ){
                     return item;
                 }
             }
@@ -91,7 +91,6 @@ angular.module('lergoApp')
 
         $scope.$on('questionAnswered', function( event, data ){
             $log.info('question was answered', data);
-
             // find answer
             var answer = findAnswer( data );
 
