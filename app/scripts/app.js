@@ -58,7 +58,12 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 templateUrl: 'views/homepage.html',
                 controller: 'HomepageCtrl'
             })
+            //todo - remove this url. use plural version '/user/lessons/:lessonId/update'
             .when('/user/lesson/:lessonId/update', {
+                templateUrl: 'views/lessons/update.html',
+                controller:'LessonsUpdateCtrl'
+            })
+            .when('/user/lessons/:lessonId/update', {
                 templateUrl: 'views/lessons/update.html',
                 controller:'LessonsUpdateCtrl'
             })

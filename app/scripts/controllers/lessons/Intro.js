@@ -18,6 +18,14 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
     }
 
+    $scope.copyLesson = function(){
+        LergoClient.lessons.copyLesson( lessonId).then(function(result){
+            $location.path('/user/lessons/' + result.data._id + '/update');
+        }, function(result){
+            $log.error(result);
+        });
+    };
+
     $scope.preview = function(){
         redirectToPreview();
     };

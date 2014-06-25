@@ -25,6 +25,10 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
     this.getPublicLessons = function (){
         return $http.get('/backend/public/lessons');
     };
+
+    this.copyLesson = function( id ) {
+        return $http.post('/backend/user/lessons/' + id + '/copy');
+    };
     
     this.getStats = function (){
         return $http.get('/backend/public/system/statistics');
