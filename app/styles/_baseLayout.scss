@@ -124,7 +124,16 @@ $FOOTER_HEIGHT: 170px !default;
         }
       }
     }
-
+	.header-language{
+		float: right;
+      	width: 245px;
+      	margin-right: 0;
+      	margin-top: -24px;
+      	select{
+	      	border:0;
+	      	background-color: transparent;
+      	}
+	}
     .header-login {
       float: right;
       width: 245px;
