@@ -13,6 +13,12 @@ angular.module('lergoApp').directive('baseLayout', function($rootScope, $log, $l
 				}
 			});
 
+
+            // a random number to prevent cache in ng-include
+            $rootScope.getCacheRandomNumber = function(){
+                return Math.floor(new Date().getTime() / 10000);
+            };
+
 			$rootScope.getLabelForLanguage = function(id) {
 
 				return LergoTranslate.translate('translationLanguage.' + id);
