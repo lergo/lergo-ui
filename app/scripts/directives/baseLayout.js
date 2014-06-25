@@ -17,9 +17,9 @@ angular.module('lergoApp')
                 );
 
                 $rootScope.getLabelForLanguage = function( id ){
+                	
                     return LergoTranslate.translate('translationLanguage.' + id);
                 };
-
                 $rootScope.lergoLanguages = [
                     {'id': 'en', 'label': 'English'},
                     {'id': 'he', 'label': 'Hebrew'}

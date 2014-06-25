@@ -35,24 +35,32 @@
 	</div>
 	<div id="footer">
 		<div class="centered-content">
+			<div class="footer-text">
+				{{'baseLayout.footer.text1' | i18n  }}
+				<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | i18n  }};</a>
+				{{'baseLayout.footer.text3' | i18n  }}.
+			</div>
 			<div class="footer-links">
 				<ul>
-					<li>{{'baseLayout.footer.privacyAndTerms' | i18n  }}</li>
+					<li><a href="#/public/baselayout/privacy">{{'baseLayout.footer.privacyAndTerms' | i18n  }}</a></li>
 					<li><a href="#/public/about">{{'baseLayout.footer.about' | i18n  }}</a></li>
 					<li><a href="#/user/homepage"> {{'baseLayout.footer.homepage' | i18n  }}</a></li>
-					<li>{{'baseLayout.footer.contact' | i18n  }}</li>
+					<li><a href="#/public/baselayout/contact">{{'baseLayout.footer.contact' | i18n  }}</a></li>
+					<li><a href="#/public/baselayout/blog">{{'baseLayout.footer.blog' | i18n}}</a></li>
 					<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
 					<li><a href="#/public/translations/diff">Translations Diff</a></li>
-
-                    <select ng-model="$root.lergoLanguage" ng-options="lang.id as lang.label for lang in $root.lergoLanguages"></select>
-
+					<li><a class="weight12"href="#/public/baselayout/feedback">{{'baseLayout.footer.feedback' | i18n}}</a></li>
+					<li><a class="weight12"href="#/public/baselayout/suggest">{{'baseLayout.footer.suggest' | i18n}}</a></li>
+					<li><a class="weight12" href="#/public/baselayout/problem">{{'baseLayout.footer.problem' | i18n}}</a></li>
+					<li><a class="weight12" href="#/public/baselayout/abuse">{{'baseLayout.footer.abuse' | i18n}}</a></li>
 				</ul>
 			</div>
-			<div class="copyrights">&copy; LerGO 2013-2014 All Rights
-				Reserved</div>
+			<div class="copyrights">
+				<div>&copy; 2014 LerGO - Educate Yourself (R.A.)</div>
+				<div>Except where noted, all rights reserved.</div>
+			</div>
 		</div>
 	</div>
-
 </div>
 
 

@@ -49,7 +49,15 @@
             "privacyAndTerms": "Privacy and Terms",
             "about": "About LerGO",
             "homepage": "Homepage",
-            "contact": "Contact Us"
+            "contact": "Contact Us",
+        	"problem":"Report Problem",
+        	"abuse":"Report Abuse",
+        	"suggest":"Suggest Lesson",
+        	"feedback":"Send Feedback",
+        	"blog":"Blog",
+    		"text1":"Text of questions is available under the",
+    		"text2":"Creative Commons Attribution-NonCommercial-ShareAlike License",
+    		"text3":"additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. LerGO is an open source EdTech venture of LerGO-Educate Yourself (R.A), a registered nonprofit organisation."
         }
     },
     "homepage": {
