@@ -128,6 +128,15 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 templateUrl: 'views/admin/homepage.html',
                 controller: 'AdminHomepageCtrl'
             })
+             .when('/user/Parents', {
+                templateUrl: 'views/errors/underConstruction.html',
+            })
+             .when('/user/Teachers', {
+                templateUrl: 'views/errors/underConstruction.html',
+            })
+             .when('/user/Contribute', {
+                templateUrl: 'views/errors/underConstruction.html',
+            })
             .when('/', {
                 redirectTo: '/public/session/login'
 //                redirectTo: '/public/session/login'
