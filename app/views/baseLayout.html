@@ -35,7 +35,7 @@
 					<div class="header-login" style="margin-top: -25px">
 						<i class="fa fa-globe fa-fw"></i> <select
 							ng-model="$root.lergoLanguage"
-							ng-options="lang.id as lang.label for lang in $root.lergoLanguages"></select>
+							ng-options="lang.id as ( 'translationLanguage.' + lang.id | i18n ) for lang in $root.lergoLanguages"></select>
 					</div>
 				</div>
 
