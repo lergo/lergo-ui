@@ -1,4 +1,6 @@
-{	"start":"Start",
+{	"underConstruction":"Under Construction",
+	"redirectToHome":"Redirect to homepage",
+	"start":"Start",
 	"share":"Share",
 	"add":"Add",
 	"cancel":"Cancel",
@@ -34,6 +36,7 @@
     "baseLayout" : {
         "header" : {
             "searchPlaceholder" : "What would you like to learn about?",
+            "siteLanguage":"Site Language",
             "links" : {
                 "learn" : "Learn",
                 "create" : "Create",

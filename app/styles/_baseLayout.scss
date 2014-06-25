@@ -124,10 +124,19 @@ $FOOTER_HEIGHT: 170px !default;
         }
       }
     }
-
+	.header-language{
+		float: right;
+      	width: 110px;
+      	margin-right: 0;
+      	margin-top: -24px;
+      	select{
+	      	border:0;
+	      	background-color: transparent;
+      	}
+	}
     .header-login {
       float: right;
-      width: 245px;
+      width: 205px;
       margin-right: 0;
       margin-top: -92px;
       a {
@@ -145,7 +154,27 @@ $FOOTER_HEIGHT: 170px !default;
           float: right;
         }
       }
-
+    }
+      .header-signup {
+      float: right;
+      width: 205px;
+      margin-right: 0;
+      margin-top: -92px;
+      a {
+        color: white;
+        display: inline-block;
+        font-size: 18px;
+        width: 95px;
+        text-decoration: none;
+        padding: 10px 0;
+        text-align: center;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.3)
+        }
+        &:last-child {
+          float: right;
+        }
+      }
     }
   }
 
