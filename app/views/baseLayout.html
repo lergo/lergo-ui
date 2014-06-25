@@ -3,27 +3,39 @@
 		<div id="header" ng-controller="LoginCtrl">
 			<div class="centered-content">
 				<div class="header-main">
-					<div><a href="#/user/homepage"><i class="logo-beta"></i></a></div>
+					<div>
+						<a href="#/user/homepage"><i class="logo-beta"></i></a>
+					</div>
 					<div class="header-links">
 						<ul>
-						<li><a href="#/user/homepage">{{ 'baseLayout.header.links.learn'| i18n }} </a></li>
+							<li><a href="#/user/homepage">{{
+									'baseLayout.header.links.learn'| i18n }} </a></li>
 							<li
 								ng-repeat="item in ['Create','Parents','Teachers','Contribute']">
-								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | i18n }}</a>
+								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' +
+									item.toLowerCase() | i18n }}</a>
 							</li>
-                        </ul>
-                    </div>
-					<div class="header-search">
-						<input placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" /> <i
-							class="icon-search"></i>
+						</ul>
 					</div>
-					
+					<div class="header-search">
+						<input
+							placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" />
+						<i class="icon-search"></i>
+					</div>
 					<div class="header-login" ng-show="!user">
-						<a href="#"> {{ 'button.login' | i18n }}</a> <a href="#/public/session/signup"> {{ 'button.signup' | i18n }}</a>
+						<a href="#"> {{ 'button.login' | i18n }}</a> <a
+							href="#/public/session/signup"> {{ 'button.signup' | i18n }}</a>
 					</div>
 					<div class="header-login" ng-show="!!user">
-						<a href="#/user/lessons"><i class="fa fa-user fa-fw"></i> {{user.username}}</a>
-						<button class="btn" ng-click="logout()">{{'baseLayout.header.logout' | i18n  }}</button>
+						<a href="#/user/lessons"><i class="fa fa-user fa-fw"></i>
+							{{user.username}}</a>
+						<button class="btn" ng-click="logout()">{{'baseLayout.header.logout'
+							| i18n }}</button>
+					</div>
+					<div class="header-login" style="margin-top: -25px">
+						<i class="fa fa-globe fa-fw"></i> <select
+							ng-model="$root.lergoLanguage"
+							ng-options="lang.id as lang.label for lang in $root.lergoLanguages"></select>
 					</div>
 				</div>
 
@@ -36,28 +48,40 @@
 	<div id="footer">
 		<div class="centered-content">
 			<div class="footer-text">
-				{{'baseLayout.footer.text1' | i18n  }}
-				<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | i18n  }};</a>
-				{{'baseLayout.footer.text3' | i18n  }}.
+				{{'baseLayout.footer.text1' | i18n }} <a
+					href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2'
+					| i18n }};</a> {{'baseLayout.footer.text3' | i18n }}.
 			</div>
-			<div class="footer-links">
-				<ul>
-					<li><a href="#/public/baselayout/privacy">{{'baseLayout.footer.privacyAndTerms' | i18n  }}</a></li>
-					<li><a href="#/public/about">{{'baseLayout.footer.about' | i18n  }}</a></li>
-					<li><a href="#/user/homepage"> {{'baseLayout.footer.homepage' | i18n  }}</a></li>
-					<li><a href="#/public/baselayout/contact">{{'baseLayout.footer.contact' | i18n  }}</a></li>
-					<li><a href="#/public/baselayout/blog">{{'baseLayout.footer.blog' | i18n}}</a></li>
-					<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
-					<li><a href="#/public/translations/diff">Translations Diff</a></li>
-					<li><a class="weight12"href="#/public/baselayout/feedback">{{'baseLayout.footer.feedback' | i18n}}</a></li>
-					<li><a class="weight12"href="#/public/baselayout/suggest">{{'baseLayout.footer.suggest' | i18n}}</a></li>
-					<li><a class="weight12" href="#/public/baselayout/problem">{{'baseLayout.footer.problem' | i18n}}</a></li>
-					<li><a class="weight12" href="#/public/baselayout/abuse">{{'baseLayout.footer.abuse' | i18n}}</a></li>
-				</ul>
-			</div>
-			<div class="copyrights">
-				<div>&copy; 2014 LerGO - Educate Yourself (R.A.)</div>
-				<div>Except where noted, all rights reserved.</div>
+			<div>
+				<div class="footer-links">
+					<ul>
+						<li><a href="#/public/baselayout/privacy">{{'baseLayout.footer.privacyAndTerms'
+								| i18n }}</a></li>
+						<li><a href="#/public/about">{{'baseLayout.footer.about'
+								| i18n }}</a></li>
+						<li><a href="#/user/homepage">
+								{{'baseLayout.footer.homepage' | i18n }}</a></li>
+						<li><a href="#/public/baselayout/contact">{{'baseLayout.footer.contact'
+								| i18n }}</a></li>
+						<li><a href="#/public/baselayout/blog">{{'baseLayout.footer.blog'
+								| i18n}}</a></li>
+						<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
+						<li><a href="#/public/translations/diff">Translations
+								Diff</a></li>
+						<li><a class="weight12" href="#/public/baselayout/feedback">{{'baseLayout.footer.feedback'
+								| i18n}}</a></li>
+						<li><a class="weight12" href="#/public/baselayout/suggest">{{'baseLayout.footer.suggest'
+								| i18n}}</a></li>
+						<li><a class="weight12" href="#/public/baselayout/problem">{{'baseLayout.footer.problem'
+								| i18n}}</a></li>
+						<li><a class="weight12" href="#/public/baselayout/abuse">{{'baseLayout.footer.abuse'
+								| i18n}}</a></li>
+					</ul>
+				</div>
+				<div class="copyrights">
+					<div>&copy; 2014 LerGO - Educate Yourself (R.A.)</div>
+					<div>Except where noted, all rights reserved.</div>
+				</div>
 			</div>
 		</div>
 	</div>
