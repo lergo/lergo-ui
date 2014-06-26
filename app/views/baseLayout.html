@@ -12,12 +12,15 @@
 								<a href="#/user/homepage">{{ 'baseLayout.header.links.learn'| i18n }} </a>
 							</li>
 							<li>
-								<a href="#/user/lessons">{{ 'baseLayout.header.links.create'| i18n }} </a>
+								<a href="#/user/create">{{ 'baseLayout.header.links.create'| i18n }} </a>
 							</li>
 							<li
-								ng-repeat="item in ['Parents','Teachers','Contribute']">
+								ng-repeat="item in ['Parents','Teachers']">
 								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' +
 									item.toLowerCase() | i18n }}</a>
+							</li>
+							<li>
+								<a href="#/public/contribute">{{ 'baseLayout.header.links.contribute'| i18n }} </a>
 							</li>
 						</ul>
 					</div>
@@ -31,7 +34,7 @@
 							href="#/public/session/signup"> {{ 'button.signup' | i18n }}</a>
 					</div>
 					<div class="header-login" ng-show="!!user">
-						<a href="#/user/lessons"><i class="fa fa-user fa-fw"></i>
+						<a href="#/user/create"><i class="fa fa-user fa-fw"></i>
 							{{user.username}}</a>
 						<button class="btn" ng-click="logout()">{{'baseLayout.header.logout'
 							| i18n }}</button>
@@ -52,33 +55,35 @@
 	<div id="footer">
 		<div class="centered-content">
 			<div class="footer-text">
-				{{'baseLayout.footer.text1' | i18n }} <a
-					href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2'
-					| i18n }};</a> {{'baseLayout.footer.text3' | i18n }}.
+				{{'baseLayout.footer.text1' | i18n }}
+				<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | i18n }};</a>
+				{{'baseLayout.footer.text3' | i18n }}
+				<a href="#/public/terms">{{'baseLayout.footer.text4' | i18n }}.</a>
+				{{'baseLayout.footer.text5' | i18n }}.
 			</div>
 			<div>
 				<div class="footer-links">
 					<ul>
-						<li><a href="#/public/baselayout/privacy">{{'baseLayout.footer.privacyAndTerms'
+						<li><a href="#/public/terms">{{'baseLayout.footer.privacyAndTerms'
 								| i18n }}</a></li>
-						<li><a href="#/public/about">{{'baseLayout.footer.about'
+						<li><a href="http://signup.lergo.org">{{'baseLayout.footer.about'
 								| i18n }}</a></li>
 						<li><a href="#/user/homepage">
 								{{'baseLayout.footer.homepage' | i18n }}</a></li>
-						<li><a href="#/public/baselayout/contact">{{'baseLayout.footer.contact'
+						<li><a href="#/public/contact">{{'baseLayout.footer.contact'
 								| i18n }}</a></li>
-						<li><a href="#/public/baselayout/blog">{{'baseLayout.footer.blog'
+						<li><a href="#/public/blog">{{'baseLayout.footer.blog'
 								| i18n}}</a></li>
 						<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
 						<li><a href="#/public/translations/diff">Translations
 								Diff</a></li>
-						<li><a class="weight12" href="#/public/baselayout/feedback">{{'baseLayout.footer.feedback'
+						<li><a class="weight12" href="#/public/feedback">{{'baseLayout.footer.feedback'
 								| i18n}}</a></li>
-						<li><a class="weight12" href="#/public/baselayout/suggest">{{'baseLayout.footer.suggest'
+						<li><a class="weight12" href="#/public/suggest">{{'baseLayout.footer.suggest'
 								| i18n}}</a></li>
-						<li><a class="weight12" href="#/public/baselayout/problem">{{'baseLayout.footer.problem'
+						<li><a class="weight12" href="#/public/problem">{{'baseLayout.footer.problem'
 								| i18n}}</a></li>
-						<li><a class="weight12" href="#/public/baselayout/abuse">{{'baseLayout.footer.abuse'
+						<li><a class="weight12" href="#/public/abuse">{{'baseLayout.footer.abuse'
 								| i18n}}</a></li>
 					</ul>
 				</div>

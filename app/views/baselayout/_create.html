@@ -1,0 +1,14 @@
+<div class="base-layout" id="create">
+	<div >
+		<tabset> 
+		<tab heading="{{'baseLayout.header.links.lessons' | i18n}}">
+		<div ng-include="'views/lessons/_index.html'" ng-controller="LessonsIndexCtrl"></div>
+		</tab> 
+		<tab heading="{{'baseLayout.header.links.questions' | i18n}}">
+		<div ng-include="'views/questions/_index.html'" ng-controller="QuestionsIndexCtrl"></div>
+		</tab> 
+		<!-- <tab heading="Admin">
+		<div ng-include="'views/admin/homepage.html'" ng-controller="AdminHomepageCtrl"></div>
+		</tab> --> </tabset>
+	</div>
+</div>
