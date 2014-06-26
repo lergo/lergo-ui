@@ -500,3 +500,9 @@ $COLOR_19: #2a6496 !default;
 .age-limit-17 { background-color:   $AGE_LIMIT_17       }
 .age-limit-18 { background-color:   $AGE_LIMIT_18       }
 .age-limit-18 + { background-color: $AGE_LIMIT_18_PLUS  }
+
+.kitchen-sink{
+	.active{
+			border:0;
+		}
+}
