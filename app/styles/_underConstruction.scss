@@ -1,12 +1,22 @@
 #underConstruction{
 
 	.lergo-h1{
-		text-align:center;}
+		text-align:center;
+		text-transform: none;
+		}
 
   &.common-content, .common-content{
     margin: 100px auto;
     width:400px;
     text-align: center;
     line-height: 30px;
+  }
+  
+   .construction{
+    width: 160px;
+    height: 159px;
+    display:inline-block;
+    background: url('../images/under-construction.png')
+
   }
 }

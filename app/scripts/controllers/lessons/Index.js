@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location,FilterService) {
+angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, FilterService) {
 	$scope.lessons = null;
-	
+
 	$scope.filter = {};
 	$scope.ageFilter = function(lesson) {
 		return FilterService.filterByAge($scope.filter, lesson.age);
@@ -13,6 +13,15 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 	$scope.subjectFilter = function(lesson) {
 		return FilterService.filterBySubject($scope.filter, lesson.subject);
 	};
+
+	LergoClient.lessons.getAll().then(function(result) {
+		$scope.lessons = result.data;
+		$scope.errorMessage = null;
+		$log.info('Lesson fetched sucessfully');
+	}, function(result) {
+		$scope.errorMessage = 'Error in fetching Lessons : ' + result.data.message;
+		$log.error($scope.errorMessage);
+	});
 	$scope.getAll = function() {
 		LergoClient.lessons.getAll().then(function(result) {
 			$scope.lessons = result.data;
@@ -37,6 +46,5 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 			$log.error($scope.errorMessage);
 		});
 	};
-
 
 });
