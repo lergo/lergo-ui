@@ -1,4 +1,6 @@
-{	"underConstruction":"Under Construction....Stay Tuned",
+{	
+	"clickHere":"click here",
+	"underConstruction":"Under Construction....Stay Tuned",
 	"redirectToHome":"Redirect to homepage",
 	"start":"Start",
 	"share":"Share",
@@ -128,13 +130,17 @@
         "letsContinue": "OK! Let's Continue",
         "lessonCompleted": "You have completed the lesson",
         "addQuestion": "Add Question to Quiz",
-        "videoURL": "Video URL"
+        "videoURL": "Video URL",
+        "videoURLHelpText": "Insert your YouTube URL here",
+        "genericVideos": "For a list of generic animated videos please"
     },
     "steps": {
         "add": "Add Step",
         "title": "Step Title",
         "type": "Step Type",
         "video": "Video",
+        "required":"required",
+    	"invalidURL" :"Please enter valid youtube URL",
         "quiz": "Quiz",
         "display": "Display Step",
         "noMoreQuestions": "No More Questions",
