@@ -1,8 +1,23 @@
-<table class="table lergo-form">
+<ng-form name="videoForm">
+<table class="lergo-table lergo-form">
 	<tr>
-		<td style="border-top: none; align: left; width: 10%">{{ 'lessons.videoURL' | i18n }}</td>
-		<td style="border-top: none; align: right"><input
-			ng-model="step.videoUrl" /></td>
+		<td style="width: 10%">{{ 'lessons.videoURL' | i18n }}</td>
+		<td>
+			<div class="form-group" ng-class="{ 'has-error' : videoForm.videoURL.$invalid && !videoForm.videoURL.$pristine }">
+				<input required class="form-control" name="videoURL" placeholder="{{'lessons.videoURLHelpText' | i18n }}" ng-model="step.videoUrl"
+					ng-pattern="/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/">
+				<p ng-show="videoForm.videoURL.$error.pattern || (videoForm.videoURL.$invalid && !videoForm.videoURL.$pristine)" class="help-block">{{'steps.invalidURL'
+					| i18n}}</p>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			{{ 'lessons.genericVideos' | i18n }}
+			<a ng-href="https://docs.google.com/spreadsheets/d/1g_JlB6lSM0N1X-oTb_kEP6UgggCVfLuvkRCe-h7Oqjo/edit?usp=sharing/{{hash}}">{{'clickHere' |
+				i18n}}</a>
+		</td>
 	</tr>
 </table>
-
+</ng-form>
