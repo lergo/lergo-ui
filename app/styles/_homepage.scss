@@ -178,6 +178,9 @@
     .stats-table {
       width: 100%;
       td {
+        span i {
+          text-align:left;
+        }
         padding-bottom: 5px;
       }
     }
