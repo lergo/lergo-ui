@@ -147,7 +147,7 @@ angular.module('lergoApp').controller(
         }, true);
 
         $scope.done = function () {
-            $location.path('/user/lessons');
+            $location.path('/user/create');
         };
 
         $scope.getStepViewByType = function (step) {
@@ -286,5 +286,23 @@ angular.module('lergoApp').controller(
                 }
             });
         };
+        
+        $scope.$on('$locationChangeStart',function(event) {
+			if (!$scope.lesson.name) {
+				var answer = confirm('For the lesson to be created and saved, you must fill at least the Name field. By leaving this page without filling this field, all changes will be lost.');
+				if (!answer) {
+					event.preventDefault();
+				} else {
+					  LergoClient.lessons.delete($scope.lesson._id).then(function() {
+			                $scope.errorMessage = null;
+			                $log.info('Lesson deleted sucessfully');
+			                $location.path('/user/lessons');
+			            }, function(result) {
+			                $scope.errorMessage = 'Error in deleting Lesson : ' + result.data.message;
+			                $log.error($scope.errorMessage);
+			            });
+				}
+			}
+		});
 
     });
