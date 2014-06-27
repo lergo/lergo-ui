@@ -20,7 +20,7 @@
 				<tr>
 					<td>{{ 'filters.labels.language' | i18n }}</td>
 					<td>
-						<select ng-model="lesson.language" ng-options="l as ('filters.languages.' + l| i18n) for l in languages"></select>
+						<select ng-model="lesson.language" ng-options="l.id as ('filters.languages.' + l.id| i18n) for l in languages"></select>
 					</td>
 					<td>{{ 'filters.labels.subject' | i18n }}</td>
 					<td>
