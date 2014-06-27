@@ -1,7 +1,32 @@
 'use strict';
 
 angular.module('lergoApp').service('FilterService', function Filterservice() {
-	this.languages = [ 'english', 'hebrew', 'arabic', 'russian', 'other', ];
+	this.languages = [ {
+		'id' : 'english',
+		'locale' : 'en'
+	}, {
+		'id' : 'hebrew',
+		'locale' : 'he'
+	}, {
+		'id' : 'arabic',
+		'locale' : 'en'
+	}, {
+		'id' : 'russian',
+		'locale' : 'en'
+	}, {
+		'id' : 'other',
+		'locale' : 'en'
+	} ];
+	
+	this.getLocaleByLanguage=function(id){
+		for ( var i = 0; i < this.languages.length; i++) {
+			if (id === this.languages[i].id) {
+				return this.languages[i].locale;
+			}
+
+		}
+		return 'en';
+	};
 	this.subjects = [ 'english', 'math', 'science', 'grammar', 'spelling', 'biology', 'other' ];
 
 	/**
