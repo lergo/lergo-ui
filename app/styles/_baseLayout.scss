@@ -202,8 +202,10 @@ $FOOTER_HEIGHT: 170px !default;
       width:26px;
       height:24px;
       display:inline-block;
+      position:absolute;
       background: url('/images/homepage/search-icon.png') no-repeat;
-      margin-left:7px;
+      margin-left:15px;
+      margin-top:6px;
     }
     input{
       border-top-left-radius: 8px;

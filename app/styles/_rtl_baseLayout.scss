@@ -38,6 +38,18 @@ body.rtl{
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
 
+        input {
+          border-top-right-radius: 10px;
+          border-top-left-radius: 3px;
+          border-bottom-left-radius: 3px;
+          border-bottom-right-radius: 3px;
+        }
+
+        i{
+          margin-left:0;
+          margin-right:16px;
+        }
+
       }
     }
 
