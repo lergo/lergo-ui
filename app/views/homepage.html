@@ -83,7 +83,7 @@
                                     <td>
 									<span ng-show="!!lesson.questionsCount">
 										<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
-										{{lesson.questionsCount}}
+										{{lesson | countQuestionsOnLesson }}
 									</span>
                                     </td>
                                 </tr>
