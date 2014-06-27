@@ -1,0 +1,237 @@
+{
+  "baseLayout": {
+    "footer": {
+      "about": "Test Notification",
+      "contact": "Контакт",
+      "homepage": "Домашняя Страничка",
+      "privacyAndTerms": "Конфиденциальность & Условия"
+    },
+    "header": {
+      "links": {
+        "contribute": "Содействие",
+        "create": "Создать",
+        "learn": "Изучить",
+        "lessons": "Уроки",
+        "parents": "Родители",
+        "questions": "Вопросы",
+        "teachers": "Учителя"
+      },
+      "logout": "Выйти",
+      "searchPlaceholder": "О чем бы вы хотели узнать?"
+    }
+  },
+  "button": {
+    "forgotPassword": "Забыли пароль?",
+    "login": "Войти",
+    "resendValidationEmail": "Выслать проверку по электронной почте",
+    "signup": "Регистрация",
+    "submit": "Послать"
+  },
+  "changePassword": {
+    "error": "Произошла ошибка при изменении пароля",
+    "signup": "Регистрация",
+    "success": "Вы успешно изменили пароль"
+  },
+  "congratulations": "Поздравляем",
+  "delete": "Удалить",
+  "description": "Описание",
+  "done": "Сделано",
+  "down": "Вниз",
+  "edit": "Редактировать",
+  "email": "Электронная Почта",
+  "featured": "Избранные",
+  "filters": {
+    "all": "Все",
+    "labels": {
+      "ageRange": "Возрастной Диапазон",
+      "language": "Язык",
+      "subject": "Предмет"
+    },
+    "languages": {
+      "few": "Несколько",
+      "many": "Много",
+      "one": "Один",
+      "other": "Прочии",
+      "zero": "Ноль",
+      "arabic": "Арабский",
+      "english": "Английский",
+      "hebrew": "Иврит",
+      "russian": "Русский"
+    },
+    "subjects": {
+      "few": "Несколько",
+      "many": "Много",
+      "one": "Один",
+      "other": "Другие",
+      "zero": "Ноль",
+      "biology": "Биология",
+      "english": "Английский",
+      "grammar": "Грамматика",
+      "math": "Математика",
+      "science": "Наука",
+      "spelling": "Правописание"
+    }
+  },
+  "fromAge": "С Возраста",
+  "homepage": {
+    "andCounting": "и считаем ...",
+    "createYourOwn": "Создайте Ваш Собственный Урок",
+    "free": "это бесплатно!",
+    "lessons": "уроки",
+    "questions": "вопросы",
+    "start": "начать"
+  },
+  "input": {
+    "confirmPassword": "Подтвердите Пароль",
+    "email": "Электронная Почта",
+    "fullName": "Полное Имя",
+    "password": "Пароль",
+    "username": "Имя Пользователя"
+  },
+  "invitations": {
+    "create": "Создать Приглашение",
+    "error": "Произошла ошибка при посылке приглашения :(",
+    "sending": "Посылаем приглашение, пожалуйста подождите ...",
+    "sent": "Приглашение успешно выслано"
+  },
+  "invite": "Пригласить",
+  "languages": {
+    "en": "Английский",
+    "he": "Иврит",
+    "ru": "Русский"
+  },
+  "lessons": {
+    "addQuestion": "Добавить Вопрос к Опросу",
+    "areYouReady": "Готовы ли вы начать обучение?",
+    "available": "Имеющиеся Уроки",
+    "create": "Создать Новый Урок",
+    "description": "Описание Урока",
+    "filter": "Фильтры Уроков",
+    "filters": {
+      "labels": {
+        "age range": "Возрастной Диапазон",
+        "language": "Язык",
+        "subject": "Предмет"
+      }
+    },
+    "lessonCompleted": "Вы завершили урок.",
+    "letsContinue": "Окей! Давайте продолжим.",
+    "letsGo": "Давайте LerGO!",
+    "myLessons": "Мои Уроки",
+    "name": "Название Урока",
+    "tags": "Таги",
+    "total": "Всего",
+    "videoURL": "Видео URL"
+  },
+  "loginPage": {
+    "login": "Войти",
+    "password": "Пароль",
+    "signup": "Регистрация",
+    "username": "Имя Пользователя"
+  },
+  "name": "Имя",
+  "new": "Новый",
+  "next": "Следующий",
+  "popular": "Популярные",
+  "preview": "Просмотр",
+  "questions": {
+    "age": "Возраст",
+    "answer": "Ответ",
+    "answerOption": "Возможные Ответы",
+    "audioUrl": "Аудио URL",
+    "audioUrlHint": "Чтобы добавить аудио к вопросу, пожалуйста, заполните аудио URL (путь к аудио)",
+    "clickToAdd": "Нажмите здесь, чтобы добавить ответ",
+    "correctAnswer": "Правильный Ответ",
+    "correctAnswerFilled": "Вы правы!",
+    "correctAnswers": "Правильные Ответы",
+    "createNew": "Создать Новый Вопрос",
+    "filter": "Фильтры Вопросов",
+    "help": "Текст Подсказки",
+    "incorrectAnswerFilled": "Это неверно",
+    "language": "Язык",
+    "languages": {
+      "few": "Несколько",
+      "many": "Много",
+      "one": "Один",
+      "other": "Другие",
+      "zero": "Ноль",
+      "arabic": "Арабский",
+      "english": "Английский",
+      "hebrew": "Иврит",
+      "russian": "Русский"
+    },
+    "longAnswer": "Длинный ответ (параграф)",
+    "myQuestions": "Мои Вопросы",
+    "noQuestions": "Не найдено вопросов для отображения",
+    "possibleAnswers": "Возможные Ответы",
+    "question": "Вопрос",
+    "questionType": "Тип Вопроса",
+    "requiredAnswer": "Требуемый Формат Ответа",
+    "select": "Выберите",
+    "shortAnswer": "Короткий Ответ (несколько слов)",
+    "subject": "Предмет",
+    "subjects": {
+      "few": "Несколько",
+      "many": "Много",
+      "one": "Один",
+      "other": "Другие",
+      "zero": "Ноль",
+      "biology": "Биология",
+      "english": "Английский",
+      "grammar": "Грамматика",
+      "math": "Математика",
+      "science": "Наука",
+      "spelling": "Правописание"
+    },
+    "thankYou": "Спасибо за ваш ответ",
+    "total": "Всего",
+    "types": {
+      "exactMatch": "Точное Совпадение",
+      "multipleChoices": "Множественный Выбор",
+      "openQuestion": "Открытый Вопрос",
+      "trueFalse": "Правда или Ложь"
+    }
+  },
+  "quizItem": {
+    "answer": {
+      "False": "Ложь",
+      "True": "Правда"
+    }
+  },
+  "remove": "Удалить",
+  "resetPassword": {
+    "emailSentSuccessfully": "Пожалуйста, проверьте свой почтовый ящик и следуйте инструкциям",
+    "error": "Произошла ошибка при запросе",
+    "instructions": "Заполните имя пользователя или электронную почту и нажмите Послать.",
+    "success": "Ваш запрос был успешно отправлен"
+  },
+  "saved": "Сохранено",
+  "saving": "Сохраняем",
+  "steps": {
+    "add": "Добавить Шаг",
+    "display": "Отобразить Шаг",
+    "noMoreQuestions": "Больше Вопросов Нет",
+    "quiz": "Опрос",
+    "selectAnAnswer": "Выбрите Ответ",
+    "title": "Название Шага",
+    "type": "Тип Шага",
+    "video": "Видео"
+  },
+  "subject": {
+    "art": "Исскуство",
+    "math": "Математика",
+    "spelling": "Правописание"
+  },
+  "tagHint": "Отделите теги запятыми (например there Vs their, орфография, грамматика)",
+  "tags": "Теги",
+  "title": "Название",
+  "translation": {
+    "baseLanguage": "Базовый Язык",
+    "comparingTitle": "Сравнить Названия",
+    "key": "Ключ",
+    "translation": "Перевод"
+  },
+  "up": "Вверх",
+  "view": "Просматривать",
+  "welcome": "Добро Пожаловать"
+}

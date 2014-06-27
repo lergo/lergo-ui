@@ -1,0 +1,231 @@
+{
+  "baseLayout": {
+    "footer": {
+      "about": "عن لارجو",
+      "contact": "اتصل بنا",
+      "homepage": "الصفحة  الرئيسية\n",
+      "privacyAndTerms": "الخصوصية  وشروط  الخدمة"
+    },
+    "header": {
+      "links": {
+        "contribute": "للتبرع",
+        "create": "لننتج",
+        "learn": "لنتعلم",
+        "lessons": "دروس",
+        "parents": "الاهل",
+        "questions": "أسئلة",
+        "teachers": "المعلمون"
+      },
+      "logout": "تسجيل الخروج",
+      "searchPlaceholder": "ما هو الموضوع الذي ترغب بدراسته؟"
+    }
+  },
+  "button": {
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "login": "دخول",
+    "resendValidationEmail": "إعادة إرسال البريد الإلكتروني والتحقق من صحته .",
+    "signup": "تسجيل",
+    "submit": "عرض"
+  },
+  "changePassword": {
+    "error": "كان هناك خطأ تغيير كلمة المرور الخاصة بك",
+    "signup": "تسجيل",
+    "success": "تم تغيير كلمة المرور بنجاح"
+  },
+  "congratulations": "هنيئا لكم ",
+  "delete": "حذف",
+  "description": "الوصف",
+  "done": "منجز",
+  "down": "هبوطا ",
+  "edit": "تعديل",
+  "email": "البريد الإلكتروني.",
+  "featured": "موصى به",
+  "filters": {
+    "all": "الجميع",
+    "labels": {
+      "ageRange": "مجموعة الجيل",
+      "language": "اللغة",
+      "subject": "الموضوع"
+    },
+    "languages": {
+      "few": "قليل ",
+      "many": "كثير",
+      "one": "واحد",
+      "other": "بديل آخر",
+      "two": "اثنان",
+      "zero": "صفر",
+      "arabic": "العربيّة",
+      "english": "الانجليزية",
+      "hebrew": "العبرية",
+      "russian": "لغة روسية"
+    },
+    "subjects": {
+      "few": "قليل ",
+      "many": "كثير",
+      "one": "واحد",
+      "other": "بديل آخر",
+      "two": "اثنان",
+      "zero": "صفر",
+      "biology": "علم الاحياء",
+      "english": "الانجليزية",
+      "grammar": "قواعد ",
+      "math": "الرياضيات",
+      "science": "العلم",
+      "spelling": "هجاء"
+    }
+  },
+  "fromAge": "من سن",
+  "homepage": {
+    "andCounting": "والعد ...",
+    "createYourOwn": "انتاج دروس خاصة بك",
+    "free": "هذا مجانيّ",
+    "lessons": "دروس",
+    "questions": "أسئلة",
+    "start": "بداية"
+  },
+  "input": {
+    "confirmPassword": "تأكيد كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "fullName": "الاسم الكامل",
+    "password": "كلمة السر",
+    "username": "اسم المستخدم"
+  },
+  "invitations": {
+    "create": "دعوة إلى الدرس",
+    "error": "خطأ في إرسال دعوة :(",
+    "sending": "يتم إرسال دعوة، يرجى الانتظار ...",
+    "sent": "ارسلت الدعوة بنجاح"
+  },
+  "invite": "دعا ",
+  "languages": {
+    "en": "الانجليزية",
+    "he": "العبرية",
+    "ru": "لغة روسية"
+  },
+  "lessons": {
+    "addQuestion": "إضافة سؤال للاختبار",
+    "areYouReady": "هل أنت على استعداد للبدء في تعلم؟",
+    "available": "الدروس المتاحة",
+    "create": "إنشاء الدرس جديد",
+    "description": "وصف الدرس",
+    "filter": "اختيار الدروس",
+    "filters": {
+      "labels": {
+        "age range": "مجموعة الجيل",
+        "language": "اللغة",
+        "subject": "الموضوع"
+      }
+    },
+    "lessonCompleted": "اكملت الدرس بنجاح",
+    "letsContinue": "حسنا! هيا نتابع العمل",
+    "letsGo": "دعونا LerGO!",
+    "myLessons": "دروسي",
+    "name": "اسم الدرس",
+    "tags": "التسميات ",
+    "total": "مجموع",
+    "videoURL": "رابط الفيديو"
+  },
+  "loginPage": {
+    "login": "دخول",
+    "password": "كلمة السر",
+    "signup": "تسجيل",
+    "username": "اسم المستخدم"
+  },
+  "name": "اسم",
+  "new": "جديد",
+  "next": "التالي",
+  "popular": "مشهور",
+  "preview": "معاينة ",
+  "questions": {
+    "age": "سن",
+    "answer": "إجابة",
+    "answerOption": "جواب اختياري ",
+    "audioUrl": " رابط سمعي",
+    "audioUrlHint": "لإضافة الصوت على السؤال، يرجى تحديث رابط الصوت",
+    "clickToAdd": "انقر هنا لإضافة جوابا",
+    "correctAnswer": "الاجابة الصحيحة",
+    "correctAnswerFilled": "كنت على صواب",
+    "correctAnswers": "الإجابات الصحيحة",
+    "createNew": "إنشاء سؤال جديد",
+    "filter": "اختيار الأسئلة",
+    "help": "نص تعليمات",
+    "incorrectAnswerFilled": "هذا غير صحيح",
+    "language": "اللغة",
+    "languages": {
+      "few": "قليل",
+      "many": "الكثير",
+      "one": "واحد",
+      "other": "بديل آخر",
+      "two": "اثنين",
+      "zero": "صفر",
+      "arabic": "العربيّة",
+      "english": "الانجليزية",
+      "hebrew": "العبرية",
+      "russian": "لغة روسية"
+    },
+    "longAnswer": "جواب طويل (الفقرة)",
+    "myQuestions": "أسئلتي.",
+    "noQuestions": "ليست هناك أي أسئلة لعرضه",
+    "possibleAnswers": "الأجوبة المحتملة",
+    "question": "سؤال",
+    "questionType": "نوع السؤال",
+    "requiredAnswer": "تنسيق الاجابة المطلوبة",
+    "select": "اختر",
+    "shortAnswer": "اجابة قصيرة (بضع كلمات)",
+    "subject": "الموضوع",
+    "subjects": {
+      "few": "",
+      "other": "بديل آخر",
+      "biology": "علم الاحياء",
+      "english": "الانجليزية",
+      "grammar": "قواعد ",
+      "math": "الرياضيات",
+      "science": "العلم",
+      "spelling": "هجاء"
+    },
+    "thankYou": "شكرا لكم على إجابتك",
+    "total": "مجموع",
+    "types": {
+      "exactMatch": "تطابق تام",
+      "multipleChoices": "تعدّد الخيارات",
+      "openQuestion": "سؤال مفتوح",
+      "trueFalse": "صحيح أم خطأ"
+    }
+  },
+  "quizItem": {
+    "answer": {
+      "False": "خطأ",
+      "True": "صحيح "
+    }
+  },
+  "remove": "إزالة",
+  "resetPassword": {
+    "emailSentSuccessfully": "يرجى مراجعة صندوق البريد الوارد الخاص بك واتبع التعليمات",
+    "error": "كان هناك خطأ تقديم الطلب",
+    "instructions": "املأ اسم المستخدم أو البريد الإلكتروني وإرسل النموذج.",
+    "success": "تم إرسال طلبك بنجاح."
+  },
+  "saved": "تم حفظ جميع التغييرات ",
+  "saving": "يتم حفظ التغييرات...",
+  "steps": {
+    "add": "إضف خطوة",
+    "display": "عرض الخطوة",
+    "noMoreQuestions": "لا توجد المزيد من الأسئلة لعرضه",
+    "quiz": "اختبار",
+    "selectAnAnswer": "اختر إجابة.",
+    "title": "اسم الخطوة   ",
+    "type": "نوع الخطوة ",
+    "video": "فيديو"
+  },
+  "subject": {
+    "art": "الفن.",
+    "math": "الرياضيات",
+    "spelling": "هجاء"
+  },
+  "tagHint": "يرجى فصل بين العلامات بفواصل (على سبيل: الهجاء والنحو واللغة ولإنجليزية)",
+  "tags": "التسميات ",
+  "title": "عنوان",
+  "up": "صعودا",
+  "view": "رؤية",
+  "welcome": "ترحيب"
+}
