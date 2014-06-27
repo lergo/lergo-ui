@@ -1,4 +1,6 @@
-{	"underConstruction":"Under Construction",
+{	
+	"clickHere":"click here",
+	"underConstruction":"Under Construction....Stay Tuned",
 	"redirectToHome":"Redirect to homepage",
 	"start":"Start",
 	"share":"Share",
@@ -60,7 +62,9 @@
         	"blog":"Blog",
     		"text1":"Text of questions is available under the",
     		"text2":"Creative Commons Attribution-NonCommercial-ShareAlike License",
-    		"text3":"additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. LerGO is an open source EdTech venture of LerGO-Educate Yourself (R.A), a registered nonprofit organisation."
+    		"text3":"additional terms may apply. By using this site, you agree to the",
+    		"text4":"Terms of Use and Privacy Policy",
+    		"text5":"LerGO is an open source EdTech venture of LerGO-Educate Yourself (R.A), a registered nonprofit organisation"
         }
     },
     "homepage": {
@@ -126,13 +130,17 @@
         "letsContinue": "OK! Let's Continue",
         "lessonCompleted": "You have completed the lesson",
         "addQuestion": "Add Question to Quiz",
-        "videoURL": "Video URL"
+        "videoURL": "Video URL",
+        "videoURLHelpText": "Insert your YouTube URL here",
+        "genericVideos": "For a list of generic animated videos please"
     },
     "steps": {
         "add": "Add Step",
         "title": "Step Title",
         "type": "Step Type",
         "video": "Video",
+        "required":"required",
+    	"invalidURL" :"Please enter valid youtube URL",
         "quiz": "Quiz",
         "display": "Display Step",
         "noMoreQuestions": "No More Questions",
