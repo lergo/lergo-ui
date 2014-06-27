@@ -11,7 +11,7 @@
 	"hint": "Hint",
 	"tags" :"Tags",
 	"fromAge":"From Age",
-   	"tagHint": "Separate tags by commas (e.g. there Vs their, spelling, grammar)",
+   	"tagHint": "Separate tags by commas (e.g. there vs their, spelling, grammar)",
     "featured":"Featured",
     "popular":"Popular",
     "new":"New",
@@ -131,7 +131,7 @@
         "lessonCompleted": "You have completed the lesson",
         "addQuestion": "Add Question to Quiz",
         "videoURL": "Video URL",
-        "videoURLHelpText": "Insert your YouTube URL here",
+        "videoURLHelpText": "Insert YouTube URL here",
         "genericVideos": "For a list of generic animated videos please"
     },
     "steps": {
@@ -144,7 +144,8 @@
         "quiz": "Quiz",
         "display": "Display Step",
         "noMoreQuestions": "No More Questions",
-        "selectAnAnswer": "Select an Answer"
+        "selectAnAnswer": "Select an Answer",
+        "answer":"Answer"
     },
     "invitations": {
         "createdSuccessfully" : "We created your invitation",
@@ -300,7 +301,11 @@
     	"description":"Lesson Description",
     	"completed":"has completed lesson",
     	"date":"Date",
-    	"questionsInQuiz":"questions in quiz"
+    	"questionsInQuiz":"questions in quiz",
+    	"recommendation":"Recommendation",
+    	"nextLesson":"Next Lesson",
+    	"priorLesson":"Prior Lesson"
+    		
     }
    
 }
