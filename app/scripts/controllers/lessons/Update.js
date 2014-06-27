@@ -109,9 +109,9 @@ angular.module('lergoApp').controller(
         };
 
         /**
-         * watch questions in step. iterates over all steps of type 'quiz'
-         * and turns the quizItems arrays to a single array *
-         */
+		 * watch questions in step. iterates over all steps of type 'quiz' and
+		 * turns the quizItems arrays to a single array *
+		 */
         $scope.$watch(function () {
             if (!$scope.lesson) {
                 return quizItemsWatch;
