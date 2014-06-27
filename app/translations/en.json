@@ -95,8 +95,8 @@
     	"createdOn":"created on",
     	"recommenedNextLesson":"Recommended Next Lesson",
     	"recommenedPriorLesson":"Recommended Prior Lesson",
-    	"recommenedNextLessonText":"Next recommended lesson",
-    	"recommenedPriorLessonText":"Prior recommended lesson",
+    	"recommenedNextLessonText":"Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
+    	"recommenedPriorLessonText":"Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
     	"myLessons" : "My Lessons",
         "startLesson" : "Start Lesson",
         "seeReport": "See Report",
@@ -132,7 +132,8 @@
         "addQuestion": "Add Question to Quiz",
         "videoURL": "Video URL",
         "videoURLHelpText": "Insert YouTube URL here",
-        "genericVideos": "For a list of generic animated videos please"
+        "genericVideosPre": "For a list of generic animated videos please",
+        "genericVideosPost":"(the list will open in a new tab)."
     },
     "steps": {
         "add": "Add Step",
@@ -140,12 +141,12 @@
         "type": "Step Type",
         "video": "Video",
         "required":"required",
-    	"invalidURL" :"Please enter valid youtube URL",
+    	"invalidURL" :"Please enter valid YouTube URL",
         "quiz": "Quiz",
         "display": "Display Step",
         "noMoreQuestions": "No More Questions",
         "selectAnAnswer": "Select an Answer",
-        "answer":"Answer"
+        "answer":"Please Answer"
     },
     "invitations": {
         "createdSuccessfully" : "We created your invitation",
