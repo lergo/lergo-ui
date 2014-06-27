@@ -23,13 +23,12 @@ angular.module('lergoApp').directive('baseLayout', function($rootScope, $log, $l
 
 				return LergoTranslate.translate('translationLanguage.' + id);
 			};
-			$rootScope.lergoLanguages = [ {
-				'id' : 'en',
-				'label' : 'English'
-			}, {
-				'id' : 'he',
-				'label' : 'Hebrew'
-			} ];
+			$rootScope.lergoLanguages = [ 
+				{ 'id' : 'en', 'label' : 'English' }, 
+				{ 'id' : 'he', 'label' : 'Hebrew' },
+				{ 'id' : 'ar', 'label' : 'Arabic' }, 
+				{ 'id' : 'ru', 'label' : 'Russian' } 
+			];
 
 			$rootScope.$watch('lergoLanguage', function(newValue/* , oldValue */) {
 				$log.info('new language', newValue);
