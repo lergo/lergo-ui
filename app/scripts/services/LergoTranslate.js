@@ -6,7 +6,12 @@ angular.module('lergoApp').service('LergoTranslate',
 
 
 
-        var supportedLanguages = [ { 'id' : 'en', 'dir' : 'ltr' } , { 'id' : 'he', 'dir' : 'rtl' } ];
+        var supportedLanguages = [
+            { 'id' : 'en', 'dir' : 'ltr' } ,
+            { 'id' : 'he', 'dir' : 'rtl' },
+            { 'id' : 'ar', 'dir' : 'rtl' },
+            { 'id' : 'ru', 'dir' : 'ltr' }
+        ];
         var DEFAULT_LANGUAGE = 'en';
         var language = localStorageService.get('lergoLanguage');
         if ( !language ){
