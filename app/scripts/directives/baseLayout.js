@@ -13,22 +13,28 @@ angular.module('lergoApp').directive('baseLayout', function($rootScope, $log, $l
 				}
 			});
 
-
-            // a random number to prevent cache in ng-include
-            $rootScope.getCacheRandomNumber = function(){
-                return Math.floor(new Date().getTime() / 10000);
-            };
+			// a random number to prevent cache in ng-include
+			$rootScope.getCacheRandomNumber = function() {
+				return Math.floor(new Date().getTime() / 10000);
+			};
 
 			$rootScope.getLabelForLanguage = function(id) {
 
 				return LergoTranslate.translate('translationLanguage.' + id);
 			};
-			$rootScope.lergoLanguages = [ 
-				{ 'id' : 'en', 'label' : 'English' }, 
-				{ 'id' : 'he', 'label' : 'Hebrew' },
-				{ 'id' : 'ar', 'label' : 'Arabic' }, 
-				{ 'id' : 'ru', 'label' : 'Russian' } 
-			];
+			$rootScope.lergoLanguages = [ {
+				'id' : 'en',
+				'label' : 'English'
+			}, {
+				'id' : 'he',
+				'label' : 'Hebrew'
+			}, {
+				'id' : 'ar',
+				'label' : 'Arabic'
+			}, {
+				'id' : 'ru',
+				'label' : 'Russian'
+			} ];
 
 			$rootScope.$watch('lergoLanguage', function(newValue/* , oldValue */) {
 				$log.info('new language', newValue);

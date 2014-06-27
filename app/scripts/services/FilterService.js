@@ -9,10 +9,10 @@ angular.module('lergoApp').service('FilterService', function Filterservice() {
 		'locale' : 'he'
 	}, {
 		'id' : 'arabic',
-		'locale' : 'en'
+		'locale' : 'ar'
 	}, {
 		'id' : 'russian',
-		'locale' : 'en'
+		'locale' : 'ru'
 	}, {
 		'id' : 'other',
 		'locale' : 'en'
