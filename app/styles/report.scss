@@ -96,6 +96,24 @@
 	.inline-table{
 	display: inline-table;
 	}
+	
+	.recommendation{
+	.lergo-h1{
+				font-size:15px;
+			}
+			background-color:#EFEFEF;
+			margin-bottom:20px;
+			border-radius: 10px;
+			.icon{
+				width:5%;
+			}
+			.title{
+				width:20%;
+				}
+			.description{
+				width:100%;
+			}
+	}
 	.details{
 		.detail{
 			background-color:#EFEFEF;
