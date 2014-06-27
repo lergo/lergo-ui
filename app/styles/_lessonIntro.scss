@@ -36,12 +36,25 @@
       }
     }
 
-    &>.action-items{
-      float:right;
-      margin-top:-320px;
-      margin-right:16px;
-      font-size:30px;
-      text-align:center;
+    & > .action-items {
+      float: right;
+      margin-top: -320px;
+      margin-right: 16px;
+      font-size: 30px;
+      text-align: center;
+
+      .action-items-top {
+
+      }
+
+      .action-items-bottom {
+        margin-top: 150px;
+        a:nth-child(n+2) {
+          margin-top: 10px;
+          display:inline-block;
+        }
+
+      }
     }
 
     .stats {

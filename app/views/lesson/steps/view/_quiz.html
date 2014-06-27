@@ -25,7 +25,7 @@
          <button ng-show="hasNextQuizItem() && getAnswer(quizItem)" class="btn" ng-click="nextQuizItem()">{{ 'nextQuestion' | i18n }} >></button>
          <button ng-show="!hasNextQuizItem() && getAnswer(quizItem)" class="btn" disabled>{{ 'steps.noMoreQuestions' | i18n }}</button>
       </div>
-      <progressbar animate="false" value="progressPercentage" type="success"> <b>{{progressPercentage}}%</b></progressbar>
+      <progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>
    </div>
    <br>
    <div ng-show="!!getAnswer(quizItem)">
@@ -46,6 +46,6 @@
       </div>
    </div>
    <div ng-show="!getAnswer(quizItem)">
-      <div class="bg-primary">{{ 'steps.selectAnAnswer' | i18n }}</div>
+      <div class="bg-primary">{{'steps.answer' | i18n }}</div>
    </div>
 </div>

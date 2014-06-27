@@ -11,7 +11,7 @@
 	"hint": "Hint",
 	"tags" :"Tags",
 	"fromAge":"From Age",
-   	"tagHint": "Separate tags by commas (e.g. there Vs their, spelling, grammar)",
+   	"tagHint": "Separate tags by commas (e.g. there vs their, spelling, grammar)",
     "featured":"Featured",
     "popular":"Popular",
     "new":"New",
@@ -95,8 +95,8 @@
     	"createdOn":"created on",
     	"recommenedNextLesson":"Recommended Next Lesson",
     	"recommenedPriorLesson":"Recommended Prior Lesson",
-    	"recommenedNextLessonText":"Next recommended lesson",
-    	"recommenedPriorLessonText":"Prior recommended lesson",
+    	"recommenedNextLessonText":"Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
+    	"recommenedPriorLessonText":"Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
     	"myLessons" : "My Lessons",
         "startLesson" : "Start Lesson",
         "seeReport": "See Report",
@@ -131,8 +131,9 @@
         "lessonCompleted": "You have completed the lesson",
         "addQuestion": "Add Question to Quiz",
         "videoURL": "Video URL",
-        "videoURLHelpText": "Insert your YouTube URL here",
-        "genericVideos": "For a list of generic animated videos please"
+        "videoURLHelpText": "Insert YouTube URL here",
+        "genericVideosPre": "For a list of generic animated videos please",
+        "genericVideosPost":"(the list will open in a new tab)."
     },
     "steps": {
         "add": "Add Step",
@@ -140,11 +141,12 @@
         "type": "Step Type",
         "video": "Video",
         "required":"required",
-    	"invalidURL" :"Please enter valid youtube URL",
+    	"invalidURL" :"Please enter valid YouTube URL",
         "quiz": "Quiz",
         "display": "Display Step",
         "noMoreQuestions": "No More Questions",
-        "selectAnAnswer": "Select an Answer"
+        "selectAnAnswer": "Select an Answer",
+        "answer":"Please Answer"
     },
     "invitations": {
         "createdSuccessfully" : "We created your invitation",
@@ -300,7 +302,11 @@
     	"description":"Lesson Description",
     	"completed":"has completed lesson",
     	"date":"Date",
-    	"questionsInQuiz":"questions in quiz"
+    	"questionsInQuiz":"questions in quiz",
+    	"recommendation":"Recommendation",
+    	"nextLesson":"Next Lesson",
+    	"priorLesson":"Prior Lesson"
+    		
     }
    
 }
