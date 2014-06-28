@@ -83,7 +83,7 @@ angular
 					};
 
 					$scope.done = function() {
-						$location.path('/user/create');
+						$location.path('/user/create/questions');
 					};
 					$scope.$on('$locationChangeStart',function(event) {
 						if (!$scope.isValid($scope.quizItem)) {
