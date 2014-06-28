@@ -29,7 +29,7 @@ angular.module('lergoApp').service(
 				}
 				return 'en';
 			};
-			this.subjects = [ 'english', 'math', 'science', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art',
+			this.subjects = [ 'english', 'math','geometry', 'science', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art',
 					'music', 'other' ];
 
 			/**

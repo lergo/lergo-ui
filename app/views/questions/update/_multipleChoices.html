@@ -2,11 +2,11 @@
 {{ (quizItem.options===undefined) && addOption() || ""}}
 <table class="lergo-table lergo-form">
    <thead>
-      <tr style="font-weight: bold">
-         <th>{{ 'questions.possibleAnswers' | i18n }}</th>
-         <th style="width: 10%">{{ 'questions.correctAnswers' | i18n }}</th>
-         <th style="width: 10%">{{ 'remove' | i18n }}</th>
-      </tr>
+      <tr >
+         <td>{{ 'questions.possibleAnswers' | i18n }}</td>
+         <td style="width: 10%">{{ 'questions.correctAnswers' | i18n }}</td>
+         <td style="width: 10%">{{ 'remove' | i18n }}</td>
+      </tr> 
    </thead>
    <tbody>
       <tr ng-repeat="option in quizItem.options track by $index">

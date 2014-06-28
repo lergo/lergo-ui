@@ -462,6 +462,12 @@ $COLOR_19: #2a6496 !default;
      vertical-align: bottom;
      border-bottom: 2px solid $table-border-color;
    }
+   
+    > thead > tr {
+     vertical-align: bottom;
+     border-bottom: 2px solid $table-border-color;
+     font-weight: bold; 
+   }
    // Remove top border from thead by default
    > caption + thead,
    > colgroup + thead,
