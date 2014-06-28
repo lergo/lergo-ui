@@ -49,6 +49,7 @@
 
       .action-items-bottom {
         margin-top: 150px;
+
         a:nth-child(n+2) {
           margin-top: 10px;
           display:inline-block;
@@ -122,6 +123,7 @@
         color: #949494;
         &:hover { color:  $LERGO_LINK_HOVER; }
         a {
+          display:inline-block;
           margin-left:20px;
           font-size:20px;
         }
