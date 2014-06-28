@@ -17,28 +17,28 @@
                 <div class="action-items" ng-show="!!showActionItems()">
 
                     <div class="action-items-top">
-                    <a class="btn-link" ng-click="deleteLesson(lesson)"><i class="fa fa-trash-o" title="{{'lessons.tooltip.delete' | i18n}}"></i></a><br/>
+                    <a class="btn-link" ng-click="deleteLesson(lesson)"><i class="fa fa-trash-o" tooltip="{{'lessons.tooltip.delete' | i18n}}"></i></a><br/>
                     </div>
 
 
 
                     <div class="action-items-bottom">
-                        <a class="btn-link" ng-click="preview()"><i class="fa fa-search-plus" title="{{'lessons.tooltip.preview' | i18n}}"></i></a><br/>
-                        <a class="btn-link" ng-click="copyLesson(les)"><i class="fa fa-copy" title="{{'lessons.tooltip.copy' | i18n}}"></i></a><br/>
-                        <a href="#/user/lesson/{{lesson._id}}/update" title="{{'lessons.tooltip.edit' | i18n}}"><i class="fa fa-pencil-square-o"></i></a><br/>
+                        <a class="btn-link" ng-click="preview()"><i class="fa fa-search-plus" tooltip="{{'lessons.tooltip.preview' | i18n}}"></i></a><br/>
+                        <a class="btn-link" ng-click="copyLesson(les)"><i class="fa fa-copy" tooltip="{{'lessons.tooltip.copy' | i18n}}"></i></a><br/>
+                        <a href="#/user/lesson/{{lesson._id}}/update" tooltip="{{'lessons.tooltip.edit' | i18n}}"><i class="fa fa-pencil-square-o"></i></a><br/>
                     </div>
                 </div>
 
 
                 <div class="stats">
                     <span class="stats-button age-limit-{{lesson.age}} no-color" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|i18n}} </span>
-                    <span class="stats-button">
-                        <i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
+                    <span class="stats-button" tooltip="{{'homepage.tooltip.views' | i18n}}" >
+                        <i class="fa fa-eye fa-fw"></i>
                         {{0+lesson.views}}
                     </span>
-                    <span class="stats-button" ng-show="!!lesson.questionsCount">
+                    <span class="stats-button" ng-show="!!lesson.questionsCount"  tooltip="{{'homepage.tooltip.questions' | i18n}}">
                         <i class="fa fa-question-circle fa-fw"
-                           tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
+                          ></i>
                         {{lesson | countQuestionsOnLesson }}
                     </span>
                 </div>
@@ -48,16 +48,16 @@
                 <div class="details">
                     <div class="name">{{ lesson.name|limitTo:160 }}</div>
                     <div class="properties">
-                        <span>
-                            <i class="fa fa-user" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
+                        <span tooltip="{{'homepage.tooltip.user' | i18n}}">
+                            <i class="fa fa-user" ></i>
                             <span>{{lesson.user.username}}</span>
                         </span>
-                        <span>
-                            <i class="fa fa-calendar" tooltip="{{'lessons.createdOn' | i18n}}"></i>
+                        <span tooltip="{{'lessons.createdOn' | i18n}}">
+                            <i class="fa fa-calendar" ></i>
                             <span>{{lesson.timeStamp | date:'d-MMM-yyyy'}}</span>
                         </span>
-                        <span ng-show="!!lesson.subject">
-                            <i class="fa fa-book" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
+                        <span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | i18n}}">
+                            <i class="fa fa-book" ></i>
                             <span>{{'filters.subjects.' + lesson.subject | i18n}}</span>
                         </span>
                     </div>

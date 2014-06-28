@@ -69,34 +69,34 @@
                             <table class="stats-table">
                                 <tr>
                                     <td>
-									<span>
-										<i class="fa fa-user fa-fw" tooltip="{{'homepage.tooltip.user' | i18n}}"></i>
+									<span  tooltip="{{'homepage.tooltip.user' | i18n}}">
+										<i class="fa fa-user fa-fw"></i>
 										{{lesson.user.username}}
 									</span>
                                     </td>
                                     <td>
-									<span>
-										<i tooltip="{{'homepage.tooltip.views' | i18n}}" class="fa fa-eye fa-fw"></i>
+									<span tooltip="{{'homepage.tooltip.views' | i18n}}" >
+										<i class="fa fa-eye fa-fw"></i>
 										{{0+lesson.views}}
 									</span>
                                     </td>
                                     <td>
-									<span ng-show="!!lesson.questionsCount">
-										<i class="fa fa-question-circle fa-fw" tooltip="{{'homepage.tooltip.questions' | i18n}}"></i>
+									<span ng-show="!!lesson.questionsCount" tooltip="{{'homepage.tooltip.questions' | i18n}}">
+										<i class="fa fa-question-circle fa-fw"></i>
 										{{lesson | countQuestionsOnLesson }}
 									</span>
                                     </td>
                                 </tr>
                                 <tr>
 									<td>
-										<span>
-											<i class="fa fa-calendar" tooltip="{{'lessons.createdOn' | i18n}}"></i>
+										<span tooltip="{{'lessons.createdOn' | i18n}}">
+											<i class="fa fa-calendar" ></i>
 											{{lesson.timeStamp | date:'d-MMM-yyyy'}}
 										</span>
 									</td>
 									<td colspan="2">
-									<span ng-show="!!lesson.subject">
-										<i class="fa fa-book fa-fw" tooltip="{{'homepage.tooltip.subject' | i18n}}"></i>
+									<span ng-show="!!lesson.subject"  tooltip="{{'homepage.tooltip.subject' | i18n}}">
+										<i class="fa fa-book fa-fw"></i>
 										{{lesson.subject && ('filters.subjects.' + lesson.subject | i18n) ||""}}
 									</span>
                                     </td>
