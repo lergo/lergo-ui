@@ -83,29 +83,29 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 controller: 'TranslationsDiffCtrl'
             })
             .when('/public/feedback', {
-                templateUrl: 'views/baselayout/_feedback.html',
+                templateUrl: 'views/baselayout/_feedback.html'
             })
             .when('/public/abuse', {
-                templateUrl: 'views/baselayout/_abuse.html',
+                templateUrl: 'views/baselayout/_abuse.html'
             })
             .when('/public/contact', {
-                templateUrl: 'views/baselayout/_contact.html',
+                templateUrl: 'views/baselayout/_contact.html'
             })
             .when('/public/terms', {
-                templateUrl: 'views/baselayout/_term.html',
+                templateUrl: 'views/baselayout/_term.html'
             })
             .when('/public/problem', {
-                templateUrl: 'views/baselayout/_problem.html',
+                templateUrl: 'views/baselayout/_problem.html'
             })
             .when('/public/suggest', {
-                templateUrl: 'views/baselayout/_suggest.html',
+                templateUrl: 'views/baselayout/_suggest.html'
             })
             .when('/public/session/signup', {
                 templateUrl: 'views/session/signup.html',
                 controller:'SignupCtrl'
             })
             .when('/public/session/signupConfirmation', {
-                templateUrl: 'views/session/signupConfirmation.html',
+                templateUrl: 'views/session/signupConfirmation.html'
             })
             .when('/public/session/login', {
                 templateUrl: 'views/session/login.html',
@@ -132,13 +132,13 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 controller: 'AdminHomepageCtrl'
             })
              .when('/user/Parents', {
-                templateUrl: 'views/errors/underConstruction.html',
+                templateUrl: 'views/errors/underConstruction.html'
             })
              .when('/user/Teachers', {
-                templateUrl: 'views/errors/underConstruction.html',
+                templateUrl: 'views/errors/underConstruction.html'
             })
              .when('/public/contribute', {
-                templateUrl: 'views/baselayout/_contribute.html',
+                templateUrl: 'views/baselayout/_contribute.html'
             })
             .when('/', {
                 redirectTo: '/public/session/login'
