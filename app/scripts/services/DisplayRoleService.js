@@ -54,7 +54,9 @@
 angular.module('lergoApp')
     .service('DisplayRoleService', function DisplayRoleService($routeParams) {
 
-        var currentRole = $routeParams.role;
+        var currentRole = function(){
+            return $routeParams.role;
+        };
 
         // all activities
         var editLesson = 'edit lesson';
@@ -75,7 +77,7 @@ angular.module('lergoApp')
         };
 
         function role() {
-            return roles[currentRole];
+            return roles[currentRole()];
         }
 
         function can(activity) {
