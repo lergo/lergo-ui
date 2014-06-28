@@ -1,312 +1,318 @@
-{	
-	"clickHere":"click here",
-	"underConstruction":"Under Construction....Stay Tuned",
-	"redirectToHome":"Redirect to homepage",
-	"start":"Start",
-	"share":"Share",
-	"add":"Add",
-	"cancel":"Cancel",
-	"advancedOptions":"Advanced options",
-	"explanation":"Explanation",
-	"hint": "Hint",
-	"tags" :"Tags",
-	"fromAge":"From Age",
-   	"tagHint": "Separate tags by commas (e.g. there vs their, spelling, grammar)",
-    "featured":"Featured",
-    "popular":"Popular",
-    "new":"New",
-    "languages": { "he": "Hebrew", "en": "English", "ru": "Russian" },
-    "view": "View",
-    "edit": "Edit",
-    "remove": "Remove",
-    "saving": "Saving",
-    "saved": "Saved",
-    "done": "Done",
-    "preview": "Preview",
-    "up": "Up",
-    "down": "Down",
-    "name": "Name",
-    "invite": "Invite",
-    "delete": "Delete",
-    "welcome": "Welcome",
-    "congratulations": "Congratulations",
-    "title": "Title",
-    "description": "Description",
-    "next": "Next",
-    "nextQuestion": "Next Question",
-    "email": "Email",
-    "baseLayout" : {
-        "header" : {
-            "searchPlaceholder" : "What would you like to learn about?",
-            "siteLanguage":"Site Language",
-            "links" : {
-                "learn" : "Learn",
-                "create" : "Create",
-                "parents" : "Parents",
-                "teachers" : "Teachers",
-                "contribute" : "Contribute",
-                "lessons" : "Lessons",
-                "questions" : "Questions"
-            },
-            "logout": "Logout"
-        },
-        "footer": {
-            "privacyAndTerms": "Privacy and Terms",
-            "about": "About LerGO",
-            "homepage": "Homepage",
-            "contact": "Contact Us",
-        	"problem":"Report Problem",
-        	"abuse":"Report Abuse",
-        	"suggest":"Suggest Lesson",
-        	"feedback":"Send Feedback",
-        	"blog":"Blog",
-    		"text1":"Text of questions is available under the",
-    		"text2":"Creative Commons Attribution-NonCommercial-ShareAlike License",
-    		"text3":"additional terms may apply. By using this site, you agree to the",
-    		"text4":"Terms of Use and Privacy Policy",
-    		"text5":"LerGO is an open source EdTech venture of LerGO-Educate Yourself (R.A), a registered nonprofit organisation"
-        }
+{
+  "add": "Add",
+  "advancedOptions": "Advanced options",
+  "baseLayout": {
+    "footer": {
+      "about": "About LerGO",
+      "abuse": "Report Abuse",
+      "blog": "Blog",
+      "contact": "Contact Us",
+      "feedback": "Send Feedback",
+      "homepage": "Homepage",
+      "privacyAndTerms": "Privacy and Terms",
+      "problem": "Report Problem",
+      "suggest": "Suggest Lesson",
+      "kitchenSink":"Kitchen Sink",
+      "text1": "Text of questions is available under the",
+      "text2": "Creative Commons Attribution-NonCommercial-ShareAlike License",
+      "text3": "additional terms may apply. By using this site, you agree to the",
+      "text4": "Terms of Use and Privacy Policy",
+      "text5": "LerGO is an open source EdTech venture of LerGO-Educate Yourself (R.A), a registered nonprofit organisation"
     },
-    "homepage": {
-        "lessons": "lessons",
-        "questions": "questions",
-        "andCounting": "and counting...",
-        "createYourOwn": "Create Your Own Lesson",
-        "create": "create",
-        "free": "it's free!",
-        "years":"Years",
-        "tooltip":{
-			"views":"number of views",
-			"questions":"number of questions",
-			"user":"by",
-			"subject":"subject"
-        }
-    },
-    "lessons": {
-    	"shareLesson":"Share lesson",
-    	"inviteLesson":"Invite to lesson",
-    	"inviteLessonHelpText":"To generate a link for the invite please enter student's name and press submit",
-    	"inviteSuccessText":"Copy the link below to invite a student to the lesson",
-    	"note":"Note",
-    	"noteMessage":"You will receive your kid's/student's lesson report upon completion of lesson.",
-    	"shareLessonTitle":"Copy the link below to share lesson with friends",
-    	"readMore":"Read More",
-    	"readLess":"Read Less",
-    	"createdOn":"created on",
-    	"recommenedNextLesson":"Recommended Next Lesson",
-    	"recommenedPriorLesson":"Recommended Prior Lesson",
-    	"recommenedNextLessonText":"Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
-    	"recommenedPriorLessonText":"Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
-    	"myLessons" : "My Lessons",
-        "startLesson" : "Start Lesson",
-        "seeReport": "See Report",
-    	"total": "Total",
-        "filter": "Filter Lessons",
-        "tags": "Tags",
-        "lessonReport":"Lesson Report",
-        "tooltip":{
-        	"invite":"invite students",
-        	"share":"share with friends",
-        	"start":"start lesson",
-        	"go":"go to lesson",
-        	"edit":"edit lesson",
-        	"delete":"delete lesson",
-            "copy" : "copy lesson",
-            "preview" : "preview lesson"
-        },
-        "filters": {
-            "labels": {
-                "age range": "Age Range",
-                "language": "Language",
-                "subject": "Subject"
-            }
-        },
-        "description": "Lesson Description",
-        "name": "Lesson Name",
-        "available": "Available Lessons",
-        "create": "Create New Lesson",
-        "areYouReady": "Are you ready to start learning?",
-        "letsGo": "Let's LerGO!",
-        "letsContinue": "OK! Let's Continue",
-        "lessonCompleted": "You have completed the lesson",
-        "addQuestion": "Add Question to Quiz",
-        "videoURL": "Video URL",
-        "videoURLHelpText": "Insert YouTube URL here",
-        "genericVideosPre": "For a list of generic animated videos please",
-        "genericVideosPost":"(the list will open in a new tab)."
-    },
-    "steps": {
-        "add": "Add Step",
-        "title": "Step Title",
-        "type": "Step Type",
-        "video": "Video",
-        "required":"required",
-    	"invalidURL" :"Please enter valid YouTube URL",
-        "quiz": "Quiz",
-        "display": "Display Step",
-        "noMoreQuestions": "No More Questions",
-        "selectAnAnswer": "Select an Answer",
-        "answer":"Please Answer"
-    },
-    "invitations": {
-        "createdSuccessfully" : "We created your invitation",
-        "create": "Create New Invite",
-        "sent": "Invitation successfully sent",
-        "sending": "Sending invite, please wait...",
-        "error": "Error sending invitation :("
-    },
-    "subject": {
-        "spelling": "Spelling",
-        "math": "Math",
-        "art": "Art"
-    },
-    "input" : {
-        "username" : "username",
-        "password" : "password",
-        "confirmPassword" : "confirm password",
-        "email" : "email",
-        "fullName" : "full name"
-
-    },
-    "button" : {
-        "submit" : "Submit",
-        "login" : "Login",
-        "signup" : "Signup",
-        "forgotPassword" : "Forgot password?",
-        "resendValidationEmail" : "Resend validation email",
-        "newInvite":"New Invite"
-    } ,
-    "resetPassword" : {
-        "instructions" : "Fill in username or email and submit the form.",
-        "success" : "Your request was dispatched successfully",
-        "error" : "There was an error submitting the request",
-        "emailSentSuccessfully" : "Please check your inbox and follow instructions"
-    },
-    "changePassword" : {
-        "success" : "You successfully changed your password",
-        "error" : "There was an error changing your password",
-        "signup" : "Signup"
-    },
-    "quizItem" : {
-        "answer" : {
-            "True" : "True",
-            "False" : "False"
-        }
-    },
-    "questions": {
-    	"editSummary":"Edit Summary",
-    	"editSummaryHelpText":"Enter Summary here",
-    	"addQuestionsToQuiz" :"Add questions to quiz",
-    	"hintHelpText" : "You can add here a hint to the question. A student will see it if he clicks on \"hint\" button.",
-    	"explanationHelpText" : "You can add here an explanation to the question.",
-    	"answerOption":"Answer Option ",
-    	"audioUrl":"Audio URL",
-    	"audioUrlHint":"To add audio to question, please update audio URL",
-        "myQuestions": "My Questions",
-        "selectQuestions" : "Select Questions",
-        "total": "Total",
-        "filter": "Filter Questions",
-        "createNew": "Create New Question",
-        "question": "Question",
-        "answer": "Answer",
-        "noQuestions": "There are no questions to display",
-        "help": "Help Text",
-        "questionType": "Question Type",
-        "language": "Language",
-        "subject": "Subject",
-        "age": "Age",
-        "types": {
-            "trueFalse": "True or False",
-            "exactMatch": "Exact Match",
-            "multipleChoices": "Multiple Choices",
-            "openQuestion": "Open Question"
-        },
-        "languages": {
-            "english": "English",
-            "hebrew": "Hebrew",
-            "arabic": "Arabic",
-            "russian": "Russian",
-            "other": "Other"
-        },
-        "subjects": {
-            "english": "English",
-            "math": "Math",
-            "science": "Science",
-            "grammar": "Grammar",
-            "spelling": "Spelling",
-            "biology": "Biology",
-            "other": "Other"
-        },
-        "possibleAnswers": "Possible Answers",
-        "clickToAdd": "Click here to add an answer",
-        "correctAnswer": "Correct Answer",
-        "correctAnswers": "Correct Answer(s)",
-        "correct":"Correct",
-        "incorrect":"Incorrect",
-        "openQuestion":"Open Question",
-        "yourAnswer":"Student's Answer",
-        "yourAnswers":"Student's Answer(s)",
-        "requiredAnswer": "Required Answer Format",
-        "select": "Select",
-        "shortAnswer": "Short Answer (a few words)",
-        "longAnswer": "Long Answer (a paragraph)",
-        "correctAnswerFilled": "You are correct!",
-        "incorrectAnswerFilled": "This is incorrect, the correct answer is",
-        "thankYou": "Thank you for your answer"
-    },
-    "filters": {
-    	"to":"To",
-    	"all":"All",
-    	"age":{
-    		"error":"Maximum age should be greater than minimum age"
-    	},
-        "labels": {
-            "ageRange": "Age Range",
-            "language": "Language",
-            "subject": "Subject",
-            "views":"# of views"
-        },
-        "languages": {
-            "english": "English",
-            "hebrew": "Hebrew",
-            "arabic": "Arabic",
-            "russian": "Russian",
-            "other": "Other"
-        },
-        "subjects": {
-            "english": "English",
-            "math": "Math",
-            "science": "Science",
-            "grammar": "Grammar",
-            "spelling": "Spelling",
-            "biology": "Biology",
-            "other": "Other"
-        }
-    },
-    "signup":{
-    	"error":{
-    		"minLength":"Username should contain at least 3 characters.",
-    		"invalidChar":"Username should only contain alphanumeric characters and underscore.",
-    		"invalidEmail":"Enter valid email.",
-    		"nameRequired":"Name is required.",
-    		"passwordRequired":"Password is required.",
-    		"confPasswordRequired":"Confirm password is equired."
-    	},
-    	"confirmation":{
-    		"message":"Thank you for signing in! In a few minutes you will receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO."
-    	}
-    },
-    "report":{
-    	"lessonSteps":"Lesson Steps",
-    	"detailedReport":"Detailed Report",
-    	"description":"Lesson Description",
-    	"completed":"has completed lesson",
-    	"date":"Date",
-    	"questionsInQuiz":"questions in quiz",
-    	"recommendation":"Recommendation",
-    	"nextLesson":"Next Lesson",
-    	"priorLesson":"Prior Lesson"
-    		
+    "header": {
+      "links": {
+        "contribute": "Contribute",
+        "create": "Create",
+        "learn": "Learn",
+        "lessons": "Lessons",
+        "parents": "Parents",
+        "questions": "Questions",
+        "teachers": "Teachers"        	
+      },
+      "logout": "Logout",
+      "searchPlaceholder": "What would you like to learn about?",
+      "siteLanguage": "Site Language",
+      "searchUnderConstruction":"Search feature under construction... for now, please use filters"
     }
-   
+  },
+  "button": {
+    "forgotPassword": "Forgot password?",
+    "login": "Login",
+    "newInvite": "New Invite",
+    "resendValidationEmail": "Resend validation email",
+    "signup": "Signup",
+    "submit": "Submit"
+  },
+  "cancel": "Cancel",
+  "changePassword": {
+    "error": "There was an error changing your password",
+    "signup": "Signup",
+    "success": "You successfully changed your password"
+  },
+  "clickHere": "click here",
+  "congratulations": "Congratulations",
+  "delete": "Delete",
+  "description": "Description",
+  "done": "Done",
+  "down": "Down",
+  "edit": "Edit",
+  "email": "Email",
+  "explanation": "Explanation",
+  "featured": "Featured",
+  "filters": {
+    "age": {
+      "error": "Maximum age should be greater than minimum age"
+    },
+    "all": "All",
+    "labels": {
+      "ageRange": "Age Range",
+      "language": "Language",
+      "subject": "Subject",
+      "views": "# of views"
+    },
+    "languages": {
+      "other": "Other",
+      "arabic": "Arabic",
+      "english": "English",
+      "hebrew": "Hebrew",
+      "russian": "Russian"
+    },
+    "subjects": {
+    	"geometry":"Geometry",
+    	"chemistry":"Chemistry",
+    	"physics":"Physics",
+    	"history":"History",
+    	"geography":"Geography",
+    	"art":"Art",
+    	"music":"Music",
+    	"other": "Other",
+    	"biology": "Biology",
+    	"english": "English",
+    	"grammar": "Grammar",
+    	"math": "Math",
+    	"science": "Science",
+    	"spelling": "Spelling"
+    },
+    "to": "To"
+  },
+  "fromAge": "From Age",
+  "hint": "Hint",
+  "homepage": {
+    "andCounting": "and counting...",
+    "create": "create",
+    "createYourOwn": "Create Your Own Lesson",
+    "free": "it's free!",
+    "lessons": "lessons",
+    "questions": "questions",
+    "start": "start",
+    "tooltip": {
+      "questions": "number of questions",
+      "subject": "subject",
+      "user": "by",
+      "views": "number of views"
+    },
+    "years": "Years"
+  },
+  "input": {
+    "confirmPassword": "confirm password",
+    "email": "email",
+    "fullName": "full name",
+    "password": "password",
+    "username": "username"
+  },
+  "invitations": {
+    "create": "Create New Invite",
+    "createdSuccessfully": "We created your invitation",
+    "error": "Error sending invitation :(",
+    "sending": "Sending invite, please wait...",
+    "sent": "Invitation successfully sent"
+  },
+  "invite": "Invite",
+  "languages": {
+    "en": "English",
+    "he": "Hebrew",
+    "ru": "Russian"
+  },
+  "lessons": {
+    "addQuestion": "Add Question to Quiz",
+    "areYouReady": "Are you ready to start learning?",
+    "available": "Available Lessons",
+    "create": "Create New Lesson",
+    "createdOn": "created on",
+    "description": "Lesson Description",
+    "filter": "Filter Lessons",
+    "filters": {
+      "labels": {
+        "age range": "Age Range",
+        "language": "Language",
+        "subject": "Subject"
+      }
+    },
+    "genericVideos": "For a list of generic animated videos please",
+    "inviteLesson": "Invite to lesson",
+    "inviteLessonHelpText": "To generate a link for the invite please enter student's name and press submit",
+    "inviteSuccessText": "Copy the link below to invite a student to the lesson",
+    "lessonCompleted": "You have completed the lesson",
+    "lessonReport": "Lesson Report",
+    "letsContinue": "OK! Let's Continue",
+    "letsGo": "Let's LerGO!",
+    "myLessons": "My Lessons",
+    "name": "Lesson Name",
+    "note": "Note",
+    "noteMessage": "You will receive your kid's/student's lesson report upon completion of lesson.",
+    "readLess": "Read Less",
+    "readMore": "Read More",
+    "recommenedNextLesson": "Recommended Next Lesson",
+    "recommenedNextLessonText": "Next recommended lesson",
+    "recommenedPriorLesson": "Recommended Prior Lesson",
+    "recommenedPriorLessonText": "Prior recommended lesson",
+    "seeReport": "See Report",
+    "shareLesson": "Share lesson",
+    "shareLessonTitle": "Copy the link below to share lesson with friends",
+    "startLesson": "Start Lesson",
+    "tags": "Tags",
+    "tooltip": {
+      "copy": "copy lesson",
+      "delete": "delete lesson",
+      "edit": "edit lesson",
+      "go": "go to lesson",
+      "invite": "invite students",
+      "preview": "preview lesson",
+      "share": "share with friends",
+      "start": "start lesson"
+    },
+    "total": "Total",
+    "videoURL": "Video URL",
+    "videoURLHelpText": "Insert your YouTube URL here"
+  },
+  "name": "Name",
+  "new": "New",
+  "next": "Next",
+  "nextQuestion": "Next Question",
+  "popular": "Popular",
+  "preview": "Preview",
+  "questions": {
+    "addQuestionsToQuiz": "Add questions to quiz",
+    "age": "Age",
+    "answer": "Answer",
+    "answerOption": "Answer Option ",
+    "audioUrl": "Audio URL",
+    "audioUrlHint": "To add audio to question, please update audio URL",
+    "clickToAdd": "Click here to add an answer",
+    "correct": "Correct",
+    "correctAnswer": "Correct Answer",
+    "correctAnswerFilled": "You are correct!",
+    "correctAnswers": "Correct Answer(s)",
+    "createNew": "Create New Question",
+    "editSummary": "Edit Summary",
+    "editSummaryHelpText": "Enter Summary here",
+    "explanationHelpText": "You can add here an explanation to the question.",
+    "filter": "Filter Questions",
+    "help": "Help Text",
+    "hintHelpText": "You can add here a hint to the question. A student will see it if he clicks on \"hint\" button.",
+    "incorrect": "Incorrect",
+    "incorrectAnswerFilled": "This is incorrect, the correct answer is",
+    "language": "Language",
+    "languages": {
+      "other": "Other",
+      "arabic": "Arabic",
+      "english": "English",
+      "hebrew": "Hebrew",
+      "russian": "Russian"
+    },
+    "longAnswer": "Long Answer (a paragraph)",
+    "myQuestions": "My Questions",
+    "noQuestions": "There are no questions to display",
+    "openQuestion": "Open Question",
+    "possibleAnswers": "Possible Answers",
+    "question": "Question",
+    "questionType": "Question Type",
+    "requiredAnswer": "Required Answer Format",
+    "select": "Select",
+    "selectQuestions": "Select Questions",
+    "shortAnswer": "Short Answer (a few words)",
+    "subject": "Subject",
+    "subjects": {
+      "other": "Other",
+      "biology": "Biology",
+      "english": "English",
+      "grammar": "Grammar",
+      "math": "Math",
+      "science": "Science",
+      "spelling": "Spelling"
+    },
+    "thankYou": "Thank you for your answer",
+    "total": "Total",
+    "types": {
+      "exactMatch": "Exact Match",
+      "multipleChoices": "Multiple Choices",
+      "openQuestion": "Open Question",
+      "trueFalse": "True or False"
+    },
+    "yourAnswer": "Student's Answer",
+    "yourAnswers": "Student's Answer(s)"
+  },
+  "quizItem": {
+    "answer": {
+      "False": "False",
+      "True": "True"
+    }
+  },
+  "redirectToHome": "Redirect to homepage",
+  "remove": "Remove",
+  "report": {
+    "completed": "has completed lesson",
+    "date": "Date",
+    "description": "Lesson Description",
+    "detailedReport": "Detailed Report",
+    "lessonSteps": "Lesson Steps",
+    "questionsInQuiz": "questions in quiz"
+  },
+  "resetPassword": {
+    "emailSentSuccessfully": "Please check your inbox and follow instructions",
+    "error": "There was an error submitting the request",
+    "instructions": "Fill in username or email and submit the form.",
+    "success": "Your request was dispatched successfully"
+  },
+  "saved": "Saved",
+  "saving": "Saving",
+  "share": "Share",
+  "signup": {
+    "confirmation": {
+      "message": "Thank you for signing in! In a few minutes you will receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO."
+    },
+    "error": {
+      "confPasswordRequired": "Confirm password is required.",
+      "invalidChar": "Username should only contain alphanumeric characters and underscore.",
+      "invalidEmail": "Enter valid email.",
+      "minLength": "Username should contain at least 3 characters.",
+      "nameRequired": "Name is required.",
+      "passwordRequired": "Password is required."
+    }
+  },
+  "start": "Start",
+  "steps": {
+    "add": "Add Step",
+    "display": "Display Step",
+    "invalidURL": "Please enter valid youtube URL",
+    "noMoreQuestions": "No More Questions",
+    "quiz": "Quiz",
+    "required": "required",
+    "selectAnAnswer": "Select an Answer",
+    "title": "Step Title",
+    "type": "Step Type",
+    "video": "Video"
+  },
+  "subject": {
+    "art": "Art",
+    "math": "Math",
+    "spelling": "Spelling"
+  },
+  "tagHint": "Separate tags by commas (e.g. there Vs their, spelling, grammar)",
+  "tags": "Tags",
+  "title": "Title",
+  "underConstruction": "Under Construction....Stay Tuned",
+  "up": "Up",
+  "view": "View",
+  "welcome": "Welcome"
 }

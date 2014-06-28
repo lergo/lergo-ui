@@ -13,7 +13,7 @@
             <td>{{ 'questions.questionType' | i18n }}</td>
             <td><select ng-model="quizItem.type" ng-options="t.id as ('questions.types.' + t.id | i18n) for t in types"></select></td>
             <td>{{ 'filters.labels.language' | i18n }}</td>
-            <td><select ng-model="quizItem.language" ng-options="l as ('filters.languages.' + l | i18n) for l in languages"></select></td>
+            <td><select ng-model="quizItem.language" ng-options="l.id as ('filters.languages.' + l.id | i18n) for l in languages"></select></td>
             <td>{{ 'filters.labels.subject' | i18n }}</td>
             <td><select ng-model="quizItem.subject" ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects"></select></td>
             <td>{{ 'fromAge' | i18n }}</td>

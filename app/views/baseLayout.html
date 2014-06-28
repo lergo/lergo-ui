@@ -27,7 +27,7 @@
 					<div class="header-search">
 						<input
 							placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" />
-						<i class="icon-search"></i>
+						<a href=""><i  popover-placement="bottom" popover="{{'baseLayout.header.searchUnderConstruction' | i18n}}" class="icon-search"></i></a>
 					</div>
 					<div class="header-signup" ng-show="!user">
 						<a href="#"> {{ 'button.login' | i18n }}</a> <a
@@ -74,7 +74,8 @@
 								| i18n }}</a></li>
 						<!--<li><a href="#/public/blog">{{'baseLayout.footer.blog'
 								| i18n}}</a></li>-->
-						<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
+						<li><a href="#/public/kitchenSink">{{'baseLayout.footer.kitchenSink'
+								| i18n}}</a></li>
 					
 						<li><a class="weight12" href="#/public/feedback">{{'baseLayout.footer.feedback'
 								| i18n}}</a></li>

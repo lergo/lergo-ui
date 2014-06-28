@@ -1,7 +1,7 @@
 <form name="filter" ng-controller="FilterCtrl" class="filters lergo-form">
 	<div class="label">{{'filters.labels.language' | i18n }}</div>
 	<div class="input">
-		<select ng-options="l as ('filters.languages.' + l | i18n) for l in languages" ng-model="$parent.filter.language">
+		<select ng-options="l.id as ('filters.languages.' + l.id | i18n) for l in languages" ng-model="$parent.filter.language">
 			<option value="">{{'filters.all'|i18n}}</option>
 		</select>
 	</div>
