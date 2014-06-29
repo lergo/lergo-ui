@@ -36,10 +36,10 @@
                         <i class="fa fa-eye fa-fw"></i>
                         {{0+lesson.views}}
                     </span>
-                    <span class="stats-button" ng-show="!!lesson.questionsCount"  tooltip="{{'homepage.tooltip.questions' | i18n}}">
+                    <span class="stats-button" tooltip="{{'homepage.tooltip.questions' | i18n}}">
                         <i class="fa fa-question-circle fa-fw"
                           ></i>
-                        {{lesson | countQuestionsOnLesson }}
+                        {{  lesson | countQuestionsOnLesson   }}
                     </span>
                 </div>
 
