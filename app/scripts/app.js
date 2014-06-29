@@ -63,8 +63,15 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 templateUrl: 'views/lessons/update.html',
                 controller:'LessonsUpdateCtrl'
             })
-             .when('/user/create', {
-                templateUrl: 'views/baselayout/_create.html'
+             .when('/user/create/lessons', {
+                templateUrl: 'views/baselayout/_create.html',
+                controller:'BaseLayoutCreateCtrl',
+                activeTab:'lessons'
+            })
+             .when('/user/create/questions', {
+                templateUrl: 'views/baselayout/_create.html',
+                controller:'BaseLayoutCreateCtrl',
+                activeTab:'questions'
             })
             .when('/user/lessons/:lessonId/update', {
                 templateUrl: 'views/lessons/update.html',

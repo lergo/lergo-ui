@@ -77,7 +77,7 @@ angular
 					};
 
 					$scope.done = function() {
-						$location.path('/user/lessons');
+						$location.path('/user/create/lessons');
 					};
 
 					$scope.getStepViewByType = function(step) {
@@ -147,9 +147,7 @@ angular
 						}
 					}, true);
 
-					$scope.done = function() {
-						$location.path('/user/create');
-					};
+					
 
 					$scope.getStepViewByType = function(step) {
 						var type = 'none';

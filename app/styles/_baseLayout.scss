@@ -93,7 +93,7 @@ $FOOTER_HEIGHT: 170px !default;
     .header-links {
       padding-top: 10px;
       padding-bottom: 10px;
-      width: 535px;
+      width: 570px;
       display: block;
       margin-top: -100px;
       margin-right:0;
@@ -135,7 +135,7 @@ $FOOTER_HEIGHT: 170px !default;
 	}
     .header-login {
       float: right;
-      width: 205px;
+      width: 210px;
       margin-right: 0;
       margin-top: -92px;
       a {
@@ -247,8 +247,9 @@ $FOOTER_HEIGHT: 170px !default;
 		a{ color:white}
     }
     .footer-links{
+    display:table;
     float:left;
-    width:700px;
+    width:810px;
       ul,li{list-style:none; padding:0; margin:0;}
       li{
         float:left;
@@ -257,11 +258,15 @@ $FOOTER_HEIGHT: 170px !default;
 
         &, a{ color:white}
       }
+      .row{
+      display:table-row;
+      }
     }
     .copyrights{
       float:right;
       color:#A6BBCF;
       margin-top: 12px;
+      margin-right:-100px;
 
     }
   }
