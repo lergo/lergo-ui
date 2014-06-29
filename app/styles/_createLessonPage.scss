@@ -1,0 +1,68 @@
+#createLessonPage{
+	.createLesson-form{
+		display:table;
+		padding-top:10px;
+		width:100%;
+		.lergo-label{
+		padding-top:10px;
+		}
+		.error{
+			display:table-row;
+			font-size: 15px; 
+			color: red;
+		}
+		.name{
+			display:table-row;
+		}
+		.description{
+			display:table-row;
+		}
+		.stats{
+		.form-control{
+		width:auto;
+		display:inline;
+		}
+			display:table;
+			padding-top:10px;
+			padding-bottom:10px;
+			span{
+			padding-right: 10px;
+			}
+			select{
+			margin-right: 10px;
+			}
+			
+		}
+		.language{
+			display:table-cell;
+			}
+			.subject{
+			display:table-cell;
+			}
+			.age{
+			display:table-cell;
+			
+			input{
+			display:table-cell;
+			width:auto;
+			}
+			}
+		.tag{
+			padding-top:10px;
+			width:100%;
+			display:table;
+			span{
+			padding-right: 10px;
+			}
+			.row{
+			display:table-cell;
+			input{
+			display:table-cell;
+			width:94%;
+			}
+			}
+		
+		}
+	
+	}
+}

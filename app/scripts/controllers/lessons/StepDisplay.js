@@ -158,4 +158,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			$scope.progressPercentage = Math.round((($scope.currentIndex+1) * 100) / $scope.step.quizItems.length);
 		}
 	};
+	
+	$scope.keyPressed = function(ev){
+		if (ev.which==13)
+			$log.info('key pressed');
+	};
 });
