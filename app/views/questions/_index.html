@@ -1,59 +1,49 @@
 <span class="error">{{error}}</span>
-<br/>
+<br />
 <div class="page-content-width page-content-titles">
-    <div class="page-content-body">
-        <div class="lergo-h1" ng-show="!isModal">{{ 'questions.myQuestions' | i18n }} [ {{ 'questions.total' | i18n }}:
-            {{items.length}} ]</div>
-        <div class="lergo-h1" ng-show="!!isModal">{{ 'questions.selectQuestions' | i18n }}</div>
-        <div class="page-content-titles-actions">
-            <button class="btn" ng-show="!isModal" ng-click="createNewQuestion()">{{ 'questions.createNew' | i18n }}</button>
-        </div>
-    </div>
-    <div class="page-content-sidebar">
-        <div class="lergo-h1">{{ 'questions.filter' | i18n }}</div>
-
-
-    </div>
+	<div class="page-content-body">
+		<div class="lergo-h1" ng-show="!isModal">{{ 'questions.myQuestions' | i18n }} [ {{ 'questions.total' | i18n }}: {{items.length}} ]</div>
+		<div class="lergo-h1" ng-show="!!isModal">{{ 'questions.selectQuestions' | i18n }}</div>
+		<div class="page-content-titles-actions">
+			<button class="btn" ng-show="!isModal" ng-click="createNewQuestion()">{{ 'questions.createNew' | i18n }}</button>
+		</div>
+	</div>
+	<div class="page-content-sidebar">
+		<div class="lergo-h1">{{ 'questions.filter' | i18n }}</div>
+	</div>
 </div>
 <div class="page-content-width">
-    <div class="page-content-body">
-        <table ng-show="items.length > 0" class="table ">
-            <thead>
-            <tr style="font-weight: bold">
-                <td ng-show="isModal"><input type="checkbox" ng-click="selectAll($event)"/></td>
-                <td>{{ 'questions.question' | i18n }}</td>
-                <td>{{ 'questions.answer' | i18n }}</td>
-                <td>{{ 'questions.language' | i18n}}</td>
-                <td>{{ 'questions.subject' | i18n}}</td>
-                <td>{{ 'questions.age' | i18n}}</td>
-                <td>{{ 'preview' | i18n }}</td>
-                <td>{{ 'copy' | i18n }}</td>
-
-            </tr>
-            </thead>
-            <tr ng-repeat="item in items |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter">
-                <td ng-show="isModal"><input type="checkbox" ng-model="item.selected"/></td>
-                <td class="question"><a href="#/user/questions/{{item._id}}/update">{{item.question | limitTo:80 }}</a>
-                </td>
-                <td class="answer">{{((item.type==='trueFalse') && (item.answer && ('quizItem.answer.'+ item.answer|
-                    i18n)||"") || getAnswers(item) ) |
-                    limitTo:30}}
-                </td>
-                <td class="answer">{{item.language && ('filters.languages.' + item.language | i18n) || ""}}</td>
-                <td class="answer">{{item.subject && ('filters.subjects.' + item.subject | i18n) ||""}}</td>
-                <td class="answer">{{item.age &&('+'+ item.age) || ""}}</td>
-                <td class="viewLink"><a href="#/user/questions/{{item._id}}/read">{{ 'preview' | i18n }}</a></td>
-                <td class="viewLink">
-                    <a class="btn-link" ng-click="copyQuestion(item)"><i class="fa fa-copy"></i></a><br/>
-                </td>
-            </tr>
-        </table>
-        <div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
-    </div>
-    <div class="page-content-sidebar">
-
-
-        <div ng-include src="'views/filters/filter.html'"></div>
-    </div>
+	<div class="page-content-body">
+		<table ng-show="items.length > 0" class="table ">
+			<thead>
+				<tr style="font-weight: bold">
+					<td ng-show="isModal">
+						<input type="checkbox" ng-click="selectAll($event)" />
+					</td>
+					<td>{{ 'questions.question' | i18n }}</td>
+					<td>{{ 'questions.answer' | i18n }}</td>
+					<td>{{ 'questions.language' | i18n}}</td>
+					<td>{{ 'questions.subject' | i18n}}</td>
+					<td>{{ 'questions.age' | i18n}}</td>
+				</tr>
+			</thead>
+			<tr ng-repeat="item in items |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter">
+				<td ng-show="isModal">
+					<input type="checkbox" ng-model="item.selected" />
+				</td>
+				<td class="question">
+					<a href="#/user/questions/{{item._id}}/read">{{item.question | limitTo:80 }}</a>
+				</td>
+				<td class="answer">{{((item.type==='trueFalse') && (item.answer && ('quizItem.answer.'+ item.answer| i18n)||"") || getAnswers(item) ) |
+					limitTo:30}}</td>
+				<td class="answer">{{item.language && ('filters.languages.' + item.language | i18n) || ""}}</td>
+				<td class="answer">{{item.subject && ('filters.subjects.' + item.subject | i18n) ||""}}</td>
+				<td class="answer">{{item.age &&('+'+ item.age) || ""}}</td>
+			</tr>
+		</table>
+		<div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
+	</div>
+	<div class="page-content-sidebar">
+		<div ng-include src="'views/filters/filter.html'"></div>
+	</div>
 </div>
-

@@ -24,15 +24,6 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		});
 	};
 
-    $scope.copyQuestion = function( question ){
-        LergoClient.questions.copyQuestion(question._id).then( function( result ){
-            $location.path('/user/questions/' + result.data._id + '/update');
-        },
-        function( result ){
-            $log.error(result);
-        });
-    };
-
 	QuestionsService.getUserQuestions().then(function(result) {
 		$scope.items = result.data;
 		$scope.errorMessage = null;
