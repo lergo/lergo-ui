@@ -1,10 +1,9 @@
 <div class="base-layout" id="create">
 	<div >
 		<tabset> 
-		<tab heading="{{'baseLayout.header.links.lessons' | i18n}}">
+		<tab heading="{{'baseLayout.header.links.lessons' | i18n}}" ng-click="lessonTabActive()" active="isLessonTabActive">
 		<div ng-include="'views/lessons/_index.html'" ng-controller="LessonsIndexCtrl"></div>
-		</tab> 
-		<tab heading="{{'baseLayout.header.links.questions' | i18n}}">
+		</tab> <tab  ng-click="questionTabActive()" heading="{{'baseLayout.header.links.questions' | i18n}}" active="isQuestionTabActive">
 		<div ng-include="'views/questions/_index.html'" ng-controller="QuestionsIndexCtrl"></div>
 		</tab> 
 		<!-- <tab heading="Admin">
