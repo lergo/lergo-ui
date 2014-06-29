@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('QuestionsReadCtrl',
-		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient,$sce) {
+		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient,$sce,$location) {
 
 			var questionId = $routeParams.questionId;
 
@@ -54,4 +54,12 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 				}
 				return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
 			};
+			 $scope.copyQuestion = function( question ){
+			        LergoClient.questions.copyQuestion(question._id).then( function( result ){
+			            $location.path('/user/questions/' + result.data._id + '/update');
+			        },
+			        function( result ){
+			            $log.error(result);
+			        });
+			    };
 		});
