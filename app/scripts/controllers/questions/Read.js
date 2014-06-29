@@ -44,7 +44,9 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 				}
 			};
 			$scope.getAudioUrl = function(quizItem) {
-				return $sce.trustAsResourceUrl(quizItem.audioUrl);
+                if ( !!quizItem ) {
+                    return $sce.trustAsResourceUrl(quizItem.audioUrl);
+                }
 			};
 			$scope.getCorrectAnswers = function(quizItem) {
 				if (!quizItem || !quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {

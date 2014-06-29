@@ -120,7 +120,9 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient,$s
 				return result;
 			};
 			$scope.getAudioUrl = function(quizItem) {
-				return $sce.trustAsResourceUrl(quizItem.audioUrl);
+                if ( !!quizItem ) {
+                    return $sce.trustAsResourceUrl(quizItem.audioUrl);
+                }
 			};
 		}
 

@@ -1,10 +1,15 @@
 'use strict';
 
-angular.module('lergoApp').service('QuestionsService', function QuestionsService($http) {
+angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log ) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
 	this.getUserQuestions = function() {
 		return $http.get('/backend/user/questions');
 	};
+
+    this.copyQuestion = function( questionId ) {
+        $log.info('copying question');
+        return $http.post('/backend/user/questions/' + questionId + '/copy');
+    };
 
 	this.getUserQuestionById = function(questionId) {
 		return $http.get('/backend/user/questions/' + questionId);

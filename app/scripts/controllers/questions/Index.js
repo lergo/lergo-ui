@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, $location, $log, FilterService) {
+angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, $location, $log, FilterService) {
 	$scope.isModal = false;
 	$scope.filter = {};
 	$scope.ageFilter = function(quizItem) {
@@ -23,6 +23,15 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 			$log.error($scope.errorMessage);
 		});
 	};
+
+    $scope.copyQuestion = function( question ){
+        LergoClient.questions.copyQuestion(question._id).then( function( result ){
+            $location.path('/user/questions/' + result.data._id + '/update');
+        },
+        function( result ){
+            $log.error(result);
+        });
+    };
 
 	QuestionsService.getUserQuestions().then(function(result) {
 		$scope.items = result.data;
