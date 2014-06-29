@@ -5,10 +5,10 @@ angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $
 	$scope.isQuestionTabActive = $scope.$route.current.activeTab === 'questions';
 	$scope.isLessonTabActive = $scope.$route.current.activeTab === 'lessons';
 	$scope.questionTabActive = function() {
-		$location.path("user/create/questions");
+		$location.path('user/create/questions');
 	};
-	
+
 	$scope.lessonTabActive = function() {
-		$location.path("user/create/lessons");
+		$location.path('user/create/lessons');
 	};
 });
