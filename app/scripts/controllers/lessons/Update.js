@@ -299,7 +299,6 @@ angular
 												LergoClient.lessons.delete($scope.lesson._id).then(function() {
 													$scope.errorMessage = null;
 													$log.info('Lesson deleted sucessfully');
-													$location.path('/user/lessons');
 												}, function(result) {
 													$scope.errorMessage = 'Error in deleting Lesson : ' + result.data.message;
 													$log.error($scope.errorMessage);

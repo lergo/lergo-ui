@@ -4,7 +4,9 @@
 			<div class="centered-content">
 				<div class="header-main">
 					<div>
-						<a href="#/user/homepage"><i class="logo-beta"></i></a>
+						<a href="#/user/homepage">
+							<i class="logo-beta"></i>
+						</a>
 					</div>
 					<div class="header-links">
 						<ul>
@@ -14,10 +16,8 @@
 							<li>
 								<a href="#/user/create/lessons">{{ 'baseLayout.header.links.create'| i18n }} </a>
 							</li>
-							<li
-								ng-repeat="item in ['Parents','Teachers']">
-								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' +
-									item.toLowerCase() | i18n }}</a>
+							<li ng-repeat="item in ['Parents','Teachers']">
+								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | i18n }}</a>
 							</li>
 							<li>
 								<a href="#/public/contribute">{{ 'baseLayout.header.links.contribute'| i18n }} </a>
@@ -25,31 +25,30 @@
 						</ul>
 					</div>
 					<div class="header-search">
-						<input
-							placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" />
-						<a href=""><i  popover-placement="bottom" popover="{{'baseLayout.header.searchUnderConstruction' | i18n}}" popover-trigger="mouseenter" class="icon-search"></i></a>
+						<input placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" />
+						<a href="">
+							<i popover-placement="bottom" popover="{{'baseLayout.header.searchUnderConstruction' | i18n}}" popover-trigger="mouseenter" class="icon-search"></i>
+						</a>
 					</div>
 					<div class="header-signup" ng-show="!user">
-						<a href="#"> {{ 'button.login' | i18n }}</a> <a
-							href="#/public/session/signup"> {{ 'button.signup' | i18n }}</a>
+						<a href="#"> {{ 'button.login' | i18n }}</a>
+						<a href="#/public/session/signup"> {{ 'button.signup' | i18n }}</a>
 					</div>
 					<div class="header-login" ng-show="!!user">
-						<a href="#/user/create/lessons"><i class="fa fa-user fa-fw"></i>
-							{{user.username}}</a>
-						<button class="btn" ng-click="logout()">{{'baseLayout.header.logout'
-							| i18n }}</button>
+						<a href="#/user/create/lessons">
+							<i class="fa fa-user fa-fw"></i>
+							{{user.username}}
+						</a>
+						<button class="btn" ng-click="logout()">{{'baseLayout.header.logout' | i18n }}</button>
 					</div>
-					<div class="header-language" >
-						<i class="fa fa-globe fa-fw" tooltip="{{'baseLayout.header.siteLanguage' | i18n}}"></i> <select
-							ng-model="$root.lergoLanguage"
-							ng-options="lang.id as ( 'translationLanguage.' + lang.id | i18n ) for lang in $root.lergoLanguages"></select>
+					<div class="header-language">
+						<i class="fa fa-globe fa-fw" tooltip="{{'baseLayout.header.siteLanguage' | i18n}}"></i>
+						<select ng-model="$root.lergoLanguage" ng-options="lang.id as ( 'translationLanguage.' + lang.id | i18n ) for lang in $root.lergoLanguages"></select>
 					</div>
 				</div>
-
 			</div>
 		</div>
-		<div id="content" class="centered-content clearfix" ng-transclude="">
-		</div>
+		<div id="content" class="centered-content clearfix" ng-transclude=""></div>
 		<div class="push"></div>
 	</div>
 	<div id="footer">
@@ -97,15 +96,13 @@
 								<a class="weight12" href="#/public/abuse">{{'baseLayout.footer.abuse' | i18n}}</a>
 							</li>
 						</ul>
+						<div class="copyrights">
+							<div>&copy; {{'baseLayout.footer.copyright' | i18n}}</div>
+							<div>{{'baseLayout.footer.copyrightMsg' | i18n}}</div>
+						</div>
 					</div>
-				</div>
-				<div class="copyrights">
-					<div>&copy; {{'baseLayout.footer.copyright' | i18n}}</div>
-					<div>{{'baseLayout.footer.copyrightMsg' | i18n}}</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-

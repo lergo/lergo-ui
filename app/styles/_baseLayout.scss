@@ -93,7 +93,7 @@ $FOOTER_HEIGHT: 170px !default;
     .header-links {
       padding-top: 10px;
       padding-bottom: 10px;
-      width: 570px;
+      width: 60%;
       display: block;
       margin-top: -100px;
       margin-right:0;
@@ -135,14 +135,14 @@ $FOOTER_HEIGHT: 170px !default;
 	}
     .header-login {
       float: right;
-      width: 210px;
-      margin-right: 0;
+      width: 25%;
+      margin-right: -40px;
       margin-top: -92px;
       a {
         color: white;
         display: inline-block;
         font-size: 18px;
-        width: 120px;
+        width: 60%;
         text-decoration: none;
         padding: 10px 0;
         text-align: center;
@@ -249,7 +249,7 @@ $FOOTER_HEIGHT: 170px !default;
     .footer-links{
     display:table;
     float:left;
-    width:810px;
+    width:100%;
       ul,li{list-style:none; padding:0; margin:0;}
       li{
         float:left;
@@ -265,9 +265,6 @@ $FOOTER_HEIGHT: 170px !default;
     .copyrights{
       float:right;
       color:#A6BBCF;
-      margin-top: 12px;
-      margin-right:-100px;
-
     }
   }
 }
