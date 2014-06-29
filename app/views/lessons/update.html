@@ -1,43 +1,40 @@
 <div class="base-layout" id="createLessonPage">
-	<form ng-submit='create()' class="CreateLesson-form lergo-form">
+	<form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
 		<div class="lergo-label">
-			<span class="errorMessage" ng-show='errorMessage' style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
+			<span class="error" ng-show='errorMessage'>{{errorMessage}}</span>
 		</div>
-		<div class="form-section">
+		<div class="form-section form-group name" ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
 			<div class="lergo-label">{{ 'lessons.name' | i18n }}</div>
 			<div class="lergo-input">
-				<input ng-model="lesson.name" />
+				<input required class="form-control" ng-model="lesson.name" name="name"/>
 			</div>
+			<p ng-show="lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine" class="help-block">{{'lessons.error.invalidName' | i18n}}</p>
 		</div>
-		<div class="form-section">
+		<div class="form-section description form-group">
 			<div class="lergo-label">{{ 'lessons.description' | i18n }}</div>
 			<div class="lergo-input">
-				<textarea ng-model="lesson.description"></textarea>
+				<textarea class="form-control" ng-model="lesson.description" name="description"></textarea>
 			</div>
 		</div>
-		<div>
-			<table class="lergo-table lergo-form">
-				<tr>
-					<td>{{ 'filters.labels.language' | i18n }}</td>
-					<td>
-						<select ng-model="lesson.language" ng-options="l.id as ('filters.languages.' + l.id| i18n) for l in languages"></select>
-					</td>
-					<td>{{ 'filters.labels.subject' | i18n }}</td>
-					<td>
-						<select ng-model="lesson.subject" ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects"></select>
-					</td>
-					<td>{{ 'fromAge' | i18n }}</td>
-					<td>
-						<input type="number" min="4" max="18" step="1" size="2" ng-model="lesson.age" />
-					</td>
-				</tr>
-				<tr>
-					<td>{{ 'tags' | i18n }}</td>
-					<td colspan="5">
-						<input placeholder="{{'tagHint' | i18n}}" ng-model="lesson.tags" />
-					</td>
-				</tr>
-			</table>
+		<div class="stats form-group">
+			<div class="language">
+				<span>{{ 'filters.labels.language' | i18n }}</span>
+				<select class="form-control" ng-model="lesson.language" ng-options="l.id as ('filters.languages.' + l.id| i18n) for l in languages" name="language"></select>
+			</div>
+			<div class="subject">
+				<span>{{ 'filters.labels.subject' | i18n }}</span>
+				<select class="form-control" ng-model="lesson.subject" ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects" name="subject"></select>
+			</div>
+			<div class="age">
+				<span>{{ 'fromAge' | i18n }}</span>
+				<input class="form-control" type="number" min="4" max="18" step="1" size="2" ng-model="lesson.age" name="age" />
+			</div>
+		</div>
+		<div class="tag form-group">
+			<div class="row">
+				<span>{{ 'tags' | i18n }}</span>
+				<input class="form-control" placeholder="{{'tagHint' | i18n}}" ng-model="lesson.tags" name="tag"/>
+			</div>
 		</div>
 		<div style="margin-top: 5px; margin-bottom: 5px">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
 		<div>
