@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('QuestionsReadCtrl',
-		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient,$sce,$location) {
+		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location) {
 
 			var questionId = $routeParams.questionId;
 
@@ -44,9 +44,9 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 				}
 			};
 			$scope.getAudioUrl = function(quizItem) {
-                if ( !!quizItem ) {
-                    return $sce.trustAsResourceUrl(quizItem.audioUrl);
-                }
+				if (!!quizItem) {
+					return $sce.trustAsResourceUrl(quizItem.audioUrl);
+				}
 			};
 			$scope.getCorrectAnswers = function(quizItem) {
 				if (!quizItem || !quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
@@ -54,12 +54,11 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 				}
 				return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
 			};
-			 $scope.copyQuestion = function( question ){
-			        LergoClient.questions.copyQuestion(question._id).then( function( result ){
-			            $location.path('/user/questions/' + result.data._id + '/update');
-			        },
-			        function( result ){
-			            $log.error(result);
-			        });
-			    };
+			$scope.copyQuestion = function(question) {
+				LergoClient.questions.copyQuestion(question._id).then(function(result) {
+					$location.path('/user/questions/' + result.data._id + '/update');
+				}, function(result) {
+					$log.error(result);
+				});
+			};
 		});
