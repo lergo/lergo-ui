@@ -39,19 +39,19 @@
 		width:10%;
 		.action-items { 
 			.hint{
-			font-size:15px;
-			margin-bottom: 20px;
+			  font-size:15px;
+
+              margin-top:  10px;
 			}
 			font-size: 30px;
 			text-align: center;
-			margin-top:  10px;
-			.action-items-top{
-			}
-			.action-items-bottom {
-				a: nth-child(n +2){ 
-					display: inline-block;
-				}
-			}
+
+          &>.btn-link{
+            text-align:left;
+            display:inline-block;
+            margin-top:20px;
+          }
+
 		}
 	}
 }

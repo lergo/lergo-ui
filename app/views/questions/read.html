@@ -23,13 +23,14 @@
 					</a>
 					<br />
 				</div>
+
 				<a class="btn-link" ng-click="copyQuestion(quizItem)">
 					<i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | i18n}}"></i>
 				</a>
-				<br />
-				<a href="#/user/questions/{{quizItem._id}}/update" tooltip="{{'questions.tooltip.edit' | i18n}}">
-					<i class="fa fa-pencil-square-o"></i>
-				</a>
+                <a class="btn-link" href="#/user/questions/{{quizItem._id}}/update" tooltip="{{'questions.tooltip.edit' | i18n}}">
+                    <i class="fa fa-pencil-square-o"></i></a>
+                <br/>
+
 				<br />
 			</div>
 		</div>
