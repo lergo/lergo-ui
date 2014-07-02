@@ -42,7 +42,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	$scope.selectAll = function(event) {
 		var checkbox = event.target;
 		if (checkbox.checked) {
-			var filtered = filterItems($scope.items, $scope.filter);
+			var filtered = filterItems($scope.items);
 			angular.forEach(filtered, function(item) {
 				item.selected = true;
 			});
@@ -54,14 +54,14 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		}
 	};
 
-	function filterItems(items, filter) {
+	function filterItems(items) {
 		var filteredItems = [];
 		for ( var i = 0; i < items.length; i++) {
-			if (!FilterService.filterByAge(filter, items[i].age)) {
+			if (!FilterService.filterByAge( items[i].age)) {
 				continue;
-			} else if (!FilterService.filterByLanguage(filter, items[i].language)) {
+			} else if (!FilterService.filterByLanguage(items[i].language)) {
 				continue;
-			} else if (!FilterService.filterBySubject(filter, items[i].subject)) {
+			} else if (!FilterService.filterBySubject(items[i].subject)) {
 				continue;
 			} else {
 				filteredItems.push(items[i]);
