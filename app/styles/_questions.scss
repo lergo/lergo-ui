@@ -132,3 +132,17 @@
     min-width: 650px;
 	
 }
+
+.shuffle{
+	display: table;
+	padding: 8px;
+	width:100%;
+	.left-cell{
+		display: table-cell;
+		vertical-align: middle;
+		width:15%;
+	}
+	.right-cell{
+		display: table-cell;
+	}
+}

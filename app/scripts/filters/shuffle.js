@@ -2,8 +2,8 @@
 
 angular.module('lergoApp')
     .filter('shuffle', function ( $log ) {
-        return function (array) {
-            if ( !!array.isShuffled ){ // hack to get this filter to run once.
+        return function (array,isShuffleDisabled) {
+            if ( !!isShuffleDisabled || !!array.isShuffled ){ // hack to get this filter to run once.
                 return array;
             }
 
