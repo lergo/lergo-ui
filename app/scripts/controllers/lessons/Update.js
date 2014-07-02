@@ -181,7 +181,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log
 			delete item.selected;
 			QuestionsService.updateQuestion(item).then(function(result) {
 				step.quizItems.push(result.data._id);
-			}, function(result) {
+			}, function() {
 				$log.error($scope.errorMessage);
 			});
 		}
