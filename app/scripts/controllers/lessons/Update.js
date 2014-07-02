@@ -176,11 +176,12 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log
 			if (!item.tags) {
 				item.tags = $scope.lesson.tags;
 			}
+			// we don't want to save state of selection thats why deleting
+			// selected property .
+			delete item.selected;
 			QuestionsService.updateQuestion(item).then(function(result) {
 				step.quizItems.push(result.data._id);
 			}, function(result) {
-				$scope.error = result.data;
-				$scope.errorMessage = 'Error in updating questions : ' + result.data.message;
 				$log.error($scope.errorMessage);
 			});
 		}
