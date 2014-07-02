@@ -260,7 +260,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log
 			controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'quizItem', 'QuestionsService', function($scope, $modalInstance, step, addItemToQuiz, quizItem, QuestionsService) {
 				$scope.qItem = quizItem;
 				$scope.ok = function(item) {
-					addItemToQuiz(item._id, step);
+					addItemToQuiz(item, step);
 					$modalInstance.close();
 				};
 				$scope.cancel = function(item) {
