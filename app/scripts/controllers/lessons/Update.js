@@ -183,7 +183,6 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log
 				$scope.errorMessage = 'Error in updating questions : ' + result.data.message;
 				$log.error($scope.errorMessage);
 			});
-			;
 		}
 	};
 
