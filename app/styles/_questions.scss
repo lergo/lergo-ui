@@ -141,6 +141,17 @@
 		display: table-cell;
 		vertical-align: middle;
 		width:15%;
+		span{
+		position:absolute;
+		padding-left:2px;
+		}
+		.popover-content{
+		width:260px;
+		}
+		button{
+			background-color: transparent;
+			border:0;
+		}
 	}
 	.right-cell{
 		display: table-cell;

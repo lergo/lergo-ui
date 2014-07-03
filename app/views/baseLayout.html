@@ -14,7 +14,9 @@
 								<a href="#/user/homepage">{{ 'baseLayout.header.links.learn'| i18n }} </a>
 							</li>
 							<li>
-								<a href="#/user/create/lessons">{{ 'baseLayout.header.links.create'| i18n }} </a>
+								<a ng-show="!!$root.user" href="#/user/create/lessons">{{ 'baseLayout.header.links.create'| i18n }} </a>
+								<a ng-show="!$root.user" href="" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | i18n}}">{{
+									'baseLayout.header.links.create'| i18n }} </a>
 							</li>
 							<li ng-repeat="item in ['Parents','Teachers']">
 								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | i18n }}</a>

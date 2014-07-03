@@ -164,26 +164,19 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log
 
 		step.quizItems = step.quizItems || [];
 		if (step.quizItems.indexOf(item._id) < 0) {
-			if (!item.subject) {
-				item.subject = $scope.lesson.subject;
+			if (!$scope.lesson.subject) {
+				$scope.lesson.subject = item.subject;
 			}
-			if (!item.age) {
-				item.age = $scope.lesson.age;
+			if (!$scope.lesson.age) {
+				$scope.lesson.age = item.age;
 			}
-			if (!item.language) {
-				item.language = $scope.lesson.language;
+			if (!$scope.lesson.language) {
+				$scope.lesson.language = item.language;
 			}
-			if (!item.tags) {
-				item.tags = $scope.lesson.tags;
+			if (!$scope.lesson.tags) {
+				$scope.lesson.tags = item.tags;
 			}
-			// we don't want to save state of selection thats why deleting
-			// selected property .
-			delete item.selected;
-			QuestionsService.updateQuestion(item).then(function(result) {
-				step.quizItems.push(result.data._id);
-			}, function() {
-				$log.error($scope.errorMessage);
-			});
+			step.quizItems.push(item._id);
 		}
 	};
 
