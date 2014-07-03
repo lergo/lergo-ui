@@ -514,6 +514,23 @@ $COLOR_19: #2a6496 !default;
 }
 
 .popover{
-	text-align:inherit;
+	.popover-title{
+	font-weight:bold;
+	}
+	.popover-content{
+	line-height: 1.2;
+	width:250px;
+	font:15px;
+	color:#949494;
+	a{
+	margin-left:0;
 	font-size:15px;
+	}
+}
+}
+
+.rtl{
+	.popover{
+	text-align:right;
+	}
 }

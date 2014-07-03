@@ -30,8 +30,13 @@
 		</tr>
 	</tbody>
 </table>
-<div ng-show="quizItem.options.length > 1" class="lergo-form shuffle" >
-	<div class="left-cell">{{'questions.disableShuffling' | i18n}}</div>
+<div ng-show="quizItem.options.length > 1" class="lergo-form shuffle">
+	<div class="left-cell">
+		{{'questions.disableShuffling' | i18n}}
+		<span>
+			<button popover="{{'questions.shuffleHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus"></button>
+		</span>
+	</div>
 	<div class="right-cell">
 		<input type="checkbox" ng-model=quizItem.shuffleDisabled />
 	</div>
