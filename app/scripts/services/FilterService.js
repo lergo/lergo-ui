@@ -27,7 +27,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 			}
 
 		}
-		return 'en';
+		return $rootScope.lergoLanguage;
 	};
 
 	this.getLanguageByLocale = function(locale) {
