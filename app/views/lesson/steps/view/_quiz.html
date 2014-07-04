@@ -9,7 +9,8 @@
                   <p class="question-help-text">{{quizItem.helpText}}</p>
                </td>
                <td>
-                  <button ng-show="!!quizItem.hint" popover-placement="top" name="quizItem._id" popover-trigger="focus" popover="{{quizItem.hint}}"
+               <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                  <button ng-show="!!quizItem.hint" popover-placement="top" name="quizItem._id" popover-trigger="focus" popover="{{quizItem.hint}}" tabindex="0"
                      class="btn-link">{{ 'hint' | i18n }}</button>
                </td>
             </tr>

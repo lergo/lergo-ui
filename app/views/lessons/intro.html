@@ -70,8 +70,9 @@
 							<i class="fa fa-envelope "></i>
 							{{'invite' | i18n}}
 						</button>
+						<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
 						<a href="" ng-show="!$root.user" class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="right"
-							popover-trigger="focus">
+							popover-trigger="focus"  tabindex="0">
 							<i class="fa fa-envelope "></i>
 							{{'invite' | i18n}}
 						</a>

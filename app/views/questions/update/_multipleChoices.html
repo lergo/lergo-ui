@@ -34,7 +34,8 @@
 	<div class="left-cell">
 		{{'questions.disableShuffling' | i18n}}
 		<span>
-			<button popover="{{'questions.shuffleHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus"></button>
+		<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+			<button popover="{{'questions.shuffleHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
 		</span>
 	</div>
 	<div class="right-cell">
