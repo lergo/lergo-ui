@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, $location, $log, FilterService) {
+angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, $location, $log, FilterService,$rootScope) {
 	$scope.isModal = false;
 	$scope.ageFilter = function(quizItem) {
 		return FilterService.filterByAge(quizItem.age);
@@ -13,7 +13,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	};
 
 	$scope.createNewQuestion = function() {
-		QuestionsService.createQuestion().then(function(result) {
+		QuestionsService.createQuestion({
+			'language' : FilterService.getLanguageByLocale($rootScope.lergoLanguage)
+		}).then(function(result) {
 			$scope.errorMessage = null;
 			$location.path('/user/questions/' + result.data._id + '/update');
 		}, function(result) {
@@ -57,7 +59,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	function filterItems(items) {
 		var filteredItems = [];
 		for ( var i = 0; i < items.length; i++) {
-			if (!FilterService.filterByAge( items[i].age)) {
+			if (!FilterService.filterByAge(items[i].age)) {
 				continue;
 			} else if (!FilterService.filterByLanguage(items[i].language)) {
 				continue;
