@@ -70,11 +70,12 @@
 							<i class="fa fa-envelope "></i>
 							{{'invite' | i18n}}
 						</button>
-						<button ng-show="!$root.user" class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="right">
+						<a href="" ng-show="!$root.user" class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="right"
+							popover-trigger="focus">
 							<i class="fa fa-envelope "></i>
 							{{'invite' | i18n}}
-						</button>
-						<button class="btn-link" tooltip="{{'lessons.tooltip.share' | i18n}}">
+						</a>
+						<button class="btn-link" ng-click="absoluteShareLink(lesson)" tooltip="{{'lessons.tooltip.share' | i18n}}">
 							<i class="fa fa-share-alt "></i>
 							{{'share' | i18n}}
 						</button>
@@ -129,9 +130,3 @@
 		</div>
 	</div>
 </div>
-<script type="text/ng-template" id="my.tpl.html">
-    <div >
-      <h1>Hello!</h1>
-      <button ng-click="sayHello()">Say Hello</button>
-    </div>
-  </script>

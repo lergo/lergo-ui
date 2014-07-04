@@ -1,9 +1,11 @@
 <div class="create-your-own-box">
-    <div class="upper-section">
-        <div class="create">{{ 'homepage.createYourOwn' | i18n }}</div>
-        <br/>
-        <!-- guy - part of fix for newline on homepage.free -->
-        <a class="start btn" ng-click="create()">{{ 'homepage.create' | i18n }}</a>
-        <div class="free">{{ 'homepage.free' | i18n }}</div>
-    </div>
+	<div class="upper-section">
+		<div class="create">{{ 'homepage.createYourOwn' | i18n }}</div>
+		<br />
+		<!-- guy - part of fix for newline on homepage.free -->
+		<a ng-show="!!$root.user" class="start btn" ng-click="create()">{{ 'homepage.create' | i18n }}</a>
+		<a ng-show="!$root.user" class="start btn" href="" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | i18n}}">{{
+			'homepage.create' | i18n }}</a>
+		<div class="free">{{ 'homepage.free' | i18n }}</div>
+	</div>
 </div>
