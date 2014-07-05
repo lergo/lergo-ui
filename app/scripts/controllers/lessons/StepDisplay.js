@@ -173,4 +173,10 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			$scope.nextQuizItem();
 		}
 	};
+
+	// autofocus not working properly in control of partial view when added
+	// through ngInclude this is a hook to get the desired behaviour
+	$scope.setFocus = function(id) {
+		document.getElementById(id).focus();
+	};
 });
