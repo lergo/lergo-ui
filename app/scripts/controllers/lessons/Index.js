@@ -3,15 +3,14 @@
 angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, FilterService) {
 	$scope.lessons = null;
 
-	$scope.filter = {};
 	$scope.ageFilter = function(lesson) {
-		return FilterService.filterByAge($scope.filter, lesson.age);
+		return FilterService.filterByAge(lesson.age);
 	};
 	$scope.languageFilter = function(lesson) {
-		return FilterService.filterByLanguage($scope.filter, lesson.language);
+		return FilterService.filterByLanguage(lesson.language);
 	};
 	$scope.subjectFilter = function(lesson) {
-		return FilterService.filterBySubject($scope.filter, lesson.subject);
+		return FilterService.filterBySubject(lesson.subject);
 	};
 
 	LergoClient.lessons.getAll().then(function(result) {

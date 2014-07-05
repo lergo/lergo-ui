@@ -1,7 +1,7 @@
 <div class="question-multi-choice">
    <table class="lergo-table">
       <tbody>
-         <tr ng-repeat="option in quizItem.options | shuffle ">
+         <tr ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
             <td style="width: 5%">
                 <!-- todo : connect input elements to model instead of doing a workaround with ng-show -->
                 <input type="checkbox"  ng-show="!quizItem.userAnswer || quizItem.userAnswer.indexOf(option.label) < 0" ng-true-value="option" ng-false-value=""
@@ -9,8 +9,6 @@
 
                 <input type="checkbox" checked ng-show="quizItem.userAnswer.indexOf(option.label) > -1" ng-true-value="option" ng-false-value=""
                ng-click="$parent.updateAnswer($event,option.label,quizItem)"/>
-
-
             </td>
             <td>{{option.label}}</td>
          </tr>

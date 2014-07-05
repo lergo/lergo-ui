@@ -23,10 +23,10 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		// scope but only (!!) if this
 		// controller and scope are responsible for resolving them.
 		if (!!$scope.questions && $scope.hasOwnProperty('questions')) { // if
-																		// this
-																		// scope
-																		// takes
-																		// care
+			// this
+			// scope
+			// takes
+			// care
 			$scope.questions = null;
 		}
 
@@ -164,5 +164,19 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		} else {
 			$scope.progressPercentage = Math.round((($scope.currentIndex + 1) * 100) / $scope.step.quizItems.length);
 		}
+	};
+
+	$scope.enterPressed = function(quizItem) {
+		if (!$scope.getAnswer(quizItem) && !!quizItem.userAnswer) {
+			$scope.checkAnswer();
+		} else if ($scope.getAnswer(quizItem) && $scope.hasNextQuizItem()) {
+			$scope.nextQuizItem();
+		}
+	};
+
+	// autofocus not working properly in control of partial view when added
+	// through ngInclude this is a hook to get the desired behaviour
+	$scope.setFocus = function(id) {
+		document.getElementById(id).focus();
 	};
 });

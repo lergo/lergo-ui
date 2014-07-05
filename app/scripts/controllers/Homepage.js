@@ -1,8 +1,11 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, FilterService/*, $location, $log*/) {
+angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, FilterService/*
+																									 * ,
+																									 * $location,
+																									 * $log
+																									 */) {
 
-	$scope.filter = {};
 	LergoClient.lessons.getPublicLessons().then(function(result) {
 		$scope.lessons = result.data;
 		$scope.lessons.forEach(function(value) {
@@ -10,16 +13,16 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		});
 	});
 	$scope.ageFilter = function(lesson) {
-		return FilterService.filterByAge($scope.filter, lesson.age);
+		return FilterService.filterByAge(lesson.age);
 	};
 	$scope.languageFilter = function(lesson) {
-		return FilterService.filterByLanguage($scope.filter, lesson.language);
+		return FilterService.filterByLanguage(lesson.language);
 	};
 	$scope.subjectFilter = function(lesson) {
-		return FilterService.filterBySubject($scope.filter, lesson.subject);
+		return FilterService.filterBySubject(lesson.subject);
 	};
 	$scope.viewsFilter = function(lesson) {
-		return FilterService.filterByViews($scope.filter, lesson.views);
+		return FilterService.filterByViews(lesson.views);
 	};
 	LergoClient.lessons.getStats().then(function(result) {
 		$scope.stats = result.data;

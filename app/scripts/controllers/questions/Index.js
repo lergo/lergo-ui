@@ -1,20 +1,21 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, $location, $log, FilterService) {
+angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, $location, $log, FilterService,$rootScope) {
 	$scope.isModal = false;
-	$scope.filter = {};
 	$scope.ageFilter = function(quizItem) {
-		return FilterService.filterByAge($scope.filter, quizItem.age);
+		return FilterService.filterByAge(quizItem.age);
 	};
 	$scope.languageFilter = function(quizItem) {
-		return FilterService.filterByLanguage($scope.filter, quizItem.language);
+		return FilterService.filterByLanguage(quizItem.language);
 	};
 	$scope.subjectFilter = function(quizItem) {
-		return FilterService.filterBySubject($scope.filter, quizItem.subject);
+		return FilterService.filterBySubject(quizItem.subject);
 	};
 
 	$scope.createNewQuestion = function() {
-		QuestionsService.createQuestion().then(function(result) {
+		QuestionsService.createQuestion({
+			'language' : FilterService.getLanguageByLocale($rootScope.lergoLanguage)
+		}).then(function(result) {
 			$scope.errorMessage = null;
 			$location.path('/user/questions/' + result.data._id + '/update');
 		}, function(result) {
@@ -43,7 +44,8 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	$scope.selectAll = function(event) {
 		var checkbox = event.target;
 		if (checkbox.checked) {
-			angular.forEach($scope.items, function(item) {
+			var filtered = filterItems($scope.items);
+			angular.forEach(filtered, function(item) {
 				item.selected = true;
 			});
 		} else {
@@ -53,4 +55,21 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 
 		}
 	};
+
+	function filterItems(items) {
+		var filteredItems = [];
+		for ( var i = 0; i < items.length; i++) {
+			if (!FilterService.filterByAge(items[i].age)) {
+				continue;
+			} else if (!FilterService.filterByLanguage(items[i].language)) {
+				continue;
+			} else if (!FilterService.filterBySubject(items[i].subject)) {
+				continue;
+			} else {
+				filteredItems.push(items[i]);
+			}
+		}
+		return filteredItems;
+
+	}
 });

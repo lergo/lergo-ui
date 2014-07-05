@@ -1,33 +1,63 @@
-<div class="base-layout admin" >
-    <table>
-        <tr>
-            <td>Title</td>
-            <td>Username</td>
-            <td>Email</td>
-            <td>public since</td>
-            <td>Actions</td>
-        </tr>
-        <tr ng-repeat="l in lessons">
-
-            <td>
-                {{l.name}}
-            </td>
-            <td>{{getUser(l).username}}</td>
-            <td>{{getUser(l).email}}</td>
-            <td>
-                {{l.public | date:'EEE dd,yyyy HH:mm:ss' }}
-            </td>
-            <td>
-
-                <button ng-show="!isChanging(l)" ng-disabled="!!l.public" ng-click="makePublic(l)"> Make Public </button>
-                <button ng-show="!isChanging(l)" ng-disabled="!l.public" ng-click="makePrivate(l)"> Make Private </button>
-                <div ng-show="isChanging(l)" class="loader-short"></div>
-                <a href="#/user/lessons/{{l._id}}/intro?preview=true"> {{ 'preview' | i18n }} </a>
-
-
-            </td>
-
-        </tr>
-    </table>
+<div class="base-layout admin">
+	<div class="page-content-width page-content-titles">
+		<div class="page-content-body">
+			<div class="lergo-h1">{{ 'admin.allLessons' | i18n }} [ {{ 'lessons.total' | i18n }}: {{lessons.length}}  ;  {{'admin.public'|i18n}}: {{getPublicLessonCount()}} ]</div>
+		</div>
+		<div class="page-content-sidebar">
+			<div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
+		</div>
+	</div>
+	<div class="page-content-width">
+		<div class="page-content-body">
+			<table class="lergo-table">
+				<thead>
+					<td class="checkbox-dropdown">
+						<div class="btn-group" dropdown>
+							<input type="checkbox" ng-click="selectAll($event)">
+							<button type="button" class="btn-link dropdown-toggle">
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<a class="btn-link" ng-click="makePublic()">{{'admin.makePublic'|i18n}}</a>
+								</li>
+								<li>
+									<a class="btn-link" ng-click="makePrivate()">{{'admin.makePrivate'|i18n}}</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a class="btn-link" ng-click="deleteLesson()">{{'delete'|i18n}}</a>
+								</li>
+							</ul>
+						</div>
+					</td>
+					<td>{{'name'|i18n}}</td>
+					<td>{{'admin.by'|i18n}}</td>
+					<td>{{'admin.views'|i18n}}</td>
+					<td>{{'admin.created'|i18n}}</td>
+					<td>{{'admin.publicFrom'|i18n}}</td>
+				</thead>
+				<tbody>
+					<tr ng-repeat="l in lessons | filter:languageFilter |filter:subjectFilter|filter:ageFilter">
+						<td>
+							<input type="checkbox" ng-model="l.selected">
+						</td>
+						<td>
+							<a ng-show="!!l.name && l.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#/user/lessons/{{l._id}}/intro">{{
+								l.name }}</a>
+							<a ng-show="!l.name || l.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#/user/lessons/{{l._id}}/intro">[ no
+								title ]</a>
+						</td>
+						<td>{{getUser(l).username}}</td>
+						<td>{{l.views}}</td>
+						<td>{{l.timeStamp | date:'EEE dd,yyyy HH:mm'}}</td>
+						<td>{{l.public | date:'EEE dd,yyyy HH:mm' }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="page-content-sidebar">
+			<div ng-include src="'views/filters/filter.html'" ng-init="showViewsFilter=true"></div>
+		</div>
+	</div>
 </div>
-
