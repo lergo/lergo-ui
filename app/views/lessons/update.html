@@ -6,7 +6,7 @@
 		<div class="form-section form-group name" ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
 			<div class="lergo-label">{{ 'lessons.name' | i18n }}</div>
 			<div class="lergo-input">
-				<input required class="form-control" ng-model="lesson.name" name="name"/>
+				<input required class="form-control" ng-model="lesson.name" name="name" />
 			</div>
 			<p ng-show="lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine" class="help-block">{{'lessons.error.invalidName' | i18n}}</p>
 		</div>
@@ -19,7 +19,8 @@
 		<div class="stats form-group">
 			<div class="language">
 				<span>{{ 'filters.labels.language' | i18n }}</span>
-				<select class="form-control" ng-model="lesson.language" ng-options="l.id as ('filters.languages.' + l.id| i18n) for l in languages" name="language"></select>
+				<select class="form-control" ng-model="lesson.language" ng-options="l.id as ('filters.languages.' + l.id| i18n) for l in languages"
+					name="language"></select>
 			</div>
 			<div class="subject">
 				<span>{{ 'filters.labels.subject' | i18n }}</span>
@@ -33,33 +34,38 @@
 		<div class="tag form-group">
 			<div class="row">
 				<span>{{ 'tags' | i18n }}</span>
-				<input class="form-control" placeholder="{{'tagHint' | i18n}}" ng-model="lesson.tags" name="tag"/>
+				<input class="form-control" placeholder="{{'tagHint' | i18n}}" ng-model="lesson.tags" name="tag" />
 			</div>
 		</div>
-		<div style="margin-top: 5px; margin-bottom: 5px">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
-		<div>
-			<button class="btn" ng-click="done()" ng-disabled="isSaving() || !lesson.name">{{'done' | i18n }}</button>
-			<button class="btn" ng-click="addStep(lesson)" ng-disabled="isSaving() || !lesson.name">{{ 'steps.add' | i18n }}</button>
-		</div>
-		<button class="btn-link" ng-click="isCollapsed = !isCollapsed" ng-show="!!lesson.name">{{ 'advancedOptions' | i18n }}</button>
-		<div collapse="!isCollapsed">
-			<hr>
-			<table class=" lergo-table lergo-form">
-				<tbody>
-					<tr>
-						<td style="width: 15%">{{ 'lessons.recommenedNextLesson' | i18n }}</td>
-						<td>
-							<input placeholder="{{'lessons.recommenedNextLessonText' | i18n}}" ng-model="lesson.nextLesson" />
-						</td>
-					</tr>
-					<tr>
-						<td>{{ 'lessons.recommenedPriorLesson' | i18n }}</td>
-						<td>
-							<input placeholder="{{'lessons.recommenedPriorLessonText' | i18n}}" ng-model="lesson.priorLesson" />
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="advance-options">
+			<div class="lergo-h1">
+				<br>
+				<button class="btn-link expander" ng-click="isCollapsed = !isCollapsed" ng-show="!!lesson.name">
+					<i ng-show="!isCollapsed" class="fa fa-plus-square"></i>
+					<i ng-show="!!isCollapsed" class="fa fa-minus-square"></i>
+					{{ 'advancedOptions' | i18n }}
+				</button>
+				{{(isCollapsed===undefined)&& (isCollapsed = (!!lesson.nextLesson || !!lesson.priorLesson ))||"" }}
+			</div>
+			<div collapse="!isCollapsed">
+				<hr>
+				<table class=" lergo-table lergo-form">
+					<tbody>
+						<tr>
+							<td style="width: 15%">{{ 'lessons.recommenedNextLesson' | i18n }}</td>
+							<td>
+								<input placeholder="{{'lessons.recommenedNextLessonText' | i18n}}" ng-model="lesson.nextLesson" />
+							</td>
+						</tr>
+						<tr>
+							<td>{{ 'lessons.recommenedPriorLesson' | i18n }}</td>
+							<td>
+								<input placeholder="{{'lessons.recommenedPriorLessonText' | i18n}}" ng-model="lesson.priorLesson" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div ng-repeat="step in lesson.steps">
 			<hr style="float: none" />
@@ -89,6 +95,11 @@
 			<div>
 				<button style="margin-left: 50%" class="btn" ng-click="displayStep(step)">{{ 'steps.display' | i18n }}</button>
 			</div>
+		</div>
+		<div class="lergo-h3">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+		<div>
+			<button class="btn" ng-click="done()" ng-disabled="isSaving() || !lesson.name">{{'done' | i18n }}</button>
+			<button class="btn" ng-click="addStep(lesson)" ng-disabled="isSaving() || !lesson.name">{{ 'steps.add' | i18n }}</button>
 		</div>
 	</form>
 </div>

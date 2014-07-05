@@ -15,8 +15,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<audio ng-show="!!quizItem.audioUrl" ng-src="{{getAudioUrl(quizItem)}}" audioplayer controls></audio>
+					<td colspan="2">
+						<div class="audio" ng-show="!!quizItem.media">
+							<audio ng-show=" quizItem.media==='audio' && !!quizItem.audioUrl" ng-src="{{getSantizeUrl(quizItem.audioUrl)}}" audioplayer controls></audio>
+							<img width="360px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSantizeUrl(quizItem.imageUrl)}}"></img>
+						</div>
 					</td>
 				</tr>
 			</table>
