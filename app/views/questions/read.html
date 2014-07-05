@@ -7,8 +7,9 @@
 			<div class="help">
 				<p class="question-help-text">{{quizItem.helpText}}</p>
 			</div>
-			<div class="audio">
-				<audio ng-show="!!quizItem.audioUrl" ng-src="{{getAudioUrl(quizItem)}}" audioplayer controls></audio>
+			<div class="audio" ng-show="!!quizItem.media">
+				<audio ng-show=" quizItem.media==='audio' && !!quizItem.audioUrl" ng-src="{{getSantizeUrl(quizItem.audioUrl)}}" audioplayer controls></audio>
+				<img width="380px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSantizeUrl(quizItem.imageUrl)}}"></img>
 			</div>
 			<div class="answers " ng-include="getQuestionViewTemplate(quizItem)"></div>
 			<div class="submit">
@@ -18,19 +19,16 @@
 		<div class="right">
 			<div class="action-items">
 				<div class="hint" ng-show="!!quizItem.hint">
-					<a ng-show="!!quizItem.hint" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link">
-						{{'hint' | i18n}}
-					</a>
+					<a ng-show="!!quizItem.hint" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link"> {{'hint' | i18n}} </a>
 					<br />
 				</div>
-
 				<a class="btn-link" ng-click="copyQuestion(quizItem)">
 					<i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | i18n}}"></i>
 				</a>
-                <a class="btn-link" href="#/user/questions/{{quizItem._id}}/update" tooltip="{{'questions.tooltip.edit' | i18n}}">
-                    <i class="fa fa-pencil-square-o"></i></a>
-                <br/>
-
+				<a class="btn-link" href="#/user/questions/{{quizItem._id}}/update" tooltip="{{'questions.tooltip.edit' | i18n}}">
+					<i class="fa fa-pencil-square-o"></i>
+				</a>
+				<br />
 				<br />
 			</div>
 		</div>
