@@ -61,7 +61,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		});
 	};
 
-	$scope.getAnswer = function(quizItem) {
+	$scope.getAnswer = function() {
 		return $scope.answer;
 	};
 
