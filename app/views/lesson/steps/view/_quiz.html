@@ -1,56 +1,5 @@
 <div class="lesson-step-quiz">
-	<div class="lesson-step-title lergo-h1">{{step.title}}</div>
-	<form class="lesson-step-quiz-content" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
-		<div style="margin: 10px">
-			<table class=lergo-table>
-				<tr>
-					<td style="width: 100%">
-						<p class="lergo-h4">{{quizItem.question}}</p>
-						<p class="question-help-text">{{quizItem.helpText}}</p>
-					</td>
-					<td>
-						<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-						<button ng-show="!!quizItem.hint" popover-placement="top" name="quizItem._id" popover-trigger="focus" popover="{{quizItem.hint}}" tabindex="0"
-							class="btn-link">{{ 'hint' | i18n }}</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="audio" ng-show="!!quizItem.media">
-							<audio ng-show=" quizItem.media==='audio' && !!quizItem.audioUrl" ng-src="{{getSantizeUrl(quizItem.audioUrl)}}" audioplayer controls></audio>
-							<img width="360px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSantizeUrl(quizItem.imageUrl)}}"></img>
-						</div>
-					</td>
-				</tr>
-			</table>
-			<div ng-include="getQuizItemTemplate(getQuizItem())"></div>
-		</div>
-		<div class="lesson-step-quiz-next">
-			<button ng-show=" !getAnswer(quizItem)" ng-disabled="!quizItem.userAnswer" type="submit" class="btn" ng-click="checkAnswer()">{{
-				'button.submit' | i18n }}</button>
-			<button ng-show="hasNextQuizItem() && getAnswer(quizItem)" class="btn" ng-click="nextQuizItem()">{{ 'nextQuestion' | i18n }} >></button>
-			<button ng-show="!hasNextQuizItem() && getAnswer(quizItem)" class="btn" disabled>{{ 'steps.noMoreQuestions' | i18n }}</button>
-		</div>
-		<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>
-	</form>
-	<br>
-	<div ng-show="!!getAnswer(quizItem)">
-		<div class="bg-success" ng-show="getAnswer(quizItem).correct">
-			{{(quizItem.type === 'openQuestion') && ('questions.thankYou' | i18n) || ('questions.correctAnswerFilled' | i18n) }}
-			<div ng-show="!!quizItem.explanation">
-				<a class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</a>
-				<div style="width: 400px; margin: auto" collapse="!isCollapsed">{{quizItem.explanation}}</div>
-			</div>
-		</div>
-		<div class="bg-warning" ng-show="!getAnswer(quizItem).correct">
-			{{'questions.incorrectAnswerFilled' | i18n }}: {{((quizItem.type==='trueFalse') && (quizItem.answer && ('quizItem.answer.'+quizItem.answer |
-			i18n)||"") || getCorrectAnswers(quizItem) )}}
-			<div ng-show="!!quizItem.explanation">
-				<a class="btn-link" style="color: white" ng-click="collapsed = !collapsed">{{ 'explanation' | i18n }}</a>
-				<div style="width: 400px; margin: auto" collapse="!!collapsed">{{quizItem.explanation}}</div>
-			</div>
-		</div>
-	</div>
+	<div ng-include="getQuizItemTemplate(getQuizItem())" ng-init="mode='quiz'"></div>
 	<div ng-show="!getAnswer(quizItem)">
 		<div class="bg-primary">{{'steps.answer' | i18n }}</div>
 	</div>
