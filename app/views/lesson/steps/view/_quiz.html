@@ -1,5 +1,5 @@
 <div class="lesson-step-quiz">
-	<div class="lesson-step-title lergo-h1">{{step.title}}</div>
+	<div class="lesson-step-title lergo-h1" style="padding-bottom: 0px; margin-bottom: -30px;">{{step.title}}</div>
 	<div ng-include="getQuizItemTemplate(getQuizItem())" ng-init="mode='quiz'"></div>
 	<div ng-show="!getAnswer(quizItem)">
 		<div class="bg-primary">{{'steps.answer' | i18n }}</div>

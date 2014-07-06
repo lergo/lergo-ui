@@ -57,7 +57,7 @@
 </div>
 <br>
 <div class="result" ng-show="!!getAnswer(quizItem)">
-	<div class="{{!answer.correct && 'bg-warning' || 'bg-success'}}">
+	<div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">
 		<span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | i18n}}</span>
 		<span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | i18n}}: {{getCorrectAnswers(quizItem)}}</span>
 		<div ng-show="!!quizItem.explanation && !getAnswer(quizItem).correct">
