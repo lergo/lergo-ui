@@ -102,14 +102,4 @@ angular.module('lergoApp').controller(
 				return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
 			};
 
-			$scope.generate = function(quizItem) {
-				if (!!quizItem) {
-					var options = (quizItem.question).split(/___/);
-					//options[0] = options[0].substring(1, options.length);
-					//options[options.length - 1] = options[options.length - 1].substring(0, options.length);
-					quizItem.options = options;
-					quizItem.answer = [];
-				}
-			};
-
 		});
