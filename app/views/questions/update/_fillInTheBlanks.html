@@ -1,20 +1,19 @@
-<!--UNTRANSLATED-->
-
-<div>
-    <button ng-click="generateFillInTheBlanks()">Generate Fill In the Blanks</button>
-    <br>
-<div style="border:2px solid blue;">
-Example : 2+2 = [4] and [2,4,6,8] is a even number less then 10.
-<br>
-<br>
- Output : 2+2 = <input type="text"/> and <input type="text"/> is a even number less then 10.
-</div>
-    
-    <!-- <div ng-repeat="answer in quizItem.answers">
-        <input ng-model="answer" type="text"/>
-        <button ng-click="moveOptionUp(question,option)">Move Up</button>
-        <button ng-click="moveOptionDown(question,option)">Move Down</button>
-        <button ng-click="quizItem.answers.splice(quizItem.indexOf(answer),1)">Remove</button>
-    </div>
-    <button ng-click="quizItem.answers.push('')"></button> -->
-</div>
+<table class="lergo-table lergo-form">
+	<thead>
+		<tr>
+			<td>{{ 'questions.correctAnswers' | i18n }}</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="line-height: 3">
+				{{!quizItem.answer && (quizItem.answer=[])||""}}
+				<span style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
+					<span>{{option}}</span>
+					<input ng-show="!$last" style="width: 130px; display: inline; border: 0; min-height: 28px;" ng-model="quizItem.answer[$index]">
+				</span>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<hr />

@@ -136,6 +136,22 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			return true;
 		},
 		'alias' : []
+	} ,{
+		'id' : 'fillInTheBlanks',
+		'label' : 'Fill In The Blanks',
+		'updateTemplate' : 'views/questions/update/_fillInTheBlanks.html',
+		'viewTemplate' : 'views/questions/view/_fillInTheBlanks.html',
+		'reportTemplate' : 'views/questions/report/_fillInTheBlanks.html',
+		'answers' : function(quizItem) {
+			return quizItem.answer.join(';');
+		},
+		'isValid' : function(quizItem) {
+			if (!quizItem.question || !quizItem.answer ) {
+				return false;
+			}
+			return true;
+		},
+		'alias' : []
 	} ];
 
 	this.getTypeById = function(typeId) {

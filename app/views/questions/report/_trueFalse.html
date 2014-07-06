@@ -12,7 +12,7 @@
 		<div ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
 		<div ng-show="!!quizItem.media" class="quiz-answer">
 			<audio ng-show=" quizItem.media==='audio' && !!quizItem.audioUrl" ng-src="{{getSanatizeUrl(quizItem.audioUrl)}}" audioplayer controls></audio>
-			<img width="380px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSanatizeUrl(quizItem.imageUrl)}}"></img>
+			<img width="190px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSanatizeUrl(quizItem.imageUrl)}}"></img>
 		</div>
 		<div class="quiz-answer">
 			<div>

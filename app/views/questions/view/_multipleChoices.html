@@ -1,19 +1,72 @@
-<div class="question-multi-choice">
-   <table class="lergo-table">
-      <tbody>
-         <tr ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
-            <td style="width: 5%">
-                <!-- todo : connect input elements to model instead of doing a workaround with ng-show -->
-                <input type="checkbox"  ng-show="!quizItem.userAnswer || quizItem.userAnswer.indexOf(option.label) < 0" ng-true-value="option" ng-false-value=""
-               ng-click="$parent.updateAnswer($event,option.label,quizItem)"/>
-
-                <input type="checkbox" checked ng-show="quizItem.userAnswer.indexOf(option.label) > -1" ng-true-value="option" ng-false-value=""
-               ng-click="$parent.updateAnswer($event,option.label,quizItem)"/>
-            </td>
-            <td>{{option.label}}</td>
-         </tr>
-      </tbody>
-   </table>
+<div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
+	<div class="left">
+		<div class="question">
+			<p class="lergo-h4">{{quizItem.question}}</p>
+		</div>
+		<div class="help">
+			<p class="question-help-text">{{quizItem.helpText}}</p>
+		</div>
+		<div class="audio" ng-show="!!quizItem.media">
+			<audio ng-show=" quizItem.media==='audio' && !!quizItem.audioUrl" ng-src="{{getSantizeUrl(quizItem.audioUrl)}}" audioplayer controls></audio>
+			<img width="190px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSantizeUrl(quizItem.imageUrl)}}"></img>
+		</div>
+		<div>
+			<table class="lergo-table">
+				<tbody>
+					<tr ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
+						<td style="width: 5%">
+							<!-- todo : connect input elements to model instead of doing a workaround with ng-show -->
+							<input type="checkbox" ng-show="!quizItem.userAnswer || quizItem.userAnswer.indexOf(option.label) < 0" ng-true-value="option" ng-false-value=""
+								ng-click="$parent.updateAnswer($event,option.label,quizItem)" />
+							<input type="checkbox" checked ng-show="quizItem.userAnswer.indexOf(option.label) > -1" ng-true-value="option" ng-false-value=""
+								ng-click="$parent.updateAnswer($event,option.label,quizItem)" />
+						</td>
+						<td>{{option.label}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="submit">
+			<div ng-show="mode==='read'">
+				<button class="btn" type="submit" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+			</div>
+			<div ng-show="mode==='quiz'">
+				<button ng-show="!getAnswer(quizItem)" ng-disabled="!quizItem.userAnswer" type="submit" class="btn" ng-click="checkAnswer()">{{
+					'button.submit' | i18n }}</button>
+				<button ng-show="hasNextQuizItem() && getAnswer(quizItem)" class="btn" ng-click="nextQuizItem()">{{ 'nextQuestion' | i18n }} >></button>
+				<button ng-show="!hasNextQuizItem() && getAnswer(quizItem)" class="btn" disabled>{{ 'steps.noMoreQuestions' | i18n }}</button>
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="action-items">
+			<div class="hint" ng-show="!!quizItem.hint">
+				<a ng-show="!!quizItem.hint" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link"> {{'hint' | i18n}} </a>
+			</div>
+			<div ng-show="mode==='read'">
+				<hr />
+				<a class="btn-link" ng-click="copyQuestion(quizItem)">
+					<i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | i18n}}"></i>
+				</a>
+				<a class="btn-link" href="#/user/questions/{{quizItem._id}}/update" tooltip="{{'questions.tooltip.edit' | i18n}}">
+					<i class="fa fa-pencil-square-o"></i>
+				</a>
+			</div>
+		</div>
+	</div>
 </div>
-
-
+<br>
+<div class="result" ng-show="!!getAnswer(quizItem)">
+	<div class="{{!answer.correct && 'bg-warning' || 'bg-success'}}">
+		<span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | i18n}}</span>
+		<span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | i18n}}: {{getCorrectAnswers(quizItem)}}</span>
+		<div ng-show="!!quizItem.explanation && !getAnswer(quizItem).correct">
+			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+			<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
+		</div>
+		<div ng-show="!!quizItem.explanation && !!getAnswer(quizItem).correct">
+			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+			<div style="width: 400px; margin: auto" collapse="!isCollapsed">{{quizItem.explanation}}</div>
+		</div>
+	</div>
+</div>

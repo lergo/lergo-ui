@@ -51,6 +51,18 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient, $
 				return false;
 			};
 
+			$scope.isCorrectFillInTheBlanks = function(quizItem, answer) {
+
+				if (!answer) {
+					return false;
+				}
+				if (quizItem.answer.indexOf(answer) === quizItem.userAnswer.indexOf(answer)) {
+					return true;
+				} else {
+					return false;
+				}
+			};
+
 			// /////////////// construct a single object with question, user
 			// answer and answer check
 
