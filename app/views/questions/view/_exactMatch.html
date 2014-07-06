@@ -8,7 +8,7 @@
 		</div>
 		<div class="audio" ng-show="!!quizItem.media">
 			<audio ng-show=" quizItem.media==='audio' && !!quizItem.audioUrl" ng-src="{{getSantizeUrl(quizItem.audioUrl)}}" audioplayer controls></audio>
-			<img width="190px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSantizeUrl(quizItem.imageUrl)}}"></img>
+			<img width="300px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSantizeUrl(quizItem.imageUrl)}}"></img>
 		</div>
 		<div class="answers">
 			<input id="exactQuestionText" ng-model="quizItem.userAnswer" autofocus ng-init="setFocus('exactQuestionText')" />
