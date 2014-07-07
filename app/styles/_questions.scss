@@ -139,11 +139,12 @@
 	width:100%;
 	.left-cell{
 		display: table-cell;
-		vertical-align: middle;
-		width:15%;
+		vertical-align: bottom;
+		width:20%;
 		span{
-		position:absolute;
+		position:relative;
 		padding-left:2px;
+		padding-bottom:10px;
 		}
 		.popover-content{
 		width:260px;
@@ -152,6 +153,7 @@
 			background-color: transparent;
 			border:0;
 			color: #2a6496;
+			vertical-align: super;
 		}
 	}
 	.right-cell{
