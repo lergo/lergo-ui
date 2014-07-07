@@ -9,7 +9,7 @@ angular.module('lergoApp')
         };
 
         this.createAnonymous = function( lessonId ){
-            return $http.post('/backend/public/lessons/' + lessonId + '/invitations/create');
+            return $http.post('/backend/lessons/' + lessonId + '/invitations/create');
         };
 
         this.report = function( invitationId, report ){

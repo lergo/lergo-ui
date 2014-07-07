@@ -9,6 +9,7 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $log, $
         link: function postLink(scope/* , element /*, attrs */) {
             LergoClient.isLoggedIn().then(function (result) {
                 if (!!result) {
+
                     $rootScope.user = result.data;
                 }
             });

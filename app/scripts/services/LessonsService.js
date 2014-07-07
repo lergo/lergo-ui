@@ -3,7 +3,7 @@
 angular.module('lergoApp').service('LessonsService', function LessonsService($http,$sce) {
 
 	this.create = function() {
-		return $http.post('/backend/user/lessons');
+		return $http.post('/backend/lessons/create');
 	};
 	this.getAll = function() {
 		return $http.get('/backend/user/lessons');
@@ -31,7 +31,7 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
     };
     
     this.getStats = function (){
-        return $http.get('/backend/public/system/statistics');
+        return $http.get('/backend/system/statistics');
     };
     
     this.getTitleImage = function(lesson) {
