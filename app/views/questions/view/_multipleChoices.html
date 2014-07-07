@@ -15,11 +15,7 @@
 				<tbody>
 					<tr ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
 						<td style="width: 5%">
-							<!-- todo : connect input elements to model instead of doing a workaround with ng-show -->
-							<input type="checkbox" ng-show="!quizItem.userAnswer || quizItem.userAnswer.indexOf(option.label) < 0" ng-true-value="option" ng-false-value=""
-								ng-click="$parent.updateAnswer($event,option.label,quizItem)" />
-							<input type="checkbox" checked ng-show="quizItem.userAnswer.indexOf(option.label) > -1" ng-true-value="option" ng-false-value=""
-								ng-click="$parent.updateAnswer($event,option.label,quizItem)" />
+							<input type="checkbox" ng-model="option.userAnswer" />
 						</td>
 						<td>{{option.label}}</td>
 					</tr>
@@ -28,10 +24,10 @@
 		</div>
 		<div class="submit">
 			<div ng-show="mode==='read'">
-				<button class="btn" type="submit" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+				<button class="btn" type="submit" ng-disabled="!canSubmitMultiChoice(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
 			</div>
 			<div ng-show="mode==='quiz'">
-				<button ng-show="!getAnswer(quizItem)" ng-disabled="!quizItem.userAnswer" type="submit" class="btn" ng-click="checkAnswer()">{{
+				<button ng-show="!getAnswer(quizItem)" ng-disabled="!canSubmitMultiChoice(quizItem)" type="submit" class="btn" ng-click="checkAnswer()">{{
 					'button.submit' | i18n }}</button>
 				<button ng-show="hasNextQuizItem() && getAnswer(quizItem)" class="btn" ng-click="nextQuizItem()">{{ 'nextQuestion' | i18n }} >></button>
 				<button ng-show="!hasNextQuizItem() && getAnswer(quizItem)" class="btn" disabled>{{ 'steps.noMoreQuestions' | i18n }}</button>
