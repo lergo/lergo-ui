@@ -20,7 +20,7 @@
 			<div ng-show="mode==='read'">
 				<button class="btn" type="submit" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
 			</div>
-			<div ng-show="mode==='quiz'">
+			<div ng-show="mode==='quiz'" class="action-item">
 				<button ng-show="!getAnswer(quizItem)" ng-disabled="!quizItem.userAnswer" type="submit" class="btn" ng-click="checkAnswer()">{{
 					'button.submit' | i18n }}</button>
 				<button ng-show="hasNextQuizItem() && getAnswer(quizItem)" class="btn" ng-click="nextQuizItem()">{{ 'nextQuestion' | i18n }} >></button>
