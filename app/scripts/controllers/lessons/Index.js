@@ -13,24 +13,19 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 		return FilterService.filterBySubject(lesson.subject);
 	};
 
-	LergoClient.lessons.getAll().then(function(result) {
-		$scope.lessons = result.data;
-		$scope.errorMessage = null;
-		$log.info('Lesson fetched sucessfully');
-	}, function(result) {
-		$scope.errorMessage = 'Error in fetching Lessons : ' + result.data.message;
-		$log.error($scope.errorMessage);
-	});
+
 	$scope.getAll = function() {
-		LergoClient.lessons.getAll().then(function(result) {
+		LergoClient.userData.getLessons().then(function(result) {
 			$scope.lessons = result.data;
 			$scope.errorMessage = null;
-			$log.info('Lesson fetched sucessfully');
+			$log.info('Lesson fetched successfully');
 		}, function(result) {
 			$scope.errorMessage = 'Error in fetching Lessons : ' + result.data.message;
 			$log.error($scope.errorMessage);
 		});
 	};
+    $scope.getAll();
+
 	$scope.$on('$viewContentLoaded', function() {
 		$scope.getAll();
 	});

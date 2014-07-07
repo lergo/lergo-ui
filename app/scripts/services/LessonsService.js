@@ -5,17 +5,22 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 	this.create = function() {
 		return $http.post('/backend/lessons/create');
 	};
-	this.getAll = function() {
-		return $http.get('/backend/user/lessons');
-	};
+
+    // will get all lessons - including private.
+    // if user not allowed, will return 400.
+    // to get user's lessons, use UserDataService
+    this.getAll = function(){
+        return $http.get('/backend/lessons/get/all');
+    };
+
 	this.delete = function(id) {
 		return $http.post('/backend/user/lessons/' + id + '/delete');
 	};
 	this.update = function(lesson) {
-		return $http.post('/backend/user/lessons/' + lesson._id, lesson);
+		return $http.post('/backend/lessons/' + lesson._id + '/update', lesson);
 	};
 	this.getById = function(id) {
-		return $http.get('/backend/user/lessons/' + id);
+		return $http.get('/backend/lessons/' + id);
 	};
 
     this.getPublicById = function( id ) {

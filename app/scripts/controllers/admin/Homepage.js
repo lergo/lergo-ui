@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, AdminClientService, FilterService, LergoClient, $log) {
+angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, FilterService, LergoClient, $log) {
 
-	AdminClientService.lessons.getLessons().then(function(result) {
+	LergoClient.lessons.getAll().then(function(result) {
 		$scope.lessons = result.data;
 		
 	});
 
 	var users = {};
 
-	AdminClientService.getAllUsers().then(function(result) {
+	LergoClient.users.getAll().then(function(result) {
 		result.data.forEach(function(user) {
 			users[user._id] = user;
 		});
@@ -34,7 +34,7 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Admi
 
 	function save(lesson) {
 		changing.push(lesson._id);
-		AdminClientService.lessons.update(lesson).then(function success(result) {
+		LergoClient.lessons.update(lesson).then(function success(result) {
 			var indexOf = $scope.lessons.indexOf(lesson);
 			$scope.lessons[indexOf] = result.data;
 			changing.splice(changing.indexOf(lesson._id), 1);
