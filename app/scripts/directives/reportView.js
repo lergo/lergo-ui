@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').directive('lessonView', function($log, LergoClient,$sce) {
+angular.module('lergoApp').directive('lessonView', function($log, LergoClient, $sce) {
 	return {
 		templateUrl : '/views/lessons/invitations/report/_display.html',
 		restrict : 'A',
@@ -49,6 +49,18 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient,$s
 					}
 				}
 				return false;
+			};
+
+			$scope.isCorrectFillInTheBlanks = function(quizItem, answer) {
+
+				if (!answer) {
+					return false;
+				}
+				if (quizItem.answer.indexOf(answer) === quizItem.userAnswer.indexOf(answer)) {
+					return true;
+				} else {
+					return false;
+				}
 			};
 
 			// /////////////// construct a single object with question, user
@@ -119,10 +131,10 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient,$s
 				$log.info('result', result);
 				return result;
 			};
-			$scope.getAudioUrl = function(quizItem) {
-                if ( !!quizItem ) {
-                    return $sce.trustAsResourceUrl(quizItem.audioUrl);
-                }
+			$scope.getSanatizeUrl = function(url) {
+				if (!!url) {
+					return $sce.trustAsResourceUrl(url);
+				}
 			};
 		}
 

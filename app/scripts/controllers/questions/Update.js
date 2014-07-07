@@ -85,21 +85,25 @@ angular
 					$scope.done = function() {
 						$location.path('/user/create/questions');
 					};
-					$scope.$on('$locationChangeStart',function(event) {
-						if (!$scope.isValid($scope.quizItem)) {
-							var answer = confirm('For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost.');
-							if (!answer) {
-								event.preventDefault();
-							} else {
-								QuestionsService.deleteQuestion(questionId);
-							}
-						}
-					});
+					$scope
+							.$on(
+									'$locationChangeStart',
+									function(event) {
+										if (!$scope.isValid($scope.quizItem)) {
+											var answer = confirm('For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost.');
+											if (!answer) {
+												event.preventDefault();
+											} else {
+												QuestionsService.deleteQuestion(questionId);
+											}
+										}
+									});
 
 					$scope.isValid = function(quizItem) {
-						if (!quizItem ||!quizItem.type) {
+						if (!quizItem || !quizItem.type) {
 							return false;
 						}
 						return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
 					};
+
 				});

@@ -1,8 +1,7 @@
 #questionPreview { 
     width:450px;
     margin:0 auto;
-    margin-top:500px;
-    min-height: 300px;
+    margin-top:50px;
     display:flex;
     border-radius:5px;
     background-color: gainsboro;
@@ -12,17 +11,8 @@
 		.submit{
 		margin-top:10px;
 		text-align: center;
+		width:430px;
 		}
-		.question-true-false{
-   			.true-false-options{
-     			.true-false-option{
-       				padding:15px;
-      				 margin-left:5px;
-     			}
-     			text-align:center;
-
-   			}
- 		}
  		.help{
  			color: grey; 
 			font-family: cursive;
@@ -31,6 +21,17 @@
 		.audio{
 		margin-top:10px;
 		}
+		.answers{
+		width:430px;
+			margin-top:10px;
+			text-align: center;
+			.true-false-options{
+     			.true-false-option{
+       				padding:15px;
+      				margin-left:5px;
+     			}
+			}
+		}
 		
 		
 	}
@@ -38,6 +39,9 @@
 	.right { 
 		width:10%;
 		.action-items { 
+			hr{
+				border-top: 1px solid transparent;
+			}
 			.hint{
 			  font-size:15px;
 
@@ -54,4 +58,23 @@
 
 		}
 	}
+	
+	textarea {
+    width: 75%;
+    padding: 5px;
+    background: $LERGO_INPUT_BACKGROUND;
+    height: $LERGO_FORM_TEXTAREA_HEIGHT;
+  }
+
+  input {
+    background: $LERGO_INPUT_BACKGROUND;
+    border:1px solid $LERGO_INPUT_BORDER_COLOR;
+    padding:5px;
+    border-radius:5px;
+    width:75%;
+    &[type=checkbox]{
+      width:30px
+    }
+
+  }
 }

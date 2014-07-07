@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log ) {
+angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
 	this.getUserQuestions = function() {
 		return $http.get('/backend/user/questions');
 	};
 
-    this.copyQuestion = function( questionId ) {
-        $log.info('copying question');
-        return $http.post('/backend/user/questions/' + questionId + '/copy');
-    };
+	this.copyQuestion = function(questionId) {
+		$log.info('copying question');
+		return $http.post('/backend/user/questions/' + questionId + '/copy');
+	};
 
 	this.getUserQuestionById = function(questionId) {
 		return $http.get('/backend/user/questions/' + questionId);
@@ -134,6 +134,28 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 				return false;
 			}
 			return true;
+		},
+		'alias' : []
+	}, {
+		'id' : 'fillInTheBlanks',
+		'label' : 'Fill In The Blanks',
+		'updateTemplate' : 'views/questions/update/_fillInTheBlanks.html',
+		'viewTemplate' : 'views/questions/view/_fillInTheBlanks.html',
+		'reportTemplate' : 'views/questions/report/_fillInTheBlanks.html',
+		'answers' : function(quizItem) {
+			return quizItem.answer.join(';');
+		},
+		'isValid' : function(quizItem) {
+			if (!quizItem.question || !quizItem.answer) {
+				return false;
+			}
+			var result = false;
+			quizItem.answer.forEach(function(value) {
+				if (!!value) {
+					result= true;
+				}
+			});
+			return result;
 		},
 		'alias' : []
 	} ];
