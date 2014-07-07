@@ -30,18 +30,6 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 
 	};
 
-	$scope.updateAnswer = function(event, answer, quizItem) {
-		$log.info('updating answer', arguments);
-		if (quizItem.userAnswer === undefined) {
-			quizItem.userAnswer = [];
-		}
-		var checkbox = event.target;
-		if (checkbox.checked) {
-			quizItem.userAnswer.push(answer);
-		} else {
-			quizItem.userAnswer.splice(quizItem.userAnswer.indexOf(answer), 1);
-		}
-	};
 	$scope.getSantizeUrl = function(url) {
 		if (!!url) {
 			return $sce.trustAsResourceUrl(url);
@@ -66,9 +54,9 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 	};
 
 	$scope.canSubmitMultiChoice = function(quizItem) {
-
-		if (!quizItem || !quizItem.options || quizItem.options.length < 1)
+		if (!quizItem || !quizItem.options || quizItem.options.length < 1) {
 			return false;
+		}
 		quizItem.userAnswer = [];
 		for ( var i = 0; i < quizItem.options.length; i++) {
 			var option = quizItem.options[i];
@@ -76,21 +64,19 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 				quizItem.userAnswer.push(option.label);
 			}
 		}
-		$log.info(quizItem.userAnswer.length > 0);
 		return quizItem.userAnswer.length > 0;
 	};
 
 	$scope.canSubmitFillInTheBlanks = function(quizItem) {
-		if (!quizItem || !quizItem.userAnswer || quizItem.userAnswer.length !== quizItem.answer.length)
+		if (!quizItem || !quizItem.userAnswer || quizItem.userAnswer.length !== quizItem.answer.length) {
 			return false;
+		}
 		var result = true;
 		for ( var i = 0; i < quizItem.userAnswer.length; i++) {
 			if (!quizItem.userAnswer[i]) {
 				result = false;
 			}
 		}
-		$log.info(result);
 		return result;
 	};
-
 });
