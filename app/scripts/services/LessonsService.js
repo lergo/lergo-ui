@@ -16,6 +16,11 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 	this.delete = function(id) {
 		return $http.post('/backend/user/lessons/' + id + '/delete');
 	};
+
+    this.getPermissions = function(id){
+        return $http.get('/backend/user/lessons' + id + '/permissions');
+    };
+
 	this.update = function(lesson) {
 		return $http.post('/backend/lessons/' + lesson._id + '/update', lesson);
 	};
