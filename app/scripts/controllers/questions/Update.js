@@ -11,7 +11,6 @@ angular
 							return QuestionsService.updateQuestion(value);
 						}
 					});
-
 					$scope.saveQuestion = saveQuestion;
 
 					var questionId = $routeParams.questionId;
@@ -22,6 +21,10 @@ angular
 
 					QuestionsService.getUserQuestionById(questionId).then(function(result) {
 						$scope.quizItem = result.data;
+						// To determine whether advance option should be open or
+						// not
+						var q = $scope.quizItem;
+						$scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary);
 						$scope.errorMessage = null;
 					}, function(result) {
 						$scope.error = result.data;

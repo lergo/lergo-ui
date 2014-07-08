@@ -37,7 +37,7 @@
 <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
 <table class="lergo-table lergo-form" ng-show="!!quizItem.question && !!quizItem.type">
 	<tr>
-		<td style="width: 15%">{{ 'tags' | i18n }}</td>
+		<td style="width: 20%">{{ 'tags' | i18n }}</td>
 		<td>
 			<input placeholder="{{'tagHint' | i18n}}" ng-model="quizItem.tags" />
 		</td>
@@ -51,9 +51,9 @@
 			<i ng-show="!!isCollapsed" class="fa fa-minus-square"></i>
 			{{ 'advancedOptions' | i18n }}
 		</button>
-		{{(isCollapsed===undefined)&& (isCollapsed = (!!quizItem.mediaUrl || !!quizItem.hint || !!quizItem.explanation || !!quizItem.summary ))||"" }}
 	</div>
-	<div collapse="!isCollapsed">
+	<div collapse="!isCollapsed"
+		ng-init="">
 		<hr />
 		<table class=" lergo-table lergo-form">
 			<tbody>
@@ -90,6 +90,7 @@
 			</tbody>
 		</table>
 	</div>
+	{{isCollapsed}}
 </div>
 <br>
 <div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>

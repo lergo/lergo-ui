@@ -18,10 +18,10 @@
 		</div>
 		<div class="submit">
 			<div ng-show="mode==='read'">
-				<button class="btn" type="submit" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+				<button class="btn" type="submit" ng-disabled="!canSubmitFillInTheBlanks(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
 			</div>
 			<div ng-show="mode==='quiz'">
-				<button ng-show="!getAnswer(quizItem)" ng-disabled="!quizItem.userAnswer" type="submit" class="btn" ng-click="checkAnswer()">{{
+				<button ng-show="!getAnswer(quizItem)" ng-disabled="!canSubmitFillInTheBlanks(quizItem)" type="submit" class="btn" ng-click="checkAnswer()">{{
 					'button.submit' | i18n }}</button>
 				<button ng-show="hasNextQuizItem() && getAnswer(quizItem)" class="btn" ng-click="nextQuizItem()">{{ 'nextQuestion' | i18n }} >></button>
 				<button ng-show="!hasNextQuizItem() && getAnswer(quizItem)" class="btn" disabled>{{ 'steps.noMoreQuestions' | i18n }}</button>
@@ -33,7 +33,7 @@
 			<div class="hint" ng-show="!!quizItem.hint">
 				<a ng-show="!!quizItem.hint" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link"> {{'hint' | i18n}} </a>
 			</div>
-			<div ng-show="mode==='read'">
+			<div ng-show="mode==='read'" class="action-item">
 				<hr />
 				<a class="btn-link" ng-click="copyQuestion(quizItem)">
 					<i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | i18n}}"></i>
