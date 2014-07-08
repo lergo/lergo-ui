@@ -113,10 +113,7 @@
 					</div>
 					<div class="description">
 						<div ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</div>
-						<div ng-show="!!more">
-							{{ lesson.description}}
-							<div ng-repeat="sum in summary track by $index">{{sum}}</div>
-						</div>
+						<div ng-show="!!more">{{ lesson.description}}</div>
 						<div class="read-more" style="text-align: center" ng-show="filteredDescription.length != lesson.description.length ">
 							<a href="" ng-click="more=!more">
 								<span class="dashes">---------------------</span>

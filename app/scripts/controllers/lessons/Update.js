@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, QuestionsService,$rootScope) {
+angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, QuestionsService, $rootScope) {
 	$scope.subjects = FilterService.subjects;
 	$scope.languages = FilterService.languages;
 	var saveLesson = new ContinuousSave({
@@ -21,8 +21,8 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log
 		$scope.lesson = result.data;
 		$scope.errorMessage = null;
 		$scope.$watch('lesson', saveLesson.onValueChange, true);
-		if(!$scope.lesson.language){
-			$scope.lesson.language=FilterService.getLanguageByLocale($rootScope.lergoLanguage);
+		if (!$scope.lesson.language) {
+			$scope.lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
 		}
 	}, function(result) {
 		$scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
@@ -36,7 +36,6 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log
 		'id' : 'quiz',
 		'label' : 'Quiz'
 	} ];
-
 
 	$scope.addStep = function(lesson) {
 		if (!lesson.steps) {
@@ -228,10 +227,11 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log
 			}
 		});
 	};
-	
-	$scope.openUpdateQuestion = function(step,quizItemId){
+
+	$scope.openUpdateQuestion = function(step, quizItemId) {
 		LergoClient.questions.getUserQuestionById(quizItemId).then(function(result) {
-		$scope.openCreateQuestionDialog(step, result.data);});
+			$scope.openCreateQuestionDialog(step, result.data);
+		});
 	};
 
 	$scope.openCreateQuestion = function(step) {

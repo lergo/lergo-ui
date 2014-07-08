@@ -6,24 +6,8 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	var preview = !!$routeParams.preview;
 	LergoClient.lessons.getPublicById(lessonId).then(function(result) {
 		$scope.lesson = result.data;
-		initSummary();
 		$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.lesson.language);
 	});
-
-	$scope.summary = [];
-	function initSummary() {
-		$scope.lesson.steps.forEach(function(step) {
-			if (!!step.quizItems) {
-				step.quizItems.forEach(function(id) {
-					LergoClient.questions.findQuestionsById(id).then(function(result) {
-						if(!!result.data.summary){
-						$scope.summary.push(result.data.summary);
-						}
-					});
-				});
-			}
-		});
-	}
 
 	function redirectToInvitation() {
 		$location.path('/public/lessons/invitations/' + invitationId + '/display');
