@@ -126,10 +126,16 @@
 .question-bank-dialog .modal-dialog {
     width :85%;
     min-width: 900px;
+    .btn-default{
+    background-color: #C0C0C0;
+    }
 }
 .question-create-dialog .modal-dialog{
 	 width :70%;
     min-width: 650px;
+    .btn-default{
+    background-color: #C0C0C0;
+    }
 	
 }
 

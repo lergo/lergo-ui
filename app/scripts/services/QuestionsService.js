@@ -59,6 +59,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			}
 			return true;
 		},
+		'canSubmit' : function(quizItem) {
+			return !!quizItem.userAnswer;
+		},
 		'alias' : []
 	}, {
 		'id' : 'exactMatch',
@@ -87,6 +90,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 				}
 			});
 			return result;
+		},
+		'canSubmit' : function(quizItem) {
+			return !!quizItem.userAnswer;
 		},
 		'alias' : []
 	}, {
@@ -119,6 +125,19 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			});
 			return result;
 		},
+		'canSubmit' : function(quizItem) {
+			if (!quizItem || !quizItem.options || quizItem.options.length < 1) {
+				return false;
+			}
+			quizItem.userAnswer = [];
+			for ( var i = 0; i < quizItem.options.length; i++) {
+				var option = quizItem.options[i];
+				if (option.userAnswer === true) {
+					quizItem.userAnswer.push(option.label);
+				}
+			}
+			return quizItem.userAnswer.length > 0;
+		},
 		'alias' : []
 	}, {
 		'id' : 'openQuestion',
@@ -134,6 +153,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 				return false;
 			}
 			return true;
+		},
+		'canSubmit' : function(quizItem) {
+			return !!quizItem.userAnswer;
 		},
 		'alias' : []
 	}, {
@@ -152,13 +174,26 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			var result = false;
 			quizItem.answer.forEach(function(value) {
 				if (!!value) {
-					result= true;
+					result = true;
 				}
 			});
 			return result;
 		},
+		'canSubmit' : function(quizItem) {
+			if (!quizItem || !quizItem.userAnswer || quizItem.userAnswer.length !== quizItem.answer.length) {
+				return false;
+			}
+			var result = true;
+			for ( var i = 0; i < quizItem.userAnswer.length; i++) {
+				if (!quizItem.userAnswer[i]) {
+					result = false;
+				}
+			}
+			return result;
+		},
 		'alias' : []
 	} ];
+	
 
 	this.getTypeById = function(typeId) {
 		for ( var i = 0; i < this.questionsType.length; i++) {

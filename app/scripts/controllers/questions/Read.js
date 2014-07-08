@@ -53,30 +53,11 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		return $scope.answer;
 	};
 
-	$scope.canSubmitMultiChoice = function(quizItem) {
-		if (!quizItem || !quizItem.options || quizItem.options.length < 1) {
+	$scope.canSubmit = function(quizItem) {
+		if (!quizItem && !quizItem.type) {
 			return false;
 		}
-		quizItem.userAnswer = [];
-		for ( var i = 0; i < quizItem.options.length; i++) {
-			var option = quizItem.options[i];
-			if (option.userAnswer === true) {
-				quizItem.userAnswer.push(option.label);
-			}
-		}
-		return quizItem.userAnswer.length > 0;
+		return QuestionsService.getTypeById(quizItem.type).canSubmit(quizItem);
 	};
 
-	$scope.canSubmitFillInTheBlanks = function(quizItem) {
-		if (!quizItem || !quizItem.userAnswer || quizItem.userAnswer.length !== quizItem.answer.length) {
-			return false;
-		}
-		var result = true;
-		for ( var i = 0; i < quizItem.userAnswer.length; i++) {
-			if (!quizItem.userAnswer[i]) {
-				result = false;
-			}
-		}
-		return result;
-	};
 });
