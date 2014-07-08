@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: LessonsStepQuizCtrl', function () {
+describe('Controller: AdminHomepageCtrl', function () {
 
   // load the controller's module
   beforeEach(module('lergoApp'));
 
-  var LessonsStepQuizCtrl,
+  var AdminHomepageCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    LessonsStepQuizCtrl = $controller('LessonsStepQuizCtrl', {
+    AdminHomepageCtrl = $controller('AdminHomepageCtrl', {
       $scope: scope
     });
   }));

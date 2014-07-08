@@ -1,0 +1,29 @@
+<form name="filter" ng-controller="FilterCtrl" class="filters lergo-form">
+	<div class="label">{{'filters.labels.language' | i18n }}</div>
+	<div class="input">
+		<select ng-options="l.id as ('filters.languages.' + l.id | i18n) for l in languages" ng-model="$root.filter.language">
+			<option value="">{{'filters.all'|i18n}}</option>
+		</select>
+	</div>
+	<div class="label">{{'filters.labels.subject' | i18n }}</div>
+	<div class="input">
+		<select placeholder="Subjects" ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects" ng-model="$root.filter.subject">
+			<option value="">{{'filters.all'|i18n}}</option>
+		</select>
+	</div>
+	<div class="label">{{'filters.labels.ageRange' | i18n }}</div>
+	<div>
+		<input min="1" max="100" size="1" class="number" type="number" ng-model="$root.filter.ageRange.min" />
+		{{'filters.to'|i18n}}
+		<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.ageRange.max" />
+	</div>
+	<br />
+	<div ng-show="!!showViewsFilter">
+		<div class="label">{{'filters.labels.views' | i18n }}</div>
+		<div>
+			<input min="1" size="1" class="number" type="number" ng-model="$root.filter.views.min" />
+			{{'filters.to'|i18n}}
+			<input min="1" size="1" class="number" type="number" ng-model="$root.filter.views.max" />
+		</div>
+	</div>
+</form>

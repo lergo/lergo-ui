@@ -1,23 +1,45 @@
-multiple choices
-
-<div class="top-actions right">
-    <i class="fa fa-times lergo-icon" ng-click="selected.showPreview=false"></i>
-    <i class="fa  lergo-icon" ng-click="selected.showPreview=false">&nbsp</i>
-</div>
-<div class="question-preview question multiple-choices">
-    <div class="title">{{selected.question.question}}</div>
-    <div class="body">
-        <div class="options left correct-answer">
-            <div ng-repeat="option in selected.question.options">
-                <div class="option"
-                     ng-class="{'active':!!option.correct}"
-                     ng-click="markOptionAsCorrect(selected.question, option)">
-                    <i class="fa fa-check"></i>
-                </div><span>{{option.answer}}</span>
-            </div>
-        </div>
-        <div class="media right">
-            <img ng-src="{{selected.question.mediaSource}}"/>
-        </div>
-    </div>
+<!-- To init option array by single element if its empty  -->
+{{ (quizItem.options===undefined) && addOption() || ""}}
+<table class="lergo-table lergo-form">
+	<thead>
+		<tr>
+			<td>{{ 'questions.possibleAnswers' | i18n }}</td>
+			<td style="width: 10%">{{ 'questions.correctAnswers' | i18n }}</td>
+			<td style="width: 10%">{{ 'remove' | i18n }}</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="option in quizItem.options track by $index">
+			<td>
+				<input type="text" placeholder="{{('questions.answerOption' |i18n) + ($index + 1)}}" ng-model=quizItem.options[$index].label />
+			</td>
+			<td>
+				<input type="checkbox" ng-model=quizItem.options[$index].checked />
+			</td>
+			<td>
+				<a class="btn-link" ng-click="removeOption(option)" ng-show="quizItem.options.length > 1">X</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="text" placeholder="{{ 'questions.clickToAdd' | i18n }}" readonly="True" ng-click="addOption()" />
+			</td>
+			<td>
+				<input type="checkbox" disabled="True" />
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div ng-show="quizItem.options.length > 1" class="lergo-form shuffle">
+	<div class="left-cell">
+		<span>
+			{{'questions.disableShuffling' | i18n}}</span>
+			<span>
+			<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+			<button popover="{{'questions.shuffleHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+		</span>
+	</div>
+	<div class="right-cell">
+		<input type="checkbox" ng-model=quizItem.shuffleDisabled />
+	</div>
 </div>

@@ -1,18 +1,31 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location) {
+angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, FilterService) {
 	$scope.lessons = null;
 
+	$scope.ageFilter = function(lesson) {
+		return FilterService.filterByAge(lesson.age);
+	};
+	$scope.languageFilter = function(lesson) {
+		return FilterService.filterByLanguage(lesson.language);
+	};
+	$scope.subjectFilter = function(lesson) {
+		return FilterService.filterBySubject(lesson.subject);
+	};
+
+
 	$scope.getAll = function() {
-		LergoClient.lessons.getAll().then(function(result) {
+		LergoClient.userData.getLessons().then(function(result) {
 			$scope.lessons = result.data;
 			$scope.errorMessage = null;
-			$log.info('Lesson fetched sucessfully');
+			$log.info('Lesson fetched successfully');
 		}, function(result) {
 			$scope.errorMessage = 'Error in fetching Lessons : ' + result.data.message;
 			$log.error($scope.errorMessage);
 		});
 	};
+    $scope.getAll();
+
 	$scope.$on('$viewContentLoaded', function() {
 		$scope.getAll();
 	});
@@ -28,17 +41,4 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 		});
 	};
 
-	$scope.deleteLesson = function(lesson) {
-		var canDelete = window.confirm('Are you sure you want to delete the lesson: ' + lesson.name + ' ?');
-		if (canDelete) {
-			LergoClient.lessons.delete(lesson._id).then(function() {
-				$scope.errorMessage = null;
-				$log.info('Lesson deleted sucessfully');
-				$scope.getAll();
-			}, function(result) {
-				$scope.errorMessage = 'Error in deleting Lesson : ' + result.data.message;
-				$log.error($scope.errorMessage);
-			});
-		}
-	};
 });

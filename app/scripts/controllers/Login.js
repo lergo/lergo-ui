@@ -8,7 +8,9 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 		LergoClient.isLoggedIn().then(function(result) {
 			if (!!result) {
 				$rootScope.user = result.data;
-				$location.path('/user/homepage');
+                $location.path('/user/homepage');
+
+
 			}
 		}, function() {
 			$scope.showLoginPage = true;
@@ -29,11 +31,12 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
         });
     };
 
+
 	$scope.login = function() {
 		LergoClient.login($scope.form).then(function success(result) {
 			$rootScope.user = result.data;
 			$scope.errorMessage = null;
-			$location.path('/user/homepage');
+            $location.path('/user/homepage');
 		}, function error(result) {
             try {
                 if ( result.data.code === 7 ){ // user not validated

@@ -8,11 +8,62 @@ $FOOTER_HEIGHT: 170px !default;
 
 }
 
-.base-layout {
-  margin-bottom:-$HEADER_HEIGHT;
+/** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
+.base-layout, .base-layout-class {
+  &:not(.base-layout-modal) {
+    margin-bottom: -$HEADER_HEIGHT;
+  }
   .push {
     height: $HEADER_HEIGHT;
     //margin-bottom:-$HEADER_HEIGHT;
+  }
+
+  /** standard widths for this layout **/
+  .page-content-width{
+    width:1000px;
+    min-width:1000px;
+
+    /* clearfix */
+    &:after{
+      content: "";
+      visibility: hidden;
+      display:block;
+      height:0;
+      clear:both;
+    }
+
+    .page-content-body{
+        display:inline-block;
+        width:730px;
+        min-width:730px;
+    }
+
+    .page-content-sidebar{
+        float:right;
+        width:225px;
+        min-width:225px;
+    }
+
+
+  }
+
+  .page-content-titles{
+    margin-bottom:25px;
+    .page-content-body, .page-content-sidebar{
+      border-bottom:1px solid $LERGO_HR_COLOR;
+      padding-bottom:15px;
+    }
+    .page-content-body .lergo-h1{
+
+      display:inline-block;
+    }
+    .page-content-titles-actions{
+      display:inline-block;
+      float: right;
+      margin-top: -5px;
+      margin-bottom: -5px;
+
+    }
   }
 
   #footer, .push {
@@ -20,7 +71,8 @@ $FOOTER_HEIGHT: 170px !default;
   }
   #header {
     background: $HEADER_BACKGROUND_COLOR;
-
+    width:100%;
+    min-width:1000px;
 
     height: $HEADER_HEIGHT;
     .logo {
@@ -34,14 +86,14 @@ $FOOTER_HEIGHT: 170px !default;
       margin-top: 10px;
       background: url('/images/homepage/logo-beta.png') no-repeat;
       display: inline-block;
-      height: 84px;
+      height: 90px;
       width: 166px;
     }
 
     .header-links {
       padding-top: 10px;
       padding-bottom: 10px;
-      width: 535px;
+      width: 60%;
       display: block;
       margin-top: -100px;
       margin-right:0;
@@ -54,7 +106,7 @@ $FOOTER_HEIGHT: 170px !default;
         margin: 0;
         li {
           list-style: none;
-          padding: 0 26px 0 0;
+          padding: 0 22px 0 0;
           margin: 0;
           float: left;
           &, a {
@@ -63,7 +115,7 @@ $FOOTER_HEIGHT: 170px !default;
           &:after {
             display: inline-block;
             content: "|";
-            padding-left: 31px;
+            padding-left: 22px;
             padding-right:0;
           }
           &:last-child:after {
@@ -72,18 +124,25 @@ $FOOTER_HEIGHT: 170px !default;
         }
       }
     }
-
+	.header-language{
+		float: right;
+      	width: 160px;
+      	margin-top: -24px;
+      	select{
+	      	border:0;
+	      	background-color: transparent;
+      	}
+	}
     .header-login {
       float: right;
-      width: 225px;
-      margin-right: 0;
+      width: 25%;
+      margin-right: -40px;
       margin-top: -92px;
       a {
         color: white;
         display: inline-block;
-        border-top: 2px solid white;
         font-size: 18px;
-        width: 90px;
+        width: 60%;
         text-decoration: none;
         padding: 10px 0;
         text-align: center;
@@ -94,7 +153,27 @@ $FOOTER_HEIGHT: 170px !default;
           float: right;
         }
       }
-
+    }
+      .header-signup {
+      float: right;
+      width: 205px;
+      margin-right: 0;
+      margin-top: -92px;
+      a {
+        color: white;
+        display: inline-block;
+        font-size: 18px;
+        width: 95px;
+        text-decoration: none;
+        padding: 10px 0;
+        text-align: center;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.3)
+        }
+        &:last-child {
+          float: right;
+        }
+      }
     }
   }
 
@@ -123,8 +202,10 @@ $FOOTER_HEIGHT: 170px !default;
       width:26px;
       height:24px;
       display:inline-block;
+      position:absolute;
       background: url('/images/homepage/search-icon.png') no-repeat;
-      margin-left:7px;
+      margin-left:15px;
+      margin-top:6px;
     }
     input{
       border-top-left-radius: 8px;
@@ -153,24 +234,37 @@ $FOOTER_HEIGHT: 170px !default;
   }
 
   #footer {
-    padding-top: 40px;
+    padding-top: 15px;
     height: $FOOTER_HEIGHT/2+30px;
 
     background-color: #296CA1;
     width:100%;
+    min-width:1000px;
+      .footer-text{
+    	color:white;
+    	padding-bottom:15px;
+		font-size:12px;    
+		a{ color:white}
+    }
     .footer-links{
+    display:table;
+    float:left;
+    width:100%;
       ul,li{list-style:none; padding:0; margin:0;}
       li{
         float:left;
-        padding-right:40px;
+        padding-right:30px;
+        padding-bottom:10px;
 
         &, a{ color:white}
+      }
+      .row{
+      display:table-row;
       }
     }
     .copyrights{
       float:right;
       color:#A6BBCF;
-
     }
   }
 }
@@ -179,47 +273,15 @@ $FOOTER_HEIGHT: 170px !default;
 #content{
   height:auto !important;
   padding-bottom:20px;
-}
-
-.container,.base-layout{
-  height:100%;
-}
-
-
-body.rtl{
-  .base-layout{
-    #header{
-      .header-links{
-        margin-left:0;
-        margin-right:230px;
-        ul{
-          li{
-            float:right;
-            padding: 0  0 0 26px;
-            &:after{
-              padding-left:0;
-              padding-right:31px;
-            }
-          }
-
-
-        }
-      }
-      .header-login{
-        float:left;
-
-      }
-
-      .header-search{
-        margin-right:230px;
-        margin-left:0;
-
-        border-top-right-radius: 10px;
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
-
-      }
-    }
+  &>div:first-child{ /* guy - written like this so that we can override if needed */
+    margin-top:40px;
   }
 }
+/** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
+.container,.base-layout,.base-layout-class{
+  &:not(.base-layout-modal) {
+    height: 100%;
+  }
+}
+
+

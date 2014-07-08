@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
+angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
     .config(function ($routeProvider, $httpProvider, $logProvider) {
 
         $logProvider.debugEnabled(false);
@@ -29,10 +29,27 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
             })
             .when('/user/lessons/:lessonId/display', {
                 templateUrl : 'views/lessons/display.html',
-                controller : 'LessonsDisplayCtrl'
+                controller : 'LessonsDisplayCtrl',
+                reloadOnSearch: false
             })
 
-
+            .when('/public/lessons/invitations/:invitationId/display', {
+                templateUrl: 'views/lessons/invitations/display.html',
+                controller: 'LessonsInvitationsDisplayCtrl',
+                reloadOnSearch: false
+            })
+            .when('/:role/lessons/:lessonId/intro', {
+                templateUrl: 'views/lessons/intro.html',
+                controller: 'LessonsIntroCtrl'
+            })
+            .when('/public/lessons/:lessonId/share', {
+                template: '',
+                controller: 'LessonsInvitesPublicShareCtrl'
+            })
+            .when('/public/lessons/invitations/:invitationId/report', {
+                templateUrl: 'views/lessons/invitations/report.html',
+                controller: 'LessonsInvitationsReportCtrl'
+            })
             .when('/user/questions/:questionId/update', {
                 templateUrl : 'views/questions/update.html',
                 controller  : 'QuestionsUpdateCtrl'
@@ -41,9 +58,29 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 templateUrl: 'views/homepage.html',
                 controller: 'HomepageCtrl'
             })
+            //todo - remove this url. use plural version '/user/lessons/:lessonId/update'
             .when('/user/lesson/:lessonId/update', {
                 templateUrl: 'views/lessons/update.html',
                 controller:'LessonsUpdateCtrl'
+            })
+
+             .when('/user/create/lessons', {
+                templateUrl: 'views/partials/_create.html', // todo: move this view to view/create/_lessons.html
+                controller:'BaseLayoutCreateCtrl',
+                activeTab:'lessons'
+            })
+             .when('/user/create/questions', {
+                templateUrl: 'views/partials/_create.html',
+                controller:'BaseLayoutCreateCtrl',
+                activeTab:'questions'
+            })
+            .when('/user/lessons/:lessonId/update', {
+                templateUrl: 'views/lessons/update.html',
+                controller:'LessonsUpdateCtrl'
+            })
+            .when('/user/lessons/:lessonId/invitations', {
+                templateUrl : 'views/lessons/invitations/create.html',
+                controller: 'LessonsInvitesCreateCtrl'
             })
             .when('/public/kitchenSink', {
                 templateUrl: 'views/kitchenSink.html'
@@ -53,9 +90,30 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 templateUrl: 'views/translations/diff.html',
                 controller: 'TranslationsDiffCtrl'
             })
+            .when('/public/feedback', {
+                templateUrl: 'views/partials/_feedback.html'
+            })
+            .when('/public/abuse', {
+                templateUrl: 'views/partials/_abuse.html'
+            })
+            .when('/public/contact', {
+                templateUrl: 'views/partials/_contact.html'
+            })
+            .when('/public/terms', {
+                templateUrl: 'views/partials/_term.html'
+            })
+            .when('/public/problem', {
+                templateUrl: 'views/partials/_problem.html'
+            })
+            .when('/public/suggest', {
+                templateUrl: 'views/partials/_suggest.html'
+            })
             .when('/public/session/signup', {
                 templateUrl: 'views/session/signup.html',
                 controller:'SignupCtrl'
+            })
+            .when('/public/session/signupConfirmation', {
+                templateUrl: 'views/session/signupConfirmation.html'
             })
             .when('/public/session/login', {
                 templateUrl: 'views/session/login.html',
@@ -77,8 +135,21 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute'])
                 templateUrl : 'views/session/resetPasswordRequest.html',
                 controller: 'SessionResetPasswordRequestCtrl'
             })
+            .when('/admin/homepage', {
+                templateUrl: 'views/admin/homepage.html',
+                controller: 'AdminHomepageCtrl'
+            })
+             .when('/user/Parents', {
+                templateUrl: 'views/errors/underConstruction.html'
+            })
+             .when('/user/Teachers', {
+                templateUrl: 'views/errors/underConstruction.html'
+            })
+             .when('/public/contribute', {
+                templateUrl: 'views/partials/_contribute.html'
+            })
             .when('/', {
-                redirectTo: '/user/lessons'
+                redirectTo: '/public/session/login'
 //                redirectTo: '/public/session/login'
             })
             .otherwise({

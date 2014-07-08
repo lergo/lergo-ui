@@ -48,12 +48,43 @@
 #questionsIndex{
   table{
     .question{
-      width:100%;
+      width:70%;
+    }
+    .answer{
+      width:30%;
     }
   }
 }
 
+.question-display {
+	.question-submit{
+    text-align:center;
+    padding: 20px 0;
+  }
+  .question-content, .question-submit{
+  background-color: gainsboro;
+    width:400px;
+    margin:0 auto;
+  }
+  
+  .question-true-false{
+   .true-false-options{
+     .true-false-option{
+       padding:15px;
+       margin-left:5px;
 
+     }
+     text-align:center;
+
+   }
+ }
+
+}
+
+.question-help-text{
+	color: grey; 
+	font-family: cursive;
+}
 
 #questions-update{
   .multipleChoiceSingleAnswer {
@@ -61,5 +92,84 @@
       width:100%;
     };
 
-  }
+  } 
+}
+
+.filters { 
+
+
+    .label:nth-child(n+2) {
+      padding-top: 20px;
+    }
+
+
+	.label {
+      padding-bottom: 10px;
+	text-transform:uppercase;
+
+	color: #C5C5C5;
+	background: transparent;
+	font-size: 20px;
+	}
+
+	.number {
+		width: 50px;
+		margin-left: 5px;
+		margin-right: 5px;
+		display: inline-block;
+	}
+
+	select {
+		width: 100%;
+	}
+}
+.question-bank-dialog .modal-dialog {
+    width :85%;
+    min-width: 900px;
+    .btn-default{
+    background-color: #C0C0C0;
+    }
+}
+.question-create-dialog .modal-dialog{
+	 width :70%;
+    min-width: 650px;
+    .btn-default{
+    background-color: #C0C0C0;
+    }
+	
+}
+
+.shuffle{
+	display: table;
+	padding: 8px;
+	width:100%;
+	.left-cell{
+		display: table-cell;
+		vertical-align: bottom;
+		width:20%;
+		span{
+		position:relative;
+		padding-left:2px;
+		padding-bottom:10px;
+		}
+		.popover-content{
+		width:260px;
+		}
+		button{
+			background-color: transparent;
+			border:0;
+			color: #2a6496;
+			vertical-align: super;
+		}
+	}
+	.right-cell{
+		display: table-cell;
+	}
+}
+
+.questions-exact-match{
+	input{
+	width:75%;
+	margin:0 auto;
+	}
 }

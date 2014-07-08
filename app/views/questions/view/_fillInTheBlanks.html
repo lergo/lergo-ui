@@ -1,2 +1,65 @@
-<div class="question-fill-in-the-blanks"
-	bind-html-unsafe="fillInTheBlanks(quizItem)"></div>
+<div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
+	<div class="left">
+		<div class="question" style="line-height: 3">
+			{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
+			<span class="lergo-h4" style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
+				<span class="lergo-h4">{{option}}</span>
+				<input ng-show="!$last"
+					style="width:{{!quizItem.answer[$index] && 100|| ((quizItem.answer[$index].length*10)+20)}}px; background-color:transparent; display: inline; min-height: 28px;"
+					ng-model="quizItem.userAnswer[$index]">
+			</span>
+		</div>
+		<div class="help">
+			<p class="qu estion-help-text">{{quizItem.helpText}}</p>
+		</div>
+		<div class="audio" ng-show="!!quizItem.media">
+			<audio ng-show=" quizItem.media==='audio' && !!quizItem.audioUrl" ng-src="{{getSantizeUrl(quizItem.audioUrl)}}" audioplayer controls></audio>
+			<img width="300px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSantizeUrl(quizItem.imageUrl)}}"></img>
+		</div>
+		<div class="submit">
+			<div ng-show="mode==='read'">
+				<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+			</div>
+			<div ng-show="mode==='quiz'">
+				<button ng-show="!getAnswer(quizItem)" ng-disabled="!canSubmit(quizItem)" type="submit" class="btn" ng-click="checkAnswer()">{{
+					'button.submit' | i18n }}</button>
+				<button ng-show="hasNextQuizItem() && getAnswer(quizItem)" class="btn" ng-click="nextQuizItem()">{{ 'nextQuestion' | i18n }} >></button>
+				<button ng-show="!hasNextQuizItem() && getAnswer(quizItem)" class="btn" disabled>{{ 'steps.noMoreQuestions' | i18n }}</button>
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="action-items">
+			<div class="hint" ng-show="!!quizItem.hint">
+				<a ng-show="!!quizItem.hint" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link"> {{'hint' | i18n}} </a>
+			</div>
+			<div ng-show="mode==='read'" class="action-item">
+				<hr />
+				<a class="btn-link" ng-click="copyQuestion(quizItem)">
+					<i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | i18n}}"></i>
+				</a>
+				<a class="btn-link" href="#/user/questions/{{quizItem._id}}/update" tooltip="{{'questions.tooltip.edit' | i18n}}">
+					<i class="fa fa-pencil-square-o"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-show="mode==='quiz'">
+	<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>
+</div>
+<br>
+<div class="result" ng-show="!!getAnswer(quizItem)">
+	<div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">
+		<span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | i18n}}</span>
+		<span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | i18n}}: {{getCorrectAnswers(quizItem)}}</span>
+		<div ng-show="!!quizItem.explanation && !getAnswer(quizItem).correct">
+			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+			<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
+		</div>
+		<div ng-show="!!quizItem.explanation && !!getAnswer(quizItem).correct">
+			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+			<div style="width: 400px; margin: auto" collapse="!isCollapsed">{{quizItem.explanation}}</div>
+		</div>
+	</div>
+</div>

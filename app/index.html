@@ -18,10 +18,12 @@
         <!-- endbuild -->
       <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 </head>
-  <body ng-app="lergoApp" ng-view="" style="position:relative" class="{{$root.lergoLanguage | i18nDirection }}">
+  <body ng-app="lergoApp" ng-view="" style="position:relative" class="{{$root.lergoLanguage | i18nDirection }} {{$root.lergoLanguage}}">
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
+
+    <script src="/backend/public/conf"></script>
 
     <!--[if lt IE 9]>
       <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -33,10 +35,20 @@
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
+        try {
+            if (!!conf && !!conf.googleAnalyticsCode) {
+                var _gaq = [
+                    ['_setAccount', conf.googleAnalyticsCode],
+                    ['_trackPageview']
+                ];
+                (function (d, t) {
+                    var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+                    g.src = '//www.google-analytics.com/ga.js';
+                    s.parentNode.insertBefore(g, s)
+                }(document, 'script'));
+            }
+        } catch (e) {
+        }
     </script>
 
     <script src="bower_components/angular/angular.js"></script>
@@ -55,6 +67,8 @@
         <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
 
         <script src="bower_components/google-code-prettify/src/prettify.js"></script>
+        <script src="bower_components/lodash/dist/lodash.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <!-- endbuild -->
 
         <!-- build:js scripts/modules.js -->
@@ -95,6 +109,26 @@
         <script src="scripts/services/RequestProgressInterceptor.js"></script>
         <script src="scripts/controllers/translations/Diff.js"></script>
 
+    <script src="scripts/controllers/lessons/invitations/Display.js"></script>
+    <script src="scripts/services/LessonsInvitationsService.js"></script>
+    <script src="scripts/services/FilterService.js"></script>
+    <script src="scripts/controllers/lessons/report/Write.js"></script>
+    <script src="scripts/controllers/lessons/invitations/Report.js"></script>
+    <script src="scripts/directives/reportView.js"></script>
+    <script src="scripts/controllers/filters/Filter.js"></script>
+    <script src="scripts/controllers/admin/Homepage.js"></script>
+    <script src="scripts/directives/adminSection.js"></script>
+    <script src="scripts/controllers/lessons/invites/PublicShare.js"></script>
+    <script src="scripts/controllers/lessons/Intro.js"></script>
+    <script src="scripts/directives/lessonTitleImage.js"></script>
+    <script src="scripts/filters/shuffle.js"></script>
+    <script src="scripts/services/DisplayRoleService.js"></script>
+    <script src="scripts/directives/createYourOwnBox.js"></script>
+    <script src="scripts/filters/multilineEllipsis.js"></script>
+    <script src="scripts/filters/countQuestionsOnLesson.js"></script>
+    <script src="scripts/controllers/BaseLayoutCreate.js"></script>
+    <script src="scripts/services/UserDataService.js"></script>
+    <script src="scripts/services/UsersService.js"></script>
     <!-- endbuild -->
 </body>
 </html>

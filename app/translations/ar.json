@@ -1,0 +1,321 @@
+{
+  "add": "إضافة",
+  "advancedOptions": "خيارات متقدمة",
+  "baseLayout": {
+    "footer": {
+      "about": "عن لارجو",
+      "abuse": "الإبلاغ عن سوء استخدام ",
+      "blog": "منتدى",
+      "contact": "اتصل بنا",
+      "feedback": "أرسل ملاحظاتك ",
+      "homepage": "الصفحة  الرئيسية\n",
+      "privacyAndTerms": "الخصوصية  وشروط  الخدمة",
+      "problem": "الإبلاغ عن خطأ ",
+      "suggest": "اقترح درس",
+      "text1": "الأسئلة عن الدرس موجودة اسفل ال ",
+      "text2": "CC BY-NC-SA 4.0",
+      "text3": "قد تنطبق شروط إضافية. باستخدام هذا الموقع، فإنك / توافق على شروط وسياسات الخصوصية لارغو - لارغو هو مبادرة تعليمية غير ربحية. لارغو-. تعلم بنفسك."
+    },
+    "header": {
+      "links": {
+        "contribute": "للتبرع",
+        "create": "لننتج",
+        "learn": "لنتعلم",
+        "lessons": "دروس",
+        "parents": "الاهل",
+        "questions": "أسئلة",
+        "teachers": "المعلمون"
+      },
+      "logout": "تسجيل الخروج",
+      "searchPlaceholder": "ما هو الموضوع الذي ترغب بدراسته؟",
+      "siteLanguage": "لغة الموقع"
+    }
+  },
+  "button": {
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "login": "دخول",
+    "newInvite": "دعوة جديدة",
+    "resendValidationEmail": "إعادة إرسال البريد الإلكتروني والتحقق من صحته .",
+    "signup": "تسجيل",
+    "submit": "عرض"
+  },
+  "changePassword": {
+    "error": "كان هناك خطأ تغيير كلمة المرور الخاصة بك",
+    "signup": "تسجيل",
+    "success": "تم تغيير كلمة المرور بنجاح"
+  },
+  "clickHere": "انقر هنا ",
+  "congratulations": "هنيئا لكم ",
+  "delete": "حذف",
+  "description": "الوصف",
+  "done": "منجز",
+  "down": "هبوطا ",
+  "edit": "تعديل",
+  "email": "البريد الإلكتروني.",
+  "explanation": "تفسير",
+  "featured": "موصى به",
+  "filters": {
+    "age": {
+      "error": "يجب أن يكون الحد الأقصى لعمر أكبر من الحد الأدنى للسن."
+    },
+    "all": "الجميع",
+    "labels": {
+      "ageRange": "مجموعة الجيل",
+      "language": "اللغة",
+      "subject": "الموضوع",
+      "views": "عدد المشاهدات"
+    },
+    "languages": {
+      "few": "قليل ",
+      "many": "كثير",
+      "one": "واحد",
+      "other": "بديل آخر",
+      "two": "اثنان",
+      "zero": "صفر",
+      "arabic": "العربيّة",
+      "english": "الانجليزية",
+      "hebrew": "العبرية",
+      "russian": "لغة روسية"
+    },
+    "subjects": {
+      "few": "قليل ",
+      "many": "كثير",
+      "one": "واحد",
+      "other": "بديل آخر",
+      "two": "اثنان",
+      "zero": "صفر",
+      "biology": "علم الاحياء",
+      "english": "الانجليزية",
+      "grammar": "قواعد ",
+      "math": "الرياضيات",
+      "science": "العلم",
+      "spelling": "هجاء"
+    },
+    "to": "حتى"
+  },
+  "fromAge": "من سن",
+  "homepage": {
+    "andCounting": "والعد ...",
+    "createYourOwn": "انتاج دروس خاصة بك",
+    "free": "هذا مجانيّ",
+    "lessons": "دروس",
+    "questions": "أسئلة",
+    "start": "بداية",
+    "tooltip": {
+      "questions": "عدد من الأسئلة",
+      "subject": "موضوع",
+      "user": "من قبل",
+      "views": "عدد المشاهدات"
+    },
+    "years": "سنوات"
+  },
+  "input": {
+    "confirmPassword": "تأكيد كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "fullName": "الاسم الكامل",
+    "password": "كلمة السر",
+    "username": "اسم المستخدم"
+  },
+  "invitations": {
+    "create": "دعوة إلى الدرس",
+    "createdSuccessfully": "أنشأنا طلبك",
+    "error": "خطأ في إرسال دعوة :(",
+    "sending": "يتم إرسال دعوة، يرجى الانتظار ...",
+    "sent": "ارسلت الدعوة بنجاح"
+  },
+  "invite": "دعا ",
+  "languages": {
+    "en": "الانجليزية",
+    "he": "العبرية",
+    "ru": "لغة روسية"
+  },
+  "lessons": {
+    "addQuestion": "إضافة سؤال للاختبار",
+    "areYouReady": "هل أنت على استعداد للبدء في تعلم؟",
+    "available": "الدروس المتاحة",
+    "create": "إنشاء الدرس جديد",
+    "createdOn": "تم انتاجه ب",
+    "description": "وصف الدرس",
+    "filter": "اختيار الدروس",
+    "filters": {
+      "labels": {
+        "age range": "مجموعة الجيل",
+        "language": "اللغة",
+        "subject": "الموضوع"
+      }
+    },
+    "genericVideos": "الى قائمة الرسوم المتحركة عام (لمحة عن الدرس، نهاية ..) ",
+    "inviteLesson": "دعوة للدرس",
+    "inviteLessonHelpText": "لانتاج رابط الدعوة الى الدرس اضف اسم الطالب واضغط ارسال",
+    "inviteSuccessText": "انقل الرابط لدعوة الطالب الى الدرس",
+    "lessonCompleted": "اكملت الدرس بنجاح",
+    "letsContinue": "حسنا! هيا نتابع العمل",
+    "letsGo": "دعونا LerGO!",
+    "myLessons": "دروسي",
+    "name": "اسم الدرس",
+    "note": "انتبه",
+    "noteMessage": "سيرسل اليك تقرير لعمل الطالب مع انتهاء الدرس",
+    "readLess": "اقرأ اقل",
+    "readMore": "اقرأ اكثر",
+    "recommenedNextLesson": "الدرس المفضل التالي",
+    "recommenedNextLessonText": "ادخل هنا رابط الدرس (نقس الرابط للمشاركة بالدرس)",
+    "recommenedPriorLesson": "الدرس المفضل السابق",
+    "recommenedPriorLessonText": "ادخل هنا رابط الدرس (نقس الرابط للمشاركة بالدرس)",
+    "seeReport": "لعرض التقرير الدرس",
+    "shareLesson": "للمشاركة بالدرس",
+    "shareLessonTitle": "الصق الرابط لمشاركة الدرس مع اصدقائك",
+    "startLesson": "بداية الدرس",
+    "tags": "التسميات ",
+    "tooltip": {
+      "delete": "لمحو الدرس",
+      "edit": "لتعديل الدرس",
+      "go": "للدخول الى الدرس",
+      "invite": "لدعوة الطلاب",
+      "share": "للمشاركة مع الاصدقاء"
+    },
+    "total": "مجموع",
+    "videoURL": "رابط الفيديو",
+    "videoURLHelpText": "ادخل رابط الفيديو منYouTube هنا"
+  },
+  "loginPage": {
+    "login": "دخول",
+    "password": "كلمة السر",
+    "signup": "تسجيل",
+    "username": "اسم المستخدم"
+  },
+  "name": "اسم",
+  "new": "جديد",
+  "next": "التالي",
+  "nextQuestion": "السؤال التالي",
+  "popular": "مشهور",
+  "preview": "معاينة ",
+  "questions": {
+    "addQuestionsToQuiz": "مضيفا السؤال التقييم",
+    "age": "سن",
+    "answer": "إجابة",
+    "answerOption": "جواب اختياري ",
+    "audioUrl": " رابط سمعي",
+    "audioUrlHint": "لإضافة الصوت على السؤال، يرجى تحديث رابط الصوت",
+    "clickToAdd": "انقر هنا لإضافة جوابا",
+    "correct": "صحيح",
+    "correctAnswer": "الاجابة الصحيحة",
+    "correctAnswerFilled": "كنت على صواب",
+    "correctAnswers": "الإجابات الصحيحة",
+    "createNew": "إنشاء سؤال جديد",
+    "editSummary": "انتهاء التعديلات",
+    "editSummaryHelpText": "تلخيص التعديلات",
+    "explanationHelpText": "هنا يمكنك إضافة سؤال التلميح. سوف نرى ذلك الطالب عند النقر على زر تلميح",
+    "filter": "اختيار الأسئلة",
+    "help": "نص تعليمات",
+    "hintHelpText": "هنا يمكنك إضافة سؤال التلميح. سوف نرى ذلك الطالب عند النقر على زر تلميح",
+    "incorrect": "غير صحيح",
+    "incorrectAnswerFilled": "هذا غير صحيح",
+    "language": "اللغة",
+    "languages": {
+      "few": "قليل",
+      "many": "الكثير",
+      "one": "واحد",
+      "other": "بديل آخر",
+      "two": "اثنين",
+      "zero": "صفر",
+      "arabic": "العربيّة",
+      "english": "الانجليزية",
+      "hebrew": "العبرية",
+      "russian": "لغة روسية"
+    },
+    "longAnswer": "جواب طويل (الفقرة)",
+    "myQuestions": "أسئلتي.",
+    "noQuestions": "ليست هناك أي أسئلة لعرضه",
+    "openQuestion": "سؤال مفتوح",
+    "possibleAnswers": "الأجوبة المحتملة",
+    "question": "سؤال",
+    "questionType": "نوع السؤال",
+    "requiredAnswer": "تنسيق الاجابة المطلوبة",
+    "select": "اختر",
+    "shortAnswer": "اجابة قصيرة (بضع كلمات)",
+    "subject": "الموضوع",
+    "subjects": {
+      "few": "",
+      "other": "بديل آخر",
+      "biology": "علم الاحياء",
+      "english": "الانجليزية",
+      "grammar": "قواعد ",
+      "math": "الرياضيات",
+      "science": "العلم",
+      "spelling": "هجاء"
+    },
+    "thankYou": "شكرا لكم على إجابتك",
+    "total": "مجموع",
+    "types": {
+      "exactMatch": "تطابق تام",
+      "multipleChoices": "تعدّد الخيارات",
+      "openQuestion": "سؤال مفتوح",
+      "trueFalse": "صحيح أم خطأ"
+    },
+    "yourAnswer": "سؤال مفتوح",
+    "yourAnswers": "اجابة الطالب"
+  },
+  "quizItem": {
+    "answer": {
+      "False": "خطأ",
+      "True": "صحيح "
+    }
+  },
+  "redirectToHome": "العودة إلى الصفحة الرئيسية",
+  "remove": "إزالة",
+  "report": {
+    "completed": "انهى\\ت الدرس",
+    "date": "التاريخ",
+    "description": "وصف الدرس",
+    "detailedReport": "التقرير المفصل",
+    "lessonSteps": "مراحل الدرس",
+    "questionsInQuiz": "الاسئلة بالاختبار"
+  },
+  "resetPassword": {
+    "emailSentSuccessfully": "يرجى مراجعة صندوق البريد الوارد الخاص بك واتبع التعليمات",
+    "error": "كان هناك خطأ تقديم الطلب",
+    "instructions": "املأ اسم المستخدم أو البريد الإلكتروني وإرسل النموذج.",
+    "success": "تم إرسال طلبك بنجاح."
+  },
+  "saved": "تم حفظ جميع التغييرات ",
+  "saving": "يتم حفظ التغييرات...",
+  "share": "مشاركة",
+  "signup": {
+    "confirmation": {
+      "message": "أشكركم على الاشتراك في lergo. وبعد دقائق قليلة سوف تتلقى بريد الكتروني للتحقق من LerGO. الرجاء التأكد من البريد الإلكتروني الخاص بك عن طريق النقر على الرابط والذهاب من هناك اتصال lergo."
+    },
+    "error": {
+      "confPasswordRequired": "مطلوب لتأكيد كلمة السر",
+      "invalidChar": "يمكن أن تحتوي على اسم المستخدم فقط الأرقام والحروف، أو التسطير.",
+      "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح.",
+      "minLength": "يجب أن يحتوي اسم المستخدم لا يقل عن ثلاثة أحرف.",
+      "nameRequired": "مطلوب اسم المستخدم",
+      "passwordRequired": "مطلوب كلمة مرور"
+    }
+  },
+  "start": "بداية",
+  "steps": {
+    "add": "إضف خطوة",
+    "display": "عرض الخطوة",
+    "invalidURL": "ادخل رابط صالح  للفيديو منYouTube",
+    "noMoreQuestions": "لا توجد المزيد من الأسئلة لعرضه",
+    "quiz": "اختبار",
+    "required": "مطلوب",
+    "selectAnAnswer": "اختر إجابة.",
+    "title": "اسم الخطوة   ",
+    "type": "نوع الخطوة ",
+    "video": "فيديو"
+  },
+  "subject": {
+    "art": "الفن.",
+    "math": "الرياضيات",
+    "spelling": "هجاء"
+  },
+  "tagHint": "يرجى فصل بين العلامات بفواصل (على سبيل: الهجاء والنحو واللغة ولإنجليزية)",
+  "tags": "التسميات ",
+  "title": "عنوان",
+  "underConstruction": "هذه الصفحة قيد الإنشاء ... ",
+  "up": "صعودا",
+  "view": "رؤية",
+  "welcome": "ترحيب"
+}

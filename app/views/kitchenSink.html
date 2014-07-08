@@ -1,138 +1,15 @@
-<div class="base-layout" id="kitchen-sink">
-
-    <div class="intro">
-        <p>
-            The LerGO theme is based on <a href="http://www.getbootstrap.com" target="_blank">twitter's bootstrap </a><br/>
-
-            Even though we have some proprietary CSS, we aim to use bootstrap as much as possible.<br/>
-            This page will show developers how to write their HTML to get output aligned the LerGO's theme. <br/>
-        </p>
-        <p>
-            This page does not cover all of Bootstrap's features which are available for LerGO's developers. <br/>
-            You can read more at
-
-        </p>
-    </div>
-    <div class="lergo-h1">Headers</div>
-
-
-    <div class="lergo-ks-demo">
-        <div class="lergo-h1">Header1</div>
-        <div class="lergo-h2">Header2</div>
-        <div class="lergo-h3">Header3</div>
-    </div>
-
-
-    <div class="lergo-h1">Form</div>
-
-    <div class="lergo-ks-demo">
-        <div class="lergo-form">
-            <input placeholder="plain input"/><br/>
-            <textarea>Text Area</textarea><br/>
-            <select>
-                <option>Select Box</option>
-            </select>
-
-            <div class="section horizontal">
-                <div class="label">
-                    Horizontal Section
-                </div>
-                <div class="input">
-                    <input placeholder="input in horizontal section"/>
-                </div>
-            </div>
-            <div class="section">
-                <div class="label">
-                    Plain Section
-                </div>
-                <div class="input">
-                    <input placeholder="input in plain section"/>
-                </div>
-            </div>
-            <div class="actions">
-                <button>An Action Button</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="lergo-h1">Butons</div>
-
-    <div class="lergo-ks-demo">
-        <button class="btn "> A button</button>
-        <a class="btn">link button</a>
-    </div>
-
-
-    <div class="lergo-ks-demo">
-        <button class="btn btn-default">Default Button</button>
-        <a class="btn btn-default">Default Link Button</a>
-    </div>
-
-
-    <div class="lergo-ks-demo">
-
-        <button class="btn btn-primary">Main Button</button>
-        <a class="btn btn-primary">Main Link Button</a>
-
-    </div>
-
-
-
-    <div class="lergo-ks-demo">
-
-        <button class="btn btn-success">Success Button</button>
-        <a class="btn btn-success">Success Link Button</a>
-    </div>
-
-
-    <div class="lergo-ks-demo">
-
-        <button class="btn btn-info">Info Button</button>
-        <a class="btn btn-info">Info Link Button</a>
-    </div>
-
-
-    <div class="lergo-ks-demo">
-
-        <button class="btn btn-warning">Warning Button</button>
-        <a class="btn btn-warning">Warning Link Button</a>
-
-    </div>
-
-
-    <div class="lergo-ks-demo">
-
-        <button class="btn btn-danger">Danger Button</button>
-        <a class="btn btn-danger">Danger Link Button</a>
-    </div>
-
-
-    <div class="lergo-ks-demo">
-
-        <button class="btn btn-link">Link Button</button>
-            <a class="btn btn-link">Link Link Button</a>
-     </div>
-
-    <div class="lergo-h1">Button Selector</div>
-
-    <div class="lergo-ks-demo">
-        <div class="buttons-selector">
-            <button class="buttons-selector-item"> Item 1
-            </button><button class="buttons-selector-item">Item 2
-            </button><button class="buttons-selector-item active"> Item 3
-            </button><button class="buttons-selector-item"> Item 4
-            </button>
-        </div>
-    </div>
-
-    <div class="lergo-h1">Contextual Backgrounds</div>
-
-    <div class="lergo-ks-demo contextual-backgrounds">
-        <div class="bg-info">Info box</div>
-        <div class="bg-primary">Primary box</div>
-        <div class="bg-success">Success box</div>
-        <div class="bg-warning">Warning box</div>
-        <div class="bg-danger">Danger box</div>
-    </div>
-
+<div class="base-layout" >
+	<div class="kitchen-sink">
+		<tabset> 
+		<tab heading="Kitchen Sink">
+		<div ng-include="'views/partials/_kitchenSink.html'" ></div>
+		</tab> 
+		<tab heading="Translations Diff">
+		<div ng-include="'views/translations/_diff.html'" ng-controller="TranslationsDiffCtrl"></div>
+		</tab> 
+		<tab heading="Build Information">
+		<div ng-include="'views/about.html'" ng-controller="SignupCtrl"></div>
+		</tab> </tabset>
+	</div>
+   
 </div>

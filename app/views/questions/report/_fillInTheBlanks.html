@@ -1,0 +1,51 @@
+<div class="questions-exact-match lergo-form">
+	<div class="{{!quizItem.checkAnswer.correct && 'quiz-wrong' || 'quiz-correct'}}">
+		<div ng-show="!!quizItem.checkAnswer.correct" class="bg-success" class="quiz">
+			<span class="inline-table">{{quizItem.question}}</span>
+			<span class="inline-table">({{'questions.correct'|i18n}}) </span>
+		</div>
+		<div ng-show="!quizItem.checkAnswer.correct" class="bg-warning" class="quiz">
+			<span class="inline-table">{{quizItem.question}}</span>
+			<span class="inline-table">({{'questions.incorrect'|i18n}})</span>
+		</div>
+		<div ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
+		<div ng-show="!!quizItem.media" class="quiz-answer">
+			<audio ng-show=" quizItem.media==='audio' && !!quizItem.audioUrl" ng-src="{{getSanatizeUrl(quizItem.audioUrl)}}" audioplayer controls></audio>
+			<img width="300px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSanatizeUrl(quizItem.imageUrl)}}"></img>
+		</div>
+		<div class="quiz-answer">
+			<div>
+				<div class="bold">{{'questions.correctAnswers'|i18n}}</div>
+				<div class="question" style="line-height: 2">
+					{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
+					<span style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
+						<span>{{option}}</span>
+						<span ng-show="!$last">
+							<span class="bold" style="text-decoration: underline">{{!quizItem.answer[$index] && '________' || quizItem.answer[$index]}} </span>
+						</span>
+					</span>
+				</div>
+			</div>
+			<br>
+			<div>
+				<div class="bold">{{'questions.yourAnswers'|i18n}}</div>
+				<div class="question" style="line-height: 2">
+					{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
+					<span ng-repeat="option in quizItem.question.split('___') track by $index">
+						<span>{{option}}</span>
+						<span ng-show="!$last">
+							<span class="bold" style="text-decoration: underline">{{!quizItem.userAnswer[$index] && '________' || quizItem.userAnswer[$index]}} </span>
+							<i ng-show="!isCorrectFillInTheBlanks(quizItem , quizItem.userAnswer[$index])" class="fa fa-times wrong"></i>
+							<i ng-show="!!isCorrectFillInTheBlanks(quizItem , quizItem.userAnswer[$index])" class="fa fa-check correct"></i>
+						</span>
+					</span>
+				</div>
+			</div>
+			<div ng-show="!!quizItem.explanation">
+				<br>
+				<div class="bold">{{'explanation'|i18n}}</div>
+				<div>{{quizItem.explanation}}</div>
+			</div>
+		</div>
+	</div>
+</div>
