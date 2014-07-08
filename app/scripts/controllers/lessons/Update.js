@@ -228,6 +228,11 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl', function($scope, $log
 			}
 		});
 	};
+	
+	$scope.openUpdateQuestion = function(step,quizItemId){
+		LergoClient.questions.getUserQuestionById(quizItemId).then(function(result) {
+		$scope.openCreateQuestionDialog(step, result.data);});
+	};
 
 	$scope.openCreateQuestion = function(step) {
 		QuestionsService.createQuestion({
