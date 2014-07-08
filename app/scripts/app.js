@@ -63,13 +63,14 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 templateUrl: 'views/lessons/update.html',
                 controller:'LessonsUpdateCtrl'
             })
+
              .when('/user/create/lessons', {
-                templateUrl: 'views/baselayout/_create.html',
+                templateUrl: 'views/partials/_create.html', // todo: move this view to view/create/_lessons.html
                 controller:'BaseLayoutCreateCtrl',
                 activeTab:'lessons'
             })
              .when('/user/create/questions', {
-                templateUrl: 'views/baselayout/_create.html',
+                templateUrl: 'views/partials/_create.html',
                 controller:'BaseLayoutCreateCtrl',
                 activeTab:'questions'
             })
@@ -90,22 +91,22 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 controller: 'TranslationsDiffCtrl'
             })
             .when('/public/feedback', {
-                templateUrl: 'views/baselayout/_feedback.html'
+                templateUrl: 'views/partials/_feedback.html'
             })
             .when('/public/abuse', {
-                templateUrl: 'views/baselayout/_abuse.html'
+                templateUrl: 'views/partials/_abuse.html'
             })
             .when('/public/contact', {
-                templateUrl: 'views/baselayout/_contact.html'
+                templateUrl: 'views/partials/_contact.html'
             })
             .when('/public/terms', {
-                templateUrl: 'views/baselayout/_term.html'
+                templateUrl: 'views/partials/_term.html'
             })
             .when('/public/problem', {
-                templateUrl: 'views/baselayout/_problem.html'
+                templateUrl: 'views/partials/_problem.html'
             })
             .when('/public/suggest', {
-                templateUrl: 'views/baselayout/_suggest.html'
+                templateUrl: 'views/partials/_suggest.html'
             })
             .when('/public/session/signup', {
                 templateUrl: 'views/session/signup.html',
@@ -145,7 +146,7 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
                 templateUrl: 'views/errors/underConstruction.html'
             })
              .when('/public/contribute', {
-                templateUrl: 'views/baselayout/_contribute.html'
+                templateUrl: 'views/partials/_contribute.html'
             })
             .when('/', {
                 redirectTo: '/public/session/login'
