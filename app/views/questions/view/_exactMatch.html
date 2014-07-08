@@ -42,6 +42,9 @@
 		</div>
 	</div>
 </div>
+<div ng-show="mode==='quiz'">
+	<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>
+</div>
 <br>
 <div class="result" ng-show="!!getAnswer(quizItem)">
 	<div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">

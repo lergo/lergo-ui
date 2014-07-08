@@ -72,7 +72,7 @@
 						</button>
 						<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
 						<a href="" ng-show="!$root.user" class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="right"
-							popover-trigger="focus"  tabindex="0">
+							popover-trigger="focus" tabindex="0">
 							<i class="fa fa-envelope "></i>
 							{{'invite' | i18n}}
 						</a>
@@ -113,7 +113,10 @@
 					</div>
 					<div class="description">
 						<div ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</div>
-						<div ng-show="!!more">{{ lesson.description}}</div>
+						<div ng-show="!!more">
+							{{ lesson.description}}
+							<div ng-repeat="sum in summary track by $index">{{sum}}</div>
+						</div>
 						<div class="read-more" style="text-align: center" ng-show="filteredDescription.length != lesson.description.length ">
 							<a href="" ng-click="more=!more">
 								<span class="dashes">---------------------</span>

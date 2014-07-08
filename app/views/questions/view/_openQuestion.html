@@ -30,7 +30,7 @@
 	</div>
 	<div class="right">
 		<div class="action-items">
-			<div class="hint" ng-show="!!quizItem.hint" >
+			<div class="hint" ng-show="!!quizItem.hint">
 				<a ng-show="!!quizItem.hint" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link"> {{'hint' | i18n}} </a>
 			</div>
 			<div ng-show="mode==='read'" class="action-item">
@@ -44,6 +44,9 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div ng-show="mode==='quiz'">
+	<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>
 </div>
 <br>
 <div ng-show="!!getAnswer(quizItem)">
