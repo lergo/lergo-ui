@@ -7,7 +7,7 @@
 	</div>
 	<div class="label">{{'filters.labels.subject' | i18n }}</div>
 	<div class="input">
-		<select placeholder="Subjects" ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects" ng-model="$root.filter.subject">
+		<select ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects" ng-model="$root.filter.subject">
 			<option value="">{{'filters.all'|i18n}}</option>
 		</select>
 	</div>
@@ -24,6 +24,15 @@
 			<input min="1" size="1" class="number" type="number" ng-model="$root.filter.views.min" />
 			{{'filters.to'|i18n}}
 			<input min="1" size="1" class="number" type="number" ng-model="$root.filter.views.max" />
+		</div>
+	</div>
+	<br />
+	<div ng-show="!!showStatusFilter">
+		<div class="label">{{'filters.labels.status' | i18n }}</div>
+		<div class="input">
+			<select ng-options="s as ('filters.status.' + s | i18n) for s in status" ng-model="$root.filter.status">
+				<option value="">{{'filters.all'|i18n}}</option>
+			</select>
 		</div>
 	</div>
 </form>

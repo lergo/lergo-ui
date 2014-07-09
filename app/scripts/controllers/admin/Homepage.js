@@ -4,7 +4,7 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 
 	LergoClient.lessons.getAll().then(function(result) {
 		$scope.lessons = result.data;
-		
+
 	});
 
 	var users = {};
@@ -24,6 +24,12 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 	$scope.subjectFilter = function(lesson) {
 		return FilterService.filterBySubject(lesson.subject);
 	};
+	$scope.viewsFilter = function(lesson) {
+		return FilterService.filterByViews(lesson.views);
+	};
+	$scope.statusFilter = function(lesson) {
+		return FilterService.filterByStatus(lesson.public);
+	};
 
 	$scope.getUser = function(lesson) {
 		return users[lesson.userId];
@@ -33,9 +39,13 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 	var changing = $scope.changing;
 
 	function save(lesson) {
+		// preserving selected state of lesson  
+		var selected = lesson.selected;
+		delete lesson.selected;
 		changing.push(lesson._id);
 		LergoClient.lessons.update(lesson).then(function success(result) {
 			var indexOf = $scope.lessons.indexOf(lesson);
+			result.data.selected=selected;
 			$scope.lessons[indexOf] = result.data;
 			changing.splice(changing.indexOf(lesson._id), 1);
 		}, function error() {
@@ -47,7 +57,6 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 		angular.forEach($scope.lessons, function(lesson) {
 			if (lesson.selected === true) {
 				lesson.public = new Date().getTime();
-				delete lesson.selected;
 				save(lesson);
 			}
 		});
@@ -89,7 +98,6 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 		angular.forEach($scope.lessons, function(lesson) {
 			if (lesson.selected === true) {
 				delete lesson.public;
-				delete lesson.selected;
 				save(lesson);
 			}
 		});
@@ -98,6 +106,7 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 	$scope.deleteLesson = function() {
 		angular.forEach($scope.lessons, function(lesson) {
 			if (lesson.selected === true) {
+				$scope.lessons.splice($scope.lessons.indexOf(lesson), 1);
 				LergoClient.lessons.delete(lesson._id).then(function() {
 					$scope.errorMessage = null;
 					$log.info('Lesson deleted sucessfully');
@@ -117,7 +126,7 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 		var count = 0;
 		angular.forEach($scope.lessons, function(lesson) {
 			if (!!lesson.public) {
-				count = count+ 1;
+				count = count + 1;
 			}
 		});
 		return count;

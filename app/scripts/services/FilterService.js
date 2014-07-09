@@ -2,7 +2,6 @@
 
 angular.module('lergoApp').service('FilterService', function Filterservice($rootScope) {
 
-
 	this.languages = [ {
 		'id' : 'english',
 		'locale' : 'en'
@@ -19,6 +18,8 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		'id' : 'other',
 		'locale' : 'en'
 	} ];
+	this.subjects = [ 'english', 'math', 'geometry', 'science', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'other' ];
+	this.status = [ 'private', 'public' ];
 
 	this.getLocaleByLanguage = function(id) {
 		for ( var i = 0; i < this.languages.length; i++) {
@@ -39,14 +40,13 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		}
 		return 'english';
 	};
-	this.subjects = [ 'english', 'math', 'geometry', 'science', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'other' ];
 
 	/**
 	 * This function require ageRange and age to verify whether age is with in
 	 * the range. return true if age is in the range, else return false
 	 */
 	this.filterByAge = function(age) {
-		var filter=$rootScope.filter;
+		var filter = $rootScope.filter;
 		if (!filter || !filter.ageRange || (!filter.ageRange.min && !filter.ageRange.max)) {
 			return true;
 		}
@@ -63,7 +63,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 	};
 
 	this.filterByViews = function(views) {
-		var filter=$rootScope.filter;
+		var filter = $rootScope.filter;
 		if (!filter || !filter.views || (!filter.views.min && !filter.views.max)) {
 			return true;
 		}
@@ -80,7 +80,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 	};
 
 	this.filterByLanguage = function(language) {
-		var filter=$rootScope.filter;
+		var filter = $rootScope.filter;
 		if (!filter || !filter.language) {
 			return true;
 		}
@@ -88,11 +88,22 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 	};
 
 	this.filterBySubject = function(subject) {
-		var filter=$rootScope.filter;
+		var filter = $rootScope.filter;
 		if (!filter || !filter.subject) {
 			return true;
 		}
 		return subject === filter.subject;
+	};
+
+	this.filterByStatus = function(status) {
+		var filter = $rootScope.filter;
+		if (!filter || !filter.status) {
+			return true;
+		}
+		if (filter.status === 'public') {
+			return !!status;
+		}
+		return !status;
 	};
 
 });
