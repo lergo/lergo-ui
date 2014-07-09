@@ -2,8 +2,11 @@
 	<div class="modal-body" style="height: 400px; overflow-y: auto">
 		<div ng-include="'views/questions/_update.html'"></div>
 	</div>
-	<div class="modal-footer" style="text-align: left">
+	<div class="modal-footer" style="text-align: left" ng-show="!!create">
 		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="ok(quizItem)">{{'add' | i18n}}</button>
 		<button class="btn btn-default" ng-click="cancel(quizItem)">{{'cancel' | i18n}}</button>
+	</div>
+	<div class="modal-footer" style="text-align: left" ng-show="!create">
+		<button class="btn btn-default" ng-click="cancel(quizItem)">{{'close' | i18n}}</button>
 	</div>
 </div>
