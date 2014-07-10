@@ -1,4 +1,4 @@
-<div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
+ <div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
 	<div class="left">
 		<div class="question" style="line-height: 3">
 			{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
@@ -6,7 +6,7 @@
 				<span class="lergo-h4">{{option}}</span>
 				<input ng-show="!$last"
 					style="width:{{!quizItem.answer[$index] && 100|| ((quizItem.answer[$index].length*10)+20)}}px; background-color:transparent; display: inline; min-height: 28px;"
-					ng-model="quizItem.userAnswer[$index]">
+					ng-model="quizItem.userAnswer[$index]" set-focus="$first">
 			</span>
 		</div>
 		<div class="help">

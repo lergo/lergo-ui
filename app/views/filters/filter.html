@@ -37,9 +37,9 @@
 	</div>
 	<br />
 	<div ng-show="!!users" class='container-fluid'>
-		<div class="input" style="position: relative;">
+		<div class="input">
 			<input type="text" placeholder="{{'filters.labels.createdBy' | i18n}}" ng-model="$root.filter.user"
-				typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
+				typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 " class="form-control">
 		</div>
 	</div>
 </form>
