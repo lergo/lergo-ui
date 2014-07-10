@@ -105,5 +105,16 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		}
 		return !status;
 	};
+	
+	this.filterByUser = function(user) {
+		var filter = $rootScope.filter;
+		if (!filter || !filter.user || !user) {
+			return true;
+		}
+		if (filter.user === user) {
+			return true;
+		}
+		return false;
+	};
 
 });

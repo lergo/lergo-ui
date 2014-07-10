@@ -122,6 +122,12 @@
 	select {
 		width: 100%;
 	}
+	.input{
+	position: relative;
+	.dropdown-menu{
+		width:100%;
+	}
+	}
 }
 .question-bank-dialog .modal-dialog {
     width :85%;

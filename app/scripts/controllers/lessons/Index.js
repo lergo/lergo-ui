@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, FilterService) {
+angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, FilterService,$rootScope) {
 	$scope.lessons = null;
 
 	$scope.ageFilter = function(lesson) {
@@ -13,7 +13,6 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 		return FilterService.filterBySubject(lesson.subject);
 	};
 
-
 	$scope.getAll = function() {
 		LergoClient.userData.getLessons().then(function(result) {
 			$scope.lessons = result.data;
@@ -24,7 +23,7 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 			$log.error($scope.errorMessage);
 		});
 	};
-    $scope.getAll();
+	$scope.getAll();
 
 	$scope.$on('$viewContentLoaded', function() {
 		$scope.getAll();
@@ -40,5 +39,8 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 			$log.error($scope.errorMessage);
 		});
 	};
-
+	$scope.$on('$locationChangeStart', function(event) {
+		$rootScope.lessonScrollPosition = window.scrollY;
+	});
+	window.scrollTo(0, $rootScope.lessonScrollPosition);
 });
