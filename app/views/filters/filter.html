@@ -1,9 +1,8 @@
 <form name="filter" ng-controller="FilterCtrl" class="filters lergo-form">
-
 	<div ng-show="!!users" class='container-fluid'>
+		<div class="label">{{'filters.labels.createdBy' | i18n}}</div>
 		<div class="input">
-			<input type="text" placeholder="{{'filters.labels.createdBy' | i18n}}" ng-model="$root.filter.user"
-				typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 " class="form-control">
+			<input type="text" ng-model="$root.filter.user" typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
 		</div>
 	</div>
 	<div class="label">{{'filters.labels.language' | i18n }}</div>
@@ -42,5 +41,4 @@
 			</select>
 		</div>
 	</div>
-	
 </form>

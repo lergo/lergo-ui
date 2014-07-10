@@ -44,7 +44,7 @@
 					<tr
 						ng-repeat="l in lessons |orderBy:'-lastUpdate'| filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter|filter:statusFilter|filter:userFilter">
 						<td>
-							<input type="checkbox" ng-model="l.selected">
+							<input type="checkbox" style="margin-left:5px;" ng-model="l.selected">
 						</td>
 						<td>
 							<a ng-show="!!l.name && l.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#/user/lessons/{{l._id}}/intro">{{
