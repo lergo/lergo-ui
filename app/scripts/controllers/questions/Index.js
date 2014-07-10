@@ -73,8 +73,8 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 
 	}
 
-	$scope.$on('$locationChangeStart', function(event) {
+	$scope.$on('$locationChangeStart', function() {
 		$rootScope.questionScrollPosition = window.scrollY;
 	});
-	window.scrollTo( 0,$rootScope.questionScrollPosition);
+	window.scrollTo(0, $rootScope.questionScrollPosition);
 });
