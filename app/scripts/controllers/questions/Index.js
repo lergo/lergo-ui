@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, $location, $log, FilterService,$rootScope) {
+angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, $location, $log, FilterService, $rootScope) {
 	$scope.isModal = false;
 	$scope.ageFilter = function(quizItem) {
 		return FilterService.filterByAge(quizItem.age);
@@ -72,4 +72,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		return filteredItems;
 
 	}
+
+	$scope.$on('$locationChangeStart', function(event) {
+		$rootScope.questionScrollPosition = window.scrollY;
+	});
+	window.scrollTo( 0,$rootScope.questionScrollPosition);
 });

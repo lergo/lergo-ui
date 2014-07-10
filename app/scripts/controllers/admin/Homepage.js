@@ -8,10 +8,14 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 	});
 
 	var users = {};
+	$scope._users = [];
 
 	LergoClient.users.getAll().then(function(result) {
 		result.data.forEach(function(user) {
 			users[user._id] = user;
+			if (!(user in $scope._users)) {
+				$scope._users.push(user);
+			}
 		});
 	});
 
@@ -30,6 +34,9 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 	$scope.statusFilter = function(lesson) {
 		return FilterService.filterByStatus(lesson.public);
 	};
+	$scope.userFilter = function(lesson) {
+		return FilterService.filterByUser($scope.getUser(lesson));
+	};
 
 	$scope.getUser = function(lesson) {
 		return users[lesson.userId];
@@ -39,13 +46,13 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 	var changing = $scope.changing;
 
 	function save(lesson) {
-		// preserving selected state of lesson  
+		// preserving selected state of lesson
 		var selected = lesson.selected;
 		delete lesson.selected;
 		changing.push(lesson._id);
 		LergoClient.lessons.update(lesson).then(function success(result) {
 			var indexOf = $scope.lessons.indexOf(lesson);
-			result.data.selected=selected;
+			result.data.selected = selected;
 			$scope.lessons[indexOf] = result.data;
 			changing.splice(changing.indexOf(lesson._id), 1);
 		}, function error() {
@@ -85,6 +92,12 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 			} else if (!FilterService.filterByLanguage(items[i].language)) {
 				continue;
 			} else if (!FilterService.filterBySubject(items[i].subject)) {
+				continue;
+			} else if (!FilterService.filterByViews(items[i].views)) {
+				continue;
+			} else if (!FilterService.filterByStatus(items[i].public)) {
+				continue;
+			} else if (!FilterService.filterByUser($scope.getUser(items[i]))) {
 				continue;
 			} else {
 				filteredItems.push(items[i]);
