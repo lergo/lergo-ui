@@ -199,8 +199,10 @@ angular.module('lergoApp').controller(
 				}
 
 			};
-
-			$scope.openQuestionBank = function(step) {
+			$scope.openQuestionBank=function(step){
+				$scope.openQuestionBankDialog(step);
+			};
+			$scope.openQuestionBankDialog = function(step) {
 				$modal.open({
 					templateUrl : 'views/questions/modalindex.html',
 					windowClass : 'question-bank-dialog',

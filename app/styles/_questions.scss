@@ -96,7 +96,12 @@
 }
 
 .filters { 
-
+	.input{
+		position: relative;
+		.dropdown-menu{
+			width:100%;
+		}
+	}
 
     .label:nth-child(n+2) {
       padding-top: 20px;
@@ -122,12 +127,7 @@
 	select {
 		width: 100%;
 	}
-	.input{
-	position: relative;
-	.dropdown-menu{
-		width:100%;
-	}
-	}
+	
 }
 .question-bank-dialog .modal-dialog {
     width :85%;
