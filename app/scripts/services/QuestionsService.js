@@ -28,7 +28,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 	};
 
 	this.createQuestion = function(question) {
-		return $http.post('/backend/questions', question);
+		return $http.post('/backend/questions/create', question);
 	};
 
 	this.updateQuestion = function(question) {
