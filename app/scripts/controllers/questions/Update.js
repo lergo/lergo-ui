@@ -19,18 +19,25 @@ angular
 					$scope.subjects = FilterService.subjects;
 					$scope.languages = FilterService.languages;
 
-					QuestionsService.getUserQuestionById(questionId).then(function(result) {
-						$scope.quizItem = result.data;
-						// To determine whether advance option should be open or
-						// not
-						var q = $scope.quizItem;
-						$scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary);
-						$scope.errorMessage = null;
-					}, function(result) {
-						$scope.error = result.data;
-						$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
-						$log.error($scope.errorMessage);
-					});
+                    function loadQuestion() {
+                        QuestionsService.getQuestionById(questionId).then(function (result) {
+                            $scope.quizItem = result.data;
+                            // To determine whether advance option should be open or
+                            // not
+                            var q = $scope.quizItem;
+                            $scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary);
+                            $scope.errorMessage = null;
+                        }, function (result) {
+                            $scope.error = result.data;
+                            $scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
+                            $log.error($scope.errorMessage);
+                        });
+                    }
+
+                    if ( !!questionId ){
+                        loadQuestion();
+                    }
+
 
 					$scope.$watch('quizItem', saveQuestion.onValueChange, true);
 

@@ -11,8 +11,10 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		return $http.post('/backend/user/questions/' + questionId + '/copy');
 	};
 
-	this.getUserQuestionById = function(questionId) {
-		return $http.get('/backend/user/questions/' + questionId);
+	this.getQuestionById = function(questionId) {
+        if ( !questionId){
+        }
+		return $http.get('/backend/questions/' + questionId);
 	};
 
 	this.findQuestionsById = function(ids) {
@@ -26,11 +28,11 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 	};
 
 	this.createQuestion = function(question) {
-		return $http.post('/backend/user/questions', question);
+		return $http.post('/backend/questions', question);
 	};
 
 	this.updateQuestion = function(question) {
-		return $http.post('/backend/user/questions/' + question._id, question);
+		return $http.post('/backend/questions/' + question._id + '/update', question);
 	};
 
 	this.getLessonsWhoUseThisQuestion = function(question) {

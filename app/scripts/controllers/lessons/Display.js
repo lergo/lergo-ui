@@ -6,7 +6,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	if (!!$routeParams.lessonId) {
         // guy - using public here to support admin's preview.
         // when we align all roles routes to the new design, this will be implicit.
-		LergoClient.lessons.getPublicById($routeParams.lessonId).then(function(result) {
+		LergoClient.lessons.getById($routeParams.lessonId).then(function(result) {
 			$log.info('got lesson', result.data);
 			$scope.lesson = result.data;
 			$scope.lesson.image= LergoClient.lessons.getTitleImage($scope.lesson);

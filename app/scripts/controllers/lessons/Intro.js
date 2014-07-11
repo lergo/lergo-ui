@@ -4,7 +4,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	var lessonId = $routeParams.lessonId;
 	var invitationId = $routeParams.invitationId;
 	var preview = !!$routeParams.preview;
-	LergoClient.lessons.getPublicById(lessonId).then(function(result) {
+	LergoClient.lessons.getById(lessonId).then(function(result) {
 		$scope.lesson = result.data;
 		$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.lesson.language);
 	});

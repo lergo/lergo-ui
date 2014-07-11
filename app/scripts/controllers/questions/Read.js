@@ -4,7 +4,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 
 	var questionId = $routeParams.questionId;
 
-	QuestionsService.getUserQuestionById(questionId).then(function(result) {
+	QuestionsService.getQuestionById(questionId).then(function(result) {
 		$scope.quizItem = result.data;
 		$scope.errorMessage = null;
 	}, function(result) {
