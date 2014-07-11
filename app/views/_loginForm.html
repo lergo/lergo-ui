@@ -26,7 +26,7 @@
 				<span style="float: left;">{{ 'input.username' | i18n }}</span>
 			</div>
 			<div class="lergo-input">
-				<input ng-model="form.username" required />
+				<input ng-model="form.username" id="login-username" required autofocus ng-init="setFocus('login-username')" />
 			</div>
 		</div>
 
