@@ -40,6 +40,16 @@ angular
 
 
 					$scope.$watch('quizItem', saveQuestion.onValueChange, true);
+                    $scope.$watch(function(){ return $scope.quizItem.media;}, function(newValue/*, oldValue*/){
+                        // guy - todo - remove this when we organize the model for media
+                        if ( newValue !== 'image' ){
+                            $scope.quizItem.imageUrl = null;
+                        }
+
+                        if ( newValue !== 'audio'){
+                            $scope.quizItem.audioUrl = null;
+                        }
+                    });
 
 					// setInterval( function(){ console.log($scope.quizItem)},
 					// 1000);
