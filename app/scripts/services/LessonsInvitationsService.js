@@ -5,7 +5,7 @@ angular.module('lergoApp')
 
 
         this.create = function (lessonId, invitation) {
-            return $http.post('/backend/user/lessons/' + lessonId + '/invitations/create', invitation);
+            return $http.post('/backend/lessons/' + lessonId + '/invitations/create', invitation);
         };
 
         this.createAnonymous = function( lessonId ){
