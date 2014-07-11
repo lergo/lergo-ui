@@ -46,9 +46,12 @@
     min-height: 100px;
     text-align: right;
 
-    td {
-      margin: 0;
-      padding: 0;
+    .stats-wrapper{
+      display:table-row;
+      &>div{
+        display:table-cell;
+        padding-top:6px;
+      }
     }
     .stats-lessons {
       width: 1px;
@@ -64,13 +67,18 @@
     .type {
       font-size: 14px;
       text-transform: uppercase;
-      margin-top: -10px;
     }
     .and-counting {
       margin-left: 73px;
       font-size: 34px;
       text-transform: uppercase;
       text-align: left;
+      position:relative;
+      span{
+        position:absolute;
+        padding-top:1px;
+        white-space: nowrap;
+      }
     }
   }
   .age-limit {

@@ -6,21 +6,21 @@
 		<div statistics-banner class="page-content-width">
 			<!-- how many lessons, and how many questions -->
 			<div class="article-header page-content-body">
-				<table class="lergo-table">
-					<tr>
-						<td class="stats-lessons">
+				<div class="stats-wrapper">
+
+						<div class="stats-lessons">
 							<div class="amount">{{stats.lessonsCount}}</div>
 							<div class="type">{{ 'homepage.lessons' | i18n }}</div>
-						</td>
-						<td class="stats-questions">
+						</div>
+						<div class="stats-questions">
 							<div class="amount">{{stats.questionsCount}}</div>
 							<div class="type">{{ 'homepage.questions' | i18n }}</div>
-						</td>
-						<td>
-							<div class="and-counting item">{{ 'homepage.andCounting' | i18n }}</div>
-						</td>
-					</tr>
-				</table>
+						</div>
+						<div>
+							<div class="and-counting item"><span>{{ 'homepage.andCounting' | i18n }}</span></div>
+						</div>
+
+				</div>
 			</div>
 			<div class="upper-section page-content-sidebar">
 				<div create-your-own-box></div>
