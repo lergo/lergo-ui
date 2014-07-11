@@ -1,5 +1,9 @@
 .rtl{
   .homepage {
+    .age-limit{
+      margin-left:0;
+      margin-right:10px;
+    }
     .upper-section {
       .create {
         font-size: 27px;
@@ -13,6 +17,12 @@
       }
       .start {
         font-size: 23px;
+      }
+    }
+
+    .lessons{
+      .lesson{
+        float:right;
       }
     }
 
@@ -38,10 +48,7 @@
 /* specifics for hebrew */
 .he{
   .homepage{
-    .age-limit{
-      margin-left:0;
-      margin-right:10px;
-    }
+
     .lergo-h1{
       font-size:34px;
     }
@@ -53,11 +60,7 @@
       }
 
     }
-    .lessons{
-      .lesson{
-        float:right;
-      }
-    }
+
   }
 
 }
