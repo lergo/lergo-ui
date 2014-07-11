@@ -30,11 +30,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 
 	};
 
-	$scope.getSantizeUrl = function(url) {
-		if (!!url) {
-			return $sce.trustAsResourceUrl(url);
-		}
-	};
+
 	$scope.getCorrectAnswers = function(quizItem) {
 		if (!quizItem || !quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
 			return '';

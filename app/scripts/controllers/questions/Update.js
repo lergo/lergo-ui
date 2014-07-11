@@ -40,7 +40,10 @@ angular
 
 
 					$scope.$watch('quizItem', saveQuestion.onValueChange, true);
-                    $scope.$watch(function(){ return $scope.quizItem.media;}, function(newValue/*, oldValue*/){
+                    $scope.$watch(function(){ return $scope.quizItem && $scope.quizItem.media;}, function(newValue/*, oldValue*/){
+                        if ( !$scope.quizItem){
+                            return;
+                        }
                         // guy - todo - remove this when we organize the model for media
                         if ( newValue !== 'image' ){
                             $scope.quizItem.imageUrl = null;

@@ -6,10 +6,8 @@
 		<div class="help">
 			<p class="question-help-text">{{quizItem.helpText}}</p>
 		</div>
-		<div class="audio" ng-show="!!quizItem.media">
-			<audio ng-show=" quizItem.media==='audio' && !!quizItem.audioUrl" ng-src="{{getSantizeUrl(quizItem.audioUrl)}}" audioplayer controls></audio>
-			<img width="300px" ng-show="quizItem.media==='image' && !!quizItem.imageUrl" ng-src="{{getSantizeUrl(quizItem.imageUrl)}}"></img>
-		</div>
+
+        <div quiz-item-media quiz-item="quizItem"></div>
 		<div class="answers">
 			<div class="true-false-options">
 				<button ng-repeat="option in ['True','False']" class="true-false-option" ng-click="quizItem.userAnswer = option"
