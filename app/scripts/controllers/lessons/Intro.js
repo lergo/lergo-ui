@@ -7,7 +7,11 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	LergoClient.lessons.getById(lessonId).then(function(result) {
 		$scope.lesson = result.data;
 		$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.lesson.language);
-	});
+    }, function( result ) {
+        if ( result.status === 404 ){
+            $location.path('/errors/notFound');
+        }
+    });
 
 	function redirectToInvitation() {
 		$location.path('/public/lessons/invitations/' + invitationId + '/display');

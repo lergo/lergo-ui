@@ -148,6 +148,9 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap'])
              .when('/public/contribute', {
                 templateUrl: 'views/partials/_contribute.html'
             })
+            .when('errors/notFound', {
+                templateUrl: 'views/errors/notFound.html'
+            })
             .when('/', {
                 redirectTo: '/public/session/login'
 //                redirectTo: '/public/session/login'

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp')
-    .controller('LessonsInvitationsDisplayCtrl', function ($scope, LergoClient, $routeParams, $log, $controller, ContinuousSave, $rootScope) {
+    .controller('LessonsInvitationsDisplayCtrl', function ($scope, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope) {
 
         $log.info('loading invitation', $routeParams.invitationId);
         $controller('LessonsDisplayCtrl', {$scope: $scope});
@@ -53,6 +53,10 @@ angular.module('lergoApp')
                 $scope.questions[ item._id ] = item;
 
 
+            }
+        }, function( result ){
+            if ( result.status ){
+                $location.path('/errors/notFound');
             }
         });
 
