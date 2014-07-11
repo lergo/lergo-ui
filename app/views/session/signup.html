@@ -11,7 +11,7 @@
                <span>{{ 'input.username' | i18n }} </span>
             </div>
             <div class="lergo-input">
-               <input ng-model="signupForm.username" class="form-control" name="username" ng-minlength="3" required ng-pattern="/^[a-zA-Z0-9\_]+$/" />
+               <input ng-model="signupForm.username" class="form-control" name="username" ng-minlength="3" required ng-pattern="/^[a-zA-Z0-9\_]+$/" id="signup-username" ng-init="setFocus('signup-username')" />
                <p ng-show="formSignup.username.$error.minlength" class="help-block">{{'signup.error.minLength' | i18n}}</p>
                <p ng-show="formSignup.username.$error.pattern" class="help-block">{{'signup.error.invalidChar' | i18n}}</p>
             </div>
