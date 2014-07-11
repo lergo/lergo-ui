@@ -29,6 +29,10 @@ angular.module('lergoApp').controller('SignupCtrl', function($scope, $log, Lergo
 	setInterval(function() {
 		$('#issues').scrollLeft(200).scrollTop(Math.max($('#issues').scrollTop(), 160));
 	}, 1000);
-}
 
-);
+	// autofocus not working properly in control of partial view when added
+	// through ngInclude this is a hook to get the desired behaviour
+	$scope.setFocus = function(id) {
+		document.getElementById(id).focus();
+	};
+});
