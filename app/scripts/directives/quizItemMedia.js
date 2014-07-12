@@ -15,12 +15,12 @@ angular.module('lergoApp')
 
 
                 function removeRedundantElement(){
-                    if ($scope.quizItem.media === 'audio') {
+                    if ($scope.quizItem.media === 'audio' || !$scope.quizItem.imageUrl || $scope.quizItem.imageUrl.trim() === '' ) {
                         url = $sce.trustAsResourceUrl($scope.quizItem.audioUrl);
                         $element.find('img').remove();
                     }
 
-                    if ($scope.quizItem.media === 'image') {
+                    if ($scope.quizItem.media === 'image' || !$scope.quizItem.audioUrl || $scope.quizItem.audioUrl.trim() === '') {
                         url = $sce.trustAsResourceUrl($scope.quizItem.imageUrl);
                         $element.find('audio').remove();
                     }
