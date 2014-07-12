@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp')
-    .directive('quizItemMedia', function ($sce, $compile, $timeout) {
+    .directive('quizItemMedia', function ($sce, $compile, $timeout, $log) {
         return {
             templateUrl: 'views/directives/_quizItemMedia.html',
             restrict: 'A',
@@ -41,7 +41,19 @@ angular.module('lergoApp')
 
 
 
-                $scope.$watch('quizItem', function (/*newValue/*, oldValue*/) {
+                $scope.$watch( function(){
+                    // guy - todo -once media model is sorted out, we should change this watch expression
+                    try{
+                        if ( !$scope.quizItem ){
+                            return undefined;
+                        }else{
+                            return $scope.quizItem.media + $scope.quizItem.audioUrl + $scope.quizItem.imageUrl;
+                        }
+                    }catch(e){
+                        $log.error(e);
+                    }
+                }, function (newValue, oldValue) {
+                    $log.info('value changed ', newValue, oldValue);
                     if (!!$scope.quizItem) {
                         if (!!$scope.quizItem.media) {
                             compileTemplate();

@@ -28,6 +28,10 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 		return $http.get('/backend/lessons/' + id);
 	};
 
+    this.getLessonIntro = function(id){
+        return $http.get('/backend/lessons/' + id + '/intro');
+    };
+
     this.getPublicLessons = function (){
         return $http.get('/backend/public/lessons');
     };
