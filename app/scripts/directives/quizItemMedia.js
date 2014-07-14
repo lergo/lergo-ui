@@ -44,10 +44,10 @@ angular.module('lergoApp')
                 $scope.$watch( function(){
                     // guy - todo -once media model is sorted out, we should change this watch expression
                     try{
-                        if ( !$scope.quizItem ){
+                        if ( !$scope.quizItem || !$scope.quizItem.media || !$scope.quizItem.media.type){
                             return undefined;
                         }else{
-                            return $scope.quizItem.media + $scope.quizItem.media.url;
+                            return $scope.quizItem.media.type + $scope.quizItem.media.url;
                         }
                     }catch(e){
                         $log.error(e);
