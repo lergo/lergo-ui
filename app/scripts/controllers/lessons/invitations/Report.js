@@ -9,5 +9,9 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 	$scope.$on('stats', function(event, data) {
 		$scope.stats[data.index] = data;
 	});
+	
+	$scope.absoluteShareLink = function(id) {
+		return window.location.origin + '/#/public/lessons/' + id + '/intro';
+	};
 
 });

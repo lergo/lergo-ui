@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').directive('lessonView', function($log, LergoClient, $sce) {
+angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 	return {
 		templateUrl : '/views/lessons/invitations/report/_display.html',
 		restrict : 'A',
@@ -130,11 +130,6 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient, $
 				var result = '/views/lessons/invitations/report/steps/_' + step.type + '.html';
 				$log.info('result', result);
 				return result;
-			};
-			$scope.getSanatizeUrl = function(url) {
-				if (!!url) {
-					return $sce.trustAsResourceUrl(url);
-				}
 			};
 		}
 
