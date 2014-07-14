@@ -6,7 +6,7 @@
 		<div class="help">
 			<p class="question-help-text">{{quizItem.helpText}}</p>
 		</div>
-		<div ng-include="getMediaTemplate(quizItem)"></div>
+		<div quiz-item-media quiz-item="quizItem"></div>
 		<div class="answers">
 			<div class="true-false-options">
 				<button ng-repeat="option in ['True','False']" class="true-false-option" ng-click="quizItem.userAnswer = option"
