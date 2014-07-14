@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').directive('quizItemMedia', function($sce, $compile, $timeout, $log) {
+angular.module('lergoApp').directive('quizItemMedia', function($sce) {
 	return {
 		restrict : 'A',
 		scope : {
@@ -23,9 +23,9 @@ angular.module('lergoApp').directive('quizItemMedia', function($sce, $compile, $
 				if (!media) {
 					return false;
 				}
-				if (media.type === 'image')
+				if (media.type === 'image') {
 					return isValidImage(media.imageUrl);
-				else if (media.type === 'audio') {
+				} else if (media.type === 'audio') {
 					return isValidAudio(media.audioUrl);
 				}
 			}
