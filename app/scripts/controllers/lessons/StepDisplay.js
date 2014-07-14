@@ -166,6 +166,13 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		return LergoClient.questions.getTypeById(quizItem.type).canSubmit(quizItem);
 	};
 	
+	$scope.getMediaTemplate = function(quizItem) {
+		var type = 'none';
+		if (!!quizItem.media && !!quizItem.media.type) {
+			type = quizItem.media.type;
+		}
+		return 'views/questions/view/media/_' + type + '.html';
+	};
 
 	$scope.getUrl = function(quizItem) {
 		if (!!quizItem && !!quizItem.media) {
