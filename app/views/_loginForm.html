@@ -1,26 +1,18 @@
 <div class="login-form lergo-form" ng-controller="LoginCtrl">
-    <div class="loader"></div>
+	<div class="loader"></div>
 	<form ng-submit='login()'>
-        <div class="section">
-            <div class="label">
-            <span
-                    class="errorMessage" ng-show='errorMessage'
-                    style="font-size: 15px; color: red;">{{errorMessage}}</span>
-
-            </div>
-
-            <div ng-show="resendValidation">
-                <a class="clickable" ng-click="resendValidationEmail()">{{ 'button.resendValidationEmail' | i18n }}</a>
-            </div>
-
-            <div ng-show="sendingValidationEmail">
-                <div class="loader-short"></div>
-            </div>
-
-            <div ng-show="validationEmailSentSuccess" class="bg-success">
-                {{ 'resetPassword.emailSentSuccessfully' | i18n }}
-            </div>
-        </div>
+		<div class="section">
+			<div class="label">
+				<span class="errorMessage" ng-show='errorMessage'>{{errorMessage}}</span>
+			</div>
+			<div ng-show="resendValidation">
+				<a class="clickable" ng-click="resendValidationEmail()">{{ 'button.resendValidationEmail' | i18n }}</a>
+			</div>
+			<div ng-show="sendingValidationEmail">
+				<div class="loader-short"></div>
+			</div>
+			<div ng-show="validationEmailSentSuccess" class="bg-success">{{ 'resetPassword.emailSentSuccessfully' | i18n }}</div>
+		</div>
 		<div class="section">
 			<div class="label">
 				<span style="float: left;">{{ 'input.username' | i18n }}</span>
@@ -29,28 +21,23 @@
 				<input ng-model="form.username" id="login-username" required autofocus ng-init="setFocus('login-username')" />
 			</div>
 		</div>
-
 		<div class="section">
 			<div class="label">{{ 'input.password' | i18n }}</div>
 			<div class="lergo-input">
 				<input ng-model="form.password" required type="password" />
 			</div>
 		</div>
-
 		<!--<div class="section horizontal ">-->
-            <!--<div class="input">-->
-                <!--<input ng-model="form.rememberMe" type="checkbox" />-->
-            <!--</div>-->
-			<!--<div class="label">Keep Me Logged In</div>-->
-
+		<!--<div class="input">-->
+		<!--<input ng-model="form.rememberMe" type="checkbox" />-->
 		<!--</div>-->
-
-        <div class="center">
-		    <button type="submit" class="btn">{{ 'button.login' | i18n }}</button>
-		    <a href="#/public/session/signup">{{ 'button.signup' | i18n }}</a><br/>
-            <a href="#/public/session/resetPasswordRequest">{{ 'button.forgotPassword' | i18n }}</a>
-        </div>
+		<!--<div class="label">Keep Me Logged In</div>-->
+		<!--</div>-->
+		<div class="center">
+			<button type="submit" class="btn">{{ 'button.login' | i18n }}</button>
+			<a href="#/public/session/signup">{{ 'button.signup' | i18n }}</a>
+			<br />
+			<a href="#/public/session/resetPasswordRequest">{{ 'button.forgotPassword' | i18n }}</a>
+		</div>
 	</form>
-
-
 </div>
