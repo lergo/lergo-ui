@@ -16,14 +16,14 @@
 			<div>
 				<div class="bold">{{'questions.correctAnswer'|i18n}}</div>
 				<div ng-repeat="option in ['True','False']">
-					{{option}}
+					{{'quizItem.answer.'+ option | i18n}}
 					<i ng-show="quizItem.answer === option" class="fa fa-check correct"></i>
 				</div>
 			</div>
 			<br>
 			<div>
 				<div class="bold">{{'questions.yourAnswer'|i18n}}</div>
-				{{quizItem.userAnswer}}
+				{{'quizItem.answer.'+quizItem.userAnswer | i18n}}
 				<i ng-show="quizItem.userAnswer === quizItem.answer" class="fa fa-check correct"></i>
 				<i ng-show="quizItem.userAnswer !== quizItem.answer" class="fa fa-times wrong"></i>
 			</div>

@@ -1,4 +1,5 @@
- <div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
+
+<div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
 	<div class="left">
 		<div class="question" style="line-height: 3">
 			{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
@@ -12,7 +13,7 @@
 		<div class="help">
 			<p class="qu estion-help-text">{{quizItem.helpText}}</p>
 		</div>
-        <div quiz-item-media quiz-item="quizItem"></div>
+		<div ng-include="getMediaTemplate(quizItem)"></div>
 		<div class="submit">
 			<div ng-show="mode==='read'">
 				<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>

@@ -6,7 +6,7 @@
 		<div class="help">
 			<p class="question-help-text">{{quizItem.helpText}}</p>
 		</div>
-        <div quiz-item-media quiz-item="quizItem"></div>
+        <div ng-include="getMediaTemplate(quizItem)"></div>
 		<div class="answers">
 			<input id="exactQuestionText" ng-model="quizItem.userAnswer" autofocus ng-init="setFocus('exactQuestionText')" />
 		</div>
