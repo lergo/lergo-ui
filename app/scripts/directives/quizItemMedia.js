@@ -15,17 +15,17 @@ angular.module('lergoApp')
 
 
                 function removeRedundantElement(){
-                    if ($scope.quizItem.media === 'audio' || !$scope.quizItem.imageUrl || $scope.quizItem.imageUrl.trim() === '' ) {
-                        url = $sce.trustAsResourceUrl($scope.quizItem.audioUrl);
+                    if ($scope.quizItem.media.type === 'audio' || !$scope.quizItem.media.url || $scope.quizItem.media.url.trim() === '' ) {
+                        url = $sce.trustAsResourceUrl($scope.quizItem.media.url);
                         $element.find('img').remove();
                     }
 
-                    if ($scope.quizItem.media === 'image' || !$scope.quizItem.audioUrl || $scope.quizItem.audioUrl.trim() === '') {
-                        url = $sce.trustAsResourceUrl($scope.quizItem.imageUrl);
+                    if ($scope.quizItem.media.type === 'image' || !$scope.quizItem.media.url || $scope.quizItem.media.url.trim() === '') {
+                        url = $sce.trustAsResourceUrl($scope.quizItem.media.url);
                         $element.find('audio').remove();
                     }
 
-                    if ($scope.quizItem.media !== 'image' && $scope.quizItem.media !== 'audio') {
+                    if ($scope.quizItem.media.type !== 'image' && $scope.quizItem.media.type !== 'audio') {
                         $element.remove();
                     }
                 }
@@ -47,7 +47,7 @@ angular.module('lergoApp')
                         if ( !$scope.quizItem ){
                             return undefined;
                         }else{
-                            return $scope.quizItem.media + $scope.quizItem.audioUrl + $scope.quizItem.imageUrl;
+                            return $scope.quizItem.media + $scope.quizItem.media.url;
                         }
                     }catch(e){
                         $log.error(e);

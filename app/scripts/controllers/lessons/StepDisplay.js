@@ -165,4 +165,12 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		}
 		return LergoClient.questions.getTypeById(quizItem.type).canSubmit(quizItem);
 	};
+	
+
+	$scope.getUrl = function(quizItem) {
+		if (!!quizItem && !!quizItem.media) {
+			return $sce.trustAsResourceUrl(quizItem.media.url);
+		}
+
+	};
 });

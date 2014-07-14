@@ -6,8 +6,7 @@
 		<div class="help">
 			<p class="question-help-text">{{quizItem.helpText}}</p>
 		</div>
-
-        <div quiz-item-media quiz-item="quizItem"></div>
+		<div ng-include="getMediaTemplate(quizItem)"></div>
 		<div class="answers">
 			<div class="true-false-options">
 				<button ng-repeat="option in ['True','False']" class="true-false-option" ng-click="quizItem.userAnswer = option"
@@ -18,7 +17,7 @@
 			<div ng-show="mode==='read'">
 				<button class="btn" type="submit" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
 			</div>
-			<div ng-show="mode==='quiz'" >
+			<div ng-show="mode==='quiz'">
 				<button ng-show="!getAnswer(quizItem)" ng-disabled="!quizItem.userAnswer" type="submit" class="btn" ng-click="checkAnswer()">{{
 					'button.submit' | i18n }}</button>
 				<button ng-show="hasNextQuizItem() && getAnswer(quizItem)" class="btn" ng-click="nextQuizItem()">{{ 'nextQuestion' | i18n }} >></button>
@@ -28,7 +27,7 @@
 	</div>
 	<div class="right">
 		<div class="action-items">
-			<div class="hint" ng-show="!!quizItem.hint" >
+			<div class="hint" ng-show="!!quizItem.hint">
 				<a ng-show="!!quizItem.hint" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link"> {{'hint' | i18n}} </a>
 			</div>
 			<div ng-show="mode==='read'" class="action-item">
@@ -50,7 +49,8 @@
 <div class="result" ng-show="!!getAnswer(quizItem)">
 	<div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">
 		<span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | i18n}}</span>
-		<span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | i18n}}: {{getCorrectAnswers(quizItem)}}</span>
+		<span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | i18n}}:
+			{{'quizItem.answer.'+getCorrectAnswers(quizItem)|i18n}}</span>
 		<div ng-show="!!quizItem.explanation && !getAnswer(quizItem).correct">
 			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
 			<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>

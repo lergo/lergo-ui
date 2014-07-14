@@ -19,40 +19,36 @@ angular
 					$scope.subjects = FilterService.subjects;
 					$scope.languages = FilterService.languages;
 
-                    function loadQuestion() {
-                        QuestionsService.getQuestionById(questionId).then(function (result) {
-                            $scope.quizItem = result.data;
-                            // To determine whether advance option should be open or
-                            // not
-                            var q = $scope.quizItem;
-                            $scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary);
-                            $scope.errorMessage = null;
-                        }, function (result) {
-                            $scope.error = result.data;
-                            $scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
-                            $log.error($scope.errorMessage);
-                        });
-                    }
+					function loadQuestion() {
+						QuestionsService.getQuestionById(questionId).then(function(result) {
+							$scope.quizItem = result.data;
+							// To determine whether advance option should be
+							// open or
+							// not
+							var q = $scope.quizItem;
+							$scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary);
+							$scope.errorMessage = null;
+						}, function(result) {
+							$scope.error = result.data;
+							$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
+							$log.error($scope.errorMessage);
+						});
+					}
 
-                    if ( !!questionId ){
-                        loadQuestion();
-                    }
-
+					if (!!questionId) {
+						loadQuestion();
+					}
 
 					$scope.$watch('quizItem', saveQuestion.onValueChange, true);
-                    $scope.$watch(function(){ return $scope.quizItem && $scope.quizItem.media;}, function(newValue/*, oldValue*/){
-                        if ( !$scope.quizItem){
-                            return;
-                        }
-                        // guy - todo - remove this when we organize the model for media
-                        if ( newValue !== 'image' ){
-                            $scope.quizItem.imageUrl = null;
-                        }
-
-                        if ( newValue !== 'audio'){
-                            $scope.quizItem.audioUrl = null;
-                        }
-                    });
+					$scope.$watch(function() {
+						return $scope.quizItem && $scope.quizItem.media;
+					}, function(newValue/*
+										 * , oldValue
+										 */) {
+						if (!$scope.quizItem) {
+							return;
+						}
+					});
 
 					// setInterval( function(){ console.log($scope.quizItem)},
 					// 1000);
@@ -127,6 +123,14 @@ angular
 							return false;
 						}
 						return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
+					};
+
+					$scope.getMediaTemplate = function(quizItem) {
+						var type = 'none';
+						if (!!quizItem.media && !!quizItem.media.type) {
+							type = quizItem.media.type;
+						}
+						return 'views/questions/update/media/_' + type + '.html';
 					};
 
 				});
