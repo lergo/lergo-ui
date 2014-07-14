@@ -40,15 +40,6 @@ angular
 					}
 
 					$scope.$watch('quizItem', saveQuestion.onValueChange, true);
-					$scope.$watch(function() {
-						return $scope.quizItem && $scope.quizItem.media;
-					}, function(newValue/*
-										 * , oldValue
-										 */) {
-						if (!$scope.quizItem) {
-							return;
-						}
-					});
 
 					// setInterval( function(){ console.log($scope.quizItem)},
 					// 1000);
