@@ -29,8 +29,11 @@
 			</a>
 		</div>
 		<br>
-		<div class="recmmonded" ng-show="!!lesson.recommendedNextLesson">
-			<a ng-href="{{lesson.nextLesson}}"> <i class="fa fa-university"></i>{{ 'lessons.recommenedNextLesson' | i18n }} </a>
+		<div class="recmmonded" ng-show="!!lesson.nextLessonId">
+			<a ng-href="#/public/lessons/{{lesson.nextLessonId}}/intro">
+				<i class="fa fa-university"></i>
+				{{ 'lessons.recommenedNextLesson' | i18n }}
+			</a>
 		</div>
 	</div>
 	<div style="text-align: left">
