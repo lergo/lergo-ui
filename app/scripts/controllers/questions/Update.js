@@ -28,6 +28,18 @@ angular
 							var q = $scope.quizItem;
 							$scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary);
 							$scope.errorMessage = null;
+
+							// This is to support old media model migrate to new
+							// media model need to remove once migration is done
+							if ($scope.quizItem.media === 'audio' || $scope.quizItem.media === 'image') {
+								var mediaType = $scope.quizItem.media;
+								$scope.quizItem.media = {};
+								$scope.quizItem.media.type = mediaType;
+								$scope.quizItem.media.imageUrl = $scope.quizItem.imageUrl;
+								$scope.quizItem.media.audioUrl = $scope.quizItem.audioUrl;
+								delete $scope.quizItem.audioUrl;
+								delete $scope.quizItem.imageUrl;
+							}
 						}, function(result) {
 							$scope.error = result.data;
 							$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;

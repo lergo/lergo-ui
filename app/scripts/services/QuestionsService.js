@@ -12,9 +12,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 	};
 
 	this.getQuestionById = function(questionId) {
-        if ( !!questionId){
-        	return $http.get('/backend/questions/' + questionId);
-        }
+		if (!!questionId) {
+			return $http.get('/backend/questions/' + questionId);
+		}
 	};
 
 	this.findQuestionsById = function(ids) {
@@ -195,7 +195,6 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		},
 		'alias' : []
 	} ];
-	
 
 	this.getTypeById = function(typeId) {
 		for ( var i = 0; i < this.questionsType.length; i++) {
