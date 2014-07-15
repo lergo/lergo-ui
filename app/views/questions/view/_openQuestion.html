@@ -13,17 +13,7 @@
 			<!-- Setting focus manually -->
 			{{quizItem.subType==='short' ? setFocus('openQuestionText') : setFocus('openQuestionTextarea')}}
 		</div>
-		<div class="submit">
-			<div ng-show="mode==='read'">
-				<button class="btn" type="submit" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
-			</div>
-			<div ng-show="mode==='quiz'">
-				<button ng-show="!getAnswer(quizItem)" ng-disabled="!quizItem.userAnswer" type="submit" class="btn" ng-click="checkAnswer()">{{
-					'button.submit' | i18n }}</button>
-				<button ng-show="hasNextQuizItem() && getAnswer(quizItem)" class="btn" ng-click="nextQuizItem()">{{ 'nextQuestion' | i18n }} >></button>
-				<button ng-show="!hasNextQuizItem() && getAnswer(quizItem)" class="btn" disabled>{{ 'steps.noMoreQuestions' | i18n }}</button>
-			</div>
-		</div>
+		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
 	</div>
 	<div class="right">
 		<div class="action-items">
@@ -49,5 +39,9 @@
 <div ng-show="!!getAnswer(quizItem)">
 	<div class="bg-primary">
 		<span>{{'questions.thankYou' | i18n}}</span>
+		<div ng-show="!!quizItem.explanation">
+			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+			<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
+		</div>
 	</div>
 </div>

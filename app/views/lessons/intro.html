@@ -94,10 +94,10 @@
 							<p>{{'lessons.inviteLessonHelpText' | i18n}}</p>
 							<div ng-controller="LessonsInvitesCreateCtrl" class="container">
 								<div>{{ 'name' | i18n }}</div>
-								<input type="text" ng-model="invite.invitee.name" />
+								<input type="text" ng-model="invite.invitee.name" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
 								<div ng-show="!!createSuccess">
 									<div>{{'lessons.inviteSuccessText' | i18n}}</div>
-									<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" />
+									<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null"/>
 								</div>
 								<br />
 								<div class="button">
