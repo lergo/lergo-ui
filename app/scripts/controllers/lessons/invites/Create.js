@@ -31,4 +31,11 @@ angular.module('lergoApp').controller('LessonsInvitesCreateCtrl', function($scop
 			$scope.createError = true;
 		});
 	};
+	$scope.enterPressed = function() {
+		if ($scope.createSuccess) {
+			$scope.newInvite();
+		} else if (!!$scope.invite.invitee.name) {
+			$scope.sendInvite();
+		}
+	};
 });
