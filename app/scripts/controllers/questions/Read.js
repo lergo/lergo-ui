@@ -55,7 +55,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		return QuestionsService.getTypeById(quizItem.type).canSubmit(quizItem);
 	};
 	$scope.getFillIntheBlankSize = function(quizItem, index) {
-		if (!quizItem.blanks || !quizItem.blanks.type || quizItem.blanks.type == "auto") {
+		if (!quizItem.blanks || !quizItem.blanks.type || quizItem.blanks.type === 'auto') {
 			if (!!quizItem.answer[index]) {
 				var answer = quizItem.answer[index].split(';');
 				var maxLength = 0;
@@ -66,7 +66,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 				}
 				return maxLength * 10 + 20;
 			}
-		} else if (quizItem.blanks.type == "custom") {
+		} else if (quizItem.blanks.type === 'custom') {
 			return quizItem.blanks.size * 10 + 20;
 		}
 	};

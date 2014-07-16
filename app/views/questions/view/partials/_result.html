@@ -5,10 +5,12 @@
 		<div ng-show="!!quizItem.explanation && !getAnswer(quizItem).correct">
 			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
 			<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
+			<div quiz-item-explanation-media quiz-item="quizItem"></div>
 		</div>
 		<div ng-show="!!quizItem.explanation && !!getAnswer(quizItem).correct">
 			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
 			<div style="width: 400px; margin: auto" collapse="!isCollapsed">{{quizItem.explanation}}</div>
+			<div quiz-item-explanation-media quiz-item="quizItem"></div>
 		</div>
 	</div>
 </div>
