@@ -1,3 +1,8 @@
 <div class="base-layout">
-	<div ng-include="getQuestionViewTemplate(quizItem)" ng-init="mode='read'"></div>
+	<div style="float: left">
+		<div ng-include="getQuestionViewTemplate(quizItem)" ng-init="mode='read'"></div>
+	</div>
+	<div style="float: right; margin-top:50px">
+		<div  ng-show="!!getAnswer(quizItem)" quiz-item-explanation-media quiz-item="quizItem"></div>
+	</div>
 </div>

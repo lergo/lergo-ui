@@ -30,9 +30,13 @@
 				</span>
 			</td>
 			<td>
+				{{!quizItem.blanks && (quizItem.blanks.type='auto')||""}}
 				<select ng-model="quizItem.blanks.type" ng-options="m as ('questions.fillInTheBlanks.type.' + m | i18n) for m in ['auto','custom']">
 				</select>
-				<input ng-show="quizItem.blanks.type==='custom'" style="width: 30px; display: inline" ng-model=quizItem.blanks.size />
+				<span ng-show="quizItem.blanks.type==='custom'">
+					<input style="width: 30px; display: inline" ng-model=quizItem.blanks.size />
+					{{'quizItem.blanks.size.hint'|i18n}}
+				</span>
 			</td>
 		</tr>
 	</tbody>

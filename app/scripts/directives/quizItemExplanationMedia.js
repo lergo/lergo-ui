@@ -27,8 +27,7 @@ angular.module('lergoApp').directive('quizItemExplanationMedia', function($sce) 
 					return isValidImage(media.imageUrl);
 				} else if (media.type === 'audio') {
 					return isValidAudio(media.audioUrl);
-				}
-				else if (media.type === 'video') {
+				} else if (media.type === 'video') {
 					return isValidVideo(media.videoUrl);
 				}
 			}
@@ -42,13 +41,13 @@ angular.module('lergoApp').directive('quizItemExplanationMedia', function($sce) 
 				return !!url;
 
 			}
-			
+
 			function isValidVideo(url) {
 				return !!url;
 
 			}
 			$scope.getYoutubeEmbedSource = function(url) {
-				var src = '//www.youtube.com/embed/' + getVideoId(url) + '?autoplay=1&rel=0&iv_load_policy=3';
+				var src = '//www.youtube.com/embed/' + getVideoId(url) + '?rel=0&iv_load_policy=3';
 				return $sce.trustAsResourceUrl(src);
 			};
 			function getVideoId(url) {

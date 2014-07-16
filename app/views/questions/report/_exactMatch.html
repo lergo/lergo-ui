@@ -30,6 +30,11 @@
 				<div class="bold">{{'explanation'|i18n}}</div>
 				<div>{{quizItem.explanation}}</div>
 			</div>
+			<div ng-show="!!quizItem.explanationMedia">
+				<br>
+				<div class="bold">{{'explanation'|i18n}}</div>
+				<div quiz-item-explanation-media quiz-item="quizItem"></div>
+			</div>
 		</div>
 	</div>
 </div>
