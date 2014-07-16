@@ -6,7 +6,7 @@
 			<span class="lergo-h4" style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
 				<span class="lergo-h4">{{option}}</span>
 				<input ng-show="!$last"
-					style="width:{{!quizItem.answer[$index] && 100|| ((quizItem.answer[$index].length*10)+20)}}px; background-color:transparent; display: inline; min-height: 28px;"
+					style="width:{{(!quizItem.answer[$index] || quizItem.sameSizeBox) && 100|| ((quizItem.answer[$index].length*10)+20)}}px; background-color:#EEEEEE; display: inline; min-height: 28px;"
 					ng-model="quizItem.userAnswer[$index]" set-focus="$first">
 			</span>
 		</div>
@@ -37,4 +37,4 @@
 	<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>
 </div>
 <br>
-<div ng-include="'views/questions/view/partials/_result.html'"> </div>
+<div ng-include="'views/questions/view/partials/_result.html'"></div>
