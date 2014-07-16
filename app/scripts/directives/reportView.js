@@ -56,10 +56,11 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 				if (!answer) {
 					return false;
 				}
-				if (quizItem.answer.indexOf(answer) === quizItem.userAnswer.indexOf(answer)) {
-					return true;
-				} else {
+				var index = quizItem.userAnswer.indexOf(answer);
+				if (quizItem.answer[index].split(';').indexOf(answer) === -1) {
 					return false;
+				} else {
+					return true;
 				}
 			};
 

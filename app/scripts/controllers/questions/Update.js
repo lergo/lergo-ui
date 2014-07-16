@@ -136,4 +136,12 @@ angular
 						return 'views/questions/update/media/_' + type + '.html';
 					};
 
+					$scope.getExplanationMediaTemplate = function(quizItem) {
+						var type = 'none';
+						if (!!quizItem.explanationMedia && !!quizItem.explanationMedia.type) {
+							type = quizItem.explanationMedia.type;
+						}
+						return 'views/questions/update/explanationMedia/_' + type + '.html';
+					};
+
 				});
