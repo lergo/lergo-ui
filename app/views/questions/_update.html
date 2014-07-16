@@ -80,6 +80,17 @@
 					</td>
 				</tr>
 				<tr>
+					<td style="width: 15%">{{ 'questions.addExplanationMedia' | i18n }}</td>
+					<td style="width: 10%">
+						<select ng-model="quizItem.explanationMedia.type" ng-options="m as ('questions.media.' + m | i18n) for m in ['audio','image','video']">
+							<option value=""></option>
+						</select>
+					</td>
+					<td>
+						<div ng-show="!!quizItem.explanationMedia" ng-include="getExplanationMediaTemplate(quizItem)"></div>
+					</td>
+				</tr>
+				<tr>
 					<td>{{ 'questions.editSummary' | i18n }}</td>
 					<td colspan="2">
 						<input placeholder="{{'questions.editSummaryHelpText' | i18n}}" ng-model="quizItem.summary" />

@@ -22,15 +22,17 @@
 		</tr>
 		<tr>
 			<td class=disableAutoSize>
-				<span> {{'questions.disableAutoSize' | i18n}}</span>
+				<span> {{'questions.fillInTheBlanks.inputSize' | i18n}}</span>
 				<span>
 					<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-					<button popover="{{'questions.disableAutoSizeHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus"
-						tabindex="0"></button>
+					<button popover="{{'questions.fillInTheBlanks.inputSizeHint' | i18n}}" class="fa fa-question-circle" popover-placement="top"
+						popover-trigger="focus" tabindex="0"></button>
 				</span>
 			</td>
 			<td>
-				<input type="checkbox" ng-model=quizItem.sameSizeBox />
+				<select ng-model="quizItem.blanks.type" ng-options="m as ('questions.fillInTheBlanks.type.' + m | i18n) for m in ['auto','custom']">
+				</select>
+				<input ng-show="quizItem.blanks.type==='custom'" style="width: 30px; display: inline" ng-model=quizItem.blanks.size />
 			</td>
 		</tr>
 	</tbody>

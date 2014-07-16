@@ -5,8 +5,7 @@
 			{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
 			<span class="lergo-h4" style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
 				<span class="lergo-h4">{{option}}</span>
-				<input ng-show="!$last"
-					style="width:{{(!quizItem.answer[$index] || quizItem.sameSizeBox) && 100|| ((quizItem.answer[$index].length*10)+20)}}px; background-color:#EEEEEE; display: inline; min-height: 28px;"
+				<input ng-show="!$last" style="width:{{getFillIntheBlankSize(quizItem,$index)}}px; background-color:#EEEEEE; display: inline; min-height: 28px;"
 					ng-model="quizItem.userAnswer[$index]" set-focus="$first">
 			</span>
 		</div>
