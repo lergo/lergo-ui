@@ -167,9 +167,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'viewTemplate' : 'views/questions/view/_fillInTheBlanks.html',
 		'reportTemplate' : 'views/questions/report/_fillInTheBlanks.html',
 		'answers' : function(quizItem) {
-			var answer = [] ;
+			var answer = [];
 			for ( var i = 0; i < quizItem.answer.length; i++) {
-				answer[i] =	quizItem.answer[i].split(';').join(' / ');
+				answer[i] = quizItem.answer[i].split(';').join(' / ');
 
 			}
 			return answer.join(' ; ');
@@ -178,8 +178,8 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			if (!quizItem.question) {
 				return false;
 			}
-			if(!quizItem.answer || !angular.isArray(quizItem.answer)){
-				quizItem.answer=[];
+			if (!quizItem.answer || !angular.isArray(quizItem.answer)) {
+				quizItem.answer = [];
 			}
 			var result = true;
 			quizItem.answer.forEach(function(value) {
