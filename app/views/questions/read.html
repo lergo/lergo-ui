@@ -1,8 +1,16 @@
 <div class="base-layout">
-	<div style="float: left">
-		<div ng-include="getQuestionViewTemplate(quizItem)" ng-init="mode='read'"></div>
-	</div>
-	<div style="float: right; margin-top:50px">
-		<div  ng-show="!!getAnswer(quizItem)" quiz-item-explanation-media quiz-item="quizItem"></div>
-	</div>
+	<table class="lergo-table">
+		<tr>
+			<td style="vertical-align: top;">
+				<div>
+					<div ng-include="getQuestionViewTemplate(quizItem)" ng-init="mode='read'"></div>
+				</div>
+			</td>
+			<td style="vertical-align: top;">
+				<div style="margin-top: 50px">
+					<div ng-show="!!getAnswer(quizItem)" quiz-item-explanation-media quiz-item="quizItem"></div>
+				</div>
+			</td>
+		</tr>
+	</table>
 </div>
