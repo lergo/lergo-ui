@@ -1,41 +1,30 @@
 
 <div class="question-true-false">
-	<div class="{{!quizItem.checkAnswer.correct && 'quiz-wrong' || 'quiz-correct'}}">
-		<div ng-show="!!quizItem.checkAnswer.correct" class="bg-success" class="quiz">
-			<span class="inline-table">{{quizItem.question}}</span>
-			<span class="inline-table">({{'questions.correct'|i18n}}) </span>
-		</div>
-		<div ng-show="!quizItem.checkAnswer.correct" class="bg-warning" class="quiz">
-			<span class="inline-table">{{quizItem.question}}</span>
-			<span class="inline-table">({{'questions.incorrect'|i18n}})</span>
-		</div>
-		<div ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
-		<div class="question-media" quiz-item-media quiz-item="quizItem"></div>
-		<div class="quiz-answer">
-			<div>
-				<div class="bold">{{'questions.correctAnswer'|i18n}}</div>
-				<div ng-repeat="option in ['True','False']">
-					{{'quizItem.answer.'+ option | i18n}}
-					<i ng-show="quizItem.answer === option" class="fa fa-check correct"></i>
-				</div>
+	<div ng-include="'views/questions/report/partial/_questionHeader.html'"></div>
+	<div class="question-media" quiz-item-media quiz-item="quizItem"></div>
+	<div class="quiz-answer">
+		<div>
+			<div class="bold">{{'questions.correctAnswer'|i18n}}</div>
+			<div ng-repeat="option in ['True','False']">
+				{{'quizItem.answer.'+ option | i18n}}
+				<i ng-show="quizItem.answer === option" class="fa fa-check correct"></i>
 			</div>
+		</div>
+		<br>
+		<div>
+			<div class="bold">{{'questions.yourAnswer'|i18n}}</div>
+			{{'quizItem.answer.'+quizItem.userAnswer | i18n}}
+			<i ng-show="quizItem.userAnswer === quizItem.answer" class="fa fa-check correct"></i>
+			<i ng-show="quizItem.userAnswer !== quizItem.answer" class="fa fa-times wrong"></i>
+		</div>
+		<div ng-show="!!quizItem.explanation">
 			<br>
-			<div>
-				<div class="bold">{{'questions.yourAnswer'|i18n}}</div>
-				{{'quizItem.answer.'+quizItem.userAnswer | i18n}}
-				<i ng-show="quizItem.userAnswer === quizItem.answer" class="fa fa-check correct"></i>
-				<i ng-show="quizItem.userAnswer !== quizItem.answer" class="fa fa-times wrong"></i>
-			</div>
-			<div ng-show="!!quizItem.explanation">
-				<br>
-				<div class="bold">{{'explanation'|i18n}}</div>
-				<div>{{quizItem.explanation}}</div>
-			</div>
-			<div ng-show="!!quizItem.explanationMedia">
-				<br>
-				<div class="bold">{{'explanation'|i18n}}</div>
-				<div quiz-item-explanation-media quiz-item="quizItem"></div>
-			</div>
+			<div class="bold">{{'explanation'|i18n}}</div>
+			<div>{{quizItem.explanation}}</div>
+		</div>
+		<div ng-show="!!quizItem.explanationMedia">
+			<br>
+			<div quiz-item-explanation-media quiz-item="quizItem"></div>
 		</div>
 	</div>
 </div>

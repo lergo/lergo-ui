@@ -65,14 +65,18 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.checkAnswer = function() {
 		var quizItem = $scope.quizItem;
+
+		var duration = new Date().getTime() - $scope.startTime;
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
 			$scope.answers[quizItem._id] = result.data;
 			$rootScope.$broadcast('questionAnswered', {
 				'userAnswer' : quizItem.userAnswer,
 				'checkAnswer' : result.data,
-				'quizItemId' : quizItem._id
-
+				'quizItemId' : quizItem._id,
+				'duration' : duration,
+				'isHintUsed' : !!$scope.isHintUsed
 			});
+			$scope.isHintUsed = false;
 			$scope.$emit('quizComplete', !$scope.hasNextQuizItem());
 		}, function() {
 			$log.error('there was an error checking answer');
@@ -82,6 +86,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.getQuizItem = function() {
 		if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > $scope.currentIndex) {
+			$scope.startTime = new Date().getTime();
 			return $scope.step.quizItems[$scope.currentIndex];
 		}
 		return null;
@@ -156,7 +161,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	// autofocus not working properly in control of partial view when added
 	// through ngInclude this is a hook to get the desired behaviour
 	$scope.setFocus = function(id) {
-		document.getElementById(id).focus();
+		// document.getElementById(id).focus();
 	};
 
 	$scope.canSubmit = function(quizItem) {
@@ -181,6 +186,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		} else if (quizItem.blanks.type === 'custom') {
 			return quizItem.blanks.size * 10 + 20;
 		}
+	};
+	$scope.hintUsed = function() {
+		$scope.isHintUsed = true;
 	};
 
 });
