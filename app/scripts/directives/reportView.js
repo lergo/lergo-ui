@@ -132,6 +132,28 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 				$log.info('result', result);
 				return result;
 			};
+
+			$scope.getDuration = function(duration) {
+				if (!duration) {
+					return 0;
+				}
+				var seconds = Math.ceil(duration / 1000);
+				var time = '';
+				if (seconds > 60) {
+					time = seconds % 60 + time;
+					var minutes = Math.floor(seconds / 60);
+					if (minutes > 60) {
+						time = minutes % 60 + ':' + time;
+						time = Math.floor(minutes / 60) + ':' + time;
+					} else {
+						time = '00:' + minutes + ':' + time;
+					}
+
+				} else {
+					time = '00:00:' + seconds;
+				}
+				return time;
+			};
 		}
 
 	};

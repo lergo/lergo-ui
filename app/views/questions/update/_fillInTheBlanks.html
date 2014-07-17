@@ -25,7 +25,7 @@
 				</span>
 			</td>
 			<td>
-				{{!quizItem.blanks && (quizItem.blanks.type='auto')||""}}
+				{{!quizItem.blanks && (quizItem.blanks={'type':'auto','size':'4'} )||""}}
 				<select ng-model="quizItem.blanks.type" ng-options="m as ('questions.fillInTheBlanks.type.' + m | i18n) for m in ['auto','custom']">
 				</select>
 				<span ng-show="quizItem.blanks.type==='custom'">

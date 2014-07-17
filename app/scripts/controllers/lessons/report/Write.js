@@ -5,14 +5,12 @@
  * This controller write the events from a lesson a report model
  * 
  * Usage example:
- * 
- *  // example - lets say we have viewing a lesson $scope.data = lesson;
- *  // lets add a report to the lesson lesson.report = {};
- *  // lets put the report on the scope $scope.report = lesson.report;
- *  // call the report controller - the controller will look for "report" on the
- * scope $controller('LessonsReportWriteCtrl', {$scope: $scope});
- *  // listen to writing on the report and do something with it
- * $scope.$watch('report', function(){
+ *  // example - lets say we have viewing a lesson $scope.data = lesson; // lets
+ * add a report to the lesson lesson.report = {}; // lets put the report on the
+ * scope $scope.report = lesson.report; // call the report controller - the
+ * controller will look for "report" on the scope
+ * $controller('LessonsReportWriteCtrl', {$scope: $scope}); // listen to writing
+ * on the report and do something with it $scope.$watch('report', function(){
  * 
  * do something when the repost changes
  * 
@@ -93,7 +91,9 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 			'stepIndex' : stepIndex,
 			'quizItemId' : data.quizItemId,
 			'userAnswer' : data.userAnswer,
-			'checkAnswer' : data.checkAnswer
+			'checkAnswer' : data.checkAnswer,
+			'isHintUsed' : data.isHintUsed,
+			'duration' : data.duration
 		});
 	});
 

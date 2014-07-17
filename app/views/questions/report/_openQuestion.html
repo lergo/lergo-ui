@@ -2,6 +2,16 @@
 	<div class="bg-primary" class="quiz">
 		<span class="inline-table">{{quizItem.question}}</span>
 		<span class="inline-table">({{'questions.openQuestion'|i18n}})</span>
+		<div style="float: right">
+			<span ng-show="quizItem.isHintUsed" class="inline-table">
+				<i class="fa fa-header"></i>
+				|
+			</span>
+			<span class="inline-table">
+				<i class="fa fa-clock-o"></i>
+				{{getDuration(quizItem.duration)}}
+			</span>
+		</div>
 	</div>
 	<div ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
 	<div class="question-media" quiz-item-media quiz-item="quizItem"></div>
@@ -15,7 +25,6 @@
 		</div>
 		<div ng-show="!!quizItem.explanationMedia">
 			<br>
-			<div class="bold">{{'explanation'|i18n}}</div>
 			<div quiz-item-explanation-media quiz-item="quizItem"></div>
 		</div>
 	</div>
