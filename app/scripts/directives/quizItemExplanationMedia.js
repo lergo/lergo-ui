@@ -14,7 +14,7 @@ angular.module('lergoApp').directive('quizItemExplanationMedia', function($sce) 
 			$scope.getMediaTemplate = function() {
 				var quizItem = $scope.quizItem;
 				var type = 'none';
-				if (!!quizItem.explanationMedia && !!quizItem.explanationMedia.type && isValid(quizItem.explanationMedia)) {
+				if (!!quizItem && !!quizItem.explanationMedia && !!quizItem.explanationMedia.type && isValid(quizItem.explanationMedia)) {
 					type = quizItem.explanationMedia.type;
 				}
 				return 'views/questions/view/explanationMedia/_' + type + '.html';
