@@ -86,7 +86,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.getQuizItem = function() {
 		if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > $scope.currentIndex) {
-			$scope.startTime = new Date().getTime();
+			if (!$scope.startTime) {
+				$scope.startTime = new Date().getTime();
+			}
 			return $scope.step.quizItems[$scope.currentIndex];
 		}
 		return null;
@@ -161,7 +163,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	// autofocus not working properly in control of partial view when added
 	// through ngInclude this is a hook to get the desired behaviour
 	$scope.setFocus = function(id) {
-		// document.getElementById(id).focus();
+		document.getElementById(id).focus();
 	};
 
 	$scope.canSubmit = function(quizItem) {

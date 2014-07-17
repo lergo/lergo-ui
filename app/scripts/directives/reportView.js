@@ -141,7 +141,7 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 				var time = '';
 				if (seconds > 60) {
 					time = seconds % 60 + time;
-					minutes = Math.floor(seconds / 60);
+					var minutes = Math.floor(seconds / 60);
 					if (minutes > 60) {
 						time = minutes % 60 + ':' + time;
 						time = Math.floor(minutes / 60) + ':' + time;
