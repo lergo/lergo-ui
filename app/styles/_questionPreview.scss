@@ -5,6 +5,9 @@
     display:table;
     border-radius:5px;
     background-color: gainsboro;
+    .bold{
+    font-weight: bold;
+    }
 	.left {
 		width:90%;
 		padding:10px;
@@ -17,7 +20,6 @@
  			color: grey; 
 			font-family: cursive;
 			margin-top:10px;
-			margin-bottom: 10px;
 		}
 		.audio{
 		margin-top:10px;
@@ -48,6 +50,7 @@
 			.hint{
 			  font-size:15px;
               margin-top:  10px;
+              position: relative;
 			}
 			.action-item{
 			position:relative;

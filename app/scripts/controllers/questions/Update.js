@@ -26,7 +26,7 @@ angular
 							// open or
 							// not
 							var q = $scope.quizItem;
-							$scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary);
+							$scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary || !!q.explanationMedia);
 							$scope.errorMessage = null;
 
 							// This is to support old media model migrate to new

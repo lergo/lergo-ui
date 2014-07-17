@@ -16,20 +16,7 @@
 		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
 	</div>
 	<div class="right">
-		<div class="action-items">
-			<div class="hint" ng-show="!!quizItem.hint">
-				<a ng-show="!!quizItem.hint" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link"> {{'hint' | i18n}} </a>
-			</div>
-			<div ng-show="mode==='read'" class="action-item">
-				<hr />
-				<a class="btn-link" ng-click="copyQuestion(quizItem)">
-					<i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | i18n}}"></i>
-				</a>
-				<a class="btn-link" href="#/user/questions/{{quizItem._id}}/update" tooltip="{{'questions.tooltip.edit' | i18n}}">
-					<i class="fa fa-pencil-square-o"></i>
-				</a>
-			</div>
-		</div>
+		<div ng-include="'views/questions/view/partials/_actionItems.html'"></div>
 	</div>
 </div>
 <div ng-show="mode==='quiz'">

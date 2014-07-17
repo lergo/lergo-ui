@@ -14,7 +14,7 @@ angular.module('lergoApp').directive('quizItemMedia', function($sce) {
 			$scope.getMediaTemplate = function() {
 				var quizItem = $scope.quizItem;
 				var type = 'none';
-				if (!!quizItem.media && !!quizItem.media.type && isValid(quizItem.media)) {
+				if (!!quizItem && !!quizItem.media && !!quizItem.media.type && isValid(quizItem.media)) {
 					type = quizItem.media.type;
 				}
 				return 'views/questions/view/media/_' + type + '.html';

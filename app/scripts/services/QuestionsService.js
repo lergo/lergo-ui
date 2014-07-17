@@ -181,6 +181,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			if (!quizItem.answer || !angular.isArray(quizItem.answer)) {
 				quizItem.answer = [];
 			}
+			if (quizItem.answer.length == 0) {
+				return false;
+			}
 			var result = true;
 			quizItem.answer.forEach(function(value) {
 				if (!value) {
