@@ -29,7 +29,7 @@
 				<select ng-model="quizItem.blanks.type" ng-options="m as ('questions.fillInTheBlanks.type.' + m | i18n) for m in ['auto','custom']">
 				</select>
 				<span ng-show="quizItem.blanks.type==='custom'">
-					<input style="width: 30px; display: inline" ng-model=quizItem.blanks.size />
+					<input type="number" style="width: 50px; display: inline" ng-model=quizItem.blanks.size />
 					{{'questions.fillInTheBlanks.sizeHint'|i18n}}
 				</span>
 			</td>

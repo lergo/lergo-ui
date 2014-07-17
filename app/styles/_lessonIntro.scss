@@ -169,6 +169,20 @@
       .description {
         font-size: 17px;
         margin-top:10px;
+        .edit-summary{
+	        .question{
+	        
+	        }
+	        .summary{
+		       	padding-left: 17px;
+				font-size: 15px;
+				padding-top: 5px;
+				padding-bottom: 10px;
+	        }
+	        .title{
+	        font-weight: bold;
+	        }
+        }
         .read-more{
           margin-top:10px;
           .dashes{

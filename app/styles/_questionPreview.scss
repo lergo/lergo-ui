@@ -12,9 +12,13 @@
 		width:90%;
 		padding:10px;
 		.submit{
-		margin-top:10px;
-		text-align: center;
-		width:430px;
+			margin-top:10px;
+			text-align: center;
+			width:430px;
+			.left-arrow{
+				display:none;
+			}
+			
 		}
  		.help{
  			color: grey; 
@@ -90,4 +94,21 @@
 .result{
 		width:450px;
 		margin:0 auto;
+}
+
+.rtl{
+	#questionPreview { 	
+		.left {
+			.submit{
+				width: 385px;
+				padding-left: 15px;
+				.right-arrow{
+					display:none;
+				}
+				.left-arrow{
+					display:inline;
+				}
+			}
+		}
+	}
 }

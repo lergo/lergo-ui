@@ -2,10 +2,7 @@
 	<span class="inline-table">{{quizItem.question}}</span>
 	<span class="inline-table">({{'questions.correct'|i18n}}) </span>
 	<div style="float: right">
-		<span ng-show="quizItem.isHintUsed" class="inline-table">
-			<i class="fa fa-header"></i>
-			|
-		</span>
+		<span ng-show="quizItem.isHintUsed" class="inline-table"> {{'questions.hintWatched' | i18n}}:{{quizItem.hint | limitTo:10}} | </span>
 		<span class="inline-table">
 			<i class="fa fa-clock-o"></i>
 			{{getDuration(quizItem.duration)}}
@@ -16,10 +13,7 @@
 	<span class="inline-table">{{quizItem.question}}</span>
 	<span class="inline-table">({{'questions.incorrect'|i18n}})</span>
 	<div style="float: right">
-		<span ng-show="quizItem.isHintUsed" class="inline-table">
-			<i class="fa fa-header"></i>
-			|
-		</span>
+		<span ng-show="quizItem.isHintUsed" class="inline-table"> {{'questions.hintWatched' | i18n}}:{{quizItem.hint | limitTo:10}} | </span>
 		<span class="inline-table">
 			<i class="fa fa-clock-o"></i>
 			{{getDuration(quizItem.duration)}}
