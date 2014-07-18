@@ -37,7 +37,7 @@ angular.module('lergoApp')
                         $scope.error = 'tagSection.alreadyExists';
                         return;
                     }
-                    if (value.indexOf(separator) >= 0) {
+                    if ( !value || value.trim() === '' || value.indexOf(separator) >= 0) {
                         $scope.error = 'tagSection.invalidTag';
                         return;
                     }

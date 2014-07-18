@@ -561,15 +561,18 @@ $COLOR_19: #2a6496 !default;
 
 .tag-section-wrapper {
   .lergo-tag-item {
+    padding:10px;
+    border-radius:7px;
     background: $COLOR_1;
     color: white;
     margin-top: 12px;
     margin-left: 3px;
-    padding: 5px;
     display: inline-block;
     white-space: nowrap;
     .lergo-tag-item-remove {
-      padding: 0 0 0 10px;
+      padding: 0 0 0 5px;
+      margin-left:5px;
+      border-left:1px solid white;
       cursor: pointer;
       &:after {
         background: yellow;
