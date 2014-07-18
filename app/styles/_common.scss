@@ -579,7 +579,8 @@ $COLOR_19: #2a6496 !default;
   }
   input {
     display: inline-block;
-    width: 250px;
+    width:100%;
+    max-width: 250px;
     margin-top:10px;
   }
 }
