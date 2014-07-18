@@ -10,9 +10,7 @@ $FOOTER_HEIGHT: 170px !default;
 
 /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
 .base-layout, .base-layout-class {
-  .dropdown-menu{ // fix for typeahead position when scrolling the page.
-   position:fixed;
-  }
+
   &:not(.base-layout-modal) {
     margin-bottom: -$HEADER_HEIGHT;
   }
