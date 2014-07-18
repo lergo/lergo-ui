@@ -123,7 +123,8 @@
 								<div ng-repeat="q in questions">
 									<div ng-show="!!q.summary">
 										<div class="question">
-											<a href="#/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>
+											<!--  <a href="#/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
+											Q:{{q.question | limitTo :30}}
 										</div>
 										<div class="summary">{{q.summary}}</div>
 									</div>
