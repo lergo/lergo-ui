@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, $location, $log, FilterService, $rootScope) {
+angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, TagsService, $location, $log, FilterService, $rootScope) {
 	$scope.isModal = false;
 	$scope.ageFilter = function(quizItem) {
 		return FilterService.filterByAge(quizItem.age);
@@ -11,6 +11,10 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	$scope.subjectFilter = function(quizItem) {
 		return FilterService.filterBySubject(quizItem.subject);
 	};
+
+    $scope.tagsFilter = function(quizItem){
+        return FilterService.filterByTags(quizItem.tags);
+    };
 
 	$scope.createNewQuestion = function() {
 		QuestionsService.createQuestion({
@@ -28,6 +32,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	QuestionsService.getUserQuestions().then(function(result) {
 		$scope.items = result.data;
 		$scope.errorMessage = null;
+        $scope.availableTags = TagsService.getTagsFromItems( $scope.items );
 	}, function(result) {
 		$scope.error = result.data;
 		$scope.errorMessage = 'Error in fetching questions : ' + result.data.message;

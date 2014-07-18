@@ -558,3 +558,28 @@ $COLOR_19: #2a6496 !default;
 	}
 	font-size: 15px;
 }
+
+.tag-section-wrapper {
+  .lergo-tag-item {
+    background: $COLOR_1;
+    color: white;
+    margin-top: 12px;
+    margin-left: 3px;
+    padding: 5px;
+    display: inline-block;
+    white-space: nowrap;
+    .lergo-tag-item-remove {
+      padding: 0 0 0 10px;
+      cursor: pointer;
+      &:after {
+        background: yellow;
+      }
+    }
+
+  }
+  input {
+    display: inline-block;
+    width: 250px;
+    margin-top:10px;
+  }
+}

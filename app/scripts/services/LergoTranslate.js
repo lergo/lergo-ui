@@ -75,6 +75,7 @@ angular.module('lergoApp').service('LergoTranslate',
         // t - the translation
         // key - the key to translate
         function findTranslationInLanguage( t, key ){
+
             var args = key.split('.');
             for ( var i = 0; i < args.length; i ++ ){
                 if ( !!t && t.hasOwnProperty(args[i]))
@@ -92,9 +93,15 @@ angular.module('lergoApp').service('LergoTranslate',
 
         this.translate = function (key) {
             $log.debug('translating' ,key);
-            var value = findTranslationInLanguage( translations[language], key );
-            if ( !value ){
-                value = findTranslationInLanguage( translations.general , key );
+            var value = null;
+            if ( !!key ){
+                value = findTranslationInLanguage( translations[language], key );
+
+                if ( !value ){
+                    value = findTranslationInLanguage( translations.general , key );
+                }
+            }else{
+                return '';
             }
             // Fallback to default language
             if (!value && (language !== DEFAULT_LANGUAGE)) {
