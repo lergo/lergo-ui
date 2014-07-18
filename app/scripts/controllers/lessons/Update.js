@@ -26,6 +26,10 @@ angular.module('lergoApp').controller(
 				if (!$scope.lesson.language) {
 					$scope.lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
 				}
+
+                if ( !$scope.lesson.tags ){
+                    $scope.lesson.tags = [];
+                }
 			}, function(result) {
 				$scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
 				$log.error($scope.errorMessage);
@@ -173,7 +177,7 @@ angular.module('lergoApp').controller(
 					if (!$scope.lesson.language) {
 						$scope.lesson.language = item.language;
 					}
-					if (!$scope.lesson.tags) {
+					if (!$scope.lesson.tags || $scope.lesson.tags.length === 0) {
 						$scope.lesson.tags = item.tags;
 					}
 					step.quizItems.push(item._id);

@@ -1,0 +1,17 @@
+<div class="tag-section-wrapper">
+    <div class="tags-section">
+        <span ng-repeat="tag in tags"><span class="lergo-tag-item">{{tag.label}}<span class="lergo-tag-item-remove fa fa-times" ng-show="canRemoveTags" ng-click="removeTag(tag)">
+        </span>
+        </span>
+        </span>
+        <!-- TODO: currently hiding typeahead if editing, but we can fetch tags from database for editing mode -->
+        <input ng-model="newTag" type="text" ng-show="!tagsAvailable" placeholder="{{'tagHint' | i18n}}" ui-keypress="{enter: 'finishTyping(newTag)'}"/>
+        <input ng-model="newTag" type="text" ng-show="!!tagsAvailable" name="filterName" ng-trim="false" ui-keypress="{enter: 'finishTyping(newTag)'}"
+
+               placeholder="{{'tagHint' | i18n}}"
+               typeahead="tag as tag.label for tag in tagsAvailable | filter:$viewValue | limitTo:15 "
+                typeahead-append-to-body="true"
+                />
+    </div>
+    {{error | i18n }}
+</div>

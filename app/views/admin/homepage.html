@@ -42,7 +42,7 @@
 				</thead>
 				<tbody>
 					<tr
-						ng-repeat="l in lessons |orderBy:'-lastUpdate'| filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter|filter:statusFilter|filter:userFilter">
+						ng-repeat="l in lessons |orderBy:'-lastUpdate'| filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter|filter:statusFilter|filter:userFilter|filter:tagsFilter">
 						<td>
 							<input type="checkbox" style="margin-left:5px;" ng-model="l.selected">
 						</td>

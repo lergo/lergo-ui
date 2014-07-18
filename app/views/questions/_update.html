@@ -39,7 +39,8 @@
 	<tr>
 		<td style="width: 17%">{{ 'tags' | i18n }}</td>
 		<td>
-			<input placeholder="{{'tagHint' | i18n}}" ng-model="quizItem.tags" />
+            <div tag-section tags="quizItem.tags"></div>
+
 		</td>
 	</tr>
 </table>

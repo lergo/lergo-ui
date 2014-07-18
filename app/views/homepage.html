@@ -39,7 +39,7 @@
 			<div class="page-content-body">
 				<div class="lessons">
 					<div class="lesson"
-						ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter">
+						ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter |filter:tagsFilter">
 						<div class="age-limit age-limit-{{lesson.age}}">
 							<div class="value">{{lesson.age}}+</div>
 							<div class="units">

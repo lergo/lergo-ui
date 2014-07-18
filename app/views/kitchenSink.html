@@ -1,15 +1,18 @@
 <div class="base-layout" >
+    <div ng-controller="KitchenSinkCtrl">
+
+
 	<div class="kitchen-sink">
-		<tabset> 
+		<tabset>
 		<tab heading="Kitchen Sink">
 		<div ng-include="'views/partials/_kitchenSink.html'" ></div>
-		</tab> 
+		</tab>
 		<tab heading="Translations Diff">
 		<div ng-include="'views/translations/_diff.html'" ng-controller="TranslationsDiffCtrl"></div>
-		</tab> 
+		</tab>
 		<tab heading="Build Information">
 		<div ng-include="'views/about.html'" ng-controller="SignupCtrl"></div>
 		</tab> </tabset>
 	</div>
-   
+</div>
 </div>

@@ -48,18 +48,23 @@
 			}
 			}
 		.tag{
+           color:inherit;
 			padding-top:10px;
 			width:100%;
-			display:table;
-			span{
-			padding-right: 10px;
-			}
+
+
 			.row{
-			display:table-cell;
-			input{
-			display:table-cell;
-			width:94%;
-			}
+              display:table-row;
+              &>span{
+                display:table-cell;
+                padding-right: 10px;
+              }
+			.tag-section-wrapper{
+
+			    display:table-cell;
+			    width:94%;
+
+			  }
 			}
 		
 		}

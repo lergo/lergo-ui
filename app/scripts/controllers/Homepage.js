@@ -1,20 +1,29 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, FilterService/*
+angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService/*
 																									 * ,
 																									 * $location,
 																									 * $log
 																									 */) {
 
+
 	LergoClient.lessons.getPublicLessons().then(function(result) {
 		$scope.lessons = result.data;
+        $scope.availableTags = TagsService.getTagsFromItems( $scope.lessons );
+
 		$scope.lessons.forEach(function(value) {
 			value.image = LergoClient.lessons.getTitleImage(value);
 		});
 	});
+
 	$scope.ageFilter = function(lesson) {
 		return FilterService.filterByAge(lesson.age);
 	};
+
+    $scope.tagsFilter = function(lesson){
+        return FilterService.filterByTags( lesson.tags );
+    };
+
 	$scope.languageFilter = function(lesson) {
 		return FilterService.filterByLanguage(lesson.language);
 	};

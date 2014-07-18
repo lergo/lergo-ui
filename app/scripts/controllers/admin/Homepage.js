@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, FilterService, LergoClient, $log) {
+angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, FilterService, LergoClient, $log, TagsService) {
 
 	LergoClient.lessons.getAll().then(function(result) {
 		$scope.lessons = result.data;
+        $scope.availableTags = TagsService.getTagsFromItems( $scope.lessons );
 
 	});
 
@@ -37,6 +38,10 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 	$scope.userFilter = function(lesson) {
 		return FilterService.filterByUser($scope.getUser(lesson));
 	};
+
+    $scope.tagsFilter = function(lesson){
+        return FilterService.filterByTags(lesson.tags);
+    };
 
 	$scope.getUser = function(lesson) {
 		return users[lesson.userId];
@@ -98,7 +103,9 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 			} else if (!FilterService.filterByStatus(items[i].public)) {
 				continue;
 			} else if (!FilterService.filterByUser($scope.getUser(items[i]))) {
-				continue;
+                continue;
+            } else if ( !FilterService.filterByTags(items[i].tags)){
+                continue;
 			} else {
 				filteredItems.push(items[i]);
 			}
