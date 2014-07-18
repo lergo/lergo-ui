@@ -77,7 +77,6 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				'isHintUsed' : !!$scope.isHintUsed
 			});
 			$scope.isHintUsed = false;
-			$scope.startTime = null;
 			$scope.$emit('quizComplete', !$scope.hasNextQuizItem());
 		}, function() {
 			$log.error('there was an error checking answer');
@@ -106,6 +105,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		var quizItem = $scope.quizItem;
 		if ($scope.answers.hasOwnProperty(quizItem._id)) {
 			$scope.isHintUsed = false;
+			$scope.startTime = null;
 			$scope.currentIndex++;
 		}
 	};

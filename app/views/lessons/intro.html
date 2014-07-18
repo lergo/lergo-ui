@@ -121,7 +121,7 @@
 								<br />
 								<br />
 								<div ng-repeat="q in questions">
-									<div>
+									<div ng-show="!!q.summary">
 										<div class="question">
 											<a href="#/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>
 										</div>

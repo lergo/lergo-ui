@@ -9,7 +9,7 @@
 				</div>
 			</td>
 			<td style="vertical-align: top;">
-				<div style="margin-top: 50px" ng-show="!!getAnswer(quizItem) && !!quizItem.explanationMedia">
+				<div style="margin-top: 50px" ng-show="!!getAnswer(quizItem) && !!quizItem.explanationMedia && !!quizItem.explanationMedia.type">
 					<div style="font-weight: bold">{{ 'explanation' | i18n }}</div>
 					<div>{{quizItem.explanation}}</div>
 					<div quiz-item-explanation-media quiz-item="quizItem"></div>

@@ -143,6 +143,10 @@
 					color:mediumseagreen;
 				}
 				.bold{font-weight:bold;}
+				.specific-explanation{
+					display: block;
+					font-weight:bold;
+				}
 				.bg-success{
 				text-align: inherit;
 				}
@@ -159,7 +163,25 @@
 				.question-media{
 				padding-left: 10px;
 				}
+				.duration{
+				float:right;
+				}
 				
+			}
+		}
+	}
+}
+
+
+.rtl{
+	.report{
+		.details{
+			.detail{
+				.quiz{
+					.duration{
+						float:left;
+					}
+				}
 			}
 		}
 	}
