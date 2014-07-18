@@ -2,8 +2,11 @@
 	<div class="bg-primary" class="quiz">
 		<span class="inline-table">{{quizItem.question}}</span>
 		<span class="inline-table">({{'questions.openQuestion'|i18n}})</span>
-		<div style="float: right">
-			<span ng-show="quizItem.isHintUsed" class="inline-table"> {{'questions.hintWatched' | i18n}}:{{quizItem.hint | limitTo:10}} | </span>
+		<div class="duration">
+			<span ng-show="quizItem.isHintUsed">
+				<span class="inline-table"> {{'questions.hintWatched' | i18n}} </span>
+				<span class="inline-table"> : {{quizItem.hint | limitTo:20}} | </span>
+			</span>
 			<span class="inline-table">
 				<i class="fa fa-clock-o"></i>
 				{{getDuration(quizItem.duration)}}

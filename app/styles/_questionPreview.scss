@@ -11,6 +11,7 @@
 	.left {
 		width:90%;
 		padding:10px;
+		float:left;
 		.submit{
 			margin-top:10px;
 			text-align: center;
@@ -98,10 +99,13 @@
 
 .rtl{
 	#questionPreview { 	
+		.right{
+			float:left;
+		}
 		.left {
+			float:right;
 			.submit{
-				width: 385px;
-				padding-left: 15px;
+				
 				.right-arrow{
 					display:none;
 				}
@@ -110,5 +114,11 @@
 				}
 			}
 		}
+	}
+}
+
+.previewQuestion{
+	.specific-explanation{
+	  display: none;
 	}
 }
