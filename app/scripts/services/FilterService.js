@@ -19,6 +19,8 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		'locale' : 'en'
 	} ];
 
+    this.subjects = [ 'english', 'math', 'geometry', 'science', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'other' ];
+
 	this.status = [ 'private', 'public' ];
 
 	this.getLocaleByLanguage = function(id) {
