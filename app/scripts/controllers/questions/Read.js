@@ -30,7 +30,6 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 
 	};
 
-
 	$scope.getCorrectAnswers = function(quizItem) {
 		if (!quizItem || !quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
 			return '';
@@ -54,6 +53,22 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 			return false;
 		}
 		return QuestionsService.getTypeById(quizItem.type).canSubmit(quizItem);
+	};
+	$scope.getFillIntheBlankSize = function(quizItem, index) {
+		if (!quizItem.blanks || !quizItem.blanks.type || quizItem.blanks.type === 'auto') {
+			if (!!quizItem.answer[index]) {
+				var answer = quizItem.answer[index].split(';');
+				var maxLength = 0;
+				for ( var i = 0; i < answer.length; i++) {
+					if (answer[i].length > maxLength) {
+						maxLength = answer[i].length;
+					}
+				}
+				return maxLength * 10 + 20;
+			}
+		} else if (quizItem.blanks.type === 'custom') {
+			return quizItem.blanks.size * 10 + 20;
+		}
 	};
 
 });

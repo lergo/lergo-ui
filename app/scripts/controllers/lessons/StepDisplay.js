@@ -65,14 +65,19 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.checkAnswer = function() {
 		var quizItem = $scope.quizItem;
+
+		var duration = new Date().getTime() - $scope.startTime;
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
 			$scope.answers[quizItem._id] = result.data;
 			$rootScope.$broadcast('questionAnswered', {
 				'userAnswer' : quizItem.userAnswer,
 				'checkAnswer' : result.data,
-				'quizItemId' : quizItem._id
-
+				'quizItemId' : quizItem._id,
+				'duration' : duration,
+				'isHintUsed' : !!$scope.isHintUsed
 			});
+			$scope.isHintUsed = false;
+			$scope.startTime = null;
 			$scope.$emit('quizComplete', !$scope.hasNextQuizItem());
 		}, function() {
 			$log.error('there was an error checking answer');
@@ -82,6 +87,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.getQuizItem = function() {
 		if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > $scope.currentIndex) {
+			if (!$scope.startTime) {
+				$scope.startTime = new Date().getTime();
+			}
 			return $scope.step.quizItems[$scope.currentIndex];
 		}
 		return null;
@@ -97,6 +105,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		$log.info('next');
 		var quizItem = $scope.quizItem;
 		if ($scope.answers.hasOwnProperty(quizItem._id)) {
+			$scope.isHintUsed = false;
 			$scope.currentIndex++;
 		}
 	};
@@ -165,4 +174,25 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		}
 		return LergoClient.questions.getTypeById(quizItem.type).canSubmit(quizItem);
 	};
+
+	$scope.getFillIntheBlankSize = function(quizItem, index) {
+		if (!quizItem.blanks || !quizItem.blanks.type || quizItem.blanks.type === 'auto') {
+			if (!!quizItem.answer[index]) {
+				var answer = quizItem.answer[index].split(';');
+				var maxLength = 0;
+				for ( var i = 0; i < answer.length; i++) {
+					if (answer[i].length > maxLength) {
+						maxLength = answer[i].length;
+					}
+				}
+				return maxLength * 10 + 20;
+			}
+		} else if (quizItem.blanks.type === 'custom') {
+			return quizItem.blanks.size * 10 + 20;
+		}
+	};
+	$scope.hintUsed = function() {
+		$scope.isHintUsed = true;
+	};
+
 });

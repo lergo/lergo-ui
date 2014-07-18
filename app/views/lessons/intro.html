@@ -94,10 +94,10 @@
 							<p>{{'lessons.inviteLessonHelpText' | i18n}}</p>
 							<div ng-controller="LessonsInvitesCreateCtrl" class="container">
 								<div>{{ 'name' | i18n }}</div>
-								<input type="text" ng-model="invite.invitee.name" />
+								<input type="text" ng-model="invite.invitee.name" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
 								<div ng-show="!!createSuccess">
 									<div>{{'lessons.inviteSuccessText' | i18n}}</div>
-									<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" />
+									<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
 								</div>
 								<br />
 								<div class="button">
@@ -113,7 +113,23 @@
 					</div>
 					<div class="description">
 						<div ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</div>
-						<div ng-show="!!more">{{ lesson.description}}</div>
+						<div ng-show="!!more">
+							<div>{{ lesson.description}}</div>
+							<div class="edit-summary" ng-show="!!questions && questions.length > 0">
+								<br />
+								<span class="title">{{'questions.editSummary'|i18n}}</span>
+								<br />
+								<br />
+								<div ng-repeat="q in questions">
+									<div>
+										<div class="question">
+											<a href="#/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>
+										</div>
+										<div class="summary">{{q.summary}}</div>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div class="read-more" style="text-align: center" ng-show="filteredDescription.length != lesson.description.length ">
 							<a href="" ng-click="more=!more">
 								<span class="dashes">---------------------</span>

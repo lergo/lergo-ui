@@ -6,14 +6,33 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td style="line-height: 3">
-				{{!quizItem.answer && (quizItem.answer=[])||""}}
+			<td style="line-height: 3" colspan="2">
 				<span style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
 					<span>{{option}}</span>
 					<input ng-show="!$last" style="width: 130px; display: inline; border: 0; min-height: 28px;" ng-model="quizItem.answer[$index]">
+					<!-- remove extra element in answer array this is required when user modify number of input boxes later -->
+					{{quizItem.answer.splice(quizItem.question.split('___').length-1) && "" || ""}}
+				</span>
+			</td>
+		</tr>
+		<tr ng-show="isValid(quizItem)">
+			<td class="setInputSize">
+				<span> {{'questions.fillInTheBlanks.inputSize' | i18n}}</span>
+				<span>
+					<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+					<button popover="{{'questions.fillInTheBlanks.inputSizeHint' | i18n}}" class="fa fa-question-circle" popover-placement="top"
+						popover-trigger="focus" tabindex="0"></button>
+				</span>
+			</td>
+			<td>
+				{{!quizItem.blanks && (quizItem.blanks={'type':'auto','size':'4'} )||""}}
+				<select ng-model="quizItem.blanks.type" ng-options="m as ('questions.fillInTheBlanks.type.' + m | i18n) for m in ['auto','custom']">
+				</select>
+				<span ng-show="quizItem.blanks.type==='custom'">
+					<input type="number" style="width: 50px; display: inline" ng-model=quizItem.blanks.size />
+					{{'questions.fillInTheBlanks.sizeHint'|i18n}}
 				</span>
 			</td>
 		</tr>
 	</tbody>
 </table>
-<hr />

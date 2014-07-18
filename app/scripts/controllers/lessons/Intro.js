@@ -6,12 +6,13 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	var preview = !!$routeParams.preview;
 	LergoClient.lessons.getLessonIntro(lessonId).then(function(result) {
 		$scope.lesson = result.data;
+		loadQuestions();
 		$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.lesson.language);
-    }, function( result ) {
-        if ( result.status === 404 ){
-            $location.path('/errors/notFound');
-        }
-    });
+	}, function(result) {
+		if (result.status === 404) {
+			$location.path('/errors/notFound');
+		}
+	});
 
 	function redirectToInvitation() {
 		$location.path('/public/lessons/invitations/' + invitationId + '/display');
@@ -76,4 +77,19 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	$scope.onTextClick = function($event) {
 		$event.target.select();
 	};
+	function loadQuestions() {
+		var questionsId = [];
+		if (!!$scope.lesson) {
+			for ( var i = 0; i < $scope.lesson.steps.length; i++) {
+				var items = $scope.lesson.steps[i].quizItems;
+				if (!!items && angular.isArray(items)) {
+					questionsId.push.apply(questionsId, items);
+				}
+			}
+			LergoClient.questions.findQuestionsById(questionsId).then(function(result) {
+				$scope.questions = result.data;
+			});
+		}
+	}
+
 });

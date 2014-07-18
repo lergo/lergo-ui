@@ -23,6 +23,8 @@ angular.module('lergoApp').controller(
 				$scope.lesson = result.data;
 				$scope.errorMessage = null;
 				$scope.$watch('lesson', saveLesson.onValueChange, true);
+				$scope.$watch('lesson.nextLesson', updateNextLesson);
+				$scope.$watch('lesson.priorLesson', updatePriorLesson);
 				if (!$scope.lesson.language) {
 					$scope.lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
 				}
@@ -34,6 +36,24 @@ angular.module('lergoApp').controller(
 				$scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
 				$log.error($scope.errorMessage);
 			});
+
+			function updateNextLesson(newValue, oldValue) {
+				if (!!newValue && newValue !== oldValue) {
+					var id = newValue.substring(0, newValue.lastIndexOf('/'));
+					id = id.substring(id.lastIndexOf('/') + 1);
+					$scope.lesson.nextLessonId = id;
+
+				}
+
+			}
+			function updatePriorLesson(newValue, oldValue) {
+				if (!!newValue && newValue !== oldValue) {
+					var id = newValue.substring(0, newValue.lastIndexOf('/'));
+					id = id.substring(id.lastIndexOf('/') + 1);
+					$scope.lesson.priorLessonId = id;
+
+				}
+			}
 
 			$scope.stepTypes = [ {
 				'id' : 'video',
@@ -203,7 +223,7 @@ angular.module('lergoApp').controller(
 				}
 
 			};
-			$scope.openQuestionBank=function(step){
+			$scope.openQuestionBank = function(step) {
 				$scope.openQuestionBankDialog(step);
 			};
 			$scope.openQuestionBankDialog = function(step) {
@@ -237,9 +257,9 @@ angular.module('lergoApp').controller(
 			};
 
 			$scope.openUpdateQuestion = function(step, quizItemId) {
-				LergoClient.questions.getQuestionById(quizItemId).then(function(result) {
-					$scope.openCreateUpdateQuestionDialog(step, result.data, false);
-				});
+				if ($scope.quizItemsData.hasOwnProperty(quizItemId)) {
+					$scope.openCreateUpdateQuestionDialog(step, $scope.quizItemsData[quizItemId], false);
+				}
 			};
 
 			$scope.openCreateQuestion = function(step) {

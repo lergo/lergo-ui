@@ -12,9 +12,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 	};
 
 	this.getQuestionById = function(questionId) {
-        if ( !questionId){
-        }
-		return $http.get('/backend/questions/' + questionId);
+		if (!!questionId) {
+			return $http.get('/backend/questions/' + questionId);
+		}
 	};
 
 	this.findQuestionsById = function(ids) {
@@ -167,16 +167,27 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'viewTemplate' : 'views/questions/view/_fillInTheBlanks.html',
 		'reportTemplate' : 'views/questions/report/_fillInTheBlanks.html',
 		'answers' : function(quizItem) {
-			return quizItem.answer.join(';');
+			var answer = [];
+			for ( var i = 0; i < quizItem.answer.length; i++) {
+				answer[i] = quizItem.answer[i].split(';').join(' / ');
+
+			}
+			return answer.join(' ; ');
 		},
 		'isValid' : function(quizItem) {
-			if (!quizItem.question || !quizItem.answer) {
+			if (!quizItem.question) {
 				return false;
 			}
-			var result = false;
+			if (!quizItem.answer || !angular.isArray(quizItem.answer)) {
+				quizItem.answer = [];
+			}
+			if (quizItem.answer.length === 0) {
+				return false;
+			}
+			var result = true;
 			quizItem.answer.forEach(function(value) {
-				if (!!value) {
-					result = true;
+				if (!value) {
+					result = false;
 				}
 			});
 			return result;
@@ -195,7 +206,6 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		},
 		'alias' : []
 	} ];
-	
 
 	this.getTypeById = function(typeId) {
 		for ( var i = 0; i < this.questionsType.length; i++) {

@@ -179,3 +179,23 @@
 	margin:0 auto;
 	}
 }
+
+.setInputSize{
+		display: table-cell;
+		vertical-align: middle;
+		width:17%;
+		span{
+		position:relative;
+		padding-left:2px;
+		padding-bottom:10px;
+		}
+		.popover-content{
+		width:260px;
+		}
+		button{
+			background-color: transparent;
+			border:0;
+			color: #2a6496;
+			vertical-align: super;
+		}
+}

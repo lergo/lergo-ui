@@ -1,7 +1,20 @@
 <div class="lesson-step-quiz">
 	<div class="lesson-step-title lergo-h1" style="padding-bottom: 0px; margin-bottom: -30px;">{{step.title}}</div>
-	<div ng-include="getQuizItemTemplate(getQuizItem())" ng-init="mode='quiz'"></div>
-	<div ng-show="!getAnswer(quizItem)">
-		<div class="bg-primary">{{'steps.answer' | i18n }}</div>
-	</div>
+	<table class="lergo-table">
+		<tr>
+			<td style="vertical-align: top;">
+				<div ng-include="getQuizItemTemplate(getQuizItem())" ng-init="mode='quiz'"></div>
+				<div ng-show="!getAnswer(quizItem)">
+					<div class="bg-primary">{{'steps.answer' | i18n }}</div>
+				</div>
+			</td>
+			<td style="vertical-align: top;">
+				<div style="margin-top: 50px" ng-show="!!getAnswer(quizItem) && !!quizItem.explanationMedia">
+					<div style="font-weight: bold">{{ 'explanation' | i18n }}</div>
+					<div>{{quizItem.explanation}}</div>
+					<div quiz-item-explanation-media quiz-item="quizItem"></div>
+				</div>
+			</td>
+		</tr>
+	</table>
 </div>

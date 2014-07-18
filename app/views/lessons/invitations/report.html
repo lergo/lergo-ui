@@ -77,22 +77,22 @@
 			<hr />
 			<div class="recommendation" collapse="!!recommendationCollapsed">
 				<table class="lergo-table">
-					<tr ng-show="!!report.data.lesson.nextLesson">
+					<tr ng-show="!!report.data.lesson.nextLessonId">
 						<td class="icon">
 							<i class="fa fa-university"></i>
 						</td>
 						<td class="title lergo-h1">{{'report.nextLesson' | i18n}}</td>
 						<td class="description">
-							<a ng-href="{{report.data.lesson.nextLesson}}">{{report.data.lesson.nextLesson}}</a>
+							<a ng-href="#/public/lessons/{{report.data.lesson.nextLessonId}}/intro">{{absoluteShareLink(report.data.lesson.nextLessonId)}}</a>
 						</td>
 					</tr>
-					<tr ng-show="!!report.data.lesson.priorLesson">
+					<tr ng-show="!!report.data.lesson.priorLessonId">
 						<td class="icon">
 							<i class="fa fa-university"></i>
 						</td>
 						<td class="title lergo-h1">{{'report.priorLesson' | i18n}}</td>
 						<td class="description">
-							<a ng-href="{{report.data.lesson.priorLesson}}">{{report.data.lesson.priorLesson}}</a>
+							<a ng-href="#/public/lessons/{{report.data.lesson.priorLessonId}}/intro">{{absoluteShareLink(report.data.lesson.priorLessonId)}}</a>
 						</td>
 					</tr>
 				</table>

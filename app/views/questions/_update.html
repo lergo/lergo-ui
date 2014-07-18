@@ -4,13 +4,14 @@
 			<tr>
 				<td>{{ 'questions.question' | i18n }}</td>
 				<td colspan="7">
-					<input ng-model="quizItem.question" placeholder="{{quizItem.type==='fillInTheBlanks' ? ('questions.fillInTheBlanks.hint' |i18n) : ''}}" />
+					<input ng-model="quizItem.question"
+						placeholder="{{quizItem.type==='fillInTheBlanks' ? ('questions.fillInTheBlanks.hint' |i18n) : ('questions.questionHint' | i18n)}}" />
 				</td>
 			</tr>
 			<tr>
 				<td>{{ 'questions.help' | i18n }}</td>
 				<td colspan="7">
-					<input ng-model="quizItem.helpText" />
+					<input placeholder="{{'questions.helpHint' | i18n}}" ng-model="quizItem.helpText" />
 				</td>
 			</tr>
 			<tr>
@@ -53,23 +54,19 @@
 			{{ 'advancedOptions' | i18n }}
 		</button>
 	</div>
-	<div collapse="!isCollapsed"
-		ng-init="">
+	<div collapse="!isCollapsed" ng-init="">
 		<hr />
 		<table class=" lergo-table lergo-form">
 			<tbody>
 				<tr>
 					<td style="width: 15%">{{ 'questions.addMedia' | i18n }}</td>
 					<td style="width: 10%">
-						<select ng-model="quizItem.media" ng-options="m as ('questions.media.' + m | i18n) for m in ['audio','image']">
-                            <option value=""></option>
+						<select ng-model="quizItem.media.type" ng-options="m as ('questions.media.' + m | i18n) for m in ['audio','image']">
+							<option value=""></option>
 						</select>
 					</td>
 					<td>
-						<div ng-show="!!quizItem.media">
-							<input ng-show="quizItem.media==='audio'" placeholder="{{'questions.audioUrlHint' | i18n}}" ng-model="quizItem.audioUrl" />
-							<input ng-show="quizItem.media==='image'" placeholder="{{'questions.imageUrlHint' | i18n}}" ng-model="quizItem.imageUrl" />
-						</div>
+						<div ng-show="!!quizItem.media" ng-include="getMediaTemplate(quizItem)"></div>
 					</td>
 				</tr>
 				<tr>
@@ -82,6 +79,17 @@
 					<td>{{ 'questions.addExplanation' | i18n }}</td>
 					<td colspan="2">
 						<input placeholder="{{'questions.explanationHelpText' | i18n}}" ng-model="quizItem.explanation" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 15%">{{ 'questions.addExplanationMedia' | i18n }}</td>
+					<td style="width: 10%">
+						<select ng-model="quizItem.explanationMedia.type" ng-options="m as ('questions.media.' + m | i18n) for m in ['audio','image','video']">
+							<option value=""></option>
+						</select>
+					</td>
+					<td>
+						<div ng-show="!!quizItem.explanationMedia" ng-include="getExplanationMediaTemplate(quizItem)"></div>
 					</td>
 				</tr>
 				<tr>
