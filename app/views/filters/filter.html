@@ -23,7 +23,6 @@
 		{{'filters.to'|i18n}}
 		<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.ageRange.max" />
 	</div>
-	<br />
 	<div ng-show="!!showViewsFilter">
 		<div class="label">{{'filters.labels.views' | i18n }}</div>
 		<div>
@@ -32,7 +31,6 @@
 			<input min="1" size="1" class="number" type="number" ng-model="$root.filter.views.max" />
 		</div>
 	</div>
-	<br />
 	<div ng-show="!!showStatusFilter">
 		<div class="label">{{'filters.labels.status' | i18n }}</div>
 		<div class="input">
@@ -41,7 +39,6 @@
 			</select>
 		</div>
 	</div>
-    <br/>
     <div>
         <div class="label">{{'filters.labels.tags' | i18n }}</div>
         <div>
