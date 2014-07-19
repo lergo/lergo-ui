@@ -4,13 +4,15 @@
         </span>
         </span>
         </span>
-        <!-- TODO: currently hiding typeahead if editing, but we can fetch tags from database for editing mode -->
+        <!-- if no tags avaiable, hide typeahead or otherwise we will get errors in the console -->
         <input ng-model="newTag" type="text" ng-show="!tagsAvailable" placeholder="{{'tagHint' | i18n}}" ui-keypress="{enter: 'finishTyping(newTag)'}"/>
-        <input ng-model="newTag" type="text" ng-show="!!tagsAvailable" name="filterName" ng-trim="false" ui-keypress="{enter: 'finishTyping(newTag)'}"
+
+        <input ng-model="newTag" type="text" ng-show="!!tagsAvailable" name="filterName" ng-trim="false"
 
                placeholder="{{'tagHint' | i18n}}"
                typeahead="tag as tag.label for tag in tagsAvailable | filter:$viewValue | limitTo:15 "
                 typeahead-append-to-body="true"
+                typeahead-on-select="addTagFromTypeahead($item, $model, $label)"
                 />
     </div>
     {{error | i18n }}

@@ -4,7 +4,7 @@ angular
 		.module('lergoApp')
 		.controller(
 				'QuestionsUpdateCtrl',
-				function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $location, FilterService) {
+				function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $location, FilterService, TagsService ) {
 
 					var saveQuestion = new ContinuousSave({
 						'saveFn' : function(value) {
@@ -87,6 +87,8 @@ angular
 							$scope.quizItem.answer.splice($scope.quizItem.answer.indexOf(option), 1);
 						}
 					};
+
+                    TagsService.getAllAvailableTags().then(function(result){ $scope.allAvailableTags  = result.data; });
 
 					$scope.isSaving = function() {
 						return !!saveQuestion.getStatus().saving;
