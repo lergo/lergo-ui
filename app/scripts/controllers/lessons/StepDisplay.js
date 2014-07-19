@@ -146,6 +146,13 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		return LergoClient.questions.getTypeById(quizItem.type).answers(quizItem);
 	};
 
+
+    $scope.$watch('step', function( newValue , oldValue ){
+        if ( newValue !== oldValue ){
+            $scope.progressPercentage = 0;
+        }
+    });
+
 	$scope.updateProgressPercent = function() {
 		if (!$scope.step || !$scope.step.quizItems || $scope.step.quizItems.length < 1) {
 			$scope.progressPercentage = 0;

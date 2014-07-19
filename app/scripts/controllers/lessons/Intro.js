@@ -79,7 +79,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	};
 	function loadQuestions() {
 		var questionsId = [];
-		if (!!$scope.lesson) {
+		if (!!$scope.lesson && !!$scope.lesson.steps) {
 			for ( var i = 0; i < $scope.lesson.steps.length; i++) {
 				var items = $scope.lesson.steps[i].quizItems;
 				if (!!items && angular.isArray(items)) {

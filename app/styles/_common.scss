@@ -587,3 +587,15 @@ $COLOR_19: #2a6496 !default;
     margin-top:10px;
   }
 }
+
+.lergo-progress-bar{
+  border:1px solid royalblue;
+  border-radius:4px;
+  .lergo-progress-bar-inner{
+    background-color: #428bca;
+    color:white;
+    text-align:center;
+    font-size:12px;
+    line-height:20px;
+  }
+}
