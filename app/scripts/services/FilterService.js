@@ -46,7 +46,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
     this.filterByTags = function (tags) {
         var filter = $rootScope.filter;
 
-        if (!filter || !filter.tags) { // if filter does not have tags, let this lesson through
+        if (!filter || !filter.tags || filter.tags.length === 0) { // if filter does not have tags, let this lesson through
             return true;
         }
 
