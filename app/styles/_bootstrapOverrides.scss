@@ -14,6 +14,10 @@
   margin:0 auto;
 }
 
+.dropdown-menu{
+  z-index:100000; /* LERGO-315 - typeahead for tags in 'add question' from 'edit lesson' */
+}
+
 .lergo-form input[type=submit],
 .btn, .btn:hover, .btn:active, .btn:focus{
   outline:none;
