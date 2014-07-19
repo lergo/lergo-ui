@@ -131,13 +131,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="read-more" style="text-align: center" ng-show="showReadMore() ">
-							<a href="" ng-click="more=!more">
-								<span class="dashes">---------------------</span>
-								<span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
-								<span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
-								<span class="dashes">---------------------</span>
-							</a>
+						<div class="read-more" style="text-align: center" ng-show="showReadMore() " ng-click="more=!more">
+                                <hr class="dashes">
+                                <span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
+                                <span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
+                                <hr class="dashes">
 						</div>
 					</div>
 				</div>
