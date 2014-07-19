@@ -53,6 +53,15 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		}
 	};
 
+    $scope.showReadMore = function(){
+        return !!$scope.lesson && !!$scope.lesson.description &&
+            ( ( !!$scope.filteredDescription &&  $scope.filteredDescription.length !== $scope.lesson.description.length ) ||
+                ( !!$scope.questionsWithSummary && $scope.questionsWithSummary.length > 0 ) );
+
+
+
+    };
+
 	$scope.startLesson = function() {
 		if (!!preview) { // preview - no lesson report, no invitation
 			redirectToPreview();
@@ -77,19 +86,17 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	$scope.onTextClick = function($event) {
 		$event.target.select();
 	};
-	function loadQuestions() {
-		var questionsId = [];
-		if (!!$scope.lesson && !!$scope.lesson.steps) {
-			for ( var i = 0; i < $scope.lesson.steps.length; i++) {
-				var items = $scope.lesson.steps[i].quizItems;
-				if (!!items && angular.isArray(items)) {
-					questionsId.push.apply(questionsId, items);
-				}
-			}
-			LergoClient.questions.findQuestionsById(questionsId).then(function(result) {
-				$scope.questions = result.data;
-			});
-		}
-	}
+
+    function loadQuestions() {
+
+        var questionsId = _.uniq(_.compact(_.flatten(_.map($scope.lesson.steps, 'quizItems'))));
+
+        LergoClient.questions.findQuestionsById(questionsId).then(function (result) {
+            $scope.questions = result.data;
+
+            $scope.questionsWithSummary = _.filter(result.data, 'summary');
+
+        });
+    }
 
 });
