@@ -9,9 +9,9 @@ angular.module('lergoApp')
 
         function increase(){
             $scope.progressBarValue += 10;
-            $timeout(increase, 1000)
+            $timeout(increase, 1000);
         }
 
-        $timeout(increase, 1000)
+        $timeout(increase, 1000);
 
     });
