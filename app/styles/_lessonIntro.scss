@@ -167,6 +167,10 @@
 
 
       .description {
+        pre {
+          word-break: break-word;
+          background:transparent;
+        }
         font-size: 17px;
         margin-top:10px;
         .edit-summary{
