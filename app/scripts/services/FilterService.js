@@ -19,6 +19,8 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		'locale' : 'en'
 	} ];
 
+    this.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'other' ];
+
 	this.status = [ 'private', 'public' ];
 
 	this.getLocaleByLanguage = function(id) {
@@ -44,7 +46,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
     this.filterByTags = function (tags) {
         var filter = $rootScope.filter;
 
-        if (!filter || !filter.tags) { // if filter does not have tags, let this lesson through
+        if (!filter || !filter.tags || filter.tags.length === 0) { // if filter does not have tags, let this lesson through
             return true;
         }
 

@@ -15,6 +15,11 @@ angular.module('lergoApp')
 
                 $scope.canRemoveTags = true;
 
+                $scope.addTagFromTypeahead = function ($item/*, $model, $label*/) {
+                    $scope.error = 'tagSection.alreadyExists';
+                    addTag($item.label);
+
+                };
 
                 function endsWith(str, suffix) {
                     return str.indexOf(suffix, str.length - suffix.length) !== -1;
@@ -34,10 +39,12 @@ angular.module('lergoApp')
                     if (!!$scope.tags && $.grep($scope.tags, function (item/*, index*/) {
                         return item.label === value;
                     }).length > 0) {
+                        $log.info('error on scope');
                         $scope.error = 'tagSection.alreadyExists';
                         return;
                     }
-                    if (value.indexOf(separator) >= 0) {
+                    if (!value || value.trim() === '' || value.indexOf(separator) >= 0) {
+                        $log.info('error on scope');
                         $scope.error = 'tagSection.invalidTag';
                         return;
                     }
@@ -60,8 +67,8 @@ angular.module('lergoApp')
                     $log.info('newTag changed');
 
                     if (typeof($scope.newTag) === 'object') {
-                        $scope.newTag = $scope.newTag.label;
-//                  return;
+                        // if object - it came from typeahead, and our 'on select' listener will take care of it.
+                        return;
                     }
 
                     $scope.error = null;

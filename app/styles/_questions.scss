@@ -95,7 +95,8 @@
   } 
 }
 
-.filters { 
+.filters {
+  margin-top:-13px;
 	.input{
 		position: relative;
 		.dropdown-menu{
@@ -103,7 +104,7 @@
 		}
 	}
 
-    .label:nth-child(n+2) {
+    .label{
       padding-top: 20px;
     }
 

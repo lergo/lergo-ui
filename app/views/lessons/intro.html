@@ -123,9 +123,9 @@
 						</div>
 					</div>
 					<div class="description">
-						<div ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</div>
+						<pre ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>
 						<div ng-show="!!more">
-							<div>{{ lesson.description}}</div>
+							<pre>{{ lesson.description}}</pre>
 							<div class="edit-summary" ng-show="!!questions && questions.length > 0">
 								<br />
 								<span class="title">{{'questions.editSummary'|i18n}}</span>
@@ -134,20 +134,19 @@
 								<div ng-repeat="q in questions">
 									<div ng-show="!!q.summary">
 										<div class="question">
-											<a href="#/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>
+											<!--  <a href="#/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
+											Q:{{q.question | limitTo :30}}
 										</div>
-										<div class="summary">{{q.summary}}</div>
+										<div class="summary" btf-markdown="q.summary"></div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="read-more" style="text-align: center" ng-show="filteredDescription.length != lesson.description.length ">
-							<a href="" ng-click="more=!more">
-								<span class="dashes">---------------------</span>
-								<span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
-								<span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
-								<span class="dashes">---------------------</span>
-							</a>
+						<div class="read-more" style="text-align: center" ng-show="showReadMore() " ng-click="more=!more">
+                                <hr class="dashes">
+                                <span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
+                                <span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
+                                <hr class="dashes">
 						</div>
 					</div>
 				</div>

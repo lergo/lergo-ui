@@ -55,6 +55,15 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
     $scope.noop = angular.noop;
 
+    $scope.showReadMore = function(){
+        return !!$scope.lesson && !!$scope.lesson.description &&
+            ( ( !!$scope.filteredDescription &&  $scope.filteredDescription.length !== $scope.lesson.description.length ) ||
+                ( !!$scope.questionsWithSummary && $scope.questionsWithSummary.length > 0 ) );
+
+
+
+    };
+
 	$scope.startLesson = function() {
 		if (!!preview) { // preview - no lesson report, no invitation
 			redirectToPreview();

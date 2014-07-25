@@ -2,7 +2,7 @@
 
 angular.module('lergoApp').controller(
 		'LessonsUpdateCtrl',
-		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, QuestionsService, $rootScope) {
+		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, TagsService, QuestionsService, $rootScope) {
 			$scope.subjects = FilterService.subjects;
 			$scope.languages = FilterService.languages;
 			var saveLesson = new ContinuousSave({
@@ -125,6 +125,10 @@ angular.module('lergoApp').controller(
 				}
 				return null;
 			};
+
+            TagsService.getAllAvailableTags().then(function (result) {
+                $scope.allAvailableTags = result.data;
+            });
 
 			/**
 			 * watch questions in step. iterates over all steps of type 'quiz'

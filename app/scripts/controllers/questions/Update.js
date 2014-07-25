@@ -4,7 +4,7 @@ angular
 		.module('lergoApp')
 		.controller(
 				'QuestionsUpdateCtrl',
-				function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $location, FilterService) {
+				function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $location, FilterService, TagsService ) {
 
 					var saveQuestion = new ContinuousSave({
 						'saveFn' : function(value) {
@@ -28,18 +28,6 @@ angular
 							var q = $scope.quizItem;
 							$scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary || !!q.explanationMedia);
 							$scope.errorMessage = null;
-
-							// This is to support old media model migrate to new
-							// media model need to remove once migration is done
-							if ($scope.quizItem.media === 'audio' || $scope.quizItem.media === 'image') {
-								var mediaType = $scope.quizItem.media;
-								$scope.quizItem.media = {};
-								$scope.quizItem.media.type = mediaType;
-								$scope.quizItem.media.imageUrl = $scope.quizItem.imageUrl;
-								$scope.quizItem.media.audioUrl = $scope.quizItem.audioUrl;
-								delete $scope.quizItem.audioUrl;
-								delete $scope.quizItem.imageUrl;
-							}
 						}, function(result) {
 							$scope.error = result.data;
 							$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
@@ -99,6 +87,8 @@ angular
 							$scope.quizItem.answer.splice($scope.quizItem.answer.indexOf(option), 1);
 						}
 					};
+
+                    TagsService.getAllAvailableTags().then(function(result){ $scope.allAvailableTags  = result.data; });
 
 					$scope.isSaving = function() {
 						return !!saveQuestion.getStatus().saving;
