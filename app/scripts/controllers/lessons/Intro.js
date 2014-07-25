@@ -53,6 +53,8 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		}
 	};
 
+    $scope.noop = angular.noop;
+
 	$scope.startLesson = function() {
 		if (!!preview) { // preview - no lesson report, no invitation
 			redirectToPreview();

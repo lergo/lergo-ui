@@ -66,6 +66,17 @@
 							<i class="fa fa-play-circle-o "></i>
 							{{'start' | i18n}}
 						</button>
+                        <button class="btn-link" ng-click="likeLesson()" tooltip="{{'lessons.tooltip.like' | i18n}}" ng-show="!isLiked()">
+                            <i class="fa fa-play-circle-o "></i>
+                            {{'like' | i18n}}
+                        </button>
+                        <button class="btn-link" ng-click="noop()" tooltip="{{'lessons.tooltip.liked' | i18n}}" ng-show="isLiked()">
+                            <i class="fa fa-play-circle-o "></i>
+                            <i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
+                            <div ng-show="!!showMenu">
+                                <button class="btn-link" ng-click="dislike()">dislike</button>
+                            </div>
+                        </button>
 						<button ng-show="!!$root.user" class="btn-link" ng-click="showHideInvite()" tooltip="{{'lessons.tooltip.invite' | i18n}}">
 							<i class="fa fa-envelope "></i>
 							{{'invite' | i18n}}
