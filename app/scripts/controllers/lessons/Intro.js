@@ -31,6 +31,11 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		});
 	};
 
+    $scope.likeLesson = function(){
+        $log.info('liking lesson');
+        LergoClient.likes.likeLesson($scope.lesson);
+    };
+
 	$scope.preview = function() {
 		redirectToPreview();
 	};
@@ -59,9 +64,6 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
         return !!$scope.lesson && !!$scope.lesson.description &&
             ( ( !!$scope.filteredDescription &&  $scope.filteredDescription.length !== $scope.lesson.description.length ) ||
                 ( !!$scope.questionsWithSummary && $scope.questionsWithSummary.length > 0 ) );
-
-
-
     };
 
 	$scope.startLesson = function() {
