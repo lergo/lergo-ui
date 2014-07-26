@@ -95,13 +95,12 @@
                                 </span>
                             </span>
                         </span>
-                        <span show-anonymous>
-                            <button class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="right"
-                                    popover-trigger="focus" >
-                                <i class="fa fa-thumbs-o-up "></i>
-                                {{'like' | i18n}}
-                            </button>
-                        </span>
+
+                        <a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="right"
+                                popover-trigger="focus" tabindex="0" >
+                            <i class="fa fa-thumbs-o-up "></i>
+                            {{'like' | i18n}}
+                        </a>
 
                         <button show-logged-in class="btn-link" ng-click="showHideInvite()"
                                 tooltip="{{'lessons.tooltip.invite' | i18n}}">
@@ -120,14 +119,14 @@
 						</button>
 					</div>
 					<div class="forms">
-						<div ng-Show="!!share" class="lergo-form share">
+						<div ng-show="!!share" class="lergo-form share">
 							<p class="lergo-h4">{{'lessons.shareLesson' | i18n}}</p>
 							<div class="container">
 								<span>{{'lessons.shareLessonTitle' | i18n}}</span>
 								<input type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)" />
 							</div>
 						</div>
-						<div ng-Show="!!invite" class="lergo-form invite">
+						<div ng-show="!!invite" class="lergo-form invite">
 							<p class="lergo-h4">{{'lessons.inviteLesson'| i18n}}</p>
 							<p>{{'lessons.inviteLessonHelpText' | i18n}}</p>
 							<div ng-controller="LessonsInvitesCreateCtrl" class="container">
