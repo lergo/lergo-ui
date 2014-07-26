@@ -5,12 +5,16 @@ angular.module('lergoApp').service('LergoTranslate',
         // AngularJS will instantiate a singleton by calling "new" on this function
 
 
-
-        var supportedLanguages = [ { 'id' : 'en', 'dir' : 'ltr' } , { 'id' : 'he', 'dir' : 'rtl' } ];
-
+        var supportedLanguages = [
+            { 'id' : 'en', 'dir' : 'ltr' },
+            { 'id' : 'he', 'dir' : 'rtl' },
+            { 'id' : 'ru', 'dir' : 'ltr' },
+            { 'id' : 'ar', 'dir' : 'rtl' }
+        ];
+        var DEFAULT_LANGUAGE = 'en';
         var language = localStorageService.get('lergoLanguage');
         if ( !language ){
-            language = $routeParams.hasOwnProperty('language') ? $routeParams.language : 'en';
+            language = $routeParams.hasOwnProperty('language') ? $routeParams.language : DEFAULT_LANGUAGE;
         }
 
 
@@ -20,7 +24,7 @@ angular.module('lergoApp').service('LergoTranslate',
 
 
         $( supportedLanguages ).each( function(index,item){
-            $http.get('/translations/' + item.id + '.json').then(function(data){
+            $http.get('/backend/system/translations/' + item.id + '.json').then(function(data){
                 translations[item.id] = data.data;
             });
         });
@@ -71,6 +75,7 @@ angular.module('lergoApp').service('LergoTranslate',
         // t - the translation
         // key - the key to translate
         function findTranslationInLanguage( t, key ){
+
             var args = key.split('.');
             for ( var i = 0; i < args.length; i ++ ){
                 if ( !!t && t.hasOwnProperty(args[i]))
@@ -88,9 +93,20 @@ angular.module('lergoApp').service('LergoTranslate',
 
         this.translate = function (key) {
             $log.debug('translating' ,key);
-            var value = findTranslationInLanguage( translations[language], key );
-            if ( !value ){
-                value = findTranslationInLanguage( translations.general , key );
+            var value = null;
+            if ( !!key ){
+                value = findTranslationInLanguage( translations[language], key );
+
+                if ( !value ){
+                    value = findTranslationInLanguage( translations.general , key );
+                }
+            }else{
+                return '';
+            }
+            // Fallback to default language
+            if (!value && (language !== DEFAULT_LANGUAGE)) {
+                console.log('Translation key "' + key + '" is missing in locale "' + language + '", please contact LerGO');
+                value = findTranslationInLanguage(translations[DEFAULT_LANGUAGE], key);
             }
 
             if ( !value ){

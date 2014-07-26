@@ -1,58 +1,313 @@
 {
-    "languages":{"he":"עברית","en":"אנגלית", "ru":"רוסית"},
-    "featured" : "קיימים",
-    "popular" : "פופולרים",
-    "new" : "חדשים",
-    "loginPage" : {
-        "username"  : "שם משתמש",
-        "password" : "סיסמא",
-        "login" : "כניסה",
-        "signup" : "הרשמה"
+  "add": "הוסף",
+  "advancedOptions": "אפשרויות מתקדמות",
+  "baseLayout": {
+    "footer": {
+      "about": "אודות לרגו",
+      "abuse": "דווח על שימוש לרעה",
+      "blog": "בלוג",
+      "contact": "צור קשר",
+      "feedback": "לשלוח משוב",
+      "homepage": "דף הבית",
+      "privacyAndTerms": "פרטיות ותנאי שימוש",
+      "problem": "דווח על בעיה",
+      "suggest": "להציע שיעור",
+      "text1": "הטקסט בשאלות אלו זמין תחת ",
+      "text2": "רישיון של CC ייחוס-לא מסחרי-שיתוף זהה ",
+      "text3": "ייתכן שחלים תנאים נוספים. ע\"י שימוש באתר זה, את/ה מסכימ/ה לתנאים ולמדינות פרטיות של לרגו. לרגו הינו מיזם חינוכי טכנולוגי של לרגו - למד בעצמך (ע\"ר), ושהינו ללא מטרת רווח."
     },
-    "baseLayout" : {
-        "header" : {
-            "searchPlaceholder" : " מה תרצה ללמוד?",
-            "links" : {
-                "learn" : "למד",
-                "create" : "צור",
-                "parents" : "הורים",
-                "teachers" : "מורים",
-                "contribute" : "תרום",
-                "lessons" : "שיעורים",
-                "questions" : "שאלות"
-            }
-        }
-    },
-    "input" : {
-        "email" : "אימייל",
-        "username" : "שם משתמש",
-        "password" : "סיסמא",
-        "confirmPassword" : "אישור סיסמא",
-        "fullName" : "שם מלא"
-    },
-    "button" : {
-        "submit" : "שלח",
-        "login" : "הכנס",
-        "signup" : "הצטרף",
-        "forgotPassword" : "שכחתי סיסמא",
-        "resendValidationEmail" : "שלח אימייל אימות שוב"
-
-
-    },
-    "resetPassword" : {
-        "instructions" : "מלא שם משתמש או אימייל ועקוב אחר הוראות שנשלחו",
-        "success" : "הבקשה נשלחה בהצלחה",
-        "error" : "הייתה בעיה בשליחת הבקשה"
-
-    },
-    "changePassword" : {
-        "success" : "הסיסמא שונתה בהצלחה",
-        "error" : "הייתה בעיה בשינוי הסיסמא"
-    },
-    "translation" : {
-        "comparingTitle" : "משווה אנגלית עם",
-        "key" : "מפתח",
-        "baseLanguage" : "שפת בסיס",
-        "translation" : "תרגום"
+    "header": {
+      "links": {
+        "contribute": "תרום",
+        "create": "צור",
+        "learn": "למד",
+        "lessons": "שיעורים",
+        "parents": "הורים",
+        "questions": "שאלות",
+        "teachers": "מורים"
+      },
+      "logout": "התנתק",
+      "searchPlaceholder": "על מה תרצה ללמוד?",
+      "siteLanguage": "שפת האתר"
     }
+  },
+  "button": {
+    "forgotPassword": "שכחתי סיסמה",
+    "login": "הכנס",
+    "newInvite": "הזמנה חדשה",
+    "resendValidationEmail": "שלח אימייל אימות שוב",
+    "signup": "הצטרף",
+    "submit": "שלח"
+  },
+  "cancel": "בטל",
+  "changePassword": {
+    "error": "הייתה בעיה בשינוי הסיסמה",
+    "signup": "הצטרפות",
+    "success": "הסיסמה שונתה בהצלחה"
+  },
+  "clickHere": "לחץ כאן",
+  "congratulations": "מזל טוב",
+  "delete": "מחיקה",
+  "description": "תיאור",
+  "done": "סיום",
+  "down": "למטה",
+  "edit": "ערוך",
+  "email": "אימייל (דואר אלקטרוני)",
+  "explanation": "הסבר",
+  "featured": "מומלצים",
+  "filters": {
+    "age": {
+      "error": "הגיל המקסימלי צריך להיות גדול מהגיל המינימלי."
+    },
+    "all": "הכל",
+    "labels": {
+      "ageRange": "טווח גילאים",
+      "language": "שפה",
+      "subject": "מקצוע",
+      "views": "מספר צפיות"
+    },
+    "languages": {
+      "other": "אחרת",
+      "arabic": "ערבית",
+      "english": "אנגלית",
+      "hebrew": "עברית",
+      "russian": "רוסית"
+    },
+    "subjects": {
+      "other": "אחר",
+      "biology": "ביולוגיה",
+      "english": "אנגלית",
+      "grammar": "דקדוק",
+      "math": "מתמטיקה",
+      "science": "מדע",
+      "spelling": "איות"
+    },
+    "to": "עד"
+  },
+  "fromAge": "החל מגיל",
+  "hint": "רמז",
+  "homepage": {
+    "andCounting": "וממשיכים לספור...",
+    "createYourOwn": "ליצירת שיעור משלך",
+    "free": "זה בחינם!",
+    "lessons": "שיעורים",
+    "questions": "שאלות",
+    "start": "התחל",
+    "tooltip": {
+      "questions": "מספר שאלות",
+      "subject": "נושא",
+      "user": "ע\"י",
+      "views": "מספר צפיות"
+    },
+    "years": "שנים"
+  },
+  "input": {
+    "confirmPassword": "אישור סיסמה",
+    "email": "אימייל",
+    "fullName": "שם מלא",
+    "password": "סיסמה",
+    "username": "שם משתמש"
+  },
+  "invitations": {
+    "create": "ליצירת הזמנה חדשה",
+    "createdSuccessfully": "יצרנו את ההזמנה שלך",
+    "error": "שגיאה בשליחת ההזמנה :(",
+    "sending": "שולח הזמנה, נא להמתין...",
+    "sent": "ההזמנה נשלחה בהצלחה"
+  },
+  "invite": "הזמנה",
+  "languages": {
+    "en": "אנגלית",
+    "he": "עברית",
+    "ru": "רוסית"
+  },
+  "lessons": {
+    "addQuestion": "הוסף שאלה למבדק",
+    "areYouReady": "אתם מוכנים להתחיל ללמוד?",
+    "available": "שיעורים זמינים",
+    "create": "ליצירת שיעור חדש",
+    "createdOn": "נוצר ב",
+    "description": "תיאור השיעור",
+    "filter": "לסינון השיעורים",
+    "filters": {
+      "labels": {
+        "age range": "טווח גילאים",
+        "language": "שפה",
+        "subject": "מקצוע"
+      }
+    },
+    "genericVideos": "לרשימה של סרטוני אנימציה גנריים (הקדמה לשיעור, סיום, ..)",
+    "inviteLesson": "להזמין לשיעור",
+    "inviteLessonHelpText": "כדי להפיק קישור להזמנה נא להזין את שם התלמיד וללחוץ על שלח.",
+    "inviteSuccessText": "נא להעתיק את הקישור כדי להזמין את התלמיד לשיעור.",
+    "lessonCompleted": "השלמת את השיעור",
+    "letsContinue": "קדימה - בואו נמשיך!",
+    "letsGo": "בואו נתחיל עם לרגו!",
+    "myLessons": "השיעורים שלי",
+    "name": "שם השיעור",
+    "note": "לשים לב",
+    "noteMessage": "ישלח אלייך דו\"ח שיעור עם סיום השיעור ע\"י התלמיד.",
+    "readLess": "לקרוא פחות",
+    "readMore": "לקרוא יותר",
+    "recommenedNextLesson": "השיעור המומלץ הבא",
+    "recommenedNextLessonText": "נא להזין כאן את הקישור של השיעור (אותו קישור כאשר לוחצים על לשתף שיעור).",
+    "recommenedPriorLesson": "השיעור המומלץ הקודם",
+    "recommenedPriorLessonText": "נא להזין כאן את הקישור של השיעור (אותו קישור כאשר לוחצים על לשתף שיעור).",
+    "seeReport": "לצפייה בדו\"ח שיעור",
+    "shareLesson": "לשתף בשיעור",
+    "shareLessonTitle": "נא להעתיק את הקישור כדי לשתף את השיעור עם חברים.",
+    "startLesson": "התחלת שיעור",
+    "tags": "תגים",
+    "tooltip": {
+      "delete": "למחוק שיעור",
+      "edit": "לערוך שיעור",
+      "go": "לגשת לשיעור",
+      "invite": "להזמנת תלמידים",
+      "share": "לשיתוף עם חברים"
+    },
+    "total": "סך הכל",
+    "videoURL": "ה- URL של הוידאו",
+    "videoURLHelpText": "נא להכניס קישור / URL לוידאו של YouTube"
+  },
+  "loginPage": {
+    "login": "כניסה",
+    "password": "סיסמה",
+    "signup": "הרשמה",
+    "username": "שם משתמש"
+  },
+  "name": "שם",
+  "new": "חדשים",
+  "next": "המשך",
+  "nextQuestion": "לשאלה הבאה",
+  "popular": "פופולריים",
+  "preview": "הצגה",
+  "questions": {
+    "addQuestionsToQuiz": "הוספת שאלה למבדק",
+    "age": "גיל",
+    "answer": "תשובה",
+    "answerOption": "אפשרות תשובה ",
+    "audioUrl": "URL של קובץ השמע",
+    "audioUrlHint": "על מנת להוסיף שמע לשאלה, אנא עדכן את ה- URL של קובץ השמע",
+    "clickToAdd": "לחץ כאן להוספת אפשרות לתשובה",
+    "correct": "נכון",
+    "correctAnswer": "התשובה הנכונה",
+    "correctAnswerFilled": "תשובה נכונה!",
+    "correctAnswers": "התשובות הנכונות",
+    "createNew": "ליצירת שאלה חדשה",
+    "editSummary": "סיכום עריכה",
+    "editSummaryHelpText": "תקציר עריכה",
+    "explanationHelpText": "כאן אפשר להוסיף רמז לשאלה. התלמיד יראה את זה כאשר ילחץ על כפתור רמז",
+    "filter": "לסינון השאלות",
+    "help": "טקסט עזרה",
+    "hintHelpText": "כאן אפשר להוסיף רמז לשאלה. התלמיד יראה את זה כאשר ילחץ על כפתור רמז",
+    "incorrect": "לא נכון",
+    "incorrectAnswerFilled": "תשובה שגויה",
+    "language": "שפה",
+    "languages": {
+      "other": "שפה אחרת",
+      "arabic": "ערבית",
+      "english": "אנגלית",
+      "hebrew": "עברית",
+      "russian": "רוסית"
+    },
+    "longAnswer": "תשובה ארוכה (פסקה)",
+    "myQuestions": "השאלות שלי",
+    "noQuestions": "אין שאלות להצגה",
+    "openQuestion": "שאלה פתוחה",
+    "possibleAnswers": "תשובות אפשריות",
+    "question": "שאלה",
+    "questionType": "סוג שאלה",
+    "requiredAnswer": "מבנה התשובה הנדרש",
+    "select": "בחירה",
+    "shortAnswer": "תשובה קצרה (מספר מילים)",
+    "subject": "מקצוע",
+    "subjects": {
+      "other": "אחר",
+      "biology": "ביולוגיה",
+      "english": "אנגלית",
+      "grammar": "דקדוק",
+      "math": "מתמטיקה",
+      "science": "מדע",
+      "spelling": "איות"
+    },
+    "thankYou": "תודה לך על תשובתך!",
+    "total": "סך הכל",
+    "types": {
+      "exactMatch": "תשובה יחידה",
+      "multipleChoices": "תשובות מרובות",
+      "openQuestion": "שאלה פתוחה",
+      "trueFalse": "אמת או שקר"
+    },
+    "yourAnswer": "תשובת התלמיד",
+    "yourAnswers": "תשובה / תשובות התלמיד"
+  },
+  "quizItem": {
+    "answer": {
+      "False": "שקר",
+      "True": "אמת"
+    }
+  },
+  "redirectToHome": "לחזור לדף הבית",
+  "remove": "הסר",
+  "report": {
+    "completed": "סיימ/ה שיעור",
+    "date": "תאריך",
+    "description": "תיאור שיעור",
+    "detailedReport": "דו\"ח מפורט",
+    "lessonSteps": "שלבי השיעור",
+    "questionsInQuiz": "שאלות במבדק"
+  },
+  "resetPassword": {
+    "emailSentSuccessfully": "אנא בדוק את תיבת המייל ועקוב אחר ההוראות",
+    "error": "הייתה בעיה בשליחת הבקשה",
+    "instructions": "מלא שם משתמש או אימייל ועקוב אחר הוראות שנשלחו",
+    "success": "הבקשה נשלחה בהצלחה"
+  },
+  "saved": "נשמר",
+  "saving": "שומר",
+  "share": "שיתוף",
+  "signup": {
+    "confirmation": {
+      "message": "תודה שנרשמת ללרגו. עוד מספר דקות תקבל אמייל לצורך אימות מלרגו. אנא אשר את הדואר האלקטרוני שלך ע\"י לחיצה על הקישור והמשך משם להתחברות ללרגו. "
+    },
+    "error": {
+      "confPasswordRequired": "נדרש לאשר סיסמה",
+      "invalidChar": "שם משתמש צריך להכיל רק תווים אלפאנומרים וקו תחתון",
+      "invalidEmail": "נא להזין כתובת אימייל תקינה.",
+      "minLength": "שם משתמש צריך להכיל לפחות  שלושה תווים.",
+      "nameRequired": "דרוש שם משתמש",
+      "passwordRequired": "דרושה סיסמה"
+    }
+  },
+  "start": "התחלה",
+  "steps": {
+    "add": "הוסף שלב",
+    "display": "הצג שלב",
+    "invalidURL": "נא להכניס URL תקף / חוקי של YouTube",
+    "noMoreQuestions": "אין שאלות נוספות",
+    "quiz": "מבדק",
+    "required": "נדרש",
+    "selectAnAnswer": "בחר תשובה",
+    "title": "כותרת השלב",
+    "type": "סוג השלב",
+    "video": "וידאו"
+  },
+  "subject": {
+    "art": "אמנות",
+    "math": "מתמטיקה",
+    "spelling": "איות"
+  },
+  "tagHint": "הפרד תגים בעזרת פסיק (דוגמה: 'איות, דקדוק')",
+  "tags": "תגים",
+  "title": "כותרת",
+  "translation": {
+    "baseLanguage": "שפת בסיס",
+    "comparingTitle": "משווה אנגלית עם",
+    "key": "מפתח",
+    "translation": "תרגום"
+  },
+  "underConstruction": "דף זה בבנייה... ",
+  "up": "למעלה",
+  "view": "הצג",
+  "welcome": "ברוכים הבאים"
 }

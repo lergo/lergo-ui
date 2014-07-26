@@ -1,124 +1,108 @@
-<div class="base-layout" id="homepage">
-    <div class="header-stats">
-        <div class="article">
-            <div class="item">
-                <div class="amount">2305</div>
-                <div class="type">lessons</div>
-            </div>
-            <div class="item">
-                <div class="amount">17456</div>
-                <div class="type">questions</div>
-            </div>
-            <div class="and-counting item">
-                and counting...
-            </div>
-        </div>
-        <div class="sidebar">
-            <div class="title">Create Your Own Lessons</div>
-            <div class="start">start</div>
-            <div class="free">it's free!</div>
-        </div>
-    </div>
-          <div class="article">
-              <div class="section" ng-repeat="section in sections">
-                  <div class="title">
-                      <div class="section-label">
-                          {{section.label|i18n}}
-                      </div>
-                      <div class="controls">
-                          <i class="fa fa-chevron-left" ng-class="{'disabled':section.index ==0}" ng-click="flipSection(section,false)"></i>
-                          <i class="fa fa-chevron-right" ng-click="flipSection(section,true)"></i>
-                      </div>
-                  </div>
-                  <div class="lessons">
-                      <div class="lesson" ng-repeat="lesson in getLessons(section)">
-                          <div class="age-limit age-limit-{{lesson.age}}">
-                              <div class="value">{{lesson.age}}</div>
-                              <div class="units">
-                                  <i class="fa fa-arrow-up"></i>
-                                  years
-                              </div>
-                          </div> <!-- age limit -->
-                          <div class="image">
-                              <img src="/images/homepage/logo.png"/>
+<div class="base-layout">
+	<div admin-section>
+		<a href="#/admin/homepage">Admin Homepage</a>
+	</div>
+	<div class="homepage">
+		<div statistics-banner class="page-content-width">
+			<!-- how many lessons, and how many questions -->
+			<div class="article-header page-content-body">
+				<div class="stats-wrapper">
 
-                              <div class="stats">
-                                  <span class="time">
-                                        <i class="fa fa-clock-o"></i>
-                                        <span> {{lesson.time}} </span>
-                                  </span>
-                                  <span class="questions">
-                                        <i class="fa fa-question-circle"></i>
-                                        <span> {{lesson.questions}} </span>
-                                  </span>
+						<div class="stats-lessons">
+							<div class="amount">{{stats.lessonsCount}}</div>
+							<div class="type">{{ 'homepage.lessons' | i18n }}</div>
+						</div>
+						<div class="stats-questions">
+							<div class="amount">{{stats.questionsCount}}</div>
+							<div class="type">{{ 'homepage.questions' | i18n }}</div>
+						</div>
+						<div>
+							<div class="and-counting item"><span>{{ 'homepage.andCounting' | i18n }}</span></div>
+						</div>
 
-                              </div>
-                          </div>
-                          <div class="title">
-                              {{ lesson.title + ".title" | i18n }}
-                          </div>
-
-                          <div class="description" multiline-ellipsis>
-                              {{lesson.title + '.description' | i18n }}
-                          </div>
-                          <div class="info">
-                              <div class="by">
-                                  <div class="label">by</div>
-                                  <ul class="value">
-                                      <li ng-repeat="by in lesson.by"><a href="#">{{by}}</a></li>
-                                    </ul>
-                              </div>
-                              <div class="at">
-                                  {{lesson.at}}
-                              </div>
-                          </div>
-                          <div class="lesson-stats">
-                              <div class="lesson-stats-item" >
-
-                                  <div class="{{stat.type}} item" ng-repeat="stat in lesson.stats">
-                                      <i ng-class="{'fa fa-thumbs-up' : stat.type == 'likes', 'fa fa-eye':stat.type == 'views', 'fa fa-comment': stat.type == 'comments'}">                                  </i>
-
-                                  </div>
-                              </div>
-                              <div class="lesson-stats-item" >
-                                  <div class="{{stat.type}} item" ng-repeat="stat in lesson.stats">
-                                      {{stat.value}}
-
-
-
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="sidebar">
-              <div class="filters">
-                <div class="title">
-                      filter lessons
-                  </div>
-                  <div class="filter" ng-repeat="filter in filters">
-                      <div class="label"> {{filter.label}}</div>
-                      <div class="input"><select ng-options="op | i18n:{skip:!filter.translate} for op in filter.options" ng-model="filter.selected"> </select></div>
-                  </div>
-                  <div class="filter">
-                      <div class="label">tags</div>
-                  </div>
-                  <div class="tags">
-                      <div class="tag" ng-repeat="tag in tags">
-                      <span>
-                          {{tag}}
-                      </span>
-                          <i class="icon-remove"></i>
-                      </div>
-
-                  </div>
-              </div>
-
-              <div class="labels">
-                    <span ng-repeat="label in labels" class="weight{{label.weight}}"><a href="#">{{label.text}} </a></span>
-              </div>
-          </div>
-
+				</div>
+			</div>
+			<div class="upper-section page-content-sidebar">
+				<div create-your-own-box></div>
+			</div>
+			<!-- create, it's free -->
+		</div>
+		<div class="page-content-width page-content-titles">
+			<div class="page-content-body">
+				<div class="lergo-h1">{{ 'featured' | i18n }}</div>
+			</div>
+			<div class="page-content-sidebar">
+				<div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
+			</div>
+		</div>
+		<div class="page-content-width">
+			<div class="page-content-body">
+				<div class="lessons">
+					<div class="lesson"
+						ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter |filter:tagsFilter">
+						<div class="age-limit age-limit-{{lesson.age}}">
+							<div class="value">{{lesson.age}}+</div>
+							<div class="units">
+								<i class="fa fa-arrow-up"></i>
+								{{'homepage.years'|i18n}}
+							</div>
+						</div>
+						<!-- age limit -->
+						<div class="image">
+							<a href="#/public/lessons/{{lesson._id}}/intro">
+								<div lesson-title-image lesson="lesson"></div>
+							</a>
+						</div>
+						<div class="title">
+							<a href="#/public/lessons/{{lesson._id}}/intro">
+								{{ lesson.name|limitTo:40 }}
+								<span ng-show="lesson.name.length >40">...</span>
+							</a>
+						</div>
+						<div class="stats">
+							<table class="stats-table">
+								<tr>
+									<td>
+										<span tooltip="{{'homepage.tooltip.user' | i18n}}">
+											<i class="fa fa-user fa-fw"></i>
+											{{lesson.user.username}}
+										</span>
+									</td>
+									<td>
+										<span tooltip="{{'homepage.tooltip.views' | i18n}}">
+											<i class="fa fa-eye fa-fw"></i>
+											{{0+lesson.views}}
+										</span>
+									</td>
+									<td>
+										<span ng-show="!!lesson.questionsCount" tooltip="{{'homepage.tooltip.questions' | i18n}}">
+											<i class="fa fa-question-circle fa-fw"></i>
+											{{lesson | countQuestionsOnLesson }}
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span tooltip="{{'lessons.createdOn' | i18n}}">
+											<i class="fa fa-calendar"></i>
+											{{lesson.timeStamp | date:'d-MMM-yyyy'}}
+										</span>
+									</td>
+									<td colspan="2">
+										<span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | i18n}}">
+											<i class="fa fa-book fa-fw"></i>
+											{{lesson.subject && ('filters.subjects.' + lesson.subject | i18n) ||""}}
+										</span>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="sidebar page-content-sidebar">
+				<div ng-include src="'views/filters/filter.html'" ng-init="showViewsFilter=true"></div>
+			</div>
+		</div>
+	</div>
 </div>

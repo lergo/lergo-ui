@@ -1,33 +1,9 @@
 <div class="base-layout" id="questions-update">
+	<div ng-include="'views/questions/_update.html'"></div>
+	<br>
+	<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
 	<div>
-		<table class=" table lergo-form">
-			<tbody>
-				<tr>
-					<td style="border-top: none; align: right; width: 15%">Question
-						:</td>
-					<td style="border-top: none; align: left"><input
-						class="lergo-input" ng-model="quizItem.question" /></td>
-				</tr>
-				<tr>
-					<td style="border-top: none; align: right">Help Text :</td>
-					<td style="border-top: none; align: left"><input
-						class="lergo-input" ng-model="quizItem.helpText" /></td>
-				</tr>
-				<tr>
-					<td style="border-top: none; align: right">Question Type :</td>
-					<td style="border-top: none; align: left"><select
-						ng-model="quizItem.type"
-						ng-options="t.id as t.label for t in types"></select></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
-	<div>{{isSaving() && "Saving..." || "Saved" }}</div>
-	<div>
-		<button class="btn" ng-click="done()"
-			ng-disabled="isSaving()||!!quizItem.question||quizItem.question.length<=0">Done</button>
-		<a class="btn" href="#/user/questions/{{quizItem._id}}/read">
-			Preview </a>
+		<button class="btn" ng-click="done()" ng-disabled="isSaving()||!isValid(quizItem)">{{ 'done' | i18n }}</button>
+		<a class="btn" ng-disabled="isSaving()||!isValid(quizItem)" href="#/user/questions/{{quizItem._id}}/read"> {{ 'preview' | i18n }} </a>
 	</div>
 </div>

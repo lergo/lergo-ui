@@ -1,0 +1,188 @@
+.report{
+	.lergo-h1{
+			font-size:20px;
+		}
+	hr{	 
+		margin-top: 10px; 
+		margin-bottom: 10px;  
+		border-top: 2px solid #C0C0C0;
+	}
+	.image {
+		float: left;
+		width: 150px;
+		height: 190px;
+		background-color: #949494;
+		text-align: center;
+		border-radius: 10px;
+		padding: 10px;
+		margin-right:35px;
+		
+		.user {
+       		margin-top: 30px;
+       		color: #91cfff;
+       		.fa-user {
+         		font-size: 120px;
+       		}
+     	}
+     	.cap {
+        	margin-top: -155px;
+        	color: #296CA1;
+        	.fa-graduation-cap {
+          		font-size: 70px;
+        	}
+      	}
+	}
+	.header{
+		height: 190px;
+		padding: 10px;
+		background-color:#EFEFEF;
+		margin-bottom:20px;
+		border-radius: 10px;
+		.lergo-h4{
+			font-size:18px;
+			color: #949494;
+		}
+		.lergo-h1{
+		white-space: normal;
+		text-align:center;
+		}
+		.header-name{
+			text-align:center;
+			border: 3px solid blue;
+			width: 30%;
+			border-radius: 10px;
+			padding: 30px;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.header-desc{
+			width: 50%;
+			padding-left: 10px;
+			display: inline-block;
+		}
+	}
+	.steps{
+	
+		.step{
+			.lergo-h1{
+				font-size:15px;
+			}
+			background-color:#EFEFEF;
+			margin-bottom:20px;
+			border-radius: 10px;
+			.icon{
+				width:5%;
+			}
+			.title{
+				width:20%;
+				}
+			.description{
+				width:100%;
+				.bg-success{
+					margin:5px;
+				}
+				.bg-warning{
+				margin:5px;
+					}
+				.bg-primary{
+					margin:5px;
+				}
+			}
+		}
+	}
+	.no-underline{
+	text-decoration: none;
+	}
+	.inline-table{
+	display: inline-table;
+	}
+	
+	.recommendation{
+	.lergo-h1{
+				font-size:15px;
+			}
+			background-color:#EFEFEF;
+			margin-bottom:20px;
+			border-radius: 10px;
+			.icon{
+				width:5%;
+			}
+			.title{
+				width:20%;
+				}
+			.description{
+				width:100%;
+			}
+	}
+	.details{
+		.detail{
+			background-color:#EFEFEF;
+			margin-bottom:20px;
+			border-radius: 10px;
+			padding: 10px;
+			
+			.quiz{
+					padding: 5px;
+					border-radius: 10px;
+				.quiz-correct{
+					border: 2px solid mediumseagreen;
+					border-radius: 10px;
+				}
+				.quiz-wrong{
+					border: 2px solid #ee9a00;
+					border-radius: 10px;
+				}
+				.quiz-open{
+					border: 2px solid royalblue;
+					border-radius: 10px;
+				}
+				.wrong{
+					color:firebrick;
+				}
+				.correct{
+					color:mediumseagreen;
+				}
+				.bold{font-weight:bold;}
+				.specific-explanation{
+					display: block;
+					font-weight:bold;
+				}
+				.bg-success{
+				text-align: inherit;
+				}
+				.bg-warning{
+				text-align: inherit;
+				}
+				.bg-primary{
+				text-align: inherit;
+				}
+				.quiz-answer{padding:10px;}
+				.help-text{font-style: italic;
+				color:#949494;
+				padding:10px;}
+				.question-media{
+				padding-left: 10px;
+				}
+				.duration{
+				float:right;
+				}
+				
+			}
+		}
+	}
+}
+
+
+.rtl{
+	.report{
+		.details{
+			.detail{
+				.quiz{
+					.duration{
+						float:left;
+					}
+				}
+			}
+		}
+	}
+}

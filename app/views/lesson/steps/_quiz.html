@@ -1,9 +1,18 @@
-<select ng-model="selectedQuestion" ng-options="item._id as item.question for item in quizItems"> </select>
-        {{selectedQuestion}}
-        <button ng-click="addItemToQuiz( selectedQuestion, step )">Add Item To Step</button>
-
-        <ul>
-            <li ng-repeat="item in step.quizItems">
-                {{getQuestion(item)}} <button ng-click="removeItemFromQuiz( item, step )">Remove</button>
-            </li>
-        </ul>
+<table class="lergo-table" style="width: 90%; float: left">
+	<tr ng-repeat="item in step.quizItems">
+		<td class="question">
+			<button class="btn-link" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</button>
+		</td>
+		<td>
+			<a ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
+			<a ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
+			<a class="btn-link" ng-click="removeItemFromQuiz( item, step )">X</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button class="btn" ng-click="openQuestionBank(step)">{{ 'lessons.addQuestion' | i18n }}</button>
+			<button class="btn" ng-click="openCreateQuestion(step)">{{ 'questions.createNew' | i18n }}</button>
+		</td>
+	</tr>
+</table>

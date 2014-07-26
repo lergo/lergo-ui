@@ -1,0 +1,9 @@
+<div ng-controller="QuestionsIndexCtrl" ng-init="$root.questionScrollPosition=0">
+	<div class="modal-body base-layout-class base-layout-modal" style="height: 400px; overflow-y: auto">
+		<div ng-include="'views/questions/_index.html'" ng-init="isModal=true"></div>
+	</div>
+	<div class="modal-footer" style="text-align: left">
+		<button class="btn " ng-click="ok(items)">{{'add' |i18n}}</button>
+		<button class="btn btn-default" ng-click="cancel()">{{'cancel' |i18n}}</button>
+	</div>
+</div>

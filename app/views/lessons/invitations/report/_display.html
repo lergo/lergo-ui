@@ -1,0 +1,3 @@
+<div ng-repeat="step in lesson.steps track by $index" >
+    <div class="lesson-step" ng-include="getStepViewByType(step)"></div>
+</div>

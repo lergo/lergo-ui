@@ -1,0 +1,68 @@
+.rtl{
+  .homepage {
+    .age-limit{
+      margin-left:0;
+      margin-right:10px;
+    }
+    .upper-section {
+      .create {
+        font-size: 27px;
+        text-align: justify;
+        width: 400px;
+      }
+      .free {
+        margin-left: 0;
+        margin-right: 12px;
+        font-size: 21px;
+      }
+      .start {
+        font-size: 19px;
+        padding:2px 38px;
+
+      }
+    }
+
+    .lessons{
+      .lesson{
+        float:right;
+      }
+    }
+
+    .article-header {
+      text-align: right;
+
+      .stats-lessons {
+        width: 114px;
+      }
+
+      .stats-questions {
+        width: 1px;
+      }
+
+      .and-counting {
+        margin-right: 73px;
+        text-align: right;
+      }
+    }
+  }
+}
+
+/* specifics for hebrew */
+.he{
+  .homepage{
+
+    .lergo-h1{
+      font-size:34px;
+    }
+    .sidebar{
+      .upper-section{
+        .free{
+
+        }
+      }
+
+    }
+
+  }
+
+}

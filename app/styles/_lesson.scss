@@ -1,28 +1,25 @@
-
 .lesson-step {
   .lesson-step-title {
     text-align:center;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
   }
 }
-
 .lesson-step-video{
   text-align:center;
-  padding-top:50px;
-
+  padding-top:20px;
   .lesson-step-video-content{
     display:inline-block;
   }
 }
-
-
 .lesson-step-quiz{
-
   .lesson-step-quiz-next{
     text-align:center;
-    padding: 20px 0;
   }
+    .lergo-progress-bar{
 
+    width: 450px;
+	margin: 0 auto;
+    }
  .question-true-false{
    .true-false-options{
      .true-false-option{
@@ -34,13 +31,13 @@
 
    }
  }
-
-  margin-top:50px;
+  margin-top:20px;
   .lergo-h2{
     text-align:center;
     padding:10px 0;
   }
   .lesson-step-quiz-content, .lesson-step-quiz-next{
+  background-color: gainsboro;
     width:400px;
     margin:0 auto;
   }
@@ -48,14 +45,50 @@
 
 
 #lessonDisplay{
-
+  #content{
+    padding-bottom:100px;
+  }
   .done-step {
-    padding-top: 100px;
+   margin: 0 auto;
+   	
+   	 .orange{
+      	color:#F7941E;
+      	position: relative;
+		z-index: 10;
+		font-size: 80px;
+      }
+      .green{
+      	color:#8CC63F;
+      	position: relative;
+		z-index: 10;
+		font-size: 60px;
+      }
+      .red{
+     	color:#EF3E36;
+      	position: relative;
+		z-index: 10;
+		font-size: 40px;
+      }
+   	
     .message {
-      float: right;
-      margin-top: 200px;
-      margin-right: 320px;
+    width:50%;
+      float: left;
+      margin-top: 50px;
       font-size:30px;
+      text-align:center;
+      .lergo-h1{
+      text-align:center;
+      white-space: normal;
+      text-transform: none;
+      }
+      .report{
+	      a{
+	      &:hover{
+	      text-decoration:none;}
+	      }
+      }
+      .recmmonded{
+      }
     }
 
     .image {
@@ -79,41 +112,13 @@
   }
 
 
-  .start-step{
-    padding-top:100px;
-    .image{
-      float:left;
-      .fa{
-        font-size:240px;
-        color:#296CA1;
-      }
-    }
-    .message{
-      float:right;
-      margin-right:250px;
-      .welcome{
-        font-size:30px;
-      }
-      .name{
-        padding:20px 0;
-        font-weight:bold;
-        font-size:20px;
-        text-align:center;
-      }
-      .description{
-        padding:5px 0;
-        width:400px;
 
-
-      }
-      .button{
-        padding:20px;
-        text-align:center;
-      }
-    }
-  }
   .next-step{
-    padding:30px;
-    text-align:center;
+  	position:relative;
+    margin:0 auto;
   }
+ }
+.video-tip{
+	display: inline-block;
+	
 }

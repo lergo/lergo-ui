@@ -11,15 +11,15 @@ angular.module('lergoApp').controller('SignupCtrl', function($scope, $log, Lergo
 	$scope.submit = function() {
 
 		if ($scope.signupForm.password !== $scope.signupForm.passwordConfirm) {
-			$scope.errorMessage = 'Confirm Passowrd doesnot match the password';
+			$scope.errorMessage = 'Confirm Password does not match the password';
 			return;
 		} else {
-			$scope.errorConfirmPassword = null;
+			$scope.errorMessage = null;
 		}
 		LergoClient.signup($scope.signupForm).then(function() {
 			$log.info('got success');
 			$scope.errorMessage = null;
-			$location.path('/public/session/login');
+			$location.path('/public/session/signupConfirmation');
 		}, function(result) {
 			$scope.errorMessage = result.data.message;
 			$log.error('got error');
@@ -29,6 +29,10 @@ angular.module('lergoApp').controller('SignupCtrl', function($scope, $log, Lergo
 	setInterval(function() {
 		$('#issues').scrollLeft(200).scrollTop(Math.max($('#issues').scrollTop(), 160));
 	}, 1000);
-}
 
-);
+	// autofocus not working properly in control of partial view when added
+	// through ngInclude this is a hook to get the desired behaviour
+	$scope.setFocus = function(id) {
+		document.getElementById(id).focus();
+	};
+});

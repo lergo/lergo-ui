@@ -1,0 +1,124 @@
+#questionPreview { 
+    width:450px;
+    margin:0 auto;
+    margin-top:50px;
+    display:table;
+    border-radius:5px;
+    background-color: gainsboro;
+    .bold{
+    font-weight: bold;
+    }
+	.left {
+		width:90%;
+		padding:10px;
+		float:left;
+		.submit{
+			margin-top:10px;
+			text-align: center;
+			width:430px;
+			.left-arrow{
+				display:none;
+			}
+			
+		}
+ 		.help{
+ 			color: grey; 
+			font-family: cursive;
+			margin-top:10px;
+		}
+		.audio{
+		margin-top:10px;
+		}
+		.answers{
+		width:430px;
+			margin-top:10px;
+			text-align: center;
+			.true-false-options{
+     			.true-false-option{
+       				padding:15px;
+      				margin-left:5px;
+     			}
+			}
+		}
+		
+		
+	}
+
+	.right { 
+		width:10%;
+		.action-items { 
+			font-size: 30px;
+			text-align: center;
+			hr{
+				border-top: 1px solid transparent;
+			}
+			.hint{
+			  font-size:15px;
+              margin-top:  10px;
+              position: relative;
+			}
+			.action-item{
+			position:relative;
+			}
+
+          &>.btn-link{
+            text-align:left;
+            display:inline-block;
+            margin-top:20px;
+          }
+
+		}
+	}
+	
+	textarea {
+    width: 75%;
+    padding: 5px;
+    background: $LERGO_INPUT_BACKGROUND;
+    height: $LERGO_FORM_TEXTAREA_HEIGHT;
+  }
+
+  input {
+    background: $LERGO_INPUT_BACKGROUND;
+    border:1px solid $LERGO_INPUT_BORDER_COLOR;
+    padding:5px;
+    border-radius:5px;
+    width:75%;
+    &[type=checkbox]{
+      width:20px;
+      height: 20px;
+    }
+
+  }
+  
+}
+
+.result{
+		width:450px;
+		margin:0 auto;
+}
+
+.rtl{
+	#questionPreview { 	
+		.right{
+			float:left;
+		}
+		.left {
+			float:right;
+			.submit{
+				
+				.right-arrow{
+					display:none;
+				}
+				.left-arrow{
+					display:inline;
+				}
+			}
+		}
+	}
+}
+
+.previewQuestion{
+	.specific-explanation{
+	  display: none;
+	}
+}

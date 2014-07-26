@@ -19,11 +19,15 @@ $COLOR_16: #BC8F8F !default;
 $COLOR_17: #EE9A00 !default;
 $COLOR_18: #B22222 !default;
 $COLOR_19: #2a6496 !default;
+$COLOR_20: #D2E8FA !default;
 
 
+$LERGO_LINK_HOVER:$COLOR_19 !default;
 $LERGO_BACKGROUND:$COLOR_1 !default; /** background for highlighted content: header, buttons **/
+$LERGO_HR_COLOR: $COLOR_20;
 $LERGO_BODY_BACKGROUND:$COLOR_2  !default; /** background for text content **/
 $LERGO_ACTION_BACKGROUND:$COLOR_3 !default;
+$LERGO_TAG_BACKGROUND_COLOR:$COLOR_1 !default;
 
 $LERGO_TEXT_COLOR:$COLOR_4 !default; /** title color **/
 $LERGO_BODY_COLOR: $COLOR_5 !default; /** reading text color **/
@@ -44,7 +48,41 @@ $LERGO_ICON_COLOR:$COLOR_12 !default;
 
 
 
-$LERGO_POST_MAIN_CONTENT_WIDTH:750px;
-$LERGO_POST_SIDE_COLUMN_WIDTH:225px;
+$LERGO_POST_MAIN_CONTENT_WIDTH:750px !default;
+$LERGO_POST_SIDE_COLUMN_WIDTH:225px !default;
 
 $LERGO_FORM_TEXTAREA_HEIGHT:160px !default;
+
+
+
+$AGE_LIMIT_4            : #D68ED7  !default;
+$AGE_LIMIT_5            : #C67BD4  !default;
+$AGE_LIMIT_6            : #9E6CC9  !default;
+$AGE_LIMIT_7            : #7D6BB1  !default;
+$AGE_LIMIT_8            : #736EE2  !default;
+$AGE_LIMIT_9            : #6B9BEA  !default;
+$AGE_LIMIT_10           : #8CE4FA  !default;
+$AGE_LIMIT_11           : #58DBD9  !default;
+$AGE_LIMIT_12           : #51D5A5  !default;
+$AGE_LIMIT_13           : #86DE83  !default;
+$AGE_LIMIT_14           : #B3F0A8  !default;
+$AGE_LIMIT_15           : #D3EA84  !default;
+$AGE_LIMIT_16           : #FFEA3C  !default;
+$AGE_LIMIT_17           : #FED782  !default;
+$AGE_LIMIT_18           : #FF9B64  !default;
+$AGE_LIMIT_18_PLUS      : #FF8181  !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

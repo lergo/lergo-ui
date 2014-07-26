@@ -1,23 +1,33 @@
-multiple choices
-
-<div class="top-actions right">
-    <i class="fa fa-times lergo-icon" ng-click="selected.showPreview=false"></i>
-    <i class="fa  lergo-icon" ng-click="selected.showPreview=false">&nbsp</i>
+<div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
+	<div class="left">
+		<div class="question">
+			<p class="lergo-h4">{{quizItem.question}}</p>
+		</div>
+		<div class="help">
+			<p class="question-help-text">{{quizItem.helpText}}</p>
+		</div>
+		<div quiz-item-media quiz-item="quizItem"></div>
+		<div>
+			<table class="lergo-table">
+				<tbody>
+					<tr ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
+						<td style="width: 5%">
+							<input type="checkbox" ng-model="option.userAnswer" />
+						</td>
+						<td>{{option.label}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
+	</div>
+	<div class="right">
+		<div ng-include="'views/questions/view/partials/_actionItems.html'"></div>
+	</div>
 </div>
-<div class="question-preview question multiple-choices">
-    <div class="title">{{selected.question.question}}</div>
-    <div class="body">
-        <div class="options left correct-answer">
-            <div ng-repeat="option in selected.question.options">
-                <div class="option"
-                     ng-class="{'active':!!option.correct}"
-                     ng-click="markOptionAsCorrect(selected.question, option)">
-                    <i class="fa fa-check"></i>
-                </div><span>{{option.answer}}</span>
-            </div>
-        </div>
-        <div class="media right">
-            <img ng-src="{{selected.question.mediaSource}}"/>
-        </div>
-    </div>
+<div ng-show="mode==='quiz'">
+    <div lergo-progress-bar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></div>
+    <!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
 </div>
+<br>
+<div ng-include="'views/questions/view/partials/_result.html'"> </div>

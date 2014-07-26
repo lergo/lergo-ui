@@ -3,58 +3,109 @@
 		<div id="header" ng-controller="LoginCtrl">
 			<div class="centered-content">
 				<div class="header-main">
-					<div class="logo-beta"></div>
+					<div>
+						<a href="#/user/homepage">
+							<i class="logo-beta"></i>
+						</a>
+					</div>
 					<div class="header-links">
 						<ul>
-							<li
-								ng-repeat="item in ['Learn','Create','Parents','Teachers','Contribute']">
-								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | i18n }}</a>
-							
+							<li>
+								<a href="#/user/homepage">{{ 'baseLayout.header.links.learn'| i18n }} </a>
 							</li>
-                            <li><a href="#/user/lessons"> {{ 'baseLayout.header.links.lessons' | i18n }}</a></li>
-                            <li><a href="#/user/questions"> {{ 'baseLayout.header.links.questions' | i18n }}</a></li>
-                        </ul>
-                    </div>
-					<div class="header-search">
-						<input placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" /> <i
-							class="icon-search"></i>
+							<li>
+								<a show-logged-in href="#/user/create/lessons">{{ 'baseLayout.header.links.create'| i18n }} </a>
+								<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+								<a show-anonymous href="" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | i18n}}" tabindex="0">{{
+									'baseLayout.header.links.create'| i18n }} </a>
+							</li>
+							<li ng-repeat="item in ['Parents','Teachers']">
+								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | i18n }}</a>
+							</li>
+							<li>
+								<a href="#/public/contribute">{{ 'baseLayout.header.links.contribute'| i18n }} </a>
+							</li>
+						</ul>
 					</div>
-					
-					<div class="header-login" ng-show="!user">
-						<a href="#"> {{ 'button.login' | i18n }}</a> <a href="#/public/session/signup"> {{ 'button.signup' | i18n }}</a>
+					<div class="header-search">
+						<input placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" />
+						<a href="">
+							<i popover-placement="bottom" popover="{{'baseLayout.header.searchUnderConstruction' | i18n}}" popover-trigger="mouseenter" class="icon-search"></i>
+						</a>
+					</div>
+					<div class="header-signup" ng-show="!user">
+						<a href="#"> {{ 'button.login' | i18n }}</a>
+						<a href="#/public/session/signup"> {{ 'button.signup' | i18n }}</a>
 					</div>
 					<div class="header-login" ng-show="!!user">
-						{{user.username}}
-						<button ng-click="logout()">logout</button>
+						<a href="#/user/create/lessons">
+							<i class="fa fa-user fa-fw"></i>
+							{{user.username}}
+						</a>
+						<button class="btn" ng-click="logout()">{{'baseLayout.header.logout' | i18n }}</button>
+					</div>
+					<div class="header-language">
+						<i class="fa fa-globe fa-fw" tooltip="{{'baseLayout.header.siteLanguage' | i18n}}"></i>
+						<select ng-model="$root.lergoLanguage" ng-options="lang.id as ( 'translationLanguage.' + lang.id | i18n ) for lang in $root.lergoLanguages"></select>
 					</div>
 				</div>
-
 			</div>
 		</div>
-		<div id="content" class="centered-content clearfix" ng-transclude="">
-		</div>
+		<div id="content" class="centered-content clearfix" ng-transclude=""></div>
 		<div class="push"></div>
 	</div>
 	<div id="footer">
 		<div class="centered-content">
-			<div class="footer-links">
-				<ul>
-					<li>Privacy & Terms</li>
-					<li><a href="#/public/about">About LerGO</a></li>
-					<li>Home Page</li>
-					<li>Contact Us</li>
-					<li><a href="#/public/kitchenSink">Kitchen Sink</a></li>
-					<li><a href="#/public/translations/diff">Translations Diff</a></li>
-
-                    <select ng-model="$root.lergoLanguage" ng-options="lang.id as lang.label for lang in $root.lergoLanguages"></select>
-
-				</ul>
+			<div class="footer-text">
+				{{'baseLayout.footer.text1' | i18n }}
+				<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | i18n }};</a>
+				{{'baseLayout.footer.text3' | i18n }}
+				<a href="#/public/terms">{{'baseLayout.footer.text4' | i18n }}.</a>
+				{{'baseLayout.footer.text5' | i18n }}.
 			</div>
-			<div class="copyrights">&copy; LerGO 2013-2014 All Rights
-				Reserved</div>
+			<div>
+				<div class="footer-links">
+					<div class=row>
+						<ul>
+							<li>
+								<a href="#/public/terms">{{'baseLayout.footer.privacyAndTerms' | i18n }}</a>
+							</li>
+							<li>
+								<a href="http://signup.lergo.org">{{'baseLayout.footer.about' | i18n }}</a>
+							</li>
+							<li>
+								<a href="#/user/homepage"> {{'baseLayout.footer.homepage' | i18n }}</a>
+							</li>
+							<li>
+								<a href="#/public/contact">{{'baseLayout.footer.contact' | i18n }}</a>
+							</li>
+							<li>
+								<a href="#/public/kitchenSink">{{'baseLayout.footer.kitchenSink' | i18n}}</a>
+							</li>
+						</ul>
+					</div>
+					<div class="row">
+						<ul>
+							<li>
+								<a class="weight12" href="#/public/feedback">{{'baseLayout.footer.feedback' | i18n}}</a>
+							</li>
+							<li>
+								<a class="weight12" href="#/public/suggest">{{'baseLayout.footer.suggest' | i18n}}</a>
+							</li>
+							<li>
+								<a class="weight12" href="#/public/problem">{{'baseLayout.footer.problem' | i18n}}</a>
+							</li>
+							<li>
+								<a class="weight12" href="#/public/abuse">{{'baseLayout.footer.abuse' | i18n}}</a>
+							</li>
+						</ul>
+						<div class="copyrights">
+							<div>&copy; {{'baseLayout.footer.copyright' | i18n}}</div>
+							<div>{{'baseLayout.footer.copyrightMsg' | i18n}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
 </div>
-
-

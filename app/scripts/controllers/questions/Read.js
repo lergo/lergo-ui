@@ -1,73 +1,74 @@
 'use strict';
 
-angular.module('lergoApp').controller(
-		'QuestionsReadCtrl',
-		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile) {
+angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location) {
 
-			var questionId = $routeParams.questionId;
-			$scope.types = QuestionsService.questionsType;
+	var questionId = $routeParams.questionId;
 
-			QuestionsService.getUserQuestionById(questionId).then(function(result) {
-				$scope.quizItem = result.data;
-				$scope.errorMessage = null;
-			}, function(result) {
-				$scope.error = result.data;
-				$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
-				$log.error($scope.errorMessage);
-			});
+	QuestionsService.getQuestionById(questionId).then(function(result) {
+		$scope.quizItem = result.data;
+		$scope.errorMessage = null;
+	}, function(result) {
+		$scope.error = result.data;
+		$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
+		$log.error($scope.errorMessage);
+	});
 
-			$scope.getQuestionViewTemplate = function() {
-				if (!!$scope.quizItem && !!$scope.quizItem.type) {
-					var type = QuestionsService.getTypeById($scope.quizItem.type);
-					return type.viewTemplate;
-				}
-				return '';
-			};
-			$scope.correctAnswers = {};
-			$scope.submit = function() {
-				QuestionsService.submitAnswers($scope.correctAnswers).then(function(result) {
-					$scope.result = result.data;
-					$scope.errorMessage = null;
-				}, function(result) {
-					$scope.error = result.data;
-					$scope.errorMessage = 'Error in submitting questions : ' + result.data.message;
-					$log.error($scope.errorMessage);
-				});
-
-			};
-
-			$scope.updateAnswer = function($event, answer, quizItem) {
-				var checkbox = $event.target;
-				var correctAnswer = $scope.correctAnswers[quizItem._id];
-				if (correctAnswer === undefined) {
-					correctAnswer = [];
-					$scope.correctAnswers[quizItem._id] = correctAnswer;
-				}
-				if (QuestionsService.getTypeById(quizItem.type).id === 'multipleChoicesMultipleAnswers') {
-					if (checkbox.checked) {
-						correctAnswer.push(answer);
-					} else {
-						correctAnswer.splice(correctAnswer.indexOf(answer), 1);
-					}
-				} else if (QuestionsService.getTypeById(quizItem.type).id === 'multipleChoiceSingleAnswer'
-						|| QuestionsService.getTypeById(quizItem.type).id === 'trueFalse'
-						|| QuestionsService.getTypeById(quizItem.type).id === 'exactMatch') {
-					correctAnswer.splice(0, correctAnswer.length);
-					correctAnswer.push(answer);
-				}
-
-			};
-
-			$scope.fillInTheBlanks = function(quizItem) {
-				var question = quizItem.question;
-				var res = quizItem.question;
-				$scope.correctAnswers[quizItem._id] = [];
-				var re = /\[(.*?)\]/g;
-				var i = 0;
-				for ( var m = re.exec(question); m; m = re.exec(question)) {
-					res = res.replace('[' + m[1] + ']', '<input ng-model= correctAnswers[quizItem._id][' + i + '] />');
-					i = i + 1;
-				}
-				return '<div>' + res + '<\div>';
-			};
+	$scope.getQuestionViewTemplate = function() {
+		if (!!$scope.quizItem && !!$scope.quizItem.type) {
+			var type = QuestionsService.getTypeById($scope.quizItem.type);
+			return type.viewTemplate;
+		}
+		return '';
+	};
+	$scope.checkAnswer = function() {
+		var quizItem = $scope.quizItem;
+		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
+			$scope.answer = result.data;
+		}, function() {
+			$log.error('there was an error checking answer');
 		});
+
+	};
+
+	$scope.getCorrectAnswers = function(quizItem) {
+		if (!quizItem || !quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
+			return '';
+		}
+		return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
+	};
+	$scope.copyQuestion = function(question) {
+		LergoClient.questions.copyQuestion(question._id).then(function(result) {
+			$location.path('/user/questions/' + result.data._id + '/update');
+		}, function(result) {
+			$log.error(result);
+		});
+	};
+
+	$scope.getAnswer = function() {
+		return $scope.answer;
+	};
+
+	$scope.canSubmit = function(quizItem) {
+		if (!quizItem && !quizItem.type) {
+			return false;
+		}
+		return QuestionsService.getTypeById(quizItem.type).canSubmit(quizItem);
+	};
+	$scope.getFillIntheBlankSize = function(quizItem, index) {
+		if (!quizItem.blanks || !quizItem.blanks.type || quizItem.blanks.type === 'auto') {
+			if (!!quizItem.answer[index]) {
+				var answer = quizItem.answer[index].split(';');
+				var maxLength = 0;
+				for ( var i = 0; i < answer.length; i++) {
+					if (answer[i].length > maxLength) {
+						maxLength = answer[i].length;
+					}
+				}
+				return maxLength * 10 + 20;
+			}
+		} else if (quizItem.blanks.type === 'custom') {
+			return quizItem.blanks.size * 10 + 20;
+		}
+	};
+
+});
