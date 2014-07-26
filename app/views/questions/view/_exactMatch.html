@@ -1,24 +1,4 @@
-<div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
-	<div class="left">
-		<div class="question">
-			<p class="lergo-h4">{{quizItem.question}}</p>
-		</div>
-		<div class="help">
-			<p class="question-help-text">{{quizItem.helpText}}</p>
-		</div>
-		<div quiz-item-media quiz-item="quizItem"></div>
-		<div class="answers">
-			<input id="exactQuestionText" ng-model="quizItem.userAnswer" autofocus ng-init="setFocus('exactQuestionText')" />
-		</div>
-		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
-	</div>
-	<div class="right">
-		<div ng-include="'views/questions/view/partials/_actionItems.html'"></div>
-	</div>
+<div class="questions-exact-match">
+    <p class="lergo-h4">{{quizItem.question}}</p> <br/>
+    <textarea ng-model="correctAnswers[quizItem._id]"></textarea>
 </div>
-<div ng-show="mode==='quiz'">
-    <div lergo-progress-bar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></div>
-    <!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
-</div>
-<br>
-<div ng-include="'views/questions/view/partials/_result.html'"></div>

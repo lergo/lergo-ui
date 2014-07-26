@@ -1,27 +1,2 @@
-
-<div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
-	<div class="left">
-		<div class="question" style="line-height: 3">
-			{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
-			<span class="lergo-h4" style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
-				<span class="lergo-h4">{{option}}</span>
-				<input ng-show="!$last" style="width:{{getFillIntheBlankSize(quizItem,$index)}}px; background-color:#EEEEEE; display: inline; min-height: 28px;"
-					ng-model="quizItem.userAnswer[$index]" set-focus="$first">
-			</span>
-		</div>
-		<div class="help">
-			<p class="qu estion-help-text">{{quizItem.helpText}}</p>
-		</div>
-		<div quiz-item-media quiz-item="quizItem"></div>
-		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
-	</div>
-	<div class="right">
-	<div ng-include="'views/questions/view/partials/_actionItems.html'"></div>
-	</div>
-</div>
-<div ng-show="mode==='quiz'">
-    <div lergo-progress-bar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></div>
-    <!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
-</div>
-<br>
-<div ng-include="'views/questions/view/partials/_result.html'"></div>
+<div class="question-fill-in-the-blanks"
+	bind-html-unsafe="fillInTheBlanks(quizItem)"></div>

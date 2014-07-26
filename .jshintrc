@@ -22,8 +22,6 @@
         "angular": false,
         "$": false,
         "d3": false,
-        "prettyPrintOne": false,
-        "_": false,
-        "confirm":false
+        "prettyPrintOne": false
     }
 }

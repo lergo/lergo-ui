@@ -1,0 +1,11 @@
+<div class="question-multi-choice-single-answer">
+	<p class="lergo-h4">{{quizItem.question}}</p>
+	<table class="table">
+		<tbody>
+			<tr ng-repeat="option in quizItem.options">
+				<td><input type="radio" name="MCSingleAnswer"
+					ng-click="$parent.updateAnswer($event,option,quizItem)"/>{{option}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

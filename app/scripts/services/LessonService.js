@@ -7,9 +7,9 @@ angular.module('lergoApp')
         var sections;
         var lessons;
 
-//        function _getLessons() {
-//
-//        }
+        function _getLessons() {
+
+        }
 
 
         function _getLabels() {
@@ -17,7 +17,6 @@ angular.module('lergoApp')
             deferred.resolve(labels);
             return deferred.promise;
         }
-
         _getLabels(); // remove later
 
         function _getHomepageLessons() {
@@ -27,7 +26,7 @@ angular.module('lergoApp')
         }
 
 
-//        this.getLessons = _getLessons;
+        this.getLessons = _getLessons;
         this.getHomepageLessons = _getHomepageLessons;
 
 

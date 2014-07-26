@@ -1,0 +1,12 @@
+
+<div class="question-multi-choice-multiple-answers">
+	<p class="lergo-h4">{{quizItem.question}}</p>
+	<table class="table ">
+		<tbody>
+			<tr ng-repeat="option in quizItem.options">
+				<td><input type="checkbox" ng-true-value="option"
+					ng-false-value="" ng-click="$parent.updateAnswer($event,option,quizItem)" />{{option}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

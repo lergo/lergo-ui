@@ -22,8 +22,3 @@ The feature name should have the jira issue  and possibly the title.
 
  * [Lergo Website](lergo.org)
 
-
-## Thanks To
-
-[![Browser Stack](/app/images/thanks_to/browserstack.png?raw=true "BrowserStack")](http://www.browserstack.com/)
-
