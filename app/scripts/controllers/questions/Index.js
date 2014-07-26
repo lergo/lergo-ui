@@ -70,7 +70,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 				continue;
 			} else if (!FilterService.filterBySubject(items[i].subject)) {
 				continue;
-			} else {
+			}else if ( !FilterService.filterByTags(items[i].tags)){
+                continue;
+            }  else {
 				filteredItems.push(items[i]);
 			}
 		}
