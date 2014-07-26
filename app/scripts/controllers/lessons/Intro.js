@@ -31,6 +31,47 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		});
 	};
 
+    var lessonLikeWatch = null;
+    $scope.$watch('lesson', function (newValue) {
+        if (!!newValue) {
+            // get my like - will decide if I like this lesson or not
+            LergoClient.likes.getMyLessonLike($scope.lesson).then(function (result) {
+                $scope.lessonLike = result.data;
+            });
+
+            if (lessonLikeWatch === null) {
+                lessonLikeWatch = $scope.$watch('lessonLike', function () {
+                    // get count of likes for lesson
+                    LergoClient.likes.countLessonLikes($scope.lesson).then(function (result) {
+                        $scope.lessonLikes = result.data.count;
+                    });
+                });
+            }
+        }
+    });
+
+
+
+    $scope.likeLesson = function () {
+        $log.info('liking lesson');
+        LergoClient.likes.likeLesson($scope.lesson).then(function (result) {
+            $scope.lessonLike = result.data;
+        });
+    };
+
+    $scope.unlikeLesson = function(){
+        $log.info('unliking lesson');
+        LergoClient.likes.deleteLessonLike( $scope.lesson).then(function(){
+            $scope.lessonLike = null;
+        });
+    };
+
+    $scope.isLiked = function(){
+        return !!$scope.lessonLike;
+    };
+
+
+
 	$scope.preview = function() {
 		redirectToPreview();
 	};
@@ -53,13 +94,12 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		}
 	};
 
+    $scope.noop = angular.noop;
+
     $scope.showReadMore = function(){
         return !!$scope.lesson && !!$scope.lesson.description &&
             ( ( !!$scope.filteredDescription &&  $scope.filteredDescription.length !== $scope.lesson.description.length ) ||
                 ( !!$scope.questionsWithSummary && $scope.questionsWithSummary.length > 0 ) );
-
-
-
     };
 
 	$scope.startLesson = function() {
@@ -86,17 +126,19 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	$scope.onTextClick = function($event) {
 		$event.target.select();
 	};
-
-    function loadQuestions() {
-
-        var questionsId = _.uniq(_.compact(_.flatten(_.map($scope.lesson.steps, 'quizItems'))));
-
-        LergoClient.questions.findQuestionsById(questionsId).then(function (result) {
-            $scope.questions = result.data;
-
-            $scope.questionsWithSummary = _.filter(result.data, 'summary');
-
-        });
-    }
+	function loadQuestions() {
+		var questionsId = [];
+		if (!!$scope.lesson) {
+			for ( var i = 0; i < $scope.lesson.steps.length; i++) {
+				var items = $scope.lesson.steps[i].quizItems;
+				if (!!items && angular.isArray(items)) {
+					questionsId.push.apply(questionsId, items);
+				}
+			}
+			LergoClient.questions.findQuestionsById(questionsId).then(function(result) {
+				$scope.questions = result.data;
+			});
+		}
+	}
 
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('LergoClient', function LergoClient($http, $log, UsersService, QuestionsService, LessonsService, LessonsInvitationsService, UserDataService ) {
+angular.module('lergoApp').service('LergoClient', function LergoClient($http, $log, UsersService, QuestionsService, LikesService, LessonsService, LessonsInvitationsService, UserDataService ) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
 
 	$log.info('initializing');
@@ -42,5 +42,6 @@ angular.module('lergoApp').service('LergoClient', function LergoClient($http, $l
 
     // get user's lessons, get user's data.. not like UsersService..
     this.userData = UserDataService;
+    this.likes = LikesService;
 
 });

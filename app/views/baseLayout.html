@@ -14,9 +14,9 @@
 								<a href="#/user/homepage">{{ 'baseLayout.header.links.learn'| i18n }} </a>
 							</li>
 							<li>
-								<a ng-show="!!$root.user" href="#/user/create/lessons">{{ 'baseLayout.header.links.create'| i18n }} </a>
+								<a show-logged-in href="#/user/create/lessons">{{ 'baseLayout.header.links.create'| i18n }} </a>
 								<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-								<a ng-show="!$root.user" href="" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | i18n}}" tabindex="0">{{
+								<a show-anonymous href="" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | i18n}}" tabindex="0">{{
 									'baseLayout.header.links.create'| i18n }} </a>
 							</li>
 							<li ng-repeat="item in ['Parents','Teachers']">
