@@ -126,7 +126,7 @@
         border-bottom:1px solid silver;
         color: #949494;
         &:hover { color:  $LERGO_LINK_HOVER; }
-        &>.btn-link{
+        &>.btn-link, &>span{
         display:inline-block;
           margin-left:20px;
           font-size:20px;
