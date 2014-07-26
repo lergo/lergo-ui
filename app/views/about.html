@@ -1,10 +1,7 @@
-<div  id="about">
+<div class="base-layout" id="about">
     <h1> Thanks To </h1>
     <div>
         <div class="cloudbees">
-
-        </div>
-        <div class="browserstack">
 
         </div>
     </div>
@@ -13,7 +10,7 @@
 
     <h1> Build Timestamp </h1>
     <pre>
-        <div ng-include="'views/version/_version.html?i=' + getCacheRandomNumber()"></div>
+        <div ng-include="'views/version/_version.html'"></div>
     </pre>
 
     <h1> Latest Commits </h1>
@@ -21,7 +18,7 @@
                      git log  --abbrev=30 --pretty=format:"%h|%an|%ar|%s" -10 | column -t -s '|' > template
                      -->
     <pre>
-        <div ng-include="'views/version/_commits.html?i=' + getCacheRandomNumber() "></div>
+        <div ng-include="'views/version/_commits.html'"></div>
     </pre>
 
 

@@ -1,52 +1,42 @@
-<div ng-show="showSteps() && hasNextStep() " class="next-step">
-	<div ng-include="'/views/lessons/_stepDisplay.html'"></div>
-	<br />
-	<div ng-show="hasNextStep()" style="text-align: center">
-		<button ng-click="nextStep()" ng-disabled="!isQuizComplete" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
-	</div>
-</div>
-<div ng-show="!hasNextStep() && lesson.steps.length>0" class="done-step">
-	<div class="image">
-		<div class="user">
-			<i class="fa fa-user"></i>
-		</div>
-		<div class="cap">
-			<i class="fa fa-graduation-cap"></i>
-		</div>
-	</div>
-	<div class="message">
-		{{ 'congratulations' | i18n }}!
-		<br>
-		{{ 'lessons.lessonCompleted' | i18n }}:
-		<br>
-		<br>
-		<div class="lergo-h1">{{lesson.name}}</div>
-		<br>
-		<div class="report">
-			<a ng-show="!!invitation" ng-href="/#/public/lessons/invitations/{{invitation._id}}/report">
-				<i class="fa fa-bar-chart-o"></i>
-				{{ 'lessons.lessonReport' | i18n }}
-			</a>
-		</div>
-		<br>
-		<div class="recmmonded" ng-show="!!lesson.nextLessonId">
-			<a ng-href="#/public/lessons/{{lesson.nextLessonId}}/intro">
-				<i class="fa fa-university"></i>
-				{{ 'lessons.recommenedNextLesson' | i18n }}
-			</a>
-		</div>
-	</div>
-	<div style="text-align: left">
-		<i class="fa fa-star red"></i>
-		<br>
-		<i class="fa fa-star green"></i>
-		<br>
-		<i class="fa fa-star orange"></i>
-		<br>
-		<i class="fa fa-star green"></i>
-		<i class="fa fa-star red"></i>
-		<br>
-		<i class="fa fa-star green"></i>
-		<br>
-	</div>
-</div>
+ <div class="start-step" ng-show="currentStepIndex < 0 ">
+        <div class="image">
+            <i class="fa fa-university"></i>
+        </div>
+        <div class="message">
+            <div class="welcome">
+                Welcome! <br/>
+                Are you ready to start learning<br/>
+            </div>
+            <div class="name">
+                {{lesson.name}}
+            </div>
+            <div class="description">
+                {{lesson.description}}
+            </div>
+            <div class="button">
+                <button ng-click="nextStep()" class="btn">Lets LerGO!</button>
+            </div>
+        </div>
+
+
+    </div>
+    <div ng-show="currentStepIndex >= 0 && hasNextStep() ">
+        <div ng-include="'/views/lessons/_stepDisplay.html'"></div>
+        <div ng-show="hasNextStep()" class="next-step">
+            <button ng-click="nextStep()" class="btn">OK! Lets Continue</button>
+        </div>
+    </div>
+
+    <div ng-show="!hasNextStep()"  class="done-step">
+        <div class="image">
+            <div class="user">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="cap">
+                <i class="fa fa-graduation-cap"></i>
+            </div>
+        </div>
+        <div class="message">
+            Congratulations!<br/> You have completed the lesson.
+        </div>
+    </div>

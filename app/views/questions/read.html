@@ -1,18 +1,7 @@
-<div class="base-layout previewQuestion">
-	<table class="lergo-table">
-		<tr>
-			<td style="vertical-align: top;">
-				<div>
-					<div ng-include="getQuestionViewTemplate(quizItem)" ng-init="mode='read'"></div>
-				</div>
-			</td>
-			<td style="vertical-align: top;">
-				<div style="margin-top: 50px" ng-show="!!getAnswer(quizItem) && !!quizItem.explanationMedia && !!quizItem.explanationMedia.type">
-					<div style="font-weight: bold">{{ 'explanation' | i18n }}</div>
-					<div>{{quizItem.explanation}}</div>
-					<div quiz-item-explanation-media quiz-item="quizItem"></div>
-				</div>
-			</td>
-		</tr>
-	</table>
+<div class="base-layout">
+	<form name="QuestionForm" class="lergo-form"
+		ng-submit="submit()">
+		<div ng-include="getQuestionViewTemplate(quizItem)"></div>
+		<button type="submit">Submit</button>
+	</form>
 </div>

@@ -20,6 +20,6 @@ angular.module('lergoApp')
                 $scope.requestError = true;
                 $scope.requestInProgress = false;
                 $log.error('got error', result.data);
-            });
-        };
+            })
+        }
     });

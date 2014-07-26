@@ -23,185 +23,342 @@
 .weight30{font-size:30px;}
 
 
-.homepage{
-  hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: $LERGO_HR_COLOR;
-    border-color: $LERGO_HR_COLOR;
-    border-top: 1px solid $LERGO_HR_COLOR;
-  }
+#homepage {
 
-  .sidebar {
-    width: 225px;
-    float: right;
-    margin-top: 0;
+    .header-stats{
+      margin-top:100px;
+      font-size:20px;
+      color:#D8D8D8;
 
-  }
-  .article-header {
-    margin-top: 5px;
+      .article {
+        width: 700px;
+        font-weight: bold;
+        .item {
+          width: auto;
+          display: inline-block;
+          vertical-align: middle;
+          padding-right:20px;
+          .amount{ font-size:34px;  }
+          .type{ font-size:14px; text-transform: uppercase; margin-top:10px; text-align: right}
+        }
+        .and-counting{ font-size:34px; vertical-align: top; font-weight: bold;  text-transform: uppercase;}
+      }
+      .sidebar{
+        width:225px;
+        font-size:13px;
+        line-height: 35px;
+        text-transform: uppercase;
+        color:#676767;
+        margin-top:-80px;
+        float:right;
+        .start{
+          text-transform: uppercase;
+          background:yellow;
+          padding: 0 30px;
+          border-radius: 10px;
+          width:auto;
+          display:inline-block;
+        }
 
-    font-weight: bold;
-    color: #D8D8D8;
-    min-height: 100px;
-    text-align: right;
+        .free{
+          display:inline-block;
+          margin-left:5px;
+          font-weight: bold;
 
-    .stats-wrapper{
-      display:table-row;
-      &>div{
-        display:table-cell;
-        padding-top:6px;
+        }
+
+
+
       }
     }
-    .stats-lessons {
-      width: 1px;
+
+
+  #content {
+
+    .article{
+
+      width:725px;
+      float:left;
+      .title{
+        line-height:60px;
+        clear:both;
+        padding-bottom:60px;
+        .section-label{
+          float:left;
+        }
+        .controls{
+          float:right;
+          .disabled{
+            display:none;
+          }
+        }
+      }
+      .lessons{
+        overflow-x:hidden;
+        padding-top:20px;
+        .lesson{
+          position:relative;
+            height:350px;
+          width:215px;
+          float:left;
+          &:not(:first-child){margin-left:25px;}
+          border-radius: 10px;
+          background-color:#EFEFEF;
+          &:hover{ background-color:white;}
+
+          .age-limit{
+            width:70px;
+            z-index:10;
+            position:relative;
+            margin-top:10px;
+            margin-left:10px;
+            background-color:#6B9BEA;
+            padding:10px;
+            border-radius: 10px;
+            color:white;
+            overflow-x:hidden;
+            white-space: nowrap;
+            .value{
+              display:inline-block;
+              font-size:30px;
+              width:38px;
+              vertical-align: top;
+              margin-top:10px;
+              padding-right:5px;
+            }
+            .units{
+              white-space: normal;
+              width:35px;
+              text-align: center;
+              display:inline-block;
+              line-height:15px;
+              margin-left:-10px;
+
+            }
+
+
+            &.age-limit--4   { background-color:#FFB9E4 }
+            &.age-limit-4   { background-color:#D68ED7 }
+            &.age-limit-5   { background-color:#C67BD4 }
+            &.age-limit-6   { background-color:#9E6CC9 }
+            &.age-limit-7   { background-color:#7D6BB1 }
+            &.age-limit-8   { background-color:#736EE2 }
+            &.age-limit-9   { background-color:#6B9BEA }
+            &.age-limit-10  { background-color:#8CE4FA }
+            &.age-limit-11  { background-color:#58DBD9 }
+            &.age-limit-12  { background-color:#51D5A5 }
+            &.age-limit-13  { background-color:#86DE83 }
+            &.age-limit-14  { background-color:#B3F0A8 }
+            &.age-limit-15  { background-color:#D3EA84 }
+            &.age-limit-16  { background-color:#FFEA3C }
+            &.age-limit-17  { background-color:#FED782 }
+            &.age-limit-18  { background-color:#FF9B64 }
+            &.age-limit-18+  { background-color:#FF8181 }
+
+          }
+
+          .image{
+            position:relative;
+            display:inline-block;
+
+            &, img {
+              height:120px;
+              width:180px;
+            }
+            margin-top:-35px;
+            margin-left:20px;
+            z-index:0;
+
+
+
+            .stats{
+              background:rgba(0,0,0,0.7);
+              width:158px;
+              i { margin-top: 2px; }
+              margin:0 auto;
+              position:absolute;
+              bottom:10px;
+              left:5px;
+              padding:5px;
+              color:white;
+              text-align: justify;
+              .questions{
+                float:right;
+                margin-right:5px;
+              }
+              .time{
+                margin-left:5px;
+              }
+            }
+          }
+
+          .title{
+
+            color:#585858;
+            border-bottom:none;
+            padding: 15px 0 5px 0;
+            line-height:1.2em;
+            font-size:14px;
+            white-space: normal;
+            font-weight: bold;
+            width:175px;
+            text-align: left;
+            margin:0 auto;
+          }
+
+          .description{
+            line-height:1.2em;
+            font-size:13px;
+            font-weight: lighter;
+            width:175px;
+            margin:0 auto;
+            height:40px;
+            overflow:hidden;
+            text-overflow: ellipsis;
+          }
+
+          .info {
+            width:175px;
+            margin:0 auto;
+            .by{
+              float:left;
+              .label{
+                color:#CDCDCD;
+                font-size:10px;
+                background:none;
+              }
+              .value{
+                margin:0;
+                padding:0;
+                font-size:10px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width:auto;
+                display:inline-block;
+                ul, li{ list-style: none; }
+                li{
+                  &:not(:last-child){ float:left; &:after{display:inline-block; content:","; } }
+                  a{ color:black; text-decoration: none }
+
+                }
+
+              }
+            }
+
+            .at{
+              float:right;
+              display:inline-block;
+              width:auto;
+              font-size:10px;
+            }
+          }
+
+          .lesson-stats{
+            width:175px;
+            position:absolute;
+            bottom:0;
+            left:15px;
+            margin:0 auto;
+            margin-top:60px;
+            text-align: justify;
+            .lesson-stats-item{
+              height:25px;
+
+              text-align: justify;
+              .item {
+                height: 20px;
+                color: #CECECE;
+                display: inline-block;
+                float: left;
+                width: auto;
+                text-align: center;
+                line-height: 15px;
+
+                &.views {
+                  float: left;
+
+                }
+
+                &.comments {
+                  float: right;
+                }
+
+                &.likes {
+                  position:absolute;
+                  left:80px;
+
+                }
+              }
+            }
+          }
+
+        }
+      }
+
     }
 
-    .stats-questions {
-      width: 114px;
-    }
-
-    .amount {
-      font-size: 34px;
-    }
-    .type {
-      font-size: 14px;
+    .title{
+      font-size:22px;
+      white-space: nowrap;
+      overflow: visible;
+      text-align: justify;
+      color:#5FB9FF;
+      padding-bottom:20px;
+      border-bottom:1px solid #5FB9FF;
       text-transform: uppercase;
-    }
-    .and-counting {
-      margin-left: 73px;
-      font-size: 34px;
-      text-transform: uppercase;
-      text-align: left;
-      position:relative;
-      span{
-        position:absolute;
-        padding-top:1px;
-        white-space: nowrap;
-      }
-    }
-  }
-  .age-limit {
-    width: 90px;
-    z-index: 10;
-    position: relative;
-    margin-top: 10px;
-    margin-left: 10px;
-    background-color: #6B9BEA;
-    padding: 10px;
-    border-radius: 10px;
-    color: white;
-    overflow-x: hidden;
-    white-space: nowrap;
-    .value {
-      display: inline-block;
-      font-size: 20px;
-    }
-    .units {
-      white-space: normal;
-      width: 35px;
-      text-align: center;
-      display: inline-block;
-      line-height: 15px;
-    }
-	&.age-limit-4   { background-color:#FFB9E4 }
-	&.age-limit-4   { background-color:#D68ED7 }
-	&.age-limit-5   { background-color:#C67BD4 }
-	&.age-limit-6   { background-color:#9E6CC9 }
-	&.age-limit-7   { background-color:#7D6BB1 }
-	&.age-limit-8   { background-color:#736EE2 }
-	&.age-limit-9   { background-color:#6B9BEA }
-	&.age-limit-10  { background-color:#8CE4FA }
-	&.age-limit-11  { background-color:#58DBD9 }
-	&.age-limit-12  { background-color:#51D5A5 }
-	&.age-limit-13  { background-color:#86DE83 }
-	&.age-limit-14  { background-color:#B3F0A8 }
-	&.age-limit-15  { background-color:#D3EA84 }
-	&.age-limit-16  { background-color:#FFEA3C }
-	&.age-limit-17  { background-color:#FED782 }
-	&.age-limit-18  { background-color:#FF9B64 }
-	&.age-limit-18+  { background-color:#FF8181 }
-  }
-  .lessons {
-    .image {
-      position: relative;
-      margin: -35px auto 0 auto;
-      text-align: center;
-      z-index: 0;
-      &, img {
-        height: 120px;
-        width: 180px;
-      }
-      i {
-        font-size: 120px;
-      }
-    }
-    .title {
-      color: #585858;
-      padding: 5px 10px 5px 10px;
-      font-size: 15px;
-      white-space: normal;
       font-weight: bold;
-      width: 200px;
-      line-height: 15px;
-      margin: 0 auto;
-      min-height: 40px;
-      a {
-        color: #585858;
-        &:hover {
-          color: blue;
+    }
+    .sidebar{
+      float:right;
+      width:225px;
+      .labels{
+        text-align: justify;
+        line-height: 20px;
+        span{ line-height: 10px; text-align: justify; line-height: 20px;}
+        a{ text-decoration: none; text-align: justify; line-height: 20px;}
+
+
+      }
+
+      .tags{
+        margin-left:-5px;
+        padding-bottom:10px;
+        text-transform: capitalize;
+        .tag{
+          background-color:#5FB9FF;
+          padding:5px 5px 5px 5px;
+          margin-left:5px;
+          margin-top:5px;
+          border-radius: 10px;
+          floating:left;
+          color:white;
+          width:auto;
+          display:inline-block;
+          span:after{ display:inline-block; content:"|"}
+        i{vertical-align:middle;}
+
+        }
+
+
+      }
+
+      .filters{
+        .filter{
+          .label{
+            text-transform: uppercase;
+            padding: 20px 0 10px 0;
+            color:#C5C5C5;
+            background:transparent;
+            font-size:20px;
+          }
+          select{
+            width:200px;
+          }
         }
       }
     }
-    .stats {
-      width: 200px;
-      margin: 0 auto;
-      padding: 5px 10px;
-      font-size: 14px;
-      color: #585858;
-      display: block;
-    }
-    .lesson {
-      position: relative;
-      height: 256px;
-      width: 233px;
-      float: left;
-      border-radius: 10px;
-      background-color: #EFEFEF;
-      &:hover {
-        background-color: white;
-      }
 
-      margin-top:10px;
-      &:nth-child(n+4) {
-        margin-top: 37px;
-      }
 
-      &:nth-child(3n+2) {
-        margin-left: 15px;
-        margin-right: 15px;
-
-      }
-    }
-    .stats-table {
-      width: 100%;
-      td {
-        span i {
-          text-align:left;
-          width:13px;
-        }
-        padding-bottom: 5px;
-      }
-    }
   }
-}
 
-
-
-.admin{
-  table{
-    tr, td{
-      padding:10px;
-    }
-  }
 }
