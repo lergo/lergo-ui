@@ -4,7 +4,7 @@ angular.module('lergoApp')
     .service('LikesService', function LikesService($http) {
 
         function getLike(itemType, item) {
-            return $http.get('/backend/user/me/' + itemType + '/' + item._id);
+            return $http.get('/backend/user/me/likes/' + itemType + '/' + item._id);
         }
 
         this.getMyLessonLike = function (item) {
@@ -41,5 +41,17 @@ angular.module('lergoApp')
             return createLike('question', item);
         };
 
+        function deleteLike(itemType, item){
+            return $http.post('/backend/likes/' + itemType + '/' + item._id + '/delete');
+        }
+
+
+        this.deleteLessonLike = function( item ){
+            return deleteLike('lesson', item);
+        };
+
+        this.deleteQuestionLike = function(item){
+            return deleteLike('question',item);
+        };
 
     });

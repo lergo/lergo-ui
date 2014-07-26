@@ -44,6 +44,10 @@
 						<i class="fa fa-question-circle fa-fw"></i>
 						{{ lesson | countQuestionsOnLesson }}
 					</span>
+                    <span class="stats-button" tooltip="{{'homepage.tooltip.likes' | i18n}}">
+						<i class="fa fa-thumbs-o-up"></i>
+						{{ lessonLikes }}
+					</span>
 				</div>
 				<div class="details">
 					<div class="name">{{ lesson.name|limitTo:160 }}</div>
@@ -66,24 +70,46 @@
 							<i class="fa fa-play-circle-o "></i>
 							{{'start' | i18n}}
 						</button>
-                        <button class="btn-link" ng-click="likeLesson()" tooltip="{{'lessons.tooltip.like' | i18n}}" ng-show="!isLiked()">
-                            <i class="fa fa-thumbs-o-up "></i>
-                            {{'like' | i18n}}
-                        </button>
-                        <span class="btn-link" ng-click="noop()" tooltip="{{'lessons.tooltip.liked' | i18n}}" ng-show="!!isLiked()">
-                            <i class="fa fa-thumbs-o-up "></i>
-                            {{'liked' | i18n}}
-                            <i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
-                            <span ng-show="!!showMenu">
-                                <button class="btn-link" ng-click="dislike()">{{'dislike' | i18n}}</button>
+
+                        <span show-logged-in>
+                            <button class="btn-link" ng-click="likeLesson()" tooltip="{{'lessons.tooltip.like' | i18n}}"
+                                    ng-show="!isLiked()">
+                                <i class="fa fa-thumbs-o-up "></i>
+                                {{'like' | i18n}}
+                            </button>
+                            <span class="btn-link dropdown" ng-click="noop()"
+                                  tooltip="{{'lessons.tooltip.liked' | i18n}}" ng-show="!!isLiked()">
+                                <span class="dropdown-toggle">
+                                    <i class="fa fa-thumbs-o-up "></i>
+                                    {{'liked' | i18n}}
+                                    <i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
+                                    <span ng-show="!!showMenu">
+                                        <button class="btn-link">{{'dislike' | i18n}}</button>
+                                    </span>
+                                </span>
+                                <span class="dropdown-menu">
+                                    <li>
+                                        <button class="btn-link" ng-click="unlikeLesson()">{{ 'unlike' | i18n }}
+                                        </button>
+                                    </li>
+                                </span>
                             </span>
                         </span>
-						<button ng-show="!!$root.user" class="btn-link" ng-click="showHideInvite()" tooltip="{{'lessons.tooltip.invite' | i18n}}">
-							<i class="fa fa-envelope "></i>
-							{{'invite' | i18n}}
-						</button>
+                        <span show-anonymous>
+                            <button class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="right"
+                                    popover-trigger="focus" >
+                                <i class="fa fa-thumbs-o-up "></i>
+                                {{'like' | i18n}}
+                            </button>
+                        </span>
+
+                        <button show-logged-in class="btn-link" ng-click="showHideInvite()"
+                                tooltip="{{'lessons.tooltip.invite' | i18n}}">
+                            <i class="fa fa-envelope "></i>
+                            {{'invite' | i18n}}
+                        </button>
 						<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-						<a href="" ng-show="!$root.user" class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="right"
+						<a href="" show-anonymous class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="right"
 							popover-trigger="focus" tabindex="0">
 							<i class="fa fa-envelope "></i>
 							{{'invite' | i18n}}

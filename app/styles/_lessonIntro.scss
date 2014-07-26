@@ -68,6 +68,10 @@
       width: 50px;
 
       .stats-button {
+        i {
+          text-align:center;
+          width:20px;
+        }
         &:not(.no-color) {
           background-color: #C6C6C6;
         }
@@ -122,12 +126,7 @@
         border-bottom:1px solid silver;
         color: #949494;
         &:hover { color:  $LERGO_LINK_HOVER; }
-        a {
-          display:inline-block;
-          margin-left:20px;
-          font-size:20px;
-        }
-        .btn-link{
+        &>.btn-link{
         display:inline-block;
           margin-left:20px;
           font-size:20px;
