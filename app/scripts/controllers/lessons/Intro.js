@@ -137,6 +137,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 			}
 			LergoClient.questions.findQuestionsById(questionsId).then(function(result) {
 				$scope.questions = result.data;
+                $scope.questionsWithSummary = _.filter(result.data,'summary');
 			});
 		}
 	}
