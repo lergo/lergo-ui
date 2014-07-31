@@ -59,6 +59,10 @@
 									<span ng-show="!!stats[$index].openQuestions" class="bg-primary">
 										<span class="inline-table">{{stats[$index].openQuestions}} {{'questions.openQuestion' | i18n}}</span>
 									</span>
+									<span>
+										<i class="fa fa-clock-o"></i>
+										{{stats[$index].duration}}
+									</span>
 								</div>
 							</td>
 						</tr>
