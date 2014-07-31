@@ -100,6 +100,7 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 				if (!quizItems || quizItems.length < 1) {
 					return;
 				}
+				var duration = 0;
 				var stats = {
 					'correct' : 0,
 					'wrong' : 0,
@@ -117,6 +118,7 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 							stats.wrong = stats.wrong + 1;
 						}
 					}
+					duration = duration + quizItems[i].duration;
 				}
 				var correctPercentage = ((stats.correct * 100) / (quizItems.length - stats.openQuestions));
 				stats.correctPercentage = Math.round(correctPercentage);
@@ -124,6 +126,7 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 				var wrongPercentage = ((stats.wrong * 100) / (quizItems.length - stats.openQuestions));
 				stats.wrongPercentage = Math.round(wrongPercentage);
 				stats.index = index;
+				stats.duration = $scope.getDuration(duration);
 				$scope.$emit('stats', stats);
 			};
 
