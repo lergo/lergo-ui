@@ -39,6 +39,10 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		$log.error($scope.errorMessage);
 	});
 
+    $scope.getTextFilterItems = function(){
+        return $scope.items;
+    };
+
 	$scope.getAnswers = function(quizItem) {
 		if (!quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
 			return '';

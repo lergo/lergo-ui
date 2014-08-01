@@ -196,6 +196,10 @@ $FOOTER_HEIGHT: 170px !default;
     border-right: 1px solid #69BEFF;
     border-bottom: 1px solid #69BEFF;
 
+    [text-filter]{
+      width:430px;
+      display:inline-block;
+    }
     i{
       font-size:20px;
       padding-left:5px;

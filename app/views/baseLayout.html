@@ -27,9 +27,13 @@
 							</li>
 						</ul>
 					</div>
-					<div class="header-search">
-						<input placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" />
-						<a href="">
+					<div class="header-search" ui-keypress="{enter: 'searchOnHomepage()'}">
+
+                        <div text-filter placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}"
+                             items="typeaheadItems"
+                             model="$root.filter.search"
+                             on-select="doSearchFromTypeahead($item,$model,$label)"></div>
+						<a href="#/user/homepage">
 							<i popover-placement="bottom" popover="{{'baseLayout.header.searchUnderConstruction' | i18n}}" popover-trigger="mouseenter" class="icon-search"></i>
 						</a>
 					</div>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').directive('baseLayout', function ($rootScope, $log, $location, LergoClient, LergoTranslate) {
+angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeout, $log, $location, LergoClient, LergoTranslate) {
     return {
         templateUrl: '/views/baseLayout.html',
         transclude: true,
@@ -49,12 +49,34 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $log, $
                 $rootScope.$broadcast('siteLanguageChanged');
             });
 
+            scope.searchOnHomepage = function(){
+                $location.path('/user/homepage');
+
+                // keep focus on the input element
+                // NOTE: this is not a proper angular solution, but one would be an overkill here.
+                // answer from : http://stackoverflow.com/a/19568146
+                $timeout(function(){
+                    $('#header .header-search input')[0].setSelectionRange($rootScope.filter.textSearch.length,$rootScope.filter.textSearch.length);
+                },0);
+
+            };
+
             scope.logout = function () {
                 LergoClient.logout().then(function () {
                     $rootScope.user = null;
                     $location.path('/');
                 });
             };
+
+
+            LergoClient.lessons.getPublicLessons().then(function(result) {
+                scope.typeaheadItems = result.data;
+            });
+
+            scope.doSearchFromTypeahead = function( /*$item, $model, $label */){
+                scope.searchOnHomepage();
+            };
+
         }
     };
 });

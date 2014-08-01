@@ -5,6 +5,13 @@
 			<input type="text" ng-model="$root.filter.user" typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
 		</div>
 	</div>
+    <div ng-show="!!showTextFilter">
+        <div class="label">{{'filters.labels.text' | i18n }}</div>
+        <div>
+            <div text-filter items="getTextFilterItems()" model="$root.filter.text" placeholder="{{'filters.labels.text' | i18n  }}"></div>
+        </div>
+
+    </div>
 	<div class="label">{{'filters.labels.language' | i18n }}</div>
 	<div class="input">
 		<select ng-options="l.id as ('filters.languages.' + l.id | i18n) for l in languages" ng-model="$root.filter.language">

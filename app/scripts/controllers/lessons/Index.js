@@ -3,6 +3,10 @@
 angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, FilterService, $rootScope, TagsService) {
 	$scope.lessons = null;
 
+    $scope.getTextFilterItems = function(){
+        return $scope.lessons;
+    };
+
 	$scope.ageFilter = function(lesson) {
 		return FilterService.filterByAge(lesson.age);
 	};

@@ -27,7 +27,7 @@
 					<td>{{ 'questions.age' | i18n}}</td>
 				</tr>
 			</thead>
-			<tr ng-repeat="item in items |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:tagsFilter">
+			<tr ng-repeat="item in items |orderBy:'-lastUpdate' |  filter:$root.filter.text | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:tagsFilter">
 				<td ng-show="isModal">
 					<input type="checkbox" ng-model="item.selected" />
 				</td>
@@ -44,6 +44,6 @@
 		<div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
 	</div>
 	<div class="page-content-sidebar">
-		<div ng-include src="'views/filters/filter.html'"></div>
+		<div ng-include src="'views/filters/filter.html'" ng-init="showTextFilter=true"></div>
 	</div>
 </div>

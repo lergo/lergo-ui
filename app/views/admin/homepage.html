@@ -42,7 +42,7 @@
 				</thead>
 				<tbody>
 					<tr
-						ng-repeat="l in lessons |orderBy:'-lastUpdate'| filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter|filter:statusFilter|filter:userFilter|filter:tagsFilter">
+						ng-repeat="l in lessons |orderBy:'-lastUpdate'| filter:$root.filter.text | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter|filter:statusFilter|filter:userFilter|filter:tagsFilter">
 						<td>
 							<input type="checkbox" style="margin-left:5px;" ng-model="l.selected">
 						</td>
@@ -63,7 +63,7 @@
 			</table>
 		</div>
 		<div class="page-content-sidebar">
-			<div ng-include src="'views/filters/filter.html'" ng-init="showViewsFilter=true;showStatusFilter=true;users=_users"></div>
+			<div ng-include src="'views/filters/filter.html'" ng-init="showViewsFilter=true;showStatusFilter=true;users=_users;showTextFilter=true"></div>
 		</div>
 	</div>
 </div>
