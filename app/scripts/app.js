@@ -54,7 +54,7 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.u
                 templateUrl : 'views/questions/update.html',
                 controller  : 'QuestionsUpdateCtrl'
             })
-            .when('/user/homepage', {
+            .when('/public/homepage', {
                 templateUrl: 'views/homepage.html',
                 controller: 'HomepageCtrl'
             })
@@ -139,6 +139,9 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.u
                 templateUrl: 'views/admin/homepage.html',
                 controller: 'AdminHomepageCtrl'
             })
+            .when('/user/homepage', {
+                redirectTo: '/public/homepage'
+            })
              .when('/user/Parents', {
                 templateUrl: 'views/errors/underConstruction.html'
             })
@@ -152,7 +155,7 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.u
                 templateUrl: 'views/errors/notFound.html'
             })
             .when('/', {
-                redirectTo: '/public/session/login'
+                redirectTo: '/public/homepage'
 //                redirectTo: '/public/session/login'
             })
             .otherwise({

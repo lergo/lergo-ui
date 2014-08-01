@@ -6,6 +6,10 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	var preview = !!$routeParams.preview;
 	LergoClient.lessons.getLessonIntro(lessonId).then(function(result) {
 		$scope.lesson = result.data;
+        $rootScope.page = {
+            'title' : $scope.lesson.name,
+            'description' : $scope.lesson.description
+        };
 		loadQuestions();
 		$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.lesson.language);
 	}, function(result) {

@@ -1,11 +1,21 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService/*
+angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService, $rootScope, $filter/*
 																									 * ,
 																									 * $location,
 																									 * $log
 																									 */) {
 
+
+
+    $scope.$watch( function(){
+        return $filter('i18n')('lergo.title');
+    }, function(){
+        $rootScope.page = {
+            'title' : $filter('i18n')('lergo.title'),
+            'description' : $filter('i18n')('lergo.description')
+        };
+    });
 
 	LergoClient.lessons.getPublicLessons().then(function(result) {
 		$scope.lessons = result.data;
