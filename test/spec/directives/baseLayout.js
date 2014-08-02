@@ -1,13 +1,20 @@
 'use strict';
 
 describe('Directive: baseLayout', function () {
-  beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp', 'directives-templates', function($provide){
+        $provide.value('LergoTranslate',{
+            translate : function(n){ return n;}
+        })
+    }));
 
-  var element;
+    var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<base-layout></base-layout>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the baseLayout directive');
-  }));
+    it('should put getLabelForLanguage on rootScope', inject(function ($rootScope, $compile, $httpBackend) {
+        $httpBackend.expectGET('/backend/user/loggedin').respond(200, '{}');
+        $httpBackend.expectGET('/backend/public/lessons').respond(200, '{}');
+        element = angular.element('<div class="base-layout"></div>');
+        element = $compile(element)($rootScope);
+        $rootScope.$digest();
+        expect(typeof($rootScope.getLabelForLanguage)).toBe('function');
+    }));
 });

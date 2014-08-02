@@ -2,17 +2,17 @@
 
 describe('Service: VideoService', function () {
 
-  // load the service's module
-  beforeEach(module('lergoApp'));
+    // load the service's module
+    beforeEach(module('lergoApp'));
 
-  // instantiate service
-  var VideoService;
-  beforeEach(inject(function (_VideoService_) {
-    VideoService = _VideoService_;
-  }));
+    // instantiate service
+    var mVideoService;
+    beforeEach(inject(function (VideoService) {
+        mVideoService = VideoService;
+    }));
 
-  it('should do something', function () {
-    expect(!!VideoService).toBe(true);
-  });
+    it('should do something', function () {
+        expect(!!mVideoService).toBe(true);
+    });
 
 });

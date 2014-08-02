@@ -1,13 +1,16 @@
 'use strict';
 
 describe('Directive: lergoProgressBar', function () {
-  beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp', 'directives-templates'));
 
-  var element;
+    var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<lergo-progress-bar></lergo-progress-bar>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the lergoProgressBar directive');
-  }));
+    it('should make hidden element visible', inject(function ($rootScope, $compile) {
+        element = angular.element('<div lergo-progress-bar value="value"></div>');
+        $rootScope.value = 50;
+        element = $compile(element)($rootScope);
+        $rootScope.$digest();
+
+        expect(element.text().trim()).toBe('50%');
+    }));
 });

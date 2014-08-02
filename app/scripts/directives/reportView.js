@@ -2,7 +2,7 @@
 
 angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 	return {
-		templateUrl : '/views/lessons/invitations/report/_display.html',
+		templateUrl : 'views/lessons/invitations/report/_display.html',
 		restrict : 'A',
 		scope : {
 			'lesson' : '=',
@@ -137,26 +137,23 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 			};
 
 			$scope.getDuration = function(duration) {
-				if (!duration) {
-					return 0;
-				}
-				var seconds = Math.ceil(duration / 1000);
-				var time = '';
-				if (seconds > 60) {
-					time = seconds % 60 + time;
-					var minutes = Math.floor(seconds / 60);
-					if (minutes > 60) {
-						time = minutes % 60 + ':' + time;
-						time = Math.floor(minutes / 60) + ':' + time;
-					} else {
-						time = '00:' + minutes + ':' + time;
-					}
 
-				} else {
-					time = '00:00:' + seconds;
+                function pad( number ){
+                    return ( '00' + number ).slice(-2);
+                }
+
+				if (!duration) {
+					return '00:00:00';
 				}
-				return time;
+				var durationInSeconds = Math.floor(duration / 1000);
+                var durationInMinutes = Math.floor( durationInSeconds / 60 );
+                var durationInHours = Math.floor( durationInMinutes / 60 );
+
+                return pad(durationInHours) + ':' + pad( durationInMinutes % 60 ) + ':' + pad( durationInSeconds % 60 );
+
+
 			};
+
 		}
 
 	};

@@ -1,13 +1,17 @@
 'use strict';
 
 describe('Directive: textFilter', function () {
-  beforeEach(module('lergoApp'));
+    beforeEach(function () {
+        module('lergoApp');
+        module('directives-templates');
+    });
 
-  var element;
+    var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<text-filter></text-filter>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the textFilter directive');
-  }));
+    it('should create an input tag', inject(function ($rootScope, $compile) {
+        element = angular.element('<div text-filter></div>');
+        element = $compile(element)($rootScope);
+        $rootScope.$digest();
+        expect(element.find('input').length).toBe(1);
+    }));
 });

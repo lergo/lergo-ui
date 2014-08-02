@@ -2,18 +2,18 @@
 
 describe('Filter: shuffle', function () {
 
-  // load the filter's module
-  beforeEach(module('lergoApp'));
+    // load the filter's module
+    beforeEach(module('lergoApp'));
 
-  // initialize a new instance of the filter before each test
-  var shuffle;
-  beforeEach(inject(function ($filter) {
-    shuffle = $filter('shuffle');
-  }));
+    // initialize a new instance of the filter before each test
+    var shuffle;
+    beforeEach(inject(function ($filter) {
+        shuffle = $filter('shuffle');
+    }));
 
-  it('should return the input prefixed with "shuffle filter:"', function () {
-    var text = 'angularjs';
-    expect(shuffle(text)).toBe('shuffle filter: ' + text);
-  });
+    it('should return the array with isShuffled field set to true"', function () {
+        var a = [1, 2, 3, 4];
+        expect(shuffle(a).isShuffled).toBe(true);
+    });
 
 });

@@ -2,17 +2,17 @@
 
 describe('Service: UserDataService', function () {
 
-  // load the service's module
-  beforeEach(module('lergoApp'));
+    // load the service's module
+    beforeEach(module('lergoApp'));
 
-  // instantiate service
-  var UserDataService;
-  beforeEach(inject(function (_UserDataService_) {
-    UserDataService = _UserDataService_;
-  }));
+    // instantiate service
+    var mUserDataService;
+    beforeEach(inject(function (UserDataService) {
+        mUserDataService = UserDataService;
+    }));
 
-  it('should do something', function () {
-    expect(!!UserDataService).toBe(true);
-  });
+    it('should do something', function () {
+        expect(!!mUserDataService).toBe(true);
+    });
 
 });

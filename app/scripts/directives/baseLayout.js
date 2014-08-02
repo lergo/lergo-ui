@@ -2,7 +2,7 @@
 
 angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeout, $log, $location, LergoClient, LergoTranslate) {
     return {
-        templateUrl: '/views/baseLayout.html',
+        templateUrl: 'views/baseLayout.html',
         transclude: true,
         restrict: 'C',
         replace: true,
@@ -45,7 +45,7 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
 
             $rootScope.$watch('lergoLanguage', function (newValue/* , oldValue */) {
                 $log.info('new language', newValue);
-                LergoTranslate.setLanguage(newValue);
+//                LergoTranslate.setLanguage(newValue);
                 $rootScope.$broadcast('siteLanguageChanged');
             });
 

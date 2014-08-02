@@ -1,13 +1,17 @@
 'use strict';
 
 describe('Directive: tagSection', function () {
-  beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp', 'directives-templates', function($provide){
+        $provide.value('LergoTranslate',{
+            translate : function(n){ return n;}
+        })}));
 
-  var element;
+    var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<tag-section></tag-section>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the tagSection directive');
-  }));
+    it('should contain tag-section-wrapper', inject(function ($rootScope, $compile, $httpBackend) {
+        element = angular.element('<div tag-section></div>');
+        element = $compile(element)($rootScope);
+        $rootScope.$digest();
+        expect(element.find('.tag-section-wrapper').length).toBe(1);
+    }));
 });
