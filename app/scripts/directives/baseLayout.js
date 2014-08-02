@@ -45,7 +45,7 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
 
             $rootScope.$watch('lergoLanguage', function (newValue/* , oldValue */) {
                 $log.info('new language', newValue);
-//                LergoTranslate.setLanguage(newValue);
+                LergoTranslate.setLanguage(newValue);
                 $rootScope.$broadcast('siteLanguageChanged');
             });
 

@@ -1,10 +1,15 @@
 'use strict';
 
 describe('Directive: baseLayout', function () {
+
+    var translateMock = {
+        translate: function(n){ return n; },
+        setLanguage: function(){}
+    };
+
     beforeEach(module('lergoApp', 'directives-templates', function($provide){
-        $provide.value('LergoTranslate',{
-            translate : function(n){ return n;}
-        })
+        spyOn(translateMock, 'setLanguage');
+        $provide.value('LergoTranslate',translateMock);
     }));
 
     var element;
@@ -17,4 +22,8 @@ describe('Directive: baseLayout', function () {
         $rootScope.$digest();
         expect(typeof($rootScope.getLabelForLanguage)).toBe('function');
     }));
+
+    if ( 'should invoke setLanguage on LergoTranslate', function(){
+        expect(translateMock.setLanguage).toHaveBeenCalled();
+    });
 });

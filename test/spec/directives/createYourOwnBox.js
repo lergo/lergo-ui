@@ -4,11 +4,12 @@ describe('Directive: createYourOwnBox', function () {
     beforeEach(module('lergoApp', 'directives-templates', function($provide){
         $provide.value('LergoTranslate',{
             translate : function(n){ return n;}
-        })}));
+        });
+    }));
 
     var element;
 
-    it('should make hidden element visible', inject(function ($rootScope, $compile, $httpBackend) {
+    it('should make hidden element visible', inject(function ($rootScope, $compile) {
 
         element = angular.element('<div create-your-own-box></div>');
         element = $compile(element)($rootScope);
