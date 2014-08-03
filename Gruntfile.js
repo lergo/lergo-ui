@@ -119,13 +119,28 @@ module.exports = function (grunt) {
             server: '.tmp'
         },
         jshint: {
-            options: {
-                jshintrc: '.jshintrc'
+            main: {
+                options: {
+                    jshintrc: '.jshintrc'
+                },
+                files:  {
+                    'src':[
+                        'Gruntfile.js',
+                        '<%= yeoman.app %>/scripts/**/*.js'
+                    ]
+                }
             },
-            all: [
-                'Gruntfile.js',
-                '<%= yeoman.app %>/scripts/**/*.js'
-            ]
+            test: {
+                options: {
+                    jshintrc: 'test.jshintrc'
+                },
+                files:  {
+                    'src':[
+                        'test/**/*.js'
+                    ]
+                }
+            }
+
         },
         compass: {
             options: {
@@ -202,6 +217,22 @@ module.exports = function (grunt) {
             //     ]
             //   }
             // }
+        },
+        html2js: {
+            options: {
+                // custom options, see below
+            },
+            main: {
+                src: ['app/views/**/*.html','app/views/*.html'],
+                dest: '.tmp/html2js/directives.js',
+                module: 'directives-templates',
+                options: {
+                    rename: function (moduleName) {
+                        var indexOf = moduleName.indexOf('views');
+                        return moduleName.substring(indexOf);
+                    }
+                }
+            }
         },
         htmlmin: {
             dist: {
@@ -326,6 +357,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
+        'html2js',
         'concurrent:test',
         'connect:test',
         'karma'
@@ -348,7 +380,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'jshint',
-//        'test',
+        'test',
         'build'
     ]);
 };

@@ -1,13 +1,14 @@
 'use strict';
 
 describe('Directive: lessonTitleImage', function () {
-  beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp'));
 
-  var element;
+    var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<lesson-title-image></lesson-title-image>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the lessonTitleImage directive');
-  }));
+    it('should show i element if no lesson on scope', inject(function ($rootScope, $compile) {
+        element = angular.element('<div lesson-title-image></div>');
+        element = $compile(element)($rootScope);
+        $rootScope.$digest();
+        expect(element.find('i').length).toBe(1);
+    }));
 });

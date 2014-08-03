@@ -2,21 +2,30 @@
 
 describe('Controller: LessonsInvitesPublicShareCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('lergoApp'));
+    // load the controller's module
+    beforeEach(module('lergoApp'));
 
-  var LessonsInvitesPublicShareCtrl,
-    scope;
+    var LessonsInvitesPublicShareCtrl,
+        scope;
+    var createAnonymousInvoked = false;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    LessonsInvitesPublicShareCtrl = $controller('LessonsInvitesPublicShareCtrl', {
-      $scope: scope
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function ($controller, $rootScope, $q) {
+        scope = $rootScope.$new();
+        LessonsInvitesPublicShareCtrl = $controller('LessonsInvitesPublicShareCtrl', {
+            $scope: scope,
+            LergoClient: {
+                lessonsInvitations: {
+                    createAnonymous: function () {
+                        createAnonymousInvoked = true;
+                        return $q.defer().promise;
+                    }
+                }
+            }
+        });
+    }));
+
+    it('should call createAnonymous on LergoClient.lessonsInvitations', function () {
+        expect(createAnonymousInvoked).toBe(true);
     });
-  }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
 });

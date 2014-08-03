@@ -2,21 +2,21 @@
 
 describe('Controller: QuestionsIndexCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('lergoApp'));
+    // load the controller's module
+    beforeEach(module('lergoApp'));
 
-  var QuestionsIndexCtrl,
-    scope;
+    var QuestionsIndexCtrl,
+        scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    QuestionsIndexCtrl = $controller('QuestionsIndexCtrl', {
-      $scope: scope
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function ($controller, $rootScope) {
+        scope = $rootScope.$new();
+        QuestionsIndexCtrl = $controller('QuestionsIndexCtrl', {
+            $scope: scope
+        });
+    }));
+
+    it('should put isModal as false on scope', function () {
+        expect(scope.isModal).toBe(false);
     });
-  }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
 });

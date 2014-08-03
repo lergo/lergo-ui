@@ -1,13 +1,14 @@
 'use strict';
 
 describe('Directive: quizItemMedia', function () {
-  beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp', 'directives-templates'));
 
-  var element;
+    var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<quiz-item-media></quiz-item-media>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the quizItemMedia directive');
-  }));
+    it('should add function getMediaTemplate to scope', inject(function ($rootScope, $compile) {
+        element = angular.element('<div quiz-item-media></div>');
+        element = $compile(element)($rootScope);
+        $rootScope.$digest();
+        expect(typeof(element.children().scope().getMediaTemplate)).toBe('function');
+    }));
 });

@@ -2,21 +2,31 @@
 
 describe('Controller: LessonsIntroCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('lergoApp'));
+    // load the controller's module
+    beforeEach(module('lergoApp'));
 
-  var LessonsIntroCtrl,
-    scope;
+    var LessonsIntroCtrl,
+        scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    LessonsIntroCtrl = $controller('LessonsIntroCtrl', {
-      $scope: scope
+    var getLessonIntroInvoked = false;
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function ($controller, $rootScope, $q) {
+        scope = $rootScope.$new();
+        LessonsIntroCtrl = $controller('LessonsIntroCtrl', {
+            $scope: scope,
+            LergoClient: {
+                lessons: {
+                    getLessonIntro: function () {
+                        getLessonIntroInvoked = true;
+                        return $q.defer().promise;
+
+                    }
+                }
+            }
+        });
+    }));
+
+    it('should invoke getLessonIntroInvoked', function () {
+        expect(getLessonIntroInvoked).toBe(true);
     });
-  }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
 });

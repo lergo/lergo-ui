@@ -24,8 +24,7 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.u
                 controller: 'QuestionsReadCtrl'
             })
             .when('/user/lessons/step/display', {
-                templateUrl : 'views/lessons/stepDisplay.html',
-                controller: 'LessonsStepDisplayPageCtrl'
+                templateUrl : 'views/lessons/stepDisplay.html'
             })
             .when('/user/lessons/:lessonId/display', {
                 templateUrl : 'views/lessons/display.html',
@@ -46,7 +45,7 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.u
                 template: '',
                 controller: 'LessonsInvitesPublicShareCtrl'
             })
-            .when('/public/lessons/invitations/:invitationId/report', {
+            .when('/public/lessons/reports/:reportId/display', {
                 templateUrl: 'views/lessons/invitations/report.html',
                 controller: 'LessonsInvitationsReportCtrl'
             })

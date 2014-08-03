@@ -1,5 +1,17 @@
 'use strict';
 
+/**
+ *
+ *
+ *          GUY
+ *
+ *  This is a deprecated directive.
+ *  Use filter instead.
+ *
+ *  keeping it for future references.
+ *
+ *
+ */
 angular.module('lergoApp')
     .directive('multilineEllipsis', function () {
         return {

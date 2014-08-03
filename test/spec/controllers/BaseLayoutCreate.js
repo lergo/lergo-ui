@@ -1,22 +1,25 @@
 'use strict';
 
-describe('Controller: BaselayoutcreateCtrl', function () {
+describe('Controller: BaseLayoutCreateCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('lergoApp'));
+    // load the controller's module
+    beforeEach(module('lergoApp'));
 
-  var BaselayoutcreateCtrl,
-    scope;
+    var BaselayoutcreateCtrl,
+        scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    BaselayoutcreateCtrl = $controller('BaselayoutcreateCtrl', {
-      $scope: scope
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function ($controller, $rootScope, $route, $location) {
+        scope = $rootScope.$new();
+        BaselayoutcreateCtrl = $controller('BaseLayoutCreateCtrl', {
+            $scope: scope,
+            $route: { current: {} },
+            $location: $location
+
+        });
+    }));
+
+    it('should attach lessonTabActive function to scope', function () {
+        expect(typeof(scope.lessonTabActive)).toBe('function');
     });
-  }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
 });
