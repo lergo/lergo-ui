@@ -201,7 +201,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		$scope.isHintUsed = true;
 	};
 
-	$rootScope.$on('nextStepClick', function(event) {
+	$rootScope.$on('nextStepClick', function() {
 		$scope.startTime = null;
 	});
 
