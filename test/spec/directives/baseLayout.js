@@ -23,7 +23,7 @@ describe('Directive: baseLayout', function () {
         expect(typeof($rootScope.getLabelForLanguage)).toBe('function');
     }));
 
-    if ( 'should invoke setLanguage on LergoTranslate', function(){
+    it ( 'should invoke setLanguage on LergoTranslate', function(){
         expect(translateMock.setLanguage).toHaveBeenCalled();
     });
 });
