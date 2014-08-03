@@ -4,7 +4,6 @@ angular.module('lergoApp')
     .controller('LessonsInvitationsDisplayCtrl', function ($scope, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope) {
 
         $log.info('loading invitation', $routeParams.invitationId);
-        $controller('LessonsDisplayCtrl', {$scope: $scope});
 
 
         var updateChange = new ContinuousSave({
@@ -22,6 +21,8 @@ angular.module('lergoApp')
                 $scope.report = report;
                 $scope.$watch('report', updateChange.onValueChange, true);
                 $controller('LessonsReportWriteCtrl', {$scope: $scope});
+
+                $controller('LessonsDisplayCtrl', {$scope: $scope}); // display should be initialized here, we should not show lesson before we can report.
                 $rootScope.$broadcast('startLesson', invitation);
             }
 
@@ -47,7 +48,7 @@ angular.module('lergoApp')
 
 
         $scope.$watch(function () { // broadcast end of lesson if not next step
-            return !!$scope.invitation && !$scope.hasNextStep();
+            return !!$scope.invitation && !!$scope.hasNextStep && !$scope.hasNextStep();
         }, function (newValue/*, oldValue*/) {
             if (!!newValue) {
                 $rootScope.$broadcast('endLesson');

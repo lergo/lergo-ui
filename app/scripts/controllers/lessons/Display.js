@@ -46,9 +46,10 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	}
 
 	$scope.$watch('currentStepIndex', function(newValue, oldValue) {
+        $log.info('currentStepIndex changed', newValue, oldValue );
 		updateCurrentStep();
 		$location.search('currentStepIndex', newValue);
-		$rootScope.$broadcast('nextStepClick', {
+		$rootScope.$broadcast('stepIndexChange', {
 			'old' : oldValue,
 			'new' : newValue
 		});

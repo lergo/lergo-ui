@@ -50,10 +50,17 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 	});
 
 	// data is step
-	$scope.$on('nextStepClick', function(event, data) {
-		$log.info('nextStepClicked', event, data);
-		stepIndex++;
-	});
+
+    // guy - deprecated, use stepIndexChange instead.
+//	$scope.$on('nextStepClick', function(event, data) {
+//		$log.info('nextStepClicked', event, data);
+//		stepIndex++;
+//	});
+
+    $scope.$on('stepIndexChange', function(event,data){
+         $log.info('stepIndexChange',data);
+        stepIndex = ~~data.new;
+    });
 
 	// in case user answered a question, and then changed the answer, we
 	// will need to find the answer again
@@ -96,5 +103,7 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 			'duration' : data.duration
 		});
 	});
+
+    $log.info('report writer initialized');
 
 });

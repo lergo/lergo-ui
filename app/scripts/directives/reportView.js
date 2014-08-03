@@ -131,9 +131,7 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 			};
 
 			$scope.getStepViewByType = function(step) {
-				var result = '/views/lessons/invitations/report/steps/_' + step.type + '.html';
-				$log.info('result', result);
-				return result;
+				return '/views/lessons/invitations/report/steps/_' + step.type + '.html';
 			};
 
 			$scope.getDuration = function(duration) {
