@@ -58,7 +58,8 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 //	});
 
     $scope.$on('stepIndexChange', function(event,data){
-         $log.info('stepIndexChange',data);
+        $log.info('stepIndexChange',data);
+        /* jshint -W052 */
         stepIndex = ~~data.new;
     });
 
