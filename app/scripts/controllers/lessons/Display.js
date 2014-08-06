@@ -2,6 +2,12 @@
 
 angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, $log, $controller, $rootScope, $location) {
 
+    // guy - using this flag because ng-cloak and other solutions will not apply to this scenario.
+    // the display to the lesson is simply taking time, because we have to fetch the lesson and the report
+    // so once they are loaded, we will switch that flag to true.
+    // otherwise we get a flash of the last screen (LERGO-358).
+    $scope.loaded = false;
+
 	$log.info('loading lesson display ctrl');
 	if (!!$routeParams.lessonId) {
         // guy - using public here to support admin's preview.
@@ -10,6 +16,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 			$log.info('got lesson', result.data);
 			$scope.lesson = result.data;
 			$scope.lesson.image= LergoClient.lessons.getTitleImage($scope.lesson);
+            $scope.loaded = true;
 		}, function(result) {
 			$log.info('error while getting lesson', result.data);
 		});
