@@ -16,7 +16,6 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 			$log.info('got lesson', result.data);
 			$scope.lesson = result.data;
 			$scope.lesson.image= LergoClient.lessons.getTitleImage($scope.lesson);
-            $scope.loaded = true;
 		}, function(result) {
 			$log.info('error while getting lesson', result.data);
 		});
@@ -88,5 +87,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	$scope.$on('quizComplete', function(event, data) {
 		$scope.isQuizComplete = data;
 	});
+
+    $scope.loaded = true;
 
 });
