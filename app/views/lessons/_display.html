@@ -1,9 +1,15 @@
-<div ng-show="showSteps() && hasNextStep() " class="next-step" ng-cloak>
+<div ng-show="loaded && showSteps() && hasNextStep() " class="next-step" ng-cloak>
 	<div ng-include="'/views/lessons/_stepDisplay.html'"></div>
 	<br />
 	<div ng-show="hasNextStep()" style="text-align: center">
 		<button ng-click="nextStep()" ng-disabled="!isQuizComplete" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
 	</div>
+</div>
+<div ng-show="!loaded" class="loading">
+<div>
+	<i class="fa fa-cog fa-spin"></i>
+</div>
+<div>{{'loading' | i18n}}</div>
 </div>
 <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step">
 	<div class="image">

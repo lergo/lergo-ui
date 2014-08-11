@@ -10,10 +10,6 @@
 						<a ng-click="startLesson()" ng-show="!!lesson">
 							<i class="fa fa-play-circle-o " tooltip="{{'lessons.startLesson' | i18n}}"></i>
 						</a>
-						<a ng-show="!lesson">
-							<i class="fa fa-cog fa-spin"></i>
-							{{'loading' | i18n}}
-						</a>
 					</span>
 				</div>
 				<div class="action-items" ng-show="!!showActionItems()">
@@ -69,7 +65,7 @@
 							<span>{{'filters.subjects.' + lesson.subject | i18n}}</span>
 						</span>
 					</div>
-					<div class="action-items" ng-show="!!lesson">
+					<div class="action-items">
 						<button class="btn-link" ng-click="startLesson()" tooltip="{{'lessons.tooltip.start' | i18n}}">
 							<i class="fa fa-play-circle-o "></i>
 							{{'start' | i18n}}
