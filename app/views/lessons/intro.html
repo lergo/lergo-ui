@@ -7,8 +7,12 @@
 				</div>
 				<div class="start-lesson">
 					<span class="button">
-						<a ng-click="startLesson()">
+						<a ng-click="startLesson()" ng-show="!!lesson">
 							<i class="fa fa-play-circle-o " tooltip="{{'lessons.startLesson' | i18n}}"></i>
+						</a>
+						<a ng-show="!lesson">
+							<i class="fa fa-cog fa-spin"></i>
+							{{'loading' | i18n}}
 						</a>
 					</span>
 				</div>
@@ -44,7 +48,7 @@
 						<i class="fa fa-question-circle fa-fw"></i>
 						{{ lesson | countQuestionsOnLesson }}
 					</span>
-                    <span class="stats-button" tooltip="{{'homepage.tooltip.likes' | i18n}}">
+					<span class="stats-button" tooltip="{{'homepage.tooltip.likes' | i18n}}">
 						<i class="fa fa-thumbs-o-up"></i>
 						{{ lessonLikes }}
 					</span>
@@ -65,51 +69,44 @@
 							<span>{{'filters.subjects.' + lesson.subject | i18n}}</span>
 						</span>
 					</div>
-					<div class="action-items">
+					<div class="action-items" ng-show="!!lesson">
 						<button class="btn-link" ng-click="startLesson()" tooltip="{{'lessons.tooltip.start' | i18n}}">
 							<i class="fa fa-play-circle-o "></i>
 							{{'start' | i18n}}
 						</button>
-
-                        <span show-logged-in>
-                            <button class="btn-link" ng-click="likeLesson()" tooltip="{{'lessons.tooltip.like' | i18n}}"
-                                    ng-show="!isLiked()">
-                                <i class="fa fa-thumbs-o-up "></i>
-                                {{'like' | i18n}}
-                            </button>
-                            <span class="btn-link dropdown" ng-click="noop()"
-                                  tooltip="{{'lessons.tooltip.liked' | i18n}}" ng-show="!!isLiked()">
-                                <span class="dropdown-toggle">
-                                    <i class="fa fa-thumbs-o-up "></i>
-                                    {{'liked' | i18n}}
-                                    <i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
-                                    <span ng-show="!!showMenu">
-                                        <button class="btn-link">{{'dislike' | i18n}}</button>
-                                    </span>
-                                </span>
-                                <span class="dropdown-menu">
-                                    <li>
-                                        <button class="btn-link" ng-click="unlikeLesson()">{{ 'unlike' | i18n }}
-                                        </button>
-                                    </li>
-                                </span>
-                            </span>
-                        </span>
-
-                        <a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="right"
-                                popover-trigger="focus" tabindex="0" >
-                            <i class="fa fa-thumbs-o-up "></i>
-                            {{'like' | i18n}}
-                        </a>
-
-                        <button show-logged-in class="btn-link" ng-click="showHideInvite()"
-                                tooltip="{{'lessons.tooltip.invite' | i18n}}">
-                            <i class="fa fa-envelope "></i>
-                            {{'invite' | i18n}}
-                        </button>
+						<span show-logged-in>
+							<button class="btn-link" ng-click="likeLesson()" tooltip="{{'lessons.tooltip.like' | i18n}}" ng-show="!isLiked()">
+								<i class="fa fa-thumbs-o-up "></i>
+								{{'like' | i18n}}
+							</button>
+							<span class="btn-link dropdown" ng-click="noop()" tooltip="{{'lessons.tooltip.liked' | i18n}}" ng-show="!!isLiked()">
+								<span class="dropdown-toggle">
+									<i class="fa fa-thumbs-o-up "></i>
+									{{'liked' | i18n}}
+									<i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
+									<span ng-show="!!showMenu">
+										<button class="btn-link">{{'dislike' | i18n}}</button>
+									</span>
+								</span>
+								<span class="dropdown-menu">
+									<li>
+										<button class="btn-link" ng-click="unlikeLesson()">{{ 'unlike' | i18n }}</button>
+									</li>
+								</span>
+							</span>
+						</span>
+						<a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="right" popover-trigger="focus"
+							tabindex="0">
+							<i class="fa fa-thumbs-o-up "></i>
+							{{'like' | i18n}}
+						</a>
+						<button show-logged-in class="btn-link" ng-click="showHideInvite()" tooltip="{{'lessons.tooltip.invite' | i18n}}">
+							<i class="fa fa-envelope "></i>
+							{{'invite' | i18n}}
+						</button>
 						<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-						<a href="" show-anonymous class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="right"
-							popover-trigger="focus" tabindex="0">
+						<a href="" show-anonymous class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="right" popover-trigger="focus"
+							tabindex="0">
 							<i class="fa fa-envelope "></i>
 							{{'invite' | i18n}}
 						</a>
@@ -169,10 +166,10 @@
 							</div>
 						</div>
 						<div class="read-more" style="text-align: center" ng-show="showReadMore() " ng-click="more=!more">
-                                <hr class="dashes">
-                                <span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
-                                <span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
-                                <hr class="dashes">
+							<hr class="dashes">
+							<span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
+							<span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
+							<hr class="dashes">
 						</div>
 					</div>
 				</div>
