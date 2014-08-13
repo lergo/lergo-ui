@@ -50,7 +50,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
             return true;
         }
 
-        if (!tags) { // if filter has tags, but lesson doesn't, filter it out.
+        if (!tags || tags.length === 0) { // if filter has tags, but lesson doesn't, filter it out.
             return false;
         }
 

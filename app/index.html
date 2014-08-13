@@ -18,7 +18,8 @@
         <!-- endbuild -->
       <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 </head>
-  <body ng-view="" style="position:relative" class="{{$root.lergoLanguage | i18nDirection }} {{$root.lergoLanguage}}">
+  <body style="position:relative" class="{{$root.lergoLanguage | i18nDirection }} {{$root.lergoLanguage}}">
+  <div ng-view=""></div>
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -58,7 +59,7 @@
     <!-- endbuild -->
 
         <!-- build:js scripts/plugins.js -->
-        <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -140,6 +141,10 @@
     <script src="scripts/directives/session/showLoggedIn.js"></script>
     <script src="scripts/directives/textFilter.js"></script>
     <script src="scripts/services/ReportsService.js"></script>
+    <script src="scripts/directives/disqus.js"></script>
+    <script src="scripts/services/DisqusService.js"></script>
+    <script src="scripts/controllers/DisqusPage.js"></script>
+    <script src="scripts/directives/disqusEmbed.js"></script>
     <!-- endbuild -->
 </body>
 </html>
