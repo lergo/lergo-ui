@@ -2,28 +2,53 @@
 
 describe('Directive: baseLayout', function () {
 
+
     var translateMock = {
-        translate: function(n){ return n; },
-        setLanguage: function(){}
+        translate: function (n) {
+            return n;
+        },
+        setLanguage: function () {
+            console.log('setting language', arguments);
+            return 'guy';
+        }
     };
 
-    beforeEach(module('lergoApp', 'directives-templates', function($provide){
-        spyOn(translateMock, 'setLanguage');
-        $provide.value('LergoTranslate',translateMock);
-    }));
 
     var element;
+    beforeEach(module('lergoApp', 'directives-templates', function ($provide) {
+        console.log('spying on setLanguage');
+        $provide.value('LergoTranslate', translateMock);
 
-    it('should put getLabelForLanguage on rootScope', inject(function ($rootScope, $compile, $httpBackend) {
-        $httpBackend.expectGET('/backend/user/loggedin').respond(200, '{}');
-        $httpBackend.expectGET('/backend/public/lessons').respond(200, '{}');
-        element = angular.element('<div class="base-layout"></div>');
-        element = $compile(element)($rootScope);
-        $rootScope.$digest();
-        expect(typeof($rootScope.getLabelForLanguage)).toBe('function');
+//
     }));
 
-    it ( 'should invoke setLanguage on LergoTranslate', function(){
-        expect(translateMock.setLanguage).toHaveBeenCalled();
+    function setup() {
+        inject(function ($rootScope, $compile, $httpBackend) {
+            console.log('translateMock.setLanguage typeof is ', typeof(translateMock.setLanguage));
+
+            spyOn(translateMock, 'setLanguage');
+            $httpBackend.expectGET('/backend/user/loggedin').respond(200, '{}');
+            $httpBackend.expectGET('/backend/public/lessons').respond(200, '{}');
+            element = angular.element('<div class="base-layout"></div>');
+            element = $compile(element)($rootScope);
+            $rootScope.$digest();
+        });
+    }
+
+
+    describe('something', function () {
+
+
+        it('should put getLabelForLanguage on rootScope', inject(function ($rootScope) {
+            setup();
+            expect(typeof($rootScope.getLabelForLanguage)).toBe('function');
+
+        }));
+//
+        it('should invoke setLanguage on LergoTranslate', function () {
+            setup();
+            expect(translateMock.setLanguage).toHaveBeenCalled();
+
+        });
     });
 });
