@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope,LergoClient,TagsService,FilterService) {
+angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope,LergoClient,TagsService,FilterService,$log) {
 
 	$scope.languageFilter = function(report) {
 		return FilterService.filterByLanguage(report.data.lesson.language);
@@ -61,7 +61,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope,LergoC
             $scope.availableTags = TagsService.getTagsFromItems( $scope.reports );
             $scope.invitees = [];
             angular.forEach($scope.reports, function(item) {
-            	if ($scope.invitees.indexOf(item.data.invitee.name) == -1) {
+            	if ($scope.invitees.indexOf(item.data.invitee.name) === -1) {
                     $scope.invitees.push(item.data.invitee.name);
                 }
 			});
