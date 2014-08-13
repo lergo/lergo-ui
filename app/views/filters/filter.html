@@ -5,13 +5,18 @@
 			<input type="text" ng-model="$root.filter.user" typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
 		</div>
 	</div>
-    <div ng-show="!!showTextFilter">
-        <div class="label">{{'filters.labels.text' | i18n }}</div>
-        <div>
-            <div text-filter items="getTextFilterItems()" model="$root.filter.text" placeholder="{{'filters.labels.text' | i18n  }}"></div>
-        </div>
-
-    </div>
+	<div ng-show="!!inviteeFilter" class='container-fluid'>
+		<div class="label">{{'filters.labels.doneByStudent' | i18n}}</div>
+		<div class="input">
+			<input type="text" ng-model="$root.filter.invitee" typeahead="invitee as invitee for invitee in invitees | filter:$viewValue | limitTo:15 ">
+		</div>
+	</div>
+	<div ng-show="!!showTextFilter">
+		<div class="label">{{'filters.labels.text' | i18n }}</div>
+		<div>
+			<div text-filter items="getTextFilterItems()" model="$root.filter.text" placeholder="{{'filters.labels.text' | i18n  }}"></div>
+		</div>
+	</div>
 	<div class="label">{{'filters.labels.language' | i18n }}</div>
 	<div class="input">
 		<select ng-options="l.id as ('filters.languages.' + l.id | i18n) for l in languages" ng-model="$root.filter.language">
@@ -24,11 +29,13 @@
 			<option value="">{{'filters.all'|i18n}}</option>
 		</select>
 	</div>
-	<div class="label">{{'filters.labels.ageRange' | i18n }}</div>
-	<div>
-		<input min="1" max="100" size="1" class="number" type="number" ng-model="$root.filter.ageRange.min" />
-		{{'filters.to'|i18n}}
-		<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.ageRange.max" />
+	<div ng-show="!!agefilter">
+		<div class="label">{{'filters.labels.ageRange' | i18n }}</div>
+		<div>
+			<input min="1" max="100" size="1" class="number" type="number" ng-model="$root.filter.ageRange.min" />
+			{{'filters.to'|i18n}}
+			<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.ageRange.max" />
+		</div>
 	</div>
 	<div ng-show="!!showViewsFilter">
 		<div class="label">{{'filters.labels.views' | i18n }}</div>
@@ -46,11 +53,18 @@
 			</select>
 		</div>
 	</div>
-    <div>
-        <div class="label">{{'filters.labels.tags' | i18n }}</div>
-        <div>
-            <div tag-section tags="$root.filter.tags" tags-available="availableTags"></div>
-        </div>
-
-    </div>
+	<div ng-show="!!correctPercentageFilter">
+		<div class="label">{{'filters.labels.correctPercentage' | i18n }}</div>
+		<div>
+			<input min="1" max="100" size="1" class="number" type="number" ng-model="$root.filter.correctPercentage.min" />
+			{{'filters.to'|i18n}}
+			<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.correctPercentage.max" />
+		</div>
+	</div>
+	<div>
+		<div class="label">{{'filters.labels.tags' | i18n }}</div>
+		<div>
+			<div tag-section tags="$root.filter.tags" tags-available="availableTags"></div>
+		</div>
+	</div>
 </form>

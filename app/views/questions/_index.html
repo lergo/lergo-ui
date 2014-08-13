@@ -44,6 +44,6 @@
 		<div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
 	</div>
 	<div class="page-content-sidebar">
-		<div ng-include src="'views/filters/filter.html'" ng-init="showTextFilter=true"></div>
+		<div ng-include src="'views/filters/filter.html'" ng-init="showTextFilter=true;agefilter=true"></div>
 	</div>
 </div>
