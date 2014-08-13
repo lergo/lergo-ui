@@ -7,4 +7,8 @@ angular.module('lergoApp')
             return $http.get('/backend/user/me/lessons');
         };
         // AngularJS will instantiate a singleton by calling "new" on this function
+        
+        this.getReports = function () {
+            return $http.get('/backend/user/me/reports');
+        };
     });
