@@ -38,7 +38,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="report in reports |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:tagsFilter | filter:studentFilter">
+					<tr
+						ng-repeat="report in reports |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:tagsFilter | filter:studentFilter |filter:percentageFilter">
 						<td>
 							<input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
 						</td>
@@ -51,6 +52,8 @@
 						<td class="answer">{{report.data.invitee.name}}</td>
 						<td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject | i18n) ||""}}</td>
 						<td class="answer">{{report.lastUpdate| date:'d-MMM-yyyy HH:MM'}}</td>
+						<td class="answer">{{report.correctPercentage}}</td>
+						<td class="answer">{{report.duration|duration}}</td>
 					</tr>
 				</tbody>
 			</table>
