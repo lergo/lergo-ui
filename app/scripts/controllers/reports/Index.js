@@ -3,20 +3,35 @@
 angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log) {
 
 	$scope.languageFilter = function(report) {
+		if (!report || !report.data || !report.data.lesson) {
+			return true;
+		}
 		return FilterService.filterByLanguage(report.data.lesson.language);
 	};
 	$scope.subjectFilter = function(report) {
+		if (!report || !report.data || !report.data.lesson) {
+			return true;
+		}
 		return FilterService.filterBySubject(report.data.lesson.subject);
 	};
 
 	$scope.tagsFilter = function(report) {
+		if (!report || !report.data || !report.data.lesson) {
+			return true;
+		}
 		return FilterService.filterByTags(report.data.lesson.tags);
 	};
 	$scope.studentFilter = function(report) {
+		if (!report || !report.data || !report.data.invitee) {
+			return true;
+		}
 		return FilterService.filterByInvitee(report.data.invitee.name);
 	};
-	
+
 	$scope.percentageFilter = function(report) {
+		if (!report) {
+			return true;
+		}
 		return FilterService.filterByCorrectPercentage(report.correctPercentage);
 	};
 
