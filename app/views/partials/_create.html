@@ -5,7 +5,10 @@
 		<div ng-include="'views/lessons/_index.html'" ng-controller="LessonsIndexCtrl"></div>
 		</tab> <tab  ng-click="questionTabActive()" heading="{{'baseLayout.header.links.questions' | i18n}}" active="isQuestionTabActive">
 		<div ng-include="'views/questions/_index.html'" ng-controller="QuestionsIndexCtrl"></div>
-		</tab> 
+		</tab>
+		<tab  ng-click="reportTabActive()" heading="{{'baseLayout.header.links.reports' | i18n}}" active="isReportTabActive">
+		<div ng-include="'views/reports/_index.html'" ng-controller="ReportsIndexCtrl"></div>
+		</tab>  
 		<!-- <tab heading="Admin">
 		<div ng-include="'views/admin/homepage.html'" ng-controller="AdminHomepageCtrl"></div>
 		</tab> --> </tabset>
