@@ -11,9 +11,9 @@ describe('Filter: duration', function() {
 		duration = $filter('duration');
 	}));
 
-	it('should return the input prefixed with "duration filter:"', function() {
-		var text = 'angularjs';
-		expect(duration(text)).toBe('duration filter: ' + text);
-	});
+    it('should display duration in format hh:mm:ss', function () {
+        expect(duration(0)).toBe('00:00:00');
+        expect(duration(606012345)).toBe('68:20:12');
+    });
 
 });

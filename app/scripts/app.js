@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.utils', 'btford.markdown' ])
-    .config(function ($routeProvider, $httpProvider, $logProvider) {
+    .config(function ($routeProvider, $httpProvider, $logProvider, $locationProvider) {
 
         $logProvider.debugEnabled(false);
+
+//        $locationProvider
+//            .html5Mode(false)
+//            .hashPrefix('!');
 
         $routeProvider
             .when('/user/lesson/create',{
@@ -151,6 +155,11 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.u
             })
              .when('/user/Teachers', {
                 templateUrl: 'views/errors/underConstruction.html'
+            })
+
+            .when('/disqus/:disqus_identifier', {
+                controller: 'DisqusPageCtrl',
+                templateUrl : 'views/disqusPage.html'
             })
              .when('/public/contribute', {
                 templateUrl: 'views/partials/_contribute.html'

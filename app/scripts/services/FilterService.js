@@ -19,7 +19,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		'locale' : 'en'
 	} ];
 
-	this.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'other' ];
+    this.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'other' ];
 
 	this.status = [ 'private', 'public' ];
 
@@ -56,7 +56,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 			return true;
 		}
 
-		if (!tags) { // if filter has tags, but lesson doesn't, filter it
+		if (!tags || tags.length === 0) { // if filter has tags, but lesson doesn't, filter it
 						// out.
 			return false;
 		}
@@ -141,7 +141,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		}
 		return !status;
 	};
-
+	
 	this.filterByUser = function(user) {
 		var filter = $rootScope.filter;
 		if (!filter || !filter.user || !user) {

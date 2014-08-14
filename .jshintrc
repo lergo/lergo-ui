@@ -24,6 +24,7 @@
         "d3": false,
         "prettyPrintOne": false,
         "_": false,
-        "confirm":false
+        "confirm":false ,
+        "conf" : false
     }
 }
