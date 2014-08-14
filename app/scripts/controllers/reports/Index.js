@@ -130,7 +130,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 					wrong++;
 				}
 			});
-			report.correctPercentage = (correct * 100) / (correct + wrong);
+			report.correctPercentage = Math.round((correct * 100) / (correct + wrong));
 		});
 	}
 });
