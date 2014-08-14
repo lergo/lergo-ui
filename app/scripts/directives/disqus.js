@@ -54,8 +54,7 @@ angular.module('lergoApp')
                     {
                         'type': 'text/javascript',
                         'async': true,
-                        'src': 'scripts/disqus.js'
-//                        'src': '//' + window.disqus_shortname + '.disqus.com/embed.js'
+                        'src': '//' + window.disqus_shortname + '.disqus.com/embed.js'
                     }
                 );
 
