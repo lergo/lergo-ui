@@ -8,6 +8,7 @@ files = [
   JASMINE,
   JASMINE_ADAPTER,
   'app/bower_components/jquery/jquery.js',
+  'app/bower_components/lodash/dist/lodash.js',
   'app/bower_components/angular/angular.js',
   'app/bower_components/angular-mocks/angular-mocks.js',
   'app/bower_components/angular-route/angular-route.js',

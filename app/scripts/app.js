@@ -5,9 +5,9 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.u
 
         $logProvider.debugEnabled(false);
 
-        $locationProvider
-            .html5Mode(false)
-            .hashPrefix('!');
+//        $locationProvider
+//            .html5Mode(false)
+//            .hashPrefix('!');
 
         $routeProvider
             .when('/user/lesson/create',{

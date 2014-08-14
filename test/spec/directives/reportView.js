@@ -15,8 +15,4 @@ describe('Directive: lessonView', function () {
     }));
 
 
-    it('should display duration in format hh:mm:ss', function () {
-        expect(elementScope.getDuration(0)).toBe('00:00:00');
-        expect(elementScope.getDuration(606012345)).toBe('68:20:12');
-    });
 });

@@ -14,7 +14,7 @@ angular.module('lergoApp')
             scope: {
                 'lesson': '='
             },
-            link: function postLink(scope, element, attrs) {
+            link: function postLink(scope, element/*, attrs*/) {
                 element = $(element);
                 // resizing iframe
                 function resizeIframe() {
@@ -44,12 +44,12 @@ angular.module('lergoApp')
                     var str = [];
                     for (var p in obj) {
                         if (obj.hasOwnProperty(p)) {
-                            var k = prefix ? prefix + "[" + p + "]" : p,
+                            var k = prefix ? prefix + '[' + p + ']' : p,
                                 v = obj[k];
-                            str.push(angular.isObject(v) ? qs(v, k) : (k) + "=" + encodeMe(v));
+                            str.push(angular.isObject(v) ? qs(v, k) : (k) + '=' + encodeMe(v));
                         }
                     }
-                    return str.join("&");
+                    return str.join('&');
                 };
 
 
@@ -67,12 +67,13 @@ angular.module('lergoApp')
 
                         // add category if exists
                         if (!!conf && !!conf.disqus && !!conf.disqus.lessonsCateogry) {
+                            /*jshint camelcase: false */
                             queryObject.disqus_category_id = conf.disqus.lessonsCategory;
                         }
 
                         window.title = window.disqus_title;
 
-                        var $iframe = $("<iframe></iframe>", {
+                        var $iframe = $('<iframe></iframe>', {
                             'src': '/index.html#/disqus/' + lesson._id + '?' + qs(queryObject),
                             'width': '100%',
                             'frameBorder': '0',
