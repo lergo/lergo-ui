@@ -19,7 +19,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		'locale' : 'en'
 	} ];
 
-    this.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'other' ];
+	this.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'other' ];
 
 	this.status = [ 'private', 'public' ];
 
@@ -43,32 +43,39 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		return 'english';
 	};
 
-    this.filterByTags = function (tags) {
-        var filter = $rootScope.filter;
+	this.filterByTags = function(tags) {
+		var filter = $rootScope.filter;
 
-        if (!filter || !filter.tags || filter.tags.length === 0) { // if filter does not have tags, let this lesson through
-            return true;
-        }
+		if (!filter || !filter.tags || filter.tags.length === 0) { // if filter
+																	// does not
+																	// have
+																	// tags, let
+																	// this
+																	// lesson
+																	// through
+			return true;
+		}
 
-        if (!tags) { // if filter has tags, but lesson doesn't, filter it out.
-            return false;
-        }
+		if (!tags) { // if filter has tags, but lesson doesn't, filter it
+						// out.
+			return false;
+		}
 
-        // make lesson tags a regexp.
-        // if one of the filter tags don't match the regexp,
-        // this means this lesson does not have a tag that exists on filter
-        // and thus should be filtered out.
-        var filterRegExp = new RegExp($.map(tags, function (item) {
-            return item.label;
-        }).join('|'), 'i');
-        for (var i = 0; i < filter.tags.length; i++) {
-            if (!filter.tags[i].label.match(filterRegExp)) {
-                return false;
-            }
-        }
+		// make lesson tags a regexp.
+		// if one of the filter tags don't match the regexp,
+		// this means this lesson does not have a tag that exists on filter
+		// and thus should be filtered out.
+		var filterRegExp = new RegExp($.map(tags, function(item) {
+			return item.label;
+		}).join('|'), 'i');
+		for ( var i = 0; i < filter.tags.length; i++) {
+			if (!filter.tags[i].label.match(filterRegExp)) {
+				return false;
+			}
+		}
 
-        return true;
-    };
+		return true;
+	};
 
 	/**
 	 * This function require ageRange and age to verify whether age is with in
@@ -134,7 +141,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		}
 		return !status;
 	};
-	
+
 	this.filterByUser = function(user) {
 		var filter = $rootScope.filter;
 		if (!filter || !filter.user || !user) {
@@ -156,4 +163,20 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		return false;
 	};
 
+	this.filterByCorrectPercentage = function(correctPercentage) {
+		var filter = $rootScope.filter;
+		if (!filter || !filter.correctPercentage || (!filter.correctPercentage.min && !filter.correctPercentage.max)) {
+			return true;
+		}
+		if (!correctPercentage) {
+			return false;
+		}
+		if (filter.correctPercentage.min && correctPercentage < filter.correctPercentage.min) {
+			return false;
+		}
+		if (filter.correctPercentage.max && correctPercentage > filter.correctPercentage.max) {
+			return false;
+		}
+		return true;
+	};
 });
