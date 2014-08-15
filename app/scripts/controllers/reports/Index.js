@@ -95,9 +95,9 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 	$scope.deleteReports = function() {
 		angular.forEach($scope.reports, function(report) {
 			if (report.selected === true) {
-				$scope.reports.splice($scope.reports.indexOf(report), 1);
 				LergoClient.reports.deleteReport(report).then(function() {
 					$scope.errorMessage = null;
+					$scope.reports.splice($scope.reports.indexOf(report), 1);
 					$log.info('report deleted successfully');
 				}, function(result) {
 					$scope.errorMessage = 'Error in deleting report : ' + result.data.message;
