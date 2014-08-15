@@ -12,9 +12,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		return FilterService.filterBySubject(quizItem.subject);
 	};
 
-    $scope.tagsFilter = function(quizItem){
-        return FilterService.filterByTags(quizItem.tags);
-    };
+	$scope.tagsFilter = function(quizItem) {
+		return FilterService.filterByTags(quizItem.tags);
+	};
 
 	$scope.createNewQuestion = function() {
 		QuestionsService.createQuestion({
@@ -32,22 +32,26 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	QuestionsService.getUserQuestions().then(function(result) {
 		$scope.items = result.data;
 		$scope.errorMessage = null;
-        $scope.availableTags = TagsService.getTagsFromItems( $scope.items );
+		$scope.availableTags = TagsService.getTagsFromItems($scope.items);
 	}, function(result) {
 		$scope.error = result.data;
 		$scope.errorMessage = 'Error in fetching questions : ' + result.data.message;
 		$log.error($scope.errorMessage);
 	});
 
-    $scope.getTextFilterItems = function(){
-        return $scope.items;
-    };
+	$scope.getTextFilterItems = function() {
+		return $scope.items;
+	};
 
 	$scope.getAnswers = function(quizItem) {
-		if (!quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
+		if (!quizItem.type) {
 			return '';
 		}
-		return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
+		var type = QuestionsService.getTypeById(quizItem.type);
+		if (!type || !type.answers(quizItem)) {
+			return '';
+		}
+		return type.answers(quizItem);
 	};
 
 	$scope.selectAll = function(event) {
@@ -74,9 +78,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 				continue;
 			} else if (!FilterService.filterBySubject(items[i].subject)) {
 				continue;
-			}else if ( !FilterService.filterByTags(items[i].tags)){
-                continue;
-            }  else {
+			} else if (!FilterService.filterByTags(items[i].tags)) {
+				continue;
+			} else {
 				filteredItems.push(items[i]);
 			}
 		}

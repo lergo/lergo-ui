@@ -168,9 +168,11 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'reportTemplate' : 'views/questions/report/_fillInTheBlanks.html',
 		'answers' : function(quizItem) {
 			var answer = [];
-			for ( var i = 0; i < quizItem.answer.length; i++) {
-				answer[i] = quizItem.answer[i].split(';').join(' / ');
+			if (!!quizItem.answer) {
+				for ( var i = 0; i < quizItem.answer.length; i++) {
+					answer[i] = quizItem.answer[i].split(';').join(' / ');
 
+				}
 			}
 			return answer.join(' ; ');
 		},

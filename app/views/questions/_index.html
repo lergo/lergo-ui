@@ -39,6 +39,7 @@
 				<td class="answer">{{item.language && ('filters.languages.' + item.language | i18n) || ""}}</td>
 				<td class="answer">{{item.subject && ('filters.subjects.' + item.subject | i18n) ||""}}</td>
 				<td class="answer">{{item.age &&('+'+ item.age) || ""}}</td>
+				<td><a href="#/user/questions/{{item._id}}/update">edit</a></td>
 			</tr>
 		</table>
 		<div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
