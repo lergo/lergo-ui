@@ -78,10 +78,13 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			});
 			$scope.isHintUsed = false;
 			$scope.$emit('quizComplete', !$scope.hasNextQuizItem());
+			$scope.updateProgressPercent();
+			if ($scope.hasNextQuizItem() && !!$scope.step && !!$scope.step.testMode) {
+				$scope.nextQuizItem();
+			}
 		}, function() {
 			$log.error('there was an error checking answer');
 		});
-		$scope.updateProgressPercent();
 	};
 
 	$scope.getQuizItem = function() {
