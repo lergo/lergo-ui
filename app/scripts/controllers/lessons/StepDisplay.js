@@ -38,7 +38,6 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		// guy - do not use 'hasOwnProperty' as scope might not have the
 		// property, but there is such a value.
 		if (!!$scope.step && !!$scope.step.quizItems && !$scope.questions) {
-
 			LergoClient.questions.findQuestionsById($scope.step.quizItems).then(function(result) {
 				var questions = {};
 				for ( var i in result.data) {
@@ -46,7 +45,6 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				}
 				$scope.questions = questions;
 			});
-
 		}
 		$scope.$emit('quizComplete', canMoveToNextStep());
 	}
@@ -62,7 +60,6 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.checkAnswer = function() {
 		var quizItem = $scope.quizItem;
-
 		var duration = new Date().getTime() - $scope.startTime;
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
 			$scope.answers[quizItem._id] = result.data;
@@ -76,7 +73,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			$scope.isHintUsed = false;
 			$scope.$emit('quizComplete', canMoveToNextStep());
 			$scope.updateProgressPercent();
-			if ($scope.hasNextQuizItem() && !!$scope.step && !!$scope.step.testMode) {
+			if ($scope.hasNextQuizItem() && !!$scope.step && $scope.step.testMode === "True") {
 				$scope.nextQuizItem();
 			}
 		}, function() {

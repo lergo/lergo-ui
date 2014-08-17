@@ -20,11 +20,13 @@
 	</div>
 </div>
 <div ng-show="mode==='quiz'">
-	<div lergo-progress-bar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></div>
+	<div lergo-progress-bar animate="true" value="progressPercentage" type="primary" class="progressbar">
+		<b>{{progressPercentage}}%</b>
+	</div>
 	<!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
 </div>
 <br>
-<div class="result" ng-show="((!!getAnswer(quizItem))&& (!step.testMode))">
+<div class="result" ng-show="!!getAnswer(quizItem)&& step.testMode!=='True'">
 	<div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">
 		<span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | i18n}}</span>
 		<span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | i18n}}:
