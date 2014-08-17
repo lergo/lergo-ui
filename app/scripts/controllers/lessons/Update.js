@@ -38,16 +38,21 @@ angular.module('lergoApp').controller(
 			});
 
 			function updateNextLesson(newValue, oldValue) {
-				if (!!newValue && newValue !== oldValue) {
+				if(!newValue){
+					delete $scope.lesson.nextLessonId;
+				}
+				else if (!!newValue && newValue !== oldValue) {
 					var id = newValue.substring(0, newValue.lastIndexOf('/'));
 					id = id.substring(id.lastIndexOf('/') + 1);
 					$scope.lesson.nextLessonId = id;
-
 				}
 
 			}
 			function updatePriorLesson(newValue, oldValue) {
-				if (!!newValue && newValue !== oldValue) {
+				if(!newValue){
+					delete $scope.lesson.priorLessonId;
+				}
+				else if (!!newValue && newValue !== oldValue) {
 					var id = newValue.substring(0, newValue.lastIndexOf('/'));
 					id = id.substring(id.lastIndexOf('/') + 1);
 					$scope.lesson.priorLessonId = id;
