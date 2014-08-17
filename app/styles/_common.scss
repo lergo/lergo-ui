@@ -614,3 +614,27 @@ $COLOR_19: #2a6496 !default;
     line-height:20px;
   }
 }
+
+.pop-up-hint{
+	padding: 8px;
+	vertical-align: middle;
+	span{
+		position:relative;
+		padding-left:2px;
+		padding-bottom:10px;
+		.popover-content{
+			width:260px;
+		}
+		button{
+			background-color: transparent;
+			border:0;
+			color: #2a6496;
+			vertical-align: super;
+		}
+		input{
+			vertical-align: middle;
+			display: inline;
+			margin-left: 10px;
+		}
+	}
+}

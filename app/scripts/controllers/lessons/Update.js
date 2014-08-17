@@ -73,7 +73,7 @@ angular.module('lergoApp').controller(
 					lesson.steps = [];
 				}
 
-				lesson.steps.push({});
+				lesson.steps.push({'testMode':'False'});
 			};
 			$scope.moveStepUp = function(index) {
 				var temp = $scope.lesson.steps[index - 1];
