@@ -23,10 +23,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		// scope but only (!!) if this
 		// controller and scope are responsible for resolving them.
 		if (!!$scope.questions && $scope.hasOwnProperty('questions')) { // if
-			// this
-			// scope
-			// takes
-			// care
+			// this scope takes care
 			$scope.questions = null;
 		}
 
@@ -50,7 +47,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			});
 
 		}
-		$scope.$emit('quizComplete', !$scope.hasNextQuizItem());
+		$scope.$emit('quizComplete', canMoveToNextStep());
 	}
 
 	$scope.$watch('step', reload);
@@ -77,7 +74,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				'isHintUsed' : !!$scope.isHintUsed
 			});
 			$scope.isHintUsed = false;
-			$scope.$emit('quizComplete', !$scope.hasNextQuizItem());
+			$scope.$emit('quizComplete', canMoveToNextStep());
 			$scope.updateProgressPercent();
 			if ($scope.hasNextQuizItem() && !!$scope.step && !!$scope.step.testMode) {
 				$scope.nextQuizItem();
@@ -96,10 +93,16 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		}
 		return null;
 	};
+	function canMoveToNextStep() {
+		if (!!$scope.getQuizItem()) {
+			return (!$scope.hasNextQuizItem()) && (!!$scope.getAnswer());
+		} else {
+			return true;
+		}
+	}
 
 	$scope.getAnswer = function() {
 		var quizItem = $scope.quizItem;
-
 		return !!quizItem && $scope.answers.hasOwnProperty(quizItem._id) ? $scope.answers[quizItem._id] : null;
 	};
 
