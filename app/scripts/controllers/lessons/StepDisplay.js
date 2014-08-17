@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient) {
+angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient, shuffleFilter) {
 	$log.info('showing step');
 
 	if (!!$routeParams.data) {
 		$scope.step = JSON.parse($routeParams.data);
+		shuffleFilter($scope.step.quizItems, !$scope.step.shuffleQuestion);
 		$log.info($scope.step);
 	}
 
@@ -51,7 +52,6 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	}
 
 	$scope.$watch('step', reload);
-
 	$scope.getQuizItemTemplate = function(id) {
 		if (!!$scope.questions) {
 			$scope.quizItem = $scope.questions[id];

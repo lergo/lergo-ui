@@ -93,12 +93,6 @@
 						</select>
 					</td>
 				</tr>
-				<tr ng-show="step.type==='quiz'">
-					<td>{{'quiz.testMode' | i18n}}</td>
-					<td>
-						<input type="checkbox" ng-model=step.testMode />
-					</td>
-				</tr>
 			</table>
 			<div ng-include="getStepViewByType(step)"></div>
 			<div>
