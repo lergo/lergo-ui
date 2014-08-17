@@ -74,7 +74,7 @@ angular.module('lergoApp')
                         window.title = window.disqus_title;
 
                         var $iframe = $('<iframe></iframe>', {
-                            'src': '/index.html#/disqus/' + lesson._id + '?' + qs(queryObject),
+                            'src': '/index.html#!/disqus/' + lesson._id + '?' + qs(queryObject),
                             'width': '100%',
                             'frameBorder': '0',
                             'scrolling': 'no'

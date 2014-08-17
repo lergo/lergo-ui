@@ -45,9 +45,9 @@
 						</td>
 						<td class="name">
 							<a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}"
-								ng-href="#/public/lessons/reports/{{report._id}}/display">{{ report.data.lesson.name }}</a>
+								ng-href="#!/public/lessons/reports/{{report._id}}/display">{{ report.data.lesson.name }}</a>
 							<a ng-show="!report.data.lesson.name || report.data.lesson.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}"
-								ng-href="#/public/lessons/reports/{{report._id}}/display">[ no title ]</a>
+								ng-href="#!/public/lessons/reports/{{report._id}}/display">[ no title ]</a>
 						</td>
 						<td class="answer">{{report.data.invitee.name}}</td>
 						<td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject | i18n) ||""}}</td>

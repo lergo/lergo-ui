@@ -119,7 +119,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		}
 	};
 	$scope.absoluteShareLink = function(lesson) {
-		$scope.shareLink = window.location.origin + '/#/public/lessons/' + lesson._id + '/intro';
+		$scope.shareLink = window.location.origin + '/#!/public/lessons/' + lesson._id + '/intro';
 		$scope.invite = false;
 		$scope.share = !$scope.share;
 	};

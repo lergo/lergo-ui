@@ -4,26 +4,26 @@
 			<div class="centered-content">
 				<div class="header-main">
 					<div>
-						<a href="#/user/homepage">
+						<a href="#!/user/homepage">
 							<i class="logo-beta"></i>
 						</a>
 					</div>
 					<div class="header-links">
 						<ul>
 							<li>
-								<a href="#/user/homepage">{{ 'baseLayout.header.links.learn'| i18n }} </a>
+								<a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| i18n }} </a>
 							</li>
 							<li>
-								<a show-logged-in href="#/user/create/lessons">{{ 'baseLayout.header.links.create'| i18n }} </a>
+								<a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| i18n }} </a>
 								<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
 								<a show-anonymous href="" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | i18n}}" tabindex="0">{{
 									'baseLayout.header.links.create'| i18n }} </a>
 							</li>
 							<li ng-repeat="item in ['Parents','Teachers']">
-								<a href="#/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | i18n }}</a>
+								<a href="#!/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | i18n }}</a>
 							</li>
 							<li>
-								<a href="#/public/contribute">{{ 'baseLayout.header.links.contribute'| i18n }} </a>
+								<a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| i18n }} </a>
 							</li>
 						</ul>
 					</div>
@@ -33,16 +33,16 @@
                              items="typeaheadItems"
                              model="$root.filter.search"
                              on-select="doSearchFromTypeahead($item,$model,$label)"></div>
-						<a href="#/user/homepage">
+						<a href="#!/user/homepage">
 							<i class="icon-search"></i>
 						</a>
 					</div>
 					<div class="header-signup" ng-show="!user">
-						<a href="#/public/session/login"> {{ 'button.login' | i18n }}</a>
-						<a href="#/public/session/signup"> {{ 'button.signup' | i18n }}</a>
+						<a href="#!/public/session/login"> {{ 'button.login' | i18n }}</a>
+						<a href="#!/public/session/signup"> {{ 'button.signup' | i18n }}</a>
 					</div>
 					<div class="header-login" ng-show="!!user">
-						<a href="#/user/create/lessons">
+						<a href="#!/user/create/lessons">
 							<i class="fa fa-user fa-fw"></i>
 							{{user.username}}
 						</a>
@@ -64,7 +64,7 @@
 				{{'baseLayout.footer.text1' | i18n }}
 				<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | i18n }};</a>
 				{{'baseLayout.footer.text3' | i18n }}
-				<a href="#/public/terms">{{'baseLayout.footer.text4' | i18n }}.</a>
+				<a href="#!/public/terms">{{'baseLayout.footer.text4' | i18n }}.</a>
 				{{'baseLayout.footer.text5' | i18n }}.
 			</div>
 			<div>
@@ -72,35 +72,35 @@
 					<div class=row>
 						<ul>
 							<li>
-								<a href="#/public/terms">{{'baseLayout.footer.privacyAndTerms' | i18n }}</a>
+								<a href="#!/public/terms">{{'baseLayout.footer.privacyAndTerms' | i18n }}</a>
 							</li>
 							<li>
 								<a href="http://signup.lergo.org">{{'baseLayout.footer.about' | i18n }}</a>
 							</li>
 							<li>
-								<a href="#/user/homepage"> {{'baseLayout.footer.homepage' | i18n }}</a>
+								<a href="#!/user/homepage"> {{'baseLayout.footer.homepage' | i18n }}</a>
 							</li>
 							<li>
-								<a href="#/public/contact">{{'baseLayout.footer.contact' | i18n }}</a>
+								<a href="#!/public/contact">{{'baseLayout.footer.contact' | i18n }}</a>
 							</li>
 							<li>
-								<a href="#/public/kitchenSink">{{'baseLayout.footer.kitchenSink' | i18n}}</a>
+								<a href="#!/public/kitchenSink">{{'baseLayout.footer.kitchenSink' | i18n}}</a>
 							</li>
 						</ul>
 					</div>
 					<div class="row">
 						<ul>
 							<li>
-								<a class="weight12" href="#/public/feedback">{{'baseLayout.footer.feedback' | i18n}}</a>
+								<a class="weight12" href="#!/public/feedback">{{'baseLayout.footer.feedback' | i18n}}</a>
 							</li>
 							<li>
-								<a class="weight12" href="#/public/suggest">{{'baseLayout.footer.suggest' | i18n}}</a>
+								<a class="weight12" href="#!/public/suggest">{{'baseLayout.footer.suggest' | i18n}}</a>
 							</li>
 							<li>
-								<a class="weight12" href="#/public/problem">{{'baseLayout.footer.problem' | i18n}}</a>
+								<a class="weight12" href="#!/public/problem">{{'baseLayout.footer.problem' | i18n}}</a>
 							</li>
 							<li>
-								<a class="weight12" href="#/public/abuse">{{'baseLayout.footer.abuse' | i18n}}</a>
+								<a class="weight12" href="#!/public/abuse">{{'baseLayout.footer.abuse' | i18n}}</a>
 							</li>
 						</ul>
 						<div class="copyrights">

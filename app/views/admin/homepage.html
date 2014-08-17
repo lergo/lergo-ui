@@ -47,9 +47,9 @@
 							<input type="checkbox" style="margin-left:5px;" ng-model="l.selected">
 						</td>
 						<td>
-							<a ng-show="!!l.name && l.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#/user/lessons/{{l._id}}/intro">{{
+							<a ng-show="!!l.name && l.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#!/user/lessons/{{l._id}}/intro">{{
 								l.name }}</a>
-							<a ng-show="!l.name || l.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#/user/lessons/{{l._id}}/intro">[ no
+							<a ng-show="!l.name || l.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#!/user/lessons/{{l._id}}/intro">[ no
 								title ]</a>
 						</td>
 						<td>

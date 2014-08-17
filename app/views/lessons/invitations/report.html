@@ -87,7 +87,7 @@
 						</td>
 						<td class="title lergo-h1">{{'report.nextLesson' | i18n}}</td>
 						<td class="description">
-							<a ng-href="#/public/lessons/{{report.data.lesson.nextLessonId}}/intro">{{absoluteShareLink(report.data.lesson.nextLessonId)}}</a>
+							<a ng-href="#!/public/lessons/{{report.data.lesson.nextLessonId}}/intro">{{absoluteShareLink(report.data.lesson.nextLessonId)}}</a>
 						</td>
 					</tr>
 					<tr ng-show="!!report.data.lesson.priorLessonId">
@@ -96,7 +96,7 @@
 						</td>
 						<td class="title lergo-h1">{{'report.priorLesson' | i18n}}</td>
 						<td class="description">
-							<a ng-href="#/public/lessons/{{report.data.lesson.priorLessonId}}/intro">{{absoluteShareLink(report.data.lesson.priorLessonId)}}</a>
+							<a ng-href="#!/public/lessons/{{report.data.lesson.priorLessonId}}/intro">{{absoluteShareLink(report.data.lesson.priorLessonId)}}</a>
 						</td>
 					</tr>
 				</table>

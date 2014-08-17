@@ -28,14 +28,14 @@
 		<div class="lergo-h1">{{lesson.name}}</div>
 		<br>
 		<div class="report">
-			<a ng-show="!!invitation" ng-href="/#/public/lessons/reports/{{report._id}}/display">
+			<a ng-show="!!invitation" ng-href="/#!/public/lessons/reports/{{report._id}}/display">
 				<i class="fa fa-bar-chart-o"></i>
 				{{ 'lessons.lessonReport' | i18n }}
 			</a>
 		</div>
 		<br>
 		<div class="recmmonded" ng-show="!!lesson.nextLessonId">
-			<a ng-href="#/public/lessons/{{lesson.nextLessonId}}/intro">
+			<a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
 				<i class="fa fa-university"></i>
 				{{ 'lessons.recommenedNextLesson' | i18n }}
 			</a>

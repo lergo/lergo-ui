@@ -48,7 +48,7 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	});
 
 	$scope.absoluteShareLink = function(lesson) {
-		return window.location.origin + '/#/public/lessons/' + lesson._id + '/share';
+		return window.location.origin + '/#!/public/lessons/' + lesson._id + '/share';
 	};
 
 	/** * MOCK CODE FOR REFERENCE - WILL BE REMOVED BY END OF JUNE ** */

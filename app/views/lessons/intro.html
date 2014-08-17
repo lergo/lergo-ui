@@ -28,7 +28,7 @@
 							<i class="fa fa-copy" tooltip="{{'lessons.tooltip.copy' | i18n}}"></i>
 						</a>
 						<br />
-						<a href="#/user/lesson/{{lesson._id}}/update" tooltip="{{'lessons.tooltip.edit' | i18n}}">
+						<a href="#!/user/lesson/{{lesson._id}}/update" tooltip="{{'lessons.tooltip.edit' | i18n}}">
 							<i class="fa fa-pencil-square-o"></i>
 						</a>
 						<br />
@@ -153,7 +153,7 @@
 								<div ng-repeat="q in questions">
 									<div ng-show="!!q.summary">
 										<div class="question">
-											<!--  <a href="#/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
+											<!--  <a href="#!/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
 											Q:{{q.question | limitTo :30}}
 										</div>
 										<div class="summary" btf-markdown="q.summary"></div>

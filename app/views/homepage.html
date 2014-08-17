@@ -1,6 +1,6 @@
 <div class="base-layout">
 	<div admin-section>
-		<a href="#/admin/homepage">Admin Homepage</a>
+		<a href="#!/admin/homepage">Admin Homepage</a>
 	</div>
 	<div class="homepage">
 		<div statistics-banner class="page-content-width">
@@ -49,12 +49,12 @@
 						</div>
 						<!-- age limit -->
 						<div class="image">
-							<a href="#/public/lessons/{{lesson._id}}/intro">
+							<a href="#!/public/lessons/{{lesson._id}}/intro">
 								<div lesson-title-image lesson="lesson"></div>
 							</a>
 						</div>
 						<div class="title">
-							<a href="#/public/lessons/{{lesson._id}}/intro">
+							<a href="#!/public/lessons/{{lesson._id}}/intro">
 								{{ lesson.name|limitTo:40 }}
 								<span ng-show="lesson.name.length >40">...</span>
 							</a>

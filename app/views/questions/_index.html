@@ -32,7 +32,7 @@
 					<input type="checkbox" ng-model="item.selected" />
 				</td>
 				<td class="question">
-					<a href="#/user/questions/{{item._id}}/read">{{item.question | limitTo:80 }}</a>
+					<a href="#!/user/questions/{{item._id}}/read">{{item.question | limitTo:80 }}</a>
 				</td>
 				<td class="answer">{{((item.type==='trueFalse') && (item.answer && ('quizItem.answer.'+ item.answer| i18n)||"") || getAnswers(item) ) |
 					limitTo:30}}</td>

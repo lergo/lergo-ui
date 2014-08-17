@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.utils', 'btford.markdown' ])
-    .config(function ($routeProvider, $httpProvider, $logProvider/*, $locationProvider*/) {
+    .config(function ($routeProvider, $httpProvider, $logProvider, $locationProvider) {
 
         $logProvider.debugEnabled(false);
 
-//        $locationProvider
-//            .html5Mode(false)
-//            .hashPrefix('!');
+        $locationProvider
+            .html5Mode(false)
+            .hashPrefix('!');
 
         $routeProvider
             .when('/user/lesson/create',{
