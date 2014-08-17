@@ -73,7 +73,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			$scope.isHintUsed = false;
 			$scope.$emit('quizComplete', canMoveToNextStep());
 			$scope.updateProgressPercent();
-			if ($scope.hasNextQuizItem() && !!$scope.step && $scope.step.testMode === "True") {
+			if ($scope.hasNextQuizItem() && !!$scope.step && $scope.step.testMode === 'True') {
 				$scope.nextQuizItem();
 			}
 		}, function() {

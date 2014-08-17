@@ -1,5 +1,15 @@
 {
   "add": "Add",
+  "admin": {
+    "allLessons": "All Lessons",
+    "by": "By",
+    "created": "Created",
+    "makePrivate": "Unpublish",
+    "makePublic": "Publish",
+    "public": "Public",
+    "publicFrom": "Public From",
+    "views": "# Views"
+  },
   "advancedOptions": "Advanced options",
   "baseLayout": {
     "footer": {
@@ -7,12 +17,14 @@
       "abuse": "Report Abuse",
       "blog": "Blog",
       "contact": "Contact Us",
+      "copyright": "2014 LerGO - Educate Yourself (R.A.)",
+      "copyrightMsg": "Except where noted, all rights reserved.",
       "feedback": "Send Feedback",
       "homepage": "Homepage",
+      "kitchenSink": "Kitchen Sink",
       "privacyAndTerms": "Privacy and Terms",
       "problem": "Report Problem",
       "suggest": "Suggest Lesson",
-      "kitchenSink":"Kitchen Sink",
       "text1": "Text of questions is available under the",
       "text2": "Creative Commons Attribution-NonCommercial-ShareAlike License",
       "text3": "additional terms may apply. By using this site, you agree to the",
@@ -27,12 +39,13 @@
         "lessons": "Lessons",
         "parents": "Parents",
         "questions": "Questions",
-        "teachers": "Teachers"        	
+        "reports": "Reports",
+        "teachers": "Teachers"
       },
       "logout": "Logout",
       "searchPlaceholder": "What would you like to learn about?",
-      "siteLanguage": "Site Language",
-      "searchUnderConstruction":"Search feature under construction... for now, please use filters"
+      "searchUnderConstruction": "Search feature under construction... for now, please use the filters below.",
+      "siteLanguage": "Site Language"
     }
   },
   "button": {
@@ -49,8 +62,11 @@
     "signup": "Signup",
     "success": "You successfully changed your password"
   },
-  "clickHere": "click here",
+  "clickHere": "click here.",
+  "close": "Close",
   "congratulations": "Congratulations",
+  "copy": "Copy",
+  "createNotAvailable": "Please signup or login to LerGO. Only registered users can create content.",
   "delete": "Delete",
   "description": "Description",
   "done": "Done",
@@ -58,6 +74,9 @@
   "edit": "Edit",
   "email": "Email",
   "explanation": "Explanation",
+  "explanationAudio": "Explanation with Audio",
+  "explanationImage": "Explanation with Image",
+  "explanationVideo": "Explanation with Video",
   "featured": "Featured",
   "filters": {
     "age": {
@@ -66,8 +85,14 @@
     "all": "All",
     "labels": {
       "ageRange": "Age Range",
+      "correctPercentage": "% Correct Range",
+      "createdBy": "Created By",
+      "doneByStudent": "Student",
       "language": "Language",
+      "status": "Status",
       "subject": "Subject",
+      "tags": "Tags",
+      "text": "Text",
       "views": "# of views"
     },
     "languages": {
@@ -77,22 +102,28 @@
       "hebrew": "Hebrew",
       "russian": "Russian"
     },
-    "subjects": {
-    	"geometry":"Geometry",
-    	"chemistry":"Chemistry",
-    	"physics":"Physics",
-    	"history":"History",
-    	"geography":"Geography",
-    	"art":"Art",
-    	"music":"Music",
-    	"other": "Other",
-    	"biology": "Biology",
-    	"english": "English",
-    	"grammar": "Grammar",
-    	"math": "Math",
-    	"science": "Science",
-    	"spelling": "Spelling"
+    "status": {
+      "private": "Not Public",
+      "public": "Public"
     },
+    "subjects": {
+      "other": "Other",
+      "art": "Art",
+      "biology": "Biology",
+      "chemistry": "Chemistry",
+      "english": "English",
+      "geography": "Geography",
+      "geometry": "Geometry",
+      "grammar": "Grammar",
+      "history": "History",
+      "language": "Language",
+      "math": "Math",
+      "music": "Music",
+      "physics": "Physics",
+      "science": "Science",
+      "spelling": "Spelling"
+    },
+    "testrahul": "testrahul",
     "to": "To"
   },
   "fromAge": "From Age",
@@ -106,6 +137,7 @@
     "questions": "questions",
     "start": "start",
     "tooltip": {
+      "likes": "number of likes",
       "questions": "number of questions",
       "subject": "subject",
       "user": "by",
@@ -129,9 +161,14 @@
   },
   "invite": "Invite",
   "languages": {
+    "ar": "Arabic",
     "en": "English",
     "he": "Hebrew",
     "ru": "Russian"
+  },
+  "lergo": {
+    "description": "LerGO is a new non-profit EdTech venture aimed at providing free, animated & interactive online lessons for all children, anywhere, at any time. This will be made possible through LerGO's open source cloud platform, which will leverage the goodwill of the community, enabling contributors to easily create animated & interactive lessons. Kids will use these lessons as a free alternative to private tutoring/lessons, to self-learn all school subjects, enjoyably and at their own pace.",
+    "title": "LerGO - Educate Yourself"
   },
   "lessons": {
     "addQuestion": "Add Question to Quiz",
@@ -140,6 +177,9 @@
     "create": "Create New Lesson",
     "createdOn": "created on",
     "description": "Lesson Description",
+    "error": {
+      "invalidName": "Lesson name is a required field. Please fill it out before adding a step to the lesson."
+    },
     "filter": "Filter Lessons",
     "filters": {
       "labels": {
@@ -148,14 +188,17 @@
         "subject": "Subject"
       }
     },
-    "genericVideos": "For a list of generic animated videos please",
+    "genericVideosPost": " The list will open in a new tab.",
+    "genericVideosPre": "For a list of generic animated videos please",
     "inviteLesson": "Invite to lesson",
     "inviteLessonHelpText": "To generate a link for the invite please enter student's name and press submit",
+    "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
     "inviteSuccessText": "Copy the link below to invite a student to the lesson",
     "lessonCompleted": "You have completed the lesson",
     "lessonReport": "Lesson Report",
     "letsContinue": "OK! Let's Continue",
     "letsGo": "Let's LerGO!",
+    "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like lessons.",
     "myLessons": "My Lessons",
     "name": "Lesson Name",
     "note": "Note",
@@ -163,27 +206,38 @@
     "readLess": "Read Less",
     "readMore": "Read More",
     "recommenedNextLesson": "Recommended Next Lesson",
-    "recommenedNextLessonText": "Next recommended lesson",
-    "recommenedPriorLesson": "Recommended Prior Lesson",
-    "recommenedPriorLessonText": "Prior recommended lesson",
+    "recommenedNextLessonText": "Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
+    "recommenedPriorLesson": "Recommended Previous Lesson",
+    "recommenedPriorLessonText": "Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
     "seeReport": "See Report",
     "shareLesson": "Share lesson",
     "shareLessonTitle": "Copy the link below to share lesson with friends",
     "startLesson": "Start Lesson",
     "tags": "Tags",
     "tooltip": {
-      "copy": "copy lesson",
-      "delete": "delete lesson",
-      "edit": "edit lesson",
+      "copy": "Copy Lesson",
+      "delete": "Delete Lesson",
+      "edit": "Edit Lesson",
       "go": "go to lesson",
       "invite": "invite students",
-      "preview": "preview lesson",
+      "like": "like this lesson",
+      "liked": "you liked this lesson",
+      "preview": "Preview Lesson",
       "share": "share with friends",
       "start": "start lesson"
     },
     "total": "Total",
     "videoURL": "Video URL",
-    "videoURLHelpText": "Insert your YouTube URL here"
+    "videoURLHelpText": "Insert your YouTube URL here."
+  },
+  "like": "Like",
+  "liked": "Liked",
+  "loading": "Loading...",
+  "loginPage": {
+    "login": "Login",
+    "password": "Password",
+    "signup": "Signup",
+    "username": "Username"
   },
   "name": "Name",
   "new": "New",
@@ -192,6 +246,10 @@
   "popular": "Popular",
   "preview": "Preview",
   "questions": {
+    "addExplanation": "Add Text Explanation",
+    "addExplanationMedia": "Add Media Explanation",
+    "addHint": "Add Hint",
+    "addMedia": "Add Media",
     "addQuestionsToQuiz": "Add questions to quiz",
     "age": "Age",
     "answer": "Answer",
@@ -204,12 +262,31 @@
     "correctAnswerFilled": "You are correct!",
     "correctAnswers": "Correct Answer(s)",
     "createNew": "Create New Question",
+    "disableShuffling": "Disable Shuffling",
     "editSummary": "Edit Summary",
-    "editSummaryHelpText": "Enter Summary here",
+    "editSummaryHelpText": "Enter edit summary here.",
+    "explanation": {
+      "audioUrlHint": "To add audio explanation, please update audio URL.",
+      "imageUrlHint": "To add image explanation, please update image URL.",
+      "videoUrlHint": "To add video explanation, please update video URL."
+    },
     "explanationHelpText": "You can add here an explanation to the question.",
+    "fillInTheBlanks": {
+      "hint": "Enter the sentence or paragraph, and mark blanks with : \"___\". For Example: This is ___ story. Please tell me it ___.",
+      "inputSize": "Input Blank Box Size",
+      "inputSizeHint": "Blank boxes sizes for answers are displayed in a similar length to the correct answer, choose custom to define the specific size",
+      "sizeHint": "(please define the number of characters for input blank box size).",
+      "type": {
+        "auto": "Auto",
+        "custom": "Custom"
+      }
+    },
     "filter": "Filter Questions",
-    "help": "Help Text",
+    "help": "Instructions",
+    "helpHint": "You can type here instructions to question, for example: 'Choose the correct answer'.",
     "hintHelpText": "You can add here a hint to the question. A student will see it if he clicks on \"hint\" button.",
+    "hintWatched": "Watched Hint",
+    "imageUrlHint": "To add image to question, please update image URL",
     "incorrect": "Incorrect",
     "incorrectAnswerFilled": "This is incorrect, the correct answer is",
     "language": "Language",
@@ -221,16 +298,23 @@
       "russian": "Russian"
     },
     "longAnswer": "Long Answer (a paragraph)",
+    "media": {
+      "audio": "Audio",
+      "image": "Image",
+      "video": "Video"
+    },
     "myQuestions": "My Questions",
     "noQuestions": "There are no questions to display",
     "openQuestion": "Open Question",
     "possibleAnswers": "Possible Answers",
     "question": "Question",
+    "questionHint": "Type in your question, for example: 'How do you spell the number 2?' (required).",
     "questionType": "Question Type",
     "requiredAnswer": "Required Answer Format",
     "select": "Select",
     "selectQuestions": "Select Questions",
     "shortAnswer": "Short Answer (a few words)",
+    "shuffleHint": "Multiple choice answers are shuffled by default, click to disable shuffling for this specific question.",
     "subject": "Subject",
     "subjects": {
       "other": "Other",
@@ -242,15 +326,26 @@
       "spelling": "Spelling"
     },
     "thankYou": "Thank you for your answer",
+    "tooltip": {
+      "copy": "Copy Question",
+      "edit": "Edit Question"
+    },
     "total": "Total",
     "types": {
       "exactMatch": "Exact Match",
+      "fillInTheBlanks": "Fill In The Blanks",
       "multipleChoices": "Multiple Choices",
       "openQuestion": "Open Question",
       "trueFalse": "True or False"
     },
+    "videoUrlHint": "To add video to question, please update video URL",
     "yourAnswer": "Student's Answer",
     "yourAnswers": "Student's Answer(s)"
+  },
+  "quiz": {
+    "practiseMode": "Practise",
+    "shuffleQuestion": "Shuffle questions",
+    "testMode": "Test"
   },
   "quizItem": {
     "answer": {
@@ -266,7 +361,20 @@
     "description": "Lesson Description",
     "detailedReport": "Detailed Report",
     "lessonSteps": "Lesson Steps",
-    "questionsInQuiz": "questions in quiz"
+    "nextLesson": "Recommended Next Lesson",
+    "priorLesson": "Recommended Previous Lesson",
+    "questionsInQuiz": "questions in quiz",
+    "recommendation": "Recommendations"
+  },
+  "reports": {
+    "correctPercentage": "% Correct",
+    "duration": "Duration",
+    "filter": "Filter Reports",
+    "myReports": "My Reports",
+    "student": "Student",
+    "subject": "Subject",
+    "takenAt": "Taken at",
+    "total": "Total"
   },
   "resetPassword": {
     "emailSentSuccessfully": "Please check your inbox and follow instructions",
@@ -293,6 +401,7 @@
   "start": "Start",
   "steps": {
     "add": "Add Step",
+    "answer": "Please Answer",
     "display": "Display Step",
     "invalidURL": "Please enter valid youtube URL",
     "noMoreQuestions": "No More Questions",
@@ -308,10 +417,21 @@
     "math": "Math",
     "spelling": "Spelling"
   },
-  "tagHint": "Separate tags by commas (e.g. there Vs their, spelling, grammar)",
+  "tagHint": "Separate tags by commas",
+  "tagSection": {
+    "alreadyExists": "Tag already exists",
+    "invalidTag": "Invalid tag"
+  },
   "tags": "Tags",
   "title": "Title",
+  "translation": {
+    "baseLanguage": "Language",
+    "comparingTitle": "Comparing English with",
+    "key": "Key",
+    "translation": "Translation"
+  },
   "underConstruction": "Under Construction....Stay Tuned",
+  "unlike": "Unlike",
   "up": "Up",
   "view": "View",
   "welcome": "Welcome"
