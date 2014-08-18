@@ -2,7 +2,7 @@
 
 angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeout, $log, $location, LergoClient, LergoTranslate) {
     return {
-        templateUrl: 'views/baseLayout.html',
+        templateUrl: 'views/baseLayout.html?changed=1',
         transclude: true,
         restrict: 'C',
         replace: true,
