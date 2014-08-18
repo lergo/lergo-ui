@@ -118,7 +118,9 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 							stats.wrong = stats.wrong + 1;
 						}
 					}
-					duration = duration + quizItems[i].duration;
+					if (!!quizItems[i].duration) {
+						duration = duration + quizItems[i].duration;
+					}
 				}
 				var correctPercentage = ((stats.correct * 100) / (quizItems.length - stats.openQuestions));
 				stats.correctPercentage = Math.round(correctPercentage);
