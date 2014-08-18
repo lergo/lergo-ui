@@ -17,6 +17,19 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
       <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+
+      <script>
+          try {
+              if ( window.location.hash.indexOf('#/') === 0 ){
+                  window.location.hash = '#!/' + window.location.hash.substring(2);
+              }
+          }catch(e){
+              try{
+                  console.log('unable to redirect to new url',e);
+              }catch(e){}
+          }
+
+      </script>
 </head>
   <body ng-view="" style="position:relative" class="{{$root.lergoLanguage | i18nDirection }} {{$root.lergoLanguage}}">
     <!--[if lt IE 7]>
