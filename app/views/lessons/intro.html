@@ -154,7 +154,8 @@
 									<div ng-show="!!q.summary">
 										<div class="question">
 											<!--  <a href="#!/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
-											Q:{{q.question | limitTo :30}}
+											<i class="fa fa-question-circle"> </i>
+											<span class="title-question"> {{q.question | limitTo :50}} </span>
 										</div>
 										<div class="summary" btf-markdown="q.summary"></div>
 									</div>
@@ -174,10 +175,8 @@
 		<div class="page-content-sidebar">
 			<div create-your-own-box></div>
 		</div>
-       <!-- <div class="comments" show-logged-in>
+		<!-- <div class="comments" show-logged-in>
             <div disqus-embed lesson="lesson"></div>
         </div> -->
 	</div>
-
 </div>
-

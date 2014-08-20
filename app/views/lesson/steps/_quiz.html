@@ -26,7 +26,7 @@
 <table class="lergo-table" style="width: 90%; float: left">
 	<tr ng-repeat="item in step.quizItems">
 		<td class="question" colspan="5">
-			<button class="btn-link" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</button>
+			<a class="btn-link" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
 		</td>
 		<td>
 			<a ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
