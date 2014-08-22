@@ -101,12 +101,11 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
     $scope.noop = angular.noop;
 
     function getQuestionsWithSummary(){
-        return [].concat(_.find($scope.questions || [], function(q){ return !!q.summary}));
+        return [].concat(_.find($scope.questions || [], function(q){ return !!q.summary; }));
     }
 
     $scope.showEditSummary = function(){
         var withSummary = getQuestionsWithSummary();
-        debugger;
         return !!withSummary && withSummary.length > 0;
     };
 
