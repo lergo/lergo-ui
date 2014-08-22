@@ -143,9 +143,9 @@
 					</div>
 					<div class="description">
 						<pre ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>
-						<div ng-show="!!more">
+                        <div ng-show="!!more">
 							<pre>{{ lesson.description}}</pre>
-							<div class="edit-summary" ng-show="!!questions && questions.length > 0">
+							<div class="edit-summary" ng-show="showEditSummary()">
 								<br />
 								<span class="title">{{'questions.editSummary'|i18n}}</span>
 								<br />
@@ -162,7 +162,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="read-more" style="text-align: center" ng-show="showReadMore() " ng-click="more=!more">
+						<div class="read-more" style="text-align: center" ng-show="showReadMore(filteredDescription) " ng-click="more=!more">
 							<hr class="dashes">
 							<span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
 							<span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>

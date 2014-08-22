@@ -100,9 +100,22 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
     $scope.noop = angular.noop;
 
-    $scope.showReadMore = function(){
+    function getQuestionsWithSummary(){
+        return [].concat(_.find($scope.questions || [], function(q){ return !!q.summary}));
+    }
+
+    $scope.showEditSummary = function(){
+        var withSummary = getQuestionsWithSummary();
+        debugger;
+        return !!withSummary && withSummary.length > 0;
+    };
+
+
+
+    $scope.showReadMore = function(filteredDescription){
+
         return !!$scope.lesson && !!$scope.lesson.description &&
-            ( ( !!$scope.filteredDescription &&  $scope.filteredDescription.length !== $scope.lesson.description.length ) ||
+            ( ( !!filteredDescription &&  filteredDescription.length !== $scope.lesson.description.length ) ||
                 ( !!$scope.questionsWithSummary && $scope.questionsWithSummary.length > 0 ) );
     };
 
