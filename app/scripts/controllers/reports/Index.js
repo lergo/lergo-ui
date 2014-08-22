@@ -110,7 +110,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 				}
 			});
 
-			LergoClient.lessons.update(lesson).then(function(result) {
+			LergoClient.lessons.update(lesson).then(function() {
 				$location.path('/user/lessons/' + lesson._id + '/intro');
 			});
 		});
