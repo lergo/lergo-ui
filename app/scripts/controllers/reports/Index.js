@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log) {
+angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location) {
 
 	$scope.languageFilter = function(report) {
 		if (!report || !report.data || !report.data.lesson) {
@@ -91,7 +91,38 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		});
 	};
 	$scope.getAll();
+	$scope.createLessonFromWrongQuestions = function() {
+		LergoClient.lessons.create().then(function(result) {
+			var lesson = result.data;
+			lesson.name = 'Difficult questions lesson';
+			lesson.steps = [];
+			lesson.description = '';
+			var step = {
+				'type' : 'quiz',
+				'quizItems' : [],
+				'title':'Difficult Questions'
+			};
+			lesson.steps.push(step);
+			angular.forEach($scope.reports, function(report) {
+				if (report.selected === true) {
+					lesson.description = lesson.description + report.data.lesson.name + '\n';
+					getWronngQuestions(report.answers, lesson);
+				}
+			});
 
+			LergoClient.lessons.update(lesson).then(function(result) {
+				$location.path('/user/lessons/' + lesson._id + '/intro');
+			});
+		});
+
+	};
+	function getWronngQuestions(answers, lesson) {
+		angular.forEach(answers, function(answer) {
+			if (!answer.checkAnswer.correct) {
+				lesson.steps[0].quizItems.push(answer.quizItemId);
+			}
+		});
+	}
 	$scope.deleteReports = function() {
 		angular.forEach($scope.reports, function(report) {
 			if (report.selected === true) {
@@ -130,7 +161,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 					wrong++;
 				}
 			});
-			report.correctPercentage = Math.round((correct * 100) / (correct + wrong));
+			report.correctPercentage = Math.round((correct * 100) / (report.data.quizItems.length));
 		});
 	}
 });
