@@ -170,7 +170,13 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			var correct = 0;
 			var wrong = 0;
 			report.correctPercentage = 0;
-			if (!!report.data.quizItems && report.data.quizItems.length > 0) {
+			var numberOfQuestions = 0;
+			angular.forEach(report.data.lesson.steps, function(step) {
+				if (step.type === 'quiz' && !!step.quizItems) {
+					numberOfQuestions = numberOfQuestions + step.quizItems.length;
+				}
+			});
+			if (!!report.data.quizItems && numberOfQuestions > 0) {
 				angular.forEach(report.answers, function(answer) {
 					if (answer.checkAnswer.correct === true) {
 						correct++;
@@ -178,7 +184,8 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 						wrong++;
 					}
 				});
-				report.correctPercentage = Math.round((correct * 100) / (report.data.quizItems.length));
+
+				report.correctPercentage = Math.round((correct * 100) / numberOfQuestions);
 			}
 		});
 	}
