@@ -19,9 +19,10 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		'locale' : 'en'
 	} ];
 
-    this.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'other' ];
+	this.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'other' ];
 
 	this.status = [ 'private', 'public' ];
+	this.reportStatus = [ 'complete', 'incomplete' ];
 
 	this.getLocaleByLanguage = function(id) {
 		for ( var i = 0; i < this.languages.length; i++) {
@@ -47,17 +48,18 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		var filter = $rootScope.filter;
 
 		if (!filter || !filter.tags || filter.tags.length === 0) { // if filter
-																	// does not
-																	// have
-																	// tags, let
-																	// this
-																	// lesson
-																	// through
+			// does not
+			// have
+			// tags, let
+			// this
+			// lesson
+			// through
 			return true;
 		}
 
-		if (!tags || tags.length === 0) { // if filter has tags, but lesson doesn't, filter it
-						// out.
+		if (!tags || tags.length === 0) { // if filter has tags, but lesson
+											// doesn't, filter it
+			// out.
 			return false;
 		}
 
@@ -141,7 +143,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		}
 		return !status;
 	};
-	
+
 	this.filterByUser = function(user) {
 		var filter = $rootScope.filter;
 		if (!filter || !filter.user || !user) {
@@ -178,5 +180,31 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 			return false;
 		}
 		return true;
+	};
+	
+	
+	this.filterByDuration = function(duration) {
+		var filter = $rootScope.filter;
+		if (!filter || !filter.duration || (!filter.duration.min && !filter.duration.max)) {
+			return true;
+		}
+		if (filter.duration.min && duration < filter.duration.min*1000) {
+			return false;
+		}
+		if (filter.duration.max && duration > filter.duration.max*1000) {
+			return false;
+		}
+		return true;
+	};
+	
+	this.filterByReportStatus = function(isFinished) {
+		var filter = $rootScope.filter;
+		if (!filter || !filter.reportStatus) {
+			return true;
+		}
+		if (filter.reportStatus === 'complete') {
+			return !!isFinished;
+		}
+		return !isFinished;
 	};
 });
