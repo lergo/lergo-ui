@@ -29,19 +29,18 @@ angular.module('lergoApp').controller(
 					$scope.lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
 				}
 
-                if ( !$scope.lesson.tags ){
-                    $scope.lesson.tags = [];
-                }
+				if (!$scope.lesson.tags) {
+					$scope.lesson.tags = [];
+				}
 			}, function(result) {
 				$scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
 				$log.error($scope.errorMessage);
 			});
 
 			function updateNextLesson(newValue, oldValue) {
-				if(!newValue){
+				if (!newValue) {
 					delete $scope.lesson.nextLessonId;
-				}
-				else if (!!newValue && newValue !== oldValue) {
+				} else if (!!newValue && newValue !== oldValue) {
 					var id = newValue.substring(0, newValue.lastIndexOf('/'));
 					id = id.substring(id.lastIndexOf('/') + 1);
 					$scope.lesson.nextLessonId = id;
@@ -49,10 +48,9 @@ angular.module('lergoApp').controller(
 
 			}
 			function updatePriorLesson(newValue, oldValue) {
-				if(!newValue){
+				if (!newValue) {
 					delete $scope.lesson.priorLessonId;
-				}
-				else if (!!newValue && newValue !== oldValue) {
+				} else if (!!newValue && newValue !== oldValue) {
 					var id = newValue.substring(0, newValue.lastIndexOf('/'));
 					id = id.substring(id.lastIndexOf('/') + 1);
 					$scope.lesson.priorLessonId = id;
@@ -73,7 +71,9 @@ angular.module('lergoApp').controller(
 					lesson.steps = [];
 				}
 
-				lesson.steps.push({'testMode':'False'});
+				lesson.steps.push({
+					'testMode' : 'False'
+				});
 			};
 			$scope.moveStepUp = function(index) {
 				var temp = $scope.lesson.steps[index - 1];
@@ -131,9 +131,9 @@ angular.module('lergoApp').controller(
 				return null;
 			};
 
-            TagsService.getAllAvailableTags().then(function (result) {
-                $scope.allAvailableTags = result.data;
-            });
+			TagsService.getAllAvailableTags().then(function(result) {
+				$scope.allAvailableTags = result.data;
+			});
 
 			/**
 			 * watch questions in step. iterates over all steps of type 'quiz'
@@ -241,13 +241,19 @@ angular.module('lergoApp').controller(
 					windowClass : 'question-bank-dialog',
 					backdrop : 'static',
 					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', function($scope, $modalInstance, step, addItemToQuiz) {
+						$scope.emptySelection=false;
 						$scope.ok = function(items) {
+							var isEmpty = true;
 							angular.forEach(items, function(item) {
 								if (item.selected === true) {
+									isEmpty = false;
 									addItemToQuiz(item, step);
 								}
 							});
-							$modalInstance.close();
+							$scope.emptySelection = isEmpty;
+							if (!isEmpty) {
+								$modalInstance.close();
+							}
 						};
 
 						$scope.cancel = function() {

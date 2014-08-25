@@ -445,6 +445,7 @@ $COLOR_19: #2a6496 !default;
 
 .lergo-table {
    width: 100%;
+   position: relative;
    // Cells
    > thead,
    > tbody,
@@ -637,4 +638,9 @@ $COLOR_19: #2a6496 !default;
 			margin-left: 10px;
 		}
 	}
+}
+
+.errorMessage {
+	font-size: 15px;
+	color: red;
 }

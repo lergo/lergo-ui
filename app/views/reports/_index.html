@@ -40,14 +40,14 @@
 				</thead>
 				<tbody>
 					<tr
-						ng-repeat="report in reports |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:tagsFilter | filter:studentFilter |filter:percentageFilter">
+						ng-repeat="report in reports |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:tagsFilter | filter:studentFilter |filter:percentageFilter|filter:duration|filter:reportStatus">
 						<td>
 							<input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
 						</td>
 						<td class="name">
-							<a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}"
+							<a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0" tooltip="{{'reports.tooltip.go' | i18n}}"
 								ng-href="#!/public/lessons/reports/{{report._id}}/display">{{ report.data.lesson.name }}</a>
-							<a ng-show="!report.data.lesson.name || report.data.lesson.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}"
+							<a ng-show="!report.data.lesson.name || report.data.lesson.name.trim().length <= 0" tooltip="{{'reports.tooltip.go' | i18n}}"
 								ng-href="#!/public/lessons/reports/{{report._id}}/display">[ no title ]</a>
 						</td>
 						<td class="answer">{{report.data.invitee.name}}</td>
@@ -60,7 +60,8 @@
 			</table>
 		</div>
 		<div class="page-content-sidebar">
-			<div ng-include src="'views/filters/filter.html'" ng-init="inviteeFilter=true;correctPercentageFilter=true"></div>
+			<div ng-include src="'views/filters/filter.html'"
+				ng-init="inviteeFilter=true;correctPercentageFilter=true;reportStatusFilter=true;durationFilter=true"></div>
 		</div>
 	</div>
 </div>

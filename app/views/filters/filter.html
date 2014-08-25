@@ -61,6 +61,23 @@
 			<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.correctPercentage.max" />
 		</div>
 	</div>
+	<div ng-show="!!reportStatusFilter">
+		<div class="label">{{'filters.labels.status' | i18n }}</div>
+		<div class="input">
+			<select ng-options="s as ('filters.status.' + s | i18n) for s in reportStatus" ng-model="$root.filter.reportStatus">
+				<option value="">{{'filters.all'|i18n}}</option>
+			</select>
+		</div>
+	</div>
+	<div ng-show="!!durationFilter">
+		<div class="label">{{'filters.labels.duration' | i18n }}</div>
+		<div>
+			<input min="1" max="100" size="1" class="number" type="number" ng-model="$root.filter.duration.min" />
+			{{'filters.to'|i18n}}
+			<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.duration.max" />
+		</div>
+	</div>
+	
 	<div>
 		<div class="label">{{'filters.labels.tags' | i18n }}</div>
 		<div>

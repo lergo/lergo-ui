@@ -35,6 +35,19 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		return FilterService.filterByCorrectPercentage(report.correctPercentage);
 	};
 
+	$scope.duration = function(report) {
+		if (!report) {
+			return true;
+		}
+		return FilterService.filterByDuration(report.duration);
+	};
+
+	$scope.reportStatus = function(report) {
+		if (!report) {
+			return true;
+		}
+		return FilterService.filterByReportStatus(report.data.finished);
+	};
 	$scope.selectAll = function(event) {
 		var checkbox = event.target;
 		if (checkbox.checked) {
@@ -62,6 +75,10 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			} else if (!FilterService.filterByTags(items[i].data.lesson.tags)) {
 				continue;
 			} else if (!FilterService.filterByCorrectPercentage(items[i].correctPercentage)) {
+				continue;
+			} else if (!FilterService.filterByDuration(items[i].duration)) {
+				continue;
+			} else if (!FilterService.filterByReportStatus(items[i].data.finished)) {
 				continue;
 			} else {
 				filteredItems.push(items[i]);
@@ -100,7 +117,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			var step = {
 				'type' : 'quiz',
 				'quizItems' : [],
-				'title':'Difficult Questions'
+				'title' : 'Difficult Questions'
 			};
 			lesson.steps.push(step);
 			angular.forEach($scope.reports, function(report) {
@@ -140,13 +157,11 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 
 	function calculateDuration(reports) {
 		angular.forEach(reports, function(report) {
+			report.duration = 0;
 			angular.forEach(report.answers, function(answer) {
-				if (!report.duration) {
-					report.duration = answer.duration;
-				} else {
-					report.duration = report.duration + answer.duration;
-				}
+				report.duration = report.duration + answer.duration;
 			});
+			report.duration = (Math.round(report.duration / 1000)) * 1000;
 		});
 	}
 
@@ -154,14 +169,24 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		angular.forEach(reports, function(report) {
 			var correct = 0;
 			var wrong = 0;
-			angular.forEach(report.answers, function(answer) {
-				if (answer.checkAnswer.correct === true) {
-					correct++;
-				} else {
-					wrong++;
+			report.correctPercentage = 0;
+			var numberOfQuestions = 0;
+			angular.forEach(report.data.lesson.steps, function(step) {
+				if (step.type === 'quiz' && !!step.quizItems) {
+					numberOfQuestions = numberOfQuestions + step.quizItems.length;
 				}
 			});
-			report.correctPercentage = Math.round((correct * 100) / (report.data.quizItems.length));
+			if (!!report.data.quizItems && numberOfQuestions > 0) {
+				angular.forEach(report.answers, function(answer) {
+					if (answer.checkAnswer.correct === true) {
+						correct++;
+					} else {
+						wrong++;
+					}
+				});
+
+				report.correctPercentage = Math.round((correct * 100) / numberOfQuestions);
+			}
 		});
 	}
 });
