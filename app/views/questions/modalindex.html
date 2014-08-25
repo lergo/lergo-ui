@@ -3,7 +3,10 @@
 		<div ng-include="'views/questions/_index.html'" ng-init="isModal=true"></div>
 	</div>
 	<div class="modal-footer" style="text-align: left">
-		<button class="btn " ng-click="ok(items)">{{'add' |i18n}}</button>
-		<button class="btn btn-default" ng-click="cancel()">{{'cancel' |i18n}}</button>
+		<div>
+			<button class="btn " ng-click="ok(items)">{{'add' |i18n}}</button>
+			<button class="btn btn-default" ng-click="cancel()">{{'cancel' |i18n}}</button>
+		</div>
+		<div ng-show="!!emptySelection" class="errorMessage">{{'questions.add.emptySelection' | i18n}}</div>
 	</div>
 </div>
