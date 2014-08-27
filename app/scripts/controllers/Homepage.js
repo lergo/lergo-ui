@@ -1,25 +1,36 @@
 'use strict';
 
 angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService, $rootScope, $filter/*
-																									 * ,
-																									 * $location,
-																									 * $log
-																									 */) {
+																																	 * ,
+																																	 * $location,
+																																	 * $log
+																																	 */) {
+	var users = {};
+	$scope._users = [];
 
-
-
-    $scope.$watch( function(){
-        return $filter('i18n')('lergo.title');
-    }, function(){
-        $rootScope.page = {
-            'title' : $filter('i18n')('lergo.title'),
-            'description' : $filter('i18n')('lergo.description')
-        };
-    });
+	LergoClient.users.getAll().then(function(result) {
+		result.data.forEach(function(user) {
+			users[user._id] = user;
+			if (!(user in $scope._users)) {
+				$scope._users.push(user);
+			}
+		});
+	});
+	$scope.getUser = function(lesson) {
+		return users[lesson.userId];
+	};
+	$scope.$watch(function() {
+		return $filter('i18n')('lergo.title');
+	}, function() {
+		$rootScope.page = {
+			'title' : $filter('i18n')('lergo.title'),
+			'description' : $filter('i18n')('lergo.description')
+		};
+	});
 
 	LergoClient.lessons.getPublicLessons().then(function(result) {
 		$scope.lessons = result.data;
-        $scope.availableTags = TagsService.getTagsFromItems( $scope.lessons );
+		$scope.availableTags = TagsService.getTagsFromItems($scope.lessons);
 
 		$scope.lessons.forEach(function(value) {
 			value.image = LergoClient.lessons.getTitleImage(value);
@@ -30,9 +41,9 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		return FilterService.filterByAge(lesson.age);
 	};
 
-    $scope.tagsFilter = function(lesson){
-        return FilterService.filterByTags( lesson.tags );
-    };
+	$scope.tagsFilter = function(lesson) {
+		return FilterService.filterByTags(lesson.tags);
+	};
 
 	$scope.languageFilter = function(lesson) {
 		return FilterService.filterByLanguage(lesson.language);
@@ -46,6 +57,10 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	LergoClient.lessons.getStats().then(function(result) {
 		$scope.stats = result.data;
 	});
+
+	$scope.userFilter = function(lesson) {
+		return FilterService.filterByUser($scope.getUser(lesson));
+	};
 
 	$scope.absoluteShareLink = function(lesson) {
 		return window.location.origin + '/#!/public/lessons/' + lesson._id + '/share';
