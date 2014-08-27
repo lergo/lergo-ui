@@ -7,19 +7,19 @@
 			<!-- how many lessons, and how many questions -->
 			<div class="article-header page-content-body">
 				<div class="stats-wrapper">
-
-						<div class="stats-lessons">
-							<div class="amount">{{stats.lessonsCount}}</div>
-							<div class="type">{{ 'homepage.lessons' | i18n }}</div>
+					<div class="stats-lessons">
+						<div class="amount">{{stats.lessonsCount}}</div>
+						<div class="type">{{ 'homepage.lessons' | i18n }}</div>
+					</div>
+					<div class="stats-questions">
+						<div class="amount">{{stats.questionsCount}}</div>
+						<div class="type">{{ 'homepage.questions' | i18n }}</div>
+					</div>
+					<div>
+						<div class="and-counting item">
+							<span>{{ 'homepage.andCounting' | i18n }}</span>
 						</div>
-						<div class="stats-questions">
-							<div class="amount">{{stats.questionsCount}}</div>
-							<div class="type">{{ 'homepage.questions' | i18n }}</div>
-						</div>
-						<div>
-							<div class="and-counting item"><span>{{ 'homepage.andCounting' | i18n }}</span></div>
-						</div>
-
+					</div>
 				</div>
 			</div>
 			<div class="upper-section page-content-sidebar">
@@ -39,7 +39,7 @@
 			<div class="page-content-body">
 				<div class="lessons">
 					<div class="lesson"
-						ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:$root.filter.search | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter |filter:tagsFilter">
+						ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:$root.filter.search | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter |filter:tagsFilter|filter:userFilter">
 						<div class="age-limit age-limit-{{lesson.age}}">
 							<div class="value">{{lesson.age}}+</div>
 							<div class="units">
@@ -101,7 +101,7 @@
 				</div>
 			</div>
 			<div class="sidebar page-content-sidebar">
-				<div ng-include src="'views/filters/filter.html'" ng-init="showViewsFilter=true"></div>
+				<div ng-include src="'views/filters/filter.html'" ng-init="showViewsFilter=true;users=_users;"></div>
 			</div>
 		</div>
 	</div>
