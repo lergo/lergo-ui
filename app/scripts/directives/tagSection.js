@@ -63,8 +63,11 @@ angular.module('lergoApp')
                     addTag(tag);
                 };
 
-                $scope.$watch('newTag', function () {
-                    $log.info('newTag changed');
+                $scope.$watch('newTag', function (newValue, oldValue) {
+                    if ( newValue === oldValue ){
+                        return;
+                    }
+                    $log.info('newTag changed', newValue, oldValue);
 
                     if (typeof($scope.newTag) === 'object') {
                         // if object - it came from typeahead, and our 'on select' listener will take care of it.

@@ -9,6 +9,7 @@ describe('Controller: LessonsIntroCtrl', function () {
         scope;
 
     var getLessonIntroInvoked = false;
+    var getPermissionsInvoked = false;
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope, $q) {
         scope = $rootScope.$new();
@@ -19,7 +20,10 @@ describe('Controller: LessonsIntroCtrl', function () {
                     getLessonIntro: function () {
                         getLessonIntroInvoked = true;
                         return $q.defer().promise;
-
+                    },
+                    getPermissions: function(){
+                        getPermissionsInvoked = true;
+                        return $q.defer().promise;
                     }
                 }
             }
@@ -28,5 +32,8 @@ describe('Controller: LessonsIntroCtrl', function () {
 
     it('should invoke getLessonIntroInvoked', function () {
         expect(getLessonIntroInvoked).toBe(true);
+    });
+    it('should invoke getPermissionsInvoked', function () {
+        expect(getPermissionsInvoked).toBe(true);
     });
 });

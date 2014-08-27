@@ -103,6 +103,10 @@ angular.module('lergoApp')
 
             function _onValueChange(newValue, oldValue) {
 
+                if ( newValue === oldValue ){
+                    return;
+                }
+
                 if (!newValue) { // page still not initialized
                     return;
                 }

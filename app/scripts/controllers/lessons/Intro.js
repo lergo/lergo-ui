@@ -110,6 +110,10 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
     };
 
 
+    LergoClient.lessons.getPermissions(lessonId).then(function( result ){
+        $scope.permissions = result.data;
+    });
+
 
     $scope.showReadMore = function(filteredDescription){
 

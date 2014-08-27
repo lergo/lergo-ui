@@ -43,6 +43,11 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		return $http.post('/backend/questions/checkAnswer', question);
 
 	};
+
+    this.getPermissions = function(id){
+        return $http.get('/backend/questions/' + id + '/permissions');
+    };
+
 	this.deleteQuestion = function(id) {
 		return $http.post('/backend/user/questions/' + id + '/delete');
 	};

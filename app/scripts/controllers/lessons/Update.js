@@ -299,7 +299,7 @@ angular.module('lergoApp').controller(
 					backdrop : 'static',
 					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'quizItem', 'QuestionsService', 'isCreate',
 							function($scope, $modalInstance, step, addItemToQuiz, quizItem, QuestionsService, isCreate) {
-								$scope.qItem = quizItem;
+								$scope.quizItem = quizItem;
 								$scope.create = isCreate;
 								$scope.ok = function(item) {
 									addItemToQuiz(item, step);

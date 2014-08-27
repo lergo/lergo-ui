@@ -39,6 +39,13 @@ angular
 						loadQuestion();
 					}
 
+                    if ( !!questionId || !!$scope.quizItem ){
+                        QuestionsService.getPermissions( questionId || $scope.quizItem._id ).then(function( result ){
+                            $scope.permissions = result.data;
+                        });
+                    }
+
+
 					$scope.$watch('quizItem', saveQuestion.onValueChange, true);
 
 					// setInterval( function(){ console.log($scope.quizItem)},

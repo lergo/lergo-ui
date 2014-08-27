@@ -18,7 +18,7 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 	};
 
     this.getPermissions = function(id){
-        return $http.get('/backend/user/lessons' + id + '/permissions');
+        return $http.get('/backend/lessons/' + id + '/permissions');
     };
 
 	this.update = function(lesson) {
@@ -37,7 +37,7 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
     };
 
     this.copyLesson = function( id ) {
-        return $http.post('/backend/user/lessons/' + id + '/copy');
+        return $http.post('/backend/lessons/' + id + '/copy');
     };
     
     this.getStats = function (){
