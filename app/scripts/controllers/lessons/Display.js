@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, $log, $controller, $rootScope, $location,shuffleFilter) {
+angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, $log, $controller, $rootScope, $location, shuffleFilter) {
 
 	// guy - using this flag because ng-cloak and other solutions will not apply
 	// to this scenario.
@@ -87,10 +87,6 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 
 		}
 	};
-	$scope.$on('quizComplete', function(event, data) {
-		$scope.isQuizComplete = data;
-	});
-
 	$scope.loaded = true;
 
 });
