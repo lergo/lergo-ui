@@ -36,7 +36,9 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 		if ($scope.currentStepIndex >= 0) {
 			if (!!$scope.lesson) {
 				$scope.step = $scope.lesson.steps[$scope.currentStepIndex];
-				shuffleFilter($scope.step.quizItems, !$scope.step.shuffleQuestion);
+				if (!!$scope.step) {
+					shuffleFilter($scope.step.quizItems, !$scope.step.shuffleQuestion);
+				}
 			} else {
 				$scope.step = null;
 			}

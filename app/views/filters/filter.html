@@ -1,10 +1,4 @@
 <form name="filter" ng-controller="FilterCtrl" class="filters lergo-form">
-	<div ng-show="!!users" class='container-fluid'>
-		<div class="label">{{'filters.labels.createdBy' | i18n}}</div>
-		<div class="input">
-			<input type="text" ng-model="$root.filter.user" typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
-		</div>
-	</div>
 	<div ng-show="!!inviteeFilter" class='container-fluid'>
 		<div class="label">{{'filters.labels.doneByStudent' | i18n}}</div>
 		<div class="input">
@@ -77,11 +71,16 @@
 			<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.duration.max" />
 		</div>
 	</div>
-	
 	<div>
 		<div class="label">{{'filters.labels.tags' | i18n }}</div>
 		<div>
 			<div tag-section tags="$root.filter.tags" tags-available="availableTags"></div>
+		</div>
+	</div>
+	<div ng-show="!!users" class='container-fluid'>
+		<div class="label">{{'filters.labels.createdBy' | i18n}}</div>
+		<div class="input">
+			<input type="text" ng-model="$root.filter.user" typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
 		</div>
 	</div>
 </form>

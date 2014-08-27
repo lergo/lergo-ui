@@ -67,7 +67,9 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 				return maxLength * 10 + 20;
 			}
 		} else if (quizItem.blanks.type === 'custom') {
+			quizItem.blanks.size = !!quizItem.blanks.size ? quizItem.blanks.size : 4;
 			return quizItem.blanks.size * 10 + 20;
+
 		}
 	};
 
