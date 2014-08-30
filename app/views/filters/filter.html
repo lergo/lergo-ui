@@ -80,7 +80,7 @@
 	<div ng-show="!!users" class='container-fluid'>
 		<div class="label">{{'filters.labels.createdBy' | i18n}}</div>
 		<div class="input">
-			<input type="text" ng-model="$root.filter.user" typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
+			<input type="text" ng-model="$root.filter.user">
 		</div>
 	</div>
 </form>
