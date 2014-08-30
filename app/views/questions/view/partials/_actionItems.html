@@ -5,10 +5,10 @@
 	</div>
 	<div ng-show="mode==='read'" class="action-item">
 		<hr />
-		<a class="btn-link" ng-click="copyQuestion(quizItem)">
+		<a class="btn-link" ng-click="copyQuestion(quizItem)" ng-show="!!permissions.canCopy">
 			<i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | i18n}}"></i>
 		</a>
-		<a class="btn-link" href="#!/user/questions/{{quizItem._id}}/update" tooltip="{{'questions.tooltip.edit' | i18n}}">
+		<a class="btn-link" href="#!/user/questions/{{quizItem._id}}/update" tooltip="{{'questions.tooltip.edit' | i18n}}" ng-show="!!permissions.canEdit">
 			<i class="fa fa-pencil-square-o"></i>
 		</a>
 	</div>

@@ -8,7 +8,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 
 	this.copyQuestion = function(questionId) {
 		$log.info('copying question');
-		return $http.post('/backend/user/questions/' + questionId + '/copy');
+		return $http.post('/backend/questions/' + questionId + '/copy');
 	};
 
 	this.getQuestionById = function(questionId) {
@@ -26,6 +26,13 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			}
 		});
 	};
+
+    this.getPublicQuestions = function(){
+        return $http({
+            'url' : '/backend/questions/publicLessons',
+            'method' :'GET'
+        });
+    };
 
 	this.createQuestion = function(question) {
 		return $http.post('/backend/questions/create', question);

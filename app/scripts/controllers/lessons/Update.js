@@ -232,16 +232,22 @@ angular.module('lergoApp').controller(
 				}
 
 			};
-			$scope.openQuestionBank = function(step) {
+			$scope.openMyQuestionBank = function(step) {
 				$scope.openQuestionBankDialog(step);
 			};
-			$scope.openQuestionBankDialog = function(step) {
+
+            $scope.openPublicQuestionBank = function(step) {
+                $scope.openQuestionBankDialog(step, true);
+            };
+
+			$scope.openQuestionBankDialog = function(step, isPublic ) {
 				$modal.open({
 					templateUrl : 'views/questions/modalindex.html',
 					windowClass : 'question-bank-dialog',
 					backdrop : 'static',
-					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', function($scope, $modalInstance, step, addItemToQuiz) {
+					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'opts', function($scope, $modalInstance, step, addItemToQuiz, opts ) {
 						$scope.emptySelection=false;
+                        $scope.isPublic = opts.isPublic;
 						$scope.ok = function(items) {
 							var isEmpty = true;
 							angular.forEach(items, function(item) {
@@ -250,6 +256,10 @@ angular.module('lergoApp').controller(
 									addItemToQuiz(item, step);
 								}
 							});
+
+
+
+
 							$scope.emptySelection = isEmpty;
 							if (!isEmpty) {
 								$modalInstance.close();
@@ -266,7 +276,10 @@ angular.module('lergoApp').controller(
 						},
 						addItemToQuiz : function() {
 							return $scope.addItemToQuiz;
-						}
+						},
+                        opts : function(){
+                            return  { 'isPublic' : !!isPublic };
+                        }
 					}
 				});
 			};

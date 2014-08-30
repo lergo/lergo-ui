@@ -29,15 +29,24 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		});
 	};
 
-	QuestionsService.getUserQuestions().then(function(result) {
-		$scope.items = result.data;
-		$scope.errorMessage = null;
-		$scope.availableTags = TagsService.getTagsFromItems($scope.items);
-	}, function(result) {
-		$scope.error = result.data;
-		$scope.errorMessage = 'Error in fetching questions : ' + result.data.message;
-		$log.error($scope.errorMessage);
-	});
+
+    var getQuestionsPromise = null;
+    if ( !$scope.isPublic ){
+        getQuestionsPromise = QuestionsService.getUserQuestions();
+    }else{
+        getQuestionsPromise = QuestionsService.getPublicQuestions();
+    }
+
+    getQuestionsPromise.then(function (result) {
+        $scope.items = result.data;
+        $scope.errorMessage = null;
+        $scope.availableTags = TagsService.getTagsFromItems($scope.items);
+    }, function (result) {
+        $scope.error = result.data;
+        $scope.errorMessage = 'Error in fetching questions : ' + result.data.message;
+        $log.error($scope.errorMessage);
+    });
+
 
 	$scope.getTextFilterItems = function() {
 		return $scope.items;

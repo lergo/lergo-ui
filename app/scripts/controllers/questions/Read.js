@@ -7,11 +7,19 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 	QuestionsService.getQuestionById(questionId).then(function(result) {
 		$scope.quizItem = result.data;
 		$scope.errorMessage = null;
+
+        LergoClient.questions.getPermissions( $scope.quizItem._id).then(function( result ){
+            $scope.permissions = result.data;
+        });
+
 	}, function(result) {
 		$scope.error = result.data;
 		$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
 		$log.error($scope.errorMessage);
 	});
+
+
+
 
 	$scope.getQuestionViewTemplate = function() {
 		if (!!$scope.quizItem && !!$scope.quizItem.type) {
