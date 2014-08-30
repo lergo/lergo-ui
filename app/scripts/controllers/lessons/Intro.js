@@ -112,6 +112,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
     $scope.showEditSummary = function(){
 
+
         if ( !!$scope.lesson && !!$scope.lesson.copyOf ){
             return true;
         }
@@ -130,7 +131,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
         return !!$scope.lesson && !!$scope.lesson.description &&
             ( ( !!filteredDescription &&  filteredDescription.length !== $scope.lesson.description.length ) ||
-                ( !!$scope.questionsWithSummary && $scope.questionsWithSummary.length > 0 ) );
+                $scope.showEditSummary());
     };
 
 	$scope.startLesson = function() {
