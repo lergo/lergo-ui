@@ -5,20 +5,6 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 																																	 * $location,
 																																	 * $log
 																																	 */) {
-	var users = {};
-	$scope._users = [];
-
-	LergoClient.users.getAll().then(function(result) {
-		result.data.forEach(function(user) {
-			users[user._id] = user;
-			if (!(user in $scope._users)) {
-				$scope._users.push(user);
-			}
-		});
-	});
-	$scope.getUser = function(lesson) {
-		return users[lesson.userId];
-	};
 	$scope.$watch(function() {
 		return $filter('i18n')('lergo.title');
 	}, function() {
@@ -59,7 +45,7 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	});
 
 	$scope.userFilter = function(lesson) {
-		return FilterService.filterByUser($scope.getUser(lesson));
+		return FilterService.filterByUser(lesson.user.username);
 	};
 
 	$scope.absoluteShareLink = function(lesson) {

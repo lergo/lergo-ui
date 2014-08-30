@@ -58,7 +58,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		}
 
 		if (!tags || tags.length === 0) { // if filter has tags, but lesson
-											// doesn't, filter it
+			// doesn't, filter it
 			// out.
 			return false;
 		}
@@ -149,10 +149,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		if (!filter || !filter.user || !user) {
 			return true;
 		}
-		if (filter.user === user) {
-			return true;
-		}
-		return false;
+		return user.indexOf(filter.user) === 0;
 	};
 	this.filterByInvitee = function(invitee) {
 		var filter = $rootScope.filter;
@@ -181,22 +178,21 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		}
 		return true;
 	};
-	
-	
+
 	this.filterByDuration = function(duration) {
 		var filter = $rootScope.filter;
 		if (!filter || !filter.duration || (!filter.duration.min && !filter.duration.max)) {
 			return true;
 		}
-		if (filter.duration.min && duration < filter.duration.min*1000) {
+		if (filter.duration.min && duration < filter.duration.min * 1000) {
 			return false;
 		}
-		if (filter.duration.max && duration > filter.duration.max*1000) {
+		if (filter.duration.max && duration > filter.duration.max * 1000) {
 			return false;
 		}
 		return true;
 	};
-	
+
 	this.filterByReportStatus = function(isFinished) {
 		var filter = $rootScope.filter;
 		if (!filter || !filter.reportStatus) {
