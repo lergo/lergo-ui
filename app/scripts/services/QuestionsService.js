@@ -22,7 +22,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			'url' : '/backend/questions/find',
 			'method' : 'GET',
 			params : {
-				'ids' : ids
+				'questionsId' : ids
 			}
 		});
 	};

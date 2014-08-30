@@ -104,7 +104,18 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
         return [].concat(_.find($scope.questions || [], function(q){ return !!q.summary; }));
     }
 
+
+    // we want to show edit summary in case this lesson is a copy of another lesson
+    // or if we have an edit summary on one of the questions.
+
+    // edit summary is used here as an abstraction and does not refer to the question model field 'edit summary'
+
     $scope.showEditSummary = function(){
+
+        if ( !!$scope.lesson && !!$scope.lesson.copyOf ){
+            return true;
+        }
+
         var withSummary = getQuestionsWithSummary();
         return !!withSummary && withSummary.length > 0;
     };
@@ -161,5 +172,28 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 			});
 		}
 	}
+
+
+    $scope.$watch('lesson', function( newValue ){
+        if ( !!$scope.copyOfItem ){
+            return;
+        }
+        if ( !!newValue && !!newValue.copyOf ){
+            LergoClient.lessons.findLessonsById( [].concat(newValue.copyOf)).then(function( result ){
+                var copyOfLessons = result.data;
+                LergoClient.users.findUsersById(_.map(copyOfLessons, 'userId')).then(function(result){
+                    var copyOfUsers = result.data;
+                    var copyOfUsersById = _.object(_.map(copyOfUsers , '_id'), copyOfUsers );
+
+                    _.each( copyOfLessons , function(l){
+                        l.userDetails = copyOfUsersById[l.userId];
+                    });
+
+                    $scope.copyOfItems = copyOfLessons;
+
+                });
+            });
+        }
+    });
 
 });

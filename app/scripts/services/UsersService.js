@@ -5,4 +5,15 @@ angular.module('lergoApp')
         this.getAll = function () {
             return $http.get('/backend/users/get/all');
         };
+
+
+        this.findUsersById = function(ids) {
+            return $http({
+                'url' : '/backend/users/find',
+                'method' : 'GET',
+                params : {
+                    'usersId' : ids
+                }
+            });
+        };
     });

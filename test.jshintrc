@@ -29,6 +29,7 @@
         "inject" : false,
         "expect" :false,
         "angular":false,
-        "spyOn" : false
+        "spyOn" : false,
+        "$" : false
     }
 }

@@ -162,6 +162,20 @@
 									</div>
 								</div>
 							</div>
+                            <div ng-show="copyOfItems.length > 0">
+                                <span ng-show="copyOfItems.length === 1" ng-repeat="item in copyOfItems">
+                                    {{ 'lessonIntro.copiedFromLesson' | i18n}} <span lesson-intro-link lesson="item">{{item.name}}</span> {{ 'lessonIntro.copiedFromLessonBy' | i18n }} {{item.userDetails.fullName }}
+                                </span>
+                                <span ng-show="copyOfItems.length > 1">
+                                    {{ 'lessonIntro.copiedFromLessons' | i18n }}
+                                    <ul>
+                                        <li ng-repeat="item in copyOfItems track by $index">
+                                            <span lesson-intro-link lesson="item">{{item.name}}</span> {{ 'lessonIntro.copiedFromLessonBy' | i18n }} {{item.userDetails.fullName }}
+                                        </li>
+                                    </ul>
+                                </span>
+
+                            </div>
 						</div>
 						<div class="read-more" style="text-align: center" ng-show="showReadMore(filteredDescription) " ng-click="more=!more">
 							<hr class="dashes">
