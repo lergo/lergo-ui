@@ -52,6 +52,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.getQuizItemTemplate = function(id) {
 		if (!!$scope.questions) {
 			$scope.quizItem = $scope.questions[id];
+			if (!$scope.quizItem.startTime) {
+				$scope.quizItem.startTime = new Date().getTime();
+			}
 			return !!$scope.quizItem && LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate || '';
 		}
 		return '';
@@ -81,9 +84,6 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.getQuizItem = function() {
 		if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > $scope.currentIndex) {
 			var quizItem = $scope.step.quizItems[$scope.currentIndex];
-			if (!quizItem.startTime) {
-				quizItem.startTime = new Date().getTime();
-			}
 			return quizItem;
 		}
 		return null;
