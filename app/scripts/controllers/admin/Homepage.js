@@ -9,14 +9,10 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 	});
 
 	var users = {};
-	$scope._users = [];
 
 	LergoClient.users.getAll().then(function(result) {
 		result.data.forEach(function(user) {
 			users[user._id] = user;
-			if (!(user in $scope._users)) {
-				$scope._users.push(user);
-			}
 		});
 	});
 
@@ -36,7 +32,7 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 		return FilterService.filterByStatus(lesson.public);
 	};
 	$scope.userFilter = function(lesson) {
-		return FilterService.filterByUser($scope.getUser(lesson));
+		return FilterService.filterByUser($scope.getUser(lesson).username);
 	};
 
     $scope.tagsFilter = function(lesson){
