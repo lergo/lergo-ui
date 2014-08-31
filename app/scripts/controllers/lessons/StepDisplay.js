@@ -52,7 +52,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.getQuizItemTemplate = function(id) {
 		if (!!$scope.questions) {
 			$scope.quizItem = $scope.questions[id];
-			if (!$scope.quizItem.startTime) {
+			if (!!$scope.quizItem && !$scope.quizItem.startTime) {
 				$scope.quizItem.startTime = new Date().getTime();
 			}
 			return !!$scope.quizItem && LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate || '';
