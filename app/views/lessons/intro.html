@@ -153,13 +153,13 @@
 								<br />
                                 <div ng-show="copyOfItems.length > 0">
                                 <span ng-show="copyOfItems.length === 1" ng-repeat="item in copyOfItems">
-                                    {{ 'lessonIntro.copiedFromLesson' | i18n}} <span lesson-intro-link lesson="item">{{item.name}}</span> {{ 'lessonIntro.copiedFromLessonBy' | i18n }} {{item.userDetails.fullName }}
+                                    {{ 'lessonIntro.copiedFromLesson' | i18n}} <span lesson-intro-link lesson="item">{{item.name}}</span> {{ 'lessonIntro.copiedFromLessonBy' | i18n }} {{item.userDetails.username }}
                                 </span>
                                 <span ng-show="copyOfItems.length > 1">
                                     {{ 'lessonIntro.copiedFromLessons' | i18n }}
                                     <ul>
                                         <li ng-repeat="item in copyOfItems track by $index">
-                                            <span lesson-intro-link lesson="item">{{item.name}}</span> {{ 'lessonIntro.copiedFromLessonBy' | i18n }} {{item.userDetails.fullName }}
+                                            <span lesson-intro-link lesson="item">{{item.name}}</span> {{ 'lessonIntro.copiedFromLessonBy' | i18n }} {{item.userDetails.username }}
                                         </li>
                                     </ul>
                                 </span>
