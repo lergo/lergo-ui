@@ -10,7 +10,7 @@
 		<div class="answers">
 			<div class="true-false-options">
 				<button ng-repeat="option in ['True','False']" class="true-false-option" ng-click="quizItem.userAnswer = option"
-					ng-class="{'active' : quizItem.userAnswer === option }">{{ 'quizItem.answer.' + option | i18n }}</button>
+					ng-class="{'active-button' : quizItem.userAnswer === option }">{{ 'quizItem.answer.' + option | i18n }}</button>
 			</div>
 		</div>
 		<div ng-include="'views/questions/view/partials/_submit.html'"></div>

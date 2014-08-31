@@ -39,7 +39,7 @@
 			<div class="page-content-body">
 				<div class="lessons">
 					<div class="lesson"
-						ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:$root.filter.search | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter |filter:tagsFilter|filter:userFilter">
+						ng-repeat="lesson in pageLessons |orderBy:'-lastUpdate' | filter:$root.filter.search | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter |filter:tagsFilter|filter:userFilter">
 						<div class="age-limit age-limit-{{lesson.age}}">
 							<div class="value">{{lesson.age}}+</div>
 							<div class="units">
@@ -103,6 +103,10 @@
 			<div class="sidebar page-content-sidebar">
 				<div ng-include src="'views/filters/filter.html'" ng-init="showViewsFilter=true;users=true;"></div>
 			</div>
+		</div>
+		<div class="pagination">
+			<pagination total-items="lessons.length" ng-model="currentPage" max-size="5" items-per-page="numOfItemsInPage" class="pagination-sm" rotate="false"
+				ng-change="initPageLessons(currentPage)" num-pages="numPages" style="border:none;"></pagination>
 		</div>
 	</div>
 </div>

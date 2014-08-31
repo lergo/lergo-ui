@@ -13,6 +13,14 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			'description' : $filter('i18n')('lergo.description')
 		};
 	});
+	$scope.numOfItemsInPage = 18;
+	$scope.initPageLessons = function(currentPage) {
+		if (!!$scope.lessons) {
+			var startIndex = (currentPage - 1) * $scope.numOfItemsInPage;
+			var endIndex = Math.min(startIndex + $scope.numOfItemsInPage, $scope.lessons.length);
+			$scope.pageLessons = $scope.lessons.slice(startIndex, endIndex);
+		}
+	};
 
 	LergoClient.lessons.getPublicLessons().then(function(result) {
 		$scope.lessons = result.data;
@@ -21,6 +29,7 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		$scope.lessons.forEach(function(value) {
 			value.image = LergoClient.lessons.getTitleImage(value);
 		});
+		$scope.initPageLessons(1);
 	});
 
 	$scope.ageFilter = function(lesson) {
