@@ -127,10 +127,11 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
     });
 
 
-    $scope.showReadMore = function(filteredDescription){
 
-        return !!$scope.lesson && !!$scope.lesson.description &&
-            ( ( !!filteredDescription &&  filteredDescription.length !== $scope.lesson.description.length ) ||
+    $scope.showReadMore = function(filteredDescription){
+        $scope.more = !$scope.lesson || !$scope.lesson.description || $scope.lesson.description === '' ;
+        return (!!$scope.lesson && !!$scope.lesson.description &&
+             ( !!filteredDescription &&  filteredDescription.length !== $scope.lesson.description.length ) ||
                 $scope.showEditSummary());
     };
 
