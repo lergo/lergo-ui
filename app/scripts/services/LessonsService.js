@@ -72,7 +72,9 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 			if (step.videoUrl.toLocaleLowerCase().indexOf('youtu.be') > 0) {
 				value = step.videoUrl.substring(step.videoUrl.lastIndexOf('/') + 1);
 			} else {
-				value = step.videoUrl.split('?')[1].split('v=')[1];
+				var temp = step.videoUrl.split('?')[1];
+				if(!!temp){
+				value = step.videoUrl.split('?')[1].split('v=')[1];}
 			}
 		}
 		return value;

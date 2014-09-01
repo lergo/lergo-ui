@@ -105,8 +105,8 @@
 			</div>
 		</div>
 		<div class="pagination">
-			<pagination total-items="lessons.length" ng-model="currentPage" max-size="5" items-per-page="numOfItemsInPage" class="pagination-sm" rotate="false"
-				ng-change="initPageLessons(currentPage)" num-pages="numPages" style="border:none;"></pagination>
+			<pagination total-items="filteredLessons.length" ng-model="currentPage" max-size="5" items-per-page="numOfItemsInPage" class="pagination-sm" rotate="false"
+				ng-change="initPageLessons(currentPage)" num-pages="numPages" previous-text="<<" next-text=">>"></pagination>
 		</div>
 	</div>
 </div>

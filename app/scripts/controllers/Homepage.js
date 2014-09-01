@@ -1,10 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService, $rootScope, $filter/*
-																																	 * ,
-																																	 * $location,
-																																	 * $log
-																																	 */) {
+angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService, $rootScope, $filter) {
 	$scope.$watch(function() {
 		return $filter('i18n')('lergo.title');
 	}, function() {
@@ -16,9 +12,10 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	$scope.numOfItemsInPage = 18;
 	$scope.initPageLessons = function(currentPage) {
 		if (!!$scope.lessons) {
+			filterItems();
 			var startIndex = (currentPage - 1) * $scope.numOfItemsInPage;
-			var endIndex = Math.min(startIndex + $scope.numOfItemsInPage, $scope.lessons.length);
-			$scope.pageLessons = $scope.lessons.slice(startIndex, endIndex);
+			var endIndex = Math.min(startIndex + $scope.numOfItemsInPage, $scope.filteredLessons.length);
+			$scope.pageLessons = $scope.filteredLessons.slice(startIndex, endIndex);
 		}
 	};
 
@@ -33,6 +30,7 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	});
 
 	$scope.ageFilter = function(lesson) {
+		filterItems();
 		return FilterService.filterByAge(lesson.age);
 	};
 
@@ -49,42 +47,40 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	$scope.viewsFilter = function(lesson) {
 		return FilterService.filterByViews(lesson.views);
 	};
-	LergoClient.lessons.getStats().then(function(result) {
-		$scope.stats = result.data;
-	});
-
 	$scope.userFilter = function(lesson) {
 		return FilterService.filterByUser(lesson.user.username);
 	};
+	LergoClient.lessons.getStats().then(function(result) {
+		$scope.stats = result.data;
+	});
 
 	$scope.absoluteShareLink = function(lesson) {
 		return window.location.origin + '/#!/public/lessons/' + lesson._id + '/share';
 	};
 
-	/** * MOCK CODE FOR REFERENCE - WILL BE REMOVED BY END OF JUNE ** */
-	/*
-	 * $scope.filters = [ { 'label' : 'age range',
-	 * 'options':['1-6','6-10','10-15','15-20','Custom'], 'select':null}, {
-	 * 'label' : 'language',
-	 * 'options':['languages.en','languages.he','languages.ru'],
-	 * 'translate':true, 'select':null}, { 'label' : 'subject',
-	 * 'options':['subject.spelling','subject.math','subject.art'],
-	 * 'translate':true, 'select':null} ];
-	 * 
-	 * $scope.tags = [ 'confusing words', 'tricks', 'visual', 'fun' ]; // true ==
-	 * next, false == prev $scope.flipSection = function (section, direction) {
-	 * 
-	 * if (direction) { section.index++; } else { if (section.index > 0) {
-	 * section.index--; } } };
-	 * 
-	 * $scope.getLessons = function(section){ if (
-	 * !section.hasOwnProperty('index')){ section.index = 0; }
-	 * 
-	 * var l = section.lessons; var i = section.index; var ll =
-	 * section.lessons.length; return [ l[i%ll], l[(i+1)%ll], l[(i+2)%ll]]; };
-	 * 
-	 * LessonService.getHomepageLessons().then(function(data){ $scope.sections =
-	 * data; });
-	 */
+	function filterItems() {
+		var items = $scope.lessons;
+		$scope.filteredLessons = [];
+		for ( var i = 0; i < items.length; i++) {
+			if (!FilterService.filterByAge(items[i].age)) {
+				continue;
+			} else if (!FilterService.filterByLanguage(items[i].language)) {
+				continue;
+			} else if (!FilterService.filterBySubject(items[i].subject)) {
+				continue;
+			} else if (!FilterService.filterByViews(items[i].views)) {
+				continue;
+			} else if (!FilterService.filterByUser(items[i].user.username)) {
+				continue;
+			} else if (!FilterService.filterByTags(items[i].tags)) {
+				continue;
+			} else {
+				$scope.filteredLessons.push(items[i]);
+			}
+			
+			$scope.filteredLessons= _.sortBy($scope.filteredLessons, 'lastUpdated');
+		}
+
+	}
 
 });
