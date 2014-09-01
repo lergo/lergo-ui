@@ -1,25 +1,25 @@
 'use strict';
 
-angular.module('lergoApp').service('LessonsService', function LessonsService($http,$sce) {
+angular.module('lergoApp').service('LessonsService', function LessonsService($http, $sce) {
 
 	this.create = function() {
 		return $http.post('/backend/lessons/create');
 	};
 
-    // will get all lessons - including private.
-    // if user not allowed, will return 400.
-    // to get user's lessons, use UserDataService
-    this.getAll = function(){
-        return $http.get('/backend/lessons/get/all');
-    };
+	// will get all lessons - including private.
+	// if user not allowed, will return 400.
+	// to get user's lessons, use UserDataService
+	this.getAll = function() {
+		return $http.get('/backend/lessons/get/all');
+	};
 
 	this.delete = function(id) {
 		return $http.post('/backend/lessons/' + id + '/delete');
 	};
 
-    this.getPermissions = function(id){
-        return $http.get('/backend/lessons/' + id + '/permissions');
-    };
+	this.getPermissions = function(id) {
+		return $http.get('/backend/lessons/' + id + '/permissions');
+	};
 
 	this.update = function(lesson) {
 		return $http.post('/backend/lessons/' + lesson._id + '/update', lesson);
@@ -28,41 +28,40 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 		return $http.get('/backend/lessons/' + id);
 	};
 
-    this.findLessonsById = function(ids) {
-        return $http({
-            'url' : '/backend/lessons/find',
-            'method' : 'GET',
-            params : {
-                'lessonsId' : ids
-            }
-        });
-    };
+	this.findLessonsById = function(ids) {
+		return $http({
+			'url' : '/backend/lessons/find',
+			'method' : 'GET',
+			params : {
+				'lessonsId' : ids
+			}
+		});
+	};
 
+	this.getLessonIntro = function(id) {
+		return $http.get('/backend/lessons/' + id + '/intro');
+	};
 
-    this.getLessonIntro = function(id){
-        return $http.get('/backend/lessons/' + id + '/intro');
-    };
+	this.getPublicLessons = function() {
+		return $http.get('/backend/public/lessons');
+	};
 
-    this.getPublicLessons = function (){
-        return $http.get('/backend/public/lessons');
-    };
+	this.copyLesson = function(id) {
+		return $http.post('/backend/lessons/' + id + '/copy');
+	};
 
-    this.copyLesson = function( id ) {
-        return $http.post('/backend/lessons/' + id + '/copy');
-    };
-    
-    this.getStats = function (){
-        return $http.get('/backend/system/statistics');
-    };
-    
-    this.getTitleImage = function(lesson) {
+	this.getStats = function() {
+		return $http.get('/backend/system/statistics');
+	};
+
+	this.getTitleImage = function(lesson) {
 		if (!lesson || !lesson.steps || lesson.steps.length < 1) {
 			return;
 		}
 		for ( var i = 0; i < lesson.steps.length; i++) {
 			var id = this.getVideoId(lesson.steps[i]);
 			if (id !== null) {
-				return  $sce.trustAsResourceUrl('http://img.youtube.com/vi/' + id + '/0.jpg');
+				return $sce.trustAsResourceUrl('http://img.youtube.com/vi/' + id + '/0.jpg');
 			}
 		}
 	};
@@ -73,8 +72,9 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 				value = step.videoUrl.substring(step.videoUrl.lastIndexOf('/') + 1);
 			} else {
 				var temp = step.videoUrl.split('?')[1];
-				if(!!temp){
-				value = step.videoUrl.split('?')[1].split('v=')[1];}
+				if (!!temp) {
+					value = step.videoUrl.split('?')[1].split('v=')[1];
+				}
 			}
 		}
 		return value;
