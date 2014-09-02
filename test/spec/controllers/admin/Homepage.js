@@ -16,7 +16,7 @@ describe('Controller: AdminHomepageCtrl', function () {
         });
     }));
 
-    it('assign empty array _users to scope', function () {
-        expect(scope._users.length).toBe(0);
+    it('assign empty array changing to scope', function () {
+        expect(scope.changing.length).toBe(0);
     });
 });

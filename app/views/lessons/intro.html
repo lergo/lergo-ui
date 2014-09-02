@@ -141,16 +141,20 @@
 								</div>
 							</div>
 						</div>
+
 					</div>
 					<div class="description">
 						<pre ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>
                         <div ng-show="!!more">
 							<pre>{{ lesson.description}}</pre>
+
 							<div class="edit-summary" ng-show="showEditSummary()">
 								<br />
 								<span class="title">{{'questions.editSummary'|i18n}}</span>
 								<br />
 								<br />
+
+                                <!-- show copy of lesson -->
                                 <div ng-show="copyOfItems.length > 0">
                                 <span ng-show="copyOfItems.length === 1" ng-repeat="item in copyOfItems">
                                     {{ 'lessonIntro.copiedFromLesson' | i18n}} <span lesson-intro-link lesson="item">{{item.name}}</span> {{ 'lessonIntro.copiedFromLessonBy' | i18n }} {{item.userDetails.username }}
@@ -163,9 +167,40 @@
                                         </li>
                                     </ul>
                                 </span>
-
-                                </div>
                                 <br/>
+                                </div>
+
+
+
+
+                                <!-- show copy of questions -->
+                                <div ng-show="questionsWeCopied.length > 0">
+                                    <div ng-repeat="q in questionsWeCopied track by $index">
+                                        <div class="question">
+                                            <i class="fa fa-question-circle"> </i>
+                                            <span class="title-question"> {{q.question | limitTo :50}} </span>
+                                        </div>
+                                        <div ng-repeat="o in q.originals track by $index">
+                                            <div class="summary">Copied from <span style="text-decoration: underline">{{o.question}}</span> by {{o.userDetails.username}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- show questions from others -->
+                                <div ng-show="questionsFromOthers.length > 0">
+                                    <div ng-repeat="q in questionsFromOthers track by $index">
+                                        <div class="question">
+                                            <i class="fa fa-question-circle"> </i>
+                                            <span class="title-question"> {{q.question | limitTo :50}} </span>
+                                        </div>
+                                        <div class="summary">Question created by {{q.userDetails.username}}</div>
+                                    </div>
+                                </div>
+
+
+
+
 								<div ng-repeat="q in questions">
 									<div ng-show="!!q.summary">
 										<div class="question">

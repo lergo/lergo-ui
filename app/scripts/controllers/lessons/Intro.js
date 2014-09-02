@@ -101,7 +101,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
     $scope.noop = angular.noop;
 
     function getQuestionsWithSummary(){
-        return [].concat(_.find($scope.questions || [], function(q){ return !!q.summary; }));
+        return _.compact([].concat(_.find($scope.questions || [], function(q){ return !!q.summary; })));
     }
 
 
@@ -112,8 +112,15 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
     $scope.showEditSummary = function(){
 
-
         if ( !!$scope.lesson && !!$scope.lesson.copyOf ){
+            return true;
+        }
+
+        if ( !!$scope.questionsFromOthers && $scope.questionsFromOthers.length > 0){
+            return true;
+        }
+
+        if ( !!$scope.questionsWeCopied && $scope.questionsWeCopied.length > 0 ){
             return true;
         }
 
@@ -159,9 +166,82 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	$scope.onTextClick = function($event) {
 		$event.target.select();
 	};
+
+
+    function giveCreditToQuestionsWeCopied( questions ){
+
+        var questionsWeCopied = _.filter( questions, 'copyOf');
+        // find all questions with copy of
+        var questionsWithCopyOf = _.compact(_.flatten(_.map(questionsWeCopied, 'copyOf')));
+
+
+
+        if ( !!questionsWithCopyOf && questionsWithCopyOf.length > 0 ){
+            // get all of these questions
+            LergoClient.questions.findQuestionsById( questionsWithCopyOf).then(function( result ){
+                var originalQuestions = result.data;
+
+
+                var usersWeCopiedFrom = _.uniq(_.compact(_.map(originalQuestions,'userId')));
+
+                // get all users we copied from..
+                LergoClient.users.findUsersById( usersWeCopiedFrom).then(function(result){
+                    var copyOfUsers = result.data;
+                    // turn list of users to map where id is map
+                    var copyOfUsersById = _.object(_.map(copyOfUsers, '_id'), copyOfUsers );
+
+                    _.each( originalQuestions, function(q){
+                        q.userDetails = copyOfUsersById[q.userId];
+                    });
+
+                    var originalsById = _.object(_.map(originalQuestions, '_id'), originalQuestions);
+
+                    _.each(questionsWeCopied, function(q){
+
+                        var originals = [];
+                        _.each(q.copyOf, function(c){
+                            originals.push(originalsById[c]);
+                        });
+
+                        q.originals = originals;
+
+                    });
+
+                    /* map each question we copied to the original */
+
+                    $scope.questionsWeCopied = questionsWeCopied;
+
+                });
+            });
+
+        }
+    }
+
+    function giveCreditToQuestionsWeUseFromOthers( questions ){
+        var questionsFromOthers = _.filter( questions, function(q){ return q.userId !== $scope.lesson.userId; });
+        var others = _.uniq(_.compact(_.map( questionsFromOthers, 'userId')));
+
+
+        if ( !others || others.length === 0 ){
+            return;
+        }
+
+        LergoClient.users.findUsersById( others).then( function(result) {
+            var othersUsers = result.data;
+            var othersUsersById = _.object(_.map(othersUsers, '_id'), othersUsers );
+
+            _.each(questionsFromOthers, function( q ){
+                q.userDetails = othersUsersById[q.userId];
+            });
+
+            $scope.questionsFromOthers = questionsFromOthers;
+        });
+
+    }
+
 	function loadQuestions() {
 		var questionsId = [];
-		if (!!$scope.lesson) {
+		if (!!$scope.lesson && !!$scope.lesson.steps ) {
 			for ( var i = 0; i < $scope.lesson.steps.length; i++) {
 				var items = $scope.lesson.steps[i].quizItems;
 				if (!!items && angular.isArray(items)) {
@@ -171,6 +251,8 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 			LergoClient.questions.findQuestionsById(questionsId).then(function(result) {
 				$scope.questions = result.data;
                 $scope.questionsWithSummary = _.filter(result.data,'summary');
+                giveCreditToQuestionsWeUseFromOthers($scope.questions);
+                giveCreditToQuestionsWeCopied($scope.questions);
 			});
 		}
 	}
@@ -185,6 +267,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
                 var copyOfLessons = result.data;
                 LergoClient.users.findUsersById(_.map(copyOfLessons, 'userId')).then(function(result){
                     var copyOfUsers = result.data;
+                    // turn list of users to map
                     var copyOfUsersById = _.object(_.map(copyOfUsers , '_id'), copyOfUsers );
 
                     _.each( copyOfLessons , function(l){
