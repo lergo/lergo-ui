@@ -158,8 +158,10 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 	function calculateDuration(reports) {
 		angular.forEach(reports, function(report) {
 			report.duration = 0;
-			angular.forEach(report.answers, function(answer) {
-				report.duration = report.duration + answer.duration;
+			angular.forEach(report.stepDurations, function(duration) {
+				if (!!duration.startTime && !!duration.endTime) {
+					report.duration = report.duration + (duration.endTime - duration.startTime);
+				}
 			});
 			report.duration = (Math.round(report.duration / 1000)) * 1000;
 		});
