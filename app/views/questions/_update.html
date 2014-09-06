@@ -1,5 +1,5 @@
 <div>
-    <span class="update-question-notifications">
+    <span class="update-question-notifications" ng-show="!!showUsedByOthers() || !!canCopyAndOverride()">
         <span ng-show="!!showUsedByOthers()">
 
             {{ 'questions.usedByOthers' | i18n }}

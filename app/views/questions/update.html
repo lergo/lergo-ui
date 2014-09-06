@@ -1,6 +1,6 @@
 <div class="base-layout" id="questions-update">
 	<div ng-include="'views/questions/_update.html'"></div>
-	<br>
+	<br>                                                                      _
 	<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
 	<div>
 		<button class="btn" ng-click="done()" ng-disabled="isSaving()||!isValid(quizItem)">{{ 'done' | i18n }}</button>

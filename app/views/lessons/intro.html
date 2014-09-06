@@ -181,7 +181,7 @@
                                             <span class="title-question"> {{q.question | limitTo :50}} </span>
                                         </div>
                                         <div ng-repeat="o in q.originals track by $index">
-                                            <div class="summary">Copied from <span style="text-decoration: underline">{{o.question}}</span> by {{o.userDetails.username}}</div>
+                                            <div class="summary">Copied from <span question-read-link question="o"></span> by {{o.userDetails.username}}</div>
                                         </div>
                                     </div>
                                 </div>

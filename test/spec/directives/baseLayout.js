@@ -8,7 +8,7 @@ describe('Directive: baseLayout', function () {
             return n;
         },
         setLanguage: function () {
-            console.log('setting language', arguments);
+//            console.log('setting language', arguments);
             return 'guy';
         }
     };
@@ -16,7 +16,7 @@ describe('Directive: baseLayout', function () {
 
     var element;
     beforeEach(module('lergoApp', 'directives-templates', function ($provide) {
-        console.log('spying on setLanguage');
+//        console.log('spying on setLanguage');
         $provide.value('LergoTranslate', translateMock);
 
 //
@@ -24,7 +24,7 @@ describe('Directive: baseLayout', function () {
 
     function setup() {
         inject(function ($rootScope, $compile, $httpBackend) {
-            console.log('translateMock.setLanguage typeof is ', typeof(translateMock.setLanguage));
+//            console.log('translateMock.setLanguage typeof is ', typeof(translateMock.setLanguage));
 
             spyOn(translateMock, 'setLanguage');
             $httpBackend.expectGET('/backend/user/loggedin').respond(200, '{}');

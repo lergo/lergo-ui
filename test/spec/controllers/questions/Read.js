@@ -15,7 +15,7 @@ describe('Controller: QuestionsReadCtrl', function () {
             $scope: scope,
             QuestionsService: {
                 getQuestionById: function () {
-                    console.log('getting question by id');
+//                    console.log('getting question by id');
                     var deferred = $q.defer();
                     deferred.resolve({});
                     return deferred.promise;
