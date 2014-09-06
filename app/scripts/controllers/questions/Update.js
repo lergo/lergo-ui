@@ -40,8 +40,14 @@ angular
 					}
 
                     if ( !!questionId || !!$scope.quizItem ){
+                        $log.info('loading permissions');
                         QuestionsService.getPermissions( questionId || $scope.quizItem._id ).then(function( result ){
-                            $scope.permissions = result.data;
+
+                            if ( !!$scope.permissions ){ // support $parent scope, update data inside existing permissions object
+                                _.merge($scope.permissions, result.data);
+                            }else{
+                                $scope.permissions = result.data;
+                            }
                         });
                     }
 

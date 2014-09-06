@@ -1,9 +1,34 @@
-<fieldset ng-disabled="!permissions.canEdit"> <!-- http://stackoverflow.com/a/21638542/1068746 -->
 <div>
+<span ng-show="!!canCopyAndOverride()" class="bg-info"
+      style="background: #fcf8e3; display:block; width:700px; margin:0 auto; color:black;">
+        <span ng-show="!wantToEdit">
+        You cannot edit this questions since you did not create it. <br/>
+        You can however <button class="btn btn-link" ng-click="wantToEdit=true">copy it and replace the use of it all
+            over the lesson
+        </button> <br/>
+        </span>
+        <span ng-show="wantToEdit">
+            Are you sure you want to copy this question and replace all instances of it in the lesson?<br/>
+            <span class="options">
+                <span class="option1">
+                    <button class="btn btn-link" ng-click="copyAndReplaceQuestion(quizItem)">Yes, copy and replace</button>
+                </span>
+                <span class="option2">
+                    <button class="btn btn-link" ng-click="wantToEdit=false">No, do not copy and replace</button>
+                </span>
+            </span>
+        </span>
+    </span>
+</div>
+<fieldset ng-disabled="!permissions.canEdit"> <!-- http://stackoverflow.com/a/21638542/1068746 -->
+
+
+<div>
+
 	<table class=" lergo-table lergo-form">
 		<tbody>
 			<tr>
-				<td>{{ 'questions.question' | i18n }}</td>
+				<td>{{ 'questions.question' | i18n }} hello</td>
 				<td colspan="7">
 					<input ng-model="quizItem.question"
 						placeholder="{{quizItem.type==='fillInTheBlanks' ? ('questions.fillInTheBlanks.hint' |i18n) : ('questions.questionHint' | i18n)}}" />

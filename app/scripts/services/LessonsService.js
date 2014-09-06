@@ -13,6 +13,10 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 		return $http.get('/backend/lessons/get/all');
 	};
 
+    this.overrideQuestion = function( lessonId, questionId ){
+        return $http.post('/backend/lessons/' + lessonId + '/question/' + questionId + '/override');
+    };
+
 	this.delete = function(id) {
 		return $http.post('/backend/lessons/' + id + '/delete');
 	};

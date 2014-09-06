@@ -240,12 +240,48 @@ angular.module('lergoApp').controller(
                 $scope.openQuestionBankDialog(step, true);
             };
 
+            function lessonOverrideQuestion(questionIdToOverride, callback) {
+                $log.info('in lesson controller, overriding question');
+                LergoClient.lessons.overrideQuestion($scope.lesson._id, questionIdToOverride).then(function (result) {
+                    if ( !!callback ) {
+                        callback(result.data.quizItem._id);
+                    }
+                    $scope.lesson = result.data.lesson;
+                }, function (result) {
+                    toastr.error('error while overriding question', result.data );
+                });
+            }
+
+
+            // this is a wrapper to 'lessonOverrideQuestion' which will, after lesson update
+            // list on quizItemsData change ONCE and reopens the dialog
+            function lessonOverrideQuestionAndReopenDialog( step, questionIdToOverride ){
+                lessonOverrideQuestion( questionIdToOverride, function(newQuizItemId){
+
+                    // first - lets watch
+                    // http://stackoverflow.com/a/13652152/1068746
+                    var unregister = $scope.$watch('quizItemsData', function( ){
+
+                        if ( !$scope.quizItemsData.hasOwnProperty(newQuizItemId)){
+                            return; // wait for it to exist ;
+                        }
+
+                        try{
+                            $scope.openCreateUpdateQuestionDialog( step, $scope.quizItemsData[newQuizItemId],false);
+                        }finally{
+                            unregister();
+                        }
+                    });
+                });
+            }
+
 			$scope.openQuestionBankDialog = function(step, isPublic ) {
 				$modal.open({
 					templateUrl : 'views/questions/modalindex.html',
 					windowClass : 'question-bank-dialog',
 					backdrop : 'static',
-					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'opts', function($scope, $modalInstance, step, addItemToQuiz, opts ) {
+					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'opts',
+                                   function($scope, $modalInstance, step, addItemToQuiz, opts ) {
 						$scope.emptySelection=false;
                         $scope.isPublic = opts.isPublic;
 						$scope.ok = function(items) {
@@ -277,6 +313,8 @@ angular.module('lergoApp').controller(
 						addItemToQuiz : function() {
 							return $scope.addItemToQuiz;
 						},
+
+
                         opts : function(){
                             return  { 'isPublic' : !!isPublic };
                         }
@@ -310,15 +348,41 @@ angular.module('lergoApp').controller(
 					templateUrl : 'views/questions/modalupdate.html',
 					windowClass : 'question-create-dialog',
 					backdrop : 'static',
-					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'quizItem', 'QuestionsService', 'isCreate',
-							function($scope, $modalInstance, step, addItemToQuiz, quizItem, QuestionsService, isCreate) {
+					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'quizItem', 'QuestionsService', 'isCreate', 'lessonOverrideQuestion',
+							function($scope, $modalInstance, step, addItemToQuiz, quizItem, QuestionsService, isCreate, lessonOverrideQuestion) {
 								$scope.quizItem = quizItem;
+                                $scope.permissions = {}; // this object will be updated by child scope UpdateQuestionCtrl.
 								$scope.create = isCreate;
 								$scope.ok = function(item) {
 									addItemToQuiz(item, step);
 									$modalInstance.close();
 								};
-								$scope.cancel = function(item) {
+
+
+                                /**
+                                 * There are so many things we need to have to enable copy and override, we better
+                                 * wrap it in a function.
+                                 */
+                                $scope.canCopyAndOverride = function(){
+
+                                    // we can query $scope.permissions even though it is populated in child scope
+                                    // because child controller supports update for my $scope.permissions model rather than overriding it
+
+                                    return !!lessonOverrideQuestion && // we should have a parent's function to complete the task
+                                            !!$scope.quizItem._id && //  we should have an item to override
+                                            !!$scope.permissions && // we should have permissions from backend
+                                            !$scope.permissions.canEdit && // user should not be able to edit
+                                            !!$scope.permissions.canCopy; // user should be able to copy
+                                };
+
+                                $scope.copyAndReplaceQuestion = function( item ){
+                                    $log.info('copying and replacing question from modal instance');
+                                    $modalInstance.close(); // we will soon open the new modal instance with the copied question.
+                                    lessonOverrideQuestion( step, item._id );
+                                };
+
+
+                                $scope.cancel = function(item) {
 									if (!$scope.isValid(item)) {
 										QuestionsService.deleteQuestion(item._id);
 									}
@@ -338,6 +402,9 @@ angular.module('lergoApp').controller(
 						step : function() {
 							return step;
 						},
+                        lessonOverrideQuestion:function(){
+                            return lessonOverrideQuestionAndReopenDialog;
+                        },
 						addItemToQuiz : function() {
 							return $scope.addItemToQuiz;
 						},

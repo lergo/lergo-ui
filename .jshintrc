@@ -25,6 +25,7 @@
         "prettyPrintOne": false,
         "_": false,
         "confirm":false ,
-        "conf" : false
+        "conf" : false,
+        "toastr" : false
     }
 }
