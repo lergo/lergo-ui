@@ -4,7 +4,7 @@ angular
 		.module('lergoApp')
 		.controller(
 				'QuestionsUpdateCtrl',
-				function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $location, FilterService, TagsService ) {
+				function($scope, QuestionsService, LergoClient, $routeParams, ContinuousSave, $log, $location, FilterService, TagsService ) {
 
 					var saveQuestion = new ContinuousSave({
 						'saveFn' : function(value) {
@@ -39,6 +39,22 @@ angular
 						loadQuestion();
 					}
 
+
+                    $scope.showUsedByOthers = function(){
+                        return lessonsWhoUseThisQuestion !== null && lessonsWhoUseThisQuestion.length > 0;
+                    };
+
+                    var lessonsWhoUseThisQuestion = null;
+
+                    function getLessonsWhoUseThisQuestion() {
+                        $log.info('finding usages');
+                        LergoClient.lessons.getLessonsWhoUseThisQuestion(questionId || $scope.quizItem._id).then(function (result) {
+                            lessonsWhoUseThisQuestion = result.data;
+                        }, function (result) {
+                            toastr.error('cannot find usages, got error', result.data);
+                        });
+                    }
+
                     if ( !!questionId || !!$scope.quizItem ){
                         $log.info('loading permissions');
                         QuestionsService.getPermissions( questionId || $scope.quizItem._id ).then(function( result ){
@@ -47,6 +63,11 @@ angular
                                 _.merge($scope.permissions, result.data);
                             }else{
                                 $scope.permissions = result.data;
+                            }
+
+                            if ( !!$scope.permissions.canEdit ){
+
+                                getLessonsWhoUseThisQuestion();
                             }
                         });
                     }

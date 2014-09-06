@@ -1,20 +1,26 @@
 <div>
-<span ng-show="!!canCopyAndOverride()" class="bg-info"
-      style="background: #fcf8e3; display:block; width:700px; margin:0 auto; color:black;">
-        <span ng-show="!wantToEdit">
-        You cannot edit this questions since you did not create it. <br/>
-        You can however <button class="btn btn-link" ng-click="wantToEdit=true">copy it and replace the use of it all
-            over the lesson
-        </button> <br/>
+    <span class="update-question-notifications">
+        <span ng-show="!!showUsedByOthers()">
+            This question is being used by other lessons
         </span>
-        <span ng-show="wantToEdit">
-            Are you sure you want to copy this question and replace all instances of it in the lesson?<br/>
-            <span class="options">
-                <span class="option1">
-                    <button class="btn btn-link" ng-click="copyAndReplaceQuestion(quizItem)">Yes, copy and replace</button>
-                </span>
-                <span class="option2">
-                    <button class="btn btn-link" ng-click="wantToEdit=false">No, do not copy and replace</button>
+        <span ng-show="!!canCopyAndOverride()">
+            <span ng-show="!wantToEdit">
+            You cannot edit this questions since you did not create it. <br/>
+            You can however <button class="btn btn-link" ng-click="wantToEdit=true">copy it and replace the use of it
+                all
+                over the lesson
+            </button> <br/>
+            </span>
+            <span ng-show="wantToEdit">
+                Are you sure you want to copy this question and replace all instances of it in the lesson?<br/>
+                <span class="options">
+                    <span class="option1">
+                        <button class="btn btn-link" ng-click="copyAndReplaceQuestion(quizItem)">Yes, copy and replace
+                        </button>
+                    </span>
+                    <span class="option2">
+                        <button class="btn btn-link" ng-click="wantToEdit=false">No, do not copy and replace</button>
+                    </span>
                 </span>
             </span>
         </span>

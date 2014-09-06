@@ -42,10 +42,6 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		return $http.post('/backend/questions/' + question._id + '/update', question);
 	};
 
-	this.getLessonsWhoUseThisQuestion = function(question) {
-		return $http.get('/backend/user/questions/' + question._id + '/usages');
-	};
-
 	this.checkAnswer = function(question) {
 		return $http.post('/backend/questions/checkAnswer', question);
 
