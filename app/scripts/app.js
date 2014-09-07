@@ -27,7 +27,7 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.u
                 templateUrl : 'views/questions/read.html',
                 controller: 'QuestionsReadCtrl'
             })
-            .when('/public/questions/:questionId/read', {
+            .when('/user/questions/:questionId/read', {
                 templateUrl : 'views/questions/read.html',
                 controller: 'QuestionsReadCtrl'
             })
