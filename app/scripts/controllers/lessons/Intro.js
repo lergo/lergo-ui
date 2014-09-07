@@ -112,7 +112,9 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
     $scope.showEditSummary = function(){
 
-        if ( !!$scope.lesson && !!$scope.lesson.copyOf ){
+        // we want to keep the information about copyOf if copied from yourself.
+        // we do not want to display it in the edit summary though
+        if ( !!$scope.lesson && !!$scope.lesson.copyOf &&  !!$scope.copyOfItems && $scope.copyOfItems.length > 0){
             return true;
         }
 
@@ -258,13 +260,18 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	}
 
 
+    // once we have the copyOf details, we need to fetch details about it like users and lessons.
+    // we only want to do this once. We can implement 'unregister' or simply return at the beginning.
+    // either way is fine with me.
     $scope.$watch('lesson', function( newValue ){
         if ( !!$scope.copyOfItem ){
             return;
         }
         if ( !!newValue && !!newValue.copyOf ){
             LergoClient.lessons.findLessonsById( [].concat(newValue.copyOf)).then(function( result ){
-                var copyOfLessons = result.data;
+                // we want to keep the information about copyOf if copied from yourself.
+                // we do not want to display it in the edit summary though
+                var copyOfLessons = _.compact( _.filter(result.data, function(i) { if ( $scope.lesson.userId !== i.userId ){  return i; }  }) );
                 LergoClient.users.findUsersById(_.map(copyOfLessons, 'userId')).then(function(result){
                     var copyOfUsers = result.data;
                     // turn list of users to map
