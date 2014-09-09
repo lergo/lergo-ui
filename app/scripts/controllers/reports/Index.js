@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location) {
+angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location, $rootScope) {
 
 	$scope.languageFilter = function(report) {
 		if (!report || !report.data || !report.data.lesson) {
@@ -111,7 +111,8 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 	$scope.createLessonFromWrongQuestions = function() {
 		LergoClient.lessons.create().then(function(result) {
 			var lesson = result.data;
-			lesson.name = 'Difficult questions lesson';
+			lesson.name = 'Difficult questions lesson from : ';
+			lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
 			lesson.steps = [];
 			lesson.description = '';
 			var step = {
@@ -122,11 +123,12 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			lesson.steps.push(step);
 			angular.forEach($scope.reports, function(report) {
 				if (report.selected === true) {
+					lesson.name = lesson.name + report.data.lesson.name + ',';
 					lesson.description = lesson.description + report.data.lesson.name + '\n';
 					getWronngQuestions(report.answers, lesson);
 				}
 			});
-
+			lesson.name = lesson.name.slice(0, -1);
 			LergoClient.lessons.update(lesson).then(function() {
 				$location.path('/user/lessons/' + lesson._id + '/intro');
 			});

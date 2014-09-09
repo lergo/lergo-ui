@@ -8,18 +8,15 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		$scope.quizItem = result.data;
 		$scope.errorMessage = null;
 
-        LergoClient.questions.getPermissions( $scope.quizItem._id).then(function( result ){
-            $scope.permissions = result.data;
-        });
+		LergoClient.questions.getPermissions($scope.quizItem._id).then(function(result) {
+			$scope.permissions = result.data;
+		});
 
 	}, function(result) {
 		$scope.error = result.data;
 		$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
 		$log.error($scope.errorMessage);
 	});
-
-
-
 
 	$scope.getQuestionViewTemplate = function() {
 		if (!!$scope.quizItem && !!$scope.quizItem.type) {
@@ -78,6 +75,12 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 			quizItem.blanks.size = !!quizItem.blanks.size ? quizItem.blanks.size : 4;
 			return quizItem.blanks.size * 10 + 20;
 
+		}
+	};
+
+	$scope.enterPressed = function(quizItem) {
+		if (!$scope.getAnswer(quizItem) && $scope.canSubmit(quizItem)) {
+			$scope.checkAnswer();
 		}
 	};
 
