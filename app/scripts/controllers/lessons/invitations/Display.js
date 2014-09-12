@@ -105,11 +105,6 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	$scope.showHideInvite = function() {
 		$scope.share = false;
 		$scope.invite = !$scope.invite;
-		if (!!scope.invite) {
-			$location.search({
-				lessonId : $scope.lesson._id
-			});
-		}
 	};
 	$scope.onTextClick = function($event) {
 		$event.target.select();
