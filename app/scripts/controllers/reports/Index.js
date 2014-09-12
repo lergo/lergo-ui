@@ -115,6 +115,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
 			lesson.steps = [];
 			lesson.description = '';
+			lesson.lastUpdate = new Date().getTime();
 			var step = {
 				'type' : 'quiz',
 				'quizItems' : [],
