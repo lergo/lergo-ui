@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location) {
+angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location, $speechSynthetis) {
 
 	var questionId = $routeParams.questionId;
 
@@ -29,6 +29,11 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		var quizItem = $scope.quizItem;
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
 			$scope.answer = result.data;
+			if ($scope.answer.correct) {
+				voiceFeedback('You are correct');
+			} else {
+				voiceFeedback('Your are incorrect');
+			}
 		}, function() {
 			$log.error('there was an error checking answer');
 		});
@@ -83,5 +88,9 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 			$scope.checkAnswer();
 		}
 	};
+
+	function voiceFeedback(command) {
+		$speechSynthetis.speak(command, 'en-Uk');
+	}
 
 });

@@ -126,7 +126,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 				if (report.selected === true) {
 					lesson.name = lesson.name + report.data.lesson.name + ',';
 					lesson.description = lesson.description + report.data.lesson.name + '\n';
-					getWronngQuestions(report.answers, lesson);
+					getWrongQuestions(report.answers, lesson);
 				}
 			});
 			lesson.name = lesson.name.slice(0, -1);
@@ -136,7 +136,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		});
 
 	};
-	function getWronngQuestions(answers, lesson) {
+	function getWrongQuestions(answers, lesson) {
 		angular.forEach(answers, function(answer) {
 			if (!answer.checkAnswer.correct) {
 				lesson.steps[0].quizItems.push(answer.quizItemId);

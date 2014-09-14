@@ -20,8 +20,10 @@
 	</div>
 </div>
 <div ng-show="mode==='quiz'">
-    <div lergo-progress-bar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></div>
-    <!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
+	<div lergo-progress-bar animate="true" value="progressPercentage" type="primary" class="progressbar">
+		<b>{{progressPercentage}}%</b>
+	</div>
+	<!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
 </div>
 <br>
 <div ng-show="!!getAnswer(quizItem)">
@@ -32,4 +34,7 @@
 			<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
 		</div>
 	</div>
+</div>
+<div class="result" ng-show="!getAnswer()">
+	<div class="bg-primary">{{'steps.answer' | i18n }}</div>
 </div>

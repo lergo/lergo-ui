@@ -16,32 +16,48 @@
 		<span>{{ 'lessons.lessonCompleted' | i18n }}</span>
 		<span class="lesson-title">"{{lesson.name}}"</span>
 		<span>{{'lesson.createdBy'|i18n}}</span>
-		<span class="lesson-title">"{{lesson.user.username}}"</span>
+		<span class="lesson-title">{{lesson.user.username}}</span>
 		<br>
 	</div>
 	<div class="report">
-		<br>
-		<div>
-			<a ng-show="!!invitation" ng-href="/#!/public/lessons/reports/{{report._id}}/display">
-				<i class="fa fa-bar-chart-o"></i>
-				{{ 'lessons.lessonReport' | i18n }}
-			</a>
-		</div>
-		<div class="recmmonded" ng-show="!!lesson.nextLessonId">
-			<a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
-				<i class="fa fa-university"></i>
-				{{ 'lessons.recommenedNextLesson' | i18n }}
-			</a>
-		</div>
-		<br>
+		<table class="lergo-table">
+			<tr>
+				<td>
+					<div>
+						<a ng-show="!!invitation" ng-href="/#!/public/lessons/reports/{{report._id}}/display">
+							<i class="fa fa-bar-chart-o"></i>
+							{{ 'lessons.lessonReport' | i18n }}
+						</a>
+					</div>
+					<div class="recmmonded" ng-show="!!lesson.nextLessonId">
+						<a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
+							<i class="fa fa-university"></i>
+							{{ 'lessons.recommenedNextLesson' | i18n }}
+						</a>
+					</div>
+				</td>
+				<td>
+					<button class="btn-link" ng-click="startLesson()" tooltip="{{'lessons.tooltip.restart' | i18n}}">
+						<i style="font-size: 35px; color: chartreuse;" class="fa fa-repeat "></i>
+						{{'lessons.restart' | i18n}}
+					</button>
+				</td>
+				<td>
+					<button class="btn-link" ng-click="practiceMistakes()" tooltip="{{'lessons.practiseWrongQuestion' | i18n}}">
+						<i style="font-size: 35px; color: orangered;" class="fa fa-repeat "></i>
+						{{'lessons.practiseWrongQuestion' | i18n}}
+					</button>
+				</td>
+			</tr>
+		</table>
 	</div>
 	<div class="stats">
 		<div class="action-items">
-			<button class="btn-link" ng-click="startLesson()" tooltip="{{'lessons.tooltip.restart' | i18n}}">
-				<i class="fa fa-repeat "></i>
-				{{'lessons.restart' | i18n}}
-			</button>
 			<span show-logged-in>
+				<button class="btn-link" ng-click="comment()" tooltip="{{'lessons.tooltip.comment' | i18n}}">
+					<i class="fa fa-comment"></i>
+					{{'lessons.comment' | i18n}}
+				</button>
 				<button class="btn-link" ng-click="likeLesson()" tooltip="{{'lessons.tooltip.like' | i18n}}" ng-show="!isLiked()">
 					<i class="fa fa-thumbs-o-up "></i>
 					{{'like' | i18n}}
@@ -82,7 +98,7 @@
 				{{'share' | i18n}}
 			</button>
 		</div>
-		<div class="forms">
+		<div ng-show="!!share || !!invite" class="forms">
 			<div ng-show="!!share" class="lergo-form share">
 				<p class="lergo-h4">{{'lessons.shareLesson' | i18n}}</p>
 				<div class="container">
