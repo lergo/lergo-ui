@@ -1,5 +1,5 @@
 #questionPreview { 
-    width:450px;
+    width:550px;
     margin:0 auto;
     margin-top:50px;
     display:table;
@@ -9,13 +9,13 @@
     font-weight: bold;
     }
 	.left {
-		width:90%;
-		padding:10px;
+		width:85%;
+		padding:15px;
 		float:left;
 		.submit{
 			margin-top:10px;
 			text-align: center;
-			width:430px;
+			width:530px;
 			.left-arrow{
 				display:none;
 			}
@@ -45,7 +45,8 @@
 	}
 
 	.right { 
-		width:10%;
+		width:15%;
+		padding:15px;
 		.action-items { 
 			font-size: 30px;
 			text-align: center;
@@ -93,7 +94,7 @@
 }
 
 .result{
-		width:450px;
+		width:550px;
 		margin:0 auto;
 }
 

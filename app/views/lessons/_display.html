@@ -22,7 +22,7 @@
 	<div class="report">
 		<table class="lergo-table">
 			<tr>
-				<td>
+				<td style="width: 100%;">
 					<div>
 						<a ng-show="!!invitation" ng-href="/#!/public/lessons/reports/{{report._id}}/display">
 							<i class="fa fa-bar-chart-o"></i>
@@ -36,17 +36,21 @@
 						</a>
 					</div>
 				</td>
-				<td>
-					<button class="btn-link" ng-click="startLesson()" tooltip="{{'lessons.tooltip.restart' | i18n}}">
+				<td rowspan="2">
+					<a class="btn-link" ng-click="startLesson()">
 						<i style="font-size: 35px; color: chartreuse;" class="fa fa-repeat "></i>
-						{{'lessons.restart' | i18n}}
-					</button>
+					</a>
 				</td>
 				<td>
-					<button class="btn-link" ng-click="practiceMistakes()" tooltip="{{'lessons.practiseWrongQuestion' | i18n}}">
+					<a class="btn-link" ng-click="startLesson()">{{'lessons.restart' | i18n}}</a>
+				</td>
+				<td rowspan="2">
+					<a class="btn-link" ng-click="practiceMistakes()">
 						<i style="font-size: 35px; color: orangered;" class="fa fa-repeat "></i>
-						{{'lessons.practiseWrongQuestion' | i18n}}
-					</button>
+					</a>
+				</td>
+				<td>
+					<a class="btn-link" ng-click="practiceMistakes()">{{'lessons.practiseWrongQuestion' | i18n}}</a>
 				</td>
 			</tr>
 		</table>
