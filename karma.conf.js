@@ -20,6 +20,7 @@ module.exports = function(config){
             'app/bower_components/angular-sanitize/angular-sanitize.js',
             'app/bower_components/angular-local-storage/angular-local-storage.js',
             'app/bower_components/google-code-prettify/src/prettify.js',
+            'app/bower_components/angular-adaptive-speech/angular-adaptive-speech.js',
             'app/scripts/*.js',
             '.tmp/html2js/*.js',
             'app/scripts/**/*.js',

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location) {
+angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location, $rootScope) {
 
     $scope.reportsFilter = {  };
     $scope.filterPage = { };
@@ -36,6 +36,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		LergoClient.lessons.create().then(function(result) {
 			var lesson = result.data;
 			lesson.name = 'Difficult questions lesson from : ';
+            // todo: remove filter Service getLanguageByLocale - this should be coming from translate service.
 			lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
 			lesson.steps = [];
 			lesson.description = '';
