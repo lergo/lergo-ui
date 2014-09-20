@@ -12,7 +12,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
     
     
 	$scope.loadReports = function() {
-        var queryObj = { 'filter': _.merge({}, $scope.reportsFilter), 'dollar_page': $scope.filterPage };
+        var queryObj = { 'filter': _.merge({}, $scope.reportsFilter), 'sort' : { 'lastUpdate' : -1 }, 'dollar_page': $scope.filterPage };
 		LergoClient.userData.getReports(queryObj).then(function(result) {
 			$scope.reports = result.data.data;
             $scope.filterPage.count = result.data.count;

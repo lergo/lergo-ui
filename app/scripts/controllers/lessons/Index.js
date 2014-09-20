@@ -15,7 +15,7 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 
     $scope.loadLessons = function() {
         $log.info('loading lessons');
-        var queryObj =  { 'filter' : _.merge({}, $scope.lessonsFilter), 'dollar_page' : $scope.filterPage };
+        var queryObj =  { 'filter' : _.merge({}, $scope.lessonsFilter), 'sort' : { 'lastUpdate' : -1 },  'dollar_page' : $scope.filterPage };
 
         LergoClient.userData.getLessons( queryObj ).then(function(result) {
             $scope.lessons = result.data.data;

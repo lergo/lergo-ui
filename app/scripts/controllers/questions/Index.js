@@ -28,7 +28,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 
 
     $scope.loadQuestions = function() {
-        var queryObj = { 'filter' : _.merge({}, $scope.questionsFilter), 'dollar_page' : $scope.filterPage };
+        var queryObj = { 'filter' : _.merge({}, $scope.questionsFilter), 'sort' : { 'lastUpdate' : -1 }, 'dollar_page' : $scope.filterPage };
 
         var getQuestionsPromise = null;
         if (!$scope.isPublic) {

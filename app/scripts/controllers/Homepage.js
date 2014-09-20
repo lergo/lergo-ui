@@ -15,7 +15,7 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 
     $scope.loadLessons = function() {
         $log.info('loading lessons');
-        var queryObj =  { 'filter' : _.merge({}, $scope.lessonsFilter), 'dollar_page' : $scope.filterPage };
+        var queryObj =  { 'filter' : _.merge({}, $scope.lessonsFilter), 'sort' : { 'lastUpdate' : -1 }, 'dollar_page' : $scope.filterPage };
         LergoClient.lessons.getPublicLessons( queryObj ).then(function (result) {
             $scope.lessons = result.data.data;
             $scope.filterPage.count = result.data.count; // the number of lessons found after filtering them.
