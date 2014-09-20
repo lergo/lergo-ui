@@ -27,9 +27,13 @@ angular.module('lergoApp')
                 $scope.ageFilter = {};
 
                 $scope.subjects = FilterService.subjects;
+
                 $scope.languages = FilterService.languages;
+
                 $scope.status = FilterService.status;
+
                 $scope.reportStatus = FilterService.reportStatus;
+
                 $scope.initFilter = function () {
                     if (!$rootScope.filter) {
                         $rootScope.filter = {
@@ -56,6 +60,20 @@ angular.module('lergoApp')
                         }
                     }
                 });
+
+                function setDefaultLanguage( force ) {
+
+                    try {
+                        if ( (!!scope.opts.showLanguage && !scope.model.language) || !!force) {
+                            scope.model.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
+                        }
+                    } catch (e) {
+                        $log.error('unable to set default language filter', e);
+                    }
+                }
+                setDefaultLanguage();
+
+                $scope.$watch( function(){ return $rootScope.lergoLanguage;  }, function(){setDefaultLanguage(true);} );
 
                 $scope.reportStatusValue = null;
                 $scope.$watch('reportStatusValue', function( newValue, oldValue ){
