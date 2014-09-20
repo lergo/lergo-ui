@@ -15,7 +15,7 @@ describe('Directive: baseLayout', function () {
 
 
     var element;
-    beforeEach(module('lergoApp', 'directives-templates', function ($provide) {
+    beforeEach(module('lergoApp', 'directives-templates', 'lergoBackendMock', function ($provide) {
 //        console.log('spying on setLanguage');
         $provide.value('LergoTranslate', translateMock);
 
@@ -23,12 +23,11 @@ describe('Directive: baseLayout', function () {
     }));
 
     function setup() {
-        inject(function ($rootScope, $compile, $httpBackend) {
+        inject(function ($rootScope, $compile) {
 //            console.log('translateMock.setLanguage typeof is ', typeof(translateMock.setLanguage));
 
             spyOn(translateMock, 'setLanguage');
-            $httpBackend.expectGET('/backend/user/loggedin').respond(200, '{}');
-            $httpBackend.expectGET('/backend/public/lessons').respond(200, '{}');
+
             element = angular.element('<div class="base-layout"></div>');
             element = $compile(element)($rootScope);
             $rootScope.$digest();

@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: questionReadLink', function () {
-    beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp', 'lergoBackendMock'));
 
     var element;
 
@@ -22,7 +22,7 @@ describe('Directive: questionReadLink', function () {
 
     it('should show the question as link title', function () {
         setup();
-        expect(element.text()).toBe('this is my question');
+        expect($(element).find('span:not(.ng-hide)[ng-show]').text()).toBe('this is my question');
     });
 
     it('should have href attribute pointing to /read of the question', function () {

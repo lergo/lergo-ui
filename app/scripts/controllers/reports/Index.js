@@ -2,112 +2,39 @@
 
 angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location) {
 
-	$scope.languageFilter = function(report) {
-		if (!report || !report.data || !report.data.lesson) {
-			return true;
-		}
-		return FilterService.filterByLanguage(report.data.lesson.language);
-	};
-	$scope.subjectFilter = function(report) {
-		if (!report || !report.data || !report.data.lesson) {
-			return true;
-		}
-		return FilterService.filterBySubject(report.data.lesson.subject);
-	};
 
-	$scope.tagsFilter = function(report) {
-		if (!report || !report.data || !report.data.lesson) {
-			return true;
-		}
-		return FilterService.filterByTags(report.data.lesson.tags);
-	};
-	$scope.studentFilter = function(report) {
-		if (!report || !report.data || !report.data.invitee) {
-			return true;
-		}
-		return FilterService.filterByInvitee(report.data.invitee.name);
-	};
+    $scope.totalResults = 0;
+    $scope.reportsFilter = {  };
+    $scope.filterPage = { };
+    $scope.reportsFilterOpts = {
+        'showSubject' : true,
+        'showLanguage' : true,
+        'showReportStatus' : true
+    };
 
-	$scope.percentageFilter = function(report) {
-		if (!report) {
-			return true;
-		}
-		return FilterService.filterByCorrectPercentage(report.correctPercentage);
-	};
+    $scope.loadReports = function () {
+        var queryObj = { 'filter': _.merge({}, $scope.reportsFilter), 'dollar_page': $scope.filterPage };
+        LergoClient.userData.getReports(queryObj).then(function (result) {
+            $scope.reports = result.data.data;
+            $scope.filterPage.count = result.data.count;
+            $scope.totalResults = result.data.total;
+            $scope.errorMessage = null;
 
-	$scope.duration = function(report) {
-		if (!report) {
-			return true;
-		}
-		return FilterService.filterByDuration(report.duration);
-	};
+            $scope.invitees = [];
+            angular.forEach($scope.reports, function (item) {
+                if ($scope.invitees.indexOf(item.data.invitee.name) === -1) {
+                    $scope.invitees.push(item.data.invitee.name);
+                }
+            });
+            calculateDuration($scope.reports);
+            calculateCorrectPercentage($scope.reports);
 
-	$scope.reportStatus = function(report) {
-		if (!report) {
-			return true;
-		}
-		return FilterService.filterByReportStatus(report.data.finished);
-	};
-	$scope.selectAll = function(event) {
-		var checkbox = event.target;
-		if (checkbox.checked) {
-			var filtered = filterItems($scope.reports);
-			angular.forEach(filtered, function(item) {
-				item.selected = true;
-			});
-		} else {
-			angular.forEach($scope.reports, function(item) {
-				item.selected = false;
-			});
+        }, function (result) {
+            $scope.errorMessage = 'Error in fetching reports : ' + result.data.message;
+            $log.error($scope.errorMessage);
+        });
+    };
 
-		}
-	};
-
-	function filterItems(items) {
-		var filteredItems = [];
-		for ( var i = 0; i < items.length; i++) {
-			if (!FilterService.filterByInvitee(items[i].data.invitee.name)) {
-				continue;
-			} else if (!FilterService.filterByLanguage(items[i].data.lesson.language)) {
-				continue;
-			} else if (!FilterService.filterBySubject(items[i].data.lesson.subject)) {
-				continue;
-			} else if (!FilterService.filterByTags(items[i].data.lesson.tags)) {
-				continue;
-			} else if (!FilterService.filterByCorrectPercentage(items[i].correctPercentage)) {
-				continue;
-			} else if (!FilterService.filterByDuration(items[i].duration)) {
-				continue;
-			} else if (!FilterService.filterByReportStatus(items[i].data.finished)) {
-				continue;
-			} else {
-				filteredItems.push(items[i]);
-			}
-		}
-		return filteredItems;
-
-	}
-
-	$scope.getAll = function() {
-		LergoClient.userData.getReports().then(function(result) {
-			$scope.reports = result.data;
-			$scope.errorMessage = null;
-			$scope.availableTags = TagsService.getTagsFromItems($scope.reports);
-			$scope.invitees = [];
-			angular.forEach($scope.reports, function(item) {
-				if ($scope.invitees.indexOf(item.data.invitee.name) === -1) {
-					$scope.invitees.push(item.data.invitee.name);
-				}
-			});
-			calculateDuration($scope.reports);
-			calculateCorrectPercentage($scope.reports);
-
-		}, function(result) {
-			$scope.errorMessage = 'Error in fetching reports : ' + result.data.message;
-			$log.error($scope.errorMessage);
-		});
-	};
-	$scope.getAll();
 	$scope.createLessonFromWrongQuestions = function() {
 		LergoClient.lessons.create().then(function(result) {
 			var lesson = result.data;
@@ -123,7 +50,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			angular.forEach($scope.reports, function(report) {
 				if (report.selected === true) {
 					lesson.description = lesson.description + report.data.lesson.name + '\n';
-					getWronngQuestions(report.answers, lesson);
+					getWrongQuestions(report.answers, lesson);
 				}
 			});
 
@@ -133,7 +60,16 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		});
 
 	};
-	function getWronngQuestions(answers, lesson) {
+
+
+    $scope.selectAll = function(event) {
+        var checkbox = event.target;
+        angular.forEach($scope.reports, function (item) {
+            item.selected = checkbox.checked;
+        });
+    };
+
+	function getWrongQuestions(answers, lesson) {
 		angular.forEach(answers, function(answer) {
 			if (!answer.checkAnswer.correct) {
 				lesson.steps[0].quizItems.push(answer.quizItemId);

@@ -113,14 +113,6 @@ angular.module('lergoApp').controller(
 				return 'views/lesson/steps/_' + type + '.html';
 			};
 
-			LergoClient.questions.getUserQuestions().then(function(result) {
-				$scope.quizItems = result.data;
-				$scope.errorMessage = null;
-			}, function(result) {
-				$scope.errorMessage = 'Error in fetching questions for user : ' + result.data.message;
-				$log.error($scope.errorMessage);
-			});
-
 			var quizItemsWatch = [];
 			$scope.quizItemsData = {};
 

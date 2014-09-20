@@ -9,17 +9,19 @@ describe('Controller: BaseLayoutCreateCtrl', function () {
         scope;
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope, $route, $location) {
+    beforeEach(inject(function ($controller, $rootScope ) {
         scope = $rootScope.$new();
         BaselayoutcreateCtrl = $controller('BaseLayoutCreateCtrl', {
             $scope: scope,
-            $route: { current: {} },
-            $location: $location
-
+            $routeParams : { 'activeTab' : 'lessons'}
         });
     }));
 
-    it('should attach lessonTabActive function to scope', function () {
-        expect(typeof(scope.lessonTabActive)).toBe('function');
+    it('should NOT attach lessonTabActive function to scope', function () {
+        expect(typeof(scope.lessonTabActive)).toBe('undefined');
+    });
+
+    it('should  attach sections to scope', function () {
+        expect(typeof(scope.sections)).toBe('object');
     });
 });

@@ -1,11 +1,12 @@
-<div id="ReportIndex">
+<div id="reportIndex">
 	<div class="lergo-label">
 		<span class="errorMessage" ng-show='errorMessage' style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
 	</div>
 	<br />
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
-			<div class="lergo-h1">{{ 'reports.myReports' | i18n }}</div>
+
+			<div class="lergo-h1">{{ 'reports.myReports' | i18n }} [ {{ 'reports.total' | i18n }}: {{systemStats.myReports}} ]</div>
 		</div>
 		<div class="page-content-sidebar">
 			<div class="lergo-h1">{{ 'reports.filter' | i18n }}</div>
@@ -40,7 +41,7 @@
 				</thead>
 				<tbody>
 					<tr
-						ng-repeat="report in reports |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:tagsFilter | filter:studentFilter |filter:percentageFilter|filter:duration|filter:reportStatus">
+						ng-repeat="report in reports |orderBy:'-lastUpdate'">
 						<td>
 							<input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
 						</td>
@@ -59,9 +60,11 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="page-content-sidebar">
-			<div ng-include src="'views/filters/filter.html'"
-				ng-init="inviteeFilter=true;correctPercentageFilter=true;reportStatusFilter=true;durationFilter=true"></div>
-		</div>
-	</div>
+        <div class="sidebar page-content-sidebar">
+            {{reportsFilter}}
+            <div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts"></div>
+
+        </div>
+    </div>
+    <div lergo-paging page="filterPage" on-change="loadReports()"></div>
 </div>

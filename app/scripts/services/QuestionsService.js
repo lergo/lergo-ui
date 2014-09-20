@@ -2,8 +2,15 @@
 
 angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
-	this.getUserQuestions = function() {
-		return $http.get('/backend/user/questions');
+
+	this.getUserQuestions = function( queryObj ) {
+		return $http({
+            'method' : 'GET',
+            'url' : '/backend/user/questions',
+            'params' : {
+                'query' : queryObj
+            }
+        });
 	};
 
 	this.copyQuestion = function(questionId) {
@@ -27,10 +34,16 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		});
 	};
 
-    this.getPublicQuestions = function(){
+    this.getPublicQuestions = function( queryObj ){
+        if ( !queryObj ){
+            throw new Error('you should at least have {"public" : { "exists" : 1 } } ');
+        }
         return $http({
             'url' : '/backend/questions/publicLessons',
-            'method' :'GET'
+            'method' :'GET',
+            'params' : {
+                'query' : queryObj
+            }
         });
     };
 

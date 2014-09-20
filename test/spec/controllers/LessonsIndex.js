@@ -16,7 +16,7 @@ describe('Controller: LessonsindexCtrl', function () {
         });
     }));
 
-    it('should attach a list of awesomeThings to the scope', function () {
-        expect(typeof(scope.getAll)).toBe('function');
+    it('should attach lessonsFilter', function () {
+        expect(typeof(scope.lessonsFilter)).toBe('object');
     });
 });

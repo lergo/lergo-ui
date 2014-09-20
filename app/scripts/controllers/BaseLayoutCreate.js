@@ -1,19 +1,33 @@
 'use strict';
 
-angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $route, $location) {
-	$scope.$route = $route;
-	$scope.isQuestionTabActive = $scope.$route.current.activeTab === 'questions';
-	$scope.isLessonTabActive = $scope.$route.current.activeTab === 'lessons';
-	$scope.isReportTabActive = $scope.$route.current.activeTab === 'reports';
-	$scope.questionTabActive = function() {
-		$location.path('user/create/questions');
-	};
+angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $routeParams, $controller  ) {
 
-	$scope.lessonTabActive = function() {
-		$location.path('user/create/lessons');
-	};
 
-	$scope.reportTabActive = function() {
-		$location.path('user/create/reports');
-	};
+    $scope.sections = [
+        {
+            'id' : 'lessons',
+            'controller' : 'LessonsIndexCtrl'
+        },
+        {
+            'id' : 'questions',
+            'controller' : 'QuestionsIndexCtrl'
+        },
+        {
+            'id' : 'reports',
+            'controller' : 'ReportsIndexCtrl'
+        }
+    ];
+
+
+    $scope.currentSection = _.find( $scope.sections, function( section ){ return $routeParams.activeTab === section.id; });
+
+    $controller($scope.currentSection.controller, { $scope : $scope });
+
+    $scope.isActive = function( section ){
+        return !!$scope.currentSection && section.id === $scope.currentSection.id;
+    };
+
+    $scope.getInclude = function(){
+        return  'views/' + $scope.currentSection.id + '/_index.html';
+    };
 });

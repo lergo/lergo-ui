@@ -14,6 +14,15 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
                 }
             });
 
+            $rootScope.updateStats = function( refresh ){
+                // todo - move to LergoClient.system
+                LergoClient.lessons.getStats( refresh ).then(function(result){
+                    $rootScope.systemStats = result.data;
+
+                });
+            };
+
+            $rootScope.updateStats();
 
             // a random number to prevent cache in ng-include
             $rootScope.getCacheRandomNumber = function () {
@@ -69,9 +78,10 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
             };
 
 
-            LergoClient.lessons.getPublicLessons().then(function(result) {
-                scope.typeaheadItems = result.data;
-            });
+            // todo: reinstate this search.
+//            LergoClient.lessons.getPublicLessons().then(function(result) {
+//                scope.typeaheadItems = result.data;
+//            });
 
             scope.doSearchFromTypeahead = function( /*$item, $model, $label */){
                 scope.searchOnHomepage();

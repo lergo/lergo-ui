@@ -71,20 +71,9 @@ angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.u
                 controller:'LessonsUpdateCtrl'
             })
 
-             .when('/user/create/lessons', {
+             .when('/user/create/:activeTab', {
                 templateUrl: 'views/partials/_create.html', // todo: move this view to view/create/_lessons.html
-                controller:'BaseLayoutCreateCtrl',
-                activeTab:'lessons'
-            })
-             .when('/user/create/questions', {
-                templateUrl: 'views/partials/_create.html',
-                controller:'BaseLayoutCreateCtrl',
-                activeTab:'questions'
-            })
-             .when('/user/create/reports', {
-                templateUrl: 'views/partials/_create.html',
-                controller:'BaseLayoutCreateCtrl',
-                activeTab:'reports'
+                controller:'BaseLayoutCreateCtrl'
             })
             .when('/user/lessons/:lessonId/update', {
                 templateUrl: 'views/lessons/update.html',

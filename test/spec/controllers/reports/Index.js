@@ -15,7 +15,7 @@ describe('Controller: ReportsIndexCtrl', function() {
 		});
 	}));
 
-	it('should attach a list of awesomeThings to the scope', function() {
-		expect(typeof(scope.studentFilter)).toBe('function');
+	it('should attach filter object to scope', function() {
+		expect(typeof(scope.reportsFilter)).toBe('object');
 	});
 });

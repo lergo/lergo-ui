@@ -2,17 +2,18 @@
 	<div admin-section>
 		<a href="#!/admin/homepage">Admin Homepage</a>
 	</div>
+
 	<div class="homepage">
 		<div statistics-banner class="page-content-width">
 			<!-- how many lessons, and how many questions -->
 			<div class="article-header page-content-body">
 				<div class="stats-wrapper">
 					<div class="stats-lessons">
-						<div class="amount">{{stats.lessonsCount}}</div>
+						<div class="amount">{{systemStats.lessonsCount}}</div>
 						<div class="type">{{ 'homepage.lessons' | i18n }}</div>
 					</div>
 					<div class="stats-questions">
-						<div class="amount">{{stats.questionsCount}}</div>
+						<div class="amount">{{systemStats.questionsCount}}</div>
 						<div class="type">{{ 'homepage.questions' | i18n }}</div>
 					</div>
 					<div>
@@ -39,7 +40,7 @@
 			<div class="page-content-body">
 				<div class="lessons">
 					<div class="lesson"
-						ng-repeat="lesson in pageLessons |orderBy:'-lastUpdate' | filter:$root.filter.search | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter |filter:tagsFilter|filter:userFilter">
+						ng-repeat="lesson in lessons ">
 						<div class="age-limit age-limit-{{lesson.age}}">
 							<div class="value">{{lesson.age}}+</div>
 							<div class="units">
@@ -100,13 +101,14 @@
 					</div>
 				</div>
 			</div>
+
+
+
 			<div class="sidebar page-content-sidebar">
-				<div ng-include src="'views/filters/filter.html'" ng-init="showViewsFilter=true;users=true;"></div>
+                <div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts"></div>
+
 			</div>
 		</div>
-		<div class="pagination">
-			<pagination total-items="filteredLessons.length" ng-model="currentPage" max-size="5" items-per-page="numOfItemsInPage" class="pagination-sm" rotate="false"
-				ng-change="initPageLessons(currentPage)" num-pages="numPages" previous-text="<<" next-text=">>"></pagination>
-		</div>
+        <div lergo-paging page="filterPage" on-change="loadLessons()"></div>
 	</div>
 </div>

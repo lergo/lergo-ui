@@ -4,6 +4,9 @@ angular.module('lergoApp').service('LergoTranslate',
     function ( $routeParams, $http, localStorageService, $log , $rootScope ) { /*LergoTranslate */
         // AngularJS will instantiate a singleton by calling "new" on this function
 
+        if ( !!$rootScope.noTranslation ){
+            return;
+        }
 
         var supportedLanguages = [
             { 'id' : 'en', 'dir' : 'ltr' },

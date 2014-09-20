@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('lergoApp').service('LessonsService', function LessonsService($http, $sce) {
+angular.module('lergoApp').service('LessonsService', function LessonsService($http, $sce, $q ) {
+
+    var self = this;
 
 	this.create = function() {
 		return $http.post('/backend/lessons/create');
@@ -9,8 +11,19 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 	// will get all lessons - including private.
 	// if user not allowed, will return 400.
 	// to get user's lessons, use UserDataService
-	this.getAll = function() {
-		return $http.get('/backend/lessons/get/all');
+	this.getAll = function( queryObj ) {
+        if ( !queryObj ){
+            throw new Error('should have at least a query object with pagination..');
+        }
+		return $http({'method' : 'GET' ,'url' : '/backend/lessons/get/all', 'params' : {
+            'query' : queryObj
+        }}).then( function(result){
+            _.each(result.data.data, function(value){
+                value.image = self.getTitleImage(value);
+            });
+            return result;
+
+        });
 	};
 
     this.getLessonsWhoUseThisQuestion = function(questionId) {
@@ -50,22 +63,38 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 		return $http.get('/backend/lessons/' + id + '/intro');
 	};
 
-	this.getPublicLessons = function() {
-		return $http.get('/backend/public/lessons');
+	this.getPublicLessons = function( queryObj ) {
+        if ( !queryObj ){
+            throw new Error('you should at least have {"public" : { "exists" : 1 } } ');
+        }
+		return $http( {
+            'method' : 'GET' ,
+            'url' : '/backend/public/lessons',
+            'params' : { 'query' : JSON.stringify(queryObj) } /* stringify the queryObj as it contains $ signs which angular filters out */
+        } );
 	};
 
 	this.copyLesson = function(id) {
 		return $http.post('/backend/lessons/' + id + '/copy');
 	};
 
-	this.getStats = function() {
-		return $http.get('/backend/system/statistics');
+    var stats = null;
+	this.getStats = function( refresh ) {
+        if ( stats === null || !!refresh ){
+            return $http.get('/backend/system/statistics').then(function(result){ stats = result.data;  return result; });
+        }else{
+            var deferred = $q.defer();
+            deferred.resolve({ data: stats });
+            return deferred.promise;
+        }
+
 	};
 
 	this.getTitleImage = function(lesson) {
 		if (!lesson || !lesson.steps || lesson.steps.length < 1) {
 			return;
 		}
+
 		for ( var i = 0; i < lesson.steps.length; i++) {
 			var id = this.getVideoId(lesson.steps[i]);
 			if (id !== null) {
