@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient, shuffleFilter) {
+angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient, shuffleFilter, $speechSynthetis) {
 	$log.info('showing step');
 
 	if (!!$routeParams.data) {
@@ -73,7 +73,14 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				'isHintUsed' : !!quizItem.isHintUsed
 			});
 			$scope.updateProgressPercent();
-			if ($scope.hasNextQuizItem() && !!$scope.step && $scope.step.testMode === 'True') {
+			if (!isTestMode()) {
+				if (result.data.correct) {
+					voiceFeedback('You are correct');
+				} else {
+					voiceFeedback('Your are incorrect');
+				}
+			}
+			if ($scope.hasNextQuizItem() && isTestMode()) {
 				$scope.nextQuizItem();
 			}
 		}, function() {
@@ -193,5 +200,16 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.hintUsed = function(quizItem) {
 		quizItem.isHintUsed = true;
 	};
+
+	function isTestMode() {
+		if (!!$scope.step) {
+			return $scope.step.testMode === 'True';
+		}
+		return false;
+	}
+
+	function voiceFeedback(command) {
+		$speechSynthetis.speak(command, 'en-Uk');
+	}
 
 });

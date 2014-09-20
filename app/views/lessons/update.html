@@ -87,7 +87,15 @@
 					</td>
 				</tr>
 				<tr>
-					<td>{{ 'steps.type' | i18n }}</td>
+					<td>
+						<span class="pop-up-hint" style="padding: 0px;">
+							<span > {{ 'steps.type' | i18n }} </span>
+							<span>
+								<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+								<button popover="{{'steps.typeHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+							</span>
+						</span>
+					</td>
 					<td>
 						<select ng-model="step.type" ng-options="t.id as ('steps.' + t.id | i18n) for t in stepTypes">
 						</select>
@@ -102,7 +110,13 @@
 		<div class="lergo-h3">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
 		<div>
 			<button class="btn" ng-click="done()" ng-disabled="isSaving() || !lesson.name">{{'done' | i18n }}</button>
-			<button class="btn" ng-click="addStep(lesson)" ng-disabled="isSaving() || !lesson.name">{{ 'steps.add' | i18n }}</button>
+			<span class="pop-up-hint">
+				<button class="btn" ng-click="addStep(lesson)" ng-disabled="isSaving() || !lesson.name">{{ 'steps.add' | i18n }}</button>
+				<span>
+					<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+					<button popover="{{'steps.addHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+				</span>
+			</span>
 		</div>
 	</form>
 </div>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.utils', 'btford.markdown' ])
+angular.module('lergoApp', ['LocalStorageModule','ngRoute','ui.bootstrap', 'ui.utils', 'btford.markdown','adaptive.speech' ])
     .config(function ($routeProvider, $httpProvider, $logProvider, $locationProvider) {
 
         $logProvider.debugEnabled(false);

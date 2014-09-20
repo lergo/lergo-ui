@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location) {
+angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location, $speechSynthetis) {
 
 	var questionId = $routeParams.questionId;
 
@@ -8,18 +8,15 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		$scope.quizItem = result.data;
 		$scope.errorMessage = null;
 
-        LergoClient.questions.getPermissions( $scope.quizItem._id).then(function( result ){
-            $scope.permissions = result.data;
-        });
+		LergoClient.questions.getPermissions($scope.quizItem._id).then(function(result) {
+			$scope.permissions = result.data;
+		});
 
 	}, function(result) {
 		$scope.error = result.data;
 		$scope.errorMessage = 'Error in fetching questions by id : ' + result.data.message;
 		$log.error($scope.errorMessage);
 	});
-
-
-
 
 	$scope.getQuestionViewTemplate = function() {
 		if (!!$scope.quizItem && !!$scope.quizItem.type) {
@@ -32,6 +29,11 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		var quizItem = $scope.quizItem;
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
 			$scope.answer = result.data;
+			if ($scope.answer.correct) {
+				voiceFeedback('You are correct');
+			} else {
+				voiceFeedback('Your are incorrect');
+			}
 		}, function() {
 			$log.error('there was an error checking answer');
 		});
@@ -80,5 +82,15 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 
 		}
 	};
+
+	$scope.enterPressed = function(quizItem) {
+		if (!$scope.getAnswer(quizItem) && $scope.canSubmit(quizItem)) {
+			$scope.checkAnswer();
+		}
+	};
+
+	function voiceFeedback(command) {
+		$speechSynthetis.speak(command, 'en-Uk');
+	}
 
 });

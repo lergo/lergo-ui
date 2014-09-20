@@ -19,7 +19,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	});
 
 	function redirectToInvitation() {
-		$location.path('/public/lessons/invitations/' + invitationId + '/display');
+		$location.path('/public/lessons/invitations/' + invitationId + '/display').search({lessonId:$scope.lesson._id});
 	}
 
 	function redirectToPreview() {
