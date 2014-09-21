@@ -19,7 +19,7 @@
     "angular-markdown-directive": "~0.3.0",
     "string-format-js": "~0.1.1",
     "toastr": "~2.0.3",
-    "angular-adaptive-speech": "latest"
+    "audio5js":"latest"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

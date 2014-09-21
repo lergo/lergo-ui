@@ -1,0 +1,18 @@
+<div class="question-preview">
+	<div class="question-title">
+		<p class="lergo-h4">{{quizItem.question}}</p>
+	</div>
+	<div class="help">
+		<p class="question-help-text">{{quizItem.helpText}}</p>
+	</div>
+	<div quiz-item-media quiz-item="quizItem"></div>
+</div>
+<div class="answers">
+	<input id="exactQuestionText" ng-model="quizItem.userAnswer" autofocus ng-init="setFocus('exactQuestionText')" />
+</div>
+<br />
+<div class="submit">
+	<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+</div>
+<br />
+<div ng-include="'views/questions/view/preview/partials/_result.html'"></div>
