@@ -1,0 +1,19 @@
+<div class="question-preview">
+	<div class="question-title" style="line-height: 3">
+		{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
+		<span class="lergo-h4" style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
+			<span class="lergo-h4">{{option}}</span>
+			<input ng-show="!$last" style="width:{{getFillIntheBlankSize(quizItem,$index)}}px; background-color:#EEEEEE; display: inline; min-height: 28px;"
+				ng-model="quizItem.userAnswer[$index]" set-focus="$first">
+		</span>
+	</div>
+	<div class="help">
+		<p class="question-help-text">{{quizItem.helpText}}</p>
+	</div>
+	<div quiz-item-media quiz-item="quizItem"></div>
+</div>
+<div class="submit">
+	<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+</div>
+<br />
+<div ng-include="'views/questions/view/preview/partials/_result.html'"></div>

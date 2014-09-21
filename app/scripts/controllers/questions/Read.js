@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location, $speechSynthetis) {
+angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location) {
 
 	var questionId = $routeParams.questionId;
+	$scope.noop = angular.noop;
 
 	QuestionsService.getQuestionById(questionId).then(function(result) {
 		$scope.quizItem = result.data;
@@ -10,6 +11,13 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 
 		LergoClient.questions.getPermissions($scope.quizItem._id).then(function(result) {
 			$scope.permissions = result.data;
+		});
+
+		LergoClient.users.findUsersById($scope.quizItem.userId).then(function(result) {
+			$scope.quizItem.user = result.data[0];
+		});
+		LergoClient.lessons.getLessonsWhoUseThisQuestion($scope.quizItem._id).then(function(result) {
+			$scope.usedInLessons = result.data;
 		});
 
 	}, function(result) {
@@ -21,7 +29,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 	$scope.getQuestionViewTemplate = function() {
 		if (!!$scope.quizItem && !!$scope.quizItem.type) {
 			var type = QuestionsService.getTypeById($scope.quizItem.type);
-			return type.viewTemplate;
+			return type.previewTemplate;
 		}
 		return '';
 	};
@@ -30,9 +38,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
 			$scope.answer = result.data;
 			if ($scope.answer.correct) {
-				voiceFeedback('You are correct');
-			} else {
-				voiceFeedback('Your are incorrect');
+				voiceFeedback();
 			}
 		}, function() {
 			$log.error('there was an error checking answer');
@@ -89,8 +95,52 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		}
 	};
 
-	function voiceFeedback(command) {
-		$speechSynthetis.speak(command, 'en-Uk');
+	function voiceFeedback() {
+		var player = new Audio5js({
+			swf_path : 'components/audio5js/audio5js.swf'
+		});
+		player.load('../audio/correctanswer.mp3');
+		player.play();
 	}
+	 var lessonLikeWatch = null;
+	    $scope.$watch('lesson', function (newValue) {
+	        if (!!newValue) {
+	            // get my like - will decide if I like this lesson or not
+	            LergoClient.likes.getMyQuestionLike($scope.lesson).then(function (result) {
+	                $scope.lessonLike = result.data;
+	            });
 
+	            if (lessonLikeWatch === null) {
+	                lessonLikeWatch = $scope.$watch('lessonLike', function () {
+	                    // get count of likes for lesson
+	                    LergoClient.likes.countQuestionLikes($scope.lesson).then(function (result) {
+	                        $scope.lessonLikes = result.data.count;
+	                    });
+	                });
+	            }
+	        }
+	    });
+	$scope.like = function() {
+		LergoClient.likes.likeQuestion($scope.quizItem).then(function(result) {
+			$scope.questionLike = result.data;
+		});
+	};
+
+	$scope.unlike = function() {
+		LergoClient.likes.deleteQuestionLike($scope.quizItem).then(function() {
+			$scope.questionLike = null;
+		});
+	};
+
+	$scope.isLiked = function() {
+		return !!$scope.questionLike;
+	};
+
+	$scope.absoluteShareLink = function(question) {
+		$scope.shareLink = window.location.origin + '/#!/public/questions/' + question._id + '/read';
+		$scope.share = !$scope.share;
+	};
+	$scope.onTextClick = function($event) {
+		$event.target.select();
+	};
 });

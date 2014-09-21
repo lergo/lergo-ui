@@ -1,0 +1,32 @@
+<div class="question-preview">
+	<div class="question-title">
+		<p class="lergo-h4">{{quizItem.question}}</p>
+	</div>
+	<div class="help">
+		<p class="question-help-text">{{quizItem.helpText}}</p>
+	</div>
+	<div quiz-item-media quiz-item="quizItem"></div>
+</div>
+<div class="answers">
+	<input id="openQuestionText" ng-show="quizItem.subType==='short'" ng-model="quizItem.userAnswer" autofocus />
+	<textarea id="openQuestionTextarea" ng-show="quizItem.subType==='long'" ng-model="quizItem.userAnswer" autofocus></textarea>
+	<!-- Setting focus manually -->
+	{{quizItem.subType==='short' ? setFocus('openQuestionText') : setFocus('openQuestionTextarea')}}
+</div>
+<br />
+<div class="submit">
+	<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+</div>
+<br />
+<div ng-show="!!getAnswer(quizItem)">
+	<div class="bg-primary">
+		<span>{{'questions.thankYou' | i18n}}</span>
+		<div ng-show="!!quizItem.explanation">
+			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+			<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
+		</div>
+	</div>
+</div>
+<div ng-show="!getAnswer()">
+	<div class="bg-primary">{{'steps.answer' | i18n }}</div>
+</div>

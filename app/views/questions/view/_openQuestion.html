@@ -26,7 +26,7 @@
 	<!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
 </div>
 <br>
-<div ng-show="!!getAnswer(quizItem)">
+<div class="result" ng-show="!!getAnswer(quizItem)">
 	<div class="bg-primary">
 		<span>{{'questions.thankYou' | i18n}}</span>
 		<div ng-show="!!quizItem.explanation">
