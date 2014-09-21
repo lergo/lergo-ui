@@ -205,11 +205,8 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	}
 
 	function voiceFeedback() {
-		var player = new Audio5js({
-			swf_path : 'components/audio5js/audio5js.swf'
-		});
-		player.load('../audio/correctanswer.mp3');
-		player.play();
+		var audio = new Audio('../audio/correctanswer.mp3');
+		audio.play();
 	}
 
 });
