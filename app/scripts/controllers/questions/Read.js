@@ -102,24 +102,24 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		player.load('../audio/correctanswer.mp3');
 		player.play();
 	}
-	 var lessonLikeWatch = null;
-	    $scope.$watch('lesson', function (newValue) {
-	        if (!!newValue) {
-	            // get my like - will decide if I like this lesson or not
-	            LergoClient.likes.getMyQuestionLike($scope.lesson).then(function (result) {
-	                $scope.lessonLike = result.data;
-	            });
+	var questionLikeWatch = null;
+	$scope.$watch('quizItem', function(newValue) {
+		if (!!newValue) {
+			// get my like - will decide if I like this question or not
+			LergoClient.likes.getMyQuestionLike($scope.quizItem).then(function(result) {
+				$scope.questionLike = result.data;
+			});
 
-	            if (lessonLikeWatch === null) {
-	                lessonLikeWatch = $scope.$watch('lessonLike', function () {
-	                    // get count of likes for lesson
-	                    LergoClient.likes.countQuestionLikes($scope.lesson).then(function (result) {
-	                        $scope.lessonLikes = result.data.count;
-	                    });
-	                });
-	            }
-	        }
-	    });
+			if (questionLikeWatch === null) {
+				questionLikeWatch = $scope.$watch('questionLike', function() {
+					// get count of likes for lesson
+					LergoClient.likes.countQuestionLikes($scope.quizItem).then(function(result) {
+						$scope.questionLikes = result.data.count;
+					});
+				});
+			}
+		}
+	});
 	$scope.like = function() {
 		LergoClient.likes.likeQuestion($scope.quizItem).then(function(result) {
 			$scope.questionLike = result.data;
