@@ -6,6 +6,10 @@
 			<input ng-show="!$last" style="width:{{getFillIntheBlankSize(quizItem,$index)}}px; display: inline; min-height: 28px;"
 				ng-model="quizItem.userAnswer[$index]" set-focus="$first">
 		</span>
+		<div class="right">
+			<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link hint"
+				popover-trigger="focus" tabindex="0">{{'hint' | i18n}}</button>
+		</div>
 	</div>
 	<div class="help">
 		<p class="question-help-text">{{quizItem.helpText}}</p>

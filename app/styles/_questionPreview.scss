@@ -51,7 +51,7 @@
                 border-top: 1px solid transparent;
             }
             .hint {
-                font-size: 15px;
+                font-size: 20px;
                 margin-top: 10px;
                 position: relative;
             }
@@ -125,12 +125,21 @@
             padding: 10px;
             width: 450px;
         }
+        .question-title {
+            .right {
+                float: right;
+                .hint {
+                    font-size: 20px;
+                    margin-top: 10px;
+                    position: relative;
+                }
+            }
+        }
         .submit {
             text-align: center;
         }
         .help {
-            color: grey;
-            font-family: cursive;
+            width: 350px;
             margin-top: 10px;
         }
         .audio {
@@ -362,6 +371,11 @@
 .rtl {
     #questionIntro {
         .question {
+            .question-title {
+                .right {
+                    float: left;
+                }
+            }
             .details {
                 .properties {
                     & > span {

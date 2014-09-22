@@ -1,6 +1,10 @@
 <div class="question-preview">
 	<div class="question-title">
 		<p class="lergo-h4">{{quizItem.question}}</p>
+		<div class="right">
+			<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link hint"
+				popover-trigger="focus" tabindex="0">{{'hint' | i18n}}</button>
+		</div>
 	</div>
 	<div class="help">
 		<p class="question-help-text">{{quizItem.helpText}}</p>

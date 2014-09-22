@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope,FilterService) {
+angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope, FilterService) {
 
 	$log.info('loading invitation', $routeParams.invitationId);
 
@@ -85,8 +85,14 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			});
 		}
 	}
-	$scope.startLesson = function() {
-		LergoClient.lessonsInvitations.createAnonymous($scope.lesson._id).then(function(result) {
+	$scope.startLesson = function(lessonId) {
+		var id = null;
+		if (!lessonId) {
+			id = $scope.lesson._id;
+		} else {
+			id = lessonId;
+		}
+		LergoClient.lessonsInvitations.createAnonymous(id).then(function(result) {
 			var invitationId = result.data._id;
 			redirectToInvitation(invitationId);
 		});
@@ -157,7 +163,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 				}
 			});
 			LergoClient.lessons.update(lesson).then(function() {
-				$location.path('/user/lessons/' + lesson._id + '/intro');
+				$scope.startLesson(lesson._id);
 			});
 		});
 

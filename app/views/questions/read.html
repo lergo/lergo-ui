@@ -19,11 +19,6 @@
 					</span>
 				</div>
 				<div class="action-items" ng-show="!!permissions">
-					<div class="action-items-top">
-						<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link"
-							popover-trigger="focus" tabindex="0">{{'hint' | i18n}}</button>
-						<br />
-					</div>
 					<div class="action-items-bottom">
 						<a class="btn-link" ng-click="copyQuestion(quizItem)" ng-show="!!permissions.canCopy">
 							<i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | i18n}}"></i>
