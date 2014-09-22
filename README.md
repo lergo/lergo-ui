@@ -11,7 +11,7 @@ Lergo-UI
 
 ## Workflow
 
-We are using git flow 
+We are using git flow  
 
 http://danielkummer.github.io/git-flow-cheatsheet/
 
