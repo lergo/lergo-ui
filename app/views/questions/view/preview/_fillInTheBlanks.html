@@ -11,9 +11,9 @@
 		<p class="question-help-text">{{quizItem.helpText}}</p>
 	</div>
 	<div quiz-item-media quiz-item="quizItem"></div>
+	<div class="submit">
+		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+	</div>
+	<br />
+	<div ng-include="'views/questions/view/preview/partials/_result.html'"></div>
 </div>
-<div class="submit">
-	<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
-</div>
-<br />
-<div ng-include="'views/questions/view/preview/partials/_result.html'"></div>
