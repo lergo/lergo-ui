@@ -205,7 +205,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	}
 
 	function voiceFeedback() {
-		var audio = new Audio('../audio/correctanswer.mp3');
+		var audio = new Audio('https://dl.dropboxusercontent.com/u/114994943/correct%20answer%20feedback%20sept%2015.mp3');
 		audio.play();
 	}
 
