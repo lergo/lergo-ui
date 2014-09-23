@@ -153,8 +153,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			lesson.lastUpdate = new Date().getTime();
 			var step = {
 				'type' : 'quiz',
-				'quizItems' : [],
-				'title' : 'Difficult Questions'
+				'quizItems' : []
 			};
 			lesson.steps.push(step);
 			angular.forEach(report.answers, function(answer) {
