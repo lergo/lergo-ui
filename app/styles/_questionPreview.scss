@@ -125,21 +125,15 @@
             padding: 10px;
             width: 450px;
         }
-        .question-title {
-            .right {
-                float: right;
-                .hint {
-                    font-size: 20px;
-                    margin-top: 10px;
-                    position: relative;
-                }
-            }
+        .hint {
+            font-size: 20px;
+            position: relative;
+            text-align: right;
         }
         .submit {
             text-align: center;
         }
         .help {
-            width: 350px;
             margin-top: 10px;
         }
         .audio {
@@ -164,25 +158,6 @@
         float: right;
         border-radius: 10px;
         background-color: #EFEFEF;
-        .image {
-            position: relative;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 20px;
-            text-align: center;
-            z-index: 0;
-            &, img {
-                height: 320px;
-                width: 480px;
-            }
-            i {
-                font-size: 320px;
-                color: #296CA1;
-                &:before {
-                    margin-left: 40px;
-                }
-            }
-        }
         & > .action-items {
             float: right;
             margin-top: 30px;
@@ -371,10 +346,8 @@
 .rtl {
     #questionIntro {
         .question {
-            .question-title {
-                .right {
-                    float: left;
-                }
+            .hint {
+                text-align: left;
             }
             .details {
                 .properties {
