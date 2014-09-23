@@ -2,6 +2,7 @@
 
 angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient, shuffleFilter) {
 	$log.info('showing step');
+	var audio = new Audio('../audio/correctanswer.mp3');
 
 	if (!!$routeParams.data) {
 		$scope.step = JSON.parse($routeParams.data);
@@ -205,7 +206,6 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	}
 
 	function voiceFeedback() {
-		var audio = new Audio('../audio/correctanswer.mp3');
 		audio.play();
 	}
 

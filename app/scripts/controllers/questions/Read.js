@@ -4,6 +4,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 
 	var questionId = $routeParams.questionId;
 	$scope.noop = angular.noop;
+	var audio = new Audio('../audio/correctanswer.mp3');
 
 	QuestionsService.getQuestionById(questionId).then(function(result) {
 		$scope.quizItem = result.data;
@@ -96,7 +97,6 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 	};
 
 	function voiceFeedback() {
-		var audio = new Audio('../audio/correctanswer.mp3');
 		audio.play();
 	}
 	var questionLikeWatch = null;
