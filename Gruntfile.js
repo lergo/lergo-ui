@@ -273,7 +273,8 @@ module.exports = function (grunt) {
                             'translations/**/*',
                             'images/{,*/}*.{gif,webp,svg,png,jpg,jpeg}',
                             'emailResources/**/*',
-                            'styles/fonts/*'
+                            'styles/fonts/*',
+                            'audio/{,*/}*.mp3'
                         ]
                     },
                     {

@@ -1,118 +1,109 @@
 .lesson-step {
-  .lesson-step-title {
-    text-align:center;
-    padding-bottom: 20px;
-  }
-}
-.lesson-step-video{
-  text-align:center;
-  .lesson-step-video-content{
-    display:inline-block;
-  }
-}
-.lesson-step-quiz{
-  .lesson-step-quiz-next{
-    text-align:center;
-  }
-    .lergo-progress-bar{
-
-    width: 550px;
-	margin: 0 auto;
+    .lesson-step-title {
+        text-align: center;
+        padding-bottom: 20px;
     }
- .question-true-false{
-   .true-false-options{
-     .true-false-option{
-       padding:15px;
-       margin-left:5px;
-
-     }
-     text-align:center;
-
-   }
- }
-  margin-top:20px;
-  .lergo-h2{
-    text-align:center;
-    padding:10px 0;
-  }
-  .lesson-step-quiz-content, .lesson-step-quiz-next{
-  background-color: gainsboro;
-    width:400px;
-    margin:0 auto;
-  }
 }
 
-
-#lessonDisplay{
-  #content{
-    padding-bottom:100px;
-  }
-  .done-step {
-  	background-image: url('../images/certificate.png');
-   	margin: 0 auto;
-   	width : 800px;
-   	height: 544px;
-   	
-   	.congrats{
-   	 font-size:30px;
-      text-align:center;
-      font-family: cursive;
-      font-weight: bold;
-      padding-top: 75px;
-   	}
-    .message {
-		width:600px;
-		font-size:25px;
-		text-align:center;
-      	margin: 0 auto;
-		line-height: 2;
-		.lesson-title{
-			font-weight: bold;
-			color: #428bca;
-		}
-		
+.lesson-step-video {
+    text-align: center;
+    .lesson-step-video-content {
+        display: inline-block;
     }
-      .report{
-		width:600px;
-		margin:0 auto;
-		font-size:20px;
-	      a{
-	      &:hover{
-	      text-decoration:none;
-	      }
-	      }
-      }
-      
-      .stats{
-      	width:600px;
-		margin: 0 auto;
-		.action-items{
-		text-align:right;
-		}
-		.forms{
-		background: #efefef;
-		padding: 5px;
-		border-radius: 10px;
-		}
-      }
+}
 
+.lesson-step-quiz {
+    .lesson-step-quiz-next {
+        text-align: center;
+    }
+    .lergo-progress-bar {
+        width: 560px;
+        margin: 0 auto;
+    }
+    .question-true-false {
+        .true-false-options {
+            .true-false-option {
+                padding: 15px;
+                margin-left: 5px;
+            }
+            text-align: center;
+        }
+    }
+    margin-top: 20px;
+    .lergo-h2 {
+        text-align: center;
+        padding: 10px 0;
+    }
+    .lesson-step-quiz-content, .lesson-step-quiz-next {
+        background-color: gainsboro;
+        width: 400px;
+        margin: 0 auto;
+    }
+}
 
-  }
+#lessonDisplay {
+    #content {
+        padding-bottom: 100px;
+    }
+    .done-step {
+        background-image: url("../images/certificate.png");
+        margin: 0 auto;
+        width: 800px;
+        height: 550px;
+        .congrats {
+            font-size: 30px;
+            text-align: center;
+            font-family: cursive;
+            font-weight: bold;
+            padding-top: 75px;
+        }
+        .message {
+            width: 600px;
+            font-size: 25px;
+            text-align: center;
+            margin: 0 auto;
+            line-height: 2;
+            .lesson-title {
+                font-weight: bold;
+                color: #428bca;
+            }
+        }
+        .report {
+            width: 600px;
+            margin: 0 auto;
+            font-size: 20px;
+            a {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+        .stats {
+            width: 600px;
+            margin: 0 auto;
+            .action-items {
+                text-align: right;
+            }
+            .forms {
+                background: #efefef;
+                padding: 5px;
+                border-radius: 10px;
+            }
+        }
+    }
+    .loading {
+        width: 160px;
+        margin: auto;
+        margin-top: 200px;
+        font-size: 60px;
+        text-align: center;
+    }
+    .next-step {
+        position: relative;
+        margin: 0 auto;
+    }
+}
 
-
-	.loading{
-		width: 160px;
-		margin: auto;
-		margin-top: 200px;
-		font-size: 60px;
-		text-align: center;
-	}
-  .next-step{
-  	position:relative;
-    margin:0 auto;
-  }
- }
-.video-tip{
-	display: inline-block;
-	
+.video-tip {
+    display: inline-block;
 }

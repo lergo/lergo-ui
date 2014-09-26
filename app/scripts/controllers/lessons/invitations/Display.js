@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope) {
+angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope, FilterService) {
 
 	$log.info('loading invitation', $routeParams.invitationId);
 
@@ -85,8 +85,14 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			});
 		}
 	}
-	$scope.startLesson = function() {
-		LergoClient.lessonsInvitations.createAnonymous($scope.lesson._id).then(function(result) {
+	$scope.startLesson = function(lessonId) {
+		var id = null;
+		if (!lessonId) {
+			id = $scope.lesson._id;
+		} else {
+			id = lessonId;
+		}
+		LergoClient.lessonsInvitations.createAnonymous(id).then(function(result) {
 			var invitationId = result.data._id;
 			redirectToInvitation(invitationId);
 		});
@@ -127,5 +133,39 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	$scope.isLiked = function() {
 		return !!$scope.lessonLike;
 	};
+
+	$scope.practiceMistakes = function() {
+		LergoClient.reports.getById($routeParams.reportId).then(function(result) {
+			var report = result.data;
+			createLessonFromWrongQuestions(report);
+		});
+	};
+
+	function createLessonFromWrongQuestions(report) {
+		LergoClient.lessons.create().then(function(result) {
+			var lesson = result.data;
+			lesson.name = 'Difficult questions lesson from : ' + report.data.lesson.name;
+			// todo: remove filter Service getLanguageByLocale - this should be
+			// coming from translate service.
+			lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
+			lesson.steps = [];
+			lesson.description = report.data.lesson.description;
+			lesson.lastUpdate = new Date().getTime();
+			var step = {
+				'type' : 'quiz',
+				'quizItems' : []
+			};
+			lesson.steps.push(step);
+			angular.forEach(report.answers, function(answer) {
+				if (!answer.checkAnswer.correct) {
+					lesson.steps[0].quizItems.push(answer.quizItemId);
+				}
+			});
+			LergoClient.lessons.update(lesson).then(function() {
+				$scope.startLesson(lesson._id);
+			});
+		});
+
+	}
 
 });

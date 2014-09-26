@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient, shuffleFilter, $speechSynthetis) {
+angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient, shuffleFilter) {
 	$log.info('showing step');
+	var audio = new Audio('../audio/correctanswer.mp3');
 
 	if (!!$routeParams.data) {
 		$scope.step = JSON.parse($routeParams.data);
@@ -73,12 +74,8 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				'isHintUsed' : !!quizItem.isHintUsed
 			});
 			$scope.updateProgressPercent();
-			if (!isTestMode()) {
-				if (result.data.correct) {
-					voiceFeedback('You are correct');
-				} else {
-					voiceFeedback('Your are incorrect');
-				}
+			if (!isTestMode() && result.data.correct) {
+				voiceFeedback();
 			}
 			if ($scope.hasNextQuizItem() && isTestMode()) {
 				$scope.nextQuizItem();
@@ -208,8 +205,8 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		return false;
 	}
 
-	function voiceFeedback(command) {
-		$speechSynthetis.speak(command, 'en-Uk');
+	function voiceFeedback() {
+		audio.play();
 	}
 
 });

@@ -7,7 +7,7 @@
 			<p class="question-help-text">{{quizItem.helpText}}</p>
 		</div>
 		<div quiz-item-media quiz-item="quizItem"></div>
-		<div>
+		<div style="font-size: 20px;">
 			<table class="lergo-table">
 				<tbody>
 					<tr ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
@@ -26,8 +26,10 @@
 	</div>
 </div>
 <div ng-show="mode==='quiz'">
-    <div lergo-progress-bar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></div>
-    <!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
+	<div lergo-progress-bar animate="true" value="progressPercentage" type="primary" class="progressbar">
+		<b>{{progressPercentage}}%</b>
+	</div>
+	<!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
 </div>
 <br>
-<div ng-include="'views/questions/view/partials/_result.html'"> </div>
+<div ng-include="'views/questions/view/partials/_result.html'"></div>
