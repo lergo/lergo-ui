@@ -8,22 +8,55 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
         'showSubject' : true,
         'showLanguage' : true,
         'showReportStatus' : true,
+        'showStudents' : true,
         'showCorrectPercentage' : true
     };
-    
-    
+
+    $scope.reportTypes = [
+        { 'id' : 'mine' },
+        { 'id' : 'students' }
+    ];
+
+
+    $scope.reportsPage = { reportType : 'students' };
+
+    function isMyReports(){
+        return $scope.reportsPage.reportType === 'mine';
+    }
+
+    $scope.$watch('reportsPage.reportType', function (newValue, oldValue) {
+        if (newValue !== oldValue) {
+            $log.info('reportType changed');
+            $scope.reportsFilterOpts.showStudents = isStudentsReports();
+            $scope.filterPage.current = 1;
+            $scope.filterPage.updatedLast = new Date().getTime(); // create a 'change' event artificially..
+        }
+    });
+
+    function isStudentsReports(){
+        return $scope.reportsPage.reportType === 'students';
+    }
+
+    $scope.showStudentColumn = function(){
+        return isStudentsReports();
+    };
+
 	$scope.loadReports = function() {
+        if ( !$scope.filterPage.current ){
+            return;
+        }
         var queryObj = { 'filter': _.merge({}, $scope.reportsFilter), 'sort' : { 'lastUpdate' : -1 }, 'dollar_page': $scope.filterPage };
-		LergoClient.userData.getReports(queryObj).then(function(result) {
-			$scope.reports = result.data.data;
+        var promise = null;
+        if ( isMyReports() ) {
+            promise = LergoClient.userData.getReports(queryObj);
+        }else if ( isStudentsReports() ){
+            promise = LergoClient.userData.getStudentsReports( queryObj );
+        }
+
+        promise.then(function(result) {
+            $scope.reports = result.data.data;
             $scope.filterPage.count = result.data.count;
-			$scope.errorMessage = null;
-			$scope.invitees = [];
-			angular.forEach($scope.reports, function(item) {
-				if ($scope.invitees.indexOf(item.data.invitee.name) === -1) {
-					$scope.invitees.push(item.data.invitee.name);
-				}
-			});
+            $scope.errorMessage = null;
 		}, function(result) {
 			$scope.errorMessage = 'Error in fetching reports : ' + result.data.message;
 			$log.error($scope.errorMessage);

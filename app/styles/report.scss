@@ -1,3 +1,18 @@
+#reportIndex{
+  .report-type-selection{
+    background:none;
+    border:none;
+    float:right;
+    margin-top:6px;
+  }
+}
+.rtl #reportIndex{
+  .report-type-selection {
+    float: left;
+  }
+}
+
+
 .report{
 	.lergo-h1{
 			font-size:20px;

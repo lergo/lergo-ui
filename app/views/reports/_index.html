@@ -3,10 +3,16 @@
 		<span class="errorMessage" ng-show='errorMessage' style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
 	</div>
 	<br />
+
+
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
 
 			<div class="lergo-h1">{{ 'reports.myReports' | i18n }} [ {{ 'reports.total' | i18n }}: {{systemStats.myReports}} ]</div>
+            <select class="report-type-selection" ng-model="reportsPage.reportType" ng-options="reportType.id as ( 'reports.type.' + reportType.id | i18n ) for reportType in reportTypes  ">
+                <option>mine</option>
+                <option>students</option>
+            </select>
 		</div>
 		<div class="page-content-sidebar">
 			<div class="lergo-h1">{{ 'reports.filter' | i18n }}</div>
@@ -32,7 +38,7 @@
 							</div>
 						</td>
 						<td>{{ 'name' | i18n }}</td>
-						<td>{{ 'reports.student' | i18n}}</td>
+						<td ng-show="showStudentColumn()">{{ 'reports.student' | i18n}}</td>
 						<td>{{ 'reports.subject' | i18n}}</td>
 						<td>{{ 'reports.takenAt' | i18n}}</td>
 						<td>{{ 'reports.correctPercentage' | i18n }}</td>
@@ -51,7 +57,7 @@
 							<a ng-show="!report.data.lesson.name || report.data.lesson.name.trim().length <= 0" tooltip="{{'reports.tooltip.go' | i18n}}"
 								ng-href="#!/public/lessons/reports/{{report._id}}/display">[ no title ]</a>
 						</td>
-						<td class="answer">{{report.data.invitee.name}}</td>
+						<td class="answer" ng-show="showStudentColumn()">{{report.data.invitee.name}}</td>
 						<td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject | i18n) ||""}}</td>
 						<td class="answer">{{report.lastUpdate| date:'medium'}}</td>
 						<td class="answer">{{report.correctPercentage}}</td>

@@ -1,12 +1,10 @@
 <form name="filter" class="filters lergo-form">
-
-
-    <!--<div ng-show="!!inviteeFilter" class='container-fluid'>-->
-        <!--<div class="label">{{'filters.labels.doneByStudent' | i18n}}</div>-->
-        <!--<div class="input">-->
-            <!--<input type="text" ng-model="$root.filter.invitee" typeahead="invitee as invitee for invitee in invitees | filter:$viewValue | limitTo:15 ">-->
-        <!--</div>-->
-    <!--</div>-->
+    <div ng-show="!!opts.showStudents" class='container-fluid'>
+        <div class="label">{{'filters.labels.doneByStudent' | i18n}}</div>
+        <div class="input">
+            <input type="text" ng-model="reportStudent" typeahead="student._id as student._id for student in students | filter:$viewValue | limitTo:15 ">
+        </div>
+    </div>
 
 
     <!--<div ng-show="!!showTextFilter">-->

@@ -9,7 +9,7 @@
  */
 
 angular.module('lergoApp')
-    .directive('lergoFilter', function ($rootScope, FilterService, $log) {
+    .directive('lergoFilter', function ($rootScope, FilterService, LergoClient, $log) {
         return {
             templateUrl: 'views/directives/_lergoFilter.html',
             restrict: 'A',
@@ -44,18 +44,44 @@ angular.module('lergoApp')
 
                 $scope.statusValue = null;
 
-                $scope.$watch('statusValue', function( newValue, oldValue ){
+                LergoClient.reports.getStudents().then(function (result) {
+                    scope.students = result.data;
+                });
+
+
+                function updateReportStudent(){
+
+                    if ( !!$scope.reportStudent && $scope.reportStudent !== '' && $scope.opts.showStudents ) {
+                        scope.model['data.invitee.name'] = $scope.reportStudent;
+                    } else {
+                        delete scope.model['data.invitee.name'];
+                    }
+                }
+                $scope.$watch('reportStudent', function (newValue, oldValue) {
+                    if (newValue !== oldValue) {
+                        $log.info('student changed', arguments);
+                        updateReportStudent();
+                    }
+                });
+
+                $scope.$watch('opts.showStudents', function(newValue, oldValue){
                     if ( oldValue !== newValue ) {
-                        $log.info('statusValue changed', newValue, oldValue );
+                        updateReportStudent();
+                    }
+                });
 
-                        if ( newValue === 'private' ){
-                            $scope.model.public = { 'dollar_exists' : false };
+                $scope.$watch('statusValue', function (newValue, oldValue) {
+                    if (oldValue !== newValue) {
+                        $log.info('statusValue changed', newValue, oldValue);
+
+                        if (newValue === 'private') {
+                            $scope.model.public = { 'dollar_exists': false };
 
                         }
-                        else if ( newValue === 'public' ){
-                            $scope.model.public = { 'dollar_exists' : true };
+                        else if (newValue === 'public') {
+                            $scope.model.public = { 'dollar_exists': true };
                         }
-                        else{
+                        else {
                             $scope.model.public = null;
                         }
                     }

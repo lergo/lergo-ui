@@ -25,4 +25,8 @@ angular.module('lergoApp')
         this.deleteReport = function (report) {
             return $http.post('/backend/reports/' + report._id + '/delete');
         };
+
+        this.getStudents = function(){
+            return $http.get('/backend/reports/students');
+        };
     });

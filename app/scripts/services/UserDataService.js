@@ -7,7 +7,7 @@ angular.module('lergoApp')
             return $http({ 'method' : 'GET' , 'url' : '/backend/user/me/lessons' , 'params' : { 'query' : queryObj }});
         };
         // AngularJS will instantiate a singleton by calling "new" on this function
-        
+
         this.getReports = function ( queryObj ) {
             return $http({
                 'method' : 'GET',
@@ -15,6 +15,17 @@ angular.module('lergoApp')
                 'params' : {
                     'query' : queryObj
                 }
+            });
+        };
+
+        this.getStudentsReports = function (queryObj) {
+            return $http({
+                'method': 'GET',
+                'url': '/backend/user/me/studentsReports',
+                'params': {
+                    'query': queryObj
+                }
+
             });
         };
     });

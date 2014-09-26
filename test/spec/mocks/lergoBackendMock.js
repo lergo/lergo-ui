@@ -17,6 +17,7 @@ angular.module('lergoBackendMock', []).run(function($httpBackend){
     $httpBackend.whenGET('/backend/user/loggedin').respond(200, '{}');
     $httpBackend.whenGET('/backend/public/lessons').respond(200, '{}');
     $httpBackend.whenGET('/backend/tags/filter').respond(200, '[]');
+    $httpBackend.whenGET('/backend/reports/students').respond(200, '[]');
 
 
 });
