@@ -44,7 +44,7 @@
 				<td>
 					<a class="btn-link" ng-click="startLesson()">{{'lessons.restart' | i18n}}</a>
 				</td>
-				<td rowspan="2">
+				<td rowspan="2" ng-show="wrongQuestions.length>0">
 					<a show-logged-in class="btn-link" ng-click="practiceMistakes()">
 						<i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
 					</a>
@@ -53,7 +53,7 @@
 						<i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
 					</a>
 				</td>
-				<td>
+				<td ng-show="wrongQuestions.length>0">
 					<a show-logged-in class="btn-link" ng-click="practiceMistakes()">{{'lessons.practiseWrongQuestion' | i18n}}</a>
 					<a show-anonymous class="btn-link" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | i18n}}"
 						tabindex="0">{{'lessons.practiseWrongQuestion' | i18n}}</a>

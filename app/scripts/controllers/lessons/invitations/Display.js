@@ -47,6 +47,10 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	}, function(newValue/* , oldValue */) {
 		if (!!newValue) {
 			$rootScope.$broadcast('endLesson');
+			LergoClient.reports.getById($routeParams.reportId).then(function(result) {
+				$scope.report = result.data;
+				getWrongQuestion($scope.report);
+			});
 			if (!$scope.invitation.anonymous) {
 				LergoClient.reports.ready($routeParams.reportId);
 			} else {
@@ -135,36 +139,40 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	};
 
 	$scope.practiceMistakes = function() {
-		LergoClient.reports.getById($routeParams.reportId).then(function(result) {
-			var report = result.data;
-			createLessonFromWrongQuestions(report);
-		});
+		createLessonFromWrongQuestions();
 	};
-
-	function createLessonFromWrongQuestions(report) {
-		LergoClient.lessons.create().then(function(result) {
-			var lesson = result.data;
-			lesson.name = 'Difficult questions lesson from : ' + report.data.lesson.name;
-			// todo: remove filter Service getLanguageByLocale - this should be
-			// coming from translate service.
-			lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
-			lesson.steps = [];
-			lesson.description = report.data.lesson.description;
-			lesson.lastUpdate = new Date().getTime();
-			var step = {
-				'type' : 'quiz',
-				'quizItems' : []
-			};
-			lesson.steps.push(step);
-			angular.forEach(report.answers, function(answer) {
-				if (!answer.checkAnswer.correct) {
-					lesson.steps[0].quizItems.push(answer.quizItemId);
-				}
-			});
-			LergoClient.lessons.update(lesson).then(function() {
-				$scope.startLesson(lesson._id);
-			});
+	function getWrongQuestion(report) {
+		$scope.wrongQuestions = [];
+		angular.forEach(report.answers, function(answer) {
+			if (!answer.checkAnswer.correct) {
+				$scope.wrongQuestions.push(answer.quizItemId);
+			}
 		});
+	}
+	function createLessonFromWrongQuestions() {
+		if ($scope.wrongQuestions.length > 0) {
+			var report = $scope.report;
+			LergoClient.lessons.create().then(function(result) {
+				var lesson = result.data;
+				lesson.name = 'Difficult questions lesson from : ' + report.data.lesson.name;
+				// todo: remove filter Service getLanguageByLocale - this should
+				// be
+				// coming from translate service.
+				lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
+				lesson.steps = [];
+				lesson.description = report.data.lesson.description;
+				lesson.lastUpdate = new Date().getTime();
+				var step = {
+					'type' : 'quiz',
+					'quizItems' : []
+				};
+				lesson.steps.push(step);
+				lesson.steps[0].quizItems = $scope.wrongQuestions;
+				LergoClient.lessons.update(lesson).then(function() {
+					$scope.startLesson(lesson._id);
+				});
+			});
+		}
 
 	}
 
