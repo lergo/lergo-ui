@@ -29,7 +29,6 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			$log.error($scope.errorMessage);
 		});
 	};
-	$scope.loadReports();
 	$scope.createLessonFromWrongQuestions = function() {
 		LergoClient.lessons.create().then(function(result) {
 			var lesson = result.data;
