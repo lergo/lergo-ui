@@ -83,9 +83,9 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	});
 
 	function updateUserInfo() {
-		if (!!$scope.lesson) {
+		if (!!$scope.user) {
 			LergoClient.users.findUsersById($scope.lesson.userId).then(function(result) {
-				$scope.lesson.user = result.data[0];
+				$scope.user = result.data[0];
 			});
 		}
 	}
@@ -119,7 +119,24 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	$scope.onTextClick = function($event) {
 		$event.target.select();
 	};
+	var lessonLikeWatch = null;
+	$scope.$watch('lesson', function(newValue) {
+		if (!!newValue) {
+			// get my like - will decide if I like this lesson or not
+			LergoClient.likes.getMyLessonLike($scope.lesson).then(function(result) {
+				$scope.lessonLike = result.data;
+			});
 
+			if (lessonLikeWatch === null) {
+				lessonLikeWatch = $scope.$watch('lessonLike', function() {
+					// get count of likes for lesson
+					LergoClient.likes.countLessonLikes($scope.lesson).then(function(result) {
+						$scope.lessonLikes = result.data.count;
+					});
+				});
+			}
+		}
+	});
 	$scope.likeLesson = function() {
 		$log.info('liking lesson');
 		LergoClient.likes.likeLesson($scope.lesson).then(function(result) {
