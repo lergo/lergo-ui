@@ -77,6 +77,8 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 		if (!!oldDuration) {
 			oldDuration.endTime = new Date().getTime();
 		}
+
+        calculateDuration(report);
 	});
 
 	// in case user answered a question, and then changed the answer, we
@@ -119,8 +121,49 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 			'isHintUsed' : data.isHintUsed,
 			'duration' : data.duration
 		});
+
+        calculateCorrectPercentage(report);
+
 	});
 
 	$log.info('report writer initialized');
+
+
+    function calculateDuration(report) {
+        report.duration = 0;
+        angular.forEach(report.stepDurations, function (duration) {
+            if (!!duration.startTime && !!duration.endTime) {
+                report.duration = report.duration + (duration.endTime - duration.startTime);
+            }
+        });
+        report.duration = report.duration - (report.duration % 1000);
+        $log.info('new duration is ' , report.duration);
+    }
+
+    function calculateCorrectPercentage(report) {
+        var correct = 0;
+        var wrong = 0;
+        report.correctPercentage = 0;
+        var numberOfQuestions = 0;
+        angular.forEach(report.data.lesson.steps, function (step) {
+            if (step.type === 'quiz' && !!step.quizItems) {
+                numberOfQuestions = numberOfQuestions + step.quizItems.length;
+            }
+        });
+        if (!!report.data.quizItems && numberOfQuestions > 0) {
+            angular.forEach(report.answers, function (answer) {
+                if (answer.checkAnswer.correct === true) {
+                    correct++;
+                } else {
+                    wrong++;
+                }
+            });
+
+            report.correctPercentage = Math.round((correct * 100) / numberOfQuestions);
+        }
+
+        $log.info('new correct percentage is : ', report.correctPercentage);
+
+    }
 
 });

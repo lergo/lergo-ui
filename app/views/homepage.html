@@ -86,7 +86,7 @@
 									<td>
 										<span tooltip="{{'lessons.createdOn' | i18n}}">
 											<i class="fa fa-calendar"></i>
-											{{lesson.timeStamp | date:'d-MMM-yyyy'}}
+											{{lesson | mongoIdToTimestamp |  date:'d-MMM-yyyy'}}
 										</span>
 									</td>
 									<td colspan="2">

@@ -7,7 +7,8 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
     $scope.reportsFilterOpts = {
         'showSubject' : true,
         'showLanguage' : true,
-        'showReportStatus' : true
+        'showReportStatus' : true,
+        'showCorrectPercentage' : true
     };
     
     
@@ -23,9 +24,6 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 					$scope.invitees.push(item.data.invitee.name);
 				}
 			});
-			calculateDuration($scope.reports);
-			calculateCorrectPercentage($scope.reports);
-
 		}, function(result) {
 			$scope.errorMessage = 'Error in fetching reports : ' + result.data.message;
 			$log.error($scope.errorMessage);
@@ -92,40 +90,5 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		});
 	};
 
-	function calculateDuration(reports) {
-		angular.forEach(reports, function(report) {
-			report.duration = 0;
-			angular.forEach(report.stepDurations, function(duration) {
-				if (!!duration.startTime && !!duration.endTime) {
-					report.duration = report.duration + (duration.endTime - duration.startTime);
-				}
-			});
-			report.duration = (Math.round(report.duration / 1000)) * 1000;
-		});
-	}
 
-	function calculateCorrectPercentage(reports) {
-		angular.forEach(reports, function(report) {
-			var correct = 0;
-			var wrong = 0;
-			report.correctPercentage = 0;
-			var numberOfQuestions = 0;
-			angular.forEach(report.data.lesson.steps, function(step) {
-				if (step.type === 'quiz' && !!step.quizItems) {
-					numberOfQuestions = numberOfQuestions + step.quizItems.length;
-				}
-			});
-			if (!!report.data.quizItems && numberOfQuestions > 0) {
-				angular.forEach(report.answers, function(answer) {
-					if (answer.checkAnswer.correct === true) {
-						correct++;
-					} else {
-						wrong++;
-					}
-				});
-
-				report.correctPercentage = Math.round((correct * 100) / numberOfQuestions);
-			}
-		});
-	}
 });

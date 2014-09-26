@@ -59,7 +59,7 @@
 						</span>
 						<span tooltip="{{'lessons.createdOn' | i18n}}">
 							<i class="fa fa-calendar"></i>
-							<span>{{lesson.timeStamp | date:'d-MMM-yyyy'}}</span>
+							<span>{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
 						</span>
 						<span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | i18n}}">
 							<i class="fa fa-book"></i>

@@ -59,14 +59,14 @@
             </select>
         </div>
     </span>
-    <!--<div ng-show="!!correctPercentageFilter">-->
-        <!--<div class="label">{{'filters.labels.correctPercentage' | i18n }}</div>-->
-        <!--<div>-->
-            <!--<input min="1" max="100" size="1" class="number" type="number" ng-model="$root.filter.correctPercentage.min" />-->
-            <!--{{'filters.to'|i18n}}-->
-            <!--<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.correctPercentage.max" />-->
-        <!--</div>-->
-    <!--</div>-->
+    <span ng-show="!!opts.showCorrectPercentage">
+        <div class="label">{{'filters.labels.correctPercentage' | i18n }}</div>
+        <div>
+            <input min="1" max="100" size="1" class="number" type="number" ng-model="correctPercentage.min" />
+            {{'filters.to'|i18n}}
+            <input min="1" max="100" size="1" ng class="number" type="number" ng-model="correctPercentage.max" />
+        </div>
+    </span>
     <span ng-show="!!opts.showReportStatus">
         <div class="label">{{'filters.labels.status' | i18n }}</div>
         <div class="input">

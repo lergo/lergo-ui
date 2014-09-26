@@ -105,22 +105,23 @@ angular.module('lergoApp')
 
 
                         if ( !!newValue.min ){
-                            $scope.model[propertyName].dollar_gt = newValue.min;
+                            $scope.model[propertyName].dollar_gte = newValue.min;
                         }
 
                         if ( !!newValue.max ){
-                            $scope.model[propertyName].dollar_lt = newValue.max;
+                            $scope.model[propertyName].dollar_lte = newValue.max;
                         }
                     };
                 }
 
                 $scope.$watch('ageFilter', minMaxFilter('age'),true);
                 $scope.$watch('viewsFilter', minMaxFilter('views'),true);
+                $scope.$watch('correctPercentage', minMaxFilter('correctPercentage'),true);
 
                 // handle 'all' values or null values - simply remove them from the model.
                 $scope.$watch('model', function(){
 
-                    _.each(['language','subject','public', 'status','age', 'views', 'data.finished'], function(prop){
+                    _.each(['language','subject','public', 'status','age', 'views', 'correctPercentage', 'data.finished'], function(prop){
                         if ( $scope.model[prop] === null ){
                             delete $scope.model[prop];
                         }
