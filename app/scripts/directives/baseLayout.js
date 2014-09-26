@@ -24,6 +24,12 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
 
             $rootScope.updateStats();
 
+            // using `scope` to watch instead of `rootScope` will ensure I do not have a leak
+            scope.$watch( function(){ return $rootScope.user; }, function(){
+                $rootScope.updateStats(true);
+            }, true);
+
+
             // a random number to prevent cache in ng-include
             $rootScope.getCacheRandomNumber = function () {
                 return Math.floor(new Date().getTime() / 10000);

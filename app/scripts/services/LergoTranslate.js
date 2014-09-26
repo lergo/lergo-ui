@@ -108,7 +108,9 @@ angular.module('lergoApp').service('LergoTranslate',
             }
             // Fallback to default language
             if (!value && (language !== DEFAULT_LANGUAGE)) {
-                console.log('Translation key "' + key + '" is missing in locale "' + language + '", please contact LerGO');
+                if ( translations.hasOwnProperty(language)) {
+                    $log.info('Translation key "' + key + '" is missing in locale "' + language + '", please contact LerGO');
+                }
                 value = findTranslationInLanguage(translations[DEFAULT_LANGUAGE], key);
             }
 
