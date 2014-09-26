@@ -18,7 +18,14 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 			$scope.quizItem.user = result.data[0];
 		});
 		LergoClient.lessons.getLessonsWhoUseThisQuestion($scope.quizItem._id).then(function(result) {
-			$scope.usedInLessons = result.data;
+			$scope.lessons = result.data;
+
+			$scope.usedInLessons = [];
+			angular.forEach($scope.lessons, function(lesson) {
+				if (!!lesson.public) {
+					$scope.usedInLessons.push(lesson);
+				}
+			});
 		});
 
 	}, function(result) {
