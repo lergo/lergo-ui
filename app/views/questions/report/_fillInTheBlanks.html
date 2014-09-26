@@ -9,7 +9,7 @@
 					<span style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
 						<span>{{option}}</span>
 						<span ng-show="!$last">
-							<span class="bold" style="text-decoration: underline">{{!quizItem.answer[$index] && '________' || quizItem.answer[$index]}} </span>
+							<span class="bold" style="text-decoration: underline">{{!quizItem.answer[$index] && '________' || quizItem.answer[$index].replace(';',' / ')}} </span>
 						</span>
 					</span>
 				</div>

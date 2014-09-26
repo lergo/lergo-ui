@@ -3,7 +3,7 @@
 	<table class="lergo-table">
 		<tr>
 			<td style="vertical-align: top;">
-				<div ng-include="getQuizItemTemplate(getQuizItem())" ng-init="mode='quiz'"></div>
+				<div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate(getQuizItem())" ng-init="mode='quiz'"></div>
 			</td>
             <!-- LERGO-320 - placing the show/hide on the table itself resolves the alignment issue when explanation media is hidden-->
 			<td style="vertical-align: top;" ng-show="!!getAnswer(quizItem) && !!quizItem.explanationMedia && !!quizItem.explanationMedia.type">
