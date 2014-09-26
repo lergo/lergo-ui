@@ -7,6 +7,17 @@ angular.module('lergoApp')
         };
 
 
+        this.getUsernames = function( like ){
+            return $http({
+                'url' : '/backend/users/usernames',
+                'method' : 'GET',
+                params : {
+                    'like' : like
+                }
+            });
+        };
+
+
         this.findUsersById = function(ids) {
             return $http({
                 'url' : '/backend/users/find',

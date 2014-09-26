@@ -49,6 +49,23 @@ angular.module('lergoApp')
                 });
 
 
+                LergoClient.users.getUsernames().then(function(result){
+                    scope.users = result.data;
+                });
+
+
+                $scope.$watch('createdBy', function( newValue , oldValue ){
+
+                    if ( newValue !== oldValue ) {
+                        if (!!newValue && newValue.hasOwnProperty('_id')) {
+                            $scope.model.userId = $scope.createdBy._id;
+                        }else{
+                            $scope.model.userId = null;
+                        }
+
+                    }
+                });
+
                 function updateReportStudent(){
 
                     if ( !!$scope.reportStudent && $scope.reportStudent !== '' && $scope.opts.showStudents ) {
@@ -147,7 +164,7 @@ angular.module('lergoApp')
                 // handle 'all' values or null values - simply remove them from the model.
                 $scope.$watch('model', function(){
 
-                    _.each(['language','subject','public', 'status','age', 'views', 'correctPercentage', 'data.finished'], function(prop){
+                    _.each(['language','subject','public', 'status','age', 'userId', 'views', 'correctPercentage', 'data.finished'], function(prop){
                         if ( $scope.model[prop] === null ){
                             delete $scope.model[prop];
                         }
