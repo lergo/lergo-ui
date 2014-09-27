@@ -8,7 +8,7 @@
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
 
-			<div class="lergo-h1">{{ 'reports.myReports' | i18n }} [ {{ 'reports.total' | i18n }}: {{systemStats.myReports}} ]</div>
+			<div class="lergo-h1">{{ 'reports.myReports' | i18n }} [ {{ 'reports.total' | i18n }}: {{systemStats.myReports + + systemStats.myInvitedReports }} ] <!-- LERGO-457--></div>
             <select class="report-type-selection" ng-model="reportsPage.reportType" ng-options="reportType.id as ( 'reports.type.' + reportType.id | i18n ) for reportType in reportTypes  ">
                 <option>mine</option>
                 <option>students</option>
