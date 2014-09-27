@@ -4,6 +4,11 @@ angular.module('lergoApp')
     .filter('countQuestionsOnLesson', function () {
 
         return function (item) {
+
+            if ( item.hasOwnProperty('questionsCount') ){
+                return item.questionsCount;
+            }
+
             var qCount = 0;
             try {
                 if (!item || !item.steps) {
@@ -14,9 +19,16 @@ angular.module('lergoApp')
                         qCount = qCount + item.steps[i].quizItems.length;
                     }
                 }
+
+                if ( qCount > 0 ){
+                    item.questionsCount = qCount;
+                }
+
             }catch(e){
                 return qCount;
             }
+
+
             return qCount;
 
         };
