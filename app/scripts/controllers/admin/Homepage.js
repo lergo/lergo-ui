@@ -30,11 +30,22 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
 
 	var users = {};
 
-	LergoClient.users.getAll().then(function(result) {
-		result.data.forEach(function(user) {
-			users[user._id] = user;
-		});
-	});
+    $scope.$watch( 'lessons' , function( ){
+        var requiredUsers = _.difference(_.map($scope.lessons,'userId'), _.map(users, '_id'));
+
+        if ( requiredUsers.length > 0 ){
+            LergoClient.users.findUsersById( requiredUsers ).then(function (result) {
+                result.data.forEach(function (user) {
+                    users[user._id] = user;
+                });
+            });
+        }
+    });
+
+
+    $scope.getUser = function(lesson){
+        return users[lesson.userId];
+    };
 
 	$scope.changing = [];
 	var changing = $scope.changing;
