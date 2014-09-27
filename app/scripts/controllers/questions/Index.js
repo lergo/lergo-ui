@@ -9,7 +9,8 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
     $scope.questionsFilterOpts = {
         'showSubject' : true,
         'showLanguage' : true,
-        'showAge' : true
+        'showAge' : true,
+        'showSearchText' : true
     };
 
     $scope.createNewQuestion = function() {

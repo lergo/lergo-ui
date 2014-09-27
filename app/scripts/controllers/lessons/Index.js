@@ -10,7 +10,8 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
         'showLanguage' : true,
         'showAge' : true,
         'showViews': true,
-        'showTags' : true
+        'showTags' : true,
+        'showSearchText' : true
     };
 
     $scope.loadLessons = function() {

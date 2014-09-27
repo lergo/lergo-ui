@@ -164,8 +164,8 @@ angular.module('lergoApp')
                 // handle 'all' values or null values - simply remove them from the model.
                 $scope.$watch('model', function(){
 
-                    _.each(['language','subject','public', 'status','age', 'userId', 'views', 'correctPercentage', 'data.finished'], function(prop){
-                        if ( $scope.model[prop] === null ){
+                    _.each(['language','subject','public', 'status','age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished'], function(prop){
+                        if ( $scope.model[prop] === null || $scope.model[prop] === '' ){
                             delete $scope.model[prop];
                         }
                     });

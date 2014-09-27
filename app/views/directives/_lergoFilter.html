@@ -7,12 +7,12 @@
     </div>
 
 
-    <!--<div ng-show="!!showTextFilter">-->
-        <!--<div class="label">{{'filters.labels.text' | i18n }}</div>-->
-        <!--<div>-->
-            <!--<div text-filter items="getTextFilterItems()" model="$root.filter.text" placeholder="{{'filters.labels.text' | i18n  }}"></div>-->
-        <!--</div>-->
-    <!--</div>-->
+    <div ng-show="!!opts.showSearchText">
+        <div class="label">{{'filters.labels.text' | i18n }}</div>
+        <div>
+            <input ng-model="model.searchText" placeholder="{{'filters.labels.text' | i18n  }}"/>
+        </div>
+    </div>
 
     <span ng-show="!!opts.showLanguage">
         <div class="label">{{'filters.labels.language' | i18n }}</div>
