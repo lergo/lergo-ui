@@ -62,7 +62,6 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	LergoClient.lessonsInvitations.build($routeParams.invitationId, true, false).then(function(result) {
 		$scope.invitation = result.data;
 		$scope.lesson = result.data.lesson;
-		updateUserInfo();
 		$scope.lesson.image = LergoClient.lessons.getTitleImage($scope.lesson);
 		$scope.questions = {};
 
@@ -82,13 +81,6 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		}
 	});
 
-	function updateUserInfo() {
-		if (!!$scope.user) {
-			LergoClient.users.findUsersById($scope.lesson.userId).then(function(result) {
-				$scope.user = result.data[0];
-			});
-		}
-	}
 	$scope.startLesson = function(lessonId) {
 		var id = null;
 		if (!lessonId) {
@@ -137,6 +129,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			}
 		}
 	});
+
 	$scope.likeLesson = function() {
 		$log.info('liking lesson');
 		LergoClient.likes.likeLesson($scope.lesson).then(function(result) {

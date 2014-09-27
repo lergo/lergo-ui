@@ -89,10 +89,18 @@
 						</div>
 					</div>
 					<div class="description">
-						<div class="edit-summary" ng-show="quizItem.summary">
+						<div class="edit-summary" ng-show="quizItem.summary || quizItem.copyOf">
 							<br />
 							<div class="title">{{'questions.editSummary'|i18n}}</div>
-							<div>
+							<div  style="padding: 5px 0 10px 0;" class="summary" ng-show="quizItem.summary">
+								<pre>{{ quizItem.summary }}</pre>
+							</div>
+							<div ng-show="quizItem.copyOf">
+								<div style="padding: 5px 0 10px 0;" class="summary">
+									Copied from
+									<span question-read-link question="copiedFrom"></span>
+									by {{quizItem.user.username}}
+								</div>
 								<pre>{{ quizItem.summary }}</pre>
 							</div>
 						</div>
