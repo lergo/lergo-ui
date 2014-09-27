@@ -14,6 +14,13 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
         'showTags' : true
     };
 
+
+    $scope.selectAll = function(){
+        _.each($scope.items, function(item){
+           item.selected = true;
+        });
+    };
+
     $scope.createNewQuestion = function() {
 
 		QuestionsService.createQuestion({
