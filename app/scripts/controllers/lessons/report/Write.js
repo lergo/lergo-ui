@@ -89,10 +89,8 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
                 }
             });
             oldDuration.endTime = oldDuration.startTime + quizDuration;
-        }else if (!!oldDuration) {
-
-                oldDuration.endTime = new Date().getTime();
-
+        } else if (!!oldDuration) {
+            oldDuration.endTime = new Date().getTime();
         }
 
         calculateDuration(report);
