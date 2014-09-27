@@ -42,6 +42,9 @@ angular.module('lergoApp')
                     }
                 };
 
+
+
+
                 $scope.statusValue = null;
 
                 LergoClient.reports.getStudents().then(function (result) {
@@ -170,6 +173,18 @@ angular.module('lergoApp')
                         }
                     });
                 }, true);
+
+
+                $scope.filterTags = [];
+                $scope.$watch('filterTags', function(){
+                    $log.info('filterTags changed' ,$scope.filterTags );
+                    if ( $scope.filterTags.length === 0){
+                        delete $scope.model['tags.label'];
+                    }else{
+                        $scope.model['tags.label'] = { 'dollar_in' : _.map($scope.filterTags, 'label') };
+                    }
+
+                },true);
 
                 $scope.$on('siteLanguageChanged', function () {
                     if (!$rootScope.filter) {

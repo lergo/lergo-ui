@@ -82,14 +82,14 @@
         <!--</div>-->
     <!--</div>-->
 
-    <!--<span ng-show="!!opts.showTags">-->
-        <!--<div>-->
-            <!--<div class="label">{{'filters.labels.tags' | i18n }}</div>-->
-            <!--<div>-->
-                <!--<div tag-section tags="$root.filter.tags"></div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</span>-->
+    <span ng-show="!!opts.showTags">
+        <div>
+            <div class="label">{{'filters.labels.tags' | i18n }}</div>
+            <div>
+                <div tag-section tags="filterTags"></div>
+            </div>
+        </div>
+    </span>
 
     <div ng-show="!!opts.showCreatedBy" class='container-fluid'>
         <div class="label">{{'filters.labels.createdBy' | i18n}}</div>
