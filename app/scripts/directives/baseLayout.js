@@ -1,12 +1,16 @@
 'use strict';
 
-angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeout, $log, $location, LergoClient, LergoTranslate) {
+angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeout, $log, $location, LergoClient, LergoTranslate, $routeParams) {
     return {
         templateUrl: 'views/baseLayout.html',
         transclude: true,
         restrict: 'C',
         replace: true,
         link: function postLink(scope/* , element /*, attrs */) {
+
+
+            scope.baseLayout = { 'filterTextSearch' : $routeParams.search };
+
             LergoClient.isLoggedIn().then(function (result) {
                 if (!!result) {
 
@@ -64,14 +68,19 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
                 $rootScope.$broadcast('siteLanguageChanged');
             });
 
-            scope.searchOnHomepage = function(){
-                $location.path('/user/homepage');
 
+            scope.searchOnHomepage = function(){
+                $log.info('searching on homepage', scope.baseLayout.filterTextSearch);
+                $location.search('search', scope.baseLayout.filterTextSearch).path('/user/homepage');
+//                var textSearch = scope.filterTextSearch;
                 // keep focus on the input element
                 // NOTE: this is not a proper angular solution, but one would be an overkill here.
                 // answer from : http://stackoverflow.com/a/19568146
                 $timeout(function(){
-                    $('#header .header-search input')[0].setSelectionRange($rootScope.filter.textSearch.length,$rootScope.filter.textSearch.length);
+//                    scope.filterTextSearch = textSearch;
+                    if ( !!scope.baseLayout && !!scope.baseLayout.filterTextSearch ) {
+                        $('#header .header-search input')[0].setSelectionRange(scope.baseLayout.filterTextSearch.length, scope.baseLayout.filterTextSearch.length);
+                    }
                 },0);
 
             };
