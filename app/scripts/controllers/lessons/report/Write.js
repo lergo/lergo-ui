@@ -73,17 +73,34 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 		if (!newDuration.startTime) {
 			newDuration.startTime = new Date().getTime();
 		}
-		var oldDuration = report.stepDurations[~~data.old];
-		if (!!oldDuration) {
-			oldDuration.endTime = new Date().getTime();
-		}
+        var oldStep = report.data.lesson.steps[~~data.old];
+        var oldDuration = report.stepDurations[~~data.old];
+        if ( oldStep.type === 'quiz' && !!oldDuration ){
+
+            // LERGO-457 - quiz step duration should be the sum of durations per answer.
+            $log.info('calculating duration for quiz');
+
+            // calculate end time by counting the duration on each answer..
+            var quizDuration = 0;
+            _.each(oldStep.quizItems, function(quizItem){
+                var answer = findAnswer( { 'quizItemId' : quizItem }, ~~data.old);
+                if ( !!answer ){
+                    quizDuration += answer.duration;
+                }
+            });
+            oldDuration.endTime = oldDuration.startTime + quizDuration;
+        }else if (!!oldDuration) {
+
+                oldDuration.endTime = new Date().getTime();
+
+        }
 
         calculateDuration(report);
 	});
 
 	// in case user answered a question, and then changed the answer, we
 	// will need to find the answer again
-	function findAnswer(data) {
+	function findAnswer(data, stepIndex ) {
 		for ( var i = 0; i < report.answers.length; i++) {
 			var item = report.answers[i];
 			if ((item.quizItemId === data.quizItemId) && (item.stepIndex === stepIndex)) {
@@ -105,7 +122,7 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 	$scope.$on('questionAnswered', function(event, data) {
 		$log.info('question was answered', data);
 		// find answer
-		var answer = findAnswer(data);
+		var answer = findAnswer(data, stepIndex);
 
 		if (!answer) { // add if not exists
 			answer = {};
