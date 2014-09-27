@@ -15,9 +15,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
     };
 
 
-    $scope.selectAll = function(){
-        _.each($scope.items, function(item){
-           item.selected = true;
+    $scope.selectAll = function () {
+        _.each($scope.items, function (item) {
+            item.selected = true;
         });
     };
 
