@@ -2,6 +2,22 @@
 /*jshint camelcase: false */
 
 /**
+ *  This is a directive for all aside panel filters.
+ *
+ *  The parent page should pass a filter object.
+ *  this directive takes care of displaying the right filters and their behavior (typeahead, select box etc..)
+ *  this directive will also take care of constructing a valid mongo query as much as possible.
+ *  in some cases the query should be specific to collection and then the backend will have to take care of it.
+ *  for example 'subject' and 'language' are a valid mongo query, but searchText is not - it is later translated in the backend
+ *  as '$or' on 'name' and 'description' with regex for case insensitivity (for lessons) and something similar but for property 'question'
+ *  for collection question.
+ *
+ *
+ *
+ *  persistency
+ *  ===========
+ *
+ *  persistency is done by marshalling and unmarshalling the scope using {@link FilterService#marshall} and {@link FilterService#unmarhsall}
  *
  *
  *
@@ -9,7 +25,7 @@
  */
 
 angular.module('lergoApp')
-    .directive('lergoFilter', function ($rootScope, FilterService, LergoClient, $log) {
+    .directive('lergoFilter', function ($rootScope, FilterService, LergoClient, $log, localStorageService) {
         return {
             templateUrl: 'views/directives/_lergoFilter.html',
             restrict: 'A',
@@ -33,17 +49,6 @@ angular.module('lergoApp')
                 $scope.status = FilterService.status;
 
                 $scope.reportStatus = FilterService.reportStatus;
-
-                $scope.initFilter = function () {
-                    if (!$rootScope.filter) {
-                        $rootScope.filter = {
-                            'language': FilterService.getLanguageByLocale($rootScope.lergoLanguage)
-                        };
-                    }
-                };
-
-
-
 
                 $scope.statusValue = null;
 
@@ -119,7 +124,14 @@ angular.module('lergoApp')
                 }
                 setDefaultLanguage();
 
-                $scope.$watch( function(){ return $rootScope.lergoLanguage;  }, function(){setDefaultLanguage(true);} );
+                $scope.$watch( function(){
+                    return $rootScope.lergoLanguage;
+                }, function( newValue, oldValue ){
+                    $log.info('should change language in filter?', newValue, oldValue );
+                    if ( !!newValue && !!oldValue && newValue !== oldValue ) {
+                        setDefaultLanguage(true);
+                    }
+                } );
 
                 $scope.reportStatusValue = null;
                 $scope.$watch('reportStatusValue', function( newValue, oldValue ){
@@ -186,15 +198,80 @@ angular.module('lergoApp')
 
                 },true);
 
-                $scope.$on('siteLanguageChanged', function () {
-                    if (!$rootScope.filter) {
-                        $rootScope.filter = {};
+                // load the filter from local storage
+                // we do this before we define how to persist so we want get an event to persist every property we load
+                // we do this after we defined the entire scope - DO NOT ADD MORE LOGIC UNDER LOCAL STORAGE HANDLING
+                // as every property that we will load should trigger the correct watcher to inflict change on the scope
+
+                /**
+                 * the keyName to inflict on the
+                 * @param keyName - the key name in the scope/local storage we want to load
+                 * @param relevancy - property on opts that tells us if we need to load this property or not
+                 */
+                function load(keyName, relevancy) {
+                    if (!!scope.opts && !!scope.opts[relevancy]) {
+                        var args = keyName.split('.');
+                        var saved = localStorageService.get('lergoFilter.' + keyName);
+                        var scopeVariable = scope;
+                        if (!!saved) {
+                            for (var i = 0; i < args.length - 1; i++) {
+                                scopeVariable = scopeVariable[args[i]];
+                            }
+                        }
+                        scopeVariable[args[args.length - 1]] = saved;
                     }
-                    $rootScope.filter.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
-                });
-                $scope.initFilter();
+                }
 
 
+                // load for switches change and if some field became relevant, load it.
+                // we do lazy load since not all fields are relevant for all filter.
+                // admin wants to know if lesson is private or public
+                // but while looking at reports, public/private flag makes no difference.
+                function watchLoad(keyName, relevancy) {
+                    $scope.$watch('opts.' + relevancy, function (newValue, oldValue) {
+                        if (newValue !== oldValue) {
+                            load(keyName, relevancy);
+                        }
+                    });
+                }
+
+                // save the property only if changed and is relevant.
+                function save(keyName, relevancy) {
+                    $scope.$watch(keyName, function (newValue, oldValue) {
+
+                        if (newValue !== oldValue && !!scope.opts[relevancy]) {
+                            $log.info(keyName + ' has changed. persisting [' + newValue + ']');
+                            localStorageService.set('lergoFilter.' + keyName, newValue);
+                        }
+                    }, true);
+                }
+
+                // how to persist the filter.
+                // NOTE: sometimes we convert values. for example lesson status 'public' or 'private'
+                // is converted to  filter.public = { '$exists' : 1 } or { '$exists' : 0 }
+                // same for a lot of other properties : filterTags, createdBy, ageFilter etc..
+                // WE WANT TO PERSIST ONLY THE PROPERTIES WE REFERENCE IN THE TEMPLATE (HTML) AS NG-MODEL
+                // as those are the properties that decide the state of the filter.
+                function persist(keyName, relevancy) {
+
+                    load(keyName, relevancy);
+
+                    watchLoad(keyName, relevancy);
+
+                    save(keyName, relevancy);
+                }
+
+                persist('ageFilter', 'showAge');
+                persist('viewsFilter', 'showViews');
+                persist('correctPercentage', 'showCorrectPercentage');
+                persist('model.language', 'showLanguage');
+                persist('model.subject', 'showSubject');
+                persist('reportStudent', 'showStudents');
+                persist('filterTags', 'showTags');
+                persist('reportStatusValue', 'showReportStatus');
+                persist('statusValue', 'showLessonStatus');
+                persist('model.searchText', 'showSearchText');
+                persist('createdBy', 'showCreatedBy');
             }
         };
     });
