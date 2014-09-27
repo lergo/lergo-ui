@@ -14,9 +14,18 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 			$scope.permissions = result.data;
 		});
 
+		if (!!$scope.quizItem.copyOf) {
+			QuestionsService.getQuestionById($scope.quizItem.copyOf).then(function(result) {
+				$scope.copiedFrom = result.data;
+				LergoClient.users.findUsersById($scope.copiedFrom.userId).then(function(result) {
+					$scope.copiedFrom.user = result.data[0];
+				});
+			});
+		}
 		LergoClient.users.findUsersById($scope.quizItem.userId).then(function(result) {
 			$scope.quizItem.user = result.data[0];
 		});
+
 		LergoClient.lessons.getLessonsWhoUseThisQuestion($scope.quizItem._id).then(function(result) {
 			$scope.lessons = result.data;
 
