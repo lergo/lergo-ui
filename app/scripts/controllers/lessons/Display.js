@@ -10,20 +10,6 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	// otherwise we get a flash of the last screen (LERGO-358).
 	$scope.loaded = false;
 
-	$log.info('loading lesson display ctrl');
-	if (!!$routeParams.lessonId) {
-		// guy - using public here to support admin's preview.
-		// when we align all roles routes to the new design, this will be
-		// implicit.
-		LergoClient.lessons.getById($routeParams.lessonId).then(function(result) {
-			$log.info('got lesson', result.data);
-			$scope.lesson = result.data;
-			$scope.lesson.image = LergoClient.lessons.getTitleImage($scope.lesson);
-		}, function(result) {
-			$log.info('error while getting lesson', result.data);
-		});
-	}
-
 	$controller('LessonsStepDisplayCtrl', {
 		$scope : $scope
 	});
