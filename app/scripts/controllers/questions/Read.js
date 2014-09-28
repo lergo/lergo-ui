@@ -16,10 +16,13 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 
 		if (!!$scope.quizItem.copyOf) {
 			QuestionsService.getQuestionById($scope.quizItem.copyOf).then(function(result) {
-				$scope.copiedFrom = result.data;
-				LergoClient.users.findUsersById($scope.copiedFrom.userId).then(function(result) {
-					$scope.copiedFrom.user = result.data[0];
-				});
+				var copiedFrom = result.data;
+				if (quizItem.userId !== copiedFrom.userId) {
+					LergoClient.users.findUsersById(copiedFrom.userId).then(function(result) {
+						copiedFrom.user = result.data[0];
+						$scope.copiedFrom = copiedFrom;
+					});
+				}
 			});
 		}
 		LergoClient.users.findUsersById($scope.quizItem.userId).then(function(result) {

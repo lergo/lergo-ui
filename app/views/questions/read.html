@@ -89,15 +89,15 @@
 						</div>
 					</div>
 					<div class="description">
-						<div class="edit-summary" ng-show="quizItem.summary || quizItem.copyOf">
+						<div class="edit-summary" ng-show="quizItem.summary || !!copiedFrom )">
 							<br />
 							<div class="title">{{'questions.editSummary'|i18n}}</div>
 							<div style="padding: 5px 0 10px 0;" class="summary" ng-show="quizItem.summary" btf-markdown="quizItem.summary"></div>
-							<div ng-show="quizItem.copyOf">
+							<div ng-show="!!copiedFrom">
 								<div style="padding: 5px 0 10px 0;" class="summary">
 									Copied from
 									<span question-read-link question="copiedFrom"></span>
-									by {{quizItem.user.username}}
+									by {{copiedFrom.user.username}}
 								</div>
 							</div>
 						</div>
