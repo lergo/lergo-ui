@@ -1,7 +1,32 @@
+<span>
+	<span class="pop-up-hint">
+		<span> {{'quiz.practiseMode' | i18n}}</span>
+		<span>
+			<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+			<button popover="{{'quiz.testModeHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+		</span>
+	</span>
+	<input style="vertical-align: middle; display: inline;" type="checkbox" ng-true-value="False" ng-false-value="True" ng-model=step.testMode />
+</span>
+<span class="pop-up-hint">
+	<span>{{'quiz.testMode' | i18n}}</span>
+	<input style="vertical-align: middle; display: inline; margin-left: 6px;" ng-true-value="True" ng-false-value="False" type="checkbox"
+		ng-model=step.testMode />
+</span>
+<span style="padding-left: 60px;">
+	<span class="pop-up-hint">
+		<span> {{'quiz.shuffleQuestion' | i18n}}</span>
+		<span>
+			<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+			<button popover="{{'quiz.shuffleQuestionHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+		</span>
+	</span>
+	<input style="vertical-align: middle; display: inline;" type="checkbox" ng-model=step.shuffleQuestion />
+</span>
 <table class="lergo-table" style="width: 90%; float: left">
 	<tr ng-repeat="item in step.quizItems">
-		<td class="question">
-			<button class="btn-link" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</button>
+		<td class="question" colspan="5">
+			<a class="btn-link" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
 		</td>
 		<td>
 			<a ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
@@ -10,9 +35,10 @@
 		</td>
 	</tr>
 	<tr>
-		<td>
-			<button class="btn" ng-click="openQuestionBank(step)">{{ 'lessons.addQuestion' | i18n }}</button>
-			<button class="btn" ng-click="openCreateQuestion(step)">{{ 'questions.createNew' | i18n }}</button>
+		<td colspan="5">
+            <button class="btn" ng-click="openCreateQuestion(step)">{{ 'questions.createNew' | i18n }}</button>
+            <button class="btn" ng-click="openMyQuestionBank(step)">{{ 'lessons.addQuestion' | i18n }}</button>
+            <button class="btn" ng-click="openPublicQuestionBank(step)">{{ 'lessons.addQuestionFromAll' | i18n }}</button>
 		</td>
 	</tr>
 </table>

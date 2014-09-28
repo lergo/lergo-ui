@@ -2,17 +2,17 @@
 
 describe('Service: UsersService', function () {
 
-  // load the service's module
-  beforeEach(module('lergoApp'));
+    // load the service's module
+    beforeEach(module('lergoApp'));
 
-  // instantiate service
-  var UsersService;
-  beforeEach(inject(function (_UsersService_) {
-    UsersService = _UsersService_;
-  }));
+    // instantiate service
+    var mUsersService;
+    beforeEach(inject(function (UsersService) {
+        mUsersService = UsersService;
+    }));
 
-  it('should do something', function () {
-    expect(!!UsersService).toBe(true);
-  });
+    it('should do something', function () {
+        expect(!!mUsersService).toBe(true);
+    });
 
 });

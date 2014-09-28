@@ -1,9 +1,11 @@
 <div class="lesson-step-video">
-    <div class="lesson-step-title lergo-h1">
-        {{step.title}}
-    </div>
-    <div class="lesson-step-video-content">
-        <iframe width="560" height="315" ng-src="{{getYoutubeEmbedSource(step)}}" frameborder="0" allowfullscreen></iframe>
-    </div>
-
+	<div class="lesson-step-title lergo-h1">{{step.title}}</div>
+	<div class="lesson-step-video-content">
+		<iframe width="672" height="378" ng-src="{{getYoutubeEmbedSource(step)}}" frameborder="0" allowfullscreen></iframe>
+	</div>
+	<br />
+	<br />
+	<div ng-show="hasNextStep()" style="text-align: center">
+		<button ng-click="nextStep()" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
+	</div>
 </div>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp')
-    .filter('multilineEllipsis', function ($log) {
+    .filter('multilineEllipsis', function (/*$log*/) {
 
         function truncate(text, lengthLimit) {
 
@@ -20,7 +20,7 @@ angular.module('lergoApp')
             text = text.substring(0,lengthLimit);
 
             var sentences = _.filter(_.compact(text.split(/\.|!|\n|\?/).map($.trim)),function(str){ return str !== ''; });
-            $log.info(sentences);
+//            $log.info(sentences);
             if ( sentences.length > 0 ) {
                 sentences.splice(sentences.length - 1, 1);
             }

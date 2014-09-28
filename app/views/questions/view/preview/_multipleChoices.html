@@ -1,0 +1,31 @@
+<div class="question-preview">
+	<div class="hint">
+		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link hint"
+			popover-trigger="focus" tabindex="0">{{'hint' | i18n}}</button>
+	</div>
+	<div class="question-title">
+		<p class="lergo-h4">{{quizItem.question}}</p>
+	</div>
+	<div class="help">
+		<p class="question-help-text">{{quizItem.helpText}}</p>
+	</div>
+	<div quiz-item-media quiz-item="quizItem"></div>
+	<div style="font-size: 20px;">
+		<table class="lergo-table">
+			<tbody>
+				<tr ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
+					<td style="width: 5%">
+						<input type="checkbox" ng-model="option.userAnswer" />
+					</td>
+					<td>{{option.label}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br />
+	<div class="submit">
+		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+	</div>
+	<br />
+	<div ng-include="'views/questions/view/preview/partials/_result.html'"></div>
+</div>

@@ -1,13 +1,53 @@
 'use strict';
 
 describe('Directive: baseLayout', function () {
-  beforeEach(module('lergoApp'));
 
-  var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<base-layout></base-layout>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the baseLayout directive');
-  }));
+    var translateMock = {
+        translate: function (n) {
+            return n;
+        },
+        setLanguage: function () {
+//            console.log('setting language', arguments);
+            return 'guy';
+        }
+    };
+
+
+    var element;
+    beforeEach(module('lergoApp', 'directives-templates', 'lergoBackendMock', function ($provide) {
+//        console.log('spying on setLanguage');
+        $provide.value('LergoTranslate', translateMock);
+
+//
+    }));
+
+    function setup() {
+        inject(function ($rootScope, $compile) {
+//            console.log('translateMock.setLanguage typeof is ', typeof(translateMock.setLanguage));
+
+            spyOn(translateMock, 'setLanguage');
+
+            element = angular.element('<div class="base-layout"></div>');
+            element = $compile(element)($rootScope);
+            $rootScope.$digest();
+        });
+    }
+
+
+    describe('something', function () {
+
+
+        it('should put getLabelForLanguage on rootScope', inject(function ($rootScope) {
+            setup();
+            expect(typeof($rootScope.getLabelForLanguage)).toBe('function');
+
+        }));
+//
+        it('should invoke setLanguage on LergoTranslate', function () {
+            setup();
+            expect(translateMock.setLanguage).toHaveBeenCalled();
+
+        });
+    });
 });

@@ -1,52 +1,139 @@
-<div ng-show="showSteps() && hasNextStep() " class="next-step">
+<div ng-show="loaded && showSteps() && hasNextStep() " class="next-step" ng-cloak>
 	<div ng-include="'/views/lessons/_stepDisplay.html'"></div>
-	<br />
-	<div ng-show="hasNextStep()" style="text-align: center">
-		<button ng-click="nextStep()" ng-disabled="!isQuizComplete" class="btn">{{ 'lessons.letsContinue' | i18n }}</button>
+</div>
+<div ng-show="!loaded" class="loading">
+	<div>
+		<i class="fa fa-cog fa-spin"></i>
 	</div>
 </div>
-<div ng-show="!hasNextStep() && lesson.steps.length>0" class="done-step">
-	<div class="image">
-		<div class="user">
-			<i class="fa fa-user"></i>
-		</div>
-		<div class="cap">
-			<i class="fa fa-graduation-cap"></i>
-		</div>
-	</div>
-	<div class="message">
+<div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step">
+	<div class="congrats">
 		{{ 'congratulations' | i18n }}!
 		<br>
-		{{ 'lessons.lessonCompleted' | i18n }}:
 		<br>
-		<br>
-		<div class="lergo-h1">{{lesson.name}}</div>
-		<br>
-		<div class="report">
-			<a ng-show="!!invitation" ng-href="/#/public/lessons/invitations/{{invitation._id}}/report">
-				<i class="fa fa-bar-chart-o"></i>
-				{{ 'lessons.lessonReport' | i18n }}
-			</a>
-		</div>
-		<br>
-		<div class="recmmonded" ng-show="!!lesson.nextLessonId">
-			<a ng-href="#/public/lessons/{{lesson.nextLessonId}}/intro">
-				<i class="fa fa-university"></i>
-				{{ 'lessons.recommenedNextLesson' | i18n }}
-			</a>
-		</div>
 	</div>
-	<div style="text-align: left">
-		<i class="fa fa-star red"></i>
+	<div class="message">
+		<span>{{ 'lessons.lessonCompleted' | i18n }}</span>
+		<span class="lesson-title">"{{lesson.name}}"</span>
+		<span>{{'lesson.createdBy'|i18n}}</span>
+		<span class="lesson-title">{{lesson.user.username}}</span>
 		<br>
-		<i class="fa fa-star green"></i>
-		<br>
-		<i class="fa fa-star orange"></i>
-		<br>
-		<i class="fa fa-star green"></i>
-		<i class="fa fa-star red"></i>
-		<br>
-		<i class="fa fa-star green"></i>
-		<br>
+	</div>
+	<div class="report">
+		<table class="lergo-table">
+			<tr>
+				<td style="width: 100%;">
+					<div>
+						<a ng-show="!!invitation" ng-href="/#!/public/lessons/reports/{{report._id}}/display">
+							<i class="fa fa-bar-chart-o"></i>
+							{{ 'lessons.lessonReport' | i18n }}
+						</a>
+					</div>
+					<div class="recmmonded" ng-show="!!lesson.nextLessonId">
+						<a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
+							<i class="fa fa-university"></i>
+							{{ 'lessons.recommenedNextLesson' | i18n }}
+						</a>
+					</div>
+				</td>
+				<td rowspan="2">
+					<a class="btn-link" ng-click="startLesson()">
+						<i style="font-size: 35px; color: #8CC63F;" class="fa fa-repeat "></i>
+					</a>
+				</td>
+				<td>
+					<a class="btn-link" ng-click="startLesson()">{{'lessons.restart' | i18n}}</a>
+				</td>
+				<td rowspan="2" ng-show="wrongQuestions.length>0">
+					<a show-logged-in class="btn-link" ng-click="practiceMistakes()">
+						<i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
+					</a>
+					<a show-anonymous class="btn-link" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | i18n}}"
+						tabindex="0">
+						<i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
+					</a>
+				</td>
+				<td ng-show="wrongQuestions.length>0">
+					<a show-logged-in class="btn-link" ng-click="practiceMistakes()">{{'lessons.practiseWrongQuestion' | i18n}}</a>
+					<a show-anonymous class="btn-link" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | i18n}}"
+						tabindex="0">{{'lessons.practiseWrongQuestion' | i18n}}</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br />
+	<div class="stats">
+		<div class="action-items">
+			<span show-logged-in>
+				<button class="btn-link" ng-click="likeLesson()" tooltip="{{'lessons.tooltip.like' | i18n}}" ng-show="!isLiked()">
+					<i class="fa fa-thumbs-o-up "></i>
+					{{'like' | i18n}}
+				</button>
+				<span class="btn-link dropdown" ng-click="noop()" tooltip="{{'lessons.tooltip.liked' | i18n}}" ng-show="!!isLiked()">
+					<span class="dropdown-toggle">
+						<i class="fa fa-thumbs-o-up "></i>
+						{{'liked' | i18n}}
+						<i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
+						<span ng-show="!!showMenu">
+							<button class="btn-link">{{'dislike' | i18n}}</button>
+						</span>
+					</span>
+					<span class="dropdown-menu">
+						<li>
+							<button class="btn-link" ng-click="unlikeLesson()">{{ 'unlike' | i18n }}</button>
+						</li>
+					</span>
+				</span>
+			</span>
+			<a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="right" popover-trigger="focus"
+				tabindex="0">
+				<i class="fa fa-thumbs-o-up "></i>
+				{{'like' | i18n}}
+			</a>
+			<button show-logged-in class="btn-link" ng-click="showHideInvite()" tooltip="{{'lessons.tooltip.invite' | i18n}}">
+				<i class="fa fa-envelope "></i>
+				{{'invite' | i18n}}
+			</button>
+			<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+			<a href="" show-anonymous class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="right" popover-trigger="focus"
+				tabindex="0">
+				<i class="fa fa-envelope "></i>
+				{{'invite' | i18n}}
+			</a>
+			<button class="btn-link" ng-click="absoluteShareLink(lesson)" tooltip="{{'lessons.tooltip.share' | i18n}}">
+				<i class="fa fa-share-alt "></i>
+				{{'share' | i18n}}
+			</button>
+		</div>
+		<div ng-show="!!share || !!invite" class="forms">
+			<div ng-show="!!share" class="lergo-form share">
+				<p class="lergo-h4">{{'lessons.shareLesson' | i18n}}</p>
+				<div class="container">
+					<span>{{'lessons.shareLessonTitle' | i18n}}</span>
+					<input type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)" />
+				</div>
+			</div>
+			<div ng-show="!!invite" class="lergo-form invite">
+				<p class="lergo-h4">{{'lessons.inviteLesson'| i18n}}</p>
+				<p>{{'lessons.inviteLessonHelpText' | i18n}}</p>
+				<div ng-controller="LessonsInvitesCreateCtrl" class="container">
+					<div>{{ 'name' | i18n }}</div>
+					<input type="text" ng-model="invite.invitee.name" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
+					<div ng-show="!!createSuccess">
+						<div>{{'lessons.inviteSuccessText' | i18n}}</div>
+						<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
+					</div>
+					<br />
+					<div class="button">
+						<button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | i18n }}</button>
+						<button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | i18n }}</button>
+					</div>
+					<div>
+						<span class="lergo-h4">{{'lessons.note' | i18n}}:</span>
+						{{'lessons.noteMessage' | i18n}}
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

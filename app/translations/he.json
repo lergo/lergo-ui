@@ -1,42 +1,58 @@
 {
   "add": "הוסף",
+  "admin": {
+    "allLessons": "כל השיעורים",
+    "by": "ע\"י",
+    "created": "נוצר",
+    "makePrivate": "לא לפרסם",
+    "makePublic": "לפרסם",
+    "public": "פורסם",
+    "publicFrom": "פורסם ב",
+    "views": "מספר צפיות"
+  },
   "advancedOptions": "אפשרויות מתקדמות",
   "baseLayout": {
     "footer": {
       "about": "אודות לרגו",
-      "abuse": "דווח על שימוש לרעה",
+      "abuse": "לדווח על שימוש לרעה",
       "blog": "בלוג",
-      "contact": "צור קשר",
+      "contact": "ליצירת קשר",
+      "copyright": "לרגו - למד בעצמך (ע\"ר)",
+      "copyrightMsg": "למעט היכן שצוין אחרת, כל הזכויות שמורות.",
       "feedback": "לשלוח משוב",
       "homepage": "דף הבית",
+      "kitchenSink": "כיור מטבח",
       "privacyAndTerms": "פרטיות ותנאי שימוש",
-      "problem": "דווח על בעיה",
+      "problem": "לדווח על בעיה",
       "suggest": "להציע שיעור",
       "text1": "הטקסט בשאלות אלו זמין תחת ",
       "text2": "רישיון של CC ייחוס-לא מסחרי-שיתוף זהה ",
-      "text3": "ייתכן שחלים תנאים נוספים. ע\"י שימוש באתר זה, את/ה מסכימ/ה לתנאים ולמדינות פרטיות של לרגו. לרגו הינו מיזם חינוכי טכנולוגי של לרגו - למד בעצמך (ע\"ר), ושהינו ללא מטרת רווח."
+      "text3": "ייתכן שחלים תנאים נוספים. ע\"י שימוש באתר זה, את/ה מסכימ/ה ",
+      "text4": "לתנאים ולמדינות פרטיות",
+      "text5": "לרגו הינו מיזם חינוכי טכנולוגי של לרגו - למד בעצמך (ע\"ר), ושהינו ללא מטרת רווח"
     },
     "header": {
       "links": {
-        "contribute": "תרום",
-        "create": "צור",
-        "learn": "למד",
+        "contribute": "לתרום",
+        "create": "ליצור",
+        "learn": "ללמוד",
         "lessons": "שיעורים",
         "parents": "הורים",
         "questions": "שאלות",
         "teachers": "מורים"
       },
-      "logout": "התנתק",
-      "searchPlaceholder": "על מה תרצה ללמוד?",
+      "logout": "להתנתק",
+      "searchPlaceholder": "על מה תרצו ללמוד?",
+      "searchUnderConstruction": "יכולת חיפוש תחת בנייה... בינתיים, נא להשתמש בכפתורי סינון למטה.",
       "siteLanguage": "שפת האתר"
     }
   },
   "button": {
     "forgotPassword": "שכחתי סיסמה",
-    "login": "הכנס",
+    "login": "כניסה",
     "newInvite": "הזמנה חדשה",
     "resendValidationEmail": "שלח אימייל אימות שוב",
-    "signup": "הצטרף",
+    "signup": "הרשמה",
     "submit": "שלח"
   },
   "cancel": "בטל",
@@ -45,8 +61,10 @@
     "signup": "הצטרפות",
     "success": "הסיסמה שונתה בהצלחה"
   },
-  "clickHere": "לחץ כאן",
+  "clickHere": "נא ללחוץ כאן.",
   "congratulations": "מזל טוב",
+  "copy": "העתקה",
+  "createNotAvailable": "נא להירשם או להיכנס ללרגו. רק משתמשים רשומים יכולים ליצור שיעורים.",
   "delete": "מחיקה",
   "description": "תיאור",
   "done": "סיום",
@@ -75,19 +93,28 @@
     },
     "subjects": {
       "other": "אחר",
+      "art": "אמנות",
       "biology": "ביולוגיה",
+      "chemistry": "כימיה",
       "english": "אנגלית",
+      "geography": "גאוגרפיה",
+      "geometry": "גיאומטריה",
       "grammar": "דקדוק",
+      "history": "היסטוריה",
       "math": "מתמטיקה",
+      "music": "מוזיקה",
+      "physics": "פיזיקה",
       "science": "מדע",
       "spelling": "איות"
     },
+    "testrahul": "מבחןרהול",
     "to": "עד"
   },
   "fromAge": "החל מגיל",
   "hint": "רמז",
   "homepage": {
     "andCounting": "וממשיכים לספור...",
+    "create": "יצירה",
     "createYourOwn": "ליצירת שיעור משלך",
     "free": "זה בחינם!",
     "lessons": "שיעורים",
@@ -95,7 +122,7 @@
     "start": "התחל",
     "tooltip": {
       "questions": "מספר שאלות",
-      "subject": "נושא",
+      "subject": "מקצוע",
       "user": "ע\"י",
       "views": "מספר צפיות"
     },
@@ -117,17 +144,21 @@
   },
   "invite": "הזמנה",
   "languages": {
+    "ar": "ערבית",
     "en": "אנגלית",
     "he": "עברית",
     "ru": "רוסית"
   },
   "lessons": {
-    "addQuestion": "הוסף שאלה למבדק",
+    "addQuestion": "להוספת שאלה ממאגר",
     "areYouReady": "אתם מוכנים להתחיל ללמוד?",
     "available": "שיעורים זמינים",
     "create": "ליצירת שיעור חדש",
     "createdOn": "נוצר ב",
     "description": "תיאור השיעור",
+    "error": {
+      "invalidName": "שם שיעור הוא שדה דרוש. יש למלא אותו לפני הוספת שלב לשיעור."
+    },
     "filter": "לסינון השיעורים",
     "filters": {
       "labels": {
@@ -136,11 +167,14 @@
         "subject": "מקצוע"
       }
     },
-    "genericVideos": "לרשימה של סרטוני אנימציה גנריים (הקדמה לשיעור, סיום, ..)",
+    "genericVideosPost": "הרשימה תפתח בלשונית חדשה בדפדפן.",
+    "genericVideosPre": "לרשימה של סרטוני אנימציה גנריים (הקדמה לשיעור, סיום, ...)",
     "inviteLesson": "להזמין לשיעור",
     "inviteLessonHelpText": "כדי להפיק קישור להזמנה נא להזין את שם התלמיד וללחוץ על שלח.",
+    "inviteNotAvailable": "נא להירשם או להיכנס ללרגו. רק משתמשים רשומים יכולים להזמין תלמידים לשיעורים.",
     "inviteSuccessText": "נא להעתיק את הקישור כדי להזמין את התלמיד לשיעור.",
     "lessonCompleted": "השלמת את השיעור",
+    "lessonReport": "דו\"ח שיעור",
     "letsContinue": "קדימה - בואו נמשיך!",
     "letsGo": "בואו נתחיל עם לרגו!",
     "myLessons": "השיעורים שלי",
@@ -159,15 +193,18 @@
     "startLesson": "התחלת שיעור",
     "tags": "תגים",
     "tooltip": {
-      "delete": "למחוק שיעור",
-      "edit": "לערוך שיעור",
+      "copy": "העתקת שיעור",
+      "delete": "מחיקת שיעור",
+      "edit": "עריכת שיעור",
       "go": "לגשת לשיעור",
-      "invite": "להזמנת תלמידים",
-      "share": "לשיתוף עם חברים"
+      "invite": "הזמנת תלמידים",
+      "preview": "הצגה מקדימה",
+      "share": "שיתוף עם חברים",
+      "start": "התחלת שיעור"
     },
     "total": "סך הכל",
     "videoURL": "ה- URL של הוידאו",
-    "videoURLHelpText": "נא להכניס קישור / URL לוידאו של YouTube"
+    "videoURLHelpText": "נא להכניס קישור / URL לוידאו של YouTube."
   },
   "loginPage": {
     "login": "כניסה",
@@ -182,26 +219,34 @@
   "popular": "פופולריים",
   "preview": "הצגה",
   "questions": {
+    "addExplanation": "הוספת הסבר",
+    "addHint": "הוספת רמז",
+    "addMedia": "הוספת מדיה",
     "addQuestionsToQuiz": "הוספת שאלה למבדק",
     "age": "גיל",
     "answer": "תשובה",
     "answerOption": "אפשרות תשובה ",
-    "audioUrl": "URL של קובץ השמע",
-    "audioUrlHint": "על מנת להוסיף שמע לשאלה, אנא עדכן את ה- URL של קובץ השמע",
+    "audioUrl": "URL של קובץ השמע.",
+    "audioUrlHint": "על מנת להוסיף שמע לשאלה, יש לעדכן את ה- URL של קובץ השמע.",
     "clickToAdd": "לחץ כאן להוספת אפשרות לתשובה",
     "correct": "נכון",
     "correctAnswer": "התשובה הנכונה",
     "correctAnswerFilled": "תשובה נכונה!",
     "correctAnswers": "התשובות הנכונות",
     "createNew": "ליצירת שאלה חדשה",
-    "editSummary": "סיכום עריכה",
+    "disableShuffling": "ללא ערבוב תשובות",
+    "editSummary": "תקציר עריכה",
     "editSummaryHelpText": "תקציר עריכה",
-    "explanationHelpText": "כאן אפשר להוסיף רמז לשאלה. התלמיד יראה את זה כאשר ילחץ על כפתור רמז",
+    "explanationHelpText": "כאן אפשר להוסיף הסבר לשאלה אשר יוצג לתלמיד רק אחרי שענה על השאלה. ",
+    "fillInTheBlanks": {
+      "hint": "בסוג שאלה זה, יש לתקתק את התרגיל, המשפט או הפסקה, ולסמן את החסר ב: \"___\". למשל: 3+3=___ וכן 5-2=___. או ____ ילדים ו _____ ילדות."
+    },
     "filter": "לסינון השאלות",
     "help": "טקסט עזרה",
-    "hintHelpText": "כאן אפשר להוסיף רמז לשאלה. התלמיד יראה את זה כאשר ילחץ על כפתור רמז",
+    "hintHelpText": "כאן אפשר להוסיף רמז לשאלה. התלמיד יראה את זה כאשר ילחץ על כפתור רמז.",
+    "imageUrlHint": "כדי להוסיף תמונה לשאלה, יש להכניס קישור לתמונה כאן.",
     "incorrect": "לא נכון",
-    "incorrectAnswerFilled": "תשובה שגויה",
+    "incorrectAnswerFilled": "תשובה שגויה, התשובה הנכונה היא",
     "language": "שפה",
     "languages": {
       "other": "שפה אחרת",
@@ -211,6 +256,10 @@
       "russian": "רוסית"
     },
     "longAnswer": "תשובה ארוכה (פסקה)",
+    "media": {
+      "audio": "אודיו",
+      "image": "תמונה"
+    },
     "myQuestions": "השאלות שלי",
     "noQuestions": "אין שאלות להצגה",
     "openQuestion": "שאלה פתוחה",
@@ -219,7 +268,9 @@
     "questionType": "סוג שאלה",
     "requiredAnswer": "מבנה התשובה הנדרש",
     "select": "בחירה",
+    "selectQuestions": "בחירת שאלות",
     "shortAnswer": "תשובה קצרה (מספר מילים)",
+    "shuffleHint": "התשובות של שאלות רב ברירה מעורבבות כברירת מחדל. נא לסמן אופציה זו כדי למנוע ערבוב לשאלה זו.",
     "subject": "מקצוע",
     "subjects": {
       "other": "אחר",
@@ -231,9 +282,14 @@
       "spelling": "איות"
     },
     "thankYou": "תודה לך על תשובתך!",
+    "tooltip": {
+      "copy": "העתקת שאלה",
+      "edit": "עריכת שאלה"
+    },
     "total": "סך הכל",
     "types": {
       "exactMatch": "תשובה יחידה",
+      "fillInTheBlanks": "להשלים את החסר",
       "multipleChoices": "תשובות מרובות",
       "openQuestion": "שאלה פתוחה",
       "trueFalse": "אמת או שקר"
@@ -247,7 +303,7 @@
       "True": "אמת"
     }
   },
-  "redirectToHome": "לחזור לדף הבית",
+  "redirectToHome": "לחזרה לדף הבית",
   "remove": "הסר",
   "report": {
     "completed": "סיימ/ה שיעור",
@@ -255,7 +311,10 @@
     "description": "תיאור שיעור",
     "detailedReport": "דו\"ח מפורט",
     "lessonSteps": "שלבי השיעור",
-    "questionsInQuiz": "שאלות במבדק"
+    "nextLesson": "השיעור המומלץ הבא",
+    "priorLesson": "שיעור מומלץ קודם",
+    "questionsInQuiz": "שאלות במבדק",
+    "recommendation": "המלצות"
   },
   "resetPassword": {
     "emailSentSuccessfully": "אנא בדוק את תיבת המייל ועקוב אחר ההוראות",
@@ -268,7 +327,7 @@
   "share": "שיתוף",
   "signup": {
     "confirmation": {
-      "message": "תודה שנרשמת ללרגו. עוד מספר דקות תקבל אמייל לצורך אימות מלרגו. אנא אשר את הדואר האלקטרוני שלך ע\"י לחיצה על הקישור והמשך משם להתחברות ללרגו. "
+      "message": "תודה שנרשמת ללרגו. עוד מספר דקות תקבל אמייל לצורך אימות מלרגו. נא לאשר את הדואר האלקטרוני שלך ע\"י לחיצה על הקישור ולהמשיך משם להתחברות ללרגו. "
     },
     "error": {
       "confPasswordRequired": "נדרש לאשר סיסמה",
@@ -282,6 +341,7 @@
   "start": "התחלה",
   "steps": {
     "add": "הוסף שלב",
+    "answer": "נא לענות",
     "display": "הצג שלב",
     "invalidURL": "נא להכניס URL תקף / חוקי של YouTube",
     "noMoreQuestions": "אין שאלות נוספות",
@@ -297,7 +357,7 @@
     "math": "מתמטיקה",
     "spelling": "איות"
   },
-  "tagHint": "הפרד תגים בעזרת פסיק (דוגמה: 'איות, דקדוק')",
+  "tagHint": "יש להפריד תגים בעזרת פסיק (דוגמה: 'איות, דקדוק').",
   "tags": "תגים",
   "title": "כותרת",
   "translation": {

@@ -4,11 +4,10 @@
  * 
  * This controller write the events from a lesson a report model
  * 
- * Usage example:
- *  // example - lets say we have viewing a lesson $scope.data = lesson; // lets
- * add a report to the lesson lesson.report = {}; // lets put the report on the
- * scope $scope.report = lesson.report; // call the report controller - the
- * controller will look for "report" on the scope
+ * Usage example: // example - lets say we have viewing a lesson $scope.data =
+ * lesson; // lets add a report to the lesson lesson.report = {}; // lets put
+ * the report on the scope $scope.report = lesson.report; // call the report
+ * controller - the controller will look for "report" on the scope
  * $controller('LessonsReportWriteCtrl', {$scope: $scope}); // listen to writing
  * on the report and do something with it $scope.$watch('report', function(){
  * 
@@ -33,6 +32,9 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 	if (!report.answers) {
 		report.answers = [];
 	}
+	if (!report.stepDurations) {
+		report.stepDurations = [];
+	}
 	var stepIndex = 0;
 
 	$scope.$on('startLesson', function(event, data) {
@@ -50,14 +52,53 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 	});
 
 	// data is step
-	$scope.$on('nextStepClick', function(event, data) {
-		$log.info('nextStepClicked', event, data);
-		stepIndex++;
+
+	// guy - deprecated, use stepIndexChange instead.
+	// $scope.$on('nextStepClick', function(event, data) {
+	// $log.info('nextStepClicked', event, data);
+	// stepIndex++;
+	// });
+
+	$scope.$on('stepIndexChange', function(event, data) {
+		$log.info('stepIndexChange', data);
+		/* jshint -W052 */
+		stepIndex = ~~data.new;
+		var newDuration = report.stepDurations[stepIndex];
+
+		if (!newDuration) {
+			newDuration = {};
+			report.stepDurations.push(newDuration);
+		}
+
+		if (!newDuration.startTime) {
+			newDuration.startTime = new Date().getTime();
+		}
+        var oldStep = report.data.lesson.steps[~~data.old];
+        var oldDuration = report.stepDurations[~~data.old];
+        if ( oldStep.type === 'quiz' && !!oldDuration ){
+
+            // LERGO-457 - quiz step duration should be the sum of durations per answer.
+            $log.info('calculating duration for quiz');
+
+            // calculate end time by counting the duration on each answer..
+            var quizDuration = 0;
+            _.each(oldStep.quizItems, function(quizItem){
+                var answer = findAnswer( { 'quizItemId' : quizItem }, ~~data.old);
+                if ( !!answer ){
+                    quizDuration += answer.duration;
+                }
+            });
+            oldDuration.endTime = oldDuration.startTime + quizDuration;
+        } else if (!!oldDuration) {
+            oldDuration.endTime = new Date().getTime();
+        }
+
+        calculateDuration(report);
 	});
 
 	// in case user answered a question, and then changed the answer, we
 	// will need to find the answer again
-	function findAnswer(data) {
+	function findAnswer(data, stepIndex ) {
 		for ( var i = 0; i < report.answers.length; i++) {
 			var item = report.answers[i];
 			if ((item.quizItemId === data.quizItemId) && (item.stepIndex === stepIndex)) {
@@ -79,7 +120,7 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 	$scope.$on('questionAnswered', function(event, data) {
 		$log.info('question was answered', data);
 		// find answer
-		var answer = findAnswer(data);
+		var answer = findAnswer(data, stepIndex);
 
 		if (!answer) { // add if not exists
 			answer = {};
@@ -95,6 +136,49 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 			'isHintUsed' : data.isHintUsed,
 			'duration' : data.duration
 		});
+
+        calculateCorrectPercentage(report);
+
 	});
+
+	$log.info('report writer initialized');
+
+
+    function calculateDuration(report) {
+        report.duration = 0;
+        angular.forEach(report.stepDurations, function (duration) {
+            if (!!duration.startTime && !!duration.endTime) {
+                report.duration = report.duration + (duration.endTime - duration.startTime);
+            }
+        });
+        report.duration = report.duration - (report.duration % 1000);
+        $log.info('new duration is ' , report.duration);
+    }
+
+    function calculateCorrectPercentage(report) {
+        var correct = 0;
+        var wrong = 0;
+        report.correctPercentage = 0;
+        var numberOfQuestions = 0;
+        angular.forEach(report.data.lesson.steps, function (step) {
+            if (step.type === 'quiz' && !!step.quizItems) {
+                numberOfQuestions = numberOfQuestions + step.quizItems.length;
+            }
+        });
+        if (!!report.data.quizItems && numberOfQuestions > 0) {
+            angular.forEach(report.answers, function (answer) {
+                if (answer.checkAnswer.correct === true) {
+                    correct++;
+                } else {
+                    wrong++;
+                }
+            });
+
+            report.correctPercentage = Math.round((correct * 100) / numberOfQuestions);
+        }
+
+        $log.info('new correct percentage is : ', report.correctPercentage);
+
+    }
 
 });

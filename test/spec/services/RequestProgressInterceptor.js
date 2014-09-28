@@ -2,17 +2,17 @@
 
 describe('Service: RequestProgressInterceptor', function () {
 
-  // load the service's module
-  beforeEach(module('lergoApp'));
+    // load the service's module
+    beforeEach(module('lergoApp'));
 
-  // instantiate service
-  var RequestProgressInterceptor;
-  beforeEach(inject(function (_RequestProgressInterceptor_) {
-    RequestProgressInterceptor = _RequestProgressInterceptor_;
-  }));
+    // instantiate service
+    var mRequestProgressInterceptor;
+    beforeEach(inject(function (RequestProgressInterceptor) {
+        mRequestProgressInterceptor = RequestProgressInterceptor;
+    }));
 
-  it('should do something', function () {
-    expect(!!RequestProgressInterceptor).toBe(true);
-  });
+    it('should do something', function () {
+        expect(!!mRequestProgressInterceptor).toBe(true);
+    });
 
 });

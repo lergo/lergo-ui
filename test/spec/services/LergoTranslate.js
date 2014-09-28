@@ -2,17 +2,17 @@
 
 describe('Service: LergoTranslate', function () {
 
-  // load the service's module
-  beforeEach(module('LergoApp'));
+    // load the service's module
+    beforeEach(module('lergoApp'));
 
-  // instantiate service
-//  var LergoTranslate;
-//  beforeEach(inject(function (_LergoTranslate_) {
-//    LergoTranslate = _LergoTranslate_;
-//  }));
+    // instantiate service
+    var mLergoTranslate;
+    beforeEach(inject(function (LergoTranslate) {
+        mLergoTranslate = LergoTranslate;
+    }));
 
-//  it('should do something', function () {
-//    expect(!!LergoTranslate).toBe(true);
-//  });
+    it('should do something', function () {
+        expect(!!mLergoTranslate).toBe(true);
+    });
 
 });

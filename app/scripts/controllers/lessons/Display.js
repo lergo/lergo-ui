@@ -1,19 +1,14 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, $log, $controller, $rootScope, $location) {
+angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, $log, $controller, $rootScope, $location, shuffleFilter) {
 
-	$log.info('loading lesson display ctrl');
-	if (!!$routeParams.lessonId) {
-        // guy - using public here to support admin's preview.
-        // when we align all roles routes to the new design, this will be implicit.
-		LergoClient.lessons.getById($routeParams.lessonId).then(function(result) {
-			$log.info('got lesson', result.data);
-			$scope.lesson = result.data;
-			$scope.lesson.image= LergoClient.lessons.getTitleImage($scope.lesson);
-		}, function(result) {
-			$log.info('error while getting lesson', result.data);
-		});
-	}
+	// guy - using this flag because ng-cloak and other solutions will not apply
+	// to this scenario.
+	// the display to the lesson is simply taking time, because we have to fetch
+	// the lesson and the report
+	// so once they are loaded, we will switch that flag to true.
+	// otherwise we get a flash of the last screen (LERGO-358).
+	$scope.loaded = false;
 
 	$controller('LessonsStepDisplayCtrl', {
 		$scope : $scope
@@ -27,6 +22,9 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 		if ($scope.currentStepIndex >= 0) {
 			if (!!$scope.lesson) {
 				$scope.step = $scope.lesson.steps[$scope.currentStepIndex];
+				if (!!$scope.step) {
+					shuffleFilter($scope.step.quizItems, !$scope.step.shuffleQuestion);
+				}
 			} else {
 				$scope.step = null;
 			}
@@ -46,9 +44,10 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	}
 
 	$scope.$watch('currentStepIndex', function(newValue, oldValue) {
+		$log.info('currentStepIndex changed', newValue, oldValue);
 		updateCurrentStep();
 		$location.search('currentStepIndex', newValue);
-		$rootScope.$broadcast('nextStepClick', {
+		$rootScope.$broadcast('stepIndexChange', {
 			'old' : oldValue,
 			'new' : newValue
 		});
@@ -56,7 +55,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 
 	$scope.$watch(function() {
 		return $routeParams.currentStepIndex;
-	}, function(newValue/*, oldValue*/) {
+	}, function(newValue/* , oldValue */) {
 		if (newValue !== undefined) {
 			$scope.currentStepIndex = newValue;
 		}
@@ -70,15 +69,12 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 		return $scope.currentStepIndex >= 0;
 	};
 
-
 	$scope.nextStep = function() {
 		if ($scope.hasNextStep()) {
 			$scope.currentStepIndex++;
 
 		}
 	};
-	$scope.$on('quizComplete', function(event, data) {
-		$scope.isQuizComplete = data;
-	});
+	$scope.loaded = true;
 
 });

@@ -1,0 +1,42 @@
+<div class="question-preview">
+	<div class="hint">
+		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link hint"
+			popover-trigger="focus" tabindex="0">{{'hint' | i18n}}</button>
+	</div>
+	<div class="question-title">
+		<p class="lergo-h4">{{quizItem.question}}</p>
+	</div>
+	<div class="help">
+		<p class="question-help-text">{{quizItem.helpText}}</p>
+	</div>
+	<div quiz-item-media quiz-item="quizItem"></div>
+	<div class="answers">
+		<div class="true-false-options">
+			<button ng-repeat="option in ['True','False']" class="true-false-option" ng-click="quizItem.userAnswer = option"
+				ng-class="{'active-button' : quizItem.userAnswer === option }">{{ 'quizItem.answer.' + option | i18n }}</button>
+		</div>
+	</div>
+	<br />
+	<div class="submit">
+		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+	</div>
+	<br>
+	<div ng-show="!!getAnswer(quizItem)&& step.testMode!=='True'">
+		<div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">
+			<span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | i18n}}</span>
+			<span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | i18n}}:
+				{{'quizItem.answer.'+getCorrectAnswers(quizItem)|i18n}}</span>
+			<div ng-show="!!quizItem.explanation && !getAnswer(quizItem).correct">
+				<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+				<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
+			</div>
+			<div ng-show="!!quizItem.explanation && !!getAnswer(quizItem).correct">
+				<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+				<div style="width: 400px; margin: auto" collapse="!isCollapsed">{{quizItem.explanation}}</div>
+			</div>
+		</div>
+	</div>
+	<div ng-show="!getAnswer()">
+		<div class="bg-primary">{{'steps.answer' | i18n }}</div>
+	</div>
+</div>

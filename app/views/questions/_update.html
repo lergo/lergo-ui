@@ -1,4 +1,38 @@
 <div>
+    <span class="update-question-notifications" ng-show="!!showUsedByOthers() || !!canCopyAndOverride()">
+        <span ng-show="!!showUsedByOthers()">
+
+            {{ 'questions.usedByOthers' | i18n }}
+        </span>
+        <span ng-show="!!canCopyAndOverride()">
+            <span ng-show="!wantToEdit">
+
+            {{ 'questions.notOwnerCannotEdit' | i18n }}  <br/>
+            <button class="btn btn-link" ng-click="wantToEdit=true">
+                {{ 'questions.copyAndReplaceAction' | i18n }}
+
+            </button> <br/>
+            </span>
+            <span ng-show="wantToEdit">
+                {{ 'questions.copyAndReplacePrompt' | i18n }} <br/>
+                <span class="options">
+                    <span class="option1">
+                        <button class="btn btn-link" ng-click="copyAndReplaceQuestion(quizItem)">{{ 'questions.copyAndReplacePromptConfirm' | i18n }}
+                        </button>
+                    </span>
+                    <span class="option2">
+                        <button class="btn btn-link" ng-click="wantToEdit=false">{{ 'questions.copyAndReplacePromptDecline' | i18n }}</button>
+                    </span>
+                </span>
+            </span>
+        </span>
+    </span>
+</div>
+<fieldset ng-disabled="!permissions.canEdit"> <!-- http://stackoverflow.com/a/21638542/1068746 -->
+
+
+<div>
+
 	<table class=" lergo-table lergo-form">
 		<tbody>
 			<tr>
@@ -102,3 +136,4 @@
 		</table>
 	</div>
 </div>
+</fieldset>

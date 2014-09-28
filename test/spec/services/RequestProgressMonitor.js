@@ -2,17 +2,17 @@
 
 describe('Service: RequestProgressMonitor', function () {
 
-  // load the service's module
-  beforeEach(module('lergoApp'));
+    // load the service's module
+    beforeEach(module('lergoApp'));
 
-  // instantiate service
-  var RequestProgressMonitor;
-  beforeEach(inject(function (_RequestProgressMonitor_) {
-    RequestProgressMonitor = _RequestProgressMonitor_;
-  }));
+    // instantiate service
+    var mRequestProgressMonitor;
+    beforeEach(inject(function (RequestProgressMonitor) {
+        mRequestProgressMonitor = RequestProgressMonitor;
+    }));
 
-  it('should do something', function () {
-    expect(!!RequestProgressMonitor).toBe(true);
-  });
+    it('should do something', function () {
+        expect(!!mRequestProgressMonitor).toBe(true);
+    });
 
 });

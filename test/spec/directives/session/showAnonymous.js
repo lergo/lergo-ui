@@ -1,13 +1,14 @@
 'use strict';
 
 describe('Directive: session/showAnonymous', function () {
-  beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp'));
 
-  var element;
+    var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<session/show-anonymous></session/show-anonymous>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the session/showAnonymous directive');
-  }));
+    it('should show element if no user on rootScope', inject(function ($rootScope, $compile) {
+        element = angular.element('<div show-anonymous></div>');
+        element = $compile(element)($rootScope);
+        $rootScope.$digest();
+        expect(element.css('display')).toBe('block');
+    }));
 });

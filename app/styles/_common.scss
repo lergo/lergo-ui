@@ -61,6 +61,7 @@ del {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  position: relative;
 }
 
 *, body, html {
@@ -439,12 +440,13 @@ $COLOR_19: #2a6496 !default;
 
 }
 
-.active{
+.active-button{
   border:3px solid $COLOR_14;
 }
 
 .lergo-table {
    width: 100%;
+   position: relative;
    // Cells
    > thead,
    > tbody,
@@ -613,4 +615,33 @@ $COLOR_19: #2a6496 !default;
     font-size:12px;
     line-height:20px;
   }
+}
+
+.pop-up-hint{
+	padding: 8px;
+	vertical-align: middle;
+	span{
+		position:relative;
+		padding-left:2px;
+		padding-bottom:10px;
+		.popover-content{
+			width:260px;
+		}
+		button{
+			background-color: transparent;
+			border:0;
+			color: #2a6496;
+			vertical-align: super;
+		}
+		input{
+			vertical-align: middle;
+			display: inline;
+			margin-left: 10px;
+		}
+	}
+}
+
+.errorMessage {
+	font-size: 15px;
+	color: red;
 }

@@ -2,13 +2,20 @@
 
 angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
-	this.getUserQuestions = function() {
-		return $http.get('/backend/user/questions');
+
+	this.getUserQuestions = function( queryObj ) {
+		return $http({
+            'method' : 'GET',
+            'url' : '/backend/user/questions',
+            'params' : {
+                'query' : queryObj
+            }
+        });
 	};
 
 	this.copyQuestion = function(questionId) {
 		$log.info('copying question');
-		return $http.post('/backend/user/questions/' + questionId + '/copy');
+		return $http.post('/backend/questions/' + questionId + '/copy');
 	};
 
 	this.getQuestionById = function(questionId) {
@@ -22,10 +29,23 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 			'url' : '/backend/questions/find',
 			'method' : 'GET',
 			params : {
-				'ids' : ids
+				'questionsId' : ids
 			}
 		});
 	};
+
+    this.getPublicQuestions = function( queryObj ){
+        if ( !queryObj ){
+            throw new Error('you should at least have {"public" : { "exists" : 1 } } ');
+        }
+        return $http({
+            'url' : '/backend/questions/publicLessons',
+            'method' :'GET',
+            'params' : {
+                'query' : queryObj
+            }
+        });
+    };
 
 	this.createQuestion = function(question) {
 		return $http.post('/backend/questions/create', question);
@@ -35,14 +55,15 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		return $http.post('/backend/questions/' + question._id + '/update', question);
 	};
 
-	this.getLessonsWhoUseThisQuestion = function(question) {
-		return $http.get('/backend/user/questions/' + question._id + '/usages');
-	};
-
 	this.checkAnswer = function(question) {
 		return $http.post('/backend/questions/checkAnswer', question);
 
 	};
+
+    this.getPermissions = function(id){
+        return $http.get('/backend/questions/' + id + '/permissions');
+    };
+
 	this.deleteQuestion = function(id) {
 		return $http.post('/backend/user/questions/' + id + '/delete');
 	};
@@ -51,6 +72,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'True or False',
 		'updateTemplate' : 'views/questions/update/_trueFalse.html',
 		'viewTemplate' : 'views/questions/view/_trueFalse.html',
+		'previewTemplate' : 'views/questions/view/preview/_trueFalse.html',
 		'reportTemplate' : 'views/questions/report/_trueFalse.html',
 		'answers' : function(quizItem) {
 			return quizItem.answer;
@@ -70,6 +92,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'Exact Match',
 		'updateTemplate' : 'views/questions/update/_exactMatch.html',
 		'viewTemplate' : 'views/questions/view/_exactMatch.html',
+		'previewTemplate' : 'views/questions/view/preview/_exactMatch.html',
 		'reportTemplate' : 'views/questions/report/_exactMatch.html',
 		'answers' : function(quizItem) {
 			var answers = [];
@@ -102,6 +125,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'Multiple Choice',
 		'updateTemplate' : 'views/questions/update/_multipleChoices.html',
 		'viewTemplate' : 'views/questions/view/_multipleChoices.html',
+		'previewTemplate' : 'views/questions/view/preview/_multipleChoices.html',
 		'reportTemplate' : 'views/questions/report/_multipleChoices.html',
 		'answers' : function(quizItem) {
 			var answers = [];
@@ -146,6 +170,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'Open Question',
 		'updateTemplate' : 'views/questions/update/_openQuestion.html',
 		'viewTemplate' : 'views/questions/view/_openQuestion.html',
+		'previewTemplate' : 'views/questions/view/preview/_openQuestion.html',
 		'reportTemplate' : 'views/questions/report/_openQuestion.html',
 		'answers' : function(quizItem) {
 			return quizItem.answer;
@@ -165,12 +190,15 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'label' : 'Fill In The Blanks',
 		'updateTemplate' : 'views/questions/update/_fillInTheBlanks.html',
 		'viewTemplate' : 'views/questions/view/_fillInTheBlanks.html',
+		'previewTemplate' : 'views/questions/view/preview/_fillInTheBlanks.html',
 		'reportTemplate' : 'views/questions/report/_fillInTheBlanks.html',
 		'answers' : function(quizItem) {
 			var answer = [];
-			for ( var i = 0; i < quizItem.answer.length; i++) {
-				answer[i] = quizItem.answer[i].split(';').join(' / ');
+			if (!!quizItem.answer) {
+				for ( var i = 0; i < quizItem.answer.length; i++) {
+					answer[i] = quizItem.answer[i].split(';').join(' / ');
 
+				}
 			}
 			return answer.join(' ; ');
 		},

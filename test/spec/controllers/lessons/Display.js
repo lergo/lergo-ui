@@ -2,21 +2,21 @@
 
 describe('Controller: LessonsDisplayCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('lergoApp'));
+    // load the controller's module
+    beforeEach(module('lergoApp'));
 
-  var LessonsDisplayCtrl,
-    scope;
+    var LessonsDisplayCtrl,
+        scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    LessonsDisplayCtrl = $controller('LessonsDisplayCtrl', {
-      $scope: scope
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function ($controller, $rootScope) {
+        scope = $rootScope.$new();
+        LessonsDisplayCtrl = $controller('LessonsDisplayCtrl', {
+            $scope: scope
+        });
+    }));
+
+    it('should set currentStepIndex to 0', function () {
+        expect(scope.currentStepIndex).toBe(0);
     });
-  }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
 });

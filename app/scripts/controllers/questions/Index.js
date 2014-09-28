@@ -2,21 +2,27 @@
 
 angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, TagsService, $location, $log, FilterService, $rootScope) {
 	$scope.isModal = false;
-	$scope.ageFilter = function(quizItem) {
-		return FilterService.filterByAge(quizItem.age);
-	};
-	$scope.languageFilter = function(quizItem) {
-		return FilterService.filterByLanguage(quizItem.language);
-	};
-	$scope.subjectFilter = function(quizItem) {
-		return FilterService.filterBySubject(quizItem.subject);
-	};
 
-    $scope.tagsFilter = function(quizItem){
-        return FilterService.filterByTags(quizItem.tags);
+    $scope.totalResults = 0;
+    $scope.questionsFilter = {  };
+    $scope.filterPage = { };
+    $scope.questionsFilterOpts = {
+        'showSubject' : true,
+        'showLanguage' : true,
+        'showAge' : true,
+        'showSearchText' : true,
+        'showTags' : true
     };
 
-	$scope.createNewQuestion = function() {
+
+    $scope.selectAll = function () {
+        _.each($scope.items, function (item) {
+            item.selected = true;
+        });
+    };
+
+    $scope.createNewQuestion = function() {
+
 		QuestionsService.createQuestion({
 			'language' : FilterService.getLanguageByLocale($rootScope.lergoLanguage)
 		}).then(function(result) {
@@ -29,54 +35,41 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		});
 	};
 
-	QuestionsService.getUserQuestions().then(function(result) {
-		$scope.items = result.data;
-		$scope.errorMessage = null;
-        $scope.availableTags = TagsService.getTagsFromItems( $scope.items );
-	}, function(result) {
-		$scope.error = result.data;
-		$scope.errorMessage = 'Error in fetching questions : ' + result.data.message;
-		$log.error($scope.errorMessage);
-	});
+
+    $scope.loadQuestions = function() {
+        var queryObj = { 'filter' : _.merge({}, $scope.questionsFilter), 'sort' : { 'lastUpdate' : -1 }, 'dollar_page' : $scope.filterPage };
+
+        var getQuestionsPromise = null;
+        if (!$scope.isPublic) {
+            getQuestionsPromise = QuestionsService.getUserQuestions( queryObj );
+        } else {
+            getQuestionsPromise = QuestionsService.getPublicQuestions( queryObj );
+        }
+
+        getQuestionsPromise.then(function (result) {
+            $scope.items = result.data.data;
+            $scope.errorMessage = null;
+            $scope.totalResults = result.data.total;
+            $scope.filterPage.count = result.data.count;
+        }, function (result) {
+            $scope.error = result.data;
+            $scope.errorMessage = 'Error in fetching questions : ' + result.data.message;
+            $log.error($scope.errorMessage);
+        });
+    };
+
 
 	$scope.getAnswers = function(quizItem) {
-		if (!quizItem.type || !QuestionsService.getTypeById(quizItem.type).answers(quizItem)) {
+		if (!quizItem.type) {
 			return '';
 		}
-		return QuestionsService.getTypeById(quizItem.type).answers(quizItem);
+		var type = QuestionsService.getTypeById(quizItem.type);
+		if (!type || !type.answers(quizItem)) {
+			return '';
+		}
+		return type.answers(quizItem);
 	};
 
-	$scope.selectAll = function(event) {
-		var checkbox = event.target;
-		if (checkbox.checked) {
-			var filtered = filterItems($scope.items);
-			angular.forEach(filtered, function(item) {
-				item.selected = true;
-			});
-		} else {
-			angular.forEach($scope.items, function(item) {
-				item.selected = false;
-			});
-
-		}
-	};
-
-	function filterItems(items) {
-		var filteredItems = [];
-		for ( var i = 0; i < items.length; i++) {
-			if (!FilterService.filterByAge(items[i].age)) {
-				continue;
-			} else if (!FilterService.filterByLanguage(items[i].language)) {
-				continue;
-			} else if (!FilterService.filterBySubject(items[i].subject)) {
-				continue;
-			} else {
-				filteredItems.push(items[i]);
-			}
-		}
-		return filteredItems;
-
-	}
 
 	$scope.$on('$locationChangeStart', function() {
 		$rootScope.questionScrollPosition = window.scrollY;

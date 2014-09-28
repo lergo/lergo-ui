@@ -90,6 +90,10 @@ $FOOTER_HEIGHT: 170px !default;
       height: 90px;
       width: 166px;
     }
+    
+    .header-main{
+    	position:relative;
+    }
 
     .header-links {
       padding-top: 10px;
@@ -196,6 +200,10 @@ $FOOTER_HEIGHT: 170px !default;
     border-right: 1px solid #69BEFF;
     border-bottom: 1px solid #69BEFF;
 
+    [text-filter]{
+      width:430px;
+      display:inline-block;
+    }
     i{
       font-size:20px;
       padding-left:5px;
@@ -205,8 +213,8 @@ $FOOTER_HEIGHT: 170px !default;
       display:inline-block;
       position:absolute;
       background: url('/images/homepage/search-icon.png') no-repeat;
-      margin-left:15px;
-      margin-top:6px;
+      margin-left:5px;
+      margin-top:-10px;
     }
     input{
       border-top-left-radius: 8px;

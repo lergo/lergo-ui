@@ -1,124 +1,109 @@
 .lesson-step {
-  .lesson-step-title {
-    text-align:center;
-    padding-bottom: 20px;
-  }
-}
-.lesson-step-video{
-  text-align:center;
-  padding-top:20px;
-  .lesson-step-video-content{
-    display:inline-block;
-  }
-}
-.lesson-step-quiz{
-  .lesson-step-quiz-next{
-    text-align:center;
-  }
-    .lergo-progress-bar{
-
-    width: 450px;
-	margin: 0 auto;
+    .lesson-step-title {
+        text-align: center;
+        padding-bottom: 20px;
     }
- .question-true-false{
-   .true-false-options{
-     .true-false-option{
-       padding:15px;
-       margin-left:5px;
-
-     }
-     text-align:center;
-
-   }
- }
-  margin-top:20px;
-  .lergo-h2{
-    text-align:center;
-    padding:10px 0;
-  }
-  .lesson-step-quiz-content, .lesson-step-quiz-next{
-  background-color: gainsboro;
-    width:400px;
-    margin:0 auto;
-  }
 }
 
-
-#lessonDisplay{
-  #content{
-    padding-bottom:100px;
-  }
-  .done-step {
-   margin: 0 auto;
-   	
-   	 .orange{
-      	color:#F7941E;
-      	position: relative;
-		z-index: 10;
-		font-size: 80px;
-      }
-      .green{
-      	color:#8CC63F;
-      	position: relative;
-		z-index: 10;
-		font-size: 60px;
-      }
-      .red{
-     	color:#EF3E36;
-      	position: relative;
-		z-index: 10;
-		font-size: 40px;
-      }
-   	
-    .message {
-    width:50%;
-      float: left;
-      margin-top: 50px;
-      font-size:30px;
-      text-align:center;
-      .lergo-h1{
-      text-align:center;
-      white-space: normal;
-      text-transform: none;
-      }
-      .report{
-	      a{
-	      &:hover{
-	      text-decoration:none;}
-	      }
-      }
-      .recmmonded{
-      }
+.lesson-step-video {
+    text-align: center;
+    .lesson-step-video-content {
+        display: inline-block;
     }
+}
 
-    .image {
-      float: left;
-      .user {
-        margin-top: 100px;
-        color: #91cfff;
-        .fa-user {
-          font-size: 240px;
+.lesson-step-quiz {
+    .lesson-step-quiz-next {
+        text-align: center;
+    }
+    .lergo-progress-bar {}
+    .question-true-false {
+        .true-false-options {
+            .true-false-option {
+                padding: 15px;
+                margin-left: 5px;
+            }
+            text-align: center;
         }
-      }
-
-      .cap {
-        margin-top: -310px;
-        color: #296CA1;
-        .fa-graduation-cap {
-          font-size: 140px;
-        }
-      }
     }
-  }
+    margin-top: 20px;
+    .lergo-h2 {
+        text-align: center;
+        padding: 10px 0;
+    }
+    .lesson-step-quiz-content {
+        width: 570px;
+        border: 5px solid #949494;
+        border-radius: 10px;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
+#lessonDisplay {
+    #content {
+        padding-bottom: 100px;
+    }
+    .done-step {
+        background-image: url("../images/certificate.png");
+        margin: 0 auto;
+        width: 800px;
+        height: 550px;
+        .congrats {
+            font-size: 30px;
+            text-align: center;
+            font-family: cursive;
+            font-weight: bold;
+            padding-top: 75px;
+        }
+        .message {
+            width: 600px;
+            font-size: 25px;
+            text-align: center;
+            margin: 0 auto;
+            line-height: 2;
+            .lesson-title {
+                font-weight: bold;
+                color: #428bca;
+            }
+        }
+        .report {
+            width: 600px;
+            margin: 0 auto;
+            font-size: 20px;
+            a {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+        .stats {
+            width: 600px;
+            margin: 0 auto;
+            .action-items {
+                text-align: right;
+            }
+            .forms {
+                background: #efefef;
+                padding: 5px;
+                border-radius: 10px;
+            }
+        }
+    }
+    .loading {
+        width: 160px;
+        margin: auto;
+        margin-top: 200px;
+        font-size: 60px;
+        text-align: center;
+    }
+    .next-step {
+        position: relative;
+        margin: 0 auto;
+    }
+}
 
-
-  .next-step{
-  	position:relative;
-    margin:0 auto;
-  }
- }
-.video-tip{
-	display: inline-block;
-	
+.video-tip {
+    display: inline-block;
 }

@@ -1,25 +1,26 @@
 <div class="base-layout">
 	<div admin-section>
-		<a href="#/admin/homepage">Admin Homepage</a>
+		<a href="#!/admin/homepage">Admin Homepage</a>
 	</div>
+
 	<div class="homepage">
 		<div statistics-banner class="page-content-width">
 			<!-- how many lessons, and how many questions -->
 			<div class="article-header page-content-body">
 				<div class="stats-wrapper">
-
-						<div class="stats-lessons">
-							<div class="amount">{{stats.lessonsCount}}</div>
-							<div class="type">{{ 'homepage.lessons' | i18n }}</div>
+					<div class="stats-lessons">
+						<div class="amount">{{systemStats.lessonsCount}}</div>
+						<div class="type">{{ 'homepage.lessons' | i18n }}</div>
+					</div>
+					<div class="stats-questions">
+						<div class="amount">{{systemStats.questionsCount}}</div>
+						<div class="type">{{ 'homepage.questions' | i18n }}</div>
+					</div>
+					<div>
+						<div class="and-counting item">
+							<span>{{ 'homepage.andCounting' | i18n }}</span>
 						</div>
-						<div class="stats-questions">
-							<div class="amount">{{stats.questionsCount}}</div>
-							<div class="type">{{ 'homepage.questions' | i18n }}</div>
-						</div>
-						<div>
-							<div class="and-counting item"><span>{{ 'homepage.andCounting' | i18n }}</span></div>
-						</div>
-
+					</div>
 				</div>
 			</div>
 			<div class="upper-section page-content-sidebar">
@@ -39,7 +40,7 @@
 			<div class="page-content-body">
 				<div class="lessons">
 					<div class="lesson"
-						ng-repeat="lesson in lessons |orderBy:'-lastUpdate' | filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter |filter:tagsFilter">
+						ng-repeat="lesson in lessons ">
 						<div class="age-limit age-limit-{{lesson.age}}">
 							<div class="value">{{lesson.age}}+</div>
 							<div class="units">
@@ -49,12 +50,12 @@
 						</div>
 						<!-- age limit -->
 						<div class="image">
-							<a href="#/public/lessons/{{lesson._id}}/intro">
+							<a href="#!/public/lessons/{{lesson._id}}/intro">
 								<div lesson-title-image lesson="lesson"></div>
 							</a>
 						</div>
 						<div class="title">
-							<a href="#/public/lessons/{{lesson._id}}/intro">
+							<a href="#!/public/lessons/{{lesson._id}}/intro">
 								{{ lesson.name|limitTo:40 }}
 								<span ng-show="lesson.name.length >40">...</span>
 							</a>
@@ -85,7 +86,7 @@
 									<td>
 										<span tooltip="{{'lessons.createdOn' | i18n}}">
 											<i class="fa fa-calendar"></i>
-											{{lesson.timeStamp | date:'d-MMM-yyyy'}}
+											{{lesson | mongoIdToTimestamp |  date:'d-MMM-yyyy'}}
 										</span>
 									</td>
 									<td colspan="2">
@@ -100,9 +101,14 @@
 					</div>
 				</div>
 			</div>
+
+
+
 			<div class="sidebar page-content-sidebar">
-				<div ng-include src="'views/filters/filter.html'" ng-init="showViewsFilter=true"></div>
+                <div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts"></div>
+
 			</div>
 		</div>
+        <div lergo-paging page="filterPage" on-change="loadLessons()"></div>
 	</div>
 </div>

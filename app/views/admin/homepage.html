@@ -1,8 +1,8 @@
 <div class="base-layout admin">
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
-			<div class="lergo-h1">{{ 'admin.allLessons' | i18n }} [ {{ 'lessons.total' | i18n }}: {{lessons.length}} ; {{'admin.public'|i18n}}:
-				{{getPublicLessonCount()}} ]</div>
+			<div class="lergo-h1">{{ 'admin.allLessons' | i18n }} [ {{ 'lessons.total' | i18n }}: {{systemStats.lessonsCount}} ; {{'admin.public'|i18n}}:
+				{{systemStats.publicLessonsCount}} ]</div>
 		</div>
 		<div class="page-content-sidebar">
 			<div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
@@ -42,14 +42,14 @@
 				</thead>
 				<tbody>
 					<tr
-						ng-repeat="l in lessons |orderBy:'-lastUpdate'| filter:languageFilter |filter:subjectFilter|filter:ageFilter|filter:viewsFilter|filter:statusFilter|filter:userFilter|filter:tagsFilter">
+						ng-repeat="l in lessons">
 						<td>
-							<input type="checkbox" style="margin-left:5px;" ng-model="l.selected">
+							<input type="checkbox" style="margin-left: 5px;" ng-model="l.selected">
 						</td>
 						<td>
-							<a ng-show="!!l.name && l.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#/user/lessons/{{l._id}}/intro">{{
+							<a ng-show="!!l.name && l.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#!/user/lessons/{{l._id}}/intro">{{
 								l.name }}</a>
-							<a ng-show="!l.name || l.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#/user/lessons/{{l._id}}/intro">[ no
+							<a ng-show="!l.name || l.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#!/user/lessons/{{l._id}}/intro">[ no
 								title ]</a>
 						</td>
 						<td>
@@ -63,7 +63,8 @@
 			</table>
 		</div>
 		<div class="page-content-sidebar">
-			<div ng-include src="'views/filters/filter.html'" ng-init="showViewsFilter=true;showStatusFilter=true;users=_users"></div>
+			<div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="loadLessons()"></div>
 		</div>
 	</div>
+    <div lergo-paging page="filterPage" on-change="loadLessons()"></div>
 </div>

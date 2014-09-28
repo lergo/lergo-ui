@@ -46,7 +46,7 @@
 							<td class="title lergo-h1">{{step.title}}</td>
 							<td class="description">
 								<a ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}"> {{step.videoUrl}}</a>
-								<div ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+								<span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
 									<span class="inline-table">{{step.quizItems.length}} {{'report.questionsInQuiz' | i18n}} </span>
 									<Span ng-show="!!stats[$index].correct" class="bg-success">
 										<span class="inline-table">{{stats[$index].correct}} {{'questions.correct' | i18n}}</span>
@@ -59,14 +59,18 @@
 									<span ng-show="!!stats[$index].openQuestions" class="bg-primary">
 										<span class="inline-table">{{stats[$index].openQuestions}} {{'questions.openQuestion' | i18n}}</span>
 									</span>
-								</div>
+								</span>
+								<span ngShow="!!report.stepDurations[$index]">
+									<i class="fa fa-clock-o"></i>
+									{{(report.stepDurations[$index].endTime-report.stepDurations[$index].startTime)|duration}}
+								</span>
 							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
 		</div>
-		<div ng-show="!!report.data.lesson.nextLesson || !!report.data.lesson.priorLesson">
+		<div ng-show="!!report.data.lesson.nextLessonId || !!report.data.lesson.priorLessonId">
 			<div class="lergo-h1">
 				<a href="" class="no-underline" ng-click="recommendationCollapsed=!recommendationCollapsed">
 					<i ng-show="!!recommendationCollapsed" class="fa fa-plus-square"></i>
@@ -83,7 +87,7 @@
 						</td>
 						<td class="title lergo-h1">{{'report.nextLesson' | i18n}}</td>
 						<td class="description">
-							<a ng-href="#/public/lessons/{{report.data.lesson.nextLessonId}}/intro">{{absoluteShareLink(report.data.lesson.nextLessonId)}}</a>
+							<a ng-href="#!/public/lessons/{{report.data.lesson.nextLessonId}}/intro">{{absoluteShareLink(report.data.lesson.nextLessonId)}}</a>
 						</td>
 					</tr>
 					<tr ng-show="!!report.data.lesson.priorLessonId">
@@ -92,7 +96,7 @@
 						</td>
 						<td class="title lergo-h1">{{'report.priorLesson' | i18n}}</td>
 						<td class="description">
-							<a ng-href="#/public/lessons/{{report.data.lesson.priorLessonId}}/intro">{{absoluteShareLink(report.data.lesson.priorLessonId)}}</a>
+							<a ng-href="#!/public/lessons/{{report.data.lesson.priorLessonId}}/intro">{{absoluteShareLink(report.data.lesson.priorLessonId)}}</a>
 						</td>
 					</tr>
 				</table>
