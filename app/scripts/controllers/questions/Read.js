@@ -17,7 +17,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		if (!!$scope.quizItem.copyOf) {
 			QuestionsService.getQuestionById($scope.quizItem.copyOf).then(function(result) {
 				var copiedFrom = result.data;
-				if (quizItem.userId !== copiedFrom.userId) {
+				if ($scope.quizItem.userId !== copiedFrom.userId) {
 					LergoClient.users.findUsersById(copiedFrom.userId).then(function(result) {
 						copiedFrom.user = result.data[0];
 						$scope.copiedFrom = copiedFrom;
