@@ -63,7 +63,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.checkAnswer = function() {
 		var quizItem = $scope.quizItem;
-		var duration = new Date().getTime() - quizItem.startTime;
+		var duration = Math.max(0,new Date().getTime() - quizItem.startTime); // using max with 0 just in case something went wrong and startTime > endTime.. LERGO-468
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
 			$scope.answers[quizItem._id] = result.data;
 			$rootScope.$broadcast('questionAnswered', {

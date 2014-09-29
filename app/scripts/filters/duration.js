@@ -10,9 +10,10 @@ angular.module('lergoApp').filter('duration', function() {
 		if (!duration) {
 			return '00:00:00';
 		}
-		var durationInSeconds = Math.floor(duration / 1000);
-		var durationInMinutes = Math.floor(durationInSeconds / 60);
-		var durationInHours = Math.floor(durationInMinutes / 60);
+        // using round. see #1 description in LERGO-463
+		var durationInSeconds = Math.round(duration / 1000);
+		var durationInMinutes = Math.round(durationInSeconds / 60);
+		var durationInHours = Math.round(durationInMinutes / 60);
 
 		return pad(durationInHours) + ':' + pad(durationInMinutes % 60) + ':' + pad(durationInSeconds % 60);
 

@@ -63,19 +63,24 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 		$log.info('stepIndexChange', data);
 		/* jshint -W052 */
 		stepIndex = ~~data.new;
-		var newDuration = report.stepDurations[stepIndex];
+        // update new duration only if we are still looking at steps inside the lesson.
+        if ( stepIndex <= report.data.lesson.steps.length ){
+            var newDuration = report.stepDurations[stepIndex];
 
-		if (!newDuration) {
-			newDuration = {};
-			report.stepDurations.push(newDuration);
-		}
+            if (!newDuration) {
+                newDuration = {};
+                report.stepDurations.push(newDuration);
+            }
 
-		if (!newDuration.startTime) {
-			newDuration.startTime = new Date().getTime();
-		}
-        var oldStep = report.data.lesson.steps[~~data.old];
-        var oldDuration = report.stepDurations[~~data.old];
-        if ( oldStep.type === 'quiz' && !!oldDuration ){
+            if (!newDuration.startTime) {
+                newDuration.startTime = new Date().getTime();
+            }
+        }
+
+        var finishedStepIndex = ~~data.old;
+        var oldStep = report.data.lesson.steps[finishedStepIndex];
+        var oldDuration = report.stepDurations[finishedStepIndex];
+        if ( !!oldStep && oldStep.type === 'quiz' && !!oldDuration ){
 
             // LERGO-457 - quiz step duration should be the sum of durations per answer.
             $log.info('calculating duration for quiz');
@@ -83,7 +88,7 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
             // calculate end time by counting the duration on each answer..
             var quizDuration = 0;
             _.each(oldStep.quizItems, function(quizItem){
-                var answer = findAnswer( { 'quizItemId' : quizItem }, ~~data.old);
+                var answer = findAnswer( { 'quizItemId' : quizItem }, finishedStepIndex);
                 if ( !!answer ){
                     quizDuration += answer.duration;
                 }
@@ -148,7 +153,8 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
         report.duration = 0;
         angular.forEach(report.stepDurations, function (duration) {
             if (!!duration.startTime && !!duration.endTime) {
-                report.duration = report.duration + (duration.endTime - duration.startTime);
+                // in case there is an error and endTime < startTime.. lets use 0 instead.. LERGO-468
+                report.duration = report.duration + Math.max(0,(duration.endTime - duration.startTime));
             }
         });
         report.duration = report.duration - (report.duration % 1000);
