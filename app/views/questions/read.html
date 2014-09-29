@@ -81,27 +81,24 @@
 					</div>
 					<div class="forms">
 						<div ng-show="!!share" class="lergo-form share">
-							<p class="lergo-h4">{{'lessons.shareLesson' | i18n}}</p>
+							<p class="lergo-h4">{{'questions.shareQuestion' | i18n}}</p>
 							<div class="container">
-								<span>{{'lessons.shareLessonTitle' | i18n}}</span>
-								<input type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)" />
+								<span>{{'questions.shareQuestionTitle' | i18n}}</span>
+								<input style="width: 100%;" type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)" />
 							</div>
 						</div>
 					</div>
 					<div class="description">
-						<div class="edit-summary" ng-show="quizItem.summary || quizItem.copyOf">
+						<div class="edit-summary" ng-show="quizItem.summary || !!copiedFrom )">
 							<br />
 							<div class="title">{{'questions.editSummary'|i18n}}</div>
-							<div  style="padding: 5px 0 10px 0;" class="summary" ng-show="quizItem.summary">
-								<pre>{{ quizItem.summary }}</pre>
-							</div>
-							<div ng-show="quizItem.copyOf">
+							<div style="padding: 5px 0 10px 0;" class="summary" ng-show="quizItem.summary" btf-markdown="quizItem.summary"></div>
+							<div ng-show="!!copiedFrom">
 								<div style="padding: 5px 0 10px 0;" class="summary">
 									Copied from
 									<span question-read-link question="copiedFrom"></span>
-									by {{quizItem.user.username}}
+									by {{copiedFrom.user.username}}
 								</div>
-								<pre>{{ quizItem.summary }}</pre>
 							</div>
 						</div>
 						<div class="edit-summary" ng-show="usedInLessons.length>0">
