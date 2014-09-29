@@ -10,7 +10,8 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
         'showLanguage' : true,
         'showAge' : true,
         'showViews': true,
-        'showTags' : true
+        'showTags' : true,
+        'showCreatedBy':true
     };
 
     $scope.loadLessons = function() {

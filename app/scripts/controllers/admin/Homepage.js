@@ -12,7 +12,8 @@ angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, Filt
         'showAge' : true,
         'showViews': true,
         'showTags' : true,
-        'showCreatedBy':true
+        'showCreatedBy':true,
+        'showSearchText' :true
     };
 
     $scope.loadLessons = function() {
