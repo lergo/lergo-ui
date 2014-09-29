@@ -15,14 +15,26 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		});
 
 		if (!!$scope.quizItem.copyOf) {
-			QuestionsService.getQuestionById($scope.quizItem.copyOf).then(function(result) {
-				var copiedFrom = result.data;
-				if ($scope.quizItem.userId !== copiedFrom.userId) {
-					LergoClient.users.findUsersById(copiedFrom.userId).then(function(result) {
-						copiedFrom.user = result.data[0];
-						$scope.copiedFrom = copiedFrom;
+			QuestionsService.findQuestionsById($scope.quizItem.copyOf).then(function(result) {
+				var originalQuestions = result.data;
+				// remove the question created by the same user 
+				_.remove(originalQuestions, function(q) {
+					return q.userId === $scope.quizItem.userId;
+				});
+				var usersWeCopiedFrom = _.uniq(_.compact(_.map(originalQuestions, 'userId')));
+
+				// get all users we copied from..
+				LergoClient.users.findUsersById(usersWeCopiedFrom).then(function(result) {
+					var copyOfUsers = result.data;
+					// turn list of users to map where id is map
+					var copyOfUsersById = _.object(_.map(copyOfUsers, '_id'), copyOfUsers);
+
+					_.each(originalQuestions, function(q) {
+						q.user = copyOfUsersById[q.userId];
 					});
-				}
+
+					$scope.originalQuestions = originalQuestions;
+				});
 			});
 		}
 		LergoClient.users.findUsersById($scope.quizItem.userId).then(function(result) {
