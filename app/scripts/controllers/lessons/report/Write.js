@@ -77,25 +77,27 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
             }
         }
 
-        var finishedStepIndex = ~~data.old;
-        var oldStep = report.data.lesson.steps[finishedStepIndex];
-        var oldDuration = report.stepDurations[finishedStepIndex];
-        if ( !!oldStep && oldStep.type === 'quiz' && !!oldDuration ){
+        if ( data.old  !== undefined && data.old !== null && !isNaN(parseInt(data.old,10))) {
+            var finishedStepIndex = ~~data.old;
+            var oldStep = report.data.lesson.steps[finishedStepIndex];
+            var oldDuration = report.stepDurations[finishedStepIndex];
+            if (!!oldStep && oldStep.type === 'quiz' && !!oldDuration) {
 
-            // LERGO-457 - quiz step duration should be the sum of durations per answer.
-            $log.info('calculating duration for quiz');
+                // LERGO-457 - quiz step duration should be the sum of durations per answer.
+                $log.info('calculating duration for quiz');
 
-            // calculate end time by counting the duration on each answer..
-            var quizDuration = 0;
-            _.each(oldStep.quizItems, function(quizItem){
-                var answer = findAnswer( { 'quizItemId' : quizItem }, finishedStepIndex);
-                if ( !!answer ){
-                    quizDuration += answer.duration;
-                }
-            });
-            oldDuration.endTime = oldDuration.startTime + quizDuration;
-        } else if (!!oldDuration) {
-            oldDuration.endTime = new Date().getTime();
+                // calculate end time by counting the duration on each answer..
+                var quizDuration = 0;
+                _.each(oldStep.quizItems, function (quizItem) {
+                    var answer = findAnswer({ 'quizItemId': quizItem }, finishedStepIndex);
+                    if (!!answer) {
+                        quizDuration += answer.duration;
+                    }
+                });
+                oldDuration.endTime = oldDuration.startTime + quizDuration;
+            } else if (!!oldDuration) {
+                oldDuration.endTime = new Date().getTime();
+            }
         }
 
         calculateDuration(report);
