@@ -25,7 +25,7 @@
 					<tr>
 						<td class="checkbox-dropdown">
 							<div class="btn-group" dropdown>
-								<input type="checkbox" ng-click="selectAll($event)">
+								<input type="checkbox" ng-click="selectAll($event)" ng-model="reportsPage.selectAll">
 								<button type="button" class="btn-link dropdown-toggle">
 									<span class="caret"></span>
 								</button>
@@ -61,7 +61,7 @@
 						<td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject | i18n) ||""}}</td>
 						<td class="answer">{{report.lastUpdate| date:'medium'}}</td>
 						<td class="answer">{{report.correctPercentage}}</td>
-						<td class="answer">{{report.duration|duration}}</td>
+						<td class="answer"><span ng-show="isComplete(report)">{{report.duration|duration}}</span><span ng-show="!isComplete(report)">{{'report.incomplete' | i18n}}</span></td>
 					</tr>
 				</tbody>
 			</table>

@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location, $rootScope) {
+angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location, $rootScope, localStorageService) {
+
 
     $scope.reportsFilter = {  };
     $scope.filterPage = { };
@@ -18,7 +19,10 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
     ];
 
 
-    $scope.reportsPage = { reportType : 'students' };
+    $scope.reportsPage = { reportType : 'students', selectAll : false };
+    if ( !!localStorageService.get('reportType') ){
+        $scope.reportsPage.reportType = localStorageService.get('reportType');
+    }
 
     function isMyReports(){
         return $scope.reportsPage.reportType === 'mine';
@@ -30,6 +34,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
             $scope.reportsFilterOpts.showStudents = isStudentsReports();
             $scope.filterPage.current = 1;
             $scope.filterPage.updatedLast = new Date().getTime(); // create a 'change' event artificially..
+            localStorageService.set('reportType', newValue);
         }
     });
 
@@ -41,7 +46,20 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
         return isStudentsReports();
     };
 
+    $scope.isComplete = function( report ){
+
+        var completeSteps = 0;
+        _.each(report.stepDurations, function(elem){
+            if  ( angular.isNumber(elem.startTime) && angular.isNumber(elem.endTime) ){
+                completeSteps++;
+            }
+        });
+
+        return report.data.lesson.steps.length === completeSteps || report.duration > 0;
+    };
+
 	$scope.loadReports = function() {
+        $scope.reportsPage.selectAll = false;
         if ( !$scope.filterPage.current ){
             return;
         }
@@ -108,12 +126,18 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		});
 	}
 	$scope.deleteReports = function() {
+        var toDelete = 0;
 		angular.forEach($scope.reports, function(report) {
 			if (report.selected === true) {
+                toDelete ++;
 				LergoClient.reports.deleteReport(report).then(function() {
+                    toDelete --;
 					$scope.errorMessage = null;
 					$scope.reports.splice($scope.reports.indexOf(report), 1);
 					$log.info('report deleted successfully');
+                    if ( toDelete === 0 ){
+                        $scope.loadReports();
+                    }
 				}, function(result) {
 					$scope.errorMessage = 'Error in deleting report : ' + result.data.message;
 					$log.error($scope.errorMessage);

@@ -62,7 +62,7 @@
 								</span>
 								<span ngShow="!!report.stepDurations[$index]">
 									<i class="fa fa-clock-o"></i>
-									{{(report.stepDurations[$index].endTime-report.stepDurations[$index].startTime)|duration}}
+									{{report.stepDurations[$index]|duration}}
 								</span>
 							</td>
 						</tr>

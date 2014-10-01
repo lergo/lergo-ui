@@ -16,4 +16,13 @@ describe('Filter: duration', function() {
         expect(duration(606012345)).toBe('68:20:12');
     });
 
+    it ('should support objects with startTime and endTime', function(){
+        expect(duration({'startTime' : 0, 'endTime' : 1000 })).toBe('00:00:01');
+    });
+
+    it ( 'should not support objects with only startTime or only endTime' ,function(){
+        expect(duration({'startTime' : 1})).toBe('did not finish');
+        expect(duration({'endTime' : 1})).toBe('did not finish');
+    });
+
 });

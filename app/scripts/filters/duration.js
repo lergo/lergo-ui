@@ -3,6 +3,23 @@
 angular.module('lergoApp').filter('duration', function() {
 	return function(duration) {
 
+        function isNumber(prop){
+            return !isNaN(parseInt(prop,10));
+        }
+
+        if ( typeof(duration) === 'object'   ){
+            if ( isNumber(duration.startTime) && isNumber(duration.endTime) ){
+                duration = duration.endTime - duration.startTime;
+            }else{
+
+                return 'did not finish';
+            }
+        }
+
+        if ( !isNumber(duration) ) {
+            return 'missing info';
+        }
+
 		function pad(number) {
 			return ('00' + number).slice(-2);
 		}
