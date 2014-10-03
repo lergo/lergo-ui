@@ -172,4 +172,16 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		$event.target.select();
 	};
 	$window.scrollTo(0, 0);
+	$scope.isCorrectFillInTheBlanks = function(quizItem, answer) {
+
+		if (!answer) {
+			return false;
+		}
+		var index = quizItem.userAnswer.indexOf(answer);
+		if (quizItem.answer[index].split(';').indexOf(answer) === -1) {
+			return false;
+		} else {
+			return true;
+		}
+	};
 });
