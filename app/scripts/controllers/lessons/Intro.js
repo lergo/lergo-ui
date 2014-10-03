@@ -4,6 +4,8 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	var lessonId = $routeParams.lessonId;
 	var invitationId = $routeParams.invitationId;
 	var preview = !!$routeParams.preview;
+	var autoPlay = $routeParams.autoPlay;
+
 	LergoClient.lessons.getLessonIntro(lessonId).then(function(result) {
 		$scope.lesson = result.data;
 		$rootScope.page = {
@@ -152,6 +154,10 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 			redirectToInvitation();
 		}
 	};
+
+	if (!!autoPlay) {
+		$scope.startLesson();
+	}
 	$scope.absoluteShareLink = function(lesson) {
 		$scope.shareLink = window.location.origin + '/#!/public/lessons/' + lesson._id + '/intro';
 		$scope.invite = false;
@@ -216,8 +222,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 						});
 						return q.originals.length > 0;
 					});
-					
-					
+
 					$scope.questionsWeCopied = _.object(_.map(questionsWeCopied, '_id'), questionsWeCopied);
 				});
 			});
@@ -242,7 +247,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 				q.userDetails = othersUsersById[q.userId];
 			});
 
-			$scope.questionsFromOthers =  _.object(_.map(questionsFromOthers, '_id'), questionsFromOthers);
+			$scope.questionsFromOthers = _.object(_.map(questionsFromOthers, '_id'), questionsFromOthers);
 		});
 
 	}

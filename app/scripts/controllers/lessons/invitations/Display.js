@@ -7,28 +7,28 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	var updateChange = new ContinuousSave({
 		'saveFn' : function(value) {
 			$log.info('updating report');
-            var finished = value.data.finished;
+			var finished = value.data.finished;
 
-            if ( finished ){
-                getWrongQuestion(value);
-            }
+			if (finished) {
+				getWrongQuestion(value);
+			}
 
-			return LergoClient.reports.update(value).then(function( result ){
-                if ( finished ){
-                    if (!$scope.invitation.anonymous) {
-                        LergoClient.reports.ready($routeParams.reportId);
-                    } else {
-                        $log.info('not sending report link because anonymous');
-                    }
-                }
-                return result;
-            }, function( result ){
-                if ( finished ){
-                    toastr.error('error while updating report');
-                    $log.error('error while updating report',result.data);
-                }
-                return result;
-            });
+			return LergoClient.reports.update(value).then(function(result) {
+				if (finished) {
+					if (!$scope.invitation.anonymous) {
+						LergoClient.reports.ready($routeParams.reportId);
+					} else {
+						$log.info('not sending report link because anonymous');
+					}
+				}
+				return result;
+			}, function(result) {
+				if (finished) {
+					toastr.error('error while updating report');
+					$log.error('error while updating report', result.data);
+				}
+				return result;
+			});
 
 		}
 	});
@@ -68,7 +68,8 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		return !!$scope.invitation && !!$scope.hasNextStep && !$scope.hasNextStep();
 	}, function(newValue/* , oldValue */) {
 		if (!!newValue) {
-            // just notify end lesson. do nothing else. wait for report to update.
+			// just notify end lesson. do nothing else. wait for report to
+			// update.
 			$rootScope.$broadcast('endLesson');
 		}
 	});
@@ -96,20 +97,18 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	});
 
 	$scope.startLesson = function(lessonId) {
-		var id = null;
 		if (!lessonId) {
-			id = $scope.lesson._id;
+			redirectToInvitation($scope.lesson._id, $scope.invitation._id);
 		} else {
-			id = lessonId;
+			LergoClient.lessonsInvitations.createAnonymous(lessonId).then(function(result) {
+				redirectToInvitation(lessonId, result.data._id);
+			});
 		}
-		LergoClient.lessonsInvitations.createAnonymous(id).then(function(result) {
-			var invitationId = result.data._id;
-			redirectToInvitation(invitationId);
-		});
 	};
-	function redirectToInvitation(invitationId) {
-		$location.path('/public/lessons/invitations/' + invitationId + '/display').search({
-			reportId : ''
+	function redirectToInvitation(lessonId, invId) {
+		$location.path('/public/lessons/' + lessonId + '/intro').search({
+			invitationId : invId,
+			autoPlay : true
 		});
 	}
 
