@@ -89,7 +89,7 @@
 						</div>
 					</div>
 					<div class="description">
-						<div class="edit-summary" ng-show="quizItem.summary || !!copiedFrom )">
+						<div class="edit-summary" ng-show="quizItem.summary || (!!originalQuestions && originalQuestions.length>0)">
 							<br />
 							<div class="title">{{'questions.editSummary'|i18n}}</div>
 							<div style="padding: 5px 0 10px 0;" class="summary" ng-show="quizItem.summary" btf-markdown="quizItem.summary"></div>
