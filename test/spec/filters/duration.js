@@ -14,6 +14,7 @@ describe('Filter: duration', function() {
     it('should display duration in format hh:mm:ss', function () {
         expect(duration(0)).toBe('00:00:00');
         expect(duration(606012345)).toBe('68:20:12');
+        expect(duration(35861)).toBe('00:00:36');
     });
 
     it ('should support objects with startTime and endTime', function(){

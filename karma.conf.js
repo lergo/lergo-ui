@@ -24,6 +24,8 @@ module.exports = function(config){
             'app/scripts/*.js',
             '.tmp/html2js/*.js',
             'app/scripts/**/*.js',
+            'test/resources/index.js',
+            'test/resources/modules/**/*.js',
             'test/mock/**/*.js',
             'test/spec/**/*.js'
         ],
@@ -32,7 +34,7 @@ module.exports = function(config){
         runnerPort: 9100,
         colors: true,
         logLevel: 'info',
-        autoWatch: false,
+        autoWatch: true,
         captureTimeout: 15000,
         singleRun: false
     });
