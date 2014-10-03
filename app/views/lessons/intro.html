@@ -168,41 +168,26 @@
 									</span>
 									<br />
 								</div>
-								<!-- show copy of questions -->
-								<div ng-show="questionsWeCopied.length > 0">
-									<div ng-repeat="q in questionsWeCopied track by $index">
-										<div class="question">
-											<i class="fa fa-question-circle"> </i>
-											<span class="title-question"> {{q.question | limitTo :50}} </span>
-										</div>
-										<div ng-repeat="o in q.originals track by $index">
+								<div ng-repeat="q in questions">
+									<div class="question" ng-show="!!q.summary || !!questionsWeCopied[q._id] || !!questionsFromOthers[q._id]">
+										<!--  <a href="#!/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
+										<i class="fa fa-question-circle"> </i>
+										<span class="title-question"> {{q.question | limitTo :50}} </span>
+									</div>
+									<div ng-show="!!questionsFromOthers[q._id]">
+										<div class="summary">Question created by {{questionsFromOthers[q._id].userDetails.username}}</div>
+									</div>
+									<div ng-show="!!q.summary">
+										<div class="summary" btf-markdown="q.summary"></div>
+									</div>
+									<div ng-show="!!questionsWeCopied[q._id]">
+										<div ng-repeat="o in questionsWeCopied[q._id].originals track by $index">
 											<div class="summary">
 												Copied from
 												<span question-read-link question="o"></span>
 												by {{o.userDetails.username}}
 											</div>
 										</div>
-										<div class="summary" btf-markdown="q.summary"></div>
-									</div>
-								</div>
-								<!-- show questions from others -->
-								<div ng-show="questionsFromOthers.length > 0">
-									<div ng-repeat="q in questionsFromOthers track by $index">
-										<div class="question">
-											<i class="fa fa-question-circle"> </i>
-											<span class="title-question"> {{q.question | limitTo :50}} </span>
-										</div>
-										<div class="summary">Question created by {{q.userDetails.username}}</div>
-									</div>
-								</div>
-								<div ng-repeat="q in questions">
-									<div ng-show="!!q.summary">
-										<div class="question">
-											<!--  <a href="#!/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
-											<i class="fa fa-question-circle"> </i>
-											<span class="title-question"> {{q.question | limitTo :50}} </span>
-										</div>
-										<div class="summary" btf-markdown="q.summary"></div>
 									</div>
 								</div>
 							</div>
