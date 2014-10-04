@@ -25,7 +25,7 @@
       "privacyAndTerms": "Privacy and Terms",
       "problem": "Report Problem",
       "suggest": "Suggest Lesson",
-      "text1": "Text of questions is available under the",
+      "text1": "Text of questions & exercises is available under the",
       "text2": "Creative Commons Attribution-NonCommercial-ShareAlike License",
       "text3": "additional terms may apply. By using this site, you agree to the",
       "text4": "Terms of Use and Privacy Policy",
@@ -45,7 +45,10 @@
       "logout": "Logout",
       "searchPlaceholder": "What would you like to learn about?",
       "searchUnderConstruction": "Search feature under construction... for now, please use the filters below.",
-      "siteLanguage": "Site Language"
+      "siteLanguage": "Click to change Site Language",
+      "userName": {
+        "tip": "Go to My Reports/ My Lessons/ My Questions"
+      }
     }
   },
   "button": {
@@ -88,6 +91,7 @@
       "correctPercentage": "% Correct Range",
       "createdBy": "Created By",
       "doneByStudent": "Student",
+      "duration": "Duration (in seconds)",
       "language": "Language",
       "status": "Status",
       "subject": "Subject",
@@ -103,6 +107,8 @@
       "russian": "Russian"
     },
     "status": {
+      "complete": "Complete",
+      "incomplete": "Incomplete",
       "private": "Not Public",
       "public": "Public"
     },
@@ -120,6 +126,7 @@
       "math": "Math",
       "music": "Music",
       "physics": "Physics",
+      "roadSafety": "Road Safety",
       "science": "Science",
       "spelling": "Spelling"
     },
@@ -170,10 +177,20 @@
     "description": "LerGO is a new non-profit EdTech venture aimed at providing free, animated & interactive online lessons for all children, anywhere, at any time. This will be made possible through LerGO's open source cloud platform, which will leverage the goodwill of the community, enabling contributors to easily create animated & interactive lessons. Kids will use these lessons as a free alternative to private tutoring/lessons, to self-learn all school subjects, enjoyably and at their own pace.",
     "title": "LerGO - Educate Yourself"
   },
+  "lesson": {
+    "createdBy": "created by"
+  },
+  "lessonIntro": {
+    "copiedFromLesson": "Lesson was originally copied from lesson",
+    "copiedFromLessonBy": "by",
+    "copiedFromLessons": "Some of the content of this lesson were orignially copied from"
+  },
   "lessons": {
-    "addQuestion": "Add Question to Quiz",
+    "addQuestion": "Add from My Questions",
+    "addQuestionFromAll": "add from all questions",
     "areYouReady": "Are you ready to start learning?",
     "available": "Available Lessons",
+    "comment": "Comments",
     "create": "Create New Lesson",
     "createdOn": "created on",
     "description": "Lesson Description",
@@ -191,7 +208,7 @@
     "genericVideosPost": " The list will open in a new tab.",
     "genericVideosPre": "For a list of generic animated videos please",
     "inviteLesson": "Invite to lesson",
-    "inviteLessonHelpText": "To generate a link for the invite please enter student's name and press submit",
+    "inviteLessonHelpText": "To generate a link for the invite please enter student's first name and press submit",
     "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
     "inviteSuccessText": "Copy the link below to invite a student to the lesson",
     "lessonCompleted": "You have completed the lesson",
@@ -203,18 +220,22 @@
     "name": "Lesson Name",
     "note": "Note",
     "noteMessage": "You will receive your kid's/student's lesson report upon completion of lesson.",
+    "practiceNotAvailable": "Please signup or login to LerGO. Only registered users can use this feature.",
+    "practiseWrongQuestion": "Practice Mistakes",
     "readLess": "Read Less",
     "readMore": "Read More",
     "recommenedNextLesson": "Recommended Next Lesson",
     "recommenedNextLessonText": "Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
     "recommenedPriorLesson": "Recommended Previous Lesson",
     "recommenedPriorLessonText": "Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
+    "restart": "Start Over",
     "seeReport": "See Report",
     "shareLesson": "Share lesson",
     "shareLessonTitle": "Copy the link below to share lesson with friends",
     "startLesson": "Start Lesson",
     "tags": "Tags",
     "tooltip": {
+      "comment": "Comments",
       "copy": "Copy Lesson",
       "delete": "Delete Lesson",
       "edit": "Edit Lesson",
@@ -223,6 +244,7 @@
       "like": "like this lesson",
       "liked": "you liked this lesson",
       "preview": "Preview Lesson",
+      "restart": "Start again",
       "share": "share with friends",
       "start": "start lesson"
     },
@@ -246,6 +268,9 @@
   "popular": "Popular",
   "preview": "Preview",
   "questions": {
+    "add": {
+      "emptySelection": "No questions were added because none were selected, please select questions and then press \"add\"."
+    },
     "addExplanation": "Add Text Explanation",
     "addExplanationMedia": "Add Media Explanation",
     "addHint": "Add Hint",
@@ -257,6 +282,10 @@
     "audioUrl": "Audio URL",
     "audioUrlHint": "To add audio to question, please update audio URL",
     "clickToAdd": "Click here to add an answer",
+    "copyAndReplaceAction": "Yes. Copy it and replace the use of it all over the lesson so I can edit it",
+    "copyAndReplacePrompt": "Are you sure you want to copy this question? Please note that if this question appears more than once in this lesson, any edits made to it will apply wherever it appears in this lesson.",
+    "copyAndReplacePromptConfirm": "Yes, copy and replace",
+    "copyAndReplacePromptDecline": "No, do not copy and replace",
     "correct": "Correct",
     "correctAnswer": "Correct Answer",
     "correctAnswerFilled": "You are correct!",
@@ -297,6 +326,7 @@
       "hebrew": "Hebrew",
       "russian": "Russian"
     },
+    "lessonUsed": "Lessons Used",
     "longAnswer": "Long Answer (a paragraph)",
     "media": {
       "audio": "Audio",
@@ -305,6 +335,8 @@
     },
     "myQuestions": "My Questions",
     "noQuestions": "There are no questions to display",
+    "noTitle": "[ No Title ]",
+    "notOwnerCannotEdit": "You cannot edit this question since you did not create it. If you want to edit this question, you first need to copy it.",
     "openQuestion": "Open Question",
     "possibleAnswers": "Possible Answers",
     "question": "Question",
@@ -313,6 +345,8 @@
     "requiredAnswer": "Required Answer Format",
     "select": "Select",
     "selectQuestions": "Select Questions",
+    "shareQuestion": "Share question",
+    "shareQuestionTitle": "Copy link below to share question",
     "shortAnswer": "Short Answer (a few words)",
     "shuffleHint": "Multiple choice answers are shuffled by default, click to disable shuffling for this specific question.",
     "subject": "Subject",
@@ -328,7 +362,11 @@
     "thankYou": "Thank you for your answer",
     "tooltip": {
       "copy": "Copy Question",
-      "edit": "Edit Question"
+      "edit": "Edit Question",
+      "lessons": "Number of lessons",
+      "like": "like this question",
+      "liked": "you liked this question",
+      "share": "Share question"
     },
     "total": "Total",
     "types": {
@@ -338,14 +376,17 @@
       "openQuestion": "Open Question",
       "trueFalse": "True or False"
     },
+    "usedByOthers": "This question is already used in another lesson. Please limit your edits accordingly.",
     "videoUrlHint": "To add video to question, please update video URL",
     "yourAnswer": "Student's Answer",
     "yourAnswers": "Student's Answer(s)"
   },
   "quiz": {
-    "practiseMode": "Practise",
-    "shuffleQuestion": "Shuffle questions",
-    "testMode": "Test"
+    "practiseMode": "Practice Mode",
+    "shuffleQuestion": "Shuffle Questions",
+    "shuffleQuestionHint": "Click here to shuffle order of questions.",
+    "testMode": "Test Mode",
+    "testModeHint": "In Practice Mode feedback is given after each question and in Test Mode only at the end of lesson."
   },
   "quizItem": {
     "answer": {
@@ -356,10 +397,12 @@
   "redirectToHome": "Redirect to homepage",
   "remove": "Remove",
   "report": {
+    "CreateLessonFromWrongQuestions": "Create quiz from incorrect answers",
     "completed": "has completed lesson",
     "date": "Date",
     "description": "Lesson Description",
     "detailedReport": "Detailed Report",
+    "incomplete": "Incomplete",
     "lessonSteps": "Lesson Steps",
     "nextLesson": "Recommended Next Lesson",
     "priorLesson": "Recommended Previous Lesson",
@@ -374,7 +417,14 @@
     "student": "Student",
     "subject": "Subject",
     "takenAt": "Taken at",
-    "total": "Total"
+    "tooltip": {
+      "go": "go to lesson's report"
+    },
+    "total": "Total",
+    "type": {
+      "mine": "Lessons done by me",
+      "students": "Lessons done by students"
+    }
   },
   "resetPassword": {
     "emailSentSuccessfully": "Please check your inbox and follow instructions",
@@ -401,15 +451,17 @@
   "start": "Start",
   "steps": {
     "add": "Add Step",
+    "addHint": "Click Add Step to add a video or a quiz to your lesson.",
     "answer": "Please Answer",
     "display": "Display Step",
     "invalidURL": "Please enter valid youtube URL",
-    "noMoreQuestions": "No More Questions",
+    "noMoreQuestions": "Let's Go to Next Step",
     "quiz": "Quiz",
     "required": "required",
     "selectAnAnswer": "Select an Answer",
     "title": "Step Title",
     "type": "Step Type",
+    "typeHint": "Step type can be either video or quiz - click to select.",
     "video": "Video"
   },
   "subject": {
