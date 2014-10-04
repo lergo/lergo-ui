@@ -9,7 +9,8 @@
 					<span style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
 						<span>{{option}}</span>
 						<span ng-show="!$last">
-							<span class="bold" style="text-decoration: underline">{{!quizItem.answer[$index] && '________' || quizItem.answer[$index].replace(';',' / ')}} </span>
+							<span class="bold" style="text-decoration: underline">{{!quizItem.answer[$index] && '________' || quizItem.answer[$index].replace(';','
+								/ ')}} </span>
 						</span>
 					</span>
 				</div>
@@ -23,8 +24,8 @@
 						<span>{{option}}</span>
 						<span ng-show="!$last">
 							<span class="bold" style="text-decoration: underline">{{!quizItem.userAnswer[$index] && '________' || quizItem.userAnswer[$index]}} </span>
-							<i ng-show="!isCorrectFillInTheBlanks(quizItem , quizItem.userAnswer[$index])" class="fa fa-times wrong"></i>
-							<i ng-show="!!isCorrectFillInTheBlanks(quizItem , quizItem.userAnswer[$index])" class="fa fa-check correct"></i>
+							<i ng-show="!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-times wrong"></i>
+							<i ng-show="!!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-check correct"></i>
 						</span>
 					</span>
 				</div>
