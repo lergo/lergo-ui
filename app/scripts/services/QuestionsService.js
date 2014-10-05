@@ -65,7 +65,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 	};
 
 	this.deleteQuestion = function(id) {
-		return $http.post('/backend/user/questions/' + id + '/delete');
+		return $http.post('/backend/questions/' + id + '/delete');
 	};
 	this.questionsType = [ {
 		'id' : 'trueFalse',
