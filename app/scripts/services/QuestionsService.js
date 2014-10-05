@@ -1,16 +1,16 @@
 'use strict';
 
-angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log) {
+angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log, $filter) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
 
-	this.getUserQuestions = function( queryObj ) {
+	this.getUserQuestions = function(queryObj) {
 		return $http({
-            'method' : 'GET',
-            'url' : '/backend/user/questions',
-            'params' : {
-                'query' : queryObj
-            }
-        });
+			'method' : 'GET',
+			'url' : '/backend/user/questions',
+			'params' : {
+				'query' : queryObj
+			}
+		});
 	};
 
 	this.copyQuestion = function(questionId) {
@@ -34,18 +34,18 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		});
 	};
 
-    this.getPublicQuestions = function( queryObj ){
-        if ( !queryObj ){
-            throw new Error('you should at least have {"public" : { "exists" : 1 } } ');
-        }
-        return $http({
-            'url' : '/backend/questions/publicLessons',
-            'method' :'GET',
-            'params' : {
-                'query' : queryObj
-            }
-        });
-    };
+	this.getPublicQuestions = function(queryObj) {
+		if (!queryObj) {
+			throw new Error('you should at least have {"public" : { "exists" : 1 } } ');
+		}
+		return $http({
+			'url' : '/backend/questions/publicLessons',
+			'method' : 'GET',
+			'params' : {
+				'query' : queryObj
+			}
+		});
+	};
 
 	this.createQuestion = function(question) {
 		return $http.post('/backend/questions/create', question);
@@ -60,9 +60,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 
 	};
 
-    this.getPermissions = function(id){
-        return $http.get('/backend/questions/' + id + '/permissions');
-    };
+	this.getPermissions = function(id) {
+		return $http.get('/backend/questions/' + id + '/permissions');
+	};
 
 	this.deleteQuestion = function(id) {
 		return $http.post('/backend/user/questions/' + id + '/delete');
@@ -75,7 +75,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		'previewTemplate' : 'views/questions/view/preview/_trueFalse.html',
 		'reportTemplate' : 'views/questions/report/_trueFalse.html',
 		'answers' : function(quizItem) {
-			return quizItem.answer;
+			return $filter('i18n')('quizItem.answer.' + quizItem.answer);
 		},
 		'isValid' : function(quizItem) {
 			if (!quizItem.question || !quizItem.answer) {

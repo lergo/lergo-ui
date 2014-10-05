@@ -5,6 +5,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 	var questionId = $routeParams.questionId;
 	$scope.noop = angular.noop;
 	var audio = new Audio('../audio/correctanswer.mp3');
+	$window.scrollTo(0, 0);
 
 	QuestionsService.getQuestionById(questionId).then(function(result) {
 		$scope.quizItem = result.data;
@@ -171,7 +172,6 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 	$scope.onTextClick = function($event) {
 		$event.target.select();
 	};
-	$window.scrollTo(0, 0);
 	$scope.isCorrectFillInTheBlanks = function(quizItem, index) {
 
 		var userAnswer = quizItem.userAnswer[index];

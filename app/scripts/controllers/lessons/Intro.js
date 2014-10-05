@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $routeParams, LergoClient, $location, $modal, DisplayRoleService, $log, $rootScope, FilterService) {
+angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $routeParams, LergoClient, $location, $modal, DisplayRoleService, $log, $rootScope, FilterService,$window) {
+	$window.scrollTo(0,0);
 	var lessonId = $routeParams.lessonId;
 	var invitationId = $routeParams.invitationId;
 	var preview = !!$routeParams.preview;

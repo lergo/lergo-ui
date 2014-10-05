@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient, shuffleFilter) {
+angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient, shuffleFilter, $window) {
 	$log.info('showing step');
+	$window.scrollTo(0, 0);
 	var audio = new Audio('../audio/correctanswer.mp3');
 
 	if (!!$routeParams.data) {
@@ -63,7 +64,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.checkAnswer = function() {
 		var quizItem = $scope.quizItem;
-		var duration = Math.max(0,new Date().getTime() - quizItem.startTime); // using max with 0 just in case something went wrong and startTime > endTime.. LERGO-468
+		var duration = Math.max(0, new Date().getTime() - quizItem.startTime);
+		// using max with 0 just in case something went wrong and startTime >
+		// endTime.. LERGO-468
 		LergoClient.questions.checkAnswer(quizItem).then(function(result) {
 			$scope.answers[quizItem._id] = result.data;
 			$rootScope.$broadcast('questionAnswered', {
@@ -208,7 +211,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	function voiceFeedback() {
 		audio.play();
 	}
-	
+
 	$scope.isCorrectFillInTheBlanks = function(quizItem, index) {
 
 		var userAnswer = quizItem.userAnswer[index];
