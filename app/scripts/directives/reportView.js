@@ -51,13 +51,13 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 				return false;
 			};
 
-			$scope.isCorrectFillInTheBlanks = function(quizItem, answer) {
+			$scope.isCorrectFillInTheBlanks = function(quizItem, index) {
 
-				if (!answer) {
+				var userAnswer = quizItem.userAnswer[index];
+				if (!userAnswer) {
 					return false;
 				}
-				var index = quizItem.userAnswer.indexOf(answer);
-				if (quizItem.answer[index].split(';').indexOf(answer) === -1) {
+				if (quizItem.answer[index].split(';').indexOf(userAnswer) === -1) {
 					return false;
 				} else {
 					return true;

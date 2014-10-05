@@ -4,6 +4,14 @@
     .bold {
         font-weight: bold;
     }
+    .wrong {
+        color: firebrick;
+        margin-left: -13px;
+    }
+    .correct {
+        color: mediumseagreen;
+        margin-left: -15px;
+    }
     .left {
         width: 85%;
         padding: 15px;
@@ -26,7 +34,7 @@
         }
     }
     .answers {
-            width: 530px;
+        width: 530px;
         margin-top: 10px;
         text-align: center;
         font-size: 20px;
@@ -323,6 +331,14 @@
                 width: 20px;
                 height: 20px;
             }
+        }
+        .wrong {
+            color: firebrick;
+            margin-left: -13px;
+        }
+        .correct {
+            color: mediumseagreen;
+            margin-left: -15px;
         }
     }
 }

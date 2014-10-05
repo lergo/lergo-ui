@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location) {
+angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location, $window) {
 
 	var questionId = $routeParams.questionId;
 	$scope.noop = angular.noop;
@@ -17,7 +17,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		if (!!$scope.quizItem.copyOf) {
 			QuestionsService.findQuestionsById($scope.quizItem.copyOf).then(function(result) {
 				var originalQuestions = result.data;
-				// remove the question created by the same user 
+				// remove the question created by the same user
 				_.remove(originalQuestions, function(q) {
 					return q.userId === $scope.quizItem.userId;
 				});
@@ -170,5 +170,18 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 	};
 	$scope.onTextClick = function($event) {
 		$event.target.select();
+	};
+	$window.scrollTo(0, 0);
+	$scope.isCorrectFillInTheBlanks = function(quizItem, index) {
+
+		var userAnswer = quizItem.userAnswer[index];
+		if (!userAnswer) {
+			return false;
+		}
+		if (quizItem.answer[index].split(';').indexOf(userAnswer) === -1) {
+			return false;
+		} else {
+			return true;
+		}
 	};
 });

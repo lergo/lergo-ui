@@ -9,6 +9,10 @@
 			<span class="lergo-h4">{{option}}</span>
 			<input ng-show="!$last" style="width:{{getFillIntheBlankSize(quizItem,$index)}}px; display: inline; min-height: 28px;"
 				ng-model="quizItem.userAnswer[$index]" set-focus="$first">
+			<span ng-show="!$last && getAnswer() && !getAnswer().correct">
+				<i ng-show="!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-times wrong"></i>
+				<i ng-show="!!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-check correct"></i>
+			</span>
 		</span>
 	</div>
 	<div class="help">

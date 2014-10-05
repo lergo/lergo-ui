@@ -101,20 +101,18 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	});
 
 	$scope.startLesson = function(lessonId) {
-		var id = null;
 		if (!lessonId) {
-			id = $scope.lesson._id;
+			redirectToInvitation($scope.lesson._id, $scope.invitation._id);
 		} else {
-			id = lessonId;
+			LergoClient.lessonsInvitations.createAnonymous(lessonId).then(function(result) {
+				redirectToInvitation(lessonId, result.data._id);
+			});
 		}
-		LergoClient.lessonsInvitations.createAnonymous(id).then(function(result) {
-			var invitationId = result.data._id;
-			redirectToInvitation(invitationId);
-		});
 	};
-	function redirectToInvitation(invitationId) {
-		$location.path('/public/lessons/invitations/' + invitationId + '/display').search({
-			reportId : ''
+	function redirectToInvitation(lessonId, invId) {
+		$location.path('/public/lessons/' + lessonId + '/intro').search({
+			invitationId : invId,
+			autoPlay : true
 		});
 	}
 

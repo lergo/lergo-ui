@@ -4,6 +4,8 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	var lessonId = $routeParams.lessonId;
 	var invitationId = $routeParams.invitationId;
 	var preview = !!$routeParams.preview;
+	var autoPlay = $routeParams.autoPlay;
+
 	LergoClient.lessons.getLessonIntro(lessonId).then(function(result) {
 		$scope.lesson = result.data;
 		$rootScope.page = {
@@ -152,6 +154,10 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 			redirectToInvitation();
 		}
 	};
+
+	if (!!autoPlay) {
+		$scope.startLesson();
+	}
 	$scope.absoluteShareLink = function(lesson) {
 		$scope.shareLink = window.location.origin + '/#!/public/lessons/' + lesson._id + '/intro';
 		$scope.invite = false;
@@ -206,24 +212,18 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 					 * remove question that was created by the same user who
 					 * owns this lesson
 					 */
-					$scope.questionsWeCopied = _.filter(questionsWeCopied, function(q) {
+					questionsWeCopied = _.filter(questionsWeCopied, function(q) {
 						if (!q.originals || q.originals.length < 1) {
 							return false;
 						}
 						_.remove(q.originals, function(o) {
 							var remove = o.userId === $scope.lesson.userId;
-							if (!remove) {
-								// remove question from $scope.questions to
-								// avoid repetition
-								_.remove($scope.questions, {
-									'_id' : q._id
-								});
-							}
 							return remove;
 						});
 						return q.originals.length > 0;
 					});
 
+					$scope.questionsWeCopied = _.object(_.map(questionsWeCopied, '_id'), questionsWeCopied);
 				});
 			});
 
@@ -247,7 +247,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 				q.userDetails = othersUsersById[q.userId];
 			});
 
-			$scope.questionsFromOthers = questionsFromOthers;
+			$scope.questionsFromOthers = _.object(_.map(questionsFromOthers, '_id'), questionsFromOthers);
 		});
 
 	}

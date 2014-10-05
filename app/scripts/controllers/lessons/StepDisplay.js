@@ -208,5 +208,18 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	function voiceFeedback() {
 		audio.play();
 	}
+	
+	$scope.isCorrectFillInTheBlanks = function(quizItem, index) {
+
+		var userAnswer = quizItem.userAnswer[index];
+		if (!userAnswer) {
+			return false;
+		}
+		if (quizItem.answer[index].split(';').indexOf(userAnswer) === -1) {
+			return false;
+		} else {
+			return true;
+		}
+	};
 
 });
