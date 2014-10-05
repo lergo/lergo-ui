@@ -71,11 +71,28 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	};
 
 
+	var path = $location.path();
 	$scope.$on('$locationChangeStart', function() {
-		$rootScope.questionScrollPosition = window.scrollY;
+		persistScroll($scope.filterPage.current);
 	});
 
-	if (!!$rootScope.questionScrollPosition) {
-		window.scrollTo(0, $rootScope.questionScrollPosition);
+	$scope.$watch('filterPage.current', function(newValue, oldValue) {
+		if (!!oldValue) {
+
+			persistScroll(oldValue);
+		}
+	});
+	function persistScroll(pageNumber) {
+		if (!$rootScope.scrollPosition) {
+			$rootScope.scrollPosition = {};
+		}
+		$rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
+	}
+	function scrollToPersistPosition() {
+		var scrollY = 0;
+		if (!!$rootScope.scrollPosition) {
+			scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
+		}
+		$window.scrollTo(0, scrollY);
 	}
 });

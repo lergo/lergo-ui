@@ -1,33 +1,50 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService, $rootScope, $filter, $log, $routeParams ) {
+angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService, $rootScope, $filter, $log, $routeParams, $location, $window, $document) {
 
+	$scope.lessonsFilter = {
+		'public' : {
+			'dollar_exists' : 1
+		}
+	};
+	$scope.filterPage = {};
+	$scope.lessonsFilterOpts = {
+		'showSubject' : true,
+		'showLanguage' : true,
+		'showAge' : true,
+		'showViews' : true,
+		'showTags' : true,
+		'showCreatedBy' : true
+	};
 
-    $scope.lessonsFilter = { 'public' : { 'dollar_exists' : 1 } };
-    $scope.filterPage = { };
-    $scope.lessonsFilterOpts = {
-        'showSubject' : true,
-        'showLanguage' : true,
-        'showAge' : true,
-        'showViews': true,
-        'showTags' : true,
-        'showCreatedBy':true
-    };
+	$scope.loadLessons = function() {
 
-    $scope.loadLessons = function() {
-        $log.info('loading lessons');
+		$log.info('loading lessons');
 
-        var searchFilter = {};
-        if ( !!$routeParams.search ){
-            searchFilter = { 'searchText' : $routeParams.search };
-        }
+		var searchFilter = {};
+		if (!!$routeParams.search) {
+			searchFilter = {
+				'searchText' : $routeParams.search
+			};
+		}
 
-        var queryObj =  { 'filter' : _.merge(searchFilter, $scope.lessonsFilter), 'sort' : { 'lastUpdate' : -1 }, 'dollar_page' : $scope.filterPage };
-        LergoClient.lessons.getPublicLessons( queryObj ).then(function (result) {
-            $scope.lessons = result.data.data;
-            $scope.filterPage.count = result.data.count; // the number of lessons found after filtering them.
-        });
-    };
+		var queryObj = {
+			'filter' : _.merge(searchFilter, $scope.lessonsFilter),
+			'sort' : {
+				'lastUpdate' : -1
+			},
+			'dollar_page' : $scope.filterPage
+		};
+		LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
+			$scope.lessons = result.data.data;
+			$scope.filterPage.count = result.data.count; // the number of
+			// lessons found
+			// after filtering
+			// them.
+			scrollToPersistPosition();
+		});
+
+	};
 
 	$scope.$watch(function() {
 		return $filter('i18n')('lergo.title');
@@ -38,9 +55,33 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		};
 	});
 
-
 	$scope.absoluteShareLink = function(lesson) {
 		return window.location.origin + '/#!/public/lessons/' + lesson._id + '/share';
 	};
+
+	var path = $location.path();
+	$scope.$on('$locationChangeStart', function() {
+		persistScroll($scope.filterPage.current);
+	});
+
+	$scope.$watch('filterPage.current', function(newValue, oldValue) {
+		if (!!oldValue) {
+
+			persistScroll(oldValue);
+		}
+	});
+	function persistScroll(pageNumber) {
+		if (!$rootScope.scrollPosition) {
+			$rootScope.scrollPosition = {};
+		}
+		$rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
+	}
+	function scrollToPersistPosition() {
+		var scrollY = 0;
+		if (!!$rootScope.scrollPosition) {
+			scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
+		}
+		$window.scrollTo(0, scrollY);
+	}
 
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, $log, $controller, $rootScope, $location, shuffleFilter) {
+angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, $log, $controller, $rootScope, $location, shuffleFilter,$window) {
 
 	// guy - using this flag because ng-cloak and other solutions will not apply
 	// to this scenario.
@@ -9,7 +9,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	// so once they are loaded, we will switch that flag to true.
 	// otherwise we get a flash of the last screen (LERGO-358).
 	$scope.loaded = false;
-
+	$window.scrollTo(0, 0);
 	$controller('LessonsStepDisplayCtrl', {
 		$scope : $scope
 	});
