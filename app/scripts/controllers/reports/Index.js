@@ -1,90 +1,104 @@
 'use strict';
 
-angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location, $rootScope, localStorageService) {
+angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location, $rootScope, localStorageService, $window) {
 
+	$scope.reportsFilter = {};
+	$scope.filterPage = {};
+	$scope.reportsFilterOpts = {
+		'showSubject' : true,
+		'showLanguage' : true,
+		'showReportStatus' : true,
+		'showStudents' : true,
+		'showCorrectPercentage' : true
+	};
 
-    $scope.reportsFilter = {  };
-    $scope.filterPage = { };
-    $scope.reportsFilterOpts = {
-        'showSubject' : true,
-        'showLanguage' : true,
-        'showReportStatus' : true,
-        'showStudents' : true,
-        'showCorrectPercentage' : true
-    };
+	$scope.reportTypes = [ {
+		'id' : 'mine'
+	}, {
+		'id' : 'students'
+	} ];
 
-    $scope.reportTypes = [
-        { 'id' : 'mine' },
-        { 'id' : 'students' }
-    ];
+	$scope.reportsPage = {
+		reportType : 'students',
+		selectAll : false
+	};
+	if (!!localStorageService.get('reportType')) {
+		$scope.reportsPage.reportType = localStorageService.get('reportType');
+	}
 
+	function isMyReports() {
+		return $scope.reportsPage.reportType === 'mine';
+	}
 
-    $scope.reportsPage = { reportType : 'students', selectAll : false };
-    if ( !!localStorageService.get('reportType') ){
-        $scope.reportsPage.reportType = localStorageService.get('reportType');
-    }
+	$scope.$watch('reportsPage.reportType', function(newValue, oldValue) {
+		if (newValue !== oldValue) {
+			$log.info('reportType changed');
+			$scope.reportsFilterOpts.showStudents = isStudentsReports();
+			$scope.filterPage.current = 1;
+			$scope.filterPage.updatedLast = new Date().getTime(); // create a
+																	// 'change'
+																	// event
+																	// artificially..
+			localStorageService.set('reportType', newValue);
+		}
+	});
 
-    function isMyReports(){
-        return $scope.reportsPage.reportType === 'mine';
-    }
+	function isStudentsReports() {
+		return $scope.reportsPage.reportType === 'students';
+	}
 
-    $scope.$watch('reportsPage.reportType', function (newValue, oldValue) {
-        if (newValue !== oldValue) {
-            $log.info('reportType changed');
-            $scope.reportsFilterOpts.showStudents = isStudentsReports();
-            $scope.filterPage.current = 1;
-            $scope.filterPage.updatedLast = new Date().getTime(); // create a 'change' event artificially..
-            localStorageService.set('reportType', newValue);
-        }
-    });
+	$scope.showStudentColumn = function() {
+		return isStudentsReports();
+	};
 
-    function isStudentsReports(){
-        return $scope.reportsPage.reportType === 'students';
-    }
+	$scope.isComplete = function(report) {
 
-    $scope.showStudentColumn = function(){
-        return isStudentsReports();
-    };
+		var completeSteps = 0;
+		_.each(report.stepDurations, function(elem) {
+			if (angular.isNumber(elem.startTime) && angular.isNumber(elem.endTime)) {
+				completeSteps++;
+			}
+		});
 
-    $scope.isComplete = function( report ){
-
-        var completeSteps = 0;
-        _.each(report.stepDurations, function(elem){
-            if  ( angular.isNumber(elem.startTime) && angular.isNumber(elem.endTime) ){
-                completeSteps++;
-            }
-        });
-
-        return report.data.lesson.steps.length === completeSteps || report.duration > 0;
-    };
+		return report.data.lesson.steps.length === completeSteps || report.duration > 0;
+	};
 
 	$scope.loadReports = function() {
-        $scope.reportsPage.selectAll = false;
-        if ( !$scope.filterPage.current ){
-            return;
-        }
-        var queryObj = { 'filter': _.merge({}, $scope.reportsFilter), 'sort' : { 'lastUpdate' : -1 }, 'dollar_page': $scope.filterPage };
-        var promise = null;
-        if ( isMyReports() ) {
-            promise = LergoClient.userData.getReports(queryObj);
-        }else if ( isStudentsReports() ){
-            promise = LergoClient.userData.getStudentsReports( queryObj );
-        }
+		$scope.reportsPage.selectAll = false;
+		if (!$scope.filterPage.current) {
+			return;
+		}
+		var queryObj = {
+			'filter' : _.merge({}, $scope.reportsFilter),
+			'sort' : {
+				'lastUpdate' : -1
+			},
+			'dollar_page' : $scope.filterPage
+		};
+		var promise = null;
+		if (isMyReports()) {
+			promise = LergoClient.userData.getReports(queryObj);
+		} else if (isStudentsReports()) {
+			promise = LergoClient.userData.getStudentsReports(queryObj);
+		}
 
-        promise.then(function(result) {
-            $scope.reports = result.data.data;
-            $scope.filterPage.count = result.data.count;
-            $scope.errorMessage = null;
+		promise.then(function(result) {
+			$scope.reports = result.data.data;
+			$scope.filterPage.count = result.data.count;
+			$scope.errorMessage = null;
 		}, function(result) {
 			$scope.errorMessage = 'Error in fetching reports : ' + result.data.message;
 			$log.error($scope.errorMessage);
 		});
+
+		scrollToPersistPosition();
 	};
 	$scope.createLessonFromWrongQuestions = function() {
 		LergoClient.lessons.create().then(function(result) {
 			var lesson = result.data;
 			lesson.name = 'Difficult questions lesson from : ';
-            // todo: remove filter Service getLanguageByLocale - this should be coming from translate service.
+			// todo: remove filter Service getLanguageByLocale - this should be
+			// coming from translate service.
 			lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
 			lesson.steps = [];
 			lesson.description = '';
@@ -110,14 +124,13 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 
 	};
 
+	$scope.selectAll = function(event) {
+		var checkbox = event.target;
+		angular.forEach($scope.reports, function(item) {
+			item.selected = checkbox.checked;
+		});
+	};
 
-    $scope.selectAll = function(event) {
-        var checkbox = event.target;
-        angular.forEach($scope.reports, function (item) {
-            item.selected = checkbox.checked;
-        });
-    };
-    
 	function getWrongQuestions(answers, lesson) {
 		angular.forEach(answers, function(answer) {
 			if (!answer.checkAnswer.correct) {
@@ -126,18 +139,18 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		});
 	}
 	$scope.deleteReports = function() {
-        var toDelete = 0;
+		var toDelete = 0;
 		angular.forEach($scope.reports, function(report) {
 			if (report.selected === true) {
-                toDelete ++;
+				toDelete++;
 				LergoClient.reports.deleteReport(report).then(function() {
-                    toDelete --;
+					toDelete--;
 					$scope.errorMessage = null;
 					$scope.reports.splice($scope.reports.indexOf(report), 1);
 					$log.info('report deleted successfully');
-                    if ( toDelete === 0 ){
-                        $scope.loadReports();
-                    }
+					if (toDelete === 0) {
+						$scope.loadReports();
+					}
 				}, function(result) {
 					$scope.errorMessage = 'Error in deleting report : ' + result.data.message;
 					$log.error($scope.errorMessage);

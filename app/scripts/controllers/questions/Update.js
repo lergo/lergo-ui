@@ -150,7 +150,7 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
 
 			$scope.getMediaTemplate = function(quizItem) {
 				var type = 'none';
-				if (!!quizItem.media && !!quizItem.media.type) {
+				if (!!quizItem && !!quizItem.media && !!quizItem.media.type) {
 					type = quizItem.media.type;
 				}
 				return 'views/questions/update/media/_' + type + '.html';
@@ -158,7 +158,7 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
 
 			$scope.getExplanationMediaTemplate = function(quizItem) {
 				var type = 'none';
-				if (!!quizItem.explanationMedia && !!quizItem.explanationMedia.type) {
+				if (!!quizItem && !!quizItem.explanationMedia && !!quizItem.explanationMedia.type) {
 					type = quizItem.explanationMedia.type;
 				}
 				return 'views/questions/update/explanationMedia/_' + type + '.html';
