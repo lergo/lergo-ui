@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').filter('duration', function() {
+angular.module('lergoApp').filter('duration', function( $filter ) {
 	return function(duration) {
 
         function isNumber(prop){
@@ -12,12 +12,12 @@ angular.module('lergoApp').filter('duration', function() {
                 duration = duration.endTime - duration.startTime;
             }else{
 
-                return 'did not finish';
+                return $filter('i18n')('report.did.not.finish');
             }
         }
 
         if ( !isNumber(duration) ) {
-            return 'missing info';
+            return $filter('i18n')('report.missing.info');
         }
 
 		function pad(number) {

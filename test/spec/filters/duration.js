@@ -22,8 +22,8 @@ describe('Filter: duration', function() {
     });
 
     it ( 'should not support objects with only startTime or only endTime' ,function(){
-        expect(duration({'startTime' : 1})).toBe('did not finish');
-        expect(duration({'endTime' : 1})).toBe('did not finish');
+        expect(duration({'startTime' : 1})).toBe('???report.did.not.finish???');
+        expect(duration({'endTime' : 1})).toBe('???report.did.not.finish???');
     });
 
 });

@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope, FilterService) {
+angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, $filter, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope, FilterService) {
 
 	$log.info('loading invitation', $routeParams.invitationId);
-
+    var errorWhileSaving = false;
 	var updateChange = new ContinuousSave({
 		'saveFn' : function(value) {
 			$log.info('updating report');
@@ -15,6 +15,10 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 
 			return LergoClient.reports.update(value).then(function( result ){
                 if ( finished ){
+                    if ( errorWhileSaving ){
+                        toastr.success($filter('i18n')('report.saved.successfully'));
+                    }
+                    errorWhileSaving = false;
                     if (!$scope.invitation.anonymous) {
                         LergoClient.reports.ready($routeParams.reportId);
                     } else {
@@ -24,7 +28,8 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
                 return result;
             }, function( result ){
                 if ( finished ){
-                    toastr.error('error while updating report');
+                    errorWhileSaving = true;
+                    toastr.error($filter('i18n')('report.error.while.updating'));
                     $log.error('error while updating report',result.data);
                 }
                 return result;

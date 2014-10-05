@@ -124,6 +124,7 @@ angular.module('lergoApp')
                 $timeout(_save, 0);
             }
 
+            var retries = 0;
             function _save() {
 
                 $log.info(_localVersion);
@@ -143,6 +144,7 @@ angular.module('lergoApp')
 
                 _status.saving = true;
                 _saveFn(_localVersion).then(function (result) {
+                    retries = 0;
                     _remoteVersion = result.data;
                     _status.saved = _versionMatch();
                     _status.saving = false;
@@ -154,6 +156,12 @@ angular.module('lergoApp')
                 }, function( result ){
                     $log.error('unable to save ', result);
                     _status.saving = false;
+                    if ( retries > 5 ){
+                        return;
+                    }else{
+                        retries++;
+                        setTimeout(_save,1000);
+                    }
 
                 });
 
