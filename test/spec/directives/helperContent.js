@@ -1,20 +1,19 @@
 'use strict';
 
-describe('Directive: helperContent', function () {
+describe('Directive: helperContent', function() {
 
-  // load the directive's module
-  beforeEach(module('lergoApp'));
+	// load the directive's module
+	beforeEach(module('lergoApp'));
 
-  var element,
-    scope;
+	var element, scope;
 
-  beforeEach(inject(function ($rootScope) {
-    scope = $rootScope.$new();
-  }));
+	beforeEach(inject(function($rootScope) {
+		scope = $rootScope.$new();
+	}));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<-helper-content></-helper-content>');
-    element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the HelperContent directive');
-  }));
+	it('should make hidden element visible', inject(function($compile) {
+		element = angular.element('<-helper-content></-helper-content>');
+		element = $compile(element)(scope);
+		expect(element.text()).toBe('this is the HelperContent directive');
+	}));
 });
