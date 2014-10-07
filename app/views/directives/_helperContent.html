@@ -1,0 +1,40 @@
+<div name="helperContent" style="width: 340px;" class="helperContent lergo-form">
+	<div ng-repeat="c in helperContent.contents">
+		<div>
+			<div ng-show="!!c.videoUrl" style="background: #cccccc; padding: 5px; border-radius: 3px">
+				<div ng-show="!!c.videoUrl" class="lesson-step-video-content">
+					<iframe width="330" height="185" ng-src="{{getYoutubeEmbedSource(c.videoUrl)}}" frameborder="0" allowfullscreen></iframe>
+				</div>
+				<div style="font-size: 20px; text-align: center" ng-show="!!c.title">{{c.title}}</div>
+			</div>
+			<div ng-show="!!c.tips">
+				<h4>Tips:</h4>
+				{{c.tips}}
+			</div>
+		</div>
+		<br />
+		<div admin-section>
+			<div style="border: 2px solid black; padding: 5px; border-radius: 5px;">
+				<div>
+					<a class="btn-link" style="float: right" ng-click="removeHelperContent($index)">X</a>
+				</div>
+				<div>
+					Video Url:
+					<input ng-model="c.videoUrl" />
+				</div>
+				<div>
+					Title:
+					<input ng-model="c.title" />
+				</div>
+				<div>
+					Tips:
+					<input ng-model="c.tips" />
+				</div>
+			</div>
+		</div>
+		<br />
+	</div>
+	<div admin-section>
+		<a class="btn-link" ng-click="addHelperContent()">Click here to add helper contents</a>
+	</div>
+</div>
