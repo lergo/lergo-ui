@@ -34,7 +34,11 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		});
 	};
 
-	$scope.loadQuestions = function() {
+	$scope.loadQuestions = function(isPublic) {
+
+		if (isPublic !== undefined) {
+			$scope.isPublic = isPublic;
+		}
 		var queryObj = {
 			'filter' : _.merge({}, $scope.questionsFilter),
 			'sort' : {
