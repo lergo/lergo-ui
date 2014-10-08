@@ -5,8 +5,8 @@
 				<div ng-show="!!c.videoUrl" class="lesson-step-video-content">
 					<iframe width="330" height="185" ng-src="{{getYoutubeEmbedSource(c.videoUrl)}}" frameborder="0" allowfullscreen></iframe>
 				</div>
-				<div class="textContent">
-					<div class="title" ng-show="!!c.title">{{c.title}}</div>
+				<div class="title" ng-show="!!c.title">{{c.title}}</div>
+				<div class="textContent" ng-show="!!c.tips  || !! c.important">
 					<div ng-show="!!c.tips">
 						<div class="tips">
 							<i class="fa fa-lightbulb-o"> {{'helperContent.tips' | i18n}} </i>
