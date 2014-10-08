@@ -11,6 +11,7 @@
     "views": "# Views"
   },
   "advancedOptions": "Advanced options",
+  "back": "Back",
   "baseLayout": {
     "footer": {
       "about": "About LerGO",
@@ -71,6 +72,12 @@
   "copy": "Copy",
   "createNotAvailable": "Please signup or login to LerGO. Only registered users can create content.",
   "delete": "Delete",
+  "deleteLesson": {
+    "Confirm": "For the lesson to be created and saved, you must fill at least the Name field. By leaving this page without filling this field, all changes will be lost."
+  },
+  "deleteQuestion": {
+    "Confirm": "For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost."
+  },
   "description": "Description",
   "done": "Done",
   "down": "Down",
@@ -134,6 +141,13 @@
     "to": "To"
   },
   "fromAge": "From Age",
+  "helperContent": {
+    "add": "Click to add Contents",
+    "important": "Important",
+    "tips": "Tips",
+    "title": "Title",
+    "videoUrl": "Video Url"
+  },
   "hint": "Hint",
   "homepage": {
     "andCounting": "and counting...",
@@ -377,6 +391,7 @@
       "trueFalse": "True or False"
     },
     "usedByOthers": "This question is already used in another lesson. Please limit your edits accordingly.",
+    "usedByOthersHint": "Since this question is already used in another lesson, please limit edits to correcting typos, adding hints/ explanations/ tags/ edit summary etc. If any other changes are required please copy this question instead.",
     "videoUrlHint": "To add video to question, please update video URL",
     "yourAnswer": "Student's Answer",
     "yourAnswers": "Student's Answer(s)"
@@ -402,12 +417,28 @@
     "date": "Date",
     "description": "Lesson Description",
     "detailedReport": "Detailed Report",
+    "did": {
+      "not": {
+        "finish": "Did not finish"
+      }
+    },
+    "error": {
+      "while": {
+        "updating": "Error while updating report"
+      }
+    },
     "incomplete": "Incomplete",
     "lessonSteps": "Lesson Steps",
+    "missing": {
+      "info": "Missing information"
+    },
     "nextLesson": "Recommended Next Lesson",
     "priorLesson": "Recommended Previous Lesson",
     "questionsInQuiz": "questions in quiz",
-    "recommendation": "Recommendations"
+    "recommendation": "Recommendations",
+    "saved": {
+      "successfully": "Report saved successfully"
+    }
   },
   "reports": {
     "correctPercentage": "% Correct",

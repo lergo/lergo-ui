@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($scope, $log, LergoClient, $routeParams, $rootScope) {
+angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($scope, $log, LergoClient, $routeParams, $rootScope, FilterService) {
 	$log.info('loading');
 	LergoClient.reports.getById($routeParams.reportId).then(function(result) {
 		$scope.report = result.data;
@@ -8,6 +8,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 			'title' : $scope.report.data.lesson.name,
 			'description' : $scope.report.data.lesson.description
 		};
+		$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.report.data.lesson.language);
 	});
 	$scope.stats = [];
 	$scope.$on('stats', function(event, data) {

@@ -10,13 +10,26 @@ angular.module('lergoApp').directive('helperContent', function($rootScope, $http
 		},
 		link : function postLink(scope) {
 			var $scope = scope;
-			function get(queryObj) {
-
-				return $http({
+			function get() {
+				$http({
 					'method' : 'GET',
 					'url' : '/backend/helpercontents',
 					'params' : {
-						'query' : JSON.stringify(queryObj)
+						'query' : JSON.stringify({
+							'path' : $scope.path,
+							'locale' : $rootScope.lergoLanguage
+						})
+					}
+				}).then(function(result) {
+					$scope.helperContent = result.data;
+					if (!$scope.helperContent) {
+						create({
+							'path' : $scope.path,
+							'locale' : $rootScope.lergoLanguage
+						}).then(function(result) {
+							$scope.helperContent = result.data;
+
+						});
 					}
 				});
 			}
@@ -27,21 +40,7 @@ angular.module('lergoApp').directive('helperContent', function($rootScope, $http
 				return $http.post('/backend/helperContents/' + content._id + '/update', content);
 			}
 
-			get({
-				'path' : $scope.path,
-				'locale' : $rootScope.lergoLanguage
-			}).then(function(result) {
-				$scope.helperContent = result.data;
-				if (!$scope.helperContent) {
-					create({
-						'path' : $scope.path,
-						'locale' : $rootScope.lergoLanguage
-					}).then(function(result) {
-						$scope.helperContent = result.data;
-
-					});
-				}
-			});
+			get();
 			var saveContent = new ContinuousSave({
 				'saveFn' : function(value) {
 					return update(value);
@@ -49,6 +48,10 @@ angular.module('lergoApp').directive('helperContent', function($rootScope, $http
 			});
 
 			$scope.$watch('helperContent', saveContent.onValueChange, true);
+			$scope.isSaving = function() {
+				return !!saveContent.getStatus().saving;
+			};
+
 			$scope.addHelperContent = function() {
 				if (!$scope.helperContent.contents) {
 					$scope.helperContent.contents = [];
@@ -63,7 +66,7 @@ angular.module('lergoApp').directive('helperContent', function($rootScope, $http
 				return $rootScope.lergoLanguage;
 			}, function(newValue, oldValue) {
 				if (!!newValue && !!oldValue && newValue !== oldValue) {
-					$scope.helperContent = get($scope.path, $rootScope.lergoLanguage);
+					get();
 				}
 			});
 			$scope.getYoutubeEmbedSource = function(url) {
