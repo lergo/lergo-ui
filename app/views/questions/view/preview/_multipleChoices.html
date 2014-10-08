@@ -10,18 +10,7 @@
 		<p class="question-help-text">{{quizItem.helpText}}</p>
 	</div>
 	<div quiz-item-media quiz-item="quizItem"></div>
-	<div style="font-size: 20px;">
-		<table class="lergo-table">
-			<tbody>
-				<tr ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
-					<td style="width: 5%">
-						<input type="checkbox" ng-model="option.userAnswer" />
-					</td>
-					<td>{{option.label}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+	<div multi-choice quiz-item="quizItem"></div>
 	<br />
 	<div class="submit">
 		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>

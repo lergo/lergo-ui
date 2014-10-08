@@ -1,17 +1,20 @@
 #HelperContent {
     width: 340px;
     .helperContent {
-        background: #efefef;
         padding: 5px;
         border-radius: 3px;
-        .title {
-            font-size: 20px;
-            text-align: center;
-            color: #7c7c7c;
-            font-weight: bold;
+        .video {
+            background: #efefef;
+            .title {
+                font-size: 20px;
+                text-align: center;
+                color: #7c7c7c;
+                font-weight: bold;
+                padding-bottom: 5px;
+            }
         }
         .textContent {
-            margin-top: 5px;
+            background: #efefef;
             border: 2px solid #7c7c7c;
             border-radius: 5px;
             padding: 5px;

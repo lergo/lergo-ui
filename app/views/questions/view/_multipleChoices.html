@@ -7,18 +7,7 @@
 			<p class="question-help-text">{{quizItem.helpText}}</p>
 		</div>
 		<div quiz-item-media quiz-item="quizItem"></div>
-		<div style="font-size: 20px;">
-			<table class="lergo-table">
-				<tbody>
-					<tr ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
-						<td style="width: 5%">
-							<input type="checkbox" ng-model="option.userAnswer" />
-						</td>
-						<td>{{option.label}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<div multi-choice quiz-item="quizItem"></div>
 		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
 	</div>
 	<div class="right">
