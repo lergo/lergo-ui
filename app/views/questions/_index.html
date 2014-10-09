@@ -3,7 +3,7 @@
 	<br />
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
-			<div class="lergo-h1" ng-show="!isModal">
+			<div class="lergo-h1">
 				<div class="btn-group" dropdown>
 					<button type="button" class="btn-link dropdown-toggle">
 						<span class="caret" style="border-top: 10px solid #5fb9ff;"></span>
@@ -18,8 +18,8 @@
 				</div>
 				[ {{ 'questions.total' | i18n }}: {{filterPage.count}} ]
 			</div>
-			<div class="lergo-h1" ng-show="!!isModal">{{ 'questions.selectQuestions' | i18n }}</div>
 			<div class="page-content-titles-actions">
+				<button class="btn" ng-show="!!isModal" ng-click="createQuestion()">{{ 'questions.createNew' | i18n }}</button>
 				<button class="btn" ng-show="!isModal" ng-click="createNewQuestion()">{{ 'questions.createNew' | i18n }}</button>
 			</div>
 		</div>

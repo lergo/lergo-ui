@@ -271,29 +271,23 @@ angular.module('lergoApp').controller(
 				});
 			}
 
-			$scope.openQuestionBankDialog = function(step, isPublic) {
-				$modal.open({
+			$scope.openQuestionBankDialog = function(step, callback) {
+				var modelInstance = $modal.open({
 					templateUrl : 'views/questions/modalindex.html',
 					windowClass : 'question-bank-dialog',
 					backdrop : 'static',
-					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'opts','localStorageService', function($scope, $modalInstance, step, addItemToQuiz, opts,localStorageService) {
-						$scope.emptySelection = false;
-						localStorageService.set('isPublic',opts.isPublic);
+					controller : [ '$scope', '$modalInstance', 'step', 'localStorageService', 'openCreateQuestion', function($scope, $modalInstance, step, localStorageService, openCreateQuestion) {
 						$scope.ok = function(items) {
-							var isEmpty = true;
-							angular.forEach(items, function(item) {
-								if (item.selected === true) {
-									isEmpty = false;
-									addItemToQuiz(item, step);
-								}
-							});
-
-							$scope.emptySelection = isEmpty;
-							if (!isEmpty) {
-								$modalInstance.close();
+							$scope.selectedItems = _.filter(items, 'selected');
+							if ($scope.selectedItems.length > 0) {
+								$modalInstance.close($scope.selectedItems);
 							}
 						};
-
+						$scope.createQuestion = function() {
+							openCreateQuestion(step, function() {
+								$modalInstance.close();
+							});
+						};
 						$scope.cancel = function() {
 							$modalInstance.dismiss('cancel');
 						};
@@ -302,16 +296,18 @@ angular.module('lergoApp').controller(
 						step : function() {
 							return step;
 						},
-						addItemToQuiz : function() {
-							return $scope.addItemToQuiz;
-						},
-
-						opts : function() {
-							return {
-								'isPublic' : !!isPublic
-							};
+						openCreateQuestion : function() {
+							return $scope.openCreateQuestion;
 						}
 					}
+				});
+				modelInstance.opened.then(function(result) {
+					callback();
+				});
+				modelInstance.result.then(function(items) {
+					angular.forEach(items, function(item) {
+						$scope.addItemToQuiz(item, step);
+					});
 				});
 			};
 
@@ -321,7 +317,7 @@ angular.module('lergoApp').controller(
 				}
 			};
 
-			$scope.openCreateQuestion = function(step) {
+			$scope.openCreateQuestion = function(step,callback) {
 				QuestionsService.createQuestion({
 					'subject' : $scope.lesson.subject,
 					'age' : $scope.lesson.age,
@@ -329,20 +325,20 @@ angular.module('lergoApp').controller(
 					'tags' : $scope.lesson.tags
 				}).then(function(result) {
 					$scope.errorMessage = null;
-					$scope.openCreateUpdateQuestionDialog(step, result.data, true);
+					$scope.openCreateUpdateQuestionDialog(step, result.data, true,callback);
 				}, function(result) {
 					$scope.error = result.data;
 					$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
 					$log.error($scope.errorMessage);
 				});
 			};
-			$scope.openCreateUpdateQuestionDialog = function(step, quizItem, isCreate) {
-				$modal.open({
+			$scope.openCreateUpdateQuestionDialog = function(step, quizItem, isCreate, callback) {
+				var modelInstance = $modal.open({
 					templateUrl : 'views/questions/modalupdate.html',
 					windowClass : 'question-create-dialog',
 					backdrop : 'static',
-					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'quizItem', 'QuestionsService', 'isCreate', 'lessonOverrideQuestion',
-							function($scope, $modalInstance, step, addItemToQuiz, quizItem, QuestionsService, isCreate, lessonOverrideQuestion) {
+					controller : [ '$scope', '$modalInstance', 'step', 'quizItem', 'QuestionsService', 'isCreate', 'lessonOverrideQuestion', 'openQuestionBankDialog',
+							function($scope, $modalInstance, step, quizItem, QuestionsService, isCreate, lessonOverrideQuestion, openQuestionBankDialog) {
 								$scope.quizItem = quizItem;
 								$scope.permissions = {}; // this object will
 								// be updated by
@@ -350,8 +346,7 @@ angular.module('lergoApp').controller(
 								// UpdateQuestionCtrl.
 								$scope.create = isCreate;
 								$scope.ok = function(item) {
-									addItemToQuiz(item, step);
-									$modalInstance.close();
+									$modalInstance.close(item);
 								};
 
 								/**
@@ -393,7 +388,13 @@ angular.module('lergoApp').controller(
 									if (!$scope.isValid(item)) {
 										QuestionsService.deleteQuestion(item._id);
 									}
-									$modalInstance.dismiss('cancel');
+									if ($scope.create) {
+										openQuestionBankDialog(step, function() {
+											$modalInstance.dismiss('cancel');
+										});
+									} else {
+										$modalInstance.dismiss('cancel');
+									}
 								};
 								$scope.isValid = function(quizItem) {
 									if (!quizItem || !quizItem.type) {
@@ -412,13 +413,19 @@ angular.module('lergoApp').controller(
 						lessonOverrideQuestion : function() {
 							return lessonOverrideQuestionAndReopenDialog;
 						},
-						addItemToQuiz : function() {
-							return $scope.addItemToQuiz;
-						},
 						isCreate : function() {
 							return isCreate;
+						},
+						openQuestionBankDialog : function() {
+							return $scope.openQuestionBankDialog;
 						}
 					}
+				});
+				modelInstance.opened.then(function(result) {
+					callback();
+				});
+				modelInstance.result.then(function(item) {
+					$scope.addItemToQuiz(item, step);
 				});
 			};
 			$scope.$on('$locationChangeStart', function(event) {
