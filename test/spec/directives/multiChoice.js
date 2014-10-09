@@ -3,7 +3,7 @@
 describe('Directive: multiChoice', function() {
 
 	// load the directive's module
-	beforeEach(module('lergoApp'));
+	beforeEach(module('lergoApp','directives-templates'));
 
 	var element, scope;
 
@@ -12,8 +12,9 @@ describe('Directive: multiChoice', function() {
 	}));
 
 	it('should make hidden element visible', inject(function($compile) {
-		element = angular.element('<multi-choice></multi-choice>');
+		element = angular.element('<div multi-choice></div>');
 		element = $compile(element)(scope);
-		expect(element.text()).toBe('this is the multiChoice directive');
+        scope.$digest();
+		expect(typeof(element.children().scope().isMultiChoiceMultiAnswer)).toBe('function');
 	}));
 });

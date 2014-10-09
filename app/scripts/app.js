@@ -49,7 +49,8 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
 		controller : 'QuestionsUpdateCtrl'
 	}).when('/public/homepage', {
 		templateUrl : 'views/homepage.html',
-		controller : 'HomepageCtrl'
+		controller : 'HomepageCtrl',
+        reloadOnSearch: false
 	})
 	// todo - remove this url. use plural version
 	// '/user/lessons/:lessonId/update'
@@ -62,7 +63,8 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
 		templateUrl : 'views/partials/_create.html', // todo: move
 		// this view to
 		// view/create/_lessons.html
-		controller : 'BaseLayoutCreateCtrl'
+		controller : 'BaseLayoutCreateCtrl',
+        reloadOnSearch:false
 	}).when('/user/lessons/:lessonId/update', {
 		templateUrl : 'views/lessons/update.html',
 		controller : 'LessonsUpdateCtrl'

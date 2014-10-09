@@ -3,7 +3,7 @@
 describe('Directive: helperContent', function() {
 
 	// load the directive's module
-	beforeEach(module('lergoApp'));
+	beforeEach(module('lergoApp', 'directives-templates', 'lergoBackendMock'));
 
 	var element, scope;
 
@@ -12,8 +12,9 @@ describe('Directive: helperContent', function() {
 	}));
 
 	it('should make hidden element visible', inject(function($compile) {
-		element = angular.element('<-helper-content></-helper-content>');
+		element = angular.element('<div helper-content></div>');
 		element = $compile(element)(scope);
-		expect(element.text()).toBe('this is the HelperContent directive');
+        scope.$digest();
+		expect(typeof(element.children().scope().isSaving)).toBe('function');
 	}));
 });

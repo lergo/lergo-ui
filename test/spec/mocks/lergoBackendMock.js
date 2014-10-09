@@ -19,6 +19,7 @@ angular.module('lergoBackendMock', []).run(function($httpBackend){
     $httpBackend.whenGET('/backend/tags/filter').respond(200, '[]');
     $httpBackend.whenGET('/backend/reports/students').respond(200, '[]');
     $httpBackend.whenGET('/backend/users/usernames').respond(200, '[]');
+    $httpBackend.whenGET('/backend/helpercontents?query=%7B%22locale%22:%22en%22%7D').respond(200, '[]');
 
 
 });

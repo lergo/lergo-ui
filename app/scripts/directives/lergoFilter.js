@@ -26,7 +26,7 @@
  * 
  */
 
-angular.module('lergoApp').directive('lergoFilter', function($rootScope, FilterService, LergoClient, $log, localStorageService) {
+angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoClient, FilterService, $log, localStorageService, $location, $routeParams ) {
 	return {
 		templateUrl : 'views/directives/_lergoFilter.html',
 		restrict : 'A',
@@ -37,9 +37,9 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, FilterS
 		},
 		link : function postLink(scope/* , element, attrs */) {
 
-			scope.$watch('model', scope.change, true);
+			scope.$watch('model',scope.change,true);
 
-			var $scope = scope;
+            var $scope = scope;
 
 			$scope.ageFilter = {};
 
@@ -157,16 +157,17 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, FilterS
 				}
 			}, true);
 
-			function minMaxFilter(propertyName) {
+			function minMaxFilter(propertyName, scopeVariable) {
 				return function(newValue, oldValue) {
-					if (newValue === oldValue) {
+
+					if (newValue === oldValue || newValue === null) {
 						return;
 					}
-
 					if (!!newValue.min || !!newValue.max) {
 						$scope.model[propertyName] = {};
 					} else {
 						$scope.model[propertyName] = null;
+                        $scope[scopeVariable] = null;
 					}
 
 					if (!!newValue.min) {
@@ -179,9 +180,9 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, FilterS
 				};
 			}
 
-			$scope.$watch('ageFilter', minMaxFilter('age'), true);
-			$scope.$watch('viewsFilter', minMaxFilter('views'), true);
-			$scope.$watch('correctPercentage', minMaxFilter('correctPercentage'), true);
+			$scope.$watch('ageFilter', minMaxFilter('age', 'ageFilter'), true);
+			$scope.$watch('viewsFilter', minMaxFilter('views', 'viewsFilter'), true);
+			$scope.$watch('correctPercentage', minMaxFilter('correctPercentage', 'correctPercentage'), true);
 
 			// handle 'all' values or null values - simply remove them from the
 			// model.
@@ -217,7 +218,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, FilterS
 
 			/**
 			 * the keyName to inflict on the
-			 * 
+			 *
 			 * @param keyName -
 			 *            the key name in the scope/local storage we want to
 			 *            load
@@ -228,12 +229,18 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, FilterS
 			function load(keyName, relevancy) {
 				if (!!scope.opts && !!scope.opts[relevancy]) {
 					var args = keyName.split('.');
-					var saved = localStorageService.get('lergoFilter.' + keyName);
-					var scopeVariable = scope;
+                    var filterName = 'lergoFilter.' + keyName;
+                    var saved = ( $routeParams[filterName] && JSON.parse($routeParams[filterName] ) ) || localStorageService.get(filterName);
+                    if ( _.isEmpty(saved) ) {
+                        saved = null;
+                    }
+                    var scopeVariable = scope;
 					if (!!saved) {
 						for ( var i = 0; i < args.length - 1; i++) {
 							scopeVariable = scopeVariable[args[i]];
 						}
+
+                        $location.search(filterName, saved === null ? null : JSON.stringify(saved));
 					}
 					scopeVariable[args[args.length - 1]] = saved;
 				}
@@ -258,8 +265,13 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, FilterS
 				$scope.$watch(keyName, function(newValue, oldValue) {
 
 					if (newValue !== oldValue && !!scope.opts[relevancy]) {
+                        if (_.isEmpty(newValue) ){
+                            newValue = null;
+                        }
 						$log.info(keyName + ' has changed. persisting [' + newValue + ']');
-						localStorageService.set('lergoFilter.' + keyName, newValue);
+                        var filterName = 'lergoFilter.' + keyName;
+                        localStorageService.set(filterName, newValue);
+                        $location.search(filterName, newValue === null ? null : angular.toJson(newValue));
 					}
 				}, true);
 			}

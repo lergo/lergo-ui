@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, FilterService, $log, $location, $rootScope, localStorageService, $window) {
+angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, $routeParams, FilterService, $log, $location, $rootScope, localStorageService, $window) {
 
 	$scope.reportsFilter = {};
 	$scope.filterPage = {};
@@ -22,26 +22,30 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		reportType : 'students',
 		selectAll : false
 	};
-	if (!!localStorageService.get('reportType')) {
-		$scope.reportsPage.reportType = localStorageService.get('reportType');
-	}
+
+
 
 	function isMyReports() {
 		return $scope.reportsPage.reportType === 'mine';
 	}
 
-	$scope.$watch('reportsPage.reportType', function(newValue, oldValue) {
-		if (newValue !== oldValue) {
-			$log.info('reportType changed');
-			$scope.reportsFilterOpts.showStudents = isStudentsReports();
-			$scope.filterPage.current = 1;
-			$scope.filterPage.updatedLast = new Date().getTime(); // create a
-																	// 'change'
-																	// event
-																	// artificially..
-			localStorageService.set('reportType', newValue);
-		}
+	$scope.$watch('reportsPage.reportType', function(newValue/*, oldValue*/) {
+        $log.info('reportType changed');
+        $scope.reportsFilterOpts.showStudents = isStudentsReports();
+        $scope.filterPage.current = 1;
+        $scope.filterPage.updatedLast = new Date().getTime(); // create a
+                                                                // 'change'
+                                                                // event
+                                                                // artificially..
+        localStorageService.set('reportType', newValue);
+        $location.search('reportType',newValue);
+
 	});
+
+    var reportType = $routeParams.reportType || localStorageService.get('reportType');
+    if ( !!reportType ) {
+        $scope.reportsPage.reportType = reportType;
+    }
 
 	function isStudentsReports() {
 		return $scope.reportsPage.reportType === 'students';
