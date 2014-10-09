@@ -276,9 +276,9 @@ angular.module('lergoApp').controller(
 					templateUrl : 'views/questions/modalindex.html',
 					windowClass : 'question-bank-dialog',
 					backdrop : 'static',
-					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'opts', function($scope, $modalInstance, step, addItemToQuiz, opts) {
+					controller : [ '$scope', '$modalInstance', 'step', 'addItemToQuiz', 'opts','localStorageService', function($scope, $modalInstance, step, addItemToQuiz, opts,localStorageService) {
 						$scope.emptySelection = false;
-						$scope.isPublic = opts.isPublic;
+						localStorageService.set('isPublic',opts.isPublic);
 						$scope.ok = function(items) {
 							var isEmpty = true;
 							angular.forEach(items, function(item) {
