@@ -7,6 +7,6 @@
 			<button class="btn " ng-click="ok(items)">{{'add' |i18n}}</button>
 			<button class="btn btn-default" ng-click="cancel()">{{'cancel' |i18n}}</button>
 		</div>
-		<div ng-show="!!emptySelection" class="errorMessage">{{'questions.add.emptySelection' | i18n}}</div>
+		<div ng-show="selectedItems.length===0" class="errorMessage">{{'questions.add.emptySelection' | i18n}}</div>
 	</div>
 </div>
