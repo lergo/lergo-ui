@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, TagsService, $location, $log, FilterService, $rootScope, $window) {
+angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, TagsService, $location, $log, localStorageService, FilterService, $rootScope, $window) {
 	$scope.isModal = false;
 
 	$scope.totalResults = 0;
@@ -34,11 +34,17 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		});
 	};
 
-	$scope.loadQuestions = function(isPublic) {
-
-		if (isPublic !== undefined) {
-			$scope.isPublic = isPublic;
+	$scope.loadPublicQuestion = function(isPublic) {
+		var oldValue = JSON.parse(localStorageService.get('isPublic'));
+		if (oldValue !== isPublic) {
+			localStorageService.set('isPublic', isPublic);
+			$scope.filterPage.current = 1;
+			$scope.filterPage.updatedLast = new Date().getTime();
 		}
+	};
+
+	$scope.loadQuestions = function() {
+		$scope.isPublic = JSON.parse(localStorageService.get('isPublic'));
 		var queryObj = {
 			'filter' : _.merge({}, $scope.questionsFilter),
 			'sort' : {
@@ -59,6 +65,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 			$scope.errorMessage = null;
 			$scope.totalResults = result.data.total;
 			$scope.filterPage.count = result.data.count;
+			updateUserInfo($scope.items);
 		}, function(result) {
 			$scope.error = result.data;
 			$scope.errorMessage = 'Error in fetching questions : ' + result.data.message;
@@ -67,6 +74,22 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 
 		scrollToPersistPosition();
 	};
+
+	function updateUserInfo(questions) {
+		var users = _.uniq(_.compact(_.map(questions, 'userId')));
+
+		// get all users we copied from..
+		LergoClient.users.findUsersById(users).then(function(result) {
+			// turn list of users to map where id is map
+			var usersById = _.object(_.map(result.data, '_id'), result.data);
+
+			_.each(questions, function(q) {
+				q.user = usersById[q.userId];
+			});
+
+			$scope.items = questions;
+		});
+	}
 
 	$scope.getAnswers = function(quizItem) {
 		if (!quizItem.type) {

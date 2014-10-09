@@ -186,6 +186,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 				// be
 				// coming from translate service.
 				lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
+				lesson.subject=report.data.lesson.subject;
 				lesson.steps = [];
 				lesson.description = report.data.lesson.description;
 				lesson.lastUpdate = new Date().getTime();
