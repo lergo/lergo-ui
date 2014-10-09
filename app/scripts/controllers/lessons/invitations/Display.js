@@ -3,37 +3,37 @@
 angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, $filter, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope, FilterService) {
 
 	$log.info('loading invitation', $routeParams.invitationId);
-    var errorWhileSaving = false;
+	var errorWhileSaving = false;
 	var updateChange = new ContinuousSave({
 		'saveFn' : function(value) {
 			$log.info('updating report');
-            var finished = value.data.finished;
+			var finished = value.data.finished;
 
-            if ( finished ){
-                getWrongQuestion(value);
-            }
+			if (finished) {
+				getWrongQuestion(value);
+			}
 
-			return LergoClient.reports.update(value).then(function( result ){
-                if ( finished ){
-                    if ( errorWhileSaving ){
-                        toastr.success($filter('i18n')('report.saved.successfully'));
-                    }
-                    errorWhileSaving = false;
-                    if (!$scope.invitation.anonymous) {
-                        LergoClient.reports.ready($routeParams.reportId);
-                    } else {
-                        $log.info('not sending report link because anonymous');
-                    }
-                }
-                return result;
-            }, function( result ){
-                if ( finished ){
-                    errorWhileSaving = true;
-                    toastr.error($filter('i18n')('report.error.while.updating'));
-                    $log.error('error while updating report',result.data);
-                }
-                return result;
-            });
+			return LergoClient.reports.update(value).then(function(result) {
+				if (finished) {
+					if (errorWhileSaving) {
+						toastr.success($filter('i18n')('report.saved.successfully'));
+					}
+					errorWhileSaving = false;
+					if (!$scope.invitation.anonymous) {
+						LergoClient.reports.ready($routeParams.reportId);
+					} else {
+						$log.info('not sending report link because anonymous');
+					}
+				}
+				return result;
+			}, function(result) {
+				if (finished) {
+					errorWhileSaving = true;
+					toastr.error($filter('i18n')('report.error.while.updating'));
+					$log.error('error while updating report', result.data);
+				}
+				return result;
+			});
 
 		}
 	});
@@ -73,7 +73,8 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		return !!$scope.invitation && !!$scope.hasNextStep && !$scope.hasNextStep();
 	}, function(newValue/* , oldValue */) {
 		if (!!newValue) {
-            // just notify end lesson. do nothing else. wait for report to update.
+			// just notify end lesson. do nothing else. wait for report to
+			// update.
 			$rootScope.$broadcast('endLesson');
 		}
 	});
@@ -186,12 +187,15 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 				// be
 				// coming from translate service.
 				lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
+				lesson.subject = report.data.lesson.subject;
 				lesson.steps = [];
 				lesson.description = report.data.lesson.description;
 				lesson.lastUpdate = new Date().getTime();
 				var step = {
 					'type' : 'quiz',
-					'quizItems' : []
+					'quizItems' : [],
+					'testMode' : 'False',
+					'shuffleQuestion' : true
 				};
 				lesson.steps.push(step);
 				lesson.steps[0].quizItems = $scope.wrongQuestions;
