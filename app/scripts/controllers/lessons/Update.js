@@ -301,7 +301,7 @@ angular.module('lergoApp').controller(
 						}
 					}
 				});
-				modelInstance.opened.then(function(result) {
+				modelInstance.opened.then(function() {
 					callback();
 				});
 				modelInstance.result.then(function(items) {
@@ -421,7 +421,7 @@ angular.module('lergoApp').controller(
 						}
 					}
 				});
-				modelInstance.opened.then(function(result) {
+				modelInstance.opened.then(function() {
 					callback();
 				});
 				modelInstance.result.then(function(item) {
