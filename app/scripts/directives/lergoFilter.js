@@ -26,7 +26,7 @@
  * 
  */
 
-angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoClient, FilterService, $log, localStorageService, $location, $routeParams ) {
+angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoClient, $timeout, FilterService, $log, localStorageService, $location, $routeParams ) {
 	return {
 		templateUrl : 'views/directives/_lergoFilter.html',
 		restrict : 'A',
@@ -159,6 +159,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 
 			function minMaxFilter(propertyName, scopeVariable) {
 				return function(newValue, oldValue) {
+                    $log.info('min max filter changed ', scopeVariable, newValue, oldValue, propertyName);
 
 					if (newValue === oldValue || newValue === null) {
 						return;
@@ -177,6 +178,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 					if (!!newValue.max) {
 						$scope.model[propertyName].dollar_lte = newValue.max;
 					}
+                    $log.info('min max filter applied', $scope.model[propertyName]);
 				};
 			}
 
@@ -230,6 +232,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				if (!!scope.opts && !!scope.opts[relevancy]) {
 					var args = keyName.split('.');
                     var filterName = 'lergoFilter.' + keyName;
+                    $log.info('loading : ' + filterName );
                     var saved = ( $routeParams[filterName] && JSON.parse($routeParams[filterName] ) ) || localStorageService.get(filterName);
                     if ( _.isEmpty(saved) ) {
                         saved = null;
@@ -242,6 +245,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 
                         $location.search(filterName, saved === null ? null : JSON.stringify(saved));
 					}
+
+                    $log.info('loading filter', filterName, saved, scopeVariable[args[args.length - 1]] );
 					scopeVariable[args[args.length - 1]] = saved;
 				}
 			}
@@ -295,17 +300,23 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				save(keyName, relevancy);
 			}
 
-			persist('ageFilter', 'showAge');
-			persist('viewsFilter', 'showViews');
-			persist('correctPercentage', 'showCorrectPercentage');
-			persist('model.language', 'showLanguage');
-			persist('model.subject', 'showSubject');
-			persist('reportStudent', 'showStudents');
-			persist('filterTags', 'showTags');
-			persist('reportStatusValue', 'showReportStatus');
-			persist('statusValue', 'showLessonStatus');
-			persist('model.searchText', 'showSearchText');
-			persist('createdBy', 'showCreatedBy');
+            function persisAll() {
+                persist('ageFilter', 'showAge');
+                persist('viewsFilter', 'showViews');
+                persist('correctPercentage', 'showCorrectPercentage');
+                persist('model.language', 'showLanguage');
+                persist('model.subject', 'showSubject');
+                persist('reportStudent', 'showStudents');
+                persist('filterTags', 'showTags');
+                persist('reportStatusValue', 'showReportStatus');
+                persist('statusValue', 'showLessonStatus');
+                persist('model.searchText', 'showSearchText');
+                persist('createdBy', 'showCreatedBy');
+            }
+
+
+            // http://stackoverflow.com/q/26300411/1068746
+            $timeout(persisAll);
 		}
 	};
 });
