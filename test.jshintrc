@@ -30,6 +30,8 @@
         "expect" :false,
         "angular":false,
         "spyOn" : false,
-        "$" : false
+        "$" : false,
+        "runs" : false,
+        "waitsFor" : false
     }
 }
