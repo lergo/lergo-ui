@@ -15,5 +15,6 @@ describe('Directive: createYourOwnBox', function () {
         element = $compile(element)($rootScope);
         $rootScope.$digest();
         expect(typeof(element.children().scope().create)).toBe('function');
+        expect(1).toBe(2);
     }));
 });
