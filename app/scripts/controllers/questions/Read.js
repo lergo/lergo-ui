@@ -15,6 +15,8 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 			$scope.permissions = result.data;
 		});
 
+
+        // todo: this looks a copy paste from Intro.js.. need to refactor!
 		if (!!$scope.quizItem.copyOf) {
 			QuestionsService.findQuestionsById($scope.quizItem.copyOf).then(function(result) {
 				var originalQuestions = result.data;
