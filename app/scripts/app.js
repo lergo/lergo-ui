@@ -111,7 +111,8 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
 		controller : 'SessionResetPasswordRequestCtrl'
 	}).when('/admin/homepage', {
 		templateUrl : 'views/admin/homepage.html',
-		controller : 'AdminHomepageCtrl'
+		controller : 'AdminHomepageCtrl',
+        reloadOnSearch:false
 	}).when('/user/homepage', {
 		redirectTo : '/public/homepage'
 	}).when('/user/Parents', {
