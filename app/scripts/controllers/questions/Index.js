@@ -1,8 +1,6 @@
 'use strict';
 
 angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, TagsService, $location, $log, localStorageService, FilterService, $rootScope, $window) {
-	$scope.isModal = false;
-
 	$scope.totalResults = 0;
 	$scope.questionsFilter = {};
 	$scope.filterPage = {};
@@ -33,9 +31,14 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 			$log.error($scope.errorMessage);
 		});
 	};
-
+	$scope.showQuestionBank = function() {
+		if ($scope.loadPublic !== undefined) {
+			$scope.loadPublicQuestion($scope.loadPublic);
+		}
+		return !$scope.isCreate;
+	};
 	$scope.loadPublicQuestion = function(isPublic) {
-		var oldValue = JSON.parse(localStorageService.get('isPublic'));
+		var oldValue = (localStorageService.get('isPublic') == "true") ? true : false;
 		if (oldValue !== isPublic) {
 			localStorageService.set('isPublic', isPublic);
 			$scope.filterPage.current = 1;
@@ -44,7 +47,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	};
 
 	$scope.loadQuestions = function() {
-		$scope.isPublic = JSON.parse(localStorageService.get('isPublic'));
+		$scope.isPublic = (localStorageService.get('isPublic') == "true") ? true : false;
 		var queryObj = {
 			'filter' : _.merge({}, $scope.questionsFilter),
 			'sort' : {

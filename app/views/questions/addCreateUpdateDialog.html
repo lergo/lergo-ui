@@ -1,0 +1,39 @@
+<div ng-show="!isUpdate" class="menu">
+	<div>
+		<a class="btn-link" ng-click="showCreate()">{{'questions.createNewQuestion'|i18n}}</a>
+	</div>
+	<div>
+		<a class="btn-link" ng-click="loadQuestions(false)">{{'questions.myQuestions'|i18n}}</a>
+	</div>
+	<div>
+		<a class="btn-link" ng-click="loadQuestions(true)">{{'questions.allQuestions'|i18n}}</a>
+	</div>
+</div>
+<div ng-controller="QuestionsIndexCtrl" ng-show="showQuestionBank()">
+	<div>
+		<div class="modal-body base-layout-class base-layout-modal">
+			<div ng-include="'views/questions/_index.html'"></div>
+		</div>
+		<div class="modal-footer" >
+			<div>
+				<button class="btn " ng-click="addSelectedItems(items)">{{'add' |i18n}}</button>
+				<button class="btn btn-default" ng-click="cancel()">{{'cancel' |i18n}}</button>
+			</div>
+			<div ng-show="selectedItems.length===0" class="errorMessage">{{'questions.add.emptySelection' | i18n}}</div>
+		</div>
+	</div>
+</div>
+<div ng-controller="QuestionsUpdateCtrl" ng-show="!!isCreate">
+	<div class="modal-body base-layout-class base-layout-modal " style="height: 400px; overflow-y: auto">
+		<div ng-include="'views/questions/_update.html'"></div>
+	</div>
+	<div class="modal-footer"  ng-show="!isUpdate">
+		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="addItem(quizItem)">{{'add' | i18n}}</button>
+		<button class="btn btn-default" ng-click="cancel(quizItem)">{{'cancel' | i18n}}</button>
+		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+	</div>
+	<div class="modal-footer"  ng-show="!!isUpdate">
+		<button class="btn" ng-click="cancel(quizItem)">{{'back' | i18n}}</button>
+		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+	</div>
+</div>
