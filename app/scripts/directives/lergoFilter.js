@@ -118,7 +118,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
                             'dollar_exists': true
                         };
                     } else {
-                        $scope.model.public = null;
+                        delete $scope.model.public;
                     }
                 }
             };

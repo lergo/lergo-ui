@@ -1,4 +1,4 @@
-<div class="base-layout admin">
+<div class="base-layout admin" load-filter-and-paging="loadLessons()">
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
 			<div class="lergo-h1">{{ 'admin.allLessons' | i18n }} [ {{ 'lessons.total' | i18n }}: {{systemStats.lessonsCount}} ; {{'admin.public'|i18n}}:
@@ -63,8 +63,8 @@
 			</table>
 		</div>
 		<div class="page-content-sidebar">
-			<div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="loadLessons()"></div>
+			<div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="loadLessons()" on-load="filterLoaded()"></div>
 		</div>
 	</div>
-    <div lergo-paging page="filterPage" on-change="loadLessons()"></div>
+    <div lergo-paging page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
 </div>
