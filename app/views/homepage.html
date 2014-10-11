@@ -1,4 +1,4 @@
-<div class="base-layout">
+<div class="base-layout" load-filter-and-paging="loadLessons()">
 	<div admin-section>
 		<a href="#!/admin/homepage">Admin Homepage</a>
 	</div>
@@ -105,10 +105,10 @@
 
 
 			<div class="sidebar page-content-sidebar">
-                <div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts"></div>
+                <div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>
 
 			</div>
 		</div>
-        <div lergo-paging page="filterPage" on-change="loadLessons()"></div>
+        <div lergo-paging page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
 	</div>
 </div>
