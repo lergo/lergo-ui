@@ -38,7 +38,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		return !$scope.isCreate;
 	};
 	$scope.loadPublicQuestion = function(isPublic) {
-		var oldValue = (localStorageService.get('isPublic') == "true") ? true : false;
+		var oldValue = (localStorageService.get('isPublic') === 'true') ? true : false;
 		if (oldValue !== isPublic) {
 			localStorageService.set('isPublic', isPublic);
 			$scope.filterPage.current = 1;
@@ -47,7 +47,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	};
 
 	$scope.loadQuestions = function() {
-		$scope.isPublic = (localStorageService.get('isPublic') == "true") ? true : false;
+		$scope.isPublic = (localStorageService.get('isPublic') === 'true') ? true : false;
 		var queryObj = {
 			'filter' : _.merge({}, $scope.questionsFilter),
 			'sort' : {

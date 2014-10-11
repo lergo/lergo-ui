@@ -224,9 +224,6 @@ angular.module('lergoApp').controller(
 				}
 
 			};
-			$scope.addCreateQuestion = function(step) {
-				$scope.openQuestionDialog(step, null, lesson);
-			};
 
 			function lessonOverrideQuestion(questionIdToOverride, callback) {
 				$log.info('in lesson controller, overriding question');
@@ -270,7 +267,7 @@ angular.module('lergoApp').controller(
 			};
 			$scope.openUpdateQuestion = function(step, quizItemId) {
 				if ($scope.quizItemsData.hasOwnProperty(quizItemId)) {
-					openQuestionDialog(step, $scope.quizItemsData[quizItemId], $scope.lesson, true);
+					openQuestionDialog(step, $scope.quizItemsData[quizItemId], true);
 				}
 			};
 			$scope.addCreateQuestion = function(step) {
@@ -281,20 +278,20 @@ angular.module('lergoApp').controller(
 					'tags' : $scope.lesson.tags
 				}).then(function(result) {
 					$scope.errorMessage = null;
-					openQuestionDialog(step, result.data, $scope.lesson, false);
+					openQuestionDialog(step, result.data,false);
 				}, function(result) {
 					$scope.error = result.data;
 					$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
 					$log.error($scope.errorMessage);
 				});
 			};
-			function openQuestionDialog(step, quizItem, lesson, isUpdate) {
+			function openQuestionDialog(step, quizItem, isUpdate) {
 				var modelContent = {};
 				modelContent.templateUrl = 'views/questions/addCreateUpdateDialog.html';
 				modelContent.windowClass = 'question-bank-dialog';
 				modelContent.backdrop = 'static';
-				modelContent.controller = [ '$scope', '$modalInstance', 'quizItem', 'lesson', 'lessonOverrideQuestion', 'QuestionsService', 'isUpdate',
-						function($scope, $modalInstance, quizItem, lesson, lessonOverrideQuestion, QuestionsService, isUpdate) {
+				modelContent.controller = [ '$scope', '$modalInstance', 'quizItem', 'lessonOverrideQuestion', 'QuestionsService', 'isUpdate',
+						function($scope, $modalInstance, quizItem, lessonOverrideQuestion, QuestionsService, isUpdate) {
 
 							// this object will be updated by child scope
 							// UpdateQuestionCtrl.
@@ -311,7 +308,7 @@ angular.module('lergoApp').controller(
 							};
 							$scope.addItem = function(item) {
 								var items = [];
-								items.push(quizItem);
+								items.push(item);
 								$modalInstance.close(items);
 							};
 							$scope.cancel = function(item) {
@@ -365,9 +362,6 @@ angular.module('lergoApp').controller(
 					},
 					quizItem : function() {
 						return quizItem;
-					},
-					lesson : function() {
-						return lesson;
 					},
 					isUpdate : function() {
 						return isUpdate;
