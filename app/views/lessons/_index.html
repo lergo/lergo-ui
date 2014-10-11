@@ -1,4 +1,4 @@
-<div id="lessonsIndex">
+<div id="lessonsIndex" load-filter-and-paging="loadLessons()">
 	<div class="lergo-label">
 		<span class="errorMessage" ng-show='errorMessage' style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
 	</div>
@@ -42,9 +42,9 @@
 			</table>
 		</div>
         <div class="sidebar page-content-sidebar">
-            <div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts"></div>
+            <div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>
 
         </div>
 	</div>
-    <div lergo-paging page="filterPage" on-change="loadLessons()"></div>
+    <div lergo-paging page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
 </div>
