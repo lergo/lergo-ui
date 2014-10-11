@@ -9,7 +9,7 @@ Lergo-UI
  * [Lergo Campaign](http://www.indiegogo.com/projects/lergo-free-kids-education)
 
 
-## Workflow
+## Workflow 
 
 We are using git flow  
 

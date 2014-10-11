@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller(
-		'LessonsUpdateCtrl',
+angular.module('lergoApp').controller('LessonsUpdateCtrl',
 		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter) {
 			$window.scrollTo(0, 0);
 			$scope.subjects = FilterService.subjects;
@@ -271,43 +270,69 @@ angular.module('lergoApp').controller(
 				});
 			}
 
-			$scope.openQuestionBankDialog = function(step, callback) {
-				var modelInstance = $modal.open({
-					templateUrl : 'views/questions/modalindex.html',
-					windowClass : 'question-bank-dialog',
-					backdrop : 'static',
-					controller : [ '$scope', '$modalInstance', 'step', 'localStorageService', 'openCreateQuestion', function($scope, $modalInstance, step, localStorageService, openCreateQuestion) {
-						$scope.ok = function(items) {
-							$scope.selectedItems = _.filter(items, 'selected');
-							if ($scope.selectedItems.length > 0) {
-								$modalInstance.close($scope.selectedItems);
-							}
-						};
-						$scope.createQuestion = function() {
-							openCreateQuestion(step, function() {
-								$modalInstance.close();
-							});
-						};
-						$scope.cancel = function() {
-							$modalInstance.dismiss('cancel');
-						};
-					} ],
-					resolve : {
-						step : function() {
-							return step;
-						},
-						openCreateQuestion : function() {
-							return $scope.openCreateQuestion;
+			$scope.openQuestionBankDialog = function(step) {
+				var modelContent = {};
+				modelContent.templateUrl = 'views/questions/modalindex.html';
+				modelContent.windowClass = 'question-bank-dialog';
+				modelContent.backdrop = 'static';
+				modelContent.controller = [ '$scope', '$modalInstance', 'openCreateQuestion', 'QuestionsService', function($scope, $modalInstance, openCreateQuestion, QuestionsService) {
+					$scope.addSelectedItems = function(items) {
+						$scope.selectedItems = _.filter(items, 'selected');
+						if ($scope.selectedItems.length > 0) {
+							$modalInstance.close($scope.selectedItems);
 						}
+					};
+					$scope.addItem = function(item) {
+						var items = [];
+						items.push(item);
+						$modalInstance.close(items);
+					};
+
+					$scope.showMyQuestions = function() {
+						$scope.create = false;
+					};
+					$scope.showAllQuestions = function() {
+						$scope.create = false;
+					};
+					$scope.createQuestion = function() {
+						$scope.create = true;
+						if (!$scope.quizItem) {
+							openCreateQuestion(function(quizItem) {
+								$scope.quizItem = quizItem;
+								$scope.permissions = {};
+								$scope.permissions.canEdit = true;
+							});
+						}
+					};
+					$scope.addQuestion = function() {
+						$scope.create = false;
+					};
+					$scope.cancel = function() {
+						$modalInstance.dismiss($scope.quizItem);
+					};
+					$scope.isValid = function(quizItem) {
+						if (!quizItem || !quizItem.type) {
+							return false;
+						}
+						return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
+					};
+
+				} ];
+				modelContent.resolve = {
+					openCreateQuestion : function() {
+						return $scope.openCreateQuestion;
 					}
-				});
-				modelInstance.opened.then(function() {
-					callback();
-				});
+				};
+
+				var modelInstance = $modal.open(modelContent);
 				modelInstance.result.then(function(items) {
 					angular.forEach(items, function(item) {
 						$scope.addItemToQuiz(item, step);
 					});
+				}, function(item) {
+					if (!!item && (!item.type || !QuestionsService.getTypeById(item.type).isValid(item))) {
+						QuestionsService.deleteQuestion(item._id);
+					}
 				});
 			};
 
@@ -317,7 +342,7 @@ angular.module('lergoApp').controller(
 				}
 			};
 
-			$scope.openCreateQuestion = function(step,callback) {
+			$scope.openCreateQuestion = function(callback) {
 				QuestionsService.createQuestion({
 					'subject' : $scope.lesson.subject,
 					'age' : $scope.lesson.age,
@@ -325,84 +350,76 @@ angular.module('lergoApp').controller(
 					'tags' : $scope.lesson.tags
 				}).then(function(result) {
 					$scope.errorMessage = null;
-					$scope.openCreateUpdateQuestionDialog(step, result.data, true,callback);
+					callback(result.data);
 				}, function(result) {
 					$scope.error = result.data;
 					$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
 					$log.error($scope.errorMessage);
 				});
 			};
-			$scope.openCreateUpdateQuestionDialog = function(step, quizItem, isCreate, callback) {
+			$scope.openCreateUpdateQuestionDialog = function(step, quizItem) {
 				var modelInstance = $modal.open({
 					templateUrl : 'views/questions/modalupdate.html',
 					windowClass : 'question-create-dialog',
 					backdrop : 'static',
-					controller : [ '$scope', '$modalInstance', 'step', 'quizItem', 'QuestionsService', 'isCreate', 'lessonOverrideQuestion', 'openQuestionBankDialog',
-							function($scope, $modalInstance, step, quizItem, QuestionsService, isCreate, lessonOverrideQuestion, openQuestionBankDialog) {
-								$scope.quizItem = quizItem;
-								$scope.permissions = {}; // this object will
-								// be updated by
-								// child scope
-								// UpdateQuestionCtrl.
-								$scope.create = isCreate;
-								$scope.ok = function(item) {
-									$modalInstance.close(item);
-								};
+					controller : [ '$scope', '$modalInstance', 'step', 'QuestionsService', 'lessonOverrideQuestion', function($scope, $modalInstance, step, QuestionsService, lessonOverrideQuestion) {
+						$scope.quizItem = quizItem;
+						$scope.permissions = {}; // this object will
+						// be updated by
+						// child scope
+						// UpdateQuestionCtrl.
+						$scope.ok = function() {
+							$modalInstance.dismiss('ok');
+						};
 
-								/**
-								 * There are so many things we need to have to
-								 * enable copy and override, we better wrap it
-								 * in a function.
-								 */
-								$scope.canCopyAndOverride = function() {
+						/**
+						 * There are so many things we need to have to enable
+						 * copy and override, we better wrap it in a function.
+						 */
+						$scope.canCopyAndOverride = function() {
 
-									// we can query $scope.permissions even
-									// though it is populated in child scope
-									// because child controller supports update
-									// for my $scope.permissions model rather
-									// than overriding it
+							// we can query $scope.permissions even
+							// though it is populated in child scope
+							// because child controller supports update
+							// for my $scope.permissions model rather
+							// than overriding it
 
-									return !!lessonOverrideQuestion &&
-									// we should have a parent's function to
-									// complete the task
-									!!$scope.quizItem._id &&
-									// we should have an item to override
-									!!$scope.permissions &&
-									// we should have permissions from backend
-									!$scope.permissions.canEdit &&
-									// user should not be able to edit
-									!!$scope.permissions.canCopy;
-									// user should be able to copy
-								};
+							return !!lessonOverrideQuestion &&
+							// we should have a parent's function to
+							// complete the task
+							!!$scope.quizItem._id &&
+							// we should have an item to override
+							!!$scope.permissions &&
+							// we should have permissions from backend
+							!$scope.permissions.canEdit &&
+							// user should not be able to edit
+							!!$scope.permissions.canCopy;
+							// user should be able to copy
+						};
 
-								$scope.copyAndReplaceQuestion = function(item) {
-									$log.info('copying and replacing question from modal instance');
-									$modalInstance.close(); // we will soon open
-									// the new modal
-									// instance with the
-									// copied question.
-									lessonOverrideQuestion(step, item._id);
-								};
+						$scope.copyAndReplaceQuestion = function(item) {
+							$log.info('copying and replacing question from modal instance');
+							$modalInstance.close(item); // we will soon
+							// open
+							// the new modal
+							// instance with the
+							// copied question.
+							lessonOverrideQuestion(step, item._id);
+						};
 
-								$scope.cancel = function(item) {
-									if (!$scope.isValid(item)) {
-										QuestionsService.deleteQuestion(item._id);
-									}
-									if ($scope.create) {
-										openQuestionBankDialog(step, function() {
-											$modalInstance.dismiss('cancel');
-										});
-									} else {
-										$modalInstance.dismiss('cancel');
-									}
-								};
-								$scope.isValid = function(quizItem) {
-									if (!quizItem || !quizItem.type) {
-										return false;
-									}
-									return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
-								};
-							} ],
+						$scope.cancel = function(item) {
+							if (!$scope.isValid(item)) {
+								QuestionsService.deleteQuestion(item._id);
+							}
+							$modalInstance.dismiss('cancel');
+						};
+						$scope.isValid = function(quizItem) {
+							if (!quizItem || !quizItem.type) {
+								return false;
+							}
+							return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
+						};
+					} ],
 					resolve : {
 						quizItem : function() {
 							return quizItem;
@@ -412,17 +429,8 @@ angular.module('lergoApp').controller(
 						},
 						lessonOverrideQuestion : function() {
 							return lessonOverrideQuestionAndReopenDialog;
-						},
-						isCreate : function() {
-							return isCreate;
-						},
-						openQuestionBankDialog : function() {
-							return $scope.openQuestionBankDialog;
 						}
 					}
-				});
-				modelInstance.opened.then(function() {
-					callback();
 				});
 				modelInstance.result.then(function(item) {
 					$scope.addItemToQuiz(item, step);
