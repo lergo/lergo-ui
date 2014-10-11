@@ -37,6 +37,12 @@ angular.module('lergoApp')
                     $scope.availableTags = result.data;
                 });
 
+                $scope.getTagsLike = function (like) {
+                    return TagsService.getAllAvailableTags(like).then(function (result) {
+                        return result.data;
+                    });
+                };
+
 
                 function addTag(value) {
                     if (!!$scope.tags && $.grep($scope.tags, function (item/*, index*/) {
