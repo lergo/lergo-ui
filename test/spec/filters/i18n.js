@@ -25,9 +25,9 @@ describe('Filter: i18n', function () {
 
     }));
 
-    it('should return ???angular??? because we do not have a translation for that key', function () {
+    it('should return ???angularjs??? because we do not have a translation for that key', function () {
         var text = 'angularjs';
-        expect(i18n(text)).toBe('cool');
+        expect(i18n(text)).toBe('???angularjs???');
     });
 
 });

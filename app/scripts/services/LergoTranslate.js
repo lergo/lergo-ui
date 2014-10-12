@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').service('LergoTranslate',
-    function ( $routeParams, $http, localStorageService, $log , $rootScope, $location ) { /*LergoTranslate */
+    function ( $routeParams, $http, localStorageService, $log , $rootScope, $location, $route ) { /*LergoTranslate */
         // AngularJS will instantiate a singleton by calling "new" on this function
 
         if ( !!$rootScope.noTranslation ){
@@ -58,7 +58,13 @@ angular.module('lergoApp').service('LergoTranslate',
                 language = _language;
                 $rootScope.lergoLanguage = language;
                 localStorageService.set('lergoLanguage', _language);
-                $location.search('lergoLanguage', _language);
+
+                // don't cause a page refresh
+                if ( !!$route.current && !!$route.current.$$route &&  $route.current.$$route.reloadOnSearch === false ) {
+                    $location.search('lergoLanguage', _language);
+                }
+
+
             }else{
                 $log.info('language',language,'is not supported');
             }
@@ -126,7 +132,12 @@ angular.module('lergoApp').service('LergoTranslate',
         // guy - $routeParams is not yet initialized when this runs.
         // we are using a hack $$search.lergoLanguage
 
-        this.setLanguage($location.$$search.lergoLanguage || localStorageService.get('lergoLanguage') || DEFAULT_LANGUAGE);
+        var me = this;
+        me.setLanguage($location.$$search.lergoLanguage || localStorageService.get('lergoLanguage') || DEFAULT_LANGUAGE);
+        $rootScope.$on('$routeChangeSuccess', function(/* event, oldValue, newValue*/ ){
+            me.setLanguage($location.$$search.lergoLanguage || localStorageService.get('lergoLanguage') || DEFAULT_LANGUAGE);
+        });
+
     }
 
 

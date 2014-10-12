@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: questionReadLink', function () {
-    beforeEach(module('lergoApp', 'lergoBackendMock'));
+    beforeEach(module('lergoApp','directives-templates', 'lergoBackendMock' ));
 
     var element;
 
