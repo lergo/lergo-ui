@@ -5,11 +5,13 @@
 			{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
 			<span class="lergo-h4" style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
 				<span class="lergo-h4">{{option}}</span>
-				<input ng-show="!$last" style="width:{{getFillIntheBlankSize(quizItem,$index)}}px; display: inline; min-height: 28px;"
-					ng-model="quizItem.userAnswer[$index]" set-focus="$first">
-				<span ng-show="!$last && getAnswer() && step.testMode!=='True' && !getAnswer().correct ">
-					<i ng-show="!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-times wrong"></i>
-					<i ng-show="!!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-check correct"></i>
+				<span ng-show="!$last" style="display: inline-block;">
+					<input style="width:{{getFillIntheBlankSize(quizItem,$index)}}px; display: inline; min-height: 28px;" ng-model="quizItem.userAnswer[$index]"
+						set-focus="$first">
+					<span ng-show="getAnswer() && step.testMode!=='True' && !getAnswer().correct ">
+						<i ng-show="!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-times wrong"></i>
+						<i ng-show="!!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-check correct"></i>
+					</span>
 				</span>
 			</span>
 		</div>
