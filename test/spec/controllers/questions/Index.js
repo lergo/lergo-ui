@@ -16,7 +16,4 @@ describe('Controller: QuestionsIndexCtrl', function () {
         });
     }));
 
-    it('should put isModal as false on scope', function () {
-        expect(scope.isModal).toBe(false);
-    });
 });
