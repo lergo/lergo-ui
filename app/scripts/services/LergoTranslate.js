@@ -126,7 +126,7 @@ angular.module('lergoApp').service('LergoTranslate',
         // guy - $routeParams is not yet initialized when this runs.
         // we are using a hack $$search.lergoLanguage
 
-        this.setLanguage($location.$$search.lergoLanguage || localStorageService.get('lergoLanguage'));
+        this.setLanguage($location.$$search.lergoLanguage || localStorageService.get('lergoLanguage') || DEFAULT_LANGUAGE);
     }
 
 
