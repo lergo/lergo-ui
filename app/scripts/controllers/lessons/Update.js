@@ -1,4 +1,4 @@
-	'use strict';
+'use strict';
 
 angular.module('lergoApp').controller(
 		'LessonsUpdateCtrl',
@@ -278,7 +278,7 @@ angular.module('lergoApp').controller(
 					'tags' : $scope.lesson.tags
 				}).then(function(result) {
 					$scope.errorMessage = null;
-					openQuestionDialog(step, result.data,false);
+					openQuestionDialog(step, result.data, false);
 				}, function(result) {
 					$scope.error = result.data;
 					$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
@@ -303,13 +303,18 @@ angular.module('lergoApp').controller(
 							$scope.addSelectedItems = function(items) {
 								$scope.selectedItems = _.filter(items, 'selected');
 								if ($scope.selectedItems.length > 0) {
-									$modalInstance.close({selected : $scope.selectedItems,quizItem:$scope.quizItem});
+									$modalInstance.close({
+										selected : $scope.selectedItems,
+										quizItem : $scope.quizItem
+									});
 								}
 							};
 							$scope.addItem = function(item) {
 								var items = [];
 								items.push(item);
-								$modalInstance.close({selected : items});
+								$modalInstance.close({
+									selected : items
+								});
 							};
 							$scope.cancel = function(item) {
 								$modalInstance.dismiss(item);
@@ -385,12 +390,12 @@ angular.module('lergoApp').controller(
 			}
 
 			$scope.$on('$locationChangeStart', function(event) { // guy -
-																	// todo -
-																	// consider
-																	// using
-																	// route
-																	// change
-																	// instead.
+				// todo -
+				// consider
+				// using
+				// route
+				// change
+				// instead.
 				if (!!$scope.lesson && !$scope.lesson.name) {
 					var answer = confirm($filter('i18n')('deleteLesson.Confirm'));
 					if (!answer) {
