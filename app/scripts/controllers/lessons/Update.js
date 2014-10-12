@@ -1,4 +1,4 @@
-'use strict';
+	'use strict';
 
 angular.module('lergoApp').controller(
 		'LessonsUpdateCtrl',
@@ -303,13 +303,13 @@ angular.module('lergoApp').controller(
 							$scope.addSelectedItems = function(items) {
 								$scope.selectedItems = _.filter(items, 'selected');
 								if ($scope.selectedItems.length > 0) {
-									$modalInstance.close($scope.selectedItems);
+									$modalInstance.close({selected : $scope.selectedItems,quizItem:$scope.quizItem});
 								}
 							};
 							$scope.addItem = function(item) {
 								var items = [];
 								items.push(item);
-								$modalInstance.close(items);
+								$modalInstance.close({selected : items});
 							};
 							$scope.cancel = function(item) {
 								$modalInstance.dismiss(item);
@@ -369,10 +369,14 @@ angular.module('lergoApp').controller(
 				};
 
 				var modelInstance = $modal.open(modelContent);
-				modelInstance.result.then(function(items) {
-					angular.forEach(items, function(item) {
+				modelInstance.result.then(function(result) {
+					angular.forEach(result.selected, function(item) {
 						$scope.addItemToQuiz(item, step);
 					});
+					// dont save invalid questions
+					if (!!result.quizItem && !$scope.isValid(result.quizItem)) {
+						QuestionsService.deleteQuestion(result.quizItem._id);
+					}
 				}, function(item) {
 					if (!!item && !$scope.isValid(item)) {
 						QuestionsService.deleteQuestion(item._id);
@@ -380,7 +384,13 @@ angular.module('lergoApp').controller(
 				});
 			}
 
-			$scope.$on('$locationChangeStart', function(event) { // guy - todo - consider using route change instead.
+			$scope.$on('$locationChangeStart', function(event) { // guy -
+																	// todo -
+																	// consider
+																	// using
+																	// route
+																	// change
+																	// instead.
 				if (!!$scope.lesson && !$scope.lesson.name) {
 					var answer = confirm($filter('i18n')('deleteLesson.Confirm'));
 					if (!answer) {
