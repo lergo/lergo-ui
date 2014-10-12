@@ -46,7 +46,8 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
 		controller : 'LessonsInvitationsReportCtrl'
 	}).when('/user/questions/:questionId/update', {
 		templateUrl : 'views/questions/update.html',
-		controller : 'QuestionsUpdateCtrl'
+		controller : 'QuestionsUpdateCtrl',
+        reloadOnSearch:false
 	}).when('/public/homepage', {
 		templateUrl : 'views/homepage.html',
 		controller : 'HomepageCtrl',
@@ -56,7 +57,8 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
 	// '/user/lessons/:lessonId/update'
 	.when('/user/lesson/:lessonId/update', {
 		templateUrl : 'views/lessons/update.html',
-		controller : 'LessonsUpdateCtrl'
+		controller : 'LessonsUpdateCtrl',
+        reloadOnSearch: false
 	})
 
 	.when('/user/create/:activeTab', {
@@ -67,7 +69,8 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
         reloadOnSearch:false
 	}).when('/user/lessons/:lessonId/update', {
 		templateUrl : 'views/lessons/update.html',
-		controller : 'LessonsUpdateCtrl'
+		controller : 'LessonsUpdateCtrl',
+        reloadOnSearch:false
 	}).when('/user/lessons/:lessonId/invitations', {
 		templateUrl : 'views/lessons/invitations/create.html',
 		controller : 'LessonsInvitesCreateCtrl'

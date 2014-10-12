@@ -130,8 +130,8 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
 			$scope.done = function() {
 				$location.path('/user/create/questions');
 			};
-			$scope.$on('$locationChangeStart', function(event) {
-				if (!$scope.isValid($scope.quizItem)) {
+			$scope.$on('$locationChangeStart', function(event) {   // guy todo : consider using routeChange instead
+				if (!!$scope.quizItem && !$scope.isValid($scope.quizItem)) {
 					var answer = confirm($filter('i18n')('deleteQuestion.Confirm'));
 					if (!answer) {
 						event.preventDefault();

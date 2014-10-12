@@ -380,8 +380,8 @@ angular.module('lergoApp').controller(
 				});
 			}
 
-			$scope.$on('$locationChangeStart', function(event) {
-				if (!$scope.lesson.name) {
+			$scope.$on('$locationChangeStart', function(event) { // guy - todo - consider using route change instead.
+				if (!!$scope.lesson && !$scope.lesson.name) {
 					var answer = confirm($filter('i18n')('deleteLesson.Confirm'));
 					if (!answer) {
 						event.preventDefault();
