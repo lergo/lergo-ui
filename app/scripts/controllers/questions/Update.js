@@ -130,7 +130,7 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
 			$scope.done = function() {
 				$location.path('/user/create/questions');
 			};
-			$scope.$on('$locationChangeStart', function(event) {   // guy todo : consider using routeChange instead
+			$scope.$on('$locationChangeStart', function(event) {   // guy using route change - location change not affect by "reloadOnSearch" flag which is required here.
 				if (!!$scope.quizItem && !$scope.isValid($scope.quizItem)) {
 					var answer = confirm($filter('i18n')('deleteQuestion.Confirm'));
 					if (!answer) {

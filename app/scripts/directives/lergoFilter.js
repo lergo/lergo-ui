@@ -34,7 +34,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			'model' : '=',
 			'opts' : '=',
 			'change' : '&onChange',
-            'load' : '&onLoad'
+            'load' : '&onLoad',
+            'noUrlChanges' : '@noUrlChanges'
 		},
 		link : function postLink(scope/* , element, attrs */) {
 
@@ -59,6 +60,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			$scope.reportStatus = FilterService.reportStatus;
 
 			$scope.statusValue = null;
+
+            function _isChangeUrl(){
+                return scope.noUrlChanges !== true && scope.noUrlChanges !== 'true';
+            }
 
 			LergoClient.reports.getStudents().then(function(result) {
 				scope.students = result.data;
@@ -280,8 +285,9 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 						for ( var i = 0; i < args.length - 1; i++) {
 							scopeVariable = scopeVariable[args[i]];
 						}
-
-                        $location.search(filterName, saved === null ? null : JSON.stringify(saved));
+                        if ( _isChangeUrl() ) {
+                            $location.search(filterName, saved === null ? null : JSON.stringify(saved));
+                        }
 					}
 
                     $log.info('loading filter', filterName, saved, scopeVariable[args[args.length - 1]] );
@@ -319,7 +325,9 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 						$log.info(keyName + ' has changed. persisting [' + newValue + ']');
                         var filterName = 'lergoFilter.' + keyName;
                         localStorageService.set(filterName, newValue);
-                        $location.search(filterName, newValue === null ? null : angular.toJson(newValue));
+                        if ( _isChangeUrl() ) {
+                            $location.search(filterName, newValue === null ? null : angular.toJson(newValue));
+                        }
 					}
 				}, true);
 			}

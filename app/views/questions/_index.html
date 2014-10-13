@@ -62,7 +62,7 @@
 			<div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
 		</div>
 		<div class="sidebar page-content-sidebar">
-			<div lergo-filter model="questionsFilter" on-change="loadQuestions()" on-load="filterLoaded()" opts="questionsFilterOpts"></div>
+			<div lergo-filter no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()" on-load="filterLoaded()" opts="questionsFilterOpts"></div>
 		</div>
 	</div>
 	<div lergo-paging page="filterPage" on-change="loadQuestions()" on-load="pagingLoaded()"></div>
