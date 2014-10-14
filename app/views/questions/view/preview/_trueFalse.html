@@ -11,15 +11,8 @@
 	</div>
 	<div quiz-item-media quiz-item="quizItem"></div>
 	<div class="answers">
-		<div class="true-false-options">
-			<button ng-repeat="option in ['True','False']" class="true-false-option" ng-click="quizItem.userAnswer = option"
-				ng-class="{'active-button' : quizItem.userAnswer === option }">{{ 'quizItem.answer.' + option | i18n }}</button>
-		</div>
+		<div true-false quiz-item="quizItem" on-click="checkAnswer()"></div>
 	</div>
 	<br />
-	<div class="submit">
-		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
-	</div>
-	<br>
 	<div ng-include="'views/questions/view/preview/partials/_result.html'"></div>
 </div>

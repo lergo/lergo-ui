@@ -17,7 +17,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 	});
 
 	$scope.absoluteShareLink = function(id) {
-		return window.location.origin + '/#!/public/lessons/' + id + '/intro';
+		return window.location.origin + '/public/lessons/' + id + '/intro';
 	};
 
 	$scope.startLesson = function(lessonId) {
