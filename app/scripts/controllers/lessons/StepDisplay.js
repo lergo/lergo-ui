@@ -86,7 +86,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				} else {
 					$timeout(function() {
 						$scope.nextQuizItem();
-					}, 500);
+					}, 1000);
 				}
 			}
 		}, function() {
