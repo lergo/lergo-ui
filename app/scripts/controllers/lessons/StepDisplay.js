@@ -81,9 +81,13 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				voiceFeedback();
 			}
 			if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
-				$timeout(function() {
+				if (isTestMode()) {
 					$scope.nextQuizItem();
-				}, 500);
+				} else {
+					$timeout(function() {
+						$scope.nextQuizItem();
+					}, 500);
+				}
 			}
 		}, function() {
 			$log.error('there was an error checking answer');
