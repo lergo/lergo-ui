@@ -1,12 +1,13 @@
 <div class="submit">
 	<div>
-		<button ng-show="!getAnswer() && !!showSubmitButton" ng-disabled="!canSubmit(quizItem)" type="submit" class="btn" ng-click="checkAnswer()">{{
+		<button ng-show="!getAnswer() && !hideSubmitButton" ng-disabled="!canSubmit(quizItem)" type="submit" class="btn" ng-click="checkAnswer()">{{
 			'button.submit' | i18n }}</button>
 		<button ng-show="hasNextQuizItem() && getAnswer()" class="btn" ng-click="nextQuizItem()">
 			{{ 'nextQuestion' | i18n }}
 			<span class="fa fa-forward  right-arrow"></span>
 			<span class="fa fa-backward left-arrow"></span>
 		</button>
-		<button ng-show="!hasNextQuizItem() && getAnswer()" class="btn" ng-click="nextStep()">{{ 'lessons.letsContinue' | i18n }}</button>
+		<button ng-show="!hasNextQuizItem() && getAnswer() && !getAnswer().correct" class="btn" ng-click="nextStep()">{{ 'lessons.letsContinue' |
+			i18n }}</button>
 	</div>
 </div>

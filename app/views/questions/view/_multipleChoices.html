@@ -8,7 +8,7 @@
 		</div>
 		<div quiz-item-media quiz-item="quizItem"></div>
 		<div multi-choice quiz-item="quizItem" on-click="checkAnswer()"></div>
-		<div ng-include="'views/questions/view/partials/_submit.html'" ng-init="showSubmitButton=isMultiChoiceMultiAnswer(quizItem)"></div>
+		<div ng-include="'views/questions/view/partials/_submit.html'" ng-init="hideSubmitButton=!isMultiChoiceMultiAnswer(quizItem)"></div>
 	</div>
 	<div class="right">
 		<div ng-include="'views/questions/view/partials/_actionItems.html'"></div>

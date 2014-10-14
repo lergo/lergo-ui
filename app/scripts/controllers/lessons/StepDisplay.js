@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient, shuffleFilter, $window) {
+angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, $log, $routeParams, $sce, LergoClient, shuffleFilter, $window, $timeout) {
 	$log.info('showing step');
 	$window.scrollTo(0, 0);
 	var audio = new Audio('../audio/correctanswer.mp3');
@@ -81,7 +81,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				voiceFeedback();
 			}
 			if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
-				$scope.nextQuizItem();
+				$timeout(function() {
+					$scope.nextQuizItem();
+				}, 500);
 			}
 		}, function() {
 			$log.error('there was an error checking answer');

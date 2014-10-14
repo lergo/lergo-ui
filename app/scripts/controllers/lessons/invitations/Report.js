@@ -17,7 +17,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 	});
 
 	$scope.absoluteShareLink = function(id) {
-		return window.location.origin + '/public/lessons/' + id + '/intro';
+		return window.location.origin + '/#!/public/lessons/' + id + '/intro';
 	};
 
 	$scope.startLesson = function(lessonId) {
@@ -30,7 +30,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 		}
 	};
 	function redirectToInvitation(lessonId, invId) {
-		$location.path('/#!/public/lessons/' + lessonId + '/intro').search({
+		$location.path('/public/lessons/' + lessonId + '/intro').search({
 			invitationId : invId,
 			autoPlay : true
 		});
