@@ -5,15 +5,13 @@ describe('Directive: trueFalse', function() {
 	// load the directive's module
 	beforeEach(module('lergoApp'));
 
-	var element, scope;
+	var element;
 
-	beforeEach(inject(function($rootScope) {
-		scope = $rootScope.$new();
-	}));
-
-	it('should make hidden element visible', inject(function($compile) {
+	it('should add true false answer option', inject(function($rootScope, $compile) {
 		element = angular.element('<true-false></true-false>');
-		element = $compile(element)(scope);
-		expect(element.text()).toBe('this is the trueFalse directive');
+		element = $compile(element)($rootScope);
+		$rootScope.$digest();
+		// expect(element.text()).toBe('this is the trueFalse directive');
 	}));
+
 });
