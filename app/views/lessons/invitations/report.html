@@ -16,17 +16,19 @@
 					<br />
 				</div>
 				<div class="lergo-h1">
-					<a ng-href="#!/user/lessons/{{report.data.lesson._id}}/intro">{{report.data.lesson.name| limitTo:40}}</a>
+					<a ng-href="#!/public/lessons/{{report.data.lesson._id}}/intro">{{report.data.lesson.name| limitTo:40}}</a>
 				</div>
 				<div>
 					<span class="lergo-h4">{{'report.date'|i18n}}:</span>
 					<span>{{report.lastUpdate | date:'medium'}}</span>
 				</div>
 			</div>
-			<div ng-show="!!report.data.lesson.description" class="header-desc">
-				<div class="lergo-h4">{{'report.description'|i18n}}</div>
-				<div>{{report.data.lesson.description | limitTo:440}}</div>
-				<div style="margin-top: 40px; float: right;">
+			<div class="header-desc">
+				<div ng-show="!!report.data.lesson.description">
+					<div class="lergo-h4">{{'report.description'|i18n}}</div>
+					<div>{{report.data.lesson.description | limitTo:440}}</div>
+				</div>
+				<div style="position: absolute; right: 0; bottom: 0; top: 150px;">
 					<span class="restart" style="font-size: 25px; color: #8CC63F; margin: 5px;">
 						<a class="btn-link" ng-click="startLesson()">
 							<i style="color: #8CC63F;" class="fa fa-repeat "> {{'lessons.restart' | i18n}}</i>
