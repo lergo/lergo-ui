@@ -5,19 +5,25 @@ angular.module('lergoApp').directive('multiChoice', function() {
 		templateUrl : 'views/directives/_multiChoice.html',
 		restrict : 'A',
 		scope : {
-			'quizItem' : '='
+			quizItem : '=',
+			click : '&onClick'
 		},
 		link : function postLink($scope) {
 			$scope.isMultiChoiceMultiAnswer = function(quizItem) {
 				var correctAnswers = _.filter(quizItem.options, 'checked');
 				return correctAnswers.length > 1;
 			};
-			$scope.setSelection = function(quizItem, index) {
+			$scope.setSingleAnswer = function(quizItem, index) {
 				for ( var i = 0; i < quizItem.options.length; i++) {
 					if (i !== index) {
-						quizItem.options[i].userAnswer = false;
+						delete quizItem.options[i].userAnswer;
+					} else {
+						quizItem.options[i].userAnswer = true;
 					}
 				}
+				quizItem.userAnswer = [];
+				quizItem.userAnswer.push(quizItem.options[index].label);
+				$scope.click();
 			};
 		}
 	};

@@ -186,4 +186,9 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 			return true;
 		}
 	};
+	
+	$scope.isMultiChoiceMultiAnswer = function(quizItem) {
+		var correctAnswers = _.filter(quizItem.options, 'checked');
+		return correctAnswers.length > 1;
+	};
 });

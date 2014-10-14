@@ -9,7 +9,7 @@
 			</tr>
 			<tr ng-show="!isMultiChoiceMultiAnswer(quizItem)" ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
 				<td style="width: 5%">
-					<input type="radio" ng-model="option.userAnswer" ng-value="true" ng-change="setSelection(quizItem, $index)" />
+					<input type="radio" ng-model="option.userAnswer" ng-value="true" ng-click="setSingleAnswer(quizItem, $index)" />
 				</td>
 				<td>{{option.label}}</td>
 			</tr>

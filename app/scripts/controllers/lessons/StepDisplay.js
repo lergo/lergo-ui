@@ -80,7 +80,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			if (!isTestMode() && result.data.correct) {
 				voiceFeedback();
 			}
-			if ($scope.hasNextQuizItem() && isTestMode()) {
+			if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
 				$scope.nextQuizItem();
 			}
 		}, function() {
@@ -223,6 +223,11 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		} else {
 			return true;
 		}
+	};
+
+	$scope.isMultiChoiceMultiAnswer = function(quizItem) {
+		var correctAnswers = _.filter(quizItem.options, 'checked');
+		return correctAnswers.length > 1;
 	};
 
 });

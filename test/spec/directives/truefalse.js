@@ -1,0 +1,19 @@
+'use strict';
+
+describe('Directive: trueFalse', function() {
+
+	// load the directive's module
+	beforeEach(module('lergoApp'));
+
+	var element, scope;
+
+	beforeEach(inject(function($rootScope) {
+		scope = $rootScope.$new();
+	}));
+
+	it('should make hidden element visible', inject(function($compile) {
+		element = angular.element('<true-false></true-false>');
+		element = $compile(element)(scope);
+		expect(element.text()).toBe('this is the trueFalse directive');
+	}));
+});
