@@ -1,0 +1,17 @@
+#reportIndex {
+    .report-type-selection {
+        background: none;
+        border: none;
+        float: right;
+        margin-top: 6px;
+    }
+    .delete-menu {
+        margin-top: -10px;
+    }
+}
+
+.rtl #reportIndex {
+    .report-type-selection {
+        float: left;
+    }
+}

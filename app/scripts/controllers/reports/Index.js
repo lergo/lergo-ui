@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, $routeParams, FilterService, $log, $location, $rootScope, localStorageService, $window) {
+angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, $routeParams, FilterService, $log, $location, $rootScope, localStorageService, $window, $filter) {
 
 	$scope.reportsFilter = {};
 	$scope.filterPage = {};
@@ -23,29 +23,27 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		selectAll : false
 	};
 
-
-
 	function isMyReports() {
 		return $scope.reportsPage.reportType === 'mine';
 	}
 
-	$scope.$watch('reportsPage.reportType', function(newValue/*, oldValue*/) {
-        $log.info('reportType changed');
-        $scope.reportsFilterOpts.showStudents = isStudentsReports();
-        $scope.filterPage.current = 1;
-        $scope.filterPage.updatedLast = new Date().getTime(); // create a
-                                                                // 'change'
-                                                                // event
-                                                                // artificially..
-        localStorageService.set('reportType', newValue);
-        $location.search('reportType',newValue);
+	$scope.$watch('reportsPage.reportType', function(newValue/* , oldValue */) {
+		$log.info('reportType changed');
+		$scope.reportsFilterOpts.showStudents = isStudentsReports();
+		$scope.filterPage.current = 1;
+		$scope.filterPage.updatedLast = new Date().getTime(); // create a
+		// 'change'
+		// event
+		// artificially..
+		localStorageService.set('reportType', newValue);
+		$location.search('reportType', newValue);
 
 	});
 
-    var reportType = $routeParams.reportType || localStorageService.get('reportType');
-    if ( !!reportType ) {
-        $scope.reportsPage.reportType = reportType;
-    }
+	var reportType = $routeParams.reportType || localStorageService.get('reportType');
+	if (!!reportType) {
+		$scope.reportsPage.reportType = reportType;
+	}
 
 	function isStudentsReports() {
 		return $scope.reportsPage.reportType === 'students';
@@ -144,23 +142,25 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 	}
 	$scope.deleteReports = function() {
 		var toDelete = 0;
-		angular.forEach($scope.reports, function(report) {
-			if (report.selected === true) {
-				toDelete++;
-				LergoClient.reports.deleteReport(report).then(function() {
-					toDelete--;
-					$scope.errorMessage = null;
-					$scope.reports.splice($scope.reports.indexOf(report), 1);
-					$log.info('report deleted successfully');
-					if (toDelete === 0) {
-						$scope.loadReports();
-					}
-				}, function(result) {
-					$scope.errorMessage = 'Error in deleting report : ' + result.data.message;
-					$log.error($scope.errorMessage);
-				});
-			}
-		});
+		if (confirm($filter('i18n')('deleteReports.Confirm'))) {
+			angular.forEach($scope.reports, function(report) {
+				if (report.selected === true) {
+					toDelete++;
+					LergoClient.reports.deleteReport(report).then(function() {
+						toDelete--;
+						$scope.errorMessage = null;
+						$scope.reports.splice($scope.reports.indexOf(report), 1);
+						$log.info('report deleted successfully');
+						if (toDelete === 0) {
+							$scope.loadReports();
+						}
+					}, function(result) {
+						$scope.errorMessage = 'Error in deleting report : ' + result.data.message;
+						$log.error($scope.errorMessage);
+					});
+				}
+			});
+		}
 	};
 
 	var path = $location.path();
