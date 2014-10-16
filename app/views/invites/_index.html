@@ -45,14 +45,22 @@
 						</td>
 						<td class="name">
 							<a tooltip="{{'invites.tooltip.go' | i18n}}" ng-href="#!/public/lessons/{{invite.lessonId}}/intro?invitationId={{invite._id}}">
-								<span ng-show="invite.name.trim().length > 0">{{ invite.name }}</span>
-								<span ng-show="invite.name.trim().length <= 0">[ no title ]</span>
+								<span ng-show="invite.name.trim().length > 0" class="{{!invite.finished && 'bold' || ''}}"> {{ invite.name}} </span>
+								<span ng-show="invite.name.trim().length <= 0" class="{{!invite.finished && 'bold' || ''}}">[ no title ]</span>
 							</a>
 						</td>
-						<td class="answer">{{invite.invitee.name}}</td>
-						<td class="answer">{{invite.language && ('filters.languages.' + invite.language | i18n) ||""}}</td>
-						<td class="answer">{{invite.subject && ('filters.subjects.' + invite.subject | i18n) ||""}}</td>
-						<td class="answer">{{invite.age}}</td>
+						<td class="answer">
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.invitee.name}}</span>
+						</td>
+						<td class="answer">
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.language && ('filters.languages.' + invite.language | i18n) ||""}}</span>
+						</td>
+						<td class="answer">
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.subject && ('filters.subjects.' + invite.subject | i18n) ||""}}</span>
+						</td>
+						<td class="answer">
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.age}}</span>
+						</td>
 					</tr>
 				</tbody>
 			</table>

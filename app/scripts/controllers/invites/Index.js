@@ -78,6 +78,7 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 			if (invite.selected === true) {
 				toUpdate++;
 				invite.finished = true;
+				delete invite.selected;
 				LergoClient.lessonsInvitations.update(invite).then(function() {
 					toUpdate--;
 					$scope.errorMessage = null;
@@ -97,7 +98,8 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 		angular.forEach($scope.invites, function(invite) {
 			if (invite.selected === true) {
 				toUpdate++;
-				invite.finished = false;
+				delete invite.finished;
+				delete invite.selected;
 				LergoClient.lessonsInvitations.update(invite).then(function() {
 					toUpdate--;
 					$scope.errorMessage = null;
