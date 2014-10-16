@@ -92,16 +92,11 @@ angular.module('lergoApp').controller(
 				}
 
 			};
-			String.prototype.format = function() {
-			    var args = arguments;
-
-			    return this.replace(/\{(\d+)\}/g, function() {
-			        return args[arguments[1]];
-			    });
-			};
-
 			$scope.deleteStep = function(step) {
-				var canDelete = confirm(($filter('i18n')('deleteStep.confirm')).format(step.title));
+				var str = $filter('i18n')('deleteStep.confirm');
+				var canDelete = confirm($filter('format')(str, {
+					'0' : step.title
+				}));
 				if (canDelete) {
 					var steps = $scope.lesson.steps;
 					if (!!steps && steps.length > 0 && steps.indexOf(step) >= 0) {
