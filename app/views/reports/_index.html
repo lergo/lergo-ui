@@ -3,16 +3,17 @@
 		<span class="errorMessage" ng-show='errorMessage' style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
 	</div>
 	<br />
-
-
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
-
-			<div class="lergo-h1">{{ 'reports.myReports' | i18n }} [ {{ 'reports.total' | i18n }}: {{systemStats.myReports + + systemStats.myInvitedReports }} ] <!-- LERGO-457--></div>
-            <select class="report-type-selection" ng-model="reportsPage.reportType" ng-options="reportType.id as ( 'reports.type.' + reportType.id | i18n ) for reportType in reportTypes  ">
-                <option>mine</option>
-                <option>students</option>
-            </select>
+			<div class="lergo-h1">
+				{{ 'reports.myReports' | i18n }} [ {{ 'reports.total' | i18n }}: {{systemStats.myReports + + systemStats.myInvitedReports }} ]
+				<!-- LERGO-457-->
+			</div>
+			<select class="report-type-selection" ng-model="reportsPage.reportType"
+				ng-options="reportType.id as ( 'reports.type.' + reportType.id | i18n ) for reportType in reportTypes  ">
+				<option>mine</option>
+				<option>students</option>
+			</select>
 		</div>
 		<div class="page-content-sidebar">
 			<div class="lergo-h1">{{ 'reports.filter' | i18n }}</div>
@@ -31,8 +32,9 @@
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li>
-										<a class="btn-link" ng-click="deleteReports()">{{'delete'|i18n}}</a>
-										<a class="btn-link" ng-click="createLessonFromWrongQuestions()">{{'report.CreateLessonFromWrongQuestions'|i18n}}</a>
+										<a dropdown-toggle style="outline: none;" class="btn-link" ng-click="createLessonFromWrongQuestions()">{{'report.CreateLessonFromWrongQuestions'|i18n}}</a>
+										<hr />
+										<a dropdown-toggle style="outline: none;" class="btn-link delete-menu" ng-click="deleteReports()">{{'delete'|i18n}}</a>
 									</li>
 								</ul>
 							</div>
@@ -46,8 +48,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr
-						ng-repeat="report in reports |orderBy:'-lastUpdate'">
+					<tr ng-repeat="report in reports |orderBy:'-lastUpdate'">
 						<td>
 							<input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
 						</td>
@@ -61,15 +62,17 @@
 						<td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject | i18n) ||""}}</td>
 						<td class="answer">{{report.lastUpdate| date:'medium'}}</td>
 						<td class="answer">{{report.correctPercentage}}</td>
-						<td class="answer"><span ng-show="isComplete(report)">{{report.duration|duration}}</span><span ng-show="!isComplete(report)">{{'report.incomplete' | i18n}}</span></td>
+						<td class="answer">
+							<span ng-show="isComplete(report)">{{report.duration|duration}}</span>
+							<span ng-show="!isComplete(report)">{{'report.incomplete' | i18n}}</span>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-        <div class="sidebar page-content-sidebar">
-            <div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts" on-load="filterLoaded()"></div>
-
-        </div>
-    </div>
-    <div lergo-paging page="filterPage" on-change="loadReports()" on-load="pagingLoaded()"></div>
+		<div class="sidebar page-content-sidebar">
+			<div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts" on-load="filterLoaded()"></div>
+		</div>
+	</div>
+	<div lergo-paging page="filterPage" on-change="loadReports()" on-load="pagingLoaded()"></div>
 </div>

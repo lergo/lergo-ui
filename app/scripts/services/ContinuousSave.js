@@ -31,7 +31,7 @@
  *
  */
 angular.module('lergoApp')
-    .factory('ContinuousSave', function (localStorageService, $timeout, $rootScope, $log) {
+    .factory('ContinuousSave', function (localStorageService, $timeout, $rootScope, $log,$filter) {
 
         var _preventedPageExit = [];
         var _preventedFlag;
@@ -87,7 +87,7 @@ angular.module('lergoApp')
                         if (!_status.saved) { // if there is unsaved data, we need to prevent
                             _preventedPageExit.push(_preventedFlag); // i prevented, so i put the flag on the list.
 
-                            var answer = window.confirm('You have unsaved changes.Are you sure you want to leave this page?');
+                            var answer = confirm($filter('i18n')('continousSave.Confirm'));
                             if (!answer) {
                                 event.preventDefault();
                             }

@@ -11,9 +11,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		$log.info($scope.step);
 	}
 
-    function currentIndex(){
-        return _.size($scope.answers);
-    }
+	$scope.currentIndex = 0;
 	$scope.answers = {};
 	function reload() {
 		$log.info('reload display for step');
@@ -36,7 +34,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			return;
 		}
 
-
+		$scope.currentIndex = 0;
 		$scope.answers = {};
 
 		// guy - do not use 'hasOwnProperty' as scope might not have the
@@ -48,14 +46,14 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 					questions[result.data[i]._id] = result.data[i];
 				}
 				$scope.questions = questions;
-                $scope.nextQuizItem();
 			});
 		}
 	}
 
 	$scope.$watch('step', reload);
-	$scope.getQuizItemTemplate = function() {
+	$scope.getQuizItemTemplate = function(id) {
 		if (!!$scope.questions) {
+			$scope.quizItem = $scope.questions[id];
 			if (!!$scope.quizItem && !$scope.quizItem.startTime) {
 				$scope.quizItem.startTime = new Date().getTime();
 			}
@@ -91,7 +89,11 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	};
 
 	$scope.getQuizItem = function() {
-        return $scope.quizItem && $scope.quizItem._id;
+		if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > $scope.currentIndex) {
+			var quizItem = $scope.step.quizItems[$scope.currentIndex];
+			return quizItem;
+		}
+		return null;
 	};
 
 	$scope.getAnswer = function() {
@@ -101,20 +103,14 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.nextQuizItem = function() {
 		$log.info('next');
-
-        if ( !$scope.questions){
-            return;
-        }
-
-        if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > currentIndex()) {
-            var quizItem = $scope.step.quizItems[currentIndex()];
-            $scope.quizItem = $scope.questions[quizItem];
-        }
+		var quizItem = $scope.quizItem;
+		if ($scope.answers.hasOwnProperty(quizItem._id)) {
+			$scope.currentIndex++;
+		}
 	};
 
-
 	$scope.hasNextQuizItem = function() {
-		return !!$scope.step && !!$scope.questions && currentIndex() < $scope.step.quizItems.length;
+		return !!$scope.step && !!$scope.step.quizItems && $scope.currentIndex < $scope.step.quizItems.length - 1;
 	};
 
 	$scope.getStepViewByType = function(step) {
@@ -159,9 +155,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		if (!$scope.step || !$scope.step.quizItems || $scope.step.quizItems.length < 1) {
 			$scope.progressPercentage = 0;
 		} else {
-            // guy - count percentage by counting the answers. not current index.
-
-			$scope.progressPercentage = Math.round((_.size($scope.answers) * 100) / _.size($scope.questions));
+			$scope.progressPercentage = Math.round((($scope.currentIndex + 1) * 100) / $scope.step.quizItems.length);
 		}
 	};
 
@@ -231,6 +225,10 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		}
 	};
 
+    $scope.isMultiChoiceMultiAnswer = function(quizItem) {
+        var correctAnswers = _.filter(quizItem.options, 'checked');
+        return correctAnswers.length > 1;
+    };
 
     $scope.tryAgain = function(){
         $log.info('trying again');
@@ -240,5 +238,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
         $scope.updateProgressPercent();
         quizItem.userAnswer = null;
     };
-
+    
+    
+    
 });

@@ -76,6 +76,10 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			// just notify end lesson. do nothing else. wait for report to
 			// update.
 			$rootScope.$broadcast('endLesson');
+			if (!!$scope.invitation) {
+				$scope.invitation.finished = true;
+				LergoClient.lessonsInvitations.update($scope.invitation);
+			}
 		}
 	});
 

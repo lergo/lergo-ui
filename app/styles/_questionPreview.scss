@@ -76,6 +76,10 @@
             width: 20px;
             height: 20px;
         }
+        &[type=radio] {
+            width: 20px;
+            height: 20px;
+        }
     }
 }
 
@@ -338,6 +342,10 @@
             border-radius: 5px;
             width: 75%;
             &[type=checkbox] {
+                width: 20px;
+                height: 20px;
+            }
+            &[type=radio] {
                 width: 20px;
                 height: 20px;
             }

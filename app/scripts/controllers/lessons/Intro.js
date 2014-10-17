@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $routeParams, LergoClient, $location, $modal, DisplayRoleService, $log, $rootScope, FilterService,$window) {
-	$window.scrollTo(0,0);
+angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $routeParams, LergoClient, $location, $modal, DisplayRoleService, $log, $rootScope, FilterService, $window, $filter) {
+	$window.scrollTo(0, 0);
 	var lessonId = $routeParams.lessonId;
 	var invitationId = $routeParams.invitationId;
 	var preview = !!$routeParams.preview;
@@ -86,7 +86,10 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	};
 
 	$scope.deleteLesson = function(lesson) {
-		var canDelete = window.confirm('Are you sure you want to delete the lesson: ' + lesson.name + ' ?');
+		var str = $filter('i18n')('deleteIntro.Confirm');
+		var canDelete = confirm($filter('format')(str, {
+			'0' : lesson.name
+		}));
 		if (canDelete) {
 			LergoClient.lessons.delete(lesson._id).then(function() {
 				$scope.errorMessage = null;

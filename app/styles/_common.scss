@@ -640,7 +640,9 @@ $COLOR_19: #2a6496 !default;
 		}
 	}
 }
-
+ .bold {
+                    font-weight: bold;
+                }
 .errorMessage {
 	font-size: 15px;
 	color: red;

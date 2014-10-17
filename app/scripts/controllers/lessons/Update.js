@@ -93,7 +93,10 @@ angular.module('lergoApp').controller(
 
 			};
 			$scope.deleteStep = function(step) {
-				var canDelete = window.confirm('Are you sure you want to delete the step: ' + step.title + ' ?');
+				var str = $filter('i18n')('deleteStep.confirm');
+				var canDelete = confirm($filter('format')(str, {
+					'0' : step.title
+				}));
 				if (canDelete) {
 					var steps = $scope.lesson.steps;
 					if (!!steps && steps.length > 0 && steps.indexOf(step) >= 0) {

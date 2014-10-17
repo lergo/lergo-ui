@@ -10,9 +10,9 @@
 		<p class="question-help-text">{{quizItem.helpText}}</p>
 	</div>
 	<div quiz-item-media quiz-item="quizItem"></div>
-	<div multi-choice quiz-item="quizItem"></div>
+	<div multi-choice quiz-item="quizItem" on-click="checkAnswer()"></div>
 	<br />
-	<div class="submit">
+	<div class="submit" ng-show="isMultiChoiceMultiAnswer(quizItem)">
 		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
 	</div>
 	<br />
