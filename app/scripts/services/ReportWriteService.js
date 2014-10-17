@@ -19,7 +19,9 @@ angular.module('lergoApp')
                     var answers = _.filter(report.answers, {'stepIndex': finishedStepIndex});
                     // calculate end time by counting the duration on each answer..
                     var quizDuration = _.reduce(answers, function (num, obj/*, index, list*/) {
-                        return num + obj.duration;
+                        return num + obj.duration + _.reduce(obj.retries, function(num,retry){ // support retries for question
+                            return num+retry.duration;
+                        },0);
                     }, 0);
                     oldDuration.endTime = oldDuration.startTime + quizDuration;
                 } else if (!!oldDuration) {

@@ -110,19 +110,24 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 		var answer = findAnswer(data, stepIndex);
 
 		if (!answer) { // add if not exists
-			answer = {};
-			report.answers.push(answer);
-		}
+            answer = {};
+            report.answers.push(answer);
 
-		// update the answer
-		_.merge(answer, {
-			'stepIndex' : stepIndex,
-			'quizItemId' : data.quizItemId,
-			'userAnswer' : data.userAnswer,
-			'checkAnswer' : data.checkAnswer,
-			'isHintUsed' : data.isHintUsed,
-			'duration' : data.duration
-		});
+            // update the answer
+            _.merge(answer, {
+                'stepIndex': stepIndex,
+                'quizItemId': data.quizItemId,
+                'userAnswer': data.userAnswer,
+                'checkAnswer': data.checkAnswer,
+                'isHintUsed': data.isHintUsed,
+                'duration': data.duration
+            });
+        }else{ // assuming retry
+            if ( !answer.retries ){
+                answer.retries = [];
+            }
+            answer.retries.push(data);
+        }
 
         calculateCorrectPercentage(report);
 

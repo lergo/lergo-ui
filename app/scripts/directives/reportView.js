@@ -1,5 +1,8 @@
 'use strict';
 
+// guy - todo - change this file name or directive name.
+// I think the directive should be reportView and not lessonView.
+// consider using a template named reportView.html as well.
 angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 	return {
 		templateUrl : 'views/lessons/invitations/report/_display.html',
@@ -81,15 +84,16 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 
 				$log.info('getting report quiz Items', step);
 
-				for ( var i = 0; i < quizItemsIds.length; i++) {
-					var qiId = quizItemsIds[i];
-
+                _.each(quizItemsIds, function(qiId){
 					var answer = getAnswer(qiId, index);
 					var qi = getQuizItem(qiId);
-
 					results.push(_.merge({}, qi, answer));
+                    // add all retries as well..
+                    _.each(answer.retries, function(retry){
+                        results.push(_.merge({},qi,retry));
+                    });
+                });
 
-				}
 				$log.info('quizItems', results);
 				reportQuizItems['' + index] = results;
 				$scope.getAnswerStats(results, index);
