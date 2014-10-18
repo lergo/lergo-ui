@@ -82,7 +82,11 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			if (!isTestMode() && result.data.correct) {
 				voiceFeedback();
 			}
-            if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
+
+            if ( !!$scope.step.retryQuestion && !result.data.correct ) { // if incorrect and retry, then retry
+                $timeout(function() { $scope.tryAgain(); }, 1000);
+
+            } else if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
                 if (isTestMode()) {
                     $scope.nextQuizItem();
                 } else {
@@ -95,6 +99,17 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			$log.error('there was an error checking answer');
 		});
 	};
+
+    // quiz is done only if all of the following are correct
+    // 1. all questions were answered
+    // 2. no retry required for last question -- which means last answer was correct or no retry configured
+    // guy - the last question is a special scenario since all the others will fall on the first condition.
+    $scope.isQuizDone = function(){
+        var answer = $scope.getAnswer();
+        var allQuestionsWereAnswered = !$scope.hasNextQuizItem() && answer;
+        var noRetryOnLast = answer && ( answer.correct || !$scope.step.retryQuestion );
+        return allQuestionsWereAnswered && noRetryOnLast; // the full condition
+    };
 
 	$scope.getQuizItem = function() {
         return $scope.quizItem && $scope.quizItem._id;
@@ -120,7 +135,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 
 	$scope.hasNextQuizItem = function() {
-		return !!$scope.step && !!$scope.questions && currentIndex() < $scope.step.quizItems.length;
+		return !!$scope.step && !!$scope.questions && currentIndex() < _.size($scope.questions);
 	};
 
 	$scope.getStepViewByType = function(step) {

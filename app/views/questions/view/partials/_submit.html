@@ -7,7 +7,7 @@
 			<span class="fa fa-forward  right-arrow"></span>
 			<span class="fa fa-backward left-arrow"></span>
 		</button>
-		<button ng-show="!hasNextQuizItem() && getAnswer()" class="btn" ng-click="nextStep()">{{ 'lessons.letsContinue' |
+		<button ng-show="!!isQuizDone()" class="btn" ng-click="nextStep()">{{ 'lessons.letsContinue' |
 			i18n }}</button>
 	</div>
 </div>
