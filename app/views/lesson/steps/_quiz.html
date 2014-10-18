@@ -29,6 +29,9 @@
 
     <span class="pop-up-hint"  ng-show="step.testMode === 'False'">
         <span>{{'quiz.allowRetry' | i18n}}</span>
+        <span>
+            <button popover="{{'quiz.retryQuestionHint' | i18n }}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+        </span>
         <input style="vertical-align: middle; display: inline; margin-left: 6px;" type="checkbox"
                ng-model=step.retryQuestion />
     </span>
