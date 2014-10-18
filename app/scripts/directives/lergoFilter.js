@@ -296,6 +296,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
                     }else{
                         scopeVariable[args[args.length - 1]] = saved;
                     }
+
                     updateFn(saved);
 				}
 			}
@@ -363,12 +364,12 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			}
 
             function persistAll() {
+                persist('reportStudent', 'showStudents', _updateReportStudent);
                 persist('ageFilter', 'showAge', _updateAgeFilter);
                 persist('viewsFilter', 'showViews', _updateViewsFilter);
                 persist('correctPercentage', 'showCorrectPercentage', _updateCorrectPercentage);
                 persist('model.language', 'showLanguage');
                 persist('model.subject', 'showSubject');
-                persist('reportStudent', 'showStudents', _updateReportStatusValue);
                 persist('filterTags', 'showTags', _updateFilterTags);
                 persist('reportStatusValue', 'showReportStatus', _updateReportStatusValue);
                 persist('statusValue', 'showLessonStatus', _updateStatusValue);
