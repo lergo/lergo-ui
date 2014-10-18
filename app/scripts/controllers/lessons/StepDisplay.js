@@ -78,15 +78,16 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				'duration' : duration,
 				'isHintUsed' : !!quizItem.isHintUsed
 			});
-			$scope.updateProgressPercent();
+
 			if (!isTestMode() && result.data.correct) {
 				voiceFeedback();
 			}
 
-            if ( !!$scope.step.retryQuestion && !result.data.correct ) { // if incorrect and retry, then retry
-                $timeout(function() { $scope.tryAgain(); }, 1000);
+            if ( !$scope.step.retryQuestion || result.data.correct ) { // if incorrect and retry, then retry
+                $scope.updateProgressPercent();
+            }
 
-            } else if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
+            if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
                 if (isTestMode()) {
                     $scope.nextQuizItem();
                 } else {
@@ -255,6 +256,17 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
     $scope.isMultiChoiceMultiAnswer = function(quizItem) {
         var correctAnswers = _.filter(quizItem.options, 'checked');
         return correctAnswers.length > 1;
+    };
+
+
+    // reach here when you click next after got question wrong
+    // if step defined with "allow retry" - we will try again, otherwise we move to next item.
+    $scope.retryOrNext = function(){
+        if ( $scope.step.retryQuestion ){
+            $scope.tryAgain();
+        }else{
+            $scope.nextQuizItem();
+        }
     };
 
     $scope.tryAgain = function(){
