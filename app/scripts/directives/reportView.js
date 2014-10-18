@@ -87,11 +87,13 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
                 _.each(quizItemsIds, function(qiId){
 					var answer = getAnswer(qiId, index);
 					var qi = getQuizItem(qiId);
-					results.push(_.merge({}, qi, answer));
-                    // add all retries as well..
-                    _.each(answer.retries, function(retry){
-                        results.push(_.merge({},qi,retry));
-                    });
+                    if ( !!answer && !!qi ) {
+                        results.push(_.merge({}, qi, answer));
+                        // add all retries as well..
+                        _.each(answer.retries, function (retry) {
+                            results.push(_.merge({}, qi, retry));
+                        });
+                    }
                 });
 
 				$log.info('quizItems', results);

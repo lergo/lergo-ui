@@ -62,7 +62,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			}
 		});
 
-		return report.data.lesson.steps.length === completeSteps || report.duration > 0;
+		return report.data.lesson.steps.length === completeSteps;
 	};
 
 	$scope.loadReports = function() {
