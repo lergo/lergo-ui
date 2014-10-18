@@ -168,7 +168,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 	};
 
 	$scope.absoluteShareLink = function(question) {
-		$scope.shareLink = window.location.origin + '/#!/public/questions/' + question._id + '/read';
+		$scope.shareLink = LergoClient.questions.getShareLink( question );
 		$scope.share = !$scope.share;
 	};
 	$scope.onTextClick = function($event) {

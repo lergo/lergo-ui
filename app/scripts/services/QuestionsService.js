@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log, $filter) {
+angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log, $filter, $window ) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
 
 	this.getUserQuestions = function(queryObj) {
@@ -244,4 +244,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 		}
 		throw new Error('type ' + typeId + ' is unsupported ');
 	};
+
+
+    this.getShareLink = function(question){
+        return $window.location.origin + '/#!/public/questions/' + question._id + '/read';
+    };
 });

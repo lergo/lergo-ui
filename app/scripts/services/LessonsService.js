@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('LessonsService', function LessonsService($http, $sce, $q ) {
+angular.module('lergoApp').service('LessonsService', function LessonsService($http, $sce, $q, $window ) {
 
     var self = this;
 
@@ -116,4 +116,8 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 		}
 		return value;
 	};
+
+    this.getShareLink = function(lesson){
+        return $window.location.origin + '/index.html#!/public/lessons/' + lesson._id + '/intro';
+    };
 });

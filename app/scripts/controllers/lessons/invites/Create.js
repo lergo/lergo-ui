@@ -11,7 +11,7 @@ angular.module('lergoApp').controller('LessonsInvitesCreateCtrl', function($scop
 
 	$scope.getLink = function() {
 		if (invitation !== null) {
-			return window.location.origin + '/#!/public/lessons/' + invitation.lessonId + '/intro?invitationId=' + invitation._id;
+			return window.location.origin + '/index.html#!/public/lessons/' + invitation.lessonId + '/intro?invitationId=' + invitation._id;
 		}
 	};
 
