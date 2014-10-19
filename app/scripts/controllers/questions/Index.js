@@ -35,12 +35,6 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	$scope.$watch('loadPublic', function(newValue) {
 		$scope.loadPublicQuestion(newValue.value);
 	}, true);
-	$scope.showQuestionBank = function() {
-		if ($scope.loadPublic !== undefined) {
-			$scope.loadPublicQuestion($scope.loadPublic);
-		}
-		return !$scope.isCreate;
-	};
 	$scope.loadPublicQuestion = function(isPublic) {
 		var oldValue = localStorageService.get('isPublic') === 'true';
 		if (oldValue !== isPublic) {
@@ -69,6 +63,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 
 		getQuestionsPromise.then(function(result) {
 			$scope.items = result.data.data;
+			$rootScope.$broadcast('questionsLoaded', {
+				'items' : $scope.items
+			});
 			$scope.errorMessage = null;
 			$scope.totalResults = result.data.total;
 			$scope.filterPage.count = result.data.count;

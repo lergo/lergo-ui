@@ -1,6 +1,6 @@
 <div class="modal-body base-layout-class base-layout-modal">
 	<div ng-show="!isUpdate">
-		<div class="left" >
+		<div class="left">
 			<ul class="nav nav-tabs-vertical">
 				<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
 					<a href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.key | i18n}}</a>
@@ -8,7 +8,8 @@
 			</ul>
 		</div>
 		<div class="tab-content-vertical right">
-			<div ng-include="getInclude()"></div>
+			<div ng-show="!!isActive(sections[0])" ng-include="sections[0].page" ng-controller="QuestionsUpdateCtrl"></div>
+			<div ng-show="!isActive(sections[0])" ng-include="sections[1].page" ng-controller="QuestionsIndexCtrl"></div>
 		</div>
 	</div>
 	<div ng-show="!!isUpdate">
@@ -17,8 +18,8 @@
 </div>
 <div class="modal-footer" ng-show="!isCreate && !isUpdate">
 	<div>
-		<button class="btn " ng-click="currentSection.add(items)">{{'add' |i18n}}</button>
-		<button class="btn " ng-click="currentSection.addClose(items)">{{'addClose' |i18n}}</button>
+		<button class="btn " ng-click="currentSection.add()">{{'add' |i18n}}</button>
+		<button class="btn " ng-click="currentSection.addClose()">{{'addClose' |i18n}}</button>
 		<button class="btn btn-default" ng-click="cancel()">{{'cancel' |i18n}}</button>
 	</div>
 	<div ng-show="selectedItems.length===0" class="errorMessage">{{'questions.add.emptySelection' | i18n}}</div>

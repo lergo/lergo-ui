@@ -14,7 +14,11 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 			$scope.loadPublic = {
 				value : false
 			};
-			function addSelectedItems(items, canClose) {
+			var items = [];
+			$scope.$on('questionsLoaded', function(event, data) {
+				items = data.items;
+			});
+			function addSelectedItems(canClose) {
 				$scope.selectedItems = _.filter(items, 'selected');
 				angular.forEach($scope.selectedItems, function(item) {
 					addItemToQuiz(item, step);
@@ -59,11 +63,11 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 				page : 'views/questions/_index.html',
 				loadPublic : false,
 				isCreate : false,
-				add : function(items) {
-					addSelectedItems(items, false);
+				add : function() {
+					addSelectedItems(false);
 				},
-				addClose : function(items) {
-					addSelectedItems(items, true);
+				addClose : function() {
+					addSelectedItems(true);
 				}
 			}, {
 				id : 'publicQuestion',
@@ -72,20 +76,17 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 				page : 'views/questions/_index.html',
 				loadPublic : true,
 				isCreate : false,
-				add : function(items) {
-					addSelectedItems(items, false);
+				add : function() {
+					addSelectedItems(false);
 				},
-				addClose : function(items) {
-					addSelectedItems(items, true);
+				addClose : function() {
+					addSelectedItems(true);
 				}
 			} ];
 			$scope.setCurrentSelection = function(section) {
 				$scope.currentSection = section;
 				$scope.isCreate = section.isCreate;
 				$scope.loadPublic.value = section.loadPublic;
-				$controller($scope.currentSection.controller, {
-					$scope : $scope
-				});
 
 			};
 
