@@ -31,15 +31,9 @@ angular.module('lergoApp').controller('AboutCtrl', function($scope, $routeParams
 	} ];
 
 	$scope.currentSection = _.find($scope.sections, function(section) {
-		if (!$routeParams.activeAboutTab) {
-			$routeParams.activeAboutTab = 'overview';
-		}
 		return $routeParams.activeAboutTab === section.id;
 	});
 
-	$scope.setSection = function(section) {
-		$scope.currentSection = section;
-	};
 	$scope.isActive = function(section) {
 		return !!$scope.currentSection && section.id === $scope.currentSection.id;
 	};
