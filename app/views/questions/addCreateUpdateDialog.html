@@ -1,20 +1,61 @@
-<div ng-show="!isUpdate" class="menu">
-	<div>
-		<a class="btn-link" ng-click="showCreate()">{{'questions.createNewQuestion'|i18n}}</a>
+<div class="modal-body base-layout-class base-layout-modal">
+	<div ng-show="!isUpdate">
+		<div >
+			<ul class="nav nav-tabs-vertical">
+				<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
+					<a href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.key | i18n}}</a>
+				</li>
+			</ul>
+		</div>
+		<div class="tab-content-vertical ">
+			<div ng-include="getInclude()"></div>
+		</div>
 	</div>
-	<div>
-		<a class="btn-link" ng-click="loadQuestions(false)">{{'questions.myQuestions'|i18n}}</a>
-	</div>
-	<div>
-		<a class="btn-link" ng-click="loadQuestions(true)">{{'questions.allQuestions'|i18n}}</a>
+	<div ng-show="!!isUpdate">
+		<div ng-include="getInclude()"></div>
 	</div>
 </div>
-<div ng-controller="QuestionsIndexCtrl" ng-show="showQuestionBank()">
+<div class="modal-footer" ng-show="!isCreate && !isUpdate">
+	<div>
+		<button class="btn " ng-click="currentSection.add(items)">{{'add' |i18n}}</button>
+		<button class="btn " ng-click="currentSection.addClose(items)">{{'addClose' |i18n}}</button>
+		<button class="btn btn-default" ng-click="cancel()">{{'cancel' |i18n}}</button>
+	</div>
+	<div ng-show="selectedItems.length===0" class="errorMessage">{{'questions.add.emptySelection' | i18n}}</div>
+</div>
+<div class="modal-footer" ng-show="!!isCreate && !isUpdate">
+	<div>
+		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="currentSection.add(quizItem)">{{'add' |i18n}}</button>
+		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="currentSection.addClose(quizItem)">{{'addClose' |i18n}}</button>
+		<button class="btn btn-default" ng-click="cancel()">{{'cancel' |i18n}}</button>
+		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+	</div>
+</div>
+<div class="modal-footer" ng-show="!!isCreate && !!isUpdate">
+	<div>
+		<button class="btn" ng-disabled="isSaving()" ng-click="cancel(quizItem)">{{'back' | i18n}}</button>
+		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+	</div>
+</div>
+<!--  <div ng-show="!isUpdate" class="menu">
+	<div>
+		<a class="btn-link" ng-click="showCreate()" ng-class="{'active-menu' : !!isCreate }">{{'questions.createNewQuestion'|i18n}}</a>
+	</div>
+	<div>
+		<a class="btn-link" ng-click="loadQuestions(false)" ng-class="{'active-menu' : !loadPublic && !isCreate }">{{'questions.myQuestions'|i18n}}</a>
+	</div>
+	<div>
+		<a class="
+			btn-link" ng-click="loadQuestions(true)" ng-class="{'active-menu' : !!loadPublic && !isCreate }">{{'questions.allQuestions'|i18n}}</a>
+	</div>
+</div>
+<div ng-controller="
+			QuestionsIndexCtrl" ng-show="showQuestionBank()">
 	<div>
 		<div class="modal-body base-layout-class base-layout-modal">
 			<div ng-include="'views/questions/_index.html'"></div>
 		</div>
-		<div class="modal-footer" >
+		<div class="modal-footer">
 			<div>
 				<button class="btn " ng-click="addSelectedItems(items)">{{'add' |i18n}}</button>
 				<button class="btn btn-default" ng-click="cancel()">{{'cancel' |i18n}}</button>
@@ -27,13 +68,14 @@
 	<div class="modal-body base-layout-class base-layout-modal " style="height: 400px; overflow-y: auto">
 		<div ng-include="'views/questions/_update.html'"></div>
 	</div>
-	<div class="modal-footer"  ng-show="!isUpdate">
+	<div class="modal-footer" ng-show="!isUpdate">
 		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="addItem(quizItem)">{{'add' | i18n}}</button>
 		<button class="btn btn-default" ng-click="cancel(quizItem)">{{'cancel' | i18n}}</button>
 		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
 	</div>
-	<div class="modal-footer"  ng-show="!!isUpdate">
+	<div class="modal-footer" ng-show="!!isUpdate">
 		<button class="btn" ng-click="cancel(quizItem)">{{'back' | i18n}}</button>
 		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
 	</div>
 </div>
+-->

@@ -31,6 +31,10 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 			$log.error($scope.errorMessage);
 		});
 	};
+
+	$scope.$watch('loadPublic', function(newValue) {
+		$scope.loadPublicQuestion(newValue.value);
+	}, true);
 	$scope.showQuestionBank = function() {
 		if ($scope.loadPublic !== undefined) {
 			$scope.loadPublicQuestion($scope.loadPublic);
