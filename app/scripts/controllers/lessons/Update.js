@@ -282,6 +282,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				});
 			};
 			function openQuestionDialog(step, quizItem, isUpdate) {
+				persistScroll();
 				var modelContent = {};
 				modelContent.templateUrl = 'views/questions/addCreateUpdateDialog.html';
 				modelContent.windowClass = 'question-bank-dialog';
@@ -304,16 +305,17 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 						return step;
 					}
 				};
-				$modal.open(modelContent);
+				var modelInstance = $modal.open(modelContent);
+				modelInstance.result.then(function() {
+					scrollToPersistPosition();
+				}, function() {
+					scrollToPersistPosition();
+				});
 			}
 
 			$scope.$on('$locationChangeStart', function(event) { // guy -
-				// todo -
-				// consider
-				// using
-				// route
-				// change
-				// instead.
+				// TODO - consider using route change instead.
+				persistScroll();
 				if (!!$scope.lesson && !$scope.lesson.name) {
 					var answer = confirm($filter('i18n')('deleteLesson.Confirm'));
 					if (!answer) {
@@ -329,5 +331,17 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 					}
 				}
 			});
-
+			function persistScroll() {
+				if (!$rootScope.scrollPosition) {
+					$rootScope.scrollPosition = {};
+				}
+				$rootScope.scrollPosition[$location.path()] = $window.scrollY;
+			}
+			function scrollToPersistPosition() {
+				var scrollY = 0;
+				if (!!$rootScope.scrollPosition) {
+					scrollY = $rootScope.scrollPosition[$location.path()] || 0;
+				}
+				$window.scrollTo(0, scrollY);
+			}
 		});

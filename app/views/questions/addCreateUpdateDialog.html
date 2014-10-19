@@ -1,13 +1,13 @@
 <div class="modal-body base-layout-class base-layout-modal">
 	<div ng-show="!isUpdate">
-		<div >
+		<div class="left" >
 			<ul class="nav nav-tabs-vertical">
 				<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
 					<a href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.key | i18n}}</a>
 				</li>
 			</ul>
 		</div>
-		<div class="tab-content-vertical ">
+		<div class="tab-content-vertical right">
 			<div ng-include="getInclude()"></div>
 		</div>
 	</div>

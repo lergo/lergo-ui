@@ -12,9 +12,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		'showTags' : true
 	};
 
-	$scope.selectAll = function() {
+	$scope.selectAll = function(checked) {
 		_.each($scope.items, function(item) {
-			item.selected = true;
+			item.selected = checked;
 		});
 	};
 

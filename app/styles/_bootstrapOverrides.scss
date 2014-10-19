@@ -131,9 +131,7 @@
 
 // Give the vertical tabs something to sit on
 .nav-tabs-vertical {
-    width: 150px;
-    height: 400px;
-    float: left;
+    width: 100%;
     border-right: 1px solid $nav-tabs-border-color;
     > li {
         float: left;
@@ -141,6 +139,7 @@
         // Actual tabs (as links)
         > a {
             margin-bottom: 2px;
+            margin-right: -1px;
             background-color: #91cfff;
             color: white;
             line-height: $line-height-base;
@@ -172,24 +171,16 @@
     }
 }
 
-.tab-content-vertical {
-    width: 1050px;
-    float: right;
-}
-
-.rtl {
-    .tab-content-vertical {
-        float: left;
-    }
-}
-
 .rtl {
     .nav-tabs-vertical {
-        float: right;
         border-left: 1px solid $nav-tabs-border-color;
         border-right: none;
         > li {
             float: right;
+            width: inherit;
+            > a {
+                margin-left: -1px;
+            }
             &.active > a {
                 &,
                 &:hover,
