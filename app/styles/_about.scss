@@ -13,6 +13,7 @@
     }
     .nav-tabs-vertical {
         width: 225px;
+        float: left;
         > li {
             &.active > a {
                 &,
@@ -25,9 +26,11 @@
     }
     .tab-content-vertical {
         width: 775px;
+        float: right;
     }
     .rtl {
         .nav-tabs-vertical {
+            float: right;
             > li {
                 &.active > a {
                     &,
@@ -38,6 +41,9 @@
                     }
                 }
             }
+        }
+        .tab-content-vertical {
+            float: left;
         }
     }
 }
