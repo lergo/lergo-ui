@@ -1,16 +1,43 @@
-#about{
-  .cloudbees{
-    width: 128px;
-    height: 92px;
-    display:inline-block;
-    background: url('../images/thanks_to/cloudbees.png')
-  }
-
-  .browserstack{
-    width: 386px;
-    height: 92px;
-    display:inline-block;
-    background: url('../images/thanks_to/browserstack.png')
-  }
-
+#about {
+    .cloudbees {
+        width: 128px;
+        height: 92px;
+        display: inline-block;
+        background: url("../images/thanks_to/cloudbees.png");
+    }
+    .browserstack {
+        width: 386px;
+        height: 92px;
+        display: inline-block;
+        background: url("../images/thanks_to/browserstack.png");
+    }
+    .nav-tabs-vertical {
+        width: 225px;
+        > li {
+            &.active > a {
+                &,
+                &:hover,
+                &:focus {
+                    border-right-color: #fafafa;
+                }
+            }
+        }
+    }
+    .tab-content-vertical {
+        width: 775px;
+    }
+    .rtl {
+        .nav-tabs-vertical {
+            > li {
+                &.active > a {
+                    &,
+                    &:hover,
+                    &:focus {
+                        border-left-color: #fafafa;
+                        border-right-color: #dddddd;
+                    }
+                }
+            }
+        }
+    }
 }

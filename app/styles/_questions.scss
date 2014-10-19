@@ -123,20 +123,9 @@
         }
         .modal-footer {
             text-align: left;
-            .lergo-h3{
-                display:inline;
+            .lergo-h3 {
+                display: inline;
             }
-        }
-        .menu {
-            border-right: 3px solid #efefef;
-            min-height: 380px;
-            width: 150px;
-            line-height: 2;
-            min-width: 150px;
-            float: left;
-            padding: 10px;
-            font-size: 20px;
-            margin-top: 10px;
         }
     }
     .btn-default {
@@ -144,17 +133,7 @@
     }
 }
 
-.rtl {
-    .question-bank-dialog .modal-dialog {
-        .modal-content {
-            .menu {
-                border-left: 3px solid #efefef;
-                border-right: none;
-                float: right;
-            }
-        }
-    }
-}
+
 
 .shuffle {
     display: table;

@@ -1,4 +1,4 @@
-<div  id="about">
+<!-- <div  id="about">
     <h1> Thanks To </h1>
     <div>
         <div class="cloudbees">
@@ -17,9 +17,9 @@
     </pre>
 
     <h1> Latest Commits </h1>
-    <!-- GENERATED WITH
+    GENERATED WITH
                      git log  --abbrev=30 --pretty=format:"%h|%an|%ar|%s" -10 | column -t -s '|' > template
-                     -->
+                    
     <pre>
         <div ng-include="'views/version/_commits.html?i=' + getCacheRandomNumber() "></div>
     </pre>
@@ -37,4 +37,16 @@
 
 
 
+</div> -->
+<div class="base-layout" id="about">
+	<div>
+		<ul class="nav nav-tabs-vertical">
+			<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
+				<a href="" ng-click="setSection(section)">{{'about.' + section.id | i18n}}</a>
+			</li>
+		</ul>
+		<div class="tab-content-vertical">
+			<div ng-include="getInclude()"></div>
+		</div>
+	</div>
 </div>
