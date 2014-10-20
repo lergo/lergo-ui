@@ -83,6 +83,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				voiceFeedback();
 			}
 
+
             if ( !$scope.step.retryQuestion || result.data.correct ) { // if incorrect and retry, then retry
                 $scope.updateProgressPercent();
             }
@@ -133,6 +134,10 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
             $scope.quizItem = $scope.questions[quizItem];
         }
 	};
+
+    $scope.showNextQuestion = function(){
+        return ( $scope.step.retryQuestion || $scope.hasNextQuizItem() ) && $scope.getAnswer() && !$scope.getAnswer().correct;
+    };
 
 
 	$scope.hasNextQuizItem = function() {

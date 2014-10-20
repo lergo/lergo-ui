@@ -119,6 +119,9 @@ module.exports = function (grunt) {
             server: '.tmp'
         },
         jshint: {
+            options: {
+                reporter: require('jshint-stylish')
+            },
             main: {
                 options: {
                     jshintrc: '.jshintrc'
