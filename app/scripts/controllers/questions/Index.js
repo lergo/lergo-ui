@@ -12,9 +12,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		'showTags' : true
 	};
 
-	$scope.selectAll = function() {
+	$scope.selectAll = function(checked) {
 		_.each($scope.items, function(item) {
-			item.selected = true;
+			item.selected = checked;
 		});
 	};
 
@@ -31,12 +31,10 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 			$log.error($scope.errorMessage);
 		});
 	};
-	$scope.showQuestionBank = function() {
-		if ($scope.loadPublic !== undefined) {
-			$scope.loadPublicQuestion($scope.loadPublic);
-		}
-		return !$scope.isCreate;
-	};
+
+	$scope.$watch('loadPublic', function(newValue) {
+		$scope.loadPublicQuestion(newValue.value);
+	}, true);
 	$scope.loadPublicQuestion = function(isPublic) {
 		var oldValue = localStorageService.get('isPublic') === 'true';
 		if (oldValue !== isPublic) {
@@ -65,6 +63,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 
 		getQuestionsPromise.then(function(result) {
 			$scope.items = result.data.data;
+			$rootScope.$broadcast('questionsLoaded', {
+				'items' : $scope.items
+			});
 			$scope.errorMessage = null;
 			$scope.totalResults = result.data.total;
 			$scope.filterPage.count = result.data.count;

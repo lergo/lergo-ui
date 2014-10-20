@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller(
-		'LessonsUpdateCtrl',
+angular.module('lergoApp').controller('LessonsUpdateCtrl',
 		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter) {
 			$window.scrollTo(0, 0);
 			$scope.subjects = FilterService.subjects;
@@ -188,8 +187,7 @@ angular.module('lergoApp').controller(
 				}
 			};
 
-			$scope.addItemToQuiz = function(item, step) {
-
+			function addItemToQuiz(item, step) {
 				step.quizItems = step.quizItems || [];
 				if (step.quizItems.indexOf(item._id) < 0) {
 					if (!$scope.lesson.subject) {
@@ -206,7 +204,7 @@ angular.module('lergoApp').controller(
 					}
 					step.quizItems.push(item._id);
 				}
-			};
+			}
 
 			$scope.moveQuizItemUp = function(index, step) {
 				if (!!step.quizItems) {
@@ -255,19 +253,14 @@ angular.module('lergoApp').controller(
 						}
 
 						try {
-							$scope.openCreateUpdateQuestionDialog(step, $scope.quizItemsData[newQuizItemId], false);
+							$scope.openQuestionDialog(step, $scope.quizItemsData[newQuizItemId], false);
 						} finally {
 							unregister();
 						}
 					});
 				});
 			}
-			$scope.isValid = function(quizItem) {
-				if (!quizItem || !quizItem.type) {
-					return false;
-				}
-				return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
-			};
+
 			$scope.openUpdateQuestion = function(step, quizItemId) {
 				if ($scope.quizItemsData.hasOwnProperty(quizItemId)) {
 					openQuestionDialog(step, $scope.quizItemsData[quizItemId], true);
@@ -289,81 +282,12 @@ angular.module('lergoApp').controller(
 				});
 			};
 			function openQuestionDialog(step, quizItem, isUpdate) {
+				persistScroll();
 				var modelContent = {};
 				modelContent.templateUrl = 'views/questions/addCreateUpdateDialog.html';
 				modelContent.windowClass = 'question-bank-dialog';
 				modelContent.backdrop = 'static';
-				modelContent.controller = [ '$scope', '$modalInstance', 'quizItem', 'lessonOverrideQuestion', 'QuestionsService', 'isUpdate',
-						function($scope, $modalInstance, quizItem, lessonOverrideQuestion, QuestionsService, isUpdate) {
-
-							// this object will be updated by child scope
-							// UpdateQuestionCtrl.
-							$scope.permissions = {};
-							$scope.isModal = true;
-							$scope.isCreate = true;
-							$scope.quizItem = quizItem;
-							$scope.isUpdate = isUpdate;
-							$scope.addSelectedItems = function(items) {
-								$scope.selectedItems = _.filter(items, 'selected');
-								if ($scope.selectedItems.length > 0) {
-									$modalInstance.close({
-										selected : $scope.selectedItems,
-										quizItem : $scope.quizItem
-									});
-								}
-							};
-							$scope.addItem = function(item) {
-								var items = [];
-								items.push(item);
-								$modalInstance.close({
-									selected : items
-								});
-							};
-							$scope.cancel = function(item) {
-								$modalInstance.dismiss(item);
-							};
-							$scope.showCreate = function() {
-								$scope.isCreate = true;
-							};
-							$scope.loadQuestions = function(isPublic) {
-								$scope.loadPublic = isPublic;
-								$scope.isCreate = false;
-							};
-							/**
-							 * There are so many things we need to have to
-							 * enable copy and override, we better wrap it in a
-							 * function.
-							 */
-							$scope.canCopyAndOverride = function() {
-
-								// we can query $scope.permissions even
-								// though it is populated in child scope
-								// because child controller supports update
-								// for my $scope.permissions model rather
-								// than overriding it
-
-								return !!lessonOverrideQuestion &&
-								// we should have a parent's function to
-								// complete the task
-								!!$scope.quizItem && !!$scope.quizItem._id &&
-								// we should have an item to override
-								!!$scope.permissions &&
-								// we should have permissions from backend
-								!$scope.permissions.canEdit &&
-								// user should not be able to edit
-								!!$scope.permissions.canCopy;
-								// user should be able to copy
-							};
-
-							$scope.copyAndReplaceQuestion = function(item) {
-								$log.info('copying and replacing question from modal instance');
-								$modalInstance.close(item);
-								// we will soon open the new modal instance with
-								// the copied question.
-								lessonOverrideQuestion(step, item._id);
-							};
-
-						} ];
+				modelContent.controller = 'QuestionsAddUpdateDialogCtrl';
 				modelContent.resolve = {
 					lessonOverrideQuestion : function() {
 						return lessonOverrideQuestionAndReopenDialog;
@@ -373,32 +297,25 @@ angular.module('lergoApp').controller(
 					},
 					isUpdate : function() {
 						return isUpdate;
+					},
+					addItemToQuiz : function() {
+						return addItemToQuiz;
+					},
+					step : function() {
+						return step;
 					}
 				};
-
 				var modelInstance = $modal.open(modelContent);
-				modelInstance.result.then(function(result) {
-					angular.forEach(result.selected, function(item) {
-						$scope.addItemToQuiz(item, step);
-					});
-					// dont save invalid questions
-					if (!!result.quizItem && !$scope.isValid(result.quizItem)) {
-						QuestionsService.deleteQuestion(result.quizItem._id);
-					}
-				}, function(item) {
-					if (!!item && !$scope.isValid(item)) {
-						QuestionsService.deleteQuestion(item._id);
-					}
+				modelInstance.result.then(function() {
+					scrollToPersistPosition();
+				}, function() {
+					scrollToPersistPosition();
 				});
 			}
 
 			$scope.$on('$locationChangeStart', function(event) { // guy -
-				// todo -
-				// consider
-				// using
-				// route
-				// change
-				// instead.
+				// TODO - consider using route change instead.
+				persistScroll();
 				if (!!$scope.lesson && !$scope.lesson.name) {
 					var answer = confirm($filter('i18n')('deleteLesson.Confirm'));
 					if (!answer) {
@@ -414,5 +331,17 @@ angular.module('lergoApp').controller(
 					}
 				}
 			});
-
+			function persistScroll() {
+				if (!$rootScope.scrollPosition) {
+					$rootScope.scrollPosition = {};
+				}
+				$rootScope.scrollPosition[$location.path()] = $window.scrollY;
+			}
+			function scrollToPersistPosition() {
+				var scrollY = 0;
+				if (!!$rootScope.scrollPosition) {
+					scrollY = $rootScope.scrollPosition[$location.path()] || 0;
+				}
+				$window.scrollTo(0, scrollY);
+			}
 		});

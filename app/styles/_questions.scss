@@ -114,29 +114,29 @@
 }
 
 .question-bank-dialog .modal-dialog {
-    width: 95%;
+    width: 96%;
     min-width: 1000px;
     .modal-content {
         .modal-body {
-            height: 400px;
+            height: 500px;
             overflow-y: auto;
-        }
-        .modal-footer {
-            text-align: left;
-            .lergo-h3{
-                display:inline;
+            .left {
+                float: left;
+                width: 15%;
+            }
+            .right {
+                margin-right: 0px;
+                float: right;
+                width: 84%;
             }
         }
-        .menu {
-            border-right: 3px solid #efefef;
-            min-height: 380px;
-            width: 150px;
-            line-height: 2;
-            min-width: 150px;
-            float: left;
-            padding: 10px;
-            font-size: 20px;
-            margin-top: 10px;
+        .modal-footer {
+            padding: 5px 20px 5px;
+            margin-top: 0px;
+            text-align: left;
+            .lergo-h3 {
+                display: inline;
+            }
         }
     }
     .btn-default {
@@ -147,10 +147,15 @@
 .rtl {
     .question-bank-dialog .modal-dialog {
         .modal-content {
-            .menu {
-                border-left: 3px solid #efefef;
-                border-right: none;
-                float: right;
+            .modal-body {
+                .left {
+                    float: right;
+                }
+                .right {
+                    float: left;
+                    margin-left: 5px;
+                    margin-right: 0px;
+                }
             }
         }
     }

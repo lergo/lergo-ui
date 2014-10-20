@@ -1,5 +1,16 @@
 {
-  "add": "Add",
+  "about": {
+    "contact": "Contact",
+    "contribute": "Contribute",
+    "faq": "FAQ",
+    "friends": "Friends",
+    "keyContributors": "Key Contributors",
+    "keyFunders": "Key Funders List",
+    "keyFundersPictures": "Funders Picture Mosiac",
+    "overview": "Overview",
+    "privacy": "Privacy & Term"
+  },
+  "add": "Add to quiz",
   "admin": {
     "allLessons": "All Lessons",
     "by": "By",
@@ -36,6 +47,7 @@
       "links": {
         "contribute": "Contribute",
         "create": "Create",
+        "invites": "Invites",
         "learn": "Learn",
         "lessons": "Lessons",
         "parents": "Parents",
@@ -69,14 +81,26 @@
   "clickHere": "click here.",
   "close": "Close",
   "congratulations": "Congratulations",
+  "continousSave": {
+    "Confirm": "You have unsaved changes.Are you sure you want to leave this page?"
+  },
   "copy": "Copy",
   "createNotAvailable": "Please signup or login to LerGO. Only registered users can create content.",
   "delete": "Delete",
+  "deleteIntro": {
+    "Confirm": "Are you sure you want to delete the lesson : #{0} ?  This action cannot be undone."
+  },
   "deleteLesson": {
     "Confirm": "For the lesson to be created and saved, you must fill at least the Name field. By leaving this page without filling this field, all changes will be lost."
   },
   "deleteQuestion": {
     "Confirm": "For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost."
+  },
+  "deleteReports": {
+    "Confirm": "Are you sure you want to delete the marked reports? This action cannot be undone. "
+  },
+  "deleteStep": {
+    "confirm": "Are you sure you want to delete the step: #{0} ? This action cannot be undone."
   },
   "description": "Description",
   "done": "Done",
@@ -181,6 +205,12 @@
     "sent": "Invitation successfully sent"
   },
   "invite": "Invite",
+  "invites": {
+    "filter": "Filter Invites",
+    "markAsDone": "Mark as done",
+    "markAsUndone": "Mark as undone",
+    "myInvites": "My Invites"
+  },
   "languages": {
     "ar": "Arabic",
     "en": "English",
@@ -200,7 +230,7 @@
     "copiedFromLessons": "Some of the content of this lesson were orignially copied from"
   },
   "lessons": {
-    "addQuestion": "Add from My Questions",
+    "addQuestion": "Add Questions to Quiz",
     "addQuestionFromAll": "from all questions",
     "areYouReady": "Are you ready to start learning?",
     "available": "Available Lessons",
@@ -278,7 +308,7 @@
   "name": "Name",
   "new": "New",
   "next": "Next",
-  "nextQuestion": "Next Question",
+  "nextQuestion": "Continue",
   "popular": "Popular",
   "preview": "Preview",
   "questions": {
@@ -335,6 +365,7 @@
     "imageUrlHint": "To add image to question, please update image URL",
     "incorrect": "Incorrect",
     "incorrectAnswerFilled": "This is incorrect, the correct answer is",
+    "incorrectTryAgain": "Try Again",
     "language": "Language",
     "languages": {
       "other": "Other",
@@ -400,7 +431,9 @@
     "yourAnswers": "Student's Answer(s)"
   },
   "quiz": {
+    "allowRetry": "Allow Retry",
     "practiseMode": "Practice Mode",
+    "retryQuestionHint": "Click this option to repeat questions when student's answers are incorrect",
     "shuffleQuestion": "Shuffle Questions",
     "shuffleQuestionHint": "Click here to shuffle order of questions.",
     "testMode": "Test Mode",

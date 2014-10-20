@@ -23,7 +23,8 @@
 			</div>
 		</div>
 		<div class="page-content-body" ng-show="!!isModal">
-			<div class="lergo-h1">{{ 'questions.selectQuestions' | i18n }}</div>
+			<div ng-show="!!isPublic" class="lergo-h1">{{ 'questions.selectAllQuestions' | i18n }}</div>
+			<div ng-show="!isPublic" class="lergo-h1">{{ 'questions.selectMyQuestions' | i18n }}</div>
 		</div>
 		<div class="page-content-sidebar">
 			<div class="lergo-h1">{{ 'questions.filter' | i18n }}</div>
@@ -35,7 +36,7 @@
 				<thead>
 					<tr style="font-weight: bold">
 						<td ng-show="isModal">
-							<input type="checkbox" ng-click="selectAll($event)" />
+							<input type="checkbox" ng-click="selectAll($event.target.checked)" />
 						</td>
 						<td>{{ 'questions.question' | i18n }}</td>
 						<td>{{ 'questions.answer' | i18n }}</td>
