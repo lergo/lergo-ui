@@ -136,7 +136,9 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 	function getWrongQuestions(answers, lesson) {
 		angular.forEach(answers, function(answer) {
 			if (!answer.checkAnswer.correct) {
-				lesson.steps[0].quizItems.push(answer.quizItemId);
+				if (lesson.steps[0].quizItems.indexOf(answer.quizItemId) == -1) {
+					lesson.steps[0].quizItems.push(answer.quizItemId);
+				}
 			}
 		});
 	}
