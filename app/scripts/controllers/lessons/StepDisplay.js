@@ -277,6 +277,12 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
     $scope.tryAgain = function(){
         $log.info('trying again');
         var quizItem = $scope.quizItem;
+        if ( !!quizItem.options ) {
+            quizItem.options.isShuffled = false;
+            _.each(quizItem.options, function (option) {
+                option.userAnswer = false;
+            });
+        }
         delete $scope.answers[quizItem._id];
         quizItem.startTime = new Date().getTime();
         $scope.updateProgressPercent();
