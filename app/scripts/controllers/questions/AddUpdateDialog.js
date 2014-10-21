@@ -11,19 +11,27 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 			$scope.isCreate = true;
 			$scope.quizItem = quizItem;
 			$scope.isUpdate = isUpdate;
-			$scope.step = step;
 			$scope.loadPublic = {
 				value : false
 			};
 			var items = [];
 			$scope.$on('questionsLoaded', function(event, data) {
 				items = data.items;
+				if (!!step && !!step.quizItems) {
+					_.each(items, function(q) {
+						if (step.quizItems.indexOf(q._id) !== -1) {
+							q.alreadyAdded = true;
+						}
+					});
+				}
+
 			});
 			function addSelectedItems(canClose) {
 				$scope.selectedItems = _.filter(items, 'selected');
 				angular.forEach($scope.selectedItems, function(item) {
 					addItemToQuiz(item, step);
 					item.selected = false;
+					item.alreadyAdded = true;
 				});
 				if ($scope.selectedItems.length > 0 && !!canClose) {
 					$scope.cancel();

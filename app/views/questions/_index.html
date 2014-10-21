@@ -42,9 +42,9 @@
 						<td>{{ 'questions.age' | i18n}}</td>
 					</tr>
 				</thead>
-				<tr ng-repeat="item in items |orderBy:'-lastUpdate'">
+				<tr ng-repeat="item in items |orderBy:'-lastUpdate'" ng-class="{'disabled':!!item.alreadyAdded}">
 					<td ng-show="isModal">
-						<input type="checkbox" ng-model="item.selected" />
+						<input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected" />
 					</td>
 					<td class="question">
 						<span ng-show="!!isModal">{{item.question}}</span>

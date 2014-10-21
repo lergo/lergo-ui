@@ -62,16 +62,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		}
 
 		getQuestionsPromise.then(function(result) {
-			// if it is opened from add-quiz dialog we need to filter the quiz
-			// already added to the step
-			if (!!$scope.step && !!$scope.step.quizItems) {
-				$scope.items = _.filter(result.data.data, function(q) {
-					return $scope.step.quizItems.indexOf(q._id) === -1;
-				});
-
-			} else {
-				$scope.items = result.data.data;
-			}
+			$scope.items = result.data.data;
 			$rootScope.$broadcast('questionsLoaded', {
 				'items' : $scope.items
 			});
