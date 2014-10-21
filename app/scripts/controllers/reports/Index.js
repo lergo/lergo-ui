@@ -98,7 +98,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 	$scope.createLessonFromWrongQuestions = function() {
 		LergoClient.lessons.create().then(function(result) {
 			var lesson = result.data;
-			lesson.name = 'Difficult questions lesson from : ';
+			lesson.name = $filter('i18n')('lesson.practice.title');
 			// todo: remove filter Service getLanguageByLocale - this should be
 			// coming from translate service.
 			lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
@@ -108,7 +108,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			var step = {
 				'type' : 'quiz',
 				'quizItems' : [],
-				'title' : 'Difficult Questions'
+				'title' : $filter('i18n')('lesson.practice.step.title')
 			};
 			lesson.steps.push(step);
 			angular.forEach($scope.reports, function(report) {

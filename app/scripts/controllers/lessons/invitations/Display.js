@@ -186,7 +186,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			var report = $scope.report;
 			LergoClient.lessons.create().then(function(result) {
 				var lesson = result.data;
-				lesson.name = 'Difficult questions lesson from : ' + report.data.lesson.name;
+				lesson.name = $filter('i18n')('lesson.practice.title') + report.data.lesson.name;
 				// todo: remove filter Service getLanguageByLocale - this should
 				// be
 				// coming from translate service.

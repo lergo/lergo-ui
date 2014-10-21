@@ -4,15 +4,19 @@ angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $
 
 	$scope.sections = [ {
 		'id' : 'lessons',
+		icon : 'fa fa-university',
 		'controller' : 'LessonsIndexCtrl'
 	}, {
 		'id' : 'questions',
+		icon : 'fa fa-question-circle',
 		'controller' : 'QuestionsIndexCtrl'
 	}, {
 		'id' : 'reports',
+		icon : 'fa fa-bar-chart-o',
 		'controller' : 'ReportsIndexCtrl'
 	}, {
 		id : 'invites',
+		icon : 'fa fa-envelope',
 		controller : 'InvitesIndexCtrl'
 
 	} ];

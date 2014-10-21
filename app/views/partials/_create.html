@@ -1,32 +1,35 @@
 <div class="base-layout" id="create">
-	<div >
-        <ul class="nav nav-tabs">
-            <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
-               <a href="#!/user/create/{{section.id}}">{{'baseLayout.header.links.' + section.id | i18n}}</a>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div ng-include="getInclude()"></div>
-        </div>
+	<div>
+		<ul class="nav nav-tabs">
+			<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
+				<a href="#!/user/create/{{section.id}}">
+					<i class="{{section.icon}}"></i>
+					{{'baseLayout.header.links.' + section.id | i18n}}
+				</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div ng-include="getInclude()"></div>
+		</div>
 		<!--<tabset> -->
 		<!--<tab heading="" ng-click="lessonTabActive()" active="isLessonTabActive">-->
-            <!--<span ng-show="!!isLessonTabActive">-->
-		        <!--<div ng-include="'views/lessons/_index.html'" ng-controller="LessonsIndexCtrl" ></div>-->
-            <!--</span>-->
+		<!--<span ng-show="!!isLessonTabActive">-->
+		<!--<div ng-include="'views/lessons/_index.html'" ng-controller="LessonsIndexCtrl" ></div>-->
+		<!--</span>-->
 		<!--</tab>-->
-        <!--<tab  ng-click="questionTabActive()" heading="{{'baseLayout.header.links.questions' | i18n}}" active="isQuestionTabActive">-->
-            <!--<span ng-show="!!isQuestionTabActive">-->
-		        <!--<div ng-include="'views/questions/_index.html'" ng-controller="QuestionsIndexCtrl" ></div>-->
-            <!--</span>-->
+		<!--<tab  ng-click="questionTabActive()" heading="{{'baseLayout.header.links.questions' | i18n}}" active="isQuestionTabActive">-->
+		<!--<span ng-show="!!isQuestionTabActive">-->
+		<!--<div ng-include="'views/questions/_index.html'" ng-controller="QuestionsIndexCtrl" ></div>-->
+		<!--</span>-->
 		<!--</tab>-->
 		<!--<tab  ng-click="reportTabActive()" heading="{{'baseLayout.header.links.reports' | i18n}}" active="isReportTabActive">-->
-            <!--<span ng-show="!!isReportTabActive">-->
-		        <!--<div ng-include="'views/reports/_index.html'" ng-controller="ReportsIndexCtrl" ></div>-->
-            <!--</span>-->
+		<!--<span ng-show="!!isReportTabActive">-->
+		<!--<div ng-include="'views/reports/_index.html'" ng-controller="ReportsIndexCtrl" ></div>-->
+		<!--</span>-->
 		<!--</tab>  -->
 		<!--&lt;!&ndash; <tab heading="Admin">-->
 		<!--&lt;!&ndash;<div ng-include="'views/admin/homepage.html'" ng-controller="AdminHomepageCtrl"></div>&ndash;&gt;-->
 		<!--&lt;!&ndash;</tab> &ndash;&gt;-->
-        <!--</tabset>-->
+		<!--</tabset>-->
 	</div>
 </div>
