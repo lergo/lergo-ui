@@ -102,11 +102,18 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		});
 	};
 
-    // quiz is done only if all of the following are correct
+    // quiz is done only iff all of the following are correct
     // 1. all questions were answered
     // 2. no retry required for last question -- which means last answer was correct or no retry configured
     // guy - the last question is a special scenario since all the others will fall on the first condition.
+
+    // if step is not quiz - then we will return "true" as default.
     $scope.isQuizDone = function(){
+
+        if ( $scope.step.type !== 'quiz'){ // return true if not quiz.
+            return true;
+        }
+
         var answer = $scope.getAnswer();
         var allQuestionsWereAnswered = !$scope.hasNextQuizItem() && answer;
         var noRetryOnLast = answer && ( answer.correct || !$scope.step.retryQuestion );
