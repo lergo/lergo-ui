@@ -202,8 +202,8 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.enterPressed = function(quizItem) {
 		if (!$scope.getAnswer(quizItem) && $scope.canSubmit(quizItem)) {
 			$scope.checkAnswer();
-		} else if ($scope.getAnswer(quizItem) && $scope.hasNextQuizItem()) {
-			$scope.nextQuizItem();
+		} else if ($scope.getAnswer(quizItem) && !$scope.isQuizDone()) {
+            $scope.retryOrNext();
 		}
 	};
 
