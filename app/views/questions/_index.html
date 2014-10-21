@@ -1,8 +1,8 @@
 <div id="questionsIndex" load-filter-and-paging="loadQuestions()">
 	<span class="error">{{error}}</span>
 	<br />
-	<div class="page-content-width page-content-titles">
-		<div class="page-content-body" ng-show="!isModal">
+	<div class="page-content-width page-content-titles" ng-show="!isModal">
+		<div class="page-content-body">
 			<div class="lergo-h1">
 				<div class="btn-group" dropdown>
 					<button type="button" class="btn-link dropdown-toggle">
@@ -21,10 +21,6 @@
 			<div class="page-content-titles-actions">
 				<button class="btn" ng-click="createNewQuestion()">{{ 'questions.createNew' | i18n }}</button>
 			</div>
-		</div>
-		<div class="page-content-body" ng-show="!!isModal">
-			<div ng-show="!!isPublic" class="lergo-h1">{{ 'questions.selectAllQuestions' | i18n }}</div>
-			<div ng-show="!isPublic" class="lergo-h1">{{ 'questions.selectMyQuestions' | i18n }}</div>
 		</div>
 		<div class="page-content-sidebar">
 			<div class="lergo-h1">{{ 'questions.filter' | i18n }}</div>
@@ -51,7 +47,8 @@
 						<input type="checkbox" ng-model="item.selected" />
 					</td>
 					<td class="question">
-						<div question-read-link question="item"></div>
+						<span ng-show="!!isModal">{{item.question}}</span>
+						<div ng-show="!isModal" question-read-link question="item"></div>
 					</td>
 					<td class="answer">{{ getAnswers(item) | limitTo:30}}</td>
 					<td ng-show="!!isPublic" class="answer">{{item.user.username}}</td>
@@ -63,7 +60,8 @@
 			<div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | i18n }}</div>
 		</div>
 		<div class="sidebar page-content-sidebar">
-			<div lergo-filter no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()" on-load="filterLoaded()" opts="questionsFilterOpts"></div>
+			<div lergo-filter no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()" on-load="filterLoaded()"
+				opts="questionsFilterOpts"></div>
 		</div>
 	</div>
 	<div lergo-paging page="filterPage" on-change="loadQuestions()" on-load="pagingLoaded()"></div>

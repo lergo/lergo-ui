@@ -3,7 +3,8 @@
 		<div class="left">
 			<ul class="nav nav-tabs-vertical">
 				<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
-					<a href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.key | i18n}}</a>
+					<a href="" ng-click="setCurrentSelection(section)" tooltip="{{section.tooltip}}" tooltip-placement="right">{{'questions.' + section.id |
+						i18n}}</a>
 				</li>
 			</ul>
 		</div>

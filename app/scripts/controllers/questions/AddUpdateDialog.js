@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
-		function($scope, $modalInstance, quizItem, lessonOverrideQuestion, QuestionsService, isUpdate, $controller, step, addItemToQuiz, $log) {
+		function($scope, $modalInstance, quizItem, lessonOverrideQuestion, QuestionsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
 
 			$scope.quizItem = quizItem;
 			// this object will be updated by child scope
@@ -11,6 +11,7 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 			$scope.isCreate = true;
 			$scope.quizItem = quizItem;
 			$scope.isUpdate = isUpdate;
+			$scope.step = step;
 			$scope.loadPublic = {
 				value : false
 			};
@@ -46,7 +47,7 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 			$scope.sections = [ {
 				id : 'createNewQuestion',
 				controller : 'QuestionsUpdateCtrl',
-				key : 'createNewQuestion',
+				tooltip : $filter('i18n')('questions.createNewQuestion'),
 				page : 'views/questions/_update.html',
 				loadPublic : false,
 				isCreate : true,
@@ -59,7 +60,7 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 			}, {
 				id : 'myQuestions',
 				controller : 'QuestionsIndexCtrl',
-				key : 'myQuestions',
+				tooltip : $filter('i18n')('questions.selectMyQuestions'),
 				page : 'views/questions/_index.html',
 				loadPublic : false,
 				isCreate : false,
@@ -70,9 +71,9 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 					addSelectedItems(true);
 				}
 			}, {
-				id : 'publicQuestion',
+				id : 'allQuestions',
 				controller : 'QuestionsIndexCtrl',
-				key : 'allQuestions',
+				tooltip : $filter('i18n')('questions.selectAllQuestions'),
 				page : 'views/questions/_index.html',
 				loadPublic : true,
 				isCreate : false,
