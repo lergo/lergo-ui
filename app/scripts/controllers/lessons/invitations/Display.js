@@ -115,8 +115,9 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		}
 	};
 	function redirectToInvitation(lessonId, invId) {
-		$location.path('/public/lessons/invitations/' + invId + '/display').search({
-			lessonId : lessonId
+		$location.path('/public/lessons/' + lessonId + '/intro').search({
+			invitationId : invId,
+			autoPlay : true
 		});
 	}
 
