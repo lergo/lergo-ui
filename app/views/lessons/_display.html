@@ -37,12 +37,12 @@
 					</div>
 				</td>
 				<td rowspan="2">
-					<a class="btn-link" ng-click="startLesson()">
+					<a ng-show="!lesson.temporary" class="btn-link" ng-click="startLesson()">
 						<i style="font-size: 35px; color: #8CC63F;" class="fa fa-repeat "></i>
 					</a>
 				</td>
 				<td>
-					<a class="btn-link" ng-click="startLesson()">{{'lessons.restart' | i18n}}</a>
+					<a ng-show="!lesson.temporary" class="btn-link" ng-click="startLesson()">{{'lessons.restart' | i18n}}</a>
 				</td>
 				<td rowspan="2" ng-show="wrongQuestions.length>0">
 					<a show-logged-in class="btn-link" ng-click="practiceMistakes()">

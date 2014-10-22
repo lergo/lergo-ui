@@ -26,7 +26,7 @@
  * 
  */
 
-angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope, ReportWriteService, $log) {
+angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope, ReportWriteService, $log,LergoClient) {
 
 	var report = $scope.report;
 	if (!report.answers) {
@@ -49,6 +49,9 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 		if (!report.data.finished) {
 			report.data.finished = true;
 		}
+		if(!!report.data.lesson.temporary){
+			LergoClient.lessons.delete(report.data.lesson._id);
+		}
 	});
 
 	// data is step
@@ -63,7 +66,8 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 		$log.info('stepIndexChange', data);
 		/* jshint -W052 */
 		stepIndex = ~~data.new;
-        // update new duration only if we are still looking at steps inside the lesson.
+        // update new duration only if we are still looking at steps inside the
+		// lesson.
         if ( stepIndex <= report.data.lesson.steps.length ){
             var newDuration = report.stepDurations[stepIndex];
 
@@ -79,8 +83,14 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 
 
 
-        ReportWriteService.calculateOldStepDuration( report, data ); // updates report model
-        report.duration = ReportWriteService.calculateReportDuration(report); // does not update report model
+        ReportWriteService.calculateOldStepDuration( report, data ); // updates
+																		// report
+																		// model
+        report.duration = ReportWriteService.calculateReportDuration(report); // does
+																				// not
+																				// update
+																				// report
+																				// model
 	});
 
 	// in case user answered a question, and then changed the answer, we
