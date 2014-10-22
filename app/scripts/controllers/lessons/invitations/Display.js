@@ -192,6 +192,12 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 				lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
 				lesson.subject = report.data.lesson.subject;
 				lesson.steps = [];
+				var stepsWithoutRetry = _.filter(report.data.lesson.steps, function(s) {
+					if (s.type === 'quiz') {
+						return !s.retryQuestion;
+					}
+				});
+
 				lesson.description = report.data.lesson.description;
 				lesson.lastUpdate = new Date().getTime();
 				lesson.temporary = true;
@@ -199,7 +205,8 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 					'type' : 'quiz',
 					'quizItems' : [],
 					'testMode' : 'False',
-					'shuffleQuestion' : true
+					'shuffleQuestion' : true,
+					retryQuestion : stepsWithoutRetry.length === 0
 				};
 				lesson.steps.push(step);
 				lesson.steps[0].quizItems = $scope.wrongQuestions;

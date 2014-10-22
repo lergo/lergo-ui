@@ -59,7 +59,7 @@
 							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.subject && ('filters.subjects.' + invite.subject | i18n) ||""}}</span>
 						</td>
 						<td class="answer">
-							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.age}}</span>
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.age &&('+'+ invite.age) || ""}}</span>
 						</td>
 					</tr>
 				</tbody>
