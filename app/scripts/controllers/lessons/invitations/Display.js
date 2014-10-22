@@ -115,9 +115,8 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		}
 	};
 	function redirectToInvitation(lessonId, invId) {
-		$location.path('/public/lessons/' + lessonId + '/intro').search({
-			invitationId : invId,
-			autoPlay : true
+		$location.path('/public/lessons/invitations/' + invId + '/display').search({
+			lessonId : lessonId
 		});
 	}
 
@@ -195,6 +194,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 				lesson.steps = [];
 				lesson.description = report.data.lesson.description;
 				lesson.lastUpdate = new Date().getTime();
+				lesson.temporary = true;
 				var step = {
 					'type' : 'quiz',
 					'quizItems' : [],

@@ -33,7 +33,9 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	};
 
 	$scope.$watch('loadPublic', function(newValue) {
-		$scope.loadPublicQuestion(newValue.value);
+		if (!!newValue) {
+			$scope.loadPublicQuestion(newValue.value);
+		}
 	}, true);
 	$scope.loadPublicQuestion = function(isPublic) {
 		var oldValue = localStorageService.get('isPublic') === 'true';
