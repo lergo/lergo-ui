@@ -1,6 +1,7 @@
 <div class="base-layout" id="lessonIntro">
 	<div class="page-content-width">
-		<div class="page-content-body">
+        <div class="lesson-intro-content clearfix">
+    		<div class="page-content-body">
 			<div class="lesson">
 				<div class="image">
 					<div lesson-title-image lesson="lesson"></div>
@@ -219,16 +220,22 @@
 
 
 		</div>
-        <div class="embed-mode-item watch-on-lergo">
-            <a href="{{shareLink}}" target="_blank">{{'powered.by.lergo'|i18n}}</a>
-        </div>
 
-		<div class="page-content-sidebar">
-			<div create-your-own-box class="not-embed-mode-item"></div>
-		</div>
-		<div class="comments" show-logged-in>
-			<div disqus-embed lesson="lesson"></div>
-		</div>
+
+    		<div class="page-content-sidebar">
+    			<div create-your-own-box class="not-embed-mode-item"></div>
+		    </div>
+        </div>
+        <div>
+            <div class="embed-mode-item watch-on-lergo">
+                <a href="{{shareLink}}" target="_blank">{{'powered.by.lergo'|i18n}}</a>
+            </div>
+        </div>
+        <div class="not-embed-mode-item" style="margin-top:10px;">
+    		<div class="comments " show-logged-in>
+    			<div disqus-embed lesson="lesson"></div>
+		    </div>
+        </div>
 
 	</div>
 

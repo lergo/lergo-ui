@@ -270,11 +270,18 @@
 }
 
 .lergo-embed-mode {
-  [create-your-own-box] {
-    display: none;
+
+  .watch-on-lergo{
+    margin-left:135px;
+    margin-right:0;
   }
 }
 
-.watch-on-lergo{
-  margin-left:135px;
+
+
+.rtl.lergo-embed-mode {
+  .watch-on-lergo{
+    margin-left:0;
+    margin-right:275px;
+  }
 }
