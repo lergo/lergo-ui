@@ -61,7 +61,7 @@ angular.module('lergoApp').service('LergoTranslate',
 
                 // don't cause a page refresh
                 if ( !!$route.current && !!$route.current.$$route &&  $route.current.$$route.reloadOnSearch === false ) {
-                    $location.search('lergoLanguage', _language);
+                    $location.search('lergoLanguage', _language).replace();
                 }
 
 
