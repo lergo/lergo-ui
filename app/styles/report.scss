@@ -188,3 +188,14 @@
         }
     }
 }
+
+.lergo-embed-mode {
+  #content {
+    .report {
+      margin: 0;
+      .image {
+        display: none;
+      }
+    }
+  }
+}

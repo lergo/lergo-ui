@@ -107,3 +107,18 @@
 .video-tip {
     display: inline-block;
 }
+
+
+.lergo-embed-mode{
+  #lessonDisplay{
+    .done-step{
+      width:600px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("../images/certificate_embed.png") ;
+      .message, .report, .stats{
+        width:400px;
+      }
+    }
+  }
+}

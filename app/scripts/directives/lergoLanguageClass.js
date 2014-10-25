@@ -19,8 +19,6 @@ angular.module('lergoApp')
                     } catch (e) {
                     }
                 });
-
-                scope.$digest();
             }
         };
     });

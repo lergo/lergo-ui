@@ -291,7 +291,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
         if ( !!newValue ) {
             $scope.shareLink = LergoClient.lessons.getShareLink(newValue);
-            $scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="1000" frameBorder="0"></iframe>';
+            $scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="600" frameBorder="0"></iframe>';
         }
 
 		if (!!newValue && !!newValue.copyOf) {
