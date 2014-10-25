@@ -7,6 +7,8 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	var preview = !!$routeParams.preview;
 	var autoPlay = $routeParams.autoPlay;
 
+    $scope.shareSection = 'link';
+
 	LergoClient.lessons.getLessonIntro(lessonId).then(function(result) {
 		$scope.lesson = result.data;
 		$rootScope.page = {
@@ -162,8 +164,10 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	if (!!autoPlay) {
 		$scope.startLesson();
 	}
-	$scope.absoluteShareLink = function(lesson) {
-		$scope.shareLink = LergoClient.lessons.getShareLink(lesson);
+
+
+
+	$scope.absoluteShareLink = function(/*lesson*/) {
 		$scope.invite = false;
 		$scope.share = !$scope.share;
 	};
@@ -282,7 +286,14 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	$scope.$watch('lesson', function(newValue) {
 		if (!!$scope.copyOfItem) {
 			return;
-		}
+
+        }
+
+        if ( !!newValue ) {
+            $scope.shareLink = LergoClient.lessons.getShareLink(newValue);
+            $scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="1000" frameBorder="0"></iframe>';
+        }
+
 		if (!!newValue && !!newValue.copyOf) {
 			LergoClient.lessons.findLessonsById([].concat(newValue.copyOf)).then(function(result) {
 				// we want to keep the information about copyOf if copied from

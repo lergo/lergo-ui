@@ -113,11 +113,26 @@
 					</div>
 					<div class="forms">
 						<div ng-show="!!share" class="lergo-form share">
-							<p class="lergo-h4">{{'lessons.shareLesson' | i18n}}</p>
-							<div class="container">
-								<span>{{'lessons.shareLessonTitle' | i18n}}</span>
-								<input type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)" />
-							</div>
+
+                            <div class="share-navigation clearfix">
+                                <p class="lergo-h4 share-section-link" ng-click="shareSection = 'link'" ng-class="{'active' : shareSection === 'link'}">{{'lessons.shareLesson' | i18n}}</p>
+                                <p class="lergo-h4 share-section-link" ng-click="shareSection = 'embed'" ng-class="{'active' : shareSection === 'embed'}">{{'lessons.embedLesson' | i18n}}</p>
+
+                            </div>
+
+                            <div class="share-link" ng-show="shareSection === 'link' ">
+
+							    <div class="container">
+    								<span>{{'lessons.shareLessonTitle' | i18n}}</span>
+    								<input type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)" />
+    							</div>
+                            </div>
+                            <div class="share-embed" ng-show="shareSection === 'embed' ">
+                                <div class="container">
+                                    <span>{{'lessons.embedLessonTitle' | i18n }}</span>
+                                    <textarea ng-model="embedCode" style="height:74px;" readonly ng-click="onTextClick($event)"></textarea>
+                                </div>
+                            </div>
 						</div>
 						<div ng-show="!!invite" class="lergo-form invite">
 							<p class="lergo-h4">{{'lessons.inviteLesson'| i18n}}</p>
@@ -201,12 +216,21 @@
 					</div>
 				</div>
 			</div>
+
+
 		</div>
+        <div class="embed-mode-item watch-on-lergo">
+            <a href="{{shareLink}}" target="_blank">{{'powered.by.lergo'|i18n}}</a>
+        </div>
+
 		<div class="page-content-sidebar">
-			<div create-your-own-box></div>
+			<div create-your-own-box class="not-embed-mode-item"></div>
 		</div>
 		<div class="comments" show-logged-in>
 			<div disqus-embed lesson="lesson"></div>
 		</div>
+
 	</div>
+
 </div>
+

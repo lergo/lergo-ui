@@ -1,6 +1,6 @@
 <div>
 	<div id="wrapper" class="clearfix">
-		<div id="header" ng-controller="LoginCtrl">
+		<div id="header" class="not-embed-mode-item" ng-controller="LoginCtrl">
 			<div class="centered-content">
 				<div class="header-main">
 					<div>
@@ -56,7 +56,7 @@
 		<div id="content" class="centered-content clearfix" ng-transclude=""></div>
 		<div class="push"></div>
 	</div>
-	<div id="footer">
+	<div id="footer" class="not-embed-mode-item">
 		<div class="centered-content">
 			<div class="footer-text">
 				{{'baseLayout.footer.text1' | i18n }}

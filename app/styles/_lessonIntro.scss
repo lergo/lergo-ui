@@ -151,6 +151,24 @@
         }
 
         .share {
+
+          .share-navigation {
+            padding-bottom:10px;
+            .share-section-link {
+              cursor: pointer;
+              float: left;
+
+              &:not(:first-child) {
+                margin-left: 10px;
+              }
+
+              &.active {
+                color: $LERGO_INTRO_LINK;
+                border-bottom: 3px solid $LERGO_INTRO_LINK;
+              }
+            }
+          }
+
           color: #949494;
           padding: 10px;
           .lergo-h4 {
@@ -248,7 +266,15 @@
         }
       }
     }
-
-
   }
+}
+
+.lergo-embed-mode {
+  [create-your-own-box] {
+    display: none;
+  }
+}
+
+.watch-on-lergo{
+  margin-left:135px;
 }

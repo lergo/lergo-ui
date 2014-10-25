@@ -294,4 +294,19 @@ $FOOTER_HEIGHT: 170px !default;
   }
 }
 
+.embed-mode-item{ /* to display only in embed code */
+  display:none;
+}
 
+.lergo-embed-mode{
+  background:transparent;
+  .not-embed-mode-item {
+    display:none;
+  }
+
+
+
+  .embed-mode-item{
+    display:block;
+  }
+}

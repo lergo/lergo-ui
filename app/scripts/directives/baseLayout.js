@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeout, $log, $location, LergoClient, LergoTranslate, $routeParams) {
+angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeout, $log, $location, LergoClient, LergoTranslate, $routeParams, $window) {
     return {
         templateUrl: 'views/baseLayout.html',
         transclude: true,
@@ -8,6 +8,26 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
         replace: true,
         link: function postLink(scope/* , element /*, attrs */) {
 
+            if ( $window.parent !== $window  || $routeParams.embed === 'true' ){
+                scope.embeddedMode = true;
+                $('body').addClass('lergo-embed-mode');
+
+                var dimensions = [0,0];
+                scope.$watch(function(){
+
+                    dimensions[0] = $(document).width();
+                    dimensions[1] = $(document).height();
+                    return dimensions;
+                }, function( newValue, oldValue ){
+                    try {
+                        if (!!newValue && newValue !== oldValue) {
+                            $window.parent.postMessage( { 'name' : 'lergo_size_change', 'data' : { 'width' : dimensions[0], 'height': dimensions[1] } }, /*$window.location.origin*/ '*');
+
+                        }
+                    }catch(e){ $log.error('unable to set height/width on location.search',e);}
+                },true);
+
+            }
 
             scope.baseLayout = { 'filterTextSearch' : $routeParams.search };
 
