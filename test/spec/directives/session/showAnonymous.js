@@ -9,6 +9,7 @@ describe('Directive: session/showAnonymous', function () {
         element = angular.element('<div show-anonymous></div>');
         element = $compile(element)($rootScope);
         $rootScope.$digest();
-        expect(element.css('display')).toBe('block');
+        var elementHtml =  $(element)[0].outerHTML; // guy - for some reason element.css('display') - returned a map instead of value.. so I am using this stupid method now..
+        expect(elementHtml.indexOf('display: block;') > 0).toBe(true);
     }));
 });
