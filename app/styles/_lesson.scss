@@ -111,6 +111,15 @@
 
 .lergo-embed-mode{
   #lessonDisplay{
+    #content{
+      width:600px;
+    }
+    .lesson-step-title{
+      width:600px;
+      max-width:600px;
+      text-overflow: ellipsis;
+      overflow-x:hidden;
+    }
     .done-step{
       width:600px;
       background-repeat: no-repeat;
@@ -118,6 +127,10 @@
       background-image: url("../images/certificate_embed.png") ;
       .message, .report, .stats{
         width:400px;
+      }
+
+      .report{
+        margin: 0 auto;
       }
     }
   }

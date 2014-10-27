@@ -11,6 +11,7 @@
 			</div>
 			<div class="header-name">
 				<div ng-show="!!report.data.invitee.name">
+
 					<div class="lergo-h1">{{report.data.invitee.name}}</div>
 					<div class="lergo-h4">{{'report.completed'|i18n}}:</div>
 					<br />
@@ -27,6 +28,7 @@
 			</div>
 			<div class="header-desc">
 				<div ng-show="!!report.data.lesson.description">
+
 					<div class="lergo-h4">{{'report.description'|i18n}}</div>
 					<div>{{report.data.lesson.description | limitTo:440}}</div>
 				</div>
@@ -138,4 +140,5 @@
 			</div>
 		</div>
 	</div>
+    <div powered-by-lergo="report.data.lesson"></div>
 </div>
