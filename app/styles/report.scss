@@ -1,4 +1,8 @@
 .report {
+
+    .redo-buttons{
+      position: absolute; right: 0; bottom: 0; top: 150px;
+    }
     .lergo-h1 {
         font-size: 20px;
     }
@@ -195,6 +199,40 @@
       margin: 0;
       .image {
         display: none;
+      }
+
+      .report-quiz-summary-item{
+        padding:2px;
+        white-space: nowrap;
+      }
+
+      .recommendation .description a{
+        width:250px;
+        overflow-x:hidden;
+        display:block;
+        text-overflow: ellipsis;
+      }
+
+      .header {
+        .header-name{
+          width:auto;
+        }
+        .header-desc{
+          margin-top:10px;
+          width:auto;
+        }
+      }
+
+      .redo-buttons{
+        position:static;
+        margin-top:10px;
+      }
+
+      .quiz-step-report-view{
+        .report-quiz-question-header .duration {
+          display:block;
+          float:none;
+        }
       }
     }
   }

@@ -119,18 +119,46 @@
       max-width:600px;
       text-overflow: ellipsis;
       overflow-x:hidden;
+      line-height:40px;
     }
     .done-step{
       width:600px;
       background-repeat: no-repeat;
       background-position: center;
       background-image: url("../images/certificate_embed.png") ;
+
+      .congrats{
+        line-height:10px;
+      }
+
+
       .message, .report, .stats{
         width:400px;
+
+        .lesson-title{
+          color: #428bca;
+          font-size: 17px;
+          text-overflow: ellipsis;
+          overflow-x: hidden;
+          white-space: nowrap;
+          max-width: 380px;
+          display: inline-block;
+          width: 500px;
+        }
+
+        .created-by{
+          display:block;
+          line-height:10px;
+          margin-top:-10px;
+        }
+
       }
 
       .report{
         margin: 0 auto;
+        table{
+          margin-top:-40px;
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-<div class="{{!quizItem.checkAnswer.correct && 'bg-warning' || 'bg-success'}}">
+<div class="{{!quizItem.checkAnswer.correct && 'bg-warning' || 'bg-success'}} report-quiz-question-header">
 	<span class="inline-table">{{quizItem.question}}</span>
 	<span ng-show="!!quizItem.checkAnswer.correct" class="inline-table">({{'questions.correct'|i18n}}) </span>
 	<span ng-show="!quizItem.checkAnswer.correct" class="inline-table">({{'questions.incorrect'|i18n}})</span>

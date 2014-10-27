@@ -32,7 +32,7 @@
 					<div class="lergo-h4">{{'report.description'|i18n}}</div>
 					<div>{{report.data.lesson.description | limitTo:440}}</div>
 				</div>
-				<div style="position: absolute; right: 0; bottom: 0; top: 150px;">
+				<div class="redo-buttons">
 					<span class="restart" style="font-size: 25px; color: #8CC63F; margin: 5px;">
 						<a ng-show="!report.data.lesson.temporary" class="btn-link" ng-click="startLesson()">
 							<i style="color: #8CC63F;" class="fa fa-repeat "> {{'lessons.restart' | i18n}}</i>
@@ -72,15 +72,15 @@
 								<a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}"> {{step.videoUrl}}</a>
 								<span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
 									<span class="inline-table">{{step.quizItems.length}} {{'report.questionsInQuiz' | i18n}} </span>
-									<Span ng-show="!!stats[$index].correct" class="bg-success">
+									<Span ng-show="!!stats[$index].correct" class="bg-success report-quiz-summary-item">
 										<span class="inline-table">{{stats[$index].correct}} {{'questions.correct' | i18n}}</span>
 										<span class="inline-table">({{stats[$index].correctPercentage}}%)</Span>
 									</Span>
-									<span ng-show="!!stats[$index].wrong" class="bg-warning">
+									<span ng-show="!!stats[$index].wrong" class="bg-warning report-quiz-summary-item">
 										<span class="inline-table">{{stats[$index].wrong}} {{'questions.incorrect' | i18n}}</span>
 										<span class="inline-table">({{stats[$index].wrongPercentage}}%)</span>
 									</span>
-									<span ng-show="!!stats[$index].openQuestions" class="bg-primary">
+									<span ng-show="!!stats[$index].openQuestions" class="bg-primary report-quiz-summary-item">
 										<span class="inline-table">{{stats[$index].openQuestions}} {{'questions.openQuestion' | i18n}}</span>
 									</span>
 								</span>

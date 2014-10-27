@@ -15,7 +15,7 @@
 	<div class="message">
 		<span>{{ 'lessons.lessonCompleted' | i18n }}</span>
 		<span class="lesson-title">"{{lesson.name}}"</span>
-		<span>{{'lesson.createdBy'|i18n}}</span>
+		<span class="created-by">{{'lesson.createdBy'|i18n}}</span>
 		<span class="lesson-title">{{lesson.user.username}}</span>
 		<br>
 	</div>
@@ -85,7 +85,7 @@
 					</span>
 				</span>
 			</span>
-			<a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="right" popover-trigger="focus"
+			<a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="top" popover-trigger="focus"
 				tabindex="0">
 				<i class="fa fa-thumbs-o-up "></i>
 				{{'like' | i18n}}
@@ -95,7 +95,7 @@
 				{{'invite' | i18n}}
 			</button>
 			<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-			<a href="" show-anonymous class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="right" popover-trigger="focus"
+			<a href="" show-anonymous class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="top" popover-trigger="focus"
 				tabindex="0">
 				<i class="fa fa-envelope "></i>
 				{{'invite' | i18n}}
