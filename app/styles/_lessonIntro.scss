@@ -1,302 +1,283 @@
 #lessonIntro {
-  .lesson {
-    width: 600px;
-    margin: 0 auto;
-    position: relative;
-    float: right;
-    border-radius: 10px;
-    background-color: #EFEFEF;
-    .image {
-      position: relative;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 20px;
-      text-align: center;
-      z-index: 0;
-      &, img {
-        height: 320px;
-        width: 480px;
-      }
-      i {
-        font-size: 320px;
-        color: #296CA1;
-        &:before{
-          margin-left:40px;
-        }
-      }
-    }
-
-    .start-lesson {
-      position: relative;
-      width: 40px;
-      margin: -190px auto 140px;
-
-      i {
-        font-size: 60px;
-      }
-    }
-
-    & > .action-items {
-      float: right;
-      margin-top: -320px;
-      margin-right: 16px;
-      font-size: 30px;
-      text-align: center;
-
-      .action-items-top {
-
-      }
-
-      .action-items-bottom {
-        margin-top: 150px;
-
-        a:nth-child(n+2) {
-          margin-top: 10px;
-          display:inline-block;
-        }
-
-      }
-    }
-
-    .stats {
-      z-index: 0;
-      position: relative;
-      display: block;
-      margin-top: -320px;
-      margin-left: 20px;
-      float: left;
-      width: 50px;
-
-      .stats-button {
-        i {
-          text-align:center;
-          width:20px;
-        }
-        &:not(.no-color) {
-          background-color: #C6C6C6;
-        }
-        &:nth-child(n+2) {
-          margin-top: 10px;
-        }
-        padding: 8px;
-        color: white;
-        border-radius: 10px;
-        float: left;
-        width: 90px;
-
-      }
-
-      .stats-button-age {
-        background-color: #5fb9ff;
-        padding: 8px;
-        color: white;
-        border-radius: 10px;
-        float: left;
-        width: 80px;
-      }
-      .button {
+    .lesson {
         width: 600px;
-        background-color: transparent;
-        text-align: center;
+        margin: 0 auto;
+        position: relative;
         float: right;
-
-      }
-    }
-
-    .details{
-      padding:0 40px 40px 40px;
-      .name {
-        font-size: 27px;
-        color: #3E3E3E;
-      }
-
-      .properties{
-        margin-top:10px;
-
-        &>span{
-          display:inline-block;
-          &:nth-child(n+2){margin-left:30px;}
-        }
-      }
-
-      .action-items{
-        margin-top:20px;
-        text-align:right;
-        padding-bottom:10px;
-        border-bottom:1px solid silver;
-        color: #949494;
-        &:hover { color:  $LERGO_LINK_HOVER; }
-        &>.btn-link, &>span{
-        display:inline-block;
-          margin-left:20px;
-          font-size:20px;
-        }
-      }
-      .forms{
-        .invite {
-          color: #949494;
-          padding: 10px;
-          .lergo-h4 {
-            color: #949494;
-          }
-          .button {
+        border-radius: 10px;
+        background-color: #EFEFEF;
+        .image {
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
             text-align: center;
-          }
-
-          .container {
-            border: 1px solid #949494;
-            padding: 10px;
-          }
-
-        }
-
-        .share {
-
-          .share-navigation {
-            padding-bottom:10px;
-            .share-section-link {
-              cursor: pointer;
-              float: left;
-
-              &:not(:first-child) {
-                margin-left: 10px;
-              }
-
-              &.active {
-                color: $LERGO_INTRO_LINK;
-                border-bottom: 3px solid $LERGO_INTRO_LINK;
-              }
+            z-index: 0;
+            &, img {
+                height: 320px;
+                width: 480px;
             }
-          }
-
-          color: #949494;
-          padding: 10px;
-          .lergo-h4 {
-            color: #949494;
-          }
-          .container {
-            border: 1px solid #949494;
-            padding: 10px;
-          }
-
-        }
-      }
-
-
-      .description {
-        pre {
-          word-break: break-word;
-          background:transparent;
-        }
-        font-size: 17px;
-        margin-top:10px;
-        .edit-summary{
-	        .question{
-	        .title-question{
-	        padding-left:10px;
-	        padding-right: 10px;
-	        }
-	        }
-	        .summary{
-		       	padding-left: 30px;
-		       	padding-right: 25px;
-				font-size: 15px;
-				padding-top: 5px;
-				padding-bottom: 10px;
-	        }
-	        .title{
-	        font-weight: bold;
-	        }
-        }
-        .read-more{
-          cursor: pointer;
-          &:hover{
-            hr {
-              background-color: $LERGO_LINK_HOVER;
+            i {
+                font-size: 320px;
+                color: #296CA1;
+                &:before {
+                    margin-left: 40px;
+                }
             }
-            span{
-              color: $LERGO_LINK_HOVER;
-            }
-          }
-          hr,span{
-            display:inline-block;
-            vertical-align: middle;
-          }
-          hr{
-            background-color:#CECECE;
-            height:3px;
-            width: 30%;
-
-          }
-          span{
-            color: #949494;
-            padding:0 10px;
-          }
         }
-
-      }
+        .start-lesson {
+            position: relative;
+            width: 40px;
+            margin: -190px auto 140px;
+            i {
+                font-size: 60px;
+            }
+        }
+        & > .action-items {
+            float: right;
+            margin-top: -320px;
+            margin-right: 16px;
+            font-size: 30px;
+            text-align: center;
+            .action-items-top {}
+            .action-items-bottom {
+                margin-top: 150px;
+                a:nth-child(n+2) {
+                    margin-top: 10px;
+                    display: inline-block;
+                }
+            }
+        }
+        .stats {
+            z-index: 0;
+            position: relative;
+            display: block;
+            margin-top: -320px;
+            margin-left: 20px;
+            float: left;
+            width: 50px;
+            .stats-button {
+                i {
+                    text-align: center;
+                    width: 20px;
+                }
+                &:not(.no-color) {
+                    background-color: #C6C6C6;
+                }
+                &:nth-child(n+2) {
+                    margin-top: 10px;
+                }
+                padding: 8px;
+                color: white;
+                border-radius: 10px;
+                float: left;
+                width: 90px;
+            }
+            .stats-button-age {
+                background-color: #5fb9ff;
+                padding: 8px;
+                color: white;
+                border-radius: 10px;
+                float: left;
+                width: 80px;
+            }
+            .button {
+                width: 600px;
+                background-color: transparent;
+                text-align: center;
+                float: right;
+            }
+        }
+        .details {
+            padding: 0 40px 40px 40px;
+            .name {
+                font-size: 27px;
+                color: #3E3E3E;
+            }
+            .properties {
+                margin-top: 10px;
+                & > span {
+                    display: inline-block;
+                    &:nth-child(n+2) {
+                        margin-left: 30px;
+                    }
+                }
+            }
+            .action-items {
+                margin-top: 20px;
+                text-align: right;
+                padding-bottom: 10px;
+                border-bottom: 1px solid silver;
+                color: #949494;
+                &:hover {
+                    color: $LERGO_LINK_HOVER;
+                }
+                & > .btn-link, & > span {
+                    display: inline-block;
+                    margin-left: 20px;
+                    font-size: 20px;
+                }
+            }
+            .forms {
+                color: #949494;
+                padding: 10px;
+                .lergo-h4 {
+                    color: #949494;
+                }
+                .button {
+                    text-align: center;
+                }
+                .container {
+                    border: 1px solid #949494;
+                    padding: 10px;
+                }
+                .invite {}
+                .share {
+                    .share-navigation {
+                        padding-bottom: 10px;
+                        .share-section-link {
+                            cursor: pointer;
+                            float: left;
+                            &:not(:first-child) {
+                                margin-left: 20px;
+                            }
+                            &.active {
+                                font-weight: bold;
+                                border-bottom: 3px solid $LERGO_INTRO_LINK;
+                            }
+                            &:hover {
+                                color: $LERGO_INTRO_LINK;
+                                border-bottom: 3px solid $LERGO_INTRO_LINK;
+                            }
+                        }
+                        .btn-link{
+                        float:right;
+                        }
+                    }
+                    .share-link {
+                        textarea {
+                            height: 45px;
+                        }
+                    }
+                    .share-embed {
+                        textarea {
+                            height: 80px;
+                        }
+                    }
+                    .lergo-h4 {
+                        font-weight: normal;
+                    }
+                    textarea {
+                        padding: 5px;
+                        resize: none;
+                        text-align: left;
+                    }
+                }
+            }
+            .description {
+                pre {
+                    word-break: break-word;
+                    background: transparent;
+                }
+                font-size: 17px;
+                margin-top: 10px;
+                .edit-summary {
+                    .question {
+                        .title-question {
+                            padding-left: 10px;
+                            padding-right: 10px;
+                        }
+                    }
+                    .summary {
+                        padding-left: 30px;
+                        padding-right: 25px;
+                        font-size: 15px;
+                        padding-top: 5px;
+                        padding-bottom: 10px;
+                    }
+                    .title {
+                        font-weight: bold;
+                    }
+                }
+                .read-more {
+                    cursor: pointer;
+                    &:hover {
+                        hr {
+                            background-color: $LERGO_LINK_HOVER;
+                        }
+                        span {
+                            color: $LERGO_LINK_HOVER;
+                        }
+                    }
+                    hr,span {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    hr {
+                        background-color: #CECECE;
+                        height: 3px;
+                        width: 30%;
+                    }
+                    span {
+                        color: #949494;
+                        padding: 0 10px;
+                    }
+                }
+            }
+        }
     }
-  }
 }
 
-.rtl{
-  #lessonIntro {
-    .lesson {
-      .details {
-        .properties {
-          & > span{
-            margin-left: 0 !important;
-            &:nth-child(n+2) {
-              margin-right: 30px;
+.rtl {
+    #lessonIntro {
+        .lesson {
+            .details {
+                .properties {
+                    & > span {
+                        margin-left: 0 !important;
+                        &:nth-child(n+2) {
+                            margin-right: 30px;
+                        }
+                    }
+                }
+                .action-items {
+                    text-align: left;
+                    direction: ltr;
+                    & > a {
+                        margin-left: 0;
+                        &:nth-child(n+2) {
+                            margin-left: 20px;
+                        }
+                    }
+                }
             }
-          }
         }
-
-        .action-items{
-          text-align:left;
-
-          direction: ltr;
-
-          &>a {
-            margin-left: 0;
-            &:nth-child(n+2) {
-              margin-left: 20px;
-            }
-          }
-        }
-      }
     }
-  }
 }
 
 .lergo-embed-mode {
-
-  .centered-content{
-    margin:0;
-    width:auto;
-  }
-  .watch-on-lergo{
-
-    margin-right:0;
-  }
-  #lessonIntro{
-    .page-content-width {
-      width: auto;
-      min-width:0;
-      margin-top:0;
+    .centered-content {
+        margin: 0;
+        width: auto;
     }
-    .page-content-body{
-      min-width:0;
-      width:auto;
+    .watch-on-lergo {
+        margin-right: 0;
     }
-  }
+    #lessonIntro {
+        .page-content-width {
+            width: auto;
+            min-width: 0;
+            margin-top: 0;
+        }
+        .page-content-body {
+            min-width: 0;
+            width: auto;
+        }
+    }
 }
 
-
-
 .rtl.lergo-embed-mode {
-  .watch-on-lergo{
-    margin-left:0;
-
-  }
+    .watch-on-lergo {
+        margin-left: 0;
+    }
 }

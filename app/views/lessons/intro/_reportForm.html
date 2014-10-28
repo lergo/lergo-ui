@@ -1,0 +1,22 @@
+<div class="lergo-form report">
+	<p class="lergo-h4"><!--{{'lessons.reportAbuse'| i18n}}--> Report Abuse</p>
+	<div class="container">
+		<div>
+			<div>
+				<input type="radio" ng-model="reportAbuse.reason" value="infringesRights" />
+				It infringes my rights
+			</div>
+			<div>
+				<input type="radio" ng-model="reportAbuse.reason" value="notEducational" />
+				It is not educational content
+			</div>
+			<div>
+				<input type="radio" ng-model="reportAbuse.reason" value="notAppropriate" />
+				It is not appropriate for kids
+			</div>
+		</div>
+		<div class="button">
+			<button ng-disabled="!reportAbuse.reason" class="btn" ng-click="sendReportAbuse()">{{ 'button.submit' | i18n }}</button>
+		</div>
+	</div>
+</div>

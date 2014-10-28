@@ -167,14 +167,24 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
 
 
-	$scope.absoluteShareLink = function(/*lesson*/) {
-		$scope.invite = false;
-		$scope.share = !$scope.share;
+	// enum{
+	$scope.actionItems = {
+		INVITE : 'invite',
+		SHARE : 'share'
 	};
-	$scope.showHideInvite = function() {
-		$scope.share = false;
-		$scope.invite = !$scope.invite;
-	};
+	var activeAction = null;
+	$scope.setActiveAction=function(actionItem)
+	{
+		if (activeAction === actionItem) {
+			activeAction = null;
+		} else {
+			activeAction = actionItem;
+		}
+	}
+	$scope.isActiveAction=function(actionItem)
+	{
+		return activeAction === actionItem;
+	}
 	$scope.onTextClick = function($event) {
 		$event.target.select();
 	};

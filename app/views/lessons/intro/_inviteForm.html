@@ -1,0 +1,21 @@
+<div class="lergo-form invite">
+	<p class="lergo-h4">{{'lessons.inviteLesson'| i18n}}</p>
+	<p>{{'lessons.inviteLessonHelpText' | i18n}}</p>
+	<div ng-controller="LessonsInvitesCreateCtrl" class="container">
+		<div>{{ 'name' | i18n }}</div>
+		<input type="text" ng-model="invite.invitee.name" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
+		<div ng-show="!!createSuccess">
+			<div>{{'lessons.inviteSuccessText' | i18n}}</div>
+			<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
+		</div>
+		<br />
+		<div class="button">
+			<button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | i18n }}</button>
+			<button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | i18n }}</button>
+		</div>
+		<div>
+			<span class="lergo-h4">{{'lessons.note' | i18n}}:</span>
+			{{'lessons.noteMessage' | i18n}}
+		</div>
+	</div>
+</div>

@@ -14,7 +14,7 @@
 						{{0+ lessons.length }}
 					</span>
 					<span class="stats-button" tooltip="{{'homepage.tooltip.likes' | i18n}}">
-						<i class="fa fa-thumbs-o-up"></i>
+						<i class="fa fa-heart-o"></i>
 						{{0+questionLikes }}
 					</span>
 				</div>
@@ -50,12 +50,12 @@
 					<div class="action-items">
 						<span show-logged-in>
 							<button class="btn-link" ng-click="like()" tooltip="{{'questions.tooltip.like' | i18n}}" ng-show="!isLiked()">
-								<i class="fa fa-thumbs-o-up "></i>
+								<i class="fa fa-heart-o "></i>
 								{{'like' | i18n}}
 							</button>
 							<span class="btn-link dropdown" ng-click="noop()" tooltip="{{'questions.tooltip.liked' | i18n}}" ng-show="!!isLiked()">
 								<span class="dropdown-toggle">
-									<i class="fa fa-thumbs-o-up "></i>
+									<i class="fa fa-heart-o "></i>
 									{{'liked' | i18n}}
 									<i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
 									<span ng-show="!!showMenu">
@@ -71,7 +71,7 @@
 						</span>
 						<a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="right" popover-trigger="focus"
 							tabindex="0">
-							<i class="fa fa-thumbs-o-up "></i>
+							<i class="fa fa-heart-o "></i>
 							{{'like' | i18n}}
 						</a>
 						<button class="btn-link" ng-click="absoluteShareLink(quizItem)" tooltip="{{'questions.tooltip.share' | i18n}}">

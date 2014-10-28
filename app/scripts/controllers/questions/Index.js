@@ -9,7 +9,8 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		'showLanguage' : true,
 		'showAge' : true,
 		'showSearchText' : true,
-		'showTags' : true
+		'showTags' : true,
+		showCreatedBy:true
 	};
 
 	$scope.selectAll = function(checked) {
