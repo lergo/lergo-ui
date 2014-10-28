@@ -7,7 +7,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	var preview = !!$routeParams.preview;
 	var autoPlay = $routeParams.autoPlay;
 
-    $scope.shareSection = 'link';
+	$scope.shareSection = 'link';
 
 	LergoClient.lessons.getLessonIntro(lessonId).then(function(result) {
 		$scope.lesson = result.data;
@@ -165,26 +165,22 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		$scope.startLesson();
 	}
 
-
-
 	// enum{
 	$scope.actionItems = {
 		INVITE : 'invite',
 		SHARE : 'share'
 	};
 	var activeAction = null;
-	$scope.setActiveAction=function(actionItem)
-	{
+	$scope.setActiveAction = function(actionItem) {
 		if (activeAction === actionItem) {
 			activeAction = null;
 		} else {
 			activeAction = actionItem;
 		}
-	}
-	$scope.isActiveAction=function(actionItem)
-	{
+	};
+	$scope.isActiveAction = function(actionItem) {
 		return activeAction === actionItem;
-	}
+	};
 	$scope.onTextClick = function($event) {
 		$event.target.select();
 	};
@@ -297,12 +293,12 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		if (!!$scope.copyOfItem) {
 			return;
 
-        }
+		}
 
-        if ( !!newValue ) {
-            $scope.shareLink = LergoClient.lessons.getShareLink(newValue);
-            $scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="600" frameBorder="0"></iframe>';
-        }
+		if (!!newValue) {
+			$scope.shareLink = LergoClient.lessons.getShareLink(newValue);
+			$scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="600" frameBorder="0"></iframe>';
+		}
 
 		if (!!newValue && !!newValue.copyOf) {
 			LergoClient.lessons.findLessonsById([].concat(newValue.copyOf)).then(function(result) {
