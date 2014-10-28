@@ -8,9 +8,10 @@
     "keyFunders": "Key Funders List",
     "keyFundersPictures": "Funders Picture Mosiac",
     "overview": "Overview",
-    "privacy": "Privacy & Term"
+    "privacy": "Privacy & Terms"
   },
   "add": "Add to quiz",
+  "addClose": "Add & Close",
   "admin": {
     "allLessons": "All Lessons",
     "by": "By",
@@ -22,7 +23,7 @@
     "views": "# Views"
   },
   "advancedOptions": "Advanced options",
-  "back": "Back",
+  "back": "Close",
   "baseLayout": {
     "footer": {
       "about": "About LerGO",
@@ -34,7 +35,7 @@
       "feedback": "Send Feedback",
       "homepage": "Homepage",
       "kitchenSink": "Kitchen Sink",
-      "privacyAndTerms": "Privacy and Terms",
+      "privacyAndTerms": "Privacy & Terms",
       "problem": "Report Problem",
       "suggest": "Suggest Lesson",
       "text1": "Text of questions & exercises is available under the",
@@ -60,7 +61,7 @@
       "searchUnderConstruction": "Search feature under construction... for now, please use the filters below.",
       "siteLanguage": "Click to change Site Language",
       "userName": {
-        "tip": "Go to My Reports/ My Lessons/ My Questions"
+        "tip": "Go to My Invites/ My Reports/ My Lessons/ My Questions"
       }
     }
   },
@@ -72,7 +73,7 @@
     "signup": "Signup",
     "submit": "Submit"
   },
-  "cancel": "Cancel",
+  "cancel": "Close",
   "changePassword": {
     "error": "There was an error changing your password",
     "signup": "Signup",
@@ -90,8 +91,14 @@
   "deleteIntro": {
     "Confirm": "Are you sure you want to delete the lesson : #{0} ?  This action cannot be undone."
   },
+  "deleteInvites": {
+    "Confirm": "Are you sure you want to delete this invite? This action cannot be undone."
+  },
   "deleteLesson": {
     "Confirm": "For the lesson to be created and saved, you must fill at least the Name field. By leaving this page without filling this field, all changes will be lost."
+  },
+  "deleteLessons": {
+    "Confirm": "Are you sure you want to delete selected lessons ?"
   },
   "deleteQuestion": {
     "Confirm": "For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost."
@@ -149,6 +156,7 @@
       "biology": "Biology",
       "chemistry": "Chemistry",
       "english": "English",
+      "financialEducation": "Financial Education",
       "geography": "Geography",
       "geometry": "Geometry",
       "grammar": "Grammar",
@@ -209,7 +217,10 @@
     "filter": "Filter Invites",
     "markAsDone": "Mark as done",
     "markAsUndone": "Mark as undone",
-    "myInvites": "My Invites"
+    "myInvites": "My Invites",
+    "tooltip": {
+      "go": "Click here to play the lesson."
+    }
   },
   "languages": {
     "ar": "Arabic",
@@ -222,7 +233,13 @@
     "title": "LerGO - Educate Yourself"
   },
   "lesson": {
-    "createdBy": "created by"
+    "createdBy": "created by",
+    "practice": {
+      "step": {
+        "title": "Questions"
+      },
+      "title": "Practice Mistakes of : "
+    }
   },
   "lessonIntro": {
     "copiedFromLesson": "Lesson was originally copied from lesson",
@@ -320,7 +337,7 @@
     "addHint": "Add Hint",
     "addMedia": "Add Media",
     "addQuestionsToQuiz": "Add questions to quiz",
-    "age": "Age",
+    "age": "From Age",
     "allQuestions": "All Questions",
     "answer": "Answer",
     "answerOption": "Answer Option ",
@@ -392,6 +409,8 @@
     "questionType": "Question Type",
     "requiredAnswer": "Required Answer Format",
     "select": "Select",
+    "selectAllQuestions": "Select from all questions",
+    "selectMyQuestions": "Select from my questions",
     "selectQuestions": "Select Questions",
     "shareQuestion": "Share question",
     "shareQuestionTitle": "Copy link below to share question",
@@ -431,7 +450,8 @@
     "yourAnswers": "Student's Answer(s)"
   },
   "quiz": {
-    "allowRetry": "Allow Retry",
+    "addQuestionHint": "Click here to create new questions or to add questions from question banks (\"my questions\" or \"all questions\").",
+    "allowRetry": "Repeat question if answer is incorrect",
     "practiseMode": "Practice Mode",
     "retryQuestionHint": "Click this option to repeat questions when student's answers are incorrect",
     "shuffleQuestion": "Shuffle Questions",
