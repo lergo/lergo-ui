@@ -6,13 +6,13 @@ describe('Service: AbuseReports', function() {
 	beforeEach(module('lergoApp'));
 
 	// instantiate service
-	var AbuseReports;
-	beforeEach(inject(function(abuseReports) {
-		AbuseReports = abuseReports;
+	var myAbuseReports;
+	beforeEach(inject(function(AbuseReports) {
+		myAbuseReports = abuseReports;
 	}));
 
 	it('should do something', function() {
-		expect(!!AbuseReports).toBe(true);
+		expect(!!myAbuseReports).toBe(true);
 	});
 
 });
