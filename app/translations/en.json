@@ -10,6 +10,18 @@
     "overview": "Overview",
     "privacy": "Privacy & Terms"
   },
+  "abuseReport": {
+    "addComments": "Additional details:",
+    "comments": "Comments (Optional)",
+    "issueReported": "Issue reported:",
+    "noteMessage": "Nava : need to update",
+    "reason": {
+      "infringesRights": "It infringes my rights",
+      "notAppropriate": "It is not appropriate for kids",
+      "notEducational": "It is not educational content"
+    },
+    "timeStamp": "Timestamp:"
+  },
   "add": "Add to quiz",
   "addClose": "Add & Close",
   "admin": {
@@ -98,7 +110,7 @@
     "Confirm": "For the lesson to be created and saved, you must fill at least the Name field. By leaving this page without filling this field, all changes will be lost."
   },
   "deleteLessons": {
-    "Confirm": "Are you sure you want to delete selected lessons ?"
+    "Confirm": "Are you sure you want to delete selected lessons? This action cannot be undone."
   },
   "deleteQuestion": {
     "Confirm": "For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost."
@@ -238,7 +250,7 @@
       "step": {
         "title": "Questions"
       },
-      "title": "Practice Mistakes of : "
+      "title": "Practice Mistakes of: "
     }
   },
   "lessonIntro": {
@@ -255,6 +267,8 @@
     "create": "Create New Lesson",
     "createdOn": "created on",
     "description": "Lesson Description",
+    "embedLesson": "Embed",
+    "embedLessonTitle": "Copy the code below to embed lesson on your webpage or blog",
     "error": {
       "invalidName": "Lesson name is a required field. Please fill it out before adding a step to the lesson."
     },
@@ -291,7 +305,7 @@
     "recommenedPriorLessonText": "Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
     "restart": "Start Over",
     "seeReport": "See Report",
-    "shareLesson": "Share lesson",
+    "shareLesson": "Share",
     "shareLessonTitle": "Copy the link below to share lesson with friends",
     "startLesson": "Start Lesson",
     "tags": "Tags",
@@ -327,6 +341,11 @@
   "next": "Next",
   "nextQuestion": "Continue",
   "popular": "Popular",
+  "powered": {
+    "by": {
+      "lergo": "Powered by LerGO"
+    }
+  },
   "preview": "Preview",
   "questions": {
     "add": {
@@ -337,7 +356,7 @@
     "addHint": "Add Hint",
     "addMedia": "Add Media",
     "addQuestionsToQuiz": "Add questions to quiz",
-    "age": "From Age",
+    "age": "Age",
     "allQuestions": "All Questions",
     "answer": "Answer",
     "answerOption": "Answer Option ",
@@ -469,7 +488,7 @@
   "remove": "Remove",
   "report": {
     "CreateLessonFromWrongQuestions": "Create quiz from incorrect answers",
-    "completed": "has completed lesson",
+    "completed": "has completed the lesson",
     "date": "Date",
     "description": "Lesson Description",
     "detailedReport": "Detailed Report",
@@ -495,6 +514,10 @@
     "saved": {
       "successfully": "Report saved successfully"
     }
+  },
+  "reportAbuse": {
+    "thanks": "Thanks for reporting",
+    "title": "Report Abuse"
   },
   "reports": {
     "correctPercentage": "% Correct",

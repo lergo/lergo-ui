@@ -27,7 +27,7 @@ angular.module('lergoApp').service('LergoTranslate',
 
 
         $( supportedLanguages ).each( function(index,item){
-            $http.get('/backend/system/translations/' + item.id + '.json').then(function(data){
+            $http.get('/translations/' + item.id + '.json').then(function(data){
                 translations[item.id] = data.data;
             });
         });
