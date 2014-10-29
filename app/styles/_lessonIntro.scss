@@ -112,7 +112,7 @@
                 &:hover {
                     color: $LERGO_LINK_HOVER;
                 }
-                & > .btn-link, & > span {
+                & > .btn-link, & > div {
                     display: inline-block;
                     margin-left: 20px;
                     font-size: 20px;
@@ -132,6 +132,25 @@
                     padding: 10px;
                 }
                 .invite {}
+                .report {
+                    .options {
+                        vertical-align: top;
+                        line-height: 2;
+                        input {
+                            display: inline;
+                            width: 20px;
+                            height: 20px;
+                            min-height: 20px;
+                        }
+                    }
+                    .comment {
+                        margin-bottom: 10px;
+                        textarea {
+                            background: #fafafa;
+                            height: 100px;
+                        }
+                    }
+                }
                 .share {
                     .share-navigation {
                         padding-bottom: 10px;
@@ -150,8 +169,8 @@
                                 border-bottom: 3px solid $LERGO_INTRO_LINK;
                             }
                         }
-                        .btn-link{
-                        float:right;
+                        .btn-link {
+                            float: right;
                         }
                     }
                     .share-link {
@@ -171,6 +190,7 @@
                         padding: 5px;
                         resize: none;
                         text-align: left;
+                        direction: ltr;
                     }
                 }
             }

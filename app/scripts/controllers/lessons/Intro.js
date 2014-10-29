@@ -167,6 +167,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
 	// enum{
 	$scope.actionItems = {
+		REPORT : 'report',
 		INVITE : 'invite',
 		SHARE : 'share'
 	};
@@ -181,6 +182,13 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	$scope.isActiveAction = function(actionItem) {
 		return activeAction === actionItem;
 	};
+	$scope.abuseReport = {};
+	$scope.submitAbuseReport = function() {
+		LergoClient.abuseReports.abuseLesson($scope.abuseReport, $scope.lesson._id).then(function(result) {
+			$scope.abuseReport = result.data;
+		});
+	};
+
 	$scope.onTextClick = function($event) {
 		$event.target.select();
 	};

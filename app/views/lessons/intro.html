@@ -67,54 +67,75 @@
 							</span>
 						</div>
 						<div class="action-items">
-							<button class="btn-link" ng-click="startLesson()" tooltip="{{'lessons.tooltip.start' | i18n}}">
-								<i class="fa fa-play-circle-o "></i>
-								{{'start' | i18n}}
-							</button>
-							<span show-logged-in>
-								<button class="btn-link" ng-click="likeLesson()" tooltip="{{'lessons.tooltip.like' | i18n}}" ng-show="!isLiked()">
-									<i class="fa fa-heart-o "></i>
-									{{'like' | i18n}}
+							<div class="action-item">
+								<button class="btn-link" ng-click="startLesson()" tooltip="{{'lessons.tooltip.start' | i18n}}">
+									<i class="fa fa-play-circle-o "></i>
+									{{'start' | i18n}}
 								</button>
-								<span class="btn-link dropdown" ng-click="noop()" tooltip="{{'lessons.tooltip.liked' | i18n}}" ng-show="!!isLiked()">
-									<span class="dropdown-toggle">
+							</div>
+							<div class="action-item">
+								<div show-logged-in>
+									<button class="btn-link" ng-click="likeLesson()" tooltip="{{'lessons.tooltip.like' | i18n}}" ng-show="!isLiked()">
 										<i class="fa fa-heart-o "></i>
-										{{'liked' | i18n}}
-										<i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
-										<span ng-show="!!showMenu">
-											<button class="btn-link">{{'dislike' | i18n}}</button>
-										</span>
-									</span>
-									<span class="dropdown-menu">
+										{{'like' | i18n}}
+									</button>
+									<div class="btn-group" dropdown ng-show="!!isLiked()">
+										<button class="btn-link dropdown-toggle">
+											<i class="fa fa-heart-o "></i>
+											{{'liked' | i18n}}
+											<span class="fa fa-caret-down"></span>
+										</button>
+										<ul class="dropdown-menu" role="menu">
+											<li>
+												<a dropdown-toggle class="btn-link" style="outline: none;" ng-click="unlikeLesson()">{{ 'unlike' | i18n }}</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div show-anonymous>
+									<button class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="top" popover-trigger="focus" tabindex="0">
+										<i class="fa fa-heart-o "></i>
+										{{'like' | i18n}}
+									</button>
+								</div>
+							</div>
+							<div class="action-item">
+								<button show-logged-in class="btn-link" ng-click="setActiveAction(actionItems.INVITE)" tooltip="{{'lessons.tooltip.invite' | i18n}}">
+									<i class="fa fa-envelope "></i>
+									{{'invite' | i18n}}
+								</button>
+								<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+								<a href="" show-anonymous class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="top" popover-trigger="focus"
+									tabindex="0">
+									<i class="fa fa-envelope "></i>
+									{{'invite' | i18n}}
+								</a>
+							</div>
+							<div class="action-item">
+								<button class="btn-link" ng-click="setActiveAction(actionItems.SHARE)" tooltip="{{'lessons.tooltip.share' | i18n}}">
+									<i class="fa fa-share-alt "></i>
+									{{'share' | i18n}}
+								</button>
+							</div>
+							<!-- 
+							<div class="action-item">
+								<div class="btn-group" dropdown>
+									<button class="btn-link dropdown-toggle">
+										<span class="fa fa-chevron-down" style="vertical-align: super;"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
 										<li>
-											<button class="btn-link" ng-click="unlikeLesson()">{{ 'unlike' | i18n }}</button>
+											<a dropdown-toggle class="btn-link" style="outline: none;" ng-click="setActiveAction(actionItems.REPORT)">{{'report'|i18n}}</a>
 										</li>
-									</span>
-								</span>
-							</span>
-							<a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="top" popover-trigger="focus"
-								tabindex="0">
-								<i class="fa fa-heart-o "></i>
-								{{'like' | i18n}}
-							</a>
-							<button show-logged-in class="btn-link" ng-click="setActiveAction(actionItems.INVITE)" tooltip="{{'lessons.tooltip.invite' | i18n}}">
-								<i class="fa fa-envelope "></i>
-								{{'invite' | i18n}}
-							</button>
-							<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-							<a href="" show-anonymous class="btn-link" popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="top" popover-trigger="focus"
-								tabindex="0">
-								<i class="fa fa-envelope "></i>
-								{{'invite' | i18n}}
-							</a>
-							<button class="btn-link" ng-click="setActiveAction(actionItems.SHARE)" tooltip="{{'lessons.tooltip.share' | i18n}}">
-								<i class="fa fa-share-alt "></i>
-								{{'share' | i18n}}
-							</button>
+									</ul>
+								</div>
+							</div>
+							 -->
 						</div>
 						<div class="forms">
 							<div ng-show="isActiveAction(actionItems.SHARE)" ng-include="'views/lessons/intro/_shareForm.html'"></div>
 							<div ng-show="isActiveAction(actionItems.INVITE)" ng-include="'views/lessons/intro/_inviteForm.html'"></div>
+							<div ng-show="isActiveAction(actionItems.REPORT)" ng-include="'views/lessons/intro/_reportForm.html'"></div>
 						</div>
 						<div class="description">
 							<pre ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>

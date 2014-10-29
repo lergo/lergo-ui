@@ -10,7 +10,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		'showAge' : true,
 		'showSearchText' : true,
 		'showTags' : true,
-		showCreatedBy:true
+		showCreatedBy : localStorageService.get('isPublic') === 'true'
 	};
 
 	$scope.selectAll = function(checked) {
@@ -41,6 +41,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	$scope.loadPublicQuestion = function(isPublic) {
 		var oldValue = localStorageService.get('isPublic') === 'true';
 		if (oldValue !== isPublic) {
+			$scope.questionsFilterOpts.showCreatedBy = isPublic;
 			localStorageService.set('isPublic', isPublic);
 			$scope.filterPage.current = 1;
 			$scope.filterPage.updatedLast = new Date().getTime();
