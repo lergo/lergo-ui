@@ -1,25 +1,24 @@
 <div class="lergo-form report">
-	<p class="lergo-h4">
-		<!--{{'lessons.reportAbuse'| i18n}}-->
-		Report Abuse
-	</p>
-	<div class="container" ng-show='!abuseReport.submitted'>
+	<p ng-show="!abuseReport.lastUpdated" class="lergo-h4">{{'reportAbuse.title'| i18n}}</p>
+	<p ng-show="!!abuseReport.lastUpdated" class="lergo-h4">{{'reportAbuse.thanks'| i18n}}</p>
+	<button style="float: right; margin-top: -20px;" class="btn-link" ng-click="setActiveAction()">X</button>
+	<div class="container" ng-show="!abuseReport.lastUpdated">
 		<div>
 			<div class="options">
 				<input type="radio" ng-model="abuseReport.reason" value="infringesRights" />
-				It infringes my rights
+				{{'abuseReport.reason.infringesRights'|i18n}}
 			</div>
 			<div class="options">
 				<input type="radio" ng-model="abuseReport.reason" value="notEducational" />
-				It is not educational content
+				{{'abuseReport.reason.notEducational'|i18n}}
 			</div>
 			<div class="options">
 				<input type="radio" ng-model="abuseReport.reason" value="notAppropriate" />
-				It is not appropriate for kids
+				{{'abuseReport.reason.notAppropriate'|i18n}}
 			</div>
 		</div>
 		<div class="comment" ng-show="!!abuseReport.reason">
-			Comments (Optional)
+			{{'abuseReport.comments'|i18n}}
 			<textarea ng-model="abuseReport.comment"></textarea>
 		</div>
 		<div class="button">
@@ -27,8 +26,24 @@
 		</div>
 		<div>
 			<span class="lergo-h4">{{'lessons.note' | i18n}}:</span>
-			{{'lessons.reportNoteMessage' | i18n}}
+			{{'abuseReport.noteMessage' | i18n}}
 		</div>
 	</div>
-	<div class="container" ng-show='!!abuseReport.submitted'></div>
+	<div class="container" ng-show="!!abuseReport.lastUpdated">
+		<div>
+			<div class="bold">{{'abuseReport.issueReported'|i18n}}</div>
+			{{'abuseReport.reason.'+abuseReport.reason| i18n}}
+		</div>
+		<br />
+		<div>
+			<div class="bold">{{'abuseReport.timeStamp'|i18n}}</div>
+			{{abuseReport.lastUpdated | date:'d-MMM-yyyy' }}
+		</div>
+		<br />
+		<div ng-show="!!abuseReport.comment">
+			<div class="bold">{{'abuseReport.addComments'|i18n}}</div>
+			{{abuseReport.comment}}
+		</div>
+		<br />
+	</div>
 </div>

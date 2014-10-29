@@ -184,7 +184,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	};
 	$scope.abuseReport = {};
 	$scope.submitAbuseReport = function() {
-		LergoClient.abuseReports.abuseLesson($scope.abuseReport, $scope.lesson._id).then(function(result) {
+		LergoClient.abuseReports.abuseLesson($scope.abuseReport, $scope.lesson).then(function(result) {
 			$scope.abuseReport = result.data;
 		});
 	};
