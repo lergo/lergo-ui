@@ -11,7 +11,10 @@ describe('Controller: AdminHomepageCtrl', function() {
 	beforeEach(inject(function($controller, $rootScope) {
 		scope = $rootScope.$new();
 		$controller('AdminHomepageCtrl', {
-			$scope : scope
+			$scope : scope,
+			$routeParams : {
+				'activeTab' : 'lessons'
+			}
 		});
 	}));
 
