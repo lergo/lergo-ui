@@ -46,8 +46,13 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 
 	$scope.$on('endLesson', function(/* event, data */) {
 		$log.info('lesson ended');
-		if (!report.data.finished) {
-			report.data.finished = true;
+        // mark invitation as finished
+        if (!report.data.finished) {
+            report.data.finished = true;
+        }
+        // mark report as finished
+		if (!report.finished) {
+			report.finished = true;
 		}
 		if(!!report.data.lesson.temporary){
 			LergoClient.lessons.delete(report.data.lesson._id);

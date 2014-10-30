@@ -7,7 +7,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	var updateChange = new ContinuousSave({
 		'saveFn' : function(value) {
 			$log.info('updating report');
-			var finished = value.data.finished;
+			var finished = value.finished; // value.data is the invitation. we want the report.
 
 			if (finished) {
 				getWrongQuestion(value);
@@ -76,10 +76,10 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			// just notify end lesson. do nothing else. wait for report to
 			// update.
 			$rootScope.$broadcast('endLesson');
-			if (!!$scope.invitation) {
-				$scope.invitation.finished = true;
-				LergoClient.lessonsInvitations.update($scope.invitation);
-			}
+//			if (!!$scope.invitation) {
+//				$scope.invitation.finished = true;
+//				LergoClient.lessonsInvitations.update($scope.invitation);
+//			}
 		}
 	});
 
