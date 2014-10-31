@@ -14,7 +14,7 @@
     "addComments": "Additional details:",
     "comments": "Comments (Optional)",
     "issueReported": "Issue reported:",
-    "noteMessage": "Nava : need to update",
+    "noteMessage": "Flagged lessons and users will be reviewed by LerGO staff ASAP to determine whether they violate LerGO's Terms or Community Guidelines. Accounts are penalized for Terms or Community Guidelines violations and serious or repeated violations can lead to account termination.",
     "reason": {
       "infringesRights": "It infringes my rights",
       "notAppropriate": "It is not appropriate for kids",
@@ -27,6 +27,8 @@
   "admin": {
     "allLessons": "All Lessons",
     "by": "By",
+    "category": "Category",
+    "comments": "Comments",
     "created": "Created",
     "makePrivate": "Unpublish",
     "makePublic": "Publish",
@@ -58,6 +60,7 @@
     },
     "header": {
       "links": {
+        "abuseReports": "Flag Reports",
         "contribute": "Contribute",
         "create": "Create",
         "invites": "Invites",
@@ -303,6 +306,7 @@
     "recommenedNextLessonText": "Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
     "recommenedPriorLesson": "Recommended Previous Lesson",
     "recommenedPriorLessonText": "Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
+    "reportAbuseNotAvailable": "To flag lesson or report abuse please login or register to LerGO. Alternately, you can also use the Report Abuse button at the footer below.",
     "restart": "Start Over",
     "seeReport": "See Report",
     "shareLesson": "Share",
@@ -541,6 +545,11 @@
     "error": "There was an error submitting the request",
     "instructions": "Fill in username or email and submit the form.",
     "success": "Your request was dispatched successfully"
+  },
+  "root": {
+    "page": {
+      "description": "LerGO is a new nonprofit open source venture dedicated to kids self education."
+    }
   },
   "saved": "Saved",
   "saving": "Saving",

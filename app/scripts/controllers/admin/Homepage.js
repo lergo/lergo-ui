@@ -1,124 +1,30 @@
 'use strict';
 
-angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, FilterService, LergoClient, $log, $filter) {
+angular.module('lergoApp').controller('AdminHomepageCtrl', function($scope, $routeParams, $controller) {
 
-	$scope.adminFilter = {};
-	$scope.filterPage = {};
+	$scope.sections = [ {
+		'id' : 'lessons',
+		icon : 'fa fa-university',
+		'controller' : 'AdminLessonIndexCtrl'
+	}, {
+		'id' : 'abuseReports',
+		icon : 'fa fa-flag',
+		'controller' : 'AdminAbuseReportIndexCtrl'
+	} ];
 
-	$scope.adminFilterOpts = {
-		'showSubject' : true,
-		'showLessonStatus' : true,
-		'showLanguage' : true,
-		'showAge' : true,
-		'showViews' : true,
-		'showTags' : true,
-		'showCreatedBy' : true,
-		'showSearchText' : true
-	};
-
-	$scope.loadLessons = function() {
-		var queryObj = {
-			'filter' : _.merge({}, $scope.adminFilter),
-			'sort' : {
-				'lastUpdate' : -1
-			},
-			'dollar_page' : $scope.filterPage
-		};
-		LergoClient.lessons.getAll(queryObj).then(function(result) {
-			$scope.lessons = result.data.data;
-			$scope.filterPage.count = result.data.count; // the number of
-			// lessons found
-			// after filtering
-			// them.
-		});
-	};
-
-	function loadStats() {
-		$scope.updateStats(true);
-	}
-
-	var users = {};
-
-	$scope.$watch('lessons', function() {
-		var requiredUsers = _.difference(_.map($scope.lessons, 'userId'), _.map(users, '_id'));
-
-		if (requiredUsers.length > 0) {
-			LergoClient.users.findUsersById(requiredUsers).then(function(result) {
-				result.data.forEach(function(user) {
-					users[user._id] = user;
-				});
-			});
-		}
+	$scope.currentSection = _.find($scope.sections, function(section) {
+		return $routeParams.activeTab === section.id;
 	});
 
-	$scope.getUser = function(lesson) {
-		return users[lesson.userId];
+	$controller($scope.currentSection.controller, {
+		$scope : $scope
+	});
+
+	$scope.isActive = function(section) {
+		return !!$scope.currentSection && section.id === $scope.currentSection.id;
 	};
 
-	$scope.changing = [];
-	var changing = $scope.changing;
-
-	function save(lesson) {
-		// preserving selected state of lesson
-		var selected = lesson.selected;
-		delete lesson.selected;
-		changing.push(lesson._id);
-		LergoClient.lessons.update(lesson).then(function success(result) {
-			var indexOf = $scope.lessons.indexOf(lesson);
-			result.data.selected = selected;
-			$scope.lessons[indexOf] = result.data;
-			changing.splice(changing.indexOf(lesson._id), 1);
-			loadStats();
-			$scope.loadLessons();
-		}, function error() {
-			changing.splice(changing.indexOf(lesson._id), 1);
-		});
-	}
-
-	$scope.makePublic = function() {
-		angular.forEach($scope.lessons, function(lesson) {
-			if (lesson.selected === true) {
-				lesson.public = new Date().getTime();
-				save(lesson);
-			}
-		});
+	$scope.getInclude = function() {
+		return 'views/admin/' + $scope.currentSection.id + '/_index.html';
 	};
-
-	$scope.selectAll = function(event) {
-		var checkbox = event.target;
-		angular.forEach($scope.lessons, function(item) {
-			item.selected = checkbox.checked;
-		});
-	};
-
-	$scope.makePrivate = function() {
-		angular.forEach($scope.lessons, function(lesson) {
-			if (lesson.selected === true) {
-				delete lesson.public;
-				save(lesson);
-			}
-		});
-	};
-
-	$scope.deleteLesson = function() {
-		if (confirm($filter('i18n')('deleteLessons.Confirm'))) {
-			angular.forEach($scope.lessons, function(lesson) {
-				if (lesson.selected === true) {
-					$scope.lessons.splice($scope.lessons.indexOf(lesson), 1);
-					LergoClient.lessons.delete(lesson._id).then(function() {
-						$scope.errorMessage = null;
-						$log.info('Lesson deleted sucessfully');
-					}, function(result) {
-						$scope.errorMessage = 'Error in deleting Lesson : ' + result.data.message;
-						$log.error($scope.errorMessage);
-					});
-				}
-			});
-		}
-	};
-
-	$scope.isChanging = function(lesson) {
-		return changing.indexOf(lesson._id) >= 0;
-	};
-
 });

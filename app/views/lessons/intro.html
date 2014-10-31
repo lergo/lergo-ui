@@ -117,14 +117,22 @@
 									{{'share' | i18n}}
 								</button>
 							</div>
-							<div show-logged-in class="action-item">
+							<div class="action-item">
 								<div class="btn-group" dropdown>
 									<button class="btn-link dropdown-toggle">
 										<span class="fa fa-chevron-down" style="vertical-align: super;"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu">
 										<li>
-											<a dropdown-toggle class="btn-link" style="outline: none;" ng-click="setActiveAction(actionItems.REPORT)">{{'reportAbuse.title'|i18n}}</a>
+											<a show-logged-in dropdown-toggle class="btn-link" style="outline: none;" ng-click="setActiveAction(actionItems.REPORT)">
+												<i class="fa fa-flag "></i>
+												{{'reportAbuse.title'|i18n}}
+											</a>
+											<a href="" show-anonymous class="btn-link" popover="{{'lessons.reportAbuseNotAvailable' | i18n}}" popover-placement="top"
+												popover-trigger="focus" tabindex="0">
+												<i class="fa fa-flag "></i>
+												{{'reportAbuse.title'|i18n}}
+											</a>
 										</li>
 									</ul>
 								</div>

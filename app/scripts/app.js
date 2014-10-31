@@ -47,18 +47,18 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
 	}).when('/user/questions/:questionId/update', {
 		templateUrl : 'views/questions/update.html',
 		controller : 'QuestionsUpdateCtrl',
-        reloadOnSearch:false
+		reloadOnSearch : false
 	}).when('/public/homepage', {
 		templateUrl : 'views/homepage.html',
 		controller : 'HomepageCtrl',
-        reloadOnSearch: false
+		reloadOnSearch : false
 	})
 	// todo - remove this url. use plural version
 	// '/user/lessons/:lessonId/update'
 	.when('/user/lesson/:lessonId/update', {
 		templateUrl : 'views/lessons/update.html',
 		controller : 'LessonsUpdateCtrl',
-        reloadOnSearch: false
+		reloadOnSearch : false
 	})
 
 	.when('/user/create/:activeTab', {
@@ -66,11 +66,11 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
 		// this view to
 		// view/create/_lessons.html
 		controller : 'BaseLayoutCreateCtrl',
-        reloadOnSearch:false
+		reloadOnSearch : false
 	}).when('/user/lessons/:lessonId/update', {
 		templateUrl : 'views/lessons/update.html',
 		controller : 'LessonsUpdateCtrl',
-        reloadOnSearch:false
+		reloadOnSearch : false
 	}).when('/user/lessons/:lessonId/invitations', {
 		templateUrl : 'views/lessons/invitations/create.html',
 		controller : 'LessonsInvitesCreateCtrl'
@@ -112,10 +112,10 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
 	}).when('/public/session/resetPasswordRequest', {
 		templateUrl : 'views/session/resetPasswordRequest.html',
 		controller : 'SessionResetPasswordRequestCtrl'
-	}).when('/admin/homepage', {
+	}).when('/admin/homepage/:activeTab', {
 		templateUrl : 'views/admin/homepage.html',
 		controller : 'AdminHomepageCtrl',
-        reloadOnSearch:false
+		reloadOnSearch : false
 	}).when('/user/homepage', {
 		redirectTo : '/public/homepage'
 	}).when('/user/Parents', {

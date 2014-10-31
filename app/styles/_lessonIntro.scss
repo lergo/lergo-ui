@@ -127,6 +127,10 @@
                 .button {
                     text-align: center;
                 }
+                .close-button {
+                    float: right;
+                    margin-top: -20px;
+                }
                 .container {
                     border: 1px solid #949494;
                     padding: 10px;
@@ -169,8 +173,8 @@
                                 border-bottom: 3px solid $LERGO_INTRO_LINK;
                             }
                         }
-                        .btn-link {
-                            float: right;
+                        .close-button {
+                            margin-top: 0px;
                         }
                     }
                     .share-link {
@@ -262,11 +266,25 @@
                 }
                 .action-items {
                     text-align: left;
-                    direction: ltr;
                     & > a {
                         margin-left: 0;
                         &:nth-child(n+2) {
                             margin-left: 20px;
+                        }
+                    }
+                }
+                .forms {
+                    .close-button {
+                        float: left;
+                    }
+                    .share {
+                        .share-navigation {
+                            .share-section-link {
+                                float: right;
+                                &:not(:first-child) {
+                                    margin-right: 20px;
+                                }
+                            }
                         }
                     }
                 }

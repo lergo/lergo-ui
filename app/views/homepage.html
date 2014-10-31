@@ -1,8 +1,7 @@
 <div class="base-layout" load-filter-and-paging="loadLessons()">
 	<div admin-section>
-		<a href="#!/admin/homepage">Admin Homepage</a>
+		<a href="#!/admin/homepage/lessons">Admin Homepage</a>
 	</div>
-
 	<div class="homepage">
 		<div statistics-banner class="page-content-width">
 			<!-- how many lessons, and how many questions -->
@@ -39,8 +38,7 @@
 		<div class="page-content-width">
 			<div class="page-content-body">
 				<div class="lessons">
-					<div class="lesson"
-						ng-repeat="lesson in lessons ">
+					<div class="lesson" ng-repeat="lesson in lessons ">
 						<div class="age-limit age-limit-{{lesson.age}}">
 							<div class="value">{{lesson.age}}+</div>
 							<div class="units">
@@ -86,7 +84,7 @@
 									<td>
 										<span tooltip="{{'lessons.createdOn' | i18n}}">
 											<i class="fa fa-calendar"></i>
-											{{lesson | mongoIdToTimestamp |  date:'d-MMM-yyyy'}}
+											{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}
 										</span>
 									</td>
 									<td colspan="2">
@@ -101,14 +99,10 @@
 					</div>
 				</div>
 			</div>
-
-
-
 			<div class="sidebar page-content-sidebar">
-                <div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>
-
+				<div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>
 			</div>
 		</div>
-        <div lergo-paging page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
+		<div lergo-paging page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
 	</div>
 </div>
