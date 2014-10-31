@@ -69,6 +69,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		}
 	}
 
+    // todo : do a test for invitation.finished = true
 	$scope.$watch(function() { // broadcast end of lesson if not next step
 		return !!$scope.invitation && !!$scope.hasNextStep && !$scope.hasNextStep();
 	}, function(newValue/* , oldValue */) {
@@ -76,10 +77,10 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			// just notify end lesson. do nothing else. wait for report to
 			// update.
 			$rootScope.$broadcast('endLesson');
-//			if (!!$scope.invitation) {
-//				$scope.invitation.finished = true;
-//				LergoClient.lessonsInvitations.update($scope.invitation);
-//			}
+			if (!!$scope.invitation) {
+				$scope.invitation.finished = true;
+				LergoClient.lessonsInvitations.update($scope.invitation);
+			}
 		}
 	});
 
