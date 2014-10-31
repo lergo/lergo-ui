@@ -26,7 +26,7 @@
  * 
  */
 
-angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoClient, TagsService,  $timeout, FilterService, $log, localStorageService, $location, $routeParams ) {
+angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoClient, TagsService, $timeout, FilterService, $log, localStorageService, $location, $routeParams) {
 	return {
 		templateUrl : 'views/directives/_lergoFilter.html',
 		restrict : 'A',
@@ -34,20 +34,19 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			'model' : '=',
 			'opts' : '=',
 			'change' : '&onChange',
-            'load' : '&onLoad',
-            'noUrlChanges' : '@noUrlChanges'
+			'load' : '&onLoad',
+			'noUrlChanges' : '@noUrlChanges'
 		},
 		link : function postLink(scope/* , element, attrs */) {
 
+			scope.$watch('model', function(newValue, oldValue) {
+				if (newValue === oldValue) {
+					return;
+				}
+				scope.change();
+			}, true);
 
-            scope.$watch('model', function (newValue, oldValue) {
-                if (newValue === oldValue) {
-                    return;
-                }
-                scope.change();
-            }, true);
-
-            var $scope = scope;
+			var $scope = scope;
 
 			$scope.ageFilter = {};
 
@@ -58,12 +57,13 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			$scope.status = FilterService.status;
 
 			$scope.reportStatus = FilterService.reportStatus;
+			$scope.abuseReportStatus = FilterService.abuseReportStatus;
 
 			$scope.statusValue = null;
 
-            function _isChangeUrl(){
-                return scope.noUrlChanges !== true && scope.noUrlChanges !== 'true';
-            }
+			function _isChangeUrl() {
+				return scope.noUrlChanges !== true && scope.noUrlChanges !== 'true';
+			}
 
 			LergoClient.reports.getStudents().then(function(result) {
 				scope.students = result.data;
@@ -73,18 +73,29 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				scope.users = result.data;
 			});
 
+			function _updateCreatedBy(newValue, oldValue) {
+				if (newValue !== oldValue) {
+					if (!!newValue && newValue.hasOwnProperty('_id')) {
+						$scope.model.userId = $scope.createdBy._id;
+					} else {
+						delete $scope.model.userId;
+					}
+				}
+			}
 
-            function _updateCreatedBy(newValue, oldValue) {
-                if (newValue !== oldValue) {
-                    if (!!newValue && newValue.hasOwnProperty('_id')) {
-                        $scope.model.userId = $scope.createdBy._id;
-                    } else {
-                        delete $scope.model.userId;
-                    }
-                }
-            }
+			$scope.$watch('reportedBy', _updateCreatedBy);
 
-			$scope.$watch('createdBy', _updateCreatedBy);
+			function _updateReportedBy(newValue, oldValue) {
+				if (newValue !== oldValue) {
+					if (!!newValue && newValue.hasOwnProperty('_id')) {
+						$scope.model.reporterId = $scope.reportedBy._id;
+					} else {
+						delete $scope.model.reporterId;
+					}
+				}
+			}
+
+			$scope.$watch('reportedBy', _updateReportedBy);
 
 			function _updateReportStudent() {
 
@@ -94,7 +105,6 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 					delete scope.model['data.invitee.name'];
 				}
 			}
-
 
 			$scope.$watch('reportStudent', function(newValue, oldValue) {
 				if (newValue !== oldValue) {
@@ -109,25 +119,25 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				}
 			});
 
-            var _updateStatusValue = function (newValue, oldValue) {
-                if (oldValue !== newValue) {
-                    $log.info('statusValue changed', newValue, oldValue);
+			var _updateStatusValue = function(newValue, oldValue) {
+				if (oldValue !== newValue) {
+					$log.info('statusValue changed', newValue, oldValue);
 
-                    if (newValue === 'private') {
-                        $scope.model.public = {
-                            'dollar_exists': false
-                        };
+					if (newValue === 'private') {
+						$scope.model.public = {
+							'dollar_exists' : false
+						};
 
-                    } else if (newValue === 'public') {
-                        $scope.model.public = {
-                            'dollar_exists': true
-                        };
-                    } else {
-                        delete $scope.model.public;
-                    }
-                }
-            };
-            $scope.$watch('statusValue', _updateStatusValue);
+					} else if (newValue === 'public') {
+						$scope.model.public = {
+							'dollar_exists' : true
+						};
+					} else {
+						delete $scope.model.public;
+					}
+				}
+			};
+			$scope.$watch('statusValue', _updateStatusValue);
 
 			function setDefaultLanguage(force) {
 
@@ -151,32 +161,32 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			});
 
 			$scope.reportStatusValue = null;
-            var _updateReportStatusValue = function (newValue, oldValue) {
-                if (oldValue !== newValue) {
-                    if (newValue === 'complete') {
-                        $scope.model['data.finished'] = {
-                            'dollar_exists': true
-                        };
-                    } else if (newValue === 'incomplete') {
-                        // todo - there is ambiguity in this field.. as
-                        // incomplete could be interpreted as 'not exists', null
-                        // or false..
-                        // todo - i checked with production, and currently
-                        // either it exists with value `true` or it doesn't..
-                        // but we have to get rid of the multiple meanings.
-                        $scope.model['data.finished'] = {
-                            'dollar_exists': false
-                        };
-                    } else {
-                        delete $scope.model['data.finished'];
-                    }
-                }
-            };
-            $scope.$watch('reportStatusValue', _updateReportStatusValue, true);
+			var _updateReportStatusValue = function(newValue, oldValue) {
+				if (oldValue !== newValue) {
+					if (newValue === 'complete') {
+						$scope.model['data.finished'] = {
+							'dollar_exists' : true
+						};
+					} else if (newValue === 'incomplete') {
+						// todo - there is ambiguity in this field.. as
+						// incomplete could be interpreted as 'not exists', null
+						// or false..
+						// todo - i checked with production, and currently
+						// either it exists with value `true` or it doesn't..
+						// but we have to get rid of the multiple meanings.
+						$scope.model['data.finished'] = {
+							'dollar_exists' : false
+						};
+					} else {
+						delete $scope.model['data.finished'];
+					}
+				}
+			};
+			$scope.$watch('reportStatusValue', _updateReportStatusValue, true);
 
 			function minMaxFilter(propertyName, scopeVariable) {
 				return function(newValue, oldValue) {
-                    $log.info('min max filter changed ', scopeVariable, newValue, oldValue, propertyName);
+					$log.info('min max filter changed ', scopeVariable, newValue, oldValue, propertyName);
 
 					if (newValue === oldValue || newValue === null) {
 						return;
@@ -185,10 +195,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 						$scope.model[propertyName] = {};
 					} else {
 						delete $scope.model[propertyName];
-                        $scope[scopeVariable] = null;
+						$scope[scopeVariable] = null;
 					}
-
-
 
 					if (!!newValue.min) {
 						$scope.model[propertyName].dollar_gte = newValue.min;
@@ -197,31 +205,30 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 					if (!!newValue.max) {
 						$scope.model[propertyName].dollar_lte = newValue.max;
 					}
-                    $log.info('min max filter applied', $scope.model[propertyName]);
+					$log.info('min max filter applied', $scope.model[propertyName]);
 				};
 			}
 
+			$scope.getTagsLike = function(like) {
+				return TagsService.getAllAvailableTags(like).then(function(result) {
+					return result.data;
+				});
+			};
 
-            $scope.getTagsLike = function(like){
-                return TagsService.getAllAvailableTags(like).then(function( result ){
-                    return result.data;
-                });
-            };
-
-            var _updateAgeFilter = minMaxFilter('age', 'ageFilter');
-            $scope.$watch('ageFilter', _updateAgeFilter, true);
-            var _updateViewsFilter = minMaxFilter('views', 'viewsFilter');
-            $scope.$watch('viewsFilter', _updateViewsFilter, true);
-            var _updateCorrectPercentage = minMaxFilter('correctPercentage', 'correctPercentage');
-            $scope.$watch('correctPercentage', _updateCorrectPercentage, true);
+			var _updateAgeFilter = minMaxFilter('age', 'ageFilter');
+			$scope.$watch('ageFilter', _updateAgeFilter, true);
+			var _updateViewsFilter = minMaxFilter('views', 'viewsFilter');
+			$scope.$watch('viewsFilter', _updateViewsFilter, true);
+			var _updateCorrectPercentage = minMaxFilter('correctPercentage', 'correctPercentage');
+			$scope.$watch('correctPercentage', _updateCorrectPercentage, true);
 
 			// handle 'all' values or null values - simply remove them from the
 			// model.
-			$scope.$watch('model', function( newValue, oldValue ) {
+			$scope.$watch('model', function(newValue, oldValue) {
 
-                if ( newValue === oldValue ){
-                    return;
-                }
+				if (newValue === oldValue) {
+					return;
+				}
 
 				_.each([ 'language', 'subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished' ], function(prop) {
 					if ($scope.model[prop] === null || $scope.model[prop] === '') {
@@ -231,18 +238,18 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			}, true);
 
 			$scope.filterTags = [];
-            var _updateFilterTags = function () {
-                $log.info('filterTags changed', $scope.filterTags);
-                if (!$scope.filterTags || $scope.filterTags.length === 0) {
-                    delete $scope.model['tags.label'];
-                } else {
-                    $scope.model['tags.label'] = {
-                        'dollar_in': _.map($scope.filterTags, 'label')
-                    };
-                }
+			var _updateFilterTags = function() {
+				$log.info('filterTags changed', $scope.filterTags);
+				if (!$scope.filterTags || $scope.filterTags.length === 0) {
+					delete $scope.model['tags.label'];
+				} else {
+					$scope.model['tags.label'] = {
+						'dollar_in' : _.map($scope.filterTags, 'label')
+					};
+				}
 
-            };
-            $scope.$watch('filterTags', _updateFilterTags, true);
+			};
+			$scope.$watch('filterTags', _updateFilterTags, true);
 
 			// load the filter from local storage
 			// we do this before we define how to persist so we want get an
@@ -254,50 +261,50 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 
 			/**
 			 * the keyName to inflict on the
-			 *
+			 * 
 			 * @param keyName -
 			 *            the key name in the scope/local storage we want to
 			 *            load
 			 * @param relevancy -
 			 *            property on opts that tells us if we need to load this
 			 *            property or not
-             * @param updateFn -
-             *           function used to apply change to the model.
-             *           used for complex values.
-             *           see explanation above.
+			 * @param updateFn -
+			 *            function used to apply change to the model. used for
+			 *            complex values. see explanation above.
 			 */
 			function load(keyName, relevancy, updateFn) {
 
-                if ( !updateFn){
-                    updateFn = function(){}; // noop
-                }
+				if (!updateFn) {
+					updateFn = function() {
+					}; // noop
+				}
 
 				if (!!scope.opts && !!scope.opts[relevancy]) {
 					var args = keyName.split('.');
-                    var filterName = 'lergoFilter.' + keyName;
-                    $log.info('loading : ' + filterName );
-                    var saved = ( $routeParams[filterName] && JSON.parse($routeParams[filterName] ) ) || localStorageService.get(filterName);
-                    if ( _.isEmpty(saved) ) {
-                        saved = null;
-                    }
-                    var scopeVariable = scope;
+					var filterName = 'lergoFilter.' + keyName;
+					$log.info('loading : ' + filterName);
+					var saved = ($routeParams[filterName] && JSON.parse($routeParams[filterName])) || localStorageService.get(filterName);
+					if (_.isEmpty(saved)) {
+						saved = null;
+					}
+					var scopeVariable = scope;
 					if (!!saved) {
 						for ( var i = 0; i < args.length - 1; i++) {
 							scopeVariable = scopeVariable[args[i]];
 						}
-                        if ( _isChangeUrl() ) {
-                            $location.search(filterName, saved === null ? null : JSON.stringify(saved));
-                        }
+						if (_isChangeUrl()) {
+							$location.search(filterName, saved === null ? null : JSON.stringify(saved));
+						}
 					}
 
-                    $log.info('loading filter', filterName, saved, scopeVariable[args[args.length - 1]] );
-                    if ( saved === null ) {
-                        delete scopeVariable[args[args.length - 1]];
-                    }else{
-                        scopeVariable[args[args.length - 1]] = saved;
-                    }
+					$log.info('loading filter', filterName, saved, scopeVariable[args[args.length - 1]]);
+					if (saved === null) {
+						delete scopeVariable[args[args.length - 1]];
+					} else {
+						scopeVariable[args[args.length - 1]] = saved;
+					}
 
-                    updateFn(saved);
+					updateFn(saved);
 				}
 			}
 
@@ -320,15 +327,15 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				$scope.$watch(keyName, function(newValue, oldValue) {
 
 					if (newValue !== oldValue && !!scope.opts[relevancy]) {
-                        if (_.isEmpty(newValue) ){
-                            newValue = null;
-                        }
+						if (_.isEmpty(newValue)) {
+							newValue = null;
+						}
 						$log.info(keyName + ' has changed. persisting [' + newValue + ']');
-                        var filterName = 'lergoFilter.' + keyName;
-                        localStorageService.set(filterName, newValue);
-                        if ( _isChangeUrl() ) {
-                            $location.search(filterName, newValue === null ? null : angular.toJson(newValue));
-                        }
+						var filterName = 'lergoFilter.' + keyName;
+						localStorageService.set(filterName, newValue);
+						if (_isChangeUrl()) {
+							$location.search(filterName, newValue === null ? null : angular.toJson(newValue));
+						}
 					}
 				}, true);
 			}
@@ -343,17 +350,23 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			// WE WANT TO PERSIST ONLY THE PROPERTIES WE REFERENCE IN THE
 			// TEMPLATE (HTML) AS NG-MODEL
 			// as those are the properties that decide the state of the filter.
-            //
-            // updateFn - used for loading.
-            // some fields are complex - and do not affect the model directly..
-            // we are watching these values with $watch and only then we apply them to the model
-            // when we load we want to invoke those callbacks immediately and not wait for another $digest cycle.
+			//
+			// updateFn - used for loading.
+			// some fields are complex - and do not affect the model directly..
+			// we are watching these values with $watch and only then we apply
+			// them to the model
+			// when we load we want to invoke those callbacks immediately and
+			// not wait for another $digest cycle.
 
-            // basically this directive works on $watch. It triggers an 'onChange'
-            // this is all true but the first initialization.
-            // when we load/initialize, we would like to set everything up in the same $digest cycle
-            // use case: when we load lessons, we want the first time to include the loaded filter.
-            // otherwise we will need to handle multiple http queries overriding one another..
+			// basically this directive works on $watch. It triggers an
+			// 'onChange'
+			// this is all true but the first initialization.
+			// when we load/initialize, we would like to set everything up in
+			// the same $digest cycle
+			// use case: when we load lessons, we want the first time to include
+			// the loaded filter.
+			// otherwise we will need to handle multiple http queries overriding
+			// one another..
 			function persist(keyName, relevancy, updateFn) {
 
 				load(keyName, relevancy, updateFn);
@@ -363,25 +376,26 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				save(keyName, relevancy);
 			}
 
-            function persistAll() {
-                persist('reportStudent', 'showStudents', _updateReportStudent);
-                persist('ageFilter', 'showAge', _updateAgeFilter);
-                persist('viewsFilter', 'showViews', _updateViewsFilter);
-                persist('correctPercentage', 'showCorrectPercentage', _updateCorrectPercentage);
-                persist('model.language', 'showLanguage');
-                persist('model.subject', 'showSubject');
-                persist('filterTags', 'showTags', _updateFilterTags);
-                persist('reportStatusValue', 'showReportStatus', _updateReportStatusValue);
-                persist('statusValue', 'showLessonStatus', _updateStatusValue);
-                persist('model.searchText', 'showSearchText');
-                persist('createdBy', 'showCreatedBy', _updateCreatedBy);
-            }
+			function persistAll() {
+				persist('reportStudent', 'showStudents', _updateReportStudent);
+				persist('ageFilter', 'showAge', _updateAgeFilter);
+				persist('viewsFilter', 'showViews', _updateViewsFilter);
+				persist('correctPercentage', 'showCorrectPercentage', _updateCorrectPercentage);
+				persist('model.language', 'showLanguage');
+				persist('model.subject', 'showSubject');
+				persist('filterTags', 'showTags', _updateFilterTags);
+				persist('reportStatusValue', 'showReportStatus', _updateReportStatusValue);
+				persist('model.status', 'showAbuseReportStatus');
+				persist('statusValue', 'showLessonStatus', _updateStatusValue);
+				persist('model.searchText', 'showSearchText');
+				persist('createdBy', 'showCreatedBy', _updateCreatedBy);
+				persist('reportedBy', 'showReportedBy', _updateReportedBy);
+			}
 
+			persistAll();
 
-            persistAll();
-
-            $log.info('filter loaded. calling callback', scope.load);
-            scope.$evalAsync(scope.load); // notify you were loaded
+			$log.info('filter loaded. calling callback', scope.load);
+			scope.$evalAsync(scope.load); // notify you were loaded
 		}
 	};
 });

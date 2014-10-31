@@ -27,13 +27,19 @@
   "admin": {
     "allLessons": "All Lessons",
     "by": "By",
+    "byCreated": "By(Lesson)",
+    "byReported": "By(Report)",
     "category": "Category",
     "comments": "Comments",
     "created": "Created",
+    "flaggedLesson": "Flagged Lesson Reports",
+    "lessonName": "Lesson Name",
     "makePrivate": "Unpublish",
     "makePublic": "Publish",
     "public": "Public",
     "publicFrom": "Public From",
+    "report": "Report",
+    "status": "Status",
     "views": "# Views"
   },
   "advancedOptions": "Advanced options",
@@ -60,7 +66,7 @@
     },
     "header": {
       "links": {
-        "abuseReports": "Flag Reports",
+        "abuseReports": "Flagged Lesson Reports",
         "contribute": "Contribute",
         "create": "Create",
         "invites": "Invites",
@@ -139,8 +145,10 @@
       "error": "Maximum age should be greater than minimum age"
     },
     "all": "All",
+  
     "labels": {
       "ageRange": "Age Range",
+      "reportedBy": "Reported By",
       "correctPercentage": "% Correct Range",
       "createdBy": "Created By",
       "doneByStudent": "Student",
@@ -161,9 +169,12 @@
     },
     "status": {
       "complete": "Complete",
+      "dismissed": "Dismissed",
       "incomplete": "Incomplete",
+      "pending": "Pending",
       "private": "Not Public",
-      "public": "Public"
+      "public": "Public",
+      "resolved": "Resolved"
     },
     "subjects": {
       "other": "Other",
@@ -213,6 +224,7 @@
     },
     "years": "Years"
   },
+  "infringesRights": "it infringes his/her right.",
   "input": {
     "confirmPassword": "confirm password",
     "email": "email",
@@ -344,6 +356,8 @@
   "new": "New",
   "next": "Next",
   "nextQuestion": "Continue",
+  "notAppropriate": "it is not appropriate for kids.",
+  "notEducational": "it is not educational content.",
   "popular": "Popular",
   "powered": {
     "by": {
@@ -513,7 +527,7 @@
     },
     "nextLesson": "Recommended Next Lesson",
     "priorLesson": "Recommended Previous Lesson",
-    "questionsInQuiz": "questions in quiz",
+    "questionsInQuiz": "different questions in quiz",
     "recommendation": "Recommendations",
     "saved": {
       "successfully": "Report saved successfully"

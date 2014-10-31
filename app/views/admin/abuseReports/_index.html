@@ -19,6 +19,15 @@
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
+									<li>
+										<a dropdown-toggle style="outline: none;" class="btn-link" ng-click="pending()">{{'filters.status.pending'|i18n}}</a>
+									</li>
+									<li>
+										<a dropdown-toggle style="outline: none;" class="btn-link" ng-click="resolved()">{{'filters.status.resolved'|i18n}}</a>
+									</li>
+									<li>
+										<a dropdown-toggle style="outline: none;" class="btn-link" ng-click="dismissed()">{{'filters.status.dismissed'|i18n}}</a>
+									</li>
 									<li class="divider"></li>
 									<li>
 										<a dropdown-toggle style="outline: none;" class="btn-link" ng-click="deleteReports()">{{'delete'|i18n}}</a>
@@ -26,11 +35,12 @@
 								</ul>
 							</div>
 						</td>
-						<td>{{'name'|i18n}}</td>
-						<td>{{'admin.by'|i18n}}</td>
+						<td>{{'admin.lessonName'|i18n}}</td>
+						<td>{{'admin.byCreated'|i18n}}</td>
+						<td>{{'admin.byReported'|i18n}}</td>
 						<td>{{'admin.created'|i18n}}</td>
-						<td>{{'admin.category'|i18n}}</td>
-						<td>{{'admin.comments'|i18n}}</td>
+						<td>{{'admin.report'|i18n}}</td>
+						<td>{{'admin.status'|i18n}}</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -45,17 +55,21 @@
 								ng-href="#!/user/lessons/{{report.itemId}}/intro">[ no title ]</a>
 						</td>
 						<td>
-							<a href="mailto:{{getUser(report).email}}">{{getUser(report).username}}</a>
+							<a href="mailto:{{getUser(report.itemUserId).email}}">{{getUser(report.itemUserId).username}}</a>
 						</td>
-						<td>{{report.lastUpdated | date:'d-MMM-yyyy HH:mm'}}</td>
-						<td>{{'abuseReport.reason.'+report.reason|i18n}}</td>
 						<td>
+							<a href="mailto:{{getUser(report.userId).email}}">{{getUser(report.userId).username}}</a>
+						</td>
+						<td>{{report.lastUpdate | date:'d-MMM-yyyy HH:mm'}}</td>
+						<td>
+							{{'abuseReport.reason.'+report.reason|i18n}}
 							<span ng-show="!!report.comment">
 								<a class="btn-link" popover="{{report.comment}}" popover-placement="top" popover-trigger="focus" tabindex="0">
 									<i class="fa fa-comment"></i>
 								</a>
 							</span>
 						</td>
+						<td>{{'filters.status.'+report.status | i18n}}</td>
 					</tr>
 				</tbody>
 			</table>

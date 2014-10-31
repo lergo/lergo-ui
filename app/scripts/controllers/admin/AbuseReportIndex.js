@@ -6,10 +6,13 @@ angular.module('lergoApp').controller('AdminAbuseReportIndexCtrl', function($sco
 	$scope.filterPage = {};
 
 	$scope.adminFilterOpts = {
-		'showSubject' : true,
-		'showLanguage' : true,
-		'showCreatedBy' : true,
-		'showSearchText' : true
+		showSubject : true,
+		showLanguage : true,
+		showCreatedBy : true,
+		showSearchText : true,
+		showReportedBy : true,
+		showAbuseReportStatus : true
+
 	};
 
 	$scope.load = function() {
@@ -33,7 +36,9 @@ angular.module('lergoApp').controller('AdminAbuseReportIndexCtrl', function($sco
 	var users = {};
 
 	$scope.$watch('reports', function() {
-		var requiredUsers = _.difference(_.map($scope.reports, 'userId'), _.map(users, '_id'));
+		var requiredReporters = _.difference(_.map($scope.reports, 'userId'), _.map(users, '_id'));
+		var requiredCreators = _.difference(_.map($scope.reports, 'itemUserId'), _.map(users, '_id'));
+		var requiredUsers = _.union(requiredReporters, requiredCreators);
 		if (requiredUsers.length > 0) {
 			LergoClient.users.findUsersById(requiredUsers).then(function(result) {
 				result.data.forEach(function(user) {
@@ -43,8 +48,8 @@ angular.module('lergoApp').controller('AdminAbuseReportIndexCtrl', function($sco
 		}
 	});
 
-	$scope.getUser = function(report) {
-		return users[report.userId];
+	$scope.getUser = function(id) {
+		return users[id];
 	};
 
 	$scope.selectAll = function(event) {
@@ -76,6 +81,49 @@ angular.module('lergoApp').controller('AdminAbuseReportIndexCtrl', function($sco
 
 			});
 		}
+	};
+	$scope.changing = [];
+	var changing = $scope.changing;
+	function save(report) {
+		// preserving selected state of report
+		var selected = report.selected;
+		delete report.selected;
+		changing.push(report._id);
+		LergoClient.abuseReports.update(report).then(function success(result) {
+			var indexOf = $scope.reports.indexOf(report);
+			result.data.selected = selected;
+			$scope.reports[indexOf] = result.data;
+			changing.splice(changing.indexOf(report._id), 1);
+			loadStats();
+			$scope.load();
+		}, function error() {
+			changing.splice(changing.indexOf(report._id), 1);
+		});
+	}
+
+	$scope.pending = function() {
+		angular.forEach($scope.reports, function(report) {
+			if (report.selected === true) {
+				report.status = 'pending';
+				save(report);
+			}
+		});
+	};
+	$scope.resolved = function() {
+		angular.forEach($scope.reports, function(report) {
+			if (report.selected === true) {
+				report.status = 'resolved';
+				save(report);
+			}
+		});
+	};
+	$scope.dismissed = function() {
+		angular.forEach($scope.reports, function(report) {
+			if (report.selected === true) {
+				report.status = 'dismissed';
+				save(report);
+			}
+		});
 	};
 
 });

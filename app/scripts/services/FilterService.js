@@ -23,6 +23,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 
 	this.status = [ 'private', 'public' ];
 	this.reportStatus = [ 'complete', 'incomplete' ];
+	this.abuseReportStatus=['pending', 'resolved','dismissed'];
 
 	this.getLocaleByLanguage = function(id) {
 		for ( var i = 0; i < this.languages.length; i++) {
