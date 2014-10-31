@@ -39,7 +39,9 @@
     "karma-ng-html2js-preprocessor": "~0.0.4",
     "grunt-html2js": "~0.2.8",
     "karma-failed-reporter": "0.0.2",
-    "jshint-stylish": "~1.0.0"
+    "jshint-stylish": "~1.0.0",
+    "karma-coverage": "~0.2.6",
+    "grunt-aws": "~0.4.0"
   },
   "engines": {
     "node": ">=0.8.0"

@@ -3,6 +3,8 @@
 var LIVERELOAD_PORT = 34729;
 var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+var path = require('path');
+var logger = require('log4js').getLogger('Gruntfile');
 
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
@@ -29,6 +31,17 @@ module.exports = function (grunt) {
     } catch (e) {
     }
 
+    var s3Config = {};
+    try {
+        var s3path = process.env.LERGO_S3 || path.resolve('./dev/s3.json');
+        logger.info('looking for s3.json at ' , s3path );
+        s3Config = require( s3path );
+    }catch(e){
+        logger.error('s3 json is undefined, you will not be able to upload to s3');
+    }
+    
+    
+
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
@@ -46,6 +59,21 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/scripts/**/*.js',
                     '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
+            }
+        },
+        s3:{
+            uploadCoverage: {
+                options: {
+                    accessKeyId: s3Config.accessKey,
+                    secretAccessKey: s3Config.secretAccessKey,
+                    bucket: s3Config.bucket,
+                    enableWeb:true,
+                    gzip:true
+                },
+                cwd: "coverage/",
+                src: "**",
+                dest: "ui-coverage/"
+
             }
         },
         connect: {

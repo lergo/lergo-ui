@@ -19,7 +19,10 @@ results
 
 app/bower_components
 
+coverage
 
+
+dev
 npm-debug.log
 node_modules
 

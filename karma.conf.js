@@ -35,14 +35,21 @@ module.exports = function(config){
             'test/mock/**/*.js',
             'test/spec/**/*.js'
         ],
+        preprocessors: {
+          'app/scripts/**/*.js' : ['coverage']
+        },
         exclude : [],
-        reporters : ['failed'],
+        reporters : ['failed', 'coverage'],
         runnerPort: 9100,
         colors: true,
         logLevel: 'info',
         autoWatch: true,
         captureTimeout: 15000,
-        singleRun: false
+        singleRun: false,
+        coverageReporter: {
+            type : 'html',
+            dir : 'coverage/'
+        }
     };
 
 
