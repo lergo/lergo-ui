@@ -31,6 +31,7 @@ module.exports = function(grunt) {
 	try {
 		yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
 	} catch (e) {
+		logger.error(e);
 	}
 
 	var s3Config = {};
