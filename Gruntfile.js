@@ -37,7 +37,7 @@ module.exports = function (grunt) {
         logger.info('looking for s3.json at ' , s3path );
         s3Config = require( s3path );
     }catch(e){
-        logger.error('s3 json is undefined, you will not be able to upload to s3');
+        logger.error('s3 json is undefined, you will not be able to upload to s3',e);
     }
     
     
