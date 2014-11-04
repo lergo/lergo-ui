@@ -266,10 +266,16 @@
                     }
                 }
                 .share {
-                    color: #949494;
-                    padding: 10px;
                     .lergo-h4 {
-                        color: #949494;
+                        font-weight: normal;
+                    }
+                    textarea {
+                        padding: 5px;
+                        resize: none;
+                        text-align: left;
+                        direction: ltr;
+                        height: 45px;
+                        width: 100%;
                     }
                     .container {
                         border: 1px solid #949494;
