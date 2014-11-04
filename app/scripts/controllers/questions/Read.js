@@ -20,10 +20,6 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 		if (!!$scope.quizItem.copyOf) {
 			QuestionsService.findQuestionsById($scope.quizItem.copyOf).then(function(result) {
 				var originalQuestions = result.data;
-				// remove the question created by the same user
-				_.remove(originalQuestions, function(q) {
-					return q.userId === $scope.quizItem.userId;
-				});
 				var usersWeCopiedFrom = _.uniq(_.compact(_.map(originalQuestions, 'userId')));
 
 				// get all users we copied from..
