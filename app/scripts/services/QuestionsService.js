@@ -3,15 +3,6 @@
 angular.module('lergoApp').service('QuestionsService', function QuestionsService($http, $log, $filter, $window ) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
 
-	this.getUserQuestions = function(queryObj) {
-		return $http({
-			'method' : 'GET',
-			'url' : '/backend/user/questions',
-			'params' : {
-				'query' : queryObj
-			}
-		});
-	};
 
 	this.copyQuestion = function(questionId) {
 		$log.info('copying question');
