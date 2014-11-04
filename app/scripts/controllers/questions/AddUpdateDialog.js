@@ -11,8 +11,8 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 			$scope.isCreate = true;
 			$scope.quizItem = quizItem;
 			$scope.isUpdate = isUpdate;
-			$scope.loadPublic = {
-				value : false
+			$scope.questionTypeFormAddQuizPopup = {
+				value : 'myQuestions'
 			};
 			var items = [];
 			$scope.$on('questionsLoaded', function(event, data) {
@@ -57,7 +57,6 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 				controller : 'QuestionsUpdateCtrl',
 				tooltip : $filter('i18n')('questions.createNewQuestion'),
 				page : 'views/questions/_update.html',
-				loadPublic : false,
 				isCreate : true,
 				add : function(item) {
 					addItem(item, false);
@@ -70,7 +69,7 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 				controller : 'QuestionsIndexCtrl',
 				tooltip : $filter('i18n')('questions.selectMyQuestions'),
 				page : 'views/questions/_index.html',
-				loadPublic : false,
+				questionTypeToLoad : 'myQuestions',
 				isCreate : false,
 				add : function() {
 					addSelectedItems(false);
@@ -83,7 +82,20 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 				controller : 'QuestionsIndexCtrl',
 				tooltip : $filter('i18n')('questions.selectAllQuestions'),
 				page : 'views/questions/_index.html',
-				loadPublic : true,
+				questionTypeToLoad : 'allQuestions',
+				isCreate : false,
+				add : function() {
+					addSelectedItems(false);
+				},
+				addClose : function() {
+					addSelectedItems(true);
+				}
+			}, {
+				id : 'likedQuestions',
+				controller : 'QuestionsIndexCtrl',
+				tooltip : $filter('i18n')('questions.selectLikedQuestions'),
+				page : 'views/questions/_index.html',
+				questionTypeToLoad : 'likedQuestions',
 				isCreate : false,
 				add : function() {
 					addSelectedItems(false);
@@ -95,7 +107,9 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 			$scope.setCurrentSelection = function(section) {
 				$scope.currentSection = section;
 				$scope.isCreate = section.isCreate;
-				$scope.loadPublic.value = section.loadPublic;
+				if (!!section.questionTypeToLoad) {
+					$scope.questionTypeFormAddQuizPopup.value = section.questionTypeToLoad;
+				}
 
 			};
 

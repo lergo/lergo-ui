@@ -5,7 +5,21 @@
 	<br />
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
-			<div class="lergo-h1">{{ 'lessons.myLessons' | i18n }} [ {{ 'lessons.total' | i18n }}: {{systemStats.myLessons}} ]</div>
+			<div class="lergo-h1">
+				<div class="btn-group" dropdown>
+					<button type="button" class="btn-link dropdown-toggle" style="color: #5fb9ff; text-decoration: none">
+						<span class="fa fa-caret-down"></span>
+						<span class="lergo-h1">{{('lessons.'+ lessonToLoad |i18n)}} </span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li>
+							<a dropdown-toggle class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.user)">{{'lessons.myLessons'|i18n}}</a>
+							<a dropdown-toggle class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.liked)">{{'lessons.likedLessons'|i18n}}</a>
+						</li>
+					</ul>
+				</div>
+				[ {{ 'lessons.total' | i18n }}: {{systemStats.myLessons}} ]
+			</div>
 			<div class="page-content-titles-actions">
 				<button ng-click="create()" class="btn">{{ 'lessons.create' | i18n }}</button>
 			</div>
@@ -23,7 +37,7 @@
 						<td>{{ 'questions.language' | i18n}}</td>
 						<td>{{ 'questions.subject' | i18n}}</td>
 						<td>{{ 'questions.age' | i18n}}</td>
-<!--						<td style="width: 20px;">{{ 'preview' | i18n }}</td>
+						<!--						<td style="width: 20px;">{{ 'preview' | i18n }}</td>
 						<td style="width: 10px;"></td>
 						<td style="width: 10px;"></td>-->
 					</tr>
@@ -31,8 +45,10 @@
 				<tbody>
 					<tr ng-repeat="les in lessons |orderBy:'-lastUpdate'">
 						<td class="name">
-							<a ng-show="!!les.name && les.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#!/user/lessons/{{les._id}}/intro">{{ les.name }}</a>
-							<a ng-show="!les.name || les.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#!/user/lessons/{{les._id}}/intro">[ no title ]</a>
+							<a ng-show="!!les.name && les.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#!/user/lessons/{{les._id}}/intro">{{
+								les.name }}</a>
+							<a ng-show="!les.name || les.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#!/user/lessons/{{les._id}}/intro">[
+								no title ]</a>
 						</td>
 						<td class="answer">{{les.language && ('filters.languages.' + les.language | i18n) || ""}}</td>
 						<td class="answer">{{les.subject && ('filters.subjects.' + les.subject | i18n) ||""}}</td>
@@ -41,10 +57,9 @@
 				</tbody>
 			</table>
 		</div>
-        <div class="sidebar page-content-sidebar">
-            <div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>
-
-        </div>
+		<div class="sidebar page-content-sidebar">
+			<div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>
+		</div>
 	</div>
-    <div lergo-paging page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
+	<div lergo-paging page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
 </div>

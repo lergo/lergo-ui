@@ -27,8 +27,8 @@
   "admin": {
     "allLessons": "All Lessons",
     "by": "By",
-    "byCreated": "By(Lesson)",
-    "byReported": "By(Report)",
+    "byCreated": "Lesson created by",
+    "byReported": "Reported By",
     "category": "Category",
     "comments": "Comments",
     "created": "Created",
@@ -145,15 +145,14 @@
       "error": "Maximum age should be greater than minimum age"
     },
     "all": "All",
-  
     "labels": {
       "ageRange": "Age Range",
-      "reportedBy": "Reported By",
       "correctPercentage": "% Correct Range",
       "createdBy": "Created By",
       "doneByStudent": "Student",
       "duration": "Duration (in seconds)",
       "language": "Language",
+      "reportedBy": "Reported By",
       "status": "Status",
       "subject": "Subject",
       "tags": "Tags",
@@ -306,6 +305,7 @@
     "letsContinue": "OK! Let's Continue",
     "letsGo": "Let's LerGO!",
     "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like lessons.",
+    "likedLessons": "Liked Lessons",
     "myLessons": "My Lessons",
     "name": "Lesson Name",
     "note": "Note",
@@ -429,6 +429,7 @@
       "russian": "Russian"
     },
     "lessonUsed": "Lessons Used",
+    "likedQuestions": "Liked Questions",
     "longAnswer": "Long Answer (a paragraph)",
     "media": {
       "audio": "Audio",

@@ -1,16 +1,23 @@
 'use strict';
 
 angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, TagsService, $location, $log, localStorageService, FilterService, $rootScope, $window) {
+	// enum
+	$scope.QuestionTypeToLoad = {
+		all : 'allQuestions',
+		user : 'myQuestions',
+		liked : 'likedQuestions'
+	};
+
 	$scope.totalResults = 0;
 	$scope.questionsFilter = {};
 	$scope.filterPage = {};
 	$scope.questionsFilterOpts = {
-		'showSubject' : true,
-		'showLanguage' : true,
-		'showAge' : true,
-		'showSearchText' : true,
-		'showTags' : true,
-		showCreatedBy : localStorageService.get('isPublic') === 'true'
+		showSubject : true,
+		showLanguage : true,
+		showAge : true,
+		showSearchText : true,
+		showTags : true,
+		showCreatedBy : localStorageService.get('questionTypeToLoad') === $scope.QuestionTypeToLoad.all
 	};
 
 	$scope.selectAll = function(checked) {
@@ -20,7 +27,6 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	};
 
 	$scope.createNewQuestion = function() {
-
 		QuestionsService.createQuestion({
 			'language' : FilterService.getLanguageByLocale($rootScope.lergoLanguage)
 		}).then(function(result) {
@@ -33,23 +39,23 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		});
 	};
 
-	$scope.$watch('loadPublic', function(newValue) {
+	$scope.$watch('questionTypeFormAddQuizPopup', function(newValue) {
 		if (!!newValue) {
-			$scope.loadPublicQuestion(newValue.value);
+			$scope.load(newValue.value);
 		}
 	}, true);
-	$scope.loadPublicQuestion = function(isPublic) {
-		var oldValue = localStorageService.get('isPublic') === 'true';
-		if (oldValue !== isPublic) {
-			$scope.questionsFilterOpts.showCreatedBy = isPublic;
-			localStorageService.set('isPublic', isPublic);
+	$scope.load = function(questionTypeToLoad) {
+		var oldValue = localStorageService.get('questionTypeToLoad');
+		if (oldValue !== questionTypeToLoad) {
+			$scope.questionsFilterOpts.showCreatedBy = questionTypeToLoad === $scope.QuestionTypeToLoad.all;
+			localStorageService.set('questionTypeToLoad', questionTypeToLoad);
 			$scope.filterPage.current = 1;
 			$scope.filterPage.updatedLast = new Date().getTime();
 		}
 	};
 
 	$scope.loadQuestions = function() {
-		$scope.isPublic = localStorageService.get('isPublic') === 'true';
+		$scope.questionToLoad = localStorageService.get('questionTypeToLoad');
 		var queryObj = {
 			'filter' : _.merge({}, $scope.questionsFilter),
 			'sort' : {
@@ -57,12 +63,14 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 			},
 			'dollar_page' : $scope.filterPage
 		};
-
 		var getQuestionsPromise = null;
-		if (!$scope.isPublic) {
-			getQuestionsPromise = LergoClient.userData.getQuestions(queryObj);
-		} else {
+		if ($scope.questionToLoad === $scope.QuestionTypeToLoad.all) {
 			getQuestionsPromise = QuestionsService.getPublicQuestions(queryObj);
+		} else if ($scope.questionToLoad === $scope.QuestionTypeToLoad.liked) {
+			getQuestionsPromise = LergoClient.userData.getLikedQuestions(queryObj);
+		} else {
+			getQuestionsPromise = LergoClient.userData.getQuestions(queryObj);
+			$scope.questionToLoad = $scope.QuestionTypeToLoad.user;
 		}
 
 		getQuestionsPromise.then(function(result) {

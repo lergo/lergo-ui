@@ -1,7 +1,11 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window) {
-
+angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window, localStorageService) {
+	// enum
+	$scope.LessonTypeToLoad = {
+		user : 'myLessons',
+		liked : 'likedLessons'
+	};
 	$scope.lessonsFilter = {};
 	$scope.filterPage = {};
 	$scope.totalResults = 0;
@@ -14,6 +18,15 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 		'showSearchText' : true
 	};
 
+	$scope.load = function(lessonToLoad) {
+		var oldValue = localStorageService.get('lessonToLoad');
+		if (oldValue !== lessonToLoad) {
+			localStorageService.set('lessonToLoad', lessonToLoad);
+			$scope.filterPage.current = 1;
+			$scope.filterPage.updatedLast = new Date().getTime();
+		}
+	};
+
 	$scope.loadLessons = function() {
 		$log.info('loading lessons');
 		var queryObj = {
@@ -23,8 +36,16 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 			},
 			'dollar_page' : $scope.filterPage
 		};
+		$scope.lessonToLoad = localStorageService.get('lessonToLoad');
+		var getLessonsPromise = null;
+		if ($scope.lessonToLoad === $scope.LessonTypeToLoad.liked) {
+			getLessonsPromise = LergoClient.userData.getLikedLessons(queryObj);
+		} else {
+			getLessonsPromise = LergoClient.userData.getLessons(queryObj);
+			$scope.lessonToLoad = $scope.LessonTypeToLoad.user;
+		}
 
-		LergoClient.userData.getLessons(queryObj).then(function(result) {
+		getLessonsPromise.then(function(result) {
 			$scope.lessons = result.data.data;
 			$scope.filterPage.count = result.data.count; // number of lessons
 			// after filtering

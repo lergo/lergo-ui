@@ -5,14 +5,15 @@
 		<div class="page-content-body">
 			<div class="lergo-h1">
 				<div class="btn-group" dropdown>
-					<button type="button" class="btn-link dropdown-toggle">
-						<span class="caret" style="border-top: 10px solid #5fb9ff;"></span>
-						<span class="lergo-h1">{{!!isPublic && ('questions.allQuestions'|i18n) || ('questions.myQuestions'|i18n) }} </span>
+					<button type="button" class="btn-link dropdown-toggle" style="color: #5fb9ff; text-decoration: none">
+						<span class="fa fa-caret-down"></span>
+						<span class="lergo-h1">{{('questions.'+ questionToLoad |i18n)}} </span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
 						<li>
-							<a dropdown-toggle class="btn-link" style="outline: none;" ng-click="loadPublicQuestion(false)">{{'questions.myQuestions'|i18n}}</a>
-							<a dropdown-toggle class="btn-link" style="outline: none;" ng-click="loadPublicQuestion(true)">{{'questions.allQuestions'|i18n}}</a>
+							<a dropdown-toggle class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.user)">{{'questions.myQuestions'|i18n}}</a>
+							<a dropdown-toggle class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.all)">{{'questions.allQuestions'|i18n}}</a>
+							<a dropdown-toggle class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.liked)">{{'questions.likedQuestions'|i18n}}</a>
 						</li>
 					</ul>
 				</div>
