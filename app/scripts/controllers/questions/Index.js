@@ -60,7 +60,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 
 		var getQuestionsPromise = null;
 		if (!$scope.isPublic) {
-			getQuestionsPromise = QuestionsService.getUserQuestions(queryObj);
+			getQuestionsPromise = LergoClient.userData.getQuestions(queryObj);
 		} else {
 			getQuestionsPromise = QuestionsService.getPublicQuestions(queryObj);
 		}

@@ -177,9 +177,6 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				return 'views/lesson/steps/_' + type + '.html';
 			};
 
-			LergoClient.questions.getUserQuestions().then(function(result) {
-				$scope.quizItems = result.data;
-			});
 
 			$scope.removeItemFromQuiz = function(item, step) {
 				if (!!step.quizItems && step.quizItems.length > 0 && step.quizItems.indexOf(item) >= 0) {
