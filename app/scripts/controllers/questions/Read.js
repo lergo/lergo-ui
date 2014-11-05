@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location, $window) {
+angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location, $window, $rootScope) {
 
 	var questionId = $routeParams.questionId;
 	$scope.noop = angular.noop;
@@ -9,14 +9,14 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 
 	QuestionsService.getQuestionById(questionId).then(function(result) {
 		$scope.quizItem = result.data;
+		$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.quizItem.language);
 		$scope.errorMessage = null;
 
 		LergoClient.questions.getPermissions($scope.quizItem._id).then(function(result) {
 			$scope.permissions = result.data;
 		});
 
-
-        // todo: this looks a copy paste from Intro.js.. need to refactor!
+		// todo: this looks a copy paste from Intro.js.. need to refactor!
 		if (!!$scope.quizItem.copyOf) {
 			QuestionsService.findQuestionsById($scope.quizItem.copyOf).then(function(result) {
 				var originalQuestions = result.data;
@@ -164,7 +164,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 	};
 
 	$scope.absoluteShareLink = function(question) {
-		$scope.shareLink = LergoClient.questions.getShareLink( question );
+		$scope.shareLink = LergoClient.questions.getShareLink(question);
 		$scope.share = !$scope.share;
 	};
 	$scope.onTextClick = function($event) {
@@ -182,7 +182,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl', function($scope, Ques
 			return true;
 		}
 	};
-	
+
 	$scope.isMultiChoiceMultiAnswer = function(quizItem) {
 		var correctAnswers = _.filter(quizItem.options, 'checked');
 		return correctAnswers.length > 1;
