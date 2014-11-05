@@ -8,7 +8,7 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 		'showSubject' : true,
 		'showLanguage' : true,
 		'showStudents' : true,
-		'showReportStatus' : true,
+		'showInviteStatus' : true,
 	};
 
 	$scope.invitesPage = {
@@ -26,6 +26,7 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 				'lastUpdate' : -1
 			},
 			'dollar_page' : $scope.filterPage
+
 		};
 		var promise = null;
 		promise = LergoClient.userData.getInvites(queryObj);

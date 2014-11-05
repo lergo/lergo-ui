@@ -59,10 +59,18 @@
 			<input min="1" max="100" size="1" ng class="number" type="number" ng-model="correctPercentage.max" />
 		</div>
 	</span>
-	<span ng-show="!!opts.showReportStatus">
+	<div ng-show="!!opts.showReportStatus">
 		<div class="label">{{'filters.labels.status' | i18n }}</div>
 		<div class="input">
 			<select ng-options="s as ('filters.status.' + s | i18n) for s in reportStatus" ng-model="reportStatusValue">
+				<option value="">{{'filters.all'|i18n}}</option>
+			</select>
+		</div>
+	</div>
+	<span ng-show="!!opts.showInviteStatus">
+		<div class="label">{{'filters.labels.status' | i18n }}</div>
+		<div class="input">
+			<select ng-options="s as ('filters.status.' + s | i18n) for s in reportStatus" ng-model="inviteStatusValue">
 				<option value="">{{'filters.all'|i18n}}</option>
 			</select>
 		</div>

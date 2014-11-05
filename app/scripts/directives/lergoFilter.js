@@ -184,6 +184,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			};
 			$scope.$watch('reportStatusValue', _updateReportStatusValue, true);
 
+			// we want to save seperate filter for status for invite and report
+			$scope.inviteStatusValue = null;
+			$scope.$watch('inviteStatusValue', _updateReportStatusValue, true);
+
 			function minMaxFilter(propertyName, scopeVariable) {
 				return function(newValue, oldValue) {
 					$log.info('min max filter changed ', scopeVariable, newValue, oldValue, propertyName);
@@ -385,6 +389,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				persist('model.subject', 'showSubject');
 				persist('filterTags', 'showTags', _updateFilterTags);
 				persist('reportStatusValue', 'showReportStatus', _updateReportStatusValue);
+				persist('inviteStatusValue', 'showInviteStatus', _updateReportStatusValue);
 				persist('model.status', 'showAbuseReportStatus');
 				persist('statusValue', 'showLessonStatus', _updateStatusValue);
 				persist('model.searchText', 'showSearchText');
