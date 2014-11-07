@@ -83,7 +83,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				}
 			}
 
-			$scope.$watch('reportedBy', _updateCreatedBy);
+			$scope.$watch('createdBy', _updateCreatedBy, true);
 
 			function _updateReportedBy(newValue, oldValue) {
 				if (newValue !== oldValue) {

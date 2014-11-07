@@ -341,7 +341,13 @@ module.exports = function (grunt) {
         karma: {
             unit: {
                 configFile: 'karma.conf.js',
-                singleRun: true//, reporters: ['failed']
+                singleRun:true
+
+            },
+            debug:{
+                configFile: 'karma.conf.js',
+                singleRun:false,
+                reporters: ['failed']
             }
         },
         cdnify: {
@@ -392,7 +398,7 @@ module.exports = function (grunt) {
         'html2js',
         'concurrent:test',
         'connect:test',
-        'karma'
+        'karma:unit'
     ]);
 
     grunt.registerTask('build', [
