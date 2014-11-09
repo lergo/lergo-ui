@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('LergoTranslate', function($routeParams, $http, localStorageService, $log, $rootScope, $location, $route) { /* LergoTranslate */
+angular.module('lergoApp').service('LergoTranslate', function($routeParams, $http, localStorageService, $log, $rootScope, $timeout, $location, $route) { /* LergoTranslate */
 	// AngularJS will instantiate a singleton by calling "new" on this function
 
 	if (!!$rootScope.noTranslation) {
@@ -55,7 +55,7 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
 	};
 
 	this.setLanguage = function(_language) {
-		$log.info('setting new language', _language);
+		$log.debug('setting new language', _language);
 		if (this.isSupported(_language)) {
 			language = _language;
 			$rootScope.lergoLanguage = language;

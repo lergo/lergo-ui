@@ -2,13 +2,13 @@
 	<div ng-show="!!opts.showStudents" class='container-fluid'>
 		<div class="label">{{'filters.labels.doneByStudent' | i18n}}</div>
 		<div class="input">
-			<input type="text" ng-model="reportStudent" typeahead="student._id as student._id for student in students | filter:$viewValue | limitTo:15 ">
+			<input type="text" ng-model-options="{debounce:500}" ng-model="reportStudent" typeahead="student._id as student._id for student in students | filter:$viewValue | limitTo:15 ">
 		</div>
 	</div>
 	<div ng-show="!!opts.showSearchText">
 		<div class="label">{{'filters.labels.text' | i18n }}</div>
 		<div>
-			<input ng-model="model.searchText" placeholder="{{'filters.labels.text' | i18n  }}" />
+			<input ng-model="model.searchText" ng-model-options="{debounce:500}" placeholder="{{'filters.labels.text' | i18n  }}" />
 		</div>
 	</div>
 	<span ng-show="!!opts.showLanguage">
@@ -54,9 +54,9 @@
 	<span ng-show="!!opts.showCorrectPercentage">
 		<div class="label">{{'filters.labels.correctPercentage' | i18n }}</div>
 		<div>
-			<input min="1" max="100" size="1" class="number" type="number" ng-model="correctPercentage.min" />
+			<input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce: 500}" ng-model="correctPercentage.min" />
 			{{'filters.to'|i18n}}
-			<input min="1" max="100" size="1" ng class="number" type="number" ng-model="correctPercentage.max" />
+			<input min="1" max="100" size="1" ng class="number" type="number" ng-model-options="{debounce: 500}" ng-model="correctPercentage.max" />
 		</div>
 	</span>
 	<div ng-show="!!opts.showReportStatus">

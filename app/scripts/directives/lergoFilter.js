@@ -48,7 +48,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 
 			var $scope = scope;
 
-			$scope.ageFilter = {};
+			$scope.ageFilter = null; //should be null to properly load from localStorage
 
 			$scope.subjects = FilterService.subjects;
 
@@ -98,7 +98,6 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			$scope.$watch('reportedBy', _updateReportedBy);
 
 			function _updateReportStudent() {
-
 				if (!!$scope.reportStudent && $scope.reportStudent !== '' && $scope.opts.showStudents) {
 					scope.model['data.invitee.name'] = $scope.reportStudent;
 				} else {
@@ -241,7 +240,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				});
 			}, true);
 
-			$scope.filterTags = [];
+			$scope.filterTags = null;
 			var _updateFilterTags = function() {
 				$log.info('filterTags changed', $scope.filterTags);
 				if (!$scope.filterTags || $scope.filterTags.length === 0) {
@@ -301,7 +300,12 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 						}
 					}
 
-					$log.info('loading filter', filterName, saved, scopeVariable[args[args.length - 1]]);
+
+                    // do not override value on scope with something saved. It is probably older..
+                    if ( !!scopeVariable[args[args.length - 1]] ){
+                        return;
+                    }
+
 					if (saved === null) {
 						delete scopeVariable[args[args.length - 1]];
 					} else {

@@ -30,4 +30,8 @@ describe('Filter: i18n', function () {
         expect(i18n(text)).toBe('cool');
     });
 
+    it('should return input if flagged to skip', function () {
+        expect(i18n('this is my input', { skip: true })).toBe('this is my input');
+    });
+
 });

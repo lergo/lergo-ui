@@ -21,6 +21,10 @@ describe('Filter: duration', function() {
         expect(duration({'startTime' : 0, 'endTime' : 1000 })).toBe('00:00:01');
     });
 
+    it('should show report missing info if duration is not a number or an object', function () {
+        expect(duration('this is not a number')).toBe('???report.missing.info???');
+    });
+
     it ( 'should not support objects with only startTime or only endTime' ,function(){
         expect(duration({'startTime' : 1})).toBe('???report.did.not.finish???');
         expect(duration({'endTime' : 1})).toBe('???report.did.not.finish???');

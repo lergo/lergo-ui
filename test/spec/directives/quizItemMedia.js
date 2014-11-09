@@ -5,7 +5,7 @@ describe('Directive: quizItemMedia', function () {
 
     var element;
 
-    it('should add function getMediaTemplate to scope', inject(function ($rootScope, $compile) {
+    it('should add function getMediaTemplate to scope', inject(function ($rootScope, $compile, $timeout) {
         element = angular.element('<div quiz-item-media></div>');
         element = $compile(element)($rootScope);
         $rootScope.$digest();

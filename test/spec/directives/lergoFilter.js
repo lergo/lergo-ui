@@ -8,10 +8,13 @@ describe('Directive: lergoFilter', function () {
     var elementText = '<div lergo-filter opts="opts" model="model"></div>';
 
     function generate( scope ){
-        inject( function($compile){
+        inject( function($compile, $httpBackend ){
+
             element = angular.element( elementText );
             element = $compile(element)(scope);
             scope.$digest();
+            $httpBackend.flush();
+
         });
     }
 
@@ -40,26 +43,165 @@ describe('Directive: lergoFilter', function () {
     }));
 
 
-    function changeUser( scopeField, modelField ){
+    /**
+     *
+     * @param scopeField
+     * @param scopeValue
+     * @param modelField
+     * @param modelValue
+     * @param opts { noValue : _value to put to signify 'no value'_ }
+     */
+    function testChangeProperty( scopeField, scopeValue, modelField, modelValue, opts ){
+        opts = opts || { 'noValue' : null };
         inject(function( $rootScope ){
             $rootScope.model = {};
-            $rootScope.opts = {};
+
+            $rootScope.opts = { 'showStudents' : true, 'showLanguage': true };
 
             generate($rootScope);
 
-            element.children().scope()[scopeField] = { '_id' : 'this is the id' };
+
+            element.children().scope()[scopeField] = scopeValue;
             $rootScope.$digest();
 
-            expect(element.children().scope().model[modelField]).toBe('this is the id');
+
+            expect(_.isEqual(element.children().scope().model[modelField],modelValue)).toBe(true);
+
+            element.children().scope()[scopeField] = opts.noValue;
+            $rootScope.$digest();
+            expect(element.children().scope().model[modelField]).toBe(undefined);
         });
 
     }
 
     it('should update model.userId when "createdBy" is changed', function(){
-        changeUser( 'createdBy', 'userId' );
+        testChangeProperty( 'createdBy', { '_id' : 'this is the id' }, 'userId', 'this is the id' );
     });
 
     it('should update reporterId when reportedBy changes', function(){
-        changeUser('reportedBy', 'reporterId');
+        testChangeProperty('reportedBy', { '_id' : 'this is the id' }, 'reporterId', 'this is the id');
     });
+
+    it('should update reportStudent', function(){
+        testChangeProperty('reportStudent', 'the name', 'data.invitee.name', 'the name' );
+    });
+
+    it('should update tags', function(){
+        testChangeProperty('filterTags', [{'label' : 'guy'}], 'tags.label',{ 'dollar_in' : ['guy']});
+        testChangeProperty('filterTags', [], 'tags.label',undefined);
+    });
+
+    it('should update reportStudent if options changed', inject(function ($rootScope) {
+
+        $rootScope.opts = { 'showStudents': false };
+        $rootScope.model = {};
+        generate($rootScope);
+        var elementScope = element.children().scope();
+        elementScope.reportStudent = 'i am a student';
+        elementScope.$digest();
+        expect(elementScope['data.invitee.name']).toBe(undefined);
+
+
+        elementScope.opts = { 'showStudents': true };
+        elementScope.$digest();
+        expect(elementScope.model['data.invitee.name']).toBe('i am a student');
+    }));
+
+
+    it('should update model on lesson statusValue change', function () {
+        testChangeProperty('statusValue', 'private', 'public', { 'dollar_exists': false });
+        testChangeProperty('statusValue', 'public', 'public', { 'dollar_exists': true });
+    });
+
+    it('should update model on report statusValue change', function () {
+        testChangeProperty('reportStatusValue', 'complete', 'data.finished', { 'dollar_exists': true  });
+        testChangeProperty('reportStatusValue', 'incomplete', 'data.finished', { 'dollar_exists': false  });
+    });
+
+    function changeMinMaxFilters(scopeFilter, modelFilter) {
+        testChangeProperty(scopeFilter, {'max': 5}, modelFilter, { 'dollar_lte': 5 }, {'noValue': {}});
+        testChangeProperty(scopeFilter, {'min': 5}, modelFilter, { 'dollar_gte': 5 }, {'noValue': {}});
+        testChangeProperty(scopeFilter, {'min': 5, 'max': 7}, modelFilter, { 'dollar_lte': 7, 'dollar_gte': 5 }, {'noValue': {}});
+    }
+
+    it('should update ageFilter', function(){
+        changeMinMaxFilters('ageFilter','age');
+    });
+
+    it('should update ageFilter', function(){
+        changeMinMaxFilters('viewsFilter','views');
+    });
+
+    it('should update ageFilter', function(){
+        changeMinMaxFilters('correctPercentage','correctPercentage');
+    });
+
+
+    describe('getTagsLike', function(){
+        it ('should invoke TagsService.getAllAvailableTags(like) function and return its data', inject(function(TagsService, $timeout, $httpBackend, $q, $rootScope){
+            $rootScope.model = {};
+            $rootScope.opts = {};
+            generate($rootScope);
+            var elementScope = element.children().scope();
+
+            var likeParam = null;
+            TagsService.getAllAvailableTags = function( like ){
+                likeParam = like;
+                var deferred = $q.defer();
+                deferred.resolve({'data' : 'this is data'});
+                return deferred.promise;
+            };
+            expect(typeof(elementScope.getTagsLike)).toBe('function');
+            var promiseResult = null;
+            var promise = elementScope.getTagsLike('this is like');
+            promise.then( function( r ){
+                promiseResult = r;
+            });
+            expect(!!promise).toBe(true);
+            expect(likeParam).toBe('this is like');
+            $timeout.flush();
+            expect(promiseResult).toBe('this is data');
+
+        }));
+    });
+
+    it ('should delete some null properties from model', inject(function( $rootScope ){
+        $rootScope.model = {};
+        $rootScope.opts = {};
+        generate( $rootScope );
+        var elementScope = element.children().scope();
+
+        var fields = [ 'language', 'subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished' ];
+        _.each( fields, function(field){
+            elementScope.model[field] = null;
+        });
+
+        elementScope.$digest();
+        _.each(fields, function(field){
+            expect(elementScope.model[field]).toBe(undefined);
+        });
+    }));
+
+    it('should update language if changed on rootScope', inject(function($rootScope, $timeout){
+        $rootScope.model = {};
+        $rootScope.opts =  {};
+
+        generate($rootScope);
+        var elementScope = element.children().scope();
+        $rootScope.lergoLanguage = 'dummy';
+        elementScope.$digest();
+        $timeout.flush();
+        $rootScope.lergoLanguage = 'en';
+        elementScope.$digest();
+        expect(elementScope.model.language).toBe('english');
+    }));
+
+    it('should consider routeParams', inject(function($routeParams, $rootScope){
+        $routeParams['lergoFilter.model.subject'] = '"math"';
+        $rootScope.model = {};
+        $rootScope.opts =  { 'showSubject' : true };
+        generate($rootScope);
+        var elementScope = element.children().scope();
+        expect(elementScope.model.subject).toBe('math');
+    }));
 });

@@ -108,6 +108,7 @@ module.exports = function (grunt) {
             },
             test: {
                 options: {
+                    port:9001,
                     middleware: function (connect) {
                         return [
                             mountFolder(connect, '.tmp'),
@@ -154,6 +155,7 @@ module.exports = function (grunt) {
                 options: {
                     jshintrc: '.jshintrc'
                 },
+
                 files:  {
                     'src':[
                         'Gruntfile.js',
@@ -341,13 +343,16 @@ module.exports = function (grunt) {
         karma: {
             unit: {
                 configFile: 'karma.conf.js',
-                singleRun:true
+                singleRun:true,
+                port:9001
+
 
             },
             debug:{
                 configFile: 'karma.conf.js',
                 singleRun:false,
-                reporters: ['failed']
+                reporters: ['failed'],
+                port:9001
             }
         },
         cdnify: {

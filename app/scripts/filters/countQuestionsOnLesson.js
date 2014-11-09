@@ -20,7 +20,7 @@ angular.module('lergoApp')
                     }
                 }
 
-                if ( qCount > 0 ){
+                if ( qCount >= 0 ){
                     item.questionsCount = qCount;
                 }
 
