@@ -156,5 +156,5 @@ angular.module('lergoApp').directive('tooltip', function() {
             attrs.tooltipTrigger = attrs.tooltipTrigger;
             attrs.tooltipPlacement = attrs.tooltipPlacement || 'top';
         }
-    }
+    };
 });
