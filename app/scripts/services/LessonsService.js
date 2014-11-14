@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('LessonsService', function LessonsService($http, $sce, $q, $window ) {
+angular.module('lergoApp').service('LessonsService', function LessonsService($http, $sce, $q, $window, VideoService, $log  ) {
 
     var self = this;
 
@@ -102,20 +102,20 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 			}
 		}
 	};
-	this.getVideoId = function(step) {
-		var value = null;
-		if (!!step && !!step.videoUrl) {
-			if (step.videoUrl.toLocaleLowerCase().indexOf('youtu.be') > 0) {
-				value = step.videoUrl.substring(step.videoUrl.lastIndexOf('/') + 1);
-			} else {
-				var temp = step.videoUrl.split('?')[1];
-				if (!!temp) {
-					value = step.videoUrl.split('?')[1].split('v=')[1];
-				}
-			}
-		}
-		return value;
-	};
+
+    this.getVideoId = function(step){
+        var value = null;
+
+        if ( !!step && !!step.videoUrl ){
+            try {
+                value = VideoService.getMedia(step.videoUrl).id;
+            }catch(e){
+                $log.error('unable to get video id',e);
+            }
+        }
+
+        return value;
+    };
 
     this.getShareLink = function(lesson){
         return $window.location.origin + '/index.html#!/public/lessons/' + lesson._id + '/intro';
