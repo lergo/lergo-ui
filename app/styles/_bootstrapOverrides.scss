@@ -175,6 +175,7 @@
     .nav-tabs-vertical {
         border-left: 1px solid $nav-tabs-border-color;
         border-right: none;
+        float:right;
         > li {
             float: right;
             width: inherit;

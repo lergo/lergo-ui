@@ -11,6 +11,157 @@
         display: inline-block;
         background: url("../images/thanks_to/browserstack.png");
     }
+    .essence {
+        width: 172px;
+        height: 44px;
+        display: inline-block;
+        background: url("../images/thanks_to/essence.png");
+    }
+    .github {
+        width: 200px;
+        height: 89px;
+        display: inline-block;
+        background: url("../images/thanks_to/github.png");
+    }
+    .goanimate {
+        width: 421px;
+        height: 90px;
+        display: inline-block;
+        background: url("../images/thanks_to/goanimate.png");
+    }
+    .jira {
+        width: 193px;
+        height: 92px;
+        display: inline-block;
+        background: url("../images/thanks_to/jira.png");
+    }
+    .loggly {
+        width: 192px;
+        height: 92px;
+        display: inline-block;
+        background: url("../images/thanks_to/loggly.png");
+    }
+    .phraseapp {
+        width: 350px;
+        height: 70px;
+        display: inline-block;
+        background: url("../images/thanks_to/phraseapp.png");
+    }
+    .pingdom {
+        width: 338px;
+        height: 90px;
+        display: inline-block;
+        background: url("../images/thanks_to/pingdom.png");
+    }
+    .tatoeba {
+        width: 392px;
+        height: 72px;
+        display: inline-block;
+        background: url("../images/thanks_to/tatoeba.png");
+    }
+    .bnaibrith {
+        width: 342px;
+        height: 93px;
+        display: inline-block;
+        background: url("../images/thanks_to/bnaibrith.png");
+    }
+    .muvizu {
+        width: 153px;
+        height: 40px;
+        display: inline-block;
+        background: url("../images/thanks_to/muvizu.png");
+    }
+    .fundersPictureImg {
+        width: 647px;
+        height: 568px;
+        display: inline-block;
+        background: url("../images/fundersPicture.png");
+    }
+    .friends {
+        margin: 0 15px;
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .icons {
+            a {
+                margin: 10px;
+            }
+        }
+    }
+    .funders {
+        margin: 0 15px;
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .name {
+            vertical-align: -webkit-baseline-middle;
+        }
+        .super {
+            vertical-align: super;
+            font-size: small;
+font-weight: bold;
+        }
+    }
+    .privacy {
+        margin: 0 15px;
+    }
+    .contribute {
+        margin: 0 15px;
+    }
+    .contact {
+        margin: 0 15px;
+    }
+    .fundersPicture {
+        margin: 0 15px;
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .image {
+            text-align: center;
+        }
+        .heart {
+            margin: 20px 0;
+            color: red;
+            i {
+                margin: 0 5px;
+            }
+        }
+    }
+    .overview {
+        margin: 0 15px;
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+    }
     .nav-tabs-vertical {
         width: 225px;
         float: left;
@@ -28,7 +179,10 @@
         width: 775px;
         float: right;
     }
-    .rtl {
+}
+
+.rtl {
+    #about {
         .nav-tabs-vertical {
             float: right;
             > li {

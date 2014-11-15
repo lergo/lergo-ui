@@ -1,10 +1,43 @@
-<div id="underConstruction">
-	<div class="common-content">
-		<div class="lergo-h1">{{'underConstruction'|i18n}}</div>
-		<br>
-		<div class="construction"></div>
+<div id="FAQ" class="lergo-form" ng-controller="FaqIndexCtrl">
+	<div>
+		<div class="title">{{'about.faq'|i18n}}</div>
 		<br />
-		<a href="#!/user/homepage">{{'redirectToHome'|i18n}}</a>
+		<div class="desc">
+			{{'faq.header1' | i18n}}
+			<a href="#!/public/contact">{{'faq.header2' | i18n}}</a>
+			{{'faq.header3' | i18n}}
+			<a href="#!/public/problem">{{'faq.header4' | i18n}}</a>
+			{{'faq.header5' | i18n}}
+		</div>
+	</div>
+	<br />
+	<div ng-repeat="q in faq.contents">
+		<div class="faq">
+			<div class="question">{{q.question}}</div>
+			<div class="answer">{{q.answer}}</div>
+		</div>
 		<br />
+		<div admin-section>
+			<div class="admin">
+				<div class="actions">
+					<a class="btn-link" ng-click="removeFAQ($index)">
+						<i class="fa fa-trash-o"></i>
+					</a>
+				</div>
+				<div>
+					{{'questions.question' | i18n}}
+					<input ng-model="q.question" />
+				</div>
+				<div>
+					{{'questions.answer' | i18n}}
+					<textarea ng-model="q.answer"> </textarea>
+				</div>
+			</div>
+			<br />
+		</div>
+	</div>
+	<div admin-section>
+		<a class="btn-link" ng-click="addFAQ()">{{'faq.add' | i18n}}</a>
+		<div class="lergo-h3">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
 	</div>
 </div>
