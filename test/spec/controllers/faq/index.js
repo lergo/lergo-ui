@@ -16,6 +16,6 @@ describe('Controller: FaqIndexCtrl', function() {
 	}));
 
 	it('should attach a list of awesomeThings to the scope', function() {
-		expect(typeof (scope.create)).toBe('function');
+		expect(typeof (scope.addFAQ)).toBe('function');
 	});
 });
