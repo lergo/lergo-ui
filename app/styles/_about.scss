@@ -117,7 +117,7 @@
         .super {
             vertical-align: super;
             font-size: small;
-font-weight: bold;
+            font-weight: bold;
         }
     }
     .privacy {
@@ -152,6 +152,24 @@ font-weight: bold;
             i {
                 margin: 0 5px;
             }
+        }
+    }
+    .contributors {
+        margin: 0 15px;
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .name {
+            font-weight: bold;
         }
     }
     .overview {
