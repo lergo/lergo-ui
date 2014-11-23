@@ -20,9 +20,9 @@
 		<div admin-section>
 			<div class="admin">
 				<div class="actions">
-					<a class="btn-link" ng-click="removeFAQ($index)">
-						<i class="fa fa-trash-o"></i>
-					</a>
+					<a ng-click="moveUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
+					<a ng-click="moveDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
+					<a ng-click="removeFAQ($index)" class="fa fa-trash-o"> </a>
 				</div>
 				<div>
 					{{'questions.question' | i18n}}

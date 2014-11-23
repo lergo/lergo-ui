@@ -30,9 +30,16 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 		}
 	};
 	function redirectToInvitation(lessonId, invId) {
-		$location.path('/public/lessons/invitations/' + invId + '/display').search({
-			lessonId : lessonId
-		});
+		// in case of temporary lesson we don't want to remember history
+		if (!$scope.lesson.temporary) {
+			$location.path('/public/lessons/invitations/' + invId + '/display').search({
+				lessonId : lessonId
+			});
+		} else {
+			$location.path('/public/lessons/invitations/' + invId + '/display').search({
+				lessonId : lessonId
+			}).replace();
+		}
 	}
 	$scope.practiceMistakes = function() {
 		createLessonFromWrongQuestions();
