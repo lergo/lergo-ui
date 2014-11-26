@@ -31,7 +31,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 	};
 	function redirectToInvitation(lessonId, invId) {
 		// in case of temporary lesson we don't want to remember history
-		if (!$scope.lesson.temporary) {
+		if (!$scope.report.data.lesson.temporary) {
 			$location.path('/public/lessons/invitations/' + invId + '/display').search({
 				lessonId : lessonId
 			});

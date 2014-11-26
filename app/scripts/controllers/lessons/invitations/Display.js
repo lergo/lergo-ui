@@ -119,12 +119,14 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	function redirectToInvitation(lessonId, invId) {
 		// in case of temporary lesson we don't want to remember history
 		if (!$scope.lesson.temporary) {
-			$location.path('/public/lessons/invitations/' + invId + '/display').search({
-				lessonId : lessonId
+			$location.path('/public/lessons/' + lessonId + '/intro').search({
+				invitationId : invId,
+				autoPlay : true
 			});
 		} else {
-			$location.path('/public/lessons/invitations/' + invId + '/display').search({
-				lessonId : lessonId
+			$location.path('/public/lessons/' + lessonId + '/intro').search({
+				invitationId : invId,
+				autoPlay : true
 			}).replace();
 		}
 	}
