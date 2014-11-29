@@ -20,7 +20,7 @@ describe('Service: Stepservice', function () {
     });
 
     it('should return false if quiz step mode is false', function(){
-       expect(mStepService.isTestMode({ 'testMode' : '' })).toBe(false);
+        expect(mStepService.isTestMode({ 'testMode' : '' })).toBe(false);
     });
 
 });
