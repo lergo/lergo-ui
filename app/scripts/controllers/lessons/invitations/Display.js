@@ -84,6 +84,9 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		}
 	});
 
+    // todo: technically we don't need to build lesson invitation anymore..
+    // todo: we should build the report instead since all data is on the report and display the data from there.
+    // todo: the display will still be for lesson invitation, but the data should come from report. (this resolves ambiguity regarding display for report.. there's only one).
 	LergoClient.lessonsInvitations.build($routeParams.invitationId, true, false).then(function(result) {
 		$scope.invitation = result.data;
 		$scope.lesson = result.data.lesson;
