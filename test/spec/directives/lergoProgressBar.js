@@ -10,7 +10,23 @@ describe('Directive: lergoProgressBar', function () {
         $rootScope.value = 50;
         element = $compile(element)($rootScope);
         $rootScope.$digest();
-
         expect(element.text().trim()).toBe('50%');
+    }));
+
+    it('should invoke ready callback after it is loaded', inject(function($rootScope, $compile, $timeout ){
+
+        var doStuffCalled = false;
+        element = angular.element('<div lergo-progress-bar value="value" ng-ready="doStuff()"></div>');
+        $rootScope.value = 50;
+        $rootScope.doStuff = function(){
+            doStuffCalled = true;
+        };
+        element = $compile(element)($rootScope);
+        $rootScope.$digest();
+        try {
+            $timeout.flush();
+        }catch(e){}
+        expect(doStuffCalled).toBe(true);
+
     }));
 });
