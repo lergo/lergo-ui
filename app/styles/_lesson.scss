@@ -73,6 +73,7 @@
             margin: 0 auto;
             font-size: 20px;
             a {
+              cursor:pointer; /* JIRA-576 - links should have cursor pointers. */
                 &:hover {
                     text-decoration: none;
                 }

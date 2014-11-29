@@ -82,12 +82,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				voiceFeedback();
 			}
 
-			if (!$scope.step.retryQuestion || result.data.correct) { // if
-				// incorrect
-				// and
-				// retry,
-				// then
-				// retry
+			if (!$scope.step.retryQuestion || result.data.correct) { // if incorrect and retry, then retry
 				$scope.updateProgressPercent();
 			}
 
