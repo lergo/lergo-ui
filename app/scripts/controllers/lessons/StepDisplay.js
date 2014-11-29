@@ -202,7 +202,13 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
     // simply gets the next quiz item. does not change the state of the page
     $scope.getNextQuizItemDry = function(){
+
+        if ( !$scope.hasNextQuizItem() ){
+            return { 'type' : null};
+        }
+
         try {
+
             // please note - current index represents the next item..
             return $scope.questions[$scope.step.quizItems[currentIndex()]];
         }catch(e){
