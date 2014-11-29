@@ -11,9 +11,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		$log.info($scope.step);
 	}
 
-    function currentIndex(){
-        return _.size($scope.answers);
-    }
+	function currentIndex() {
+		return _.size($scope.answers);
+	}
 	$scope.answers = {};
 	function reload() {
 		$log.info('reload display for step');
@@ -36,7 +36,6 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			return;
 		}
 
-
 		$scope.answers = {};
 
 		// guy - do not use 'hasOwnProperty' as scope might not have the
@@ -48,7 +47,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 					questions[result.data[i]._id] = result.data[i];
 				}
 				$scope.questions = questions;
-                $scope.nextQuizItem();
+				$scope.nextQuizItem();
 			});
 		}
 	}
@@ -83,45 +82,56 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				voiceFeedback();
 			}
 
+			if (!$scope.step.retryQuestion || result.data.correct) { // if
+				// incorrect
+				// and
+				// retry,
+				// then
+				// retry
+				$scope.updateProgressPercent();
+			}
 
-            if ( !$scope.step.retryQuestion || result.data.correct ) { // if incorrect and retry, then retry
-                $scope.updateProgressPercent();
-            }
-
-            if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
-                if (isTestMode()) {
-                    $scope.nextQuizItem();
-                } else {
-                    $timeout(function() {
-                        $scope.nextQuizItem();
-                    }, 1000);
-                }
-            }
+			if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
+				if (isTestMode()) {
+					$scope.nextQuizItem();
+				} else {
+					$timeout(function() {
+						$scope.nextQuizItem();
+					}, 1000);
+				}
+			}
 		}, function() {
 			$log.error('there was an error checking answer');
 		});
 	};
 
-    // quiz is done only iff all of the following are correct
-    // 1. all questions were answered
-    // 2. no retry required for last question -- which means last answer was correct or no retry configured
-    // guy - the last question is a special scenario since all the others will fall on the first condition.
+	// quiz is done only iff all of the following are correct
+	// 1. all questions were answered
+	// 2. no retry required for last question -- which means last answer was
+	// correct or no retry configured
+	// guy - the last question is a special scenario since all the others will
+	// fall on the first condition.
 
-    // if step is not quiz - then we will return "true" as default.
-    $scope.isQuizDone = function(){
+	// if step is not quiz - then we will return "true" as default.
+	$scope.isQuizDone = function() {
 
-        if ( $scope.step.type !== 'quiz'){ // return true if not quiz.
-            return true;
-        }
+		if ($scope.step.type !== 'quiz') { // return true if not quiz.
+			return true;
+		}
 
-        var answer = $scope.getAnswer();
-        var allQuestionsWereAnswered = !$scope.hasNextQuizItem() && answer;
-        var noRetryOnLast = answer && ( answer.correct || !$scope.step.retryQuestion );
-        return allQuestionsWereAnswered && noRetryOnLast; // the full condition
-    };
+		var answer = $scope.getAnswer();
+		var allQuestionsWereAnswered = !$scope.hasNextQuizItem() && answer;
+		if (isTestMode()) {
+			return allQuestionsWereAnswered;
+		} else {
+			var noRetryOnLast = answer && (answer.correct || !$scope.step.retryQuestion);
+			return allQuestionsWereAnswered && noRetryOnLast; // the full
+			// condition
+		}
+	};
 
 	$scope.getQuizItem = function() {
-        return $scope.quizItem && $scope.quizItem._id;
+		return $scope.quizItem && $scope.quizItem._id;
 	};
 
 	$scope.getAnswer = function() {
@@ -132,20 +142,19 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.nextQuizItem = function() {
 		$log.info('next');
 
-        if ( !$scope.questions){
-            return;
-        }
+		if (!$scope.questions) {
+			return;
+		}
 
-        if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > currentIndex()) {
-            var quizItem = $scope.step.quizItems[currentIndex()];
-            $scope.quizItem = $scope.questions[quizItem];
-        }
+		if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > currentIndex()) {
+			var quizItem = $scope.step.quizItems[currentIndex()];
+			$scope.quizItem = $scope.questions[quizItem];
+		}
 	};
 
-    $scope.showNextQuestion = function(){
-        return ( $scope.step.retryQuestion || $scope.hasNextQuizItem() ) && $scope.getAnswer() && !$scope.getAnswer().correct;
-    };
-
+	$scope.showNextQuestion = function() {
+		return ((!isTestMode() && $scope.step.retryQuestion) || $scope.hasNextQuizItem()) && $scope.getAnswer() && !$scope.getAnswer().correct;
+	};
 
 	$scope.hasNextQuizItem = function() {
 		return !!$scope.step && !!$scope.questions && currentIndex() < _.size($scope.questions);
@@ -164,10 +173,13 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		return $sce.trustAsResourceUrl(src);
 	};
 
-    $scope.videoSize = { 'width' : 672 , 'height' : 378 };
-    if ( $scope.embeddedMode ){
-        $scope.videoSize.width = 600;
-    }
+	$scope.videoSize = {
+		'width' : 672,
+		'height' : 378
+	};
+	if ($scope.embeddedMode) {
+		$scope.videoSize.width = 600;
+	}
 
 	$scope.getVideoId = function(step) {
 		var value = null;
@@ -199,7 +211,8 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		if (!$scope.step || !$scope.step.quizItems || $scope.step.quizItems.length < 1) {
 			$scope.progressPercentage = 0;
 		} else {
-            // guy - count percentage by counting the answers. not current index.
+			// guy - count percentage by counting the answers. not current
+			// index.
 
 			$scope.progressPercentage = Math.round((_.size($scope.answers) * 100) / _.size($scope.questions));
 		}
@@ -209,7 +222,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		if (!$scope.getAnswer(quizItem) && $scope.canSubmit(quizItem)) {
 			$scope.checkAnswer();
 		} else if ($scope.getAnswer(quizItem) && !$scope.isQuizDone()) {
-            $scope.retryOrNext();
+			$scope.retryOrNext();
 		}
 	};
 
@@ -271,35 +284,35 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		}
 	};
 
-    $scope.isMultiChoiceMultiAnswer = function(quizItem) {
-        var correctAnswers = _.filter(quizItem.options, 'checked');
-        return correctAnswers.length > 1;
-    };
+	$scope.isMultiChoiceMultiAnswer = function(quizItem) {
+		var correctAnswers = _.filter(quizItem.options, 'checked');
+		return correctAnswers.length > 1;
+	};
 
+	// reach here when you click next after got question wrong
+	// if step defined with "allow retry" - we will try again, otherwise we move
+	// to next item.
+	$scope.retryOrNext = function() {
+		if ($scope.step.retryQuestion) {
+			$scope.tryAgain();
+		} else {
+			$scope.nextQuizItem();
+		}
+	};
 
-    // reach here when you click next after got question wrong
-    // if step defined with "allow retry" - we will try again, otherwise we move to next item.
-    $scope.retryOrNext = function(){
-        if ( $scope.step.retryQuestion ){
-            $scope.tryAgain();
-        }else{
-            $scope.nextQuizItem();
-        }
-    };
-
-    $scope.tryAgain = function(){
-        $log.info('trying again');
-        var quizItem = $scope.quizItem;
-        if ( !!quizItem.options ) {
-            quizItem.options.isShuffled = false;
-            _.each(quizItem.options, function (option) {
-                option.userAnswer = false;
-            });
-        }
-        delete $scope.answers[quizItem._id];
-        quizItem.startTime = new Date().getTime();
-        $scope.updateProgressPercent();
-        quizItem.userAnswer = null;
-    };
+	$scope.tryAgain = function() {
+		$log.info('trying again');
+		var quizItem = $scope.quizItem;
+		if (!!quizItem.options) {
+			quizItem.options.isShuffled = false;
+			_.each(quizItem.options, function(option) {
+				option.userAnswer = false;
+			});
+		}
+		delete $scope.answers[quizItem._id];
+		quizItem.startTime = new Date().getTime();
+		$scope.updateProgressPercent();
+		quizItem.userAnswer = null;
+	};
 
 });

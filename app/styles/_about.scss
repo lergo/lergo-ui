@@ -1,75 +1,75 @@
 #about {
     .cloudbees {
-        width: 128px;
-        height: 92px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/cloudbees.png");
+        background: url("../images/thanks_to/cloudbees.png") center no-repeat;
     }
     .browserstack {
-        width: 386px;
-        height: 92px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/browserstack.png");
+        background: url("../images/thanks_to/browserstack.png") center no-repeat;
     }
     .essence {
-        width: 172px;
-        height: 44px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/essence.png");
+        background: url("../images/thanks_to/essence.png") center no-repeat;
     }
     .github {
-        width: 200px;
-        height: 89px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/github.png");
+        background: url("../images/thanks_to/github.png") center no-repeat;
     }
     .goanimate {
-        width: 421px;
-        height: 90px;
+        width: 211px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/goanimate.png");
+        background: url("../images/thanks_to/goanimate.png") center no-repeat;
     }
     .jira {
-        width: 193px;
-        height: 92px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/jira.png");
+        background: url("../images/thanks_to/jira.png") center no-repeat;
     }
     .loggly {
-        width: 192px;
-        height: 92px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/loggly.png");
+        background: url("../images/thanks_to/loggly.png") center no-repeat ;
     }
     .phraseapp {
-        width: 350px;
-        height: 70px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/phraseapp.png");
+        background: url("../images/thanks_to/phraseapp.png") center no-repeat;
     }
     .pingdom {
-        width: 338px;
-        height: 90px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/pingdom.png");
+        background: url("../images/thanks_to/pingdom.png") center no-repeat;
     }
     .tatoeba {
-        width: 392px;
-        height: 72px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/tatoeba.png");
+        background: url("../images/thanks_to/tatoeba.png") center no-repeat;
     }
     .bnaibrith {
-        width: 342px;
-        height: 93px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/bnaibrith.png");
+        background: url("../images/thanks_to/bnaibrith.png") center no-repeat;
     }
     .muvizu {
-        width: 153px;
-        height: 40px;
+        width: 210px;
+        height: 100px;
         display: inline-block;
-        background: url("../images/thanks_to/muvizu.png");
+        background: url("../images/thanks_to/muvizu.png") center no-repeat;
     }
     .fundersPictureImg {
         width: 647px;
@@ -117,7 +117,7 @@
         .super {
             vertical-align: super;
             font-size: small;
-font-weight: bold;
+            font-weight: bold;
         }
     }
     .privacy {
@@ -154,12 +154,36 @@ font-weight: bold;
             }
         }
     }
+    .contributors {
+        margin: 0 15px;
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .name {
+            font-weight: bold;
+        }
+    }
     .overview {
         margin: 0 15px;
         .desc {
             font-size: 18px;
             line-height: 1.5;
             text-align: justify;
+        }
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
         }
     }
     .nav-tabs-vertical {

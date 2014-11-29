@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, $log, $controller, $rootScope, $location, shuffleFilter,$window) {
+angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, $log, $controller, $rootScope, $location, shuffleFilter, $window) {
 
 	// guy - using this flag because ng-cloak and other solutions will not apply
 	// to this scenario.
@@ -46,7 +46,12 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	$scope.$watch('currentStepIndex', function(newValue, oldValue) {
 		$log.info('currentStepIndex changed', newValue, oldValue);
 		updateCurrentStep();
-		$location.search('currentStepIndex', newValue);
+		// in case of temporary lesson we don't want to remember history
+		if (!$scope.lesson.temporary) {
+			$location.search('currentStepIndex', newValue);
+		} else {
+			$location.search('currentStepIndex', newValue).replace();
+		}
 		$rootScope.$broadcast('stepIndexChange', {
 			'old' : oldValue,
 			'new' : newValue

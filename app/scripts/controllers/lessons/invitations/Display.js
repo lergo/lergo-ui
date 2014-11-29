@@ -7,7 +7,8 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 	var updateChange = new ContinuousSave({
 		'saveFn' : function(value) {
 			$log.info('updating report');
-			var finished = value.finished; // value.data is the invitation. we want the report.
+			var finished = value.finished; // value.data is the invitation. we
+			// want the report.
 
 			if (finished) {
 				getWrongQuestion(value);
@@ -63,13 +64,13 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			});
 		} else {
 			LergoClient.reports.createFromInvitation(invitation).then(function(result) {
-				$location.search('reportId', result.data._id);
+				$location.search('reportId', result.data._id).replace();
 				initializeReportWriter(result.data);
 			});
 		}
 	}
 
-    // todo : do a test for invitation.finished = true
+	// todo : do a test for invitation.finished = true
 	$scope.$watch(function() { // broadcast end of lesson if not next step
 		return !!$scope.invitation && !!$scope.hasNextStep && !$scope.hasNextStep();
 	}, function(newValue/* , oldValue */) {
@@ -119,10 +120,18 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		}
 	};
 	function redirectToInvitation(lessonId, invId) {
-		$location.path('/public/lessons/' + lessonId + '/intro').search({
-			invitationId : invId,
-			autoPlay : true
-		});
+		// in case of temporary lesson we don't want to remember history
+		if (!$scope.lesson.temporary) {
+			$location.path('/public/lessons/' + lessonId + '/intro').search({
+				invitationId : invId,
+				autoPlay : true
+			});
+		} else {
+			$location.path('/public/lessons/' + lessonId + '/intro').search({
+				invitationId : invId,
+				autoPlay : true
+			}).replace();
+		}
 	}
 
 	$scope.absoluteShareLink = function(lesson) {
@@ -222,5 +231,14 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		}
 
 	}
+
+	$scope.showReport = function() {
+		// in case of temporary lesson we don't want to remember history
+		if (!$scope.lesson.temporary) {
+			$location.path('/public/lessons/reports/' + $scope.report._id + '/display');
+		} else {
+			$location.path('/public/lessons/reports/' + $scope.report._id + '/display').replace();
+		}
+	};
 
 });

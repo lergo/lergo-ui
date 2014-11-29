@@ -17,6 +17,9 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		};
 		loadQuestions();
 		$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.lesson.language);
+		if (!!autoPlay) {
+			$scope.startLesson();
+		}
 	}, function(result) {
 		if (result.status === 404) {
 			$location.path('/errors/notFound');
@@ -24,9 +27,16 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	});
 
 	function redirectToInvitation() {
-		$location.path('/public/lessons/invitations/' + invitationId + '/display').search({
-			lessonId : $scope.lesson._id
-		});
+
+		if (!$scope.lesson.temporary) {
+			$location.path('/public/lessons/invitations/' + invitationId + '/display').search({
+				lessonId : $scope.lesson._id
+			});
+		} else {
+			$location.path('/public/lessons/invitations/' + invitationId + '/display').search({
+				lessonId : $scope.lesson._id
+			}).replace();
+		}
 	}
 
 	function redirectToPreview() {
@@ -161,10 +171,6 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		}
 	};
 
-	if (!!autoPlay) {
-		$scope.startLesson();
-	}
-
 	// enum{
 	$scope.actionItems = {
 		REPORT : 'report',
@@ -184,7 +190,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	};
 	$scope.abuseReport = {};
 	$scope.submitAbuseReport = function() {
-		$scope.submit=true;
+		$scope.submit = true;
 		LergoClient.abuseReports.abuseLesson($scope.abuseReport, $scope.lesson);
 	};
 

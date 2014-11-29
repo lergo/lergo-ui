@@ -58,4 +58,20 @@ angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $http, $r
 			get();
 		}
 	});
+
+	$scope.moveUp = function(index) {
+		var temp = $scope.faq.contents[index - 1];
+		if (temp) {
+			$scope.faq.contents[index - 1] = $scope.faq.contents[index];
+			$scope.faq.contents[index] = temp;
+		}
+	};
+	$scope.moveDown = function(index) {
+		var temp = $scope.faq.contents[index + 1];
+		if (temp) {
+			$scope.faq.contents[index + 1] = $scope.faq.contents[index];
+			$scope.faq.contents[index] = temp;
+		}
+
+	};
 });

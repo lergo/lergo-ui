@@ -24,7 +24,7 @@
 			<tr>
 				<td style="width: 100%;">
 					<div>
-						<a ng-show="!!invitation" ng-href="/#!/public/lessons/reports/{{report._id}}/display">
+						<a ng-show="!!invitation" ng-click="showReport()">
 							<i class="fa fa-bar-chart-o"></i>
 							{{ 'lessons.lessonReport' | i18n }}
 						</a>
