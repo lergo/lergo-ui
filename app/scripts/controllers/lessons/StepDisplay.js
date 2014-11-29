@@ -87,6 +87,10 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				voiceFeedback();
 			}
 
+            // see lergo-576 and documentation below . this line has to be before we switch to next item
+            var isSameType = $scope.quizItem.type === $scope.getNextQuizItemDry().type;
+
+
 			if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
 				if (isTestMode()) {
 					$scope.nextQuizItem();
@@ -105,6 +109,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
             // updating progress is a bit complex due to the following issues:
             // 1) when we switch to "next item", the directive is recompiled and replaced by a new one.
+               // ==> but only if question type is different!!!
             // 2) for both quiz types we want an immediate progress update
             // 3) for practice mode we delay moving to the next question ==> which means we want the same directive to animate
             // 4) for test mode we immediately go to another question ==> which means we want a different directive to animate
@@ -115,7 +120,8 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
             // for both cases - if the directive gets the same value on change, it sets value without animation.
             // this resolves reanimation from 0.
             // FOR TEST MODE
-            // for all items except last - we rely on the "ready" callback of the progress bar to modify progress.
+            // if same type of question.. we update (this resolves section 6.)
+            // otherwise for all items except last - we rely on the "ready" callback of the progress bar to modify progress.
             // for the last item we immediately modify the progress.
             // FOR QUIZ MODE
             // we immediately modify progress in all scenarios.
@@ -130,7 +136,8 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
             // to make it easier for reading we broke it down to cases
             if ( isTestMode() ){
-                if ( !$scope.hasNextQuizItem() ){
+
+                if ( !$scope.hasNextQuizItem() || isSameType ){
                     $scope.updateProgressPercent();
                 }
             }else{
@@ -192,6 +199,17 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			$scope.quizItem = $scope.questions[quizItem];
 		}
 	};
+
+    // simply gets the next quiz item. does not change the state of the page
+    $scope.getNextQuizItemDry = function(){
+        try {
+            // please note - current index represents the next item..
+            return $scope.questions[$scope.step.quizItems[currentIndex()]];
+        }catch(e){
+
+        }
+        return { 'type' : null }; // return something that will not cause NPE
+    };
 
 	$scope.showNextQuestion = function() {
 		return ((!isTestMode() && $scope.step.retryQuestion) || $scope.hasNextQuizItem()) && $scope.getAnswer() && !$scope.getAnswer().correct;
