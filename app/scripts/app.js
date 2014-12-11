@@ -108,7 +108,8 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
 		controller : 'UsersChangePasswordCtrl'
 	}).when('/public/about/:activeAboutTab', {
 		templateUrl : 'views/about.html',
-		controller : 'AboutCtrl'
+		controller : 'AboutCtrl',
+		reloadOnSearch : false
 	}).when('/public/session/resetPasswordRequest', {
 		templateUrl : 'views/session/resetPasswordRequest.html',
 		controller : 'SessionResetPasswordRequestCtrl'
