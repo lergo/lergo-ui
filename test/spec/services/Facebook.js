@@ -6,13 +6,13 @@ describe('Service: Facebook', function() {
 	beforeEach(module('lergoApp'));
 
 	// instantiate service
-	var facebook;
-	beforeEach(inject(function(fb) {
-		facebook = fb;
+	var mFacebook;
+	beforeEach(inject(function(Facebook) {
+		mFacebook = Facebook;
 	}));
 
 	it('should do something', function() {
-		expect(!!facebook).toBe(true);
+		expect(!!mFacebook).toBe(true);
 	});
 
 });
