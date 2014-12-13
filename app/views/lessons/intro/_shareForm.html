@@ -1,21 +1,21 @@
 <div class="lergo-form share">
-	<div class="share-navigation clearfix">
-		<p class="lergo-h4 share-section-link" ng-click="shareSection = 'link'" ng-class="{'active' : shareSection === 'link'}">{{'lessons.shareLesson'
-			| i18n}}</p>
-		<p class="lergo-h4 share-section-link" ng-click="shareSection = 'embed'" ng-class="{'active' : shareSection === 'embed'}">{{'lessons.embedLesson'
-			| i18n}}</p>
-		<button class="btn-link close-button" ng-click="setActiveAction()">X</button>
-	</div>
-	<div class="share-link" ng-show="shareSection === 'link' ">
-		<div class="container">
-			<span>{{'lessons.shareLessonTitle' | i18n}}</span>
-			<textarea type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)"></textarea>
-		</div>
-	</div>
-	<div class="share-embed" ng-show="shareSection === 'embed' ">
-		<div class="container">
-			<span>{{'lessons.embedLessonTitle' | i18n }}</span>
-			<textarea ng-model="embedCode" readonly ng-click="onTextClick($event)"></textarea>
-		</div>
-	</div>
+    <div class="share-navigation clearfix">
+        <p class="lergo-h4 share-section-link" ng-click="shareSection = 'link'" ng-class="{'active' : shareSection === 'link'}">{{'lessons.shareLesson' | i18n}}</p>
+        <p class="lergo-h4 share-section-link" ng-click="shareSection = 'embed'" ng-class="{'active' : shareSection === 'embed'}">{{'lessons.embedLesson' | i18n}}</p>
+        <button facebook class="facebookShare share-section-link" data-url="shareLink"></button>
+        <button class="btn-link close-button" ng-click="setActiveAction()">X</button>
+    </div>
+    <div class="share-link" ng-show="shareSection === 'link' ">
+        <div class="container">
+            <span>{{'lessons.shareLessonTitle' | i18n}}</span>
+            <textarea type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)"></textarea>
+        </div>
+    </div>
+    <div class="share-embed" ng-show="shareSection === 'embed' ">
+        <div class="container">
+            <span>{{'lessons.embedLessonTitle' | i18n }}</span>
+            <textarea ng-model="embedCode" readonly ng-click="onTextClick($event)"></textarea>
+        </div>
+    </div>
+</div>
 </div>
