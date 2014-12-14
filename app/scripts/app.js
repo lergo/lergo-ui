@@ -161,5 +161,5 @@ angular.module('lergoApp').directive('tooltip', function () {
 });
 
 angular.module('lergoApp').run(function (Facebook) {
-    Facebook.init('1505045963101770');
+    Facebook.init(conf.facebookAppId);
 });
