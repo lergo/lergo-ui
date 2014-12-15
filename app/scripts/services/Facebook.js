@@ -26,8 +26,6 @@ angular.module('lergoApp').service('Facebook', function($window) {
 				ref.parentNode.insertBefore(js, ref);
 
 			}(document));
-		} else {
-			throw ('Facebook App Id Cannot be blank');
 		}
 	};
 
