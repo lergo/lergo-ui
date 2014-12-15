@@ -7,7 +7,7 @@ angular.module('lergoApp').directive('facebook', function ($timeout, $window) {
             url: '='
         },
         templateUrl: 'views/directives/_facebook.html',
-        link: function (scope, element, attr) {
+        link: function (scope, element) {
             $timeout(function () {
                 element.bind('click', function (e) {
                     $window.FB.ui({
