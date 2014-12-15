@@ -5,6 +5,10 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$window.scrollTo(0, 0);
 	var audio = new Audio('../audio/correctanswer.mp3');
 
+	$scope.scrollUp = function() {
+		$window.scrollTo(0, 0);
+	};
+
 	if (!!$routeParams.data) {
 		$scope.step = JSON.parse($routeParams.data);
 		shuffleFilter($scope.step.quizItems, !$scope.step.shuffleQuestion);
@@ -63,10 +67,10 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		return '';
 	};
 
-    $scope.updateProgress = function(){
-        $log.info('update progress callback was called');
-        $scope.updateProgressPercent();
-    };
+	$scope.updateProgress = function() {
+		$log.info('update progress callback was called');
+		$scope.updateProgressPercent();
+	};
 
 	$scope.checkAnswer = function() {
 		var quizItem = $scope.quizItem;
@@ -87,9 +91,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				voiceFeedback();
 			}
 
-            // see lergo-576 and documentation below . this line has to be before we switch to next item
-            var isSameType = $scope.quizItem.type === $scope.getNextQuizItemDry().type;
-
+			// see lergo-576 and documentation below . this line has to be
+			// before we switch to next item
+			var isSameType = $scope.quizItem.type === $scope.getNextQuizItemDry().type;
 
 			if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
 				if (isTestMode()) {
@@ -101,52 +105,55 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 				}
 			}
 
+			// guy - we must update progress only after we moved to next quiz
+			// item or otherwise animation is broken. see lergo-579.
+			// this includes delay of 1 second before auto moving to next
+			// question.
 
+			// updating progress is a bit complex due to the following issues:
+			// 1) when we switch to "next item", the directive is recompiled and
+			// replaced by a new one.
+			// ==> but only if question type is different!!!
+			// 2) for both quiz types we want an immediate progress update
+			// 3) for practice mode we delay moving to the next question ==>
+			// which means we want the same directive to animate
+			// 4) for test mode we immediately go to another question ==> which
+			// means we want a different directive to animate
+			// 5) the progress directive uses `watch` which its async nature
+			// makes things complex.
+			// 6) the last item in the quiz behaves differently than the rest!!
+			// we do not automatically move to next item.
 
-            // guy - we must update progress only after we moved to next quiz item or otherwise animation is broken. see lergo-579.
-            // this includes delay of 1 second before auto moving to next question.
+			// to overcome these difficulties we do the following
+			// for both cases - if the directive gets the same value on change,
+			// it sets value without animation.
+			// this resolves reanimation from 0.
+			// FOR TEST MODE
+			// if same type of question.. we update (this resolves section 6.)
+			// otherwise for all items except last - we rely on the "ready"
+			// callback of the progress bar to modify progress.
+			// for the last item we immediately modify the progress.
+			// FOR QUIZ MODE
+			// we immediately modify progress in all scenarios.
 
+			// so to summarize
+			// we should update progress in the following 3 possible situations:
+			// - we are not in practice mode and we are in the last question.
+			// - we are in practice mode and question was correct
+			// - we are in practice mode without retry
+			// lergo-579 - progress animation is broken
 
-            // updating progress is a bit complex due to the following issues:
-            // 1) when we switch to "next item", the directive is recompiled and replaced by a new one.
-               // ==> but only if question type is different!!!
-            // 2) for both quiz types we want an immediate progress update
-            // 3) for practice mode we delay moving to the next question ==> which means we want the same directive to animate
-            // 4) for test mode we immediately go to another question ==> which means we want a different directive to animate
-            // 5) the progress directive uses `watch` which its async nature makes things complex.
-            // 6) the last item in the quiz behaves differently than the rest!! we do not automatically move to next item.
+			// to make it easier for reading we broke it down to cases
+			if (isTestMode()) {
 
-            // to overcome these difficulties we do the following
-            // for both cases - if the directive gets the same value on change, it sets value without animation.
-            // this resolves reanimation from 0.
-            // FOR TEST MODE
-            // if same type of question.. we update (this resolves section 6.)
-            // otherwise for all items except last - we rely on the "ready" callback of the progress bar to modify progress.
-            // for the last item we immediately modify the progress.
-            // FOR QUIZ MODE
-            // we immediately modify progress in all scenarios.
-
-
-            // so to summarize
-            // we should update progress in the following 3 possible situations:
-            // - we are not in practice mode and we are in the last question.
-            // - we are in practice mode and question was correct
-            // - we are in practice mode without retry
-            // lergo-579 - progress animation is broken
-
-            // to make it easier for reading we broke it down to cases
-            if ( isTestMode() ){
-
-                if ( !$scope.hasNextQuizItem() || isSameType ){
-                    $scope.updateProgressPercent();
-                }
-            }else{
-                if ( !$scope.step.retryQuestion || result.data.correct ){
-                    $scope.updateProgressPercent();
-                }
-            }
-
-
+				if (!$scope.hasNextQuizItem() || isSameType) {
+					$scope.updateProgressPercent();
+				}
+			} else {
+				if (!$scope.step.retryQuestion || result.data.correct) {
+					$scope.updateProgressPercent();
+				}
+			}
 
 		}, function() {
 			$log.error('there was an error checking answer');
@@ -200,22 +207,26 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		}
 	};
 
-    // simply gets the next quiz item. does not change the state of the page
-    $scope.getNextQuizItemDry = function(){
+	// simply gets the next quiz item. does not change the state of the page
+	$scope.getNextQuizItemDry = function() {
 
-        if ( !$scope.hasNextQuizItem() ){
-            return { 'type' : null};
-        }
+		if (!$scope.hasNextQuizItem()) {
+			return {
+				'type' : null
+			};
+		}
 
-        try {
+		try {
 
-            // please note - current index represents the next item..
-            return $scope.questions[$scope.step.quizItems[currentIndex()]];
-        }catch(e){
+			// please note - current index represents the next item..
+			return $scope.questions[$scope.step.quizItems[currentIndex()]];
+		} catch (e) {
 
-        }
-        return { 'type' : null }; // return something that will not cause NPE
-    };
+		}
+		return {
+			'type' : null
+		}; // return something that will not cause NPE
+	};
 
 	$scope.showNextQuestion = function() {
 		return ((!isTestMode() && $scope.step.retryQuestion) || $scope.hasNextQuizItem()) && $scope.getAnswer() && !$scope.getAnswer().correct;
@@ -326,7 +337,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	};
 
 	function isTestMode() {
-        return StepService.isTestMode($scope.step);
+		return StepService.isTestMode($scope.step);
 	}
 
 	function voiceFeedback() {
