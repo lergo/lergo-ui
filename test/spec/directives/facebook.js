@@ -12,7 +12,7 @@ describe('Directive: facebook', function() {
 	}));
 
 	it('should make hidden element visible', inject(function($compile) {
-		element = angular.element('<button facebook></button>');
+		element = angular.element('<facebook></facebook>');
 		element = $compile(element)(scope);
         scope.$digest();
         expect(element.text().trim()).toBe('');
