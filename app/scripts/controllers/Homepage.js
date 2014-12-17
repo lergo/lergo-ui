@@ -2,6 +2,7 @@
 
 angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService, $rootScope, $filter, $log, $routeParams, $location, $window) {
 
+	$scope.loaded = false;
 	$scope.lessonsFilter = {
 		'public' : {
 			'dollar_exists' : 1
@@ -83,5 +84,5 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		}
 		$window.scrollTo(0, scrollY);
 	}
-
+	$scope.loaded = true;
 });
