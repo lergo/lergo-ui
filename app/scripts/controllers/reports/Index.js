@@ -72,6 +72,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		}
 		var queryObj = {
 			'filter' : _.merge({}, $scope.reportsFilter),
+            'projection' : { 'data.quizItems' : 0 },
 			'sort' : {
 				'lastUpdate' : -1
 			},

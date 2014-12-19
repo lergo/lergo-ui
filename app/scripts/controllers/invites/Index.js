@@ -8,7 +8,7 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 		'showSubject' : true,
 		'showLanguage' : true,
 		'showStudents' : true,
-		'showInviteStatus' : true,
+		'showInviteStatus' : true
 	};
 
 	$scope.invitesPage = {
@@ -22,6 +22,7 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 		}
 		var queryObj = {
 			'filter' : _.merge({}, $scope.invitesFilter),
+            'projection' : { 'quizItems' : 0, 'lesson.steps' :0}, // don't bring me quizItems
 			'sort' : {
 				'lastUpdate' : -1
 			},
