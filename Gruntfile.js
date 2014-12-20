@@ -67,6 +67,8 @@ module.exports = function (grunt) {
                     accessKeyId: s3Config.accessKey,
                     secretAccessKey: s3Config.secretAccessKey,
                     bucket: s3Config.bucket,
+                    cacheTTL: 0,
+                    sslEnabled: false,
                     enableWeb:true,
                     gzip:true
                 },
