@@ -43,6 +43,7 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			// after filtering
 			// them.
 			scrollToPersistPosition();
+			$scope.loaded = true;
 		});
 
 	};
@@ -84,5 +85,5 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		}
 		$window.scrollTo(0, scrollY);
 	}
-	$scope.loaded = true;
+	
 });

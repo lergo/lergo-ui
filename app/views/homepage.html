@@ -1,10 +1,13 @@
-<div class="base-layout" load-filter-and-paging="loadLessons()">
-	<div ng-show="!loaded" >
+
+<div class="base-layout" ng-show="!loaded">
+	<div>
 		<div class="loading">
 			<i class="fa fa-cog fa-spin"></i>
 		</div>
 	</div>
-	<div ng-show="!!loaded">
+</div>
+<div ng-show="!!loaded" class="base-layout" load-filter-and-paging="loadLessons()">
+	<div>
 		<div admin-section>
 			<a href="#!/admin/homepage/lessons">Admin Homepage</a>
 		</div>
