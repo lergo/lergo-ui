@@ -63,8 +63,8 @@
 						<td class="answer">{{report.lastUpdate| date:'medium'}}</td>
 						<td class="answer">{{report.correctPercentage}}</td>
 						<td class="answer">
-							<span ng-show="isComplete(report)">{{report.duration|duration}}</span>
-							<span ng-show="!isComplete(report)">{{'report.incomplete' | i18n}}</span>
+							<span ng-show="isCompleted(report)">{{report.duration|duration}}</span>
+							<span ng-show="!isCompleted(report)">{{'report.incomplete' | i18n}}</span>
 						</td>
 					</tr>
 				</tbody>

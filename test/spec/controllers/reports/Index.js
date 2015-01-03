@@ -21,22 +21,12 @@ describe('Controller: ReportsIndexCtrl', function() {
 		expect(typeof(scope.reportsFilter)).toBe('object');
 	});
 
-    describe('scope#isComplete', function () {
-        var report;
-        beforeEach(function () {
-            report = { stepDurations: [
-                { 'startTime': 1, 'endTime': 1 }
-            ], 'data': { 'lesson': { 'steps': ['one'] } }  };
-        });
-
-        it('should see all steps are complete', function () {
-            expect(scope.isComplete(report)).toBe(true);
-        });
-
-        it('should see step did not finish', function () {
-            report.stepDurations[0].endTime = 'nothing!';
-            expect(scope.isComplete(report)).toBe(false);
-        });
+    describe('scope#isComplete', function (  ) {
+        it('should trigger the service', inject(function( ReportsService ){
+            spyOn(ReportsService,'isCompleted');
+            scope.isCompleted({ 'data' :  { 'lesson' : { 'steps' : [] } } } );
+            expect(ReportsService.isCompleted).toHaveBeenCalled();
+        }));
     });
 
     describe('select all', function(){

@@ -54,16 +54,9 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		return isStudentsReports();
 	};
 
-	$scope.isComplete = function(report) {
+	$scope.isCompleted = function(report) {
+        return LergoClient.reports.isCompleted(report);
 
-		var completeSteps = 0;
-		_.each(report.stepDurations, function(elem) {
-			if (angular.isNumber(elem.startTime) && angular.isNumber(elem.endTime)) {
-				completeSteps++;
-			}
-		});
-
-		return report.data.lesson.steps.length === completeSteps;
 	};
 
 	$scope.loadReports = function() {

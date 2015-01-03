@@ -41,6 +41,22 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 			}).replace();
 		}
 	}
+    $scope.isCompleted = function(report){
+        return LergoClient.reports.isCompleted(report);
+    };
+
+    $scope.showPracticeMistake = function(){
+        return !!$scope.wrongQuestions &&  $scope.wrongQuestions.length>0 && $scope.isCompleted( $scope.report )  ;
+    };
+
+    $scope.showContinueLesson = function(){
+        return !$scope.isCompleted($scope.report);
+    };
+
+    $scope.continueLessonUrl = function(){
+        return LergoClient.reports.continueLessonUrl( $scope.report);
+    };
+
 	$scope.practiceMistakes = function() {
 		createLessonFromWrongQuestions();
 	};

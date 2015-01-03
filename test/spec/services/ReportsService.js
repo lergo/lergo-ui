@@ -45,4 +45,35 @@ describe('Service: ReportsService', function () {
         $httpBackend.flush();
     }));
 
+    describe('#isCompelted', function(){
+        var report;
+        beforeEach(function () {
+            report = { stepDurations: [
+                { 'startTime': 1, 'endTime': 1 }
+            ], 'data': { 'lesson': { 'steps': ['one'] } }  };
+        });
+
+        it('should see all steps are complete', function () {
+            expect(mReportsService.isCompleted(report)).toBe(true);
+        });
+
+        it('should see step did not finish', function () {
+            report.stepDurations[0].endTime = 'nothing!';
+            expect(mReportsService.isCompleted(report)).toBe(false);
+        });
+    });
+
+
+    describe('#continueLessonUrl', function(){
+        it('should construct a url from report', function(){
+            spyOn(mReportsService,'countCompletedSteps').andReturn(24);
+            var url = mReportsService.continueLessonUrl({ 'invitationId' : {} , 'data' : { 'lessonId' : 3} , '_id' : 4  });
+            expect(url).toBe('/#!/public/lessons/invitations/[object Object]/display?lessonId=3&reportId=4&currentStepIndex=24');
+        });
+
+        it('should return N/A if report is undefined', function(){
+            expect(mReportsService.continueLessonUrl()).toBe('N/A');
+        })
+    });
+
 });
