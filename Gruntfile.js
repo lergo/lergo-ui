@@ -59,6 +59,13 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/scripts/**/*.js',
                     '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
+            },
+            jshint: {
+                files: [ '<%= yeoman.app %>/**/*.js' ]
+            },
+            develop: {
+                files: ['app/**/*.js', 'test/**/*.js'],
+                tasks: ['concurrent:develop']
             }
         },
         s3:{
@@ -331,6 +338,11 @@ module.exports = function (grunt) {
             }
         },
         concurrent: {
+            develop: [
+//                'jsdoc',
+                'jshint',
+                'karma:develop'
+            ],
             server: [
                 'compass:server'
             ],
@@ -343,6 +355,12 @@ module.exports = function (grunt) {
             ]
         },
         karma: {
+            develop: {
+                configFile: 'karma.conf.js',
+                singleRun:true,
+                port:9001,
+                browsers: ['Chrome']
+            },
             unit: {
                 configFile: 'karma.conf.js',
                 singleRun:true,

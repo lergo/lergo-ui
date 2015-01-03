@@ -9,7 +9,8 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		'showLanguage' : true,
 		'showReportStatus' : true,
 		'showStudents' : true,
-		'showCorrectPercentage' : true
+		'showCorrectPercentage' : true,
+        'showReportLesson': true
 	};
 
 	$scope.reportTypes = [ {
@@ -67,9 +68,13 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 
 	$scope.loadReports = function() {
 		$scope.reportsPage.selectAll = false;
+
+        $log.info('loading reports', $scope.reportsFilter);
+
 		if (!$scope.filterPage.current) {
 			return;
 		}
+
 		var queryObj = {
 			'filter' : _.merge({}, $scope.reportsFilter),
             'projection' : { 'data.quizItems' : 0 },

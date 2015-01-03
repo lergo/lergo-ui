@@ -9,6 +9,16 @@ angular.module('lergoApp')
             return $http.get('/backend/reports/' + reportId + '/read');
         };
 
+        this.findLesson = function( like ){
+            return $http({
+                method: 'GET',
+                url : '/backend/reports/lessons/find',
+                params: {
+                    'like' : like
+                }
+            });
+        };
+
 
         this.createFromInvitation = function (invitation) {
             return $http.post('/backend/reports/lessoninvitation/' + invitation._id);
@@ -19,7 +29,12 @@ angular.module('lergoApp')
         };
 
         this.ready = function (reportId) {
-            return $http.post('/backend/reports/' + reportId + '/ready');
+            if (typeof(reportId) === 'object'){
+                return $http.post('/backend/reports/' + reportId._id + '/ready');
+            }else{
+                return $http.post('/backend/reports/' + reportId + '/ready');
+            }
+
         };
         
         this.deleteReport = function (report) {

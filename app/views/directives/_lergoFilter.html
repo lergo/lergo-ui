@@ -75,6 +75,11 @@
 			</select>
 		</div>
 	</span>
+
+    <div ng-show="!!opts.showReportLesson">
+        <div class="label">{{'filters.label.reportLesson' | i18n }}</div>
+        <div report-lesson-filter="reportLesson"></div>
+    </div>
 	<!--<div ng-show="!!durationFilter">-->
 	<!--<div class="label">{{'filters.labels.duration' | i18n }}</div>-->
 	<!--<div>-->

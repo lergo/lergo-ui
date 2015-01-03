@@ -15,7 +15,7 @@ angular.module('lergoApp')
                 $scope.canRemoveTags = true;
 
                 $scope.addTagFromTypeahead = function ($item/*, $model, $label*/) {
-                    $scope.error = 'tagSection.alreadyExists';
+                    $scope.error = 'tagSection.alreadyExists';  // guy - todo - this line is strange.. need to remove?
                     addTag($item.label);
 
                 };
