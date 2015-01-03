@@ -73,7 +73,7 @@ describe('Service: ReportsService', function () {
 
         it('should return N/A if report is undefined', function(){
             expect(mReportsService.continueLessonUrl()).toBe('N/A');
-        })
+        });
     });
 
 });
