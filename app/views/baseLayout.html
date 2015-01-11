@@ -41,7 +41,7 @@
 					</div>
 					<div class="header-login" ng-show="!!user">
 						<a href="#!/user/create/invites" tooltip="{{'baseLayout.header.userName.tip' | i18n}}" tooltip-placement="bottom">
-							<i class="fa fa-user fa-fw"></i>
+							<img gravatar-src="user.email" gravatar-size="25">
 							{{user.username}}
 						</a>
 						<button class="btn" ng-click="logout()">{{'baseLayout.header.logout' | i18n }}</button>

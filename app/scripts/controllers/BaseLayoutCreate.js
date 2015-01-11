@@ -3,21 +3,30 @@
 angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $routeParams, $controller) {
 
 	$scope.sections = [ {
-		'id' : 'lessons',
+		id : 'profile',
+		icon : 'fa fa-user',
+		controller : 'UsersProfileCtrl',
+		include : 'views/users/_profile.html'
+	}, {
+		id : 'lessons',
 		icon : 'fa fa-university',
-		'controller' : 'LessonsIndexCtrl'
+		controller : 'LessonsIndexCtrl',
+		include : 'views/lessons/_index.html'
 	}, {
-		'id' : 'questions',
+		id : 'questions',
 		icon : 'fa fa-question-circle',
-		'controller' : 'QuestionsIndexCtrl'
+		controller : 'QuestionsIndexCtrl',
+		include : 'views/questions/_index.html'
 	}, {
-		'id' : 'reports',
+		id : 'reports',
 		icon : 'fa fa-bar-chart-o',
-		'controller' : 'ReportsIndexCtrl'
+		controller : 'ReportsIndexCtrl',
+		include : 'views/reports/_index.html'
 	}, {
 		id : 'invites',
 		icon : 'fa fa-envelope',
-		controller : 'InvitesIndexCtrl'
+		controller : 'InvitesIndexCtrl',
+		include : 'views/invites/_index.html'
 
 	} ];
 
@@ -33,7 +42,4 @@ angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $
 		return !!$scope.currentSection && section.id === $scope.currentSection.id;
 	};
 
-	$scope.getInclude = function() {
-		return 'views/' + $scope.currentSection.id + '/_index.html';
-	};
 });
