@@ -1,0 +1,84 @@
+<div id="Profile" style="background: #eeeeee; border-radius: 10px; padding: 10px;">
+	<div class="row">
+		<div class="col-sm-1 pull-right">
+			<button class="btn-link" ng-click="isEditAllow=!isEditAllow">
+				<strong>
+					<i class="fa fa-edit font-21"></i>
+				</strong>
+			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+			<div>
+				<img gravatar-src="user.email" gravatar-size="100">
+			</div>
+			<div style="padding: 10px">
+				<strong>{{user.username}}</strong>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<h1>
+				{{user.fullName}}
+				<br>
+				<small ng-show="!isEditAllow && !!user.shortIntro"> {{user.shortIntro}}</small>
+				<small ng-show="!isEditAllow && !user.shortIntro"> Short Intro</small>
+				<input ng-show="!!isEditAllow" ng-model="user.shortIntro" style="background: #fafafa; border: 0; padding: 5px; border-radius: 5px;"
+					placeholder="Short Intro" />
+			</h1>
+			<br />
+			<ul>
+				<li style="padding-bottom: 5px">
+					<p class="text-muted">
+						<i class="fa fa-envelope"></i>
+						&#xA0;&#xA0;
+						<a href="mailto:simmons@smartadmin">{{user.email}}</a>
+					</p>
+				</li>
+				<li style="padding-bottom: 5px">
+					<p class="text-muted">
+						<i class="fa fa-external-link"></i>
+						&#xA0;&#xA0;
+						<a ng-show="!isEditAllow && !!user.externalLink" ng-href="http://{{user.externalLink}}" target="_blank" class="txt-color-darken"> {{user.externalLink}}</a>
+						<span class="text-muted" ng-show="!isEditAllow && !user.externalLink " class="txt-color-darken"> External Link</span>
+						<input ng-show="!!isEditAllow" ng-model="user.externalLink" style="background: #fafafa; border: 0; padding: 5px; border-radius: 5px;"
+							placeholder="External link" />
+					</p>
+				</li>
+				<li style="padding-bottom: 5px">
+					<p class="text-muted">
+						<i class="fa fa-university"></i>
+						&#xA0;&#xA0;
+						<a href="#!/public/homepage?lergoFilter.createdBy={{user}}" class="txt-color-darken"> Lesson Created</a>
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+			<div style="padding: 10px">
+				<h4 class="font-md">
+					<strong> {{user.questionsCount}}</strong>
+					<br>
+					<small>Questions</small>
+				</h4>
+				<br>
+				<h4 class="font-md">
+					<strong> {{user.lessonsCount}}</strong>
+					<br>
+					<small>Lessons</small>
+				</h4>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<br />
+			<blockquote>
+				<p ng-show="!isEditAllow && !!user.details">{{user.details}}</p>
+			</blockquote>
+			<p class="text-muted" ng-show="!isEditAllow && !user.details">Detailed description</p>
+			<textarea ng-show="!!isEditAllow" ng-model="user.details"
+				style="width: 249px; height: 144px; border-radius: 5px; padding: 5px; background: #fafafa;" placeholder="Detailed description"> </textarea>
+		</div>
+	</div>
+</div>
