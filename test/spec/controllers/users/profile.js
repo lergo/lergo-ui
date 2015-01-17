@@ -15,7 +15,7 @@ describe('Controller: UsersProfileCtrl', function() {
 		});
 	}));
 
-	it('should attach a list of awesomeThings to the scope', function() {
-		expect(scope.saveProfile).toBe('function');
+	it('should put saveProfile function to the scope', function() {
+		expect(typeof (scope.saveProfile)).toBe('function');
 	});
 });
