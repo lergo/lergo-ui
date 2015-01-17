@@ -1,12 +1,204 @@
 {
+  "AlexanderNelles": {
+    "desg": "Head of Assisted Channels Capabilities @ Vodafone Germany"
+  },
+  "AlinaColton": {
+    "desg": "Teacher & Educator"
+  },
+  "AmnonLevav": {
+    "desg": "Co-founder & Mng Dir @ SIT"
+  },
+  "AvnerAlgom": {
+    "desg": "CEO of Israel Cloud Association"
+  },
+  "DanielSirkin": {
+    "desg": "Cinema & TV Dir. & Screenwriter"
+  },
+  "DimaAlkin": {
+    "desg": "hi-tech executive"
+  },
+  "Dr": {
+    "AlizaBelmanInbal": "Int'l Development Director,TAU",
+    "DaliaFadila": {
+      "desg": "QSchool,Pres. Technology College"
+    },
+    "HalaEspanioly": {
+      "desg": "VP @ Arab College of Education"
+    },
+    "Jeffrey": {
+      "desg": "Physicist & HiTech Executive"
+    },
+    "ZviPaltiel": {
+      "desg": "Educator & Physicist"
+    }
+  },
+  "EladMeshulam": {
+    "desg": "Digital Media Professional & Analyst"
+  },
+  "EranWagner": {
+    "desg": "General Partner,Gemini Israel Funds"
+  },
+  "EyalChen": {
+    "desg": "VP Product & Technology @ WebsPlanet"
+  },
+  "GigiLevy": {
+    "desg": "Angel investor,Mgmt board at Latet"
+  },
+  "GilShai": {
+    "desg": "Co-founder & COO CloudEndure"
+  },
+  "GiladBeeri": {
+    "desg": "Software Consultant"
+  },
+  "GioraShaked": {
+    "desg": "Founder & CEO of Hisense Medical"
+  },
+  "GuyBrill": {
+    "desg": "Former EVP Elbit & Mgmt Consultant"
+  },
+  "GuyMograby": {
+    "desg": "UX/UI Software Developer & Blogger"
+  },
+  "HaggiHochberger": {
+    "desg": "Director,Innovation Partnership Program @ Amdocs"
+  },
+  "LewisManne": {
+    "desg": "Zap Productions"
+  },
+  "LiatLevy": {
+    "desg": "Development Consultant"
+  },
+  "LiatMoreno": {
+    "desg": "Finance Analyst"
+  },
+  "LiorManor": {
+    "desg": "Mind Engineering"
+  },
+  "MaayanCohen": {
+    "desg": "Animator"
+  },
+  "MaisaElshiekh": {
+    "desg": "Teacher & Educator"
+  },
+  "MalcolmFinn": {
+    "desg": "Advocate"
+  },
+  "MartinBuhr": {
+    "desg": "Cloud Expert, HiTech Executive"
+  },
+  "MaysamKanaan": {
+    "desg": "Al Tufula"
+  },
+  "MichaelCouture": {
+    "desg": "RVP,Amdocs Canadian Managed Services @ Amdocs"
+  },
+  "MiraCohen": {
+    "desg": "Teacher & Educator"
+  },
+  "MotiShatner": {
+    "desg": "Founder BSharpC"
+  },
+  "NadavBerkovich": {
+    "desg": "Media Expert"
+  },
+  "NadavStark": {
+    "desg": "Online Learning @ TAU"
+  },
+  "OferCuriel": {
+    "desg": "High Tech Executive"
+  },
+  "OffirGonen": {
+    "desg": "UX/UI Expert"
+  },
+  "OritYaron": {
+    "desg": "SaaS Infra Architecture Specialist"
+  },
+  "Prof": {
+    "ArielRubinstein": {
+      "desg": "TAU & NYU"
+    },
+    "DavidPassig": {
+      "desg": "Futurist,Tech & Edu BGU"
+    },
+    "DoritRavid": {
+      "desg": "School of Edu @ TAU"
+    }
+  },
+  "RabbiYaronLevy": {
+    "desg": "English Program Head,Otzem"
+  },
+  "RahulShukla": {
+    "desg": "Eclipse RCP Consultant, Angular JS Evangelist"
+  },
+  "RutiArazi": {
+    "desg": "Social Networks Expert"
+  },
+  "SagyGulianka": {
+    "desg": "Pricing Expert @ TMsight"
+  },
+  "SanadAtamna": {
+    "desg": "Computer Programming Student"
+  },
+  "SashaGilenson": {
+    "desg": "CEO & Founder of Evolven Software"
+  },
+  "ShalomPassy": {
+    "desg": "former COO of TimeToKnow & Senior Consultant"
+  },
+  "ShiraPaz-Greenberg": {
+    "desg": "Designer @ Bruno-All New Media"
+  },
+  "ShulyWandam": {
+    "desg": "HRBP @ Unilever"
+  },
+  "TalChasdai": {
+    "desg": "CPA"
+  },
+  "TalGoldberg": {
+    "desg": "Waze,Co-founder HumanClick"
+  },
+  "TanyaEpstein": {
+    "desg": "Co-founder Clarizen & Applango"
+  },
+  "TomerAshur": {
+    "desg": "former Chairman WikiMedia Israel"
+  },
+  "YarivWeinberg": {
+    "desg": "Videographer @ Simanim"
+  },
+  "YishaiBarak": {
+    "desg": "Development Manager @ Siemens"
+  },
+  "YoavBen-Arie": {
+    "desg": "Org. Learning Head @ BrancoWeiss"
+  },
+  "YochaiManor": {
+    "desg": "Operations Executive"
+  },
+  "YossiBen-Shoshan": {
+    "desg": "Director R&D @ Dell"
+  },
+  "ZeevRavid": {
+    "desg": "Branding,former CEO Y&R Israel"
+  },
   "about": {
     "contact": "Contact",
     "contribute": "Contribute",
     "faq": "FAQ",
+    "friend": {
+      "desc": "As a Non Profit Open Source project we are incredibly grateful to the companies below for their donation and / or for contributing to us their outstanding services and applications, in order to help us grow. ",
+      "title": "Friends of LerGO "
+    },
     "friends": "Friends",
+    "fundersPicture": {
+      "desc1": "We believe each child is entitled to free access to animated and interactive online lessons. Thanks to our Indiegogo funders we are now one step closer to making this vision come true. ",
+      "desc2": "\nOur heartfelt thanks for helping us make it happen.  ",
+      "thanks": "The LerGO Team",
+      "title": "Funders Picture Collage"
+    },
     "keyContributors": "Key Contributors",
     "keyFunders": "Key Funders List",
-    "keyFundersPictures": "Funders Picture Mosiac",
+    "keyFundersPictures": "Funders Picture Collage",
     "overview": "Overview",
     "privacy": "Privacy & Terms"
   },
@@ -73,6 +265,7 @@
         "learn": "Learn",
         "lessons": "Lessons",
         "parents": "Parents",
+        "profile": "Profile",
         "questions": "Questions",
         "reports": "Reports",
         "teachers": "Teachers"
@@ -105,6 +298,10 @@
   "congratulations": "Congratulations",
   "continousSave": {
     "Confirm": "You have unsaved changes.Are you sure you want to leave this page?"
+  },
+  "contributors": {
+    "desc": "We would not have made it this far without the hard work, generous help and continuous encouragement of LerGO's team of contributors, volunteers and advisory board members (you guys rock!):",
+    "title": "Key Contributors"
   },
   "copy": "Copy",
   "createNotAvailable": "Please signup or login to LerGO. Only registered users can create content.",
@@ -139,6 +336,15 @@
   "explanationAudio": "Explanation with Audio",
   "explanationImage": "Explanation with Image",
   "explanationVideo": "Explanation with Video",
+  "facebookShare": "Share to Facebook",
+  "faq": {
+    "add": "Add Question",
+    "header1": "This is a short list of our most frequently asked questions. If you have another question, please use the",
+    "header2": "Contact Us",
+    "header3": "or",
+    "header4": "Report Problem",
+    "header5": "forms."
+  },
   "featured": "Featured",
   "filters": {
     "age": {
@@ -198,6 +404,10 @@
     "to": "To"
   },
   "fromAge": "From Age",
+  "funders": {
+    "desc": "We would not be here today if it were not for our incredible group of volunteers and contributors who contributed to the success of LerGO as well as our funding efforts on Indiegogo and beyond. Thank you for helping us make it happen!",
+    "title": "Key Funders List"
+  },
   "helperContent": {
     "add": "Click to add Contents",
     "important": "Important",
@@ -358,6 +568,10 @@
   "nextQuestion": "Continue",
   "notAppropriate": "it is not appropriate for kids.",
   "notEducational": "it is not educational content.",
+  "overview": {
+    "desc": "LerGO is a non-profit open source EdTech venture dedicated to self education and reducing the social gap. Our goal is to provide every child with free access to high quality and interactive online lessons. This can be made possible via LerGO's cloud platform that will harness the goodwill of the community, enabling it to easily create educational content. Kids can use these lessons to self learn all school subjects, enjoyably and at their own pace. LerGO is now in beta and we are in the process of loading initial content.",
+    "title": "Overview"
+  },
   "popular": "Popular",
   "powered": {
     "by": {
