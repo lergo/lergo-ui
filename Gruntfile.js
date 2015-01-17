@@ -39,8 +39,8 @@ module.exports = function (grunt) {
     }catch(e){
         logger.error('s3 json is undefined, you will not be able to upload to s3',e);
     }
-    
-    
+
+
 
     grunt.initConfig({
         yeoman: yeomanConfig,
@@ -343,6 +343,11 @@ module.exports = function (grunt) {
                 'jshint',
                 'karma:develop'
             ],
+            watch:[
+                'watch:compass',
+                'watch:livereload',
+                'watch:jshint'
+            ],
             server: [
                 'compass:server'
             ],
@@ -414,7 +419,7 @@ module.exports = function (grunt) {
             'configureProxies',
             'connect:livereload',
             'open',
-            'watch'
+            'concurrent:watch'
         ]);
     });
 
