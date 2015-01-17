@@ -40,7 +40,12 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			return;
 		}
 
-		$scope.answers = {};
+
+    // lets initialize the answers on load
+    // if the user already done part of the quiz, we skip questions he already answered..
+    // NOTE: WE CURRENTLY APPLY THIS ONLY IF SHUFFLE QUESTIONS IS SWITCHED OFF.. THE SHUFFLE ALGORITHM SHOULD CONSIDER QUESTIONS WITH ANSWERS IN THE ALGORITHM BEFORE WE CAN REFER TO THIS SCENARIO
+
+		$scope.answers = { };
 
 		// guy - do not use 'hasOwnProperty' as scope might not have the
 		// property, but there is such a value.
