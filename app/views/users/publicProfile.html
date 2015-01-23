@@ -1,0 +1,57 @@
+<div class="base-layout">
+    <div class="container" id="PublicProfile">
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 text-center">
+                <div>
+                    <img gravatar-src="user.email" gravatar-size="100" class="img-rounded ">
+                </div>
+                <br>
+
+                <div>
+                    <strong>{{user.username}}</strong>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 ">
+                <div class="lergo-h1">
+                    {{user.fullName}}
+                </div>
+                <br>
+
+                <div ng-show="!isEditAllow && !!user.shortIntro"> {{user.shortIntro}}</div>
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 text-center">
+                <br>
+                <h4 class="font-md">
+                    <strong> {{user.lessonsCount}}</strong>
+                    <br>
+                    {{'profile.lesson'|i18n}}
+                </h4>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 ">
+                <div ng-show="!!user.externalLink">
+                    <i class="fa fa-external-link"></i>
+                    &#xA0;&#xA0;
+                    <a ng-href="http://{{user.externalLink}}"
+                       target="_blank" class="txt-color-darken"> {{user.externalLink}}</a>
+                </div>
+                <br>
+
+                <div>
+                    <i class="fa fa-university"></i>
+                    &#xA0;&#xA0;
+                    <a href="#!/public/homepage?lergoFilter.createdBy={{user}}" class="txt-color-darken">{{'profile.lessonCreated'|i18n}}</a>
+                </div>
+
+                <br>
+
+                <div ng-show="!isEditAllow && !!user.details">
+                    <blockquote>{{user.details}}</blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

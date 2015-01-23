@@ -81,7 +81,11 @@ angular.module('lergoApp', [ 'LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'u
 			}).when('/user/lessons/:lessonId/invitations', {
 				templateUrl : 'views/lessons/invitations/create.html',
 				controller : 'LessonsInvitesCreateCtrl'
-			}).when('/public/kitchenSink', {
+			}).when('/user/:username/profile', {
+                    templateUrl : 'views/users/publicProfile.html',
+                    controller : 'UsersPublicProfileCtrl'
+                })
+                .when('/public/kitchenSink', {
 				templateUrl : 'views/kitchenSink.html'
 
 			}).when('/public/translations/diff', {

@@ -28,17 +28,14 @@ angular.module('lergoApp').service('UsersService', function UsersService($http) 
 	this.getMyProfile = function() {
 		return $http({
 			url : '/backend/users/me/profile',
-			method : 'GET',
+			method : 'GET'
 		});
 	};
 
-	this.getPublicProfile = function(user) {
+	this.getPublicProfile = function(username) {
 		return $http({
-			url : '/backend/public/profile',
-			method : 'GET',
-			params : {
-				userId : user._id
-			}
+			url : '/backend/users/'+username+'/profile',
+			method : 'GET'
 		});
 	};
 
