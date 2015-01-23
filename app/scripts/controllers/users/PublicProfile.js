@@ -5,7 +5,6 @@ angular.module('lergoApp').controller('UsersPublicProfileCtrl', function ($scope
 
     LergoClient.users.getPublicProfile(username).then(function (result) {
         $scope.user = result.data;
-        $scope.$watch('user', saveProfile.onValueChange, true);
     });
 
 });
