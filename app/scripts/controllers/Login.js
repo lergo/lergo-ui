@@ -4,7 +4,16 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 
 	$scope.showLoginPage = false;
 
-	if ($location.path() === '/public/session/login') {
+    // autofocus not working properly in control of partial view when added
+    // through ngInclude this is a hook to get the desired behaviour
+    $scope.setFocus = function(id) {
+        var element = document.getElementById(id);
+        if (!!element) {
+            element.focus();
+        }
+    };
+
+    if ($location.path() === '/public/session/login') {
 		LergoClient.isLoggedIn().then(function(result) {
 			if (!!result) {
 				$rootScope.user = result.data;
@@ -50,12 +59,5 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 		});
 	};
 
-	// autofocus not working properly in control of partial view when added
-	// through ngInclude this is a hook to get the desired behaviour
-	$scope.setFocus = function(id) {
-		var element = document.getElementById(id);
-		if (!!element) {
-			element.focus();
-		}
-	};
+
 });

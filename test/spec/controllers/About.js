@@ -14,4 +14,22 @@ describe('Controller: AboutCtrl', function() {
 			$scope : scope
 		});
 	}));
+
+    it('should assign sections on scope', function(){
+        expect(!!scope.sections).toBe(true);
+    });
+
+    describe('isActive',function(){
+        it('should return true iff current section is active', function(){
+            scope.currentSection = { 'id': 'foo'};
+            expect(scope.isActive({ 'id' : 'foo'})).toBe(true);
+        });
+    });
+
+    describe('getInclude', function(){
+        it('should return the url to include', function(){
+            scope.currentSection = { 'id' : 'foo' };
+            expect(scope.getInclude()).toBe('views/about/_foo.html');
+        });
+    });
 });
