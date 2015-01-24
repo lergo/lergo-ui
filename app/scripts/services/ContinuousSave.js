@@ -36,14 +36,7 @@ angular.module('lergoApp')
 
         var _preventedFlag = {};
 
-        // make this available on the outside
-        impl.getPreventedFlag = function(){
-            return _preventedFlag;
-        };
 
-        impl.setPreventedFlag = function( value ){
-            _preventedFlag = value;
-        };
 
 
 
@@ -205,7 +198,14 @@ angular.module('lergoApp')
             };
         }
 
+        // make this available on the outside
+        impl.getPreventedFlag = function(){
+            return _preventedFlag;
+        };
 
+        impl.setPreventedFlag = function( value ){
+            _preventedFlag = value;
+        };
 
 
         return impl;

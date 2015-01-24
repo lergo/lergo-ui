@@ -102,7 +102,7 @@ describe('Service: ContinuousSave', function () {
 
     describe('locationChangeStart handler', function(){
         it('should exist', function(){
-            var cs = new MContinuousSave({});
+            new MContinuousSave({});
             expect(!!eventHandlers.$locationChangeStart).toBe(true);
         });
 
@@ -126,10 +126,10 @@ describe('Service: ContinuousSave', function () {
         });
 
         it('should do nothing if no local version present', function(){
-            var cs = new MContinuousSave({});
+            new MContinuousSave({});
             eventHandlers.$locationChangeStart( {} );
             expect(window.confirm).not.toHaveBeenCalled();
-        })
+        });
 
     });
 
