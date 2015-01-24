@@ -1,6 +1,16 @@
 'use strict';
 
 angular.module('lergoApp').service('AbuseReports', function Abusereports($http) {
+
+    /**
+     *
+     * @description
+     * sends an abuse report about a lesson
+     *
+     * @param obj the report
+     * @param item the lesson
+     * @returns {HttpPromise}
+     */
 	this.abuseLesson = function(obj, item) {
 		obj.itemType = 'lesson';
 		return $http.post('/backend/reportabuse/' + item._id + '/abuse', obj);

@@ -23,8 +23,10 @@ angular.module('lergoApp')
                             return num+retry.duration;
                         },0);
                     }, 0);
+
                     oldDuration.endTime = oldDuration.startTime + quizDuration;
                 } else if (!!oldDuration) {
+
                     oldDuration.endTime = new Date().getTime();
                 }
             }

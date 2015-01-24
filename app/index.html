@@ -15,9 +15,10 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link href="favicon.ico?v=2" rel="shortcut icon" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
     <link href="bower_components/google-code-prettify/src/prettify.css" rel="stylesheet" />
     <link href="bower_components/toastr/toastr.css" rel="stylesheet" />
-    <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
@@ -59,8 +60,12 @@
             }
         } catch (e) {}
     </script>
+
+    <!-- build:js({.tmp,app}) scripts/base.js -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <!-- endbuild -->
+
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <!-- endbuild -->
@@ -74,6 +79,7 @@
     <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
     <script src="bower_components/google-code-prettify/src/prettify.js"></script>
     <script src="bower_components/lodash/dist/lodash.js"></script>
+    <script src="scripts/extension.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
     <script src="bower_components/showdown/src/showdown.js"></script>
@@ -182,6 +188,7 @@
     <script src="scripts/controllers/BaseLayoutFooter.js"></script>
     <script src="scripts/controllers/users/profile.js"></script>
     <script src="scripts/directives/reportLessonFilter.js"></script>
+    <script src="scripts/filters/shuffleQuestions.js"></script>
     <!-- endbuild -->
 </body>
 

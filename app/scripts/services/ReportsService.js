@@ -42,6 +42,47 @@ angular.module('lergoApp')
             return !!report && !!report.data && !!report.data.lesson && !!report.data.lesson.steps && report.data.lesson.steps.length === this.countCompletedSteps(report);
         };
 
+        /**
+         *
+         * find an existing answer for specific question in specific step identified by index.
+         *
+         * @param report the report
+         * @param quizItemId id of quizItem we want answer for
+         * @param stepIndex the step identified by index in lesson steps.
+         * @returns {null|object} null if no answer, otherwise returns the answer
+         */
+        //
+        //
+        this.getAnswerToQuizItem = function(report, quizItemId, stepIndex ){
+            var result =  _.find(report.answers, function( item ){
+                return (item.quizItemId === quizItemId) && (item.stepIndex === stepIndex);
+            });
+            if ( !result ){
+                return null; // make sure to return null, and not any other value like undefined
+            }
+            return result;
+        };
+
+        /**
+         * turns list of answers for specific step to a map of quizItemId and the answer.
+         *
+         * @param report the report
+         * @param stepIndex step we are interested in
+         * @returns {object} a map between quiz item id, and the answer
+         */
+        this.getAnswersByQuizItemId = function( report, stepIndex ){
+            var result = {};
+            _.each(report.answers, function(item){
+                if ( item.stepIndex === stepIndex ){
+                    result[item.quizItemId] = item;
+                }
+            });
+            return result;
+        };
+
+
+
+
 
         this.createFromInvitation = function (invitation) {
             return $http.post('/backend/reports/lessoninvitation/' + invitation._id);
@@ -59,7 +100,7 @@ angular.module('lergoApp')
             }
 
         };
-        
+
         this.deleteReport = function (report) {
             return $http.post('/backend/reports/' + report._id + '/delete');
         };

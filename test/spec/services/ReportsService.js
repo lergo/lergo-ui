@@ -63,6 +63,40 @@ describe('Service: ReportsService', function () {
         });
     });
 
+    describe('#getAnswerToQuizItem', function(){
+        it('should get answer to quizItem', function(){
+            var report = { answers : [ { 'quizItemId' : '6', stepIndex : 0  } , { 'quizItemId' : '7' , stepIndex : 0 } ] };
+            var quizItemId = '6';
+            var stepIndex = 0;
+            var answer = mReportsService.getAnswerToQuizItem( report, quizItemId, stepIndex );
+            expect(answer).toBe(report.answers[0]);
+        });
+
+        it('should return null if not found', function(){
+            var report = { answers : [ { 'quizItemId' : '6', stepIndex : 0  } , { 'quizItemId' : '7' , stepIndex : 0 } ] };
+            var quizItemId = '6';
+            var stepIndex = 2;
+            var answer = mReportsService.getAnswerToQuizItem( report, quizItemId, stepIndex );
+            expect(answer).toBe(null);
+        });
+
+
+    });
+
+    describe('#getAnswersByQuizItemId', function(){
+        it('should find answers by quizItemId', function(){
+            var report = { answers : [ { 'quizItemId' : '1' , 'stepIndex' : 0 } , { 'quizItemId' : '2' , 'stepIndex' : 0 }, { 'quizItemId' : '3' , 'stepIndex' : 1 } ] };
+            var stepIndex = 0;
+            var map = mReportsService.getAnswersByQuizItemId( report, stepIndex );
+
+            expect(map.hasOwnProperty('1')).toBe(true);
+            expect(map.hasOwnProperty('2')).toBe(true);
+            expect(map.hasOwnProperty('3')).toBe(false);
+
+
+        });
+    });
+
 
     describe('#continueLessonUrl', function(){
         it('should construct a url from report', function(){

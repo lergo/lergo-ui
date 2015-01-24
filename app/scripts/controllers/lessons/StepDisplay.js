@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce, LergoClient, shuffleFilter, $window) {
+angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce, LergoClient, shuffleFilter, $window ) {
 	$log.info('showing step');
 	$window.scrollTo(0, 0);
 	var audio = new Audio('../audio/correctanswer.mp3');
@@ -18,7 +18,14 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	function currentIndex() {
 		return _.size($scope.answers);
 	}
-	$scope.answers = {};
+
+
+    if ( !$scope.answers ) { // parent scope might declare answers
+        $scope.answers = {};
+    }
+
+
+
 	function reload() {
 		$log.info('reload display for step');
 
@@ -41,11 +48,13 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		}
 
 
-    // lets initialize the answers on load
-    // if the user already done part of the quiz, we skip questions he already answered..
-    // NOTE: WE CURRENTLY APPLY THIS ONLY IF SHUFFLE QUESTIONS IS SWITCHED OFF.. THE SHUFFLE ALGORITHM SHOULD CONSIDER QUESTIONS WITH ANSWERS IN THE ALGORITHM BEFORE WE CAN REFER TO THIS SCENARIO
-
-		$scope.answers = { };
+        // lets initialize the answers on load
+        // if the user already done part of the quiz, we skip questions he already answered..
+        if ( $scope.$parent && !$scope.$parent.answers ) {
+            $scope.answers = {};
+        }else{
+            $scope.answers = $scope.$parent.answers;
+        }
 
 		// guy - do not use 'hasOwnProperty' as scope might not have the
 		// property, but there is such a value.

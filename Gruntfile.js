@@ -345,7 +345,6 @@ module.exports = function (grunt) {
             ],
             watch:[
                 'watch:compass',
-                'watch:livereload',
                 'watch:jshint'
             ],
             server: [
@@ -419,7 +418,10 @@ module.exports = function (grunt) {
             'configureProxies',
             'connect:livereload',
             'open',
-            'concurrent:watch'
+            'watch:compass',
+            'watch:livereload',
+            'watch:jshint'
+
         ]);
     });
 

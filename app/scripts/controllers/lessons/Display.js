@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, $log, $controller, $rootScope, $location, shuffleFilter, $window) {
+angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, ReportsService, $log, $controller, $rootScope, $location, shuffleQuestionsFilter, $window) {
 
 	// guy - using this flag because ng-cloak and other solutions will not apply
 	// to this scenario.
@@ -17,14 +17,32 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	$scope.currentStepIndex = parseInt($routeParams.currentStepIndex || 0, 10);
 	$log.info('current step index', $scope.currentStepIndex);
 
+    // for quiz steps, we also put "answers" on the scope in case user refreshes the page etc.
+    function updateQuestionsAnswers(){
+        if ( !!$scope.step && !!$scope.step.quizItems && $scope.answers ){
+
+            if ( !!$scope.report && !isNaN(parseInt($scope.currentStepIndex,10))  ){
+                $scope.answers = ReportsService.getAnswersByQuizItemId( $scope.report, parseInt($scope.currentStepIndex,10) );
+            }
+        }
+    }
+
+
+
 	// will update step on scope
 	function updateCurrentStep() {
 		if ($scope.currentStepIndex >= 0) {
 			if (!!$scope.lesson) {
-				$scope.step = $scope.lesson.steps[$scope.currentStepIndex];
+
+                $scope.step = $scope.lesson.steps[$scope.currentStepIndex];
+                updateQuestionsAnswers();
+
 				if (!!$scope.step) {
-					shuffleFilter($scope.step.quizItems, !$scope.step.shuffleQuestion);
+					shuffleQuestionsFilter( { 'array' : $scope.step.quizItems, 'disabled' : !$scope.step.shuffleQuestion } );
 				}
+
+
+
 			} else {
 				$scope.step = null;
 			}
