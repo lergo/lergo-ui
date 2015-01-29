@@ -1,17 +1,33 @@
-<div ng-show="!!getAnswer(quizItem) && step.testMode!=='True'">
-	<div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">
-		<span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | i18n}}</span>
-		<span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | i18n}}: {{getCorrectAnswers(quizItem)}}</span>
-		<div ng-show="!!quizItem.explanation && !getAnswer(quizItem).correct">
-			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
-			<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
-		</div>
-		<div ng-show="!!quizItem.explanation && !!getAnswer(quizItem).correct">
-			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
-			<div style="width: 400px; margin: auto" collapse="!isCollapsed">{{quizItem.explanation}}</div>
-		</div>
-	</div>
+<div ng-show="!!getAnswer(quizItem)">
+
+    <div ng-show="!getAnswer(quizItem).correct" class="bg-warning">
+        <span>{{'questions.incorrectAnswerFilled' | i18n}}: {{getCorrectAnswers(quizItem)}}</span>
+
+        <div ng-show="getAnswer(quizItem).expMessage.length>0">
+            <button class="btn-link " style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n
+                }}
+            </button>
+            <div style="width: 400px; margin: auto" collapse="!!isCollapsed">
+                <div ng-repeat="msg in getAnswer(quizItem).expMessage"> {{msg}}</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="!!getAnswer(quizItem).correct" class="bg-success">
+        <span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | i18n}}</span>
+
+        <div ng-show="getAnswer(quizItem).expMessage.length>0">
+            <button class="btn-link " style="color: white" ng-click="isCollapsed = !isCollapsed">
+                {{ 'explanation' | i18n }}
+            </button>
+            <div style="width: 400px; margin: auto" collapse="!!isCollapsed">
+                <div ng-repeat="msg in getAnswer(quizItem).expMessage">{{msg}}</div>
+
+            </div>
+        </div>
+    </div>
 </div>
 <div ng-show="!getAnswer()">
-	<div class="bg-primary">{{'steps.answer' | i18n }}</div>
+    <div class="bg-primary">{{'steps.answer' | i18n }}</div>
 </div>

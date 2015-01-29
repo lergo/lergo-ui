@@ -1,0 +1,24 @@
+<table class=" lergo-table lergo-form">
+    <thead>
+    <tr>
+        <td width="15%">{{ 'questions.possibleIncorrectAnswer' | i18n }}</td>
+        <td>
+            {{'questions.textExplanation' | i18n }}
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="option in quizItem.options " ng-show="!option.checked">
+        <td><input ng-model="option.label"/></td>
+        <td>
+            <input ng-model="option.textExplanation"/>
+        </td>
+        <td><a class="btn-link" ng-click="removeOption(option)">X</a></td>
+    </tr>
+    <tr>
+        <td><input type="text" placeholder="{{ 'questions.clickToAdd' | i18n }}" readonly="True"
+                   ng-click="addOption()"/></td>
+    </tr>
+    </tbody>
+</table>
+

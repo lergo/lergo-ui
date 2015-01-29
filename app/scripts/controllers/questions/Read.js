@@ -189,4 +189,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 				var correctAnswers = _.filter(quizItem.options, 'checked');
 				return correctAnswers.length > 1;
 			};
+
+
+
 		});

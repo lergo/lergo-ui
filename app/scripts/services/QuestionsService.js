@@ -90,7 +90,9 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         'answers': function (quizItem) {
             var answers = [];
             quizItem.options.forEach(function (value) {
-                answers.push(value.label);
+                if (!!value.checked) {
+                    answers.push(value.label);
+                }
             });
             if (answers.length === 1) {
                 return answers[0];
@@ -103,7 +105,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
             }
             var result = false;
             quizItem.options.forEach(function (value) {
-                if (!!value.label) {
+                if (!!value.label && !!value.checked) {
                     result = true;
                 }
             });
