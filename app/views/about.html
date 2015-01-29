@@ -1,40 +1,13 @@
-<div  id="about">
-    <h1> Thanks To </h1>
-    <div>
-        <div class="cloudbees">
 
-        </div>
-        <div class="browserstack">
-
-        </div>
-    </div>
-
-
-
-    <h1> Build Timestamp </h1>
-    <pre>
-        <div ng-include="'views/version/_version.html?i=' + getCacheRandomNumber()"></div>
-    </pre>
-
-    <h1> Latest Commits </h1>
-    <!-- GENERATED WITH
-                     git log  --abbrev=30 --pretty=format:"%h|%an|%ar|%s" -10 | column -t -s '|' > template
-                     -->
-    <pre>
-        <div ng-include="'views/version/_commits.html?i=' + getCacheRandomNumber() "></div>
-    </pre>
-
-
-
-
-    <h1> Closed Issues</h1>
-    <pre>
-        <div id="issues" style="width:1000px; height:400px; overflow-x:hidden; ">
-            <iframe style="width:10000px;  height:5000px;" src="https://lergoedu.atlassian.net/issues/?jql=status%20%3D%20Closed%20AND%20updated%20%3E%3D%20-4w"></iframe>
-        </div>
-
-    </pre>
-
-
-
+<div class="base-layout" id="about">
+	<div>
+		<ul class="nav nav-tabs-vertical">
+			<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
+				<a href="#!/public/about/{{section.id}}">{{'about.' + section.id | i18n}}</a>
+			</li>
+		</ul>
+		<div class="tab-content-vertical">
+			<div ng-include="getInclude()"></div>
+		</div>
+	</div>
 </div>

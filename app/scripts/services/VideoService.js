@@ -3,7 +3,7 @@
 angular.module('lergoApp').service('VideoService', function VideoService() {
 	this.getMedia = function(url) {
 		var media = {};
-		if (url.match('http|https://(www.)?youtube|youtu.be')) {
+		if (url.match('(http|https)://(www.)?(youtube|youtu.be)')) {
 			media.type = 'youtube';
 			if (url.match('embed')) {
 				media.id = url.split(/embed\//)[1].split('"')[0];

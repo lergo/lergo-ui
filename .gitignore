@@ -9,7 +9,8 @@ lib-cov
 
 .idea
 *.iml
-
+app/translations
+app/services/LergoTranslate.js
 dist
 
 pids
@@ -18,9 +19,13 @@ results
 
 app/bower_components
 
+coverage
 
+
+dev
 npm-debug.log
 node_modules
 
 .sass-cache
 .tmp
+.settings

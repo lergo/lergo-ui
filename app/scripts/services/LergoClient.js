@@ -1,47 +1,63 @@
 'use strict';
 
-angular.module('lergoApp').service('LergoClient', function LergoClient($http, $log, UsersService, QuestionsService, LikesService, LessonsService, LessonsInvitationsService, UserDataService ) {
-	// AngularJS will instantiate a singleton by calling "new" on this function
+angular.module('lergoApp').service('LergoClient',
+		function LergoClient($http, $log, UsersService, QuestionsService, LikesService, LessonsService, LessonsInvitationsService, UserDataService, ReportsService, AbuseReports) {
+			// AngularJS will instantiate a singleton by calling "new" on this
+			// function
 
-	$log.info('initializing');
-	this.signup = function(signupForm) {
-		return $http.post('/backend/users/signup', signupForm);
-	};
+			$log.info('initializing');
+			this.signup = function(signupForm) {
+				return $http.post('/backend/users/signup', signupForm);
+			};
 
+			this.resendValidationEmail = function(loginCredentials) {
+				return $http.post('/backend/users/validate/resend', loginCredentials);
+			};
 
-    this.resendValidationEmail = function( loginCredentials ){
-        return $http.post('/backend/users/validate/resend', loginCredentials );
-    };
+			this.isLoggedIn = function() {
+				return $http.get('/backend/user/loggedin');
+			};
 
-	this.isLoggedIn = function() {
-		return $http.get('/backend/user/loggedin');
-	};
+			this.logout = function() {
+				return $http.post('backend/users/logout');
+			};
+			this.login = function(loginCredentials) {
+				return $http.post('/backend/users/login', loginCredentials);
+			};
 
-	this.logout = function() {
-		return $http.post('backend/users/logout');
-	};
-	this.login = function(loginCredentials) {
-		return $http.post('/backend/users/login', loginCredentials);
-	};
+			/** ********* GUY ************** */
+			/**
+			 * ** I am starting to move some code around to fit the new
+			 * authorization design **
+			 */
+			/**
+			 * ** UserData will be used for 'getting' data that belongs to the
+			 * user **
+			 */
+			/** ** Logged in users will eventually use '/backend/user/me' ** */
+			/** * rather than give the user id ** */
 
-    /***********                                   GUY                     ***************/
-    /****   I am starting to move some code around to fit the new authorization design ***/
-    /****   UserData will be used for 'getting' data that belongs to the user          ***/
-    /****   Logged in users will eventually use '/backend/user/me'                     ***/
-    /***    rather than give the user id                                               ***/
+			/**
+			 * ** Lessons, Questions etc... will be used for
+			 * create/update/delete **
+			 */
+			/**
+			 * ** This is a work in progress.. so if you have questions about
+			 * where to enter **
+			 */
+			/*******************************************************************
+			 * ** a new route/service etc.. please contact me /
+			 ******************************************************************/
 
-    /****   Lessons, Questions etc... will be used for create/update/delete            ***/
-    /****  This is a work in progress.. so if you have questions about where to enter  ***/
-    /****  a new route/service etc.. please contact me
-    /*************************************************************************************/
+			this.lessons = LessonsService;
+			this.lessonsInvitations = LessonsInvitationsService;
+			this.questions = QuestionsService;
+			this.users = UsersService; // service to get info about users..
 
-    this.lessons = LessonsService;
-    this.lessonsInvitations = LessonsInvitationsService;
-    this.questions = QuestionsService;
-    this.users = UsersService; // service to get info about users..
+			// get user's lessons, get user's data.. not like UsersService..
+			this.userData = UserDataService;
+			this.likes = LikesService;
+			this.reports = ReportsService;
+			this.abuseReports=AbuseReports;
 
-    // get user's lessons, get user's data.. not like UsersService..
-    this.userData = UserDataService;
-    this.likes = LikesService;
-
-});
+		});

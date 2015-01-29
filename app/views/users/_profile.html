@@ -1,0 +1,81 @@
+<div class="container" id="Profile">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right col-edit">
+            <a class="btn btn-link  font-lg" ng-click="isEditAllow=!isEditAllow">
+                <i ng-show="!isEditAllow" class="fa fa-edit" tooltip="{{'profile.edit.title'|i18n}}"></i>
+                <i ng-show="!!isEditAllow" class="fa fa-save" tooltip="{{'profile.save.title'|i18n}}"></i>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 text-center">
+            <div>
+                <img gravatar-src="user.email" gravatar-size="150" class="img-rounded ">
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 ">
+            <div class="lergo-h1">
+                {{user.username}}
+            </div>
+            <br>
+
+            <div ng-show="!isEditAllow && !!user.shortIntro"> {{user.shortIntro}}</div>
+            <input ng-show="!!isEditAllow" ng-model="user.shortIntro" placeholder="{{'profile.ph.shortIntro'|i18n}}"/>
+            <br>
+            <div ng-show="!!isEditAllow">
+                <i class="fa fa-external-link"></i>&#xA0;&#xA0;
+                <input ng-show="!!isEditAllow" ng-model="user.externalLink" placeholder="External link"/>
+            </div>
+            <div ng-show="!isEditAllow && !!user.externalLink">
+                <i class="fa fa-external-link"></i>
+                &#xA0;&#xA0;
+                <a ng-href="http://{{user.externalLink}}"
+                   target="_blank" class="txt-color-darken"> {{user.externalLink}}</a>
+            </div>
+            <br>
+
+            <div>
+                <i class="fa fa-university"></i>
+                &#xA0;&#xA0;
+                <a href="#!/public/homepage?lergoFilter.createdBy={{user}}" class="txt-color-darken">{{'profile.lessonCreated'|i18n}}
+                </a>
+            </div>
+            <br>
+            <div>
+                <i class="fa fa-question-circle"></i>
+                &#xA0;&#xA0;
+                <a href="#" ng-click="showPublicQuestion()"class="txt-color-darken">{{'profile.questionCreated'|i18n}}</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 text-center">
+            <br>
+            <h4>
+                <strong> {{user.questionsCount}}</strong>
+                <br>{{'profile.question'|i18n}}
+
+            </h4>
+            <br>
+            <h4 class="font-md">
+                <strong> {{user.lessonsCount}}</strong>
+                <br>
+                {{'profile.lesson'|i18n}}
+            </h4>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 ">
+
+
+
+            <br>
+
+            <div ng-show="!!isEditAllow">
+                <textarea ng-model="user.details" placeholder="{{'profile.ph.details'|i18n}}"> </textarea>
+            </div>
+            <div ng-show="!isEditAllow && !!user.details">
+                <blockquote>{{user.details}}</blockquote>
+            </div>
+        </div>
+    </div>
+</div>

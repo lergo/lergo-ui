@@ -1,8 +1,11 @@
 'use strict';
 
+// guy - todo - change this file name or directive name.
+// I think the directive should be reportView and not lessonView.
+// consider using a template named reportView.html as well.
 angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 	return {
-		templateUrl : '/views/lessons/invitations/report/_display.html',
+		templateUrl : 'views/lessons/invitations/report/_display.html',
 		restrict : 'A',
 		scope : {
 			'lesson' : '=',
@@ -51,13 +54,13 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 				return false;
 			};
 
-			$scope.isCorrectFillInTheBlanks = function(quizItem, answer) {
+			$scope.isCorrectFillInTheBlanks = function(quizItem, index) {
 
-				if (!answer) {
+				var userAnswer = quizItem.userAnswer[index];
+				if (!userAnswer) {
 					return false;
 				}
-				var index = quizItem.userAnswer.indexOf(answer);
-				if (quizItem.answer[index].split(';').indexOf(answer) === -1) {
+				if (quizItem.answer[index].split(';').indexOf(userAnswer) === -1) {
 					return false;
 				} else {
 					return true;
@@ -81,15 +84,18 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 
 				$log.info('getting report quiz Items', step);
 
-				for ( var i = 0; i < quizItemsIds.length; i++) {
-					var qiId = quizItemsIds[i];
-
+                _.each(quizItemsIds, function(qiId){
 					var answer = getAnswer(qiId, index);
 					var qi = getQuizItem(qiId);
+                    if ( !!answer && !!qi ) {
+                        results.push(_.merge({}, qi, answer));
+                        // add all retries as well..
+                        _.each(answer.retries, function (retry) {
+                            results.push(_.merge({}, qi, retry));
+                        });
+                    }
+                });
 
-					results.push(_.merge({}, qi, answer));
-
-				}
 				$log.info('quizItems', results);
 				reportQuizItems['' + index] = results;
 				$scope.getAnswerStats(results, index);
@@ -100,6 +106,7 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 				if (!quizItems || quizItems.length < 1) {
 					return;
 				}
+				var duration = 0;
 				var stats = {
 					'correct' : 0,
 					'wrong' : 0,
@@ -117,6 +124,9 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 							stats.wrong = stats.wrong + 1;
 						}
 					}
+					if (!!quizItems[i].duration) {
+						duration = duration + quizItems[i].duration;
+					}
 				}
 				var correctPercentage = ((stats.correct * 100) / (quizItems.length - stats.openQuestions));
 				stats.correctPercentage = Math.round(correctPercentage);
@@ -124,37 +134,13 @@ angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
 				var wrongPercentage = ((stats.wrong * 100) / (quizItems.length - stats.openQuestions));
 				stats.wrongPercentage = Math.round(wrongPercentage);
 				stats.index = index;
+				stats.duration = duration;
 				$scope.$emit('stats', stats);
 			};
 
 			$scope.getStepViewByType = function(step) {
-				var result = '/views/lessons/invitations/report/steps/_' + step.type + '.html';
-				$log.info('result', result);
-				return result;
-			};
-
-			$scope.getDuration = function(duration) {
-				if (!duration) {
-					return 0;
-				}
-				var seconds = Math.ceil(duration / 1000);
-				var time = '';
-				if (seconds > 60) {
-					time = seconds % 60 + time;
-					var minutes = Math.floor(seconds / 60);
-					if (minutes > 60) {
-						time = minutes % 60 + ':' + time;
-						time = Math.floor(minutes / 60) + ':' + time;
-					} else {
-						time = '00:' + minutes + ':' + time;
-					}
-
-				} else {
-					time = '00:00:' + seconds;
-				}
-				return time;
+				return '/views/lessons/invitations/report/steps/_' + step.type + '.html';
 			};
 		}
-
 	};
 });

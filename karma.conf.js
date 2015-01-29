@@ -1,57 +1,70 @@
-// Karma configuration
 
-// base path, that will be used to resolve files and exclude
-basePath = '';
+module.exports = function(config){
 
-// list of files / patterns to load in the browser
-files = [
-  JASMINE,
-  JASMINE_ADAPTER,
-  'app/bower_components/jquery/jquery.js',
-  'app/bower_components/angular/angular.js',
-  'app/bower_components/angular-mocks/angular-mocks.js',
-  'app/scripts/*.js',
-  'app/scripts/**/*.js',
-  'test/mock/**/*.js',
-  'test/spec/**/*.js'
-];
+    var configuration = {
+        frameworks : ['jasmine'],
+        browsers : ['Chrome'] ,
+        customLaunchers: {
+            Chrome_travis_ci: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+            }
+        },
+      files : [
+        'app/bower_components/jquery/jquery.js',
+        'app/bower_components/lodash/dist/lodash.js',
+        'app/bower_components/angular/angular.js',
+        'app/bower_components/string-format-js/format.js',
+        'app/bower_components/angular-mocks/angular-mocks.js',
+        'app/bower_components/angular-route/angular-route.js',
+        'app/bower_components/angular-bootstrap/ui-bootstrap.js',
+        'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+        'app/bower_components/angular-ui-utils/ui-utils.js',
+        'app/bower_components/angular-markdown-directive/markdown.js',
+        'app/bower_components/angular-sanitize/angular-sanitize.js',
+        'app/bower_components/angular-local-storage/angular-local-storage.js',
+        'app/bower_components/google-code-prettify/src/prettify.js',
+        'app/bower_components/angular-adaptive-speech/angular-adaptive-speech.js',
+        'app/bower_components/angular-gravatar/build/md5.js',
+        'app/bower_components/angular-gravatar/build/angular-gravatar.js',
+        'app/scripts/*.js',
+        '.tmp/html2js/*.js',
+        'app/scripts/**/*.js',
+        'test/resources/index.js',
+        'test/resources/modules/**/*.js',
+        'test/mock/**/*.js',
+        'test/spec/**/*.js'
+      ],
+      port: 8080,
+        basePath: '',
+        preprocessors: {
+          'app/scripts/**/*.js' : ['coverage']
+        },
+        exclude : [],
+        reporters : ['failed', 'coverage'],
+        runnerPort: 9100,
+        colors: true,
+        logLevel: 'info',
+        autoWatch: true,
+        captureTimeout: 15000,
+        singleRun: false,
+        coverageReporter: {
+            type : 'html',
+            dir : 'coverage/',
+            subdir: function(browser){
+                var result = browser.toLowerCase().split(/[ /-]/)[0];
+                console.log('this is browser',result);
+                return result;
+            }
+        }
+    };
 
-// list of files to exclude
-exclude = [];
 
-// test results reporter to use
-// possible values: dots || progress || growl
-reporters = ['progress'];
+    if(process.env.TRAVIS){
+        configuration.browsers = ['Chrome_travis_ci'];
 
-// web server port
-port = 8080;
+    }
 
-// cli runner port
-runnerPort = 9100;
+    config.set(configuration);
 
-// enable / disable colors in the output (reporters and logs)
-colors = true;
-
-// level of logging
-// possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-logLevel = LOG_INFO;
-
-// enable / disable watching file and executing tests whenever any file changes
-autoWatch = false;
-
-// Start these browsers, currently available:
-// - Chrome
-// - ChromeCanary
-// - Firefox
-// - Opera
-// - Safari (only Mac)
-// - PhantomJS
-// - IE (only Windows)
-browsers = ['Chrome'];
-
-// If browser does not capture in given timeout [ms], kill it
-captureTimeout = 15000;
-
-// Continuous Integration mode
-// if true, it capture browsers, run tests and exit
-singleRun = false;
+};

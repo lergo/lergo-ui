@@ -1,16 +1,227 @@
-#about{
-  .cloudbees{
-    width: 128px;
-    height: 92px;
-    display:inline-block;
-    background: url('../images/thanks_to/cloudbees.png')
-  }
+#about {
+    .cloudbees {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/cloudbees.png") center no-repeat;
+    }
+    .browserstack {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/browserstack.png") center no-repeat;
+    }
+    .essence {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/essence.png") center no-repeat;
+    }
+    .github {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/github.png") center no-repeat;
+    }
+    .goanimate {
+        width: 211px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/goanimate.png") center no-repeat;
+    }
+    .jira {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/jira.png") center no-repeat;
+    }
+    .loggly {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/loggly.png") center no-repeat ;
+    }
+    .phraseapp {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/phraseapp.png") center no-repeat;
+    }
+    .pingdom {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/pingdom.png") center no-repeat;
+    }
+    .tatoeba {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/tatoeba.png") center no-repeat;
+    }
+    .bnaibrith {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/bnaibrith.png") center no-repeat;
+    }
+    .muvizu {
+        width: 210px;
+        height: 100px;
+        display: inline-block;
+        background: url("../images/thanks_to/muvizu.png") center no-repeat;
+    }
+    .fundersPictureImg {
+        width: 647px;
+        height: 568px;
+        display: inline-block;
+        background: url("../images/fundersPicture.png");
+    }
+    .friends {
+        margin: 0 15px;
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .icons {
+            a {
+                margin: 10px;
+            }
+        }
+    }
+    .funders {
+        margin: 0 15px;
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .name {
+            vertical-align: -webkit-baseline-middle;
+        }
+        .super {
+            vertical-align: super;
+            font-size: small;
+            font-weight: bold;
+        }
+    }
+    .privacy {
+        margin: 0 15px;
+    }
+    .contribute {
+        margin: 0 15px;
+    }
+    .contact {
+        margin: 0 15px;
+    }
+    .fundersPicture {
+        margin: 0 15px;
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .image {
+            text-align: center;
+        }
+        .heart {
+            margin: 20px 0;
+            color: red;
+            i {
+                margin: 0 5px;
+            }
+        }
+    }
+    .contributors {
+        margin: 0 15px;
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .name {
+            font-weight: bold;
+        }
+    }
+    .overview {
+        margin: 0 15px;
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+        }
+    }
+    .nav-tabs-vertical {
+        width: 225px;
+        float: left;
+        > li {
+            &.active > a {
+                &,
+                &:hover,
+                &:focus {
+                    border-right-color: #fafafa;
+                }
+            }
+        }
+    }
+    .tab-content-vertical {
+        width: 775px;
+        float: right;
+    }
+}
 
-  .browserstack{
-    width: 386px;
-    height: 92px;
-    display:inline-block;
-    background: url('../images/thanks_to/browserstack.png')
-  }
-
+.rtl {
+    #about {
+        .nav-tabs-vertical {
+            float: right;
+            > li {
+                &.active > a {
+                    &,
+                    &:hover,
+                    &:focus {
+                        border-left-color: #fafafa;
+                        border-right-color: #dddddd;
+                    }
+                }
+            }
+        }
+        .tab-content-vertical {
+            float: left;
+        }
+    }
 }

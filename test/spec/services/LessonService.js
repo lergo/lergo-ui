@@ -2,17 +2,17 @@
 
 describe('Service: LessonService', function () {
 
-  // load the service's module
-  beforeEach(module('lergoApp'));
+    // load the service's module
+    beforeEach(module('lergoApp'));
 
-  // instantiate service
-  var LessonService;
-  beforeEach(inject(function (_LessonService_) {
-    LessonService = _LessonService_;
-  }));
+    // instantiate service
+    var mLessonService;
+    beforeEach(inject(function (LessonService) {
+        mLessonService = LessonService;
+    }));
 
-  it('should do something', function () {
-    expect(!!LessonService).toBe(true);
-  });
+    it('should do something', function () {
+        expect(!!mLessonService).toBe(true);
+    });
 
 });

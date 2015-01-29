@@ -1,0 +1,18 @@
+<div style="font-size: 20px;">
+	<table class="lergo-table">
+		<tbody>
+			<tr ng-show="!!isMultiChoiceMultiAnswer(quizItem)" ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
+				<td style="width: 5%">
+					<input type="checkbox" ng-model="option.userAnswer" />
+				</td>
+				<td>{{option.label}}</td>
+			</tr>
+			<tr ng-show="!isMultiChoiceMultiAnswer(quizItem)" ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
+				<td style="width: 5%">
+					<input type="radio" ng-model="option.userAnswer" ng-value="true" ng-click="setSingleAnswer(quizItem, $index)" />
+				</td>
+				<td>{{option.label}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

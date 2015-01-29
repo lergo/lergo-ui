@@ -1,0 +1,38 @@
+<!-- keep this  file to test live how embed works -->
+
+
+<html>
+    <head>
+        <title>Lergo Embed Test</title>
+        <script src="scripts/frameResize.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div>
+        Type the lergo URL you want to embed here<br/>
+            <input id="lergoUrlToEmbed"/>
+        </div>
+        <div>
+            You should see the iframe here <br/>
+            <iframe id="lergoIframe" frameBorder="0" src="javascript:void(0)"></iframe>
+        </div>
+    <script>
+
+        var iframeUrl = null;
+        var element = document.getElementById('lergoIframe');
+
+        setInterval(function(){
+
+            var url = document.getElementById('lergoUrlToEmbed').value;
+
+            if ( url !== iframeUrl ){
+                iframeUrl = url;
+                var element = document.getElementById('lergoIframe');
+                element.setAttribute('src', url);
+            }
+        },100);
+
+        lergoUtilsChangeFrameSize(element);
+
+    </script>
+    </body>
+</html>

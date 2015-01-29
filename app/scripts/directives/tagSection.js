@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('lergoApp')
-    .directive('tagSection', function ($log) {
+    .directive('tagSection', function ($log, TagsService ) {
         return {
             templateUrl: 'views/directives/_tagSection.html',
             restrict: 'A',
             scope: {
-                'tags': '=',
-                'tagsAvailable': '='
+                'tags': '='
             },
             link: function postLink($scope, element, attrs) {
                 var separator = attrs.separator || ',';
@@ -32,6 +31,16 @@ angular.module('lergoApp')
 
                 $scope.removeTag = function (tag) {
                     $scope.tags.splice($scope.tags.indexOf(tag), 1);
+                };
+
+                TagsService.getAllAvailableTags().then(function(result){
+                    $scope.availableTags = result.data;
+                });
+
+                $scope.getTagsLike = function (like) {
+                    return TagsService.getAllAvailableTags(like).then(function (result) {
+                        return result.data;
+                    });
                 };
 
 
@@ -63,8 +72,11 @@ angular.module('lergoApp')
                     addTag(tag);
                 };
 
-                $scope.$watch('newTag', function () {
-                    $log.info('newTag changed');
+                $scope.$watch('newTag', function (newValue, oldValue) {
+                    if ( newValue === oldValue ){
+                        return;
+                    }
+                    $log.debug('newTag changed', newValue, oldValue);
 
                     if (typeof($scope.newTag) === 'object') {
                         // if object - it came from typeahead, and our 'on select' listener will take care of it.

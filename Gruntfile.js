@@ -3,6 +3,8 @@
 var LIVERELOAD_PORT = 34729;
 var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+var path = require('path');
+var logger = require('log4js').getLogger('Gruntfile');
 
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
@@ -29,6 +31,17 @@ module.exports = function (grunt) {
     } catch (e) {
     }
 
+    var s3Config = {};
+    try {
+        var s3path = process.env.LERGO_S3 || path.resolve('./dev/s3.json');
+        logger.info('looking for s3.json at ' , s3path );
+        s3Config = require( s3path );
+    }catch(e){
+        logger.error('s3 json is undefined, you will not be able to upload to s3',e);
+    }
+    
+    
+
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
@@ -46,6 +59,23 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/scripts/**/*.js',
                     '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
+            }
+        },
+        s3:{
+            uploadCoverage: {
+                options: {
+                    accessKeyId: s3Config.accessKey,
+                    secretAccessKey: s3Config.secretAccessKey,
+                    bucket: s3Config.bucket,
+                    cacheTTL: 0,
+                    sslEnabled: false,
+                    enableWeb:true,
+                    gzip:true
+                },
+                cwd: 'coverage/',
+                src: '**',
+                dest: 'ui-coverage/'
+
             }
         },
         connect: {
@@ -80,6 +110,7 @@ module.exports = function (grunt) {
             },
             test: {
                 options: {
+                    port:9001,
                     middleware: function (connect) {
                         return [
                             mountFolder(connect, '.tmp'),
@@ -120,12 +151,31 @@ module.exports = function (grunt) {
         },
         jshint: {
             options: {
-                jshintrc: '.jshintrc'
+                reporter: require('jshint-stylish')
             },
-            all: [
-                'Gruntfile.js',
-                '<%= yeoman.app %>/scripts/**/*.js'
-            ]
+            main: {
+                options: {
+                    jshintrc: '.jshintrc'
+                },
+
+                files:  {
+                    'src':[
+                        'Gruntfile.js',
+                        '<%= yeoman.app %>/scripts/**/*.js'
+                    ]
+                }
+            },
+            test: {
+                options: {
+                    jshintrc: 'test.jshintrc'
+                },
+                files:  {
+                    'src':[
+                        'test/**/*.js'
+                    ]
+                }
+            }
+
         },
         compass: {
             options: {
@@ -203,6 +253,22 @@ module.exports = function (grunt) {
             //   }
             // }
         },
+        html2js: {
+            options: {
+                // custom options, see below
+            },
+            main: {
+                src: ['app/views/**/*.html','app/views/*.html'],
+                dest: '.tmp/html2js/directives.js',
+                module: 'directives-templates',
+                options: {
+                    rename: function (moduleName) {
+                        var indexOf = moduleName.indexOf('views');
+                        return moduleName.substring(indexOf);
+                    }
+                }
+            }
+        },
         htmlmin: {
             dist: {
                 options: {
@@ -242,7 +308,8 @@ module.exports = function (grunt) {
                             'translations/**/*',
                             'images/{,*/}*.{gif,webp,svg,png,jpg,jpeg}',
                             'emailResources/**/*',
-                            'styles/fonts/*'
+                            'styles/fonts/*',
+                            'audio/{,*/}*.mp3'
                         ]
                     },
                     {
@@ -278,7 +345,16 @@ module.exports = function (grunt) {
         karma: {
             unit: {
                 configFile: 'karma.conf.js',
-                singleRun: true
+                singleRun:true,
+                port:9001
+
+
+            },
+            debug:{
+                configFile: 'karma.conf.js',
+                singleRun:false,
+                reporters: ['failed'],
+                port:9001
             }
         },
         cdnify: {
@@ -326,9 +402,10 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
+        'html2js',
         'concurrent:test',
         'connect:test',
-        'karma'
+        'karma:unit'
     ]);
 
     grunt.registerTask('build', [
@@ -348,7 +425,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'jshint',
-//        'test',
+        'test',
         'build'
     ]);
 };

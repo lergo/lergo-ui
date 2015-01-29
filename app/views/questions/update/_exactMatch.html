@@ -1,19 +1,29 @@
 <!-- To init option array by single element if its empty   -->
 {{ (quizItem.options===undefined) && addOption() || ""}}
 <table class="lergo-table lergo-form">
-   <thead>
-      <tr >
-         <td>{{ 'questions.possibleAnswers' | i18n }}</td>
-         <td style="width: 10%"></td>
-      </tr>
-   </thead>
-   <tbody>
-      <tr ng-repeat="option in quizItem.options track by $index">
-         <td><input type="text" placeholder="{{('questions.answerOption' |i18n) + ($index + 1)}}" ng-model=quizItem.options[$index].label /></td>
-         <td><a class="btn-link" ng-click="removeOption(option)" ng-show="quizItem.options.length > 1">X</a></td>
-      </tr>
-      <tr>
-         <td><input type="text" placeholder="{{ 'questions.clickToAdd' | i18n }}" readonly="True" ng-click="addOption()" /></td>
-      </tr>
-   </tbody>
+  <thead>
+  <tr>
+    <td>{{ 'questions.possibleAnswers' | i18n }}</td>
+    <td width="10%">{{ 'questions.correctAnswers' | i18n }}</td>
+    <td width="10%">{{ 'remove' | i18n }}</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="option in quizItem.options track by $index">
+    <td>
+      <input placeholder="{{('questions.answerOption' |i18n) + ($index + 1)}}" ng-model="option.label"/>
+    </td>
+    <td>
+      <input type="checkbox" ng-model="option.checked"/>
+    </td>
+    <td>
+      <a href="#" class="btn-link" ng-click="removeOption(option)" ng-show="quizItem.options.length > 1">X</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="text" placeholder="{{ 'questions.clickToAdd' | i18n }}" readonly="True" ng-click="addOption()"/>
+    </td>
+  </tr>
+  </tbody>
 </table>

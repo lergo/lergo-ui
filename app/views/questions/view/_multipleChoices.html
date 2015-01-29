@@ -7,27 +7,25 @@
 			<p class="question-help-text">{{quizItem.helpText}}</p>
 		</div>
 		<div quiz-item-media quiz-item="quizItem"></div>
-		<div>
-			<table class="lergo-table">
-				<tbody>
-					<tr ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
-						<td style="width: 5%">
-							<input type="checkbox" ng-model="option.userAnswer" />
-						</td>
-						<td>{{option.label}}</td>
-					</tr>
-				</tbody>
-			</table>
+		<div multi-choice quiz-item="quizItem" on-click="checkAnswer()"></div>
+		<div class="submit">
+			<div>
+				<button ng-show="!getAnswer() && isMultiChoiceMultiAnswer(quizItem)" ng-disabled="!canSubmit(quizItem)" type="submit" class="btn"
+					ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+                <div quiz-next-question-button></div>
+				<button ng-show="!!isQuizDone()" class="btn" ng-click="nextStep()">{{ 'lessons.letsContinue' | i18n }}</button>
+			</div>
 		</div>
-		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
 	</div>
 	<div class="right">
 		<div ng-include="'views/questions/view/partials/_actionItems.html'"></div>
 	</div>
 </div>
 <div ng-show="mode==='quiz'">
-    <div lergo-progress-bar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></div>
-    <!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
+	<div lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
+		<b>{{progressPercentage}}%</b>
+	</div>
+	<!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
 </div>
 <br>
-<div ng-include="'views/questions/view/partials/_result.html'"> </div>
+<div ng-include="'views/questions/view/partials/_result.html'"></div>

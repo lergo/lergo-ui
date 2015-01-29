@@ -5,12 +5,14 @@
         </span>
         </span>
         <!-- if no tags avaiable, hide typeahead or otherwise we will get errors in the console -->
-        <input ng-model="newTag" type="text" ng-show="!tagsAvailable" placeholder="{{'tagHint' | i18n}}" ui-keypress="{enter: 'finishTyping(newTag)'}"/>
+        <!--<input ng-model="newTag" type="text" ng-show="!tagsAvailable" placeholder="{{'tagHint' | i18n}}" ui-keypress="{enter: 'finishTyping(newTag)'}"/>-->
 
-        <input ng-model="newTag" type="text" ng-show="!!tagsAvailable" name="filterName" ng-trim="false"
 
+        <!--ng-show="!!tagsAvailable"-->
+        <input ng-model="newTag" type="text" name="filterName" ng-trim="false"
+               typeahead-wait-ms="100"
                placeholder="{{'tagHint' | i18n}}"
-               typeahead="tag as tag.label for tag in tagsAvailable | filter:$viewValue | limitTo:15 "
+               typeahead="tag as tag.label for tag in getTagsLike($viewValue)"
                 typeahead-append-to-body="true"
                 typeahead-on-select="addTagFromTypeahead($item, $model, $label)"
                 />

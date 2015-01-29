@@ -1,22 +1,27 @@
 'use strict';
 
-describe('Controller: BaselayoutcreateCtrl', function () {
+describe('Controller: BaseLayoutCreateCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('lergoApp'));
+    // load the controller's module
+    beforeEach(module('lergoApp'));
 
-  var BaselayoutcreateCtrl,
-    scope;
+    var BaselayoutcreateCtrl,
+        scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    BaselayoutcreateCtrl = $controller('BaselayoutcreateCtrl', {
-      $scope: scope
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function ($controller, $rootScope ) {
+        scope = $rootScope.$new();
+        BaselayoutcreateCtrl = $controller('BaseLayoutCreateCtrl', {
+            $scope: scope,
+            $routeParams : { 'activeTab' : 'lessons'}
+        });
+    }));
+
+    it('should NOT attach lessonTabActive function to scope', function () {
+        expect(typeof(scope.lessonTabActive)).toBe('undefined');
     });
-  }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
+    it('should  attach sections to scope', function () {
+        expect(typeof(scope.sections)).toBe('object');
+    });
 });

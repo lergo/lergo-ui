@@ -1,8 +1,5 @@
 @import './bootstrapVariables';
 @import "myBootstrapSass/bootstrap";
-
-
-
 @import "./variables";
 @import './bootstrapOverrides';
 //
@@ -28,4 +25,9 @@
 @import "./underConstruction";
 @import "./create";
 @import "./createLessonPage";
-@import "./questionPreview"
+@import "./questionPreview";
+@import "./helperContent";
+@import "./reportIndex";
+@import "./faq";
+@import "./facebook";
+@import "./profile";

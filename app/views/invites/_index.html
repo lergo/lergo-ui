@@ -1,0 +1,73 @@
+<div id="inviteIndex" load-filter-and-paging="loadInvites()">
+	<div class="page-content-width page-content-titles">
+		<div class="page-content-body">
+			<div class="lergo-h1">
+				{{ 'invites.myInvites' | i18n }} [ {{ 'reports.total' | i18n }}: {{systemStats.myInvites }} ]
+				<!-- LERGO-457-->
+			</div>
+		</div>
+		<div class="page-content-sidebar">
+			<div class="lergo-h1">{{ 'invites.filter' | i18n }}</div>
+		</div>
+	</div>
+	<div class="page-content-width">
+		<div class="page-content-body">
+			<table class="lergo-table">
+				<thead>
+					<tr>
+						<td class="checkbox-dropdown">
+							<div class="btn-group" dropdown>
+								<input type="checkbox" ng-click="selectAll($event)" ng-model="invitesPage.selectAll">
+								<button type="button" class="btn-link" dropdown-toggle>
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li>
+										<a style="outline: none;" class="btn-link " ng-click="markAsDone()">{{'invites.markAsDone'|i18n}}</a>
+										<a style="outline: none;" class="btn-link " ng-click="markAsUndone()">{{'invites.markAsUndone'|i18n}}</a>
+										<hr />
+										<a style="outline: none;" class="btn-link delete-menu" ng-click="deleteInvites()">{{'delete'|i18n}}</a>
+									</li>
+								</ul>
+							</div>
+						</td>
+						<td>{{ 'name' | i18n }}</td>
+						<td>{{ 'reports.student' | i18n}}</td>
+						<td>{{ 'filters.labels.language' | i18n}}</td>
+						<td>{{ 'filters.labels.subject' | i18n}}</td>
+						<td>{{ 'questions.age' | i18n }}</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="invite in invites |orderBy:'-lastUpdate'">
+						<td>
+							<input type="checkbox" style="margin-left: 5px;" ng-model="invite.selected">
+						</td>
+						<td class="name">
+							<a tooltip="{{'invites.tooltip.go' | i18n}}" ng-href="#!/public/lessons/{{invite.lessonId}}/intro?invitationId={{invite._id}}">
+								<span ng-show="invite.name.trim().length > 0" class="{{!invite.finished && 'bold' || ''}}"> {{ invite.name}} </span>
+								<span ng-show="invite.name.trim().length <= 0" class="{{!invite.finished && 'bold' || ''}}">[ no title ]</span>
+							</a>
+						</td>
+						<td class="answer">
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.invitee.name}}</span>
+						</td>
+						<td class="answer">
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.language && ('filters.languages.' + invite.language | i18n) ||""}}</span>
+						</td>
+						<td class="answer">
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.subject && ('filters.subjects.' + invite.subject | i18n) ||""}}</span>
+						</td>
+						<td class="answer">
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.age &&('+'+ invite.age) || ""}}</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="sidebar page-content-sidebar">
+			<div lergo-filter model="invitesFilter" on-change="loadInvites()" opts="invitesFilterOpts" on-load="filterLoaded()"></div>
+		</div>
+	</div>
+	<div lergo-paging page="filterPage" on-change="loadInvites()" on-load="pagingLoaded()"></div>
+</div>

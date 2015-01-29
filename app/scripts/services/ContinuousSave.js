@@ -31,7 +31,7 @@
  *
  */
 angular.module('lergoApp')
-    .factory('ContinuousSave', function (localStorageService, $timeout, $rootScope, $log) {
+    .factory('ContinuousSave', function (localStorageService, $timeout, $rootScope, $log,$filter) {
 
         var _preventedPageExit = [];
         var _preventedFlag;
@@ -87,7 +87,7 @@ angular.module('lergoApp')
                         if (!_status.saved) { // if there is unsaved data, we need to prevent
                             _preventedPageExit.push(_preventedFlag); // i prevented, so i put the flag on the list.
 
-                            var answer = window.confirm('You have unsaved changes.Are you sure you want to leave this page?');
+                            var answer = confirm($filter('i18n')('continousSave.Confirm'));
                             if (!answer) {
                                 event.preventDefault();
                             }
@@ -102,6 +102,10 @@ angular.module('lergoApp')
 
 
             function _onValueChange(newValue, oldValue) {
+
+                if ( newValue === oldValue ){
+                    return;
+                }
 
                 if (!newValue) { // page still not initialized
                     return;
@@ -120,6 +124,7 @@ angular.module('lergoApp')
                 $timeout(_save, 0);
             }
 
+            var retries = 0;
             function _save() {
 
                 $log.info(_localVersion);
@@ -139,6 +144,7 @@ angular.module('lergoApp')
 
                 _status.saving = true;
                 _saveFn(_localVersion).then(function (result) {
+                    retries = 0;
                     _remoteVersion = result.data;
                     _status.saved = _versionMatch();
                     _status.saving = false;
@@ -150,6 +156,12 @@ angular.module('lergoApp')
                 }, function( result ){
                     $log.error('unable to save ', result);
                     _status.saving = false;
+                    if ( retries > 5 ){
+                        return;
+                    }else{
+                        retries++;
+                        setTimeout(_save,1000);
+                    }
 
                 });
 

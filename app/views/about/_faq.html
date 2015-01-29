@@ -1,0 +1,43 @@
+<div id="FAQ" class="lergo-form" ng-controller="FaqIndexCtrl" ng-init="scrollUp()">
+    <div>
+        <div class="title">{{'about.faq'|i18n}}</div>
+        <br />
+        <div class="desc">
+            {{'faq.header1' | i18n}}
+            <a href="#!/public/contact">{{'faq.header2' | i18n}}</a>
+            {{'faq.header3' | i18n}}
+            <a href="#!/public/problem">{{'faq.header4' | i18n}}</a>
+            {{'faq.header5' | i18n}}
+        </div>
+    </div>
+    <br />
+    <div ng-repeat="q in faq.contents">
+        <div class="faq">
+            <div class="question">{{q.question}}</div>
+            <div class="answer">{{q.answer}}</div>
+        </div>
+        <br />
+        <div admin-section>
+            <div class="admin">
+                <div class="actions">
+                    <a ng-click="moveUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
+                    <a ng-click="moveDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
+                    <a ng-click="removeFAQ($index)" class="fa fa-trash-o"></a>
+                </div>
+                <div>
+                    {{'questions.question' | i18n}}
+                    <input ng-model="q.question" />
+                </div>
+                <div>
+                    {{'questions.answer' | i18n}}
+                    <textarea ng-model="q.answer"></textarea>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div admin-section>
+        <a class="btn-link" ng-click="addFAQ()">{{'faq.add' | i18n}}</a>
+        <div class="lergo-h3">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+    </div>
+</div>

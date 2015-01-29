@@ -1,13 +1,14 @@
 'use strict';
 
 describe('Directive: adminSection', function () {
-  beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp'));
 
-  var element;
+    var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<admin-section></admin-section>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the adminSection directive');
-  }));
+    it('should make hidden element visible', inject(function ($rootScope, $compile) {
+        element = angular.element('<div admin-section></div>');
+        element = $compile(element)($rootScope);
+        $rootScope.$digest();
+        expect(element.find('.ng-hide').length).toBe(1);
+    }));
 });

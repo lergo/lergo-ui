@@ -1,38 +1,65 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, FilterService, $rootScope, TagsService) {
-	$scope.lessons = null;
-
-	$scope.ageFilter = function(lesson) {
-		return FilterService.filterByAge(lesson.age);
+angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window, localStorageService) {
+	// enum
+	$scope.LessonTypeToLoad = {
+		user : 'myLessons',
+		liked : 'likedLessons'
 	};
-	$scope.languageFilter = function(lesson) {
-		return FilterService.filterByLanguage(lesson.language);
-	};
-	$scope.subjectFilter = function(lesson) {
-		return FilterService.filterBySubject(lesson.subject);
+	$scope.lessonsFilter = {};
+	$scope.filterPage = {};
+	$scope.totalResults = 0;
+	$scope.lessonsFilterOpts = {
+		'showSubject' : true,
+		'showLanguage' : true,
+		'showAge' : true,
+		'showViews' : true,
+		'showTags' : true,
+		'showSearchText' : true
 	};
 
-    $scope.tagsFilter = function(lesson){
-        return FilterService.filterByTags( lesson.tags );
-    };
+	$scope.load = function(lessonToLoad) {
+		var oldValue = localStorageService.get('lessonToLoad');
+		if (oldValue !== lessonToLoad) {
+			localStorageService.set('lessonToLoad', lessonToLoad);
+			$scope.filterPage.current = 1;
+			$scope.filterPage.updatedLast = new Date().getTime();
+		}
+	};
 
-	$scope.getAll = function() {
-		LergoClient.userData.getLessons().then(function(result) {
-			$scope.lessons = result.data;
+	$scope.loadLessons = function() {
+		$log.info('loading lessons');
+		var queryObj = {
+			'filter' : _.merge({}, $scope.lessonsFilter),
+			'sort' : {
+				'lastUpdate' : -1
+			},
+			'dollar_page' : $scope.filterPage
+		};
+		$scope.lessonToLoad = localStorageService.get('lessonToLoad');
+		var getLessonsPromise = null;
+		if ($scope.lessonToLoad === $scope.LessonTypeToLoad.liked) {
+			getLessonsPromise = LergoClient.userData.getLikedLessons(queryObj);
+		} else {
+			getLessonsPromise = LergoClient.userData.getLessons(queryObj);
+			$scope.lessonToLoad = $scope.LessonTypeToLoad.user;
+		}
+
+		getLessonsPromise.then(function(result) {
+			$scope.lessons = result.data.data;
+			$scope.filterPage.count = result.data.count; // number of lessons
+			// after filtering
+			// .. changing
+			// pagination.
+			$scope.totalResults = result.data.total;
 			$scope.errorMessage = null;
-            $scope.availableTags = TagsService.getTagsFromItems( $scope.lessons );
 			$log.info('Lesson fetched successfully');
+			scrollToPersistPosition();
 		}, function(result) {
 			$scope.errorMessage = 'Error in fetching Lessons : ' + result.data.message;
 			$log.error($scope.errorMessage);
 		});
 	};
-	$scope.getAll();
-
-	$scope.$on('$viewContentLoaded', function() {
-		$scope.getAll();
-	});
 
 	$scope.create = function() {
 		LergoClient.lessons.create().then(function(result) {
@@ -44,8 +71,29 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 			$log.error($scope.errorMessage);
 		});
 	};
+
+	var path = $location.path();
 	$scope.$on('$locationChangeStart', function() {
-		$rootScope.lessonScrollPosition = window.scrollY;
+		persistScroll($scope.filterPage.current);
 	});
-	window.scrollTo(0, $rootScope.lessonScrollPosition);
+
+	$scope.$watch('filterPage.current', function(newValue, oldValue) {
+		if (!!oldValue) {
+
+			persistScroll(oldValue);
+		}
+	});
+	function persistScroll(pageNumber) {
+		if (!$rootScope.scrollPosition) {
+			$rootScope.scrollPosition = {};
+		}
+		$rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
+	}
+	function scrollToPersistPosition() {
+		var scrollY = 0;
+		if (!!$rootScope.scrollPosition) {
+			scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
+		}
+		$window.scrollTo(0, scrollY);
+	}
 });

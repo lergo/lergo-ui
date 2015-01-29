@@ -1,0 +1,36 @@
+#FAQ {
+    margin: 0 15px;
+    .title {
+        font-size: 25px;
+        color: rgb(6, 54, 95);
+        line-height: 25px;
+        font-weight: bold;
+    }
+    .desc {
+        font-size: 18px;
+        line-height: 1.5;
+        text-align: justify;
+    }
+    .faq {
+        .question {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .answer {
+            font-size: 18px;
+            line-height: 20px;
+            text-align: justify;
+        }
+    }
+    .admin {
+        border: 2px solid grey;
+        border-radius: 10px;
+        padding: 10px;
+        .actions {
+            text-align: right;
+        }
+    }
+}

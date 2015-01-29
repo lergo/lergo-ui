@@ -1,13 +1,15 @@
 <div class="base-layout" id="create">
-	<div >
-		<tabset> 
-		<tab heading="{{'baseLayout.header.links.lessons' | i18n}}" ng-click="lessonTabActive()" active="isLessonTabActive">
-		<div ng-include="'views/lessons/_index.html'" ng-controller="LessonsIndexCtrl"></div>
-		</tab> <tab  ng-click="questionTabActive()" heading="{{'baseLayout.header.links.questions' | i18n}}" active="isQuestionTabActive">
-		<div ng-include="'views/questions/_index.html'" ng-controller="QuestionsIndexCtrl"></div>
-		</tab> 
-		<!-- <tab heading="Admin">
-		<div ng-include="'views/admin/homepage.html'" ng-controller="AdminHomepageCtrl"></div>
-		</tab> --> </tabset>
+	<div>
+		<ul class="nav nav-tabs">
+			<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
+				<a href="#!/user/create/{{section.id}}">
+					<i class="{{section.icon}}"></i>
+					{{'baseLayout.header.links.' + section.id | i18n}}
+				</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div ng-include="currentSection.include"></div>
+		</div>
 	</div>
 </div>

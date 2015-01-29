@@ -1,70 +1,89 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService/*
-																									 * ,
-																									 * $location,
-																									 * $log
-																									 */) {
+angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService, $rootScope, $filter, $log, $routeParams, $location, $window) {
 
+	$scope.loaded = false;
+	$scope.lessonsFilter = {
+		'public' : {
+			'dollar_exists' : 1
+		}
+	};
+	$scope.filterPage = {};
+	$scope.lessonsFilterOpts = {
+		'showSubject' : true,
+		'showLanguage' : true,
+		'showAge' : true,
+		'showViews' : true,
+		'showTags' : true,
+		'showCreatedBy' : true
+	};
 
-	LergoClient.lessons.getPublicLessons().then(function(result) {
-		$scope.lessons = result.data;
-        $scope.availableTags = TagsService.getTagsFromItems( $scope.lessons );
+	$scope.loadLessons = function() {
 
-		$scope.lessons.forEach(function(value) {
-			value.image = LergoClient.lessons.getTitleImage(value);
+		$log.info('loading lessons');
+
+		var searchFilter = {};
+		if (!!$routeParams.search) {
+			searchFilter = {
+				'searchText' : $routeParams.search
+			};
+		}
+
+		var queryObj = {
+			'filter' : _.merge(searchFilter, $scope.lessonsFilter),
+			'sort' : {
+				'lastUpdate' : -1
+			},
+			'dollar_page' : $scope.filterPage
+		};
+		LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
+			$scope.lessons = result.data.data;
+			$scope.filterPage.count = result.data.count; // the number of
+			// lessons found
+			// after filtering
+			// them.
+			scrollToPersistPosition();
+			$scope.loaded = true;
 		});
-	});
 
-	$scope.ageFilter = function(lesson) {
-		return FilterService.filterByAge(lesson.age);
 	};
 
-    $scope.tagsFilter = function(lesson){
-        return FilterService.filterByTags( lesson.tags );
-    };
-
-	$scope.languageFilter = function(lesson) {
-		return FilterService.filterByLanguage(lesson.language);
-	};
-	$scope.subjectFilter = function(lesson) {
-		return FilterService.filterBySubject(lesson.subject);
-	};
-	$scope.viewsFilter = function(lesson) {
-		return FilterService.filterByViews(lesson.views);
-	};
-	LergoClient.lessons.getStats().then(function(result) {
-		$scope.stats = result.data;
+	$scope.$watch(function() {
+		return $filter('i18n')('lergo.title');
+	}, function() {
+		$rootScope.page = {
+			'title' : $filter('i18n')('lergo.title'),
+			'description' : $filter('i18n')('lergo.description')
+		};
 	});
 
 	$scope.absoluteShareLink = function(lesson) {
-		return window.location.origin + '/#/public/lessons/' + lesson._id + '/share';
+		return window.location.origin + '/#!/public/lessons/' + lesson._id + '/share';
 	};
 
-	/** * MOCK CODE FOR REFERENCE - WILL BE REMOVED BY END OF JUNE ** */
-	/*
-	 * $scope.filters = [ { 'label' : 'age range',
-	 * 'options':['1-6','6-10','10-15','15-20','Custom'], 'select':null}, {
-	 * 'label' : 'language',
-	 * 'options':['languages.en','languages.he','languages.ru'],
-	 * 'translate':true, 'select':null}, { 'label' : 'subject',
-	 * 'options':['subject.spelling','subject.math','subject.art'],
-	 * 'translate':true, 'select':null} ];
-	 * 
-	 * $scope.tags = [ 'confusing words', 'tricks', 'visual', 'fun' ]; // true ==
-	 * next, false == prev $scope.flipSection = function (section, direction) {
-	 * 
-	 * if (direction) { section.index++; } else { if (section.index > 0) {
-	 * section.index--; } } };
-	 * 
-	 * $scope.getLessons = function(section){ if (
-	 * !section.hasOwnProperty('index')){ section.index = 0; }
-	 * 
-	 * var l = section.lessons; var i = section.index; var ll =
-	 * section.lessons.length; return [ l[i%ll], l[(i+1)%ll], l[(i+2)%ll]]; };
-	 * 
-	 * LessonService.getHomepageLessons().then(function(data){ $scope.sections =
-	 * data; });
-	 */
+	var path = $location.path();
+	$scope.$on('$locationChangeStart', function() {
+		persistScroll($scope.filterPage.current);
+	});
 
+	$scope.$watch('filterPage.current', function(newValue, oldValue) {
+		if (!!oldValue) {
+
+			persistScroll(oldValue);
+		}
+	});
+	function persistScroll(pageNumber) {
+		if (!$rootScope.scrollPosition) {
+			$rootScope.scrollPosition = {};
+		}
+		$rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
+	}
+	function scrollToPersistPosition() {
+		var scrollY = 0;
+		if (!!$rootScope.scrollPosition) {
+			scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
+		}
+		$window.scrollTo(0, scrollY);
+	}
+	
 });

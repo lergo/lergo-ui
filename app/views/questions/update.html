@@ -4,6 +4,6 @@
 	<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
 	<div>
 		<button class="btn" ng-click="done()" ng-disabled="isSaving()||!isValid(quizItem)">{{ 'done' | i18n }}</button>
-		<a class="btn" ng-disabled="isSaving()||!isValid(quizItem)" href="#/user/questions/{{quizItem._id}}/read"> {{ 'preview' | i18n }} </a>
+		<a class="btn" ng-disabled="isSaving()||!isValid(quizItem)" href="#!/user/questions/{{quizItem._id}}/read"> {{ 'preview' | i18n }} </a>
 	</div>
 </div>

@@ -2,17 +2,17 @@
 
 describe('Service: ContinuousSave', function () {
 
-  // load the service's module
-  beforeEach(module('lergoApp'));
+    // load the service's module
+    beforeEach(module('lergoApp'));
 
-  // instantiate service
-  var ContinuousSave;
-  beforeEach(inject(function (_ContinuousSave_) {
-    ContinuousSave = _ContinuousSave_;
-  }));
+    // instantiate service
+    var mContinuousSave;
+    beforeEach(inject(function (ContinuousSave) {
+        mContinuousSave = ContinuousSave;
+    }));
 
-  it('should do something', function () {
-    expect(!!ContinuousSave).toBe(true);
-  });
+    it('should do something', function () {
+        expect(!!mContinuousSave).toBe(true);
+    });
 
 });
