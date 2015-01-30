@@ -23,7 +23,8 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
                 // open or
                 // not
                 var q = $scope.quizItem;
-                $scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary || !!q.explanationMedia);
+                $scope.expPerAnsCollapsed = isExpPerAnsCollapsed(q);
+                $scope.isCollapsed = (!!q.media || !!q.hint || !!q.explanation || !!q.summary || !!q.explanationMedia || $scope.expPerAnsCollapsed );
                 $scope.errorMessage = null;
             }, function (result) {
                 $scope.error = result.data;
@@ -31,6 +32,21 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
                 $log.error($scope.errorMessage);
             });
         }
+
+        function isExpPerAnsCollapsed(quizItem) {
+            if (!quizItem.options) {
+                return false;
+            }
+            var options = _.filter(quizItem.options, function (option) {
+                return !option.checked && !!option.textExplanation;
+            });
+            if (options.length === 0) {
+                return false;
+            }
+            return true;
+
+        }
+
 
         if (!!questionId) {
             loadQuestion();
@@ -176,4 +192,6 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
             return 'views/questions/update/explanation/_' + type + '.html';
         };
 
-    });
+    }
+)
+;

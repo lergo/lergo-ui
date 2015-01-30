@@ -16,7 +16,10 @@ angular.module('lergoApp').controller('UsersProfileCtrl', function ($scope, Lerg
 
     $scope.showPublicQuestion = function () {
         localStorageService.set('questionTypeToLoad', 'allQuestions');
-        $location.path('/user/create/questions/').search('createdBy', $scope.user);
+        $location.path('/user/create/questions').search('lergoFilter.createdBy', JSON.stringify({
+            _id: $scope.user._id,
+            username: $scope.user.username
+        }));
     };
 
 });

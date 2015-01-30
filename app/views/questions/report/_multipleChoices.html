@@ -18,11 +18,12 @@
 					<i ng-show="isCorrectAnswer(quizItem , answer)" class="fa fa-check correct"></i>
 				</div>
 			</div>
-			<div ng-show="!!quizItem.explanation">
-				<br>
-				<div class="bold">{{'explanation'|i18n}}</div>
-				<div>{{quizItem.explanation}}</div>
-			</div>
+            <div ng-show="quizItem.checkAnswer.expMessage.length > 0 ">
+                <br>
+
+                <div class="bold">{{'explanation'|i18n}}</div>
+                <div ng-repeat="msg in quizItem.checkAnswer.expMessage">{{msg}}</div>
+            </div>
 			<div ng-show="!!quizItem.explanationMedia">
 				<br>
 				<div quiz-item-explanation-media quiz-item="quizItem"></div>
