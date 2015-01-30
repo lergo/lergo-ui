@@ -39,6 +39,13 @@ angular.module('lergoApp').service('UsersService', function UsersService($http) 
 		});
 	};
 
+    this.getPublicProfileForNonRegUser = function(username) {
+        return $http({
+            url : '/backend/public/'+username+'/profile',
+            method : 'GET'
+        });
+    };
+
 	this.update = function(user) {
 		return $http.post('/backend/users/me/profile/update', user);
 	};

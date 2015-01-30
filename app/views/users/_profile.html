@@ -12,6 +12,11 @@
             <div>
                 <img gravatar-src="user.email" gravatar-size="150" class="img-rounded ">
             </div>
+            <div ng-show="!!isEditAllow">
+                <a class="btn btn-link" popover-placement="bottom" popover-trigger="focus"
+                   popover="{{'profile.changeImageText' | i18n}}" tabindex="0">{{'profile.changeImageTitle' |i18n}}
+                </a>
+            </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 ">
             <div class="lergo-h1">
@@ -22,6 +27,7 @@
             <div ng-show="!isEditAllow && !!user.shortIntro"> {{user.shortIntro}}</div>
             <input ng-show="!!isEditAllow" ng-model="user.shortIntro" placeholder="{{'profile.ph.shortIntro'|i18n}}"/>
             <br>
+
             <div ng-show="!!isEditAllow">
                 <i class="fa fa-external-link"></i>&#xA0;&#xA0;
                 <input ng-show="!!isEditAllow" ng-model="user.externalLink" placeholder="External link"/>
@@ -41,10 +47,12 @@
                 </a>
             </div>
             <br>
+
             <div>
                 <i class="fa fa-question-circle"></i>
                 &#xA0;&#xA0;
-                <a href="#" ng-click="showPublicQuestion()"class="txt-color-darken">{{'profile.questionCreated'|i18n}}</a>
+                <a href="#" ng-click="showPublicQuestion()"
+                   class="txt-color-darken">{{'profile.questionCreated'|i18n}}</a>
             </div>
 
         </div>
@@ -65,7 +73,6 @@
             </h4>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 ">
-
 
 
             <br>

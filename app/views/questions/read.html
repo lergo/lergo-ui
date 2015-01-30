@@ -36,10 +36,14 @@
                 <div class="details">
                     <div class="properties">
 						<span tooltip="{{'homepage.tooltip.user' | i18n}}">
-                            <a ng-href="#!/user/{{lesson.user.username}}/profile">
+                            <a show-logged-in ng-href="#!/user/{{lesson.user.username}}/profile">
                                 <i class="fa fa-user"></i>
                                 <span>{{quizItem.user.username}}</span>
                             </a>
+                             <a show-anonymous ng-href="#!/public/{{lesson.user.username}}/profile">
+                                 <i class="fa fa-user"></i>
+                                 <span>{{quizItem.user.username}}</span>
+                             </a>
 						</span>
 						<span tooltip="{{'lessons.createdOn' | i18n}}">
 							<i class="fa fa-calendar"></i>

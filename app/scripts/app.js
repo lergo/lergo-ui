@@ -8,89 +8,93 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
         $locationProvider.html5Mode(false).hashPrefix('!');
 
         gravatarServiceProvider.defaults = {
-            size     : 100,
+            size: 100,
             'default': 'mm' // Mystery man as default for missing
             // avatars
         };
 
         $routeProvider.when('/user/lesson/create', {
             'templateUrl': 'views/lesson/create.html',
-            'controller' : 'CreateLessonCtrl'
+            'controller': 'CreateLessonCtrl'
         }).when('/user/lessons', {
             templateUrl: 'views/lessons/index.html',
-            controller : 'LessonsIndexCtrl'
+            controller: 'LessonsIndexCtrl'
         }).when('/user/questions', {
             templateUrl: 'views/questions/index.html',
-            controller : 'QuestionsIndexCtrl'
+            controller: 'QuestionsIndexCtrl'
         })
 
             .when('/public/questions/:questionId/read', {
                 templateUrl: 'views/questions/read.html',
-                controller : 'QuestionsReadCtrl'
+                controller: 'QuestionsReadCtrl'
             }).when('/user/questions/:questionId/read', {
                 templateUrl: 'views/questions/read.html',
-                controller : 'QuestionsReadCtrl'
+                controller: 'QuestionsReadCtrl'
             }).when('/user/lessons/step/display', {
                 templateUrl: 'views/lessons/stepDisplay.html'
             }).when('/user/lessons/:lessonId/display', {
-                templateUrl   : 'views/lessons/display.html',
-                controller    : 'LessonsDisplayCtrl',
+                templateUrl: 'views/lessons/display.html',
+                controller: 'LessonsDisplayCtrl',
                 reloadOnSearch: false
             })
 
             .when('/public/lessons/invitations/:invitationId/display', {
-                templateUrl   : 'views/lessons/invitations/display.html',
-                controller    : 'LessonsInvitationsDisplayCtrl',
+                templateUrl: 'views/lessons/invitations/display.html',
+                controller: 'LessonsInvitationsDisplayCtrl',
                 reloadOnSearch: false
             }).when('/:role/lessons/:lessonId/intro', {
                 templateUrl: 'views/lessons/intro.html',
-                controller : 'LessonsIntroCtrl'
+                controller: 'LessonsIntroCtrl'
             }).when('/public/lessons/:lessonId/share', {
-                template  : '',
+                template: '',
                 controller: 'LessonsInvitesPublicShareCtrl'
             }).when('/public/lessons/reports/:reportId/display', {
                 templateUrl: 'views/lessons/invitations/report.html',
-                controller : 'LessonsInvitationsReportCtrl'
+                controller: 'LessonsInvitationsReportCtrl'
             }).when('/user/questions/:questionId/update', {
-                templateUrl   : 'views/questions/update.html',
-                controller    : 'QuestionsUpdateCtrl',
+                templateUrl: 'views/questions/update.html',
+                controller: 'QuestionsUpdateCtrl',
                 reloadOnSearch: false
             }).when('/public/homepage', {
-                templateUrl   : 'views/homepage.html',
-                controller    : 'HomepageCtrl',
+                templateUrl: 'views/homepage.html',
+                controller: 'HomepageCtrl',
                 reloadOnSearch: false
             })
             // todo - remove this url. use plural version
             // '/user/lessons/:lessonId/update'
             .when('/user/lesson/:lessonId/update', {
-                templateUrl   : 'views/lessons/update.html',
-                controller    : 'LessonsUpdateCtrl',
+                templateUrl: 'views/lessons/update.html',
+                controller: 'LessonsUpdateCtrl',
                 reloadOnSearch: false
             })
 
             .when('/user/create/:activeTab', {
-                templateUrl   : 'views/partials/_create.html', // todo: move
+                templateUrl: 'views/partials/_create.html', // todo: move
                 // this view to
                 // view/create/_lessons.html
-                controller    : 'BaseLayoutCreateCtrl',
+                controller: 'BaseLayoutCreateCtrl',
                 reloadOnSearch: false
             }).when('/user/lessons/:lessonId/update', {
-                templateUrl   : 'views/lessons/update.html',
-                controller    : 'LessonsUpdateCtrl',
+                templateUrl: 'views/lessons/update.html',
+                controller: 'LessonsUpdateCtrl',
                 reloadOnSearch: false
             }).when('/user/lessons/:lessonId/invitations', {
                 templateUrl: 'views/lessons/invitations/create.html',
-                controller : 'LessonsInvitesCreateCtrl'
+                controller: 'LessonsInvitesCreateCtrl'
             }).when('/user/:username/profile', {
                 templateUrl: 'views/users/publicProfile.html',
-                controller : 'UsersPublicProfileCtrl'
+                controller: 'UsersPublicProfileCtrl'
+            })
+            .when('/public/:username/profile', {
+                templateUrl: 'views/users/publicProfile.html',
+                controller: 'UsersPublicProfileCtrl'
             })
             .when('/public/kitchenSink', {
                 templateUrl: 'views/kitchenSink.html'
 
             }).when('/public/translations/diff', {
                 templateUrl: 'views/translations/diff.html',
-                controller : 'TranslationsDiffCtrl'
+                controller: 'TranslationsDiffCtrl'
             }).when('/public/feedback', {
                 templateUrl: 'views/partials/_feedback.html'
             }).when('/public/abuse', {
@@ -105,28 +109,28 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
                 templateUrl: 'views/partials/_suggest.html'
             }).when('/public/session/signup', {
                 templateUrl: 'views/session/signup.html',
-                controller : 'SignupCtrl'
+                controller: 'SignupCtrl'
             }).when('/public/session/signupConfirmation', {
                 templateUrl: 'views/session/signupConfirmation.html'
             }).when('/public/session/login', {
                 templateUrl: 'views/session/login.html',
-                controller : 'LoginCtrl'
+                controller: 'LoginCtrl'
             }).when('/public/user/validate', {
                 templateUrl: 'views/users/validate.html',
-                controller : 'UsersValidateCtrl'
+                controller: 'UsersValidateCtrl'
             }).when('/public/user/changePassword', {
                 templateUrl: 'views/users/changePassword.html',
-                controller : 'UsersChangePasswordCtrl'
+                controller: 'UsersChangePasswordCtrl'
             }).when('/public/about/:activeAboutTab', {
-                templateUrl   : 'views/about.html',
-                controller    : 'AboutCtrl',
+                templateUrl: 'views/about.html',
+                controller: 'AboutCtrl',
                 reloadOnSearch: false
             }).when('/public/session/resetPasswordRequest', {
                 templateUrl: 'views/session/resetPasswordRequest.html',
-                controller : 'SessionResetPasswordRequestCtrl'
+                controller: 'SessionResetPasswordRequestCtrl'
             }).when('/admin/homepage/:activeTab', {
-                templateUrl   : 'views/admin/homepage.html',
-                controller    : 'AdminHomepageCtrl',
+                templateUrl: 'views/admin/homepage.html',
+                controller: 'AdminHomepageCtrl',
                 reloadOnSearch: false
             }).when('/user/homepage', {
                 redirectTo: '/public/homepage'
@@ -137,7 +141,7 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
             })
 
             .when('/disqus/:disqus_identifier', {
-                controller : 'DisqusPageCtrl',
+                controller: 'DisqusPageCtrl',
                 templateUrl: 'views/disqusPage.html'
             }).when('/public/contribute', {
                 templateUrl: 'views/partials/_contribute.html'
@@ -162,7 +166,7 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
 angular.module('lergoApp').directive('tooltip', function () {
     return {
         restrict: 'EA',
-        link    : function (scope, element, attrs) {
+        link: function (scope, element, attrs) {
             attrs.tooltipTrigger = attrs.tooltipTrigger;
             attrs.tooltipPlacement = attrs.tooltipPlacement || 'top';
         }
