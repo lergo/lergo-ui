@@ -189,7 +189,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         'viewTemplate': 'views/questions/view/_fillInTheBlanks.html',
         'previewTemplate': 'views/questions/view/preview/_fillInTheBlanks.html',
         'reportTemplate': 'views/questions/report/_fillInTheBlanks.html',
-        canShowExpPerAns: false,
+        canShowExpPerAns: true,
         'answers': function (quizItem) {
             var answer = [];
             if (!!quizItem.answer) {

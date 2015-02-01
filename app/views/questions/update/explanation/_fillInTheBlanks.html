@@ -11,7 +11,7 @@
     <tr ng-repeat="option in quizItem.options " ng-show="!option.checked">
         <td><input ng-model="option.label"/></td>
         <td>
-            <input ng-model="option.textExplanation" placeholder="{{'questions.addExplanationPerAnswer' | i18n}}"/>
+            <input ng-model="option.textExplanation"/>
         </td>
         <td>
             <a class="btn btn-link" ng-click="removeOption(option)">X</a>
