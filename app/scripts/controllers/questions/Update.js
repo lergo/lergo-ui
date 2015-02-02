@@ -129,9 +129,6 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
 
         $scope.removeOption = function (option) {
             $scope.quizItem.options.splice($scope.quizItem.options.indexOf(option), 1);
-            if ($scope.quizItem.answer !== undefined) {
-                $scope.quizItem.answer.splice($scope.quizItem.answer.indexOf(option), 1);
-            }
         };
 
         TagsService.getAllAvailableTags().then(function (result) {
@@ -180,6 +177,9 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
         };
 
         $scope.canShowExpPerAns = function (quizItem) {
+            if (!quizItem) {
+                return false;
+            }
             return QuestionsService.getTypeById(quizItem.type).canShowExpPerAns;
         };
 

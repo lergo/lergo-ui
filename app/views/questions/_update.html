@@ -141,9 +141,8 @@
                                 {{ 'showExplanationPerAnswer' | i18n }}
                             </button>
                         </div>
-                        <div collapse="!expPerAnsCollapsed">
-                            <div ng-include="getExplanationPerAnswerTemplate(quizItem)"></div>
-                        </div>
+                        <div collapse="!expPerAnsCollapsed"
+                             ng-include="getExplanationPerAnswerTemplate(quizItem)"></div>
                     </td>
                 </tr>
                 <tr>

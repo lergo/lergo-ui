@@ -24,7 +24,7 @@
 			<tr>
 				<td style="width: 100%;">
 					<div>
-						<a ng-show="!!invitation" ng-click="showReport()"> <!-- guy : this should not be a link. should be a button. but css is gone, and change would be too big.see LERGO-576 -->
+						<a href="" ng-show="!!invitation" ng-click="showReport()"> <!-- guy : this should not be a link. should be a button. but css is gone, and change would be too big.see LERGO-576 -->
 							<i class="fa fa-bar-chart-o"></i>
 							{{ 'lessons.lessonReport' | i18n }}
 						</a>
@@ -37,25 +37,25 @@
 					</div>
 				</td>
 				<td rowspan="2">
-					<a ng-show="!lesson.temporary" class="btn-link" ng-click="startLesson()">
+					<a href="" ng-show="!lesson.temporary" class="btn-link" ng-click="startLesson()">
 						<i style="font-size: 35px; color: #8CC63F;" class="fa fa-repeat "></i>
 					</a>
 				</td>
 				<td>
-					<a ng-show="!lesson.temporary" class="btn-link" ng-click="startLesson()">{{'lessons.restart' | i18n}}</a>
+					<a href="" ng-show="!lesson.temporary" ng-click="startLesson()">{{'lessons.restart' | i18n}}</a>
 				</td>
 				<td rowspan="2" ng-show="wrongQuestions.length>0">
-					<a show-logged-in class="btn-link" ng-click="practiceMistakes()">
+					<a href="" show-logged-in  ng-click="practiceMistakes()">
 						<i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
 					</a>
-					<a show-anonymous class="btn-link" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | i18n}}"
+					<a show-anonymous href="" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | i18n}}"
 						tabindex="0">
 						<i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
 					</a>
 				</td>
 				<td ng-show="wrongQuestions.length>0">
-					<a show-logged-in class="btn-link" ng-click="practiceMistakes()">{{'lessons.practiseWrongQuestion' | i18n}}</a>
-					<a show-anonymous class="btn-link" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | i18n}}"
+					<a show-logged-in href="" ng-click="practiceMistakes()">{{'lessons.practiseWrongQuestion' | i18n}}</a>
+					<a show-anonymous href="" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | i18n}}"
 						tabindex="0">{{'lessons.practiseWrongQuestion' | i18n}}</a>
 				</td>
 			</tr>
