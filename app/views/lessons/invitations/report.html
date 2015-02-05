@@ -34,15 +34,15 @@
 				</div>
 				<div class="redo-buttons">
 					<span class="restart" style="font-size: 25px; color: #8CC63F; margin: 5px;">
-						<a ng-show="!report.data.lesson.temporary" class="btn-link" ng-click="startLesson()">
+						<a ng-show="!report.data.lesson.temporary" href="" ng-click="startLesson()">
 							<i style="color: #8CC63F;" class="fa fa-repeat "> {{'lessons.restart' | i18n}}</i>
 						</a>
 					</span>
 					<span ng-show="wrongQuestions.length>0" class="practiceMistake" style="font-size: 25px; margin: 5px;">
-						<a show-logged-in class="btn-link" ng-click="practiceMistakes()">
+						<a show-logged-in href="" ng-click="practiceMistakes()">
 							<i style="color: #F7941E;" class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | i18n}}</i>
 						</a>
-						<a show-anonymous class="btn-link" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | i18n}}"
+						<a show-anonymous href="" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | i18n}}"
 							tabindex="0">
 							<i style="color: #F7941E;" class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | i18n}}</i>
 						</a>

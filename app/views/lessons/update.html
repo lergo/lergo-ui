@@ -1,129 +1,146 @@
 <div class="base-layout" id="createLessonPage">
-	<div class="page-content-width">
-		<div class="page-content-body">
-			<form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
-				<div class="lergo-label">
-					<span class="error" ng-show='errorMessage'>{{errorMessage}}</span>
-				</div>
-				<div class="form-section form-group name" ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
-					<div class="lergo-label">{{ 'lessons.name' | i18n }}</div>
-					<div class="lergo-input">
-						<input required class="form-control" ng-model="lesson.name" name="name" />
-					</div>
-					<p ng-show="lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine" class="help-block">{{'lessons.error.invalidName' | i18n}}</p>
-				</div>
-				<div class="form-section description form-group">
-					<div class="lergo-label">{{ 'lessons.description' | i18n }}</div>
-					<div class="lergo-input">
-						<textarea class="form-control" ng-model="lesson.description" name="description"></textarea>
-					</div>
-				</div>
-				<div class="stats form-group">
-					<div class="language">
-						<span>{{ 'filters.labels.language' | i18n }}</span>
-						<select class="form-control" ng-model="lesson.language" ng-options="l.id as ('filters.languages.' + l.id| i18n) for l in languages"
-							name="language"></select>
-					</div>
-					<div class="subject">
-						<span>{{ 'filters.labels.subject' | i18n }}</span>
-						<select class="form-control" ng-model="lesson.subject" ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects" name="subject"></select>
-					</div>
-					<div class="age">
-						<span>{{ 'fromAge' | i18n }}</span>
-						<input class="form-control" type="number" min="4" max="18" step="1" size="2" ng-model="lesson.age" name="age" />
-					</div>
-				</div>
-				<div class="tag form-group">
-					<div class="row">
-						<span>{{ 'tags' | i18n }}</span>
-						<!--<input class="form-control"  ng-model="lesson.tags" name="tag" />-->
-						<div>
-							<div tag-section tags="lesson.tags" tags-available="allAvailableTags"></div>
-						</div>
-					</div>
-				</div>
-				<div class="advance-options">
-					<div class="lergo-h1">
-						<br>
-						<button class="btn-link expander" ng-click="isCollapsed = !isCollapsed" ng-show="!!lesson.name">
-							<i ng-show="!isCollapsed" class="fa fa-plus-square"></i>
-							<i ng-show="!!isCollapsed" class="fa fa-minus-square"></i>
-							{{ 'advancedOptions' | i18n }}
-						</button>
-						{{(isCollapsed===undefined)&& (isCollapsed = (!!lesson.nextLesson || !!lesson.priorLesson ))||"" }}
-					</div>
-					<div collapse="!isCollapsed">
-						<hr>
-						<table class=" lergo-table lergo-form">
-							<tbody>
-								<tr>
-									<td style="width: 15%">{{ 'lessons.recommenedNextLesson' | i18n }}</td>
-									<td>
-										<input placeholder="{{'lessons.recommenedNextLessonText' | i18n}}" ng-model="lesson.nextLesson" />
-									</td>
-								</tr>
-								<tr>
-									<td>{{ 'lessons.recommenedPriorLesson' | i18n }}</td>
-									<td>
-										<input placeholder="{{'lessons.recommenedPriorLessonText' | i18n}}" ng-model="lesson.priorLesson" />
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div ng-repeat="step in lesson.steps">
-					<hr style="float: none" />
-					<div style="float: right">
-						<a ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
-						<a ng-click="moveStepDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
-						<a ng-click="deleteStep(step)" class="btn-link">
-							<i class="fa fa-trash-o"></i>
-						</a>
-					</div>
-					<table class="lergo-table lergo-form">
-						<tr>
-							<td style="width: 13%">{{ 'steps.title' | i18n }}</td>
-							<td>
-								<input ng-model="step.title" />
-							</td>
-						</tr>
-						<tr>
-							<td>
+    <div class="page-content-width">
+        <div class="page-content-body">
+            <form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
+                <div class="lergo-label">
+                    <span class="error" ng-show='errorMessage'>{{errorMessage}}</span>
+                </div>
+                <div class="form-section form-group name"
+                     ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
+                    <div class="lergo-label">{{ 'lessons.name' | i18n }}</div>
+                    <div class="lergo-input">
+                        <input required class="form-control" ng-model="lesson.name" name="name"/>
+                    </div>
+                    <p ng-show="lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine" class="help-block">
+                        {{'lessons.error.invalidName' | i18n}}</p>
+                </div>
+                <div class="form-section description form-group">
+                    <div class="lergo-label">{{ 'lessons.description' | i18n }}</div>
+                    <div class="lergo-input">
+                        <textarea class="form-control" ng-model="lesson.description" name="description"></textarea>
+                    </div>
+                </div>
+                <div class="stats form-group">
+                    <div class="language">
+                        <span>{{ 'filters.labels.language' | i18n }}</span>
+                        <select class="form-control" ng-model="lesson.language"
+                                ng-options="l.id as ('filters.languages.' + l.id| i18n) for l in languages"
+                                name="language"></select>
+                    </div>
+                    <div class="subject">
+                        <span>{{ 'filters.labels.subject' | i18n }}</span>
+                        <select class="form-control" ng-model="lesson.subject"
+                                ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects"
+                                name="subject"></select>
+                    </div>
+                    <div class="age">
+                        <span>{{ 'fromAge' | i18n }}</span>
+                        <input class="form-control" type="number" min="4" max="18" step="1" size="2"
+                               ng-model="lesson.age" name="age"/>
+                    </div>
+                </div>
+                <div class="tag form-group">
+                    <div class="row">
+                        <span>{{ 'tags' | i18n }}</span>
+                        <!--<input class="form-control"  ng-model="lesson.tags" name="tag" />-->
+                        <div>
+                            <div tag-section tags="lesson.tags" tags-available="allAvailableTags"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="advance-options">
+                    <div class="lergo-h1">
+                        <br>
+                        <button class="btn-link expander" ng-click="isCollapsed = !isCollapsed" ng-show="!!lesson.name">
+                            <i ng-show="!isCollapsed" class="fa fa-plus-square"></i>
+                            <i ng-show="!!isCollapsed" class="fa fa-minus-square"></i>
+                            {{ 'advancedOptions' | i18n }}
+                        </button>
+                        {{(isCollapsed===undefined)&& (isCollapsed = (!!lesson.nextLesson || !!lesson.priorLesson ))||""
+                        }}
+                    </div>
+                    <div collapse="!isCollapsed">
+                        <hr>
+                        <table class=" lergo-table lergo-form">
+                            <tbody>
+                            <tr>
+                                <td style="width: 15%">{{ 'lessons.recommenedNextLesson' | i18n }}</td>
+                                <td>
+                                    <input placeholder="{{'lessons.recommenedNextLessonText' | i18n}}"
+                                           ng-model="lesson.nextLesson"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'lessons.recommenedPriorLesson' | i18n }}</td>
+                                <td>
+                                    <input placeholder="{{'lessons.recommenedPriorLessonText' | i18n}}"
+                                           ng-model="lesson.priorLesson"/>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div ng-repeat="step in lesson.steps">
+                    <hr style="float: none"/>
+                    <div style="float: right">
+                        <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
+                        <a href="" ng-click="moveStepDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
+                        <a ng-click="deleteStep(step)" href="">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </div>
+                    <table class="lergo-table lergo-form">
+                        <tr>
+                            <td style="width: 13%">{{ 'steps.title' | i18n }}</td>
+                            <td>
+                                <input ng-model="step.title"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
 								<span class="pop-up-hint" style="padding: 0px;">
 									<span> {{ 'steps.type' | i18n }} </span>
 									<span>
 										<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-										<button popover="{{'steps.typeHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+										<button popover="{{'steps.typeHint' | i18n}}" class="fa fa-question-circle"
+                                                popover-placement="top" popover-trigger="focus" tabindex="0"></button>
 									</span>
 								</span>
-							</td>
-							<td>
-								<select ng-model="step.type" ng-options="t.id as ('steps.' + t.id | i18n) for t in stepTypes">
-								</select>
-							</td>
-						</tr>
-					</table>
-					<div ng-include="getStepViewByType(step)"></div>
-					<div>
-						<button style="margin-left: 50%" class="btn" ng-click="displayStep(step)">{{ 'steps.display' | i18n }}</button>
-					</div>
-				</div>
-				<div class="lergo-h3">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
-				<div>
-					<button class="btn" ng-click="done()" ng-disabled="isSaving() || !lesson.name">{{'done' | i18n }}</button>
+                            </td>
+                            <td>
+                                <select ng-model="step.type"
+                                        ng-options="t.id as ('steps.' + t.id | i18n) for t in stepTypes">
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <div ng-include="getStepViewByType(step)"></div>
+                    <div>
+                        <button style="margin-left: 50%" class="btn" ng-click="displayStep(step)">{{ 'steps.display' |
+                            i18n }}
+                        </button>
+                    </div>
+                </div>
+                <div class="lergo-h3">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+                <div>
+                    <button class="btn" ng-click="done()" ng-disabled="isSaving() || !lesson.name">{{'done' | i18n }}
+                    </button>
 					<span class="pop-up-hint">
-						<button class="btn" ng-click="addStep(lesson)" ng-disabled="isSaving() || !lesson.name">{{ 'steps.add' | i18n }}</button>
+						<button class="btn" ng-click="addStep(lesson)" ng-disabled="isSaving() || !lesson.name">{{
+                            'steps.add' | i18n }}
+                        </button>
 						<span>
 							<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-							<button popover="{{'steps.addHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+							<button popover="{{'steps.addHint' | i18n}}" class="fa fa-question-circle"
+                                    popover-placement="top" popover-trigger="focus" tabindex="0"></button>
 						</span>
 					</span>
-				</div>
-			</form>
-		</div>
-		<div class="sidebar page-content-sidebar">
-			<div helper-content path="'/lesson/update'" user="user"></div>
-		</div>
-	</div>
+                </div>
+            </form>
+        </div>
+        <div class="sidebar page-content-sidebar">
+            <div helper-content path="'/lesson/update'" user="user"></div>
+        </div>
+    </div>
 </div>
