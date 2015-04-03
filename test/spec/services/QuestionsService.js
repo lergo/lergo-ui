@@ -181,13 +181,14 @@ describe('Service: QuestionsService', function () {
                 it('should return true iff data is complete', function () {
                     expect(em.isValid({'question': 'hello'})).toBe(false);
                     expect(em.isValid({'question': 'hello', 'options': []})).toBe(false);
-                    expect(em.isValid({'question': 'hello', 'options': [{'label': 'hello'}]})).toBe(true);
+                    expect(em.isValid({'question': 'hello', 'options': [{'label': 'hello', 'checked':true }]})).toBe(true);
                 });
             });
 
             describe('answers', function () {
                 it('should return answers as string', function () {
-                    expect(em.answers({'options': [{'label': 'foo'}, {'label': 'bar'}]})).toBe('foo / bar');
+
+                    expect(em.answers({'options': [{'label': 'foo', checked:true}, {'label': 'bar', checked:true}]})).toBe('foo / bar');
                 });
             });
 
