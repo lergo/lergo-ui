@@ -32,13 +32,7 @@ module.exports = function (grunt) {
     }
 
     var s3Config = {};
-    try {
-        var s3path = process.env.LERGO_S3 || path.resolve('./dev/s3.json');
-        logger.info('looking for s3.json at ' , s3path );
-        s3Config = require( s3path );
-    }catch(e){
-        logger.error('s3 json is undefined, you will not be able to upload to s3',e);
-    }
+
 
 
 
@@ -406,6 +400,21 @@ module.exports = function (grunt) {
             }
         }
     });
+
+    grunt.registerTask('readS3Credentials', function(){
+        try {
+            var s3path = process.env.LERGO_S3 || path.resolve('./dev/s3.json');
+            logger.info('looking for s3.json at ' , s3path );
+            s3Config = require( s3path );
+        }catch(e){
+            logger.error('s3 json is undefined, you will not be able to upload to s3',e);
+        }
+    });
+
+    grunt.registerTask('uploadStatus', [
+        'readS3Credentials',
+        's3'
+    ]);
 
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {
