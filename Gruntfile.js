@@ -404,7 +404,6 @@ module.exports = function (grunt) {
             var s3path = process.env.LERGO_S3 || path.resolve('./dev/s3.json');
             logger.info('looking for s3.json at ' , s3path );
             grunt.config.set('s3Config', require( s3path ));
-            console.log('this is the template', grunt.template.process("<%=s3Config%>"));
         }catch(e){
             logger.error('s3 json is undefined, you will not be able to upload to s3',e);
         }
