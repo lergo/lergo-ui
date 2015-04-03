@@ -1,10 +1,7 @@
 <!doctype html>
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="lergoApp"> <![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8" ng-app="lergoApp"> <![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9" ng-app="lergoApp"> <![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"  ng-app="lergoApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"  ng-app="lergoApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"  ng-app="lergoApp"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" ng-app="lergoApp">
 <!--<![endif]-->
@@ -16,15 +13,15 @@
     <meta name="description" content="{{$root.page.description}}">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link href="favicon.ico?v=2" rel="shortcut icon"/>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet"/>
-    <link href="bower_components/google-code-prettify/src/prettify.css" rel="stylesheet"/>
-    <link href="bower_components/toastr/toastr.css" rel="stylesheet"/>
+    <link href="favicon.ico?v=2" rel="shortcut icon" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
+
     <!-- build:css({.tmp,app}) styles/main.css -->
+    <link href="bower_components/google-code-prettify/src/prettify.css" rel="stylesheet" />
+    <link href="bower_components/toastr/toastr.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-    <link rel="stylesheet" type="text/css"
-          href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
     <script>
         try {
             if (window.location.hash.indexOf('#/') === 0) {
@@ -33,162 +30,167 @@
         } catch (e) {
             try {
                 console.log('unable to redirect to new url', e);
-            } catch (e) {
-            }
+            } catch (e) {}
         }
     </script>
 </head>
 
-<body ng-view="" style="position: relative" lergo-language-direction-class lergo-language-class embed-mode>
+<body style="position: relative" lergo-language-direction-class lergo-language-class embed-mode>
+    <div ng-view=""></div>
 <!--[if lt IE 7]>
-<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser
-    today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better
-    experience this site.</p>
-<![endif]-->
-<script src="/backend/public/conf"></script>
-<!--[if lt IE 9]>
-<script src="bower_components/es5-shim/es5-shim.js"></script>
-<script src="bower_components/json3/lib/json3.min.js"></script>
-<![endif]-->
-<!-- Add your site or application content here -->
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-<script>
-    try {
-        if (!!conf && !!conf.googleAnalyticsCode) {
-            var _gaq = [['_setAccount', conf.googleAnalyticsCode], ['_trackPageview']];
-            (function (d, t) {
-                var g = d.createElement(t),
-                    s = d.getElementsByTagName(t)[0];
-                g.src = '//www.google-analytics.com/ga.js';
-                s.parentNode.insertBefore(g, s)
-            }(document, 'script'));
-        }
-    } catch (e) {
-    }
-</script>
-<script src="bower_components/angular/angular.js"></script>
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="scripts/app.js"></script>
-<!-- endbuild -->
-<!-- build:js scripts/plugins.js -->
-<script src="bower_components/jquery/jquery.js"></script>
-<script src="bower_components/string-format-js/format.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
-<script src="bower_components/google-code-prettify/src/prettify.js"></script>
-<script src="bower_components/lodash/dist/lodash.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-<script src="bower_components/angular-ui-utils/ui-utils.js"></script>
-<script src="bower_components/showdown/src/showdown.js"></script>
-<script src="bower_components/angular-markdown-directive/markdown.js"></script>
-<script src="bower_components/toastr/toastr.js"></script>
-<script src="bower_components/angular-gravatar/build/md5.js"></script>
-<script src="bower_components/angular-gravatar/build/angular-gravatar.js"></script>
-<!-- endbuild -->
-<!-- build:js scripts/modules.js -->
-<script src="scripts/services/LergoTranslate.js"></script>
-<script src="scripts/controllers/Homepage.js"></script>
-<script src="scripts/filters/i18n.js"></script>
-<script src="scripts/directives/MultilineEllipsis.js"></script>
-<script src="scripts/directives/baseLayout.js"></script>
-<script src="scripts/controllers/CreateLesson.js"></script>
-<script src="scripts/services/LessonService.js"></script>
-<script src="scripts/directives/modalBackground.js"></script>
-<script src="scripts/controllers/Signup.js"></script>
-<script src="scripts/services/LergoClient.js"></script>
-<script src="scripts/directives/lergoKsDemo.js"></script>
-<script src="scripts/controllers/Login.js"></script>
-<script src="scripts/services/QuestionsService.js"></script>
-<script src="scripts/controllers/questions/Update.js"></script>
-<script src="scripts/controllers/questions/Read.js"></script>
-<script src="scripts/controllers/questions/Index.js"></script>
-<script src="scripts/services/ContinuousSave.js"></script>
-<script src="scripts/services/LessonsService.js"></script>
-<script src="scripts/filters/i18nDirection.js"></script>
-<script src="scripts/controllers/lessons/invites/Create.js"></script>
-<script src="scripts/controllers/lessons/Read.js"></script>
-<script src="scripts/controllers/lessons/Index.js"></script>
-<script src="scripts/controllers/lessons/StepDisplay.js"></script>
-<script src="scripts/controllers/lessons/Display.js"></script>
-<script src="scripts/controllers/lessons/Update.js"></script>
-<script src="scripts/controllers/session/ResetPasswordRequest.js"></script>
-<script src="scripts/controllers/users/Validate.js"></script>
-<script src="scripts/controllers/users/ChangePassword.js"></script>
-<script src="scripts/services/RequestProgressMonitor.js"></script>
-<script src="scripts/services/RequestProgressInterceptor.js"></script>
-<script src="scripts/controllers/translations/Diff.js"></script>
-<script src="scripts/controllers/lessons/invitations/Display.js"></script>
-<script src="scripts/services/LessonsInvitationsService.js"></script>
-<script src="scripts/services/FilterService.js"></script>
-<script src="scripts/controllers/lessons/report/Write.js"></script>
-<script src="scripts/controllers/lessons/invitations/Report.js"></script>
-<script src="scripts/directives/reportView.js"></script>
-<script src="scripts/controllers/admin/Homepage.js"></script>
-<script src="scripts/directives/adminSection.js"></script>
-<script src="scripts/controllers/lessons/invites/PublicShare.js"></script>
-<script src="scripts/controllers/lessons/Intro.js"></script>
-<script src="scripts/directives/lessonTitleImage.js"></script>
-<script src="scripts/filters/shuffle.js"></script>
-<script src="scripts/services/DisplayRoleService.js"></script>
-<script src="scripts/directives/createYourOwnBox.js"></script>
-<script src="scripts/filters/multilineEllipsis.js"></script>
-<script src="scripts/filters/countQuestionsOnLesson.js"></script>
-<script src="scripts/controllers/BaseLayoutCreate.js"></script>
-<script src="scripts/services/UserDataService.js"></script>
-<script src="scripts/services/UsersService.js"></script>
-<script src="scripts/directives/setfocus.js"></script>
-<script src="scripts/directives/quizItemMedia.js"></script>
-<script src="scripts/controllers/KitchenSink.js"></script>
-<script src="scripts/directives/tagSection.js"></script>
-<script src="scripts/services/TagsService.js"></script>
-<script src="scripts/directives/quizItemExplanationMedia.js"></script>
-<script src="scripts/services/LikesService.js"></script>
-<script src="scripts/directives/lergoProgressBar.js"></script>
-<script src="scripts/directives/session/showAnonymous.js"></script>
-<script src="scripts/directives/session/showLoggedIn.js"></script>
-<script src="scripts/directives/textFilter.js"></script>
-<script src="scripts/services/ReportsService.js"></script>
-<script src="scripts/controllers/reports/Index.js"></script>
-<script src="scripts/filters/duration.js"></script>
-<script src="scripts/directives/disqus.js"></script>
-<script src="scripts/services/DisqusService.js"></script>
-<script src="scripts/controllers/DisqusPage.js"></script>
-<script src="scripts/directives/disqusEmbed.js"></script>
-<script src="scripts/directives/lessonIntroLink.js"></script>
-<script src="scripts/filters/format.js"></script>
-<script src="scripts/filters/mongoIdToTimestamp.js"></script>
-<script src="scripts/directives/questionReadLink.js"></script>
-<script src="scripts/directives/lergoFilter.js"></script>
-<script src="scripts/directives/lergoPaging.js"></script>
-<script src="scripts/services/ReportWriteService.js"></script>
-<script src="scripts/directives/helperContent.js"></script>
-<script src="scripts/directives/multiChoice.js"></script>
-<script src="scripts/directives/loadFilterAndPaging.js"></script>
-<script src="scripts/directives/truefalse.js"></script>
-<script src="scripts/controllers/invites/Index.js"></script>
-<script src="scripts/controllers/questions/AddUpdateDialog.js"></script>
-<script src="scripts/controllers/About.js"></script>
-<script src="scripts/directives/quizNextQuestionButton.js"></script>
-<script src="scripts/directives/embedMode.js"></script>
-<script src="scripts/directives/lergoLanguageDirectionClass.js"></script>
-<script src="scripts/directives/lergoLanguageClass.js"></script>
-<script src="scripts/directives/poweredByLergo.js"></script>
-<script src="scripts/services/AbuseReports.js"></script>
-<script src="scripts/controllers/admin/LessonIndex.js"></script>
-<script src="scripts/controllers/admin/AbuseReportIndex.js"></script>
-<script src="scripts/services/VideoService.js"></script>
-<script src="scripts/services/RequestErrorInterceptor.js"></script>
-<script src="scripts/controllers/faq/index.js"></script>
-<script src="scripts/services/StepService.js"></script>
-<script src="scripts/directives/facebook.js"></script>
-<script src="scripts/services/Facebook.js"></script>
-<script src="scripts/controllers/BaseLayoutFooter.js"></script>
-<script src="scripts/controllers/users/Profile.js"></script>
-<script src="scripts/controllers/users/PublicProfile.js"></script>
-<!-- endbuild -->
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+    <script src="/backend/public/conf"></script>
+    <!--[if lt IE 9]>
+      <script src="bower_components/es5-shim/es5-shim.js"></script>
+      <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        try {
+            if (!!conf && !!conf.googleAnalyticsCode) {
+                var _gaq = [['_setAccount', conf.googleAnalyticsCode], ['_trackPageview']];
+                (function (d, t) {
+                    var g = d.createElement(t),
+                        s = d.getElementsByTagName(t)[0];
+                    g.src = '//www.google-analytics.com/ga.js';
+                    s.parentNode.insertBefore(g, s)
+                }(document, 'script'));
+            }
+        } catch (e) {}
+    </script>
+
+    <!-- build:js({.tmp,app}) scripts/base.js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/plugins.js -->
+
+    <script src="bower_components/string-format-js/format.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
+    <script src="bower_components/google-code-prettify/src/prettify.js"></script>
+    <script src="bower_components/lodash/dist/lodash.js"></script>
+    <script src="scripts/extension.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+    <script src="bower_components/showdown/src/showdown.js"></script>
+    <script src="bower_components/angular-markdown-directive/markdown.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/angular-gravatar/build/md5.js"></script>
+    <script src="bower_components/angular-gravatar/build/angular-gravatar.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/modules.js -->
+    <script src="scripts/services/LergoTranslate.js"></script>
+    <script src="scripts/controllers/Homepage.js"></script>
+    <script src="scripts/filters/i18n.js"></script>
+    <script src="scripts/directives/MultilineEllipsis.js"></script>
+    <script src="scripts/directives/baseLayout.js"></script>
+    <script src="scripts/controllers/CreateLesson.js"></script>
+    <script src="scripts/services/LessonService.js"></script>
+    <script src="scripts/directives/modalBackground.js"></script>
+    <script src="scripts/controllers/Signup.js"></script>
+    <script src="scripts/services/LergoClient.js"></script>
+    <script src="scripts/directives/lergoKsDemo.js"></script>
+    <script src="scripts/controllers/Login.js"></script>
+    <script src="scripts/services/QuestionsService.js"></script>
+    <script src="scripts/controllers/questions/Update.js"></script>
+    <script src="scripts/controllers/questions/Read.js"></script>
+    <script src="scripts/controllers/questions/Index.js"></script>
+    <script src="scripts/services/ContinuousSave.js"></script>
+    <script src="scripts/services/LessonsService.js"></script>
+    <script src="scripts/filters/i18nDirection.js"></script>
+    <script src="scripts/controllers/lessons/invites/Create.js"></script>
+    <script src="scripts/controllers/lessons/Read.js"></script>
+    <script src="scripts/controllers/lessons/Index.js"></script>
+    <script src="scripts/controllers/lessons/StepDisplay.js"></script>
+    <script src="scripts/controllers/lessons/Display.js"></script>
+    <script src="scripts/controllers/lessons/Update.js"></script>
+    <script src="scripts/controllers/session/ResetPasswordRequest.js"></script>
+    <script src="scripts/controllers/users/Validate.js"></script>
+    <script src="scripts/controllers/users/ChangePassword.js"></script>
+    <script src="scripts/services/RequestProgressMonitor.js"></script>
+    <script src="scripts/services/RequestProgressInterceptor.js"></script>
+    <script src="scripts/controllers/translations/Diff.js"></script>
+    <script src="scripts/controllers/lessons/invitations/Display.js"></script>
+    <script src="scripts/services/LessonsInvitationsService.js"></script>
+    <script src="scripts/services/FilterService.js"></script>
+    <script src="scripts/controllers/lessons/report/Write.js"></script>
+    <script src="scripts/controllers/lessons/invitations/Report.js"></script>
+    <script src="scripts/directives/reportView.js"></script>
+    <script src="scripts/controllers/admin/Homepage.js"></script>
+    <script src="scripts/directives/adminSection.js"></script>
+    <script src="scripts/controllers/lessons/invites/PublicShare.js"></script>
+    <script src="scripts/controllers/lessons/Intro.js"></script>
+    <script src="scripts/directives/lessonTitleImage.js"></script>
+    <script src="scripts/filters/shuffle.js"></script>
+    <script src="scripts/services/DisplayRoleService.js"></script>
+    <script src="scripts/directives/createYourOwnBox.js"></script>
+    <script src="scripts/filters/multilineEllipsis.js"></script>
+    <script src="scripts/filters/countQuestionsOnLesson.js"></script>
+    <script src="scripts/controllers/BaseLayoutCreate.js"></script>
+    <script src="scripts/services/UserDataService.js"></script>
+    <script src="scripts/services/UsersService.js"></script>
+    <script src="scripts/directives/setfocus.js"></script>
+    <script src="scripts/directives/quizItemMedia.js"></script>
+    <script src="scripts/controllers/KitchenSink.js"></script>
+    <script src="scripts/directives/tagSection.js"></script>
+    <script src="scripts/services/TagsService.js"></script>
+    <script src="scripts/directives/quizItemExplanationMedia.js"></script>
+    <script src="scripts/services/LikesService.js"></script>
+    <script src="scripts/directives/lergoProgressBar.js"></script>
+    <script src="scripts/directives/session/showAnonymous.js"></script>
+    <script src="scripts/directives/session/showLoggedIn.js"></script>
+    <script src="scripts/directives/textFilter.js"></script>
+    <script src="scripts/services/ReportsService.js"></script>
+    <script src="scripts/controllers/reports/Index.js"></script>
+    <script src="scripts/filters/duration.js"></script>
+    <script src="scripts/directives/disqus.js"></script>
+    <script src="scripts/services/DisqusService.js"></script>
+    <script src="scripts/controllers/DisqusPage.js"></script>
+    <script src="scripts/directives/disqusEmbed.js"></script>
+    <script src="scripts/directives/lessonIntroLink.js"></script>
+    <script src="scripts/filters/format.js"></script>
+    <script src="scripts/filters/mongoIdToTimestamp.js"></script>
+    <script src="scripts/directives/questionReadLink.js"></script>
+    <script src="scripts/directives/lergoFilter.js"></script>
+    <script src="scripts/directives/lergoPaging.js"></script>
+    <script src="scripts/services/ReportWriteService.js"></script>
+    <script src="scripts/directives/helperContent.js"></script>
+    <script src="scripts/directives/multiChoice.js"></script>
+    <script src="scripts/directives/loadFilterAndPaging.js"></script>
+    <script src="scripts/directives/truefalse.js"></script>
+    <script src="scripts/controllers/invites/Index.js"></script>
+    <script src="scripts/controllers/questions/AddUpdateDialog.js"></script>
+    <script src="scripts/controllers/About.js"></script>
+    <script src="scripts/directives/quizNextQuestionButton.js"></script>
+    <script src="scripts/directives/embedMode.js"></script>
+    <script src="scripts/directives/lergoLanguageDirectionClass.js"></script>
+    <script src="scripts/directives/lergoLanguageClass.js"></script>
+    <script src="scripts/directives/poweredByLergo.js"></script>
+    <script src="scripts/services/AbuseReports.js"></script>
+    <script src="scripts/controllers/admin/LessonIndex.js"></script>
+    <script src="scripts/controllers/admin/AbuseReportIndex.js"></script>
+    <script src="scripts/services/VideoService.js"></script>
+    <script src="scripts/services/RequestErrorInterceptor.js"></script>
+    <script src="scripts/controllers/faq/index.js"></script>
+    <script src="scripts/services/StepService.js"></script>
+    <script src="scripts/directives/facebook.js"></script>
+    <script src="scripts/services/Facebook.js"></script>
+    <script src="scripts/controllers/BaseLayoutFooter.js"></script>
+    <script src="scripts/controllers/users/Profile.js"></script>
+    <script src="scripts/controllers/users/PublicProfile.js"></script>
+    <script src="scripts/directives/reportLessonFilter.js"></script>
+    <script src="scripts/filters/shuffleQuestions.js"></script>
+    <!-- endbuild -->
 </body>
 
 </html>

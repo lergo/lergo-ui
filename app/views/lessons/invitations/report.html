@@ -13,7 +13,8 @@
 				<div ng-show="!!report.data.invitee.name">
 
 					<div class="lergo-h1">{{report.data.invitee.name}}</div>
-					<div class="lergo-h4">{{'report.completed'|i18n}}:</div>
+					<div class="lergo-h4" ng-show="isCompleted(report)">{{'report.completed'|i18n}}:</div>
+					<div class="lergo-h4" ng-show="!isCompleted(report)">{{'report.notCompletedTitle'|i18n}}:</div>
 					<br />
 				</div>
 				<div class="lergo-h1">
@@ -47,6 +48,11 @@
 							<i style="color: #F7941E;" class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | i18n}}</i>
 						</a>
 					</span>
+                    <span ng-show="showContinueLesson()" class="continue-lesson">
+                        <a class="btn-link" href="{{continueLessonUrl(report)}}">
+                            <i style="color: #F7941E;" class="fa fa-repeat "> {{'lessons.continueLesson' | i18n}}</i>
+                        </a>
+                    </span>
 				</div>
 			</div>
 		</div>

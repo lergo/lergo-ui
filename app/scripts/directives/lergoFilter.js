@@ -73,6 +73,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				scope.users = result.data;
 			});
 
+
+
 			function _updateCreatedBy(newValue, oldValue) {
 				if (newValue !== oldValue) {
 					if (!!newValue && newValue.hasOwnProperty('_id')) {
@@ -94,6 +96,25 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 					}
 				}
 			}
+
+
+
+            function _updateReportLesson(newValue, oldValue){
+                $log.info('report lesson was updated!!');
+                if ( newValue !== oldValue ){
+                    if ( !!newValue && newValue.hasOwnProperty('_id')) {
+
+                        $scope.model['data.lessonId'] = $scope.reportLesson._id;
+                        $log.info('lessonId was changed',$scope.model);
+                    }
+                    else {
+                        $scope.model['data.lessonId'] = undefined;
+                    }
+                }
+
+
+            }
+            $scope.$watch('reportLesson', _updateReportLesson, true);
 
 			$scope.$watch('reportedBy', _updateReportedBy);
 
@@ -117,6 +138,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 					_updateReportStudent();
 				}
 			});
+
+
 
 			var _updateStatusValue = function(newValue, oldValue) {
 				if (oldValue !== newValue) {
@@ -212,11 +235,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				};
 			}
 
-			$scope.getTagsLike = function(like) {
-				return TagsService.getAllAvailableTags(like).then(function(result) {
-					return result.data;
-				});
-			};
+
 
 			var _updateAgeFilter = minMaxFilter('age', 'ageFilter');
 			$scope.$watch('ageFilter', _updateAgeFilter, true);
@@ -263,7 +282,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			// watcher to inflict change on the scope
 
 			/**
-			 * the keyName to inflict on the
+			 * the keyName to inflict on the  local storage
 			 * 
 			 * @param keyName -
 			 *            the key name in the scope/local storage we want to
@@ -399,6 +418,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				persist('model.searchText', 'showSearchText');
 				persist('createdBy', 'showCreatedBy', _updateCreatedBy);
 				persist('reportedBy', 'showReportedBy', _updateReportedBy);
+                persist('reportLesson', 'showReportLesson', _updateReportLesson);
 			}
 
 			persistAll();

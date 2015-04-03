@@ -33,20 +33,37 @@
 angular.module('lergoApp')
     .factory('ContinuousSave', function (localStorageService, $timeout, $rootScope, $log,$filter) {
 
-        var _preventedPageExit = [];
-        var _preventedFlag;
+
+        var _preventedFlag = {};
+
+
+
+
+
 
         function impl(opts) {
 
             /*jshint validthis:true */
             var _me = this;
 
-            var _localVersion;
-            var _remoteVersion;
+            var _localVersion; // version we have locally
+            var _remoteVersion; // version we got from server
+
+            var _retries = opts.retries || 5;
+            var _retryDelay = opts.retryDelay || 1000;
+            var _confirmMessage = opts.confirmMessage || $filter('i18n')('continousSave.Confirm');
 
             var _saveFn;  // a function that returns a promise and saves the model.
             var _status = { 'saving': false };
 
+            /**
+             *
+             * @description
+             * makes sure the version we have locally, is the same version we have on the server
+             *
+             * @returns {boolean} true iff locationVersion exists and equals to remoteVersion
+             * @private
+             */
             function _versionMatch() {
                 return !!_localVersion && !!_remoteVersion && _localVersion.lastUpdate === _remoteVersion.lastUpdate;
             }
@@ -59,16 +76,17 @@ angular.module('lergoApp')
              * We also want to assume there are multiple models being continuously saved in the background.
              * In which case the users will get multiple alerts. We need to prevent this. How?
              *
-             * We keep "preventedPageExit" variable which will be shared to all instances and it holds
-             * the status for each instance if they alerted or not.
              *
-             * if map is empty - i can alert since i am first.
-             * if i am in map already - this means the map needs a reset since there are left overs from previous run. i can alert
-             * if i am not in the map but everybody else did not alert since everything is saved, i can alert.
+             * when location change starts, the following happens:
+             * - I check if I already registered on the model
+             *      - if yes - there is data from old run. clean the model.
+             *      - if no - register myself to the model
+             * - Check if I need to alert
+             *      - if yes - check is someone else already alerted
+             *          - if yes - do nothing
+             *          - if no - alert, and update model with 'alerted : true' - so everyone will know someone alerted
+             *      - if no - do nothing
              *
-             * otherwise, i have no reason to alert as my data is saved OR someone else already alerted.
-             *
-             * assuming everyone saved everything, no one will alert and user can exist page.
              *
              **/
 
@@ -77,25 +95,23 @@ angular.module('lergoApp')
 
                 // if I have something need saving and it is not saved, we need to prevent page exit
                 if (!!_localVersion && !!_localVersion._id) {
+
                     var uid = _localVersion._id;
+                    if ( _preventedFlag.hasOwnProperty(uid)){// data from last run, needs reset
+                        _preventedFlag = {};
+                    }
 
-                    if (_preventedPageExit.indexOf(_localVersion._id) > 0) {  // i exit. reset list
-                        _preventedPageExit = [];
-                        _preventedPageExit.push(_localVersion._id);
+                    _preventedFlag[uid] = uid;
 
-
-                        if (!_status.saved) { // if there is unsaved data, we need to prevent
-                            _preventedPageExit.push(_preventedFlag); // i prevented, so i put the flag on the list.
-
-                            var answer = confirm($filter('i18n')('continousSave.Confirm'));
+                    if ( !_status.saved ){ // do I need to alert
+                        if ( !_preventedFlag.alerted ){ // did someone else alert? no? alert and update model
+                            _preventedFlag.alerted = true;
+                            var answer = confirm(_confirmMessage);
                             if (!answer) {
                                 event.preventDefault();
                             }
-                        }
-
-                    } else if (_preventedPageExit.indexOf(_preventedFlag) > 0) {
-                        _preventedPageExit.push(uid);
-                    }
+                        } // else - if someone alerted, do nothing
+                    } // else, i don't need to alert, do nothing..
 
                 }
             });
@@ -150,17 +166,17 @@ angular.module('lergoApp')
                     _status.saving = false;
 
                     if (!_status.saved) {
-                        setTimeout(_save, 0);
+                        $timeout(_save, 0);
                     }
 
                 }, function( result ){
                     $log.error('unable to save ', result);
                     _status.saving = false;
-                    if ( retries > 5 ){
+                    if ( retries > _retries ){
                         return;
                     }else{
                         retries++;
-                        setTimeout(_save,1000);
+                        $timeout(_save, _retryDelay );
                     }
 
                 });
@@ -181,6 +197,15 @@ angular.module('lergoApp')
                 return _status;
             };
         }
+
+        // make this available on the outside
+        impl.getPreventedFlag = function(){
+            return _preventedFlag;
+        };
+
+        impl.setPreventedFlag = function( value ){
+            _preventedFlag = value;
+        };
 
 
         return impl;

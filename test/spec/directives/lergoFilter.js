@@ -56,7 +56,7 @@ describe('Directive: lergoFilter', function () {
         inject(function( $rootScope ){
             $rootScope.model = {};
 
-            $rootScope.opts = { 'showStudents' : true, 'showLanguage': true };
+            $rootScope.opts = { 'showStudents' : true, 'showLanguage': true};
 
             generate($rootScope);
 
@@ -80,6 +80,10 @@ describe('Directive: lergoFilter', function () {
 
     it('should update reporterId when reportedBy changes', function(){
         testChangeProperty('reportedBy', { '_id' : 'this is the id' }, 'reporterId', 'this is the id');
+    });
+
+    it('should update lessonId when reportLesson changes', function(){
+        testChangeProperty('reportLesson', { '_id' : 'this is reportLesson' }, 'data.lessonId', 'this is reportLesson');
     });
 
     it('should update reportStudent', function(){
@@ -136,34 +140,6 @@ describe('Directive: lergoFilter', function () {
         changeMinMaxFilters('correctPercentage','correctPercentage');
     });
 
-
-    describe('getTagsLike', function(){
-        it ('should invoke TagsService.getAllAvailableTags(like) function and return its data', inject(function(TagsService, $timeout, $httpBackend, $q, $rootScope){
-            $rootScope.model = {};
-            $rootScope.opts = {};
-            generate($rootScope);
-            var elementScope = element.children().scope();
-
-            var likeParam = null;
-            TagsService.getAllAvailableTags = function( like ){
-                likeParam = like;
-                var deferred = $q.defer();
-                deferred.resolve({'data' : 'this is data'});
-                return deferred.promise;
-            };
-            expect(typeof(elementScope.getTagsLike)).toBe('function');
-            var promiseResult = null;
-            var promise = elementScope.getTagsLike('this is like');
-            promise.then( function( r ){
-                promiseResult = r;
-            });
-            expect(!!promise).toBe(true);
-            expect(likeParam).toBe('this is like');
-            $timeout.flush();
-            expect(promiseResult).toBe('this is data');
-
-        }));
-    });
 
     it ('should delete some null properties from model', inject(function( $rootScope ){
         $rootScope.model = {};

@@ -32,15 +32,9 @@ module.exports = function (grunt) {
     }
 
     var s3Config = {};
-    try {
-        var s3path = process.env.LERGO_S3 || path.resolve('./dev/s3.json');
-        logger.info('looking for s3.json at ' , s3path );
-        s3Config = require( s3path );
-    }catch(e){
-        logger.error('s3 json is undefined, you will not be able to upload to s3',e);
-    }
-    
-    
+
+
+
 
     grunt.initConfig({
         yeoman: yeomanConfig,
@@ -59,6 +53,13 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/scripts/**/*.js',
                     '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
+            },
+            jshint: {
+                files: [ '<%= yeoman.app %>/**/*.js' ]
+            },
+            develop: {
+                files: ['app/**/*.js', 'test/**/*.js'],
+                tasks: ['concurrent:develop']
             }
         },
         s3:{
@@ -331,6 +332,15 @@ module.exports = function (grunt) {
             }
         },
         concurrent: {
+            develop: [
+//                'jsdoc',
+                'jshint',
+                'karma:develop'
+            ],
+            watch:[
+                'watch:compass',
+                'watch:jshint'
+            ],
             server: [
                 'compass:server'
             ],
@@ -343,6 +353,12 @@ module.exports = function (grunt) {
             ]
         },
         karma: {
+            develop: {
+                configFile: 'karma.conf.js',
+                singleRun:true,
+                port:9001,
+                browsers: ['Chrome']
+            },
             unit: {
                 configFile: 'karma.conf.js',
                 singleRun:true,
@@ -385,6 +401,21 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.registerTask('readS3Credentials', function(){
+        try {
+            var s3path = process.env.LERGO_S3 || path.resolve('./dev/s3.json');
+            logger.info('looking for s3.json at ' , s3path );
+            s3Config = require( s3path );
+        }catch(e){
+            logger.error('s3 json is undefined, you will not be able to upload to s3',e);
+        }
+    });
+
+    grunt.registerTask('uploadStatus', [
+        'readS3Credentials',
+        's3'
+    ]);
+
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
@@ -396,7 +427,10 @@ module.exports = function (grunt) {
             'configureProxies',
             'connect:livereload',
             'open',
-            'watch'
+            'watch:compass',
+            'watch:livereload',
+            'watch:jshint'
+
         ]);
     });
 
