@@ -1,30 +1,33 @@
 <div class="questions-exact-match lergo-form">
-	<div class="{{!quizItem.checkAnswer.correct && 'quiz-wrong' || 'quiz-correct'}}">
-		<div ng-include="'views/questions/report/partial/_questionHeader.html'" ></div>
+    <div class="{{!quizItem.checkAnswer.correct && 'quiz-wrong' || 'quiz-correct'}}">
+        <div ng-include="'views/questions/report/partial/_questionHeader.html'"></div>
         <div class="quiz-answer">
-			<div>
-				<div class="bold">{{'questions.correctAnswers'|i18n}}</div>
-				<div ng-repeat="option in quizItem.options">
-					{{option.label}}
-					<i ng-show="!!option.checked" class="fa fa-check correct"></i>
-				</div>
-			</div>
-			<br>
-			<div>
-				<div class="bold">{{'questions.yourAnswer'|i18n}}</div>
-				{{quizItem.userAnswer}}
-				<i ng-show="!quizItem.checkAnswer.correct" class="fa fa-times wrong"></i>
-				<i ng-show="!!quizItem.checkAnswer.correct" class="fa fa-check correct"></i>
-			</div>
-			<div ng-show="!!quizItem.explanation">
-				<br>
-				<div class="bold">{{'explanation'|i18n}}</div>
-				<div>{{quizItem.explanation}}</div>
-			</div>
-			<div ng-show="!!quizItem.explanationMedia">
-				<br>
-				<div quiz-item-explanation-media quiz-item="quizItem"></div>
-			</div>
-		</div>
-	</div>
+            <div>
+                <div class="bold">{{'questions.correctAnswers'|i18n}}</div>
+                <div ng-repeat="option in quizItem.options">
+                    {{option.label}}
+                    <i ng-show="!!option.checked" class="fa fa-check correct"></i>
+                </div>
+            </div>
+            <br>
+
+            <div>
+                <div class="bold">{{'questions.yourAnswer'|i18n}}</div>
+                {{quizItem.userAnswer}}
+                <i ng-show="!quizItem.checkAnswer.correct" class="fa fa-times wrong"></i>
+                <i ng-show="!!quizItem.checkAnswer.correct" class="fa fa-check correct"></i>
+            </div>
+            <div ng-show="quizItem.checkAnswer.expMessage.length > 0 ">
+                <br>
+
+                <div class="bold">{{'explanation'|i18n}}</div>
+                <div ng-repeat="msg in quizItem.checkAnswer.expMessage">{{msg}}</div>
+            </div>
+            <div ng-show="!!quizItem.explanationMedia">
+                <br>
+
+                <div quiz-item-explanation-media quiz-item="quizItem"></div>
+            </div>
+        </div>
+    </div>
 </div>

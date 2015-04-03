@@ -37,12 +37,12 @@
 <table class="lergo-table" style="width: 90%; float: left">
 	<tr ng-repeat="item in step.quizItems">
 		<td class="question" colspan="5">
-			<a class="btn-link" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
+			<a href="" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
 		</td>
 		<td>
-			<a ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
-			<a ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
-			<a class="btn-link" ng-click="removeItemFromQuiz( item, step )">X</a>
+			<a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
+			<a href="" ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
+			<a href="" ng-click="removeItemFromQuiz( item, step )">X</a>
 		</td>
 	</tr>
 	<tr>

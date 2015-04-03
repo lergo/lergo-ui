@@ -1,10 +1,10 @@
-
-<div class="base-layout" id="questionIntro" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
-	<div class="page-content-width">
-		<div class="page-content-body">
-			<div class="question">
-				<div class="stats">
-					<span class="stats-button age-limit-{{quizItem.age}} no-color" ng-show="!!quizItem.age"> {{quizItem.age}}+ {{'homepage.years'|i18n}} </span>
+<div class="base-layout" id="questionIntro" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null"
+     tabindex="1">
+    <div class="page-content-width">
+        <div class="page-content-body">
+            <div class="question">
+                <div class="stats">
+                    <span class="stats-button age-limit-{{quizItem.age}} no-color" ng-show="!!quizItem.age"> {{quizItem.age}}+ {{'homepage.years'|i18n}} </span>
 					<span class="stats-button" tooltip="{{'homepage.tooltip.views' | i18n}}">
 						<i class="fa fa-eye fa-fw"></i>
 						{{0+quizItem.views}}
@@ -17,26 +17,33 @@
 						<i class="fa fa-heart-o"></i>
 						{{0+questionLikes }}
 					</span>
-				</div>
-				<div class="action-items" ng-show="!!permissions">
-					<div class="action-items-bottom">
-						<a class="btn-link" ng-click="copyQuestion(quizItem)" ng-show="!!permissions.canCopy">
-							<i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | i18n}}"></i>
-						</a>
-						<br />
-						<a class="btn-link" href="#!/user/questions/{{quizItem._id}}/update" tooltip="{{'questions.tooltip.edit' | i18n}}"
-							ng-show="!!permissions.canEdit">
-							<i class="fa fa-pencil-square-o"></i>
-						</a>
-						<br />
-					</div>
-				</div>
-				<div ng-include="getQuestionViewTemplate(quizItem)"></div>
-				<div class="details">
-					<div class="properties">
+                </div>
+                <div class="action-items" ng-show="!!permissions">
+                    <div class="action-items-bottom">
+                        <a class="btn-link" ng-click="copyQuestion(quizItem)" ng-show="!!permissions.canCopy">
+                            <i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | i18n}}"></i>
+                        </a>
+                        <br/>
+                        <a class="btn-link" href="#!/user/questions/{{quizItem._id}}/update"
+                           tooltip="{{'questions.tooltip.edit' | i18n}}"
+                           ng-show="!!permissions.canEdit">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </a>
+                        <br/>
+                    </div>
+                </div>
+                <div ng-include="getQuestionViewTemplate(quizItem)"></div>
+                <div class="details">
+                    <div class="properties">
 						<span tooltip="{{'homepage.tooltip.user' | i18n}}">
-							<i class="fa fa-user"></i>
-							<span>{{quizItem.user.username}}</span>
+                            <a show-logged-in ng-href="#!/user/{{lesson.user.username}}/profile">
+                                <i class="fa fa-user"></i>
+                                <span>{{quizItem.user.username}}</span>
+                            </a>
+                             <a show-anonymous ng-href="#!/public/{{lesson.user.username}}/profile">
+                                 <i class="fa fa-user"></i>
+                                 <span>{{quizItem.user.username}}</span>
+                             </a>
 						</span>
 						<span tooltip="{{'lessons.createdOn' | i18n}}">
 							<i class="fa fa-calendar"></i>
@@ -46,14 +53,16 @@
 							<i class="fa fa-book"></i>
 							<span>{{'filters.subjects.' + quizItem.subject | i18n}}</span>
 						</span>
-					</div>
-					<div class="action-items">
+                    </div>
+                    <div class="action-items">
 						<span show-logged-in>
-							<button class="btn-link" ng-click="like()" tooltip="{{'questions.tooltip.like' | i18n}}" ng-show="!isLiked()">
-								<i class="fa fa-heart-o "></i>
-								{{'like' | i18n}}
-							</button>
-							<span class="btn-link dropdown" ng-click="noop()" tooltip="{{'questions.tooltip.liked' | i18n}}" ng-show="!!isLiked()">
+							<button class="btn-link" ng-click="like()" tooltip="{{'questions.tooltip.like' | i18n}}"
+                                    ng-show="!isLiked()">
+                                <i class="fa fa-heart-o "></i>
+                                {{'like' | i18n}}
+                            </button>
+							<span class="btn-link dropdown" ng-click="noop()"
+                                  tooltip="{{'questions.tooltip.liked' | i18n}}" ng-show="!!isLiked()">
 								<span class="dropdown-toggle">
 									<i class="fa fa-heart-o "></i>
 									{{'liked' | i18n}}
@@ -64,62 +73,68 @@
 								</span>
 								<span class="dropdown-menu">
 									<li>
-										<button class="btn-link" ng-click="unlike()">{{ 'unlike' | i18n }}</button>
-									</li>
+                                        <button class="btn-link" ng-click="unlike()">{{ 'unlike' | i18n }}</button>
+                                    </li>
 								</span>
 							</span>
 						</span>
-						<a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}" popover-placement="right" popover-trigger="focus"
-							tabindex="0">
-							<i class="fa fa-heart-o "></i>
-							{{'like' | i18n}}
-						</a>
-						<button class="btn-link" ng-click="absoluteShareLink(quizItem)" tooltip="{{'questions.tooltip.share' | i18n}}">
-							<i class="fa fa-share-alt "></i>
-							{{'share' | i18n}}
-						</button>
-					</div>
-					<div class="forms">
-						<div ng-show="!!share" class="lergo-form share">
-							<p class="lergo-h4">{{'questions.shareQuestion' | i18n}}</p>
-							<div class="container">
-								<span>{{'questions.shareQuestionTitle' | i18n}}</span>
-								<textarea  type="text" ng-model="shareLink" readonly
-									ng-click="onTextClick($event)"></textarea>
-							</div>
-						</div>
-					</div>
-					<div class="description">
-						<div class="edit-summary" ng-show="quizItem.summary || (!!originalQuestions && originalQuestions.length>0)">
-							<br />
-							<div class="title">{{'questions.editSummary'|i18n}}</div>
-							<div style="padding: 5px 0 10px 0;" class="summary" ng-show="quizItem.summary" btf-markdown="quizItem.summary"></div>
-							<div ng-repeat="q in originalQuestions">
-								<div style="padding: 5px 0 10px 0;" class="summary">
-									Copied from
-									<span question-read-link question="q"></span>
-									by {{q.user.username}}
-								</div>
-							</div>
-						</div>
-						<div class="edit-summary" ng-show="usedInLessons.length>0">
-							<div ng-show="!!more">
-								<div class="title">{{'questions.lessonUsed' | i18n}}</div>
-								<div ng-repeat="l in usedInLessons">
-									<i class="fa fa-star fa-fw"></i>
-									{{l.name}}
-								</div>
-							</div>
-							<div class="read-more" ng-click="more=!more">
-								<hr class="dashes">
-								<span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
-								<span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
-								<hr class="dashes">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}"
+                           popover-placement="right" popover-trigger="focus"
+                           tabindex="0">
+                            <i class="fa fa-heart-o "></i>
+                            {{'like' | i18n}}
+                        </a>
+                        <button class="btn-link" ng-click="absoluteShareLink(quizItem)"
+                                tooltip="{{'questions.tooltip.share' | i18n}}">
+                            <i class="fa fa-share-alt "></i>
+                            {{'share' | i18n}}
+                        </button>
+                    </div>
+                    <div class="forms">
+                        <div ng-show="!!share" class="lergo-form share">
+                            <p class="lergo-h4">{{'questions.shareQuestion' | i18n}}</p>
+
+                            <div class="container">
+                                <span>{{'questions.shareQuestionTitle' | i18n}}</span>
+								<textarea type="text" ng-model="shareLink" readonly
+                                          ng-click="onTextClick($event)"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <div class="edit-summary"
+                             ng-show="quizItem.summary || (!!originalQuestions && originalQuestions.length>0)">
+                            <br/>
+
+                            <div class="title">{{'questions.editSummary'|i18n}}</div>
+                            <div style="padding: 5px 0 10px 0;" class="summary" ng-show="quizItem.summary"
+                                 btf-markdown="quizItem.summary"></div>
+                            <div ng-repeat="q in originalQuestions">
+                                <div style="padding: 5px 0 10px 0;" class="summary">
+                                    Copied from
+                                    <span question-read-link question="q"></span>
+                                    by {{q.user.username}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit-summary" ng-show="usedInLessons.length>0">
+                            <div ng-show="!!more">
+                                <div class="title">{{'questions.lessonUsed' | i18n}}</div>
+                                <div ng-repeat="l in usedInLessons">
+                                    <i class="fa fa-star fa-fw"></i>
+                                    {{l.name}}
+                                </div>
+                            </div>
+                            <div class="read-more" ng-click="more=!more">
+                                <hr class="dashes">
+                                <span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
+                                <span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
+                                <hr class="dashes">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

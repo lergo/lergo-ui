@@ -1,0 +1,37 @@
+#Profile {
+    background: #eeeeee;
+    border-radius: 10px;
+    padding: 10px;
+    .col-edit {
+        margin-bottom: -40px;
+        z-index: 1000;
+    }
+    a {
+        position: relative;
+    }
+    input {
+        background: #fafafa;
+        border: 0;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    textarea {
+        width: 249px;
+        height: 144px;
+        border-radius: 5px;
+        padding: 5px;
+        background: #fafafa;
+    }
+    .btn{
+        text-transform: none;
+    }
+}
+
+#PublicProfile {
+    background: #eeeeee;
+    border-radius: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

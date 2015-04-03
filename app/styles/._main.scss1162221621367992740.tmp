@@ -1,5 +1,8 @@
 @import './bootstrapVariables';
 @import "myBootstrapSass/bootstrap";
+
+
+
 @import "./variables";
 @import './bootstrapOverrides';
 //
@@ -30,4 +33,3 @@
 @import "./reportIndex";
 @import "./faq";
 @import "./facebook";
-@import "./profile";
