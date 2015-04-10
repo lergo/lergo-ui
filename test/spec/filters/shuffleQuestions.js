@@ -58,10 +58,10 @@ describe('Filter: shuffleQuestions', function () {
         });
 
 
-        for ( var i =0; i<10 ; i++) {
-            var shuffleResult = shuffleQuestions({array: [{_id: '1'}, {_id: '2'}, {_id: '3'}], stepIndex: 0, report: {}});
-            expect(shuffleResult[0]._id === '3' || shuffleResult[1]._id === '3' ).toBe(true);
-        }
+        //for ( var i =0; i<10 ; i++) {
+        var shuffleResult = shuffleQuestions({array: ['1',  '2',  '3'], stepIndex: 0, report: {}});
+        expect(shuffleResult[0] === '3' || shuffleResult[1] === '3' ).toBe(true);
+        //}
     }));
 
 

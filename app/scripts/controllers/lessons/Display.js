@@ -38,7 +38,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
                 updateQuestionsAnswers();
 
 				if (!!$scope.step) {
-					shuffleQuestionsFilter( { 'array' : $scope.step.quizItems, 'disabled' : !$scope.step.shuffleQuestion } );
+					shuffleQuestionsFilter( { 'array' : $scope.step.quizItems, 'disabled' : !$scope.step.shuffleQuestion , 'report' : $scope.report , 'stepIndex' : $scope.currentStepIndex } );
 				}
 
 

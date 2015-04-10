@@ -105,7 +105,7 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
 	}
 
 	this.translate = function(key) {
-		$log.debug('translating', key);
+		//$log.debug('translating', key);
 		var value = null;
 		if (!!key) {
 			value = findTranslationInLanguage(translations[language], key);

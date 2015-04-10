@@ -5,6 +5,12 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
 
         $logProvider.debugEnabled(false);
 
+        try {
+            if (window.location.origin.indexOf('localhost') > 0) {
+                $logProvider.debugEnabled(true);
+            }
+        }catch(e){}
+
         $locationProvider.html5Mode(false).hashPrefix('!');
 
         gravatarServiceProvider.defaults = {

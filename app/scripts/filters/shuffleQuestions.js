@@ -19,7 +19,7 @@ angular.module('lergoApp')
          * the actual filter
          * @param {object} opts
          * @param {boolean} opts.disabled true iff the filter should do nothing
-         * @param {array} opts.array array to shuffle
+         * @param {array<string>} opts.array array of ids to shuffle
          * @param {boolean} opts.array.isShuffed true iff array is already shuffled and the filter should do nothing
          * @param {Report} opts.report the report with the questions and answers
          * @param {integer} opts.stepIndex the index of current step
@@ -39,11 +39,12 @@ angular.module('lergoApp')
             // we can only apply this if we have the report and current step index
             if (_.isDefined(opts.stepIndex) && _.isDefined(opts.report) ) { // if both exists, all is well
 
-                var answers = ReportsService.getAnswersByQuizItemId(opts.stepIndex);
+                // returns answers for stepIndex as a map by id.
+                var answers = ReportsService.getAnswersByQuizItemId(opts.report, opts.stepIndex);
 
                 opts.array.sort(function (a, b) {
-                    var aHasAnswer = answers.hasOwnProperty(a._id);
-                    var bHasAnswer = answers.hasOwnProperty(b._id);
+                    var aHasAnswer = answers.hasOwnProperty(a);
+                    var bHasAnswer = answers.hasOwnProperty(b);
                     if (aHasAnswer && bHasAnswer) {
                         return 0;
                     }
@@ -56,6 +57,8 @@ angular.module('lergoApp')
 
                 $log.error('one of stepIndex or report exists, but the other does not. seems like a bug to me..');
             }
+
+            $log.debug('this is the shuffled array',opts.array);
 
             return opts.array;
         };
