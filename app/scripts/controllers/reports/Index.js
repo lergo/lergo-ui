@@ -13,6 +13,10 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
         'showReportLesson': true
 	};
 
+    $scope.getReportName = function(report){
+        return ( report && report.data && report.data.lesson && report.data.lesson.name && report.data.lesson.name.trim().length > 0) ? report.data.lesson.name : '[no name]';
+    };
+
 	$scope.reportTypes = [ {
 		'id' : 'mine'
 	}, {
