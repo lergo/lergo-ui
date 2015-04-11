@@ -1,7 +1,23 @@
 .report {
 
-    .redo-buttons{
-      position: absolute; right: 0; bottom: 0; top: 150px;
+    .redo-buttons {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: 150px;
+        font-size: 25px;
+        * {
+            color: #F7941E;
+        }
+
+        & > span {
+            margin:5px;
+        }
+        .restart{
+            &, * {
+                color: #8CC63F;
+            }
+        }
     }
     .lergo-h1 {
         font-size: 20px;
@@ -63,7 +79,7 @@
             width: 50%;
             padding-left: 10px;
             display: inline-block;
-            position:relative;
+            position: relative;
         }
     }
     .steps {
@@ -194,46 +210,46 @@
 }
 
 .lergo-embed-mode {
-  #content {
-    .report {
-      margin: 0;
-      .image {
-        display: none;
-      }
+    #content {
+        .report {
+            margin: 0;
+            .image {
+                display: none;
+            }
 
-      .report-quiz-summary-item{
-        padding:2px;
-        white-space: nowrap;
-      }
+            .report-quiz-summary-item {
+                padding: 2px;
+                white-space: nowrap;
+            }
 
-      .recommendation .description a{
-        width:250px;
-        overflow-x:hidden;
-        display:block;
-        text-overflow: ellipsis;
-      }
+            .recommendation .description a {
+                width: 250px;
+                overflow-x: hidden;
+                display: block;
+                text-overflow: ellipsis;
+            }
 
-      .header {
-        .header-name{
-          width:auto;
+            .header {
+                .header-name {
+                    width: auto;
+                }
+                .header-desc {
+                    margin-top: 10px;
+                    width: auto;
+                }
+            }
+
+            .redo-buttons {
+                position: static;
+                margin-top: 10px;
+            }
+
+            .quiz-step-report-view {
+                .report-quiz-question-header .duration {
+                    display: block;
+                    float: none;
+                }
+            }
         }
-        .header-desc{
-          margin-top:10px;
-          width:auto;
-        }
-      }
-
-      .redo-buttons{
-        position:static;
-        margin-top:10px;
-      }
-
-      .quiz-step-report-view{
-        .report-quiz-question-header .duration {
-          display:block;
-          float:none;
-        }
-      }
     }
-  }
 }
