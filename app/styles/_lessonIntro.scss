@@ -201,6 +201,7 @@
             .description {
                 pre {
                     word-break: break-word;
+                    white-space: pre-wrap;
                     background: transparent;
                 }
                 font-size: 17px;
