@@ -3,15 +3,20 @@
 describe('Directive: trueFalse', function() {
 
 	// load the directive's module
-	beforeEach(module('lergoApp'));
+	beforeEach(module('lergoApp','directives-templates','lergoBackendMock'));
 
 	var element;
 
-	it('should add true false answer option', inject(function($rootScope, $compile) {
-		element = angular.element('<true-false></true-false>');
+	it('should put answer on quiz item and submit', inject(function($rootScope, $compile) {
+        $rootScope.onSubmit = jasmine.createSpy();
+        $rootScope.quizItem = { 'question' : 'foo' } ;
+		element = angular.element('<div true-false quiz-item="quizItem" on-click="onSubmit()"></div>');
 		element = $compile(element)($rootScope);
 		$rootScope.$digest();
-		// expect(element.text()).toBe('this is the trueFalse directive');
+        var isolatedScope = element.children().scope();
+        isolatedScope.submit('bar');
+		expect($rootScope.onSubmit).toHaveBeenCalled();
+        expect($rootScope.quizItem.userAnswer).toBe('bar');
 	}));
 
 });

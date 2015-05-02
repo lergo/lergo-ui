@@ -34,6 +34,14 @@ describe('Service: ContinuousSave', function () {
 
     });
 
+    describe('preventFlag', function(){
+        it('should remember the prevented flag', function(){
+            MContinuousSave.setPreventedFlag('foo');
+            expect(MContinuousSave.getPreventedFlag()).toBe('foo');
+        });
+
+    });
+
     describe('getStatus', function () {
         it('should return status', function () {
             var cs = new MContinuousSave({});

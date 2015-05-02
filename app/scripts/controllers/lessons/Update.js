@@ -15,6 +15,12 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				return !!saveLesson.getStatus().saving;
 			};
 
+            $scope.$watch(function () {
+                return saveLesson.getStatus();
+            }, function ( newValue ) {
+                $scope.saveStatus = newValue;
+            }, true);
+
 			$scope.displayStep = function(step) {
 				$location.path('/user/lessons/step/display').search('data', JSON.stringify(step));
 			};

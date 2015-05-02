@@ -141,6 +141,18 @@ angular.module('lergoApp')
             }
 
             var retries = 0;
+
+            function _updateRemoteVersion(newValue){
+                if ( newValue ){
+                    $log.debug('updating continuous save', newValue.lastUpdate );
+                }
+                if ( !!newValue && !!_remoteVersion && newValue.lastUpdate < _remoteVersion.lastUpdate ){
+                    $log.error('got old version from sever');
+                    return;
+                }
+                _remoteVersion = newValue;
+            }
+
             function _save() {
 
                 $log.info(_localVersion);
@@ -161,16 +173,17 @@ angular.module('lergoApp')
                 _status.saving = true;
                 _saveFn(_localVersion).then(function (result) {
                     retries = 0;
-                    _remoteVersion = result.data;
+                    _updateRemoteVersion(result.data);
                     _status.saved = _versionMatch();
                     _status.saving = false;
-
+                    _status.errorSaving = false;
                     if (!_status.saved) {
                         $timeout(_save, 0);
                     }
 
                 }, function( result ){
                     $log.error('unable to save ', result);
+                    _status.errorSaving = true;
                     _status.saving = false;
                     if ( retries > _retries ){
                         return;

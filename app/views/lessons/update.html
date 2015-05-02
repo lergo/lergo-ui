@@ -122,7 +122,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="lergo-h3">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+                <div save-status="saveStatus"></div>
                 <div>
                     <button class="btn" ng-click="done()" ng-disabled="isSaving() || !lesson.name">{{'done' | i18n }}
                     </button>

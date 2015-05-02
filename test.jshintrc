@@ -33,6 +33,7 @@
         "$" : false,
         "runs" : false,
         "waitsFor" : false,
-        "_": false
+        "_": false,
+        "jasmine" : false
     }
 }

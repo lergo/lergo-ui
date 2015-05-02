@@ -6,13 +6,29 @@ describe('Directive: lessonView', function () {
     var element;
     var elementScope;
 
-    it('should make hidden element visible', inject(function ($rootScope, $compile) {
+    beforeEach(inject(function($rootScope, $compile){
         element = angular.element('<div lesson-view></div>');
         element = $compile(element)($rootScope);
         $rootScope.$digest();
         elementScope = element.children().scope();
+        spyOn(elementScope,'$emit');
+    }));
+
+    it('should make hidden element visible', inject(function () {
         expect(typeof(elementScope.isCorrectAnswer)).toBe('function');
     }));
+
+    describe('getAnswerStatus', function(){
+        it('should emit stats', function(){
+            elementScope.getAnswerStats([{}]);
+            expect(elementScope.$emit).toHaveBeenCalled();
+        });
+
+        it('should do nothing if no results', function(){
+            elementScope.getAnswerStats();
+            expect(elementScope.$emit).not.toHaveBeenCalled();
+        });
+    });
 
 
 });
