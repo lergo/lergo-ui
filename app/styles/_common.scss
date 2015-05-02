@@ -712,3 +712,7 @@ $COLOR_19: #2a6496 !default;
         float: right;
     }
 }
+
+.clickable, a, a i, a i.fa,  a i.fa:before{
+    cursor:pointer;
+}
