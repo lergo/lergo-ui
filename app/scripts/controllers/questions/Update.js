@@ -177,7 +177,7 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
         };
 
         $scope.canShowExpPerAns = function (quizItem) {
-            if (!quizItem) {
+            if (!quizItem || !quizItem.type) {
                 return false;
             }
             return QuestionsService.getTypeById(quizItem.type).canShowExpPerAns;

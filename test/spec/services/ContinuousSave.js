@@ -3,7 +3,7 @@
 describe('Service: ContinuousSave', function () {
 
     // load the service's module
-    beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp','lergoBackendMock'));
 
     // instantiate service
     var MContinuousSave;
@@ -114,12 +114,14 @@ describe('Service: ContinuousSave', function () {
             expect(!!eventHandlers.$locationChangeStart).toBe(true);
         });
 
-        it('should pop a confirm window if there are unsaved changes', function(){
+        it('should pop a confirm window if there are unsaved changes', inject(function($timeout){
             var event = { 'preventDefault' : function(){} };
             spyOn(event,'preventDefault').andCallThrough();
 
-            var cs = new MContinuousSave({});
+            var cs = new MContinuousSave({ saveFn : function(){ return { then : function(/*success, error*/){}}; }});
+
             cs.onValueChange({ '_id' : '111', 'lastUpdate':1},{ '_id' : '111', 'lastUpdate': 1 });
+            $timeout.flush();
             eventHandlers.$locationChangeStart( event );
             var pf = MContinuousSave.getPreventedFlag();
             expect(event.preventDefault).toHaveBeenCalled();
@@ -127,11 +129,10 @@ describe('Service: ContinuousSave', function () {
             expect(pf.alerted).toBe(true);
             expect(window.confirm).toHaveBeenCalled();
 
-            //debugger;
             // lets validate it is rerunnable
             eventHandlers.$locationChangeStart( event );
             expect(window.confirm.callCount).toBe(2);
-        });
+        }));
 
         it('should do nothing if no local version present', function(){
             new MContinuousSave({});

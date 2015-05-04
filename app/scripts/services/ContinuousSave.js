@@ -89,9 +89,7 @@ angular.module('lergoApp')
              *
              *
              **/
-
-
-            $rootScope.$on('$locationChangeStart', function (event) {
+            var deregister = $rootScope.$on('$locationChangeStart', function (event) {
 
                 // if I have something need saving and it is not saved, we need to prevent page exit
                 if (!!_localVersion && !!_localVersion._id) {
@@ -99,6 +97,7 @@ angular.module('lergoApp')
                     var uid = _localVersion._id;
                     if ( _preventedFlag.hasOwnProperty(uid)){// data from last run, needs reset
                         _preventedFlag = {};
+                        _preventedFlag.alerted = false;
                     }
 
                     _preventedFlag[uid] = uid;
@@ -109,13 +108,21 @@ angular.module('lergoApp')
                             var answer = confirm(_confirmMessage);
                             if (!answer) {
                                 event.preventDefault();
+                            }else{
+                                deregister();
                             }
+
                         } // else - if someone alerted, do nothing
                     } // else, i don't need to alert, do nothing..
 
                 }
             });
 
+            // if location has changed. we need to reset the "alert" mechanism
+            var deregisterLocationChangeSuccess = $rootScope.$on('$locationChangeSuccess', function(){
+                _preventedFlag = {};
+                deregisterLocationChangeSuccess();
+            });
 
             function _onValueChange(newValue, oldValue) {
 

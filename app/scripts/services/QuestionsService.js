@@ -234,13 +234,15 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
     }];
 
     this.getTypeById = function (typeId) {
-        for (var i = 0; i < this.questionsType.length; i++) {
-            if (typeId === this.questionsType[i].id) {
-                return this.questionsType[i];
-            }
+        if ( !!typeId ) {
+            for (var i = 0; i < this.questionsType.length; i++) {
+                if (typeId === this.questionsType[i].id) {
+                    return this.questionsType[i];
+                }
 
+            }
+            throw new Error('type ' + typeId + ' is unsupported ');
         }
-        throw new Error('type ' + typeId + ' is unsupported ');
     };
 
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').directive('helperContent', function($rootScope, $http, ContinuousSave, $sce) {
+angular.module('lergoApp').directive('helperContent', function($rootScope, $http, ContinuousSave, $sce, $q, $log) {
 	return {
 		templateUrl : 'views/directives/_helperContent.html',
 		restrict : 'A',
@@ -43,7 +43,14 @@ angular.module('lergoApp').directive('helperContent', function($rootScope, $http
 			get();
 			var saveContent = new ContinuousSave({
 				'saveFn' : function(value) {
-					return update(value);
+					return update(value).catch(function(result){
+                        if ( result.status === 400 ){
+                            $log.debug('you do not have permission to save');
+                            return { data : $scope.helperContent };
+                        }else {
+                            $q.reject(result);
+                        }
+                    });
 				}
 			});
 
