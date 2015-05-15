@@ -1,10 +1,11 @@
 <div  class="base-layout" load-filter-and-paging="loadLessons()">
-    <div ng-show="!loaded">
+    <div> <!-- for css padding lergo-604 -->
+        <div ng-show="!loaded">
         <div class="loading">
             <i class="fa fa-cog fa-spin"></i>
         </div>
     </div>
-	<div ng-show="!!loaded">
+	    <div ng-show="!!loaded">
 		<div admin-section>
 			<a href="#!/admin/homepage/lessons">Admin Homepage</a>
 		</div>
@@ -112,4 +113,5 @@
 			<div lergo-paging page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
 		</div>
 	</div>
+    </div>
 </div>
