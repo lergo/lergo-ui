@@ -4,22 +4,22 @@
 		<div ng-include="'views/questions/report/partial/_questionHeader.html'"></div>
 		<div class="quiz-answer">
 			<div>
-				<div class="bold">{{'questions.correctAnswer'|i18n}}</div>
+				<div class="bold">{{'questions.correctAnswer'|translate}}</div>
 				<div ng-repeat="option in ['True','False']">
-					{{'quizItem.answer.'+ option | i18n}}
+					{{'quizItem.answer.'+ option | translate}}
 					<i ng-show="quizItem.answer === option" class="fa fa-check correct"></i>
 				</div>
 			</div>
 			<br>
 			<div>
-				<div class="bold">{{'questions.yourAnswer'|i18n}}</div>
-				{{!!quizItem.userAnswer &&('quizItem.answer.'+quizItem.userAnswer | i18n) || ""}}
+				<div class="bold">{{'questions.yourAnswer'|translate}}</div>
+				{{!!quizItem.userAnswer &&('quizItem.answer.'+quizItem.userAnswer | translate) || ""}}
 				<i ng-show="quizItem.userAnswer === quizItem.answer" class="fa fa-check correct"></i>
 				<i ng-show="quizItem.userAnswer !== quizItem.answer" class="fa fa-times wrong"></i>
 			</div>
 			<div ng-show="!!quizItem.explanation">
 				<br>
-				<div class="bold">{{'explanation'|i18n}}</div>
+				<div class="bold">{{'explanation'|translate}}</div>
 				<div>{{quizItem.explanation}}</div>
 			</div>
 			<div ng-show="!!quizItem.explanationMedia">

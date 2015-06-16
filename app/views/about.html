@@ -3,7 +3,7 @@
 	<div>
 		<ul class="nav nav-tabs-vertical">
 			<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
-				<a href="#!/public/about/{{section.id}}">{{'about.' + section.id | i18n}}</a>
+				<a href="#!/public/about/{{section.id}}">{{'about.' + section.id | translate}}</a>
 			</li>
 		</ul>
 		<div class="tab-content-vertical">

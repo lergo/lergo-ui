@@ -48,12 +48,13 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 
 	};
 
+    var translate = $filter('translate');
 	$scope.$watch(function() {
-		return $filter('i18n')('lergo.title');
+		return translate('lergo.title');
 	}, function() {
 		$rootScope.page = {
-			'title' : $filter('i18n')('lergo.title'),
-			'description' : $filter('i18n')('lergo.description')
+			'title' : translate('lergo.title'),
+			'description' : translate('lergo.description')
 		};
 	});
 
@@ -85,5 +86,5 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		}
 		$window.scrollTo(0, scrollY);
 	}
-	
+
 });

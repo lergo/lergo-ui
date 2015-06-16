@@ -101,7 +101,7 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, F
 	};
 
 	$scope.deleteLesson = function() {
-		if (confirm($filter('i18n')('deleteLessons.Confirm'))) {
+		if (confirm($filter('translate')('deleteLessons.Confirm'))) {
 			angular.forEach($scope.lessons, function(lesson) {
 				if (lesson.selected === true) {
 					$scope.lessons.splice($scope.lessons.indexOf(lesson), 1);

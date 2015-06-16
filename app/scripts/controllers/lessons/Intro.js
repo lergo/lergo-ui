@@ -98,7 +98,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	};
 
 	$scope.deleteLesson = function(lesson) {
-		var str = $filter('i18n')('deleteIntro.Confirm');
+		var str = $filter('translate')('deleteIntro.Confirm');
 		var canDelete = confirm($filter('format')(str, {
 			'0' : lesson.name
 		}));

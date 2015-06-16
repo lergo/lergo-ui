@@ -1,7 +1,7 @@
 <div class="input">
     <input ng-model="newLesson" type="text" name="filterName"
            typeahead-wait-ms="500"
-           placeholder="{{'reportLessonHint' | i18n}}"
+           placeholder="{{'reportLessonHint' | translate}}"
            typeahead="lesson as lesson.name for lesson in getReportLessonsLike($viewValue) | filter:$viewValue | limitTo: 10 "
            typeahead-append-to-body="true"
            typeahead-on-select="addReportLessonFromTypeahead($item, $model, $label)"

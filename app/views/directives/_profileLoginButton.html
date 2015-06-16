@@ -1,0 +1,25 @@
+<div class="header-signup" ng-show="!user">
+    <a href="#!/public/session/login"> {{ 'button.login' | translate }}</a>
+    <a href="#!/public/session/signup"> {{ 'button.signup' | translate }}</a>
+</div>
+<div class="header-login" ng-show="!!user" ng-mouseleave="openMenu(false)">
+    <a href="#!/user/create/invites" tooltip="{{'baseLayout.header.userName.tip' | translate}}" tooltip-placement="left" ng-mouseover="openMenu(true)">
+        <img gravatar-src="user.email" gravatar-size="25">
+        {{user.username}}
+    </a>
+    <div class="user-section-menu " dropdown is-open="menuIsOpen">
+        <ul class="dropdown-menu">
+            <li><a href="/#!/user/create/profile">{{'baseLayout.header.links.profile' | translate}}</a></li>
+            <li><a href="/#!/user/create/lessons">{{'baseLayout.header.links.lessons' | translate}}</a></li>
+            <li><a href="/#!/user/create/questions">{{'baseLayout.header.links.questions' | translate}}</a></li>
+            <li><a href="/#!/user/create/reports">{{'baseLayout.header.links.reports' | translate}}</a></li>
+            <li><a href="/#!/user/create/invites">{{'baseLayout.header.links.invites' | translate}}</a></li>
+            <li class="divider" admin-section> </li>
+            <li><a href="/#!/admin/homepage/lessons" admin-section>{{'baseLayout.header.links.manageLessons' | translate}}</a></li>
+            <li><a href="/#!/admin/homepage/abuseReports" admin-section>{{'baseLayout.header.links.manageAbuseReports' | translate}}</a></li>
+            <li><a href="/#!/admin/homepage/roles" admin-section>{{'baseLayout.header.links.manageRoles' | translate}}</a></li>
+            <li><a href="/#!/admin/homepage/groups" admin-section>{{'baseLayout.header.links.manageGroups' | translate}}</a></li>
+        </ul>
+    </div>
+    <button class="btn" ng-click="logout()">{{'baseLayout.header.logout' | translate }}</button>
+</div>

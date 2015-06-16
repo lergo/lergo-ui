@@ -9,7 +9,7 @@
             <!-- LERGO-320 - placing the show/hide on the table itself resolves the alignment issue when explanation media is hidden-->
 			<td style="vertical-align: top;" ng-show="!!getAnswer(quizItem) && !!quizItem.explanationMedia && !!quizItem.explanationMedia.type">
 				<div style="margin-top: 50px" >
-					<div style="font-weight: bold">{{ 'explanation' | i18n }}</div>
+					<div style="font-weight: bold">{{ 'explanation' | translate }}</div>
 					<div>{{quizItem.explanation}}</div>
 					<div quiz-item-explanation-media quiz-item="quizItem"></div>
 				</div>

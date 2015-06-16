@@ -98,7 +98,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
 			};
 			$scope.deleteStep = function(step) {
-				var str = $filter('i18n')('deleteStep.confirm');
+				var str = $filter('translate')('deleteStep.confirm');
 				var canDelete = confirm($filter('format')(str, {
 					'0' : step.title
 				}));
@@ -320,7 +320,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				// TODO - consider using route change instead.
 				persistScroll();
 				if (!!$scope.lesson && !$scope.lesson.name) {
-					var answer = confirm($filter('i18n')('deleteLesson.Confirm'));
+					var answer = confirm($filter('translate')('deleteLesson.Confirm'));
 					if (!answer) {
 						event.preventDefault();
 					} else {

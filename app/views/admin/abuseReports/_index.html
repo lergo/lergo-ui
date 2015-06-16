@@ -1,10 +1,10 @@
 <div load-filter-and-paging="load()">
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
-			<div class="lergo-h1">{{ 'admin.flaggedLesson' | i18n }}[ {{ 'lessons.total' | i18n }}: {{systemStats.abuseReportsCount}} ]</div>
+			<div class="lergo-h1">{{ 'admin.flaggedLesson' | translate }}[ {{ 'lessons.total' | translate }}: {{systemStats.abuseReportsCount}} ]</div>
 		</div>
 		<div class="page-content-sidebar">
-			<div class="lergo-h1">{{ 'reports.filter' | i18n }}</div>
+			<div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
 		</div>
 	</div>
 	<div class="page-content-width">
@@ -20,27 +20,27 @@
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li>
-										<a style="outline: none;" class="btn-link" ng-click="pending()">{{'filters.status.pending'|i18n}}</a>
+										<a style="outline: none;" class="btn-link" ng-click="pending()">{{'filters.status.pending'|translate}}</a>
 									</li>
 									<li>
-										<a style="outline: none;" class="btn-link" ng-click="resolved()">{{'filters.status.resolved'|i18n}}</a>
+										<a style="outline: none;" class="btn-link" ng-click="resolved()">{{'filters.status.resolved'|translate}}</a>
 									</li>
 									<li>
-										<a style="outline: none;" class="btn-link" ng-click="dismissed()">{{'filters.status.dismissed'|i18n}}</a>
+										<a style="outline: none;" class="btn-link" ng-click="dismissed()">{{'filters.status.dismissed'|translate}}</a>
 									</li>
 									<li class="divider"></li>
 									<li>
-										<a style="outline: none;" class="btn-link" ng-click="deleteReports()">{{'delete'|i18n}}</a>
+										<a style="outline: none;" class="btn-link" ng-click="deleteReports()">{{'delete'|translate}}</a>
 									</li>
 								</ul>
 							</div>
 						</td>
-						<td>{{'admin.lessonName'|i18n}}</td>
-						<td>{{'admin.byCreated'|i18n}}</td>
-						<td>{{'admin.byReported'|i18n}}</td>
-						<td>{{'admin.created'|i18n}}</td>
-						<td>{{'admin.report'|i18n}}</td>
-						<td>{{'admin.status'|i18n}}</td>
+						<td>{{'admin.lessonName'|translate}}</td>
+						<td>{{'admin.byCreated'|translate}}</td>
+						<td>{{'admin.byReported'|translate}}</td>
+						<td>{{'admin.created'|translate}}</td>
+						<td>{{'admin.report'|translate}}</td>
+						<td>{{'admin.status'|translate}}</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -49,9 +49,9 @@
 							<input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
 						</td>
 						<td>
-							<a ng-show="!!report.title && report.title.trim().length > 0" tooltip="{{'reports.tooltip.go' | i18n}}"
+							<a ng-show="!!report.title && report.title.trim().length > 0" tooltip="{{'reports.tooltip.go' | translate}}"
 								ng-href="#!/user/lessons/{{report.itemId}}/intro">{{ report.title }}</a>
-							<a ng-show="!report.title || report.title.trim().length <= 0" tooltip="{{'reports.tooltip.go' | i18n}}"
+							<a ng-show="!report.title || report.title.trim().length <= 0" tooltip="{{'reports.tooltip.go' | translate}}"
 								ng-href="#!/user/lessons/{{report.itemId}}/intro">[ no title ]</a>
 						</td>
 						<td>
@@ -62,14 +62,14 @@
 						</td>
 						<td>{{report.lastUpdate | date:'d-MMM-yyyy HH:mm'}}</td>
 						<td>
-							{{'abuseReport.reason.'+report.reason|i18n}}
+							{{'abuseReport.reason.'+report.reason|translate}}
 							<span ng-show="!!report.comment">
 								<a class="btn-link" popover="{{report.comment}}" popover-placement="top" popover-trigger="focus" tabindex="0">
 									<i class="fa fa-comment"></i>
 								</a>
 							</span>
 						</td>
-						<td>{{'filters.status.'+report.status | i18n}}</td>
+						<td>{{'filters.status.'+report.status | translate}}</td>
 					</tr>
 				</tbody>
 			</table>

@@ -11,12 +11,12 @@ angular.module('lergoApp').filter('duration', function( $filter ) {
             if ( isNumber(duration.startTime) && isNumber(duration.endTime) ){
                 duration = duration.endTime - duration.startTime;
             }else{
-                return $filter('i18n')('report.did.not.finish');
+                return $filter('translate')('report.did.not.finish');
             }
         }
 
         if ( !isNumber(duration) ) {
-            return $filter('i18n')('report.missing.info');
+            return $filter('translate')('report.missing.info');
         }
 
 		function pad(number) {

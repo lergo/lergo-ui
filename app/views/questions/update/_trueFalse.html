@@ -1,17 +1,17 @@
 <table class="lergo-table lergo-form">
    <thead>
       <tr >
-         <td>{{ 'questions.possibleAnswers' | i18n }}</td>
-         <td>{{ 'questions.correctAnswer' | i18n }}</td>
+         <td>{{ 'questions.possibleAnswers' | translate }}</td>
+         <td>{{ 'questions.correctAnswer' | translate }}</td>
       </tr>
    </thead>
    <tbody>
       <tr>
-         <td class="optionValue">{{ 'quizItem.answer.True'| i18n }}</td>
+         <td class="optionValue">{{ 'quizItem.answer.True'| translate }}</td>
          <td><input type="checkbox" ng-true-value="'True'" ng-false-value="'False'" ng-model="quizItem.answer" /></td>
       </tr>
       <tr>
-         <td class="optionValue">{{ 'quizItem.answer.False'| i18n }}</td>
+         <td class="optionValue">{{ 'quizItem.answer.False'| translate }}</td>
          <td><input type="checkbox" ng-true-value="'False'" ng-false-value="'True'" ng-model="quizItem.answer" /></td>
       </tr>
    </tbody>

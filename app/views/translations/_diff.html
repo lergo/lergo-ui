@@ -1,12 +1,12 @@
 <div id="translationDiffPage">
 
-    {{ 'translation.comparingTitle' | i18n }} {{ 'languages.' + $root.lergoLanguage | i18n }}
+    {{ 'translation.comparingTitle' | translate }} {{ 'languages.' + $root.lergoLanguage | translate }}
     <table class="table table-striped table-condensed">
         <thead>
         <tr>
-            <th class="key-column">{{ 'translation.key' | i18n }}</th>
-            <th class="translation-column"> {{ 'translation.baseLanguage' | i18n }}</th>
-            <th class="translation-column"> {{ 'translation.translation' | i18n }}</th>
+            <th class="key-column">{{ 'translation.key' | translate }}</th>
+            <th class="translation-column"> {{ 'translation.baseLanguage' | translate }}</th>
+            <th class="translation-column"> {{ 'translation.translation' | translate }}</th>
         </tr>
         </thead>
         <tbody>

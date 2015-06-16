@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ui.gravatar']).config(
-    function ($routeProvider, $httpProvider, $logProvider, $locationProvider, gravatarServiceProvider) {
+angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ui.gravatar']).config(
+    function ($routeProvider, $httpProvider, $logProvider, $locationProvider, gravatarServiceProvider, $translateProvider ) {
 
         $logProvider.debugEnabled(false);
 
@@ -11,6 +11,10 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
             }
         }catch(e){}
 
+        $translateProvider.useUrlLoader('/backend/system/translations/angular-translate.json');
+        $translateProvider.preferredLanguage('en');
+        $translateProvider.fallbackLanguage(['general','en']);
+        $translateProvider.useMissingTranslationHandler('missingTranslationFactory');
         $locationProvider.html5Mode(false).hashPrefix('!');
 
         gravatarServiceProvider.defaults = {

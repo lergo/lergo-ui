@@ -1,22 +1,22 @@
 <div class="lergo-form invite">
-		<p class="lergo-h4" >{{'lessons.inviteLesson'| i18n}}</p>
+		<p class="lergo-h4" >{{'lessons.inviteLesson'| translate}}</p>
 		<button  class="btn-link close-button" ng-click="setActiveAction()">X</button>
-		<p>{{'lessons.inviteLessonHelpText' | i18n}}</p>
+		<p>{{'lessons.inviteLessonHelpText' | translate}}</p>
 	<div ng-controller="LessonsInvitesCreateCtrl" class="container">
-		<div>{{ 'name' | i18n }}</div>
+		<div>{{ 'name' | translate }}</div>
 		<input type="text" ng-model="invite.invitee.name" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
 		<div ng-show="!!createSuccess">
-			<div>{{'lessons.inviteSuccessText' | i18n}}</div>
+			<div>{{'lessons.inviteSuccessText' | translate}}</div>
 			<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
 		</div>
 		<br />
 		<div class="button">
-			<button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | i18n }}</button>
-			<button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | i18n }}</button>
+			<button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | translate }}</button>
+			<button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | translate }}</button>
 		</div>
 		<div>
-			<span class="lergo-h4">{{'lessons.note' | i18n}}:</span>
-			{{'lessons.noteMessage' | i18n}}
+			<span class="lergo-h4">{{'lessons.note' | translate}}:</span>
+			{{'lessons.noteMessage' | translate}}
 		</div>
 	</div>
 </div>

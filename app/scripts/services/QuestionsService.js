@@ -67,7 +67,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         'reportTemplate': 'views/questions/report/_trueFalse.html',
         canShowExpPerAns: false,
         'answers': function (quizItem) {
-            return $filter('i18n')('quizItem.answer.' + quizItem.answer);
+            return $filter('translate')('quizItem.answer.' + quizItem.answer);
         },
         'isValid': function (quizItem) {
             if (!quizItem.question || !quizItem.answer) {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('LergoTranslate', function($routeParams, $http, localStorageService, $log, $rootScope, $timeout, $location, $route) { /* LergoTranslate */
+angular.module('lergoApp').service('LergoTranslate', function($routeParams, $http, localStorageService, $log, $rootScope, $timeout, $location, $route, $translate) { /* LergoTranslate */
 	// AngularJS will instantiate a singleton by calling "new" on this function
 
 	if (!!$rootScope.noTranslation) {
@@ -66,6 +66,8 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
 				$location.search('lergoLanguage', _language).replace();
 			}
 
+            $translate.use(_language);
+
 		} else {
 			$log.info('language', language, 'is not supported');
 		}
@@ -103,33 +105,6 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
 
 		return t;
 	}
-
-	this.translate = function(key) {
-		//$log.debug('translating', key);
-		var value = null;
-		if (!!key) {
-			value = findTranslationInLanguage(translations[language], key);
-
-			if (!value) {
-				value = findTranslationInLanguage(translations.general, key);
-			}
-		} else {
-			return '';
-		}
-		// Fallback to default language
-		if (!value && (language !== DEFAULT_LANGUAGE)) {
-			if (translations.hasOwnProperty(language)) {
-				$log.info('Translation key "' + key + '" is missing in locale "' + language + '", please contact LerGO');
-			}
-			value = findTranslationInLanguage(translations[DEFAULT_LANGUAGE], key);
-		}
-
-		if (!value) {
-			return '???' + key + '???';
-		}
-
-		return value;
-	};
 
 	// guy - $routeParams is not yet initialized when this runs.
 	// we are using a hack $$search.lergoLanguage

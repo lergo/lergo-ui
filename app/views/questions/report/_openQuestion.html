@@ -1,10 +1,10 @@
 <div class="quiz-open">
 	<div class="bg-primary" class="quiz">
 		<span class="inline-table">{{quizItem.question}}</span>
-		<span class="inline-table">({{'questions.openQuestion'|i18n}})</span>
+		<span class="inline-table">({{'questions.openQuestion'|translate}})</span>
 		<div class="duration">
 			<span ng-show="quizItem.isHintUsed">
-				<span class="inline-table"> {{'questions.hintWatched' | i18n}} </span>
+				<span class="inline-table"> {{'questions.hintWatched' | translate}} </span>
 				<span class="inline-table"> : {{quizItem.hint | limitTo:20}} | </span>
 			</span>
 			<span class="inline-table">
@@ -16,11 +16,11 @@
 	<div ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
 	<div class="question-media" quiz-item-media quiz-item="quizItem"></div>
 	<div class="quiz-answer">
-		<div class="bold">{{'questions.yourAnswer'|i18n}}</div>
+		<div class="bold">{{'questions.yourAnswer'|translate}}</div>
 		<div class="questions-exact-match">{{quizItem.userAnswer}}</div>
 		<div ng-show="!!quizItem.explanation">
 			<br>
-			<div class="bold">{{'explanation'|i18n}}</div>
+			<div class="bold">{{'explanation'|translate}}</div>
 			<div>{{quizItem.explanation}}</div>
 		</div>
 		<div ng-show="!!quizItem.explanationMedia">

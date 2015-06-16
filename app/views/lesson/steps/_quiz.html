@@ -1,25 +1,25 @@
 <div>
 	<span>
 		<span class="pop-up-hint">
-			<span> {{'quiz.practiseMode' | i18n}}</span>
+			<span> {{'quiz.practiseMode' | translate}}</span>
 			<span>
 				<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-				<button popover="{{'quiz.testModeHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+				<button popover="{{'quiz.testModeHint' | translate}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
 			</span>
 		</span>
 		<input style="vertical-align: middle; display: inline;" type="checkbox" ng-true-value="'False'" ng-false-value="'True'" ng-model=step.testMode />
 	</span>
 	<span class="pop-up-hint">
-		<span>{{'quiz.testMode' | i18n}}</span>
+		<span>{{'quiz.testMode' | translate}}</span>
 		<input style="vertical-align: middle; display: inline; margin-left: 6px;" ng-true-value="'True'" ng-false-value="'False'" type="checkbox"
 			ng-model=step.testMode />
 	</span>
 	<span style="padding-left: 60px;">
 		<span class="pop-up-hint">
-			<span> {{'quiz.shuffleQuestion' | i18n}}</span>
+			<span> {{'quiz.shuffleQuestion' | translate}}</span>
 			<span>
 				<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-				<button popover="{{'quiz.shuffleQuestionHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+				<button popover="{{'quiz.shuffleQuestionHint' | translate}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
 			</span>
 		</span>
 		<input style="vertical-align: middle; display: inline;" type="checkbox" ng-model=step.shuffleQuestion />
@@ -27,9 +27,9 @@
 </div>
 <div>
 	<span class="pop-up-hint" ng-show="step.testMode === 'False'">
-		<span>{{'quiz.allowRetry' | i18n}}</span>
+		<span>{{'quiz.allowRetry' | translate}}</span>
 		<span>
-			<button popover="{{'quiz.retryQuestionHint' | i18n }}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+			<button popover="{{'quiz.retryQuestionHint' | translate }}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
 		</span>
 		<input style="vertical-align: middle; display: inline; margin-left: 6px;" type="checkbox" ng-model=step.retryQuestion />
 	</span>
@@ -48,10 +48,10 @@
 	<tr>
 		<td>
 			<span class="pop-up-hint">
-				<button class="btn" ng-click="addCreateQuestion(step)">{{ 'lessons.addQuestion' | i18n }}</button>
+				<button class="btn" ng-click="addCreateQuestion(step)">{{ 'lessons.addQuestion' | translate }}</button>
 				<span>
 					<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-					<button popover="{{'quiz.addQuestionHint' | i18n}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
+					<button popover="{{'quiz.addQuestionHint' | translate}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
 				</span>
 			</span>
 		</td>

@@ -51,7 +51,7 @@ angular.module('lergoApp')
 
             var _retries = opts.retries || 5;
             var _retryDelay = opts.retryDelay || 1000;
-            var _confirmMessage = opts.confirmMessage || $filter('i18n')('continousSave.Confirm');
+            var _confirmMessage = opts.confirmMessage || $filter('translate')('continousSave.Confirm');
 
             var _saveFn;  // a function that returns a promise and saves the model.
             var _status = { 'saving': false };

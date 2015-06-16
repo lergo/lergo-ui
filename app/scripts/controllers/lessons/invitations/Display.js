@@ -17,7 +17,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			return LergoClient.reports.update(value).then(function(result) {
 				if (finished) {
 					if (errorWhileSaving) {
-						toastr.success($filter('i18n')('report.saved.successfully'));
+						toastr.success($filter('translate')('report.saved.successfully'));
 					}
 					errorWhileSaving = false;
 					if (!$scope.invitation.anonymous) {
@@ -30,7 +30,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			}, function(result) {
 				if (finished) {
 					errorWhileSaving = true;
-					toastr.error($filter('i18n')('report.error.while.updating'));
+					toastr.error($filter('translate')('report.error.while.updating'));
 					$log.error('error while updating report', result.data);
 				}
 				return result;
@@ -199,7 +199,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			var report = $scope.report;
 			LergoClient.lessons.create().then(function(result) {
 				var lesson = result.data;
-				lesson.name = $filter('i18n')('lesson.practice.title') + report.data.lesson.name;
+				lesson.name = $filter('translate')('lesson.practice.title') + report.data.lesson.name;
 				// todo: remove filter Service getLanguageByLocale - this should
 				// be
 				// coming from translate service.

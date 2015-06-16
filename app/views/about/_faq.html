@@ -1,13 +1,13 @@
 <div id="FAQ" class="lergo-form" ng-controller="FaqIndexCtrl" ng-init="scrollUp()">
     <div>
-        <div class="title">{{'about.faq'|i18n}}</div>
+        <div class="title">{{'about.faq'|translate}}</div>
         <br />
         <div class="desc">
-            {{'faq.header1' | i18n}}
-            <a href="#!/public/contact">{{'faq.header2' | i18n}}</a>
-            {{'faq.header3' | i18n}}
-            <a href="#!/public/problem">{{'faq.header4' | i18n}}</a>
-            {{'faq.header5' | i18n}}
+            {{'faq.header1' | translate}}
+            <a href="#!/public/contact">{{'faq.header2' | translate}}</a>
+            {{'faq.header3' | translate}}
+            <a href="#!/public/problem">{{'faq.header4' | translate}}</a>
+            {{'faq.header5' | translate}}
         </div>
     </div>
     <br />
@@ -25,11 +25,11 @@
                     <a ng-click="removeFAQ($index)" class="fa fa-trash-o"></a>
                 </div>
                 <div>
-                    {{'questions.question' | i18n}}
+                    {{'questions.question' | translate}}
                     <input ng-model="q.question" />
                 </div>
                 <div>
-                    {{'questions.answer' | i18n}}
+                    {{'questions.answer' | translate}}
                     <textarea ng-model="q.answer"></textarea>
                 </div>
             </div>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div admin-section>
-        <a class="btn-link" ng-click="addFAQ()">{{'faq.add' | i18n}}</a>
-        <div class="lergo-h3">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+        <a class="btn-link" ng-click="addFAQ()">{{'faq.add' | translate}}</a>
+        <div class="lergo-h3">{{ isSaving() && ('saving' + '...' | translate) || ('saved' | translate) }}</div>
     </div>
 </div>

@@ -176,27 +176,31 @@ module.exports = function (grunt) {
             }
 
         },
-        compass: {
-            options: {
-                sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                generatedImagesDir: '.tmp/images/generated',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: '<%= yeoman.app %>/bower_components',
-                httpImagesPath: '/images',
-                httpGeneratedImagesPath: '/images/generated',
-                httpFontsPath: '/styles/fonts',
-                relativeAssets: false
-            },
-            dist: {},
-            server: {
-                options: {
-                    debugInfo: true
-                }
-            }
+        sass: {
+            server: {},
+            dist: {}
         },
+        //compass: {
+        //    options: {
+        //        sassDir: '<%= yeoman.app %>/styles',
+        //        cssDir: '.tmp/styles',
+        //        generatedImagesDir: '.tmp/images/generated',
+        //        imagesDir: '<%= yeoman.app %>/images',
+        //        javascriptsDir: '<%= yeoman.app %>/scripts',
+        //        fontsDir: '<%= yeoman.app %>/styles/fonts',
+        //        importPath: '<%= yeoman.app %>/bower_components',
+        //        httpImagesPath: '/images',
+        //        httpGeneratedImagesPath: '/images/generated',
+        //        httpFontsPath: '/styles/fonts',
+        //        relativeAssets: false
+        //    },
+        //    dist: {},
+        //    server: {
+        //        options: {
+        //            debugInfo: true
+        //        }
+        //    }
+        //},
         // not used since Uglify task does concat,
         // but still available if needed
         /*concat: {
@@ -390,6 +394,7 @@ module.exports = function (grunt) {
                 ]
             }
         },
+
         uglify: {
             dist: {
                 files: {
@@ -456,6 +461,11 @@ module.exports = function (grunt) {
         'rev',
         'usemin'
     ]);
+
+    grunt.registerTask('compass',['sass']);
+
+
+
 
     grunt.registerTask('default', [
         'jshint',

@@ -1,11 +1,11 @@
 <div load-filter-and-paging="loadLessons()">
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
-			<div class="lergo-h1">{{ 'admin.allLessons' | i18n }} [ {{ 'lessons.total' | i18n }}: {{systemStats.lessonsCount}} ; {{'admin.public'|i18n}}:
+			<div class="lergo-h1">{{ 'admin.allLessons' | translate }} [ {{ 'lessons.total' | translate }}: {{systemStats.lessonsCount}} ; {{'admin.public'|translate}}:
 				{{systemStats.publicLessonsCount}} ]</div>
 		</div>
 		<div class="page-content-sidebar">
-			<div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
+			<div class="lergo-h1">{{ 'lessons.filter' | translate }}</div>
 		</div>
 	</div>
 	<div class="page-content-width">
@@ -21,23 +21,23 @@
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li>
-										<a  style="outline: none;" class="btn-link" ng-click="makePublic()">{{'admin.makePublic'|i18n}}</a>
+										<a  style="outline: none;" class="btn-link" ng-click="makePublic()">{{'admin.makePublic'|translate}}</a>
 									</li>
 									<li>
-										<a  style="outline: none;" class="btn-link" ng-click="makePrivate()">{{'admin.makePrivate'|i18n}}</a>
+										<a  style="outline: none;" class="btn-link" ng-click="makePrivate()">{{'admin.makePrivate'|translate}}</a>
 									</li>
 									<li class="divider"></li>
 									<li>
-										<a  style="outline: none;" class="btn-link" ng-click="deleteLesson()">{{'delete'|i18n}}</a>
+										<a  style="outline: none;" class="btn-link" ng-click="deleteLesson()">{{'delete'|translate}}</a>
 									</li>
 								</ul>
 							</div>
 						</td>
-						<td>{{'name'|i18n}}</td>
-						<td>{{'admin.by'|i18n}}</td>
-						<td>{{'admin.views'|i18n}}</td>
-						<td>{{'admin.created'|i18n}}</td>
-						<td>{{'admin.publicFrom'|i18n}}</td>
+						<td>{{'name'|translate}}</td>
+						<td>{{'admin.by'|translate}}</td>
+						<td>{{'admin.views'|translate}}</td>
+						<td>{{'admin.created'|translate}}</td>
+						<td>{{'admin.publicFrom'|translate}}</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -46,9 +46,9 @@
 							<input type="checkbox" style="margin-left: 5px;" ng-model="l.selected">
 						</td>
 						<td>
-							<a ng-show="!!l.name && l.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#!/user/lessons/{{l._id}}/intro">{{
+							<a ng-show="!!l.name && l.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">{{
 								l.name }}</a>
-							<a ng-show="!l.name || l.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | i18n}}" ng-href="#!/user/lessons/{{l._id}}/intro">[ no
+							<a ng-show="!l.name || l.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">[ no
 								title ]</a>
 						</td>
 						<td>

@@ -1,7 +1,7 @@
 <table class="lergo-table lergo-form">
 	<thead>
 		<tr>
-			<td>{{ 'questions.correctAnswers' | i18n }}</td>
+			<td>{{ 'questions.correctAnswers' | translate }}</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -17,20 +17,20 @@
 		</tr>
 		<tr ng-show="isValid(quizItem)">
 			<td class="setInputSize">
-				<span> {{'questions.fillInTheBlanks.inputSize' | i18n}}</span>
+				<span> {{'questions.fillInTheBlanks.inputSize' | translate}}</span>
 				<span>
 					<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-					<button popover="{{'questions.fillInTheBlanks.inputSizeHint' | i18n}}" class="fa fa-question-circle" popover-placement="top"
+					<button popover="{{'questions.fillInTheBlanks.inputSizeHint' | translate}}" class="fa fa-question-circle" popover-placement="top"
 						popover-trigger="focus" tabindex="0"></button>
 				</span>
 			</td>
 			<td>
 				{{!quizItem.blanks && (quizItem.blanks={'type':'auto','size':'4'} )||""}}
-				<select ng-model="quizItem.blanks.type" ng-options="m as ('questions.fillInTheBlanks.type.' + m | i18n) for m in ['auto','custom']">
+				<select ng-model="quizItem.blanks.type" ng-options="m as ('questions.fillInTheBlanks.type.' + m | translate) for m in ['auto','custom']">
 				</select>
 				<span ng-show="quizItem.blanks.type==='custom'">
 					<input type="number" style="width: 50px; display: inline" ng-model=quizItem.blanks.size />
-					{{'questions.fillInTheBlanks.sizeHint'|i18n}}
+					{{'questions.fillInTheBlanks.sizeHint'|translate}}
 				</span>
 			</td>
 		</tr>

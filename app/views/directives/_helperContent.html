@@ -11,14 +11,14 @@
 			<div class="textContent" ng-show="!!c.tips  || !! c.important">
 				<div ng-show="!!c.tips">
 					<div class="tips">
-						<i class="fa fa-lightbulb-o"> {{'helperContent.tips' | i18n}} </i>
+						<i class="fa fa-lightbulb-o"> {{'helperContent.tips' | translate}} </i>
 					</div>
 					{{c.tips}}
 				</div>
 				<br />
 				<div ng-show="!!c.important">
 					<div class="important">
-						<i class="fa fa-exclamation-circle"> {{'helperContent.important' | i18n}}</i>
+						<i class="fa fa-exclamation-circle"> {{'helperContent.important' | translate}}</i>
 					</div>
 					{{c.important}}
 				</div>
@@ -31,19 +31,19 @@
 					<a class="btn-link remove" ng-click="removeHelperContent($index)">X</a>
 				</div>
 				<div>
-					{{'helperContent.videoUrl' | i18n}}
+					{{'helperContent.videoUrl' | translate}}
 					<input ng-model="c.videoUrl" />
 				</div>
 				<div>
-					{{'helperContent.title' | i18n}}
+					{{'helperContent.title' | translate}}
 					<input ng-model="c.title" />
 				</div>
 				<div>
-					{{'helperContent.tips' | i18n}}
+					{{'helperContent.tips' | translate}}
 					<input ng-model="c.tips" />
 				</div>
 				<div>
-					{{'helperContent.important' | i18n}}
+					{{'helperContent.important' | translate}}
 					<input ng-model="c.important" />
 				</div>
 			</div>
@@ -51,7 +51,7 @@
 		</div>
 	</div>
 	<div admin-section>
-		<a class="btn-link" ng-click="addHelperContent()">{{'helperContent.add' | i18n}}</a>
-		<div class="lergo-h3">{{ isSaving() && ('saving' + '...' | i18n) || ('saved' | i18n) }}</div>
+		<a class="btn-link" ng-click="addHelperContent()">{{'helperContent.add' | translate}}</a>
+		<div class="lergo-h3">{{ isSaving() && ('saving' + '...' | translate) || ('saved' | translate) }}</div>
 	</div>
 </div>

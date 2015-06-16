@@ -53,7 +53,7 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 
 	$scope.deleteInvites = function() {
 		var toDelete = 0;
-		if (confirm($filter('i18n')('deleteInvites.Confirm'))) {
+		if (confirm($filter('translate')('deleteInvites.Confirm'))) {
 			angular.forEach($scope.invites, function(invite) {
 				if (invite.selected === true) {
 					toDelete++;
