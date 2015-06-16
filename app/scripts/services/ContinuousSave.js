@@ -36,11 +36,6 @@ angular.module('lergoApp')
 
         var _preventedFlag = {};
 
-
-
-
-
-
         function impl(opts) {
 
             /*jshint validthis:true */
@@ -203,7 +198,6 @@ angular.module('lergoApp')
 
 
             }
-
 
             _me.versionMatch = _versionMatch;
             _me.save = _save;
