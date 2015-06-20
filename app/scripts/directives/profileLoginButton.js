@@ -8,7 +8,7 @@
  * Used to easily navigate to all sections in the application and reduce number of clicks.
  */
 angular.module('lergoApp')
-    .directive('profileLoginButton', function ( $log ) {
+    .directive('profileLoginButton', function ( $log, LergoClient, $rootScope, $location ) {
         return {
             templateUrl: 'views/directives/_profileLoginButton.html',
             restrict: 'A',
@@ -20,6 +20,13 @@ angular.module('lergoApp')
                     $log.info('I am opening the menu', typeof(open));
                     scope.menuIsOpen = open;
                 }
+
+                scope.logout = function () {
+                    LergoClient.logout().then(function () {
+                        $rootScope.user = null;
+                        $location.path('/');
+                    });
+                };
 
             }
         };

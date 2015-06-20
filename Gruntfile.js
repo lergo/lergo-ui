@@ -177,8 +177,16 @@ module.exports = function (grunt) {
 
         },
         sass: {
-            server: {},
-            dist: {}
+            server: {
+                files: {
+                    '.tmp/styles/main.css': '<%= yeoman.app %>/styles/main.scss'
+                }
+            },
+            dist: {
+                files: {
+                    '.tmp/styles/main.css': '<%= yeoman.app %>/styles/main.scss'
+                }
+            }
         },
         //compass: {
         //    options: {

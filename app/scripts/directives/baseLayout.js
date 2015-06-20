@@ -85,12 +85,7 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
 
             };
 
-            scope.logout = function () {
-                LergoClient.logout().then(function () {
-                    $rootScope.user = null;
-                    $location.path('/');
-                });
-            };
+
 
 
             // todo: reinstate this search.

@@ -3,6 +3,14 @@
 
 /**
  *
+ *
+ * DEPRECATED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ *
+ *                          DO NOT USE
+ *
+ * DEPRECATED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ *
+ *
  * This service is concerned about role issues regarding the display
  *
  * For example - should I display this button or not.

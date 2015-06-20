@@ -2,14 +2,15 @@
 	<div>
 		<ul class="nav nav-tabs">
 			<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
-				<a href="#!/admin/homepage/{{section.id}}">
+				<a href="{{section.url}}">
 					<i class="{{section.icon}}"></i>
 					{{'baseLayout.header.links.' + section.id | translate}}
 				</a>
 			</li>
 		</ul>
+
 		<div class="tab-content">
-			<div ng-include="getInclude()"></div>
+			<div ng-transclude=""></div>
 		</div>
 	</div>
 </div>

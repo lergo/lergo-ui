@@ -48,6 +48,18 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
                 reloadOnSearch: false
             })
 
+            .when('/security/roles', {
+                templateUrl: 'views/security/rolesIndex.html',
+                controller: 'RolesIndexCtrl',
+                'params': {
+                    'activeTab' : 'roles'
+                }
+            })
+            .when('/security/roles/edit', {
+                templateUrl: 'views/security/rolesEdit.html',
+                controller: 'RolesEditCtrl'
+            })
+
             .when('/public/lessons/invitations/:invitationId/display', {
                 templateUrl: 'views/lessons/invitations/display.html',
                 controller: 'LessonsInvitationsDisplayCtrl',
@@ -75,7 +87,8 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
             .when('/user/lesson/:lessonId/update', {
                 templateUrl: 'views/lessons/update.html',
                 controller: 'LessonsUpdateCtrl',
-                reloadOnSearch: false
+                reloadOnSearch: false,
+
             })
 
             .when('/user/create/:activeTab', {
@@ -138,10 +151,6 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
             }).when('/public/session/resetPasswordRequest', {
                 templateUrl: 'views/session/resetPasswordRequest.html',
                 controller: 'SessionResetPasswordRequestCtrl'
-            }).when('/admin/homepage/:activeTab', {
-                templateUrl: 'views/admin/homepage.html',
-                controller: 'AdminHomepageCtrl',
-                reloadOnSearch: false
             }).when('/user/homepage', {
                 redirectTo: '/public/homepage'
             }).when('/user/Parents', {
@@ -149,6 +158,25 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
             }).when('/user/Teachers', {
                 templateUrl: 'views/errors/underConstruction.html'
             })
+
+            ////////////////// admin section
+            .when('/admin/homepage/lessons', {
+                templateUrl: 'views/admin/lessons/_index.html',
+                controller: 'AdminLessonIndexCtrl',
+                reloadOnSearch: false,
+                'params' : {
+                    'activeTab' : 'lessons'
+                }
+            })
+            .when('/admin/homepage/abuseReports', {
+                templateUrl: 'views/admin/abuseReports/_index.html',
+                controller: 'AdminAbuseReportIndexCtrl',
+                reloadOnSearch: false,
+                'params' : {
+                    'activeTab' : 'abuseReports'
+                }
+            })
+
 
             .when('/disqus/:disqus_identifier', {
                 controller: 'DisqusPageCtrl',
