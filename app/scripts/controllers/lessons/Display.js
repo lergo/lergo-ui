@@ -67,18 +67,20 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	}
 
 	$scope.$watch('currentStepIndex', function(newValue, oldValue) {
-		$log.info('currentStepIndex changed', newValue, oldValue);
-		updateCurrentStep();
-		// in case of temporary lesson we don't want to remember history
-		//if (!$scope.lesson.temporary) {
-		$location.search('currentStepIndex', newValue);
-		//} else {
-		//	$location.search('currentStepIndex', newValue).replace();
-		//}
-		$rootScope.$broadcast('stepIndexChange', {
-			'old' : oldValue,
-			'new' : newValue
-		});
+        if ( !!$scope.lesson ) {
+            $log.info('currentStepIndex changed', newValue, oldValue);
+            updateCurrentStep();
+            // in case of temporary lesson we don't want to remember history
+            if (!$scope.lesson.temporary) { // temporary means "create lesson from mistakes" and such..
+                $location.search('currentStepIndex', newValue);
+            } else {
+                $location.search('currentStepIndex', newValue).replace();
+            }
+            $rootScope.$broadcast('stepIndexChange', {
+                'old': oldValue,
+                'new': newValue
+            });
+        }
 	});
 
 	$scope.$watch(function() {
