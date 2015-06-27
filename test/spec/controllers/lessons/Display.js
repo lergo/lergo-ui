@@ -46,19 +46,23 @@ describe('Controller: LessonsDisplayCtrl', function () {
             errorResult = null;
             scope = $rootScope.$new();
         }));
-        var loadController = inject(function loadController(LergoClient, $controller ) {
+        var loadController = inject(function loadController(LergoClient, $controller) {
 
             spyOn(LergoClient.lessons, 'getById').andReturn({
                 then: function (success, error) {
-                    if ( successResult ){ success(successResult); }
-                    if ( errorResult ){ error(errorResult); }
+                    if (successResult) {
+                        success(successResult);
+                    }
+                    if (errorResult) {
+                        error(errorResult);
+                    }
                 }
             });
 
             $controller('LessonsDisplayCtrl', {
                 $scope: scope,
-                $route:  { current: {$$route: { params: { preview : true }}}}
-        });
+                $route: {current: {$$route: {params: {preview: true}}}}
+            });
 
         });
 

@@ -34,6 +34,7 @@
         "runs" : false,
         "waitsFor" : false,
         "_": false,
-        "jasmine" : false
+        "jasmine" : false,
+        "toastr": false
     }
 }
