@@ -19,7 +19,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
             $scope.lesson = result.data;
         }, function(){
             toastr.error('failed loading lesson', 'error');
-        })
+        });
     }
 
 	$scope.currentStepIndex = parseInt($routeParams.currentStepIndex || 0, 10);
@@ -48,9 +48,6 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 				if (!!$scope.step) {
 					shuffleQuestionsFilter( { 'array' : $scope.step.quizItems, 'disabled' : !$scope.step.shuffleQuestion , 'report' : $scope.report , 'stepIndex' : $scope.currentStepIndex } );
 				}
-
-
-
 			} else {
 				$scope.step = null;
 			}
@@ -74,7 +71,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 		updateCurrentStep();
 		// in case of temporary lesson we don't want to remember history
 		//if (!$scope.lesson.temporary) {
-			$location.search('currentStepIndex', newValue);
+		$location.search('currentStepIndex', newValue);
 		//} else {
 		//	$location.search('currentStepIndex', newValue).replace();
 		//}
