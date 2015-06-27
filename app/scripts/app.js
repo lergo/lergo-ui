@@ -41,7 +41,8 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
             }).when('/user/lessons/:lessonId/display', {
                 templateUrl: 'views/lessons/display.html',
                 controller: 'LessonsDisplayCtrl',
-                reloadOnSearch: false
+                reloadOnSearch: false,
+                params:{ 'preview' : true }
             })
 
             .when('/public/lessons/invitations/:invitationId/display', {
