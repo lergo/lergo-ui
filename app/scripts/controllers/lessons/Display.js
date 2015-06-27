@@ -14,7 +14,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 		$scope : $scope
 	});
 
-    if ( $route.current.$$route.params.preview ){
+    if ( $route && $route.current && $route.current.$$route && $route.current.$$route.params &&  $route.current.$$route.params.preview ){
         LergoClient.lessons.getById( $routeParams.lessonId).then(function(result){
             $scope.lesson = result.data;
         }, function(){
