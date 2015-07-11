@@ -40,7 +40,6 @@ describe('Controller: LessonsStepDisplayCtrl', function () {
         });
         it('should skip answered questions if unanswered questions exist', function(){
             setCurrentIndex(1);
-            debugger;
             scope.nextQuizItem();
             expect(scope.quizItem.id).toBe(2);
         });
