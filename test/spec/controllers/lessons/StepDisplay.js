@@ -51,5 +51,4 @@ describe('Controller: LessonsStepDisplayCtrl', function () {
         });
     });
 
-    it('should ')
 });
