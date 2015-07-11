@@ -105,7 +105,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 
 		}
 	}, function(result) {
-		if (result.status) {
+		if (result.status) { // lesson invitation might not be found if was temporary. temporary lessons are deleted on finish. (@see Write.js 'endLesson' event)
 			$location.path('/errors/notFound');
 		}
 	});
