@@ -3,7 +3,7 @@
 describe('Directive: quizItemExplanationMedia', function () {
 
     // load the directive's module
-    beforeEach(module('lergoApp', 'directives-templates'));
+    beforeEach(module('lergoApp', 'directives-templates','lergoBackendMock'));
 
     var element,
         scope;

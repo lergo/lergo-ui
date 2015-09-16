@@ -25,8 +25,12 @@ angular.module('lergoApp')
                     'url' : '#!/admin/homepage/abuseReports'
                 }, {
                     'id': 'roles',
-                    'icon': '',
+                    'icon': 'fa fa-key',
                     'url' : '#!/security/roles'
+                }, {
+                    'id' : 'groups',
+                    'icon' : 'fa fa-users',
+                    'url' : '#!/security/groups'
                 }
 
                 ];
@@ -39,7 +43,7 @@ angular.module('lergoApp')
 
                 $scope.isActive = function(section){
                     return $scope.currentSection === section.id;
-                }
+                };
 
             }
 

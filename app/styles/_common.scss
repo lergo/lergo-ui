@@ -159,65 +159,7 @@ button.action-item {
     height: 100px;
 }
 
-.lergo-form {
-    textarea {
-        width: $LERGO_POST_MAIN_CONTENT_WIDTH;
-        padding: 0;
-        background: $LERGO_INPUT_BACKGROUND;
-        height: $LERGO_FORM_TEXTAREA_HEIGHT;
-        @include input-block-level;
-    }
-    input {
-        background: $LERGO_INPUT_BACKGROUND;
-        border: 1px solid $LERGO_INPUT_BORDER_COLOR;
-        padding: 5px;
-        border-radius: 5px;
-        @include input-block-level;
-        &[type=checkbox] {
-            width: 30px;
-        }
-        &[type=number] {
-            min-width: 45px;
-        }
-    }
-    select {
-        background: $LERGO_INPUT_BACKGROUND;
-        border: 1px solid $LERGO_INPUT_BORDER_COLOR;
-        padding: 5px;
-        border-radius: 5px;
-    }
-    .section {
-        margin-bottom: 20px;
-        &.horizontal {
-            margin-top: 10px;
-            .label {
-                width: 200px;
-            }
-            .input {
-                display: inline-block;
-            }
-        }
-        .label {
-            color: $LERGO_H3_COLOR;
-            font-size: 17px;
-            background: none;
-            text-shadow: none;
-            text-transform: uppercase;
-        }
-    }
-    .actions {
-        text-align: center;
-        button {
-            background: $LERGO_BACKGROUND;
-            color: white;
-            padding: 10px;
-            font-weight: bold;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 10px;
-        }
-    }
-}
+
 
 .lergo-h1 {
     font-size: 28px;

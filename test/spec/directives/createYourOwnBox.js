@@ -1,11 +1,7 @@
 'use strict';
 
 describe('Directive: createYourOwnBox', function () {
-    beforeEach(module('lergoApp', 'directives-templates', function($provide){
-        $provide.value('LergoTranslate',{
-            translate : function(n){ return n;}
-        });
-    }));
+    beforeEach(module('lergoApp', 'directives-templates','lergoBackendMock'));
 
     var element;
 

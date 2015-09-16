@@ -3,7 +3,7 @@
 describe('Controller: LessonsUpdateCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp','lergoBackendMock'));
 
     var LessonsUpdateCtrl,
         scope;

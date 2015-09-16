@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: RolesIndexCtrl', function () {
+describe('Controller: security/RolesUpdateCtrl', function () {
 
     // load the controller's module
     beforeEach(module('lergoApp'));
 
-    var RolesIndexCtrl,
+    var RolesUpdateCtrl,
         scope;
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
-        RolesIndexCtrl = $controller('RolesIndexCtrl', {
+        RolesUpdateCtrl = $controller('RolesUpdateCtrl', {
             $scope: scope
         });
     }));

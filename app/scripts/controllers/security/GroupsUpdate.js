@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name lergoApp.controller:security/RolesEditCtrl
+ * @name lergoApp.controller:security/GroupsUpdateCtrl
  * @description
- * # security/RolesEditCtrl
+ * # security/GroupsUpdateCtrl
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-  .controller('RolesEditCtrl', function ($scope) {
+  .controller('SecurityGroupsUpdateCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

@@ -1,0 +1,35 @@
+<div class="base-layout " id="updateRolePage">
+    <div class="page-content-width">
+        <form class="lergo-form">
+            <div class="form-section form-group role-name">
+                <div class="lergo-label">
+                    Role Name
+                </div>
+                <input ng-model="role.name"/>
+            </div>
+
+            <div class="form-section description form-group">
+                <div class="lergo-label">{{ 'roles.description' | translate }}</div>
+                <div class="lergo-input">
+                    <textarea class="form-control" ng-model="role.description" name="description"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="permissions">
+                    <div ng-repeat="permission in permissions">
+                        <input type="checkbox" ng-model="permission.checked"/>
+                        <div class="label">{{ permission.label }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" ng-click="saveRole(false)">Apply</button>
+                <button class="btn" ng-click="saveRole(true)">Save</button>
+                <a class="btn" href="#!/security/roles">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+</div>

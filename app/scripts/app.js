@@ -50,14 +50,26 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
 
             .when('/security/roles', {
                 templateUrl: 'views/security/rolesIndex.html',
-                controller: 'RolesIndexCtrl',
+                controller: 'SecurityRolesIndexCtrl',
                 'params': {
                     'activeTab' : 'roles'
                 }
             })
-            .when('/security/roles/edit', {
-                templateUrl: 'views/security/rolesEdit.html',
-                controller: 'RolesEditCtrl'
+            .when('/security/roles/:roleId/update', {
+                templateUrl: 'views/security/rolesUpdate.html',
+                controller: 'SecurityRolesUpdateCtrl'
+            })
+
+            .when('/security/groups', {
+                templateUrl: 'views/security/groupsIndex.html',
+                controller: 'SecurityGroupsIndexCtrl',
+                'params' : {
+                    'activeTab' : 'groups'
+                }
+            })
+            .when('/security/groups/:groupId/update',{
+                templateUrl : 'views/security/groupsUpdate.html',
+                controller: 'SecurityGroupsUpdateCtrl'
             })
 
             .when('/public/lessons/invitations/:invitationId/display', {
@@ -115,9 +127,6 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
             .when('/public/kitchenSink', {
                 templateUrl: 'views/kitchenSink.html'
 
-            }).when('/public/translations/diff', {
-                templateUrl: 'views/translations/diff.html',
-                controller: 'TranslationsDiffCtrl'
             }).when('/public/feedback', {
                 templateUrl: 'views/partials/_feedback.html'
             }).when('/public/abuse', {

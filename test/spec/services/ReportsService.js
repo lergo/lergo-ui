@@ -3,7 +3,7 @@
 describe('Service: ReportsService', function () {
 
     // load the service's module
-    beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp','lergoBackendMock'));
 
     // instantiate service
     var mReportsService;

@@ -1,0 +1,24 @@
+#updateRolePage{
+
+    .permissions{
+        $COLUMNS: 3;
+        column-count:$COLUMNS;
+        -webkit-column-count: $COLUMNS;
+        -moz-column-count: $COLUMNS;
+        & > div {
+//            display:inline-block;
+            width:100%;
+
+            .label{
+                text-overflow: ellipsis;
+                overflow:hidden;
+                color:black;
+                font-weight: normal;
+                line-height:20px;
+                width:250px;
+                text-align: left;
+            }
+        }
+    }
+
+}

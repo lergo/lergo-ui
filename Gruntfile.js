@@ -342,6 +342,9 @@ module.exports = function (grunt) {
             }
         },
         concurrent: {
+            options: {
+                logConcurrentOutput: true
+            },
             develop: [
 //                'jsdoc',
                 'jshint',
@@ -349,7 +352,8 @@ module.exports = function (grunt) {
             ],
             watch:[
                 'watch:compass',
-                'watch:jshint'
+                'watch:jshint',
+                'watch:livereload'
             ],
             server: [
                 'compass:server'
@@ -440,9 +444,7 @@ module.exports = function (grunt) {
             'configureProxies',
             'connect:livereload',
             'open',
-            'watch:compass',
-            'watch:livereload',
-            'watch:jshint'
+            'concurrent:watch'
 
         ]);
     });

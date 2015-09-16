@@ -28,6 +28,8 @@ module.exports = function(config){
         'app/bower_components/angular-adaptive-speech/angular-adaptive-speech.js',
         'app/bower_components/angular-gravatar/build/md5.js',
         'app/bower_components/angular-gravatar/build/angular-gravatar.js',
+        'app/bower_components/angular-translate/angular-translate.js',
+        'app/bower_components/angular-translate-loader-url/angular-translate-loader-url.js',
         'app/scripts/*.js',
         '.tmp/html2js/*.js',
         'app/scripts/**/*.js',

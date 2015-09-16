@@ -19,7 +19,7 @@ angular.module('lergoApp')
                 scope.openMenu = function( open ){
                     $log.info('I am opening the menu', typeof(open));
                     scope.menuIsOpen = open;
-                }
+                };
 
                 scope.logout = function () {
                     LergoClient.logout().then(function () {

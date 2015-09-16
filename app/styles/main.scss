@@ -6,6 +6,8 @@
 @import './mixins';
 @import "./common";
 @import './components/index';
+
+@import './forms';
 //
 @import "./homepage";
 @import "./rtl_homepage";
@@ -31,3 +33,4 @@
 @import "./faq";
 @import "./facebook";
 @import "./profile";
+@import './roleUpdate';

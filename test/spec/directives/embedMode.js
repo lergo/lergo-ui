@@ -3,7 +3,7 @@
 describe('Directive: embedMode', function () {
 
     // load the directive's module
-    beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp','lergoBackendMock'));
 
     var element,
         scope;
