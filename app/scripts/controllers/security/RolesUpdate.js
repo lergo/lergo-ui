@@ -28,6 +28,32 @@ angular.module('lergoApp')
             });
         }
 
+        function goBackToRoles(){
+            $location.path('/security/roles');
+        }
+
+        $scope.cancel = function(){
+            goBackToRoles();
+        };
+
+        $scope.deleteRole = function deleteRole(){
+            if ( confirm ('are you sure you want to delete role [' + $scope.role.name + ']')){
+                LergoClient.security.roles.delete($scope.role._id).then(function success(){
+                    toastr.success('deleted successfully');
+                    goBackToRoles();
+
+                }, function error(result){
+                    if (LergoClient.errors.RoleInUse.typeof(result.data)) {
+
+                        var groups = _.pluck(result.data.description.groups,'name').join(',');
+                        toastr.error('used by groups : ' + groups,'role in use');
+                    } else {
+                        toastr.error(result.data, 'error');
+                    }
+
+                })
+            }
+        };
 
         function loadPermissions() {
             return LergoClient.security.roles.getPermissions().then(function (result) {
@@ -50,7 +76,7 @@ angular.module('lergoApp')
                 $log.info('saved successfully');
                 toastr.success('saved!');
                 if ( done ){
-                    $location.path('#!/security/roles');
+                    goBackToRoles();
                 }
             }, function error(result){
                 $log.error('error when saving');

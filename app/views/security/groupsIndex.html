@@ -56,9 +56,10 @@
                         <!--<td>
                             <input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
                         </td>-->
+
                         <td class="name">
                             <a tooltip="{{'groups.tooltip.go' | translate}}"
-                               ng-href="#!/security/groups/{{group._id}}/update">{{ getGroupName(role) }}</a>
+                               ng-href="#!/security/groups/{{group._id}}/update">{{ getGroupName(group) }}</a>
                         </td>
                         <td class="description">
                             {{ group.description }}

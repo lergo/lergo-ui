@@ -1,0 +1,51 @@
+<div class="base-layout " id="updategroupPage">
+    <div class="page-content-width">
+        <form class="lergo-form">
+            <div class="form-section form-group group-name">
+                <div class="lergo-label">
+                    {{ 'groups.edit.name' | translate }}
+                </div>
+                <input ng-model="group.name"/>
+            </div>
+
+            <div class="form-section description form-group">
+                <div class="lergo-label">{{ 'groups.edit.description' | translate }}</div>
+                <div class="lergo-input">
+                    <textarea class="form-control" ng-model="group.description" name="description"></textarea>
+                </div>
+            </div>
+
+
+
+            <div class="form-section roles form-group">
+                <div class="lergo-label">{{'groups.edit.roles' | translate}}</div>
+                <div class="input">
+                    <!--ng-show="!!tagsAvailable"-->
+                    <!--typeahead="role as role.name for role in getRolesLike($viewValue)"-->
+                    <input ng-model="page.newRole" type="text" name="roleName" ng-trim="false"
+                           typeahead-wait-ms="100"
+                           placeholder="{{'groups.edit.roles' | translate}}"
+                           typeahead="role as role.name for role in roles | filter:$viewValue"
+                           typeahead-append-to-body="true"
+                           typeahead-on-select="addRoleFromTypeahead($item, $model, $label)"
+                        />
+
+                </div>
+                <ul>
+                    <li ng-repeat="roleId in group.roles track by $index">{{ getRole(roleId).name }} - <span>{{ getRole(roleId).description}}</span> <a ng-click="removeRole(roleId)">remove</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="buttons">
+                <button class="btn" ng-click="saveGroup(false)"> {{ 'apply' | translate }} </button>
+                <button class="btn" ng-click="saveGroup(true)"> {{ 'save' | translate }}</button>
+                <button class="btn" ng-click="deleteGroup()">{{ 'delete' | translate }}</button>
+                <button class="btn" ng-click="cancel()">{{ 'cancel' | translate }}</button>
+
+            </div>
+        </form>
+    </div>
+
+</div>

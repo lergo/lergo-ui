@@ -8,7 +8,7 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-  .controller('SecurityGroupsIndexCtrl', function ($scope, LergoClient, $log ) {
+  .controller('SecurityGroupsIndexCtrl', function ($scope, LergoClient, $log, $location ) {
 
 
         $scope.getGroupName = function( group ){
@@ -21,11 +21,11 @@ angular.module('lergoApp')
 
         $scope.create = function() {
             $scope.errorMessage = null;
-            LergoClient.security.groups.create().then(function(){
+            LergoClient.security.groups.create().then(function success( result ){
                 var group = result.data;
                 $scope.errorMessage = null;
                 $location.path('/security/groups/' + group._id + '/update');
-            }, function(){
+            }, function error( result ){
                 $scope.errorMessage = 'unknown error';
                 try {
                     $scope.errorMessage = 'Error creating group ' + result.data.message;
@@ -36,6 +36,6 @@ angular.module('lergoApp')
         };
 
         LergoClient.security.groups.list( {}).then(function(result){
-            $scope.groups = result.data;
+            $scope.groups = result.data.data;
         })
   });

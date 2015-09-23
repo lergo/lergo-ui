@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').service('LergoClient',
-		function LergoClient($http, $log, UsersService, QuestionsService, LikesService, LessonsService, LessonsInvitationsService, UserDataService, ReportsService, AbuseReports, GroupsService, RolesService) {
+		function LergoClient($http, $log, UsersService, QuestionsService, LikesService, LergoErrorsService, LessonsService, LessonsInvitationsService, UserDataService, ReportsService, AbuseReports, GroupsService, RolesService) {
 			// AngularJS will instantiate a singleton by calling "new" on this
 			// function
 
@@ -63,5 +63,7 @@ angular.module('lergoApp').service('LergoClient',
                 roles: RolesService,
                 groups: GroupsService
             };
+
+            this.errors = LergoErrorsService;
 
 		});

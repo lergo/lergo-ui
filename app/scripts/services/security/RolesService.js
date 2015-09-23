@@ -64,7 +64,7 @@ angular.module('lergoApp')
                 throw new Error('missing roleId');
             }
             $log.info('deleting role', roleId);
-            return $http({'url' : '/backend/security/roles/' + roleId + '/delete', 'method' : 'POST'});
+            return $http({'url' : '/backend/security/roles/' + roleId , 'method' : 'DELETE'});
         };
         // AngularJS will instantiate a singleton by calling "new" on this function
     });

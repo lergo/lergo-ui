@@ -3,13 +3,13 @@
         <form class="lergo-form">
             <div class="form-section form-group role-name">
                 <div class="lergo-label">
-                    Role Name
+                    {{ 'roles.edit.name' | translate }}
                 </div>
                 <input ng-model="role.name"/>
             </div>
 
             <div class="form-section description form-group">
-                <div class="lergo-label">{{ 'roles.description' | translate }}</div>
+                <div class="lergo-label">{{ 'roles.edit.description' | translate }}</div>
                 <div class="lergo-input">
                     <textarea class="form-control" ng-model="role.description" name="description"></textarea>
                 </div>
@@ -25,9 +25,11 @@
             </div>
 
             <div class="buttons">
-                <button class="btn" ng-click="saveRole(false)">Apply</button>
-                <button class="btn" ng-click="saveRole(true)">Save</button>
-                <a class="btn" href="#!/security/roles">Cancel</a>
+                <button class="btn" ng-click="saveRole(false)"> {{ 'apply' | translate }} </button>
+                <button class="btn" ng-click="saveRole(true)"> {{ 'save' | translate }}</button>
+                <button class="btn" ng-click="deleteRole()">{{ 'delete' | translate }}</button>
+                <button class="btn" ng-click="cancel()">{{ 'cancel' | translate }}</button>
+
             </div>
         </form>
     </div>

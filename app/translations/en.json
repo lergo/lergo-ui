@@ -495,6 +495,10 @@
         "createNew" : "Create New Role",
         "tooltip" : {
             "go" : "see role"
+        },
+        "edit" : {
+            "description" : "Role Description",
+            "name" : "Role Name"
         }
     },
     "groups" : {
@@ -503,6 +507,11 @@
         "createNew" : "Create New Group",
         "tooltip" : {
             "go" : "see group"
+        },
+        "edit" : {
+            "name" : "Group Name",
+            "description" : "Group Description",
+            "roles" : "Roles"
         }
     },
     "lessons": {
