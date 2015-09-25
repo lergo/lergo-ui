@@ -117,6 +117,10 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 				return 'createNewQuestion' === section.id;
 			});
 
+            function isCreateNewQuestionSection (){
+                return $scope.currentSection.id === 'createNewQuestion';
+            }
+
 			$controller($scope.currentSection.controller, {
 				$scope : $scope
 			});
@@ -132,7 +136,15 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 			$scope.cancel = function() {
 				var item = $scope.quizItem;
 				if (!!item && !$scope.isValid(item)) {
-					QuestionsService.deleteQuestion(item._id);
+                    var answer = true;
+                    if ( isCreateNewQuestionSection() ){
+                        answer = confirm($filter('i18n')('deleteQuestion.Confirm'));
+                    }
+                    if ( !!answer ) {
+                        QuestionsService.deleteQuestion(item._id);
+                    }else{
+                        return; // do nothing!
+                    }
 				}
 				$modalInstance.dismiss();
 			};
