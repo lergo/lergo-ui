@@ -1,0 +1,41 @@
+<div class="base-layout " id="manageUserUpdate">
+    <div class="page-content-width">
+        <form class="lergo-form">
+
+            <div class="form-section form-group username">
+
+                <div class="lergo-label">
+                    {{ 'users.edit.username' | translate }}
+                </div>
+                <div class="lergo-input">
+
+                    <input ng-model="user.username" ng-disabled="true"/>
+                </div>
+            </div>
+            <div class="form-section form-group">
+
+                <div class="lergo-label">
+                    {{ 'users.edit.email' | translate }}
+                </div>
+                <div class="lergo-input">
+                    <input ng-model="user.email" ng-disabled="true"/>
+                </div>
+
+            </div>
+
+            <div class="form-section user-groups">
+                <div class="lergo-label"> {{ 'users.edit.groups' | translate }}</div>
+                <ul class="groups">
+                    <li ng-repeat="groupId in user.groups" title="{{getGroupName(groupId)}}"> <span>{{ getGroupName(groupId) }}</span></li>
+                </ul>
+                <button class="btn" ng-click="addUserToGroup()">{{ 'users.edit.editGroups' | translate }}</button>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" ng-click="cancel()">{{ 'cancel' | translate }}</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+

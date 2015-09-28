@@ -60,6 +60,6 @@ angular.module('lergoApp')
                 throw new Error('missing groupId');
             }
             $log.info('deleting group', groupId);
-            return $http({'url' : '/backend/security/groups/' + groupId + '/delete', 'method' : 'POST'});
+            return $http({'url' : '/backend/security/groups/' + groupId ,'method' : 'DELETE'});
         };
     });

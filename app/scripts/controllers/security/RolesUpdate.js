@@ -43,7 +43,7 @@ angular.module('lergoApp')
                     goBackToRoles();
 
                 }, function error(result){
-                    if (LergoClient.errors.RoleInUse.typeof(result.data)) {
+                    if (LergoClient.errors.ResourceInUse.typeof(result.data)) {
 
                         var groups = _.pluck(result.data.description.groups,'name').join(',');
                         toastr.error('used by groups : ' + groups,'role in use');

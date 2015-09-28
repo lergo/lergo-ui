@@ -108,6 +108,12 @@
 			<input type="text" ng-model="reportedBy" typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
 		</div>
 	</div>
+    <div ng-show="!!opts.showGroups" class="container-fluid">
+        <div class="label">{{'filters.labels.groups' | translate }}</div>
+        <div class="input">
+            <input type="text" ng-model="group" typeahead="group as group.name for group in groups | filter:$viewValue | limitTo: 15">
+        </div>
+    </div>
 	<div ng-show="!!opts.showAbuseReportStatus">
 		<div class="label">{{'filters.labels.status' | translate }}</div>
 		<div class="input">

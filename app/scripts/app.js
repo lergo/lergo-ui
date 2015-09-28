@@ -48,6 +48,20 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
                 reloadOnSearch: false
             })
 
+            .when('/manage/users', {
+                templateUrl: 'views/manage/users/manageUsersIndex.html',
+                controller: 'ManageUsersIndexCtrl',
+                reloadOnSearch: false,
+                params: {
+                    'activeTab' : 'users'
+                }
+            })
+
+            .when('/manage/users/:userId/update', {
+                templateUrl: 'views/manage/users/manageUserUpdate.html',
+                controller: 'ManageUsersUpdateCtrl'
+            })
+
             .when('/security/roles', {
                 templateUrl: 'views/security/rolesIndex.html',
                 controller: 'SecurityRolesIndexCtrl',

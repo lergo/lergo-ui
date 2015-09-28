@@ -31,6 +31,10 @@ angular.module('lergoApp')
                     'id' : 'groups',
                     'icon' : 'fa fa-users',
                     'url' : '#!/security/groups'
+                }, {
+                    'id' : 'users',
+                    'icon' : 'fa fa-user',
+                    'url' : '#!/manage/users'
                 }
 
                 ];

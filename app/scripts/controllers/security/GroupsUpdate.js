@@ -62,12 +62,14 @@ angular.module('lergoApp')
         };
 
         $scope.deleteGroup = function(){
-            LergoClient.security.groups.delete($scope.group).then(function success(){
-                toastr.success('deleted successfully');
-            }, function error(result){
-
-                toastr.error(result.data,'error');
-            });
+            if ( confirm('are you sure you want to delete this group?')) {
+                LergoClient.security.groups.delete($scope.group._id).then(function success() {
+                    toastr.success('deleted successfully');
+                }, function error(result) {
+                    debugger;
+                    toastr.error(result.data, 'error');
+                });
+            }
         };
 
         $scope.getRole = function getRole( roleId ){

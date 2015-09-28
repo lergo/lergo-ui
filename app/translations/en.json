@@ -271,10 +271,12 @@
                 "teachers": "Teachers",
                 "roles": "Roles",
                 "groups": "Groups",
+                "users" : "Users",
                 "manageLessons": "Manage Lessons",
                 "manageAbuseReports": "Manage Abuse Reports",
                 "manageRoles": "Manage Roles",
                 "manageGroups": "Manage Groups",
+                "manageUsers" : "Manage Users",
                 "logout": "Logout"
             },
             "logout": "Logout",
@@ -313,6 +315,9 @@
     "copy": "Copy",
     "createNotAvailable": "Please signup or login to LerGO. Only registered users can create content.",
     "delete": "Delete",
+    "apply" : "Apply",
+    "save" : "Save",
+
     "deleteIntro": {
         "Confirm": "Are you sure you want to delete the lesson : #{0} ?  This action cannot be undone."
     },
@@ -370,6 +375,7 @@
             "subject": "Subject",
             "tags": "Tags",
             "text": "Text",
+            "groups" : "Groups",
             "views": "# of views"
         },
         "languages": {

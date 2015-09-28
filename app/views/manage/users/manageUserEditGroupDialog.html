@@ -1,0 +1,11 @@
+<div>
+<div class="modal-body">
+    <div ng-repeat="group in groups">
+        <input type="checkbox" ng-model="group.checked"/> <span>{{ group.label }}</span>
+    </div>
+</div>
+    <div class="modal-footer">
+        <button class="btn" ng-click="submit()">Submit</button>
+        <button class="btn btn-default" ng-click="close()">Close</button>
+    </div>
+</div>
