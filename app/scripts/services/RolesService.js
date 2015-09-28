@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc service
- * @name lergoApp.security/RolesService
+ * @name lergoApp.RolesService
  * @description
- * # security/RolesService
+ * # RolesService
  * Service in the lergoApp.
  */
 angular.module('lergoApp')
@@ -16,7 +16,7 @@ angular.module('lergoApp')
          */
         this.create = function () {
             $log.info('creating role');
-            return $http({ 'url' : '/backend/security/roles', 'method' : 'POST' });
+            return $http({ 'url' : '/backend/roles', 'method' : 'POST' });
         };
 
         /**
@@ -29,11 +29,11 @@ angular.module('lergoApp')
                 throw new Error('missing roleId');
             }
             $log.info('getting role');
-            return $http({'url': '/backend/security/roles/' + roleId,'method' : 'GET'});
+            return $http({'url': '/backend/roles/' + roleId,'method' : 'GET'});
         };
 
         this.getPermissions = function(){
-            return $http.get('/backend/security/permissions');
+            return $http.get('/backend/roles/permissions');
         };
 
 
@@ -47,11 +47,11 @@ angular.module('lergoApp')
                 throw new Error('missind role._id');
             }
             $log.info('updating role');
-            return $http({'url' : '/backend/security/roles/' + role._id ,'method' : 'POST', 'data' : role });
+            return $http({'url' : '/backend/roles/' + role._id ,'method' : 'POST', 'data' : role });
         };
 
         this.list = function( queryObj ){
-            return $http({ 'url' : '/backend/security/roles', 'method': 'GET' , 'params' : { query: queryObj } });
+            return $http({ 'url' : '/backend/roles', 'method': 'GET' , 'params' : { query: queryObj } });
         };
 
         /**
@@ -64,7 +64,7 @@ angular.module('lergoApp')
                 throw new Error('missing roleId');
             }
             $log.info('deleting role', roleId);
-            return $http({'url' : '/backend/security/roles/' + roleId , 'method' : 'DELETE'});
+            return $http({'url' : '/backend/roles/' + roleId , 'method' : 'DELETE'});
         };
         // AngularJS will instantiate a singleton by calling "new" on this function
     });

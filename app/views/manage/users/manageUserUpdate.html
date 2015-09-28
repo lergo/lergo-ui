@@ -23,16 +23,16 @@
 
             </div>
 
-            <div class="form-section user-groups">
-                <div class="lergo-label"> {{ 'users.edit.groups' | translate }}</div>
-                <ul class="groups">
-                    <li ng-repeat="groupId in user.groups" title="{{getGroupName(groupId)}}"> <span>{{ getGroupName(groupId) }}</span></li>
+            <div class="form-section user-roles">
+                <div class="lergo-label"> {{ 'users.edit.roles' | translate }}</div>
+                <ul class="roles">
+                    <li ng-repeat="roleId in user.roles" title="{{getRoleName(roleId)}}"> <span>{{ getRoleName(roleId) }}</span><a href="#!/manage/roles/{{roleId}}/update">Edit</a></li>
                 </ul>
-                <button class="btn" ng-click="addUserToGroup()">{{ 'users.edit.editGroups' | translate }}</button>
+                <button class="btn" ng-click="editUserRoles()">{{ 'users.edit.editRoles' | translate }}</button>
             </div>
 
             <div class="buttons">
-                <button class="btn" ng-click="cancel()">{{ 'cancel' | translate }}</button>
+                <button class="btn" ng-click="close()">{{ 'cancel' | translate }}</button>
             </div>
         </form>
     </div>

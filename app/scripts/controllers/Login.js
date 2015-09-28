@@ -15,16 +15,16 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 
     if ($location.path() === '/public/session/login') {
 		LergoClient.isLoggedIn().then(function(result) {
-			if (!!result) {
-				$rootScope.user = result.data;
+			if (!!result && result.data.user ) {
+				$rootScope.user = result.data.user;
 				$location.path('/user/homepage');
 
-			}
-		}, function() {
-			$scope.showLoginPage = true;
-			// setting focus again as focus get lost when error occur in
-			// validation
-			$scope.setFocus('login-username');
+			}else{
+                $scope.showLoginPage = true;
+                // setting focus again as focus get lost when error occur in
+                // validation
+                $scope.setFocus('login-username');
+            }
 		});
 	}
 

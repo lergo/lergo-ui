@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name lergoApp.controller:security/RolesEditCtrl
+ * @name lergoApp.controller:RolesUpdateCtrl
  * @description
- * # security/RolesEditCtrl
+ * # RolesUpdateCtrl
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('SecurityRolesUpdateCtrl', function ($scope, LergoClient, $routeParams, $log, $location, $q ) {
+    .controller('RolesUpdateCtrl', function ($scope, LergoClient, $routeParams, $log, $location, $q ) {
 
 
         $q.all([getRole(), loadPermissions()]).then( function(){
@@ -20,7 +20,7 @@ angular.module('lergoApp')
 
 
         function getRole() {
-            return LergoClient.security.roles.read($routeParams.roleId).then(function success(result) {
+            return LergoClient.roles.read($routeParams.roleId).then(function success(result) {
                 $log.info('got role', result.data);
                 $scope.role = result.data;
             }, function error(result) {
@@ -29,7 +29,7 @@ angular.module('lergoApp')
         }
 
         function goBackToRoles(){
-            $location.path('/security/roles');
+            $location.path('/manage/roles');
         }
 
         $scope.cancel = function(){
@@ -38,7 +38,7 @@ angular.module('lergoApp')
 
         $scope.deleteRole = function deleteRole(){
             if ( confirm ('are you sure you want to delete role [' + $scope.role.name + ']')){
-                LergoClient.security.roles.delete($scope.role._id).then(function success(){
+                LergoClient.roles.delete($scope.role._id).then(function success(){
                     toastr.success('deleted successfully');
                     goBackToRoles();
 
@@ -56,7 +56,7 @@ angular.module('lergoApp')
         };
 
         function loadPermissions() {
-            return LergoClient.security.roles.getPermissions().then(function (result) {
+            return LergoClient.roles.getPermissions().then(function (result) {
                 $scope.permissions = _.map(result.data, function (i) {
                     return {label: i, value: i}
                 });
@@ -72,7 +72,7 @@ angular.module('lergoApp')
             $scope.role.permissions = _.pluck(_.filter( $scope.permissions, { checked : true }), 'value' );
 
 
-            LergoClient.security.roles.update($scope.role).then(function success(/*result*/){
+            LergoClient.roles.update($scope.role).then(function success(/*result*/){
                 $log.info('saved successfully');
                 toastr.success('saved!');
                 if ( done ){

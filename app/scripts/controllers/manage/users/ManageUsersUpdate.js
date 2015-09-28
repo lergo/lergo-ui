@@ -8,7 +8,7 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('ManageUsersUpdateCtrl', function ($scope, $routeParams, LergoClient, $modal ) {
+    .controller('ManageUsersUpdateCtrl', function ($scope, $routeParams, LergoClient, $modal, $location ) {
 
         function loadUser() {
             LergoClient.users.read($routeParams.userId).then(function (result) {
@@ -20,14 +20,18 @@ angular.module('lergoApp')
 
         loadUser();
 
-        $scope.addUserToGroup = function(){
+        $scope.close = function(){
+            $location.path('/manage/users');
+        };
+
+        $scope.editUserRoles = function(){
 
             var newScope = $scope.$new(true);
             newScope.user = $scope.user;
-            newScope.groups = $scope.groups;
+            newScope.roles = $scope.roles;
             $modal.open({
-                templateUrl: 'views/manage/users/manageUserEditGroupDialog.html',
-                controller: 'ManageUsersEditGroupDialogCtrl',
+                templateUrl: 'views/manage/users/manageUserEditRoleDialog.html',
+                controller: 'ManageUsersEditRoleDialogCtrl',
                 scope:newScope,
                 backdrop:'static',
                 size: 'sm'//,
@@ -36,19 +40,19 @@ angular.module('lergoApp')
         };
 
 
-        $scope.loadGroups = function(){
-            LergoClient.security.groups.list({projection: {'_id':1,'name' :1}}).then(function(result){
-                $scope.groups = _.indexBy(result.data.data,'_id');
+        $scope.loadRoles = function(){
+            LergoClient.roles.list({projection: {'_id':1,'name' :1}}).then(function(result){
+                $scope.roles = _.indexBy(result.data.data,'_id');
             })
         };
 
-        $scope.getGroupName = function(groupId){
-            if ($scope.groups ) {
-                return $scope.groups[groupId].name;
+        $scope.getRoleName = function(roleId){
+            if ($scope.roles ) {
+                return $scope.roles[roleId].name;
             }
         };
 
-        $scope.loadGroups();
+        $scope.loadRoles();
 
 
     });

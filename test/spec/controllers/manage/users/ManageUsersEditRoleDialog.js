@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: ManageUsersEditGroupDialogCtrl', function ( ) {
+describe('Controller: ManageUsersEditRoleDialogCtrl', function ( ) {
 
   // load the controller's module
   beforeEach(module('lergoApp'));

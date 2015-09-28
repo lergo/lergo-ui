@@ -44,14 +44,14 @@ angular.module('lergoApp').service('UsersService', function UsersService($http) 
 	};
 
     // follow standard described at: http://williamdurand.fr/2014/02/14/please-do-not-patch-like-an-idiot/
-    this.patchUserGroups = function( userId, groups ){
+    this.patchUserRoles = function( userId, roles ){
         return $http({
             url: '/backend/users/' + userId ,
             method: 'PATCH',
             data: {
                 op: 'replace',
-                path: 'groups',
-                value: groups
+                path: 'roles',
+                value: roles
             }
         })
     };

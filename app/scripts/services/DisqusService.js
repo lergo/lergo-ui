@@ -13,9 +13,9 @@ angular.module('lergoApp')
 
 
         LergoClient.isLoggedIn().then(function (result) {
-            if (!!result) {
+            if (!!result && !!result.data.user ) {
 
-                $rootScope.user = result.data;
+                $rootScope.user = result.data.user;
             }
         });
 

@@ -74,8 +74,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			});
 
 
-            LergoClient.security.groups.list({ projection : { '_id' : 1, 'name' : 1 }}).then(function( result ){
-                scope.groups = result.data.data;
+            LergoClient.roles.list({ projection : { '_id' : 1, 'name' : 1 }}).then(function( result ){
+                scope.roles = result.data.data;
             });
 
 
@@ -103,16 +103,16 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			}
             $scope.$watch('reportedBy', _updateReportedBy);
 
-            function _updateGroup(newValue, oldValue) {
+            function _updateRole(newValue, oldValue) {
                 if (newValue !== oldValue) {
                     if (!!newValue && newValue.hasOwnProperty('_id')) {
-                        $scope.model.groups = $scope.group._id;
+                        $scope.model.roles = $scope.role._id;
                     } else {
-                        delete $scope.model.groups;
+                        delete $scope.model.roles;
                     }
                 }
             }
-            $scope.$watch('group', _updateGroup);
+            $scope.$watch('role', _updateRole);
 
             function _updateReportLesson(newValue, oldValue){
                 $log.info('report lesson was updated!!');
@@ -440,7 +440,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				persist('model.searchText', 'showSearchText');
 				persist('createdBy', 'showCreatedBy', _updateCreatedBy);
 				persist('reportedBy', 'showReportedBy', _updateReportedBy);
-                persist('group', 'showGroups', _updateGroup );
+                persist('role', 'showRoles', _updateRole );
                 persist('reportLesson', 'showReportLesson', _updateReportLesson);
 			}
 

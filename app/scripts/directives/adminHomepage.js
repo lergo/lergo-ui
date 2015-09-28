@@ -26,11 +26,7 @@ angular.module('lergoApp')
                 }, {
                     'id': 'roles',
                     'icon': 'fa fa-key',
-                    'url' : '#!/security/roles'
-                }, {
-                    'id' : 'groups',
-                    'icon' : 'fa fa-users',
-                    'url' : '#!/security/groups'
+                    'url' : '#!/manage/roles'
                 }, {
                     'id' : 'users',
                     'icon' : 'fa fa-user',

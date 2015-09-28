@@ -1,0 +1,37 @@
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name lergoApp.controller:ManageUsersEditRoleDialogCtrl
+ * @description
+ * # ManageUsersEditRoleDialogCtrl
+ * Controller of the lergoApp
+ */
+angular.module('lergoApp')
+    .controller('ManageUsersEditRoleDialogCtrl', function ($scope, $modalInstance, LergoClient ) {
+
+
+        $scope.roles = _.map($scope.roles, function( role ){
+            return {
+                label : role.name,
+                value: role._id,
+                checked: _.indexOf($scope.user.roles, role._id) >= 0
+            }
+        });
+
+        $scope.submit = function(){
+            LergoClient.users.patchUserRoles($scope.user._id, _.pluck(_.filter($scope.roles, { checked: true }),'value')).then(function(){
+                toastr.success('roles updated successfully');
+                $modalInstance.close( );
+            }, function error(){
+                toastr.error('unable to update roles');
+                $modalInstance.dismiss();
+
+            });
+        };
+
+        $scope.close = function(){
+            $modalInstance.dismiss();
+        }
+
+    });

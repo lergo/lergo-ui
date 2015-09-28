@@ -62,29 +62,18 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
                 controller: 'ManageUsersUpdateCtrl'
             })
 
-            .when('/security/roles', {
-                templateUrl: 'views/security/rolesIndex.html',
-                controller: 'SecurityRolesIndexCtrl',
+            .when('/manage/roles', {
+                templateUrl: 'views/roles/rolesIndex.html',
+                controller: 'RolesIndexCtrl',
                 'params': {
                     'activeTab' : 'roles'
                 }
             })
-            .when('/security/roles/:roleId/update', {
-                templateUrl: 'views/security/rolesUpdate.html',
-                controller: 'SecurityRolesUpdateCtrl'
+            .when('/manage/roles/:roleId/update', {
+                templateUrl: 'views/roles/rolesUpdate.html',
+                controller: 'RolesUpdateCtrl'
             })
 
-            .when('/security/groups', {
-                templateUrl: 'views/security/groupsIndex.html',
-                controller: 'SecurityGroupsIndexCtrl',
-                'params' : {
-                    'activeTab' : 'groups'
-                }
-            })
-            .when('/security/groups/:groupId/update',{
-                templateUrl : 'views/security/groupsUpdate.html',
-                controller: 'SecurityGroupsUpdateCtrl'
-            })
 
             .when('/public/lessons/invitations/:invitationId/display', {
                 templateUrl: 'views/lessons/invitations/display.html',
