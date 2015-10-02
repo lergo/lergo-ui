@@ -16,7 +16,7 @@ angular.module('lergoApp')
                 label : role.name,
                 value: role._id,
                 checked: _.indexOf($scope.user.roles, role._id) >= 0
-            }
+            };
         });
 
         $scope.submit = function(){
@@ -25,13 +25,11 @@ angular.module('lergoApp')
                 $modalInstance.close( );
             }, function error(){
                 toastr.error('unable to update roles');
-                $modalInstance.dismiss();
-
             });
         };
 
         $scope.close = function(){
             $modalInstance.dismiss();
-        }
+        };
 
     });

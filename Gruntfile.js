@@ -58,6 +58,10 @@ module.exports = function (grunt) {
             develop: {
                 files: ['app/**/*.js', 'test/**/*.js'],
                 tasks: ['concurrent:develop']
+            },
+            karma: {
+                files: ['test/**/*.js'],
+                tasks: ['karma:unit']
             }
         },
         s3:{
@@ -371,14 +375,15 @@ module.exports = function (grunt) {
                 configFile: 'karma.conf.js',
                 singleRun:true,
                 port:9001,
-                browsers: ['Chrome'],
+                browsers: ['PhantomJS'],
                 reporters: ['failed']
 
             },
             unit: {
                 configFile: 'karma.conf.js',
                 singleRun:true,
-                port:9001
+                port:9001,
+                browsers: ['PhantomJS']
 
 
             },

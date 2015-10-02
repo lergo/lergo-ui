@@ -11,14 +11,6 @@ angular.module('lergoApp')
     .controller('RolesUpdateCtrl', function ($scope, LergoClient, $routeParams, $log, $location, $q ) {
 
 
-        $q.all([getRole(), loadPermissions()]).then( function(){
-            _.each($scope.role.permissions,function( rolePermission ){
-
-                _.find($scope.permissions, { value : rolePermission }).checked = true;
-            });
-        });
-
-
         function getRole() {
             return LergoClient.roles.read($routeParams.roleId).then(function success(result) {
                 $log.info('got role', result.data);
@@ -31,6 +23,8 @@ angular.module('lergoApp')
         function goBackToRoles(){
             $location.path('/manage/roles');
         }
+
+
 
         $scope.cancel = function(){
             goBackToRoles();
@@ -45,20 +39,20 @@ angular.module('lergoApp')
                 }, function error(result){
                     if (LergoClient.errors.ResourceInUse.typeof(result.data)) {
 
-                        var groups = _.pluck(result.data.description.groups,'name').join(',');
-                        toastr.error('used by groups : ' + groups,'role in use');
+                        var users = _.pluck(result.data.description.users,'username').join(',');
+                        toastr.error('used by users : ' + users,'role in use');
                     } else {
                         toastr.error(result.data, 'error');
                     }
 
-                })
+                });
             }
         };
 
         function loadPermissions() {
             return LergoClient.roles.getPermissions().then(function (result) {
                 $scope.permissions = _.map(result.data, function (i) {
-                    return {label: i, value: i}
+                    return {label: i, value: i};
                 });
             });
         }
@@ -83,4 +77,11 @@ angular.module('lergoApp')
                 toastr.error(result.data,'error when saving');
             });
         };
+
+        $q.all([getRole(), loadPermissions()]).then( function(){
+            _.each($scope.role.permissions,function( rolePermission ){
+
+                _.find($scope.permissions, { value : rolePermission }).checked = true;
+            });
+        });
     });

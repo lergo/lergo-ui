@@ -21,7 +21,7 @@ describe('Directive: poweredByLergo', function () {
         element = $compile(element)(scope);
         scope.$digest();
 
-        expect(element.text()).toBe(' ???powered.by.lergo??? ');
+        expect(element.text()).toContain(' powered.by.lergo ');
         expect(element.find('a').attr('href').indexOf('/index.html#!/public/lessons/theid/intro') > 0 ).toBe(true);
     }));
 });

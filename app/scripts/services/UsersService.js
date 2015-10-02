@@ -53,14 +53,14 @@ angular.module('lergoApp').service('UsersService', function UsersService($http) 
                 path: 'roles',
                 value: roles
             }
-        })
+        });
     };
 
     this.read = function( userId ){
         return $http({
             url:'/backend/users/' + userId,
             method:'GET'
-        })
+        });
     };
 
 	this.getPublicProfile = function(username) {

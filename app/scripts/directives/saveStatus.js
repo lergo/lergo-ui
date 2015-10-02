@@ -7,7 +7,7 @@
  * # saveStatus
  */
 angular.module('lergoApp')
-    .directive('saveStatus', function ( LergoTranslate ) {
+    .directive('saveStatus', function ( $filter ) {
         return {
             template: '<div class="lergo-h3 lergo-save-status {{getClassName()}}">{{getLabel()}}</div>',
             restrict: 'A',
@@ -15,13 +15,14 @@ angular.module('lergoApp')
                 'data': '=saveStatus'
             },
             link: function postLink(scope/*, element, attrs*/) {
+                var translateFilter = $filter('translate');
                 scope.getLabel = function(){
                     if ( scope.data.saving ){
-                        return LergoTranslate.translate('saving...');
+                        return translateFilter('saving...');
                     }else if ( scope.data.saved ){
-                        return LergoTranslate.translate('saved');
+                        return translateFilter('saved');
                     }else if ( scope.data.errorSaving ){
-                        return LergoTranslate.translate('errorSaving');
+                        return translateFilter('errorSaving');
                     }
                 };
 

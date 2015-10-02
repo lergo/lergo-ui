@@ -32,9 +32,9 @@ angular.module('lergoApp')
             });
         };
 
-        LergoClient.roles.list( {}  ).then(function onSuccess( result ){
-               $scope.roles = result.data.data;
-        }, function onError (){
+        LergoClient.roles.list({}).then(function onSuccess(result) {
+            $scope.roles = result.data.data;
+        }, function onError( result ) {
             toastr.error(result.data, 'Error');
         });
 

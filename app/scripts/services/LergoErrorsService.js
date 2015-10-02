@@ -15,16 +15,16 @@ angular.module('lergoApp')
 
             this.typeof = function( e ){
                 return e.code === item.code;
-            }
+            };
 
         }
 
-        $http.get('/backend/system/errors').then(function(result){
+        $http.get('/backend/system/errors').then(function (result) {
 
-            _.each(result.data, function( item ){
+            _.each(result.data, function (item) {
                 me[item.key] = new LergoError(item);
             });
         });
 
 
-  });
+    });
