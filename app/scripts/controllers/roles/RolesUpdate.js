@@ -62,7 +62,6 @@ angular.module('lergoApp')
          * @param done - should we redirect back to roles after we save
          */
         $scope.saveRole = function( done ){
-
             $scope.role.permissions = _.pluck(_.filter( $scope.permissions, { checked : true }), 'value' );
 
 

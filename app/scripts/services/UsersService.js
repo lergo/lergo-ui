@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('UsersService', function UsersService($http) {
+angular.module('lergoApp').service('UsersService', function UsersService($http, $rootScope , $q ) {
 
     // will get all users - including private.
     // if user not allowed, will return 400.
@@ -11,6 +11,33 @@ angular.module('lergoApp').service('UsersService', function UsersService($http) 
         return $http({'method' : 'GET' ,'url' : '/backend/users/get/all', 'params' : {
             'query' : queryObj
         }});
+    };
+
+    var me = this;
+
+    $rootScope.$watch('user', function( ){
+        permissionsPromise = null;
+        me.getUserPermissions();
+    });
+
+    var permissionsPromise;
+    this.getUserPermissions = function(){
+        if ( !permissionsPromise ){
+            permissionsPromise = $http.get('/backend/user/permissions').then(function( result ){
+
+                // lets convert this to nested object
+                // http://stackoverflow.com/a/30723988/1068746
+                var permissions = {};
+                _.each(result.data, function( permission ){
+                    _.set(permissions, permission,true);
+                });
+                return permissions;
+
+            }, function( result ){
+                return $q.reject(result);
+            });
+        }
+        return permissionsPromise;
     };
 
 
@@ -42,6 +69,7 @@ angular.module('lergoApp').service('UsersService', function UsersService($http) 
 			method : 'GET'
 		});
 	};
+
 
     // follow standard described at: http://williamdurand.fr/2014/02/14/please-do-not-patch-like-an-idiot/
     this.patchUserRoles = function( userId, roles ){

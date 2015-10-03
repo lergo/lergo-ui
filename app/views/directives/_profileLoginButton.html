@@ -7,18 +7,18 @@
         <img gravatar-src="user.email" gravatar-size="25">
         {{user.username}}
     </a>
-    <div class="user-section-menu " dropdown is-open="menuIsOpen">
+    <div class="user-section-menu" dropdown is-open="menuIsOpen">
         <ul class="dropdown-menu">
             <li><a href="/#!/user/create/profile">{{'baseLayout.header.links.profile' | translate}}</a></li>
             <li><a href="/#!/user/create/lessons">{{'baseLayout.header.links.lessons' | translate}}</a></li>
             <li><a href="/#!/user/create/questions">{{'baseLayout.header.links.questions' | translate}}</a></li>
             <li><a href="/#!/user/create/reports">{{'baseLayout.header.links.reports' | translate}}</a></li>
             <li><a href="/#!/user/create/invites">{{'baseLayout.header.links.invites' | translate}}</a></li>
-            <li class="divider" admin-section> </li>
-            <li><a href="/#!/admin/homepage/lessons" admin-section>{{'baseLayout.header.links.manageLessons' | translate}}</a></li>
-            <li><a href="/#!/admin/homepage/abuseReports" admin-section>{{'baseLayout.header.links.manageAbuseReports' | translate}}</a></li>
-            <li><a href="/#!/manage/roles" admin-section>{{'baseLayout.header.links.manageRoles' | translate}}</a></li>
-            <li><a href="/#!/manage/users" admin-section>{{'baseLayout.header.links.manageUsers' | translate}}</a></li>
+            <li class="divider" admin-section="lessons || abuseReports || roles || users"> </li>
+            <li admin-section="!!lessons"><a href="/#!/admin/homepage/lessons">{{'baseLayout.header.links.manageLessons' | translate}}</a></li>
+            <li admin-section="!!abuseReports"><a href="/#!/admin/homepage/abuseReports">{{'baseLayout.header.links.manageAbuseReports' | translate}}</a></li>
+            <li admin-section="!!roles"><a href="/#!/manage/roles">{{'baseLayout.header.links.manageRoles' | translate}}</a></li>
+            <li admin-section="!!users"><a href="/#!/manage/users">{{'baseLayout.header.links.manageUsers' | translate}}</a></li>
             <li class="divider"></li>
             <li><a ng-click="logout()">{{ 'baseLayout.header.links.logout' | translate }}</a></li>
         </ul>

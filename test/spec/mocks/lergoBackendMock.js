@@ -13,6 +13,7 @@ angular.module('lergoBackendMock', []).run(function($httpBackend){
 
     $httpBackend.whenGET('/backend/system/errors').respond(200,'[]');
     $httpBackend.whenGET('/backend/roles?query=%7B%22projection%22:%7B%22_id%22:1,%22name%22:1%7D%7D').respond(200,'[]');
+    $httpBackend.whenGET('/backend/user/permissions').respond(200,'[]');
 
 
 });

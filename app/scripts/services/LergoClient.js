@@ -14,8 +14,12 @@ angular.module('lergoApp').service('LergoClient',
 				return $http.post('/backend/users/validate/resend', loginCredentials);
 			};
 
-			this.isLoggedIn = function() {
-				return $http.get('/backend/user/loggedin');
+            var isLoggedInPromise  = null;
+			this.isLoggedIn = function( cached ) {
+                if ( !cached || !isLoggedInPromise ){
+                    isLoggedInPromise =  $http.get('/backend/user/loggedin');
+                }
+                return isLoggedInPromise;
 			};
 
 			this.logout = function() {
