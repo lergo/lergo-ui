@@ -1,12 +1,12 @@
 <div class="result" ng-show="!!getAnswer(quizItem) && step.testMode!=='True'">
     <div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">
 
-        <span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | i18n}}</span>
-        <span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | i18n}}: {{getCorrectAnswers(quizItem)}} </span>
+        <span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | translate}}</span>
+        <span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | translate}}: {{getCorrectAnswers(quizItem)}} </span>
 
         <div
             ng-show="getAnswer(quizItem).expMessage.length>0 && !getAnswer(quizItem).correct && (!quizItem.explanationMedia || !quizItem.explanationMedia.type)">
-            <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n
+            <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate
                 }}
             </button>
             <div style="width: 400px; margin: auto" collapse="!!isCollapsed">
@@ -16,5 +16,5 @@
     </div>
 </div>
 <div class="result" ng-show="!getAnswer()">
-    <div class="bg-primary">{{'steps.answer' | i18n }}</div>
+    <div class="bg-primary">{{'steps.answer' | translate }}</div>
 </div>

@@ -1,7 +1,7 @@
 <div class="question-preview">
 	<div class="hint">
 		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link hint"
-			popover-trigger="focus" tabindex="0">{{'hint' | i18n}}</button>
+			popover-trigger="focus" tabindex="0">{{'hint' | translate}}</button>
 	</div>
 	<div class="question-title">
 		<p class="lergo-h4">{{quizItem.question}}</p>
@@ -13,7 +13,7 @@
 	<div multi-choice quiz-item="quizItem" on-click="checkAnswer()"></div>
 	<br />
 	<div class="submit" ng-show="isMultiChoiceMultiAnswer(quizItem)">
-		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | translate }}</button>
 	</div>
 	<br />
 	<div ng-include="'views/questions/view/preview/partials/_result.html'"></div>

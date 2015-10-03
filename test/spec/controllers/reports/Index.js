@@ -3,7 +3,7 @@
 describe('Controller: ReportsIndexCtrl', function() {
 
 	// load the controller's module
-	beforeEach(module('lergoApp'));
+	beforeEach(module('lergoApp','lergoBackendMock'));
 
 	var ReportsIndexCtrl, scope;
 

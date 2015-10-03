@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ui.gravatar']).config(
-    function ($routeProvider, $httpProvider, $logProvider, $locationProvider, gravatarServiceProvider) {
+angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ui.gravatar']).config(
+    function ($routeProvider, $httpProvider, $logProvider, $locationProvider, gravatarServiceProvider, $translateProvider ) {
 
         $logProvider.debugEnabled(false);
 
@@ -11,6 +11,10 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
             }
         }catch(e){}
 
+        $translateProvider.useUrlLoader('/backend/system/translations/angular-translate.json');
+        $translateProvider.preferredLanguage('en');
+        $translateProvider.fallbackLanguage(['general','en']);
+        $translateProvider.useMissingTranslationHandler('missingTranslationFactory');
         $locationProvider.html5Mode(false).hashPrefix('!');
 
         gravatarServiceProvider.defaults = {
@@ -45,6 +49,33 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
                 params:{ 'preview' : true }
             })
 
+            .when('/manage/users', {
+                templateUrl: 'views/manage/users/manageUsersIndex.html',
+                controller: 'ManageUsersIndexCtrl',
+                reloadOnSearch: false,
+                params: {
+                    'activeTab' : 'users'
+                }
+            })
+
+            .when('/manage/users/:userId/update', {
+                templateUrl: 'views/manage/users/manageUserUpdate.html',
+                controller: 'ManageUsersUpdateCtrl'
+            })
+
+            .when('/manage/roles', {
+                templateUrl: 'views/roles/rolesIndex.html',
+                controller: 'RolesIndexCtrl',
+                'params': {
+                    'activeTab' : 'roles'
+                }
+            })
+            .when('/manage/roles/:roleId/update', {
+                templateUrl: 'views/roles/rolesUpdate.html',
+                controller: 'RolesUpdateCtrl'
+            })
+
+
             .when('/public/lessons/invitations/:invitationId/display', {
                 templateUrl: 'views/lessons/invitations/display.html',
                 controller: 'LessonsInvitationsDisplayCtrl',
@@ -72,7 +103,8 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
             .when('/user/lesson/:lessonId/update', {
                 templateUrl: 'views/lessons/update.html',
                 controller: 'LessonsUpdateCtrl',
-                reloadOnSearch: false
+                reloadOnSearch: false,
+
             })
 
             .when('/user/create/:activeTab', {
@@ -99,9 +131,6 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
             .when('/public/kitchenSink', {
                 templateUrl: 'views/kitchenSink.html'
 
-            }).when('/public/translations/diff', {
-                templateUrl: 'views/translations/diff.html',
-                controller: 'TranslationsDiffCtrl'
             }).when('/public/feedback', {
                 templateUrl: 'views/partials/_feedback.html'
             }).when('/public/abuse', {
@@ -135,10 +164,6 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
             }).when('/public/session/resetPasswordRequest', {
                 templateUrl: 'views/session/resetPasswordRequest.html',
                 controller: 'SessionResetPasswordRequestCtrl'
-            }).when('/admin/homepage/:activeTab', {
-                templateUrl: 'views/admin/homepage.html',
-                controller: 'AdminHomepageCtrl',
-                reloadOnSearch: false
             }).when('/user/homepage', {
                 redirectTo: '/public/homepage'
             }).when('/user/Parents', {
@@ -146,6 +171,25 @@ angular.module('lergoApp', ['LocalStorageModule', 'ngRoute', 'ui.bootstrap', 'ui
             }).when('/user/Teachers', {
                 templateUrl: 'views/errors/underConstruction.html'
             })
+
+            ////////////////// admin section
+            .when('/admin/homepage/lessons', {
+                templateUrl: 'views/admin/lessons/_index.html',
+                controller: 'AdminLessonIndexCtrl',
+                reloadOnSearch: false,
+                'params' : {
+                    'activeTab' : 'lessons'
+                }
+            })
+            .when('/admin/homepage/abuseReports', {
+                templateUrl: 'views/admin/abuseReports/_index.html',
+                controller: 'AdminAbuseReportIndexCtrl',
+                reloadOnSearch: false,
+                'params' : {
+                    'activeTab' : 'abuseReports'
+                }
+            })
+
 
             .when('/disqus/:disqus_identifier', {
                 controller: 'DisqusPageCtrl',

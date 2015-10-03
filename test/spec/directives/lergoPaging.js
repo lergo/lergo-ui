@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: lergoPaging', function () {
-    beforeEach(module('lergoApp','directives-templates'));
+    beforeEach(module('lergoApp','directives-templates','lergoBackendMock'));
 
     window.conf = { 'filtering' :  {'defaultPageSize' :20 } };
 

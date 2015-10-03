@@ -78,7 +78,6 @@ describe('Controller: LessonsDisplayCtrl', function () {
         });
 
         it('should call toastr on error', inject(function(){
-            spyOn(toastr,'error');
             errorResult = {};
             loadController();
             expect(toastr.error).toHaveBeenCalled();

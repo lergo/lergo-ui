@@ -28,13 +28,13 @@
 <br>
 <div class="result" ng-show="!!getAnswer(quizItem)">
 	<div class="bg-primary">
-		<span>{{'questions.thankYou' | i18n}}</span>
+		<span>{{'questions.thankYou' | translate}}</span>
 		<div ng-show="!!quizItem.explanation">
-			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate }}</button>
 			<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
 		</div>
 	</div>
 </div>
 <div class="result" ng-show="!getAnswer()">
-	<div class="bg-primary">{{'steps.answer' | i18n }}</div>
+	<div class="bg-primary">{{'steps.answer' | translate }}</div>
 </div>

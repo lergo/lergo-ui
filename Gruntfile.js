@@ -58,6 +58,10 @@ module.exports = function (grunt) {
             develop: {
                 files: ['app/**/*.js', 'test/**/*.js'],
                 tasks: ['concurrent:develop']
+            },
+            karma: {
+                files: ['test/**/*.js'],
+                tasks: ['karma:unit']
             }
         },
         s3:{
@@ -176,27 +180,39 @@ module.exports = function (grunt) {
             }
 
         },
-        compass: {
-            options: {
-                sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                generatedImagesDir: '.tmp/images/generated',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: '<%= yeoman.app %>/bower_components',
-                httpImagesPath: '/images',
-                httpGeneratedImagesPath: '/images/generated',
-                httpFontsPath: '/styles/fonts',
-                relativeAssets: false
-            },
-            dist: {},
+        sass: {
             server: {
-                options: {
-                    debugInfo: true
+                files: {
+                    '.tmp/styles/main.css': '<%= yeoman.app %>/styles/main.scss'
+                }
+            },
+            dist: {
+                files: {
+                    '.tmp/styles/main.css': '<%= yeoman.app %>/styles/main.scss'
                 }
             }
         },
+        //compass: {
+        //    options: {
+        //        sassDir: '<%= yeoman.app %>/styles',
+        //        cssDir: '.tmp/styles',
+        //        generatedImagesDir: '.tmp/images/generated',
+        //        imagesDir: '<%= yeoman.app %>/images',
+        //        javascriptsDir: '<%= yeoman.app %>/scripts',
+        //        fontsDir: '<%= yeoman.app %>/styles/fonts',
+        //        importPath: '<%= yeoman.app %>/bower_components',
+        //        httpImagesPath: '/images',
+        //        httpGeneratedImagesPath: '/images/generated',
+        //        httpFontsPath: '/styles/fonts',
+        //        relativeAssets: false
+        //    },
+        //    dist: {},
+        //    server: {
+        //        options: {
+        //            debugInfo: true
+        //        }
+        //    }
+        //},
         // not used since Uglify task does concat,
         // but still available if needed
         /*concat: {
@@ -330,6 +346,9 @@ module.exports = function (grunt) {
             }
         },
         concurrent: {
+            options: {
+                logConcurrentOutput: true
+            },
             develop: [
 //                'jsdoc',
                 'jshint',
@@ -337,7 +356,8 @@ module.exports = function (grunt) {
             ],
             watch:[
                 'watch:compass',
-                'watch:jshint'
+                'watch:jshint',
+                'watch:livereload'
             ],
             server: [
                 'compass:server'
@@ -355,14 +375,15 @@ module.exports = function (grunt) {
                 configFile: 'karma.conf.js',
                 singleRun:true,
                 port:9001,
-                browsers: ['Chrome'],
+                browsers: ['PhantomJS'],
                 reporters: ['failed']
 
             },
             unit: {
                 configFile: 'karma.conf.js',
                 singleRun:true,
-                port:9001
+                port:9001,
+                browsers: ['PhantomJS']
 
 
             },
@@ -390,6 +411,7 @@ module.exports = function (grunt) {
                 ]
             }
         },
+
         uglify: {
             dist: {
                 files: {
@@ -427,9 +449,7 @@ module.exports = function (grunt) {
             'configureProxies',
             'connect:livereload',
             'open',
-            'watch:compass',
-            'watch:livereload',
-            'watch:jshint'
+            'concurrent:watch'
 
         ]);
     });
@@ -456,6 +476,11 @@ module.exports = function (grunt) {
         'rev',
         'usemin'
     ]);
+
+    grunt.registerTask('compass',['sass']);
+
+
+
 
     grunt.registerTask('default', [
         'jshint',

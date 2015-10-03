@@ -6,9 +6,8 @@
         </div>
     </div>
 	    <div ng-show="!!loaded">
-		<div admin-section>
-			<a href="#!/admin/homepage/lessons">Admin Homepage</a>
-		</div>
+
+
 		<div class="homepage">
 			<div statistics-banner class="page-content-width">
 				<!-- how many lessons, and how many questions -->
@@ -16,15 +15,15 @@
 					<div class="stats-wrapper">
 						<div class="stats-lessons">
 							<div class="amount">{{systemStats.lessonsCount}}</div>
-							<div class="type">{{ 'homepage.lessons' | i18n }}</div>
+							<div class="type">{{ 'homepage.lessons' | translate }}</div>
 						</div>
 						<div class="stats-questions">
 							<div class="amount">{{systemStats.questionsCount}}</div>
-							<div class="type">{{ 'homepage.questions' | i18n }}</div>
+							<div class="type">{{ 'homepage.questions' | translate }}</div>
 						</div>
 						<div>
 							<div class="and-counting item">
-								<span>{{ 'homepage.andCounting' | i18n }}</span>
+								<span>{{ 'homepage.andCounting' | translate }}</span>
 							</div>
 						</div>
 					</div>
@@ -36,10 +35,10 @@
 			</div>
 			<div class="page-content-width page-content-titles">
 				<div class="page-content-body">
-					<div class="lergo-h1">{{ 'featured' | i18n }}</div>
+					<div class="lergo-h1">{{ 'featured' | translate }}</div>
 				</div>
 				<div class="page-content-sidebar">
-					<div class="lergo-h1">{{ 'lessons.filter' | i18n }}</div>
+					<div class="lergo-h1">{{ 'lessons.filter' | translate }}</div>
 				</div>
 			</div>
 			<div class="page-content-width">
@@ -50,7 +49,7 @@
 								<div class="value">{{lesson.age}}+</div>
 								<div class="units">
 									<i class="fa fa-arrow-up"></i>
-									{{'homepage.years'|i18n}}
+									{{'homepage.years'|translate}}
 								</div>
 							</div>
 							<!-- age limit -->
@@ -69,19 +68,19 @@
 								<table class="stats-table">
 									<tr>
 										<td>
-											<span tooltip="{{'homepage.tooltip.user' | i18n}}">
+											<span tooltip="{{'homepage.tooltip.user' | translate}}">
 												<i class="fa fa-user fa-fw"></i>
 												{{lesson.user.username}}
 											</span>
 										</td>
 										<td>
-											<span tooltip="{{'homepage.tooltip.views' | i18n}}">
+											<span tooltip="{{'homepage.tooltip.views' | translate}}">
 												<i class="fa fa-eye fa-fw"></i>
 												{{0+lesson.views}}
 											</span>
 										</td>
 										<td>
-											<span ng-show="!!lesson.questionsCount" tooltip="{{'homepage.tooltip.questions' | i18n}}">
+											<span ng-show="!!lesson.questionsCount" tooltip="{{'homepage.tooltip.questions' | translate}}">
 												<i class="fa fa-question-circle fa-fw"></i>
 												{{lesson | countQuestionsOnLesson }}
 											</span>
@@ -89,15 +88,15 @@
 									</tr>
 									<tr>
 										<td>
-											<span tooltip="{{'lessons.createdOn' | i18n}}">
+											<span tooltip="{{'lessons.createdOn' | translate}}">
 												<i class="fa fa-calendar"></i>
 												{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}
 											</span>
 										</td>
 										<td colspan="2">
-											<span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | i18n}}">
+											<span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | translate}}">
 												<i class="fa fa-book fa-fw"></i>
-												{{lesson.subject && ('filters.subjects.' + lesson.subject | i18n) ||""}}
+												{{lesson.subject && ('filters.subjects.' + lesson.subject | translate) ||""}}
 											</span>
 										</td>
 									</tr>

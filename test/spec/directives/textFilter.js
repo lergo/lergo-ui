@@ -2,7 +2,7 @@
 
 describe('Directive: textFilter', function () {
     beforeEach(function () {
-        module('lergoApp');
+        module('lergoApp','lergoBackendMock');
         module('directives-templates');
     });
 

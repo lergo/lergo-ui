@@ -1,0 +1,10 @@
+#manageUserUpdate{
+    .user-groups{
+        span{
+            display:inline-block;
+            width:200px;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+    }
+}

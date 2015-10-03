@@ -6,17 +6,17 @@
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
 			<div class="lergo-h1">
-				{{ 'reports.myReports' | i18n }} [ {{ 'reports.total' | i18n }}: {{systemStats.myReports + + systemStats.myInvitedReports }} ]
+				{{ 'reports.myReports' | translate }} [ {{ 'reports.total' | translate }}: {{systemStats.myReports + + systemStats.myInvitedReports }} ]
 				<!-- LERGO-457-->
 			</div>
 			<select class="report-type-selection" ng-model="reportsPage.reportType"
-				ng-options="reportType.id as ( 'reports.type.' + reportType.id | i18n ) for reportType in reportTypes  ">
+				ng-options="reportType.id as ( 'reports.type.' + reportType.id | translate ) for reportType in reportTypes  ">
 				<option>mine</option>
 				<option>students</option>
 			</select>
 		</div>
 		<div class="page-content-sidebar">
-			<div class="lergo-h1">{{ 'reports.filter' | i18n }}</div>
+			<div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
 		</div>
 	</div>
 	<div class="page-content-width">
@@ -32,19 +32,19 @@
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li>
-										<a  style="outline: none;" class="btn-link" ng-click="createLessonFromWrongQuestions()">{{'report.CreateLessonFromWrongQuestions'|i18n}}</a>
+										<a  style="outline: none;" class="btn-link" ng-click="createLessonFromWrongQuestions()">{{'report.CreateLessonFromWrongQuestions'|translate}}</a>
 										<hr />
-										<a style="outline: none;" class="btn-link delete-menu" ng-click="deleteReports()">{{'delete'|i18n}}</a>
+										<a style="outline: none;" class="btn-link delete-menu" ng-click="deleteReports()">{{'delete'|translate}}</a>
 									</li>
 								</ul>
 							</div>
 						</td>
-						<td>{{ 'name' | i18n }}</td>
-						<td ng-show="showStudentColumn()">{{ 'reports.student' | i18n}}</td>
-						<td>{{ 'reports.subject' | i18n}}</td>
-						<td>{{ 'reports.takenAt' | i18n}}</td>
-						<td>{{ 'reports.correctPercentage' | i18n }}</td>
-						<td>{{ 'reports.duration'|i18n}}</td>
+						<td>{{ 'name' | translate }}</td>
+						<td ng-show="showStudentColumn()">{{ 'reports.student' | translate}}</td>
+						<td>{{ 'reports.subject' | translate}}</td>
+						<td>{{ 'reports.takenAt' | translate}}</td>
+						<td>{{ 'reports.correctPercentage' | translate }}</td>
+						<td>{{ 'reports.duration'|translate}}</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -53,16 +53,16 @@
 							<input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
 						</td>
 						<td class="name">
-							<a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0" tooltip="{{'reports.tooltip.go' | i18n}}"
+							<a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0" tooltip="{{'reports.tooltip.go' | translate}}"
 								ng-href="#!/public/lessons/reports/{{report._id}}/display">{{ getReportName(report) }}</a>
 						</td>
 						<td class="answer" ng-show="showStudentColumn()">{{report.data.invitee.name}}</td>
-						<td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject | i18n) ||""}}</td>
+						<td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject | translate) ||""}}</td>
 						<td class="answer">{{report.lastUpdate| date:'medium'}}</td>
 						<td class="answer">{{report.correctPercentage}}</td>
 						<td class="answer">
 							<span ng-show="isCompleted(report)">{{report.duration|duration}}</span>
-							<span ng-show="!isCompleted(report)">{{'report.incomplete' | i18n}}</span>
+							<span ng-show="!isCompleted(report)">{{'report.incomplete' | translate}}</span>
 						</td>
 					</tr>
 				</tbody>

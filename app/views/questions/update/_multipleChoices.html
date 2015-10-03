@@ -3,15 +3,15 @@
 <table class="lergo-table lergo-form">
     <thead>
     <tr>
-        <td>{{ 'questions.possibleAnswers' | i18n }}</td>
-        <td style="width: 10%">{{ 'questions.correctAnswers' | i18n }}</td>
-        <td style="width: 10%">{{ 'remove' | i18n }}</td>
+        <td>{{ 'questions.possibleAnswers' | translate }}</td>
+        <td style="width: 10%">{{ 'questions.correctAnswers' | translate }}</td>
+        <td style="width: 10%">{{ 'remove' | translate }}</td>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="option in quizItem.options">
         <td>
-            <input type="text" placeholder="{{('questions.answerOption' |i18n) + ($index + 1)}}"
+            <input type="text" placeholder="{{('questions.answerOption' |translate) + ($index + 1)}}"
                    ng-model="option.label"></td>
         <td>
             <input type="checkbox" ng-model="option.checked"/>
@@ -24,7 +24,7 @@
     </tr>
     <tr>
         <td>
-            <input type="text" placeholder="{{ 'questions.clickToAdd' | i18n }}" readonly="True"
+            <input type="text" placeholder="{{ 'questions.clickToAdd' | translate }}" readonly="True"
                    ng-click="addOption()"/>
         </td>
         <td>
@@ -36,10 +36,10 @@
 <div ng-show="quizItem.options.length > 1" class="lergo-form shuffle">
     <div class="left-cell">
 		<span>
-			{{'questions.disableShuffling' | i18n}}</span>
+			{{'questions.disableShuffling' | translate}}</span>
 			<span>
 			<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-			<button popover="{{'questions.shuffleHint' | i18n}}" class="fa fa-question-circle" popover-placement="top"
+			<button popover="{{'questions.shuffleHint' | translate}}" class="fa fa-question-circle" popover-placement="top"
                     popover-trigger="focus" tabindex="0"></button>
 		</span>
     </div>

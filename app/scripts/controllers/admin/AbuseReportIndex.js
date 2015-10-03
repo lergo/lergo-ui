@@ -61,7 +61,7 @@ angular.module('lergoApp').controller('AdminAbuseReportIndexCtrl', function($sco
 
 	$scope.deleteReports = function() {
 		var toDelete = 0;
-		if (confirm($filter('i18n')('deleteReports.Confirm'))) {
+		if (confirm($filter('translate')('deleteReports.Confirm'))) {
 			angular.forEach($scope.reports, function(report) {
 				if (report.selected === true) {
 					toDelete++;

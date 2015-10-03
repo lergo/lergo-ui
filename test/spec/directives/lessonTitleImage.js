@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: lessonTitleImage', function () {
-    beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp','lergoBackendMock'));
 
     var element;
 

@@ -1,12 +1,12 @@
 <div class="{{!quizItem.checkAnswer.correct && 'bg-warning' || 'bg-success'}} report-quiz-question-header">
 	<span class="inline-table">{{quizItem.question}}</span>
-	<span ng-show="!!quizItem.checkAnswer.correct" class="inline-table">({{'questions.correct'|i18n}}) </span>
-	<span ng-show="!quizItem.checkAnswer.correct" class="inline-table">({{'questions.incorrect'|i18n}})</span>
+	<span ng-show="!!quizItem.checkAnswer.correct" class="inline-table">({{'questions.correct'|translate}}) </span>
+	<span ng-show="!quizItem.checkAnswer.correct" class="inline-table">({{'questions.incorrect'|translate}})</span>
 	<div class="duration">
 		<span ng-show="quizItem.isHintUsed">
 			<span class="inline-table">
 				<i class="fa fa-eye"> </i>
-				{{'hint' | i18n}}
+				{{'hint' | translate}}
 			</span>
 			<span class="inline-table"> : {{quizItem.hint | limitTo:30}} | </span>
 		</span>

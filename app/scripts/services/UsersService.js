@@ -1,9 +1,20 @@
 'use strict';
 
 angular.module('lergoApp').service('UsersService', function UsersService($http) {
-	this.getAll = function() {
-		return $http.get('/backend/users/get/all');
-	};
+
+    // will get all users - including private.
+    // if user not allowed, will return 400.
+    this.getAll = function( queryObj ) {
+        if ( !queryObj ){
+            throw new Error('should have at least a query object with pagination..');
+        }
+        return $http({'method' : 'GET' ,'url' : '/backend/users/get/all', 'params' : {
+            'query' : queryObj
+        }});
+    };
+
+
+
 
 	this.getUsernames = function(like) {
 		return $http({
@@ -31,6 +42,26 @@ angular.module('lergoApp').service('UsersService', function UsersService($http) 
 			method : 'GET'
 		});
 	};
+
+    // follow standard described at: http://williamdurand.fr/2014/02/14/please-do-not-patch-like-an-idiot/
+    this.patchUserRoles = function( userId, roles ){
+        return $http({
+            url: '/backend/users/' + userId ,
+            method: 'PATCH',
+            data: {
+                op: 'replace',
+                path: 'roles',
+                value: roles
+            }
+        });
+    };
+
+    this.read = function( userId ){
+        return $http({
+            url:'/backend/users/' + userId,
+            method:'GET'
+        });
+    };
 
 	this.getPublicProfile = function(username) {
 		return $http({

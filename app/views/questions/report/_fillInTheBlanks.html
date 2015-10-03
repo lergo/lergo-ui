@@ -3,7 +3,7 @@
 		<div ng-include="'views/questions/report/partial/_questionHeader.html'"></div>
 		<div class="quiz-answer">
 			<div>
-				<div class="bold">{{'questions.correctAnswers'|i18n}}</div>
+				<div class="bold">{{'questions.correctAnswers'|translate}}</div>
 				<div class="question" style="line-height: 2">
 					{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
 					<span style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
@@ -17,7 +17,7 @@
 			</div>
 			<br>
 			<div>
-				<div class="bold">{{'questions.yourAnswers'|i18n}}</div>
+				<div class="bold">{{'questions.yourAnswers'|translate}}</div>
 				<div class="question" style="line-height: 2">
 					{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
 					<span ng-repeat="option in quizItem.question.split('___') track by $index">
@@ -33,7 +33,7 @@
             <div ng-show="quizItem.checkAnswer.expMessage.length > 0 ">
                 <br>
 
-                <div class="bold">{{'explanation'|i18n}}</div>
+                <div class="bold">{{'explanation'|translate}}</div>
                 <div ng-repeat="msg in quizItem.checkAnswer.expMessage">{{msg}}</div>
             </div>
 			<div ng-show="!!quizItem.explanationMedia">

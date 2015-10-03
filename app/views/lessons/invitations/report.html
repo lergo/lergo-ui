@@ -13,8 +13,8 @@
 				<div ng-show="!!report.data.invitee.name">
 
 					<div class="lergo-h1">{{report.data.invitee.name}}</div>
-					<div class="lergo-h4" ng-show="isCompleted(report)">{{'report.completed'|i18n}}:</div>
-					<div class="lergo-h4" ng-show="!isCompleted(report)">{{'report.notCompletedTitle'|i18n}}:</div>
+					<div class="lergo-h4" ng-show="isCompleted(report)">{{'report.completed'|translate}}:</div>
+					<div class="lergo-h4" ng-show="!isCompleted(report)">{{'report.notCompletedTitle'|translate}}:</div>
 					<br />
 				</div>
 				<div class="lergo-h1">
@@ -23,34 +23,34 @@
 					<span ng-show="!!report.data.lesson.temporary">{{report.data.lesson.name| limitTo:40}}</span>
 				</div>
 				<div>
-					<span class="lergo-h4">{{'report.date'|i18n}}:</span>
+					<span class="lergo-h4">{{'report.date'|translate}}:</span>
 					<span>{{report.lastUpdate | date:'medium'}}</span>
 				</div>
 			</div>
 			<div class="header-desc">
 				<div ng-show="!!report.data.lesson.description">
 
-					<div class="lergo-h4">{{'report.description'|i18n}}</div>
+					<div class="lergo-h4">{{'report.description'|translate}}</div>
 					<div>{{report.data.lesson.description | limitTo:440}}</div>
 				</div>
 				<div class="redo-buttons">
 					<span class="restart">
 						<a ng-show="!report.data.lesson.temporary" href="" ng-click="startLesson()">
-							<i class="fa fa-repeat "> {{'lessons.restart' | i18n}}</i>
+							<i class="fa fa-repeat "> {{'lessons.restart' | translate}}</i>
 						</a>
 					</span>
 					<span ng-show="wrongQuestions.length>0" class="practiceMistake">
 						<a show-logged-in href="" ng-click="practiceMistakes()">
-							<i  class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | i18n}}</i>
+							<i  class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
 						</a>
-						<a show-anonymous href="" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | i18n}}"
+						<a show-anonymous href="" popover-placement="bottom" popover-trigger="focus" popover="{{'lessons.practiceNotAvailable' | translate}}"
 							tabindex="0">
-							<i  class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | i18n}}</i>
+							<i  class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
 						</a>
 					</span>
                     <span ng-show="showContinueLesson()" class="continue-lesson">
                         <a class="btn-link" href="{{continueLessonUrl(report)}}">
-                            <i  class="fa fa-repeat "> {{'lessons.continueLesson' | i18n}}</i>
+                            <i  class="fa fa-repeat "> {{'lessons.continueLesson' | translate}}</i>
                         </a>
                     </span>
 				</div>
@@ -61,7 +61,7 @@
 				<a href="" class="no-underline" ng-click="stepCollapsed=!stepCollapsed">
 					<i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
 					<i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>
-					{{'report.lessonSteps'|i18n}}
+					{{'report.lessonSteps'|translate}}
 				</a>
 			</div>
 			<hr />
@@ -77,17 +77,17 @@
 							<td class="description">
 								<a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}"> {{step.videoUrl}}</a>
 								<span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
-									<span class="inline-table">{{step.quizItems.length}} {{'report.questionsInQuiz' | i18n}} </span>
+									<span class="inline-table">{{step.quizItems.length}} {{'report.questionsInQuiz' | translate}} </span>
 									<Span ng-show="!!stats[$index].correct" class="bg-success report-quiz-summary-item">
-										<span class="inline-table">{{stats[$index].correct}} {{'questions.correct' | i18n}}</span>
+										<span class="inline-table">{{stats[$index].correct}} {{'questions.correct' | translate}}</span>
 										<span class="inline-table">({{stats[$index].correctPercentage}}%)</Span>
 									</Span>
 									<span ng-show="!!stats[$index].wrong" class="bg-warning report-quiz-summary-item">
-										<span class="inline-table">{{stats[$index].wrong}} {{'questions.incorrect' | i18n}}</span>
+										<span class="inline-table">{{stats[$index].wrong}} {{'questions.incorrect' | translate}}</span>
 										<span class="inline-table">({{stats[$index].wrongPercentage}}%)</span>
 									</span>
 									<span ng-show="!!stats[$index].openQuestions" class="bg-primary report-quiz-summary-item">
-										<span class="inline-table">{{stats[$index].openQuestions}} {{'questions.openQuestion' | i18n}}</span>
+										<span class="inline-table">{{stats[$index].openQuestions}} {{'questions.openQuestion' | translate}}</span>
 									</span>
 								</span>
 								<span ngShow="!!report.stepDurations[$index]">
@@ -105,7 +105,7 @@
 				<a href="" class="no-underline" ng-click="recommendationCollapsed=!recommendationCollapsed">
 					<i ng-show="!!recommendationCollapsed" class="fa fa-plus-square"></i>
 					<i ng-show="!recommendationCollapsed" class="fa fa-minus-square"></i>
-					{{'report.recommendation'|i18n}}
+					{{'report.recommendation'|translate}}
 				</a>
 			</div>
 			<hr />
@@ -115,7 +115,7 @@
 						<td class="icon">
 							<i class="fa fa-university"></i>
 						</td>
-						<td class="title lergo-h1">{{'report.nextLesson' | i18n}}</td>
+						<td class="title lergo-h1">{{'report.nextLesson' | translate}}</td>
 						<td class="description">
 							<a ng-href="#!/public/lessons/{{report.data.lesson.nextLessonId}}/intro">{{absoluteShareLink(report.data.lesson.nextLessonId)}}</a>
 						</td>
@@ -124,7 +124,7 @@
 						<td class="icon">
 							<i class="fa fa-university"></i>
 						</td>
-						<td class="title lergo-h1">{{'report.priorLesson' | i18n}}</td>
+						<td class="title lergo-h1">{{'report.priorLesson' | translate}}</td>
 						<td class="description">
 							<a ng-href="#!/public/lessons/{{report.data.lesson.priorLessonId}}/intro">{{absoluteShareLink(report.data.lesson.priorLessonId)}}</a>
 						</td>
@@ -137,7 +137,7 @@
 				<a class="no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
 					<i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
 					<i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
-					{{'report.detailedReport'|i18n}}
+					{{'report.detailedReport'|translate}}
 				</a>
 			</div>
 			<hr />

@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: quizItemMedia', function () {
-    beforeEach(module('lergoApp', 'directives-templates'));
+    beforeEach(module('lergoApp', 'directives-templates','lergoBackendMock'));
 
     var element;
 

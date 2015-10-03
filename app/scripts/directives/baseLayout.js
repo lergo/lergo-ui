@@ -12,9 +12,8 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
             scope.baseLayout = { 'filterTextSearch' : $routeParams.search };
 
             LergoClient.isLoggedIn().then(function (result) {
-                if (!!result) {
-
-                    $rootScope.user = result.data;
+                if (!!result && result.data.user ) {
+                    $rootScope.user = result.data.user;
                 }
             });
 
@@ -85,12 +84,7 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
 
             };
 
-            scope.logout = function () {
-                LergoClient.logout().then(function () {
-                    $rootScope.user = null;
-                    $location.path('/');
-                });
-            };
+
 
 
             // todo: reinstate this search.

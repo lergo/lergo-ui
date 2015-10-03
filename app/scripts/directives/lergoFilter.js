@@ -3,7 +3,7 @@
 
 /**
  * This is a directive for all aside panel filters.
- * 
+ *
  * The parent page should pass a filter object. this directive takes care of
  * displaying the right filters and their behavior (typeahead, select box etc..)
  * this directive will also take care of constructing a valid mongo query as
@@ -13,17 +13,17 @@
  * translated in the backend as '$or' on 'name' and 'description' with regex for
  * case insensitivity (for lessons) and something similar but for property
  * 'question' for collection question.
- * 
- * 
- * 
+ *
+ *
+ *
  * persistency ===========
- * 
+ *
  * persistency is done by marshalling and unmarshalling the scope using
  * {@link FilterService#marshall} and {@link FilterService#unmarhsall}
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
  */
 
 angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoClient, TagsService, $timeout, FilterService, $log, localStorageService, $location, $routeParams) {
@@ -74,6 +74,11 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			});
 
 
+            LergoClient.roles.list({ projection : { '_id' : 1, 'name' : 1 }}).then(function( result ){
+                scope.roles = result.data.data;
+            });
+
+
 
 			function _updateCreatedBy(newValue, oldValue) {
 				if (newValue !== oldValue) {
@@ -96,8 +101,18 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 					}
 				}
 			}
+            $scope.$watch('reportedBy', _updateReportedBy);
 
-
+            function _updateRole(newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    if (!!newValue && newValue.hasOwnProperty('_id')) {
+                        $scope.model.roles = $scope.role._id;
+                    } else {
+                        delete $scope.model.roles;
+                    }
+                }
+            }
+            $scope.$watch('role', _updateRole);
 
             function _updateReportLesson(newValue, oldValue){
                 $log.info('report lesson was updated!!');
@@ -116,7 +131,9 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
             }
             $scope.$watch('reportLesson', _updateReportLesson, true);
 
-			$scope.$watch('reportedBy', _updateReportedBy);
+
+
+
 
 			function _updateReportStudent() {
 				if (!!$scope.reportStudent && $scope.reportStudent !== '' && $scope.opts.showStudents) {
@@ -273,6 +290,11 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			};
 			$scope.$watch('filterTags', _updateFilterTags, true);
 
+
+
+
+
+
 			// load the filter from local storage
 			// we do this before we define how to persist so we want get an
 			// event to persist every property we load
@@ -283,7 +305,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 
 			/**
 			 * the keyName to inflict on the  local storage
-			 * 
+			 *
 			 * @param keyName -
 			 *            the key name in the scope/local storage we want to
 			 *            load
@@ -418,6 +440,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 				persist('model.searchText', 'showSearchText');
 				persist('createdBy', 'showCreatedBy', _updateCreatedBy);
 				persist('reportedBy', 'showReportedBy', _updateReportedBy);
+                persist('role', 'showRoles', _updateRole );
                 persist('reportLesson', 'showReportLesson', _updateReportLesson);
 			}
 

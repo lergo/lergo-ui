@@ -1,7 +1,7 @@
 <div class="base-layout">
 
     <div class="top-padding col-md-3 center-block">
-        <div class="lergo-h1">{{ 'invitations.create' | i18n }}</div>
+        <div class="lergo-h1">{{ 'invitations.create' | translate }}</div>
 
 
 
@@ -9,7 +9,7 @@
             <form ng-submit="sendInvite()">
                 <div class="section">
                     <div class="label">
-                        {{ 'name' | i18n }}
+                        {{ 'name' | translate }}
                     </div>
                     <div class="input">
                         <input ng-model="invite.invitee.name"/>
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="actions">
-                    <input type="submit" value="{{ 'button.submit' | i18n }}" class="btn" ng-show="!pageRequestProgress.inProgress"/>
+                    <input type="submit" value="{{ 'button.submit' | translate }}" class="btn" ng-show="!pageRequestProgress.inProgress"/>
 
                     <div ng-show="!!pageRequestProgress.inProgress" class="loader-short"></div>
                 </div>
@@ -26,16 +26,16 @@
 
         <div class="status top-padding">
             <div ng-show="!!createSuccess" class="bg-success">
-                {{ 'invitations.createdSuccessfully' | i18n }} <br/>
+                {{ 'invitations.createdSuccessfully' | translate }} <br/>
                 link = {{ getLink()}}
             </div>
 
             <div ng-show="!!pageRequestProgress.inProgress" class="bg-info">
-                {{ 'invitations.sending' | i18n }}
+                {{ 'invitations.sending' | translate }}
             </div>
 
             <div ng-show="!!createError" class="bg-warning">
-                {{ 'invitations.error' | i18n }}
+                {{ 'invitations.error' | translate }}
             </div>
         </div>
     </div>

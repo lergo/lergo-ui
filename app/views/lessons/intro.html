@@ -9,27 +9,27 @@
                     <div class="start-lesson">
 						<span class="button">
 							<a ng-click="startLesson()" ng-show="!!lesson">
-                                <i class="fa fa-play-circle-o " tooltip="{{'lessons.startLesson' | i18n}}"></i>
+                                <i class="fa fa-play-circle-o " tooltip="{{'lessons.startLesson' | translate}}"></i>
                             </a>
 						</span>
                     </div>
                     <div class="action-items" ng-show="!!permissions">
                         <div class="action-items-top">
                             <a class="btn-link" ng-click="deleteLesson(lesson)" ng-show="!!permissions.canDelete">
-                                <i class="fa fa-trash-o" tooltip="{{'lessons.tooltip.delete' | i18n}}"></i>
+                                <i class="fa fa-trash-o" tooltip="{{'lessons.tooltip.delete' | translate}}"></i>
                             </a>
                             <br/>
                         </div>
                         <div class="action-items-bottom">
                             <a class="btn-link" ng-click="preview()" ng-show="!!permissions.canPreview">
-                                <i class="fa fa-search-plus" tooltip="{{'lessons.tooltip.preview' | i18n}}"></i>
+                                <i class="fa fa-search-plus" tooltip="{{'lessons.tooltip.preview' | translate}}"></i>
                             </a>
                             <br/>
                             <a class="btn-link" ng-click="copyLesson(les)" ng-show="!!permissions.canCopy">
-                                <i class="fa fa-copy" tooltip="{{'lessons.tooltip.copy' | i18n}}"></i>
+                                <i class="fa fa-copy" tooltip="{{'lessons.tooltip.copy' | translate}}"></i>
                             </a>
                             <br/>
-                            <a href="#!/user/lesson/{{lesson._id}}/update" tooltip="{{'lessons.tooltip.edit' | i18n}}"
+                            <a href="#!/user/lesson/{{lesson._id}}/update" tooltip="{{'lessons.tooltip.edit' | translate}}"
                                ng-show="!!permissions.canEdit">
                                 <i class="fa fa-pencil-square-o"></i>
                             </a>
@@ -37,16 +37,16 @@
                         </div>
                     </div>
                     <div class="stats">
-                        <span class="stats-button age-limit-{{lesson.age}} no-color" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|i18n}} </span>
-						<span class="stats-button" tooltip="{{'homepage.tooltip.views' | i18n}}">
+                        <span class="stats-button age-limit-{{lesson.age}} no-color" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|translate}} </span>
+						<span class="stats-button" tooltip="{{'homepage.tooltip.views' | translate}}">
 							<i class="fa fa-eye fa-fw"></i>
 							{{0+lesson.views}}
 						</span>
-						<span class="stats-button" tooltip="{{'homepage.tooltip.questions' | i18n}}">
+						<span class="stats-button" tooltip="{{'homepage.tooltip.questions' | translate}}">
 							<i class="fa fa-question-circle fa-fw"></i>
 							{{ lesson | countQuestionsOnLesson }}
 						</span>
-						<span class="stats-button" tooltip="{{'homepage.tooltip.likes' | i18n}}">
+						<span class="stats-button" tooltip="{{'homepage.tooltip.likes' | translate}}">
 							<i class="fa fa-heart-o"></i>
 							{{ lessonLikes }}
 						</span>
@@ -54,7 +54,7 @@
                     <div class="details">
                         <div class="name">{{ lesson.name|limitTo:160 }}</div>
                         <div class="properties">
-							<span tooltip="{{'homepage.tooltip.user' | i18n}}">
+							<span tooltip="{{'homepage.tooltip.user' | translate}}">
                                  <a show-logged-in ng-href="#!/user/{{lesson.user.username}}/profile">
                                      <i class="fa fa-user"></i>
                                      <span> {{lesson.user.username}}</span>
@@ -64,72 +64,72 @@
                                      <span> {{lesson.user.username}}</span>
                                  </a>
                             </span>
-							<span tooltip="{{'lessons.createdOn' | i18n}}">
+							<span tooltip="{{'lessons.createdOn' | translate}}">
 								<i class="fa fa-calendar"></i>
 								<span>{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
 							</span>
-							<span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | i18n}}">
+							<span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | translate}}">
 								<i class="fa fa-book"></i>
-								<span>{{'filters.subjects.' + lesson.subject | i18n}}</span>
+								<span>{{'filters.subjects.' + lesson.subject | translate}}</span>
 							</span>
                         </div>
                         <div class="action-items">
                             <div class="action-item">
                                 <button class="btn-link" ng-click="startLesson()"
-                                        tooltip="{{'lessons.tooltip.start' | i18n}}">
+                                        tooltip="{{'lessons.tooltip.start' | translate}}">
                                     <i class="fa fa-play-circle-o "></i>
-                                    {{'start' | i18n}}
+                                    {{'start' | translate}}
                                 </button>
                             </div>
                             <div class="action-item">
                                 <div show-logged-in>
                                     <button class="btn-link" ng-click="likeLesson()"
-                                            tooltip="{{'lessons.tooltip.like' | i18n}}" ng-show="!isLiked()">
+                                            tooltip="{{'lessons.tooltip.like' | translate}}" ng-show="!isLiked()">
                                         <i class="fa fa-heart-o "></i>
-                                        {{'like' | i18n}}
+                                        {{'like' | translate}}
                                     </button>
                                     <div class="btn-group" dropdown ng-show="!!isLiked()">
                                         <button class="btn-link" dropdown-toggle>
                                             <i class="fa fa-heart-o "></i>
-                                            {{'liked' | i18n}}
+                                            {{'liked' | translate}}
                                             <span class="fa fa-caret-down"></span>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
                                                 <a class="btn-link" style="outline: none;" ng-click="unlikeLesson()">{{
-                                                    'unlike' | i18n }}</a>
+                                                    'unlike' | translate }}</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div show-anonymous>
-                                    <button class="btn-link" popover="{{'lessons.likeNotAvailable' | i18n}}"
+                                    <button class="btn-link" popover="{{'lessons.likeNotAvailable' | translate}}"
                                             popover-placement="top" popover-trigger="focus" tabindex="0">
                                         <i class="fa fa-heart-o "></i>
-                                        {{'like' | i18n}}
+                                        {{'like' | translate}}
                                     </button>
                                 </div>
                             </div>
                             <div class="action-item">
                                 <button show-logged-in class="btn-link" ng-click="setActiveAction(actionItems.INVITE)"
-                                        tooltip="{{'lessons.tooltip.invite' | i18n}}">
+                                        tooltip="{{'lessons.tooltip.invite' | translate}}">
                                     <i class="fa fa-envelope "></i>
-                                    {{'invite' | i18n}}
+                                    {{'invite' | translate}}
                                 </button>
                                 <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
                                 <a href="" show-anonymous class="btn-link"
-                                   popover="{{'lessons.inviteNotAvailable' | i18n}}" popover-placement="top"
+                                   popover="{{'lessons.inviteNotAvailable' | translate}}" popover-placement="top"
                                    popover-trigger="focus"
                                    tabindex="0">
                                     <i class="fa fa-envelope "></i>
-                                    {{'invite' | i18n}}
+                                    {{'invite' | translate}}
                                 </a>
                             </div>
                             <div class="action-item">
                                 <button class="btn-link" ng-click="setActiveAction(actionItems.SHARE)"
-                                        tooltip="{{'lessons.tooltip.share' | i18n}}">
+                                        tooltip="{{'lessons.tooltip.share' | translate}}">
                                     <i class="fa fa-share-alt "></i>
-                                    {{'share' | i18n}}
+                                    {{'share' | translate}}
                                 </button>
                             </div>
                             <div class="action-item">
@@ -142,14 +142,14 @@
                                             <a show-logged-in class="btn-link" style="outline: none;"
                                                ng-click="setActiveAction(actionItems.REPORT)">
                                                 <i class="fa fa-flag "></i>
-                                                {{'reportAbuse.title'|i18n}}
+                                                {{'reportAbuse.title'|translate}}
                                             </a>
                                             <a href="" show-anonymous class="btn-link"
-                                               popover="{{'lessons.reportAbuseNotAvailable' | i18n}}"
+                                               popover="{{'lessons.reportAbuseNotAvailable' | translate}}"
                                                popover-placement="top"
                                                popover-trigger="focus" tabindex="0">
                                                 <i class="fa fa-flag "></i>
-                                                {{'reportAbuse.title'|i18n}}
+                                                {{'reportAbuse.title'|translate}}
                                             </a>
                                         </li>
                                     </ul>
@@ -170,22 +170,22 @@
                                 <pre>{{ lesson.description}}</pre>
                                 <div class="edit-summary" ng-show="showEditSummary()">
                                     <br/>
-                                    <span class="title">{{'questions.editSummary'|i18n}}</span>
+                                    <span class="title">{{'questions.editSummary'|translate}}</span>
                                     <br/>
                                     <br/>
                                     <!-- show copy of lesson -->
                                     <div ng-show="copyOfItems.length > 0">
 										<span ng-show="copyOfItems.length === 1" ng-repeat="item in copyOfItems">
-											{{ 'lessonIntro.copiedFromLesson' | i18n}}
+											{{ 'lessonIntro.copiedFromLesson' | translate}}
 											<span lesson-intro-link lesson="item">{{item.name}}</span>
-											{{ 'lessonIntro.copiedFromLessonBy' | i18n }} {{item.userDetails.username }}
+											{{ 'lessonIntro.copiedFromLessonBy' | translate }} {{item.userDetails.username }}
 										</span>
 										<span ng-show="copyOfItems.length > 1">
-											{{ 'lessonIntro.copiedFromLessons' | i18n }}
+											{{ 'lessonIntro.copiedFromLessons' | translate }}
 											<ul>
                                                 <li ng-repeat="item in copyOfItems track by $index">
                                                     <span lesson-intro-link lesson="item">{{item.name}}</span>
-                                                    {{ 'lessonIntro.copiedFromLessonBy' | i18n }}
+                                                    {{ 'lessonIntro.copiedFromLessonBy' | translate }}
                                                     {{item.userDetails.username }}
                                                 </li>
                                             </ul>
@@ -222,8 +222,8 @@
                             <div class="read-more" style="text-align: center"
                                  ng-show="showReadMore(filteredDescription) " ng-click="more=!more">
                                 <hr class="dashes">
-                                <span ng-show="!more">{{'lessons.readMore' | i18n}}</span>
-                                <span ng-show="!!more">{{'lessons.readLess' | i18n}}</span>
+                                <span ng-show="!more">{{'lessons.readMore' | translate}}</span>
+                                <span ng-show="!!more">{{'lessons.readLess' | translate}}</span>
                                 <hr class="dashes">
                             </div>
                         </div>

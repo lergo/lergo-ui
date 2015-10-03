@@ -90,7 +90,7 @@ $FOOTER_HEIGHT: 170px !default;
       height: 90px;
       width: 166px;
     }
-    
+
     .header-main{
     	position:relative;
     }
@@ -143,7 +143,11 @@ $FOOTER_HEIGHT: 170px !default;
       width: 25%;
       margin-right: -40px;
       margin-top: -92px;
-      a {
+      .user-section-menu{
+          position:absolute;
+          margin-top:-10px;
+      }
+      &>a {
         color: white;
         display: inline-block;
         font-size: 18px;
@@ -252,7 +256,7 @@ $FOOTER_HEIGHT: 170px !default;
       .footer-text{
     	color:white;
     	padding-bottom:15px;
-		font-size:12px;    
+		font-size:12px;
 		a{ color:white}
     }
     .footer-links{

@@ -101,7 +101,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 	$scope.createLessonFromWrongQuestions = function() {
 		LergoClient.lessons.create().then(function(result) {
 			var lesson = result.data;
-			lesson.name = $filter('i18n')('lesson.practice.title');
+			lesson.name = $filter('translate')('lesson.practice.title');
 			// todo: remove filter Service getLanguageByLocale - this should be
 			// coming from translate service.
 			lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
@@ -111,7 +111,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			var step = {
 				'type' : 'quiz',
 				'quizItems' : [],
-				'title' : $filter('i18n')('lesson.practice.step.title')
+				'title' : $filter('translate')('lesson.practice.step.title')
 			};
 			lesson.steps.push(step);
 			angular.forEach($scope.reports, function(report) {
@@ -147,7 +147,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 	}
 	$scope.deleteReports = function() {
 		var toDelete = 0;
-		if (confirm($filter('i18n')('deleteReports.Confirm'))) {
+		if (confirm($filter('translate')('deleteReports.Confirm'))) {
 			angular.forEach($scope.reports, function(report) {
 				if (report.selected === true) {
 					toDelete++;

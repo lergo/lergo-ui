@@ -17,11 +17,11 @@ describe('Controller: LoginCtrl', function () {
         scope = $rootScope.$new();
         LergoClient =  {
             'isLoggedIn': function(){
-                return { 'then' : function( success , error ){
+                return { 'then' : function( success  ){
                     if ( isLoggedIn ){
-                        success();
+                        success({data: { user: 'foo' }});
                     }else{
-                        error();
+                        success({ data : {} });
                     }
                 }};
             },

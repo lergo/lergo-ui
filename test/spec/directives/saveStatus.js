@@ -24,20 +24,20 @@ describe('Directive: saveStatus', function () {
         setup();
         scope.status.saved = true;
         scope.$digest();
-        expect(element.text()).toBe('???saved???');
+        expect(element.text()).toContain('saved');
     }));
 
     it('should show saved when status is saved', inject(function () {
         setup();
         scope.status.errorSaving = true;
         scope.$digest();
-        expect(element.text()).toBe('???errorSaving???');
+        expect(element.text()).toContain('errorSaving');
     }));
 
     it('should show saved when status is saved', inject(function () {
         setup();
         scope.status.saving = true;
         scope.$digest();
-        expect(element.text()).toBe('???saving...???');
+        expect(element.text()).toContain('saving...');
     }));
 });

@@ -3,7 +3,7 @@
 	<tr>
 		<td style="width: 13%">
 			<div class="video-tip">
-				<span>{{ 'lessons.videoURL' | i18n }}</span>
+				<span>{{ 'lessons.videoURL' | translate }}</span>
 				<span class="video-tip">
 					<a  href="" ng-click="showTip=!showTip">
 						<i class="fa fa-question-circle"></i>
@@ -13,15 +13,15 @@
 		</td>
 		<td>
 			<div class="form-group" ng-class="{ 'has-error' : videoForm.videoURL.$invalid && !videoForm.videoURL.$pristine }">
-				<input required class="form-control" name="videoURL" placeholder="{{'lessons.videoURLHelpText' | i18n }}" ng-model="step.videoUrl"
+				<input required class="form-control" name="videoURL" placeholder="{{'lessons.videoURLHelpText' | translate }}" ng-model="step.videoUrl"
 					ng-pattern="/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/">
 				<p ng-show="videoForm.videoURL.$error.pattern || (videoForm.videoURL.$invalid && !videoForm.videoURL.$pristine)" class="help-block">{{'steps.invalidURL'
-					| i18n}}</p>
+					| translate}}</p>
 			</div>
 			<div collapse="!showTip">
-				{{ 'lessons.genericVideosPre' | i18n }}
+				{{ 'lessons.genericVideosPre' | translate }}
 				<a ng-href="https://docs.google.com/spreadsheets/d/1g_JlB6lSM0N1X-oTb_kEP6UgggCVfLuvkRCe-h7Oqjo/edit?usp=sharing/{{hash}}" target="_videoblank">{{'clickHere'
-					| i18n}}</a><span> {{ 'lessons.genericVideosPost' | i18n }}</span>
+					| translate}}</a><span> {{ 'lessons.genericVideosPost' | translate }}</span>
 			</div>
 		</td>
 	</tr>

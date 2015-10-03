@@ -1,7 +1,7 @@
 <div class="question-preview">
 	<div class="hint">
 		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link hint"
-			popover-trigger="focus" tabindex="0">{{'hint' | i18n}}</button>
+			popover-trigger="focus" tabindex="0">{{'hint' | translate}}</button>
 	</div>
 	<div class="question-title">
 		<p class="lergo-h4">{{quizItem.question}}</p>
@@ -18,19 +18,19 @@
 	</div>
 	<br />
 	<div class="submit">
-		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | i18n }}</button>
+		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | translate }}</button>
 	</div>
 	<br />
 	<div ng-show="!!getAnswer(quizItem)">
 		<div class="bg-primary">
-			<span>{{'questions.thankYou' | i18n}}</span>
+			<span>{{'questions.thankYou' | translate}}</span>
 			<div ng-show="!!quizItem.explanation">
-				<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | i18n }}</button>
+				<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate }}</button>
 				<div style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
 			</div>
 		</div>
 	</div>
 	<div ng-show="!getAnswer()">
-		<div class="bg-primary">{{'steps.answer' | i18n }}</div>
+		<div class="bg-primary">{{'steps.answer' | translate }}</div>
 	</div>
 </div>

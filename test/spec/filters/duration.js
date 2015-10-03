@@ -22,12 +22,12 @@ describe('Filter: duration', function() {
     });
 
     it('should show report missing info if duration is not a number or an object', function () {
-        expect(duration('this is not a number')).toBe('???report.missing.info???');
+        expect(duration('this is not a number')).toContain('report.missing.info');
     });
 
     it ( 'should not support objects with only startTime or only endTime' ,function(){
-        expect(duration({'startTime' : 1})).toBe('???report.did.not.finish???');
-        expect(duration({'endTime' : 1})).toBe('???report.did.not.finish???');
+        expect(duration({'startTime' : 1})).toContain('report.did.not.finish');
+        expect(duration({'endTime' : 1})).toContain('report.did.not.finish');
     });
 
 });

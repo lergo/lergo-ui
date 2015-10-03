@@ -7,41 +7,41 @@
                 </div>
                 <div class="form-section form-group name"
                      ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
-                    <div class="lergo-label">{{ 'lessons.name' | i18n }}</div>
+                    <div class="lergo-label">{{ 'lessons.name' | translate }}</div>
                     <div class="lergo-input">
                         <input required class="form-control" ng-model="lesson.name" name="name"/>
                     </div>
                     <p ng-show="lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine" class="help-block">
-                        {{'lessons.error.invalidName' | i18n}}</p>
+                        {{'lessons.error.invalidName' | translate}}</p>
                 </div>
                 <div class="form-section description form-group">
-                    <div class="lergo-label">{{ 'lessons.description' | i18n }}</div>
+                    <div class="lergo-label">{{ 'lessons.description' | translate }}</div>
                     <div class="lergo-input">
                         <textarea class="form-control" ng-model="lesson.description" name="description"></textarea>
                     </div>
                 </div>
                 <div class="stats form-group">
                     <div class="language">
-                        <span>{{ 'filters.labels.language' | i18n }}</span>
+                        <span>{{ 'filters.labels.language' | translate }}</span>
                         <select class="form-control" ng-model="lesson.language"
-                                ng-options="l.id as ('filters.languages.' + l.id| i18n) for l in languages"
+                                ng-options="l.id as ('filters.languages.' + l.id| translate) for l in languages"
                                 name="language"></select>
                     </div>
                     <div class="subject">
-                        <span>{{ 'filters.labels.subject' | i18n }}</span>
+                        <span>{{ 'filters.labels.subject' | translate }}</span>
                         <select class="form-control" ng-model="lesson.subject"
-                                ng-options="s as ('filters.subjects.' + s | i18n) for s in subjects"
+                                ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"
                                 name="subject"></select>
                     </div>
                     <div class="age">
-                        <span>{{ 'fromAge' | i18n }}</span>
+                        <span>{{ 'fromAge' | translate }}</span>
                         <input class="form-control" type="number" min="4" max="18" step="1" size="2"
                                ng-model="lesson.age" name="age"/>
                     </div>
                 </div>
                 <div class="tag form-group">
                     <div class="row">
-                        <span>{{ 'tags' | i18n }}</span>
+                        <span>{{ 'tags' | translate }}</span>
                         <!--<input class="form-control"  ng-model="lesson.tags" name="tag" />-->
                         <div>
                             <div tag-section tags="lesson.tags" tags-available="allAvailableTags"></div>
@@ -54,7 +54,7 @@
                         <button class="btn-link expander" ng-click="isCollapsed = !isCollapsed" ng-show="!!lesson.name">
                             <i ng-show="!isCollapsed" class="fa fa-plus-square"></i>
                             <i ng-show="!!isCollapsed" class="fa fa-minus-square"></i>
-                            {{ 'advancedOptions' | i18n }}
+                            {{ 'advancedOptions' | translate }}
                         </button>
                         {{(isCollapsed===undefined)&& (isCollapsed = (!!lesson.nextLesson || !!lesson.priorLesson ))||""
                         }}
@@ -64,16 +64,16 @@
                         <table class=" lergo-table lergo-form">
                             <tbody>
                             <tr>
-                                <td style="width: 15%">{{ 'lessons.recommenedNextLesson' | i18n }}</td>
+                                <td style="width: 15%">{{ 'lessons.recommenedNextLesson' | translate }}</td>
                                 <td>
-                                    <input placeholder="{{'lessons.recommenedNextLessonText' | i18n}}"
+                                    <input placeholder="{{'lessons.recommenedNextLessonText' | translate}}"
                                            ng-model="lesson.nextLesson"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td>{{ 'lessons.recommenedPriorLesson' | i18n }}</td>
+                                <td>{{ 'lessons.recommenedPriorLesson' | translate }}</td>
                                 <td>
-                                    <input placeholder="{{'lessons.recommenedPriorLessonText' | i18n}}"
+                                    <input placeholder="{{'lessons.recommenedPriorLessonText' | translate}}"
                                            ng-model="lesson.priorLesson"/>
                                 </td>
                             </tr>
@@ -92,7 +92,7 @@
                     </div>
                     <table class="lergo-table lergo-form">
                         <tr>
-                            <td style="width: 13%">{{ 'steps.title' | i18n }}</td>
+                            <td style="width: 13%">{{ 'steps.title' | translate }}</td>
                             <td>
                                 <input ng-model="step.title"/>
                             </td>
@@ -100,17 +100,17 @@
                         <tr>
                             <td>
 								<span class="pop-up-hint" style="padding: 0px;">
-									<span> {{ 'steps.type' | i18n }} </span>
+									<span> {{ 'steps.type' | translate }} </span>
 									<span>
 										<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-										<button popover="{{'steps.typeHint' | i18n}}" class="fa fa-question-circle"
+										<button popover="{{'steps.typeHint' | translate}}" class="fa fa-question-circle"
                                                 popover-placement="top" popover-trigger="focus" tabindex="0"></button>
 									</span>
 								</span>
                             </td>
                             <td>
                                 <select ng-model="step.type"
-                                        ng-options="t.id as ('steps.' + t.id | i18n) for t in stepTypes">
+                                        ng-options="t.id as ('steps.' + t.id | translate) for t in stepTypes">
                                 </select>
                             </td>
                         </tr>
@@ -118,21 +118,21 @@
                     <div ng-include="getStepViewByType(step)"></div>
                     <div>
                         <button style="margin-left: 50%" class="btn" ng-click="displayStep(step)">{{ 'steps.display' |
-                            i18n }}
+                            translate }}
                         </button>
                     </div>
                 </div>
                 <div save-status="saveStatus"></div>
                 <div>
-                    <button class="btn" ng-click="done()" ng-disabled="isSaving() || !lesson.name">{{'done' | i18n }}
+                    <button class="btn" ng-click="done()" ng-disabled="isSaving() || !lesson.name">{{'done' | translate }}
                     </button>
 					<span class="pop-up-hint">
 						<button class="btn" ng-click="addStep(lesson)" ng-disabled="isSaving() || !lesson.name">{{
-                            'steps.add' | i18n }}
+                            'steps.add' | translate }}
                         </button>
 						<span>
 							<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-							<button popover="{{'steps.addHint' | i18n}}" class="fa fa-question-circle"
+							<button popover="{{'steps.addHint' | translate}}" class="fa fa-question-circle"
                                     popover-placement="top" popover-trigger="focus" tabindex="0"></button>
 						</span>
 					</span>

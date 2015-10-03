@@ -3,27 +3,27 @@
         <div class="article">
             <div class="item">
                 <div class="amount">2305</div>
-                <div class="type">{{ 'homepage.lessons' | i18n }}</div>
+                <div class="type">{{ 'homepage.lessons' | translate }}</div>
             </div>
             <div class="item">
                 <div class="amount">17456</div>
-                <div class="type">{{ 'homepage.questions' | i18n }}</div>
+                <div class="type">{{ 'homepage.questions' | translate }}</div>
             </div>
             <div class="and-counting item">
-                {{ 'homepage.andCounting' | i18n }}
+                {{ 'homepage.andCounting' | translate }}
             </div>
         </div>
         <div class="sidebar">
-            <div class="title">{{ 'homepage.createYourOwn' | i18n }}</div>
-            <div class="start">{{ 'homepage.start' | i18n }}</div>
-            <div class="free">{{ 'homepage.free' | i18n }}</div>
+            <div class="title">{{ 'homepage.createYourOwn' | translate }}</div>
+            <div class="start">{{ 'homepage.start' | translate }}</div>
+            <div class="free">{{ 'homepage.free' | translate }}</div>
         </div>
     </div>
           <div class="article">
               <div class="section" ng-repeat="section in sections">
                   <div class="title">
                       <div class="section-label">
-                          {{section.label|i18n}}
+                          {{section.label|translate}}
                       </div>
                       <div class="controls">
                           <i class="fa fa-chevron-left" ng-class="{'disabled':section.index ==0}" ng-click="flipSection(section,false)"></i>
@@ -55,11 +55,11 @@
                               </div>
                           </div>
                           <div class="title">
-                              {{ lesson.title + ".title" | i18n }}
+                              {{ lesson.title + ".title" | translate }}
                           </div>
 
                           <div class="description" multiline-ellipsis>
-                              {{lesson.title + '.description' | i18n }}
+                              {{lesson.title + '.description' | translate }}
                           </div>
                           <div class="info">
                               <div class="by">
@@ -96,14 +96,14 @@
           <div class="sidebar">
               <div class="filters">
                 <div class="title">
-                      {{ 'lessons.filter' | i18n }}
+                      {{ 'lessons.filter' | translate }}
                   </div>
                   <div class="filter" ng-repeat="filter in filters">
-                      <div class="label"> {{ 'lessons.filters.labels.' + filter.label | i18n }}</div>
-                      <div class="input"><select ng-options="op | i18n:{skip:!filter.translate} for op in filter.options" ng-model="filter.selected"> </select></div>
+                      <div class="label"> {{ 'lessons.filters.labels.' + filter.label | translate }}</div>
+                      <div class="input"><select ng-options="op | translate:{skip:!filter.translate} for op in filter.options" ng-model="filter.selected"> </select></div>
                   </div>
                   <div class="filter">
-                      <div class="label">{{ 'lessons.tags' | i18n }}</div>
+                      <div class="label">{{ 'lessons.tags' | translate }}</div>
                   </div>
                   <div class="tags">
                       <div class="tag" ng-repeat="tag in tags">

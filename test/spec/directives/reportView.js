@@ -1,7 +1,7 @@
 'use strict';
 
-describe('Directive: lessonView', function () {
-    beforeEach(module('lergoApp', 'directives-templates'));
+describe('Directive: reportView', function () {
+    beforeEach(module('lergoApp', 'directives-templates','lergoBackendMock'));
 
     var element;
     var elementScope;

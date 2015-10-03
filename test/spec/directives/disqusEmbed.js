@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: disqusEmbed', function () {
-    beforeEach(module('lergoApp'));
+    beforeEach(module('lergoApp','lergoBackendMock'));
 
     var element;
 

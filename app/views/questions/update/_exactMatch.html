@@ -2,18 +2,18 @@
 <table class="lergo-table lergo-form">
     <thead>
     <tr>
-        <td>{{ 'questions.possibleAnswers' | i18n }}</td>
+        <td>{{ 'questions.possibleAnswers' | translate }}</td>
         <td style="width: 10%"></td>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="option in quizItem.options track by $index" ng-show="!!option.checked">
-        <td><input type="text" placeholder="{{('questions.answerOption' |i18n) + ($index + 1)}}"
+        <td><input type="text" placeholder="{{('questions.answerOption' |translate) + ($index + 1)}}"
                    ng-model="option.label"/></td>
         <td><a class="btn btn-link" ng-click="removeOption(option)" >X</a></td>
     </tr>
     <tr>
-        <td><input type="text" placeholder="{{ 'questions.clickToAdd' | i18n }}" readonly="True"
+        <td><input type="text" placeholder="{{ 'questions.clickToAdd' | translate }}" readonly="True"
                    ng-click="addOption({checked:true})"/></td>
     </tr>
     </tbody>

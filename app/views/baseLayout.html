@@ -11,44 +11,35 @@
 					<div class="header-links">
 						<ul>
 							<li>
-								<a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| i18n }} </a>
+								<a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }} </a>
 							</li>
 							<li>
-								<a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| i18n }} </a>
+								<a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
 								<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-								<a show-anonymous href="#" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | i18n}}" tabindex="0">{{
-									'baseLayout.header.links.create'| i18n }} </a>
+								<a show-anonymous href="#" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
+									'baseLayout.header.links.create'| translate }} </a>
 							</li>
 							<li ng-repeat="item in ['Parents','Teachers']">
-								<a href="#!/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | i18n }}</a>
+								<a href="#!/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | translate }}</a>
 							</li>
 							<li>
-								<a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| i18n }} </a>
+								<a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a>
 							</li>
 						</ul>
 					</div>
 					<div class="header-search" ui-keypress="{enter: 'searchOnHomepage()'}">
-						<!--<div text-filter placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" items="typeaheadItems" model="filterTextSearch"
+						<!--<div text-filter placeholder="{{'baseLayout.header.searchPlaceholder' | translate  }}" items="typeaheadItems" model="filterTextSearch"
 							on-select="doSearchFromTypeahead($item,$model,$label)"></div>-->
-						<input placeholder="{{'baseLayout.header.searchPlaceholder' | i18n  }}" ng-model="baseLayout.filterTextSearch" />
+						<input placeholder="{{'baseLayout.header.searchPlaceholder' | translate  }}" ng-model="baseLayout.filterTextSearch" />
 						<button ng-click="searchOnHomepage()" class="btn btn-link">
 							<i class="icon-search"></i>
 						</button>
 					</div>
-					<div class="header-signup" ng-show="!user">
-						<a href="#!/public/session/login"> {{ 'button.login' | i18n }}</a>
-						<a href="#!/public/session/signup"> {{ 'button.signup' | i18n }}</a>
-					</div>
-					<div class="header-login" ng-show="!!user">
-						<a href="#!/user/create/invites" tooltip="{{'baseLayout.header.userName.tip' | i18n}}" tooltip-placement="bottom">
-							<img gravatar-src="user.email" gravatar-size="25">
-							{{user.username}}
-						</a>
-						<button class="btn" ng-click="logout()">{{'baseLayout.header.logout' | i18n }}</button>
-					</div>
-					<div class="header-language" tooltip="{{'baseLayout.header.siteLanguage' | i18n}}">
+                    <div profile-login-button="user"></div>
+
+					<div class="header-language" tooltip="{{'baseLayout.header.siteLanguage' | translate}}">
 						<i class="fa fa-globe fa-fw"></i>
-						<select ng-model="$root.lergoLanguage" ng-options="lang.id as ( 'translationLanguage.' + lang.id | i18n ) for lang in $root.lergoLanguages"></select>
+						<select ng-model="$root.lergoLanguage" ng-options="lang.id as ( 'translationLanguage.' + lang.id | translate ) for lang in $root.lergoLanguages"></select>
 					</div>
 				</div>
 			</div>
@@ -59,51 +50,51 @@
 	<div id="footer" class="not-embed-mode-item">
 		<div class="centered-content">
 			<div class="footer-text">
-				{{'baseLayout.footer.text1' | i18n }}
-				<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | i18n }};</a>
-				{{'baseLayout.footer.text3' | i18n }}
-				<a href="#!/public/terms">{{'baseLayout.footer.text4' | i18n }}.</a>
-				{{'baseLayout.footer.text5' | i18n }}.
+				{{'baseLayout.footer.text1' | translate }}
+				<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | translate }};</a>
+				{{'baseLayout.footer.text3' | translate }}
+				<a href="#!/public/terms">{{'baseLayout.footer.text4' | translate }}.</a>
+				{{'baseLayout.footer.text5' | translate }}.
 			</div>
 			<div>
 				<div class="footer-links">
 					<div class=row>
 						<ul>
 							<li>
-								<a href="#!/public/terms">{{'baseLayout.footer.privacyAndTerms' | i18n }}</a>
+								<a href="#!/public/terms">{{'baseLayout.footer.privacyAndTerms' | translate }}</a>
 							</li>
 							<li>
-								<a href="#!/public/about/overview">{{'baseLayout.footer.about' | i18n }}</a>
+								<a href="#!/public/about/overview">{{'baseLayout.footer.about' | translate }}</a>
 							</li>
 							<li>
-								<a href="#!/user/homepage"> {{'baseLayout.footer.homepage' | i18n }}</a>
+								<a href="#!/user/homepage"> {{'baseLayout.footer.homepage' | translate }}</a>
 							</li>
 							<li>
-								<a href="#!/public/contact">{{'baseLayout.footer.contact' | i18n }}</a>
+								<a href="#!/public/contact">{{'baseLayout.footer.contact' | translate }}</a>
 							</li>
 							<li>
-								<a href="#!/public/kitchenSink">{{'baseLayout.footer.kitchenSink' | i18n}}</a>
+								<a href="#!/public/kitchenSink">{{'baseLayout.footer.kitchenSink' | translate}}</a>
 							</li>
 						</ul>
 					</div>
 					<div class="row">
 						<ul>
 							<li>
-								<a class="weight12" href="#!/public/feedback">{{'baseLayout.footer.feedback' | i18n}}</a>
+								<a class="weight12" href="#!/public/feedback">{{'baseLayout.footer.feedback' | translate}}</a>
 							</li>
 							<li>
-								<a class="weight12" href="#!/public/suggest">{{'baseLayout.footer.suggest' | i18n}}</a>
+								<a class="weight12" href="#!/public/suggest">{{'baseLayout.footer.suggest' | translate}}</a>
 							</li>
 							<li>
-								<a class="weight12" href="#!/public/problem">{{'baseLayout.footer.problem' | i18n}}</a>
+								<a class="weight12" href="#!/public/problem">{{'baseLayout.footer.problem' | translate}}</a>
 							</li>
 							<li>
-								<a class="weight12" href="#!/public/abuse">{{'baseLayout.footer.abuse' | i18n}}</a>
+								<a class="weight12" href="#!/public/abuse">{{'baseLayout.footer.abuse' | translate}}</a>
 							</li>
 						</ul>
 						<div class="copyrights">
-							<div>&copy; {{'baseLayout.footer.copyright' | i18n}}</div>
-							<div>{{'baseLayout.footer.copyrightMsg' | i18n}}</div>
+							<div>&copy; {{'baseLayout.footer.copyright' | translate}}</div>
+							<div>{{'baseLayout.footer.copyrightMsg' | translate}}</div>
 						</div>
 					</div>
 				</div>

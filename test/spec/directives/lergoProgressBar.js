@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: lergoProgressBar', function () {
-    beforeEach(module('lergoApp', 'directives-templates'));
+    beforeEach(module('lergoApp', 'directives-templates','lergoBackendMock'));
 
     var element;
 
