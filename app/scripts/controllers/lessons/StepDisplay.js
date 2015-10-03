@@ -210,20 +210,28 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.nextQuizItem = function() {
 		$log.info('next');
-
 		if (!$scope.questions) {
 			return;
 		}
 
-		if (!!$scope.step && !!$scope.step.quizItems && $scope.step.quizItems.length > currentIndex()) {
-			var quizItem = $scope.step.quizItems[currentIndex()];
-			$scope.quizItem = $scope.questions[quizItem];
+        var quizItem = null;
+		if (!!$scope.step && !!$scope.step.quizItems ) {
+            if (  $scope.step.quizItems.length > currentIndex() ) {
+                quizItem = $scope.step.quizItems[currentIndex()];
+                $scope.quizItem = $scope.questions[quizItem];
+            }else if ( $scope.step.quizItems.length === currentIndex() ) {
+                try{
+                    quizItem = $scope.step.quizItems[currentIndex()-1];
+                    $scope.quizItem = $scope.questions[quizItem];
+                }catch(e){
+                    $log.error('failed handling scenario where last question was answered',e);
+                }
+            }
 		}
 	};
 
 	// simply gets the next quiz item. does not change the state of the page
 	$scope.getNextQuizItemDry = function() {
-
 		if (!$scope.hasNextQuizItem()) {
 			return {
 				'type' : null

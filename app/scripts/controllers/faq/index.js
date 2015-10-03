@@ -17,9 +17,13 @@ angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $http, $r
 					'locale' : $rootScope.lergoLanguage
 				}).then(function(result) {
 					$scope.faq = result.data;
+                    $scope.$watch('faq', saveContent.onValueChange, true);
 
-				});
-			}
+
+                });
+			}else{
+                $scope.$watch('faq', saveContent.onValueChange, true);
+            }
 		});
 	}
 	function create(content) {
@@ -36,7 +40,6 @@ angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $http, $r
 		}
 	});
 
-	$scope.$watch('faq', saveContent.onValueChange, true);
 	$scope.isSaving = function() {
 		return !!saveContent.getStatus().saving;
 	};

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, ReportsService, $log, $controller, $rootScope, $location, shuffleQuestionsFilter, $window) {
+angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, ReportsService, $log, $controller, $rootScope, $location, shuffleQuestionsFilter, $window, $route ) {
 
 	// guy - using this flag because ng-cloak and other solutions will not apply
 	// to this scenario.
@@ -13,6 +13,14 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	$controller('LessonsStepDisplayCtrl', {
 		$scope : $scope
 	});
+
+    if ( $route && $route.current && $route.current.$$route && $route.current.$$route.params &&  $route.current.$$route.params.preview ){
+        LergoClient.lessons.getById( $routeParams.lessonId).then(function(result){
+            $scope.lesson = result.data;
+        }, function(){
+            toastr.error('failed loading lesson', 'error');
+        });
+    }
 
 	$scope.currentStepIndex = parseInt($routeParams.currentStepIndex || 0, 10);
 	$log.info('current step index', $scope.currentStepIndex);
@@ -40,9 +48,6 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 				if (!!$scope.step) {
 					shuffleQuestionsFilter( { 'array' : $scope.step.quizItems, 'disabled' : !$scope.step.shuffleQuestion , 'report' : $scope.report , 'stepIndex' : $scope.currentStepIndex } );
 				}
-
-
-
 			} else {
 				$scope.step = null;
 			}
@@ -62,18 +67,20 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	}
 
 	$scope.$watch('currentStepIndex', function(newValue, oldValue) {
-		$log.info('currentStepIndex changed', newValue, oldValue);
-		updateCurrentStep();
-		// in case of temporary lesson we don't want to remember history
-		if (!$scope.lesson.temporary) {
-			$location.search('currentStepIndex', newValue);
-		} else {
-			$location.search('currentStepIndex', newValue).replace();
-		}
-		$rootScope.$broadcast('stepIndexChange', {
-			'old' : oldValue,
-			'new' : newValue
-		});
+        if ( !!$scope.lesson ) {
+            $log.info('currentStepIndex changed', newValue, oldValue);
+            updateCurrentStep();
+            // in case of temporary lesson we don't want to remember history
+            if (!$scope.lesson.temporary) { // temporary means "create lesson from mistakes" and such..
+                $location.search('currentStepIndex', newValue);
+            } else {
+                $location.search('currentStepIndex', newValue).replace();
+            }
+            $rootScope.$broadcast('stepIndexChange', {
+                'old': oldValue,
+                'new': newValue
+            });
+        }
 	});
 
 	$scope.$watch(function() {
