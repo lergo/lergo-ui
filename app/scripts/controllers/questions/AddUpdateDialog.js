@@ -138,7 +138,7 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 				if (!!item && !$scope.isValid(item)) {
                     var answer = true;
                     if ( isCreateNewQuestionSection() ){
-                        answer = confirm($filter('i18n')('deleteQuestion.Confirm'));
+                        answer = confirm($filter('translate')('deleteQuestion.Confirm'));
                     }
                     if ( !!answer ) {
                         QuestionsService.deleteQuestion(item._id);
