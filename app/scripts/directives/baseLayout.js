@@ -40,7 +40,7 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
 
             $rootScope.getLabelForLanguage = function (id) {
 
-                return LergoTranslate.translate('translationLanguage.' + id);
+                return LergoTranslate.translate('general.translationLanguage.' + id);
             };
             $rootScope.lergoLanguages = [
                 {

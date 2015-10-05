@@ -270,12 +270,10 @@
                 "reports": "Reports",
                 "teachers": "Teachers",
                 "roles": "Roles",
-                "groups": "Groups",
                 "users" : "Users",
                 "manageLessons": "Manage Lessons",
                 "manageAbuseReports": "Manage Abuse Reports",
                 "manageRoles": "Manage Roles",
-                "manageGroups": "Manage Groups",
                 "manageUsers" : "Manage Users",
                 "logout": "Logout"
             },
@@ -375,7 +373,6 @@
             "subject": "Subject",
             "tags": "Tags",
             "text": "Text",
-            "groups" : "Groups",
             "views": "# of views"
         },
         "languages": {
@@ -505,19 +502,6 @@
         "edit" : {
             "description" : "Role Description",
             "name" : "Role Name"
-        }
-    },
-    "groups" : {
-        "total" : "Toal",
-        "myGroups" : "My Groups",
-        "createNew" : "Create New Group",
-        "tooltip" : {
-            "go" : "see group"
-        },
-        "edit" : {
-            "name" : "Group Name",
-            "description" : "Group Description",
-            "roles" : "Roles"
         }
     },
     "lessons": {
@@ -872,5 +856,33 @@
     "unlike": "Unlike",
     "up": "Up",
     "view": "View",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "manage": {
+        "users" : {
+            "index" : {
+                "count": "Total",
+                "myUsers": "My Users",
+                "tableTitles": {
+                    "username": "Username",
+                    "email": "Email"
+                },
+                "tooltip": {
+                    "go": "Edit User"
+                }
+            },
+            "edit" : {
+                "username" : "Username",
+                "email" : "Email",
+                "roles" : "Roles",
+                "actions" : {
+                    "editRoles" : "Edit User Roles",
+                    "editRole" : "Goto Edit Role"
+                }
+            }
+        }
+
+    },
+    "general" : {
+        "translationLanguage":{"he":"עברית","en":"English", "ru":"Русский", "ar" :"العربية"}
+    }
 }

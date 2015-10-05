@@ -13,7 +13,7 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
 
         $translateProvider.useUrlLoader('/backend/system/translations/angular-translate.json');
         $translateProvider.preferredLanguage('en');
-        $translateProvider.fallbackLanguage(['general','en']);
+        $translateProvider.fallbackLanguage(['en']);
         $translateProvider.useMissingTranslationHandler('missingTranslationFactory');
         $locationProvider.html5Mode(false).hashPrefix('!');
 

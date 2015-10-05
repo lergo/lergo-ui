@@ -15,7 +15,7 @@ angular.module('lergoApp')
         return function (key, language) {
             var uid = key + language;
             if (!reported[uid]) { // report only once!
-                if (key.indexOf('translationLanguage') < 0 && key.indexOf('general') < 0) {
+                if ( key.indexOf('general') !== 0) {
                     $log.info('missing key ', key, ' from language', language);
                     reported[uid] = true;
                 }
