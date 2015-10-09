@@ -9,22 +9,6 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
 	$scope.shareSection = 'link';
 
-	LergoClient.lessons.getLessonIntro(lessonId).then(function(result) {
-		$scope.lesson = result.data;
-		$rootScope.page = {
-			'title' : $scope.lesson.name,
-			'description' : $scope.lesson.description
-		};
-		loadQuestions();
-		$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.lesson.language);
-		if (!!autoPlay) {
-			$scope.startLesson();
-		}
-	}, function(result) {
-		if (result.status === 404) {
-			$location.path('/errors/notFound');
-		}
-	});
 
 	function redirectToInvitation() {
 
@@ -53,7 +37,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	};
 
 	var lessonLikeWatch = null;
-	$scope.$watch('lesson', function(newValue) {
+	$scope.$watch('lesson', function loadLike(newValue) {
 		if (!!newValue) {
 			// get my like - will decide if I like this lesson or not
 			LergoClient.likes.getMyLessonLike($scope.lesson).then(function(result) {
@@ -61,7 +45,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 			});
 
 			if (lessonLikeWatch === null) {
-				lessonLikeWatch = $scope.$watch('lessonLike', function() {
+				lessonLikeWatch = $scope.$watch('lessonLike', function countLikes() {
 					// get count of likes for lesson
 					LergoClient.likes.countLessonLikes($scope.lesson).then(function(result) {
 						$scope.lessonLikes = result.data.count;
@@ -133,15 +117,15 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
 		// we want to keep the information about copyOf if copied from yourself.
 		// we do not want to display it in the edit summary though
-		if (!!$scope.lesson && !!$scope.lesson.copyOf && !!$scope.copyOfItems && $scope.copyOfItems.length > 0) {
+		if (!!$scope.lesson && !!$scope.lesson.copyOf && !!$scope.copyOfItems && _.size($scope.copyOfItems) > 0) {
 			return true;
 		}
 
-		if (!!$scope.questionsFromOthers && $scope.questionsFromOthers.length > 0) {
+		if (!!$scope.questionsFromOthers && _.size($scope.questionsFromOthers) > 0) {
 			return true;
 		}
 
-		if (!!$scope.questionsWeCopied && $scope.questionsWeCopied.length > 0) {
+		if (!!$scope.questionsWeCopied && _.size($scope.questionsWeCopied) > 0) {
 			return true;
 		}
 
@@ -154,8 +138,9 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	});
 
 	$scope.showReadMore = function(filteredDescription) {
+
 		$scope.more = !$scope.lesson || !$scope.lesson.description || $scope.lesson.description === '';
-		return (!!$scope.lesson && !!$scope.lesson.description && (!!filteredDescription && filteredDescription.length !== $scope.lesson.description.length) || $scope.showEditSummary());
+		return  (!!$scope.lesson && !!$scope.lesson.description && !!filteredDescription && filteredDescription.length !== $scope.lesson.description.length) || $scope.showEditSummary();
 	};
 
 	$scope.startLesson = function() {
@@ -204,7 +189,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		// find all questions with copy of
 		var questionsWithCopyOf = _.compact(_.flatten(_.map(questionsWeCopied, 'copyOf')));
 
-		if (!!questionsWithCopyOf && questionsWithCopyOf.length > 0) {
+		if (!!questionsWithCopyOf && _.size(questionsWithCopyOf) > 0) {
 			// get all of these questions
 			LergoClient.questions.findQuestionsById(questionsWithCopyOf).then(function(result) {
 				var originalQuestions = result.data;
@@ -215,23 +200,18 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 				LergoClient.users.findUsersById(usersWeCopiedFrom).then(function(result) {
 					var copyOfUsers = result.data;
 					// turn list of users to map where id is map
-					var copyOfUsersById = _.object(_.map(copyOfUsers, '_id'), copyOfUsers);
+					var copyOfUsersById = _.indexBy(copyOfUsers, '_id');
 
 					_.each(originalQuestions, function(q) {
 						q.userDetails = copyOfUsersById[q.userId];
 					});
 
-					var originalsById = _.object(_.map(originalQuestions, '_id'), originalQuestions);
+					var originalsById = _.indexBy(originalQuestions, '_id');
 
 					_.each(questionsWeCopied, function(q) {
-
-						var originals = [];
-						_.each(q.copyOf, function(c) {
-							originals.push(originalsById[c]);
+                        q.originals = _.map(q.copyOf, function(c) {
+							return originalsById[c];
 						});
-
-						q.originals = originals;
-
 					});
 
 					/* map each question we copied to the original */
@@ -240,26 +220,17 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 					 * owns this lesson
 					 */
 					questionsWeCopied = _.filter(questionsWeCopied, function(q) {
-						if (!q.originals || q.originals.length < 1) {
-							return false;
-						}
-						_.remove(q.originals, function(o) {
-							var remove = o.userId === $scope.lesson.userId;
-							return remove;
-						});
-						return q.originals.length > 0;
+						return !_.isEmpty(_.reject(q.originals,  { userId : $scope.lesson.userId } ));
 					});
 
-					$scope.questionsWeCopied = _.object(_.map(questionsWeCopied, '_id'), questionsWeCopied);
+					$scope.questionsWeCopied = _.indexBy(questionsWeCopied, '_id');
 				});
 			});
 
 		}
 	}
 	function giveCreditToQuestionsWeUseFromOthers(questions) {
-		var questionsFromOthers = _.filter(questions, function(q) {
-			return q.userId !== $scope.lesson.userId;
-		});
+		var questionsFromOthers = _.reject(questions, { userId : $scope.lesson.userId } );
 		var others = _.uniq(_.compact(_.map(questionsFromOthers, 'userId')));
 
 		if (!others || others.length === 0) {
@@ -268,20 +239,22 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
 		LergoClient.users.findUsersById(others).then(function(result) {
 			var othersUsers = result.data;
-			var othersUsersById = _.object(_.map(othersUsers, '_id'), othersUsers);
+			var othersUsersById = _.indexBy(othersUsers, '_id');
 
 			_.each(questionsFromOthers, function(q) {
 				q.userDetails = othersUsersById[q.userId];
 			});
 
-			$scope.questionsFromOthers = _.object(_.map(questionsFromOthers, '_id'), questionsFromOthers);
+			$scope.questionsFromOthers = _.indexBy(questionsFromOthers, '_id');
 		});
 
 	}
 
 	function loadQuestions() {
+
 		var questionsId = [];
 		if (!!$scope.lesson && !!$scope.lesson.steps) {
+
 			for ( var i = 0; i < $scope.lesson.steps.length; i++) {
 				var items = $scope.lesson.steps[i].quizItems;
 				if (!!items && angular.isArray(items)) {
@@ -302,7 +275,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	// we only want to do this once. We can implement 'unregister' or simply
 	// return at the beginning.
 	// either way is fine with me.
-	$scope.$watch('lesson', function(newValue) {
+	$scope.$watch('lesson', function loadCopyOfDetails(newValue) {
 		if (!!$scope.copyOfItem) {
 			return;
 
@@ -318,15 +291,11 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 				// we want to keep the information about copyOf if copied from
 				// yourself.
 				// we do not want to display it in the edit summary though
-				var copyOfLessons = _.compact(_.filter(result.data, function(i) {
-					if ($scope.lesson.userId !== i.userId) {
-						return i;
-					}
-				}));
+				var copyOfLessons = _.compact(_.reject(result.data, {'userId' : $scope.lesson.userId } ));
 				LergoClient.users.findUsersById(_.map(copyOfLessons, 'userId')).then(function(result) {
 					var copyOfUsers = result.data;
 					// turn list of users to map
-					var copyOfUsersById = _.object(_.map(copyOfUsers, '_id'), copyOfUsers);
+					var copyOfUsersById = _.indexBy(copyOfUsers, '_id');
 
 					_.each(copyOfLessons, function(l) {
 						l.userDetails = copyOfUsersById[l.userId];
@@ -338,5 +307,22 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 			});
 		}
 	});
+
+    LergoClient.lessons.getLessonIntro(lessonId).then(function(result) {
+        $scope.lesson = result.data;
+        $rootScope.page = {
+            'title' : $scope.lesson.name,
+            'description' : $scope.lesson.description
+        };
+        loadQuestions();
+        $rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.lesson.language);
+        if (!!autoPlay) {
+            $scope.startLesson();
+        }
+    }, function(result) {
+        if (result.status === 404) {
+            $location.path('/errors/notFound');
+        }
+    });
 
 });
