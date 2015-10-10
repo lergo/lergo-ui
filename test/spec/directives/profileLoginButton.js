@@ -37,11 +37,7 @@ describe('Directive: profileLoginButton', function () {
 
         it('should call path with / when logout is done and set $rootScope.user to null' , inject(function(LergoClient, $location, $rootScope ){
             $rootScope.user = 'foo';
-            spyOn(LergoClient,'logout').andReturn({
-                then:function(success){
-                    success();
-                }
-            });
+            spyOn(LergoClient,'logout').andReturn(window.mockPromise({}));
             spyOn($location,'path');
             isolatedScope.logout();
             expect($location.path).toHaveBeenCalledWith('/');
