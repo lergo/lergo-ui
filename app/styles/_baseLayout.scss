@@ -1,316 +1,368 @@
-$HEADER_BACKGROUND_COLOR:$COLOR_13;
+$HEADER_BACKGROUND_COLOR: $COLOR_13;
+$HEADER_BACKGROUND_COLOR: $COLOR_13;
 $HEADER_HEIGHT: 110px !default;
 $FOOTER_HEIGHT: 170px !default;
 
-#wrapper{
-  margin-bottom:-$HEADER_HEIGHT;
-  min-height:100%;
+#wrapper {
+    margin-bottom: -$HEADER_HEIGHT;
+    min-height: 100%;
 
 }
 
 /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
 .base-layout, .base-layout-class {
 
-  &:not(.base-layout-modal) {
-    margin-bottom: -$HEADER_HEIGHT;
-  }
-  .push {
-    height: $HEADER_HEIGHT;
-    //margin-bottom:-$HEADER_HEIGHT;
-  }
-
-  /** standard widths for this layout **/
-  .page-content-width{
-    width:1000px;
-    min-width:1000px;
-
-    /* clearfix */
-    &:after{
-      content: "";
-      visibility: hidden;
-      display:block;
-      height:0;
-      clear:both;
+    &:not(.base-layout-modal) {
+        margin-bottom: -$HEADER_HEIGHT;
+    }
+    .push {
+        height: $HEADER_HEIGHT;
+        //margin-bottom:-$HEADER_HEIGHT;
     }
 
-    .page-content-body{
-        display:inline-block;
-        width:730px;
-        min-width:730px;
-    }
+    /** standard widths for this layout **/
+    .page-content-width {
+        width: 1000px;
+        min-width: 1000px;
 
-    .page-content-sidebar{
-        float:right;
-        width:225px;
-        min-width:225px;
-    }
+        /* clearfix */
+        &:after {
+            content: "";
+            visibility: hidden;
+            display: block;
+            height: 0;
+            clear: both;
+        }
 
-
-  }
-
-  .page-content-titles{
-    margin-bottom:25px;
-    .page-content-body, .page-content-sidebar{
-      border-bottom:1px solid $LERGO_HR_COLOR;
-      padding-bottom:15px;
-    }
-    .page-content-body .lergo-h1{
-
-      display:inline-block;
-    }
-    .page-content-titles-actions{
-      display:inline-block;
-      float: right;
-      margin-top: -5px;
-      margin-bottom: -5px;
-
-    }
-  }
-
-  #footer, .push {
-    clear: both;
-  }
-  #header {
-    background: $HEADER_BACKGROUND_COLOR;
-    width:100%;
-    min-width:1100px;
-
-    height: $HEADER_HEIGHT;
-    .logo {
-      margin-top: 10px;
-      background: url('/images/homepage/logo.png') no-repeat;
-      display: inline-block;
-      height: 90px;
-      width: 155px;
-    }
-     .logo-beta {
-      margin-top: 10px;
-      background: url('/images/homepage/logo-beta.png') no-repeat;
-      display: inline-block;
-      height: 90px;
-      width: 166px;
-    }
-
-    .header-main{
-    	position:relative;
-    }
-
-    .header-links {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      width: 60%;
-      display: block;
-      margin-top: -100px;
-      margin-right:0;
-      margin-left: 230px;
-      white-space: nowrap;
-      overflow: visible;
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        li {
-          list-style: none;
-          padding: 0 22px 0 0;
-          margin: 0;
-          float: left;
-          &, a {
-            color: white;
-          }
-          &:after {
+        .page-content-body {
             display: inline-block;
-            content: "|";
-            padding-left: 22px;
-            padding-right:0;
-          }
-          &:last-child:after {
-            display: none;
-          }
+            width: 730px;
+            min-width: 730px;
         }
-      }
-    }
-	.header-language{
-		float: right;
-      	width: 160px;
-      	margin-top: -24px;
-      	select{
-	      	border:0;
-	      	background-color: transparent;
-      	}
-	}
-    .header-login {
-      float: right;
-      width: 25%;
-      margin-right: -40px;
-      margin-top: -92px;
-      .user-section-menu{
-          position:absolute;
-          margin-top:-10px;
-      }
-      &>a {
-        color: white;
-        display: inline-block;
-        font-size: 18px;
-        width: 60%;
-        text-decoration: none;
-        padding: 10px 0;
-        text-align: center;
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.3)
+
+        .page-content-sidebar {
+            float: right;
+            width: 225px;
+            min-width: 225px;
         }
-        &:last-child {
-          float: right;
+
+    }
+
+    .page-content-titles {
+        margin-bottom: 25px;
+        .page-content-body, .page-content-sidebar {
+            border-bottom: 1px solid $LERGO_HR_COLOR;
+            padding-bottom: 15px;
         }
-      }
-    }
-      .header-signup {
-      float: right;
-      width: 205px;
-      margin-right: 0;
-      margin-top: -92px;
-      a {
-        color: white;
-        display: inline-block;
-        font-size: 18px;
-        width: 95px;
-        text-decoration: none;
-        padding: 10px 0;
-        text-align: center;
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.3)
+        .page-content-body .lergo-h1 {
+
+            display: inline-block;
         }
-        &:last-child {
-          float: right;
+        .page-content-titles-actions {
+            display: inline-block;
+            float: right;
+            margin-top: -5px;
+            margin-bottom: -5px;
+
         }
-      }
     }
-  }
 
-  .header-search{
-    width:495px; /*guy*/
-    height:39px;
-    margin-top:30px;
-    margin-right:0;
-    margin-left:230px;
-    background:#2BA2FF;
-    color:white;
-
-    border-top-left-radius: 10px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-top:2px solid #87A3B7;
-    border-left: 1px solid #69BEFF;
-    border-right: 1px solid #69BEFF;
-    border-bottom: 1px solid #69BEFF;
-
-    [text-filter]{
-      width:430px;
-      display:inline-block;
+    #footer, .push {
+        clear: both;
     }
-    i{
-      font-size:20px;
-      padding-left:5px;
-      &:before{ display:none}
-      width:26px;
-      height:24px;
-      display:inline-block;
-      position:absolute;
-      background: url('/images/homepage/search-icon.png') no-repeat;
-      margin-left:5px;
-      margin-top:-13px;
-    }
-    input{
-      border-top-left-radius: 8px;
-      height:35px;
-      width:430px;
-      font-weight: bold;
-      border-bottom-left-radius: 3px;
-      border:none;
-      background:#C5E6FF;
-      color:white;
-      &::-webkit-input-placeholder { /* WebKit browsers */
-        color:    white;
-      }
-      &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-        color:    white;
-      }
-      &::-moz-placeholder { /* Mozilla Firefox 19+ */
-        color:    white;
-      }
-      &:-ms-input-placeholder { /* Internet Explorer 10+ */
-        color:    white;
-      }
-      padding: 0 10px;
+    #header {
+        background: $HEADER_BACKGROUND_COLOR;
+        width: 100%;
+        min-width: 1100px;
+
+        height: $HEADER_HEIGHT;
+
+
+        .header-main {
+            position: relative;
+        }
+
+        .header-logo, .header-navigation, .header-actions{
+            background:red;
+            display:inline-block;
+            vertical-align: top;
+            height:$HEADER_HEIGHT;
+            padding: 12px 0 20px 0;
+        }
+
+
+        .header-logo{
+            .logo {
+                margin-top: 10px;
+                background: url('/images/homepage/logo.png') no-repeat;
+                display: inline-block;
+                height: 90px;
+                width: 155px;
+            }
+            .logo-beta {
+                background: url('/images/homepage/logo-beta.png') no-repeat;
+                display: inline-block;
+                height: 90px;
+                width: 166px;
+            }
+        }
+        .header-navigation {
+            margin-left: 60px;
+            max-width:520px;
+
+
+            .header-links {
+                //      padding-top: 10px;
+                //      padding-bottom: 10px;
+                //      width: 60%;
+                      display: block;
+                //      margin-top: -100px;
+                //      margin-right:0;
+                //      margin-left: 230px;
+                      white-space: nowrap;
+                      overflow: visible;
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    li {
+                        list-style: none;
+                        padding: 0 22px 0 0;
+                        margin: 0;
+                        float: left;
+                        &, a {
+                            color: white;
+                        }
+                        &:after {
+                            display: inline-block;
+                            content: "|";
+                            padding-left: 22px;
+                            padding-right: 0;
+                        }
+                        &:last-child:after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .header-search {
+                position: absolute;
+                bottom: 20px;
+
+                width: 495px; /*guy*/
+                height: 39px;
+                //    margin-top:30px;
+                //    margin-right:0;
+                //    margin-left:230px;
+                background: #2BA2FF;
+                color: white;
+                //
+                border-top-left-radius: 10px;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                border-bottom-left-radius: 3px;
+                border-top: 2px solid #87A3B7;
+                border-left: 1px solid #69BEFF;
+                border-right: 1px solid #69BEFF;
+                border-bottom: 1px solid #69BEFF;
+
+                //                    [text-filter]{
+                //                      width:430px;
+                //                      display:inline-block;
+                //                    }
+                i {
+                    font-size: 20px;
+                    padding-left: 5px;
+                    &:before {
+                        display: none
+                    }
+                    width: 26px;
+                    height: 24px;
+                    display: inline-block;
+                    position: absolute;
+                    background: url('/images/homepage/search-icon.png') no-repeat;
+                    margin-left: 5px;
+                    margin-top: -13px;
+                }
+                input {
+                    border-top-left-radius: 8px;
+                    height: 35px;
+                    width: 430px;
+                    font-weight: bold;
+                    border-bottom-left-radius: 3px;
+                    border: none;
+                    background: #C5E6FF;
+                    color: white;
+                    &::-webkit-input-placeholder {
+                        /* WebKit browsers */
+                        color: white;
+                    }
+                    &:-moz-placeholder {
+                        /* Mozilla Firefox 4 to 18 */
+                        color: white;
+                    }
+                    &::-moz-placeholder {
+                        /* Mozilla Firefox 19+ */
+                        color: white;
+                    }
+                    &:-ms-input-placeholder {
+                        /* Internet Explorer 10+ */
+                        color: white;
+                    }
+                    padding: 0 10px;
+
+                }
+            }
+        }
+
+        .header-actions{
+            margin-left:20px;
+            width:225px;
+            .header-language{
+                text-align:center;
+                margin:20px auto;
+                select{
+                    border:0;
+                    background-color: transparent;
+                }
+            }
+
+            .header-login {
+                text-align: center;
+                .user-section-menu {
+
+                    position: absolute;
+                    margin-left:30px;
+//                    margin-top: -10px;
+                }
+                & > a {
+                    color: white;
+                    display: inline-block;
+                    font-size: 18px;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
+                    overflow:hidden;
+                    max-width:100%;
+                    text-decoration: none;
+                    padding: 15px;
+                    margin:-15px;
+                    text-align: center;
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.3)
+                    }
+                    &:last-child {
+                        float: right;
+                    }
+                    img{
+                        padding-right:5px;
+                    }
+                }
+            }
+            .header-signup {
+                & > a:last-child {
+                    float: right;
+                }
+                margin-right: 0;
+//                margin-top: -92px;
+                a {
+                    color: white;
+                    display: inline-block;
+                    font-size: 18px;
+                    width: 95px;
+                    text-decoration: none;
+                    padding: 15px 0 15px 0;
+                    margin:-15px 0 -3px 0;
+                    text-align: center;
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.3)
+                    }
+                    &:last-child {
+                        float: right;
+                    }
+                }
+            }
+        }
+
+
+
+
+
 
     }
-  }
 
-  #footer {
-    padding-top: 15px;
-    height: $FOOTER_HEIGHT/2+30px;
+    #footer {
+        padding-top: 15px;
+        height: $FOOTER_HEIGHT/2+30px;
 
-    background-color: #296CA1;
-    width:100%;
-    min-width:1100px;
-      .footer-text{
-    	color:white;
-    	padding-bottom:15px;
-		font-size:12px;
-		a{ color:white}
-    }
-    .footer-links{
-    display:table;
-    float:left;
-    width:100%;
-      ul,li{list-style:none; padding:0; margin:0;}
-      li{
-        float:left;
-        padding-right:30px;
-        padding-bottom:10px;
+        background-color: #296CA1;
+        width: 100%;
+        min-width: 1100px;
+        .footer-text {
+            color: white;
+            padding-bottom: 15px;
+            font-size: 12px;
+            a {
+                color: white
+            }
+        }
+        .footer-links {
+            display: table;
+            float: left;
+            width: 100%;
+            ul, li {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            li {
+                float: left;
+                padding-right: 30px;
+                padding-bottom: 10px;
 
-        &, a{ color:white}
-      }
-      .row{
-      display:table-row;
-      }
+                &, a {
+                    color: white
+                }
+            }
+            .row {
+                display: table-row;
+            }
+        }
+        .copyrights {
+            float: right;
+            color: #A6BBCF;
+        }
     }
-    .copyrights{
-      float:right;
-      color:#A6BBCF;
-    }
-  }
 }
 
-
-#content{
-  height:auto !important;
-  min-height:750px;
-  padding-bottom:20px;
-  &>div:first-child{ /* guy - written like this so that we can override if needed */
-    margin-top:40px;
-  }
+#content {
+    height: auto !important;
+    min-height: 750px;
+    padding-bottom: 20px;
+    & > div:first-child {
+        /* guy - written like this so that we can override if needed */
+        margin-top: 40px;
+    }
 }
+
 /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
-.container,.base-layout,.base-layout-class{
-  &:not(.base-layout-modal) {
-    height: 100%;
-  }
+.container, .base-layout, .base-layout-class {
+    &:not(.base-layout-modal) {
+        height: 100%;
+    }
 }
 
-.embed-mode-item{ /* to display only in embed code */
-  display:none;
+.embed-mode-item {
+    /* to display only in embed code */
+    display: none;
 }
 
-.lergo-embed-mode{
-  background:transparent;
-  .not-embed-mode-item {
-    display:none;
-  }
+.lergo-embed-mode {
+    background: transparent;
+    .not-embed-mode-item {
+        display: none;
+    }
 
-
-
-  .embed-mode-item{
-    display:block;
-  }
+    .embed-mode-item {
+        display: block;
+    }
 }

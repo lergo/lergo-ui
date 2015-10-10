@@ -3,12 +3,13 @@
 		<div id="header" class="not-embed-mode-item" ng-controller="LoginCtrl">
 			<div class="centered-content">
 				<div class="header-main">
-					<div>
+					<div class="header-logo">
 						<a href="#!/user/homepage">
 							<i class="logo-beta"></i>
 						</a>
 					</div>
-					<div class="header-links">
+                    <div class="header-navigation">
+					    <div class="header-links">
 						<ul>
 							<li>
 								<a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }} </a>
@@ -27,7 +28,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="header-search" ui-keypress="{enter: 'searchOnHomepage()'}">
+					    <div class="header-search" ui-keypress="{enter: 'searchOnHomepage()'}">
 						<!--<div text-filter placeholder="{{'baseLayout.header.searchPlaceholder' | translate  }}" items="typeaheadItems" model="filterTextSearch"
 							on-select="doSearchFromTypeahead($item,$model,$label)"></div>-->
 						<input placeholder="{{'baseLayout.header.searchPlaceholder' | translate  }}" ng-model="baseLayout.filterTextSearch" />
@@ -35,12 +36,15 @@
 							<i class="icon-search"></i>
 						</button>
 					</div>
-                    <div profile-login-button="user"></div>
+                    </div>
+                    <div class="header-actions">
+                        <div profile-login-button="user"></div>
 
-					<div class="header-language" tooltip="{{'baseLayout.header.siteLanguage' | translate}}">
-						<i class="fa fa-globe fa-fw"></i>
-						<select ng-model="$root.lergoLanguage" ng-options="lang.id as ( 'general.translationLanguage.' + lang.id | translate ) for lang in $root.lergoLanguages"></select>
-					</div>
+                        <div class="header-language" tooltip="{{'baseLayout.header.siteLanguage' | translate}}">
+                            <i class="fa fa-globe fa-fw"></i>
+                            <select ng-model="$root.lergoLanguage" ng-options="lang.id as ( 'general.translationLanguage.' + lang.id | translate ) for lang in $root.lergoLanguages"></select>
+                        </div>
+                    </div>
 				</div>
 			</div>
 		</div>

@@ -2,17 +2,42 @@ body.rtl{
   /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
   .base-layout, .base-layout-class {
       #header {
-          .header-links {
-              margin-left: 0;
-              margin-right: 230px;
-              ul {
-                  li {
-                      float: right;
-                      padding: 0 0 0 26px;
-                      &:after {
-                          padding-left: 0;
-                          padding-right: 31px;
+          .header-navigation {
+              margin-left:0;
+              margin-right:60px;
+              .header-links {
+                  ul {
+                      li {
+                          float: right;
+                          padding: 0 0 0 26px;
+                          &:after {
+                              padding-left: 0;
+                              padding-right: 31px;
+                          }
                       }
+
+                  }
+              }
+
+              .header-search {
+//                  margin-right: 230px;
+                  margin-left: 0;
+
+                  border-top-right-radius: 10px;
+                  border-top-left-radius: 3px;
+                  border-bottom-left-radius: 3px;
+                  border-bottom-right-radius: 3px;
+
+                  input {
+                      border-top-right-radius: 10px;
+                      border-top-left-radius: 3px;
+                      border-bottom-left-radius: 3px;
+                      border-bottom-right-radius: 3px;
+                  }
+
+                  i {
+                      margin-left: 0;
+                      margin-right: 7px;
                   }
 
               }
@@ -20,43 +45,29 @@ body.rtl{
 
           .dropdown-menu{
               text-align:right;
-              transform: translateX(-100%);
+              transform: translateX(-125%);
           }
 
-          .header-login {
-              float: left;
+          .header-actions {
+              margin-left:0;
+              margin-right:40px;
 
-          }
-          .header-signup {
-              float: left;
-          }
-          .header-language {
-              float: left;
-
-          }
-
-          .header-search {
-              margin-right: 230px;
-              margin-left: 0;
-
-              border-top-right-radius: 10px;
-              border-top-left-radius: 3px;
-              border-bottom-left-radius: 3px;
-              border-bottom-right-radius: 3px;
-
-              input {
-                  border-top-right-radius: 10px;
-                  border-top-left-radius: 3px;
-                  border-bottom-left-radius: 3px;
-                  border-bottom-right-radius: 3px;
+//              .header-login {
+//                  float: left;
+//
+//              }
+              .header-signup {
+                  & > a:last-child {
+                      float: left;
+                  }
               }
-
-              i {
-                  margin-left: 0;
-                  margin-right: 7px;
-              }
-
+//              .header-language {
+//                  float: left;
+//
+//              }
           }
+
+
       }
 
       .page-content-width {
