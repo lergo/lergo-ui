@@ -15,7 +15,7 @@ angular.module('lergoApp')
 
         $scope.adminFilterOpts = {
             'showSearchText' : true,
-            'showGroups' : true
+            'showRoles' : true
         };
 
 

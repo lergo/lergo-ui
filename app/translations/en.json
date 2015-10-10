@@ -373,7 +373,8 @@
             "subject": "Subject",
             "tags": "Tags",
             "text": "Text",
-            "views": "# of views"
+            "views": "# of views",
+            "roles" : "Roles"
         },
         "languages": {
             "other": "Other",

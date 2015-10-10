@@ -107,7 +107,7 @@ $FOOTER_HEIGHT: 170px !default;
         }
         .header-navigation {
             margin-left: 60px;
-            max-width:520px;
+            width:520px;
 
 
             .header-links {
@@ -124,11 +124,15 @@ $FOOTER_HEIGHT: 170px !default;
                     list-style: none;
                     padding: 0;
                     margin: 0;
+                    max-width:520px;
+                    overflow:visible;
+                    white-space: nowrap;
                     li {
                         list-style: none;
                         padding: 0 22px 0 0;
                         margin: 0;
-                        float: left;
+                        display:inline-block;
+                        white-space: nowrap;
                         &, a {
                             color: white;
                         }
@@ -363,5 +367,24 @@ $FOOTER_HEIGHT: 170px !default;
 
     .embed-mode-item {
         display: block;
+    }
+}
+
+
+/******* LANGUAGE SPECIFIC CORRECTIONS ******/
+
+
+body.ru {
+    .base-layout, .base-layout-class {
+        #header {
+            .header-navigation {
+                li, li:after {
+                    margin: 0 3px ;
+                    padding: 0 3px;
+
+                }
+            }
+
+        }
     }
 }

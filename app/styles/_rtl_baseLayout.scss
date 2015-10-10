@@ -8,8 +8,8 @@ body.rtl{
               .header-links {
                   ul {
                       li {
-                          float: right;
-                          padding: 0 0 0 26px;
+//                          float: right;
+//                          padding: 0 0 0 26px;
                           &:after {
                               padding-left: 0;
                               padding-right: 31px;
@@ -50,7 +50,7 @@ body.rtl{
 
           .header-actions {
               margin-left:0;
-              margin-right:40px;
+              margin-right:15px;
 
 //              .header-login {
 //                  float: left;
