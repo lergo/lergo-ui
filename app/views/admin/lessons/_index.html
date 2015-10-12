@@ -26,8 +26,8 @@
 									<li>
 										<a  style="outline: none;" class="btn-link" ng-click="makePrivate()">{{'admin.makePrivate'|translate}}</a>
 									</li>
-									<li class="divider"></li>
-									<li>
+									<li class="divider" admin-section="lessons.userCanDelete"></li>
+									<li admin-section="lessons.userCanDelete">
 										<a  style="outline: none;" class="btn-link" ng-click="deleteLesson()">{{'delete'|translate}}</a>
 									</li>
 								</ul>

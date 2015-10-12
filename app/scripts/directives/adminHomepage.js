@@ -17,20 +17,24 @@ angular.module('lergoApp')
                 $scope.sections = [{
                     'id': 'lessons',
                     icon: 'fa fa-university',
-                    'url' : '#!/admin/homepage/lessons'
+                    'url' : '#!/admin/homepage/lessons',
+                    'permission' : '!!lessons'
 
                 }, {
                     'id': 'abuseReports',
                     icon: 'fa fa-flag',
-                    'url' : '#!/admin/homepage/abuseReports'
+                    'url' : '#!/admin/homepage/abuseReports',
+                    'permission' : 'abuseReports'
                 }, {
                     'id': 'roles',
                     'icon': 'fa fa-key',
-                    'url' : '#!/manage/roles'
+                    'url' : '#!/manage/roles',
+                    'permission' : 'roles'
                 }, {
                     'id' : 'users',
                     'icon' : 'fa fa-user',
-                    'url' : '#!/manage/users'
+                    'url' : '#!/manage/users',
+                    'permission' : 'users'
                 }
 
                 ];
