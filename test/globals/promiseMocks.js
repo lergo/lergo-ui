@@ -1,5 +1,5 @@
 'use strict';
-window.mockPromise = function(successResponse, errorResponse){
+window.mockPromise = function(successResponse, errorResponse, reutrnValue ){
     return {
         then:function(success, error){
             if ( !!successResponse ){
@@ -9,6 +9,7 @@ window.mockPromise = function(successResponse, errorResponse){
             if (!!errorResponse ){
                 error(errorResponse);
             }
+            return reutrnValue;
         }
     };
 };

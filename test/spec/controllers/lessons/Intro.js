@@ -386,51 +386,41 @@ describe('Controller: LessonsIntroCtrl', function () {
 
     describe('watchers', function () {
 
-        var watchers = {
-            loadCopyOfDetails: function () {
-            }, // adding mocks so code will display properly in ide..
-            loadLike: function () {
-            },
-            countLikes: function () {
-            }
-        };
+        /**
+         *
+         * @type {function} {IntroScopeWatchers}
+         * @property {function} loadLike
+         * @property {function} countLikes
+         * @property {function} loadCopyOfDetails
+         */
+        var watchers = window.mapWatchers;
 
-        function mapWatchers() {
-            watchers = {}; // don't keep garbage..
-
-            _.each(scope.$$watchers, function (w) {
-                watchers[w.fn.name] = w.fn;
-            });
-        }
-
-        beforeEach(mapWatchers);
 
         describe('$$loadLike', function () {
             it('should getMyLessonLike', function () {
-                watchers.loadLike({});
+                watchers(scope).loadLike({});
                 expect(LergoClient.likes.getMyLessonLike).toHaveBeenCalled();
             });
 
             it('should put lesson like on scope', function () {
                 LergoClient.likes.getMyLessonLike.andReturn(window.mockPromise({data: 'foo'}));
-                watchers.loadLike({});
+                watchers(scope).loadLike({});
                 expect(scope.lessonLike).toBe('foo');
             });
 
             it('should watch lessonLike', function () {
-                watchers.loadLike({});
-                mapWatchers();
-                expect(watchers.countLikes).toBeDefined();
+                watchers(scope).loadLike({});
+
+                expect(watchers(scope).countLikes).toBeDefined();
             });
 
             describe('$$countLikes', function () {
                 beforeEach(function () {
-                    watchers.loadLike({}); //this will add the watch countLikes
-                    mapWatchers();
+                    watchers(scope).loadLike({}); //this will add the watch countLikes
                 });
                 it('should put lessonLikes count on scope', function () {
                     LergoClient.likes.countLessonLikes.andReturn(window.mockPromise({data: {count: 7}}));
-                    watchers.countLikes();
+                    watchers(scope).countLikes();
                     expect(scope.lessonLikes).toBe(7);
                 });
             });
@@ -440,14 +430,14 @@ describe('Controller: LessonsIntroCtrl', function () {
 
             it('should create share link and put it on scope', function () {
 
-                watchers.loadCopyOfDetails({});
+                watchers(scope).loadCopyOfDetails({});
                 expect(LergoClient.lessons.getShareLink).toHaveBeenCalled();
                 expect(scope.shareLink).toBe('foo');
                 expect(scope.embedCode).toContain('foo');
             });
 
             it('should fetch copyOf data if lesson is copied', function () {
-                watchers.loadCopyOfDetails({copyOf: {}});
+                watchers(scope).loadCopyOfDetails({copyOf: {}});
                 expect(LergoClient.lessons.findLessonsById).toHaveBeenCalled();
             });
 
@@ -456,11 +446,11 @@ describe('Controller: LessonsIntroCtrl', function () {
                     LergoClient.lessons.findLessonsById.andReturn(window.mockPromise({}));
                 });
                 it('should do nothing if newValue is falsy', function () {
-                    watchers.loadCopyOfDetails();
+                    watchers(scope).loadCopyOfDetails();
                     expect(scope.shareLink).toBeUndefined();
                 });
                 it('should load owners details', function () {
-                    watchers.loadCopyOfDetails({copyOf: {}});
+                    watchers(scope).loadCopyOfDetails({copyOf: {}});
                     expect(LergoClient.users.findUsersById).toHaveBeenCalled();
                 });
 
@@ -487,7 +477,7 @@ describe('Controller: LessonsIntroCtrl', function () {
                             info: 'bar_info'
                         }]
                     }));
-                    watchers.loadCopyOfDetails(scope.lesson);
+                    watchers(scope).loadCopyOfDetails(scope.lesson);
                     expect(scope.copyOfItems.length).toBe(3);
                     expect(scope.copyOfItems[0].userDetails.info).toBe('bar_info');
                 });

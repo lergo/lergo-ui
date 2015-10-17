@@ -17,7 +17,7 @@
             <div class="answer">{{q.answer}}</div>
         </div>
         <br />
-        <div admin-section>
+        <div admin-section="faqs.userCanCreate && faqs.userCanEdit">
             <div class="admin">
                 <div class="actions">
                     <a ng-click="moveUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
@@ -36,7 +36,7 @@
             <br />
         </div>
     </div>
-    <div admin-section>
+    <div admin-section="faqs.userCanCreate && faqs.userCanEdit">
         <a class="btn-link" ng-click="addFAQ()">{{'faq.add' | translate}}</a>
         <div class="lergo-h3">{{ isSaving() && ('saving' + '...' | translate) || ('saved' | translate) }}</div>
     </div>

@@ -1,46 +1,67 @@
 'use strict';
 
-angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $http, $rootScope, ContinuousSave) {
-	function get() {
-		$http({
-			'method' : 'GET',
-			'url' : '/backend/faqs',
-			'params' : {
-				'query' : JSON.stringify({
-					'locale' : $rootScope.lergoLanguage
-				})
-			}
-		}).then(function(result) {
-			$scope.faq = result.data;
-			if (!$scope.faq) {
-				create({
-					'locale' : $rootScope.lergoLanguage
-				}).then(function(result) {
-					$scope.faq = result.data;
-                    $scope.$watch('faq', saveContent.onValueChange, true);
+/**
+ * @description
+ *
+ * unlike other models, faqs model is actually a collection.
+ *
+ * this means
+ *  - the faq always exists
+ *  - when you create, you actually update the model with another item in the collection.
+ *  - when you delete, you actually update the model by splicing one item out
+ *  - when you modify the order, you actually update a single model with items index changed.
+ *
+ */
+angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $log, $rootScope, ContinuousSave, LergoClient ) {
 
-
-                });
-			}else{
-                $scope.$watch('faq', saveContent.onValueChange, true);
+    function init() {
+        stopWatch();
+        LergoClient.faqs.list($rootScope.lergoLanguage).then(function (result) {
+            if (!result.data) { // need to create
+                return LergoClient.faqs.create({locale: $rootScope.lergoLanguage});
+            }else{
+                return result;
             }
-		});
-	}
-	function create(content) {
-		return $http.post('/backend/faqs/create', content);
-	}
-	function update(content) {
-		return $http.post('/backend/faqs/' + content._id + '/update', content);
-	}
+        }).then( function(result){
+            $scope.faq = result.data;
+            startWatch();
+        }, function(){
+            toastr.error('failed getting faq','failed');
+        });
+    }
 
-	get();
-	var saveContent = new ContinuousSave({
-		'saveFn' : function(value) {
-			return update(value);
-		}
-	});
+    var watcher = null;
+    function startWatch(){
+        if ( watcher !== null){
+            $log.error('watcher exists!!!');
+        }
+        $log.info('start watching');
+        if ( saveContent ) { // test friendly
+            watcher = $scope.$watch('faq', saveContent.onValueChange, true);
+        }else{ // test friendly
 
-	$scope.isSaving = function() {
+            watcher = $scope.$watch('faq', function onValueChange(){}, true);
+        }
+    }
+
+    function stopWatch(){
+        if ( watcher !== null ){
+            watcher(); // stops watching: http://stackoverflow.com/questions/13651578/how-to-unwatch-an-expression
+        }
+    }
+
+
+    init();
+
+    var saveContent = new ContinuousSave({
+        'saveFn' : function(value) {
+            return LergoClient.faqs.update(value);
+        }
+    });
+
+
+
+    $scope.isSaving = function() {
 		return !!saveContent.getStatus().saving;
 	};
 
@@ -52,13 +73,16 @@ angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $http, $r
 	};
 
 	$scope.removeFAQ = function(index) {
-		$scope.faq.contents.splice(index, 1);
+        if ( window.confirm('are you sure you want to remove this helper content?') ) {
+            $scope.faq.contents.splice(index, 1);
+        }
 	};
+
 	$scope.$watch(function() {
 		return $rootScope.lergoLanguage;
-	}, function(newValue, oldValue) {
+	}, function handleLanguageChanged(newValue, oldValue) {
 		if (!!newValue && !!oldValue && newValue !== oldValue) {
-			get();
+			init();
 		}
 	});
 
@@ -70,11 +94,6 @@ angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $http, $r
 		}
 	};
 	$scope.moveDown = function(index) {
-		var temp = $scope.faq.contents[index + 1];
-		if (temp) {
-			$scope.faq.contents[index + 1] = $scope.faq.contents[index];
-			$scope.faq.contents[index] = temp;
-		}
-
+		$scope.moveUp(index+1);
 	};
 });

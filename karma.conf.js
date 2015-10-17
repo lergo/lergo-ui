@@ -35,7 +35,7 @@ module.exports = function (config) {
             'app/scripts/**/*.js',
             'test/resources/index.js',
             'test/resources/modules/**/*.js',
-            'test/mock/**/*.js',
+            'test/globals/**/*.js',
             'test/spec/**/*.js'
         ],
         port: 8080,
