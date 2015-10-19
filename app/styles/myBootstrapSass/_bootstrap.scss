@@ -1,5 +1,6 @@
 /* This is our of bootstrap sass include as they have ugly things done in print**/
 
+$cursor-disabled:default;
 
 // Core variables and mixins
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
@@ -57,3 +58,5 @@
     bottom:0;
     position:fixed;
 }
+
+
