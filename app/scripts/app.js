@@ -167,9 +167,19 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
             }).when('/user/homepage', {
                 redirectTo: '/public/homepage'
             }).when('/user/Parents', {
-                templateUrl: 'views/errors/underConstruction.html'
+                templateUrl: 'views/parents.html',
+                controller:function($scope, $sce, $translate ){
+                    $translate('parents.teaser.url').then(function(result){
+                        $scope.url = $sce.trustAsResourceUrl(result);
+                    });
+                }
             }).when('/user/Teachers', {
-                templateUrl: 'views/errors/underConstruction.html'
+                templateUrl: 'views/teachers.html',
+                controller:function($scope, $sce, $translate ){
+                    $translate('teachers.teaser.url').then(function(result){
+                        $scope.url = $sce.trustAsResourceUrl(result);
+                    });
+                }
             })
 
             ////////////////// admin section

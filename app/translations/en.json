@@ -885,5 +885,15 @@
     },
     "general" : {
         "translationLanguage":{"he":"עברית","en":"English", "ru":"Русский", "ar" :"العربية"}
+    },
+    "parents" : {
+        "teaser" : {
+            "url" : "https://docs.google.com/forms/d/1n4ddLylSr7Tx8qh09M7A-GAMx-6ShIDVxS-DD1mcKhY/viewform"
+        }
+    },
+    "teachers" : {
+        "teaser" : {
+            "url" : "https://docs.google.com/forms/d/1oIhvwDSYLuuLEeKiwABpg67OiNbmvI-dhQH6X13C-rg/viewform"
+        }
     }
 }
