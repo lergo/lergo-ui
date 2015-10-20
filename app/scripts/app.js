@@ -168,17 +168,13 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
                 redirectTo: '/public/homepage'
             }).when('/user/Parents', {
                 templateUrl: 'views/parents.html',
-                controller:function($scope, $sce, $translate ){
-                    $translate('parents.teaser.url').then(function(result){
-                        $scope.url = $sce.trustAsResourceUrl(result);
-                    });
+                controller:function($scope, $sce, $filter ){
+                    $scope.url = function(){ return $sce.trustAsResourceUrl($filter('translate')('parents.teaser.url')); };
                 }
             }).when('/user/Teachers', {
                 templateUrl: 'views/teachers.html',
-                controller:function($scope, $sce, $translate ){
-                    $translate('teachers.teaser.url').then(function(result){
-                        $scope.url = $sce.trustAsResourceUrl(result);
-                    });
+                controller:function($scope, $sce, $filter ){
+                    $scope.url = function(){ return $sce.trustAsResourceUrl($filter('translate')('teachers.teaser.url')); };
                 }
             })
 

@@ -6,11 +6,14 @@ describe('Controller: LessonsUpdateCtrl', function () {
     beforeEach(module('lergoApp','lergoBackendMock'));
 
     var LessonsUpdateCtrl,
+        $window,
         scope;
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope, LergoClient, TagsService) {
+    beforeEach(inject(function ($controller, $rootScope, LergoClient, TagsService, _$window_ ) {
         scope = $rootScope.$new();
+        $window = _$window_;
+        spyOn($window.history,'go');
         spyOn(TagsService, 'getAllAvailableTags').andCallFake(function () {
             return {
                 then: function () {
@@ -34,6 +37,13 @@ describe('Controller: LessonsUpdateCtrl', function () {
             }
         });
     }));
+
+    describe('#done', function(){
+        it('should go back in history twice!', function(){
+            scope.done();
+            expect($window.history.go).toHaveBeenCalledWith(-2);
+        });
+    });
 
     it('should attach displayStep function to scope', function () {
         expect(typeof(scope.displayStep)).toBe('function');

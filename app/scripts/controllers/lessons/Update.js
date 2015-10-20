@@ -112,7 +112,8 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 			};
 
 			$scope.done = function() {
-				$location.path('/user/create/lessons');
+                $window.history.go(-2); // go back twice: intro, create/lessons
+				//$location.path('/user/create/lessons');
 			};
 
 			$scope.getStepViewByType = function(step) {
