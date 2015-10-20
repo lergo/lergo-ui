@@ -18,7 +18,7 @@ angular.module('lergoApp')
                 var translateFilter = $filter('translate');
                 scope.getLabel = function(){
                     if ( scope.data.saving ){
-                        return translateFilter('saving...');
+                        return translateFilter('saving');
                     }else if ( scope.data.saved ){
                         return translateFilter('saved');
                     }else if ( scope.data.errorSaving ){
