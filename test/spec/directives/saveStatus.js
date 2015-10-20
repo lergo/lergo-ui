@@ -38,6 +38,6 @@ describe('Directive: saveStatus', function () {
         setup();
         scope.status.saving = true;
         scope.$digest();
-        expect(element.text()).toContain('saving...');
+        expect(element.text()).toContain('saving');
     }));
 });
