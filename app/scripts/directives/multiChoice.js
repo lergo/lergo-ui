@@ -14,13 +14,10 @@ angular.module('lergoApp').directive('multiChoice', function() {
 				return correctAnswers.length > 1;
 			};
 			$scope.setSingleAnswer = function(quizItem, index) {
-				for ( var i = 0; i < quizItem.options.length; i++) {
-					if (i !== index) {
-						delete quizItem.options[i].userAnswer;
-					} else {
-						quizItem.options[i].userAnswer = true;
-					}
-				}
+
+                _.each(quizItem.options, function(opt){ opt.userAnswer = false; });
+                quizItem.options[index].userAnswer = true;
+
 				quizItem.userAnswer = [];
 				quizItem.userAnswer.push(quizItem.options[index].label);
 				$scope.click();
