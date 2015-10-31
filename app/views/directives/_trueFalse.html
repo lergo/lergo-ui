@@ -1,4 +1,4 @@
 <div class="true-false-options">
-	<button ng-disabled="!!quizItem.userAnswer" ng-repeat="option in ['True','False']" class="true-false-option lergo-question-option-{{option.toLowerCase()}}" ng-click="submit(option) "
+	<button ng-disabled="quizItem.submitted" ng-repeat="option in ['True','False']" class="true-false-option lergo-question-option-{{option.toLowerCase()}}" ng-click="submit(option) "
 		ng-class="{'active-button' : quizItem.userAnswer === option }">{{ 'quizItem.answer.' + option | translate }}</button>
 </div>

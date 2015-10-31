@@ -88,6 +88,11 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.checkAnswer = function() {
 		var quizItem = $scope.quizItem;
+
+        // we use a flag because no other property is eligible
+        // `userAnswer` does not necessarily exist , nor exists only after submission..
+        quizItem.submitted = true; // a flag to know if submitted
+
 		var duration = Math.max(0, new Date().getTime() - quizItem.startTime);
 		// using max with 0 just in case something went wrong and startTime >
 		// endTime.. LERGO-468
@@ -408,6 +413,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		quizItem.startTime = new Date().getTime();
 		$scope.updateProgressPercent();
 		quizItem.userAnswer = null;
+        quizItem.submitted = false;
 	};
 
 });
