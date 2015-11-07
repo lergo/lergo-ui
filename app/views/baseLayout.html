@@ -40,7 +40,7 @@
                     <div class="header-actions">
                         <div profile-login-button="user"></div>
 
-                        <div class="header-language" tooltip="{{'baseLayout.header.siteLanguage' | translate}}">
+                        <div class="header-language" tooltip="{{'baseLayout.header.siteLanguage' | translate}}" tooltip-placement="right">
                             <i class="fa fa-globe fa-fw"></i>
                             <select ng-model="$root.lergoLanguage" ng-options="lang.id as ( 'general.translationLanguage.' + lang.id | translate ) for lang in $root.lergoLanguages"></select>
                         </div>

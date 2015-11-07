@@ -91,14 +91,9 @@ angular.module('lergoApp').service('UsersService', function UsersService($http, 
         });
     };
 
-	this.getPublicProfile = function(username) {
-		return $http({
-			url : '/backend/users/'+username+'/profile',
-			method : 'GET'
-		});
-	};
 
-    this.getPublicProfileForNonRegUser = function(username) {
+
+    this.getPublicProfile = function(username) {
         return $http({
             url : '/backend/public/'+username+'/profile',
             method : 'GET'
