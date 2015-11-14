@@ -3,7 +3,7 @@
     <a href="#!/public/session/signup"> {{ 'button.signup' | translate }}</a>
 </div>
 <div class="header-login" ng-show="!!user" ng-mouseleave="openMenu(false)">
-    <a href="#!/user/create/invites" ng-mouseover="openMenu(true)">
+    <a href="#!/user/create/invites" ng-click="mouseClicked($event)" ng-mouseover="openMenu(true)">
         <img gravatar-src="user.email" gravatar-size="25">
         {{user.username}}
     </a>

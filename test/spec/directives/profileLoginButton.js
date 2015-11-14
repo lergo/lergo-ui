@@ -6,12 +6,15 @@ describe('Directive: profileLoginButton', function () {
     beforeEach(module('lergoApp','lergoBackendMock','directives-templates'));
 
     var element,
+        $timeout,
         isolatedScope,
+
         scope;
 
-    beforeEach(inject(function ($rootScope, $compile) {
+    beforeEach(inject(function ($rootScope, $compile, _$timeout_) {
         scope = $rootScope.$new();
         scope.user = 'user';
+        $timeout = _$timeout_;
         element = angular.element('<div profile-login-button="user"></div>');
         element = $compile(element)(scope);
 
@@ -25,6 +28,18 @@ describe('Directive: profileLoginButton', function () {
             expect(isolatedScope.menuIsOpen).toBe( true );
             isolatedScope.openMenu( false );
             expect(isolatedScope.menuIsOpen).toBe( false );
+        });
+    });
+
+    describe('mouseClicked', function(){
+        it('should call "openMenu" if in mobile', function(){
+            spyOn(isolatedScope,'isMobile').andReturn(true);
+            spyOn(isolatedScope,'openMenu').andReturn(null);
+            isolatedScope.mouseClicked({ preventDefault: function(){} });
+
+            expect(isolatedScope.isMobile).toHaveBeenCalled();
+            $timeout.flush();
+            expect(isolatedScope.openMenu).toHaveBeenCalledWith(true);
         });
     });
 
