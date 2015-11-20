@@ -25,6 +25,7 @@
         "it":false,
         "describe":false,
         "beforeEach":false,
+        "afterEach":false,
         "after" : false,
         "inject" : false,
         "expect" :false,

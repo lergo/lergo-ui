@@ -19,7 +19,7 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 		'locale' : 'en'
 	} ];
 
-	this.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'history', 'geography', 'art', 'music', 'financialEducation','roadSafety', 'lergo','other' ];
+	this.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'computers', 'sustainability', 'history', 'geography', 'art', 'music', 'financialEducation','roadSafety', 'lergo','other' ];
 
 	this.status = [ 'private', 'public' ];
 	this.reportStatus = [ 'complete', 'incomplete' ];
