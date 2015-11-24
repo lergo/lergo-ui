@@ -103,8 +103,7 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
             .when('/user/lesson/:lessonId/update', {
                 templateUrl: 'views/lessons/update.html',
                 controller: 'LessonsUpdateCtrl',
-                reloadOnSearch: false,
-
+                reloadOnSearch: false
             })
 
             .when('/user/create/:activeTab', {
@@ -120,15 +119,10 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
             }).when('/user/lessons/:lessonId/invitations', {
                 templateUrl: 'views/lessons/invitations/create.html',
                 controller: 'LessonsInvitesCreateCtrl'
-            }).when('/user/:username/profile', {
+            }).when('/public/:username/profile', {
                 templateUrl: 'views/users/publicProfile.html',
-                controller: 'UsersPublicProfileCtrl'
-            })
-            .when('/public/:username/profile', {
-                templateUrl: 'views/users/publicProfile.html',
-                controller: 'UsersPublicProfileCtrl'
-            })
-            .when('/public/kitchenSink', {
+                controller: 'UsersProfileCtrl'
+            }).when('/public/kitchenSink', {
                 templateUrl: 'views/kitchenSink.html'
 
             }).when('/public/feedback', {

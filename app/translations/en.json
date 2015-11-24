@@ -395,6 +395,8 @@
         "subjects": {
             "other": "Other",
             "art": "Art",
+            "computers" : "Computers",
+            "sustainability" : "Sustainability",
             "biology": "Biology",
             "chemistry": "Chemistry",
             "english": "English",
