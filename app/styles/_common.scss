@@ -168,7 +168,13 @@ button.action-item {
     color: $LERGO_H1_COLOR;
     text-transform: uppercase;
     font-weight: bold;
+
+    &.no-case{
+        text-transform: none;
+    }
 }
+
+
 
 .lergo-h2 {
     color: $LERGO_H2_COLOR;
