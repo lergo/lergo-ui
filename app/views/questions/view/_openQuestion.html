@@ -10,8 +10,7 @@
 		<div class="answers">
 			<input id="openQuestionText" ng-show="quizItem.subType==='short'" ng-model="quizItem.userAnswer" autofocus />
 			<textarea id="openQuestionTextarea" ng-show="quizItem.subType==='long'" ng-model="quizItem.userAnswer" autofocus></textarea>
-			<!-- Setting focus manually -->
-			{{quizItem.subType==='short' ? setFocus('openQuestionText') : setFocus('openQuestionTextarea')}}
+            <span ng-init="quizItem.subType==='short' ? setFocus('openQuestionText') : setFocus('openQuestionTextarea')"></span>
 		</div>
 		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
 	</div>
