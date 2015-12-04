@@ -261,12 +261,12 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
      *
      *  - if user can retry, yes we do
      *  - if wrong answer, yes we do
-     *  - if open question that has explanation, yes we do
+     *  - if open question that has explanation and no next question, yes we do
      *
      * @returns {boolean|step.retryQuestion|*}
      */
 	$scope.showNextQuestion = function() {
-        if ( $scope.quizItem.type === 'openQuestion' && $scope.quizItem.explanation && !!$scope.getAnswer() ){
+        if ( $scope.quizItem.type === 'openQuestion' && $scope.quizItem.explanation && !!$scope.getAnswer() && $scope.hasNextQuizItem() ){
             return true;
         }
 		return ((!isTestMode() && $scope.step.retryQuestion) || $scope.hasNextQuizItem()) && $scope.getAnswer() && !$scope.getAnswer().correct;

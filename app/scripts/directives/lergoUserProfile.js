@@ -7,7 +7,7 @@
  * # lergoUserProfile
  */
 angular.module('lergoApp')
-    .directive('lergoUserProfile', function (LergoClient, $location, ContinuousSave, localStorageService) {
+    .directive('lergoUserProfile', function (LergoClient, $location, $rootScope, ContinuousSave, localStorageService) {
         return {
             templateUrl: 'views/users/_profile.html',
             restrict: 'A',
@@ -15,7 +15,8 @@ angular.module('lergoApp')
 
                 var Modes = {
                     PUBLIC: 'public',
-                    PRIVATE: 'private'
+                    PRIVATE: 'private',
+                    ANONYMOUS: 'anonymous'
                 };
 
                 $scope.$watch(function(){
@@ -25,11 +26,7 @@ angular.module('lergoApp')
                 });
 
 
-                $scope.$watch(function(){
-                    return attrs.canEdit;
-                }, function( ){
-                    $scope.userCanEdit = attrs.canEdit === 'true';
-                });
+
 
                 var saveProfile = new ContinuousSave({
                     'saveFn': function (value) {
@@ -41,25 +38,22 @@ angular.module('lergoApp')
                     $scope.isEditAllow=!$scope.isEditAllow;
                 };
 
-                $scope.getLessonsCount = function () {
+                $scope.showStats = function(){
+                    return $scope.mode !== Modes.ANONYMOUS;
+                };
 
-                    if (!$scope.user || !$scope.user.stats) {
-                        return '';
-                    }
+                $scope.getLessonsCount = function () {
                     if ($scope.mode === Modes.PUBLIC) {
                         return $scope.user.stats.publicLessonsCount;
-                    } else {
+                    } else if ($scope.mode === Modes.PRIVATE) {
                         return $scope.user.stats.allLessonsCount;
                     }
                 };
 
                 $scope.getQuestionsCount = function () {
-                    if (!$scope.user || !$scope.user.stats) {
-                        return '';
-                    }
                     if ($scope.mode === Modes.PUBLIC) {
                         return $scope.user.stats.publicQuestionsCount;
-                    } else {
+                    } else if ($scope.mode === Modes.PRIVATE) {
                         return $scope.user.stats.allQuestionsCount;
                     }
                 };
@@ -71,11 +65,15 @@ angular.module('lergoApp')
                     }
                 };
 
+                $scope.userCanEdit = function(){
+                    return $scope.mode === Modes.PRIVATE;
+                };
+
 
                 LergoClient.users.getProfile(attrs.username).then(function (result) {
                     $scope.user = result.data;
                     console.log('got user', result.data);
-                    if ($scope.userCanEdit) { // watch for changes
+                    if ($scope.userCanEdit()) { // watch for changes
                         $scope.$watch('user', saveProfile.onValueChange, true);
                     }
                 });

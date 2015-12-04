@@ -18,12 +18,12 @@
 angular.module('lergoApp').controller('UsersProfileCtrl', function ($scope, $routeParams, $rootScope ) {
     $scope.username = $routeParams.username;
 
-    $scope.getCanEdit = function(){
-        return $rootScope.user && $rootScope.user.username === $scope.username;
-    };
 
     $scope.getMode = function(){
-        return !!$rootScope.user ? 'private' : 'public';
+        if (!$rootScope.user ){
+            return 'anonymous';
+        }
+        return $rootScope.user.username === $scope.username ? 'private' : 'public';
     };
 
 });

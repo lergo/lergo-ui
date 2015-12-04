@@ -25,17 +25,10 @@ describe('Controller: UsersProfileCtrl', function () {
         expect(scope.username).toBe('foo');
     });
 
-    describe('#getCanEdit', function(){
-        it('should return true iff $root.user.username the same as $routeParams.username', function(){
-            expect(!!scope.getCanEdit()).toBe(false);
-            $rootScope.user = { username : 'foo'};
-            expect(scope.getCanEdit()).toBe(true);
-        });
-    });
 
     describe('#getMode' , function(){
         it('should return private if user is logged in', function(){
-            expect(scope.getMode()).toBe('public');
+            expect(scope.getMode()).toBe('anonymous');
             $rootScope.user = { username : 'foo' };
             expect(scope.getMode()).toBe('private');
         });

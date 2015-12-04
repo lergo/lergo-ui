@@ -70,7 +70,7 @@ describe('Directive: lergoUserProfile', function () {
 
     describe('#getLessonsCount', function(){
         it('should return public lessons when mode is public', function(){
-            expect(scope.getLessonsCount()).toBe('');
+            expect(scope.getLessonsCount()).toBe(undefined);
 
             scope.user = { stats : { 'allLessonsCount' : 22, 'publicLessonsCount' : 12 } };
             scope.mode = 'private';
@@ -83,7 +83,7 @@ describe('Directive: lergoUserProfile', function () {
 
     describe('#getQuestionsCount', function(){
         it('should return public lessons when mode is public', function(){
-            expect(scope.getQuestionsCount()).toBe('');
+            expect(scope.getQuestionsCount()).toBe(undefined);
 
             scope.user = { stats : { 'allQuestionsCount' : 22, 'publicQuestionsCount' : 12 } };
             scope.mode = 'private';
