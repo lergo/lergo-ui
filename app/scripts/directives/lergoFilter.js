@@ -327,7 +327,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 					var args = keyName.split('.');
 					var filterName = 'lergoFilter.' + keyName;
 					$log.info('loading : ' + filterName);
-					var saved = ($routeParams[filterName] && JSON.parse($routeParams[filterName])) || localStorageService.get(filterName);
+					var saved = $routeParams[filterName];
+                    try{
+                        saved = ($routeParams[filterName] && JSON.parse($routeParams[filterName])) || localStorageService.get(filterName);
+                    }catch(e){}
 					if (_.isEmpty(saved)) {
 						saved = null;
 					}

@@ -286,6 +286,14 @@
             }
         }
     },
+    "profile" : {
+        "question" : "questions",
+        "lesson" : "lessons",
+        "lessonCreated" : "Lessons Created",
+        "questionCreated" : "Questions Created",
+        "questionsNotAvailable" : "Please signup or login to LerGO. Only registered users can see profile questions. "
+
+    },
     "button": {
         "forgotPassword": "Forgot password?",
         "login": "Login",

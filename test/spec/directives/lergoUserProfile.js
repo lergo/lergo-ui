@@ -22,7 +22,7 @@ describe('Directive: lergoUserProfile', function () {
         if( !html){
             html = '<div lergo-user-profile can-edit="true"></div>';
         }
-        element = angular.element();
+        element = angular.element(html);
         element = $compile(element)(scope);
 
         scope.$digest();
@@ -42,7 +42,7 @@ describe('Directive: lergoUserProfile', function () {
 
         spyOn($location,'path').andReturn('');
 
-        spyOn(LergoClient.users,'getProfile').andReturn(mockPromise());
+        spyOn(LergoClient.users,'getProfile').andReturn(window.mockPromise());
 
         $httpBackend.whenGET('/backend/users/profile').respond(200,'{}');
 
@@ -60,7 +60,7 @@ describe('Directive: lergoUserProfile', function () {
         });
 
         it('should get user by username', function(){
-            LergoClient.users.getProfile.andReturn(mockPromise({ data : 'foo' }));
+            LergoClient.users.getProfile.andReturn(window.mockPromise({ data : 'foo' }));
             compileElement();
             expect(scope.user).toBe('foo');
         });

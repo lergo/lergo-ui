@@ -15,31 +15,15 @@
  *
  */
 
-angular.module('lergoApp').controller('UsersProfileCtrl', function ($scope, LergoClient, ContinuousSave, $location, localStorageService, $routeParams ) {
-    $scope.isEditAllow = false;
+angular.module('lergoApp').controller('UsersProfileCtrl', function ($scope, $routeParams, $rootScope ) {
+    $scope.username = $routeParams.username;
 
-    var saveProfile = new ContinuousSave({
-        'saveFn': function (value) {
-            return LergoClient.users.update(value);
-        }
-    });
+    $scope.getCanEdit = function(){
+        return $rootScope.user && $rootScope.user.username === $scope.username;
+    };
 
-    $scope.isMyProfile = !!$routeParams.username;
-    var getProfilePromise = $scope.isMyProfile ? LergoClient.users.getPublicProfile($routeParams.username) : LergoClient.users.getMyProfile();
-
-    getProfilePromise.then(function (result) {
-        $scope.user = result.data;
-        if ( $scope.isMyProfile ) { // watch for changes
-            $scope.$watch('user', saveProfile.onValueChange, true);
-        }
-    });
-
-    $scope.showPublicQuestion = function () {
-        localStorageService.set('questionTypeToLoad', 'allQuestions');
-        $location.path('/user/create/questions').search('lergoFilter.createdBy', JSON.stringify({
-            _id: $scope.user._id,
-            username: $scope.user.username
-        }));
+    $scope.getMode = function(){
+        return !!$rootScope.user ? 'private' : 'public';
     };
 
 });

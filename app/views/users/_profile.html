@@ -1,8 +1,9 @@
 <div class="container" id="Profile">
 
+
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right col-edit">
-            <a class="btn btn-link  font-lg" ng-click="isEditAllow=!isEditAllow">
+            <a class="btn btn-link  font-lg" ng-click="toggleEdit()" ng-show="userCanEdit">
                 <i ng-show="!isEditAllow" class="fa fa-edit" tooltip="{{'profile.edit.title'|translate}}"></i>
                 <i ng-show="!!isEditAllow" class="fa fa-save" tooltip="{{'profile.save.title'|translate}}"></i>
             </a>
@@ -11,7 +12,7 @@
     <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 text-center">
             <div>
-                <img gravatar-src="user.email" gravatar-size="150" class="img-rounded ">
+                <img ng-src="{{user.gravatarUrlLarge}}" class="img-rounded ">
             </div>
             <div ng-show="!!isEditAllow">
                 <a class="btn btn-link" popover-placement="bottom" popover-trigger="focus"
@@ -25,18 +26,19 @@
             </div>
             <br>
 
-            <div ng-show="!isEditAllow && !!user.shortIntro"> {{user.shortIntro}}</div>
+            <div ng-show="!isEditAllow && !!user.shortIntro" class="profile-intro"> {{user.shortIntro}}</div>
             <input ng-show="!!isEditAllow" ng-model="user.shortIntro" placeholder="{{'profile.ph.shortIntro'|translate}}"/>
             <br>
 
-            <div ng-show="!!isEditAllow">
+
+
+
+
+
+            <div class="profile-external-link">
                 <i class="fa fa-external-link"></i>&#xA0;&#xA0;
                 <input ng-show="!!isEditAllow" ng-model="user.externalLink" placeholder="External link"/>
-            </div>
-            <div ng-show="!isEditAllow && !!user.externalLink">
-                <i class="fa fa-external-link"></i>
-                &#xA0;&#xA0;
-                <a ng-href="http://{{user.externalLink}}"
+                <a  ng-show="!isEditAllow" ng-href="http://{{user.externalLink}}"
                    target="_blank" class="txt-color-darken"> {{user.externalLink}}</a>
             </div>
             <br>
@@ -44,7 +46,7 @@
             <div>
                 <i class="fa fa-university"></i>
                 &#xA0;
-                <a href="#!/public/homepage?lergoFilter.createdBy={{user}}"
+                <a href="#!/public/homepage?lergoFilter.createdBy={{getCreatedByFilter()}}"
                    class="txt-color-darken">{{'profile.lessonCreated'|translate}}
                 </a>
             </div>
@@ -53,28 +55,34 @@
             <div>
                 <i class="fa fa-question-circle"></i>
                 &#xA0;&#xA0;
-                <a href="#" ng-click="showPublicQuestion()"
-                   class="txt-color-darken">{{'profile.questionCreated'|translate}}</a>
+                <a ng-click="showPublicQuestion()" show-logged-in class="txt-color-darken">{{'profile.questionCreated'|translate}}</a>
+                <button popover="{{'profile.questionsNotAvailable' | translate}}"
+                      popover-placement="right" popover-trigger="focus" show-anonymous class=" btn-link txt-color-darken">{{'profile.questionCreated'|translate}}</button>
             </div>
 
         </div>
     </div>
-    <div class="row">
+    <div class="row profile-stats">
         <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 text-center">
             <br>
             <h4>
-                <strong> {{user.questionsCount}}</strong>
-                <br>{{'profile.question'|translate}}
+                <strong> {{getQuestionsCount()}}</strong>
+                <br>
+                <span class="stats-label">
+                    {{'profile.question'|translate}}
+                </span>
 
             </h4>
             <br>
             <h4 class="font-md">
-                <strong> {{user.lessonsCount}}</strong>
+                <strong> {{getLessonsCount()}}</strong>
                 <br>
-                {{'profile.lesson'|translate}}
+                <span class="stats-label">
+                    {{'profile.lesson'|translate}}
+                </span>
             </h4>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 ">
+        <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 profile-details" >
 
 
             <br>

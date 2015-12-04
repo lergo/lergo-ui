@@ -38,7 +38,7 @@ angular.module('lergoApp')
                 });
 
                 $scope.toggleEdit = function(){
-                    $scope.isEditAllow=!$scope.isEditAllow
+                    $scope.isEditAllow=!$scope.isEditAllow;
                 };
 
                 $scope.getLessonsCount = function () {

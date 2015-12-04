@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ui.gravatar']).config(
-    function ($routeProvider, $httpProvider, $logProvider, $locationProvider, gravatarServiceProvider, $translateProvider ) {
+angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown']).config(
+    function ($routeProvider, $httpProvider, $logProvider, $locationProvider, $translateProvider ) {
 
         $logProvider.debugEnabled(false);
 
@@ -17,11 +17,6 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
         $translateProvider.useMissingTranslationHandler('missingTranslationFactory');
         $locationProvider.html5Mode(false).hashPrefix('!');
 
-        gravatarServiceProvider.defaults = {
-            size: 100,
-            'default': 'mm' // Mystery man as default for missing
-            // avatars
-        };
 
         $routeProvider.when('/user/lesson/create', {
             'templateUrl': 'views/lesson/create.html',
@@ -111,7 +106,7 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
                 // this view to
                 // view/create/_lessons.html
                 controller: 'BaseLayoutCreateCtrl',
-                reloadOnSearch: false
+                reloadOnSearch: false,
             }).when('/user/lessons/:lessonId/update', {
                 templateUrl: 'views/lessons/update.html',
                 controller: 'LessonsUpdateCtrl',
@@ -120,11 +115,10 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
                 templateUrl: 'views/lessons/invitations/create.html',
                 controller: 'LessonsInvitesCreateCtrl'
             }).when('/public/:username/profile', {
-                templateUrl: 'views/users/publicProfile.html',
+                templateUrl: 'views/users/profile.html',
                 controller: 'UsersProfileCtrl'
             }).when('/public/kitchenSink', {
-                templateUrl: 'views/kitchenSink.html'
-
+                templateUrl: 'views/kitchenSink.html',
             }).when('/public/feedback', {
                 templateUrl: 'views/partials/_feedback.html'
             }).when('/public/abuse', {

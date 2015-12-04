@@ -63,12 +63,6 @@ angular.module('lergoApp').service('UsersService', function UsersService($http, 
 		});
 	};
 
-	this.getMyProfile = function() {
-		return $http({
-			url : '/backend/users/me/profile',
-			method : 'GET'
-		});
-	};
 
 
     // follow standard described at: http://williamdurand.fr/2014/02/14/please-do-not-patch-like-an-idiot/
@@ -92,12 +86,23 @@ angular.module('lergoApp').service('UsersService', function UsersService($http, 
     };
 
 
-
-    this.getPublicProfile = function(username) {
-        return $http({
-            url : '/backend/public/'+username+'/profile',
-            method : 'GET'
-        });
+    /**
+     *
+     * @param {string} username
+     * @returns {*}
+     */
+    this.getProfile = function (username) {
+        if ( username ) {
+            return $http({
+                url: '/backend/users/' + username + '/profile',
+                method: 'GET'
+            });
+        }else{
+            return $http({
+                url: '/backend/users/profile',
+                method: 'GET'
+            });
+        }
     };
 
 	this.update = function(user) {
