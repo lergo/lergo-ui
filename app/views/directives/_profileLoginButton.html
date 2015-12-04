@@ -4,7 +4,7 @@
 </div>
 <div class="header-login" ng-show="!!user" ng-mouseleave="openMenu(false)">
     <a href="#!/user/create/invites" ng-click="mouseClicked($event)" ng-mouseover="openMenu(true)">
-        <img gravatar-src="user.email" gravatar-size="25">
+        <img ng-src="{{user.gravatarUrl}}">
         {{user.username}}
     </a>
     <div class="user-section-menu" dropdown is-open="menuIsOpen">

@@ -70,4 +70,5 @@ angular.module('lergoApp').service('LergoClient',
             this.errors = LergoErrorsService;
             this.faqs = FaqsService;
 
+
 		});

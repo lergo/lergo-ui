@@ -94,6 +94,8 @@
         "subjects": {
             "other": "אחר",
             "art": "אמנות",
+            "computers" : "מחשבים",
+            "sustainability" : "קיימות",
             "biology": "ביולוגיה",
             "chemistry": "כימיה",
             "english": "אנגלית",

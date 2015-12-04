@@ -55,11 +55,7 @@
                         <div class="name">{{ lesson.name|limitTo:160 }}</div>
                         <div class="properties">
 							<span tooltip="{{'homepage.tooltip.user' | translate}}">
-                                 <a show-logged-in ng-href="#!/user/{{lesson.user.username}}/profile">
-                                     <i class="fa fa-user"></i>
-                                     <span> {{lesson.user.username}}</span>
-                                 </a>
-                                 <a show-anonymous ng-href="#!/public/{{lesson.user.username}}/profile">
+                                 <a ng-href="#!/public/{{lesson.user.username}}/profile">
                                      <i class="fa fa-user"></i>
                                      <span> {{lesson.user.username}}</span>
                                  </a>

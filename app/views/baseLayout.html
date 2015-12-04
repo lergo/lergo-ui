@@ -36,13 +36,13 @@
 							<i class="icon-search"></i>
 						</button>
 					</div>
-                    </div>
+                    </div><!---->
                     <div class="header-actions">
                         <div profile-login-button="user"></div>
 
-                        <div class="header-language" tooltip="{{'baseLayout.header.siteLanguage' | translate}}" tooltip-placement="right">
+                        <div class="header-language">
                             <i class="fa fa-globe fa-fw"></i>
-                            <select ng-model="$root.lergoLanguage" ng-options="lang.id as ( 'general.translationLanguage.' + lang.id | translate ) for lang in $root.lergoLanguages"></select>
+                            <select ng-model="$root.lergoLanguage" ng-options="lang.id as ( 'general.translationLanguage.' + lang.id | translate ) for lang in $root.lergoLanguages" tooltip="{{'baseLayout.header.siteLanguage' | translate}}" tooltip-placement="right"></select>
                         </div>
                     </div>
 				</div>

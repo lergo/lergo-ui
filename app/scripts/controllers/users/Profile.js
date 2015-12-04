@@ -1,25 +1,29 @@
 'use strict';
 
-angular.module('lergoApp').controller('UsersProfileCtrl', function ($scope, LergoClient, ContinuousSave, $location, localStorageService) {
-    $scope.isEditAllow = false;
 
-    var saveProfile = new ContinuousSave({
-        'saveFn': function (value) {
-            return LergoClient.users.update(value);
-        }
-    });
+/**
+ *
+ * @module ProfilePage
+ *
+ * @description displays user details, with the following distinctions
+ *
+ *  - username must appear in the case user originally entered it. not uppercase
+ *  - when hovering on "questions" link it should say "only registered users can view questions..."
+ *  - for users, page should show number of public questions/lessons and a tooltip stating this is the public questions/lessons count
+ *  - should allow users to edit their own profile
+ *  - profile should be displayed in 2 places in the app. 1) my personal space, 2) public profile for other users
+ *
+ */
 
-    LergoClient.users.getMyProfile().then(function (result) {
-        $scope.user = result.data;
-        $scope.$watch('user', saveProfile.onValueChange, true);
-    });
+angular.module('lergoApp').controller('UsersProfileCtrl', function ($scope, $routeParams, $rootScope ) {
+    $scope.username = $routeParams.username;
 
-    $scope.showPublicQuestion = function () {
-        localStorageService.set('questionTypeToLoad', 'allQuestions');
-        $location.path('/user/create/questions').search('lergoFilter.createdBy', JSON.stringify({
-            _id: $scope.user._id,
-            username: $scope.user.username
-        }));
+    $scope.getCanEdit = function(){
+        return $rootScope.user && $rootScope.user.username === $scope.username;
+    };
+
+    $scope.getMode = function(){
+        return !!$rootScope.user ? 'private' : 'public';
     };
 
 });

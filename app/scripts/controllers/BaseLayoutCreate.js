@@ -6,7 +6,7 @@ angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $
 		id : 'profile',
 		icon : 'fa fa-user',
 		controller : 'UsersProfileCtrl',
-		include : 'views/users/_profile.html'
+		include : 'views/users/_userEditProfile.html'
 	}, {
 		id : 'lessons',
 		icon : 'fa fa-university',
