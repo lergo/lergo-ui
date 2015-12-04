@@ -111,9 +111,17 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				}
 			};
 
+            /**
+             * redirect to admin homepage or user create section
+             * depending on the situation.
+             */
 			$scope.done = function() {
-                $window.history.go(-2); // go back twice: intro, create/lessons
-				//$location.path('/user/create/lessons');
+                if ( $rootScope.user && $rootScope.user._id !== $scope.lesson.userId ){ // admin
+                    $location.path('/admin/homepage/lessons');
+
+                }else{ // user
+                    $location.path('/user/create/lessons');
+                }
 			};
 
 			$scope.getStepViewByType = function(step) {
