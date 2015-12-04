@@ -114,7 +114,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 			// before we switch to next item
 			var isSameType = $scope.quizItem.type === $scope.getNextQuizItemDry().type;
 
-			if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct)) {
+			if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct) && !$scope.showNextQuestion()) {
 				if (isTestMode()) {
 					$scope.nextQuizItem();
 				} else {
@@ -189,7 +189,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	// if step is not quiz - then we will return "true" as default.
 	$scope.isQuizDone = function() {
 
-		if ($scope.step.type !== 'quiz') { // return true if not quiz.
+		if ($scope.step && $scope.step.type !== 'quiz') { // return true if not quiz.
 			return true;
 		}
 
@@ -255,7 +255,20 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		}; // return something that will not cause NPE
 	};
 
+    /**
+     *
+     * should we display "next question" button??
+     *
+     *  - if user can retry, yes we do
+     *  - if wrong answer, yes we do
+     *  - if open question that has explanation, yes we do
+     *
+     * @returns {boolean|step.retryQuestion|*}
+     */
 	$scope.showNextQuestion = function() {
+        if ( $scope.quizItem.type === 'openQuestion' && $scope.quizItem.explanation && !!$scope.getAnswer() ){
+            return true;
+        }
 		return ((!isTestMode() && $scope.step.retryQuestion) || $scope.hasNextQuizItem()) && $scope.getAnswer() && !$scope.getAnswer().correct;
 	};
 
