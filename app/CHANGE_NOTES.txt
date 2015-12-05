@@ -1,0 +1,14 @@
+
+feature(lesson): add "show lesson" in update lesson page
+
+fix(profile): profile anonymous user does not see statistics
+
+fix(profile): profile for other users should only show public details
+
+fix(openQuestion): 2 buttons are shown
+
+fix(openQuestion): question with explanation should require click on 'next'
+
+fix(openQuestion): cannot see hints
+
+improve(profile): improve the profile page. show proper stats. show balloon 'please login' when anonymous clicks questions link.
