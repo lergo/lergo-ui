@@ -118,8 +118,6 @@
                     <div ng-include="getStepViewByType(step)"></div>
                     <div class="step-actions">
                         <button class="btn" ng-click="displayStep(step)">{{ 'steps.display' | translate }}</button>
-                        <button class="btn" ng-click="addStep(lesson, $index+1)" ng-disabled="isSaving() || !lesson.name">{{ 'steps.add' | translate }}</button>
-
                     </div>
                 </div>
                 <div save-status="saveStatus"></div>
