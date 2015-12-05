@@ -73,14 +73,24 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				'label' : 'Quiz'
 			} ];
 
-			$scope.addStep = function(lesson) {
+            $scope.getLessonIntroLink = function( lesson ) {
+                return LergoClient.lessons.getIntroLink( lesson );
+            };
+
+			$scope.addStep = function(lesson, $index ) {
 				if (!lesson.steps) {
 					lesson.steps = [];
 				}
 
-				lesson.steps.push({
-					'testMode' : 'False'
-				});
+                var step = {
+                    'testMode' : 'False'
+                };
+
+                if ( typeof($index) === 'number' ){
+                    lesson.steps.splice($index,0,step); //  http://stackoverflow.com/a/586189/1068746
+                }else{
+                    lesson.steps.push(step);
+                }
 			};
 			$scope.moveStepUp = function(index) {
 				var temp = $scope.lesson.steps[index - 1];
@@ -115,7 +125,13 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
              * redirect to admin homepage or user create section
              * depending on the situation.
              */
-			$scope.done = function() {
+			$scope.done = function( type ) {
+
+                if ( type === 'showLesson' ){
+                    $location.path($scope.getLessonIntroLink($scope.lesson));
+                    return;
+                }
+
                 if ( $rootScope.user && $rootScope.user._id !== $scope.lesson.userId ){ // admin
                     $location.path('/admin/homepage/lessons');
 

@@ -8,7 +8,7 @@
 		}
 		.error{
 			display:table-row;
-			font-size: 15px; 
+			font-size: 15px;
 			color: red;
 		}
 		.name{
@@ -31,7 +31,7 @@
 			select{
 			margin-right: 10px;
 			}
-			
+
 		}
 		.language{
 			display:table-cell;
@@ -41,7 +41,7 @@
 			}
 			.age{
 			display:table-cell;
-			
+
 			input{
 			display:table-cell;
 			width:auto;
@@ -66,8 +66,13 @@
 
 			  }
 			}
-		
+
 		}
-	
+
 	}
+
+    .step-actions{
+        padding: 10px 0;
+        text-align:center;
+    }
 }

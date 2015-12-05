@@ -300,7 +300,8 @@
         "newInvite": "New Invite",
         "resendValidationEmail": "Resend validation email",
         "signup": "Signup",
-        "submit": "Submit"
+        "submit": "Submit",
+        "showLesson" : "Show Lesson"
     },
     "cancel": "Close",
     "changePassword": {

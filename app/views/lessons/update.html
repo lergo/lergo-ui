@@ -116,26 +116,28 @@
                         </tr>
                     </table>
                     <div ng-include="getStepViewByType(step)"></div>
-                    <div>
-                        <button style="margin-left: 50%" class="btn" ng-click="displayStep(step)">{{ 'steps.display' |
-                            translate }}
-                        </button>
+                    <div class="step-actions">
+                        <button class="btn" ng-click="displayStep(step)">{{ 'steps.display' | translate }}</button>
+                        <button class="btn" ng-click="addStep(lesson, $index+1)" ng-disabled="isSaving() || !lesson.name">{{ 'steps.add' | translate }}</button>
+
                     </div>
                 </div>
                 <div save-status="saveStatus"></div>
                 <div>
-                    <button class="btn" ng-click="done()" ng-disabled="isSaving() || !lesson.name">{{'done' | translate }}
-                    </button>
-					<span class="pop-up-hint">
-						<button class="btn" ng-click="addStep(lesson)" ng-disabled="isSaving() || !lesson.name">{{
-                            'steps.add' | translate }}
-                        </button>
+
+                </div>
+                <div class="lesson-actions"> <!-- lesson actions -->
+                    <button class="btn" ng-click="done()" ng-disabled="isSaving() || !lesson.name">{{'done' | translate }}</button>
+                    <button class="btn" ng-click="done('showLesson')" ng-disabled="isSaving() || !lesson.name">{{'button.showLesson' | translate }}</button>
+                    <span class="pop-up-hint add-step-button">
+						<button class="btn" ng-click="addStep(lesson)" ng-disabled="isSaving() || !lesson.name">{{ 'steps.add' | translate }}</button>
 						<span>
 							<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
 							<button popover="{{'steps.addHint' | translate}}" class="fa fa-question-circle"
                                     popover-placement="top" popover-trigger="focus" tabindex="0"></button>
 						</span>
-					</span>
+                    </span>
+
                 </div>
             </form>
         </div>

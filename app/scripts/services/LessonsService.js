@@ -120,4 +120,8 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
     this.getShareLink = function(lesson){
         return $window.location.origin + '/index.html#!/public/lessons/' + lesson._id + '/intro';
     };
+
+    this.getIntroLink = function(lesson){
+        return '/public/lessons/' + lesson._id + '/intro';
+    };
 });
