@@ -1,4 +1,6 @@
 
+fix(profile): make public question count be identical with public questions search total title
+
 fix(profile): improve count of public questions
 
 chore(lesson): remove add step next to show step

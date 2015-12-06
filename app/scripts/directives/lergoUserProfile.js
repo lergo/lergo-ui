@@ -43,6 +43,9 @@ angular.module('lergoApp')
                 };
 
                 $scope.getLessonsCount = function () {
+                    if ( !$scope.user || !$scope.user.stats  ){
+                        return null;
+                    }
                     if ($scope.mode === Modes.PUBLIC) {
                         return $scope.user.stats.publicLessonsCount;
                     } else if ($scope.mode === Modes.PRIVATE) {
@@ -51,6 +54,9 @@ angular.module('lergoApp')
                 };
 
                 $scope.getQuestionsCount = function () {
+                    if ( !$scope.user || !$scope.user.stats  ){
+                        return null;
+                    }
                     if ($scope.mode === Modes.PUBLIC) {
                         return $scope.user.stats.publicQuestionsCount;
                     } else if ($scope.mode === Modes.PRIVATE) {
