@@ -35,7 +35,7 @@
 
 
 
-            <div class="profile-external-link">
+            <div class="profile-external-link" ng-show="isEditAllow || user.externalLink">
                 <i class="fa fa-external-link"></i>&#xA0;&#xA0;
                 <input ng-show="!!isEditAllow" ng-model="user.externalLink" placeholder="External link"/>
                 <a  ng-show="!isEditAllow" ng-href="http://{{user.externalLink}}"

@@ -1,4 +1,6 @@
 
+fix(profile): external link icon only displayed when relevant
+
 fix(profile): make public question count be identical with public questions search total title
 
 fix(profile): improve count of public questions
