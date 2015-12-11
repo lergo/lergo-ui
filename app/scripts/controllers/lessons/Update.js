@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsUpdateCtrl',
-		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter) {
+		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate) {
 			$window.scrollTo(0, 0);
 			$scope.subjects = FilterService.subjects;
             $scope.popover = { open : true};
@@ -374,4 +374,9 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				}
 				$window.scrollTo(0, scrollY);
 			}
+
+            $scope.getPopoverDirection = function(){
+                var lang = LergoTranslate.getLanguageObj();
+                return lang && lang.dir === 'rtl' ? 'left' : 'right';
+            }
 		});

@@ -1,4 +1,6 @@
 
+fix(popover): fix location for rtl languages
+
 improve(buttons): make "create new lesson", "create new question" and "add step" yellow like in homepage. make popover hint visible by default.
 
 fix(profile): external link icon only displayed when relevant
