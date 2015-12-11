@@ -378,5 +378,5 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             $scope.getPopoverDirection = function(){
                 var lang = LergoTranslate.getLanguageObj();
                 return lang && lang.dir === 'rtl' ? 'left' : 'right';
-            }
+            };
 		});
