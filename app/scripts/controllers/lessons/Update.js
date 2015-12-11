@@ -4,6 +4,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter) {
 			$window.scrollTo(0, 0);
 			$scope.subjects = FilterService.subjects;
+            $scope.popover = { open : true};
 			$scope.languages = FilterService.languages;
 			var saveLesson = new ContinuousSave({
 				'saveFn' : function(value) {
@@ -78,6 +79,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             };
 
 			$scope.addStep = function(lesson, $index ) {
+                $scope.popover.open = false;
 				if (!lesson.steps) {
 					lesson.steps = [];
 				}

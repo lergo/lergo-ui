@@ -47,6 +47,10 @@
     &.btn-danger {
         background-color: $COLOR_18;
     }
+    &.btn-start{
+        background-color: $COLOR_3;
+        color: $COLOR_22;
+    }
     &.btn-link {
         color: $COLOR_19;
         text-decoration: underline;

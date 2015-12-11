@@ -1,4 +1,6 @@
 
+improve(buttons): make "create new lesson", "create new question" and "add step" yellow like in homepage. make popover hint visible by default.
+
 fix(profile): external link icon only displayed when relevant
 
 fix(profile): make public question count be identical with public questions search total title
