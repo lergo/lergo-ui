@@ -1,3 +1,5 @@
+fix(testMode): move to next question automatically
+
 task(lesson): show notification only in certain scenarios
 
 task(kitchenSink): remove content if not admin
