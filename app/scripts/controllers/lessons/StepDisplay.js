@@ -259,6 +259,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
      *
      * should we display "next question" button??
      *
+     *  - if test mode, no we don't
      *  - if user can retry, yes we do
      *  - if wrong answer, yes we do
      *  - if open question that has explanation and no next question, yes we do
@@ -266,10 +267,13 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
      * @returns {boolean|step.retryQuestion|*}
      */
 	$scope.showNextQuestion = function() {
+        if ( isTestMode() ){
+            return false;
+        }
         if ( $scope.quizItem.type === 'openQuestion' && $scope.quizItem.explanation && !!$scope.getAnswer() && $scope.hasNextQuizItem() ){
             return true;
         }
-		return ((!isTestMode() && $scope.step.retryQuestion) || $scope.hasNextQuizItem()) && $scope.getAnswer() && !$scope.getAnswer().correct;
+		return ($scope.step.retryQuestion || $scope.hasNextQuizItem()) && $scope.getAnswer() && !$scope.getAnswer().correct;
 	};
 
 	$scope.hasNextQuizItem = function() {

@@ -4,7 +4,8 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate) {
 			$window.scrollTo(0, 0);
 			$scope.subjects = FilterService.subjects;
-            $scope.popover = { open : true};
+            var addStepClicked = false;
+            $scope.popoverState = { open : false, position: 'left' };
 			$scope.languages = FilterService.languages;
 			var saveLesson = new ContinuousSave({
 				'saveFn' : function(value) {
@@ -25,6 +26,10 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 			$scope.displayStep = function(step) {
 				$location.path('/user/lessons/step/display').search('data', JSON.stringify(step));
 			};
+
+            $scope.saveButtonDisabled = function(){
+                return $scope.isSaving() || !$scope.lesson || !$scope.lesson.name;
+            };
 
 			LergoClient.lessons.getById($routeParams.lessonId).then(function(result) {
 				$scope.lesson = result.data;
@@ -79,7 +84,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             };
 
 			$scope.addStep = function(lesson, $index ) {
-                $scope.popover.open = false;
+                addStepClicked = true;
 				if (!lesson.steps) {
 					lesson.steps = [];
 				}
@@ -375,8 +380,13 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				$window.scrollTo(0, scrollY);
 			}
 
-            $scope.getPopoverDirection = function(){
+
+
+            $scope.$watch(function(){
                 var lang = LergoTranslate.getLanguageObj();
-                return lang && lang.dir === 'rtl' ? 'left' : 'right';
-            };
+                return  { 'open' : !$scope.saveButtonDisabled() && !addStepClicked, 'position' :  lang && lang.dir === 'rtl' ? 'left' : 'right' };
+            }, function( newValue ){
+                console.log('popover position', newValue);
+                $scope.popoverState = newValue;
+            }, true);
 		});
