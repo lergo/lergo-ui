@@ -26,7 +26,10 @@
  *
  */
 
-angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoClient, TagsService, $timeout, FilterService, $log, localStorageService, $location, $routeParams) {
+angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoClient, TagsService, $timeout, FilterService, $log, LergoFilterService) {
+
+    // todo: remove $location, $routeParams and localStorageService..use LergoFilterService instead.
+
 	return {
 		templateUrl : 'views/directives/_lergoFilter.html',
 		restrict : 'A',
