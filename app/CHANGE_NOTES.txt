@@ -1,3 +1,6 @@
+task(lesson): show notification only in certain scenarios
+
+task(kitchenSink): remove content if not admin
 
 fix(popover): fix location for rtl languages
 
