@@ -147,14 +147,15 @@ describe('Directive: lergoFilter', function () {
         generate( $rootScope );
         var elementScope = element.children().scope();
 
-        var fields = [ 'language', 'subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished' ];
+        // guy - removed language because it cannot have value null anymore.. default is current language, and has all/other. so no null. ever..
+        var fields = [ 'subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished' ];
         _.each( fields, function(field){
             elementScope.model[field] = null;
         });
 
         elementScope.$digest();
         _.each(fields, function(field){
-            expect(elementScope.model[field]).toBe(undefined);
+            expect(elementScope.model[field]).toBe(undefined, 'field ' + field + ' has the wrong value');
         });
     }));
 

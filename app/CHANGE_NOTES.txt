@@ -1,3 +1,6 @@
+
+feat(filter): add reset filters button
+
 fix(testMode): move to next question automatically
 
 task(lesson): show notification only in certain scenarios

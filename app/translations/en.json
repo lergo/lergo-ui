@@ -369,6 +369,9 @@
         "age": {
             "error": "Maximum age should be greater than minimum age"
         },
+        "actions" : {
+            "clear" : "Clear Filters"
+        },
         "all": "All",
         "labels": {
             "ageRange": "Age Range",
@@ -386,6 +389,7 @@
             "roles" : "Roles"
         },
         "languages": {
+            "all" : "All",
             "other": "Other",
             "arabic": "Arabic",
             "english": "English",
