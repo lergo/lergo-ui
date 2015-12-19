@@ -267,20 +267,19 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 
                     var model = $scope.model[propertyName];
 					if (!!newValue && ( !!newValue.min || !!newValue.max ) ) {
-
                         if ( !model ){
                             $scope.model[propertyName] = {};
                             model = $scope.model[propertyName];
                         }
                         if (!!newValue.min && model.dollar_gte !== newValue.min ) {
                             model.dollar_gte = newValue.min;
-                        } else{
+                        } else if ( !newValue.min ) {
                             delete model.dollar_gte;
                         }
 
                         if (!!newValue.max && model.dollar_lte !== newValue.max ) {
                             model.dollar_lte = newValue.max;
-                        }else{
+                        }else if ( !newValue.max ) {
                             delete model.dollar_lte;
                         }
 					} else {
@@ -446,7 +445,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
             }, reload);
 
             scope.$watch(function(){
-                return LergoFilterService.isActive(LergoFilterService.RESET_TYPES.LOGO,scope.opts)
+                return LergoFilterService.isActive(LergoFilterService.RESET_TYPES.LOGO,scope.opts);
             }, function(newValue){
                 $log.info('isActive changed : ' +  newValue );
                 scope.isActive = !!newValue;

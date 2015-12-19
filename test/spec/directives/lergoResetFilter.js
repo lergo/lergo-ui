@@ -28,7 +28,7 @@ describe('Directive: lergoResetFilter', function () {
     it('should call LergoFilterService.resetFilter on click', function () {
         element.click();
         $timeout.flush();
-        expect(LergoFilterService.resetFilter).toHaveBeenCalledWith('logo');
+        expect(LergoFilterService.resetFilter).toHaveBeenCalledWith(LergoFilterService.RESET_TYPES.LOGO );
     });
 
     it('should pass different reset types to function', function(){
