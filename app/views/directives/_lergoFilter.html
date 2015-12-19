@@ -14,8 +14,8 @@
 	<span ng-show="!!opts.showLanguage">
 		<div class="label">{{'filters.labels.language' | translate }}</div>
 		<div class="input">
-			<select ng-options="l.id as ('filters.languages.' + l.id | translate) for l in languages" ng-model="model.language">
-				<option value="">{{'filters.all'|translate}}</option>
+
+			<select ng-options="l.id as ('filters.languages.' + l.id | translate) for l in languages" ng-model="filterLanguage">
 			</select>
 		</div>
 	</span>
@@ -123,3 +123,7 @@
 		</div>
 	</div>
 </form>
+
+<div class="clear-filter-section">
+    <button class="btn btn-success wide" lergo-reset-filter> {{ 'filters.actions.clear' | translate }}</button>
+</div>

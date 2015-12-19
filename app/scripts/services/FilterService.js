@@ -14,9 +14,6 @@ angular.module('lergoApp').service('FilterService', function Filterservice($root
 	}, {
 		'id' : 'russian',
 		'locale' : 'ru'
-	}, {
-		'id' : 'other',
-		'locale' : 'en'
 	} ];
 
 	this.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'computers', 'sustainability', 'history', 'geography', 'art', 'music', 'financialEducation','roadSafety', 'lergo','other' ];
