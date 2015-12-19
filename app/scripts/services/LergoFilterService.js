@@ -21,10 +21,12 @@ angular.module('lergoApp')
 
         var resetFilter = function( keepKeys ){
 
-            $location.search('foo',null);
             if ( !keepKeys ){
                 keepKeys = [];
+            }else if ( keepKeys.ignore ){
+                keepKeys = keepKeys.ignore;
             }
+
 
 
             _.each(_.compact(_.map(me.FILTERS, function(filter){
@@ -46,11 +48,32 @@ angular.module('lergoApp')
             me.lastReset = new Date();
         };
 
-
-
-        me.RESET_TYPES = {
-            'LOGO' : 'logo'
+        me.getSavedValue = function( filter ){
+            var filterName = filter.getFullKeyName();
+            var saved = $routeParams[filterName];
+            try{
+                saved = ($routeParams[filterName] && JSON.parse($routeParams[filterName])) || localStorageService.get(filterName);
+            }catch(e){}
+            if (_.isEmpty(saved)) {
+                saved = null;
+            }
+            return saved;
         };
+
+
+        // active if there's one relevant filter with value
+        me.isActive = function( resetType, relevancyOpts ){
+            var result = _.find(me.FILTERS, function( f ){
+                return resetType.ignore.indexOf(f) < 0 &&
+                    !!f.isRelevant(relevancyOpts) &&
+                    me.getSavedValue(f) !== null;
+            });
+
+            return !!result;
+        };
+
+
+
 
         /**
          * @typedef {object} LergoFilter
@@ -77,7 +100,7 @@ angular.module('lergoApp')
             };
 
             this.toString = function(){
-                return this.id;
+                return this.key;
             };
         }
 
@@ -110,15 +133,7 @@ angular.module('lergoApp')
 
 
 
-        me.resetFilter = function( resetType ){
-            if ( resetType === me.RESET_TYPES.LOGO ){
-                resetFilter(
-                    [
-                        me.FILTERS.FILTER_LANGUAGE
-                    ]
-                );
-            }
-        };
+        me.resetFilter = resetFilter;
 
 
 
@@ -129,8 +144,9 @@ angular.module('lergoApp')
          * @param {boolean} changeUrl should url change according to filters
          * @param {object} relevancyOpts object holding relevancies by key
          * @param {function} updateFn function to call on update
+         * @param {boolean} override
          */
-        me.getSavedValue = function( filter, scope, changeUrl, relevancyOpts , updateFn, override){
+        me.syncValue = function( filter, scope, changeUrl, relevancyOpts , updateFn, override){
 
 
             if (!updateFn) {
@@ -145,13 +161,7 @@ angular.module('lergoApp')
                 var filterName = filter.getFullKeyName( );
                 $log.info('loading : ' + filterName);
 
-                var saved = $routeParams[filterName];
-                try{
-                    saved = ($routeParams[filterName] && JSON.parse($routeParams[filterName])) || localStorageService.get(filterName);
-                }catch(e){}
-                if (_.isEmpty(saved)) {
-                    saved = null;
-                }
+                var saved = me.getSavedValue(filter);
 
                 if (!!saved) {
                     if (changeUrl) {
@@ -197,5 +207,13 @@ angular.module('lergoApp')
             };
 
         };
+
+        me.RESET_TYPES = {
+            'LOGO' : {
+                'id': 'logo',
+                'ignore': [ me.FILTERS.FILTER_LANGUAGE ]
+            }
+        };
+
 
     });

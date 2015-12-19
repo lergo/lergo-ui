@@ -34,6 +34,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 		scope : {
 			'model' : '=',
 			'opts' : '=',
+            'isActive' : '=?',
 			'change' : '&onChange',
 			'load' : '&onLoad',
 			'noUrlChanges' : '@noUrlChanges'
@@ -350,7 +351,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
              * @param {boolean} override
 			 */
 			function load(filter, override) {
-			    LergoFilterService.getSavedValue( filter, scope, _isChangeUrl(), scope.opts, UPDATE_FUNCTIONS[filter.key], override );
+			    LergoFilterService.syncValue( filter, scope, _isChangeUrl(), scope.opts, UPDATE_FUNCTIONS[filter.key], override );
 			}
 
 			// load for switches change and if some field became relevant, load
@@ -443,6 +444,13 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
             scope.$watch(function(){ // if filter data was reset, we need to reload this directive
                 return LergoFilterService.getLastReset();
             }, reload);
+
+            scope.$watch(function(){
+                return LergoFilterService.isActive(LergoFilterService.RESET_TYPES.LOGO,scope.opts)
+            }, function(newValue){
+                $log.info('isActive changed : ' +  newValue );
+                scope.isActive = !!newValue;
+            });
 		}
 	};
 });

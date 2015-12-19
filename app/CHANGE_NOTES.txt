@@ -1,4 +1,6 @@
 
+fix(filter): hide when not active, change color
+
 feat(filter): add reset filters button
 
 fix(testMode): move to next question automatically
