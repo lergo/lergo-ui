@@ -108,7 +108,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
             $scope.$watch('createdBy', _updateCreatedBy, true);
 
             function _updateLanguage(newValue, oldValue){
-                if ( newValue !== oldValue ){
+                if ( newValue !== oldValue  || !$scope.model  || scope.model.language !== newValue  ){
                     if ( !!newValue){
                         if ( newValue === 'all' ){
                             delete $scope.model.language;

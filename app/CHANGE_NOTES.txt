@@ -1,4 +1,6 @@
 
+fix(filter): language issue
+
 fix(filter): hide when not active, change color
 
 feat(filter): add reset filters button
