@@ -1,4 +1,6 @@
 
+feat(filter): add filter notification just for lesson just in english to get feedback. afterwards apply to all.
+
 fix(filter): language issue
 
 fix(filter): hide when not active, change color

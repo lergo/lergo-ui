@@ -30,7 +30,8 @@
 	</div>
 	<div class="page-content-width">
 		<div class="page-content-body">
-			<table class="table">
+            <div class="filter-is-active" ng-show="filterIsActive"></div>
+            <table class="table">
 				<thead>
 					<tr style="font-weight: bold">
 						<td style="width: 100%">{{ 'name' | translate }}</td>
@@ -58,7 +59,7 @@
 			</table>
 		</div>
 		<div class="sidebar page-content-sidebar">
-			<div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>
+			<div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
 		</div>
 	</div>
 	<div lergo-paging page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>

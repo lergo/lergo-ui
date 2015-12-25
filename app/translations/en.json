@@ -790,6 +790,13 @@
         "thanks": "Thanks for reporting",
         "title": "Report Abuse"
     },
+    "filter" : {
+        "activeNotification" : {
+            "msg" : "some items may be filtered. click below to reset the filter",
+            "resetAction" : "reset filter",
+            "hideAction" : "hide notification"
+        }
+    },
     "reports": {
         "correctPercentage": "% Correct",
         "duration": "Duration",
