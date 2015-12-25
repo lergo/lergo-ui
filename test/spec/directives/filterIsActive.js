@@ -8,18 +8,16 @@ describe('Directive: filterIsActive', function () {
     var element,
         $compile,
         $rootScope,
-        localStorageService,
         LergoFilterService,
         scope;
 
     beforeEach(inject(function (_$rootScope_, _$compile_, _localStorageService_, _LergoFilterService_) {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        localStorageService = _localStorageService_;
         LergoFilterService = _LergoFilterService_;
 
         scope = $rootScope.$new();
-        localStorageService.clearAll();
+        scope.opts = {};
 
         spyOn(LergoFilterService, 'resetFilter');
 
@@ -30,7 +28,8 @@ describe('Directive: filterIsActive', function () {
         try{
             $(element).remove();
         }catch(e){}
-        element = angular.element('<div class="filter-is-active"></div>');
+
+        element = angular.element('<div filter-is-active="opts"></div>');
         element = $compile(element)(scope);
         scope.$digest();
         $('body').append($(element));
@@ -41,24 +40,27 @@ describe('Directive: filterIsActive', function () {
         $(element).remove();
     });
 
-    var OFF_FLAG='filterActiveNotification';
 
-    describe('on load', function () {
-        it('should hide if localStorage says so', function(){
-            localStorageService.set(OFF_FLAG,'off');
-            compileElement();
-            expect($(element).is(':visible')).toBeFalsy();
+    describe('#showHide', function(){
+        it('should show/hide the element when filter is active or not', function(){
+            var isolatedScope = $(element).children().scope();
+            var $element = $(element);
+            isolatedScope.showHide(true);
+            expect($element.is(':visible')).toBe(true);
+            isolatedScope.showHide(false);
+            expect($element.is(':visible')).toBe(false);
+            isolatedScope.showHide(true);
+            expect($element.is(':visible')).toBe(true);
         });
-
     });
 
     describe('#hideNotification', function(){
         it('should hide notification and remember result in localStorage', function(){
+            var isolatedScope = $(element).children().scope();
+            isolatedScope.showHide(true);
             expect($(element).is(':visible')).toBeTruthy('element should be visible');
-            expect(localStorageService.get(OFF_FLAG)).toBeNull();
             element.children().scope().hideNotification();
             expect($(element).is(':visible')).toBeFalsy('element should hide');
-            expect(localStorageService.get(OFF_FLAG)).not.toBeNull();
 
         });
     });

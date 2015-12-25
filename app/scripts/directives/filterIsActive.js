@@ -7,38 +7,34 @@
 * # filterIsActive
 */
 angular.module('lergoApp')
-    .directive('filterIsActive', function (LergoFilterService, localStorageService) {
+    .directive('filterIsActive', function (LergoFilterService) {
         return {
             templateUrl: 'views/directives/_filterIsActive.html',
-            restrict: 'C',
+            restrict: 'A',
             scope:{
                 relevancyOpts: '=filterIsActive'
             },
             link: function postLink(scope, element) {
-
-                element.hide(); // default to hide
+                $(element).hide();
                 scope.$watch(
                     function(){
-                        LergoFilterService.isActive(LergoFilterService.RESET_TYPES.LOGO, scope.relevancyOpts);
+                        return LergoFilterService.isActive(LergoFilterService.RESET_TYPES.LOGO, scope.relevancyOpts);
                     },
                     function(newValue){
-                        scope.isActive = newValue;
+                        scope.showHide(newValue);
                     }
                 );
 
-                var OFF_FLAG='filterActiveNotification';
-                function isOff(){
-                    if ( localStorageService.get(OFF_FLAG) === 'off'){
+                scope.showHide = function( isActive ){
+                    if ( !isActive ){
                         element.hide();
                     }else{
                         element.show();
                     }
-                }
-                isOff();
+                };
 
                 scope.hideNotification = function(){
-                    localStorageService.set(OFF_FLAG, 'off');
-                    isOff();
+                    element.hide();
                 };
 
                 scope.resetFilter = function(){
