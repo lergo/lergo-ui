@@ -219,10 +219,10 @@ angular.module('lergoApp').directive('tooltip', function () {
 });
 
 angular.module('lergoApp').run(function (Facebook) {
-    if ( typeof(conf) !== 'undefined' ) {
+    //if ( typeof(conf) !== 'undefined' ) {
         Facebook.init(conf.facebookAppId);
-    }else{
-        window.location='/error.html';
-        throw new Error('service is down');
-    }
+    //}else{
+    //    window.location='/error.html';
+    //    throw new Error('service is down');
+    //}
 });

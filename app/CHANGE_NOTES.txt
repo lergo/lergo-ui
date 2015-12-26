@@ -1,4 +1,10 @@
 
+improve(filter): improve layout of 'active filter' notification.
+
+improve(filter): add notification for 'active filter' to question,reports and invites
+
+fix(filter): make lesson filter update on 'reset filter' click
+
 fix(filter): fix reports lesson filter reset.
 
 feat(filter): add filter notification just for lesson just in english to get feedback. afterwards apply to all.

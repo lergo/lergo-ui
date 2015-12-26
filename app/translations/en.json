@@ -792,9 +792,8 @@
     },
     "filter" : {
         "activeNotification" : {
-            "msg" : "some items may be filtered. click below to reset the filter",
-            "resetAction" : "reset filter",
-            "hideAction" : "hide notification"
+            "msg" : "Some items may be filtered. ",
+            "resetAction" : "Click here to reset filter"
         }
     },
     "reports": {

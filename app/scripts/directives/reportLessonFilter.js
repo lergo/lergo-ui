@@ -31,6 +31,12 @@ angular.module('lergoApp')
                 } catch (e) {
                 }
 
+                scope.$watch('model.name', function( newValue ){
+                    if (!newValue){
+                        scope.newLesson = '';
+                    }
+                });
+
                 scope.$watch('newLesson', function(newValue){
                     if ( newValue === '' ){
                         scope.model = null;
