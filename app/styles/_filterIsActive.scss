@@ -10,6 +10,15 @@
         &.alert-success{
             background-color: #3CB371;
         }
+
+        [ng-transclude]{
+            padding:0 20px;
+        }
+
+        .close{
+            margin-top:-15px;
+            margin-right:-10px;
+        }
     }
     [lergo-reset-filter]{
         cursor:pointer;
