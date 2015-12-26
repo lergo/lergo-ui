@@ -1,5 +1,19 @@
 [filter-is-active]{
+    margin-top:-15px;
+    text-align:center;
+
+    .alert {
+        width: auto;
+        display: inline-block;
+        white-space: nowrap;
+        &, .btn-link, .close { opacity:1; color:white;  }
+        &.alert-success{
+            background-color: #3CB371;
+        }
+    }
     [lergo-reset-filter]{
         cursor:pointer;
+        font-weight: bold;
+        text-decoration: underline;
     }
 }

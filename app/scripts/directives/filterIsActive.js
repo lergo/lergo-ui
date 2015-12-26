@@ -14,7 +14,7 @@ angular.module('lergoApp')
             scope:{
                 relevancyOpts: '=filterIsActive'
             },
-            link: function postLink(scope, element) {
+            link: function postLink(scope, element, attrs) {
                 $(element).hide();
                 scope.$watch(
                     function(){
@@ -31,6 +31,16 @@ angular.module('lergoApp')
                     }else{
                         element.show();
                     }
+                };
+
+                scope.getSection = function(){
+                    var section = attrs.section;
+                    if ( !section ){
+                        section = '';
+                    }else{
+                        section = section + '.';
+                    }
+                    return  section;
                 };
 
                 scope.hideNotification = function(){

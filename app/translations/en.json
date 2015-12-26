@@ -792,8 +792,24 @@
     },
     "filter" : {
         "activeNotification" : {
-            "msg" : "Some items may be filtered. ",
-            "resetAction" : "Click here to reset filter"
+            "lessons" : {
+                "msg" : "Lessons are filtered.",
+                "resetAction" : "Click here to view all lessons"
+            },
+            "questions" : {
+                "msg" : "Questions are filtered.",
+                "resetAction" : "Click here to view all questions"
+            },
+            "reports" : {
+                "msg" : "Reports are filtered.",
+                "resetAction" : "Click here to view all reports"
+            },
+            "invites" : {
+                "msg" : "Invites are filtered.",
+                "resetAction" : "Click here to view all invites"
+            }
+
+
         }
     },
     "reports": {
