@@ -1,4 +1,6 @@
 
+fix(filter): fix reports lesson filter reset.
+
 feat(filter): add filter notification just for lesson just in english to get feedback. afterwards apply to all.
 
 fix(filter): language issue
