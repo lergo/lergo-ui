@@ -309,7 +309,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 					return;
 				}
 
-				_.each([ 'subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished' ], function(prop) {
+				_.each([ 'subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished','data.lessonId' ], function(prop) {
 					if ($scope.model[prop] === null || $scope.model[prop] === '') {
 						delete $scope.model[prop];
 					}

@@ -30,6 +30,12 @@ angular.module('lergoApp')
                     scope.newLesson = scope.model.name;
                 } catch (e) {
                 }
+
+                scope.$watch('newLesson', function(newValue){
+                    if ( newValue === '' ){
+                        scope.model = null;
+                    }
+                });
             }
         };
     });
