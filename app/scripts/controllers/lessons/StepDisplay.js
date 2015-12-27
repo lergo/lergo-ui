@@ -213,6 +213,40 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		return !!quizItem && $scope.answers.hasOwnProperty(quizItem._id) ? $scope.answers[quizItem._id] : null;
 	};
 
+    /**
+     *
+     * @description
+     *
+     * * do not show explanation if
+     *   * user did not answer yet
+     *   * user is in test mode
+     *   * question does not have an explanation
+     *
+     * * show explanation if
+     *   * question is of type open question
+     *   * answer is incorrect
+     *
+     * @returns {boolean}
+     */
+    $scope.shouldShowExplanationMedia = function(){
+        if (
+            isTestMode() ||
+            !$scope.quizItem ||
+            !$scope.quizItem.explanationMedia ||
+            !$scope.quizItem.explanationMedia.type ||
+            !$scope.getAnswer()
+        ){
+            return false;
+        }
+
+        if (
+            !$scope.getAnswer().correct ||
+            $scope.quizItem.type === 'openQuestion'
+        ){
+            return true;
+        }
+    };
+
 	$scope.nextQuizItem = function() {
 		$log.info('next');
 		if (!$scope.questions) {

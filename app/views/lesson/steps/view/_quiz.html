@@ -7,7 +7,7 @@
 				<div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
 			</td>
             <!-- LERGO-320 - placing the show/hide on the table itself resolves the alignment issue when explanation media is hidden-->
-			<td style="vertical-align: top;" ng-show="!!getAnswer(quizItem) && !!quizItem.explanationMedia && !!quizItem.explanationMedia.type">
+			<td style="vertical-align: top;" ng-show="shouldShowExplanationMedia()" class="quiz-item-explanation">
 				<div style="margin-top: 50px" >
 					<div style="font-weight: bold">{{ 'explanation' | translate }}</div>
 					<div>{{quizItem.explanation}}</div>
