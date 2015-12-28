@@ -173,16 +173,8 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 				$event.target.select();
 			};
 			$scope.isCorrectFillInTheBlanks = function(quizItem, index) {
-
 				var userAnswer = quizItem.userAnswer[index];
-				if (!userAnswer) {
-					return false;
-				}
-				if (quizItem.answer[index].split(';').indexOf(userAnswer) === -1) {
-					return false;
-				} else {
-					return true;
-				}
+				return !!userAnswer && quizItem.answer[index].split(';').indexOf(userAnswer) >= 0;
 			};
 
 			$scope.isMultiChoiceMultiAnswer = function(quizItem) {
