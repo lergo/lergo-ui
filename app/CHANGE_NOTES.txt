@@ -1,4 +1,6 @@
 
+improve(link): add another google drive format
+
 improve(links): automatically convert google drive links
 
 improve(filter): improve layout of 'active filter' notification.

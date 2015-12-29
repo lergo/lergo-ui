@@ -11,40 +11,40 @@ angular.module('lergoApp')
     .service('LergoResourceLinksConverter', function ( $log ) {
 
         /**
-         * @example
-         * https://drive.google.com/file/d/0B48m4oFFlf9IUVZueFA4VVg5Ym8/view?usp=sharing
-         * http://drive.google.com/uc?export=view&id=0B48m4oFFlf9IUVZueFA4VVg5Ym8
          *
-         * <pre>
-         *
-         *      var link = 'https://drive.google.com/file/d/0B48m4oFFlf9IUVZueFA4VVg5Ym8/view?usp=sharing'
-         * </pre>
-         *
-         * @param link
+         * @typedef LINK_TYPE
+         * @property {string} id
+         * @property {string} regex
+         * @property {object} replace  used with regexp to replace strings. e.g. : link.replace(new RegExp(type.replace.from), type.replace.to);
+         * @property {string} replace.from
+         * @property {string} replace.to
          */
-        this.convertGoogleDriveLink = function(link){
-            return link.replace(new RegExp('(https://drive.google.com)/file/d/(.+)/.*'), '$1/uc?export=view&id=$2');
-        };
-
         this.LINK_TYPE = {
-            GOOGLE_DRIVE: { 'id' : 'google-drive', 'regex' : 'drive.google.com/file/d/'},
-            OTHER:  { 'id' : 'other', 'regex' : '' }
+            GOOGLE_DRIVE_1: { 'id' : 'google-drive', 'regex' : 'drive.google.com/file/d/', replace: { from: '(https://drive.google.com)/file/d/(.+)/.*', to: '$1/uc?export=view&id=$2'}},
+            GOOGLE_DRIVE_2: { 'id' : 'google-drive', 'regex' : 'drive.google.com/open\\?id=', replace:{ from: '(https://drive.google.com)/open\\?id=(.+)', to: '$1/uc?export=view&id=$2'}}
         };
 
         this.getLinkType = function(link){
             return _.find(this.LINK_TYPE, function(t){
                 return  new RegExp(t.regex).test(link);
+
             });
         };
 
-
-
-        this.convert = function (link) {
+        /**
+         *
+         * @param {string} link
+         * @param {LINK_TYPE} type optional. if not specified will be auto detected from link
+         * @returns {string} the converted link
+         */
+        this.convert = function (link, type) {
             try {
-                var type = this.getLinkType(link);
+                if ( !type ) { // try to auto detect
+                    type = this.getLinkType(link);
+                }
 
-                if ( type === this.LINK_TYPE.GOOGLE_DRIVE ){
-                    return this.convertGoogleDriveLink(link);
+                if ( !!type ){ // if auto detected successfully
+                    return link.replace(new RegExp(type.replace.from), type.replace.to);
                 }
 
             } catch (e) {
