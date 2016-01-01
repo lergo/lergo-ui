@@ -1,4 +1,6 @@
 
+fix(explanation media): fix scenarios where it should display and when it should not.
+
 improve(link): add another google drive format
 
 improve(links): automatically convert google drive links
