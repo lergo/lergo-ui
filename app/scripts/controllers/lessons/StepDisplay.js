@@ -304,7 +304,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
         if ( isTestMode() ){
             return false;
         }
-        if ( $scope.quizItem.type === 'openQuestion' && $scope.quizItem.explanation && !!$scope.getAnswer() && $scope.hasNextQuizItem() ){
+        if ( $scope.quizItem.type === LergoClient.questions.QUESTION_TYPE.OPEN_QUESTION && LergoClient.questions.hasExplanation( $scope.quizItem ) && !!$scope.getAnswer() && $scope.hasNextQuizItem() ){
             return true;
         }
 		return ($scope.step.retryQuestion || $scope.hasNextQuizItem()) && $scope.getAnswer() && !$scope.getAnswer().correct;

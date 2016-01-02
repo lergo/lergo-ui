@@ -42,6 +42,10 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         return $http.post('/backend/questions/create', question);
     };
 
+    this.hasExplanation = function(question){
+        return question.explanation || question.explanationMedia;
+    };
+
     this.updateQuestion = function (question) {
         return $http.post('/backend/questions/' + question._id + '/update', question);
     };
@@ -58,8 +62,18 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
     this.deleteQuestion = function (id) {
         return $http.post('/backend/questions/' + id + '/delete');
     };
+
+    this.QUESTION_TYPE={
+        TRUE_FALSE: 'trueFalse',
+        EXACT_MATCH: 'exactMatch',
+        MULTIPLE_CHOICES: 'multipleChoices',
+        OPEN_QUESTION: 'openQuestion',
+        FILL_IN_THE_BLANKS: 'fillInTheBlanks'
+    };
+
+    // todo: use object composition to reduce code.
     this.questionsType = [{
-        'id': 'trueFalse',
+        'id': this.QUESTION_TYPE.TRUE_FALSE,
         'label': 'True or False',
         'updateTemplate': 'views/questions/update/_trueFalse.html',
         'viewTemplate': 'views/questions/view/_trueFalse.html',
@@ -80,7 +94,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         },
         'alias': []
     }, {
-        'id': 'exactMatch',
+        'id': this.QUESTION_TYPE.EXACT_MATCH,
         'label': 'Exact Match',
         'updateTemplate': 'views/questions/update/_exactMatch.html',
         'viewTemplate': 'views/questions/view/_exactMatch.html',
@@ -116,7 +130,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         },
         'alias': []
     }, {
-        'id': 'multipleChoices',
+        'id': this.QUESTION_TYPE.MULTIPLE_CHOICES,
         'label': 'Multiple Choice',
         'updateTemplate': 'views/questions/update/_multipleChoices.html',
         'viewTemplate': 'views/questions/view/_multipleChoices.html',
@@ -162,7 +176,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         },
         'alias': []
     }, {
-        'id': 'openQuestion',
+        'id': this.QUESTION_TYPE.OPEN_QUESTION,
         'label': 'Open Question',
         'updateTemplate': 'views/questions/update/_openQuestion.html',
         'viewTemplate': 'views/questions/view/_openQuestion.html',
@@ -183,7 +197,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         },
         'alias': []
     }, {
-        'id': 'fillInTheBlanks',
+        'id': this.QUESTION_TYPE.FILL_IN_THE_BLANKS,
         'label': 'Fill In The Blanks',
         'updateTemplate': 'views/questions/update/_fillInTheBlanks.html',
         'viewTemplate': 'views/questions/view/_fillInTheBlanks.html',
