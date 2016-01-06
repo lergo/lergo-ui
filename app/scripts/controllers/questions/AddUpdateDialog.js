@@ -27,7 +27,7 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 
 			});
 			function addSelectedItems(canClose) {
-				$scope.selectedItems = _.filter(items, 'selected');
+				$scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');
 				angular.forEach($scope.selectedItems, function(item) {
 					addItemToQuiz(item, step);
 					item.selected = false;

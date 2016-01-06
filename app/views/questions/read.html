@@ -1,40 +1,48 @@
 <div class="base-layout" id="questionIntro" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null"
      tabindex="1">
+
     <div class="page-content-width">
-        <div class="page-content-body">
-            <div class="question">
-                <div class="stats">
-                    <span class="stats-button age-limit-{{quizItem.age}} no-color" ng-show="!!quizItem.age"> {{quizItem.age}}+ {{'homepage.years'|translate}} </span>
-					<span class="stats-button" tooltip="{{'homepage.tooltip.views' | translate}}">
-						<i class="fa fa-eye fa-fw"></i>
-						{{0+quizItem.views}}
-					</span>
-					<span class="stats-button" tooltip="{{'questions.tooltip.lessons' | translate}}">
-						<i class="fa fa-university fa-fw"></i>
-						{{0+ lessons.length }}
-					</span>
-					<span class="stats-button" tooltip="{{'homepage.tooltip.likes' | translate}}">
-						<i class="fa fa-heart-o"></i>
-						{{0+questionLikes }}
-					</span>
-                </div>
-                <div class="action-items" ng-show="!!permissions">
-                    <div class="action-items-bottom">
-                        <a class="btn-link" ng-click="copyQuestion(quizItem)" ng-show="!!permissions.canCopy">
-                            <i class="fa fa-copy" tooltip="{{'questions.tooltip.copy' | translate}}"></i>
-                        </a>
-                        <br/>
-                        <a class="btn-link" href="#!/user/questions/{{quizItem._id}}/update"
-                           tooltip="{{'questions.tooltip.edit' | translate}}"
-                           ng-show="!!permissions.canEdit">
-                            <i class="fa fa-pencil-square-o"></i>
-                        </a>
-                        <br/>
-                    </div>
-                </div>
-                <div ng-include="getQuestionViewTemplate(quizItem)"></div>
-                <div class="details">
-                    <div class="properties">
+
+        <table class="lergo-table">
+            <tr>
+                <td style="vertical-align: top;">
+                    <div class="page-content-body">
+                        <div class="question">
+                            <div class="stats">
+                                    <span class="stats-button age-limit-{{quizItem.age}} no-color"
+                                          ng-show="!!quizItem.age"> {{quizItem.age}}+ {{'homepage.years'|translate}} </span>
+                                    <span class="stats-button" tooltip="{{'homepage.tooltip.views' | translate}}">
+                                        <i class="fa fa-eye fa-fw"></i>
+                                        {{0+quizItem.views}}
+                                    </span>
+                                    <span class="stats-button" tooltip="{{'questions.tooltip.lessons' | translate}}">
+                                        <i class="fa fa-university fa-fw"></i>
+                                        {{0+ lessons.length }}
+                                    </span>
+                                    <span class="stats-button" tooltip="{{'homepage.tooltip.likes' | translate}}">
+                                        <i class="fa fa-heart-o"></i>
+                                        {{0+questionLikes }}
+                                    </span>
+                            </div>
+                            <div class="action-items" ng-show="!!permissions">
+                                <div class="action-items-bottom">
+                                    <a class="btn-link" ng-click="copyQuestion(quizItem)"
+                                       ng-show="!!permissions.canCopy">
+                                        <i class="fa fa-copy"
+                                           tooltip="{{'questions.tooltip.copy' | translate}}"></i>
+                                    </a>
+                                    <br/>
+                                    <a class="btn-link" href="#!/user/questions/{{quizItem._id}}/update"
+                                       tooltip="{{'questions.tooltip.edit' | translate}}"
+                                       ng-show="!!permissions.canEdit">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+                                    <br/>
+                                </div>
+                            </div>
+                            <div ng-include="getQuestionViewTemplate(quizItem)"></div>
+                            <div class="details">
+                                <div class="properties">
 						<span tooltip="{{'homepage.tooltip.user' | translate}}">
                             <a show-logged-in ng-href="#!/user/{{lesson.user.username}}/profile">
                                 <i class="fa fa-user"></i>
@@ -53,10 +61,11 @@
 							<i class="fa fa-book"></i>
 							<span>{{'filters.subjects.' + quizItem.subject | translate}}</span>
 						</span>
-                    </div>
-                    <div class="action-items">
+                                </div>
+                                <div class="action-items">
 						<span show-logged-in>
-							<button class="btn-link" ng-click="like()" tooltip="{{'questions.tooltip.like' | translate}}"
+							<button class="btn-link" ng-click="like()"
+                                    tooltip="{{'questions.tooltip.like' | translate}}"
                                     ng-show="!isLiked()">
                                 <i class="fa fa-heart-o "></i>
                                 {{'like' | translate}}
@@ -78,63 +87,79 @@
 								</span>
 							</span>
 						</span>
-                        <a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | translate}}"
-                           popover-placement="right" popover-trigger="focus"
-                           tabindex="0">
-                            <i class="fa fa-heart-o "></i>
-                            {{'like' | translate}}
-                        </a>
-                        <button class="btn-link" ng-click="absoluteShareLink(quizItem)"
-                                tooltip="{{'questions.tooltip.share' | translate}}">
-                            <i class="fa fa-share-alt "></i>
-                            {{'share' | translate}}
-                        </button>
-                    </div>
-                    <div class="forms">
-                        <div ng-show="!!share" class="lergo-form share">
-                            <p class="lergo-h4">{{'questions.shareQuestion' | translate}}</p>
+                                    <a href="" show-anonymous class="btn-link"
+                                       popover="{{'lessons.likeNotAvailable' | translate}}"
+                                       popover-placement="right" popover-trigger="focus"
+                                       tabindex="0">
+                                        <i class="fa fa-heart-o "></i>
+                                        {{'like' | translate}}
+                                    </a>
+                                    <button class="btn-link" ng-click="absoluteShareLink(quizItem)"
+                                            tooltip="{{'questions.tooltip.share' | translate}}">
+                                        <i class="fa fa-share-alt "></i>
+                                        {{'share' | translate}}
+                                    </button>
+                                </div>
+                                <div class="forms">
+                                    <div ng-show="!!share" class="lergo-form share">
+                                        <p class="lergo-h4">{{'questions.shareQuestion' | translate}}</p>
 
-                            <div class="container">
-                                <span>{{'questions.shareQuestionTitle' | translate}}</span>
+                                        <div class="container">
+                                            <span>{{'questions.shareQuestionTitle' | translate}}</span>
 								<textarea type="text" ng-model="shareLink" readonly
                                           ng-click="onTextClick($event)"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="description">
-                        <div class="edit-summary"
-                             ng-show="quizItem.summary || (!!originalQuestions && originalQuestions.length>0)">
-                            <br/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="description">
+                                    <div class="edit-summary"
+                                         ng-show="quizItem.summary || (!!originalQuestions && originalQuestions.length>0)">
+                                        <br/>
 
-                            <div class="title">{{'questions.editSummary'|translate}}</div>
-                            <div style="padding: 5px 0 10px 0;" class="summary" ng-show="quizItem.summary"
-                                 btf-markdown="quizItem.summary"></div>
-                            <div ng-repeat="q in originalQuestions">
-                                <div style="padding: 5px 0 10px 0;" class="summary">
-                                    Copied from
-                                    <span question-read-link question="q"></span>
-                                    by {{q.user.username}}
+                                        <div class="title">{{'questions.editSummary'|translate}}</div>
+                                        <div style="padding: 5px 0 10px 0;" class="summary"
+                                             ng-show="quizItem.summary"
+                                             btf-markdown="quizItem.summary"></div>
+                                        <div ng-repeat="q in originalQuestions">
+                                            <div style="padding: 5px 0 10px 0;" class="summary">
+                                                Copied from
+                                                <span question-read-link question="q"></span>
+                                                by {{q.user.username}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="edit-summary" ng-show="usedInLessons.length>0">
+                                        <div ng-show="!!more">
+                                            <div class="title">{{'questions.lessonUsed' | translate}}</div>
+                                            <div ng-repeat="l in usedInLessons">
+                                                <i class="fa fa-star fa-fw"></i>
+                                                {{l.name}}
+                                            </div>
+                                        </div>
+                                        <div class="read-more" ng-click="more=!more">
+                                            <hr class="dashes">
+                                            <span ng-show="!more">{{'lessons.readMore' | translate}}</span>
+                                            <span ng-show="!!more">{{'lessons.readLess' | translate}}</span>
+                                            <hr class="dashes">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="edit-summary" ng-show="usedInLessons.length>0">
-                            <div ng-show="!!more">
-                                <div class="title">{{'questions.lessonUsed' | translate}}</div>
-                                <div ng-repeat="l in usedInLessons">
-                                    <i class="fa fa-star fa-fw"></i>
-                                    {{l.name}}
-                                </div>
-                            </div>
-                            <div class="read-more" ng-click="more=!more">
-                                <hr class="dashes">
-                                <span ng-show="!more">{{'lessons.readMore' | translate}}</span>
-                                <span ng-show="!!more">{{'lessons.readLess' | translate}}</span>
-                                <hr class="dashes">
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </td>
+                <!-- LERGO-320 - placing the show/hide on the table itself resolves the alignment issue when explanation media is hidden-->
+                <td style="vertical-align: top;" ng-show="shouldShowExplanationMedia()"
+                    class="quiz-item-explanation">
+                    <div>
+                        <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
+                        <div>{{quizItem.explanation}}</div>
+                        <div quiz-item-explanation-media quiz-item="quizItem"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
+
+

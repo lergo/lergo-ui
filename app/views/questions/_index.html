@@ -59,8 +59,9 @@
 					<td class="answer">{{item.age &&('+'+ item.age) || ""}}</td>
 				</tr>
 			</table>
-			<div ng-show="!items || items.length == 0">{{ 'questions.noQuestions' | translate }}</div>
+			<div class="page-content-body text-center" ng-show="!items || items.length == 0"><span class="label label-warning" style="padding: 10px">{{ 'questions.noQuestions' | translate }}</span></div>
 		</div>
+       
 		<div class="sidebar page-content-sidebar">
 			<div lergo-filter no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()" on-load="filterLoaded()"
 				opts="questionsFilterOpts"></div>
