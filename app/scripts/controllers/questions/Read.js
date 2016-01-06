@@ -182,6 +182,28 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 				return correctAnswers.length > 1;
 			};
 
-
+            /**
+             *
+             * @description
+             *
+             * * do not show explanation if
+             *   * user did not answer yet
+             *   * question does not have an explanation
+             *
+             * * show explanation if
+             *   * question is of type open question
+             *   * answer is incorrect
+             *
+             * @returns {boolean}
+             */
+            $scope.shouldShowExplanationMedia = function () {
+                var quiz = $scope.quizItem;
+                if (!quiz || !quiz.explanationMedia || !quiz.explanationMedia.type || !$scope.getAnswer()) {
+                    return false;
+                }
+                if (!$scope.getAnswer().correct || $scope.quizItem.type === 'openQuestion') {
+                    return true;
+                }
+            };
 
 		});
