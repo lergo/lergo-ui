@@ -932,5 +932,14 @@
         "teaser" : {
             "url" : "https://docs.google.com/forms/d/1oIhvwDSYLuuLEeKiwABpg67OiNbmvI-dhQH6X13C-rg/viewform"
         }
+    },
+    "demos" : {
+        "goToMyLessons" : {
+            "title" : "Your Lesson Is Saved",
+            "intro" : "You are now leaving 'edit lesson' page. All your changes has been automatically saved. You can always find your lessons, just hover on your username and select 'lessons'"
+
+        },
+        "gotIt" : "Got it",
+        "dontShowAgain" : "Do not show this again"
     }
 }

@@ -7,38 +7,43 @@
  * # goToMyLessonsDemo
  */
 angular.module('lergoApp')
-    .directive('goToMyLessonsDemo', function (LergoClient, $modal) {
+    .directive('goToMyLessonsDemo', function (LergoClient, $modal , $location) {
         return {
             templateUrl: 'views/demos/goToMyLessonsDemo.html',
             restrict: 'A',
-            link: function postLink(scope, element, attrs) {
+            link: function postLink( $scope ) {
 
                 var modalInstance;
-                scope.openGoToMyLessonsDemoDialog = function () {
+                var goToUrl;
+
+                var unregister = $scope.$on('$routeChangeStart', function( event ) {
+                    goToUrl = $location.url();
+                    event.preventDefault();
+                    $scope.openGoToMyLessonsDemoDialog();
+                });
+
+                $scope.openGoToMyLessonsDemoDialog = function () {
                     modalInstance = $modal.open({
                         templateUrl: 'goToMyLessonsDemoDialog.html',
                         size: 'lg',
                         windowClass: 'go-to-my-lessons-demo-dialog',
-                        scope: scope
+                        scope: $scope
                     });
                 };
 
-                scope.okGotIt = function () {
+                $scope.close = function(remember){
+                    unregister();
                     modalInstance.dismiss();
+                    $location.url(goToUrl);
                 };
 
-                scope.dontShowAgain = function(){
-                    debugger;
+                $scope.okGotIt = function () {
+                    $scope.close();
                 };
 
-                LergoClient.lessons.getStats().then(function (result) {
-                    try {
-                        if (result.data.myLessons > 0) {
-                            scope.openGoToMyLessonsDemoDialog();
-                        }
-                    } catch (e) {
-                    }
-                });
+                $scope.dontShowAgain = function(){
+                    $scope.close(true);
+                };
             }
         };
     });
