@@ -78,15 +78,12 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 		return $http.post('/backend/lessons/' + id + '/copy');
 	};
 
-    var stats = null;
+    var statsPromise = null;
 	this.getStats = function( refresh ) {
-        if ( stats === null || !!refresh ){
-            return $http.get('/backend/system/statistics').then(function(result){ stats = result.data;  return result; });
-        }else{
-            var deferred = $q.defer();
-            deferred.resolve({ data: stats });
-            return deferred.promise;
+        if ( statsPromise === null || !!refresh ){
+            statsPromise = $http.get('/backend/system/statistics');
         }
+        return statsPromise;
 
 	};
 
