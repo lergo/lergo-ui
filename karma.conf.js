@@ -18,7 +18,6 @@ module.exports = function (config) {
             'app/bower_components/string-format-js/format.js',
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/angular-route/angular-route.js',
-            'app/bower_components/angular-bootstrap/ui-bootstrap.js',
             'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'app/bower_components/angular-ui-utils/ui-utils.js',
             'app/bower_components/angular-markdown-directive/markdown.js',

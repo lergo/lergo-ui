@@ -7,3 +7,16 @@ window.mapWatchers = function( scope ) {
     });
     return watchers;
 };
+
+window.mapListeners = function( scope ) {
+    var result = {};
+
+    _.each(scope.$$listeners, function (w) {
+        _.each(w, function(item){
+            if ( item ) {
+                result[item.name] = item;
+            }
+        });
+    });
+    return result;
+};

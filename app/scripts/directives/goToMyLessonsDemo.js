@@ -7,7 +7,7 @@
  * # goToMyLessonsDemo
  */
 angular.module('lergoApp')
-    .directive('goToMyLessonsDemo', function (LergoClient, $modal , $location) {
+    .directive('goToMyLessonsDemo', function (LergoClient, $modal , $location, localStorageService) {
         return {
             templateUrl: 'views/demos/goToMyLessonsDemo.html',
             restrict: 'A',
@@ -16,7 +16,13 @@ angular.module('lergoApp')
                 var modalInstance;
                 var goToUrl;
 
-                var unregister = $scope.$on('$routeChangeStart', function( event ) {
+                var SEEN_DEMO_STORAGE_KEY='seen.goToMyLessonsDemo';
+
+                if ( localStorageService.get(SEEN_DEMO_STORAGE_KEY) ){
+                    return;
+                }
+
+                var unregister = $scope.$on('$locationChangeStart', function locationChangeStart( event ) {
                     goToUrl = $location.url();
                     event.preventDefault();
                     $scope.openGoToMyLessonsDemoDialog();
@@ -32,6 +38,11 @@ angular.module('lergoApp')
                 };
 
                 $scope.close = function(remember){
+
+                    if ( remember ){
+                        localStorageService.set(SEEN_DEMO_STORAGE_KEY, true);
+                    }
+
                     unregister();
                     modalInstance.dismiss();
                     $location.url(goToUrl);
