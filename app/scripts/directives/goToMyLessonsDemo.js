@@ -22,7 +22,7 @@ angular.module('lergoApp')
                     return;
                 }
 
-                var unregister = $scope.$on('$locationChangeStart', function locationChangeStart( event ) {
+                var unregister = $scope.$on('$routeChangeStart', function locationChangeStart( event ) {
                     goToUrl = $location.url();
                     event.preventDefault();
                     $scope.openGoToMyLessonsDemoDialog();
