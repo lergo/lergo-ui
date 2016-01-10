@@ -11,7 +11,7 @@ angular.module('lergoApp')
         return {
             templateUrl: 'views/demos/goToMyLessonsDemo.html',
             restrict: 'A',
-            link: function postLink( $scope ) {
+            link: function postLink( $scope, element, attrs ) {
 
                 var modalInstance;
                 var goToUrl;
@@ -23,9 +23,11 @@ angular.module('lergoApp')
                 }
 
                 var unregister = $scope.$on('$routeChangeStart', function locationChangeStart( event ) {
-                    goToUrl = $location.url();
-                    event.preventDefault();
-                    $scope.openGoToMyLessonsDemoDialog();
+                    if ( attrs.active !== 'false') {
+                        goToUrl = $location.url();
+                        event.preventDefault();
+                        $scope.openGoToMyLessonsDemoDialog();
+                    }
                 });
 
                 $scope.openGoToMyLessonsDemoDialog = function () {

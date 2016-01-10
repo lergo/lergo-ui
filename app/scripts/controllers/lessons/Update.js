@@ -348,10 +348,14 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				});
 			}
 
+            $scope.isLessonInvalid = function(){
+                return !!$scope.lesson && !$scope.lesson.name;
+            };
+
 			$scope.$on('$locationChangeStart', function(event) { // guy -
 				// TODO - consider using route change instead.
 				persistScroll();
-				if (!!$scope.lesson && !$scope.lesson.name) {
+				if ( $scope.isLessonInvalid() ) {
 					var answer = confirm($filter('translate')('deleteLesson.Confirm'));
 					if (!answer) {
 						event.preventDefault();
