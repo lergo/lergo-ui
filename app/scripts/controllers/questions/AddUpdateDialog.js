@@ -27,6 +27,7 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 
 			});
 			function addSelectedItems(canClose) {
+                // questions should be added in the ascending order of data e.g question created first should come first
 				$scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');
 				angular.forEach($scope.selectedItems, function(item) {
 					addItemToQuiz(item, step);
