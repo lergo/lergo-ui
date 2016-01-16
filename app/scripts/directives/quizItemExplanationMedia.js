@@ -46,7 +46,7 @@ angular.module('lergoApp').directive('quizItemExplanationMedia', function($sce) 
 				return !!url;
 
 			}
-			$scope.getYoutubeEmbedSource = function(url) {
+			$scope.getYoutubeEmbedSource = function(url) { // todo : use service
 				var src = '//www.youtube.com/embed/' + getVideoId(url) + '?rel=0&iv_load_policy=3';
 				return $sce.trustAsResourceUrl(src);
 			};

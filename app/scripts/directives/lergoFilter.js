@@ -15,18 +15,43 @@
  * 'question' for collection question.
  *
  *
+ * load algorithm
+ * ================
  *
- * persistency ===========
- *
- * persistency is done by marshalling and unmarshalling the scope using
- * {@link FilterService#marshall} and {@link FilterService#unmarhsall}
+ * to read this directive, start from the code at the bottom.
+ * we first define 'persistancy' which also loads previously saved content
  *
  *
+ *
+ * Key Concepts
+ * =============
+ *
+ *  - persistency
+ *    see LergoFilterService
+ *    we keep the filter to session storage and url
+ *    when page loads we read session storage and url and sync the scope
+ *  - load function
+ *    each filter is loaded with a generic load function
+ *  - update filter
+ *    some filters require some custom handling to reach the query model (see below)
+ *    the update functions mainly serialize and deserialize object to/from query suitable form.
+ *    for example user is an object, but the 'update function' translates it to _id which is what we query.
+ *  - query model
+ *    the output for this filter is a query to mongo.
+ *    some flags require special handling in the backend.
+ *  - relevancy
+ *    not all filter are relevant everywhere.
+ *    those that are not relevant will be hidden and ignored in algorithms.
+ *
+ * Language handling
+ * =================
+ *
+ * Language gets a special treatment. By default it will be the website's language.
  *
  *
  */
 
-angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoClient, TagsService, $timeout, $q, FilterService, $log, LergoFilterService) {
+angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTranslate, LergoClient, TagsService, $timeout, $q, $log, LergoFilterService) {
 
 	return {
 		templateUrl : 'views/directives/_lergoFilter.html',
@@ -52,14 +77,14 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 
 			$scope.ageFilter = null; //should be null to properly load from localStorage
 
-			$scope.subjects = FilterService.subjects;
+			$scope.subjects = LergoFilterService.subjects;
 
-			$scope.languages = [{'id' : 'all'}].concat(FilterService.languages,[{ 'id' : 'other'}]);
+			$scope.languages = [{'id' : 'all'}].concat(LergoFilterService.languages,[{ 'id' : 'other'}]);
 
-			$scope.status = FilterService.status;
+			$scope.status = LergoFilterService.status;
 
-			$scope.reportStatus = FilterService.reportStatus;
-			$scope.abuseReportStatus = FilterService.abuseReportStatus;
+			$scope.reportStatus = LergoFilterService.reportStatus;
+			$scope.abuseReportStatus = LergoFilterService.abuseReportStatus;
 
 			$scope.statusValue = null;
 
@@ -113,7 +138,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
                         if ( newValue === 'all' ){
                             delete $scope.model.language;
                         }else if ( newValue === 'other'){
-                            $scope.model.language = { 'dollar_nin' : _.map( FilterService.languages, 'id')};
+                            $scope.model.language = { 'dollar_nin' : _.map( LergoFilterService.languages, 'id')};
                         }else{
                             $scope.model.language = newValue;
                         }
@@ -213,7 +238,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 			function setDefaultLanguage(force) {
 				try {
 					if ((!!scope.opts.showLanguage && !scope.filterLanguage) || !!force) {
-						scope.filterLanguage = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
+						scope.filterLanguage = LergoTranslate.getLanguageObject().name;
                         _updateLanguage(scope.filterLanguage);
 					}
 				} catch (e) {
@@ -223,7 +248,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoCl
 
 
 			$scope.$watch(function() {
-				return $rootScope.lergoLanguage;
+				return LergoTranslate.getLanguage();
 			}, function(newValue, oldValue) {
 				$log.info('should change language in filter?', newValue, oldValue);
 				if (!!newValue && !!oldValue && newValue !== oldValue) {

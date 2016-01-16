@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, $routeParams, FilterService, $log, $location, $rootScope, localStorageService, $window, $filter) {
+angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, LergoClient, TagsService, $routeParams, $log, LergoTranslate, $location, $rootScope, localStorageService, $window, $filter) {
 
 	$scope.reportsFilter = {};
 	$scope.filterPage = {};
@@ -102,9 +102,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		LergoClient.lessons.create().then(function(result) {
 			var lesson = result.data;
 			lesson.name = $filter('translate')('lesson.practice.title');
-			// todo: remove filter Service getLanguageByLocale - this should be
-			// coming from translate service.
-			lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
+			lesson.language = LergoTranslate.getLanguageObject().name; // todo: is this wrong?? shouldn't we take it from the lesson?
 			lesson.steps = [];
 			lesson.description = '';
 			lesson.lastUpdate = new Date().getTime();

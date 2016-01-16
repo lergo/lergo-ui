@@ -9,21 +9,26 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
 
         var supportedLanguages = [{
             'id': 'en',
+            'name' : 'english',
             'dir': 'ltr'
         }, {
             'id': 'he',
+            'name' : 'hebrew',
             'dir': 'rtl'
         }, {
             'id': 'ru',
+            'name' : 'russian',
             'dir': 'ltr'
         }, {
             'id': 'ar',
+            'name' : 'arabic',
             'dir': 'rtl'
         }];
         var DEFAULT_LANGUAGE = 'en';
 
-
-
+        this.getSupportedLanguages = function(){
+            return _.clone(supportedLanguages);
+        };
 
         this.isSupported = function (language) {
 
@@ -36,6 +41,19 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
             }
         };
 
+
+        this.getLanguageByName = function( _languageName ){
+            return _.find(supportedLanguages, {'name' : _languageName });
+        };
+
+        this.setLanguageByName = function( _languageName ){
+            this.setLanguage(this.getLanguageByName(_languageName).id);
+        };
+
+        /**
+         *
+         * @param {string} _language the language id . e.g. 'ru' , 'he'
+         */
         this.setLanguage = function (_language) {
             $log.debug('setting new language', _language);
             if (this.isSupported(_language)) {
@@ -54,10 +72,19 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
             }
         };
 
+        /**
+         *
+         * @returns {string} language id. e.g. : en, he
+         */
         this.getLanguage = function () {
             return $translate.use();
         };
 
+        /**
+         *
+         * @param [string] _language if empty will use current language
+         * @returns {object} the desired language object
+         */
         this.getLanguageObj = function (_language) {
             if ( !_language ){
                 _language = this.getLanguage();
@@ -66,6 +93,8 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
                 return item.id === _language;
             });
         };
+
+        this.getLanguageObject = this.getLanguageObj; // alias
 
         this.getSupportedLanguages = function () {
             return supportedLanguages;

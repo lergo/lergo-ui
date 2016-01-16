@@ -42,7 +42,8 @@
 
                         <div class="header-language">
                             <i class="fa fa-globe fa-fw"></i>
-                            <select ng-model="$root.lergoLanguage" ng-options="lang.id as ( 'general.translationLanguage.' + lang.id | translate ) for lang in $root.lergoLanguages" tooltip="{{'baseLayout.header.siteLanguage' | translate}}" tooltip-placement="right"></select>
+
+                            <select ng-model="baseLayout.language" ng-options="lang.id as ( 'general.translationLanguage.' + lang.id | translate ) for lang in baseLayout.lergoLanguages" tooltip="{{'baseLayout.header.siteLanguage' | translate}}" tooltip-placement="right"></select>
                         </div>
                     </div>
 				</div>

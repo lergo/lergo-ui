@@ -12,13 +12,13 @@
  *  - when you modify the order, you actually update a single model with items index changed.
  *
  */
-angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $log, $rootScope, ContinuousSave, LergoClient ) {
+angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $log, LergoTranslate, ContinuousSave, LergoClient ) {
 
     function init() {
         stopWatch();
-        LergoClient.faqs.list($rootScope.lergoLanguage).then(function (result) {
+        LergoClient.faqs.list(LergoTranslate.getLanguage()).then(function (result) {
             if (!result.data) { // need to create
-                return LergoClient.faqs.create({locale: $rootScope.lergoLanguage});
+                return LergoClient.faqs.create({locale: LergoTranslate.getLanguage()});
             }else{
                 return result;
             }
@@ -79,7 +79,7 @@ angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $log, $ro
 	};
 
 	$scope.$watch(function() {
-		return $rootScope.lergoLanguage;
+		return LergoTranslate.getLanguage();
 	}, function handleLanguageChanged(newValue, oldValue) {
 		if (!!newValue && !!oldValue && newValue !== oldValue) {
 			init();

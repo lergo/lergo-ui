@@ -1,4 +1,8 @@
 
+improve(filter): define filter as 'in use' if language is not website language.
+
+improve(filter): make filter kept on session.
+
 fix(explanation media): fix scenarios where it should display and when it should not.
 
 improve(link): add another google drive format

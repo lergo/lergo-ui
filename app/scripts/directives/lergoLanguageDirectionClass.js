@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('lergoApp')
-    .directive('lergoLanguageDirectionClass', function ($rootScope, $filter) {
+    .directive('lergoLanguageDirectionClass', function (LergoTranslate, $filter) {
         return {
             restrict: 'A',
             link: function postLink(scope, element/*, attrs*/) {
 
                 scope.$watch(function () {
-                        return $rootScope.lergoLanguage;
+                        return LergoTranslate.getLanguage();
                     },
                     function (newValue, oldValue) {
                         try {

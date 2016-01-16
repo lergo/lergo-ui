@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('AdminAbuseReportIndexCtrl', function($scope, FilterService, LergoClient, $log, $filter) {
+angular.module('lergoApp').controller('AdminAbuseReportIndexCtrl', function($scope, LergoClient, $log, $filter) {
 
 	$scope.adminFilter = {};
 	$scope.filterPage = {};

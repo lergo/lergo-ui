@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown']).config(
+angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ngStorage']).config(
     function ($routeProvider, $httpProvider, $logProvider, $locationProvider, $translateProvider ) {
 
         $logProvider.debugEnabled(false);
@@ -106,7 +106,7 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
                 // this view to
                 // view/create/_lessons.html
                 controller: 'BaseLayoutCreateCtrl',
-                reloadOnSearch: false,
+                reloadOnSearch: false
             }).when('/user/lessons/:lessonId/update', {
                 templateUrl: 'views/lessons/update.html',
                 controller: 'LessonsUpdateCtrl',
