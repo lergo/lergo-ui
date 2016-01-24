@@ -18,7 +18,7 @@
 						</li>
 					</ul>
 				</div>
-				[ {{ 'lessons.total' | translate }}: {{lessons.length}} ]
+				[ {{ 'lessons.total' | translate }}: {{filterPage.count}} ]
 			</div>
 			<div class="page-content-titles-actions">
 				<button ng-click="create()" class="btn btn-start">{{ 'lessons.create' | translate }}</button>
@@ -59,7 +59,7 @@
 			</table>
 		</div>
         <div class="page-content-body text-center" ng-show="!lessons || lessons.length == 0">
-            <span class="label label-warning" style="padding: 10px">{{'lessons.noLessons' | translate}}</span>
+            <span class="alert alert-warning font-medium" >{{'lessons.noLessons' | translate}}</span>
         </div>
 		<div class="sidebar page-content-sidebar">
 			<div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
