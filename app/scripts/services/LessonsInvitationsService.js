@@ -2,6 +2,14 @@
 
 angular.module('lergoApp').service('LessonsInvitationsService', function LessonsInvitationsService($http) {
 
+    /**
+     *
+     * @param {string} lessonId
+     * @param {object} invitation
+     * @param {object} invitation.invitee
+     * @param {string} invitation.invitee.name
+     * @returns {*}
+     */
 	this.create = function(lessonId, invitation) {
 		return $http.post('/backend/lessons/' + lessonId + '/invitations/create', invitation);
 	};
@@ -24,6 +32,10 @@ angular.module('lergoApp').service('LessonsInvitationsService', function Lessons
 	this.update = function(invitation) {
 		return $http.post('/backend/invitations/' + invitation._id + '/update', invitation);
 	};
+
+    this.getLink = function(invitation){
+        return window.location.origin + '/index.html#!/public/lessons/' + invitation.lessonId + '/intro?invitationId=' + invitation._id;
+    };
 
 	this.remove = function(invitation) {
 		return $http.post('/backend/invitations/' + invitation._id + '/delete');

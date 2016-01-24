@@ -143,9 +143,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		$scope.share = false;
 		$scope.invite = !$scope.invite;
 	};
-	$scope.onTextClick = function($event) {
-		$event.target.select();
-	};
+
 	var lessonLikeWatch = null;
 	$scope.$watch('lesson', function(newValue) {
 		if (!!newValue) {

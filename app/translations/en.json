@@ -544,8 +544,16 @@
         },
         "genericVideosPost": " The list will open in a new tab.",
         "genericVideosPre": "For a list of generic animated videos please",
-        "inviteLesson": "Invite to lesson",
-        "inviteLessonHelpText": "To generate a link for the invite please enter student's first name and press submit",
+        "inviteLesson": {
+            "student": {
+                "msg": "Invite student",
+                "help": "To generate a link for the invite please enter student's first name and press submit"
+            },
+            "class": {
+                "msg": "Invite class",
+                "help": "Send this link to your students"
+            }
+        },
         "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
         "inviteSuccessText": "Copy the link below to invite a student to the lesson",
         "lessonCompleted": "You have completed the lesson",

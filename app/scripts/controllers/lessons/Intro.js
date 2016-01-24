@@ -179,10 +179,6 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		LergoClient.abuseReports.abuseLesson($scope.abuseReport, $scope.lesson);
 	};
 
-	$scope.onTextClick = function($event) {
-		$event.target.select();
-	};
-
 	function giveCreditToQuestionsWeCopied(questions) {
 
 		var questionsWeCopied = _.filter(questions, 'copyOf');

@@ -169,9 +169,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 				$scope.shareLink = LergoClient.questions.getShareLink(question);
 				$scope.share = !$scope.share;
 			};
-			$scope.onTextClick = function($event) {
-				$event.target.select();
-			};
+
 			$scope.isCorrectFillInTheBlanks = function(quizItem, index) {
 				var userAnswer = quizItem.userAnswer[index];
 				return !!userAnswer && quizItem.answer[index].split(';').indexOf(userAnswer) >= 0;

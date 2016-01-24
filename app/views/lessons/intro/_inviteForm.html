@@ -1,22 +1,37 @@
-<div class="lergo-form invite">
-		<p class="lergo-h4" >{{'lessons.inviteLesson'| translate}}</p>
-		<button  class="btn-link close-button" ng-click="setActiveAction()">X</button>
-		<p>{{'lessons.inviteLessonHelpText' | translate}}</p>
-	<div ng-controller="LessonsInvitesCreateCtrl" class="container">
-		<div>{{ 'name' | translate }}</div>
-		<input type="text" ng-model="invite.invitee.name" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
-		<div ng-show="!!createSuccess">
-			<div>{{'lessons.inviteSuccessText' | translate}}</div>
-			<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
-		</div>
-		<br />
-		<div class="button">
-			<button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | translate }}</button>
-			<button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | translate }}</button>
-		</div>
-		<div>
-			<span class="lergo-h4">{{'lessons.note' | translate}}:</span>
-			{{'lessons.noteMessage' | translate}}
-		</div>
-	</div>
+<div class="lergo-form invite lesson-action-panel">
+    <div class="invite-sections sections-links lesson-action-panel-navigation clearfix">
+        <p class="lergo-h4 lesson-action-panel-link" ng-class="{active:isStudentMode()}" ng-click="setStudentMode()">{{'lessons.inviteLesson.student.msg'| translate}}</p>
+        <p class="lergo-h4 lesson-action-panel-link" ng-class="{active:isClassMode()}" ng-click="setClassMode()"> {{'lessons.inviteLesson.class.msg' | translate }}</p>
+        <button  class="btn-link close-button" ng-click="onClose()"><span class="fa fa-times"></span></button>
+    </div>
+
+
+        <div ng-show="isStudentMode()" ng-class="{active:isStudentMode()}" class="container">
+            <p select-all-text-on-click>{{'lessons.inviteLesson.student.help' | translate}}</p>
+
+            <div class="container">
+                <div>{{ 'name' | translate }}</div>
+                <input type="text" ng-model="invite.invitee.name" on-enter="enterPressed()" />
+                <div ng-show="!!createSuccess">
+                    <div>{{'lessons.inviteSuccessText' | translate}}</div>
+                    <input type="text" ng-value="getLink()" readonly select-all-text-on-click on-enter="enterPressed()" />
+                </div>
+                <br />
+                <div class="button">
+                    <button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | translate }}</button>
+                    <button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | translate }}</button>
+                </div>
+                <div>
+                    <span class="lergo-h4">{{'lessons.note' | translate}}:</span>
+                    {{'lessons.noteMessage' | translate}}
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="isClassMode()" ng-class="{active:isClassMode()}" class="container">
+            <p>{{ 'lessons.inviteLesson.class.help' | translate }}</p>
+            <div>
+                <input type="text" ng-value="getClassLink()" readonly  select-all-text-on-click />
+            </div>
+        </div>
 </div>

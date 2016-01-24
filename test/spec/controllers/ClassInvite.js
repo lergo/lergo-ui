@@ -1,22 +1,22 @@
 //'use strict';
 //
-//describe('Controller: LessonsInvitesCreateCtrl', function () {
+//describe('Controller: ClassInviteCtrl', function () {
 //
 //    // load the controller's module
 //    beforeEach(module('lergoApp'));
 //
-//    var LessonsInvitesCreateCtrl,
+//    var ClassInviteCtrl,
 //        scope;
 //
 //    // Initialize the controller and a mock scope
 //    beforeEach(inject(function ($controller, $rootScope) {
 //        scope = $rootScope.$new();
-//        LessonsInvitesCreateCtrl = $controller('LessonsInvitesCreateCtrl', {
+//        ClassInviteCtrl = $controller('ClassInviteCtrl', {
 //            $scope: scope
 //        });
 //    }));
 //
-//    it('should attach getLink to the scope', function () {
-//        expect(typeof(scope.getLink)).toBe('function');
-//    });
+//    it('should attach a list of awesomeThings to the scope', inject(function () {
+//        expect(scope.awesomeThings.length).toBe(3);
+//    }));
 //});

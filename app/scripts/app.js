@@ -78,6 +78,9 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
             }).when('/:role/lessons/:lessonId/intro', {
                 templateUrl: 'views/lessons/intro.html',
                 controller: 'LessonsIntroCtrl'
+            }).when('/:role/lessons/:lessonId/classInvite', {
+                templateUrl: 'views/invites/classInvite.html',
+                controller: 'ClassInviteCtrl'
             }).when('/public/lessons/:lessonId/share', {
                 template: '',
                 controller: 'LessonsInvitesPublicShareCtrl'

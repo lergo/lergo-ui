@@ -664,3 +664,12 @@ $COLOR_19: #2a6496 !default;
 .clickable, a, a i, a i.fa,  a i.fa:before{
     cursor:pointer;
 }
+
+
+.lergo-body-tile{
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    background-color: $LERGO_BODY_TILE_BACKGROUND;
+}

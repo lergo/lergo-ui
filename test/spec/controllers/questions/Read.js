@@ -48,13 +48,7 @@ describe('Controller: QuestionsReadCtrl', function () {
         });
     });
 
-    describe('#onTextClick', function(){
-        it('should select text', function(){
-            var event = { target : { select : jasmine.createSpy('select')} };
-            scope.onTextClick(event);
-            expect(event.target.select).toHaveBeenCalled();
-        });
-    });
+
 
     describe('#absoluteShareLink', function(){
         it('should get share link', function(){
