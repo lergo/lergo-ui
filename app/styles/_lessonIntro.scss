@@ -275,13 +275,11 @@
                     .close-button {
                         float: left;
                     }
-                    .share {
-                        .share-navigation {
-                            .share-section-link {
-                                float: right;
-                                &:not(:first-child) {
-                                    margin-right: 20px;
-                                }
+                    .lesson-action-panel{
+                        .lesson-action-panel-link{
+                            float:right;
+                            &:not(:first-child) {
+                                margin-right: 20px;
                             }
                         }
                     }

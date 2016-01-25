@@ -10,4 +10,31 @@
     .lergo-body-tile{
         padding:40px;
     }
+
+    .instructions-title{
+        text-align:center;
+        font-size:25px;
+    }
+
+    .instructions-details{
+        padding: 0 20px;
+    }
+
+    .horizontal{
+        padding: 0 60px;
+        .input{
+            vertical-align: middle;
+            max-width:200px;
+//            overflow:hidden;
+//            text-overflow:ellipsis;
+            word-break: break-all;
+        }
+    }
+}
+
+.rtl #classInvite{
+    .label {
+        text-align: right;
+
+    }
 }

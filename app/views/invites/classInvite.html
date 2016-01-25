@@ -4,23 +4,26 @@
         <form ng-submit="createInvite()">
         <div ng-show="!classInvite.data">
             <div class="lergo-form">
-                <div class="instructions section">
-                    Welcome to LerGO.<br/>
+                <div class="instructions-title section">
+                    {{ 'classInvite.welcome' | translate }}
+                </div>
+                <div class="instructions-details section">
+                    {{ 'classInvite.instructions' | translate }}
                 </div>
                 <div class="section horizontal">
-                    <div class="label">Lesson Name:   </div>
+                    <div class="label">  {{ 'classInvite.lessonName' | translate }}   </div>
                     <div class="input">  {{classInvite.lessonName}}</div>
                 </div>
                 <div class="section horizontal">
-                    <div class="label">Teacher Name:  </div>
+                    <div class="label"> {{ 'classInvite.teacherName' | translate }}  </div>
                     <div class="input"> {{classInvite.username}} </div>
                 </div>
                 <div class="section horizontal">
-                    <div class="label">Student Name:  </div>
+                    <div class="label">  {{ 'classInvite.studentName' | translate }}  </div>
                     <div class="input"> <input type="text" ng-model="classInvite.studentName" autofocus/></div>
                 </div>
                 <div class="actions">
-                    <button class="btn" ng-click="createInvite()" >Start Lesson</button>
+                    <button class="btn" ng-click="createInvite()" > {{ 'classInvite.start'  | translate }}</button>
                 </div>
             </div>
 

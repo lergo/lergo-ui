@@ -949,5 +949,14 @@
         },
         "gotIt" : "Got it",
         "dontShowAgain" : "Do not show this again"
+    },
+
+    "classInvite" : {
+        "welcome" : "Welcome to Lergo!",
+        "lessonName" : "Lesson Name",
+        "teacherName" : "Teacher Name",
+        "studentName" : "Student Name",
+        "start" : "Start",
+        "instructions" : "Note: to go to lesson enter your first name and click on \"go to lesson\""
     }
 }
