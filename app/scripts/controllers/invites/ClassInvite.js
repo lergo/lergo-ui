@@ -8,13 +8,14 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('ClassInviteCtrl', function ($scope, LergoClient, $routeParams, $log) {
+    .controller('ClassInviteCtrl', function ($scope, LergoClient, $routeParams, $log, FilterService, LergoTranslate, $rootScope ) {
         $scope.classInvite = {};
         var lessonId = $routeParams.lessonId;
         var by = $routeParams.by;
 
         LergoClient.lessons.getById(lessonId).then(function (result) {
             $scope.classInvite.lessonName = result.data.name;
+            $rootScope.lergoLanguage = FilterService.getLocaleByLanguage(result.data.language);
         });
 
         LergoClient.users.findUsersById([by]).then(function (result) {
