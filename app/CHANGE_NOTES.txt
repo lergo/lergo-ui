@@ -1,3 +1,4 @@
+fix(classInvite): fix style. add border and alignment on button.
 
 fix(explanation media): fix scenarios where it should display and when it should not.
 
