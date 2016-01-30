@@ -14,7 +14,8 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
 		if (!$scope.lesson.temporary) {
 			$location.path('/public/lessons/invitations/' + invitationId + '/display').search({
-				lessonId : $scope.lesson._id
+				lessonId : $scope.lesson._id,
+                reportId: $routeParams.reportId
 			});
 		} else {
 			$location.path('/public/lessons/invitations/' + invitationId + '/display').search({
@@ -144,6 +145,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	};
 
 	$scope.startLesson = function() {
+
 		if (!!preview) { // preview - no lesson report, no invitation
 			redirectToPreview();
 		} else if (!invitationId) { // prepared invitation

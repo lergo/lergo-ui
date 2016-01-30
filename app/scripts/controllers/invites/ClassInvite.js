@@ -8,10 +8,15 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('ClassInviteCtrl', function ($scope, LergoClient, $routeParams, $log, FilterService, LergoTranslate, $rootScope ) {
+    .controller('ClassInviteCtrl', function ($scope, LergoClient, $routeParams, $log, FilterService, LergoTranslate, $rootScope , $location ) {
         $scope.classInvite = {};
+        var invitation;
         var lessonId = $routeParams.lessonId;
         var by = $routeParams.by;
+
+        LergoClient.lessonsInvitations.get($routeParams.invitationId).then(function( result ){
+            invitation = result.data;
+        });
 
         LergoClient.lessons.getById(lessonId).then(function (result) {
             $scope.classInvite.lessonName = result.data.name;
@@ -23,22 +28,22 @@ angular.module('lergoApp')
             $scope.classInvite.username = user.username;
         });
 
-        $scope.createInvite = function () {
+
+        $scope.createReportFromClassInvite = function () {
             $scope.classInvite.error = null;
-            if (!!$scope.classInvite.studentName) {
-                LergoClient.lessonsInvitations.create(lessonId, {
-                    invitee: {name: $scope.classInvite.studentName},
-                    by: by,
-                    t: $routeParams.t
-                })
-                    .then(function success(result) {
-                        $log.info('invite is ready', result.data);
-                        $scope.classInvite.data = result.data;
-                        window.location = LergoClient.lessonsInvitations.getLink(result.data);
-                    }, function error(result) {
-                        $scope.classInvite.error = result.data;
+            LergoClient.reports.createFromInvitation(invitation, {invitee: {name: $scope.classInvite.studentName}})
+                .then(function success(result) {
+                    $log.info('invite is ready', result.data);
+                    $scope.classInvite.data = result.data;
+                    $location.path('/public/lessons/' + lessonId + '/intro').search({
+                        lessonId: lessonId,
+                        invitationId: invitation._id,
+                        reportId: result.data._id
                     });
-            }
+                }, function error(result) {
+                    $scope.classInvite.error = result.data;
+                });
         };
+
 
     });

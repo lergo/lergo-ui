@@ -48,8 +48,8 @@ angular.module('lergoApp').directive('lessonCreateInviteForm', function($log, Le
             });
 
             $scope.getClassLink = function(){
-                if ( user ) {
-                    return window.location.origin + '/index.html#!/public/lessons/' + lessonId + '/classInvite?by=' + user._id + '&t=' + token;
+                if ( user && invitation) {
+                    return window.location.origin + '/index.html#!/public/lessons/' + lessonId + '/classInvite?by=' + user._id + '&t=' + token + '&invitationId=' + invitation._id;
                 }
                 return '';
             };
@@ -63,7 +63,11 @@ angular.module('lergoApp').directive('lessonCreateInviteForm', function($log, Le
 
             $scope.getLink = function() {
                 if (invitation !== null) {
-                    return LergoClient.lessonsInvitations.getLink(invitation);
+                    if ($scope.isStudentMode()) {
+                        return LergoClient.lessonsInvitations.getLink(invitation);
+                    }else if ( $scope.isClassMode()){
+                        return $scope.getClassLink();
+                    }
                 }
             };
 
@@ -71,6 +75,8 @@ angular.module('lergoApp').directive('lessonCreateInviteForm', function($log, Le
                 $scope.createSuccess = false;
                 $scope.invite.invitee = {};
             };
+
+
             $scope.sendInvite = function() {
                 $scope.createError = false;
                 $scope.createSuccess = false;

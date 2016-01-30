@@ -677,3 +677,10 @@ $COLOR_19: #2a6496 !default;
     border-radius: 10px;
     background-color: $LERGO_BODY_TILE_BACKGROUND;
 }
+
+
+// settings this as default behavior as I assume that all text for copy-paste is in english and usually links or embed snippet
+[select-all-text-on-click]{
+    text-align:start;
+    direction:ltr;
+}

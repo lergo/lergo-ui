@@ -13,7 +13,7 @@
                 <div>{{ 'name' | translate }}</div>
                 <input type="text" ng-model="invite.invitee.name" on-enter="enterPressed()" />
                 <div ng-show="!!createSuccess">
-                    <div>{{'lessons.inviteSuccessText' | translate}}</div>
+                    <div>{{'lessons.inviteLesson.student.success' | translate}}</div>
                     <input type="text" ng-value="getLink()" readonly select-all-text-on-click on-enter="enterPressed()" />
                 </div>
                 <br />
@@ -30,8 +30,19 @@
 
         <div ng-show="isClassMode()" ng-class="{active:isClassMode()}" class="container">
             <p>{{ 'lessons.inviteLesson.class.help' | translate }}</p>
-            <div>
-                <input type="text" ng-value="getClassLink()" readonly  select-all-text-on-click />
+            <div class="container">
+                <div>{{ 'name' | translate }}</div>
+                <input type="text" ng-model="invite.invitee.name" on-enter="enterPressed()" />
+                <div ng-show="!!createSuccess">
+                    <div>{{'lessons.inviteLesson.class.success' | translate}}</div>
+                    <input type="text" ng-value="getClassLink()" readonly select-all-text-on-click on-enter="enterPressed()" />
+                </div>
+                <br />
+                <div class="button">
+                    <button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | translate }}</button>
+                    <button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | translate }}</button>
+                </div>
+
             </div>
         </div>
 </div>
