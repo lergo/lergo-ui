@@ -45,7 +45,7 @@
 							<input type="checkbox" style="margin-left: 5px;" ng-model="invite.selected">
 						</td>
 						<td class="name">
-							<a tooltip="{{'invites.tooltip.go' | translate}}" ng-href="#!/public/lessons/{{invite.lessonId}}/intro?invitationId={{invite._id}}">
+							<a tooltip="{{'invites.tooltip.go' | translate}}" ng-href="{{getInvitationLink(invite)}}">
 								<span ng-show="invite.name.trim().length > 0" class="{{!invite.finished && 'bold' || ''}}"> {{ invite.name}} </span>
 								<span ng-show="invite.name.trim().length <= 0" class="{{!invite.finished && 'bold' || ''}}">[ no title ]</span>
 							</a>

@@ -15,7 +15,8 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 		if (!$scope.lesson.temporary) {
 			$location.path('/public/lessons/invitations/' + invitationId + '/display').search({
 				lessonId : $scope.lesson._id,
-                reportId: $routeParams.reportId
+                reportId: $routeParams.reportId,
+                currentStepIndex:0 // required, otherwise we will get 'unsaved changes' alert
 			});
 		} else {
 			$location.path('/public/lessons/invitations/' + invitationId + '/display').search({

@@ -12,10 +12,15 @@ angular.module('lergoApp')
         $scope.classInvite = {};
         var invitation;
         var lessonId = $routeParams.lessonId;
-        var by = $routeParams.by;
 
         LergoClient.lessonsInvitations.get($routeParams.invitationId).then(function( result ){
             invitation = result.data;
+            $scope.classInvite.className = invitation.invitee.class;
+        }).then(function(){
+            LergoClient.users.findUsersById([invitation.inviter]).then(function (result) {
+                var user = result.data[0];
+                $scope.classInvite.username = user.username;
+            });
         });
 
         LergoClient.lessons.getById(lessonId).then(function (result) {
@@ -23,10 +28,7 @@ angular.module('lergoApp')
             $rootScope.lergoLanguage = FilterService.getLocaleByLanguage(result.data.language);
         });
 
-        LergoClient.users.findUsersById([by]).then(function (result) {
-            var user = result.data[0];
-            $scope.classInvite.username = user.username;
-        });
+
 
 
         $scope.createReportFromClassInvite = function () {

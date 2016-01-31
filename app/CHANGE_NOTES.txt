@@ -1,3 +1,11 @@
+improve(classInvite):
+
+1. Make class invites in 'my invites' link to class invite land page
+2. fix 'you have unsaved changes' alert
+3. fix alignment for help text
+4. add class name to class invite form
+5. add class name to report
+
 fix(copy-links): make link alignment the same in all languages
 
 improve(classInvite): add name of class. generate report for each student instead of invite.

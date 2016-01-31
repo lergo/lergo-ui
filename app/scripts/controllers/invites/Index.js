@@ -15,6 +15,14 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 		selectAll : false
 	};
 
+    $scope.getInvitationLink = function(invite){
+        if ( invite.invitee.name ) {
+            return '#!/public/lessons/' + invite.lessonId + '/intro?invitationId=' + invite._id;
+        }else{
+            return '#!/public/lessons/' + invite.lessonId + '/classInvite?invitationId=' + invite._id;
+        }
+    };
+
 	$scope.loadInvites = function() {
 		$scope.invitesPage.selectAll = false;
 		if (!$scope.filterPage.current) {
