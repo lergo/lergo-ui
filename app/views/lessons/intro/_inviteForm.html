@@ -5,44 +5,34 @@
         <button  class="btn-link close-button" ng-click="onClose()"><span class="fa fa-times"></span></button>
     </div>
 
+    <script type="text/ng-template" id="inline_lessonCreateInviteFormItem.html">
+        <p>{{'lessons.inviteLesson.' + mode + '.help'  | translate }} </p>
+        <div class="container">
+            <div>{{'name' | translate }}</div>
+            <input type="text" ng-model="invitationName" on-enter="enterPressed()" />
+            <div ng-show="isSuccess()">
+                <div>{{'lessons.inviteLesson.' + mode + '.success' | translate}}</div>
+                <input type="text" ng-value="getLink()" readonly select-all-text-on-click on-enter="enterPressed()" />
+            </div>
+            <br/>
+            <div class="button">
+                <button class="btn" ng-click="sendInvite()" ng-show="!isSuccess()" ng-disabled="!isValid()">{{ 'button.submit' | translate }}</button>
+                <button ng-click="newInvite()" class="btn" ng-show="isSuccess()">{{ 'button.newInvite' | translate }}</button>
+            </div>
+            <div>
+                <span class="lergo-h4">{{'lessons.inviteLesson.' + mode + '.noteTitle' | translate}}:</span>
+                {{'lessons.inviteLesson.' + mode + '.noteMessage' | translate}}
+            </div>
+
+        </div>
+    </script>
+
 
         <div ng-show="isStudentMode()" ng-class="{active:isStudentMode()}" class="container">
-            <p>{{'lessons.inviteLesson.student.help' | translate}}</p>
-
-            <div class="container">
-                <div>{{ 'name' | translate }}</div>
-                <input type="text" ng-model="invite.invitee.name" on-enter="enterPressed()" />
-                <div ng-show="!!createSuccess">
-                    <div>{{'lessons.inviteLesson.student.success' | translate}}</div>
-                    <input type="text" ng-value="getLink()" readonly select-all-text-on-click on-enter="enterPressed()" />
-                </div>
-                <br />
-                <div class="button">
-                    <button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | translate }}</button>
-                    <button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | translate }}</button>
-                </div>
-                <div>
-                    <span class="lergo-h4">{{'lessons.note' | translate}}:</span>
-                    {{'lessons.noteMessage' | translate}}
-                </div>
-            </div>
+            <div lesson-create-invite-form-item="student"></div>
         </div>
 
         <div ng-show="isClassMode()" ng-class="{active:isClassMode()}" class="container">
-            <p>{{ 'lessons.inviteLesson.class.help' | translate }}</p>
-            <div class="container">
-                <div>{{ 'name' | translate }}</div>
-                <input type="text" ng-model="invite.invitee.class" on-enter="enterPressed()" />
-                <div ng-show="!!createSuccess">
-                    <div>{{'lessons.inviteLesson.class.success' | translate}}</div>
-                    <input type="text" ng-value="getLink()" readonly select-all-text-on-click on-enter="enterPressed()" />
-                </div>
-                <br />
-                <div class="button">
-                    <button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.class">{{ 'button.submit' | translate }}</button>
-                    <button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | translate }}</button>
-                </div>
-
-            </div>
+            <div lesson-create-invite-form-item="class"></div>
         </div>
 </div>

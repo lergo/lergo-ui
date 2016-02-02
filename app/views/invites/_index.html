@@ -33,7 +33,7 @@
 							</div>
 						</td>
 						<td>{{ 'name' | translate }}</td>
-						<td>{{ 'reports.student' | translate}}</td>
+						<td>{{ 'invites.studentOrClass' | translate}}</td>
 						<td>{{ 'filters.labels.language' | translate}}</td>
 						<td>{{ 'filters.labels.subject' | translate}}</td>
 						<td>{{ 'questions.age' | translate }}</td>
@@ -51,7 +51,7 @@
 							</a>
 						</td>
 						<td class="answer">
-							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.invitee.name}}</span>
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.invitee.name || invite.invitee.class}}</span>
 						</td>
 						<td class="answer">
 							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.language && ('filters.languages.' + invite.language | translate) ||""}}</span>

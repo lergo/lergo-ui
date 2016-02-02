@@ -1,6 +1,114 @@
 'use strict';
+/**
+ * this code might require more work.
+ * I decided to have 2 directives in same file because the parent directive
+ * seems redundant and I would like to find a way to remove it altogether.
+ * conceptually I couldn't bring myself to create a file for it..
+ *
+ * Not sure if I like angular-bootstrap tabs implementation, even though it might be suitable here.
+ *
+ * I want to check :
+ * https://thinkster.io/angular-tabs-directive
+ * before I decide
+ *
+ */
 
-angular.module('lergoApp').directive('lessonCreateInviteForm', function($log, LergoClient, $routeParams) {
+angular.module('lergoApp').directive('lessonCreateInviteFormItem', function(LergoClient, $routeParams, $log){
+
+    return {
+        restrict: 'A',
+        scope:{
+            mode: '@lessonCreateInviteFormItem'
+        },
+        templateUrl: 'inline_lessonCreateInviteFormItem.html',
+        link: function($scope){
+            var invitation = null;
+            var lessonId = $routeParams.lessonId;
+            var user = null;
+            var invite = null;
+
+            $scope.newInvite = function(){
+                invitation = null;
+                $scope.invitationName = null;
+                invite = {
+                    'lessonId' : lessonId,
+                    'invitee' : {}
+                };
+            };
+
+            $scope.newInvite();
+
+            LergoClient.isLoggedIn(true).then(function( result ){
+                user = result.data.user;
+                return result;
+            });
+
+            function isClassMode (){
+                return $scope.mode === 'class';
+            }
+
+            function isStudentMode(){
+                return $scope.mode === 'student';
+            }
+
+            $scope.$watch('invitationName', function(newValue){
+                if ( isClassMode() ){
+                    invite.invitee.class = newValue;
+
+                }else if ( isStudentMode() ){
+                    invite.invitee.name = newValue;
+                }
+            });
+
+            $scope.getLink = function(){
+                if ( !invitation ){
+                    return;
+                }
+                if ( isStudentMode()){
+                    return LergoClient.lessonsInvitations.getLink(invitation);
+                }
+                if ( isClassMode()) {
+                    return window.location.origin + '/index.html#!/public/lessons/' + lessonId + '/classInvite?invitationId=' + invitation._id;
+                }
+                return '';
+            };
+
+
+            $scope.isSuccess = function(){
+                return !!invitation;
+            };
+
+            $scope.sendInvite = function () {
+                $scope.createError = false;
+                $log.info('inviting', invite);
+                return LergoClient.lessonsInvitations.create($routeParams.lessonId, invite).then(function (result) {
+                    invitation = result.data;
+                }, function () {
+                    $scope.createError = true;
+                });
+            };
+
+            $scope.isValid = function(){
+                if ( isStudentMode() ){
+                    return !!invite.invitee.name;
+                }else if ( isClassMode()){
+                    return !!invite.invitee.class;
+                }
+                return false;
+            };
+
+            $scope.enterPressed = function(){
+                if ( $scope.isSuccess() ) {
+                    $scope.newInvite();
+                } else if ( !!$scope.isValid()) {
+                    $scope.sendInvite();
+                }
+            };
+        }
+    };
+});
+
+angular.module('lergoApp').directive('lessonCreateInviteForm', function() {
     return {
         restrict: 'A',
         templateUrl: 'views/lessons/intro/_inviteForm.html',
@@ -8,9 +116,6 @@ angular.module('lergoApp').directive('lessonCreateInviteForm', function($log, Le
             'onClose' : '&'
         },
         link: function($scope/*,element,attrs*/){
-
-            var invitation = null;
-            var lessonId = $routeParams.lessonId;
 
             var Modes = {
                 CLASS: 'class',
@@ -38,66 +143,6 @@ angular.module('lergoApp').directive('lessonCreateInviteForm', function($log, Le
             $scope.isStudentMode = function(){
                 return $scope.mode === Modes.STUDENT;
             };
-
-            var user;
-            var token;
-            LergoClient.isLoggedIn(true).then(function( result ){
-                user = result.data.user;
-                token = result.data.token;
-                return result;
-            });
-
-            $scope.getClassLink = function(){
-                if ( user && invitation) {
-                    return window.location.origin + '/index.html#!/public/lessons/' + lessonId + '/classInvite?invitationId=' + invitation._id;
-                }
-                return '';
-            };
-
-
-
-            $scope.invite = {
-                'lessonId' : lessonId,
-                'invitee' : {}
-            };
-
-            $scope.getLink = function() {
-                if (invitation !== null) {
-                    if (  invitation.invitee.name ) {
-                        return LergoClient.lessonsInvitations.getLink(invitation);
-                    }else if ( invitation.invitee.class ){
-                        return $scope.getClassLink();
-                    }
-                }
-            };
-
-            $scope.newInvite = function() {
-                $scope.createSuccess = false;
-                $scope.invite.invitee = {};
-            };
-
-
-            $scope.sendInvite = function() {
-                $scope.createError = false;
-                $scope.createSuccess = false;
-                $log.info('inviting', $scope.invite);
-                LergoClient.lessonsInvitations.create($routeParams.lessonId, $scope.invite).then(function(result) {
-                    invitation = result.data;
-                    $log.info('after invitation');
-                    $scope.createSuccess = true;
-                }, function() {
-                    $scope.createError = true;
-                });
-            };
-            $scope.enterPressed = function() {
-                if ($scope.createSuccess) {
-                    $scope.newInvite();
-                } else if (!!$scope.invite.invitee.name || !!$scope.invite.invitee.class ) {
-                    $scope.sendInvite();
-                }
-            };
         }
     };
-
-
 });
