@@ -1,3 +1,12 @@
+
+improve(signup): add email retype field
+
+fix(hint): make hint clickable on mobile.
+
+hint and "create your own" yellow button are written exactly the same.
+I am not sure why hint didn't work, but I have noticed they are both using 'focus' trigger
+for popover which is an issue with mobile. adding 'click' trigger on hint solved the issue.
+
 improve(classInvite):
 
 1. Make class invites in 'my invites' link to class invite land page

@@ -859,6 +859,7 @@
             "confPasswordRequired": "Confirm password is required.",
             "invalidChar": "Username should only contain alphanumeric characters and underscore.",
             "invalidEmail": "Enter valid email.",
+            "emailMismatch" : "email does not match",
             "minLength": "Username should contain at least 3 characters.",
             "nameRequired": "Name is required.",
             "passwordRequired": "Password is required."
