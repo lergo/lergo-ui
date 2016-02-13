@@ -1,4 +1,6 @@
 
+task(phraseapp): move to api/v2 (v1 is deprecated) see: https://phraseapp.com/docs/api/v1/
+
 improve(signup): add email retype field
 
 fix(hint): make hint clickable on mobile.
