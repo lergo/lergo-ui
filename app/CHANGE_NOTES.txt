@@ -1,4 +1,6 @@
 
+fix(hint): make hint disappear between questions.
+
 improve(signup): improve errors UX.
 
 task(phraseapp): move to api/v2 (v1 is deprecated) see: https://phraseapp.com/docs/api/v1/

@@ -249,6 +249,16 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 
 	$scope.nextQuizItem = function() {
 		$log.info('next');
+
+        // guy - ugly.. should separate to directive??
+        if ( $('.hint .in').is(':visible')){
+            $('.hint .in').removeClass('in');
+            $timeout(function(){
+                $('[ng-click="hintUsed(quizItem)"]').click();
+            },0);
+
+        }
+
 		if (!$scope.questions) {
 			return;
 		}
