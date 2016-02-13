@@ -19,14 +19,14 @@
          <div class="section form-group" ng-class="{ 'has-error' : formSignup.email.$invalid && !formSignup.email.$pristine }">
             <div class="label">{{ 'input.email' | translate }}</div>
             <div class="lergo-input">
-               <input ng-model="signupForm.email" ng-model-options="{ updateOn: 'blur' }" name="email" class="form-control" type="email" required />
+               <input ng-model="signupForm.email" ng-model-options="{ updateOn: 'blur' }" name="email" class="form-control" type="email" required clear-errors="emailConfirm" />
                <p ng-show="formSignup.email.$invalid && !formSignup.email.$pristine" class="help-block">{{'signup.error.invalidEmail' | translate}}</p>
             </div>
          </div>
-          <div class="section form-group" ng-class="{ 'has-error' : formSignup.emailConfirm.$invalid && !formSignup.emailConfirm.$pristine }">
+          <div class="section form-group" ng-class="{ 'has-error' : formSignup.emailConfirm.$invalid && !formSignup.emailConfirm.$pristine }" >
               <div class="label">{{ 'input.emailConfirm' | translate }}</div>
               <div class="lergo-input">
-                  <input ng-model="signupForm.emailConfirm" ng-model-options="{ updateOn: 'blur' }" name="emailConfirm" lergo-same-as="signupForm.email" class="form-control" type="email" required />
+                  <input ng-model="signupForm.emailConfirm" ng-model-options="{ updateOn: 'blur' }" name="emailConfirm" lergo-same-as="signupForm.email" class="form-control" type="email" required clear-errors/>
                   <p ng-show="formSignup.emailConfirm.$error.lergoSameAs && !formSignup.emailConfirm.$pristine" class="help-block">{{'signup.error.emailMismatch' | translate}}</p>
               </div>
           </div>
