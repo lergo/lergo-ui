@@ -2,6 +2,10 @@
 
 angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce, LergoClient, shuffleFilter, $window ) {
 	$log.info('showing step');
+
+    // used to fix bug where hint stays open when switching between questions.
+    $scope.stepDisplay = { showHint : false };
+
 	$window.scrollTo(0, 0);
 	var audio = new Audio('../audio/correctanswer.mp3');
 
@@ -250,14 +254,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 	$scope.nextQuizItem = function() {
 		$log.info('next');
 
-        // guy - ugly.. should separate to directive??
-        if ( $('.hint .in').is(':visible')){
-            $('.hint .in').removeClass('in');
-            $timeout(function(){
-                $('[ng-click="hintUsed(quizItem)"]').click();
-            },0);
-
-        }
+        $scope.stepDisplay.showHint = false;
 
 		if (!$scope.questions) {
 			return;
@@ -421,7 +418,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		}
 	};
 	$scope.hintUsed = function(quizItem) {
-		quizItem.isHintUsed = true;
+        if ( $scope.stepDisplay.showHint ) {
+            quizItem.isHintUsed = true;
+        }
 	};
 
 	function isTestMode() {
