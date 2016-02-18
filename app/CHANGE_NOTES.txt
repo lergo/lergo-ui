@@ -1,4 +1,6 @@
 
+fix(audio): make audio work for hebrew in ipad.
+
 improve(signup): improve errors UX.
 
 fix(hint): make hint disappear between questions.
