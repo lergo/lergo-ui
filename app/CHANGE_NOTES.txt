@@ -1,4 +1,6 @@
 
+improve(signup): improve errors UX.
+
 fix(hint): make hint disappear between questions.
 
 improve(signup): improve errors UX.

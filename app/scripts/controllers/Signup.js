@@ -1,22 +1,27 @@
 'use strict';
 
 angular.module('lergoApp').controller('SignupCtrl', function($scope, $log, LergoClient, $location) {
-	$scope.signupForm = {
-		'username' : null,
-		'email' : null,
-		'password' : null,
-		'passwordConfirm' : null
-	};
+
 
 	$scope.submit = function() {
+        $scope.errorMessage = null;
 
-		if ($scope.signupForm.password !== $scope.signupForm.passwordConfirm) {
-			$scope.errorMessage = 'Confirm Password does not match the password';
-			return;
-		} else {
-			$scope.errorMessage = null;
-		}
-		LergoClient.signup($scope.signupForm).then(function() {
+        if ( !$scope.signupForm.$valid ){
+            return;
+        }
+
+
+
+		LergoClient.signup({
+
+            email : $scope.signupForm.email.$viewValue,
+            emailConfirm : $scope.signupForm.emailConfirm.$viewValue,
+            fullName : $scope.signupForm.name.$viewValue,
+            password : $scope.signupForm.password.$viewValue,
+            passwordConfirm : $scope.signupForm.passwordConfirm.$viewValue,
+            username : $scope.signupForm.username.$viewValue
+
+        }).then(function() {
 			$log.info('got success');
 			$scope.errorMessage = null;
 			$location.path('/public/session/signupConfirmation');

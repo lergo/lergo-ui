@@ -462,6 +462,8 @@
     "infringesRights": "it infringes his/her right.",
     "input": {
         "confirmPassword": "confirm password",
+        "passwordConfirm": "confirm password",
+        "emailConfirm" : "confirm email",
         "email": "email",
         "fullName": "full name",
         "password": "password",
@@ -856,6 +858,8 @@
             "message": "Thank you for signing in! In a few minutes you will receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO."
         },
         "error": {
+            "passwordMismatch" :"Confirm Password does not match the password",
+            "emailMismatch" : "Confirm email does not match the email",
             "confPasswordRequired": "Confirm password is required.",
             "invalidChar": "Username should only contain alphanumeric characters and underscore.",
             "invalidEmail": "Enter valid email.",

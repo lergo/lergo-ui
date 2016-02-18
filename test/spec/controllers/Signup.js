@@ -53,13 +53,21 @@ describe('Controller: SignupCtrl', function () {
     });
 
     describe('submit', function(){
-        it('should set error message if passwords do not match', function(){
-            scope.signupForm.passwordConfirm = 'bar';
-            scope.submit();
-            expect(scope.errorMessage).toBe('Confirm Password does not match the password');
+
+        beforeEach(function(){
+            scope.signupForm = {
+                $valid : true,
+                email : {},
+                name : {},
+                emailConfirm: {},
+                password: {},
+                passwordConfirm : {},
+                username : {}
+            } ;
         });
 
         it('should call lergo signup', function(){
+
             spyOn(LergoClient,'signup').andReturn({ 'then' : function(){} });
             scope.submit();
             expect(LergoClient.signup).toHaveBeenCalled();

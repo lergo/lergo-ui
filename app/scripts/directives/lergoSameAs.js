@@ -16,9 +16,17 @@ angular.module('lergoApp')
             restrict: 'A',
             link: function postLink(scope, element, attrs, ctrl) {
 
+                function getTarget(){ // it is unclear if target should be form field or ng-model on scope.. simply support both
+                    var target = scope.$eval(attrs.lergoSameAs);
+                    if ( target && target.$viewValue ){
+                        return target.$viewValue;
+                    }
+                    return target;
+                }
+
                 function validate() {
                     var viewValue = ctrl.$viewValue;
-                    if (viewValue === scope.$eval(attrs.lergoSameAs)) {
+                    if (viewValue === getTarget()) {
                         ctrl.$setValidity('lergoSameAs', true);
                         return viewValue;
                     } else {
@@ -28,8 +36,11 @@ angular.module('lergoApp')
                 }
 
                 scope.$watch(function () {
-                    return scope.$eval(attrs.lergoSameAs);
+                    return getTarget();
                 }, validate);
+
+                // this is ugly
+                element.on('blur', validate); // always validate on blur as well.. because angular has a bug that won't revalidate if value between 2 blurs remained the same.
 
                 ctrl.$parsers.unshift(validate);
             }
