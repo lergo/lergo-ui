@@ -41,6 +41,15 @@ body {
     }
 }
 
+body{
+    width: 1100px; // required for direction RTL.
+    &.lergo-embed-mode{
+        width:auto;
+    }
+}
+
+
+
 .ltr{
     direction:ltr;
 }
