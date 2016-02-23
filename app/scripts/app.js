@@ -87,6 +87,10 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
             }).when('/public/lessons/reports/:reportId/display', {
                 templateUrl: 'views/lessons/invitations/report.html',
                 controller: 'LessonsInvitationsReportCtrl'
+            }).when('/public/lessons/invitations/:invitationId/classReport', {
+                templateUrl: 'views/lessons/invitations/classReport/classReportDisplay.html',
+                controller: function(){} // setting this on the view itself.. (just like ui-router).
+
             }).when('/user/questions/:questionId/update', {
                 templateUrl: 'views/questions/update.html',
                 controller: 'QuestionsUpdateCtrl',

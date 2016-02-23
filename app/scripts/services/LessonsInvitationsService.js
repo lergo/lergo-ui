@@ -29,6 +29,21 @@ angular.module('lergoApp').service('LessonsInvitationsService', function Lessons
 		});
 
 	};
+
+    this.getPermissions = function( invitationId ){
+        return $http({
+            url : '/backend/lessonsinvitations/' + invitationId + '/build',
+            method: 'GET'
+        });
+    };
+
+    this.getDetails = function(invitationId){
+        return $http({
+            url: '/backend/lessonsinvitations/' + invitationId + '/details',
+            method: 'GET'
+        });
+    };
+
 	this.update = function(invitation) {
 		return $http.post('/backend/invitations/' + invitation._id + '/update', invitation);
 	};

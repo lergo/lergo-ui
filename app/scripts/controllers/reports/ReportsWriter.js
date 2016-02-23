@@ -26,7 +26,7 @@
  *
  */
 
-angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope, ReportWriteService, ReportsService, $log,LergoClient) {
+angular.module('lergoApp').controller('ReportsWriterCtrl', function($scope, ReportWriteService, ReportsService, $log,LergoClient) {
 
 	var report = $scope.report;
 	if (!report.answers) {

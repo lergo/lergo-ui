@@ -1,5 +1,27 @@
 'use strict';
 
+/**
+ * @module LessonInvitationDisplay
+ *
+ *
+ * @description
+ *
+ * this module's name is a bit obscure so let me clarify.
+ *
+ * we can display a lesson in multiple forms. for example:
+ *  - preview
+ *  - invitation
+ *
+ *
+ *  the difference between the two examples above is if we write a report or not.
+ *
+ *  so while 'Display.js' is preview, 'LessonInvitationDisplay' is for invitation.
+ *
+ *  naming conventions etc.. are still being formed.
+ *
+ *
+ *
+ */
 angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, $filter, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope, FilterService) {
 
 	$log.info('loading invitation', $routeParams.invitationId);
@@ -45,7 +67,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 		function initializeReportWriter(report) {
 			$scope.report = report;
 			$scope.$watch('report', updateChange.onValueChange, true);
-			$controller('LessonsReportWriteCtrl', {
+			$controller('ReportsWriterCtrl', {
 				$scope : $scope
 			});
 
