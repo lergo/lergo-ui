@@ -66,8 +66,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 		},
 		link : function postLink(scope/* , element, attrs */) {
 
+            var loaded = false; // keep internal track for 'change' events
+
 			scope.$watch('model', function(newValue, oldValue) {
-				if (newValue === oldValue) {
+				if (newValue === oldValue || !loaded ) {
 					return;
 				}
 				scope.change();
@@ -135,6 +137,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             function _updateLanguage(newValue, oldValue){
                 if ( newValue !== oldValue  || !$scope.model  || scope.model.language !== newValue  ){
                     if ( !!newValue){
+                        $log.debug('updating language to', newValue);
                         if ( newValue === 'all' ){
                             delete $scope.model.language;
                         }else if ( newValue === 'other'){
@@ -432,7 +435,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 				watchLoad(filter);
 
 				save(filter);
-			}
+
+            }
 
             var UPDATE_FUNCTIONS = {};
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORT_STUDENT] =  _updateReportStudent ;
@@ -463,7 +467,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             setDefaultLanguage(); // have to be below "persistAll" or otherwise default value will apply regardless
 
 			$log.info('filter loaded. calling callback', scope.load);
-			scope.$evalAsync(scope.load); // notify you were loaded
+
+            $timeout(scope.load,1); // notify you were loaded
+            $timeout(function(){ loaded = true},1);
+
 
             scope.$watch(function(){ // if filter data was reset, we need to reload this directive
                 return LergoFilterService.getLastReset();

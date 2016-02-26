@@ -240,7 +240,29 @@ angular.module('lergoApp')
             return { 'id' : l.name, 'locale' : l.id }
         });
 
-        me.subjects = [ 'english', 'math', 'geometry', 'science', 'language', 'grammar', 'spelling', 'biology', 'chemistry', 'physics', 'computers', 'sustainability', 'history', 'geography', 'art', 'music', 'financialEducation','roadSafety', 'lergo','other' ];
+        me.subjects = [
+            'english',
+            'math',
+            'geometry',
+            'science',
+            'language',
+            'grammar',
+            'spelling',
+            'biology',
+            'chemistry',
+            'physics',
+            'computers',
+            'sustainability',
+            'history',
+            'geography',
+            'art',
+            'music',
+            'financialEducation',
+            'roadSafety',
+            'bible',
+            'lergo',
+            'other'
+        ];
 
         me.status = [ 'private', 'public' ];
         me.reportStatus = [ 'complete', 'incomplete' ];

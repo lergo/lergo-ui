@@ -3,7 +3,14 @@
 angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ngStorage']).config(
     function ($routeProvider, $httpProvider, $logProvider, $locationProvider, $translateProvider ) {
 
+
         $logProvider.debugEnabled(false);
+
+        try{
+            if ( window.location.hostname === 'localhost'){
+                $logProvider.debugEnabled(true);
+            }
+        }catch(e){}
 
         try {
             if (window.location.origin.indexOf('localhost') > 0) {
