@@ -33,7 +33,7 @@
 							</div>
 						</td>
 						<td>{{ 'name' | translate }}</td>
-						<td>{{ 'reports.student' | translate}}</td>
+						<td>{{ 'invites.studentOrClass' | translate}}</td>
 						<td>{{ 'filters.labels.language' | translate}}</td>
 						<td>{{ 'filters.labels.subject' | translate}}</td>
 						<td>{{ 'questions.age' | translate }}</td>
@@ -45,13 +45,13 @@
 							<input type="checkbox" style="margin-left: 5px;" ng-model="invite.selected">
 						</td>
 						<td class="name">
-							<a tooltip="{{'invites.tooltip.go' | translate}}" ng-href="#!/public/lessons/{{invite.lessonId}}/intro?invitationId={{invite._id}}">
+							<a tooltip="{{'invites.tooltip.go' | translate}}" ng-href="{{getInvitationLink(invite)}}">
 								<span ng-show="invite.name.trim().length > 0" class="{{!invite.finished && 'bold' || ''}}"> {{ invite.name}} </span>
 								<span ng-show="invite.name.trim().length <= 0" class="{{!invite.finished && 'bold' || ''}}">[ no title ]</span>
 							</a>
 						</td>
 						<td class="answer">
-							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.invitee.name}}</span>
+							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.invitee.name || invite.invitee.class}}</span>
 						</td>
 						<td class="answer">
 							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.language && ('filters.languages.' + invite.language | translate) ||""}}</span>

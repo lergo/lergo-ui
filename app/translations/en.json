@@ -462,6 +462,8 @@
     "infringesRights": "it infringes his/her right.",
     "input": {
         "confirmPassword": "confirm password",
+        "passwordConfirm": "confirm password",
+        "emailConfirm" : "confirm email",
         "email": "email",
         "fullName": "full name",
         "password": "password",
@@ -544,8 +546,16 @@
         },
         "genericVideosPost": " The list will open in a new tab.",
         "genericVideosPre": "For a list of generic animated videos please",
-        "inviteLesson": "Invite to lesson",
-        "inviteLessonHelpText": "To generate a link for the invite please enter student's first name and press submit",
+        "inviteLesson": {
+            "student": {
+                "msg": "Invite student",
+                "help": "To generate a link for the invite please enter student's first name and press submit"
+            },
+            "class": {
+                "msg": "Invite class",
+                "help": "Send this link to your students"
+            }
+        },
         "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
         "inviteSuccessText": "Copy the link below to invite a student to the lesson",
         "lessonCompleted": "You have completed the lesson",
@@ -848,9 +858,12 @@
             "message": "Thank you for signing in! In a few minutes you will receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO."
         },
         "error": {
+            "passwordMismatch" :"Confirm Password does not match the password",
+            "emailMismatch" : "Confirm email does not match the email",
             "confPasswordRequired": "Confirm password is required.",
             "invalidChar": "Username should only contain alphanumeric characters and underscore.",
             "invalidEmail": "Enter valid email.",
+            "emailMismatch" : "email does not match",
             "minLength": "Username should contain at least 3 characters.",
             "nameRequired": "Name is required.",
             "passwordRequired": "Password is required."
@@ -941,5 +954,14 @@
         },
         "gotIt" : "Got it",
         "dontShowAgain" : "Do not show this again"
+    },
+
+    "classInvite" : {
+        "welcome" : "Welcome to Lergo!",
+        "lessonName" : "Lesson Name",
+        "teacherName" : "Teacher Name",
+        "studentName" : "Student Name",
+        "start" : "Start",
+        "instructions" : "Note: to go to lesson enter your first name and click on \"go to lesson\""
     }
 }

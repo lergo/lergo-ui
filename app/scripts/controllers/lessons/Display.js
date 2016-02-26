@@ -70,11 +70,13 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
         if ( !!$scope.lesson ) {
             $log.info('currentStepIndex changed', newValue, oldValue);
             updateCurrentStep();
+
             // in case of temporary lesson we don't want to remember history
-            if (!$scope.lesson.temporary) { // temporary means "create lesson from mistakes" and such..
-                $location.search('currentStepIndex', newValue);
-            } else {
+            // conversion ~~ to support string and numbers
+            if (!!$scope.lesson.temporary || parseInt(newValue + '',10) === 0 ) { // temporary means "create lesson from mistakes" and such..
                 $location.search('currentStepIndex', newValue).replace();
+            } else {
+                $location.search('currentStepIndex', newValue);
             }
             $rootScope.$broadcast('stepIndexChange', {
                 'old': oldValue,

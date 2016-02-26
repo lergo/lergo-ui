@@ -1,7 +1,39 @@
 
-improve(filter): define filter as 'in use' if language is not website language.
+improve(filter): make filter kept on session and fix language treatment
 
-improve(filter): make filter kept on session.
+task(subject): add bible
+
+fix(audio): make audio work for hebrew in ipad.
+
+improve(signup): improve errors UX.
+
+fix(hint): make hint disappear between questions.
+
+improve(signup): improve errors UX.
+
+task(phraseapp): move to api/v2 (v1 is deprecated) see: https://phraseapp.com/docs/api/v1/
+
+improve(signup): add email retype field
+
+fix(hint): make hint clickable on mobile.
+
+hint and "create your own" yellow button are written exactly the same.
+I am not sure why hint didn't work, but I have noticed they are both using 'focus' trigger
+for popover which is an issue with mobile. adding 'click' trigger on hint solved the issue.
+
+improve(classInvite):
+
+1. Make class invites in 'my invites' link to class invite land page
+2. fix 'you have unsaved changes' alert
+3. fix alignment for help text
+4. add class name to class invite form
+5. add class name to report
+
+fix(copy-links): make link alignment the same in all languages
+
+improve(classInvite): add name of class. generate report for each student instead of invite.
+
+fix(classInvite): fix style. add border and alignment on button.
 
 fix(explanation media): fix scenarios where it should display and when it should not.
 

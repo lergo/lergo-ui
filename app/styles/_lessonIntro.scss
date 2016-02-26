@@ -1,11 +1,6 @@
 #lessonIntro {
     .lesson {
-        width: 600px;
-        margin: 0 auto;
-        position: relative;
         float: right;
-        border-radius: 10px;
-        background-color: #EFEFEF;
         .image {
             position: relative;
             margin-left: auto;
@@ -135,7 +130,50 @@
                     border: 1px solid #949494;
                     padding: 10px;
                 }
-                .invite {}
+                .lesson-action-panel{
+                    .lesson-action-panel-navigation{
+                        padding-bottom: 10px;
+                        .lesson-action-panel-link{
+                            cursor: pointer;
+                            float: left;
+                            &:not(:first-child) {
+                                margin-left: 20px;
+                            }
+                            &.active {
+                                font-weight: bold;
+                                border-bottom: 3px solid $LERGO_INTRO_LINK;
+                            }
+                            &:hover {
+                                color: $LERGO_INTRO_LINK;
+                                border-bottom: 3px solid $LERGO_INTRO_LINK;
+                            }
+                        }
+                    }
+                    .action-link {
+                        textarea {
+                            height: 45px;
+                        }
+                    }
+                    .action-embed {
+                        textarea {
+                            height: 80px;
+                        }
+                    }
+                    .close-button {
+                        margin-top: 0px;
+                    }
+                    .lergo-h4 {
+                        font-weight: normal;
+                    }
+                    textarea {
+                        padding: 5px;
+                        resize: none;
+                        text-align: left;
+                        direction: ltr;
+                    }
+
+                }
+                .invite {/*see dedicate directive style*/}
                 .report {
                     .options {
                         vertical-align: top;
@@ -155,48 +193,7 @@
                         }
                     }
                 }
-                .share {
-                    .share-navigation {
-                        padding-bottom: 10px;
-                        .share-section-link {
-                            cursor: pointer;
-                            float: left;
-                            &:not(:first-child) {
-                                margin-left: 20px;
-                            }
-                            &.active {
-                                font-weight: bold;
-                                border-bottom: 3px solid $LERGO_INTRO_LINK;
-                            }
-                            &:hover {
-                                color: $LERGO_INTRO_LINK;
-                                border-bottom: 3px solid $LERGO_INTRO_LINK;
-                            }
-                        }
-                        .close-button {
-                            margin-top: 0px;
-                        }
-                    }
-                    .share-link {
-                        textarea {
-                            height: 45px;
-                        }
-                    }
-                    .share-embed {
-                        textarea {
-                            height: 80px;
-                        }
-                    }
-                    .lergo-h4 {
-                        font-weight: normal;
-                    }
-                    textarea {
-                        padding: 5px;
-                        resize: none;
-                        text-align: left;
-                        direction: ltr;
-                    }
-                }
+                .share { }
             }
             .description {
                 pre {
@@ -278,13 +275,11 @@
                     .close-button {
                         float: left;
                     }
-                    .share {
-                        .share-navigation {
-                            .share-section-link {
-                                float: right;
-                                &:not(:first-child) {
-                                    margin-right: 20px;
-                                }
+                    .lesson-action-panel{
+                        .lesson-action-panel-link{
+                            float:right;
+                            &:not(:first-child) {
+                                margin-right: 20px;
                             }
                         }
                     }

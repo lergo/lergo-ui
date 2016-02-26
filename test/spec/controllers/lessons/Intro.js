@@ -376,13 +376,7 @@ describe('Controller: LessonsIntroCtrl', function () {
         });
     });
 
-    describe('#onTextClick', function () {
-        it('should call select on target', function () {
-            var event = {target: {select: jasmine.createSpy('select')}};
-            scope.onTextClick(event);
-            expect(event.target.select).toHaveBeenCalled();
-        });
-    });
+
 
     describe('watchers', function () {
 

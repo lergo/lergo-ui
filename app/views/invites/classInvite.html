@@ -1,0 +1,39 @@
+<div class="base-layout" id="classInvite">
+
+    <div class="class-invite-content lergo-body-tile">
+        <form ng-submit="createInvite()">
+        <div ng-show="!classInvite.data">
+            <div class="lergo-form">
+                <div class="instructions-title section">
+                    {{ 'classInvite.welcome' | translate }}
+                </div>
+                <div class="instructions-details section">
+                    {{ 'classInvite.instructions' | translate }}
+                </div>
+                <div class="section horizontal">
+                    <div class="label">  {{ 'classInvite.lessonName' | translate }}   </div>
+                    <div class="input">  {{classInvite.lessonName}}</div>
+                </div>
+                <div class="section horizontal">
+                    <div class="label"> {{ 'classInvite.teacherName' | translate }}  </div>
+                    <div class="input"> {{classInvite.username}} </div>
+                </div>
+                <div class="section horizontal">
+                    <div class="label"> {{ 'classInvite.className' | translate }}  </div>
+                    <div class="input"> {{classInvite.className}} </div>
+                </div>
+                <div class="section horizontal">
+                    <div class="label">  {{ 'classInvite.studentName' | translate }}  </div>
+                    <div class="input"> <input type="text" ng-model="classInvite.studentName" autofocus/></div>
+                </div>
+                <div class="section horizontal">
+                    <div class="label">&nbsp;</div>
+                    <div class="input"><button class="btn" ng-click="createReportFromClassInvite()" > {{ 'classInvite.start'  | translate }}</button></div>
+                </div>
+            </div>
+
+
+        </div>
+        </form>
+    </div>
+</div>

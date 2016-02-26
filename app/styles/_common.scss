@@ -36,6 +36,26 @@ body {
     &.rtl {
         direction: rtl;
     }
+    &.ltr{
+        direction:ltr;
+    }
+}
+
+body{
+    min-width: 1100px; // required for direction RTL.
+    &.lergo-embed-mode{
+        width:auto;
+    }
+}
+
+
+
+.ltr{
+    direction:ltr;
+}
+
+.rtl{
+    direction:rtl;
 }
 
 ol, ul {
@@ -647,6 +667,10 @@ $COLOR_19: #2a6496 !default;
     font-weight: bold;
 }
 
+.font-medium{
+    font-size: medium;
+}
+
 .rtl {
     .text-right {
         text-align: left;
@@ -663,4 +687,20 @@ $COLOR_19: #2a6496 !default;
 
 .clickable, a, a i, a i.fa,  a i.fa:before{
     cursor:pointer;
+}
+
+
+.lergo-body-tile{
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    background-color: $LERGO_BODY_TILE_BACKGROUND;
+}
+
+
+// settings this as default behavior as I assume that all text for copy-paste is in english and usually links or embed snippet
+[select-all-text-on-click]{
+    text-align:start;
+    direction:ltr;
 }

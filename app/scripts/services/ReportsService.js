@@ -81,11 +81,15 @@ angular.module('lergoApp')
         };
 
 
-
-
-
-        this.createFromInvitation = function (invitation) {
-            return $http.post('/backend/reports/lessoninvitation/' + invitation._id);
+        /**
+         *
+         * @param invitation
+         * @param overrides - a temporary solution for allowing users to register their names for each report. contains 'invitee' details in the same structure as it appears on invitation.
+         *                    it will be applied on update, which should happen as soon as lesson starts.
+         * @returns {*}
+         */
+        this.createFromInvitation = function (invitation, overrides ) {
+            return $http.post('/backend/reports/lessoninvitation/' + invitation._id, overrides );
         };
 
         this.update = function (report) {

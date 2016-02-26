@@ -1,53 +1,61 @@
 <div class="base-layout" id="signUpPage">
-   <div class="centered-content">
-      <form ng-submit='submit()' name="formSignup" class="login-form Signup-form lergo-form">
+   <div class="centered-content" ng-controller="SignupCtrl"> <!-- needed to use the form.. does not work well with transcluded content hack -->
+
+      <form ng-submit='submit()' name="signupForm" class="login-form Signup-form lergo-form">
          <div class="section form-group">
             <div class="label">
                <span class="errorMessage" ng-show='errorMessage'>{{errorMessage}}</span>
             </div>
          </div>
-         <div class="section form-group" ng-class="{ 'has-error' : formSignup.username.$invalid && !formSignup.username.$pristine }">
+         <div class="section form-group" ng-class="{ 'has-error' : signupForm.username.$invalid && !signupForm.username.$pristine }">
             <div class="label">
                <span>{{ 'input.username' | translate }} </span>
             </div>
             <div class="lergo-input">
-               <input ng-model="signupForm.username" class="form-control" name="username" ng-minlength="3" required ng-pattern="/^[a-zA-Z0-9\_]+$/" id="signup-username" ng-init="setFocus('signup-username')" />
-               <p ng-show="formSignup.username.$error.minlength" class="help-block">{{'signup.error.minLength' | translate}}</p>
-               <p ng-show="formSignup.username.$error.pattern" class="help-block">{{'signup.error.invalidChar' | translate}}</p>
+               <input ng-model="username" class="form-control" name="username" ng-minlength="3" required ng-pattern="/^[a-zA-Z0-9\_]+$/" id="signup-username" autofocus/>
+               <p ng-show="signupForm.username.$error.minlength" class="help-block">{{'signup.error.minLength' | translate}}</p>
+               <p ng-show="signupForm.username.$error.pattern" class="help-block">{{'signup.error.invalidChar' | translate}}</p>
             </div>
          </div>
-         <div class="section form-group" ng-class="{ 'has-error' : formSignup.email.$invalid && !formSignup.email.$pristine }">
+         <div class="section form-group" ng-class="{ 'has-error' : signupForm.email.$invalid && !signupForm.email.$pristine }">
             <div class="label">{{ 'input.email' | translate }}</div>
             <div class="lergo-input">
-               <input ng-model="signupForm.email" name="email" class="form-control" type="email" required />
-               <p ng-show="formSignup.email.$invalid && !formSignup.email.$pristine" class="help-block">{{'signup.error.invalidEmail' | translate}}</p>
+               <input ng-model="email" ng-model-options="{ updateOn: 'blur' }" name="email" class="form-control" type="email" required clear-errors="emailConfirm" />
+               <p ng-show="signupForm.email.$invalid && !signupForm.email.$pristine" class="help-block">{{'signup.error.invalidEmail' | translate}}</p>
             </div>
          </div>
-         <div class="section form-group" ng-class="{ 'has-error' : formSignup.name.$invalid && !formSignup.name.$pristine }">
+          <div class="section form-group" ng-class="{ 'has-error' : signupForm.emailConfirm.$invalid && !signupForm.emailConfirm.$pristine }" >
+              <div class="label">{{ 'input.emailConfirm' | translate }}</div>
+              <div class="lergo-input">
+                  <input ng-model="emailConfirm" ng-model-options="{ updateOn: 'blur' }" name="emailConfirm" lergo-same-as="signupForm.email" class="form-control" type="email" required clear-errors/>
+                  <p ng-show="signupForm.emailConfirm.$error.lergoSameAs && !signupForm.emailConfirm.$pristine" class="help-block">{{'signup.error.emailMismatch' | translate}}</p>
+              </div>
+          </div>
+         <div class="section form-group" ng-class="{ 'has-error' : signupForm.name.$invalid && !signupForm.name.$pristine }">
             <div class="label">{{ 'input.fullName' | translate }}</div>
             <div class="lergo-input">
-               <input ng-model="signupForm.fullName" name="name" class="form-control" required type="text" />
-               <p ng-show="formSignup.name.$invalid && !formSignup.name.$pristine" class="help-block">{{'signup.error.nameRequired' | translate}}</p>
+               <input ng-model="fullName" name="name" class="form-control" required type="text" />
+               <p ng-show="signupForm.name.$invalid && !signupForm.name.$pristine" class="help-block">{{'signup.error.nameRequired' | translate}}</p>
             </div>
          </div>
-         <div class="section form-group" ng-class="{ 'has-error' : formSignup.password.$invalid && !formSignup.password.$pristine }">
+         <div class="section form-group" ng-class="{ 'has-error' : signupForm.password.$invalid && !signupForm.password.$pristine }">
             <div class="label">{{ 'input.password' | translate }}</div>
             <div class="lergo-input">
-               <input ng-model="signupForm.password" name="password" class="form-control" required type="password" />
-               <p ng-show="formSignup.password.$invalid && !formSignup.password.$pristine" class="help-block">{{'signup.error.passwordRequired' |
+               <input ng-model="password" name="password" class="form-control" required type="password" />
+               <p ng-show="signupForm.password.$invalid && !signupForm.password.$pristine" class="help-block">{{'signup.error.passwordRequired' |
                   translate}}</p>
             </div>
          </div>
-         <div class="section form-group" ng-class="{ 'has-error' : formSignup.confPassword.$invalid && !formSignup.confPassword.$pristine }">
-            <div class="label">{{ 'input.confirmPassword' | translate }}</div>
+         <div class="section form-group" ng-class="{ 'has-error' : signupForm.passwordConfirm.$invalid && !signupForm.passwordConfirm.$pristine }">
+            <div class="label">{{ 'input.passwordConfirm' | translate }}</div>
             <div class="lergo-input">
-               <input ng-model="signupForm.passwordConfirm" name="confPassword" class="form-control" required type="password" />
-               <p ng-show="formSignup.confPassword.$invalid && !formSignup.confPassword.$pristine" class="help-block">{{'signup.error.confPasswordRequired'
-                  | translate}}</p>
+               <input ng-model="passwordConfirm" ng-model-options="{ updateOn: 'blur' }" name="passwordConfirm" class="form-control" required type="password" lergo-same-as="signupForm.password" clear-errors />
+               <p ng-show="signupForm.passwordConfirm.$error.required && !signupForm.passwordConfirm.$pristine" class="help-block">{{'signup.error.confPasswordRequired' | translate}}</p>
+               <p ng-show="signupForm.passwordConfirm.$error.lergoSameAs && !signupForm.passwordConfirm.$pristine" class="help-block">{{'signup.error.passwordMismatch' | translate}}</p>
             </div>
          </div>
          <div>
-            <button type="submit" ng-disabled="formSignup.$invalid" class="btn">{{ 'button.submit' | translate }}</button>
+            <button type="submit" ng-disabled="signupForm.$invalid" class="btn">{{ 'button.submit' | translate }}</button>
          </div>
       </form>
    </div>

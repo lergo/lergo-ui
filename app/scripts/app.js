@@ -78,6 +78,9 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
             }).when('/:role/lessons/:lessonId/intro', {
                 templateUrl: 'views/lessons/intro.html',
                 controller: 'LessonsIntroCtrl'
+            }).when('/:role/lessons/:lessonId/classInvite', {
+                templateUrl: 'views/invites/classInvite.html',
+                controller: 'ClassInviteCtrl'
             }).when('/public/lessons/:lessonId/share', {
                 template: '',
                 controller: 'LessonsInvitesPublicShareCtrl'
@@ -133,7 +136,7 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRo
                 templateUrl: 'views/partials/_suggest.html'
             }).when('/public/session/signup', {
                 templateUrl: 'views/session/signup.html',
-                controller: 'SignupCtrl'
+                controller: function(){} // we will assign the controller on the view deliberately. angular bugs.
             }).when('/public/session/signupConfirmation', {
                 templateUrl: 'views/session/signupConfirmation.html'
             }).when('/public/session/login', {

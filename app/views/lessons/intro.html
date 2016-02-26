@@ -2,15 +2,16 @@
     <div class="page-content-width">
         <div class="lesson-intro-content clearfix">
             <div class="page-content-body">
-                <div class="lesson">
+                <div class="lesson lergo-body-tile">
                     <div class="image">
                         <div lesson-title-image lesson="lesson"></div>
                     </div>
                     <div class="start-lesson">
 						<span class="button">
-							<a ng-click="startLesson()" ng-show="!!lesson">
+                            <!--<input autofocus ng-click="startLesson()" ng-show="!!lesson" autofocus on-enter="startLesson()"/>-->
+							<button class="btn-link" ng-click="startLesson()" ng-show="!!lesson" autofocus on-enter="startLesson()">
                                 <i class="fa fa-play-circle-o " tooltip="{{'lessons.startLesson' | translate}}"></i>
-                            </a>
+                            </button>
 						</span>
                     </div>
                     <div class="action-items" ng-show="!!permissions">
@@ -155,8 +156,7 @@
                         <div class="forms">
                             <div ng-show="isActiveAction(actionItems.SHARE)"
                                  ng-include="'views/lessons/intro/_shareForm.html'"></div>
-                            <div ng-show="isActiveAction(actionItems.INVITE)"
-                                 ng-include="'views/lessons/intro/_inviteForm.html'"></div>
+                            <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form on-close="setActiveAction()"></div>
                             <div ng-show="isActiveAction(actionItems.REPORT)"
                                  ng-include="'views/lessons/intro/_reportForm.html'"></div>
                         </div>

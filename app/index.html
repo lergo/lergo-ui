@@ -35,8 +35,8 @@
     </script>
 </head>
 
-<body style="position: relative" lergo-language-direction-class lergo-language-class embed-mode>
-    <div ng-view=""></div>
+<body style="position: relative"  lergo-language-class embed-mode>
+    <div ng-view="" lergo-language-direction-class></div>
 <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -109,7 +109,7 @@
     <script src="scripts/services/ContinuousSave.js"></script>
     <script src="scripts/services/LessonsService.js"></script>
     <script src="scripts/filters/i18nDirection.js"></script>
-    <script src="scripts/controllers/lessons/invites/Create.js"></script>
+    <script src="scripts/directives/lessonInvite/lessonCreateInviteForm.js"></script>
     <script src="scripts/controllers/lessons/Read.js"></script>
     <script src="scripts/controllers/lessons/Index.js"></script>
     <script src="scripts/controllers/lessons/StepDisplay.js"></script>
@@ -207,6 +207,12 @@
     <script src="scripts/directives/lergoInputConverter.js"></script>
     <script src="scripts/services/LergoResourceLinksConverter.js"></script>
     <script src="scripts/directives/goToMyLessonsDemo.js"></script>
+    <script src="scripts/directives/selectAllTextOnClick.js"></script>
+    <script src="scripts/directives/onEnter.js"></script>
+    <script src="scripts/directives/autofocus.js"></script>
+    <script src="scripts/controllers/invites/ClassInvite.js"></script>
+    <script src="scripts/directives/lergoSameAs.js"></script>
+    <script src="scripts/directives/clearErrors.js"></script>
     <!-- endbuild -->
 </body>
 

@@ -1,7 +1,7 @@
 <div class="action-items">
 	<div class="hint" ng-show="!!quizItem.hint">
-		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link"
-			popover-trigger="focus" tabindex="0">{{'hint' | translate}}</button>
+		<button popover-animation="false" ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link"
+			popover-is-open="stepDisplay.showHint" tabindex="0">{{'hint' | translate}}</button><!-- focus click - click adds mobile support in ipad/chrome -->
 	</div>
 	<div ng-show="mode==='read'" class="action-item">
 		<hr />

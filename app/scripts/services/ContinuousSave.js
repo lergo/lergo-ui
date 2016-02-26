@@ -82,6 +82,8 @@ angular.module('lergoApp')
              *          - if no - alert, and update model with 'alerted : true' - so everyone will know someone alerted
              *      - if no - do nothing
              *
+             * locationChangeStart is the event we are listening because this is the only event to properly support
+             * scenarios where reloadOnSearch is off and user navigates in history.
              *
              **/
             var deregister = $rootScope.$on('$locationChangeStart', function (event) {
@@ -97,7 +99,7 @@ angular.module('lergoApp')
 
                     _preventedFlag[uid] = uid;
 
-                    if ( !_status.saved ){ // do I need to alert
+                    if ( !_status.saved  ){ // do I need to alert
                         if ( !_preventedFlag.alerted ){ // did someone else alert? no? alert and update model
                             _preventedFlag.alerted = true;
                             var answer = confirm(_confirmMessage);
@@ -120,7 +122,6 @@ angular.module('lergoApp')
             });
 
             function _onValueChange(newValue, oldValue) {
-
                 if ( newValue === oldValue ){
                     return;
                 }
@@ -156,6 +157,7 @@ angular.module('lergoApp')
             }
 
             function _save() {
+
 
                 $log.info(_localVersion);
 

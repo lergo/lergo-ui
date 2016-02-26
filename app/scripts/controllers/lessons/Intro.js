@@ -14,7 +14,9 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
 		if (!$scope.lesson.temporary) {
 			$location.path('/public/lessons/invitations/' + invitationId + '/display').search({
-				lessonId : $scope.lesson._id
+				lessonId : $scope.lesson._id,
+                reportId: $routeParams.reportId,
+                currentStepIndex:0 // required, otherwise we will get 'unsaved changes' alert
 			});
 		} else {
 			$location.path('/public/lessons/invitations/' + invitationId + '/display').search({
@@ -144,6 +146,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	};
 
 	$scope.startLesson = function() {
+
 		if (!!preview) { // preview - no lesson report, no invitation
 			redirectToPreview();
 		} else if (!invitationId) { // prepared invitation
@@ -177,10 +180,6 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 	$scope.submitAbuseReport = function() {
 		$scope.submit = true;
 		LergoClient.abuseReports.abuseLesson($scope.abuseReport, $scope.lesson);
-	};
-
-	$scope.onTextClick = function($event) {
-		$event.target.select();
 	};
 
 	function giveCreditToQuestionsWeCopied(questions) {

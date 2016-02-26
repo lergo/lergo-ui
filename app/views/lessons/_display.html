@@ -110,29 +110,13 @@
 				<p class="lergo-h4">{{'lessons.shareLesson' | translate}}</p>
 				<div class="container">
 					<span>{{'lessons.shareLessonTitle' | translate}}</span>
-					<input type="text" ng-model="shareLink" readonly ng-click="onTextClick($event)" />
+					<input type="text" ng-model="shareLink" readonly select-all-text-on-click />
 				</div>
 			</div>
 			<div ng-show="!!invite" class="lergo-form invite">
 				<p class="lergo-h4">{{'lessons.inviteLesson'| translate}}</p>
 				<p>{{'lessons.inviteLessonHelpText' | translate}}</p>
-				<div ng-controller="LessonsInvitesCreateCtrl" class="container">
-					<div>{{ 'name' | translate }}</div>
-					<input type="text" ng-model="invite.invitee.name" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
-					<div ng-show="!!createSuccess">
-						<div>{{'lessons.inviteSuccessText' | translate}}</div>
-						<input type="text" ng-value="getLink()" readonly ng-click="onTextClick($event)" ng-keyup="$event.keyCode === 13 ?  enterPressed() : null" />
-					</div>
-					<br />
-					<div class="button">
-						<button class="btn" ng-click="sendInvite()" ng-show="!createSuccess" ng-disabled="!invite.invitee.name">{{ 'button.submit' | translate }}</button>
-						<button ng-click="newInvite()" class="btn" ng-show="!!createSuccess">{{ 'button.newInvite' | translate }}</button>
-					</div>
-					<div>
-						<span class="lergo-h4">{{'lessons.note' | translate}}:</span>
-						{{'lessons.noteMessage' | translate}}
-					</div>
-				</div>
+				<div lesson-create-invite-form ></div>
 			</div>
 		</div>
 	</div>
