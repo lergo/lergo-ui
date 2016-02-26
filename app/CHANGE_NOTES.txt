@@ -1,4 +1,6 @@
 
+improve(filter): make filter kept on session and fix language treatment
+
 task(subject): add bible
 
 fix(audio): make audio work for hebrew in ipad.

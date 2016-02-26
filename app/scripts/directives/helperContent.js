@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').directive('helperContent', function($rootScope, $http, ContinuousSave, $sce, $q, $log) {
+angular.module('lergoApp').directive('helperContent', function(LergoTranslate, VideoService, $http, ContinuousSave, $sce, $q, $log) {
 	return {
 		templateUrl : 'views/directives/_helperContent.html',
 		restrict : 'A',
@@ -17,7 +17,7 @@ angular.module('lergoApp').directive('helperContent', function($rootScope, $http
 					'params' : {
 						'query' : JSON.stringify({
 							'path' : $scope.path,
-							'locale' : $rootScope.lergoLanguage
+							'locale' : LergoTranslate.getLanguage()
 						})
 					}
 				}).then(function(result) {
@@ -25,7 +25,7 @@ angular.module('lergoApp').directive('helperContent', function($rootScope, $http
 					if (!$scope.helperContent) {
 						create({
 							'path' : $scope.path,
-							'locale' : $rootScope.lergoLanguage
+							'locale' : LergoTranslate.getLanguage()
 						}).then(function(result) {
 							$scope.helperContent = result.data;
 
@@ -70,27 +70,19 @@ angular.module('lergoApp').directive('helperContent', function($rootScope, $http
 				$scope.helperContent.contents.splice(index, 1);
 			};
 			$scope.$watch(function() {
-				return $rootScope.lergoLanguage;
+				return LergoTranslate.getLanguage();
 			}, function(newValue, oldValue) {
 				if (!!newValue && !!oldValue && newValue !== oldValue) {
 					get();
 				}
 			});
-			$scope.getYoutubeEmbedSource = function(url) {
+			$scope.getYoutubeEmbedSource = function(url) { // todo : use service
 				var src = '//www.youtube.com/embed/' + $scope.getVideoId(url) + '?autoplay=0&rel=0&iv_load_policy=3';
 				return $sce.trustAsResourceUrl(src);
 			};
-			$scope.getVideoId = function(url) {
-				var value = null;
-				if (!!url) {
-					if (url.toLocaleLowerCase().indexOf('youtu.be') > 0) {
-						value = url.substring(url.lastIndexOf('/') + 1);
-					} else {
-						value = url.split('?')[1].split('v=')[1];
-					}
-				}
 
-				return value;
+			$scope.getVideoId = function(url) {
+				return VideoService.getMedia(url).id;
 			};
 		}
 

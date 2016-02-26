@@ -4,8 +4,11 @@ describe('Directive: lergoFilter', function () {
     beforeEach(module('lergoApp', 'directives-templates', 'lergoBackendMock', 'LocalStorageModule'));
 
     var element;
+    var LergoTranslate;
+    var $timeout;
+    var currentLanguage;
 
-    var elementText = '<div lergo-filter opts="opts" model="model"></div>';
+    var elementText = '<div lergo-filter opts="opts" model="model" loaded="true"></div>';
 
     function generate( scope ){
         inject( function($compile, $httpBackend ){
@@ -18,10 +21,20 @@ describe('Directive: lergoFilter', function () {
         });
     }
 
-    it('should have a form in display', inject(function ($rootScope) {
+    beforeEach(inject(function(_LergoTranslate_, _$timeout_){
+        LergoTranslate = _LergoTranslate_;
+        currentLanguage = 'en';
+        $timeout = _$timeout_;
+        spyOn(LergoTranslate,'getLanguage').andCallFake( function(){ // cannot use 'andReturn' if value changes.. must use function
+            return currentLanguage;
+        });
+    }));
+
+    it('should have a form in display', inject(function ($rootScope ) {
         $rootScope.model = {};
 
         generate( $rootScope );
+
 
         expect($(element).find('form').length === 1 || $(element).is('form')).toBe(true);
     }));
@@ -29,14 +42,14 @@ describe('Directive: lergoFilter', function () {
 
     // tests that fix to LERGO-490 applies.
     // the fix contained
-    it('should trigger watch functions when loading from local storage', inject(function($rootScope, localStorageService, $timeout){
+    it('should trigger watch functions when loading from local storage', inject(function($rootScope, $sessionStorage, $timeout){
         $rootScope.model = {};
         $rootScope.opts = { 'showAge' : true };
-        localStorageService.set('lergoFilter.ageFilter', { 'min' : 10 });
-
+        $sessionStorage['lergoFilter.ageFilter'] = angular.toJson({ 'min' : 10 });
+        $timeout.flush();
         generate( $rootScope );
 
-        $timeout.flush();
+
         /*jshint camelcase: false */
         expect(element.children().scope().model.age.dollar_gte).toBe(10);
 
@@ -159,18 +172,18 @@ describe('Directive: lergoFilter', function () {
         });
     }));
 
-    it('should update language if changed on rootScope', inject(function($rootScope, $timeout){
+    it('should update language if changed on LergoTranslate.getLanguage()', inject(function($rootScope, $timeout){
         $rootScope.model = {};
         $rootScope.opts =  {};
 
         generate($rootScope);
         var elementScope = element.children().scope();
-        $rootScope.lergoLanguage = 'dummy';
+        currentLanguage = 'dummy';
         elementScope.$digest();
         $timeout.flush();
-        $rootScope.lergoLanguage = 'en';
+        currentLanguage = 'he';
         elementScope.$digest();
-        expect(elementScope.model.language).toBe('english');
+        expect(elementScope.model.language).toBe('hebrew');
     }));
 
     it('should consider routeParams', inject(function($routeParams, $rootScope){

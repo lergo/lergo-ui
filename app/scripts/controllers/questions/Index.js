@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, TagsService, $location, $log, localStorageService, FilterService, $rootScope, $window) {
+angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, QuestionsService, LergoClient, TagsService, $location, $log, localStorageService, $rootScope, $window, LergoTranslate) {
 	// enum
 	$scope.QuestionTypeToLoad = {
 		all : 'allQuestions',
@@ -28,7 +28,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 
 	$scope.createNewQuestion = function() {
 		QuestionsService.createQuestion({
-			'language' : FilterService.getLanguageByLocale($rootScope.lergoLanguage)
+			'language' : LergoTranslate.getLanguageObject().name
 		}).then(function(result) {
 			$scope.errorMessage = null;
 			$location.path('/user/questions/' + result.data._id + '/update');

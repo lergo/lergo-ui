@@ -8,7 +8,7 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('ManageUsersIndexCtrl', function($scope, FilterService, LergoClient, $log) {
+    .controller('ManageUsersIndexCtrl', function($scope, LergoClient, $log) {
 
         $scope.adminFilter = {};
         $scope.filterPage = {};

@@ -329,7 +329,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function($scope,
 		return 'views/lesson/steps/view/_' + type + '.html';
 	};
 
-	$scope.getYoutubeEmbedSource = function(step) {
+	$scope.getYoutubeEmbedSource = function(step) { // todo : use service
 		var src = '//www.youtube.com/embed/' + $scope.getVideoId(step) + '?autoplay=1&rel=0&iv_load_policy=3';
 		return $sce.trustAsResourceUrl(src);
 	};

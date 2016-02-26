@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('QuestionsReadCtrl',
-		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location, $window, $rootScope, FilterService) {
+		function($scope, QuestionsService, $routeParams, ContinuousSave, $log, $compile, LergoClient, $sce, $location, $window, LergoTranslate ) {
 
 			var questionId = $routeParams.questionId;
 			$scope.noop = angular.noop;
@@ -10,7 +10,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 
 			QuestionsService.getQuestionById(questionId).then(function(result) {
 				$scope.quizItem = result.data;
-				$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.quizItem.language);
+				LergoTranslate.setLanguageByName($scope.quizItem.language);
 				$scope.errorMessage = null;
 
 				LergoClient.questions.getPermissions($scope.quizItem._id).then(function(result) {

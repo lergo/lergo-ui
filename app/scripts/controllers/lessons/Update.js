@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsUpdateCtrl',
-		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, FilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate) {
+		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate) {
 			$window.scrollTo(0, 0);
-			$scope.subjects = FilterService.subjects;
+			$scope.subjects = LergoFilterService.subjects;
             var addStepClicked = false;
             $scope.popoverState = { open : false, position: 'left' };
-			$scope.languages = FilterService.languages;
+			$scope.languages = LergoFilterService.languages;
 			var saveLesson = new ContinuousSave({
 				'saveFn' : function(value) {
 					return LergoClient.lessons.update(value);
@@ -37,10 +37,6 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				$scope.$watch('lesson', saveLesson.onValueChange, true);
 				$scope.$watch('lesson.nextLesson', updateNextLesson);
 				$scope.$watch('lesson.priorLesson', updatePriorLesson);
-				if (!$scope.lesson.language) {
-					$scope.lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
-				}
-
 				if (!$scope.lesson.tags) {
 					$scope.lesson.tags = [];
 				}

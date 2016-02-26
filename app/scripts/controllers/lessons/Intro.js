@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $routeParams, LergoClient, $location, $modal, DisplayRoleService, $log, $rootScope, FilterService, $window, $filter) {
+angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $routeParams, LergoClient, $location, $modal, DisplayRoleService, $log, $rootScope, LergoTranslate, $window, $filter) {
 	$window.scrollTo(0, 0);
 	var lessonId = $routeParams.lessonId;
 	var invitationId = $routeParams.invitationId;
@@ -314,7 +314,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
             'description' : $scope.lesson.description
         };
         loadQuestions();
-        $rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.lesson.language);
+        LergoTranslate.setLanguageByName($scope.lesson.language);
         if (!!autoPlay) {
             $scope.startLesson();
         }

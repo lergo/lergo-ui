@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, FilterService, $rootScope, $filter, $log, $routeParams, $location, $window) {
+angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location, $window) {
 
 	$scope.loaded = false;
 	$scope.lessonsFilter = {

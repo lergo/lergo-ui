@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($scope, $log, LergoClient, $routeParams, $rootScope, FilterService, $location, $filter) {
+angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope ) {
 	$log.info('loading');
 	LergoClient.reports.getById($routeParams.reportId).then(function(result) {
 		$scope.report = result.data;
@@ -9,7 +9,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 			'title' : $scope.report.data.lesson.name,
 			'description' : $scope.report.data.lesson.description
 		};
-		$rootScope.lergoLanguage = FilterService.getLocaleByLanguage($scope.report.data.lesson.language);
+		LergoTranslate.setLanguageByName($scope.report.data.lesson.language);
 	});
 	$scope.stats = [];
 	$scope.$on('stats', function(event, data) {
@@ -74,10 +74,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 			LergoClient.lessons.create().then(function(result) {
 				var lesson = result.data;
 				lesson.name = $filter('translate')('lesson.practice.title') + report.data.lesson.name;
-				// todo: remove filter Service getLanguageByLocale - this should
-				// be
-				// coming from translate service.
-				lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
+				lesson.language = LergoTranslate.getLanguageObject().name;
 				lesson.subject = report.data.lesson.subject;
 				lesson.steps = [];
 				var stepsWithoutRetry = _.filter(report.data.lesson.steps, function(s) {

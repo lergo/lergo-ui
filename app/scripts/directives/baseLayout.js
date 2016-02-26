@@ -38,33 +38,22 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
                 return Math.floor(new Date().getTime() / 10000);
             };
 
-            $rootScope.getLabelForLanguage = function (id) {
+            scope.baseLayout.lergoLanguages = LergoTranslate.getSupportedLanguages();
 
-                return LergoTranslate.translate('general.translationLanguage.' + id);
-            };
-            $rootScope.lergoLanguages = [
-                {
-                    'id': 'en',
-                    'label': 'English'
-                },
-                {
-                    'id': 'he',
-                    'label': 'Hebrew'
-                },
-                {
-                    'id': 'ru',
-                    'label': 'Russian'
-                },
-                {
-                    'id': 'ar',
-                    'label': 'Arabic'
+            scope.baseLayout.language = LergoTranslate.getLanguage();
+
+            scope.$watch('baseLayout.language', function (newValue/* , oldValue */) {
+                if ( newValue ) {
+                    $log.info('new language', newValue);
+
+                    LergoTranslate.setLanguage(newValue);
                 }
-            ];
+            });
 
-            $rootScope.$watch('lergoLanguage', function (newValue/* , oldValue */) {
-                $log.info('new language', newValue);
-                LergoTranslate.setLanguage(newValue);
-                $rootScope.$broadcast('siteLanguageChanged');
+            scope.$watch(function(){
+                return LergoTranslate.getLanguage();
+            }, function( newValue ){
+                scope.baseLayout.language = newValue ;
             });
 
 

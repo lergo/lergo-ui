@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('QuestionsUpdateCtrl',
-    function ($scope, QuestionsService, LergoClient, $routeParams, ContinuousSave, $log, $location, FilterService, TagsService, $window, $filter) {
+    function ($scope, QuestionsService, LergoClient, $routeParams, ContinuousSave, $log, $location, LergoFilterService, TagsService, $window, $filter) {
         $window.scrollTo(0, 0);
         var saveQuestion = new ContinuousSave({
             'saveFn': function (value) {
@@ -13,8 +13,8 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
         var questionId = $routeParams.questionId;
 
         $scope.types = QuestionsService.questionsType;
-        $scope.subjects = FilterService.subjects;
-        $scope.languages = FilterService.languages;
+        $scope.subjects = LergoFilterService.subjects;
+        $scope.languages = LergoFilterService.languages;
 
         function loadQuestion() {
             QuestionsService.getQuestionById(questionId).then(function (result) {
@@ -34,17 +34,9 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
         }
 
         function isExpPerAnsCollapsed(quizItem) {
-            if (!quizItem.options) {
-                return false;
-            }
-            var options = _.filter(quizItem.options, function (option) {
+            return _.some(quizItem.options, function (option) {
                 return !option.checked && !!option.textExplanation;
             });
-            if (options.length === 0) {
-                return false;
-            }
-            return true;
-
         }
 
 

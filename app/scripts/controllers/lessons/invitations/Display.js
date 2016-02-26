@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, $filter, LergoClient, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope, FilterService) {
+angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, $filter, LergoClient, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope) {
 
 	$log.info('loading invitation', $routeParams.invitationId);
 	var errorWhileSaving = false;
@@ -198,10 +198,8 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 			LergoClient.lessons.create().then(function(result) {
 				var lesson = result.data;
 				lesson.name = $filter('translate')('lesson.practice.title') + report.data.lesson.name;
-				// todo: remove filter Service getLanguageByLocale - this should
-				// be
-				// coming from translate service.
-				lesson.language = FilterService.getLanguageByLocale($rootScope.lergoLanguage);
+
+				lesson.language = LergoTranslate.getLanguageObject().name;
 				lesson.subject = report.data.lesson.subject;
 				lesson.steps = [];
 				var stepsWithoutRetry = _.filter(report.data.lesson.steps, function(s) {

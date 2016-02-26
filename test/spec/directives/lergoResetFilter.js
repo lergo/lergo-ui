@@ -3,7 +3,7 @@
 describe('Directive: lergoResetFilter', function () {
 
     // load the directive's module
-    beforeEach(module('lergoApp','lergoBackendMock'));
+    beforeEach(module('lergoApp','lergoBackendMock','directives-templates'));
 
     var element,
         $rootScope,
