@@ -64,9 +64,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			'load' : '&onLoad',
 			'noUrlChanges' : '@noUrlChanges'
 		},
-		link : function postLink(scope/* , element, attrs */) {
+		link : function postLink(scope /*, element, attrs */) {
 
-            var loaded = false; // keep internal track for 'change' events
+
+            var loaded = false;// keep internal track for 'change' events
 
 			scope.$watch('model', function(newValue, oldValue) {
 				if (newValue === oldValue || !loaded ) {
@@ -429,7 +430,6 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			// otherwise we will need to handle multiple http queries overriding
 			// one another..
 			function persist(filter) {
-
 				load(filter);
 
 				watchLoad(filter);
@@ -469,7 +469,9 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			$log.info('filter loaded. calling callback', scope.load);
 
             $timeout(scope.load,1); // notify you were loaded
-            $timeout(function(){ loaded = true},1);
+            $timeout(function setLoaded(){ // function name needed for tests
+                loaded = true;
+            },1);
 
 
             scope.$watch(function(){ // if filter data was reset, we need to reload this directive

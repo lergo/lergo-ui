@@ -2,10 +2,19 @@
 
 describe('Directive: baseLayout', function () {
 
+    var language = {};
+    var supportedLanguages = [];
+
 
     var translateMock = {
         translate: function (n) {
             return n;
+        },
+        getSupportedLanguages: function(){
+            return supportedLanguages;
+        },
+        getLanguage: function(){
+            return language;
         },
         setLanguage: function () {
 //            console.log('setting language', arguments);
@@ -37,12 +46,6 @@ describe('Directive: baseLayout', function () {
 
     describe('something', function () {
 
-
-        it('should put getLabelForLanguage on rootScope', inject(function ($rootScope) {
-            setup();
-            expect(typeof($rootScope.getLabelForLanguage)).toBe('function');
-
-        }));
 //
         it('should invoke setLanguage on LergoTranslate', function () {
             setup();

@@ -51,7 +51,7 @@ angular.module('lergoApp')
             var filterName = filter.getFullKeyName();
             var saved = $routeParams[filterName];
             try{
-                saved = angular.fromJson($routeParams[filterName] || sessionStorage[filterName]);
+                saved = angular.fromJson($routeParams[filterName] || $sessionStorage[filterName]);
             }catch(e){}
             if (_.isEmpty(saved)) {
                 saved = null;
@@ -108,7 +108,7 @@ angular.module('lergoApp')
             };
         }
 
-        var LanguageFilter = function(key, relevany){
+        var LanguageFilter = function(/*key, relevancy*/){ // the arguments are passed to the Filter constructor
             Filter.apply(this, arguments);
 
             this.isActive = function( relevancyOpts ){
@@ -128,12 +128,12 @@ angular.module('lergoApp')
 
 
         me.FILTERS = {
+            'MODEL_SUBJECT':             new Filter(                    'model.subject',      'showSubject'              ),
             'REPORT_STUDENT':            new Filter(                    'reportStudent',      'showStudents'             ),
             'AGE_FILTER':                new Filter(                    'ageFilter',          'showAge'                  ),
             'VIEWS_FILTER':              new Filter(                    'viewsFilter',        'showViews'                ),
             'CORRECT_PERCENTAGE':        new Filter(                    'correctPercentage',  'showCorrectPercentage'    ),
             'FILTER_LANGUAGE':           new LanguageFilter(            'filterLanguage',     'showLanguage'             ),
-            'MODEL_SUBJECT':             new Filter(                    'model.subject',      'showSubject'              ),
             'FILTER_TAGS':               new Filter(                    'filterTags',         'showTags'                 ),
             'REPORT_STATUS_VALUE':       new Filter(                    'reportStatusValue',  'showReportStatus'         ),
             'INVITE_STATUS_VALUE':       new Filter(                    'inviteStatusValue',  'showInviteStatus'         ),
@@ -203,8 +203,8 @@ angular.module('lergoApp')
             }
             $log.info(filter + ' has changed. persisting [' + newValue + ']');
             var filterName = filter.getFullKeyName();
-            if ( sessionStorage[filterName] !== newValue ) {
-                sessionStorage[filterName] = newValue;
+            if ( $sessionStorage[filterName] !== newValue ) {
+                $sessionStorage[filterName] = angular.toJson(newValue);
             }
             if ( changeUrl && $routeParams[filterName] !== newValue ) {
                 $location.search(filterName, newValue === null ? null : angular.toJson(newValue));
@@ -237,7 +237,7 @@ angular.module('lergoApp')
 
         /********************************************* constants we keep *********************************/
         me.languages = _.map(LergoTranslate.getSupportedLanguages(), function( l ){
-            return { 'id' : l.name, 'locale' : l.id }
+            return { 'id' : l.name, 'locale' : l.id };
         });
 
         me.subjects = [

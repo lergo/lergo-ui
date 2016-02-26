@@ -3,7 +3,7 @@
 describe('Controller: ReportsIndexCtrl', function() {
 
 	// load the controller's module
-	beforeEach(module('lergoApp','lergoBackendMock'));
+	beforeEach(module('lergoApp','lergoBackendMock','directives-templates'));
 
 	var ReportsIndexCtrl, scope;
 
@@ -41,7 +41,7 @@ describe('Controller: ReportsIndexCtrl', function() {
 
         beforeEach(inject(function(localStorageService, $location ){
             spyOn(localStorageService, 'set');
-            spyOn($location,'search');
+            spyOn($location,'search').andReturn({ replace: function(){}});
             scope.reportsPage.reportType = 'mine';
             scope.$apply();
 //            $timeout.flush();

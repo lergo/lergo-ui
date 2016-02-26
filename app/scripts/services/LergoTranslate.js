@@ -43,6 +43,9 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
 
 
         this.getLanguageByName = function( _languageName ){
+            if ( !_languageName ){ // do something by default for legacy code.
+                return supportedLanguages[0];
+            }
             return _.find(supportedLanguages, {'name' : _languageName });
         };
 
