@@ -10,6 +10,7 @@ angular.module('lergoApp')
                         return LergoTranslate.getLanguage();
                     },
                     function (newValue, oldValue) {
+                        debugger;
                         try {
 
                             var oldDirection = LergoTranslate.getDirection(oldValue);
@@ -18,7 +19,7 @@ angular.module('lergoApp')
                         }
 
                         try {
-                            var newDirection = LergoTranslate.getDirection(oldValue);
+                            var newDirection = LergoTranslate.getDirection(newValue);
                             element.addClass(newDirection);
                         } catch (e) {
                         }
