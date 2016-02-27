@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @ngdoc service
+ * @ngdoc servicer
  * @name lergoApp.LergoFilterService
  * @description
  * # LergoFilterService
@@ -143,7 +143,8 @@ angular.module('lergoApp')
             'CREATED_BY':                new Filter(                    'createdBy',          'showCreatedBy'            ),
             'REPORTED_BY':               new Filter(                    'reportedBy',         'showReportedBy'           ),
             'ROLE':                      new Filter(                    'role',               'showRoles'                ),
-            'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         )
+            'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         ),
+            'HAS_QUESTIONS':             new Filter(                    'hasQuestions',       'showHasQuestions'         )
         };
 
 

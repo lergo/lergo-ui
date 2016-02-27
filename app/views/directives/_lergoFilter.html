@@ -19,6 +19,14 @@
 			</select>
 		</div>
 	</span>
+    <span ng-show="!!opts.showHasQuestions">
+		<div class="label">{{'filters.labels.hasQuestions' | translate }}</div>
+		<div class="input">
+
+			<input type="checkbox" ng-model="hasQuestions"/>
+
+		</div>
+	</span>
 	<span ng-show="!!opts.showSubject">
 		<div class="label">{{'filters.labels.subject' | translate }}</div>
 		<div class="input">

@@ -78,7 +78,9 @@ describe('Directive: lergoFilter', function () {
             $rootScope.$digest();
 
 
-            expect(_.isEqual(element.children().scope().model[modelField],modelValue)).toBe(true);
+            var modelFieldValue = element.children().scope().model[modelField];
+            // need to use isEqual to support deep object comparison
+            expect(_.isEqual( modelFieldValue, modelValue)).toBe(true,'value should be :: ' + JSON.stringify(modelValue)  + ' but was :: ' + JSON.stringify(modelFieldValue));
 
             element.children().scope()[scopeField] = opts.noValue;
             $rootScope.$digest();
@@ -101,6 +103,10 @@ describe('Directive: lergoFilter', function () {
 
     it('should update reportStudent', function(){
         testChangeProperty('reportStudent', 'the name', 'data.invitee.name', 'the name' );
+    });
+
+    it('should update hasQuestions', function(){
+        testChangeProperty('hasQuestions', true, 'steps.quizItems.1', { dollar_exists : true } );
     });
 
     it('should update tags', function(){

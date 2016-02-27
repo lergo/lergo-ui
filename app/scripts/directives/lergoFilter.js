@@ -175,6 +175,18 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             }
             $scope.$watch('role', _updateRole);
 
+            function _updateHasQuestions(newValue, oldValue){
+                var modelKey = 'steps.quizItems.1';
+                if ( newValue !== oldValue ){
+                    if ( newValue ){
+                        $scope.model[modelKey] = { dollar_exists : true };
+                    }else{
+                        delete $scope.model[modelKey];
+                    }
+                }
+            }
+            $scope.$watch('hasQuestions', _updateHasQuestions);
+
             function _updateReportLesson(newValue, oldValue){
                 $log.info('report lesson was updated!!');
                 if ( newValue !== oldValue ){
@@ -451,6 +463,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORTED_BY] = _updateReportedBy  ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.ROLE] =  _updateRole ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORT_LESSON] =  _updateReportLesson ;
+            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.HAS_QUESTIONS] =  _updateHasQuestions ;
 
             function reload( newValue, oldValue ){
                 if ( !!newValue && !!oldValue && newValue !== oldValue ) {
@@ -472,7 +485,6 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             $timeout(function setLoaded(){ // function name needed for tests
                 loaded = true;
             },1);
-
 
             scope.$watch(function(){ // if filter data was reset, we need to reload this directive
                 return LergoFilterService.getLastReset();
