@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, FilterService, LergoClient, $log, $filter) {
+angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, LergoClient, $log, $filter) {
 
 	$scope.adminFilter = {};
 	$scope.filterPage = {};
 
 	$scope.adminFilterOpts = {
 		'showSubject' : true,
+        'showHasQuestions' : true,
 		'showLessonStatus' : true,
 		'showLanguage' : true,
 		'showAge' : true,

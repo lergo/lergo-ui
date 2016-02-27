@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, LergoClient, TagsService, $routeParams, FilterService, $log, $location, $rootScope, localStorageService, $window, $filter) {
+angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, LergoClient, TagsService, $routeParams, $log, $location, $rootScope, localStorageService, $window, $filter) {
 
 	$scope.invitesFilter = {};
 	$scope.filterPage = {};

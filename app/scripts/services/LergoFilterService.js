@@ -1,14 +1,14 @@
 'use strict';
 
 /**
- * @ngdoc service
+ * @ngdoc servicer
  * @name lergoApp.LergoFilterService
  * @description
  * # LergoFilterService
  * Service in the lergoApp.
  */
 angular.module('lergoApp')
-    .service('LergoFilterService', function ( $log, localStorageService, $location, $routeParams, $timeout ) {
+    .service('LergoFilterService', function ( $log, $sessionStorage, $location, $routeParams, $timeout, LergoTranslate ) {
 
         var me = this;
 
@@ -19,21 +19,20 @@ angular.module('lergoApp')
          */
         me.lastReset = new Date();
 
-        var resetFilter = function( keepKeys ){
+        var resetFilter = function( ignoreKeys ){
 
-            if ( !keepKeys ){
-                keepKeys = [];
-            }else if ( keepKeys.ignore ){
-                keepKeys = keepKeys.ignore;
+            if ( !ignoreKeys ){
+                ignoreKeys = [];
+            }else if ( ignoreKeys.ignore ){
+                ignoreKeys = ignoreKeys.ignore;
             }
 
 
 
-            _.each(_.compact(_.map(me.FILTERS, function(filter){
-                return keepKeys.indexOf(filter) < 0 ? filter.getFullKeyName() : null ;
-            })), function( filterKey ){
-                localStorageService.remove(filterKey);
-                $location.search(filterKey, null);
+            _.each(me.FILTERS, function(filter) {
+                if (ignoreKeys.indexOf(filter) < 0) {
+                    filter.reset();
+                }
             });
 
             $timeout(me.updateLastReset,1); // timeout required because $location.search will only apply on next tick or something..
@@ -52,7 +51,7 @@ angular.module('lergoApp')
             var filterName = filter.getFullKeyName();
             var saved = $routeParams[filterName];
             try{
-                saved = ($routeParams[filterName] && JSON.parse($routeParams[filterName])) || localStorageService.get(filterName);
+                saved = angular.fromJson($routeParams[filterName] || $sessionStorage[filterName]);
             }catch(e){}
             if (_.isEmpty(saved)) {
                 saved = null;
@@ -64,15 +63,12 @@ angular.module('lergoApp')
         // active if there's one relevant filter with value
         me.isActive = function( resetType, relevancyOpts ){
             var result = _.find(me.FILTERS, function( f ){
-                return resetType.ignore.indexOf(f) < 0 &&
-                    !!f.isRelevant(relevancyOpts) &&
-                    me.getSavedValue(f) !== null;
+                return resetType.ignore.indexOf(f) < 0 && f.isActive( relevancyOpts );
+
             });
 
             return !!result;
         };
-
-
 
 
         /**
@@ -99,10 +95,30 @@ angular.module('lergoApp')
                 return Filter.getFullKeyName(this.key);
             };
 
+            this.isActive = function( relevancyOpts ){
+                return !!this.isRelevant(relevancyOpts) && me.getSavedValue(this) !== null;
+            };
+
+            this.reset = function( ){
+                doSave(this, true, null);
+            };
+
             this.toString = function(){
                 return this.key;
             };
         }
+
+        var LanguageFilter = function(/*key, relevancy*/){ // the arguments are passed to the Filter constructor
+            Filter.apply(this, arguments);
+
+            this.isActive = function( relevancyOpts ){
+                return !!this.isRelevant(relevancyOpts) && me.getSavedValue(this) !== LergoTranslate.getLanguageObject().name;
+            };
+
+            this.reset = function(){
+                doSave( this, true, LergoTranslate.getLanguageObject().name );
+            };
+        };
 
         Filter.FILTER_PREFIX = 'lergoFilter';
 
@@ -112,22 +128,23 @@ angular.module('lergoApp')
 
 
         me.FILTERS = {
-            'REPORT_STUDENT':            new Filter('reportStudent',      'showStudents'             ),
-            'AGE_FILTER':                new Filter('ageFilter',          'showAge'                  ),
-            'VIEWS_FILTER':              new Filter('viewsFilter',        'showViews'                ),
-            'CORRECT_PERCENTAGE':        new Filter('correctPercentage',  'showCorrectPercentage'    ),
-            'FILTER_LANGUAGE':           new Filter('filterLanguage',     'showLanguage'             ),
-            'MODEL_SUBJECT':             new Filter('model.subject',      'showSubject'              ),
-            'FILTER_TAGS':               new Filter('filterTags',         'showTags'                 ),
-            'REPORT_STATUS_VALUE':       new Filter('reportStatusValue',  'showReportStatus'         ),
-            'INVITE_STATUS_VALUE':       new Filter('inviteStatusValue',  'showInviteStatus'         ),
-            'MODEL_STATUS':              new Filter('model.status',       'showAbuseReportStatus'    ),
-            'STATUS_VALUE':              new Filter('statusValue',        'showLessonStatus'         ),
-            'MODEL_SEARCH_TEXT':         new Filter('model.searchText',   'showSearchText'           ),
-            'CREATED_BY':                new Filter('createdBy',          'showCreatedBy'            ),
-            'REPORTED_BY':               new Filter('reportedBy',         'showReportedBy'           ),
-            'ROLE':                      new Filter('role',               'showRoles'                ),
-            'REPORT_LESSON':             new Filter('reportLesson',       'showReportLesson'         )
+            'MODEL_SUBJECT':             new Filter(                    'model.subject',      'showSubject'              ),
+            'REPORT_STUDENT':            new Filter(                    'reportStudent',      'showStudents'             ),
+            'AGE_FILTER':                new Filter(                    'ageFilter',          'showAge'                  ),
+            'VIEWS_FILTER':              new Filter(                    'viewsFilter',        'showViews'                ),
+            'CORRECT_PERCENTAGE':        new Filter(                    'correctPercentage',  'showCorrectPercentage'    ),
+            'FILTER_LANGUAGE':           new LanguageFilter(            'filterLanguage',     'showLanguage'             ),
+            'FILTER_TAGS':               new Filter(                    'filterTags',         'showTags'                 ),
+            'REPORT_STATUS_VALUE':       new Filter(                    'reportStatusValue',  'showReportStatus'         ),
+            'INVITE_STATUS_VALUE':       new Filter(                    'inviteStatusValue',  'showInviteStatus'         ),
+            'MODEL_STATUS':              new Filter(                    'model.status',       'showAbuseReportStatus'    ),
+            'STATUS_VALUE':              new Filter(                    'statusValue',        'showLessonStatus'         ),
+            'MODEL_SEARCH_TEXT':         new Filter(                    'model.searchText',   'showSearchText'           ),
+            'CREATED_BY':                new Filter(                    'createdBy',          'showCreatedBy'            ),
+            'REPORTED_BY':               new Filter(                    'reportedBy',         'showReportedBy'           ),
+            'ROLE':                      new Filter(                    'role',               'showRoles'                ),
+            'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         ),
+            'HAS_QUESTIONS':             new Filter(                    'hasQuestions',       'showHasQuestions'         )
         };
 
 
@@ -165,8 +182,7 @@ angular.module('lergoApp')
 
                 if (!!saved) {
                     if (changeUrl) {
-
-                        $location.search(filterName, saved === null ? null : JSON.stringify(saved));
+                        $location.search(filterName, saved === null ? null : angular.toJson(saved));
                     }
                 }
 
@@ -182,6 +198,20 @@ angular.module('lergoApp')
 
         };
 
+        function doSave( filter , changeUrl, newValue ){
+            if (_.isEmpty(newValue)) {
+                newValue = null;
+            }
+            $log.info(filter + ' has changed. persisting [' + newValue + ']');
+            var filterName = filter.getFullKeyName();
+            if ( $sessionStorage[filterName] !== newValue ) {
+                $sessionStorage[filterName] = angular.toJson(newValue);
+            }
+            if ( changeUrl && $routeParams[filterName] !== newValue ) {
+                $location.search(filterName, newValue === null ? null : angular.toJson(newValue));
+            }
+        }
+
         /**
          *
          * @param {LergoFilter} filter
@@ -192,17 +222,7 @@ angular.module('lergoApp')
         me.save = function(filter, changeUrl, relevancyOpts ) {
             return function (newValue) {
                 if (filter.isRelevant(relevancyOpts)) {
-                    if (_.isEmpty(newValue)) {
-                        newValue = null;
-                    }
-                    $log.info(filter + ' has changed. persisting [' + newValue + ']');
-                    var filterName = filter.getFullKeyName();
-                    if ( localStorageService.get(filterName) !== newValue ) {
-                        localStorageService.set(filterName, newValue);
-                    }
-                    if ( changeUrl && $routeParams[filterName] !== newValue ) {
-                        $location.search(filterName, newValue === null ? null : angular.toJson(newValue));
-                    }
+                    doSave( filter, changeUrl, newValue );
                 }
             };
 
@@ -211,9 +231,42 @@ angular.module('lergoApp')
         me.RESET_TYPES = {
             'LOGO' : {
                 'id': 'logo',
-                'ignore': [ me.FILTERS.FILTER_LANGUAGE ]
+                'ignore': [  ]
             }
         };
 
+
+        /********************************************* constants we keep *********************************/
+        me.languages = _.map(LergoTranslate.getSupportedLanguages(), function( l ){
+            return { 'id' : l.name, 'locale' : l.id };
+        });
+
+        me.subjects = [
+            'english',
+            'math',
+            'geometry',
+            'science',
+            'language',
+            'grammar',
+            'spelling',
+            'biology',
+            'chemistry',
+            'physics',
+            'computers',
+            'sustainability',
+            'history',
+            'geography',
+            'art',
+            'music',
+            'financialEducation',
+            'roadSafety',
+            'bible',
+            'lergo',
+            'other'
+        ];
+
+        me.status = [ 'private', 'public' ];
+        me.reportStatus = [ 'complete', 'incomplete' ];
+        me.abuseReportStatus=['pending', 'resolved','dismissed'];
 
     });
