@@ -12,6 +12,10 @@
                 font-weight: bold;
                 padding-bottom: 5px;
             }
+            iframe{
+                width:100%;
+                height:180px;
+            }
         }
         .textContent {
             background: #efefef;
@@ -52,3 +56,11 @@
         }
     }
 }
+
+
+@media screen and (max-width:1230px) {
+    [helper-content], #HelperContent {
+        width: 225px;
+    }
+}
+

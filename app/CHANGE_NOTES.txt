@@ -1,4 +1,8 @@
 
+fix(layout): make header go all the way to the right in mobile. make 'add question dialog' be from right-to-left in rtl languages.
+
+feat(admin): add question count for each lesson. add filter to 'has questions'
+
 improve(filter): make filter kept on session and fix language treatment
 
 task(subject): add bible

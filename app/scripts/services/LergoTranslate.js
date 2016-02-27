@@ -99,6 +99,10 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
 
         this.getLanguageObject = this.getLanguageObj; // alias
 
+        this.getDirection = function(_language){
+            return this.getLanguageObj(_language).dir;
+        };
+
         this.getSupportedLanguages = function () {
             return supportedLanguages;
         };

@@ -11,13 +11,14 @@ angular.module('lergoApp')
                     },
                     function (newValue, oldValue) {
                         try {
-                            var oldDirection = $filter('i18nDirection')(oldValue);
+
+                            var oldDirection = LergoTranslate.getDirection(oldValue);
                             element.removeClass(oldDirection);
                         } catch (e) {
                         }
 
                         try {
-                            var newDirection = $filter('i18nDirection')(newValue);
+                            var newDirection = LergoTranslate.getDirection(oldValue);
                             element.addClass(newDirection);
                         } catch (e) {
                         }
