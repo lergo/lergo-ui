@@ -24,7 +24,8 @@ angular.module('lergoApp')
         });
 
         LergoClient.lessons.getById(lessonId).then(function (result) {
-            LergoTranslate.setLanguageByName(result.data.name);
+            $scope.classInvite.lessonName = result.data.name;
+            $rootScope.lergoLanguage = LergoTranslate.setLanguageByName(result.data.language);
         });
 
 
