@@ -40,6 +40,9 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				if (!$scope.lesson.tags) {
 					$scope.lesson.tags = [];
 				}
+                if (!$scope.lesson.language) {
+                    $scope.lesson.language = LergoTranslate.getLanguageObject().name;
+                }
 			}, function(result) {
 				$scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
 				$log.error($scope.errorMessage);
@@ -312,6 +315,8 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 					$log.error($scope.errorMessage);
 				});
 			};
+
+
 			function openQuestionDialog(step, quizItem, isUpdate) {
 				persistScroll();
 				var modelContent = {};
