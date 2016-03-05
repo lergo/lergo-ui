@@ -48,6 +48,13 @@ body{
     }
 }
 
+@media screen and (max-width:1099px) {
+
+    body{
+        min-width:0;
+    }
+}
+
 
 
 .ltr{
