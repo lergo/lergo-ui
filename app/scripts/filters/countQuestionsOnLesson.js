@@ -1,16 +1,10 @@
 'use strict';
 
 angular.module('lergoApp')
-    .filter('countQuestionsOnLesson', function () {
+    .filter('countQuestionsOnLesson', function ( LessonsService ) {
 
         function countQuestionsOnLesson(item) {
-            try {
-                return _.sumBy(item.steps, function (step) {
-                    return step.type === 'quiz' ? _.size(step.quizItems) : 0;
-                });
-            } catch (e) {
-                return 0;
-            }
+            return LessonsService.countQuestions(item);
         }
 
         countQuestionsOnLesson.$stateful = true;

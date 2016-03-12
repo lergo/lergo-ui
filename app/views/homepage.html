@@ -81,7 +81,7 @@
 											</span>
 										</td>
 										<td>
-											<span ng-show="!!lesson.questionsCount" tooltip="{{'homepage.tooltip.questions' | translate}}">
+											<span ng-show="hasQuestions(lesson)" tooltip="{{'homepage.tooltip.questions' | translate}}">
 												<i class="fa fa-question-circle fa-fw"></i>
 												{{lesson | countQuestionsOnLesson }}
 											</span>

@@ -100,6 +100,21 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 		}
 	};
 
+    /**
+     *
+     * @param {Lesson} item
+     * @returns {number}
+     */
+    this.countQuestions = function( item ){
+        try {
+            return _.sumBy(item.steps, function (step) {
+                return step.type === 'quiz' ? _.size(step.quizItems) : 0;
+            });
+        } catch (e) {
+            return 0;
+        }
+    };
+
     this.getVideoId = function(step){
         var value = null;
 

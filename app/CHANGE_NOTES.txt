@@ -1,3 +1,5 @@
+fix(questions count): update homepage display with new count questions method.
+
 fix(mobile): fix display for mobile RTL mode.
 
 fix(questions count): remove count caching. handle scenario where step was once quiz but not anymore.
