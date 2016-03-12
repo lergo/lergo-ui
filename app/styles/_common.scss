@@ -48,10 +48,22 @@ body{
     }
 }
 
+/**
+ *
+ *   Guy - Things to test when changing this
+      - mobile english/hebrew shows page correctly. (not header stretches well both sides)
+      - go to /embedTest2.html (change the url there to something real) for hebrew and english. see no scroll bars and quizes display correctly.
+      - sound in ipad works correctly for hebrew mode.
+
+ *
+**/
 @media screen and (max-width:1099px) {
 
     body{
-        min-width:0;
+        &.lergo-embed-mode{
+            min-width:0;
+        }
+
     }
 }
 
