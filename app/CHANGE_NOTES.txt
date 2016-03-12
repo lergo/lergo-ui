@@ -1,3 +1,6 @@
+
+fix(questions count): remove count caching. handle scenario where step was once quiz but not anymore.
+
 fix(embed): make embed look good for RTL lessons too.
 
 task(disk): use a different folder to backup database since dumps are too big.

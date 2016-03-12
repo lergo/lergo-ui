@@ -199,13 +199,13 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 				LergoClient.users.findUsersById(usersWeCopiedFrom).then(function(result) {
 					var copyOfUsers = result.data;
 					// turn list of users to map where id is map
-					var copyOfUsersById = _.indexBy(copyOfUsers, '_id');
+					var copyOfUsersById = _.keyBy(copyOfUsers, '_id');
 
 					_.each(originalQuestions, function(q) {
 						q.userDetails = copyOfUsersById[q.userId];
 					});
 
-					var originalsById = _.indexBy(originalQuestions, '_id');
+					var originalsById = _.keyBy(originalQuestions, '_id');
 
 					_.each(questionsWeCopied, function(q) {
                         q.originals = _.map(q.copyOf, function(c) {
@@ -222,7 +222,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 						return !_.isEmpty(_.reject(q.originals,  { userId : $scope.lesson.userId } ));
 					});
 
-					$scope.questionsWeCopied = _.indexBy(questionsWeCopied, '_id');
+					$scope.questionsWeCopied = _.keyBy(questionsWeCopied, '_id');
 				});
 			});
 
@@ -238,13 +238,13 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 
 		LergoClient.users.findUsersById(others).then(function(result) {
 			var othersUsers = result.data;
-			var othersUsersById = _.indexBy(othersUsers, '_id');
+			var othersUsersById = _.keyBy(othersUsers, '_id');
 
 			_.each(questionsFromOthers, function(q) {
 				q.userDetails = othersUsersById[q.userId];
 			});
 
-			$scope.questionsFromOthers = _.indexBy(questionsFromOthers, '_id');
+			$scope.questionsFromOthers = _.keyBy(questionsFromOthers, '_id');
 		});
 
 	}
@@ -294,7 +294,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl', function($scope, $rout
 				LergoClient.users.findUsersById(_.map(copyOfLessons, 'userId')).then(function(result) {
 					var copyOfUsers = result.data;
 					// turn list of users to map
-					var copyOfUsersById = _.indexBy(copyOfUsers, '_id');
+					var copyOfUsersById = _.keyBy(copyOfUsers, '_id');
 
 					_.each(copyOfLessons, function(l) {
 						l.userDetails = copyOfUsersById[l.userId];

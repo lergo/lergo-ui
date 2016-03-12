@@ -28,7 +28,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 						LergoClient.users.findUsersById(usersWeCopiedFrom).then(function(result) {
 							var copyOfUsers = result.data;
 							// turn list of users to map where id is map
-							var copyOfUsersById = _.indexBy(copyOfUsers, '_id');
+							var copyOfUsersById = _.keyBy(copyOfUsers, '_id');
 
 							_.each(originalQuestions, function(q) {
 								q.user = copyOfUsersById[q.userId];

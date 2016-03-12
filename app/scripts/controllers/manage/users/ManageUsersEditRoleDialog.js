@@ -20,7 +20,7 @@ angular.module('lergoApp')
         });
 
         $scope.submit = function(){
-            LergoClient.users.patchUserRoles($scope.user._id, _.pluck(_.filter($scope.roles, { checked: true }),'value')).then(function(){
+            LergoClient.users.patchUserRoles($scope.user._id, _.map(_.filter($scope.roles, { checked: true }),'value')).then(function(){
                 toastr.success('roles updated successfully');
                 $modalInstance.close( );
             }, function error(){

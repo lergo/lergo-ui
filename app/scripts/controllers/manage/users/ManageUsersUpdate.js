@@ -42,7 +42,7 @@ angular.module('lergoApp')
 
         $scope.loadRoles = function(){
             LergoClient.roles.list({projection: {'_id':1,'name' :1}}).then(function(result){
-                $scope.roles = _.indexBy(result.data.data,'_id');
+                $scope.roles = _.keyBy(result.data.data,'_id');
             });
         };
 

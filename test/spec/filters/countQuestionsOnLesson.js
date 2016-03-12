@@ -15,17 +15,14 @@ describe('Filter: countQuestionsOnLesson', function () {
 
         var item = { 'steps': [
             {},
-            { 'quizItems': [ 1, 2, 3]},
-            { 'quizItems': [1]}
+            { 'type' : 'quiz', 'quizItems': [ 1, 2, 3]},
+            { 'type' : 'quiz', 'quizItems': [1]}
         ] };
 
         it('should return the input prefixed with "countQuestionsOnLesson filter:"', function () {
             expect(countQuestionsOnLesson(item)).toBe(4);
         });
 
-        it('should cache the result', function () {
-            expect(item.questionsCount).toBe(4);
-        });
 
     });
 
@@ -34,9 +31,6 @@ describe('Filter: countQuestionsOnLesson', function () {
         expect(countQuestionsOnLesson({})).toBe(0);
     });
 
-    it('should return questionsCount property if exists on object', function () {
-        expect(countQuestionsOnLesson({'steps': [], 'questionsCount': 50})).toBe(50);
-    });
 
 
     it('should fail nicely. return 0 on exception', function () {

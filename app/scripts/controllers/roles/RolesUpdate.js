@@ -39,7 +39,7 @@ angular.module('lergoApp')
                 }, function error(result){
                     if (LergoClient.errors.ResourceInUse.typeof(result.data)) {
 
-                        var users = _.pluck(result.data.description.users,'username').join(',');
+                        var users = _.map(result.data.description.users,'username').join(',');
                         toastr.error('used by users : ' + users,'role in use');
                     } else {
                         toastr.error(result.data, 'error');
@@ -62,7 +62,7 @@ angular.module('lergoApp')
          * @param done - should we redirect back to roles after we save
          */
         $scope.saveRole = function( done ){
-            $scope.role.permissions = _.pluck(_.filter( $scope.permissions, { checked : true }), 'value' );
+            $scope.role.permissions = _.map(_.filter( $scope.permissions, { checked : true }), 'value' );
 
 
             LergoClient.roles.update($scope.role).then(function success(/*result*/){
