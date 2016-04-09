@@ -219,7 +219,12 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 					retryQuestion : stepsWithoutRetry.length === 0
 				};
 				lesson.steps.push(step);
-				lesson.steps[0].quizItems = $scope.wrongQuestions;
+
+                // NOTE: using unique here on purpose.
+                // because we don't support repeating same question in the same quiz.
+                // the answers model in StepDisplay assumes uniqueness.
+
+				lesson.steps[0].quizItems = _.uniq($scope.wrongQuestions);
 				LergoClient.lessons.update(lesson).then(function() {
 					$scope.startLesson(lesson._id);
 				});
