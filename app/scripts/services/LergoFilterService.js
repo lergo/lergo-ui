@@ -53,7 +53,11 @@ angular.module('lergoApp')
             try{
                 saved = angular.fromJson($routeParams[filterName] || $sessionStorage[filterName]);
             }catch(e){}
-            if (_.isEmpty(saved)) {
+            if ( typeof(saved) !== 'boolean' && _.isEmpty(saved) ) {
+                saved = null;
+            }
+
+            if ( typeof(saved) === 'boolean' && !saved){
                 saved = null;
             }
             return saved;
@@ -128,6 +132,7 @@ angular.module('lergoApp')
 
 
         me.FILTERS = {
+            'HAS_QUESTIONS':             new Filter(                    'hasQuestions',       'showHasQuestions'         ),
             'MODEL_SUBJECT':             new Filter(                    'model.subject',      'showSubject'              ),
             'REPORT_STUDENT':            new Filter(                    'reportStudent',      'showStudents'             ),
             'AGE_FILTER':                new Filter(                    'ageFilter',          'showAge'                  ),
@@ -143,8 +148,7 @@ angular.module('lergoApp')
             'CREATED_BY':                new Filter(                    'createdBy',          'showCreatedBy'            ),
             'REPORTED_BY':               new Filter(                    'reportedBy',         'showReportedBy'           ),
             'ROLE':                      new Filter(                    'role',               'showRoles'                ),
-            'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         ),
-            'HAS_QUESTIONS':             new Filter(                    'hasQuestions',       'showHasQuestions'         )
+            'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         )
         };
 
 
@@ -199,9 +203,14 @@ angular.module('lergoApp')
         };
 
         function doSave( filter , changeUrl, newValue ){
-            if (_.isEmpty(newValue)) {
+            if ( typeof(newValue) !== 'boolean' && _.isEmpty(newValue)) {
                 newValue = null;
             }
+
+            if ( typeof(newValue) === 'boolean' && !newValue  ){
+                newValue = null;
+            }
+
             $log.info(filter + ' has changed. persisting [' + newValue + ']');
             var filterName = filter.getFullKeyName();
             if ( $sessionStorage[filterName] !== newValue ) {
@@ -258,6 +267,8 @@ angular.module('lergoApp')
             'geography',
             'art',
             'music',
+            'arabic',
+            'signlanguage',
             'financialEducation',
             'roadSafety',
             'bible',

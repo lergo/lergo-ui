@@ -1,3 +1,8 @@
+
+fix(filter): make 'hasQuestions' persistent.
+
+task(language): add 2 more subjects
+
 fix(practice mistakes): make questions not repeat themselves. resolves stuck lessons issue.
 
 fix(questions count): update homepage display with new count questions method.
