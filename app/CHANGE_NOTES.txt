@@ -1,3 +1,4 @@
+fix(installation): make domain appear properly in nginx configuration
 
 task(about): add 'feedback' tab to 'about us' section.
 
