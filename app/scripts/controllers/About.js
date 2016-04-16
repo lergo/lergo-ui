@@ -1,34 +1,49 @@
 'use strict';
 
-angular.module('lergoApp').controller('AboutCtrl', function($scope, $routeParams, $window) {
-	$scope.sections = [ {
-		id : 'overview'
+angular.module('lergoApp').controller('AboutCtrl', function($scope, $routeParams, $window, $sce, $filter) {
+    $scope.sections = [
+        {
+            id: 'overview'
+        },
+        {
+            id: 'contribute'
 
-	}, {
-		id : 'contribute'
+        },
+        {
+            id: 'keyContributors'
 
-	}, {
-		id : 'keyContributors'
+        },
+        {
+            id: 'keyFunders'
 
-	}, {
-		id : 'keyFunders'
+        },
+        {
+            id: 'keyFundersPictures'
 
-	}, {
-		id : 'keyFundersPictures'
+        },
+        {
+            id: 'lergoFeedback',
+            url: function () {
+                return $sce.trustAsResourceUrl($filter('translate')('about.sections.lergoFeedbackUrl'));
+            }
+        },
+        {
+            id: 'friends'
 
-	}, {
-		id : 'friends'
+        },
+        {
+            id: 'faq'
 
-	}, {
-		id : 'faq'
+        },
+        {
+            id: 'privacy'
 
-	}, {
-		id : 'privacy'
+        },
+        {
+            id: 'contact'
 
-	}, {
-		id : 'contact'
-
-	} ];
+        }
+    ];
 	$scope.scrollUp = function() {
 		$window.scrollTo(0, 0);
 	};

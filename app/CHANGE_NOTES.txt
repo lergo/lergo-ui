@@ -1,4 +1,8 @@
 
+task(about): add 'feedback' tab to 'about us' section.
+
+task(subject): add literature to subjects
+
 fix(filter): make 'hasQuestions' persistent.
 
 task(language): add 2 more subjects

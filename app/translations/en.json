@@ -182,6 +182,9 @@
         "desg": "Branding,former CEO Y&R Israel"
     },
     "about": {
+        "sections" : {
+            "lergoFeedbackUrl" : "https://docs.google.com/forms/d/1EWBSsbLsBtWLu8-3Q-D3X12COQXvGYQPu08LLOONAiA/viewform"
+        },
         "contact": "Contact",
         "contribute": "Contribute",
         "faq": "FAQ",
