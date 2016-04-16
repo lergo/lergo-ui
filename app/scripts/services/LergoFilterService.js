@@ -258,6 +258,7 @@ angular.module('lergoApp')
             'language',
             'grammar',
             'spelling',
+            'literature',
             'biology',
             'chemistry',
             'physics',
