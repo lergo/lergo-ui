@@ -1,3 +1,6 @@
+
+fix(about/feedback): make iframe height bigger for hebrew
+
 fix(installation): make domain appear properly in nginx configuration
 
 task(about): add 'feedback' tab to 'about us' section.
