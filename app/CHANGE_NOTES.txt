@@ -1,3 +1,4 @@
+fix(question preview): fix user profile link
 
 fix(about/feedback): make iframe height bigger for hebrew
 

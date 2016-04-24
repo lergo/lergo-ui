@@ -44,11 +44,7 @@
                             <div class="details">
                                 <div class="properties">
 						<span tooltip="{{'homepage.tooltip.user' | translate}}">
-                            <a show-logged-in ng-href="#!/user/{{lesson.user.username}}/profile">
-                                <i class="fa fa-user"></i>
-                                <span>{{quizItem.user.username}}</span>
-                            </a>
-                             <a show-anonymous ng-href="#!/public/{{lesson.user.username}}/profile">
+                             <a ng-href="#!/public/{{quizItem.user.username}}/profile">
                                  <i class="fa fa-user"></i>
                                  <span>{{quizItem.user.username}}</span>
                              </a>
