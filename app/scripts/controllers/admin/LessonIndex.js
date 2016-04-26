@@ -6,11 +6,11 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 	$scope.filterPage = {};
 
 	$scope.adminFilterOpts = {
-		'showSubject' : true,
+        'showLimitedSubject' : true,
         'showHasQuestions' : true,
 		'showLessonStatus' : true,
-		'showLanguage' : true,
-		'showAge' : true,
+		'showLimitedLanguage' : true,
+		'showLimitedAge' : true,
 		'showViews' : true,
 		'showTags' : true,
 		'showCreatedBy' : true,

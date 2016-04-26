@@ -8,7 +8,11 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('RolesUpdateCtrl', function ($scope, LergoClient, $routeParams, $log, $location, $q ) {
+    .controller('RolesUpdateCtrl', function ($scope, LergoClient, $routeParams, $log, $location, $q, LergoFilterService, LergoTranslate ) {
+
+
+        $scope.limitations = {};
+        $scope.options = { limitEditSubject : _.clone(LergoFilterService.subjects).sort(), limitEditLanguage: LergoTranslate.getSupportedLanguages().sort() };
 
 
         function getRole() {
@@ -51,9 +55,7 @@ angular.module('lergoApp')
 
         function loadPermissions() {
             return LergoClient.roles.getPermissions().then(function (result) {
-                $scope.permissions = _.map(result.data, function (i) {
-                    return {label: i, value: i};
-                });
+                $scope.permissions = result.data
             });
         }
 
@@ -62,9 +64,7 @@ angular.module('lergoApp')
          * @param done - should we redirect back to roles after we save
          */
         $scope.saveRole = function( done ){
-            $scope.role.permissions = _.map(_.filter( $scope.permissions, { checked : true }), 'value' );
-
-
+            debugger;
             LergoClient.roles.update($scope.role).then(function success(/*result*/){
                 $log.info('saved successfully');
                 toastr.success('saved!');
@@ -77,10 +77,6 @@ angular.module('lergoApp')
             });
         };
 
-        $q.all([getRole(), loadPermissions()]).then( function(){
-            _.each($scope.role.permissions,function( rolePermission ){
-
-                _.find($scope.permissions, { value : rolePermission }).checked = true;
-            });
-        });
+        getRole();
+        loadPermissions();
     });

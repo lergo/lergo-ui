@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate','ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ngStorage']).config(
+angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate',
+    'checklist-model',
+    'ngRoute', 'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ngStorage']).config(
     function ($routeProvider, $httpProvider, $logProvider, $locationProvider, $translateProvider ) {
 
 

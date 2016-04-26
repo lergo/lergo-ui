@@ -148,7 +148,11 @@ angular.module('lergoApp')
             'CREATED_BY':                new Filter(                    'createdBy',          'showCreatedBy'            ),
             'REPORTED_BY':               new Filter(                    'reportedBy',         'showReportedBy'           ),
             'ROLE':                      new Filter(                    'role',               'showRoles'                ),
-            'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         )
+            'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         ),
+
+            'LIMITED_SUBJECT':           new Filter(                    'model.subject',      'showLimitedSubject'       ),
+            'LIMITED_LANGUAGE':          new Filter(                    'filterLanguage',     'showLimitedLanguage'      ),
+            'LIMITED_AGE':               new Filter(                    'ageFilter',          'showLimitedAge'           )
         };
 
 

@@ -8,6 +8,11 @@
                 <input ng-model="role.name"/>
             </div>
 
+
+            <pre>{{role|json}}</pre>
+
+
+
             <div class="form-section description form-group">
                 <div class="lergo-label">{{ 'roles.edit.description' | translate }}</div>
                 <div class="lergo-input">
@@ -15,12 +20,65 @@
                 </div>
             </div>
 
-            <div class="form-section">
-                <div class="permissions">
+
+            <div class="form-section checklist">
+                <div ng-repeat="permission in permissions">
+                    <input type="checkbox" checklist-model="role.permissions" checklist-value="permission">
+                    <div class="label">{{permission}}</div>
+                </div>
+            </div>
+
+            <!--<div class="form-section">
+                <div class="permissions checklist">
                     <div ng-repeat="permission in permissions">
                         <input type="checkbox" ng-model="permission.checked"/>
                         <div class="label">{{ permission.label }}</div>
                     </div>
+                </div>
+            </div>-->
+
+            <div class="lergo-h1"> Limitations </div>
+            <div class="lergo-h2"> Manage Lesson Subject </div>
+
+            <div class="form-section checklist">
+                <div ng-repeat="subject in options.limitEditSubject">
+                    <input type="checkbox" checklist-model="role.limitations.manageSubject" checklist-value="subject">
+                    <div class="label">{{subject}}</div>
+                </div>
+            </div>
+           <div class="lergo-h2"> Manage Lesson Language </div>
+
+            <div class="form-section checklist">
+                <div ng-repeat="language in options.limitEditLanguage">
+                    <input type="checkbox" checklist-model="role.limitations.manageLanguages" checklist-value="language.id"/>
+                    <div class="label">{{language.name}}</div>
+                </div>
+            </div>
+
+            <div class="lergo-h2"> Manage Lesson Age </div>
+
+            <div class="form-section">
+                <div class="row">
+                    <div class="label"> age from </div>
+                    <input type="number" ng-model="role.limitations.age.from"/>
+                </div>
+                <div class="row">
+                    <div class="label"> age to </div>
+                    <input type="number" ng-model="role.limitations.age.to"/>
+                </div>
+            </div>
+
+            <div class="lergo-h2"> Manage Lesson Status </div>
+
+            <div class="form-section">
+                <div class="row">
+                    <input type="checkbox" ng-model="role.limitations.editOnlyUnpublishedContent"/>
+                    <div class="label"> Allow work only on unpublished content</div>
+                </div>
+
+                <div class="row">
+                    <input type="checkbox" ng-model="rol.limitations.disallowPublishAction"/>
+                    <div class="label"> Restrict this user from publishing a lesson </div>
                 </div>
             </div>
 

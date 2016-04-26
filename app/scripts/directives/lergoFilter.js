@@ -82,7 +82,11 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
 			$scope.subjects = LergoFilterService.subjects;
 
+            // support for limit subjects
+			$scope.limitedSubjects = LergoFilterService.subjects;
+
 			$scope.languages = [{'id' : 'all'}].concat(LergoFilterService.languages,[{ 'id' : 'other'}]);
+            $scope.limitedLanguages = [];
 
 			$scope.status = LergoFilterService.status;
 
