@@ -151,7 +151,7 @@ angular.module('lergoApp')
             'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         ),
 
             'LIMITED_SUBJECT':           new Filter(                    'model.subject',      'showLimitedSubject'       ),
-            'LIMITED_LANGUAGE':          new Filter(                    'filterLanguage',     'showLimitedLanguage'      ),
+            'LIMITED_LANGUAGE':          new LanguageFilter(            'filterLanguage',     'showLimitedLanguage'      ),
             'LIMITED_AGE':               new Filter(                    'ageFilter',          'showLimitedAge'           )
         };
 
