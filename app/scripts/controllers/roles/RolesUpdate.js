@@ -55,7 +55,7 @@ angular.module('lergoApp')
 
         function loadPermissions() {
             return LergoClient.roles.getPermissions().then(function (result) {
-                $scope.permissions = result.data
+                $scope.permissions = result.data;
             });
         }
 
@@ -64,7 +64,6 @@ angular.module('lergoApp')
          * @param done - should we redirect back to roles after we save
          */
         $scope.saveRole = function( done ){
-            debugger;
             LergoClient.roles.update($scope.role).then(function success(/*result*/){
                 $log.info('saved successfully');
                 toastr.success('saved!');

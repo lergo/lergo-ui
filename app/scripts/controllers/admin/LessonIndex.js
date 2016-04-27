@@ -17,9 +17,17 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 		'showSearchText' : true
 	};
 
+    var defaultFilter = {};
+    LergoClient.users.getUserPermissions().then(function( permissions ){
+        if ( permissions && permissions.limitations && permissions.limitations.editOnlyUnpublishedContent ){
+            defaultFilter.public = { $exists : false } ;
+        }
+    });
+
 	$scope.loadLessons = function() {
+
 		var queryObj = {
-			'filter' : _.merge({}, $scope.adminFilter),
+			'filter' : _.merge( defaultFilter, $scope.adminFilter),
 			'sort' : {
 				'lastUpdate' : -1
 			},

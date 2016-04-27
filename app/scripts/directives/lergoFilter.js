@@ -125,7 +125,9 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 $scope.limitedSubjects = LergoFilterService.getLimitedSubjects( permissionsResult );
 
                 if ( !!$scope.limitedSubjects && !$scope.model.subject && $scope.opts.showLimitedSubject ){
-                    $scope.model.subject = $scope.limitedSubjects[0];
+                    if (_.last($scope.limitedSubjects) !== 'other') { // hack.. if we have 'all' we want to select all..
+                        $scope.model.subject = $scope.limitedSubjects[0];
+                    }
                 }
 
                 $scope.limitedLanguages = LergoFilterService.getLimitedLanguages( permissionsResult );
@@ -134,7 +136,6 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                     $scope.filterLanguage = $scope.limitedLanguages[0];
                 }
 
-                debugger;
                 $scope.limitAge = LergoFilterService.getLimitedAge( permissionsResult );
                 _updateAgeFilter($scope.ageFilter, $scope.ageFilter );
 
@@ -322,10 +323,9 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
              *
              * @param propertyName
              * @param scopeVariable
-             * @param {Function} limitValuesFn - a function to get limit for values. I chose it to be a function because the values are read in async manner. returns min/max values
              * @returns {Function}
              */
-			function minMaxFilter(propertyName, scopeVariable, limitScopeField ) {
+			function minMaxFilter(propertyName, scopeVariable ) {
 				return function(newValue, oldValue) {
 					$log.info('min max filter changed ', scopeVariable, newValue, oldValue, propertyName);
 
@@ -371,7 +371,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
                     var changed = false;
                     if ( $scope.opts[relevancyFlag] ) { // only apply limits if relevant.
-                        var limitValue = typeof(limitScopeVariable) == 'string' ? $scope[limitScopeVariable] : null;
+                        var limitValue = typeof(limitScopeVariable) === 'string' ? $scope[limitScopeVariable] : null;
 
                         if ( !$scope[scopeVariable] ){
                             $scope[scopeVariable] = {};
@@ -393,7 +393,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                     if ( !changed ){
                         filterHandler(newValue, oldValue);
                     }
-                }
+                };
             }
 
 
@@ -413,7 +413,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 				}
 
 				_.each([ 'subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished','data.lessonId' ], function(prop) {
-					if ($scope.model[prop] === null || $scope.model[prop] === '') {
+					if ( $scope.model[prop] === undefined || $scope.model[prop] === null || $scope.model[prop] === '') {
 						delete $scope.model[prop];
 					}
 				});
