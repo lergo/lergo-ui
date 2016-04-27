@@ -1,3 +1,11 @@
+
+
+fix(username): handle scenario where username appears on menu when managing user.
+
+fix(role filter): make manage users role filter work
+
+feat(limitations): be able to limit admins
+
 feat(roles): add 'can see kitchen sink' permission.
 
 fix(question preview): fix user profile link
