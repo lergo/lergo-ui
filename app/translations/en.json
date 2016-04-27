@@ -220,6 +220,7 @@
     "add": "Add to quiz",
     "addClose": "Add & Close",
     "admin": {
+        "questions" : "q",
         "allLessons": "All Lessons",
         "by": "By",
         "byCreated": "Lesson created by",

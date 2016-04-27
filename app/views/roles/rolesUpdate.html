@@ -8,11 +8,6 @@
                 <input ng-model="role.name"/>
             </div>
 
-
-            <pre>{{role|json}}</pre>
-
-
-
             <div class="form-section description form-group">
                 <div class="lergo-label">{{ 'roles.edit.description' | translate }}</div>
                 <div class="lergo-input">
@@ -60,11 +55,11 @@
             <div class="form-section">
                 <div class="row">
                     <div class="label"> age from </div>
-                    <input type="number" ng-model="role.limitations.age.from"/>
+                    <input type="number" min="1" max="100" ng-model="role.limitations.manageAge.min"/>
                 </div>
                 <div class="row">
                     <div class="label"> age to </div>
-                    <input type="number" ng-model="role.limitations.age.to"/>
+                    <input type="number" min="1" max="100" ng-model="role.limitations.manageAge.max"/>
                 </div>
             </div>
 

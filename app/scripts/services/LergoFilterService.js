@@ -248,6 +248,31 @@ angular.module('lergoApp')
             }
         };
 
+        /******************************************* limited permissions feature ***************************/
+
+        me.getLimitedSubjects = function(permissions){
+            return _.get(permissions,'limitations.manageSubject', me.subjects);
+        };
+
+        me.getLimitedLanguages = function(permissions){
+            var limitations = _.get(permissions,'limitations.manageLanguages');
+            if ( limitations ) {
+                return _.map(limitations, function(lang){
+                    var langObj = LergoTranslate.getLanguageObj(lang);
+                    return {
+                        'id' : langObj.name,
+                        'locale' : langObj.id
+                    }
+                });
+            }else{
+                return [{'id' : 'all'}].concat(LergoTranslate.languages,[{ 'id' : 'other'}]);
+            }
+        };
+
+        me.getLimitedAge = function(permissions){
+            return _.get(permissions,'limitations.manageAge', null);
+        };
+
 
         /********************************************* constants we keep *********************************/
         me.languages = _.map(LergoTranslate.getSupportedLanguages(), function( l ){

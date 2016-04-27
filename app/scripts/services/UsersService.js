@@ -31,7 +31,7 @@ angular.module('lergoApp').service('UsersService', function UsersService($http, 
 
                 // lets convert this to nested object
                 // http://stackoverflow.com/a/30723988/1068746
-                var permissions = {};
+                var permissions = { limitations : result.data.permissionsLimitations };
                 _.each(result.data.permissions, function( permission ){
                     _.set(permissions, permission,true);
                 });

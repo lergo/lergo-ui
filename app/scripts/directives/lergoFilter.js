@@ -79,14 +79,15 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			var $scope = scope;
 
 			$scope.ageFilter = null; //should be null to properly load from localStorage
+            $scope.limitAge = null;
 
 			$scope.subjects = LergoFilterService.subjects;
 
             // support for limit subjects
-			$scope.limitedSubjects = LergoFilterService.subjects;
+			$scope.limitedSubjects = null;
 
 			$scope.languages = [{'id' : 'all'}].concat(LergoFilterService.languages,[{ 'id' : 'other'}]);
-            $scope.limitedLanguages = [];
+            $scope.limitedLanguages = _.clone($scope.languages);
 
 			$scope.status = LergoFilterService.status;
 
@@ -114,19 +115,36 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			});
 
 
+
             $q.all([LergoClient.isLoggedIn(true), LergoClient.users.getUserPermissions()]).then(function( result ){
 
-                var userResult = result[0];
+
+                var userResult = result[0].data;
                 var permissionsResult = result[1];
+
+                $scope.limitedSubjects = LergoFilterService.getLimitedSubjects( permissionsResult );
+
+                if ( !!$scope.limitedSubjects && !$scope.model.subject && $scope.opts.showLimitedSubject ){
+                    $scope.model.subject = $scope.limitedSubjects[0];
+                }
+
+                $scope.limitedLanguages = LergoFilterService.getLimitedLanguages( permissionsResult );
+
+                if ( !!$scope.limitedLanguages && !$scope.filterLanguage && $scope.opts.showLimitedLanguage ){
+                    $scope.filterLanguage = $scope.limitedLanguages[0];
+                }
+
+                debugger;
+                $scope.limitAge = LergoFilterService.getLimitedAge( permissionsResult );
+                _updateAgeFilter($scope.ageFilter, $scope.ageFilter );
+
+
                 if ( ( userResult && userResult.user && userResult.user.isAdmin ) || ( permissionsResult && permissionsResult.roles ) ) {
                     LergoClient.roles.list({projection: {'_id': 1, 'name': 1}}).then(function (result) {
                         scope.roles = result.data.data;
                     });
                 }
             });
-
-
-
 
 			function _updateCreatedBy(newValue, oldValue) {
 				if (newValue !== oldValue) {
@@ -154,8 +172,6 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 }
             }
             $scope.$watch('filterLanguage', _updateLanguage);
-
-
 
 			function _updateReportedBy(newValue, oldValue) {
 				if (newValue !== oldValue) {
@@ -207,10 +223,6 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
             }
             $scope.$watch('reportLesson', _updateReportLesson, true);
-
-
-
-
 
 			function _updateReportStudent() {
 				if (!!$scope.reportStudent && $scope.reportStudent !== '' && $scope.opts.showStudents) {
@@ -306,9 +318,17 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
 			$scope.$watch('inviteStatusValue', _updateReportStatusValue, true);
 
-			function minMaxFilter(propertyName, scopeVariable) {
+            /**
+             *
+             * @param propertyName
+             * @param scopeVariable
+             * @param {Function} limitValuesFn - a function to get limit for values. I chose it to be a function because the values are read in async manner. returns min/max values
+             * @returns {Function}
+             */
+			function minMaxFilter(propertyName, scopeVariable, limitScopeField ) {
 				return function(newValue, oldValue) {
 					$log.info('min max filter changed ', scopeVariable, newValue, oldValue, propertyName);
+
 
                     var model = $scope.model[propertyName];
 					if (!!newValue && ( !!newValue.min || !!newValue.max ) ) {
@@ -322,15 +342,22 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                             delete model.dollar_gte;
                         }
 
+                        // add support for limit values for min/max
+                        // after we decided what the new value should be, if that value does not fit our limit, we normalize it.
+
+
                         if (!!newValue.max && model.dollar_lte !== newValue.max ) {
                             model.dollar_lte = newValue.max;
                         }else if ( !newValue.max ) {
                             delete model.dollar_lte;
                         }
+
+
 					} else {
 						delete $scope.model[propertyName];
 						$scope[scopeVariable] = null;
 					}
+
 
 
 					$log.info('min max filter applied', $scope.model[propertyName]);
@@ -338,8 +365,39 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			}
 
 
+            /// todo: consider turning this to a directive instead.
+            function limitMinMaxFilter( scopeVariable, limitScopeVariable, relevancyFlag, filterHandler ){
+                return function(newValue,oldValue){
 
-			var _updateAgeFilter = minMaxFilter('age', 'ageFilter');
+                    var changed = false;
+                    if ( $scope.opts[relevancyFlag] ) { // only apply limits if relevant.
+                        var limitValue = typeof(limitScopeVariable) == 'string' ? $scope[limitScopeVariable] : null;
+
+                        if ( !$scope[scopeVariable] ){
+                            $scope[scopeVariable] = {};
+                        }
+                        var scopeVar = $scope[scopeVariable];
+
+
+                        if (limitValue && limitValue.min && ( !newValue.min || newValue.min < limitValue.min )) {
+                            scopeVar.min = limitValue.min;
+                            changed = true;
+                        }
+
+                        if (limitValue && limitValue.max && ( !newValue.max || newValue.max > limitValue.max )) {
+                            scopeVar.max = limitValue.max;
+                            changed = true;
+                        }
+                    }
+
+                    if ( !changed ){
+                        filterHandler(newValue, oldValue);
+                    }
+                }
+            }
+
+
+			var _updateAgeFilter = limitMinMaxFilter( 'ageFilter', 'limitAge', 'showLimitedAge', minMaxFilter('age', 'ageFilter'));
 			$scope.$watch('ageFilter', _updateAgeFilter, true);
 			var _updateViewsFilter = minMaxFilter('views', 'viewsFilter');
 			$scope.$watch('viewsFilter', _updateViewsFilter, true);
