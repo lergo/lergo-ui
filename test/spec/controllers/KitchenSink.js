@@ -17,6 +17,6 @@ describe('Controller: KitchenSinkCtrl', function () {
     }));
 
     it('should attach tags to scope', function () {
-        expect(!!scope.tags).toBe(true);
+        expect(!!scope.hello).toBe(true);
     });
 });
