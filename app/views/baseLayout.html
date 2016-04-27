@@ -38,7 +38,7 @@
 					</div>
                     </div><!---->
                     <div class="header-actions">
-                        <div profile-login-button="user"></div>
+                        <div profile-login-button="$root.user"></div> <!-- NOTE: referencing $root.user to fix bug where username displayed is the username we manage. -->
 
                         <div class="header-language">
                             <i class="fa fa-globe fa-fw"></i>

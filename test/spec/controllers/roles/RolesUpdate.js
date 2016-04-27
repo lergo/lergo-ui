@@ -20,43 +20,6 @@ describe('Controller: RolesUpdateCtrl', function () {
     }));
 
     describe('#init', function(){
-        it('should mark all permissions on role as checked=true', inject(function($q, $controller){
-            $q.all.andReturn({
-                then:function(success){
-                    success();
-                }
-            });
-
-            scope.role = {
-                permissions : [ 'foo','bar']
-            };
-            scope.permissions = [
-                { value : 'foo' },
-                { value : 'bar' },
-                { value : 'hello'}
-            ];
-
-            RolesUpdateCtrl = $controller('RolesUpdateCtrl', {
-                $scope: scope
-            });
-
-            expect(scope.permissions[0].checked).toBe(true);
-            expect(scope.permissions[2].checked).not.toBe(true);
-
-        }));
-
-        it('should translate loaded permissions to label & value object array', inject(function($controller, LergoClient){
-            LergoClient.roles.getPermissions.andReturn({then:function( success ){
-                success( { data : [ 'foo','bar' ] });
-            }});
-            RolesUpdateCtrl = $controller('RolesUpdateCtrl', {
-                $scope: scope
-            });
-
-            expect(scope.permissions[0].label).toBe('foo');
-            expect(scope.permissions[0].value).toBe('foo');
-        }));
-
         it('should put roles result on scope', inject(function( $controller, LergoClient, $routeParams ){
             LergoClient.roles.read.andReturn({
                 then:function(success){
@@ -78,13 +41,7 @@ describe('Controller: RolesUpdateCtrl', function () {
             scope.permissions = [];
             scope.role = {};
         }));
-        it('should translate roles to array of strings and filter out items without checked=true', function(){
-            scope.role = {};
-            scope.permissions = [{ 'value' : 'foo' , 'checked' : true }, { value: 'bar' , checked: false}];
-            scope.saveRole();
-            expect(scope.role.permissions[0]).toBe('foo');
-            expect(scope.role.permissions.length).toBe(1);
-        });
+
 
         describe('success', function(){
             beforeEach(inject(function(LergoClient, $location){

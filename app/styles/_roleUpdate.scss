@@ -1,6 +1,23 @@
 #updateRolePage{
 
-    .permissions{
+    .form-section{
+        padding: 20px 0;
+        .label{
+            text-overflow: ellipsis;
+            overflow:hidden;
+            color:black;
+            font-weight: normal;
+            line-height:20px;
+
+            text-align: left;
+        }
+        .row{
+            padding-bottom:5px;
+            margin:0;
+        }
+    }
+
+    .permissions, .checklist{
         $COLUMNS: 3;
         column-count:$COLUMNS;
         -webkit-column-count: $COLUMNS;
@@ -9,15 +26,9 @@
 //            display:inline-block;
             width:100%;
 
-            .label{
-                text-overflow: ellipsis;
-                overflow:hidden;
-                color:black;
-                font-weight: normal;
-                line-height:20px;
-                width:250px;
-                text-align: left;
-            }
+        }
+        .label{
+            width:250px;
         }
     }
 

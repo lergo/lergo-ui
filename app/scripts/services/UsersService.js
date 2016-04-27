@@ -21,14 +21,18 @@ angular.module('lergoApp').service('UsersService', function UsersService($http, 
     });
 
     var permissionsPromise;
+
+    // returns an object of all permissions.
+    // if the permissions are for example 'lesson.canEdit', 'lesson.canView', 'question.canEdit'
+    // then this function will output { lesson : { canEdit: true, canView: true}, question: {canEdit:true} }
     this.getUserPermissions = function(){
         if ( !permissionsPromise ){
             permissionsPromise = $http.get('/backend/user/permissions').then(function( result ){
 
                 // lets convert this to nested object
                 // http://stackoverflow.com/a/30723988/1068746
-                var permissions = {};
-                _.each(result.data, function( permission ){
+                var permissions = { limitations : result.data.permissionsLimitations };
+                _.each(result.data.permissions, function( permission ){
                     _.set(permissions, permission,true);
                 });
                 return permissions;

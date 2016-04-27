@@ -24,6 +24,7 @@ module.exports = function (config) {
             'app/bower_components/angular-sanitize/angular-sanitize.js',
             'app/bower_components/angular-local-storage/angular-local-storage.js',
             'app/bower_components/google-code-prettify/src/prettify.js',
+            'app/bower_components/checklist-model/checklist-model.js',
             'app/bower_components/angular-adaptive-speech/angular-adaptive-speech.js',
             'app/bower_components/angular-translate/angular-translate.js',
             'app/bower_components/angular-translate-loader-url/angular-translate-loader-url.js',

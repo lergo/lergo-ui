@@ -6,20 +6,28 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 	$scope.filterPage = {};
 
 	$scope.adminFilterOpts = {
-		'showSubject' : true,
+        'showLimitedSubject' : true,
         'showHasQuestions' : true,
 		'showLessonStatus' : true,
-		'showLanguage' : true,
-		'showAge' : true,
+		'showLimitedLanguage' : true,
+		'showLimitedAge' : true,
 		'showViews' : true,
 		'showTags' : true,
 		'showCreatedBy' : true,
 		'showSearchText' : true
 	};
 
+    var defaultFilter = {};
+    LergoClient.users.getUserPermissions().then(function( permissions ){
+        if ( permissions && permissions.limitations && permissions.limitations.editOnlyUnpublishedContent ){
+            defaultFilter.public = { $exists : false } ;
+        }
+    });
+
 	$scope.loadLessons = function() {
+
 		var queryObj = {
-			'filter' : _.merge({}, $scope.adminFilter),
+			'filter' : _.merge( defaultFilter, $scope.adminFilter),
 			'sort' : {
 				'lastUpdate' : -1
 			},

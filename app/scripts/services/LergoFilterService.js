@@ -148,7 +148,11 @@ angular.module('lergoApp')
             'CREATED_BY':                new Filter(                    'createdBy',          'showCreatedBy'            ),
             'REPORTED_BY':               new Filter(                    'reportedBy',         'showReportedBy'           ),
             'ROLE':                      new Filter(                    'role',               'showRoles'                ),
-            'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         )
+            'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         ),
+
+            'LIMITED_SUBJECT':           new Filter(                    'model.subject',      'showLimitedSubject'       ),
+            'LIMITED_LANGUAGE':          new Filter(                    'filterLanguage',     'showLimitedLanguage'      ),
+            'LIMITED_AGE':               new Filter(                    'ageFilter',          'showLimitedAge'           )
         };
 
 
@@ -242,6 +246,26 @@ angular.module('lergoApp')
                 'id': 'logo',
                 'ignore': [  ]
             }
+        };
+
+        /******************************************* limited permissions feature ***************************/
+
+        me.getLimitedSubjects = function(permissions){
+            return _.get(permissions,'limitations.manageSubject', me.subjects);
+        };
+
+        me.getLimitedLanguages = function(permissions){
+            var limitations = _.get(permissions,'limitations.manageLanguages');
+            if ( limitations ) {
+                return _.filter(me.languages, function(lang){ return limitations.indexOf(lang.locale) >= 0; } );
+
+            }else{
+                return [{'id' : 'all'}].concat(me.languages,[{ 'id' : 'other'}]);
+            }
+        };
+
+        me.getLimitedAge = function(permissions){
+            return _.get(permissions,'limitations.manageAge', null);
         };
 
 
