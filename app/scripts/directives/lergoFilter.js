@@ -124,7 +124,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
                 $scope.limitedSubjects = LergoFilterService.getLimitedSubjects( permissionsResult );
 
-                if ( !!$scope.limitedSubjects && !$scope.model.subject && $scope.opts.showLimitedSubject ){
+                if ( !!$scope.limitedSubjects && !$scope.model.subject && $scope.opts && $scope.opts.showLimitedSubject ){
                     if (_.last($scope.limitedSubjects) !== 'other') { // hack.. if we have 'all' we want to select all..
                         $scope.model.subject = $scope.limitedSubjects[0];
                     }
@@ -132,7 +132,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
                 $scope.limitedLanguages = LergoFilterService.getLimitedLanguages( permissionsResult );
 
-                if ( !!$scope.limitedLanguages && !$scope.filterLanguage && $scope.opts.showLimitedLanguage ){
+                if ( !!$scope.limitedLanguages && !$scope.filterLanguage && $scope.opts && $scope.opts.showLimitedLanguage ){
                     $scope.filterLanguage = $scope.limitedLanguages[0];
                 }
 
@@ -370,7 +370,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 return function(newValue,oldValue){
 
                     var changed = false;
-                    if ( $scope.opts[relevancyFlag] ) { // only apply limits if relevant.
+                    if ( $scope.opts && $scope.opts[relevancyFlag] ) { // only apply limits if relevant.
                         var limitValue = typeof(limitScopeVariable) === 'string' ? $scope[limitScopeVariable] : null;
 
                         if ( !$scope[scopeVariable] ){
