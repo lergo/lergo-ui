@@ -12,14 +12,24 @@ angular.module('lergoApp')
             templateUrl: 'views/directives/_reportLessonFilter.html',
             restrict: 'A',
             scope: {
-                'model': '=reportLessonFilter'
+                'model': '=reportLessonFilter',
+                'reportType':'='
             },
             link: function postLink(scope) {
                 scope.getReportLessonsLike = function (like) {
                     $log.debug('getting lesson like', like);
-                    return ReportsService.findLesson(like).then(function (result) {
-                        return result.data;
-                    });
+
+                    // todo: stop using hard-coded values (mine/students)
+                    if ( scope.reportType === 'mine' ) {
+
+                        return ReportsService.findLesson(like).then(function (result) {
+                            return result.data;
+                        });
+                    }else if ( scope.reportType === 'students'){
+                        return ReportsService.findStudentLesson(like).then( function(result){
+                            return result.data;
+                        });
+                    }
                 };
 
                 scope.addReportLessonFromTypeahead = function ($item) {

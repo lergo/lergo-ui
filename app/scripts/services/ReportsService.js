@@ -9,6 +9,16 @@ angular.module('lergoApp')
             return $http.get('/backend/reports/' + reportId + '/read');
         };
 
+        this.findStudentLesson = function(like){
+            return $http({
+                method: 'GET',
+                url: '/backend/reports/studentslessons/find',
+                params: {
+                    like: like
+                }
+            });
+        };
+
         this.findLesson = function( like ){
             return $http({
                 method: 'GET',

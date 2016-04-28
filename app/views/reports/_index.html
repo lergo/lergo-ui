@@ -72,7 +72,7 @@
 			</table>
 		</div>
 		<div class="sidebar page-content-sidebar">
-			<div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts" on-load="filterLoaded()"></div>
+			<div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts" on-load="filterLoaded()" report-type="reportsPage.reportType"></div>
 		</div>
 	</div>
 	<div lergo-paging page="filterPage" on-change="loadReports()" on-load="pagingLoaded()"></div>

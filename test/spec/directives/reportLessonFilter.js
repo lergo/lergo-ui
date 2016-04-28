@@ -29,31 +29,19 @@ describe('Directive: reportLessonFilter', function () {
         isolateScope = element.children().scope();
     });
 
-    it('should find lesson by name and return them to typeahead', inject(function (ReportsService, $q, $timeout) {
+    it('should find lesson by name and return them to typeahead', inject(function (ReportsService) {
         setup();
+
+        isolateScope.reportType='mine';
 
         expect(typeof(isolateScope.getReportLessonsLike)).toBe('function');
 
-        spyOn(ReportsService,'findLesson').andCallFake(function (){
-            var deferred = $q.defer();
-            deferred.resolve(['first lesson']);
-            return deferred.promise;
-        });
+        spyOn(ReportsService,'findLesson').andReturn( window.mockPromise( ['first lesson'] , null, window.mockPromise( ['first lesson'] ) ));
 
         var myData = null;
         isolateScope.getReportLessonsLike('likeExpression').then(function(data){
             myData = data;
         });
-
-        try{
-            $timeout.flush();
-        }catch(e){}
-
-
-        waitsFor(function(){
-            return myData !== null;
-        });
-
         expect(_.difference(myData,['first lesson']).length).toBe(0);
     }));
 

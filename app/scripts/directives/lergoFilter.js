@@ -60,6 +60,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			'model' : '=',
 			'opts' : '=',
             'isActive' : '=?',
+            'reportType' : '=?', // for filter report by lesson name
 			'change' : '&onChange',
 			'load' : '&onLoad',
 			'noUrlChanges' : '@noUrlChanges'
