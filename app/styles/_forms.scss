@@ -11,6 +11,7 @@
         border: 1px solid $LERGO_INPUT_BORDER_COLOR;
         padding: 5px;
         border-radius: 5px;
+        @include input-block-level;
         &[type=checkbox] {
             width: 30px;
             display:inline-block;
