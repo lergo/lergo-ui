@@ -1,3 +1,8 @@
+
+fix(language): fix limits for languages. reference language name and not locale.
+
+fix(users tab): make users tab hidden in manage section if user cannot patch users.
+
 fix(report lesson filter): handle students report + handle multiple lesson names for same lesson ID.
 
 fix(username): handle scenario where username appears on menu when managing user.

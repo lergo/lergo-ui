@@ -34,7 +34,7 @@ angular.module('lergoApp')
                     'id' : 'users',
                     'icon' : 'fa fa-user',
                     'url' : '#!/manage/users',
-                    'permission' : 'users'
+                    'permission' : 'users.userCanPatchUsers'
                 }
 
                 ];
