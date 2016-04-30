@@ -25,7 +25,7 @@
                     <div class="language">
                         <span>{{ 'filters.labels.language' | translate }}</span>
                         <select class="form-control" ng-model="lesson.language"
-                                ng-options="l.id as ('filters.languages.' + l.id| translate) for l in languages"
+                                ng-options="l as ('filters.languages.' + l| translate) for l in languages"
                                 name="language"></select>
                     </div>
                     <div class="subject">

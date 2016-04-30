@@ -12,22 +12,22 @@
 		</div>
 	</div>
 
-
 	<span ng-show="!!opts.showLimitedLanguage">
 
 		<div class="label">{{'filters.labels.language' | translate }}</div>
 		<div class="input">
 
-			<select ng-options="l.id as ('filters.languages.' + l.id | translate) for l in limitedLanguages" ng-model="filterLanguage">
+			<select ng-options="l as ('filters.languages.' + l | translate) for l in limitedLanguages track by l" ng-model="filterLanguage">
 			</select>
 		</div>
 	</span>
+
 
     <span ng-show="!!opts.showLanguage">
 		<div class="label">{{'filters.labels.language' | translate }}</div>
 		<div class="input">
 
-			<select ng-options="l.id as ('filters.languages.' + l.id | translate) for l in languages" ng-model="filterLanguage">
+			<select ng-options="l as ('filters.languages.' + l | translate) for l in languages track by l" ng-model="filterLanguage">
 			</select>
 		</div>
 	</span>
@@ -45,7 +45,7 @@
     <span ng-show="!!opts.showLimitedSubject">
 		<div class="label">{{'filters.labels.subject' | translate }}</div>
 		<div class="input">
-            <select ng-options="s as ('filters.subjects.' + s | translate) for s in limitedSubjects" ng-model="model.subject">
+            <select ng-options="s as ('filters.subjects.' + s | translate) for s in limitedSubjects track by s" ng-model="model.subject">
                 <option admin-section="!limitations.manageSubject" value="">{{'filters.all'|translate}}</option>
             </select>
         </div>
@@ -54,13 +54,13 @@
 	<span ng-show="!!opts.showSubject">
 		<div class="label">{{'filters.labels.subject' | translate }}</div>
 		<div class="input">
-			<select ng-options="s as ('filters.subjects.' + s | translate) for s in subjects" ng-model="model.subject">
+			<select ng-options="s as ('filters.subjects.' + s | translate) for s in subjects track by s" ng-model="model.subject">
 				<option value="">{{'filters.all'|translate}}</option>
 			</select>
 		</div>
 	</span>
 
-    <span ng-show="!!opts.showLimitedAge">
+    <span ng-show="!!opts.showLimitedAge" class="limited-age">
 		<div class="label">{{'filters.labels.ageRange' | translate }}</div>
 		<div>
             <input min="{{limitAge.min}}" max="{{limitAge.max}}" size="1" class="number" type="number" ng-model="ageFilter.min" />

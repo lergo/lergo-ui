@@ -87,7 +87,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             // support for limit subjects
 			$scope.limitedSubjects = null;
 
-			$scope.languages = [{'id' : 'all'}].concat(LergoFilterService.languages,[{ 'id' : 'other'}]);
+			$scope.languages = ['all'].concat(LergoFilterService.languages,'other');
             $scope.limitedLanguages = _.clone($scope.languages);
 
 			$scope.status = LergoFilterService.status;
@@ -116,26 +116,26 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			});
 
 
+            var userPermissions = null;
 
             $q.all([LergoClient.isLoggedIn(true), LergoClient.users.getUserPermissions()]).then(function( result ){
 
 
                 var userResult = result[0].data;
                 var permissionsResult = result[1];
+                userPermissions = permissionsResult;
 
                 $scope.limitedSubjects = LergoFilterService.getLimitedSubjects( permissionsResult );
 
-                if ( !!$scope.limitedSubjects && !$scope.model.subject && $scope.opts && $scope.opts.showLimitedSubject ){
-                    if (_.last($scope.limitedSubjects) !== 'other') { // hack.. if we have 'all' we want to select all..
-                        $scope.model.subject = $scope.limitedSubjects[0];
-                    }
-                }
+                enforceSubjectLimits();
+
+
 
                 $scope.limitedLanguages = LergoFilterService.getLimitedLanguages( permissionsResult );
 
-                if ( !!$scope.limitedLanguages && !$scope.filterLanguage && $scope.opts && $scope.opts.showLimitedLanguage ){
-                    $scope.filterLanguage = $scope.limitedLanguages[0];
-                }
+                enforceLanguageLimits();
+
+
 
                 $scope.limitAge = LergoFilterService.getLimitedAge( permissionsResult );
                 _updateAgeFilter($scope.ageFilter, $scope.ageFilter );
@@ -166,12 +166,15 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                         if ( newValue === 'all' ){
                             delete $scope.model.language;
                         }else if ( newValue === 'other'){
-                            $scope.model.language = { 'dollar_nin' : _.map( LergoFilterService.languages, 'id')};
+                            $scope.model.language = { 'dollar_nin' : _.clone( LergoFilterService.languages )};
                         }else{
                             $scope.model.language = newValue;
                         }
                     }
                 }
+
+                enforceLanguageLimits();
+
             }
             $scope.$watch('filterLanguage', _updateLanguage);
 
@@ -269,10 +272,15 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			};
 			$scope.$watch('statusValue', _updateStatusValue);
 
+            //function languageObjToFilterLanguage( langObj ){
+            //    return { id: langObj.name };
+            //}
+
 			function setDefaultLanguage(force) {
 				try {
 					if ((!!scope.opts.showLanguage && !scope.filterLanguage) || !!force) {
 						scope.filterLanguage = LergoTranslate.getLanguageObject().name;
+						//scope.filterLanguage = languageObjToFilterLanguage(LergoTranslate.getLanguageObject());
                         _updateLanguage(scope.filterLanguage);
 					}
 				} catch (e) {
@@ -380,12 +388,12 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                         var scopeVar = $scope[scopeVariable];
 
 
-                        if (limitValue && limitValue.min && ( !newValue.min || newValue.min < limitValue.min )) {
+                        if (limitValue && limitValue.min  && (  !newValue || !newValue.min || newValue.min < limitValue.min )) {
                             scopeVar.min = limitValue.min;
                             changed = true;
                         }
 
-                        if (limitValue && limitValue.max && ( !newValue.max || newValue.max > limitValue.max )) {
+                        if (limitValue && limitValue.max && ( !newValue || !newValue.max || newValue.max > limitValue.max )) {
                             scopeVar.max = limitValue.max;
                             changed = true;
                         }
@@ -405,19 +413,38 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			var _updateCorrectPercentage = minMaxFilter('correctPercentage', 'correctPercentage');
 			$scope.$watch('correctPercentage', _updateCorrectPercentage, true);
 
+            function enforceLanguageLimits(){
+                if ($scope.opts && $scope.opts.showLimitedLanguage) {
+                    if ( !$scope.filterLanguage || ( $scope.filterLanguage && $scope.limitedLanguages && $scope.limitedLanguages.indexOf($scope.filterLanguage) < 0)) {
+                        $scope.filterLanguage = _.first($scope.limitedLanguages);
+                    }
+                }
+            }
+
+            function enforceSubjectLimits(){
+                //normalize restricted values
+                if ($scope.opts && $scope.opts.showLimitedSubject && userPermissions && _.size(userPermissions.limitations.manageSubject)>0 ) {
+                    if (!$scope.model.subject || ( $scope.model.subject && $scope.limitedSubjects && $scope.limitedSubjects.indexOf($scope.model.subject) < 0 ) ){
+                        $scope.model.subject = _.first($scope.limitedSubjects);
+                    }
+                }
+            }
+
 			// handle 'all' values or null values - simply remove them from the
 			// model.
 			$scope.$watch('model', function(newValue, oldValue) {
 
-				if (newValue === oldValue) {
-					return;
-				}
+                if (newValue !== oldValue) {
+                    _.each(['subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished', 'data.lessonId'], function (prop) {
+                        if ($scope.model[prop] === undefined || $scope.model[prop] === null || $scope.model[prop] === '') {
+                            delete $scope.model[prop];
+                        }
+                    });
+                }
 
-				_.each([ 'subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished','data.lessonId' ], function(prop) {
-					if ( $scope.model[prop] === undefined || $scope.model[prop] === null || $scope.model[prop] === '') {
-						delete $scope.model[prop];
-					}
-				});
+                enforceSubjectLimits();
+
+
 			}, true);
 
 			$scope.filterTags = null;

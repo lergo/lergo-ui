@@ -13,7 +13,7 @@
 			<table class="lergo-table ">
 				<thead>
 					<tr>
-						<td class="checkbox-dropdown">
+						<td class="checkbox-dropdown" admin-section="lessons.userCanPublish || lessons.userCanUnpublish || lessons.userCanDelete">
 							<div class="btn-group" dropdown>
 								<input type="checkbox" ng-click="selectAll($event)">
 								<button type="button" class="btn-link" dropdown-toggle>
@@ -21,10 +21,10 @@
 								</button>
 								<ul class="dropdown-menu" role="menu">
 
-									<li admin-section="!limitations.disallowPublishAction">
+									<li admin-section="lessons.userCanPublish">
 										<a  style="outline: none;" class="btn-link" ng-click="makePublic()">{{'admin.makePublic'|translate}}</a>
 									</li>
-									<li>
+									<li admin-section="lessons.userCanUnpublish">
 										<a  style="outline: none;" class="btn-link" ng-click="makePrivate()">{{'admin.makePrivate'|translate}}</a>
 									</li>
 									<li class="divider" admin-section="lessons.userCanDelete"></li>

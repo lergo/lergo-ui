@@ -257,10 +257,10 @@ angular.module('lergoApp')
         me.getLimitedLanguages = function(permissions){
             var limitations = _.get(permissions,'limitations.manageLanguages');
             if ( limitations ) {
-                return _.filter(me.languages, function(lang){ return limitations.indexOf(lang.locale) >= 0; } );
+                return _.clone(limitations);
 
             }else{
-                return [{'id' : 'all'}].concat(me.languages,[{ 'id' : 'other'}]);
+                return ['all'].concat(me.languages,'other');
             }
         };
 
@@ -271,7 +271,7 @@ angular.module('lergoApp')
 
         /********************************************* constants we keep *********************************/
         me.languages = _.map(LergoTranslate.getSupportedLanguages(), function( l ){
-            return { 'id' : l.name, 'locale' : l.id };
+            return l.name;
         });
 
         me.subjects = [

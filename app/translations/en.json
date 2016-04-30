@@ -412,6 +412,8 @@
         "subjects": {
             "other": "Other",
             "art": "Art",
+            "arabic" : "Arabic",
+            "signlanguage" : "Sign Language",
             "computers" : "Computers",
             "sustainability" : "Sustainability",
             "biology": "Biology",
