@@ -59,7 +59,6 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 		scope : {
 			'model' : '=',
 			'opts' : '=',
-            'isActive' : '=?',
             'reportType' : '=?', // for filter report by lesson name
 			'change' : '&onChange',
 			'load' : '&onLoad',
@@ -90,12 +89,12 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			$scope.languages = ['all'].concat(LergoFilterService.languages,'other');
             $scope.limitedLanguages = _.clone($scope.languages);
 
-			$scope.status = LergoFilterService.status;
+
 
 			$scope.reportStatus = LergoFilterService.reportStatus;
 			$scope.abuseReportStatus = LergoFilterService.abuseReportStatus;
 
-			$scope.statusValue = null;
+			$scope.limitedLessonStatusValue = null;
 
 			function _isChangeUrl() {
 				return scope.noUrlChanges !== true && scope.noUrlChanges !== 'true';
@@ -129,6 +128,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
                 enforceSubjectLimits();
 
+                // lesson status is always limited..
+                $scope.limitedLessonStatus = LergoFilterService.getLimitedLessonStatus( permissionsResult );
+
+                enforceLessonStatusLimits(); // empty value is invalid in case of limited editor.
 
 
                 $scope.limitedLanguages = LergoFilterService.getLimitedLanguages( permissionsResult );
@@ -146,6 +149,14 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                         scope.roles = result.data.data;
                     });
                 }
+
+
+                /// this is the only async operation we are doing when filter is loading.. so for now putting the 'load' trigger here would suffice.
+                $timeout(scope.load,1); // notify you were loaded
+                $timeout(function setLoaded(){ // function name needed for tests
+                    loaded = true;
+                },1);
+
             });
 
 			function _updateCreatedBy(newValue, oldValue) {
@@ -421,6 +432,13 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 }
             }
 
+            function enforceLessonStatusLimits(){
+                // if limited, then can only mean private.. naiive implementation will do for now.
+                if ( $scope.opts && $scope.opts.showLimitedSubject && userPermissions && userPermissions.limitations.editOnlyUnpublishedContent ){
+                    $scope.limitedLessonStatusValue = LergoFilterService.LESSON_STATUS.PRIVATE;
+                }
+            }
+
             function enforceSubjectLimits(){
                 //normalize restricted values
                 if ($scope.opts && $scope.opts.showLimitedSubject && userPermissions && _.size(userPermissions.limitations.manageSubject)>0 ) {
@@ -443,6 +461,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 }
 
                 enforceSubjectLimits();
+
+                enforceLanguageLimits();
+
+                enforceLessonStatusLimits();
 
 
 			}, true);
@@ -571,21 +593,11 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
 			$log.info('filter loaded. calling callback', scope.load);
 
-            $timeout(scope.load,1); // notify you were loaded
-            $timeout(function setLoaded(){ // function name needed for tests
-                loaded = true;
-            },1);
+            // load triggers now moved to 'permissions' callback.. only after we apply limits is the filter really loaded.
 
             scope.$watch(function(){ // if filter data was reset, we need to reload this directive
                 return LergoFilterService.getLastReset();
             }, reload);
-
-            scope.$watch(function(){
-                return LergoFilterService.isActive(LergoFilterService.RESET_TYPES.LOGO,scope.opts);
-            }, function(newValue){
-                $log.info('isActive changed : ' +  newValue );
-                scope.isActive = !!newValue;
-            });
 		}
 	};
 });

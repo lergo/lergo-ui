@@ -530,6 +530,10 @@
         }
     },
     "lessons": {
+        "edit" : {
+            "noPermissionsTitle" : "No Permissions",
+            "noPermissionsDescription" :"You do not have permissions to edit this item"
+        },
         "addQuestion": "Add Questions to Quiz",
         "addQuestionFromAll": "from all questions",
         "areYouReady": "Are you ready to start learning?",

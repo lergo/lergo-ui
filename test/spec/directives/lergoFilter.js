@@ -181,7 +181,6 @@ describe('Directive: lergoFilter', function () {
     it('should update language if changed on LergoTranslate.getLanguage()', inject(function($rootScope, $timeout){
         $rootScope.model = {};
         $rootScope.opts =  {};
-
         generate($rootScope);
         var elementScope = element.children().scope();
         currentLanguage = 'dummy';

@@ -85,16 +85,14 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
 
         /**
          *
-         * @param [string] _language if empty will use current language
+         * @param {string} [_language] if empty will use current language
          * @returns {object} the desired language object
          */
         this.getLanguageObj = function (_language) {
             if ( !_language ){
-                _language = this.getLanguage();
+                _language = this.getLanguage() ? this.getLanguage() : supportedLanguages[0].name;
             }
-            return _.find(supportedLanguages, function (item) {
-                return item.id === _language;
-            });
+            return _.find(supportedLanguages, { id: _language });
         };
 
         this.getLanguageObject = this.getLanguageObj; // alias

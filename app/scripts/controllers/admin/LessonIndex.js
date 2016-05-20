@@ -8,7 +8,7 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 	$scope.adminFilterOpts = {
         'showLimitedSubject' : true,
         'showHasQuestions' : true,
-		'showLessonStatus' : true,
+		'showLimitedLessonStatus' : true,
 		'showLimitedLanguage' : true,
 		'showLimitedAge' : true,
 		'showViews' : true,
@@ -27,7 +27,10 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 	$scope.loadLessons = function() {
 
 		var queryObj = {
-			'filter' : _.merge( defaultFilter, $scope.adminFilter),
+            // make merge first argument be an empty object, otherwise "defaultFilter" is modified
+            // and the merge result is remembered forever!
+            // for example - makes "has questions" not reset properly.
+			'filter' : _.merge( {},defaultFilter, $scope.adminFilter),
 			'sort' : {
 				'lastUpdate' : -1
 			},

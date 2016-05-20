@@ -13,26 +13,28 @@
 			<table class="lergo-table ">
 				<thead>
 					<tr>
-						<td class="checkbox-dropdown" admin-section="lessons.userCanPublish || lessons.userCanUnpublish || lessons.userCanDelete">
-							<div class="btn-group" dropdown>
-								<input type="checkbox" ng-click="selectAll($event)">
-								<button type="button" class="btn-link" dropdown-toggle>
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
+						<td class="checkbox-dropdown">
+                            <span admin-section="lessons.userCanPublish || lessons.userCanUnpublish || lessons.userCanDelete">
+                                <div class="btn-group" dropdown>
+                                    <input type="checkbox" ng-click="selectAll($event)">
+                                    <button type="button" class="btn-link" dropdown-toggle>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
 
-									<li admin-section="lessons.userCanPublish">
-										<a  style="outline: none;" class="btn-link" ng-click="makePublic()">{{'admin.makePublic'|translate}}</a>
-									</li>
-									<li admin-section="lessons.userCanUnpublish">
-										<a  style="outline: none;" class="btn-link" ng-click="makePrivate()">{{'admin.makePrivate'|translate}}</a>
-									</li>
-									<li class="divider" admin-section="lessons.userCanDelete"></li>
-									<li admin-section="lessons.userCanDelete">
-										<a  style="outline: none;" class="btn-link" ng-click="deleteLesson()">{{'delete'|translate}}</a>
-									</li>
-								</ul>
-							</div>
+                                        <li admin-section="lessons.userCanPublish">
+                                            <a  style="outline: none;" class="btn-link" ng-click="makePublic()">{{'admin.makePublic'|translate}}</a>
+                                        </li>
+                                        <li admin-section="lessons.userCanUnpublish">
+                                            <a  style="outline: none;" class="btn-link" ng-click="makePrivate()">{{'admin.makePrivate'|translate}}</a>
+                                        </li>
+                                        <li class="divider" admin-section="lessons.userCanDelete"></li>
+                                        <li admin-section="lessons.userCanDelete">
+                                            <a  style="outline: none;" class="btn-link" ng-click="deleteLesson()">{{'delete'|translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </span>
 						</td>
 						<td> {{'name'|translate}}</td>
 						<td>{{'admin.by'|translate}}</td>

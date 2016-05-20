@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsUpdateCtrl',
-		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate) {
+		function($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
 			$window.scrollTo(0, 0);
 			$scope.subjects = LergoFilterService.subjects;
             var addStepClicked = false;
@@ -296,9 +296,17 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 			}
 
 			$scope.openUpdateQuestion = function(step, quizItemId) {
-				if ($scope.quizItemsData.hasOwnProperty(quizItemId)) {
-					openQuestionDialog(step, $scope.quizItemsData[quizItemId], true);
-				}
+                QuestionsService.getPermissions(quizItemId).then(function( result ){
+
+                    if ($scope.quizItemsData.hasOwnProperty(quizItemId) && result.data.canEdit ) {
+                        openQuestionDialog(step, $scope.quizItemsData[quizItemId], true);
+                    }
+
+                    if ( !result.data.canEdit ){
+                        toastr.error( $translate.instant('lessons.edit.noPermissionsDescription'), $translate.instant('lessons.edit.noPermissionsTitle'));
+                    }
+                });
+
 			};
 			$scope.addCreateQuestion = function(step) {
 				QuestionsService.createQuestion({
@@ -318,6 +326,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
 
 			function openQuestionDialog(step, quizItem, isUpdate) {
+
 				persistScroll();
 				var modelContent = {};
 				modelContent.templateUrl = 'views/questions/addCreateUpdateDialog.html';

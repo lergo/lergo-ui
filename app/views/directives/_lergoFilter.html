@@ -87,11 +87,11 @@
 			<input min="1" size="1" class="number" type="number" ng-model="viewsFilter.max" />
 		</div>
 	</span>
-	<span ng-show="!!opts.showLessonStatus">
+	<span ng-show="!!opts.showLimitedLessonStatus">
 		<div class="label">{{'filters.labels.status' | translate }}</div>
 		<div class="input">
-			<select ng-options="s as ('filters.status.' + s | translate) for s in status" ng-model="statusValue">
-				<option value="">{{'filters.all'|translate}}</option>
+			<select ng-options="s as ('filters.status.' + s | translate) for s in limitedLessonStatus" ng-model="limitedLessonStatusValue">
+				<option admin-section="!limitations.editOnlyUnpublishedContent" value="">{{'filters.all'|translate}}</option>
 			</select>
 		</div>
 	</span>
@@ -168,6 +168,6 @@
 	</div>
 </form>
 
-<div class="clear-filter-section" ng-show="isActive">
+<div class="clear-filter-section" filter-is-active-show-hide relevancy-opts="opts">
     <button class="btn btn-success wide" lergo-reset-filter> {{ 'filters.actions.clear' | translate }}</button>
 </div>

@@ -41,19 +41,6 @@ describe('Directive: filterIsActive', function () {
     });
 
 
-    describe('#showHide', function(){
-        it('should show/hide the element when filter is active or not', function(){
-            var isolatedScope = $(element).children().scope();
-            var $element = $(element);
-            isolatedScope.showHide(true);
-            expect($element.is(':visible')).toBe(true);
-            isolatedScope.showHide(false);
-            expect($element.is(':visible')).toBe(false);
-            isolatedScope.showHide(true);
-            expect($element.is(':visible')).toBe(true);
-        });
-    });
-
     describe('#hideNotification', function(){
         it('should hide notification and remember result in localStorage', function(){
             var isolatedScope = $(element).children().scope();

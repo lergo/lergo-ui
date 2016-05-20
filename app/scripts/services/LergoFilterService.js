@@ -65,9 +65,9 @@ angular.module('lergoApp')
 
 
         // active if there's one relevant filter with value
-        me.isActive = function( resetType, relevancyOpts ){
+        me.isActive = function( resetType, relevancyOpts, userPermissions  ){
             var result = _.find(me.FILTERS, function( f ){
-                return resetType.ignore.indexOf(f) < 0 && f.isActive( relevancyOpts );
+                return resetType.ignore.indexOf(f) < 0 && f.isActive( relevancyOpts, userPermissions  );
 
             });
 
@@ -112,6 +112,87 @@ angular.module('lergoApp')
             };
         }
 
+
+        // limited filters are active iff saved value is not the 'default limited value'
+        var LimitedFilter = function(){
+            Filter.apply(this,arguments);
+
+            this.isActive = function( relevancyOpts, userPermissions ){
+                var limitedDefaultValue = this.getLimitedDefaultValue( userPermissions );
+                return !!this.isRelevant(relevancyOpts) && !_.isEqual(limitedDefaultValue,me.getSavedValue(this));
+            };
+
+            this.reset = function(){
+                doSave(this, true, this.getLimitedDefaultValue() );
+            };
+        };
+
+
+
+
+        var LimitedAgeFilter = function(){
+            LimitedFilter.apply(this,arguments);
+
+            this.getLimitedDefaultValue = function( permissions ){
+                var result = {};
+                if ( permissions && permissions.limitations &&  permissions.limitations.manageAge ){
+
+                    if ( permissions.limitations.manageAge.min ){
+                        result.min = permissions.limitations.manageAge.min;
+                    }
+                    if ( permissions.limitations.manageAge.max){
+                        result.max = permissions.limitations.manageAge.max;
+                    }
+                }
+                return _.isEmpty(result) ? null : result;
+            };
+
+        };
+
+        var LimitedLessonStatusFilter = function(){
+            LimitedFilter.apply(this,arguments);
+            this.getLimitedDefaultValue = function( permissions ){
+                if ( permissions && permissions.limitations && permissions.limitations.editOnlyUnpublishedContent ){
+                    return me.LESSON_STATUS.PRIVATE;
+                }else{
+                    return null;
+                }
+
+            };
+        };
+
+        var LimitedLanguageFilter = function(){
+            LimitedFilter.apply(this,arguments);
+            this.getLimitedDefaultValue = function(permissions){
+                if ( LergoTranslate.getLanguageObject()) {
+                    var siteLanguage = LergoTranslate.getLanguageObject().name;
+                    if (permissions && permissions.limitations && permissions.limitations.manageLanguages) {
+                        if (_.includes(permissions.limitations.manageLanguages, siteLanguage)) {
+                            return siteLanguage;
+                        } else {
+                            return _.first(permissions.limitations.manageLanguages);
+                        }
+                    } else {
+                        return siteLanguage;
+                    }
+                }
+            };
+        };
+
+        var LimitedSubjectFilter = function(){
+            LimitedFilter.apply(this,arguments);
+            this.getLimitedDefaultValue = function(permissions){
+                if ( permissions && permissions.limitations && permissions.limitations.manageSubject && !_.isEmpty(permissions.limitations.manageSubject)){
+                    return _.first(permissions.limitations.manageSubject);
+                }else{
+                    return null;
+                }
+
+            };
+        };
+
+
+
         var LanguageFilter = function(/*key, relevancy*/){ // the arguments are passed to the Filter constructor
             Filter.apply(this, arguments);
 
@@ -132,27 +213,28 @@ angular.module('lergoApp')
 
 
         me.FILTERS = {
-            'HAS_QUESTIONS':             new Filter(                    'hasQuestions',       'showHasQuestions'         ),
-            'MODEL_SUBJECT':             new Filter(                    'model.subject',      'showSubject'              ),
-            'REPORT_STUDENT':            new Filter(                    'reportStudent',      'showStudents'             ),
-            'AGE_FILTER':                new Filter(                    'ageFilter',          'showAge'                  ),
-            'VIEWS_FILTER':              new Filter(                    'viewsFilter',        'showViews'                ),
-            'CORRECT_PERCENTAGE':        new Filter(                    'correctPercentage',  'showCorrectPercentage'    ),
-            'FILTER_LANGUAGE':           new LanguageFilter(            'filterLanguage',     'showLanguage'             ),
-            'FILTER_TAGS':               new Filter(                    'filterTags',         'showTags'                 ),
-            'REPORT_STATUS_VALUE':       new Filter(                    'reportStatusValue',  'showReportStatus'         ),
-            'INVITE_STATUS_VALUE':       new Filter(                    'inviteStatusValue',  'showInviteStatus'         ),
-            'MODEL_STATUS':              new Filter(                    'model.status',       'showAbuseReportStatus'    ),
-            'STATUS_VALUE':              new Filter(                    'statusValue',        'showLessonStatus'         ),
-            'MODEL_SEARCH_TEXT':         new Filter(                    'model.searchText',   'showSearchText'           ),
-            'CREATED_BY':                new Filter(                    'createdBy',          'showCreatedBy'            ),
-            'REPORTED_BY':               new Filter(                    'reportedBy',         'showReportedBy'           ),
-            'ROLE':                      new Filter(                    'role',               'showRoles'                ),
-            'REPORT_LESSON':             new Filter(                    'reportLesson',       'showReportLesson'         ),
+            'MODEL_SUBJECT':                   new Filter(                    'model.subject',                    'showSubject'              ),
+            'HAS_QUESTIONS':                   new Filter(                    'hasQuestions',                     'showHasQuestions'         ),
+            'REPORT_STUDENT':                  new Filter(                    'reportStudent',                    'showStudents'             ),
+            'AGE_FILTER':                      new Filter(                    'ageFilter',                        'showAge'                  ),
+            'VIEWS_FILTER':                    new Filter(                    'viewsFilter',                      'showViews'                ),
+            'CORRECT_PERCENTAGE':              new Filter(                    'correctPercentage',                'showCorrectPercentage'    ),
+            'FILTER_LANGUAGE':                 new LanguageFilter(            'filterLanguage',                   'showLanguage'             ),
+            'FILTER_TAGS':                     new Filter(                    'filterTags',                       'showTags'                 ),
+            'REPORT_STATUS_VALUE':             new Filter(                    'reportStatusValue',                'showReportStatus'         ),
+            'INVITE_STATUS_VALUE':             new Filter(                    'inviteStatusValue',                'showInviteStatus'         ),
+            'MODEL_STATUS':                    new Filter(                    'model.status',                     'showAbuseReportStatus'    ),
 
-            'LIMITED_SUBJECT':           new Filter(                    'model.subject',      'showLimitedSubject'       ),
-            'LIMITED_LANGUAGE':          new LanguageFilter(            'filterLanguage',     'showLimitedLanguage'      ),
-            'LIMITED_AGE':               new Filter(                    'ageFilter',          'showLimitedAge'           )
+            'MODEL_SEARCH_TEXT':               new Filter(                    'model.searchText',                 'showSearchText'           ),
+            'CREATED_BY':                      new Filter(                    'createdBy',                        'showCreatedBy'            ),
+            'REPORTED_BY':                     new Filter(                    'reportedBy',                       'showReportedBy'           ),
+            'ROLE':                            new Filter(                    'role',                             'showRoles'                ),
+            'REPORT_LESSON':                   new Filter(                    'reportLesson',                     'showReportLesson'         ),
+
+            'LIMITED_SUBJECT':                 new LimitedSubjectFilter(      'model.subject',                    'showLimitedSubject'       ),
+            'LIMITED_LANGUAGE':                new LimitedLanguageFilter(     'filterLanguage',                   'showLimitedLanguage'      ),
+            'LIMITED_AGE':                     new LimitedAgeFilter(          'ageFilter',                        'showLimitedAge'           ),
+            'LIMITED_LESSON_STATUS_VALUE':     new LimitedLessonStatusFilter( 'limitedLessonStatusValue',         'showLimitedLessonStatus'  )
         };
 
 
@@ -250,6 +332,15 @@ angular.module('lergoApp')
 
         /******************************************* limited permissions feature ***************************/
 
+        me.getLimitedLessonStatus = function(permissions){
+            var onlyPrivate =  _.get(permissions,'limitations.editOnlyUnpublishedContent', false );
+            if ( onlyPrivate ){
+                return [me.LESSON_STATUS.PRIVATE];
+            } else{
+                return me.status;
+            }
+        };
+
         me.getLimitedSubjects = function(permissions){
             return _.get(permissions,'limitations.manageSubject', me.subjects);
         };
@@ -301,7 +392,12 @@ angular.module('lergoApp')
             'other'
         ];
 
-        me.status = [ 'private', 'public' ];
+        me.LESSON_STATUS = {
+            PRIVATE : 'private',
+            PUBLIC : 'public'
+        };
+
+        me.status = [ me.LESSON_STATUS.PRIVATE, me.LESSON_STATUS.PUBLIC ];
         me.reportStatus = [ 'complete', 'incomplete' ];
         me.abuseReportStatus=['pending', 'resolved','dismissed'];
 
