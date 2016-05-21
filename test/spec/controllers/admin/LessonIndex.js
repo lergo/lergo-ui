@@ -13,7 +13,5 @@ describe('Controller: AdminLessonIndexCtrl', function() {
 			$scope : scope
 		});
 	}));
-	it('assign empty array changing to scope', function() {
-		expect(scope.changing.length).toBe(0);
-	});
+
 });

@@ -281,7 +281,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 					}
 				}
 			};
-			$scope.$watch('statusValue', _updateStatusValue);
+			$scope.$watch('limitedLessonStatusValue', _updateStatusValue);
 
             //function languageObjToFilterLanguage( langObj ){
             //    return { id: langObj.name };
@@ -425,9 +425,27 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			$scope.$watch('correctPercentage', _updateCorrectPercentage, true);
 
             function enforceLanguageLimits(){
+                var oldValue = $scope.filterLanguage;
                 if ($scope.opts && $scope.opts.showLimitedLanguage) {
                     if ( !$scope.filterLanguage || ( $scope.filterLanguage && $scope.limitedLanguages && $scope.limitedLanguages.indexOf($scope.filterLanguage) < 0)) {
                         $scope.filterLanguage = _.first($scope.limitedLanguages);
+
+                        /**
+                         * GUY : implement $watch here...
+                         * this is very important.. because the filter mechanism works on $watch.
+                         * once the language changes on 'model', the controller will trigger a new backend query.
+                         *
+                         * The 'enforce' mechanism does not apply on the model directly.
+                         * It relies on $watch to call _updateLanguage, which will also happen in next tick.
+                         *
+                         * So we have a race condition between the query and the limitation. and that causes bugs..
+                         *
+                         * To resolve the race, we execute our own $watch implementation within the same tick..
+                         *
+                         */
+                        if ( $scope.filterLanguage !== oldValue ){
+                            _updateLanguage( $scope.filterLanguage, oldValue );
+                        }
                     }
                 }
             }

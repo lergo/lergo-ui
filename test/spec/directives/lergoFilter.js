@@ -132,8 +132,8 @@ describe('Directive: lergoFilter', function () {
 
 
     it('should update model on lesson statusValue change', function () {
-        testChangeProperty('statusValue', 'private', 'public', { 'dollar_exists': false });
-        testChangeProperty('statusValue', 'public', 'public', { 'dollar_exists': true });
+        testChangeProperty('limitedLessonStatusValue', 'private', 'public', { 'dollar_exists': false });
+        testChangeProperty('limitedLessonStatusValue', 'public', 'public', { 'dollar_exists': true });
     });
 
     it('should update model on report statusValue change', function () {

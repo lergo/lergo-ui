@@ -16,7 +16,7 @@
 						<td class="checkbox-dropdown">
                             <span admin-section="lessons.userCanPublish || lessons.userCanUnpublish || lessons.userCanDelete">
                                 <div class="btn-group" dropdown>
-                                    <input type="checkbox" ng-click="selectAll($event)">
+                                    <input type="checkbox" ng-change="selectAll()" ng-model="manageLessons.allSelected">
                                     <button type="button" class="btn-link" dropdown-toggle>
                                         <span class="caret"></span>
                                     </button>

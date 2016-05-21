@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, LergoClient, $log, $filter) {
+angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, LergoClient, $log, $filter, $q) {
 
 	$scope.adminFilter = {};
 	$scope.filterPage = {};
+
+    $scope.manageLessons = {allSelected : false};
 
 	$scope.adminFilterOpts = {
         'showLimitedSubject' : true,
@@ -63,53 +65,50 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 		}
 	});
 
+    $scope.$watch(function allSelected(){
+        return _.isEmpty(_.filter($scope.lessons, function(l){ return !l.selected; }));
+    }, function( value ){
+        $scope.manageLessons.allSelected = value;
+    });
+
 	$scope.getUser = function(lesson) {
 		return users[lesson.userId];
 	};
 
-	$scope.changing = [];
-	var changing = $scope.changing;
 
-	function save(lesson) {
-		// preserving selected state of lesson
-		var selected = lesson.selected;
-		delete lesson.selected;
-		changing.push(lesson._id);
-		LergoClient.lessons.update(lesson).then(function success(result) {
-			var indexOf = $scope.lessons.indexOf(lesson);
-			result.data.selected = selected;
-			$scope.lessons[indexOf] = result.data;
-			changing.splice(changing.indexOf(lesson._id), 1);
-			loadStats();
-			$scope.loadLessons();
-		}, function error() {
-			changing.splice(changing.indexOf(lesson._id), 1);
-		});
-	}
 
-	$scope.makePublic = function() {
-		angular.forEach($scope.lessons, function(lesson) {
-			if (lesson.selected === true) {
-				lesson.public = new Date().getTime();
-				save(lesson);
-			}
-		});
+	$scope.selectAll = function() {
+        _.each($scope.lessons, function(l){
+            l.selected = $scope.manageLessons.allSelected;
+        });
 	};
 
-	$scope.selectAll = function(event) {
-		var checkbox = event.target;
-		angular.forEach($scope.lessons, function(item) {
-			item.selected = checkbox.checked;
-		});
-	};
+    function makeLessonPublic( lesson, isPublic ){
+        if ( isPublic ){
+            return LergoClient.lessons.publish(lesson).then(function( result ){
+                lesson.public = result.data.public;
+            });
+        }else{
+            return LergoClient.lessons.unpublish(lesson).then(function(){
+                delete lesson.public;
+            });
+        }
+    }
+
+    function makeAllPublic(lessons, isPublic){
+        var promises = _.map(_.filter(lessons, {selected:true}),function(lesson) {
+            return makeLessonPublic(lesson,isPublic);
+        });
+        $q.all(promises).then($scope.loadLessons).then(loadStats);
+
+    }
+
+    $scope.makePublic = function() {
+        makeAllPublic( $scope.lessons, true);
+    };
 
 	$scope.makePrivate = function() {
-		angular.forEach($scope.lessons, function(lesson) {
-			if (lesson.selected === true) {
-				delete lesson.public;
-				save(lesson);
-			}
-		});
+		makeAllPublic( $scope.lessons, false );
 	};
 
 	$scope.deleteLesson = function() {
@@ -127,10 +126,6 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 				}
 			});
 		}
-	};
-
-	$scope.isChanging = function(lesson) {
-		return changing.indexOf(lesson._id) >= 0;
 	};
 
 });
