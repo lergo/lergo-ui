@@ -9,6 +9,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		'showLanguage' : true,
 		'showReportStatus' : true,
 		'showStudents' : true,
+		'showClass' : true,
 		'showCorrectPercentage' : true,
         'showReportLesson': true
 	};
@@ -35,6 +36,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 	$scope.$watch('reportsPage.reportType', function(newValue/* , oldValue */) {
 		$log.info('reportType changed');
 		$scope.reportsFilterOpts.showStudents = isStudentsReports();
+		$scope.reportsFilterOpts.showClass = isStudentsReports();
 		$scope.filterPage.current = 1;
 		$scope.filterPage.updatedLast = new Date().getTime(); // create a
 		// 'change'

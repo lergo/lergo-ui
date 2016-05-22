@@ -122,4 +122,8 @@ angular.module('lergoApp')
         this.getStudents = function(){
             return $http.get('/backend/reports/students');
         };
+
+        this.getClasses = function(){
+            return $http.get('/backend/reports/classes');
+        };
     });

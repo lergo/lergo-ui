@@ -44,6 +44,7 @@
 						</td>
 						<td>{{ 'name' | translate }}</td>
 						<td ng-show="showStudentColumn()">{{ 'reports.student' | translate}}</td>
+						<td ng-show="showStudentColumn()">{{ 'reports.class' | translate}}</td>
 						<td>{{ 'reports.subject' | translate}}</td>
 						<td>{{ 'reports.takenAt' | translate}}</td>
 						<td>{{ 'reports.correctPercentage' | translate }}</td>
@@ -60,6 +61,7 @@
 								ng-href="#!/public/lessons/reports/{{report._id}}/display">{{ getReportName(report) }}</a>
 						</td>
 						<td class="answer" ng-show="showStudentColumn()">{{report.data.invitee.name}}</td>
+						<td class="answer" ng-show="showStudentColumn()">{{report.data.invitee.class}}</td>
 						<td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject | translate) ||""}}</td>
 						<td class="answer">{{report.lastUpdate| date:'medium'}}</td>
 						<td class="answer">{{report.correctPercentage}}</td>

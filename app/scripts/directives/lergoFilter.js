@@ -101,9 +101,12 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			}
 
             LergoClient.isLoggedIn(true).then(function( result ){
-                if ( result.user ) {
+                if ( result && result.data && result.data.user ) {
                     LergoClient.reports.getStudents().then(function (result) {
                         scope.students = result.data;
+                    });
+                    LergoClient.reports.getClasses().then(function (result) {
+                        scope.classes = result.data;
                     });
                 }
                 return result;
@@ -260,6 +263,28 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 					_updateReportStudent();
 				}
 			});
+
+
+            function _updateReportClass() {
+                if (!!$scope.reportClass && $scope.reportClass !== '' && $scope.opts.showClass ) {
+                    scope.model['data.invitee.class'] = $scope.reportClass;
+                } else {
+                    delete scope.model['data.invitee.class'];
+                }
+            }
+
+            $scope.$watch('reportClass', function(newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    $log.info('c;ass changed', arguments);
+                    _updateReportClass();
+                }
+            });
+
+            $scope.$watch('opts.showClass', function(newValue, oldValue) {
+                if (oldValue !== newValue) {
+                    _updateReportClass();
+                }
+            });
 
 
 
@@ -582,6 +607,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
             var UPDATE_FUNCTIONS = {};
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORT_STUDENT] =  _updateReportStudent ;
+            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORT_CLASS] =  _updateReportClass ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.AGE_FILTER] =  _updateAgeFilter ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.VIEWS_FILTER] =  _updateViewsFilter ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.CORRECT_PERCENTAGE] =  _updateCorrectPercentage ;

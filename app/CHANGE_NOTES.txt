@@ -1,4 +1,6 @@
 
+feat(report): filter by class name
+
 fix(limits): make edit button in intro apply to limits as well. (hebrew cannot edit english from intro page).
 
 fix(language): fix limits for languages. reference language name and not locale.

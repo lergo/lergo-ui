@@ -216,6 +216,7 @@ angular.module('lergoApp')
             'MODEL_SUBJECT':                   new Filter(                    'model.subject',                    'showSubject'              ),
             'HAS_QUESTIONS':                   new Filter(                    'hasQuestions',                     'showHasQuestions'         ),
             'REPORT_STUDENT':                  new Filter(                    'reportStudent',                    'showStudents'             ),
+            'REPORT_CLASS':                    new Filter(                    'reportClass',                      'showClass'                ),
             'AGE_FILTER':                      new Filter(                    'ageFilter',                        'showAge'                  ),
             'VIEWS_FILTER':                    new Filter(                    'viewsFilter',                      'showViews'                ),
             'CORRECT_PERCENTAGE':              new Filter(                    'correctPercentage',                'showCorrectPercentage'    ),

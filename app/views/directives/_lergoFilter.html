@@ -5,6 +5,14 @@
 			<input type="text" ng-model-options="{debounce:500}" ng-model="reportStudent" typeahead="student._id as student._id for student in students | filter:$viewValue | limitTo:15 ">
 		</div>
 	</div>
+
+    <div ng-show="!!opts.showClass" class='container-fluid'>
+        <div class="label">{{'filters.labels.doneByStudentClassname' | translate}}</div>
+        <div class="input">
+            <input type="text" ng-model-options="{debounce:500}" ng-model="reportClass" typeahead="class._id as class._id for class in classes | filter:$viewValue | limitTo:15 ">
+        </div>
+    </div>
+
 	<div ng-show="!!opts.showSearchText">
 		<div class="label">{{'filters.labels.text' | translate }}</div>
 		<div>
