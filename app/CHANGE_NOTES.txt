@@ -1,3 +1,4 @@
+task (subject): add citizenship to subjects
 
 feat(report): filter by class name
 
