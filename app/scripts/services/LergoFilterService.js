@@ -372,6 +372,7 @@ angular.module('lergoApp')
             'geometry',
             'science',
             'language',
+            'holidays',
             'grammar',
             'spelling',
             'literature',
