@@ -8,7 +8,8 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 		'showSubject' : true,
 		'showLanguage' : true,
 		'showStudents' : true,
-		'showInviteStatus' : true
+		'showInviteStatus' : true,
+        'showClass' : true
 	};
 
 	$scope.invitesPage = {

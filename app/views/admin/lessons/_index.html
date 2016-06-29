@@ -38,6 +38,7 @@
 						</td>
 						<td> {{'name'|translate}}</td>
 						<td>{{'admin.by'|translate}}</td>
+                        <td>{{'admin.publicCount'|translate}}</td>
 						<td>{{'admin.views'|translate}}</td>
 						<td>{{'admin.created'|translate}}</td>
 						<td>{{'admin.publicFrom'|translate}}</td>
@@ -58,7 +59,8 @@
 						<td>
 							<a href="mailto:{{getUser(l).email}}">{{getUser(l).username}}</a>
 						</td>
-						<td>{{l.views}}</td>
+                        <td>{{l.publicCount}}</td>
+                        <td>{{l.views}}</td>
 						<td>{{l.createdAt | date:'d-MMM-yyyy HH:mm'}}</td>
 						<td>{{l.public | date:'d-MMM-yyyy HH:mm' }}</td>
                         <td>{{ l | countQuestionsOnLesson }}</td>

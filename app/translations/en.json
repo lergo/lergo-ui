@@ -223,6 +223,7 @@
         "questions" : "q",
         "allLessons": "All Lessons",
         "by": "By",
+        "publicCount" : "Public",
         "byCreated": "Lesson created by",
         "byReported": "Reported By",
         "category": "Category",

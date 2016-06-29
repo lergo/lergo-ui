@@ -10,12 +10,12 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 	};
 	$scope.filterPage = {};
 	$scope.lessonsFilterOpts = {
-		'showSubject' : true,
-		'showLanguage' : true,
-		'showAge' : true,
-		'showViews' : true,
-		'showTags' : true,
-		'showCreatedBy' : true
+        'showSubject': true,
+        'showLanguage': true,
+        'showAge': true,
+        'showViews': true,
+        'showTags': true,
+        'showCreatedBy': true
 	};
 
 	$scope.loadLessons = function() {

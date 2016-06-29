@@ -100,14 +100,19 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 				return scope.noUrlChanges !== true && scope.noUrlChanges !== 'true';
 			}
 
-            LergoClient.isLoggedIn(true).then(function( result ){
-                if ( result && result.data && result.data.user ) {
-                    LergoClient.reports.getStudents().then(function (result) {
-                        scope.students = result.data;
-                    });
-                    LergoClient.reports.getClasses().then(function (result) {
-                        scope.classes = result.data;
-                    });
+            LergoClient.isLoggedIn(true).then(function (result) {
+                if (result && result.data && result.data.user) {
+
+                    $q.all([
+                        LergoClient.reports.getStudents(),
+                        LergoClient.lessonsInvitations.getStudents(),
+                        LergoClient.reports.getClasses(),
+                        LergoClient.lessonsInvitations.getClasses()
+                    ])
+                        .then(function (results) {
+                            scope.students = _.uniq(results[0].data, results[1].data);
+                            scope.classes = _.uniq(results[2].data, results[3].data);
+                        });
                 }
                 return result;
             });
@@ -614,7 +619,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.FILTER_TAGS] =  _updateFilterTags ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORT_STATUS_VALUE] =  _updateReportStatusValue ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.INVITE_STATUS_VALUE] =  _updateInviteStatusValue ;
-            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.STATUS_VALUE] =  _updateStatusValue ; // lesson status
+            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.LIMITED_LESSON_STATUS_VALUE] =  _updateStatusValue ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.CREATED_BY] =  _updateCreatedBy ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORTED_BY] = _updateReportedBy  ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.ROLE] =  _updateRole ;
