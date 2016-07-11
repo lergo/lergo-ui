@@ -1,3 +1,5 @@
+fix (backup_db):  fix typo in weekly and add PATH in yearly
+
 task  (backup_db): add daily ,weekly,  monthly , yearly backups 
 
 task (subject): add holidays to subjects
