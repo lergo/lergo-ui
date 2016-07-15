@@ -6,7 +6,6 @@ angular.module('lergoApp')
             restrict: 'A',
             link: function postLink(scope, element/*, attrs*/) {
 
-                /* add  rtl / ltr class to the toastr div*/
                 toastr.options.onShown = function() {
                     $(this).addClass(LergoTranslate.getDirection(LergoTranslate.getLanguage()));
                 };
