@@ -7,7 +7,7 @@ angular.module('lergoApp')
             link: function postLink(scope, element/*, attrs*/) {
 
                 toastr.options.onShown = function() {
-                    $(this).addClass(LergoTranslate.getDirection(LergoTranslate.getLanguage()));
+                    $(this).parent().addClass(LergoTranslate.getDirection(LergoTranslate.getLanguage()));
                 };
 
                 scope.$watch(function () {

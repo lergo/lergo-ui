@@ -1,6 +1,6 @@
 
 
-.toast{
+#toast-container{
 	visibility: hidden;
 	&.rtl,&.ltr{
 	visibility: visible;
