@@ -1,0 +1,8 @@
+
+
+.toast{
+	visibility: hidden;
+	&.rtl,&.ltr{
+	visibility: visible;
+	}
+}
