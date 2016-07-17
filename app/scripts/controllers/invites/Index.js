@@ -124,8 +124,29 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 			}
 		});
 	};
+    
+    $scope.emailNotification = function (status) {
+        var toUpdate = 0;
+        angular.forEach($scope.invites, function (invite) {
+            if (invite.selected === true) {
+                invite.emailNotification = !!status;
+                delete invite.selected;
+                toUpdate++;
+                LergoClient.lessonsInvitations.update(invite).then(function () {
+                    toUpdate--;
+                    $scope.errorMessage = null;
+                    if (toUpdate === 0) {
+                        $scope.loadInvites();
+                    }
+                }, function (result) {
+                    $scope.errorMessage = 'Error in updating invite : ' + result.data.message;
+                    $log.error($scope.errorMessage);
+                });
+            }
+        });
+    };
 
-	var path = $location.path();
+    var path = $location.path();
 	$scope.$on('$locationChangeStart', function() {
 		persistScroll($scope.filterPage.current);
 	});

@@ -20,7 +20,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function(
 						toastr.success($filter('translate')('report.saved.successfully'));
 					}
 					errorWhileSaving = false;
-					if (!$scope.invitation.anonymous) {
+					if (!$scope.invitation.anonymous &&  !!$scope.invitation.emailNotification) {
 						LergoClient.reports.ready($routeParams.reportId);
 					} else {
 						$log.info('not sending report link because anonymous');
