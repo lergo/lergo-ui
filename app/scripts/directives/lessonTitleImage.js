@@ -12,7 +12,7 @@ angular.module('lergoApp')
             link: function postLink(scope/*, element, attrs*/) {
 
                 scope.$watch('lesson', function () {
-                    scope.img = LergoClient.lessons.getTitleImage(scope.lesson);
+                    scope.img = !!scope.lesson.coverPage && scope.lesson.coverPage || LergoClient.lessons.getTitleImage(scope.lesson);
                 });
 
             }
