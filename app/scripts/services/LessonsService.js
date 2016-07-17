@@ -97,6 +97,10 @@ angular.module('lergoApp').service('LessonsService', function LessonsService($ht
 	};
 
 	this.getTitleImage = function(lesson) {
+
+        if (!!lesson.coverPage) {
+            return lesson.coverPage;
+        }
 		if (!lesson || !lesson.steps || lesson.steps.length < 1) {
 			return;
 		}
