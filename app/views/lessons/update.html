@@ -52,15 +52,14 @@
                 <div class="advance-options">
                     <div class="lergo-h1">
                         <br>
-                        <button class="btn-link expander" ng-click="isCollapsed = !isCollapsed" ng-show="!!lesson.name">
-                            <i ng-show="!isCollapsed" class="fa fa-plus-square"></i>
-                            <i ng-show="!!isCollapsed" class="fa fa-minus-square"></i>
+                        <button class="btn-link expander" ng-click="advanceOptionCollapsed = !advanceOptionCollapsed"
+                                ng-show="!!lesson.name">
+                            <i ng-show="!!advanceOptionCollapsed" class="fa fa-plus-square"></i>
+                            <i ng-show="!advanceOptionCollapsed" class="fa fa-minus-square"></i>
                             {{ 'advancedOptions' | translate }}
                         </button>
-                        {{(isCollapsed===undefined)&& (isCollapsed = (!!lesson.nextLesson || !!lesson.priorLesson ))||""
-                        }}
                     </div>
-                    <div collapse="!isCollapsed">
+                    <div collapse="advanceOptionCollapsed">
                         <hr>
                         <table class=" lergo-table lergo-form">
                             <tbody>
@@ -81,7 +80,8 @@
                             <tr>
                                 <td>{{ 'lessons.addCoverPage' | translate }}</td>
                                 <td>
-                                    <input placeholder="{{'lessons.addCoverPageHint' | translate}}"
+                                    <input lergo-input-converter
+                                           placeholder="{{'lessons.addCoverPageHint' | translate}}"
                                            ng-model="lesson.coverPage"/>
                                 </td>
                             </tr>
@@ -135,8 +135,11 @@
 
                 </div>
                 <div class="lesson-actions"> <!-- lesson actions -->
-                    <button class="btn" ng-click="done()" ng-disabled="saveButtonDisabled()">{{'done' | translate }}</button>
-                    <button class="btn" ng-click="done('showLesson')" ng-disabled="saveButtonDisabled()">{{'button.showLesson' | translate }}</button>
+                    <button class="btn" ng-click="done()" ng-disabled="saveButtonDisabled()">{{'done' | translate }}
+                    </button>
+                    <button class="btn" ng-click="done('showLesson')" ng-disabled="saveButtonDisabled()">
+                        {{'button.showLesson' | translate }}
+                    </button>
                     <span class="pop-up-hint add-step-button">
 						<button class="btn btn-start" ng-click="addStep(lesson)"
                                 ng-disabled="saveButtonDisabled()">{{ 'steps.add' | translate }}</button>
@@ -146,7 +149,8 @@
 							<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
 							<button popover="{{'steps.addHint' | translate}}"
                                     popover-is-open="popoverState.open"
-                                    popover-placement="{{popoverState.position}}" popover-trigger="focus" tabindex="0"></button>
+                                    popover-placement="{{popoverState.position}}" popover-trigger="focus"
+                                    tabindex="0"></button>
 						</span>
                     </span>
 
