@@ -57,7 +57,8 @@
 							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.invitee.name || invite.invitee.class}}</span>
 						</td>
                         <td class="answer">
-                            <span >{{!!invite.emailNotification}}</span>
+                            <span class="text-success" ng-show="invite.emailNotification">{{'on' | translate }} </span>
+                            <span class= "text-warning" ng-show="!invite.emailNotification">{{'off' | translate}}</span>
                         </td>
 						<td class="answer">
 							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.language && ('filters.languages.' + invite.language | translate) ||""}}</span>
