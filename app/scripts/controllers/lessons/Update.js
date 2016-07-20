@@ -44,7 +44,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                     $scope.lesson.language = LergoTranslate.getLanguageObject().name;
                 }
                 // Advance option should be option is any of the below properties are defined/non-empty
-                $scope.advanceOptionCollapsed = !$scope.lesson.nextLesson && !$scope.lesson.priorLesson && !$scope.lesson.coverPage
+                $scope.advanceOptionCollapsed = !$scope.lesson.nextLesson && !$scope.lesson.priorLesson && !$scope.lesson.coverPage;
 
             }, function(result) {
 				$scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
