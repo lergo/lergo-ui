@@ -1,4 +1,4 @@
-<div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
+<div id="questionPreview" ng-keyup="$event.keyCode === 13 && quizItem.subType==='short' ?  enterPressed(quizItem) : null" tabindex="1">
 	<div class="left">
 		<div class="question">
 			<p class="lergo-h4">{{quizItem.question}}</p>
