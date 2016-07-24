@@ -28,7 +28,11 @@
                 </div>
                 <div class="section horizontal">
                     <div class="label">&nbsp;</div>
-                    <div class="input"><button class="btn" ng-click="createReportFromClassInvite()" > {{ 'classInvite.start'  | translate }}</button></div>
+                    <div class="input">
+                        <button ng-disabled="!classInvite.studentName" class="btn"
+                                ng-click="createReportFromClassInvite()"> {{ 'classInvite.start' | translate }}
+                        </button>
+                    </div>
                 </div>
             </div>
 

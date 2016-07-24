@@ -52,14 +52,14 @@
                 <div class="advance-options">
                     <div class="lergo-h1">
                         <br>
-                        <button class="btn-link expander" ng-click="advanceOptionCollapsed = !advanceOptionCollapsed"
+                        <button class="btn-link expander" ng-click="isAdvOptOpen = !isAdvOptOpen"
                                 ng-show="!!lesson.name">
-                            <i ng-show="!!advanceOptionCollapsed" class="fa fa-plus-square"></i>
-                            <i ng-show="!advanceOptionCollapsed" class="fa fa-minus-square"></i>
+                            <i ng-show="!isAdvOptOpen" class="fa fa-plus-square"></i>
+                            <i ng-show="!!isAdvOptOpen" class="fa fa-minus-square"></i>
                             {{ 'advancedOptions' | translate }}
                         </button>
                     </div>
-                    <div collapse="advanceOptionCollapsed">
+                    <div collapse="!isAdvOptOpen">
                         <hr>
                         <table class=" lergo-table lergo-form">
                             <tbody>
