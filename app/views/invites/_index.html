@@ -24,11 +24,13 @@
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li>
-										<a style="outline: none;" class="btn-link " ng-click="markAsDone()">{{'invites.markAsDone'|translate}}</a>
-										<a style="outline: none;" class="btn-link " ng-click="markAsUndone()">{{'invites.markAsUndone'|translate}}</a>
+                                        <a style="outline: none;" class="btn-link " ng-click="markAsDone()">{{'invites.markAsDone'|translate}}</a>
+                                        <a style="outline: none;" class="btn-link " ng-click="markAsUndone()">{{'invites.markAsUndone'|translate}}</a>
                                         <a style="outline: none;" class="btn-link " ng-click="emailNotification()">{{'invites.emailNotificationOff'|translate}}</a>
                                         <a style="outline: none;" class="btn-link " ng-click="emailNotification(true)">{{'invites.emailNotificationOn'|translate}}</a>
-										<hr />
+                                        <a style="outline: none;" class="btn-link " ng-csv="getReports()"
+                                           csv-header="localizedHeaders()" filename="{{getExportFileName()}}">{{'invites.exportReports'|translate}}</a>
+                                        <hr />
 										<a style="outline: none;" class="btn-link delete-menu" ng-click="deleteInvites()">{{'delete'|translate}}</a>
 									</li>
 								</ul>
