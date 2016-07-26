@@ -213,7 +213,7 @@ angular.module('lergoApp').controller('InvitesIndexCtrl',
                 report[headers[3]] = $translate.instant('filters.subjects.'+item.data.lesson.subject);
                 report[headers[4]] = $filter('date')(item.lastUpdate, 'medium');
                 report[headers[5]] = item.correctPercentage;
-                if (item.duration != 0) {
+                if (item.duration !== 0) {
                     report[headers[6]] = $filter('duration')(item.duration);
                 } else {
                     report[headers[6]] = $translate.instant('report.incomplete');
@@ -239,4 +239,4 @@ angular.module('lergoApp').controller('InvitesIndexCtrl',
         return 'reports_'+  $filter('date')(Date.now(), 'medium')+'.csv';
     };
 
-    });
+});
