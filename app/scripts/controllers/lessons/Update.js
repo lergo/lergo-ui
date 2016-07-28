@@ -43,7 +43,10 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 if (!$scope.lesson.language) {
                     $scope.lesson.language = LergoTranslate.getLanguageObject().name;
                 }
-			}, function(result) {
+                // Advance option should be open is any of the below properties are defined/non-empty
+                $scope.isAdvOptOpen = !!$scope.lesson.nextLesson || !!$scope.lesson.priorLesson || !!$scope.lesson.coverPage;
+
+            }, function(result) {
 				$scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
 				$log.error($scope.errorMessage);
 			});
@@ -70,13 +73,16 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				}
 			}
 
-			$scope.stepTypes = [ {
-				'id' : 'video',
-				'label' : 'Video'
-			}, {
-				'id' : 'quiz',
-				'label' : 'Quiz'
-			} ];
+            $scope.stepTypes = [{
+                'id': 'video',
+                'label': 'Video'
+            }, {
+                'id': 'quiz',
+                'label': 'Quiz'
+            }, {
+                'id': 'slide',
+                'label': 'Slide'
+            }];
 
             $scope.getLessonIntroLink = function( lesson ) {
                 return LergoClient.lessons.getIntroLink( lesson );

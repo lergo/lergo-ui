@@ -1,0 +1,22 @@
+<div class="lesson-step-video" ng-init="scrollUp()">
+    <div class="lesson-step-title lergo-h1">{{step.title}}</div>
+    <div class="lesson-step-video-content">
+        <iframe
+            ng-src="{{getGoogleSlideEmbedSource(step.slideURL)}}"
+            frameborder="0"
+            width="{{videoSize.width}}"
+            height="{{videoSize.height}}"
+            allowfullscreen="true"
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true">
+        </iframe>
+    </div>
+
+
+</div>
+<br/>
+<br/>
+<div ng-show="hasNextStep()" style="text-align: center">
+    <button ng-click="nextStep()" class="btn">{{ 'lessons.letsContinue' | translate }}</button>
+</div>
+</div>

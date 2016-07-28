@@ -1,0 +1,21 @@
+<ng-form name="slideForm">
+    <table class="lergo-table">
+        <tr>
+            <td style="width: 13%">
+                <div class="video-tip">
+                    <span>{{ 'lessons.slideURL' | translate }}</span>
+                </div>
+            </td>
+            <td>
+                <div class="form-group"
+                     ng-class="{ 'has-error' : slideForm.slideURL.$invalid && !slideForm.slideURL.$pristine }">
+                    <input required class="form-control" name="slideURL"
+                           placeholder="{{'lessons.slideURLHelpText' | translate }}" ng-model="step.slideURL"
+                           ng-pattern="/^(?:https?:\/\/)?(?:www\.)?(docs\.google\.com(.*)\/presentation\/d\/)[-\w]{25,}/">>
+                    <p ng-show="slideForm.slideURL.$error.pattern || (slideForm.slideURL.$invalid && !slideForm.slideURL.$pristine)"
+                       class="help-block">{{'steps.invalidSlideURL' | translate}}</p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</ng-form>
