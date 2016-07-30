@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, LergoClient, TagsService, $routeParams, $log, $location, $rootScope, localStorageService, $window, $filter) {
+angular.module('lergoApp').controller('InvitesIndexCtrl',
+    function($scope, LergoClient, TagsService, $routeParams, $log,
+             $location, $rootScope, localStorageService, $window, $filter,$q,$translate) {
 
 	$scope.invitesFilter = {};
 	$scope.filterPage = {};
@@ -124,7 +126,7 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 			}
 		});
 	};
-    
+
     $scope.emailNotification = function (status) {
         var toUpdate = 0;
         angular.forEach($scope.invites, function (invite) {
@@ -170,5 +172,71 @@ angular.module('lergoApp').controller('InvitesIndexCtrl', function($scope, Lergo
 		}
 		$window.scrollTo(0, scrollY);
 	}
+
+    function getReportForSelectedInvites() {
+
+        var selected = _.filter($scope.invites, function (invite) {
+            return invite.selected;
+        });
+
+        var selectedIds = _.map(selected, function (invite) {
+            return invite._id;
+        });
+
+        var queryObj = {
+            'filter': {'invitationId': {'$in': selectedIds}},
+            'projection': {
+                'correctPercentage': 1,
+                'data.invitee.name': 1,
+                'data.invitee.class': 1,
+                'data.lesson.name': 1,
+                'duration': 1,
+                'lastUpdate': 1,
+                'data.lesson.subject': 1,
+                '_id': 0
+            },
+            'limit': 0 // It require all data..
+        };
+        return LergoClient.userData.getStudentsReports(queryObj);
+    }
+
+    $scope.getReports = function () {
+        var deferred = $q.defer();
+        var promise = getReportForSelectedInvites();
+        var headers = $scope.localizedHeaders();
+        promise.then(function (result) {
+            var data = _.map(result.data.data, function (item) {
+                var report = {};
+                report[headers[0]] = item.data.lesson.name;
+                report[headers[1]] = item.data.invitee.name;
+                report[headers[2]] = item.data.invitee.class;
+                report[headers[3]] = $translate.instant('filters.subjects.'+item.data.lesson.subject);
+                report[headers[4]] = $filter('date')(item.lastUpdate, 'medium');
+                report[headers[5]] = item.correctPercentage;
+                if (item.duration !== 0) {
+                    report[headers[6]] = $filter('duration')(item.duration);
+                } else {
+                    report[headers[6]] = $translate.instant('report.incomplete');
+                }
+                return report;
+            });
+            deferred.resolve(data);
+        }, function (result) {
+            $scope.errorMessage = 'Error in fetching reports : ' + result.data.message;
+            $log.error($scope.errorMessage);
+        });
+        return deferred.promise;
+    };
+
+    $scope.headers = ['name', 'reports.student', 'reports.class', 'reports.subject',
+        'reports.takenAt', 'reports.correctPercentage', 'reports.duration'];
+
+    $scope.localizedHeaders = function () {
+        return _.map($scope.headers, $translate.instant);
+    };
+
+    $scope.getExportFileName = function () {
+        return 'reports_'+  $filter('date')(Date.now(), 'medium')+'.csv';
+    };
 
 });
