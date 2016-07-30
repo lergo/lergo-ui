@@ -13,7 +13,6 @@ module.exports = function (config) {
 
             'app/bower_components/jquery/jquery.js',
             'app/bower_components/lodash/lodash.js',
-
             'app/bower_components/angular/angular.js',
             'app/bower_components/string-format-js/format.js',
             'app/bower_components/angular-mocks/angular-mocks.js',
@@ -29,6 +28,7 @@ module.exports = function (config) {
             'app/bower_components/angular-translate/angular-translate.js',
             'app/bower_components/angular-translate-loader-url/angular-translate-loader-url.js',
             'app/bower_components/ngstorage/ngStorage.min.js',
+            'app/bower_components/ng-csv/build/ng-csv.min.js',
             'app/scripts/*.js',
             '.tmp/html2js/*.js',
             'app/scripts/**/*.js',
