@@ -1,59 +1,75 @@
-<div>
-	<span>
-		<span class="pop-up-hint">
-			<span> {{'quiz.practiseMode' | translate}}</span>
-			<span>
-				<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-				<button popover="{{'quiz.testModeHint' | translate}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
-			</span>
-		</span>
-		<input style="vertical-align: middle; display: inline;" type="checkbox" ng-true-value="'False'" ng-false-value="'True'" ng-model=step.testMode />
-	</span>
-	<span class="pop-up-hint">
-		<span>{{'quiz.testMode' | translate}}</span>
-		<input style="vertical-align: middle; display: inline; margin-left: 6px;" ng-true-value="'True'" ng-false-value="'False'" type="checkbox"
-			ng-model=step.testMode />
-	</span>
-	<span style="padding-left: 60px;">
-		<span class="pop-up-hint">
-			<span> {{'quiz.shuffleQuestion' | translate}}</span>
-			<span>
-				<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-				<button popover="{{'quiz.shuffleQuestionHint' | translate}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
-			</span>
-		</span>
-		<input style="vertical-align: middle; display: inline;" type="checkbox" ng-model=step.shuffleQuestion />
-	</span>
+<div class="row row-nested top20">
+    <div class="col-md-4">
+        <p>{{'quiz.practiseMode' | translate}}
+            <sup>
+                <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                <a popover="{{'quiz.testModeHint' | translate}}" class="fa fa-question-circle no-underline-v1"
+                   popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+            </sup>
+            <sub>
+                <input type="checkbox" ng-true-value="'False'" ng-false-value="'True'" ng-model=step.testMode>
+            </sub>
+        </p>
+    </div>
+    <div class="col-md-3 ">
+        <p>
+            {{'quiz.testMode' | translate}}
+            <sub>
+                <input ng-true-value="'True'" ng-false-value="'False'" type="checkbox" ng-model=step.testMode>
+            </sub>
+        </p>
+    </div>
+    <div class="col-md-5 text-right">
+        <p>{{'quiz.shuffleQuestion' | translate}}
+            <sup>
+                <a popover="{{'quiz.shuffleQuestionHint' | translate}}" class="fa fa-question-circle"
+                   popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+            </sup>
+            <sub>
+                <input type="checkbox" ng-model=step.shuffleQuestion>
+            </sub>
+        </p>
+    </div>
 </div>
-<div>
-	<span class="pop-up-hint" ng-show="step.testMode === 'False'">
-		<span>{{'quiz.allowRetry' | translate}}</span>
-		<span>
-			<button popover="{{'quiz.retryQuestionHint' | translate }}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
-		</span>
-		<input style="vertical-align: middle; display: inline; margin-left: 6px;" type="checkbox" ng-model=step.retryQuestion />
-	</span>
+
+<div class="row top20 row-nested" ng-show="step.testMode === 'False'">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    {{'quiz.allowRetry' | translate}}
+                    <sup>
+                        <a popover="{{'quiz.retryQuestionHint' | translate }}" class="fa fa-question-circle"
+                           popover-placement="top" popover-trigger="focus" tabindex="0"
+                           style="text-decoration: none"></a>
+                    </sup>
+                    <sub> <input type="checkbox" ng-model=step.retryQuestion> </sub>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<table class="lergo-table" style="width: 90%; float: left">
-	<tr ng-repeat="item in step.quizItems">
-		<td class="question" colspan="5">
-			<a href="" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
-		</td>
-		<td>
-			<a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
-			<a href="" ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
-			<a href="" ng-click="removeItemFromQuiz( item, step )">X</a>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<span class="pop-up-hint">
-				<button class="btn" ng-click="addCreateQuestion(step)">{{ 'lessons.addQuestion' | translate }}</button>
-				<span>
-					<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-					<button popover="{{'quiz.addQuestionHint' | translate}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="focus" tabindex="0"></button>
-				</span>
-			</span>
-		</td>
-	</tr>
-</table>
+
+<div class="row row-nested top20">
+    <div class="row row-nested top10" ng-repeat="item in step.quizItems">
+        <div class="col-md-8">
+            <a href="" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
+        </div>
+        <div class="col-md-3 text-right">
+            <a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
+            <a href="" ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
+            <a href="" ng-click="removeItemFromQuiz( item, step )">X</a>
+        </div>
+    </div>
+</div>
+
+<div class="row row-nested top20">
+    <div class="col-md-12">
+        <button class="btn" ng-click="addCreateQuestion(step)">{{ 'lessons.addQuestion' | translate }}</button>
+        <sup>
+            <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+            <a popover="{{'quiz.addQuestionHint' | translate}}" class="fa fa-question-circle"
+               popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+        </sup>
+    </div>
+</div>

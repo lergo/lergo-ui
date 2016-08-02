@@ -90,42 +90,48 @@
                     </div>
                 </div>
                 <div ng-repeat="step in lesson.steps">
-                    <hr style="float: none"/>
-                    <div style="float: right">
-                        <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
-                        <a href="" ng-click="moveStepDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
-                        <a ng-click="deleteStep(step)" href="">
-                            <i class="fa fa-trash-o"></i>
-                        </a>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
+                            <a href="" ng-click="moveStepDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
+                            <a ng-click="deleteStep(step)" href="">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                        </div>
                     </div>
-                    <table class="lergo-table lergo-form">
-                        <tr>
-                            <td style="width: 13%">{{ 'steps.title' | translate }}</td>
-                            <td>
-                                <input ng-model="step.title"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-								<span class="pop-up-hint" style="padding: 0px;">
-									<span> {{ 'steps.type' | translate }} </span>
-									<span>
-										<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-										<button popover="{{'steps.typeHint' | translate}}" class="fa fa-question-circle"
-                                                popover-placement="top" popover-trigger="focus" tabindex="0"></button>
-									</span>
-								</span>
-                            </td>
-                            <td>
-                                <select ng-model="step.type"
-                                        ng-options="t.id as ('steps.' + t.id | translate) for t in stepTypes">
-                                </select>
-                            </td>
-                        </tr>
-                    </table>
-                    <div ng-include="getStepViewByType(step)"></div>
-                    <div class="step-actions">
-                        <button class="btn" ng-click="displayStep(step)">{{ 'steps.display' | translate }}</button>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-2">
+                            {{ 'steps.title' | translate }}
+                        </div>
+                        <div class="col-md-10">
+                            <input ng-model="step.title"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p>{{ 'steps.type' | translate }}
+                                <sup>
+                                    <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                                    <a popover="{{'steps.typeHint' | translate}}" class="fa fa-question-circle"
+                                       popover-placement="top" popover-trigger="focus" tabindex="0"
+                                       style="text-decoration: none"></a>
+                                </sup>
+                            </p>
+                        </div>
+                        <div class="col-md-10">
+                            <select ng-model="step.type"
+                                    ng-options="t.id as ('steps.' + t.id | translate) for t in stepTypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" ng-include="getStepViewByType(step)"></div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn" ng-click="displayStep(step)">{{ 'steps.display' | translate }}</button>
+                        </div>
                     </div>
                 </div>
                 <div save-status="saveStatus"></div>
