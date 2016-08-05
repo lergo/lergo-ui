@@ -93,7 +93,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
 					retryQuestion : stepsWithoutRetry.length === 0
 				};
 				lesson.steps.push(step);
-				lesson.steps[0].quizItems = $scope.wrongQuestions;
+				lesson.steps[0].quizItems = _.uniq($scope.wrongQuestions);
 				LergoClient.lessons.update(lesson).then(function() {
 					$scope.startLesson(lesson._id);
 				});
