@@ -1,3 +1,5 @@
+fix (practice mistakes) fix apply two step bug fix to practice mistakes from lesson report
+
 fix toastr move rtl to container
 
 fix toastr right to left issue (.error only)
