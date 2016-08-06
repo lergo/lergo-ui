@@ -26,54 +26,55 @@
  *
  */
 
-angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope, ReportWriteService, ReportsService, $log,LergoClient) {
+angular.module('lergoApp').controller('LessonsReportWriteCtrl',
+    function ($scope, ReportWriteService, ReportsService, $log, LergoClient,$q) {
 
-	var report = $scope.report;
-	if (!report.answers) {
-		report.answers = [];
-	}
-	if (!report.stepDurations) {
-		report.stepDurations = [];
-	}
-	var stepIndex = 0;
+    var report = $scope.report;
+    if (!report.answers) {
+        report.answers = [];
+    }
+    if (!report.stepDurations) {
+        report.stepDurations = [];
+    }
+    var stepIndex = 0;
 
-	$scope.$on('startLesson', function(event, data) {
-		$log.info('starting lesson');
-		if (!report.data) {
-			report.data = data;
-		}
-	});
+    $scope.$on('startLesson', function (event, data) {
+        $log.info('starting lesson');
+        if (!report.data) {
+            report.data = data;
+        }
+    });
 
-	$scope.$on('endLesson', function(/* event, data */) {
-		$log.info('lesson ended');
+    $scope.$on('endLesson', function (/* event, data */) {
+        $log.info('lesson ended');
         // mark invitation as finished
         if (!report.data.finished) {
             report.data.finished = true;
         }
         // mark report as finished
-		if (!report.finished) {
-			report.finished = true;
-		}
-		if(!!report.data.lesson.temporary){
-			LergoClient.lessons.delete(report.data.lesson._id);
-		}
-	});
+        if (!report.finished) {
+            report.finished = true;
+        }
+        if (!!report.data.lesson.temporary) {
+            LergoClient.lessons.delete(report.data.lesson._id);
+        }
+    });
 
-	// data is step
+    // data is step
 
-	// guy - deprecated, use stepIndexChange instead.
-	// $scope.$on('nextStepClick', function(event, data) {
-	// $log.info('nextStepClicked', event, data);
-	// stepIndex++;
-	// });
+    // guy - deprecated, use stepIndexChange instead.
+    // $scope.$on('nextStepClick', function(event, data) {
+    // $log.info('nextStepClicked', event, data);
+    // stepIndex++;
+    // });
 
-	$scope.$on('stepIndexChange', function(event, data) {
-		$log.info('stepIndexChange', data);
-		/* jshint -W052 */
-		stepIndex = ~~data.new;
+    $scope.$on('stepIndexChange', function (event, data) {
+        $log.info('stepIndexChange', data);
+        /* jshint -W052 */
+        stepIndex = ~~data.new;
         // update new duration only if we are still looking at steps inside the
-		// lesson.
-        if ( stepIndex <= report.data.lesson.steps.length ){
+        // lesson.
+        if (stepIndex <= report.data.lesson.steps.length) {
             var newDuration = report.stepDurations[stepIndex];
 
             if (!newDuration) {
@@ -87,33 +88,31 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
         }
 
 
-
-        if ( ~~data.old !== ~~data.new ) {
+        if (~~data.old !== ~~data.new) {
             ReportWriteService.calculateOldStepDuration(report, data); // updates report model
         }
         report.duration = ReportWriteService.calculateReportDuration(report); // does not update report model
-	});
+    });
 
 
+    // the idea is we always keep data without changing it.
+    // when the report is done, lesson should look like lesson,
+    // quizItems should be ids,
+    // questions should be the object for the quiz items..
+    // just like in DB...
+    // the report only adds the answers the user game and whether they are right
+    // or not.
+    // in order to track down each answer and its correlating step
 
-	// the idea is we always keep data without changing it.
-	// when the report is done, lesson should look like lesson,
-	// quizItems should be ids,
-	// questions should be the object for the quiz items..
-	// just like in DB...
-	// the report only adds the answers the user game and whether they are right
-	// or not.
-	// in order to track down each answer and its correlating step
+    $scope.$on('questionAnswered', function (event, data) {
+        $log.info('question was answered', data);
 
-	$scope.$on('questionAnswered', function(event, data) {
-		$log.info('question was answered', data);
-
-		// find answer
+        // find answer
         // in case user answered a question, and then changed the answer, we
         // will need to find the answer again
-		var answer = ReportsService.getAnswerToQuizItem(report , data.quizItemId, stepIndex);
+        var answer = ReportsService.getAnswerToQuizItem(report, data.quizItemId, stepIndex);
 
-		if (!answer) { // add if not exists
+        if (!answer) { // add if not exists
             answer = {};
             report.answers.push(answer);
 
@@ -121,13 +120,14 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
             _.merge(answer, {
                 'stepIndex': stepIndex,
                 'quizItemId': data.quizItemId,
+                'quizItemType':data.quizItemType,
                 'userAnswer': data.userAnswer,
                 'checkAnswer': data.checkAnswer,
                 'isHintUsed': data.isHintUsed,
                 'duration': data.duration
             });
-        }else{ // assuming retry
-            if ( !answer.retries ){
+        } else { // assuming retry
+            if (!answer.retries) {
                 answer.retries = [];
             }
             answer.retries.push(data);
@@ -135,37 +135,41 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl', function($scope,
 
         calculateCorrectPercentage(report);
 
-	});
+    });
 
-	$log.info('report writer initialized');
-
-
-
+    $log.info('report writer initialized');
 
     function calculateCorrectPercentage(report) {
-        var correct = 0;
-        var wrong = 0;
         report.correctPercentage = 0;
         var numberOfQuestions = 0;
+        var promises = [];
         angular.forEach(report.data.lesson.steps, function (step) {
             if (step.type === 'quiz' && !!step.quizItems) {
-                numberOfQuestions = numberOfQuestions + step.quizItems.length;
+                angular.forEach(step.quizItems, function (q) {
+                    var d = $q.defer();
+                    var questionPromise = LergoClient.questions.getQuestionById(q);
+                    questionPromise.success(function (question) {
+                        if (question.type !== 'openQuestion') {
+                            numberOfQuestions++;
+                        }
+                        d.resolve();
+                    });
+                    promises.push(d.promise);
+                });
             }
         });
-        if (!!report.data.quizItems && numberOfQuestions > 0) {
-            angular.forEach(report.answers, function (answer) {
-                if (answer.checkAnswer.correct === true) {
-                    correct++;
-                } else {
-                    wrong++;
-                }
-            });
 
-            report.correctPercentage = Math.round((correct * 100) / numberOfQuestions);
-        }
+        $q.all(promises).then(function () {
+            if (!!report.data.quizItems && numberOfQuestions > 0) {
+                var correctAnswers = _.filter(report.answers, function (answer) {
+                    return answer.quizItemType !== 'openQuestion' && answer.checkAnswer.correct === true;
+                });
+                report.correctPercentage = Math.round((correctAnswers.length * 100) / numberOfQuestions);
+            }
 
-        $log.info('new correct percentage is : ', report.correctPercentage);
+            $log.info('new correct percentage is : ', report.correctPercentage);
 
+        });
     }
 
 });

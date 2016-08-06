@@ -4,7 +4,7 @@
             <sup>
                 <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
                 <a popover="{{'steps.presentation.hint' | translate}}" class="fa fa-question-circle"
-                        popover-placement="top" popover-trigger="focus" tabindex="0"  style="text-decoration: none"></a>
+                   popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
             </sup>
         </p>
     </div>
@@ -13,10 +13,11 @@
              ng-class="{ 'has-error' : slideForm.slideURL.$invalid && !slideForm.slideURL.$pristine }">
             <input required class="form-control" name="slideURL"
                    placeholder="{{'lessons.slideURLHelpText' | translate }}" ng-model="step.slideURL"
-                   ng-pattern="/^(?:https?:\/\/)?(?:www\.)?(docs\.google\.com(.*)\/presentation\/d\/)[-\w]{25,}/">
+                   ng-pattern="/^(?:https?:\/\/)?(?:www\.)?((drive|docs)\.google\.com(.*))\/((presentation\/d\/)|(open\?id=))[-\w]{25,}/">
             <p ng-show="slideForm.slideURL.$error.pattern || (slideForm.slideURL.$invalid && !slideForm.slideURL.$pristine)"
                class="help-block">{{'steps.invalidSlideURL' | translate}}</p>
         </div>
     </div>
 </ng-form>
 
+<!--ng-pattern="/^(?:https?:\/\/)?(?:www\.)?(docs\.google\.com(.*)\/presentation\/d\/)[-\w]{25,}/">-->
