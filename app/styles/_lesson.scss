@@ -164,3 +164,17 @@
     }
   }
 }
+
+#quizUpdate {
+    .practise-button {
+        padding-right: 0px;
+    }
+}
+
+.rtl {
+    #quizUpdate {
+        .practise-button {
+            padding-right: 15px;
+        }
+    }
+}

@@ -105,6 +105,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function ($scope
                 'userAnswer': quizItem.userAnswer,
                 'checkAnswer': result.data,
                 'quizItemId': quizItem._id,
+                'quizItemType':quizItem.type,
                 'duration': duration,
                 'isHintUsed': !!quizItem.isHintUsed
             });
