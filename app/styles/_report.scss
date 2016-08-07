@@ -11,9 +11,9 @@
         }
 
         & > span {
-            margin:5px;
+            margin: 5px;
         }
-        .restart{
+        .restart {
             &, * {
                 color: #8CC63F;
             }
@@ -74,9 +74,9 @@
             padding: 30px;
             display: inline-block;
             vertical-align: top;
-            .class-name{
-                padding-left:10px;
-                padding-right:10px;
+            .class-name {
+                padding-left: 10px;
+                padding-right: 10px;
             }
         }
         .header-desc {
@@ -86,43 +86,23 @@
             position: relative;
         }
     }
-    .steps {
-        .step {
-            .lergo-h1 {
-                font-size: 15px;
-            }
-            background-color: #EFEFEF;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            .icon {
-                width: 5%;
-            }
-            .title {
-                width: 20%;
-            }
-            .description {
-                width: 100%;
-                .bg-success {
-                    margin: 5px;
-                }
-                .bg-warning {
-                    margin: 5px;
-                }
-                .bg-primary {
-                    margin: 5px;
-                }
-            }
-        }
-    }
-    .no-underline {
-        text-decoration: none;
-    }
-    .inline-table {
-        display: inline-table;
-    }
-    .recommendation {
+    .summary{
+        padding: 1px 10px 20px;
+        background-color: #EFEFEF;
+        margin-bottom: 20px;
+        border-radius: 10px;
         .lergo-h1 {
             font-size: 15px;
+            white-space: normal;
+            text-align: left;
+        }
+    }
+    .step {
+        padding: 1px 10px 20px;
+        .lergo-h1 {
+            font-size: 15px;
+            white-space: normal;
+            text-align: left;
         }
         background-color: #EFEFEF;
         margin-bottom: 20px;
@@ -134,8 +114,31 @@
             width: 20%;
         }
         .description {
-            width: 100%;
+            .bg-success {
+                margin: 5px;
+            }
+            .bg-warning {
+                margin: 5px;
+            }
+            .bg-primary {
+                margin: 5px;
+            }
         }
+    }
+    .no-underline {
+        text-decoration: none;
+    }
+    .inline-table {
+        display: inline-table;
+    }
+    .recommendation {
+        padding: 1px 10px 20px;
+        .lergo-h1 {
+            font-size: 15px;
+        }
+        background-color: #EFEFEF;
+        margin-bottom: 20px;
+        border-radius: 10px;
     }
     .details {
         .detail {

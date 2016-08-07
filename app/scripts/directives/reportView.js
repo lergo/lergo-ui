@@ -3,7 +3,7 @@
 // guy - todo - change this file name or directive name.
 // I think the directive should be reportView and not lessonView.
 // consider using a template named reportView.html as well.
-angular.module('lergoApp').directive('lessonView', function($log, LergoClient) {
+angular.module('lergoApp').directive('reportView', function($log, LergoClient) {
 	return {
 		templateUrl : 'views/lessons/invitations/report/_display.html',
 		restrict : 'A',

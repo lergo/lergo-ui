@@ -7,7 +7,7 @@ describe('Directive: reportView', function () {
     var elementScope;
 
     beforeEach(inject(function($rootScope, $compile){
-        element = angular.element('<div lesson-view></div>');
+        element = angular.element('<div report-view></div>');
         element = $compile(element)($rootScope);
         $rootScope.$digest();
         elementScope = element.children().scope();
