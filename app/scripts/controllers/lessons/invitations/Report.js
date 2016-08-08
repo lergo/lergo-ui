@@ -15,8 +15,8 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl', function($
     $scope.reportStats = {};
 	$scope.$on('stats', function(event, data) {
 		$scope.stats[data.index] = data;
-        $scope.reportStats.correct = _.sumBy($scope.stats,'correct');
-        $scope.reportStats.wrong = _.sumBy($scope.stats,'wrong');
+        $scope.reportStats.correct = _.sumBy($scope.stats,'ucq');
+        $scope.reportStats.wrong = _.sumBy($scope.stats,'uwq');
         $scope.reportStats.openQuestions = _.sumBy($scope.stats,'openQuestions');
 	});
 
