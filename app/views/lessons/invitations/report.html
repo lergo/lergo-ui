@@ -75,9 +75,20 @@
                 </div>
                 <div class="col-md-9">
                     {{report.correctPercentage}}%
-                    ({{reportStats.correct}}{{'questions.correct' | translate}},
-                    {{reportStats.wrong}} {{'questions.incorrect' | translate}},
-                    {{reportStats.openQuestions}} {{'questions.openQuestion' | translate}})
+                    (
+                    <span ng-show="!!report.data.quizItems">
+                        {{report.data.quizItems.length}} {{'report.questionsInQuiz' | translate}},
+                    </span>
+                    <span ng-show="!!reportStats.correct">
+                        {{reportStats.correct}} {{'questions.correct' | translate}},
+                    </span>
+                    <span ng-show="!!reportStats.wrong">
+                        {{reportStats.wrong}} {{'questions.incorrect' | translate}}
+                    </span>
+                    <span ng-show="!!reportStats.openQuestions">
+                       , {{reportStats.openQuestions}} {{'questions.openQuestion' | translate}}
+                    </span>
+                    )
                 </div>
             </div>
             <div class="row row-nested top20">
@@ -105,12 +116,12 @@
                 <div class="col-md-3">
                     <i ng-show="!!step.videoUrl" class="fa fa-video-camera">&nbsp;</i>
                     <i ng-show="!!step.quizItems" class="fa fa-question-circle">&nbsp;</i>
-                    <i ng-show="!!step.slideURL" class="fa fa-slideshare" aria-hidden="true">&nbsp;</i>
+                    <i ng-show="!!step.slideURL" class="fa fa-television" aria-hidden="true">&nbsp;</i>
                     <span class="title lergo-h1">{{step.title}}</span>
                 </div>
                 <div class="col-md-9 description">
                     <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
-                        {{step.videoUrl}}</a>
+                        {{'reports.click.video' | translate}}</a>
                     <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
                             <span class="inline-table">
                                 {{step.quizItems.length}} {{'report.questionsInQuiz' | translate}}
@@ -128,7 +139,7 @@
                             </span>
                         </span>
                     <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
-                        {{step.slideURL}}
+                        {{'reports.click.step' | translate}}
                     </a>
                     <i ngShow="!!report.stepDurations[$index]" class="fa fa-clock-o">
                         &nbsp;{{report.stepDurations[$index]|duration}}
