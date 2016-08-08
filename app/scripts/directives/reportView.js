@@ -122,9 +122,9 @@ angular.module('lergoApp').directive('reportView', function ($log, LergoClient) 
                     } else if (!!qItem.checkAnswer) {
 
 
-                        if(!!qItem.checkAnswer.correct){
+                        if (!!qItem.checkAnswer.correct) {
                             stats.correct++;
-                        }else{
+                        } else {
                             stats.wrong++;
                         }
 
@@ -145,7 +145,11 @@ angular.module('lergoApp').directive('reportView', function ($log, LergoClient) 
                 //unique wrong questions
                 var uwq = 0;
                 _.each(_.values(uniqueQuestions), function (ans) {
-                    !!ans && ucq++ || uwq++;
+                    if (!!ans) {
+                        ucq++;
+                    } else {
+                        uwq++;
+                    }
                 });
                 var correctPercentage = ((stats.correct * 100) / (quizItems.length - stats.openQuestions));
                 stats.correctPercentage = Math.round(correctPercentage);
