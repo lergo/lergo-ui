@@ -216,8 +216,23 @@
                 }
             }
         }
-        .lergo-h1{
-                font-size:16px;
+        .collapsible.lergo-h1{
+                font-size:25px;
+        }
+        .summary{
+            .lergo-h1{
+                font-size:20px;
+            }
+        }
+        .step{
+            .lergo-h1{
+                font-size:20px;
+            }
+        }
+        .recommendation{
+            .lergo-h1{
+                font-size:20px;
+            }
         }
     }
 }
