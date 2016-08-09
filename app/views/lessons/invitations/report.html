@@ -70,14 +70,15 @@
         <hr/>
         <div collapse="!!summaryCollapsed" class="summary row">
             <div class="row row-nested top20">
-                <div class="col-md-3 lergo-h1">
-                    {{'reports.correctPercentage'|translate}}
+                <div class="col-md-3">
+                    <i class="fa fa-percent">&nbsp;</i>
+                    <span class="lergo-h1">{{'reports.correct'|translate}}</span>
                 </div>
                 <div class="col-md-9">
-                    {{report.correctPercentage}}%
+                    {{report.correctPercentage}}
                     (
                     <span ng-show="!!report.data.quizItems">
-                        {{report.data.quizItems.length}} {{'report.questionsInQuiz' | translate}},
+                        {{report.data.quizItems.length}} {{'report.questionsInLesson' | translate}},
                     </span>
                     <span ng-show="!!reportStats.correct">
                         {{reportStats.correct}} {{'questions.correct' | translate}},
@@ -92,13 +93,17 @@
                 </div>
             </div>
             <div class="row row-nested top20">
-                <div class="col-md-3 lergo-h1">
-                    {{'reports.duration'|translate}}
+                <div class="col-md-3">
+                    <i class="fa fa-clock-o">
+                        &nbsp;
+                    </i>
+                    <span class="lergo-h1">
+                        {{'reports.summary.duration'|translate}}
+                    </span>
                 </div>
                 <div class="col-md-9">
-                    <i class="fa fa-clock-o">
-                        &nbsp;{{report.duration|duration}}
-                    </i>
+                   {{report.duration|duration}}
+
                 </div>
             </div>
         </div>
@@ -141,6 +146,7 @@
                     <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
                         {{'reports.click.step' | translate}}
                     </a>
+
                     <i ngShow="!!report.stepDurations[$index]" class="fa fa-clock-o">
                         &nbsp;{{report.stepDurations[$index]|duration}}
                     </i>
