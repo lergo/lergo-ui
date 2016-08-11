@@ -1,3 +1,5 @@
+fix (questions multiple choise) get rid of double "x" next to answers
+
 fix (practice mistakes) fix apply two step bug fix to practice mistakes from lesson report
 
 fix toastr move rtl to container
