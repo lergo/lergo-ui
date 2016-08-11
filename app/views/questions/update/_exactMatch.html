@@ -3,14 +3,14 @@
     <thead>
     <tr>
         <td>{{ 'questions.possibleAnswers' | translate }}</td>
-        <td style="width: 10%"></td>
+          <td style="width: 10%">{{ 'remove' | translate }}</td>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="option in quizItem.options track by $index" ng-show="!!option.checked">
         <td><input type="text" placeholder="{{('questions.answerOption' |translate) + ($index + 1)}}"
                    ng-model="option.label"/></td>
-        <td><a class="btn btn-link" ng-click="removeOption(option)" >X</a></td>
+        <td><a class="btn btn-link" ng-click="removeOption(option)" ><div style="color: #2a6496; text-decoration: none; display: inline-block; font-size: 15px"> X </div></a>
     </tr>
     <tr>
         <td><input type="text" placeholder="{{ 'questions.clickToAdd' | translate }}" readonly="True"
@@ -18,3 +18,4 @@
     </tr>
     </tbody>
 </table>
+

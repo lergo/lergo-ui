@@ -1,3 +1,5 @@
+fix (exact match )remove underline on X, add heading "Remove" change color of multiple answers X
+
 fix (questions multiple choise) get rid of double "x" next to answers
 
 fix (practice mistakes) fix apply two step bug fix to practice mistakes from lesson report
