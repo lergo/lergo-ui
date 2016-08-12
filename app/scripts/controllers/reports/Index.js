@@ -18,11 +18,13 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
         return ( report && report.data && report.data.lesson && report.data.lesson.name && report.data.lesson.name.trim().length > 0) ? report.data.lesson.name : '[no name]';
     };
 
-	$scope.reportTypes = [ {
-		'id' : 'mine'
-	}, {
-		'id' : 'students'
-	} ];
+    $scope.reportTypes = [{
+        'id': 'mine'
+    }, {
+        'id': 'students'
+    }, {
+        'id': 'class'
+    }];
 
 	$scope.reportsPage = {
 		reportType : 'students',
@@ -56,6 +58,10 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 		return $scope.reportsPage.reportType === 'students';
 	}
 
+    function isClassReports() {
+        return $scope.reportsPage.reportType === 'class';
+    }
+
 	$scope.showStudentColumn = function() {
 		return isStudentsReports();
 	};
@@ -66,7 +72,8 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 	};
 
 	$scope.loadReports = function() {
-		$scope.reportsPage.selectAll = false;
+
+        $scope.reportsPage.selectAll = false;
 
         $log.info('loading reports', $scope.reportsFilter);
 
@@ -87,17 +94,23 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function($scope, Lergo
 			promise = LergoClient.userData.getReports(queryObj);
 		} else if (isStudentsReports()) {
 			promise = LergoClient.userData.getStudentsReports(queryObj);
-		}
+		}else if (isClassReports()){
+            promise = LergoClient.userData.getClassReports(queryObj);
+        }
 
 		promise.then(function(result) {
-			$scope.reports = result.data.data;
-			$scope.filterPage.count = result.data.count;
+            if(isClassReports()){
+                $scope.reports = result.data.data;
+                $scope.reports.studentCount=10;
+            }else {
+                $scope.reports = result.data.data;
+                $scope.filterPage.count = result.data.count;
+            }
 			$scope.errorMessage = null;
 		}, function(result) {
 			$scope.errorMessage = 'Error in fetching reports : ' + result.data.message;
 			$log.error($scope.errorMessage);
 		});
-
 		scrollToPersistPosition();
 	};
 	$scope.createLessonFromWrongQuestions = function() {
