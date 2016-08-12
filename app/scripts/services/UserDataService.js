@@ -63,6 +63,16 @@ angular.module('lergoApp').service('UserDataService', function UserDataService($
 		});
 	};
 
+    this.getClassReports = function(queryObj) {
+        return $http({
+            'method' : 'GET',
+            'url' : '/backend/user/classSummary/reports',
+            'params' : {
+                'query' : queryObj
+            }
+        });
+    };
+
 	this.getInvites = function(queryObj) {
 		return $http({
 			'method' : 'GET',
