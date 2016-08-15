@@ -388,6 +388,7 @@ angular.module('lergoApp')
             'arabic',
             'signlanguage',
             'financialEducation',
+            'physicalEducation',
             'citizenship',
             'roadSafety',
             'bible',

@@ -1,3 +1,5 @@
+task (add subject) add Physical Education to "subjects" LERGO-628
+
 fix (exact match )remove underline on X, add heading "Remove" change color of multiple answers X
 
 fix (questions multiple choise) get rid of double "x" next to answers
