@@ -1,3 +1,5 @@
+fix (remove underline) two more places were underline had to be removed LERGO-627 && fix translation on signup
+
 task (translate error message ) first one to see if it works
 
 task (add subject) add Physical Education to "subjects" LERGO-628

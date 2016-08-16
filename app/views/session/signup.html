@@ -4,7 +4,7 @@
       <form ng-submit='submit()' name="signupForm" class="login-form Signup-form lergo-form">
          <div class="section form-group">
             <div class="label">
-               <span class="errorMessage" ng-show='errorMessage'>{{errorMessage}}</span>
+               <span class="errorMessage" ng-show='errorMessage'>{{errorMessage | translate}}</span>
             </div>
          </div>
          <div class="section form-group" ng-class="{ 'has-error' : signupForm.username.$invalid && !signupForm.username.$pristine }">
