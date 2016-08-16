@@ -177,7 +177,7 @@
             </div>
             <hr/>
             <div class="recommendation row" collapse="!!recommendationCollapsed">
-                <div class="row row-nested top20">
+                <div class="row row-nested top20" ng-show="!!report.data.lesson.nextLessonId">
                     <div class="col-md-3">
                         <div class="row">
                             <div class="col-md-2">
@@ -194,7 +194,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="row row-nested top20">
+                <div class="row row-nested top20" ng-show="!!report.data.lesson.priorLessonId">
                     <div class="col-md-3">
                         <div class="row">
                             <div class="col-md-2">
