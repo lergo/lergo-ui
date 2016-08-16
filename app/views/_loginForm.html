@@ -3,7 +3,7 @@
 	<form ng-submit='login()'>
 		<div class="section">
 			<div class="label">
-				<span class="errorMessage" ng-show='errorMessage'>{{errorMessage}}</span>
+				<span class="errorMessage" ng-show='errorMessage'>{{errorMessage | translate}}</span>
 			</div>
 			<div ng-show="resendValidation">
 				<a class="clickable" ng-click="resendValidationEmail()">{{ 'button.resendValidationEmail' | translate }}</a>

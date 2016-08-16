@@ -619,6 +619,9 @@
     "like": "Like",
     "liked": "Liked",
     "loading": "Loading...",
+    "login": {
+        "invalidUsername": "invalid username please try again my friend"
+    },
     "loginPage": {
         "login": "Login",
         "password": "Password",
