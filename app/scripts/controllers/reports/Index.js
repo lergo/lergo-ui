@@ -74,10 +74,16 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function ($scope, Lerg
         return isClassReports() || isStudentsReports();
     };
 
+    $scope.getReportLink = function (reportId) {
+        if (isClassReports()) {
+            return '#!/public/lessons/classReports/' + reportId + '/display';
+        }
+        return '#!/public/lessons/reports/' + reportId + '/display';
+    };
 
 
     $scope.isCompleted = function (report) {
-        if(isClassReports()){
+        if (isClassReports()) {
             return true;
         }
         return LergoClient.reports.isCompleted(report);
