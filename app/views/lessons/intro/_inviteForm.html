@@ -1,9 +1,8 @@
 <div class="lergo-form invite lesson-action-panel">
     <div class="invite-sections sections-links lesson-action-panel-navigation clearfix">
-        <p class="lergo-h4 lesson-action-panel-link" ng-class="{active:isStudentMode()}" ng-click="setStudentMode()">{{'lessons.inviteLesson.student.msg'| translate}}</p>
-        <p class="lergo-h4 lesson-action-panel-link" ng-class="{active:isClassMode()}" ng-click="setClassMode()"> {{'lessons.inviteLesson.class.msg' | translate }}</p>
-        <button  class="btn-link close-button" ng-click="onClose()"><span class="fa fa-times"></span></button>
-    </div>
+        <span style="width: 40px display: block" class="lergo-h4 lesson-action-panel-link" ng-class="{active:isStudentMode()}" ng-click="setStudentMode()">{{'lessons.inviteLesson.student.msg'| translate}}</span>
+        <span style="width: 400px; display: block; float: right;" class="lergo-h4 lesson-action-panel-link" ng-class="{active:isClassMode()}" ng-click="setClassMode()"> {{'lessons.inviteLesson.class.msg' | translate }}</span>
+        
 
     <script type="text/ng-template" id="inline_lessonCreateInviteFormItem.html">
         <p>{{'lessons.inviteLesson.' + mode + '.help'  | translate }} </p>
