@@ -60,7 +60,7 @@
                     <td class="name">
                         <a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0"
                            tooltip="{{'reports.tooltip.go' | translate}}"
-                           ng-href="#!/public/lessons/reports/{{report._id}}/display">{{ getReportName(report) }}</a>
+                           ng-href="{{getReportLink(report._id)}}">{{ getReportName(report) }}</a>
                     </td>
                     <td class="answer" ng-show="showStudentCountColumn()">{{report.count}}</td>
                     <td class="answer" ng-show="showStudentColumn()">{{report.data.invitee.name}}</td>
@@ -69,7 +69,7 @@
                         | translate) ||""}}
                     </td>
                     <td class="answer">{{report.lastUpdate| date:'medium'}}</td>
-                    <td class="answer">{{report.correctPercentage}}</td>
+                    <td class="answer">{{report.correctPercentage | number:2 }}</td>
                     <td class="answer">
                         <span ng-show="isCompleted(report)">{{report.duration|duration}}</span>
                         <span ng-show="!isCompleted(report)">{{'report.incomplete' | translate}}</span>
