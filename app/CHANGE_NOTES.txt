@@ -1,3 +1,5 @@
+fix (invites) partly roll back previous changes due to system test failure - need to understand better
+
 fix (invite ) invite class and invite student - remove two keys that were not needed and the X
 
 fix remove login error message from "lessons" and "reports"
