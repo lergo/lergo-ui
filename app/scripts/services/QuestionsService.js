@@ -79,6 +79,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         'viewTemplate': 'views/questions/view/_trueFalse.html',
         'previewTemplate': 'views/questions/view/preview/_trueFalse.html',
         'reportTemplate': 'views/questions/report/_trueFalse.html',
+        'aggReportTemplate': 'views/questions/report/agg/_trueFalse.html',
         canShowExpPerAns: false,
         'answers': function (quizItem) {
             return $filter('translate')('quizItem.answer.' + quizItem.answer);
@@ -100,6 +101,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         'viewTemplate': 'views/questions/view/_exactMatch.html',
         'previewTemplate': 'views/questions/view/preview/_exactMatch.html',
         'reportTemplate': 'views/questions/report/_exactMatch.html',
+        'aggReportTemplate': 'views/questions/report/agg/_exactMatch.html',
         canShowExpPerAns: true,
         'answers': function (quizItem) {
             var answers = [];
@@ -136,6 +138,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         'viewTemplate': 'views/questions/view/_multipleChoices.html',
         'previewTemplate': 'views/questions/view/preview/_multipleChoices.html',
         'reportTemplate': 'views/questions/report/_multipleChoices.html',
+        'aggReportTemplate': 'views/questions/report/agg/_multipleChoices.html',
         canShowExpPerAns: true,
         'answers': function (quizItem) {
             var answers = [];
@@ -203,6 +206,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         'viewTemplate': 'views/questions/view/_fillInTheBlanks.html',
         'previewTemplate': 'views/questions/view/preview/_fillInTheBlanks.html',
         'reportTemplate': 'views/questions/report/_fillInTheBlanks.html',
+        'aggReportTemplate': 'views/questions/report/agg/_fillInTheBlanks.html',
         canShowExpPerAns: true,
         'answers': function (quizItem) {
             var answer = [];

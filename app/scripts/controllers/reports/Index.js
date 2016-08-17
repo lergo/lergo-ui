@@ -76,7 +76,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl', function ($scope, Lerg
 
     $scope.getReportLink = function (reportId) {
         if (isClassReports()) {
-            return '#!/public/lessons/classReports/' + reportId + '/display';
+            return '#!/public/lessons/reports/agg/' + reportId + '/display';
         }
         return '#!/public/lessons/reports/' + reportId + '/display';
     };
