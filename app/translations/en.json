@@ -620,7 +620,8 @@
     "liked": "Liked",
     "loading": "Loading...",
     "login": {
-        "invalidUsername": "invalid username please try again my friend"
+        "invalidUsername": "invalid username please try again my friend",
+        "usernameAlreadyExists": "username or email already exists in the system my friend"
     },
     "loginPage": {
         "login": "Login",

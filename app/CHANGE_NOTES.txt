@@ -1,3 +1,5 @@
+task (translate error message) LERGO-633 USERNAME OR EMAIL ALREADY EXISTS IN THE SYSTEM
+
 fix (invites) partly roll back previous changes due to system test failure - need to understand better
 
 fix (invite ) invite class and invite student - remove two keys that were not needed and the X
