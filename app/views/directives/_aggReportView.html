@@ -1,0 +1,5 @@
+<div ng-repeat="quizItem in quizItems">
+    <div class="quiz">
+        <div ng-include="getQuizItemTemplate(quizItem.type)"></div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="bg-primary report-quiz-question-header">
+	<span class="inline-table">{{quizItem.question}}</span>
+	<div class="duration">
+		<span class="inline-table">
+			<i class="fa fa-clock-o"></i>
+			{{getDuration(quizItem)|duration}}
+		</span>
+	</div>
+</div>
+<div ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
+<div class="question-media" quiz-item-media quiz-item="quizItem"></div>

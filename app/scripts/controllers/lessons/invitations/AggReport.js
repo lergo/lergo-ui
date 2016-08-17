@@ -8,8 +8,8 @@ angular.module('lergoApp').controller('LessonsInvitationsAggReportCtrl', functio
         var openQueestions = _.filter($scope.report.data.quizItems, function (item) {
             return item.type === 'openQuestion';
         });
-        $scope.openQuestionCount =openQueestions.length;
-            $rootScope.page = {
+        $scope.openQuestionCount = openQueestions.length;
+        $rootScope.page = {
             'title': $scope.report.data.lesson.name,
             'description': $scope.report.data.lesson.description
         };
