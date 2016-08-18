@@ -1,9 +1,9 @@
 <div class="bg-primary report-quiz-question-header">
 	<span class="inline-table">{{quizItem.question}}</span>
-	<div class="duration">
+	<div class="duration" ng-init="updateStats(quizItem)">
 		<span class="inline-table">
 			<i class="fa fa-clock-o"></i>
-			{{getDuration(quizItem)|duration}}
+			{{quizItem.stats.avgDuration |duration}}
 		</span>
 	</div>
 </div>

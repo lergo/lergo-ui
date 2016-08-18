@@ -11,9 +11,7 @@
 				</div>
 			</div>
 			<br>
-			<div>
-				<div class="bold">{{'questions.yourAnswer'|translate}}</div>
-			</div>
+            <div ng-include="'views/questions/report/agg/partial/_answer.html'"></div>
 			<div ng-show="!!quizItem.explanation">
 				<br>
 				<div class="bold">{{'explanation'|translate}}</div>

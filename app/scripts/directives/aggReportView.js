@@ -13,11 +13,12 @@ angular.module('lergoApp').directive('aggReportView', function ($log, LergoClien
                 return LergoClient.questions.getTypeById(type).aggReportTemplate;
             };
 
-            $scope.getDuration = function (quizItem) {
+            $scope.updateStats = function (quizItem) {
                 var stats = $scope.answers[quizItem._id];
                 if (!!stats) {
-                    quizItem.duration = stats.duration / stats.count;
-                    return quizItem.duration;
+                    stats.avgDuration = stats.duration / stats.count;
+                    stats.avgCorrectPercentage = (stats.correct * 100) / stats.count;
+                    quizItem.stats = stats;
                 }
             };
         }

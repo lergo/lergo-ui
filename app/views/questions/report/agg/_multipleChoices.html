@@ -10,9 +10,7 @@
 				</div>
 			</div>
 			<br>
-			<div>
-				<div class="bold">{{'questions.yourAnswers'|translate}}</div>
-			</div>
+            <div ng-include="'views/questions/report/agg/partial/_answer.html'"></div>
             <div ng-show="quizItem.checkAnswer.expMessage.length > 0 ">
                 <br>
 

@@ -185,6 +185,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         'viewTemplate': 'views/questions/view/_openQuestion.html',
         'previewTemplate': 'views/questions/view/preview/_openQuestion.html',
         'reportTemplate': 'views/questions/report/_openQuestion.html',
+        'aggReportTemplate': 'views/questions/report/agg/_openQuestion.html',
         canShowExpPerAns: false,
         'answers': function (quizItem) {
             return quizItem.answer;
