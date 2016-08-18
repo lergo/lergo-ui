@@ -95,6 +95,9 @@ angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate', 'che
             }).when('/public/lessons/reports/:reportId/display', {
                 templateUrl: 'views/lessons/invitations/report.html',
                 controller: 'LessonsInvitationsReportCtrl'
+            }).when('/public/lessons/reports/agg/:reportId/display', {
+                templateUrl: 'views/lessons/invitations/aggReport.html',
+                controller: 'LessonsInvitationsAggReportCtrl'
             }).when('/user/questions/:questionId/update', {
                 templateUrl: 'views/questions/update.html',
                 controller: 'QuestionsUpdateCtrl',
