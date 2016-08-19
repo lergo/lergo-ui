@@ -69,7 +69,7 @@
                         | translate) ||""}}
                     </td>
                     <td class="answer">{{report.lastUpdate| date:'medium'}}</td>
-                    <td class="answer">{{report.correctPercentage | number:2 }}</td>
+                    <td class="answer">{{report.correctPercentage | number:0 }}</td>
                     <td class="answer">
                         <span ng-show="isCompleted(report)">{{report.duration|duration}}</span>
                         <span ng-show="!isCompleted(report)">{{'report.incomplete' | translate}}</span>
