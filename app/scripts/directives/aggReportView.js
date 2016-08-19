@@ -15,9 +15,12 @@ angular.module('lergoApp').directive('aggReportView', function ($log, LergoClien
 
             $scope.updateStats = function (quizItem) {
                 var stats = $scope.answers[quizItem._id];
+
                 if (!!stats) {
                     stats.avgDuration = stats.duration / stats.count;
-                    stats.avgCorrectPercentage = (stats.correct * 100) / stats.count;
+                    if (quizItem.type !== LergoClient.questions.QUESTION_TYPE.OPEN_QUESTION) {
+                        stats.avgCorrectPercentage = (stats.correct * 100) / stats.count;
+                    }
                     quizItem.stats = stats;
                 }
             };

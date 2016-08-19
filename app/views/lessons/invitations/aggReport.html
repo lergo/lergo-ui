@@ -1,20 +1,22 @@
 <div class="base-layout">
     <div class="report">
-        <div class="header">
-            <div class="image">
-                <div class="user">
-                    <i class="fa fa-user"></i>
-                </div>
-                <div class="cap">
-                    <i class="fa fa-graduation-cap"></i>
+        <div class="row header">
+            <div class="col-md-2">
+                <div class="image">
+                    <div class="user">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="cap">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
                 </div>
             </div>
-            <div class="header-name">
-
-                    <div>
-                        <div class="lergo-h1">{{'reports.header.className' | translate}}</div>
-                        <div class="class-name">{{report.data.invitee.class}}</div>
-                    </div>
+            <div class="col-md-4 header-name text-right">
+                <div>
+                    <div class="lergo-h1">{{'reports.header.className' | translate}}</div>
+                    <div class="class-name">{{report.data.invitee.class}}</div>
+                </div>
+                <br>
                 <div class="lergo-h1">
                     <a ng-show="!report.data.lesson.temporary"
                        ng-href="#!/public/lessons/{{report.data.lesson._id}}/intro">{{report.data.lesson.name|
@@ -26,10 +28,21 @@
                     <span>{{report.lastUpdate | date:'medium'}}</span>
                 </div>
             </div>
-            <div class="header-desc">
-                <div ng-show="!!report.data.lesson.description">
-                    <div class="lergo-h4">{{'report.description'|translate}}</div>
-                    <div>{{report.data.lesson.description | limitTo:440}}</div>
+            <div class="col-md-6 ">
+                <div class="row  header-desc">
+                    <div class="col-md-12">
+                        <div ng-show="!!report.data.lesson.description">
+                            <div class="lergo-h4">{{'report.description'|translate}}</div>
+                            <div>{{report.data.lesson.description | limitTo:440}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row top20 redo-buttons">
+                    <div class="col-md-6 reports" >
+                        <a href="#!/user/create/reports?reportType=students&lergoFilter.reportClass={{report.data.invitee.class}}">
+                            <i class="fa fa-bar-chart"> {{'report.header.individualReports' | translate}}</i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
