@@ -1,10 +1,6 @@
 .report {
 
     .redo-buttons {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        top: 150px;
         font-size: 25px;
         * {
             color: #F7941E;
@@ -16,6 +12,11 @@
         .restart {
             &, * {
                 color: #8CC63F;
+            }
+        }
+        .reports{
+            &, * {
+                color: #337ab7;
             }
         }
     }
@@ -80,10 +81,7 @@
             }
         }
         .header-desc {
-            width: 50%;
-            padding-left: 10px;
-            display: inline-block;
-            position: relative;
+            min-height: 120px;
         }
     }
     .summary{

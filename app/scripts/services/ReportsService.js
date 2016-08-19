@@ -23,12 +23,13 @@ angular.module('lergoApp')
             });
         };
 
-        this.findLesson = function( like ){
+        this.findLesson = function( like,reportType ){
             return $http({
                 method: 'GET',
                 url : '/backend/reports/lessons/find',
                 params: {
-                    'like' : like
+                    'like' : like,
+                    'reportType': reportType
                 }
             });
         };
