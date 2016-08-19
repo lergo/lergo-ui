@@ -1,190 +1,5 @@
 {
-    "AlexanderNelles": {
-        "desg": "Head of Assisted Channels Capabilities @ Vodafone Germany"
-    },
-    "AlinaColton": {
-        "desg": "Teacher & Educator"
-    },
-    "AmnonLevav": {
-        "desg": "Co-founder & Mng Dir @ SIT"
-    },
-    "AvnerAlgom": {
-        "desg": "CEO of Israel Cloud Association"
-    },
-    "DanielSirkin": {
-        "desg": "Cinema & TV Dir. & Screenwriter"
-    },
-    "DimaAlkin": {
-        "desg": "hi-tech executive"
-    },
-    "Dr": {
-        "AlizaBelmanInbal": "Int'l Development Director,TAU",
-        "DaliaFadila": {
-            "desg": "QSchool,Pres. Technology College"
-        },
-        "HalaEspanioly": {
-            "desg": "VP @ Arab College of Education"
-        },
-        "Jeffrey": {
-            "desg": "Physicist & HiTech Executive"
-        },
-        "ZviPaltiel": {
-            "desg": "Educator & Physicist"
-        }
-    },
-    "EladMeshulam": {
-        "desg": "Digital Media Professional & Analyst"
-    },
-    "EranWagner": {
-        "desg": "General Partner,Gemini Israel Funds"
-    },
-    "EyalChen": {
-        "desg": "VP Product & Technology @ WebsPlanet"
-    },
-    "GigiLevy": {
-        "desg": "Angel investor,Mgmt board at Latet"
-    },
-    "GilShai": {
-        "desg": "Co-founder & COO CloudEndure"
-    },
-    "GiladBeeri": {
-        "desg": "Software Consultant"
-    },
-    "GioraShaked": {
-        "desg": "Founder & CEO of Hisense Medical"
-    },
-    "GuyBrill": {
-        "desg": "Former EVP Elbit & Mgmt Consultant"
-    },
-    "GuyMograby": {
-        "desg": "UX/UI Software Developer & Blogger"
-    },
-    "HaggiHochberger": {
-        "desg": "Director,Innovation Partnership Program @ Amdocs"
-    },
-    "LewisManne": {
-        "desg": "Zap Productions"
-    },
-    "LiatLevy": {
-        "desg": "Development Consultant"
-    },
-    "LiatMoreno": {
-        "desg": "Finance Analyst"
-    },
-    "LiorManor": {
-        "desg": "Mind Engineering"
-    },
-    "MaayanCohen": {
-        "desg": "Animator"
-    },
-    "MaisaElshiekh": {
-        "desg": "Teacher & Educator"
-    },
-    "MalcolmFinn": {
-        "desg": "Advocate"
-    },
-    "MartinBuhr": {
-        "desg": "Cloud Expert, HiTech Executive"
-    },
-    "MaysamKanaan": {
-        "desg": "Al Tufula"
-    },
-    "MichaelCouture": {
-        "desg": "RVP,Amdocs Canadian Managed Services @ Amdocs"
-    },
-    "MiraCohen": {
-        "desg": "Teacher & Educator"
-    },
-    "MotiShatner": {
-        "desg": "Founder BSharpC"
-    },
-    "NadavBerkovich": {
-        "desg": "Media Expert"
-    },
-    "NadavStark": {
-        "desg": "Online Learning @ TAU"
-    },
-    "OferCuriel": {
-        "desg": "High Tech Executive"
-    },
-    "OffirGonen": {
-        "desg": "UX/UI Expert"
-    },
-    "OritYaron": {
-        "desg": "SaaS Infra Architecture Specialist"
-    },
-    "Prof": {
-        "ArielRubinstein": {
-            "desg": "TAU & NYU"
-        },
-        "DavidPassig": {
-            "desg": "Futurist,Tech & Edu BGU"
-        },
-        "DoritRavid": {
-            "desg": "School of Edu @ TAU"
-        }
-    },
-    "RabbiYaronLevy": {
-        "desg": "English Program Head,Otzem"
-    },
-    "RahulShukla": {
-        "desg": "Eclipse RCP Consultant, Angular JS Evangelist"
-    },
-    "RutiArazi": {
-        "desg": "Social Networks Expert"
-    },
-    "SagyGulianka": {
-        "desg": "Pricing Expert @ TMsight"
-    },
-    "SanadAtamna": {
-        "desg": "Computer Programming Student"
-    },
-    "SashaGilenson": {
-        "desg": "CEO & Founder of Evolven Software"
-    },
-    "ShalomPassy": {
-        "desg": "former COO of TimeToKnow & Senior Consultant"
-    },
-    "ShiraPaz-Greenberg": {
-        "desg": "Designer @ Bruno-All New Media"
-    },
-    "ShulyWandam": {
-        "desg": "HRBP @ Unilever"
-    },
-    "TalChasdai": {
-        "desg": "CPA"
-    },
-    "TalGoldberg": {
-        "desg": "Waze,Co-founder HumanClick"
-    },
-    "TanyaEpstein": {
-        "desg": "Co-founder Clarizen & Applango"
-    },
-    "TomerAshur": {
-        "desg": "former Chairman WikiMedia Israel"
-    },
-    "YarivWeinberg": {
-        "desg": "Videographer @ Simanim"
-    },
-    "YishaiBarak": {
-        "desg": "Development Manager @ Siemens"
-    },
-    "YoavBen-Arie": {
-        "desg": "Org. Learning Head @ BrancoWeiss"
-    },
-    "YochaiManor": {
-        "desg": "Operations Executive"
-    },
-    "YossiBen-Shoshan": {
-        "desg": "Director R&D @ Dell"
-    },
-    "ZeevRavid": {
-        "desg": "Branding,former CEO Y&R Israel"
-    },
     "about": {
-        "sections" : {
-            "lergoFeedbackUrl" : "https://docs.google.com/forms/d/1EWBSsbLsBtWLu8-3Q-D3X12COQXvGYQPu08LLOONAiA/viewform"
-        },
         "contact": "Contact",
         "contribute": "Contribute",
         "faq": "FAQ",
@@ -202,8 +17,12 @@
         "keyContributors": "Key Contributors",
         "keyFunders": "Key Funders List",
         "keyFundersPictures": "Funders Picture Collage",
+        "lergoFeedback": "Feedback",
         "overview": "Overview",
-        "privacy": "Privacy & Terms"
+        "privacy": "Privacy & Terms",
+        "sections": {
+            "lergoFeedbackUrl": "https://docs.google.com/forms/d/1EWBSsbLsBtWLu8-3Q-D3X12COQXvGYQPu08LLOONAiA/viewform "
+        }
     },
     "abuseReport": {
         "addComments": "Additional details:",
@@ -220,10 +39,8 @@
     "add": "Add to quiz",
     "addClose": "Add & Close",
     "admin": {
-        "questions" : "q",
         "allLessons": "All Lessons",
         "by": "By",
-        "publicCount" : "Public",
         "byCreated": "Lesson created by",
         "byReported": "Reported By",
         "category": "Category",
@@ -234,12 +51,27 @@
         "makePrivate": "Unpublish",
         "makePublic": "Publish",
         "public": "Public",
+        "publicCount": "Public Lessons",
         "publicFrom": "Public From",
+        "questions": "# Questions",
         "report": "Report",
         "status": "Status",
         "views": "# Views"
     },
     "advancedOptions": "Advanced options",
+    "AlexanderNelles": {
+        "desg": "Head of Assisted Channels Capabilities @ Vodafone Germany"
+    },
+    "AlinaColton": {
+        "desg": "Teacher & Educator"
+    },
+    "AmnonLevav": {
+        "desg": "Co-founder & Mng Dir @ SIT"
+    },
+    "apply": "Apply",
+    "AvnerAlgom": {
+        "desg": "CEO of Israel Cloud Association"
+    },
     "back": "Close",
     "baseLayout": {
         "footer": {
@@ -269,18 +101,18 @@
                 "invites": "Invites",
                 "learn": "Learn",
                 "lessons": "Lessons",
+                "logout": "Logout",
+                "manageAbuseReports": "Manage Abuse Report",
+                "manageLessons": "Manage Lessons",
+                "manageRoles": "Manage Roles",
+                "manageUsers": "Manage Users",
                 "parents": "Parents",
                 "profile": "Profile",
                 "questions": "Questions",
                 "reports": "Reports",
-                "teachers": "Teachers",
                 "roles": "Roles",
-                "users" : "Users",
-                "manageLessons": "Manage Lessons",
-                "manageAbuseReports": "Manage Abuse Reports",
-                "manageRoles": "Manage Roles",
-                "manageUsers" : "Manage Users",
-                "logout": "Logout"
+                "teachers": "Teachers",
+                "users": "Users"
             },
             "logout": "Logout",
             "searchPlaceholder": "What would you like to learn about?",
@@ -291,28 +123,29 @@
             }
         }
     },
-    "profile" : {
-        "question" : "questions",
-        "lesson" : "lessons",
-        "lessonCreated" : "Lessons Created",
-        "questionCreated" : "Questions Created",
-        "questionsNotAvailable" : "Please signup or login to LerGO. Only registered users can see profile questions. "
-
-    },
     "button": {
         "forgotPassword": "Forgot password?",
         "login": "Login",
         "newInvite": "New Invite",
         "resendValidationEmail": "Resend validation email",
+        "showLesson": "Display Lesson",
         "signup": "Signup",
-        "submit": "Submit",
-        "showLesson" : "Show Lesson"
+        "submit": "Submit"
     },
     "cancel": "Close",
     "changePassword": {
         "error": "There was an error changing your password",
         "signup": "Signup",
         "success": "You successfully changed your password"
+    },
+    "classInvite": {
+        "className": "Class",
+        "instructions": "Note: To to get to lesson, please enter your first name and then click on \"Go to Lesson\".",
+        "lessonName": "Lesson",
+        "start": "Go to Lesson",
+        "studentName": "student",
+        "teacherName": "Teacher",
+        "welcome": "Welcome to LerGO"
     },
     "clickHere": "click here.",
     "close": "Close",
@@ -326,10 +159,10 @@
     },
     "copy": "Copy",
     "createNotAvailable": "Please signup or login to LerGO. Only registered users can create content.",
+    "DanielSirkin": {
+        "desg": "Cinema & TV Dir. & Screenwriter"
+    },
     "delete": "Delete",
-    "apply" : "Apply",
-    "save" : "Save",
-
     "deleteIntro": {
         "Confirm": "Are you sure you want to delete the lesson : #{0} ?  This action cannot be undone."
     },
@@ -351,15 +184,53 @@
     "deleteStep": {
         "confirm": "Are you sure you want to delete the step: #{0} ? This action cannot be undone."
     },
+    "demos": {
+        "dontShowAgain": "OK, got it. Please don't show this tip again.",
+        "gotIt": "OK, got it!",
+        "goToMyLessons": {
+            "intro": "To go back to your lesson to edit or display it, go to your \"username\" and click on \"Lessons\". Alternately you can click on Create in top menu.  After clicking on your  lesson title, use \"pen\" icon to edit lesson, \"share\" to share your lesson, \"start\" to play your lesson, and \"invite\" to invite a student to a lesson.",
+            "title": "Where are the lessons I created stored?"
+        }
+    },
     "description": "Description",
+    "DimaAlkin": {
+        "desg": "hi-tech executive"
+    },
     "done": "Done",
     "down": "Down",
+    "Dr": {
+        "AlizaBelmanInbal": {
+            "desg": "Int'l Development Director, TAU"
+        },
+        "DaliaFadila": {
+            "desg": "QSchool,Pres. Technology College"
+        },
+        "HalaEspanioly": {
+            "desg": "VP @ Arab College of Education"
+        },
+        "Jeffrey": {
+            "desg": "Physicist & HiTech Executive"
+        },
+        "ZviPaltiel": {
+            "desg": "Educator & Physicist"
+        }
+    },
     "edit": "Edit",
+    "EladMeshulam": {
+        "desg": "Digital Media Professional & Analyst"
+    },
     "email": "Email",
+    "EranWagner": {
+        "desg": "General Partner,Gemini Israel Funds"
+    },
+    "errorSaving": "Error Saving...",
     "explanation": "Explanation",
     "explanationAudio": "Explanation with Audio",
     "explanationImage": "Explanation with Image",
     "explanationVideo": "Explanation with Video",
+    "EyalChen": {
+        "desg": "VP Product & Technology @ WebsPlanet"
+    },
     "facebookShare": "Share to Facebook",
     "faq": {
         "add": "Add Question",
@@ -370,35 +241,60 @@
         "header5": "forms."
     },
     "featured": "Featured",
+    "filter": {
+        "activeNotification": {
+            "invites": {
+                "msg": "Invites are filtered.",
+                "resetAction": "Click here to view all invites."
+            },
+            "lessons": {
+                "msg": "Lessons are filtered.",
+                "resetAction": "Click here to view all lessons."
+            },
+            "questions": {
+                "msg": "Questions are filtered.",
+                "resetAction": "Click here to view all questions."
+            },
+            "reports": {
+                "msg": "Reports are filtered.",
+                "resetAction": "Click here to view all reports."
+            }
+        }
+    },
     "filters": {
+        "actions": {
+            "clear": "Clear Filters"
+        },
         "age": {
             "error": "Maximum age should be greater than minimum age"
         },
-        "actions" : {
-            "clear" : "Clear Filters"
-        },
         "all": "All",
+        "label": {
+            "reportLesson": "Filter Reports by Lesson"
+        },
         "labels": {
             "ageRange": "Age Range",
             "correctPercentage": "% Correct Range",
             "createdBy": "Created By",
             "doneByStudent": "Student",
+            "doneByStudentClassname": "Class",
             "duration": "Duration (in seconds)",
+            "hasQuestions": "Has Questions",
             "language": "Language",
             "reportedBy": "Reported By",
+            "roles": "Role",
             "status": "Status",
             "subject": "Subject",
             "tags": "Tags",
             "text": "Text",
-            "views": "# of views",
-            "roles" : "Roles"
+            "views": "# of views"
         },
         "languages": {
-            "all" : "All",
-            "other": "Other",
+            "all": "All",
             "arabic": "Arabic",
             "english": "English",
             "hebrew": "Hebrew",
+            "other": "Other",
             "russian": "Russian"
         },
         "status": {
@@ -411,31 +307,33 @@
             "resolved": "Resolved"
         },
         "subjects": {
-            "other": "Other",
+            "arabic": "Arabic",
             "art": "Art",
-            "arabic" : "Arabic",
-            "signlanguage" : "Sign Language",
-            "computers" : "Computers",
-            "sustainability" : "Sustainability",
+            "bible": "Bible",
             "biology": "Biology",
             "chemistry": "Chemistry",
+            "citizenship": "Citizenship",
+            "computers": "Computers",
             "english": "English",
             "financialEducation": "Financial Education",
-            "physicalEducation": "Physical Education",
-            "citizenship": "Citizenship",
             "geography": "Geography",
             "geometry": "Geometry",
             "grammar": "Grammar",
             "history": "History",
-            "language": "Language",
             "holidays": "Holidays",
+            "language": "Language",
+            "lergo": "Using LerGO",
+            "literature": "Literature",
             "math": "Math",
-            "literature" : "Literature",
             "music": "Music",
+            "other": "Other",
+            "physicalEducation": "Physical Education",
             "physics": "Physics",
             "roadSafety": "Road Safety",
             "science": "Science",
-            "spelling": "Spelling"
+            "signlanguage": "Sign Language",
+            "spelling": "Spelling",
+            "sustainability": "Sustainability"
         },
         "testrahul": "testrahul",
         "to": "To"
@@ -444,6 +342,35 @@
     "funders": {
         "desc": "We would not be here today if it were not for our incredible group of volunteers and contributors who contributed to the success of LerGO as well as our funding efforts on Indiegogo and beyond. Thank you for helping us make it happen!",
         "title": "Key Funders List"
+    },
+    "general": {
+        "translationLanguage": {
+            "ar": "العربية",
+            "en": "English",
+            "he": "עברית",
+            "ru": "Русский"
+        }
+    },
+    "GigiLevy": {
+        "desg": "Angel investor,Mgmt board at Latet"
+    },
+    "GiladBeeri": {
+        "desg": "Software Consultant"
+    },
+    "GilShai": {
+        "desg": "Co-founder & COO CloudEndure"
+    },
+    "GioraShaked": {
+        "desg": "Founder & CEO of Hisense Medical"
+    },
+    "GuyBrill": {
+        "desg": "Former EVP Elbit & Mgmt Consultant"
+    },
+    "GuyMograby": {
+        "desg": "UX/UI Software Developer & Blogger"
+    },
+    "HaggiHochberger": {
+        "desg": "Director,Innovation Partnership Program @ Amdocs"
     },
     "helperContent": {
         "add": "Click to add Contents",
@@ -473,11 +400,11 @@
     "infringesRights": "it infringes his/her right.",
     "input": {
         "confirmPassword": "confirm password",
-        "passwordConfirm": "confirm password",
-        "emailConfirm" : "confirm email",
         "email": "email",
+        "emailConfirm": "Confirm Email",
         "fullName": "full name",
         "password": "password",
+        "passwordConfirm": "Confirm password",
         "username": "username"
     },
     "invitations": {
@@ -489,10 +416,15 @@
     },
     "invite": "Invite",
     "invites": {
+        "emailNotification": "Email Notifications",
+        "emailNotificationOff": "Turn off email notifications",
+        "emailNotificationOn": "Turn on email notifications",
+        "exportReports": "Export reports",
         "filter": "Filter Invites",
         "markAsDone": "Mark as done",
         "markAsUndone": "Mark as undone",
         "myInvites": "My Invites",
+        "studentOrClass": "Student / Class",
         "tooltip": {
             "go": "Click here to play the lesson."
         }
@@ -504,7 +436,7 @@
         "ru": "Russian"
     },
     "lergo": {
-        "description": "LerGO is a new non-profit EdTech venture aimed at providing free, animated & interactive online lessons for all children, anywhere, at any time. This will be made possible through LerGO's open source cloud platform, which will leverage the goodwill of the community, enabling contributors to easily create animated & interactive lessons. Kids will use these lessons as a free alternative to private tutoring/lessons, to self-learn all school subjects, enjoyably and at their own pace.",
+        "description": "LerGO is a new nonprofit EdTech venture aimed at providing free, high quality & interactive online lessons for all children, anywhere, at any time. This will be made possible through LerGO's open source cloud platform, which leverages the goodwill of the community, enabling contributors to easily create animated & interactive lessons. Kids will use these lessons as a free alternative to private tutoring/lessons, to self-learn all school subjects, enjoyably and at their own pace. LerGO was founded by Nava Levy and is being operated by the  NGO LerGO - Educate Yourself (R.A.) through volunteers. LerGO features today hundreds of lessons and thousands of questions which you can already use with your kids or students today. These lessons were created entirely by volunteers: teachers, parents, NGOs and also good students.  We need your help to create more lessons as well as to distribute these lessons to teachers, parents and kids. Thank you!",
         "title": "LerGO - Educate Yourself"
     },
     "lesson": {
@@ -521,31 +453,22 @@
         "copiedFromLessonBy": "by",
         "copiedFromLessons": "Some of the content of this lesson were orignially copied from"
     },
-    "roles": {
-        "total" : "Total",
-        "myRoles" : "Roles",
-        "createNew" : "Create New Role",
-        "tooltip" : {
-            "go" : "see role"
-        },
-        "edit" : {
-            "description" : "Role Description",
-            "name" : "Role Name"
-        }
-    },
     "lessons": {
-        "edit" : {
-            "noPermissionsTitle" : "No Permissions",
-            "noPermissionsDescription" :"You do not have permissions to edit this item"
-        },
+        "addCoverPage": "Add cover image for lesson intro",
+        "addCoverPageHint": "To add your cover image to lesson please paste here the image URL.",
         "addQuestion": "Add Questions to Quiz",
         "addQuestionFromAll": "from all questions",
         "areYouReady": "Are you ready to start learning?",
         "available": "Available Lessons",
         "comment": "Comments",
+        "continueLesson": "Continue Lesson",
         "create": "Create New Lesson",
         "createdOn": "created on",
         "description": "Lesson Description",
+        "edit": {
+            "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
+            "noPermissionsTitle": "You don't have permissions to edit this."
+        },
         "embedLesson": "Embed",
         "embedLessonTitle": "Copy the code below to embed lesson on your webpage or blog",
         "error": {
@@ -562,13 +485,19 @@
         "genericVideosPost": " The list will open in a new tab.",
         "genericVideosPre": "For a list of generic animated videos please",
         "inviteLesson": {
-            "student": {
-                "msg": "Invite student",
-                "help": "To generate a link for the invite please enter student's first name and press submit"
-            },
             "class": {
-                "msg": "Invite class",
-                "help": "Send this link to your students"
+                "help": "To generate a link for the invite please enter the grade and number of your class.",
+                "msg": "Invite Class",
+                "noteMessage": "You will receive your students lesson reports upon completion of each lesson.",
+                "noteTitle": "Note",
+                "success": "Copy the link below to invite your class to the lesson."
+            },
+            "student": {
+                "help": "To generate a link for the invite please enter student's first name and press submit.",
+                "msg": "Invite Student",
+                "noteMessage": "You will receive your kid's/student's lesson report upon completion of lesson.",
+                "noteTitle": " Note",
+                "success": "Copy the link below to invite a student to the lesson."
             }
         },
         "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
@@ -577,10 +506,11 @@
         "lessonReport": "Lesson Report",
         "letsContinue": "OK! Let's Continue",
         "letsGo": "Let's LerGO!",
-        "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like lessons.",
         "likedLessons": "Liked Lessons",
+        "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like lessons.",
         "myLessons": "My Lessons",
         "name": "Lesson Name",
+        "noLessons": "To create a new lesson please click on the above yellow button \"Create New Lesson\".",
         "note": "Note",
         "noteMessage": "You will receive your kid's/student's lesson report upon completion of lesson.",
         "practiceNotAvailable": "Please signup or login to LerGO. Only registered users can use this feature.",
@@ -596,6 +526,8 @@
         "seeReport": "See Report",
         "shareLesson": "Share",
         "shareLessonTitle": "Copy the link below to share lesson with friends",
+        "slideURL": "Presentation URL",
+        "slideURLHelpText": "Insert the URL of the Google Slides presentation here.",
         "startLesson": "Start Lesson",
         "tags": "Tags",
         "tooltip": {
@@ -614,14 +546,30 @@
         },
         "total": "Total",
         "videoURL": "Video URL",
-        "videoURLHelpText": "Insert your YouTube URL here."
+        "videoURLHelpText": "Insert the URL of the YouTube video here."
+    },
+    "lessons_": {
+        "inviteLesson": "Invite to lesson",
+        "inviteLessonHelpText": "To generate a link for the invite please enter student's first name and press submit"
+    },
+    "LewisManne": {
+        "desg": "Zap Productions"
+    },
+    "LiatLevy": {
+        "desg": "Development Consultant"
+    },
+    "LiatMoreno": {
+        "desg": "Finance Analyst"
     },
     "like": "Like",
     "liked": "Liked",
+    "LiorManor": {
+        "desg": "Mind Engineering"
+    },
     "loading": "Loading...",
     "login": {
-        "invalidUsername": "invalid username please try again my friend",
-        "usernameAlreadyExists": "username or email already exists in the system my friend"
+        "invalidUsername": "WRONG USERNAME OR PASSWORD, PLEASE TRY AGAIN",
+        "usernameAlreadyExists": "USERNAME OR EMAIL ALREADY EXISTS IN THE SYSTEM"
     },
     "loginPage": {
         "login": "Login",
@@ -629,15 +577,85 @@
         "signup": "Signup",
         "username": "Username"
     },
+    "MaayanCohen": {
+        "desg": "Animator"
+    },
+    "MaisaElshiekh": {
+        "desg": "Teacher & Educator"
+    },
+    "MalcolmFinn": {
+        "desg": "Advocate"
+    },
+    "manage": {
+        "users": {
+            "edit": {
+                "actions": {
+                    "editRole": "Goto Edit Role",
+                    "editRoles": "Edit User Roles"
+                },
+                "email": "Email",
+                "roles": "Roles",
+                "username": "Username"
+            },
+            "index": {
+                "count": "Total",
+                "myUsers": "My Users",
+                "tableTitles": {
+                    "email": "Email",
+                    "username": "Username"
+                },
+                "tooltip": {
+                    "go": "Edit User"
+                }
+            }
+        }
+    },
+    "MartinBuhr": {
+        "desg": "Cloud Expert, HiTech Executive"
+    },
+    "MaysamKanaan": {
+        "desg": "Al Tufula"
+    },
+    "MichaelCouture": {
+        "desg": "RVP,Amdocs Canadian Managed Services @ Amdocs"
+    },
+    "MiraCohen": {
+        "desg": "Teacher & Educator"
+    },
+    "MotiShatner": {
+        "desg": "Founder BSharpC"
+    },
+    "NadavBerkovich": {
+        "desg": "Media Expert"
+    },
+    "NadavStark": {
+        "desg": "Online Learning @ TAU"
+    },
     "name": "Name",
     "new": "New",
     "next": "Next",
     "nextQuestion": "Continue",
     "notAppropriate": "it is not appropriate for kids.",
     "notEducational": "it is not educational content.",
+    "OferCuriel": {
+        "desg": "High Tech Executive"
+    },
+    "off": "Off",
+    "OffirGonen": {
+        "desg": "UX/UI Expert"
+    },
+    "on": "On",
+    "OritYaron": {
+        "desg": "SaaS Infra Architecture Specialist"
+    },
     "overview": {
-        "desc": "LerGO is a non-profit open source EdTech venture dedicated to self education and reducing the social gap. Our goal is to provide every child with free access to high quality and interactive online lessons. This can be made possible via LerGO's cloud platform that will harness the goodwill of the community, enabling it to easily create educational content. Kids can use these lessons to self learn all school subjects, enjoyably and at their own pace. LerGO is now in beta and we are in the process of loading initial content.",
+        "desc": "LerGO is a non-profit open source EdTech venture dedicated to self education and reducing the social gap. Our goal is to provide every child with free access to high quality and interactive online lessons. This will be made possible via LerGO's cloud platform that leverages the goodwill of the community, enabling it to easily create educational content. Kids can use these lessons to self learn all school subjects, enjoyably and at their own pace. LerGO was founded by Nava Levy and is being operated by the  NGO LerGO - Educate Yourself (R.A.) through volunteers. LerGO features today hundreds of lessons and thousands of questions which you can already use with your kids or students today. These lessons were created entirely by volunteers: teachers, parents, NGOs and also good students.  We need your help to create more lessons as well as to distribute these lessons to teachers, parents and kids. Thank you!",
         "title": "Overview"
+    },
+    "parents": {
+        "teaser": {
+            "url": "https://docs.google.com/forms/d/1n4ddLylSr7Tx8qh09M7A-GAMx-6ShIDVxS-DD1mcKhY/viewform"
+        }
     },
     "popular": "Popular",
     "powered": {
@@ -646,12 +664,43 @@
         }
     },
     "preview": "Preview",
+    "Prof": {
+        "ArielRubinstein": {
+            "desg": "TAU & NYU"
+        },
+        "DavidPassig": {
+            "desg": "Futurist,Tech & Edu BGU"
+        },
+        "DoritRavid": {
+            "desg": "School of Edu @ TAU"
+        }
+    },
+    "profile": {
+        "changeImageText": "You can change your profile avatar via \"http://en.gravatar.com/\". Please note that kids below 13 years old cannot load their own images and those below 18 only with their parents consent",
+        "changeImageTitle": "Change Image",
+        "edit": {
+            "title": "click to edit profile"
+        },
+        "lesson": "Lessons",
+        "lessonCreated": "Lessons Created",
+        "ph": {
+            "details": "Detailed description",
+            "shortIntro": "Short Intro"
+        },
+        "question": "Questions",
+        "questionCreated": "Questions Created",
+        "questionsNotAvailable": "Please sign up or login to LerGO. Only registered users can view the questions list created by other users.",
+        "save": {
+            "title": "click to save profile"
+        }
+    },
     "questions": {
         "add": {
             "emptySelection": "No questions were added because none were selected, please select questions and then press \"add\"."
         },
         "addExplanation": "Add Text Explanation",
         "addExplanationMedia": "Add Media Explanation",
+        "addExplanationPerAnswerFill": "Please add explanation here for a specific wrong answer.",
         "addHint": "Add Hint",
         "addMedia": "Add Media",
         "addQuestionsToQuiz": "Add questions to quiz",
@@ -670,9 +719,9 @@
         "correctAnswer": "Correct Answer",
         "correctAnswerFilled": "You are correct!",
         "correctAnswers": "Correct Answer(s)",
+        "createdBy": "Created by",
         "createNew": "Create New Question",
         "createNewQuestion": "Create New",
-        "createdBy": "Created by",
         "disableShuffling": "Disable Shuffling",
         "editSummary": "Edit Summary",
         "editSummaryHelpText": "Enter edit summary here.",
@@ -703,7 +752,6 @@
         "incorrectTryAgain": "Try Again",
         "language": "Language",
         "languages": {
-            "other": "Other",
             "arabic": "Arabic",
             "english": "English",
             "hebrew": "Hebrew",
@@ -718,11 +766,12 @@
             "video": "Video"
         },
         "myQuestions": "My Questions",
-        "noQuestions": "There are no questions to display",
+        "noQuestions": "To create a new question, please click on the above yellow button \"Create New Question\".",
         "noTitle": "[ No Title ]",
         "notOwnerCannotEdit": "You cannot edit this question since you did not create it. If you want to edit this question, you first need to copy it.",
         "openQuestion": "Open Question",
         "possibleAnswers": "Possible Answers",
+        "possibleIncorrectAnswer": "Possible incorrect answers",
         "question": "Question",
         "questionHint": "Type in your question, for example: 'How do you spell the number 2?' (required).",
         "questionType": "Question Type",
@@ -737,7 +786,6 @@
         "shuffleHint": "Multiple choice answers are shuffled by default, click to disable shuffling for this specific question.",
         "subject": "Subject",
         "subjects": {
-            "other": "Other",
             "biology": "Biology",
             "english": "English",
             "grammar": "Grammar",
@@ -745,6 +793,7 @@
             "science": "Science",
             "spelling": "Spelling"
         },
+        "textExplanation": "Text Explanation",
         "thankYou": "Thank you for your answer",
         "tooltip": {
             "copy": "Copy Question",
@@ -784,11 +833,20 @@
             "True": "True"
         }
     },
+    "RabbiYaronLevy": {
+        "desg": "English Program Head,Otzem"
+    },
+    "RahulShukla": {
+        "desg": "Eclipse RCP Consultant, Angular JS Evangelist"
+    },
     "redirectToHome": "Redirect to homepage",
     "remove": "Remove",
     "report": {
-        "CreateLessonFromWrongQuestions": "Create quiz from incorrect answers",
+        "answer": {
+            "stat": "{{avgCorrectPercentage | number:0}} % Correct ({{correct}} of {{count}} correct responses)"
+        },
         "completed": "has completed the lesson",
+        "CreateLessonFromWrongQuestions": "Create quiz from incorrect answers",
         "date": "Date",
         "description": "Lesson Description",
         "detailedReport": "Detailed Report",
@@ -808,52 +866,68 @@
             "info": "Missing information"
         },
         "nextLesson": "Recommended Next Lesson",
+        "notCompletedTitle": "has not yet completed the lesson",
         "priorLesson": "Recommended Previous Lesson",
+        "questionsInLesson": {
+            "zero": "",
+            "one": "different question in lesson",
+            "other": "different questions in lesson"
+        },
+        "openQuestions":{
+            "zero": "",
+            "one": "Open Question",
+            "other": "Open Questions"
+        },
+        "correctQuestions":{
+            "zero": "",
+            "one": "Correct Question",
+            "other": "Correct Questions"
+        },
+        "wrongQuestions":{
+            "zero": "",
+            "one": "Incorrect Question",
+            "other": "Incorrect Questions"
+        },
         "questionsInQuiz": "different questions in quiz",
         "recommendation": "Recommendations",
         "saved": {
             "successfully": "Report saved successfully"
-        }
+        },
+        "summary": "Report Summary"
     },
     "reportAbuse": {
         "thanks": "Thanks for reporting",
         "title": "Report Abuse"
     },
-    "filter" : {
-        "activeNotification" : {
-            "lessons" : {
-                "msg" : "Lessons are filtered.",
-                "resetAction" : "Click here to view all lessons"
-            },
-            "questions" : {
-                "msg" : "Questions are filtered.",
-                "resetAction" : "Click here to view all questions"
-            },
-            "reports" : {
-                "msg" : "Reports are filtered.",
-                "resetAction" : "Click here to view all reports"
-            },
-            "invites" : {
-                "msg" : "Invites are filtered.",
-                "resetAction" : "Click here to view all invites"
-            }
-
-
-        }
-    },
+    "reportLessonHint": "Enter lesson name",
     "reports": {
+        "class": "Class",
+        "click": {
+            "step": "Link to presentation",
+            "video": "Link to video"
+        },
+        "correct": {
+            "avg": "Class average"
+        },
         "correctPercentage": "% Correct",
         "duration": "Duration",
         "filter": "Filter Reports",
         "myReports": "My Reports",
         "student": "Student",
+        "studentCount": "# Reports",
         "subject": "Subject",
+        "summary": {
+            "duration": {
+                "avg": "Average duration"
+            }
+        },
         "takenAt": "Taken at",
         "tooltip": {
             "go": "go to lesson's report"
         },
         "total": "Total",
         "type": {
+            "class": "Class reports",
             "mine": "Lessons done by me",
             "students": "Lessons done by students"
         }
@@ -864,44 +938,87 @@
         "instructions": "Fill in username or email and submit the form.",
         "success": "Your request was dispatched successfully"
     },
+    "roles": {
+        "createNew": "Create New Role",
+        "edit": {
+            "description": "Role Description",
+            "name": "Role Name"
+        },
+        "myRoles": "Roles",
+        "tooltip": {
+            "go": "see role"
+        },
+        "total": "Total"
+    },
     "root": {
         "page": {
             "description": "LerGO is a new nonprofit open source venture dedicated to kids self education."
         }
     },
+    "RutiArazi": {
+        "desg": "Social Networks Expert"
+    },
+    "SagyGulianka": {
+        "desg": "Pricing Expert @ TMsight"
+    },
+    "SanadAtamna": {
+        "desg": "Computer Programming Student"
+    },
+    "SashaGilenson": {
+        "desg": "CEO & Founder of Evolven Software"
+    },
+    "save": "Save",
     "saved": "Saved",
-    "saving": "Saving",
+    "saving": "Saving...",
+    "ShalomPassy": {
+        "desg": "former COO of TimeToKnow & Senior Consultant"
+    },
     "share": "Share",
+    "ShiraPaz-Greenberg": {
+        "desg": "Designer @ Bruno-All New Media"
+    },
+    "showExplanationPerAnswer": {
+        "exactMatch": "Add Explanation specific to incorrect answer",
+        "fillInTheBlanks": "Add Explanation specific to incorrect answer (applies to first blank only)",
+        "multipleChoices": "Add Explanation specific to incorrect answer"
+    },
+    "ShulyWandam": {
+        "desg": "HRBP @ Unilever"
+    },
     "signup": {
         "confirmation": {
-            "message": "Thank you for signing in! In a few minutes you will receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO."
+            "message": "Thank you for signing in! You will soon receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO."
         },
         "error": {
-            "passwordMismatch" :"Confirm Password does not match the password",
-            "emailMismatch" : "Confirm email does not match the email",
             "confPasswordRequired": "Confirm password is required.",
+            "emailMismatch": "Emails do not match",
             "invalidChar": "Username should only contain alphanumeric characters and underscore.",
             "invalidEmail": "Enter valid email.",
-            "emailMismatch" : "email does not match",
             "minLength": "Username should contain at least 3 characters.",
             "nameRequired": "Name is required.",
+            "passwordMismatch": "Confirm password does not match the password.",
             "passwordRequired": "Password is required."
         }
     },
     "start": "Start",
     "steps": {
         "add": "Add Step",
-        "addHint": "Click Add Step to add a video or a quiz to your lesson.",
+        "addHint": "To add a video or a quiz or a presentation to your lesson click on Add Step and then select the Step Type you want to add (Video or Quiz or Presentation).",
         "answer": "Please Answer",
         "display": "Display Step",
-        "invalidURL": "Please enter valid youtube URL",
+        "invalidSlideURL": "Please enter valid URL for Google Slides presentation.",
+        "invalidURL": "Please enter valid URL of YouTube video.",
         "noMoreQuestions": "Let's Go to Next Step",
+        "presentation": {
+            "hint": "Make sure to change the \"share\" settings of the presentation to \"on - anyone with the link\": click on \"share\" and then click on  \"advanced\" and then select \"change\" re who has access."
+        },
         "quiz": "Quiz",
         "required": "required",
         "selectAnAnswer": "Select an Answer",
+        "slide": "Presentation",
         "title": "Step Title",
         "type": "Step Type",
-        "typeHint": "Step type can be either video or quiz - click to select.",
+        "typeHint": "Step type can be either quiz, video (from YouTube) or presentation (from Google Slides) - click to select type.",
         "video": "Video"
     },
     "subject": {
@@ -910,12 +1027,29 @@
         "spelling": "Spelling"
     },
     "tagHint": "Separate tags by commas",
+    "tags": "Tags",
     "tagSection": {
         "alreadyExists": "Tag already exists",
         "invalidTag": "Invalid tag"
     },
-    "tags": "Tags",
+    "TalChasdai": {
+        "desg": "CPA"
+    },
+    "TalGoldberg": {
+        "desg": "Waze,Co-founder HumanClick"
+    },
+    "TanyaEpstein": {
+        "desg": "Co-founder Clarizen & Applango"
+    },
+    "teachers": {
+        "teaser": {
+            "url": "https://docs.google.com/forms/d/1oIhvwDSYLuuLEeKiwABpg67OiNbmvI-dhQH6X13C-rg/viewform"
+        }
+    },
     "title": "Title",
+    "TomerAshur": {
+        "desg": "former Chairman WikiMedia Israel"
+    },
     "translation": {
         "baseLanguage": "Language",
         "comparingTitle": "Comparing English with",
@@ -927,60 +1061,22 @@
     "up": "Up",
     "view": "View",
     "welcome": "Welcome",
-    "manage": {
-        "users" : {
-            "index" : {
-                "count": "Total",
-                "myUsers": "My Users",
-                "tableTitles": {
-                    "username": "Username",
-                    "email": "Email"
-                },
-                "tooltip": {
-                    "go": "Edit User"
-                }
-            },
-            "edit" : {
-                "username" : "Username",
-                "email" : "Email",
-                "roles" : "Roles",
-                "actions" : {
-                    "editRoles" : "Edit User Roles",
-                    "editRole" : "Goto Edit Role"
-                }
-            }
-        }
-
+    "YarivWeinberg": {
+        "desg": "Videographer @ Simanim"
     },
-    "general" : {
-        "translationLanguage":{"he":"עברית","en":"English", "ru":"Русский", "ar" :"العربية"}
+    "YishaiBarak": {
+        "desg": "Development Manager @ Siemens"
     },
-    "parents" : {
-        "teaser" : {
-            "url" : "https://docs.google.com/forms/d/1n4ddLylSr7Tx8qh09M7A-GAMx-6ShIDVxS-DD1mcKhY/viewform"
-        }
+    "YoavBen-Arie": {
+        "desg": "Org. Learning Head @ BrancoWeiss"
     },
-    "teachers" : {
-        "teaser" : {
-            "url" : "https://docs.google.com/forms/d/1oIhvwDSYLuuLEeKiwABpg67OiNbmvI-dhQH6X13C-rg/viewform"
-        }
+    "YochaiManor": {
+        "desg": "Operations Executive"
     },
-    "demos" : {
-        "goToMyLessons" : {
-            "title" : "Your Lesson Is Saved",
-            "intro" : "You are now leaving 'edit lesson' page. All your changes has been automatically saved. You can always find your lessons, just hover on your username and select 'lessons'"
-
-        },
-        "gotIt" : "Got it",
-        "dontShowAgain" : "Do not show this again"
+    "YossiBen-Shoshan": {
+        "desg": "Director R&D @ Dell"
     },
-
-    "classInvite" : {
-        "welcome" : "Welcome to Lergo!",
-        "lessonName" : "Lesson Name",
-        "teacherName" : "Teacher Name",
-        "studentName" : "Student Name",
-        "start" : "Start",
-        "instructions" : "Note: to go to lesson enter your first name and click on \"go to lesson\""
+    "ZeevRavid": {
+        "desg": "Branding,former CEO Y&R Israel"
     }
 }

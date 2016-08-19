@@ -83,18 +83,26 @@
                 <div class="col-md-9">
                     {{report.correctPercentage}}
                     (
-                    <span ng-show="!!report.data.quizItems">
-                        {{report.data.quizItems.length}} {{'report.questionsInLesson' | translate}},
-                    </span>
-                    <span ng-show="!!reportStats.correct">
-                        {{reportStats.correct}} {{'questions.correct' | translate}},
-                    </span>
-                    <span ng-show="!!reportStats.wrong">
-                        {{reportStats.wrong}} {{'questions.incorrect' | translate}}
-                    </span>
-                    <span ng-show="!!reportStats.openQuestions">
-                       , {{reportStats.openQuestions}} {{'questions.openQuestion' | translate}}
-                    </span>
+                    <ng-pluralize count="report.data.quizItems.length" when="{
+                        '0': '{{ &quot;report.questionsInLesson.zero&quot; | translate}}',
+                        'one': '{} {{ &quot;report.questionsInLesson.one&quot; | translate}}',
+                        'other': '{} {{ &quot;report.questionsInLesson.other&quot; | translate}}'}">
+                    </ng-pluralize>
+                    <ng-pluralize count="reportStats.correct" when="{
+                        '0': '{{&quot;report.correctQuestions.zero&quot; | translate}}',
+                        'one': ', {} {{&quot;report.correctQuestions.one&quot; | translate}}',
+                        'other': ', {} {{&quot;report.correctQuestions.other&quot; | translate}}'}">
+                    </ng-pluralize>
+                    <ng-pluralize count="reportStats.wrong" when="{
+                        '0': '{{&quot;report.wrongQuestions.zero&quot; | translate}}',
+                        'one': ', {} {{&quot;report.wrongQuestions.one&quot; | translate}}',
+                        'other': ', {} {{&quot;report.wrongQuestions.other&quot; | translate}}'}">
+                    </ng-pluralize>
+                    <ng-pluralize count="reportStats.openQuestions" when="{
+                        '0': '{{&quot;report.openQuestions.zero&quot; | translate}}',
+                        'one': ', {} {{&quot;report.openQuestions.one&quot; | translate}}',
+                        'other': ', {} {{&quot;report.openQuestions.other&quot; | translate}}'}">
+                    </ng-pluralize>
                     )
                 </div>
             </div>
@@ -188,9 +196,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8 col-md-offset-1 description">
+                    <div class="col-md-9 description">
                         <a ng-href="#!/public/lessons/{{report.data.lesson.nextLessonId}}/intro">
-                            {{absoluteShareLink(report.data.lesson.nextLessonId)}}
+                            {{'reports.click.nextLesson' | translate}}
                         </a>
                     </div>
                 </div>
@@ -205,9 +213,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8 col-md-offset-1 description">
+                    <div class="col-md-9 description">
                         <a ng-href="#!/public/lessons/{{report.data.lesson.priorLessonId}}/intro">
-                            {{absoluteShareLink(report.data.lesson.priorLessonId)}}
+                            {{'reports.click.priorLesson' | translate}}
                         </a>
                     </div>
                 </div>
