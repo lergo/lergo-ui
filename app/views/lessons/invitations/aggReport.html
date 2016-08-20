@@ -18,10 +18,8 @@
                 </div>
             </div>
             <div class="col-md-3 header-name ">
-                <div>
-                    <div class="lergo-h1">{{'reports.header.className' | translate}}</div>
-                    <div class="class-name">{{report.data.invitee.class}}</div>
-                </div>
+                <div class="class-header lergo-h1">{{'reports.header.className' | translate}}</div>
+                <div class="class-name">{{report.data.invitee.class}}</div>
                 <br>
                 <div class="lergo-h1">
                     <a ng-show="!report.data.lesson.temporary"
@@ -44,8 +42,8 @@
                     </div>
                 </div>
                 <div class="row top20 redo-buttons">
-                    <div class="col-md-6 reports" >
-                        <a href="#!/user/create/reports?reportType=students&lergoFilter.reportClass={{report.data.invitee.class}}">
+                    <div class="col-md-12 reports text-right">
+                        <a href="" ng-click="redirectToIndividualReports()">
                             <i class="fa fa-bar-chart"> {{'report.header.individualReports' | translate}}</i>
                         </a>
                     </div>
@@ -134,7 +132,11 @@
                         {{'reports.click.video' | translate}}</a>
                     <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
                             <span class="inline-table">
-                                {{step.quizItems.length}} {{'report.questionsInQuiz' | translate}}
+                                <ng-pluralize count="step.quizItems.length" when="{
+                                        '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
+                                        'one':'{} {{ &quot;report.questionsInQuiz.one&quot; | translate}}',
+                                        'other':'{} {{ &quot;report.questionsInQuiz.other&quot; | translate}}'}">
+                                 </ng-pluralize>
                             </span>
                         </span>
                     <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
@@ -199,7 +201,7 @@
                      <a class=" no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
                     <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
                     <i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
-                    {{'report.detailedReport'|translate}}
+                    {{'report.questionPerDiffculty'|translate}}
                 </a>
                 </span>
                 <span class="text-primary">

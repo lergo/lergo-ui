@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsInvitationsAggReportCtrl', function ($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope) {
+angular.module('lergoApp').controller('LessonsInvitationsAggReportCtrl',
+    function ($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope) {
     $log.info('loading');
     LergoClient.reports.getClassReportById($routeParams.reportId).then(function (result) {
         $scope.report = result.data;
@@ -30,6 +31,17 @@ angular.module('lergoApp').controller('LessonsInvitationsAggReportCtrl', functio
 
     $scope.getStepViewByType = function (step) {
         return '/views/lessons/invitations/report/steps/_' + step.type + '.html';
+    };
+
+    $scope.redirectToIndividualReports = function() {
+        $location.path('/user/create/reports').search({
+            reportType: 'students',
+            'lergoFilter.reportClass': $scope.report.data.invitee.class,
+            'lergoFilter.reportLesson': JSON.stringify({
+                _id: $scope.report.data.lesson._id,
+                name: $scope.report.data.lesson.name
+            })
+        });
     };
 
 
