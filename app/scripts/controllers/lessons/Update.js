@@ -133,6 +133,10 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				}
 			};
 
+            function isOwnerOfLesson(){
+                return $rootScope.user._id === $scope.lesson.userId;
+            }
+
             /**
              * redirect to admin homepage or user create section
              * depending on the situation.
@@ -144,7 +148,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                     return;
                 }
 
-                if ( $rootScope.user && $rootScope.user._id !== $scope.lesson.userId ){ // admin
+                if ( $rootScope.user && !isOwnerOfLesson()){ // admin
                     $location.path('/admin/homepage/lessons');
 
                 }else{ // user
@@ -304,11 +308,12 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 			$scope.openUpdateQuestion = function(step, quizItemId) {
                 QuestionsService.getPermissions(quizItemId).then(function( result ){
 
-                    if ($scope.quizItemsData.hasOwnProperty(quizItemId) && result.data.canEdit ) {
+                    var canEditOrCopy = result.data.canEdit || isOwnerOfLesson();
+                    if ($scope.quizItemsData.hasOwnProperty(quizItemId) && canEditOrCopy) {
                         openQuestionDialog(step, $scope.quizItemsData[quizItemId], true);
                     }
 
-                    if ( !result.data.canEdit ){
+                    if ( !canEditOrCopy ){
                         toastr.error( $translate.instant('lessons.edit.noPermissionsDescription'), $translate.instant('lessons.edit.noPermissionsTitle'));
                     }
                 });

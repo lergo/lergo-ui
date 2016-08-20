@@ -1,11 +1,46 @@
 'use strict';
 
+/******
+ *
+ *
+ * Limited editors feature support explained
+ * =========================================
+ *
+ *
+ * This dialog supports "limited editors" feature. For sake of documentation here is how it behaves, starting from "edit lesson" view.
+ *
+ * * Edit Lesson  - Limited editor can see all questions in quiz step, even those they cannot edit (for example, wrong language or subject)
+ * * Clicking the question - will open the dialog if user is owner of lesson or if editor can edit
+ * * CopyAndOverride option will be displayed if - user cannot edit the question.
+ *
+ *
+ * ## Question
+ * Why does "CopyAndOverride" work? Why do we not check for "is owner of lesson"?
+ *
+ * ## Answer
+ * Because when we get to this page, 1 of 2 is true - either I can edit, or I am owner of lesson.
+ *
+ * Thus, it is enough to check if I can edit, because if I can't, I must be owner, and then I can copy & override..
+ *
+ *
+ *
+ *
+ *******/
+
+/***
+ *
+ * @module QuestionsAddUpdateDialogCtrl
+ * @description
+ * Exposes question CRUD from lesson edit view.
+ *
+ */
+
 angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 		function($scope, $modalInstance, quizItem, lessonOverrideQuestion, QuestionsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
 
 			$scope.quizItem = quizItem;
 			// this object will be updated by child scope
-			// UpdateQuestionCtrl.
+			// QuestionsUpdateCtrl.
 			$scope.permissions = {};
 			$scope.isModal = true;
 			$scope.isCreate = true;
@@ -153,7 +188,7 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 			 * There are so many things we need to have to enable copy and
 			 * override, we better wrap it in a function.
 			 */
-			$scope.canCopyAndOverride = function() {
+			$scope.canCopyAndOverride = function() { // guy: natively support limitedEditors - see page top comment
 
 				// we can query $scope.permissions even
 				// though it is populated in child scope
