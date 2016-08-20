@@ -41,17 +41,17 @@
                     </div>
                 </div>
                 <div class="row top20 redo-buttons">
-                    <div class="col-md-6 reports" ng-show="!!report.data.invitee.class">
-                        <a href="" ng-click="redirectToClassReport()">
-                            <i class="fa fa-bar-chart"> {{'report.header.classReport' | translate}}</i>
-                        </a>
-                    </div>
-                    <div class="col-md-6 restart" ng-show="!report.data.lesson.temporary">
+                    <div class="col-md-6 restart pull-right" ng-show="!report.data.lesson.temporary">
                         <a href="" ng-click="startLesson()">
                             <i class="fa fa-repeat "> {{'lessons.restart' | translate}}</i>
                         </a>
                     </div>
-                    <div class="col-md-6 practiceMistake" ng-show="wrongQuestions.length>0">
+                    <div class="col-md-6 reports pull-right" ng-show="!!report.data.invitee.class">
+                        <a href="" ng-click="redirectToClassReport()">
+                            <i class="fa fa-bar-chart"> {{'report.header.classReport' | translate}}</i>
+                        </a>
+                    </div>
+                    <div class="col-md-6 practiceMistake pull-right" ng-show="wrongQuestions.length>0">
                         <a show-logged-in href="" ng-click="practiceMistakes()">
                             <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
@@ -61,7 +61,7 @@
                             <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
                     </div>
-                    <div class="col-md-6 continue-lesson" ng-show="showContinueLesson()">
+                    <div class="col-md-6 continue-lesson pull-right" ng-show="showContinueLesson()">
                         <a class="btn-link" href="{{continueLessonUrl(report)}}">
                             <i class="fa fa-repeat "> {{'lessons.continueLesson' | translate}}</i>
                         </a>
@@ -160,7 +160,11 @@
                         {{'reports.click.video' | translate}}</a>
                     <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
                             <span class="inline-table">
-                                {{step.quizItems.length}} {{'report.questionsInQuiz' | translate}}
+                                 <ng-pluralize count="step.quizItems.length" when="{
+                                        '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
+                                        'one':'{} {{ &quot;report.questionsInQuiz.one&quot; | translate}}',
+                                        'other':'{} {{ &quot;report.questionsInQuiz.other&quot; | translate}}'}">
+                                 </ng-pluralize>
                             </span>
                             <span ng-show="!!stats[$index].correct" class="bg-success report-quiz-summary-item">
                                 {{stats[$index].correct}} {{'questions.correct' | translate}}
@@ -171,7 +175,11 @@
                                 ({{stats[$index].wrongPercentage}}%)
                             </span>
                             <span ng-show="!!stats[$index].openQuestions" class="bg-primary report-quiz-summary-item">
-                                {{stats[$index].openQuestions}} {{'questions.openQuestion' | translate}}
+                                <ng-pluralize count="stats[$index].openQuestions" when="{
+                                        '0':'{{&quot;report.openQuestions.zero&quot; | translate}}',
+                                        'one':'{} {{&quot;report.openQuestions.one&quot; | translate}}',
+                                        'other':'{} {{&quot;report.openQuestions.other&quot; | translate}}'}">
+                                 </ng-pluralize>
                             </span>
                         </span>
                     <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
