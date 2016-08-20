@@ -46,7 +46,7 @@
                             <i class="fa fa-repeat "> {{'lessons.restart' | translate}}</i>
                         </a>
                     </div>
-                    <div class="col-md-6 reports pull-right" ng-show="!!report.data.invitee.class">
+                    <div class="col-md-6 reports pull-right" ng-show="showClassReport()">
                         <a href="" ng-click="redirectToClassReport()">
                             <i class="fa fa-bar-chart"> {{'report.header.classReport' | translate}}</i>
                         </a>
