@@ -29,13 +29,13 @@
 		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="currentSection.add(quizItem)">{{'add' |translate}}</button>
 		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="currentSection.addClose(quizItem)">{{'addClose' |translate}}</button>
 		<button class="btn btn-default" ng-click="cancel()">{{'cancel' |translate}}</button>
-		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | translate) || ('saved' | translate) }}</div>
+		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' | translate) || ('saved' | translate) }}</div>
 	</div>
 </div>
 <div class="modal-footer" ng-show="!!isCreate && !!isUpdate">
 	<div>
 		<button class="btn" ng-disabled="isSaving()" ng-click="cancel(quizItem)">{{'back' | translate}}</button>
-		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | translate) || ('saved' | translate) }}</div>
+		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' | translate) || ('saved' | translate) }}</div>
 	</div>
 </div>
 <!--  <div ng-show="!isUpdate" class="menu">
