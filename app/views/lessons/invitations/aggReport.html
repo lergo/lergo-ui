@@ -51,12 +51,17 @@
             </div>
         </div>
 
-        <div class="collapsible lergo-h1 row">
-            <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed">
-                <i ng-show="!!summaryCollapsed" class="fa fa-plus-square"></i>
-                <i ng-show="!summaryCollapsed" class="fa fa-minus-square"></i>
-                {{'report.summary'|translate}}
-            </a>
+        <div class="row">
+            <span class="collapsible lergo-h1">
+                <a href="" class="no-underline " ng-click="summaryCollapsed=!summaryCollapsed">
+                    <i class="fa" ng-class="{'fa-plus-square':summaryCollapsed,'fa-minus-square':!summaryCollapsed}">
+                    </i>
+                    {{'report.summary'|translate}}
+                </a>
+            </span>
+            <span class="text-primary">
+                    {{'report.summaryHint' | translate:{count:report.count} }}
+            </span>
         </div>
         <hr/>
         <div collapse="!!summaryCollapsed" class="summary row">
@@ -201,7 +206,7 @@
                      <a class=" no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
                     <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
                     <i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
-                    {{'report.questionPerDiffculty'|translate}}
+                    {{'report.questionPerDifficulty'|translate}}
                 </a>
                 </span>
                 <span class="text-primary">

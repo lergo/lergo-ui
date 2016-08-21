@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row top20 redo-buttons">
+                <div class="row top20 redo-buttons" ng-show="showClassReport()">
                     <div class="col-md-6 restart pull-right" ng-show="!report.data.lesson.temporary">
                         <a href="" ng-click="startLesson()">
                             <i class="fa fa-repeat "> {{'lessons.restart' | translate}}</i>
@@ -64,6 +64,27 @@
                     <div class="col-md-6 continue-lesson pull-right" ng-show="showContinueLesson()">
                         <a class="btn-link" href="{{continueLessonUrl(report)}}">
                             <i class="fa fa-repeat "> {{'lessons.continueLesson' | translate}}</i>
+                        </a>
+                    </div>
+                </div>
+                <div class="row top20 redo-buttons" ng-show="!showClassReport()">
+                    <div class="col-md-12 text-right">
+                        <a ng-click="startLesson()" ng-show="!report.data.lesson.temporary"
+                           class="restart no-underline">
+                            <i class="fa fa-repeat "> {{'lessons.restart' | translate}} &nbsp;</i>
+                        </a>
+                        <span ng-show="wrongQuestions.length>0" class="practiceMistake">
+                            <a show-logged-in ng-click="practiceMistakes()">
+                                <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
+                            </a>
+                            <a show-anonymous href="" popover-placement="bottom" popover-trigger="focus"
+                               popover="{{'lessons.practiceNotAvailable' | translate}}"
+                               tabindex="0">
+                            <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
+                            </a>
+                        </span>
+                        <a class="btn-link" href="{{continueLessonUrl(report)}}" ng-show="showContinueLesson()">
+                            <i class="fa fa-repeat "> {{'lessons.continueLesson' | translate}} &nbsp;</i>
                         </a>
                     </div>
                 </div>
