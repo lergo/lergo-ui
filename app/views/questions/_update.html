@@ -12,30 +12,14 @@
 			</span>
 		</span>
 		<span ng-show="!!canCopyAndOverride()">
-			<span ng-show="!wantToEdit">
+			<span>
 				{{ 'questions.notOwnerCannotEdit' | translate }}
 				<br/>
-				<button class="btn btn-link" ng-click="wantToEdit=true">{{ 'questions.copyAndReplaceAction' | translate }}
+				<button class="btn btn-link" ng-click="copyAndReplaceQuestion(quizItem)">{{ 'questions.copyAndReplaceAction' | translate }}
                 </button>
 				<br/>
 			</span>
-			<span ng-show="wantToEdit">
-				{{ 'questions.copyAndReplacePrompt' | translate }}
-				<br/>
-				<span class="options">
-					<span class="option1">
-						<button class="btn btn-link" ng-click="copyAndReplaceQuestion(quizItem)">{{
-                            'questions.copyAndReplacePromptConfirm' | translate }}
-                        </button>
-					</span>
-					<span class="option2">
-						<button class="btn btn-link" ng-click="wantToEdit=false">{{
-                            'questions.copyAndReplacePromptDecline' | translate
-                            }}
-                        </button>
-					</span>
-				</span>
-			</span>
+
 		</span>
 	</span>
 </div>
