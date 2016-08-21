@@ -843,6 +843,10 @@
             "stat": "{{avgCorrectPercentage | number:0}} % Correct ({{correct}} of {{count}} correct responses)"
         },
         "completed": "has completed the lesson",
+        "correctQuestions": {
+            "one": "Correct Question",
+            "other": "Correct Questions"
+        },
         "CreateLessonFromWrongQuestions": "Create quiz from incorrect answers",
         "date": "Date",
         "description": "Lesson Description",
@@ -857,6 +861,9 @@
                 "updating": "Error while updating report"
             }
         },
+        "header": {
+            "classReport": "Class Report"
+        },
         "incomplete": "Incomplete",
         "lessonSteps": "Lesson Steps",
         "missing": {
@@ -864,33 +871,25 @@
         },
         "nextLesson": "Recommended Next Lesson",
         "notCompletedTitle": "has not yet completed the lesson",
-        "priorLesson": "Recommended Previous Lesson",
-        "questionsInLesson": {
-            "zero": "",
-            "one": "different question in lesson",
-            "other": "different questions in lesson"
-        },
-        "openQuestions":{
-            "zero": "",
+        "openQuestions": {
             "one": "Open Question",
             "other": "Open Questions"
         },
-        "correctQuestions":{
-            "zero": "",
-            "one": "Correct Question",
-            "other": "Correct Questions"
-        },
-        "wrongQuestions":{
-            "zero": "",
-            "one": "Incorrect Question",
-            "other": "Incorrect Questions"
+        "priorLesson": "Recommended Previous Lesson",
+        "questionsInLesson": {
+            "one": "different question in lesson",
+            "other": "different question in lessons"
         },
         "questionsInQuiz": "different questions in quiz",
         "recommendation": "Recommendations",
         "saved": {
             "successfully": "Report saved successfully"
         },
-        "summary": "Report Summary"
+        "summary": "Report Summary",
+        "wrongQuestions": {
+            "one": "Incorrect Question",
+            "other": "Incorrect Questions"
+        }
     },
     "reportAbuse": {
         "thanks": "Thanks for reporting",
@@ -903,20 +902,21 @@
             "step": "Link to presentation",
             "video": "Link to video"
         },
-        "correct": {
-            "avg": "Class average"
-        },
+        "correct": "Correct",
+        "correctAvg": "Class average",
         "correctPercentage": "% Correct",
         "duration": "Duration",
         "filter": "Filter Reports",
+        "header": {
+            "className": "Class Report"
+        },
         "myReports": "My Reports",
         "student": "Student",
         "studentCount": "# Reports",
         "subject": "Subject",
         "summary": {
-            "duration": {
-                "avg": "Average duration"
-            }
+            "duration": "Lesson Duration",
+            "durationAvg": "Average duration"
         },
         "takenAt": "Taken at",
         "tooltip": {
