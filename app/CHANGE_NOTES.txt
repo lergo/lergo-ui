@@ -1,3 +1,5 @@
+fix (Reports) error flashes after incorrect log-in (was fixed a few days ago but came back)
+
 fix (undefined key) LERGO-634 when editing question saving key is undefined
 
 task (translate error message) LERGO-633 USERNAME OR EMAIL ALREADY EXISTS IN THE SYSTEM
