@@ -61,7 +61,7 @@
                             <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
                     </div>
-                    <div class="col-md-6 continue-lesson pull-right" ng-show="showContinueLesson()">
+                    <div class="col-md-6 pull-right" ng-show="showContinueLesson()">
                         <a class="btn-link" href="{{continueLessonUrl(report)}}">
                             <i class="fa fa-repeat "> {{'lessons.continueLesson' | translate}}</i>
                         </a>
@@ -83,7 +83,7 @@
                             <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
                             </a>
                         </span>
-                        <a class="btn-link" href="{{continueLessonUrl(report)}}" ng-show="showContinueLesson()">
+                        <a class="btn-link continue-lesson" href="{{continueLessonUrl(report)}}" ng-show="showContinueLesson()">
                             <i class="fa fa-repeat "> {{'lessons.continueLesson' | translate}} &nbsp;</i>
                         </a>
                     </div>
