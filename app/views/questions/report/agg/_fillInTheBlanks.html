@@ -1,31 +1,33 @@
 <div class="questions-exact-match lergo-form">
-	<div class="quiz-open">
-		<div ng-include="'views/questions/report/partial/_questionHeader.html'"></div>
-		<div class="quiz-answer">
-			<div>
-				<div class="bold">{{'questions.correctAnswers'|translate}}</div>
-				<div class="question" style="line-height: 2">
-					{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
-					<span style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
+    <div class="quiz-open">
+        <div ng-include="'views/questions/report/agg/partial/_questionHeader.html'"></div>
+        <div class="quiz-answer">
+            <div>
+                <div class="bold">{{'questions.correctAnswers'|translate}}</div>
+                <div class="question" style="line-height: 2">
+                    {{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
+					<span style="line-height: 0.75"
+                          ng-repeat="option in quizItem.question.split('___') track by $index">
 						<span>{{option}}</span>
 						<span ng-show="!$last">
-							<span class="bold" style="text-decoration: underline">{{!quizItem.answer[$index] && '________' || quizItem.answer[$index].replace(';','
-								/ ')}} </span>
+							<span class="bold underline">
+                                {{!quizItem.answer[$index] && '________' || quizItem.answer[$index].replace(';',' / ')}}
+                            </span>
 						</span>
 					</span>
-				</div>
-			</div>
-			<br>
+                </div>
+            </div>
+            <br>
             <div ng-include="'views/questions/report/agg/partial/_answer.html'"></div>
             <div ng-show="quizItem.checkAnswer.expMessage.length > 0 ">
                 <br>
                 <div class="bold">{{'explanation'|translate}}</div>
                 <div ng-repeat="msg in quizItem.checkAnswer.expMessage">{{msg}}</div>
             </div>
-			<div ng-show="!!quizItem.explanationMedia">
-				<br>
-				<div quiz-item-explanation-media quiz-item="quizItem"></div>
-			</div>
-		</div>
-	</div>
+            <div ng-show="!!quizItem.explanationMedia">
+                <br>
+                <div quiz-item-explanation-media quiz-item="quizItem"></div>
+            </div>
+        </div>
+    </div>
 </div>
