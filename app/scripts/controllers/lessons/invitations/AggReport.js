@@ -30,7 +30,7 @@ angular.module('lergoApp').controller('LessonsInvitationsAggReportCtrl',
             if (!!$scope.report) {
                 var stepData = $scope.report.stepDurations[index];
                 if (!!stepData) {
-                    return stepData.correctAnswers / stepData.totalAnswers;
+                    return (stepData.correctAnswers * 100)/ stepData.totalAnswers;
                 }
             }
         };

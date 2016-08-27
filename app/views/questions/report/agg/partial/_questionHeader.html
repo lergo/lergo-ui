@@ -1,7 +1,7 @@
 <div class="bg-primary report-quiz-question-header">
     <span class="inline-table">{{quizItem.question}}</span>
     <div class="duration" ng-init="updateStats(quizItem)">
-        <span>
+        <span ng-show="!!quizItem.hint && !!quizItem.stats.hintUsed">
             <i class="fa fa-eye">&nbsp; </i>
             <span>
                 <ng-pluralize count="quizItem.stats.count" when="{
