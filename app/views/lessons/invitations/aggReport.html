@@ -143,6 +143,10 @@
                                         'other':'{} {{ &quot;report.questionsInQuiz.other&quot; | translate}}'}">
                                  </ng-pluralize>
                             </span>
+                        <span class="bold">
+                            &nbsp;&nbsp;
+                            {{'reports.stepCorrectAvg' | translate:{percentage:getStepCorrectPercentage($index)} }}
+                        </span>
                         </span>
                     <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
                         {{'reports.click.step' | translate}}
