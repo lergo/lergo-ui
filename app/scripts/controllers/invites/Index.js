@@ -228,9 +228,9 @@ angular.module('lergoApp').controller('InvitesIndexCtrl',
         return deferred.promise;
     };
 
-     
+
     $scope.headers = ['name', 'reports.student', 'reports.class', 'reports.subject',
-        'reports.takenAt', 'reports.correctPercentage', 'reports.duration','reports.studentCount'];
+        'reports.takenAt', 'reports.correctPercentage', 'reports.duration'];
 
     $scope.localizedHeaders = function () {
         return _.map($scope.headers, $translate.instant);
