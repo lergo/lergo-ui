@@ -77,9 +77,10 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    {{report.correctPercentage | number:0}}
-                    (
-                    <ng-pluralize count="report.data.quizItems.length" when="{
+                    <span class="bold">
+                        {{'reports.summary.correctPercentage' | translate:{percentage:report.correctPercentage} }}
+                    </span>
+                    (<ng-pluralize count="report.data.quizItems.length" when="{
                         '0': '{{ &quot;report.questionsInLesson.zero&quot; | translate}}',
                         'one': '{} {{ &quot;report.questionsInLesson.one&quot; | translate}}',
                         'other': '{} {{ &quot;report.questionsInLesson.other&quot; | translate}}'}">
@@ -88,8 +89,7 @@
                         '0': '{{&quot;report.openQuestions.zero&quot; | translate}}',
                         'one': ', {} {{&quot;report.openQuestions.one&quot; | translate}}',
                         'other': ', {} {{&quot;report.openQuestions.other&quot; | translate}}'}">
-                    </ng-pluralize>
-                    )
+                    </ng-pluralize>)
                 </div>
             </div>
             <div class="row row-nested top20">
