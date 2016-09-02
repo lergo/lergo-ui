@@ -42,6 +42,7 @@
                         <!--</td>-->
                         <td>{{ 'manage.users.index.tableTitles.username' | translate }}</td>
                         <td>{{ 'manage.users.index.tableTitles.email' | translate }} </td>
+                        <td>{{ 'manage.users.index.tableTitles.validated' | translate }} </td>
                         <!--<td ng-show="showStudentColumn()">{{ 'reports.student' | translate}}</td>-->
                         <!--<td>{{ 'reports.subject' | translate}}</td>-->
                         <!--<td>{{ 'reports.takenAt' | translate}}</td>-->
@@ -59,7 +60,7 @@
                             <a tooltip="{{'manage.users.index.tooltip.go' | translate}}"
                                ng-href="#!/manage/users/{{user._id}}/update">{{ user.username }}</a>
                         </td>
-                        <td class="description">{{ user.email }}</td>
+                        <td class="description">{{ user.email }}</td><td class="description">{{ user.validated }}</td>
                         <!-- <td class="answer" ng-show="showStudentColumn()">{{report.data.invitee.name}}</td>
                          <td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject | translate) ||""}}</td>
                          <td class="answer">{{report.lastUpdate| date:'medium'}}</td>

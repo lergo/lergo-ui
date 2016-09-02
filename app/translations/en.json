@@ -603,7 +603,8 @@
                 "myUsers": "My Users",
                 "tableTitles": {
                     "email": "Email",
-                    "username": "Username"
+                    "username": "Username",
+                    "validated":"Validated"
                 },
                 "tooltip": {
                     "go": "Edit User"
