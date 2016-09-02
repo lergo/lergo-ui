@@ -3,10 +3,7 @@
     <div class="page-content-width">
         <div class="page-content-body">
             <form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
-                <div class="lergo-label">
-                    <span class="error" ng-show='errorMessage'>{{errorMessage}}</span>
-                </div>
-                <div class="form-section form-group name"
+                            <div class="form-section form-group name"
                      ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
                     <div class="lergo-label">{{ 'lessons.name' | translate }}</div>
                     <div class="lergo-input">
