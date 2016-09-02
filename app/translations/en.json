@@ -570,7 +570,7 @@
     "login": {
         "invalidUsername": "WRONG USERNAME OR PASSWORD, PLEASE TRY AGAIN",
         "usernameAlreadyExists": "USERNAME OR EMAIL ALREADY EXISTS IN THE SYSTEM",
-        "login.userNotValidated": "USER ACCOUNT HAS NOT BEEN VALIDATED"
+        "userNotValidated": "USER ACCOUNT HAS NOT BEEN VALIDATED"
     },
     "loginPage": {
         "login": "Login",
