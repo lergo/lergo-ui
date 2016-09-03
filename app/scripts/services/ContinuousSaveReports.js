@@ -1,5 +1,8 @@
 'use strict';
 
+    /* this file is a copy of ContinuousSave. The only change is the removal of the confirm popup.
+     this was not useful to students and was only worrysome. */
+
 angular.module('lergoApp')
     .factory('ContinuousSaveReports', function (localStorageService, $timeout, $rootScope, $log,$filter) {
 
@@ -30,7 +33,7 @@ angular.module('lergoApp')
              * @private
              */
             function _versionMatch() {
-                return !!_localVersion && !!_remoteVersion && _localVersion.lastUpdate !== _remoteVersion.lastUpdate;
+                return !!_localVersion && !!_remoteVersion && _localVersion.lastUpdate === _remoteVersion.lastUpdate;
             }
 
 
@@ -68,11 +71,11 @@ angular.module('lergoApp')
                     }
 
                     _preventedFlag[uid] = uid;
-
+                    // jeff: implement this to eliminate the confirm that appears to students when saving is slow
                     if ( !_status.saved  ){ // do I need to alert
                         if ( !_preventedFlag.alerted ){ // did someone else alert? no? alert and update model
                             _preventedFlag.alerted = true;
-                            toastr.error('we dont need this anymore');
+                            //toastr.error('we dont need this anymore');
                             /*var answer = confirm(_confirmMessage);
                              if (!answer) {
                              event.preventDefault();
