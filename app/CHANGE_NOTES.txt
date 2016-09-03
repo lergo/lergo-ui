@@ -1,3 +1,5 @@
+feat: add hyperlink to list of lessons with question
+
 task: change continoussave to prevent confirm pop-up while student is doing lesson
 
 fix log in key flashes in lessons (previous commit) & translation key for login user not validated
