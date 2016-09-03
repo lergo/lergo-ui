@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, $filter, LergoClient, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSave, $rootScope) {
+angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl', function($scope, $filter, LergoClient, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope) {
 
 	$log.info('loading invitation', $routeParams.invitationId);
 	var errorWhileSaving = false;
-	var updateChange = new ContinuousSave({
+	var updateChange = new ContinuousSaveReports({
 		'saveFn' : function(value) {
 			$log.info('updating report');
 			var finished = value.finished; // value.data is the invitation. we
