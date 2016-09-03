@@ -4,7 +4,7 @@
      this was not useful to students and was only worrysome. */
 
 angular.module('lergoApp')
-    .factory('ContinuousSaveReports', function (localStorageService, $timeout, $rootScope, $log,$filter) {
+    .factory('ContinuousSaveReports', function (localStorageService, $timeout, $rootScope, $log) {
 
 
         var _preventedFlag = {};
