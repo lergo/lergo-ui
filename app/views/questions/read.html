@@ -128,7 +128,7 @@
                                             <div class="title">{{'questions.lessonUsed' | translate}}</div>
                                             <div ng-repeat="l in usedInLessons">
                                                 <i class="fa fa-star fa-fw"></i>
-                                                {{l.name}}
+                                             <a ng-href="#!/public/lessons/{{l._id}}/intro"> {{l.name}}</a>
                                             </div>
                                         </div>
                                         <div class="read-more" ng-click="more=!more">
