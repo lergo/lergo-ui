@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function ($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce, LergoClient, shuffleFilter, $window) {
+angular.module('lergoApp').controller('LessonsStepDisplayCtrl',
+    function ($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce, LergoClient, shuffleFilter, $window) {
     $log.info('showing step');
 
     // used to fix bug where hint stays open when switching between questions.
@@ -459,7 +460,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl', function ($scope
     // if step defined with "allow retry" - we will try again, otherwise we move
     // to next item.
     $scope.retryOrNext = function () {
-        if ($scope.step.retryQuestion) {
+        if ($scope.step.retryQuestion && $scope.quizItem.type !== LergoClient.questions.QUESTION_TYPE.OPEN_QUESTION) {
             $scope.tryAgain();
         } else {
             $scope.nextQuizItem();
