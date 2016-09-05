@@ -1,15 +1,15 @@
 .lesson-preview {
 
-    .collapsible{
+    .collapsible {
         @extend .lergo-h1;
         font-size: 20px;
     }
-    .title{
+    .title {
         @extend .lergo-h1;
         font-size: 15px;
         white-space: normal;
     }
-    .sub-title{
+    .sub-title {
         @extend .lergo-h4;
         font-size: 18px;
         color: #949494;
@@ -18,8 +18,13 @@
     .header {
         img {
             width: 100%;
+
         }
-        .title{
+        .fa-university {
+            @extend .fa-university;
+            font-size: 150px;
+        }
+        .title {
             text-align: center;
         }
         height: inherit;
