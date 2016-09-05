@@ -1,0 +1,30 @@
+<div style="border: 5px solid #949494;border-radius: 10px;" class="row row-nested top10">
+    <div class="col-md-12">
+        <div class="row row-nested top10">
+            <div class="col-md-10">
+                <p class="lergo-h4">{{quizItem.question}}</p>
+            </div>
+            <div class="col-md-2 text-right">
+                <button ng-show="!!quizItem.hint" popover-placement="top"
+                        popover="{{quizItem.hint}}" class="btn-link hint"
+                        popover-trigger="focus" tabindex="0">{{'hint' | translate}}
+                </button>
+            </div>
+        </div>
+        <div class="row row-nested top10 help">
+            <div class="col-md-12">
+                <p class="question-help-text">{{quizItem.helpText}}</p>
+            </div>
+        </div>
+        <div class="row row-nested top10">
+            <div quiz-item-media quiz-item="quizItem" class="col-md-12"></div>
+        </div>
+        <div class="row row-nested top10">
+
+            <div ng-include="getQuestionTemplate()" class="col-md-12"></div>
+        </div>
+        <br/>
+    </div>
+
+</div>
+

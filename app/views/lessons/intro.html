@@ -9,7 +9,8 @@
                     <div class="start-lesson">
 						<span class="button">
                             <!--<input autofocus ng-click="startLesson()" ng-show="!!lesson" autofocus on-enter="startLesson()"/>-->
-							<button class="btn-link" ng-click="startLesson()" ng-show="!!lesson" autofocus on-enter="startLesson()">
+							<button class="btn-link" ng-click="startLesson()" ng-show="!!lesson" autofocus
+                                    on-enter="startLesson()">
                                 <i class="fa fa-play-circle-o " tooltip="{{'lessons.startLesson' | translate}}"></i>
                             </button>
 						</span>
@@ -22,15 +23,12 @@
                             <br/>
                         </div>
                         <div class="action-items-bottom">
-                            <a class="btn-link" ng-click="preview()" ng-show="!!permissions.canPreview">
-                                <i class="fa fa-search-plus" tooltip="{{'lessons.tooltip.preview' | translate}}"></i>
-                            </a>
-                            <br/>
                             <a class="btn-link" ng-click="copyLesson(lesson)" ng-show="!!permissions.canCopy">
                                 <i class="fa fa-copy" tooltip="{{'lessons.tooltip.copy' | translate}}"></i>
                             </a>
                             <br/>
-                            <a href="#!/user/lesson/{{lesson._id}}/update" tooltip="{{'lessons.tooltip.edit' | translate}}"
+                            <a href="#!/user/lesson/{{lesson._id}}/update"
+                               tooltip="{{'lessons.tooltip.edit' | translate}}"
                                ng-show="!!permissions.canEdit">
                                 <i class="fa fa-pencil-square-o"></i>
                             </a>
@@ -129,6 +127,13 @@
                                     {{'share' | translate}}
                                 </button>
                             </div>
+                            <div class="action-item" ng-show="!isInvitationLink()">
+                                <button class="btn-link" ng-click="previewLesson()"
+                                        tooltip="{{'lessons.tooltip.preview' | translate}}">
+                                    <i class="fa fa-search-plus"></i>
+                                    {{'lessonIntro.action.preview.title' | translate}}
+                                </button>
+                            </div>
                             <div class="action-item">
                                 <div class="btn-group" dropdown>
                                     <button class="btn-link" dropdown-toggle>
@@ -152,11 +157,13 @@
                                     </ul>
                                 </div>
                             </div>
+
                         </div>
                         <div class="forms">
                             <div ng-show="isActiveAction(actionItems.SHARE)"
                                  ng-include="'views/lessons/intro/_shareForm.html'"></div>
-                            <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form on-close="setActiveAction()"></div>
+                            <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
+                                 on-close="setActiveAction()"></div>
                             <div ng-show="isActiveAction(actionItems.REPORT)"
                                  ng-include="'views/lessons/intro/_reportForm.html'"></div>
                         </div>
