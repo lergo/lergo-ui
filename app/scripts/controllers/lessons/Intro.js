@@ -82,7 +82,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
             // persistScroll();
             var modelContent = {};
             modelContent.templateUrl = 'views/lesson/preview/preview.html';
-            modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
+            modelContent.windowClass = 'lesson-preview-dialog ' + LergoTranslate.getDirection();
             modelContent.backdrop = 'static';
             modelContent.controller = 'LessonPreviewCtrl';
             modelContent.resolve = {
@@ -91,15 +91,6 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
                 },
                 questions: function () {
                     return $scope.questions;
-                    // },
-                    // isUpdate : function() {
-                    //     return isUpdate;
-                    // },
-                    // addItemToQuiz : function() {
-                    //     return addItemToQuiz;
-                    // },
-                    // step : function() {
-                    //     return step;
                 }
             };
             var modelInstance = $modal.open(modelContent);
@@ -198,8 +189,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
         $scope.actionItems = {
             REPORT: 'report',
             INVITE: 'invite',
-            SHARE: 'share',
-            PREVIEW: 'preview'
+            SHARE: 'share'
         };
         var activeAction = null;
         $scope.setActiveAction = function (actionItem) {
