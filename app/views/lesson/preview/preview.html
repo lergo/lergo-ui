@@ -1,4 +1,4 @@
-<div class="model-header text-right">
+<div class="modal-header text-right">
     <button class="btn btn-link btn-lg btn-close-preview" type="button" ng-click="cancel()">
         <i class="fa fa-close"></i>
     </button>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="col-md-9 description">
-                    <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
+                    <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}" target="_blank">
                         {{'reports.click.video' | translate}}</a>
                 <span ng-show="!!step.quizItems">
                      <ng-pluralize count="step.quizItems.length" when="{
@@ -67,7 +67,7 @@
                             'other':'{} {{ &quot;report.questionsInQuiz.other&quot; | translate}}'}">
                      </ng-pluralize>
                 </span>
-                    <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
+                    <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}" target="_blank">
                         {{'reports.click.step' | translate}}
                     </a>
                 </div>
@@ -142,6 +142,9 @@
             </div>
         </div>
     </div>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">{{'cancel' |translate}}</button>
 </div>
 
 
