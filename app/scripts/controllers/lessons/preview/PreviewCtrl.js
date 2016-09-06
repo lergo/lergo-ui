@@ -9,7 +9,6 @@ function lessonPreviewctrl($scope, lesson, questions,$modalInstance) {
     _.forEach(questions,function (q){
         {
             $scope.questions[q._id]= q;
-
         }
     });
 
@@ -19,4 +18,4 @@ function lessonPreviewctrl($scope, lesson, questions,$modalInstance) {
 }
 
 
-angular.module('lergoApp').controller('LessonPreviewCtrl', lessonPreviewctrl);
+angular.module('lergoApp').controller('LessonPreviewCtrl', ['$scope', 'lesson', 'questions','$modalInstance',lessonPreviewctrl]);
