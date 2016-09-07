@@ -28,9 +28,10 @@
                 </div>
                 <div class="row top20 redo-buttons">
                     <div class="col-md-12">
-                        <span class="bold">Age:&nbsp;</span>{{lesson.age}}
-                        &nbsp;&nbsp;&nbsp;
-                        <span class="bold">Subject:&nbsp;</span>{{lesson.subject}}
+                        <span class="bold">{{'fromAge' | translate }}:&nbsp;</span>
+                        {{lesson.age}}&nbsp;&nbsp;&nbsp;
+                        <span class="bold">{{'filters.labels.subject' | translate }}:&nbsp;</span>
+                        {{'filters.subjects.'+lesson.subject | translate}}
                     </div>
                 </div>
             </div>
@@ -95,7 +96,7 @@
                         </div>
                     </div>
                     <div class="col-md-9 description">
-                        <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
+                        <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro" target="_blank">
                             {{'reports.click.nextLesson' | translate}}
                         </a>
                     </div>
@@ -112,7 +113,7 @@
                         </div>
                     </div>
                     <div class="col-md-9 description">
-                        <a ng-href="#!/public/lessons/{{lesson.priorLessonId}}/intro">
+                        <a ng-href="#!/public/lessons/{{lesson.priorLessonId}}/intro" target="_blank">
                             {{'reports.click.priorLesson' | translate}}
                         </a>
                     </div>
