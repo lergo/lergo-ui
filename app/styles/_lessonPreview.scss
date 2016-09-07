@@ -22,13 +22,13 @@
         }
         .fa-university {
             @extend .fa-university;
-            font-size: 150px;
+            font-size: 105px;
         }
         .title {
             text-align: center;
         }
         height: inherit;
-        min-height: 210px;
+        min-height: 140px;
         padding: 10px;
         background-color: #EFEFEF;
         margin-bottom: 20px;
@@ -41,7 +41,7 @@
         }
     }
     .header-desc {
-        min-height: 120px;
+        min-height: 80px;
     }
 
     .step {
@@ -105,6 +105,14 @@
                 .question-media {
                     padding-left: 10px;
                 }
+                .answers {
+                    .true-false-options {
+                        .true-false-option {
+                            padding: 15px;
+                            margin-left: 5px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -113,6 +121,7 @@
 .lesson-preview-dialog .modal-dialog {
     width: 66%;
     min-width: 900px;
+    min-height: 90%;
     .modal-content {
         .modal-header{
             padding: 0px;
@@ -123,6 +132,7 @@
         }
         .modal-footer {
             text-align: left;
+            padding: 5px 15px;
         }
     }
 }
