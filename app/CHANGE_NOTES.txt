@@ -1,3 +1,7 @@
+task: LERGO-642 add logo for intelliJIDEA
+
+style: LERGO-641 change sort order of users in admin-manage-users
+
 style: add colors (green : true, red: false) for 'validated' in admin userindex
 
 task: change continoussave to prevent confirm pop-up while student is doing lesson
