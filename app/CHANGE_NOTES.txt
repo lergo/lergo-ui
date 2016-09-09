@@ -1,3 +1,5 @@
+style: LERGO-643 change reset password wording for improved clarity
+
 task: LERGO-642 add logo for intelliJIDEA
 
 style: LERGO-641 change sort order of users in admin-manage-users

@@ -405,7 +405,10 @@
         "fullName": "full name",
         "password": "password",
         "passwordConfirm": "Confirm password",
-        "username": "username"
+        "username": "username",
+        "resetPassword":"RESET PASSWORD",
+        "enterNewPassword": "enter new password",
+        "confirmNewPassword": "confirm new password"
     },
     "invitations": {
         "create": "Create New Invite",

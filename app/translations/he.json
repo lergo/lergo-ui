@@ -140,7 +140,8 @@
         "email": "אימייל",
         "fullName": "שם מלא",
         "password": "סיסמה",
-        "username": "שם משתמש"
+        "username": "שם משתמש",
+        "resetPassword":"שינוי סיסמה"
     },
     "invitations": {
         "create": "ליצירת הזמנה חדשה",
@@ -307,7 +308,7 @@
         "videoUrlHint": "הוספת וידיאו השאלה , בבקשה לעדכן את כתובת האתר וידאו",
         "yourAnswer": "התשובה של הסטודנט",
         "yourAnswers": "התשובה של סטודנטים (ים )"
-     
+
     },
     "quizItem": {
         "answer": {
