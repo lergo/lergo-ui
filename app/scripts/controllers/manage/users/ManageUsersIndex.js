@@ -23,7 +23,7 @@ angular.module('lergoApp')
             var queryObj = {
                 'filter' : _.merge({}, $scope.adminFilter),
                 'sort' : {
-                    'lastUpdate' : -1
+                    '_id' : -1
                 },
                 'dollar_page' : $scope.filterPage
             };
