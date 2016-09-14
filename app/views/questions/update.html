@@ -4,6 +4,6 @@
 	<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving'| translate) || ('saved' | translate) }}</div>
 	<div>
 		<button class="btn" ng-click="done()" ng-disabled="isSaving()||!isValid(quizItem)">{{ 'done' | translate }}</button>
-		<a class="btn update-question-preview" ng-disabled="isSaving()||!isValid(quizItem)" href="#!/user/questions/{{quizItem._id}}/read"> {{ 'preview' | translate }} </a>
+		<a class="btn update-question-preview" ng-disabled="isSaving()||!isValid(quizItem)" href="#!/user/questions/{{quizItem._id}}/read"> {{ 'previewQuestion' | translate }} </a>
 	</div>
 </div>
