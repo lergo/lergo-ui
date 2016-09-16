@@ -3,8 +3,8 @@ the format from interfering with the before lesson invite form-->
 
 <div class="card">
     <div class="card-block">
-        <span class="lesson-invite-after" ng-class="{instanceafter:isClassMode()}"   ng-click="setClassMode()"> {{'lessons.inviteLesson.class.msg' | translate }}</span>
         <span class="lesson-invite-after" ng-class="{instanceafter:isStudentMode()}"  ng-click="setStudentMode()">{{'lessons.inviteLesson.student.msg'| translate}}</span>
+        <span class="lesson-invite-after" ng-class="{instanceafter:isClassMode()}"   ng-click="setClassMode()"> {{'lessons.inviteLesson.class.msg' | translate }}</span>
         <button  class="lesson-invite-close-button btn-link close-button" ng-click="onCloseAfter()"><span class="fa fa-times"></span></button>
     </div>
 
