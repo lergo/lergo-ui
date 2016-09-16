@@ -71,7 +71,7 @@
 										<td>
 											<span tooltip="{{'homepage.tooltip.user' | translate}}">
 												<i class="fa fa-user fa-fw"></i>
-												{{lesson.user.username}}
+												{{lesson.user.username | limitTo: 8 | lowercase}}
 											</span>
 										</td>
 										<td>
@@ -97,7 +97,7 @@
 										<td colspan="2">
 											<span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | translate}}">
 												<i class="fa fa-book fa-fw"></i>
-												{{lesson.subject && ('filters.subjects.' + lesson.subject | translate) ||""}}
+												{{lesson.subject && ('filters.subjects.' + lesson.subject | translate) | limitTo: 8 ||""}}
 											</span>
 										</td>
 									</tr>

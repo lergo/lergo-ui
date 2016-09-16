@@ -8,7 +8,7 @@
 		</div>
 		<div quiz-item-media quiz-item="quizItem"></div>
 		<div class="answers">
-			<input id="exactQuestionText" ng-model="quizItem.userAnswer" autofocus ng-init="setFocus('exactQuestionText')" />
+			<input id="exactQuestionText" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="quizItem.userAnswer" autofocus ng-init="setFocus('exactQuestionText')" />
 		</div>
 		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
 	</div>
