@@ -1,0 +1,27 @@
+
+.instanceafter {
+    border-bottom: 3px solid #428bca;
+    font-weight: bold;
+    color: #949494;
+}
+.lesson-invite-after {
+    color: #949494;
+    font-size: 20px;
+    margin: 0 15px;
+}
+.lesson-invite-after:hover {
+    color: #337ab7;
+}
+
+.lesson-invite-close-button {
+    float: right;
+}
+
+.rtl {
+    .lesson-invite-close-button {
+        float: left;
+    }
+}
+
+
+
