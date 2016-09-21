@@ -1,3 +1,5 @@
+feat: LERGO-656 add reset (X) button to home page search
+
 feat: LERGO-653 to 655 change username max length & lowercase etc on homepage and disable spellchecker
 
 fix:  LERGO 650 fix invite form after lesson
