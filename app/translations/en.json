@@ -115,7 +115,10 @@
                 "users": "Users"
             },
             "logout": "Logout",
+
             "searchPlaceholder": "What would you like to learn about?",
+            "searchReset": "Reset the search",
+            "searchWord": "Search for a word in the title or description",
             "searchUnderConstruction": "Search feature under construction... for now, please use the filters below.",
             "siteLanguage": "Click to change Site Language",
             "userName": {
