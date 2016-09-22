@@ -212,8 +212,12 @@ $FOOTER_HEIGHT: 170px !default;
                         /* Internet Explorer 10+ */
                         color: white;
                     }
+
                     padding: 0 10px;
 
+                }
+                .searchcolor {
+                    background-color: green;
                 }
                 .cancel-search {
                     position:relative;
