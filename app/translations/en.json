@@ -396,7 +396,9 @@
             "questions": "number of questions",
             "subject": "subject",
             "user": "by",
-            "views": "number of views"
+            "views": "number of views",
+            "searchReset": "reset the search",
+            "searchWord": "search for a word in the title or description"
         },
         "years": "Years"
     },
