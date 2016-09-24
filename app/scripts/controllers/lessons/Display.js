@@ -110,7 +110,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl',
 		// avoiding clicking more then once
 		$timeout(function(){
             $scope.continueBtnDisable = false;
-        },1000)
+        },1000);
 
 	};
 	$scope.loaded = true;
