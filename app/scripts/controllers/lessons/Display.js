@@ -102,10 +102,11 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 	};
 
 	$scope.nextStep = function() {
+        $scope.continueBtnDisable = true;
 		if ($scope.hasNextStep()) {
 			$scope.currentStepIndex++;
-
 		}
+        $scope.continueBtnDisable = false;
 	};
 	$scope.loaded = true;
 

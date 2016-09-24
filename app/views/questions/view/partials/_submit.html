@@ -3,6 +3,6 @@
 		<button ng-show="!getAnswer() && !hideSubmitButton" ng-disabled="!canSubmit(quizItem)" type="submit" class="btn" ng-click="checkAnswer()">{{
 			'button.submit' | translate }}</button>
         <div quiz-next-question-button></div>
-		<button ng-show="!!isQuizDone()" class="btn lergo-next-step" ng-click="nextStep()">{{ 'lessons.letsContinue' | translate }}</button>
+		<button ng-show="!!isQuizDone()" class="btn lergo-next-step" ng-click="nextStep()" ng-disabled="continueBtnDisable">{{ 'lessons.letsContinue' | translate }}</button>
 	</div>
 </div>
