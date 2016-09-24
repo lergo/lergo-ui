@@ -52,7 +52,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 practiceMistake pull-right" ng-show="wrongQuestions.length>0">
-                        <a show-logged-in href="" ng-click="practiceMistakes()">
+                        <a show-logged-in href="" ng-click="practiceMistakes()" ng-disabled="practiseBtnDisable">
                             <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
                         <a show-anonymous href="" popover-placement="bottom" popover-trigger="focus"

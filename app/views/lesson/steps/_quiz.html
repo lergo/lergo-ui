@@ -65,7 +65,7 @@
 
 <div class="row row-nested top20">
     <div class="col-md-12">
-        <button class="btn" ng-click="addCreateQuestion(step)">{{ 'lessons.addQuestion' | translate }}</button>
+        <button class="btn" ng-click="addCreateQuestion(step)" ng-disabled="addQuestionBtnDisable">{{ 'lessons.addQuestion' | translate }}</button>
         <sup>
             <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
             <a popover="{{'quiz.addQuestionHint' | translate}}" class="fa fa-question-circle"

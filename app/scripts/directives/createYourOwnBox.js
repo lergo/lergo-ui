@@ -7,6 +7,7 @@ angular.module('lergoApp')
             restrict: 'A',
             link: function postLink($scope/*, element, attrs*/) {
                 $scope.create = function () {
+                    $scope.createBtnDisable=true;
                     LergoClient.lessons.create().then(function (result) {
                         var lesson = result.data;
                         $scope.errorMessage = null;
@@ -14,6 +15,7 @@ angular.module('lergoApp')
                     }, function (result) {
                         $scope.errorMessage = 'Error in creating Lesson : ' + result.data.message;
                         $log.error($scope.errorMessage);
+                        $scope.createBtnDisable=false;
                     });
                 };
             }

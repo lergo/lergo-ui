@@ -62,6 +62,7 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 	};
 
 	$scope.create = function() {
+        $scope.createLessonBtnDisable=true;
 		LergoClient.lessons.create().then(function(result) {
 			var lesson = result.data;
 			$scope.errorMessage = null;
@@ -69,6 +70,7 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 		}, function(result) {
 			$scope.errorMessage = 'Error in creating Lesson : ' + result.data.message;
 			$log.error($scope.errorMessage);
+            $scope.createLessonBtnDisable=false;
 		});
 	};
 

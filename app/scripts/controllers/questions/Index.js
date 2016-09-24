@@ -27,6 +27,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 	};
 
 	$scope.createNewQuestion = function() {
+        $scope.createQuestionBtnDisable=true;
 		QuestionsService.createQuestion({
 			'language' : LergoTranslate.getLanguageObject().name
 		}).then(function(result) {
@@ -36,6 +37,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 			$scope.error = result.data;
 			$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
 			$log.error($scope.errorMessage);
+            $scope.createQuestionBtnDisable=false;
 		});
 	};
 

@@ -320,6 +320,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
 			};
 			$scope.addCreateQuestion = function(step) {
+                $scope.addQuestionBtnDisable=true;
 				QuestionsService.createQuestion({
 					'subject' : $scope.lesson.subject,
 					'age' : $scope.lesson.age,
@@ -328,10 +329,12 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				}).then(function(result) {
 					$scope.errorMessage = null;
 					openQuestionDialog(step, result.data, false);
+                    $scope.addQuestionBtnDisable=false;
 				}, function(result) {
 					$scope.error = result.data;
 					$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
 					$log.error($scope.errorMessage);
+                    $scope.addQuestionBtnDisable=false;
 				});
 			};
 

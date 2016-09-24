@@ -20,7 +20,7 @@
 				[ {{ 'questions.total' | translate }}: {{filterPage.count}} ]
 			</div>
 			<div class="page-content-titles-actions">
-				<button class="btn btn-start" ng-click="createNewQuestion()">{{ 'questions.createNew' | translate }}</button>
+				<button class="btn btn-start" ng-click="createNewQuestion()" ng-disabled="createQuestionBtnDisable">{{ 'questions.createNew' | translate }}</button>
 			</div>
 		</div>
 		<div class="page-content-sidebar">

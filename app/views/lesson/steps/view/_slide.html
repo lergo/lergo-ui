@@ -16,7 +16,7 @@
 </div>
 <br/>
 <br/>
-<div ng-show="hasNextStep()" style="text-align: center">
-    <button ng-click="nextStep()" class="btn">{{ 'lessons.letsContinue' | translate }}</button>
+<div ng-show="hasNextStep()" class="text-center">
+    <button ng-click="nextStep()" class="btn" ng-disabled="continueBtnDisable" >{{ 'lessons.letsContinue' | translate }}</button>
 </div>
 </div>

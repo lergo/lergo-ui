@@ -18,7 +18,7 @@
 				[ {{ 'lessons.total' | translate }}: {{filterPage.count}} ]
 			</div>
 			<div class="page-content-titles-actions">
-				<button ng-click="create()" class="btn btn-start">{{ 'lessons.create' | translate }}</button>
+				<button ng-click="create()" class="btn btn-start" ng-disabled="createLessonBtnDisable">{{ 'lessons.create' | translate }}</button>
 			</div>
 		</div>
 		<div class="page-content-sidebar">

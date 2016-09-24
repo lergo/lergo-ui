@@ -3,7 +3,7 @@
 		<div class="create">{{ 'homepage.createYourOwn' | translate }}</div>
 		<br />
 		<!-- guy - part of fix for newline on homepage.free -->
-		<a  show-logged-in class="start btn btn-start" ng-click="create()">{{ 'homepage.create' | translate }}</a>
+		<a  show-logged-in class="start btn btn-start" ng-click="create()" ng-disabled="createBtnDisable">{{ 'homepage.create' | translate }}</a>
 		<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
 		<a show-anonymous class="start btn btn-start" href="" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
 			'homepage.create' | translate }}</a>

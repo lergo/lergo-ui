@@ -26,6 +26,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
         };
 
         $scope.startLesson = function (lessonId) {
+            $scope.startBtnDisable=true;
             if (!lessonId) {
                 redirectToInvitation($scope.report.data.lesson._id, $scope.report.invitationId);
             } else {
@@ -90,7 +91,15 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
         };
 
         $scope.practiceMistakes = function () {
-            createLessonFromWrongQuestions();
+            $scope.practiseBtnDisable = true;
+            LergoClient.lessons.createLessonFromWrongQuestions($scope.report, $scope.wrongQuestions).then(
+                function (lesson) {
+                    $scope.startLesson(lesson._id);
+                    $scope.practiseBtnDisable = false;
+                }, function () {
+                    $log.error('Error in creating Practise Lesson');
+                    $scope.practiseBtnDisable = false;
+                });
         };
         function getWrongQuestion(report) {
             $scope.wrongQuestions = [];
@@ -99,39 +108,6 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
                     $scope.wrongQuestions.push(answer.quizItemId);
                 }
             });
-        }
-
-        function createLessonFromWrongQuestions() {
-            if ($scope.wrongQuestions.length > 0) {
-                var report = $scope.report;
-                LergoClient.lessons.create().then(function (result) {
-                    var lesson = result.data;
-                    lesson.name = $filter('translate')('lesson.practice.title') + report.data.lesson.name;
-                    lesson.language = LergoTranslate.getLanguageObject().name;
-                    lesson.subject = report.data.lesson.subject;
-                    lesson.steps = [];
-                    var stepsWithoutRetry = _.filter(report.data.lesson.steps, function (s) {
-                        if (s.type === 'quiz') {
-                            return !s.retryQuestion;
-                        }
-                    });
-                    lesson.description = report.data.lesson.description;
-                    lesson.lastUpdate = new Date().getTime();
-                    lesson.temporary = true;
-                    var step = {
-                        'type': 'quiz',
-                        'quizItems': [],
-                        'testMode': 'False',
-                        'shuffleQuestion': true,
-                        retryQuestion: stepsWithoutRetry.length === 0
-                    };
-                    lesson.steps.push(step);
-                    lesson.steps[0].quizItems = _.uniq($scope.wrongQuestions);
-                    LergoClient.lessons.update(lesson).then(function () {
-                        $scope.startLesson(lesson._id);
-                    });
-                });
-            }
         }
 
     })
