@@ -689,6 +689,9 @@ $COLOR_19: #2a6496 !default;
 .font-medium{
     font-size: medium;
 }
+.modal-footer{
+    text-align: left;
+}
 
 .rtl {
     .text-right {
@@ -701,6 +704,9 @@ $COLOR_19: #2a6496 !default;
     .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,
     .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
         float: right;
+    }
+    .modal-footer{
+        text-align: right;
     }
 }
 
