@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $routeParams, LergoClient, ReportsService, $log, $controller, $rootScope, $location, shuffleQuestionsFilter, $window, $route ) {
+angular.module('lergoApp').controller('LessonsDisplayCtrl',
+    function($scope, $routeParams, LergoClient, ReportsService, $log, $controller, $rootScope, $location, shuffleQuestionsFilter, $window, $route ,$timeout) {
 
 	// guy - using this flag because ng-cloak and other solutions will not apply
 	// to this scenario.
@@ -106,8 +107,13 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl', function($scope, $ro
 		if ($scope.hasNextStep()) {
 			$scope.currentStepIndex++;
 		}
-        $scope.continueBtnDisable = false;
+		// avoiding clicking more then once
+		$timeout(function(){
+            $scope.continueBtnDisable = false;
+        },1000);
+
 	};
 	$scope.loaded = true;
+
 
 });

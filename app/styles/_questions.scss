@@ -122,6 +122,9 @@
     width: 96%;
     min-width: 1000px;
     .modal-content {
+        .modal-header{
+            padding: 0px;
+        }
         .modal-body {
             height: 500px;
             overflow-y: auto;
@@ -138,7 +141,6 @@
         .modal-footer {
             padding: 5px 20px 5px;
             margin-top: 0px;
-            text-align: left;
             .lergo-h3 {
                 display: inline;
             }
