@@ -1,71 +1,79 @@
 <div id="questionsIndex" load-filter-and-paging="loadQuestions()">
-	<span class="error">{{error}}</span>
-	<br />
-	<div class="page-content-width page-content-titles" ng-show="!isModal">
-		<div class="page-content-body">
-			<div class="lergo-h1">
-				<div class="btn-group" dropdown>
-					<button type="button" class="btn-link" dropdown-toggle style="color: #5fb9ff; text-decoration: none">
-						<span class="fa fa-caret-down"></span>
-						<span class="lergo-h1">{{('questions.'+ questionToLoad |translate)}} </span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li>
-							<a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.user)">{{'questions.myQuestions'|translate}}</a>
-							<a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.all)">{{'questions.allQuestions'|translate}}</a>
-							<a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.liked)">{{'questions.likedQuestions'|translate}}</a>
-						</li>
-					</ul>
-				</div>
-				[ {{ 'questions.total' | translate }}: {{filterPage.count}} ]
-			</div>
-			<div class="page-content-titles-actions">
-				<button class="btn btn-start" ng-click="createNewQuestion()" ng-disabled="createQuestionBtnDisable">{{ 'questions.createNew' | translate }}</button>
-			</div>
-		</div>
-		<div class="page-content-sidebar">
-			<div class="lergo-h1">{{ 'questions.filter' | translate }}</div>
-		</div>
-	</div>
-	<div class="page-content-width">
-		<div class="page-content-body">
+    <span class="error">{{error}}</span>
+    <br/>
+    <div class="page-content-width page-content-titles" ng-show="!isModal">
+        <div class="page-content-body">
+            <div class="lergo-h1">
+                <div class="btn-group" dropdown>
+                    <button type="button" class="btn-link" dropdown-toggle
+                            style="color: #5fb9ff; text-decoration: none">
+                        <span class="fa fa-caret-down"></span>
+                        <span class="lergo-h1">{{('questions.'+ questionToLoad |translate)}} </span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.user)">{{'questions.myQuestions'|translate}}</a>
+                            <a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.all)">{{'questions.allQuestions'|translate}}</a>
+                            <a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.liked)">{{'questions.likedQuestions'|translate}}</a>
+                        </li>
+                    </ul>
+                </div>
+                [ {{ 'questions.total' | translate }}: {{filterPage.count}} ]
+            </div>
+            <div class="page-content-titles-actions">
+                <button class="btn btn-start" ng-click="createQuestionBtnDisable || createNewQuestion()"
+                        ng-disabled="createQuestionBtnDisable">
+                    <i ng-show="createQuestionBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+                    {{ 'questions.createNew' | translate }}
+                </button>
+            </div>
+        </div>
+        <div class="page-content-sidebar">
+            <div class="lergo-h1">{{ 'questions.filter' | translate }}</div>
+        </div>
+    </div>
+    <div class="page-content-width">
+        <div class="page-content-body">
             <div filter-is-active="questionsFilterOpts" section="questions"></div>
-			<table ng-show="items.length > 0" class="table ">
-				<thead>
-					<tr style="font-weight: bold">
-						<td ng-show="isModal">
-							<input type="checkbox" ng-click="selectAll($event.target.checked)" />
-						</td>
-						<td>{{ 'questions.question' | translate }}</td>
-						<td>{{ 'questions.answer' | translate }}</td>
-						<td ng-show="questionToLoad ===QuestionTypeToLoad.all">{{ 'questions.createdBy' | translate }}</td>
-						<td>{{ 'questions.language' | translate}}</td>
-						<td>{{ 'questions.subject' | translate}}</td>
-						<td>{{ 'questions.age' | translate}}</td>
-					</tr>
-				</thead>
-				<tr ng-repeat="item in items |orderBy:'-lastUpdate'" ng-class="{'disabled':!!item.alreadyAdded}">
-					<td ng-show="isModal">
-						<input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected" />
-					</td>
-					<td class="question">
-						<span ng-show="!!isModal">{{item.question}}</span>
-						<div ng-show="!isModal" question-read-link question="item"></div>
-					</td>
-					<td class="answer">{{ getAnswers(item) | limitTo:30}}</td>
-					<td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
-					<td class="answer">{{item.language && ('filters.languages.' + item.language | translate) || ""}}</td>
-					<td class="answer">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
-					<td class="answer">{{item.age &&('+'+ item.age) || ""}}</td>
-				</tr>
-			</table>
-			<div class="page-content-body text-center" ng-show="!items || items.length == 0"><span class="alert alert-warning font-medium">{{ 'questions.noQuestions' | translate }}</span></div>
-		</div>
+            <table ng-show="items.length > 0" class="table ">
+                <thead>
+                <tr style="font-weight: bold">
+                    <td ng-show="isModal">
+                        <input type="checkbox" ng-click="selectAll($event.target.checked)"/>
+                    </td>
+                    <td>{{ 'questions.question' | translate }}</td>
+                    <td>{{ 'questions.answer' | translate }}</td>
+                    <td ng-show="questionToLoad ===QuestionTypeToLoad.all">{{ 'questions.createdBy' | translate }}</td>
+                    <td>{{ 'questions.language' | translate}}</td>
+                    <td>{{ 'questions.subject' | translate}}</td>
+                    <td>{{ 'questions.age' | translate}}</td>
+                </tr>
+                </thead>
+                <tr ng-repeat="item in items |orderBy:'-lastUpdate'" ng-class="{'disabled':!!item.alreadyAdded}">
+                    <td ng-show="isModal">
+                        <input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
+                    </td>
+                    <td class="question">
+                        <span ng-show="!!isModal">{{item.question}}</span>
+                        <div ng-show="!isModal" question-read-link question="item"></div>
+                    </td>
+                    <td class="answer">{{ getAnswers(item) | limitTo:30}}</td>
+                    <td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
+                    <td class="answer">{{item.language && ('filters.languages.' + item.language | translate) || ""}}
+                    </td>
+                    <td class="answer">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
+                    <td class="answer">{{item.age &&('+'+ item.age) || ""}}</td>
+                </tr>
+            </table>
+            <div class="page-content-body text-center" ng-show="!items || items.length == 0"><span
+                class="alert alert-warning font-medium">{{ 'questions.noQuestions' | translate }}</span></div>
+        </div>
 
-		<div class="sidebar page-content-sidebar">
-			<div lergo-filter no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()" on-load="filterLoaded()"
-				opts="questionsFilterOpts"></div>
-		</div>
-	</div>
-	<div lergo-paging page="filterPage" on-change="loadQuestions()" on-load="pagingLoaded()"></div>
+        <div class="sidebar page-content-sidebar">
+            <div lergo-filter no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
+                 on-load="filterLoaded()"
+                 opts="questionsFilterOpts"></div>
+        </div>
+    </div>
+    <div lergo-paging page="filterPage" on-change="loadQuestions()" on-load="pagingLoaded()"></div>
 </div>
