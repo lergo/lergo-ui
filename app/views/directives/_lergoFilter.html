@@ -17,9 +17,15 @@
 
     <div ng-show="!!opts.showSearchText">
         <div class="label">{{'filters.labels.text' | translate }}</div>
-        <div>
+        <div class="input-group">
             <input ng-model="model.searchText" ng-model-options="{updateOn:'change blur'}"
-                   placeholder="{{'filters.labels.text' | translate  }}"/>
+                   placeholder="{{'filters.labels.text' | translate  }}" style="border-radius: 0"/>
+            <span class="input-group-addon" style="cursor: pointer">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+            </span>
+            <span ng-show="!!model.searchText" class="cancel-search" ng-click="model.searchText=''">
+                X
+            </span>
         </div>
     </div>
 

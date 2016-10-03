@@ -17,6 +17,9 @@
 <br/>
 <br/>
 <div ng-show="hasNextStep()" class="text-center">
-    <button ng-click="nextStep()" class="btn" ng-disabled="continueBtnDisable" >{{ 'lessons.letsContinue' | translate }}</button>
+    <button ng-click="continueBtnDisable || nextStep()" class="btn" ng-disabled="continueBtnDisable">
+        <i ng-show="continueBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+        {{ 'lessons.letsContinue' | translate }}
+    </button>
 </div>
 </div>
