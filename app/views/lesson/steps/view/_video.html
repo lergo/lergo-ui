@@ -1,11 +1,16 @@
 <div class="lesson-step-video" ng-init="scrollUp()">
-	<div class="lesson-step-title lergo-h1">{{step.title}}</div>
-	<div class="lesson-step-video-content">
-		<iframe width="{{videoSize.width}}" height="{{videoSize.height}}" ng-src="{{getYoutubeEmbedSource(step)}}" frameborder="0" allowfullscreen></iframe>
-	</div>
-	<br />
-	<br />
-	<div ng-show="hasNextStep()" class="text-center">
-		<button ng-click="nextStep()" class="btn" ng-disabled="continueBtnDisable">{{ 'lessons.letsContinue' | translate }}</button>
-	</div>
+    <div class="lesson-step-title lergo-h1">{{step.title}}</div>
+    <div class="lesson-step-video-content">
+        <iframe width="{{videoSize.width}}" height="{{videoSize.height}}" ng-src="{{getYoutubeEmbedSource(step)}}"
+                frameborder="0" allowfullscreen>
+        </iframe>
+    </div>
+    <br/>
+    <br/>
+    <div ng-show="hasNextStep()" class="text-center">
+        <button ng-click="continueBtnDisable || nextStep()" class="btn" ng-disabled="continueBtnDisable">
+            <i ng-show="continueBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+            {{ 'lessons.letsContinue' | translate }}
+        </button>
+    </div>
 </div>

@@ -67,6 +67,7 @@
     <div class="col-md-12">
         <button class="btn" ng-click="addQuestionBtnDisable || addCreateQuestion(step)"
                 ng-disabled="addQuestionBtnDisable">
+            <i ng-show="addQuestionBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
             {{ 'lessons.addQuestion' | translate }}
         </button>
         <sup>

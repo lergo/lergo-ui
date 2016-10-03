@@ -7,6 +7,7 @@
         <div quiz-next-question-button></div>
         <button ng-show="!!isQuizDone()" class="btn lergo-next-step" ng-click="continueBtnDisable || nextStep()"
                 ng-disabled="continueBtnDisable">
+            <i ng-show="continueBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
             {{ 'lessons.letsContinue' | translate }}
         </button>
     </div>
