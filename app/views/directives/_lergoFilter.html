@@ -1,31 +1,35 @@
 <form name="filter" class="filters lergo-form">
-	<div ng-show="!!opts.showStudents" class='container-fluid'>
-		<div class="label">{{'filters.labels.doneByStudent' | translate}}</div>
-		<div class="input">
-			<input type="text" ng-model-options="{debounce:500}" ng-model="reportStudent" typeahead="student._id as student._id for student in students | filter:$viewValue | limitTo:15 ">
-		</div>
-	</div>
+    <div ng-show="!!opts.showStudents" class='container-fluid'>
+        <div class="label">{{'filters.labels.doneByStudent' | translate}}</div>
+        <div class="input">
+            <input type="text" ng-model-options="{debounce:500}" ng-model="reportStudent"
+                   typeahead="student._id as student._id for student in students | filter:$viewValue | limitTo:15 ">
+        </div>
+    </div>
 
     <div ng-show="!!opts.showClass" class='container-fluid'>
         <div class="label">{{'filters.labels.doneByStudentClassname' | translate}}</div>
         <div class="input">
-            <input type="text" ng-model-options="{debounce:500}" ng-model="reportClass" typeahead="class._id as class._id for class in classes | filter:$viewValue | limitTo:15 ">
+            <input type="text" ng-model-options="{debounce:500}" ng-model="reportClass"
+                   typeahead="class._id as class._id for class in classes | filter:$viewValue | limitTo:15 ">
         </div>
     </div>
 
-	<div ng-show="!!opts.showSearchText">
-		<div class="label">{{'filters.labels.text' | translate }}</div>
-		<div>
-			<input ng-model="model.searchText" ng-model-options="{debounce:500}" placeholder="{{'filters.labels.text' | translate  }}" />
-		</div>
-	</div>
+    <div ng-show="!!opts.showSearchText">
+        <div class="label">{{'filters.labels.text' | translate }}</div>
+        <div>
+            <input ng-model="model.searchText" ng-model-options="{updateOn:'change blur'}"
+                   placeholder="{{'filters.labels.text' | translate  }}"/>
+        </div>
+    </div>
 
-	<span ng-show="!!opts.showLimitedLanguage">
+    <span ng-show="!!opts.showLimitedLanguage">
 
 		<div class="label">{{'filters.labels.language' | translate }}</div>
 		<div class="input">
 
-			<select ng-options="l as ('filters.languages.' + l | translate) for l in limitedLanguages track by l" ng-model="filterLanguage">
+			<select ng-options="l as ('filters.languages.' + l | translate) for l in limitedLanguages track by l"
+                    ng-model="filterLanguage">
 			</select>
 		</div>
 	</span>
@@ -35,7 +39,8 @@
 		<div class="label">{{'filters.labels.language' | translate }}</div>
 		<div class="input">
 
-			<select ng-options="l as ('filters.languages.' + l | translate) for l in languages track by l" ng-model="filterLanguage">
+			<select ng-options="l as ('filters.languages.' + l | translate) for l in languages track by l"
+                    ng-model="filterLanguage">
 			</select>
 		</div>
 	</span>
@@ -53,16 +58,18 @@
     <span ng-show="!!opts.showLimitedSubject">
 		<div class="label">{{'filters.labels.subject' | translate }}</div>
 		<div class="input">
-            <select ng-options="s as ('filters.subjects.' + s | translate) for s in limitedSubjects track by s" ng-model="model.subject">
+            <select ng-options="s as ('filters.subjects.' + s | translate) for s in limitedSubjects track by s"
+                    ng-model="model.subject">
                 <option admin-section="!limitations.manageSubject" value="">{{'filters.all'|translate}}</option>
             </select>
         </div>
 	</span>
 
-	<span ng-show="!!opts.showSubject">
+    <span ng-show="!!opts.showSubject">
 		<div class="label">{{'filters.labels.subject' | translate }}</div>
 		<div class="input">
-			<select ng-options="s as ('filters.subjects.' + s | translate) for s in subjects track by s" ng-model="model.subject">
+			<select ng-options="s as ('filters.subjects.' + s | translate) for s in subjects track by s"
+                    ng-model="model.subject">
 				<option value="">{{'filters.all'|translate}}</option>
 			</select>
 		</div>
@@ -71,58 +78,66 @@
     <span ng-show="!!opts.showLimitedAge" class="limited-age">
 		<div class="label">{{'filters.labels.ageRange' | translate }}</div>
 		<div>
-            <input min="{{limitAge.min}}" max="{{limitAge.max}}" size="1" class="number" type="number" ng-model="ageFilter.min" />
+            <input min="{{limitAge.min}}" max="{{limitAge.max}}" size="1" class="number" type="number"
+                   ng-model="ageFilter.min"/>
             {{'filters.to'|translate}}
-            <input min="{{limitAge.min}}" max="{{limitAge.max}}" size="1" class="number" type="number" ng-model="ageFilter.max" />
+            <input min="{{limitAge.min}}" max="{{limitAge.max}}" size="1" class="number" type="number"
+                   ng-model="ageFilter.max"/>
         </div>
 	</span>
 
-	<span ng-show="!!opts.showAge">
+    <span ng-show="!!opts.showAge">
 		<div class="label">{{'filters.labels.ageRange' | translate }}</div>
 		<div>
-			<input min="1" max="100" size="1" class="number" type="number" ng-model="ageFilter.min" />
+			<input min="1" max="100" size="1" class="number" type="number" ng-model="ageFilter.min"/>
 			{{'filters.to'|translate}}
-			<input min="1" max="100" size="1" class="number" type="number" ng-model="ageFilter.max" />
+			<input min="1" max="100" size="1" class="number" type="number" ng-model="ageFilter.max"/>
 		</div>
 	</span>
 
 
-	<span ng-show="!!opts.showViews">
+    <span ng-show="!!opts.showViews">
 		<div class="label">{{'filters.labels.views' | translate }}</div>
 		<div>
-			<input min="1" size="1" class="number" type="number" ng-model="viewsFilter.min" />
+			<input min="1" size="1" class="number" type="number" ng-model="viewsFilter.min"/>
 			{{'filters.to'|translate}}
-			<input min="1" size="1" class="number" type="number" ng-model="viewsFilter.max" />
+			<input min="1" size="1" class="number" type="number" ng-model="viewsFilter.max"/>
 		</div>
 	</span>
-	<span ng-show="!!opts.showLimitedLessonStatus">
+    <span ng-show="!!opts.showLimitedLessonStatus">
 		<div class="label">{{'filters.labels.status' | translate }}</div>
 		<div class="input">
-			<select ng-options="s as ('filters.status.' + s | translate) for s in limitedLessonStatus" ng-model="limitedLessonStatusValue">
-				<option admin-section="!limitations.editOnlyUnpublishedContent" value="">{{'filters.all'|translate}}</option>
+			<select ng-options="s as ('filters.status.' + s | translate) for s in limitedLessonStatus"
+                    ng-model="limitedLessonStatusValue">
+				<option admin-section="!limitations.editOnlyUnpublishedContent"
+                        value="">{{'filters.all'|translate}}</option>
 			</select>
 		</div>
 	</span>
-	<span ng-show="!!opts.showCorrectPercentage">
+    <span ng-show="!!opts.showCorrectPercentage">
 		<div class="label">{{'filters.labels.correctPercentage' | translate }}</div>
 		<div>
-			<input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce: 500}" ng-model="correctPercentage.min" />
+			<input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce: 500}"
+                   ng-model="correctPercentage.min"/>
 			{{'filters.to'|translate}}
-			<input min="1" max="100" size="1" ng class="number" type="number" ng-model-options="{debounce: 500}" ng-model="correctPercentage.max" />
+			<input min="1" max="100" size="1" ng class="number" type="number" ng-model-options="{debounce: 500}"
+                   ng-model="correctPercentage.max"/>
 		</div>
 	</span>
-	<div ng-show="!!opts.showReportStatus">
+    <div ng-show="!!opts.showReportStatus">
+        <div class="label">{{'filters.labels.status' | translate }}</div>
+        <div class="input">
+            <select ng-options="s as ('filters.status.' + s | translate) for s in reportStatus"
+                    ng-model="reportStatusValue">
+                <option value="">{{'filters.all'|translate}}</option>
+            </select>
+        </div>
+    </div>
+    <span ng-show="!!opts.showInviteStatus">
 		<div class="label">{{'filters.labels.status' | translate }}</div>
 		<div class="input">
-			<select ng-options="s as ('filters.status.' + s | translate) for s in reportStatus" ng-model="reportStatusValue">
-				<option value="">{{'filters.all'|translate}}</option>
-			</select>
-		</div>
-	</div>
-	<span ng-show="!!opts.showInviteStatus">
-		<div class="label">{{'filters.labels.status' | translate }}</div>
-		<div class="input">
-			<select ng-options="s as ('filters.status.' + s | translate) for s in reportStatus" ng-model="inviteStatusValue">
+			<select ng-options="s as ('filters.status.' + s | translate) for s in reportStatus"
+                    ng-model="inviteStatusValue">
 				<option value="">{{'filters.all'|translate}}</option>
 			</select>
 		</div>
@@ -132,15 +147,15 @@
         <div class="label">{{'filters.label.reportLesson' | translate }}</div>
         <div report-lesson-filter="reportLesson" report-type="reportType"></div>
     </div>
-	<!--<div ng-show="!!durationFilter">-->
-	<!--<div class="label">{{'filters.labels.duration' | translate }}</div>-->
-	<!--<div>-->
-	<!--<input min="1" max="100" size="1" class="number" type="number" ng-model="$root.filter.duration.min" />-->
-	<!--{{'filters.to'|translate}}-->
-	<!--<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.duration.max" />-->
-	<!--</div>-->
-	<!--</div>-->
-	<span ng-show="!!opts.showTags">
+    <!--<div ng-show="!!durationFilter">-->
+    <!--<div class="label">{{'filters.labels.duration' | translate }}</div>-->
+    <!--<div>-->
+    <!--<input min="1" max="100" size="1" class="number" type="number" ng-model="$root.filter.duration.min" />-->
+    <!--{{'filters.to'|translate}}-->
+    <!--<input min="1" max="100" size="1" ng class="number" type="number" ng-model="$root.filter.duration.max" />-->
+    <!--</div>-->
+    <!--</div>-->
+    <span ng-show="!!opts.showTags">
 		<div>
 			<div class="label">{{'filters.labels.tags' | translate }}</div>
 			<div>
@@ -148,32 +163,36 @@
 			</div>
 		</div>
 	</span>
-	<div ng-show="!!opts.showCreatedBy" class='container-fluid'>
-		<div class="label">{{'filters.labels.createdBy' | translate}}</div>
-		<div class="input">
-			<input type="text" ng-model="createdBy" typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
-		</div>
-	</div>
-	<div ng-show="!!opts.showReportedBy" class='container-fluid'>
-		<div class="label">{{'filters.labels.reportedBy' | translate}}</div>
-		<div class="input">
-			<input type="text" ng-model="reportedBy" typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
-		</div>
-	</div>
+    <div ng-show="!!opts.showCreatedBy" class='container-fluid'>
+        <div class="label">{{'filters.labels.createdBy' | translate}}</div>
+        <div class="input">
+            <input type="text" ng-model="createdBy"
+                   typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
+        </div>
+    </div>
+    <div ng-show="!!opts.showReportedBy" class='container-fluid'>
+        <div class="label">{{'filters.labels.reportedBy' | translate}}</div>
+        <div class="input">
+            <input type="text" ng-model="reportedBy"
+                   typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
+        </div>
+    </div>
     <div ng-show="!!opts.showRoles" class="container-fluid">
         <div class="label">{{'filters.labels.roles' | translate }}</div>
         <div class="input">
-            <input type="text" ng-model="role" typeahead="role as role.name for role in roles | filter:$viewValue | limitTo: 15">
+            <input type="text" ng-model="role"
+                   typeahead="role as role.name for role in roles | filter:$viewValue | limitTo: 15">
         </div>
     </div>
-	<div ng-show="!!opts.showAbuseReportStatus">
-		<div class="label">{{'filters.labels.status' | translate }}</div>
-		<div class="input">
-			<select ng-options="s as ('filters.status.' + s | translate) for s in abuseReportStatus" ng-model="model.status">
-				<option value="">{{'filters.all'|translate}}</option>
-			</select>
-		</div>
-	</div>
+    <div ng-show="!!opts.showAbuseReportStatus">
+        <div class="label">{{'filters.labels.status' | translate }}</div>
+        <div class="input">
+            <select ng-options="s as ('filters.status.' + s | translate) for s in abuseReportStatus"
+                    ng-model="model.status">
+                <option value="">{{'filters.all'|translate}}</option>
+            </select>
+        </div>
+    </div>
 </form>
 
 <div class="clear-filter-section" filter-is-active-show-hide relevancy-opts="opts">
