@@ -1,3 +1,5 @@
+temp: reduce number of totalgit s lessons by 900 (the amount that don't have at least 1 question)
+
 feat: LERGO-656 add reset (X) button to home page search
 
 feat: LERGO-653 to 655 change username max length & lowercase etc on homepage and disable spellchecker
