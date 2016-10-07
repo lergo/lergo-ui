@@ -40,9 +40,7 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl',
 
     $scope.$on('startLesson', function (event, data) {
         $log.info('starting lesson');
-        if (!report.data) {
-            report.data = data;
-        }
+        _.merge(report.data,data); // since we compacted data on report, report it initialized with partial data
     });
 
     $scope.$on('endLesson', function (/* event, data */) {
