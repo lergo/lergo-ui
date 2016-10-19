@@ -137,8 +137,8 @@ describe('Directive: lergoFilter', function () {
     });
 
     it('should update model on report statusValue change', function () {
-        testChangeProperty('reportStatusValue', 'complete', 'data.finished', { 'dollar_exists': true  });
-        testChangeProperty('reportStatusValue', 'incomplete', 'data.finished', { 'dollar_exists': false  });
+        testChangeProperty('reportStatusValue', 'complete', 'finished', { 'dollar_exists': true  });
+        testChangeProperty('reportStatusValue', 'incomplete', 'finished', { 'dollar_exists': false  });
     });
 
     function changeMinMaxFilters(scopeFilter, modelFilter) {
@@ -167,7 +167,7 @@ describe('Directive: lergoFilter', function () {
         var elementScope = element.children().scope();
 
         // guy - removed language because it cannot have value null anymore.. default is current language, and has all/other. so no null. ever..
-        var fields = [ 'subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished' ];
+        var fields = [ 'subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'finished' ];
         _.each( fields, function(field){
             elementScope.model[field] = null;
         });
