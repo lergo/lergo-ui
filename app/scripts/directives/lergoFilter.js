@@ -343,7 +343,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			var _updateReportStatusValue = function(newValue, oldValue) {
 				if (oldValue !== newValue) {
 					if (newValue === 'complete') {
-						$scope.model['finished'] = {
+						$scope.model.finished = {
 							'dollar_exists' : true
 						};
 					} else if (newValue === 'incomplete') {
@@ -353,11 +353,11 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 						// todo - i checked with production, and currently
 						// either it exists with value `true` or it doesn't..
 						// but we have to get rid of the multiple meanings.
-						$scope.model['finished'] = {
+						$scope.model.finished = {
 							'dollar_exists' : false
 						};
 					} else {
-						delete $scope.model['finished'];
+						delete $scope.model.finished;
 					}
 				}
 			};
