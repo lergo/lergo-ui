@@ -501,7 +501,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			$scope.$watch('model', function(newValue, oldValue) {
 
                 if (newValue !== oldValue) {
-                    _.each(['subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'data.finished', 'data.lessonId'], function (prop) {
+                    _.each(['subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'finished', 'data.lessonId'], function (prop) {
                         if ($scope.model[prop] === undefined || $scope.model[prop] === null || $scope.model[prop] === '') {
                             delete $scope.model[prop];
                         }
