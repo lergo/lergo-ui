@@ -1,3 +1,5 @@
+fix: report when invitation was deleted
+
 temp: reduce number of total lessons by 900 (the amount that don't have at least 1 question)
 
 feat: LERGO-656 add reset (X) button to home page search
