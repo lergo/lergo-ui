@@ -1,4 +1,5 @@
-<button ng-show="showNextQuestion()" class="btn lergo-show-next-question-btn" ng-click="onQuizNextQuestionButtonClick()">
+<button ng-show="showNextQuestion()" class="btn lergo-show-next-question-btn" ng-click="nextQuesBtnDisable || onQuizNextQuestionButtonClick()">
+    <i ng-show="nextQuesBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
     {{ 'nextQuestion' | translate }}
     <span class="fa fa-forward  right-arrow"></span>
     <span class="fa fa-backward left-arrow"></span>

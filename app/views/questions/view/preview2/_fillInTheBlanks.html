@@ -1,1 +1,10 @@
 <!--Nothing to display as answer-->
+<div class="question-title" style="line-height: 3">
+    <span class="lergo-h4" style="line-height: 0.75"
+          ng-repeat="option in quizItem.question.split('___') track by $index">
+			<span class="lergo-h4">{{option}}</span>
+			<span ng-show="!$last" style="display: inline-block;">
+			    <input style="width:50px; display: inline; min-height: 28px;">
+			</span>
+		</span>
+</div>

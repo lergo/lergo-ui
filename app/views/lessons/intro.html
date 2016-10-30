@@ -1,8 +1,8 @@
 <div class="base-layout" id="lessonIntro">
-    <div class="page-content-width">
+    <div  class="page-content-width">
         <div class="lesson-intro-content clearfix">
             <div class="page-content-body">
-                <div class="lesson lergo-body-tile">
+                <div cg-busy="[copyLessonPromise,deleteLessonPromise,]" class="lesson lergo-body-tile">
                     <div class="image">
                         <div lesson-title-image lesson="lesson"></div>
                     </div>
@@ -23,9 +23,10 @@
                             <br/>
                         </div>
                         <div class="action-items-bottom">
-                            <a class="btn-link" ng-click="copyLesson(lesson)" ng-show="!!permissions.canCopy">
+                            <button class="btn-link" ng-click="copyBtnDisable || copyLesson(lesson)"
+                               ng-show="!!permissions.canCopy">
                                 <i class="fa fa-copy" tooltip="{{'lessons.tooltip.copy' | translate}}"></i>
-                            </a>
+                            </button>
                             <br/>
                             <a href="#!/user/lesson/{{lesson._id}}/update"
                                tooltip="{{'lessons.tooltip.edit' | translate}}"
@@ -37,15 +38,15 @@
                     </div>
                     <div class="stats">
                         <span class="stats-button age-limit-{{lesson.age}} no-color" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|translate}} </span>
-						<span class="stats-button" tooltip="{{'homepage.tooltip.views' | translate}}">
+                        <span class="stats-button" tooltip="{{'homepage.tooltip.views' | translate}}">
 							<i class="fa fa-eye fa-fw"></i>
 							{{0+lesson.views}}
 						</span>
-						<span class="stats-button" tooltip="{{'homepage.tooltip.questions' | translate}}">
+                        <span class="stats-button" tooltip="{{'homepage.tooltip.questions' | translate}}">
 							<i class="fa fa-question-circle fa-fw"></i>
 							{{ lesson | countQuestionsOnLesson }}
 						</span>
-						<span class="stats-button" tooltip="{{'homepage.tooltip.likes' | translate}}">
+                        <span class="stats-button" tooltip="{{'homepage.tooltip.likes' | translate}}">
 							<i class="fa fa-heart-o"></i>
 							{{ lessonLikes }}
 						</span>
@@ -59,11 +60,11 @@
                                      <span> {{lesson.user.username}}</span>
                                  </a>
                             </span>
-							<span tooltip="{{'lessons.createdOn' | translate}}">
+                            <span tooltip="{{'lessons.createdOn' | translate}}">
 								<i class="fa fa-calendar"></i>
 								<span>{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
 							</span>
-							<span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | translate}}">
+                            <span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | translate}}">
 								<i class="fa fa-book"></i>
 								<span>{{'filters.subjects.' + lesson.subject | translate}}</span>
 							</span>
@@ -183,7 +184,7 @@
 											<span lesson-intro-link lesson="item">{{item.name}}</span>
 											{{ 'lessonIntro.copiedFromLessonBy' | translate }} {{item.userDetails.username }}
 										</span>
-										<span ng-show="copyOfItems.length > 1">
+                                        <span ng-show="copyOfItems.length > 1">
 											{{ 'lessonIntro.copiedFromLessons' | translate }}
 											<ul>
                                                 <li ng-repeat="item in copyOfItems track by $index">

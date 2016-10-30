@@ -1,7 +1,8 @@
 <div class="submit">
     <div>
-        <button ng-show="!getAnswer() && !hideSubmitButton" ng-disabled="!canSubmit(quizItem)" type="submit" class="btn"
-                ng-click="checkAnswer()">
+        <button ng-show="!getAnswer() && !hideSubmitButton" ng-disabled="submitBtnDisable || !canSubmit(quizItem)" type="submit" class="btn"
+                ng-click="submitBtnDisable || checkAnswer()">
+            <i ng-show="submitBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
             {{ 'button.submit' | translate }}
         </button>
         <div quiz-next-question-button></div>

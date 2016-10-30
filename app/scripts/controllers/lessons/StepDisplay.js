@@ -91,6 +91,8 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl',
     };
 
     $scope.checkAnswer = function () {
+
+        $scope.submitBtnDisable = true;
         var quizItem = $scope.quizItem;
 
         // we use a flag because no other property is eligible
@@ -127,6 +129,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl',
                         $scope.nextQuizItem();
                     }, 1000);
                 }
+
             }
 
             // guy - we must update progress only after we moved to next quiz
@@ -178,7 +181,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl',
                     $scope.updateProgressPercent();
                 }
             }
-
+            $scope.submitBtnDisable = false;
         }, function () {
             $log.error('there was an error checking answer');
         });

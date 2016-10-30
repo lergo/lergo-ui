@@ -7,6 +7,7 @@ angular.module('lergoApp')
             restrict: 'A',
             link: function postLink(scope/*, element, attrs*/) {
                 scope.onQuizNextQuestionButtonClick = function(){
+                    scope.nextQuesBtnDisable = true;
                     if ( scope.quizItem.type === QuestionsService.QUESTION_TYPE.OPEN_QUESTION ){
                         scope.nextQuizItem();
                     }else {
