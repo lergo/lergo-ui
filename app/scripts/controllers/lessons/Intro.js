@@ -32,9 +32,12 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
         }
 
         $scope.copyLesson = function () {
-            LergoClient.lessons.copyLesson(lessonId).then(function (result) {
+            $scope.copyBtnDisable = true;
+            $scope.copyLessonPromise = LergoClient.lessons.copyLesson(lessonId);
+            $scope.copyLessonPromise.then(function (result) {
                 $location.path('/user/lessons/' + result.data._id + '/update');
             }, function (result) {
+                $scope.copyBtnDisable = false;
                 $log.error(result);
             });
         };
@@ -115,7 +118,8 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
                 '0': lesson.name
             }));
             if (canDelete) {
-                LergoClient.lessons.delete(lesson._id).then(function () {
+                $scope.deleteLessonPromise = LergoClient.lessons.delete(lesson._id);
+                $scope.deleteLessonPromise.then(function () {
                     $scope.errorMessage = null;
                     $log.info('Lesson deleted sucessfully');
                     $location.path('/user/create/lessons');

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp', ['LocalStorageModule', 'pascalprecht.translate', 'checklist-model', 'ngRoute',
-    'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ngStorage', 'ngCsv']).config(
+    'ui.bootstrap', 'ui.utils', 'btford.markdown', 'ngStorage', 'ngCsv','cgBusy']).config(
     function ($routeProvider, $httpProvider, $logProvider, $locationProvider, $translateProvider ) {
 
 
@@ -240,3 +240,8 @@ angular.module('lergoApp').run(function (Facebook) {
     //    throw new Error('service is down');
     //}
 });
+angular.module('lergoApp').value('cgBusyDefaults',{
+    message:'busy.message',
+    templateUrl: 'views/busy/template.html'
+});
+
