@@ -73,6 +73,14 @@ angular.module('lergoApp').directive('lessonCreateInviteFormItem', function(Lerg
                 return '';
             };
 
+            $scope.getPin = function(){
+                if ( !invitation ){
+                    return;
+                }
+                return invitation.pin;
+            };
+
+
 
             $scope.isSuccess = function(){
                 return !!invitation;

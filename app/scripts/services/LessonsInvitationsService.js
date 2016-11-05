@@ -41,8 +41,12 @@ angular.module('lergoApp').service('LessonsInvitationsService', function Lessons
         return $http.get('/backend/invitations/' + invitationId + '/get' );
     };
 
+    this.getByPin = function( pin ){
+        return $http.get('/backend/invitations/pin/' + pin );
+    };
+
 	this.remove = function(invitation) {
-		return $http.post('/backend/invitations/' + invitation._id + '/delete');
+		return $http.post('/backend/invitations/pin' + invitation._id + '/delete');
 	};
 
     this.getStudents = function(){
