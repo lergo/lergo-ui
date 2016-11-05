@@ -1,0 +1,36 @@
+#pinInvite {
+    background-color: #91CFFF;
+    overflow: hidden;
+    input{
+        border: .125rem solid #ccc;
+        box-sizing: border-box;
+        font-size: 20px;
+        height: 50px;
+        line-height: 50px;
+        color: #333;
+        text-align: center;
+        max-width: 300px;
+        width: 100%;
+    }
+
+    .vertical-positioning-wrapper {
+        min-height: 100vh;
+        /* -webkit-transform: translateY(40%); */
+        -ms-transform: translateY(40%);
+        transform: translateY(40%);
+    }
+
+    .vertical-positioning-wrapper .vertical-positioning-40 {
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+    }
+
+    button{
+        width:100%;
+        max-width: 300px;
+        height: 50px;
+        font-size: 20px;
+    }
+}

@@ -11,7 +11,7 @@ angular.module('lergoApp')
                     LergoClient.lessons.create().then(function (result) {
                         var lesson = result.data;
                         $scope.errorMessage = null;
-                        $location.path('/user/lesson/' + lesson._id + '/update');
+                        $location.path('/user/lessons/' + lesson._id + '/update');
                     }, function (result) {
                         $scope.errorMessage = 'Error in creating Lesson : ' + result.data.message;
                         $log.error($scope.errorMessage);
