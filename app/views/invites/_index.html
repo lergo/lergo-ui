@@ -38,6 +38,7 @@
 						</td>
 						<td>{{ 'name' | translate }}</td>
 						<td>{{ 'invites.studentOrClass' | translate}}</td>
+                        <td>{{'pin'|translate}}</td>
                         <td>{{ 'invites.emailNotification' | translate}}</td>
 						<td>{{ 'filters.labels.language' | translate}}</td>
 						<td>{{ 'filters.labels.subject' | translate}}</td>
@@ -58,6 +59,9 @@
 						<td class="answer">
 							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.invitee.name || invite.invitee.class}}</span>
 						</td>
+                        <td class="answer">
+                            {{invite.pin}}
+                        </td>
                         <td class="answer">
                             <span class="text-success" ng-show="invite.emailNotification">{{'on' | translate }} </span>
                             <span class= "text-warning" ng-show="!invite.emailNotification">{{'off' | translate}}</span>
