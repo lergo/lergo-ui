@@ -28,7 +28,7 @@
 
             <div ng-show="isSuccess()">
                 <div>{{'lessons.inviteLesson.' + mode + '.success' | translate}}</div>
-                <input type="text" ng-value="getLink()" readonly select-all-text-on-click on-enter="enterPressed()"/>
+                <input type="text" class="link" ng-value="getLink()" readonly select-all-text-on-click on-enter="enterPressed()"/>
             </div>
             <br/>
             <div class="button">
