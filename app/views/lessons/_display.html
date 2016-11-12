@@ -104,7 +104,7 @@
                 <i class="fa fa-heart-o "></i>
                 {{'like' | translate}}
             </a>
-            <button show-logged-in class="btn-link" ng-click="showHideInvite()"
+            <button show-logged-in class="btn-link" ng-click="setActiveAction(actionItems.INVITE)"
                     tooltip="{{'lessons.tooltip.invite' | translate}}">
                 <i class="fa fa-envelope "></i>
                 {{'invite' | translate}}
@@ -116,23 +116,17 @@
                 <i class="fa fa-envelope "></i>
                 {{'invite' | translate}}
             </a>
-            <button class="btn-link" ng-click="absoluteShareLink(lesson)"
+            <button class="btn-link" ng-click="setActiveAction(actionItems.SHARE)"
                     tooltip="{{'lessons.tooltip.share' | translate}}">
                 <i class="fa fa-share-alt "></i>
                 {{'share' | translate}}
             </button>
         </div>
-        <div ng-show="!!share || !!invite" class="forms">
-            <div ng-show="!!share" class="lergo-form share">
-                <p class="lergo-h4">{{'lessons.shareLesson' | translate}}</p>
-                <div class="container">
-                    <span>{{'lessons.shareLessonTitle' | translate}}</span>
-                    <input type="text" ng-model="shareLink" readonly select-all-text-on-click/>
-                </div>
-            </div>
-            <div ng-show="!!invite" class="lergo-form invite">
-                <div lesson-create-invite-form-after on-close-after="showHideInvite()"></div>
-            </div>
+        <div class="forms">
+            <div ng-show="isActiveAction(actionItems.SHARE)"
+                 ng-include="'views/lessons/intro/_shareForm.html'"></div>
+            <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
+                 on-close="setActiveAction()"></div>
         </div>
     </div>
 </div>

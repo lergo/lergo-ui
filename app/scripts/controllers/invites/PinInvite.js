@@ -15,6 +15,7 @@ angular.module('lergoApp')
 
         function redirectToLesson(invitation) {
             if (!invitation) {
+                $scope.invalidPin=true;
                 return;
             }
             if (!!invitation.invitee.name) {

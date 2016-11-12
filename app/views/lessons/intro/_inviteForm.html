@@ -12,14 +12,16 @@
         <p>{{'lessons.inviteLesson.' + mode + '.help' | translate }} </p>
         <div class="container">
             <div class="row">
-                <div ng-class="{'col-md-6':isSuccess(),'col-md-12':!isSuccess() }">
+                <div ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
                     <div>{{'name' | translate }}</div>
-                    <input type="text" ng-model="invitationName" on-enter="enterPressed()"/>
+                    <input type="text" ng-model="invitationName" on-enter="enterPressed()"
+                           ng-class="{'in-success':isSuccess()}"/>
                 </div>
-                <div ng-show="isSuccess()" class="col-md-6">
-                    <div>{{'pin' | translate }}</div>
-                    <input type="text" ng-value="getPin()" readonly
-                           on-enter="enterPressed()"/>
+                <div ng-show="isSuccess()" class="col-md-8">
+
+                    <div>{{'pin' | translate }}({{'invitePinHtnt' | translate}})</div>
+                    <input type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
+                           ng-class="{'in-success':isSuccess()}" select-all-text-on-click on-enter/>
                 </div>
             </div>
 

@@ -5,6 +5,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
 
         $log.info('loading invitation', $routeParams.invitationId);
         var errorWhileSaving = false;
+        $scope.shareSection = 'link';
         var updateChange = new ContinuousSaveReports({
             'saveFn': function (value) {
                 $log.info('updating report');
@@ -95,6 +96,9 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             $scope.lesson.image = LergoClient.lessons.getTitleImage($scope.lesson);
             $scope.questions = {};
 
+            $scope.shareLink = LergoClient.lessons.getShareLink($scope.lesson);
+            $scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="600" frameBorder="0"></iframe>';
+
             initializeReport($scope.invitation);
             var items = result.data.quizItems;
             if (!items) {
@@ -110,6 +114,22 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                 $location.path('/errors/notFound');
             }
         });
+
+        $scope.actionItems = {
+            INVITE: 'invite',
+            SHARE: 'share'
+        };
+        var activeAction = null;
+        $scope.setActiveAction = function (actionItem) {
+            if (activeAction === actionItem) {
+                activeAction = null;
+            } else {
+                activeAction = actionItem;
+            }
+        };
+        $scope.isActiveAction = function (actionItem) {
+            return activeAction === actionItem;
+        };
 
         $scope.startLesson = function (lessonId) {
             if (!lessonId) {
@@ -135,15 +155,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             }
         }
 
-        $scope.absoluteShareLink = function (lesson) {
-            $scope.shareLink = LergoClient.lessons.getShareLink(lesson);
-            $scope.invite = false;
-            $scope.share = !$scope.share;
-        };
-        $scope.showHideInvite = function () {
-            $scope.share = false;
-            $scope.invite = !$scope.invite;
-        };
+
 
         var lessonLikeWatch = null;
         $scope.$watch('lesson', function (newValue) {
