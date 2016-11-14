@@ -13,6 +13,7 @@ angular.module('lergoApp')
                     }else {
                         scope.retryOrNext();
                     }
+                    scope.nextQuesBtnDisable = false;
                 };
             }
         };
