@@ -2,7 +2,10 @@
   "name": "lergo-ui",
   "version": "0.0.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "karma": "^0.13.22",
+    "requirejs": "^2.3.2"
+  },
   "scripts": {
     "test": "grunt jshint && grunt test"
   },
