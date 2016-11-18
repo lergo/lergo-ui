@@ -9,7 +9,8 @@
 
 
     <script type="text/ng-template" id="inline_lessonCreateInviteFormItem.html">
-        <p>{{'lessons.inviteLesson.' + mode + '.help' | translate }} </p>
+        <p ng-show="!isSuccess()">{{'lessons.inviteLesson.' + mode + '.help' | translate }} </p>
+        <p ng-show="isSuccess()">{{'lessons.inviteLesson.' + mode + '.success.help' | translate }} </p>
         <div class="container">
             <div class="row">
                 <div ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
@@ -19,7 +20,7 @@
                 </div>
                 <div ng-show="isSuccess()" class="col-md-8">
 
-                    <div>{{'pin' | translate }}({{'invitePinHtnt' | translate}})</div>
+                    <p>{{'pin' | translate }}: <small style="font-size: small">{{'lessons.inviteLesson.'+mode+'.pinHint' | translate}}</small></p>
                     <input type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
                            ng-class="{'in-success':isSuccess()}" select-all-text-on-click on-enter/>
                 </div>
