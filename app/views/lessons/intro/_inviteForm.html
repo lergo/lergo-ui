@@ -20,16 +20,20 @@
                 </div>
                 <div ng-show="isSuccess()" class="col-md-8">
 
-                    <p>{{'pin' | translate }}: <small style="font-size: small">{{'lessons.inviteLesson.'+mode+'.pinHint' | translate}}</small></p>
+                    <p>{{'pin' | translate }}
+                        <small style="font-size: small">{{'lessons.inviteLesson.'+mode+'.pinHint' | translate}}</small>
+                    </p>
                     <input type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
-                           ng-class="{'in-success':isSuccess()}" select-all-text-on-click on-enter/>
+                           ng-class="{'in-success':isSuccess()}" select-all-text-on-click on-enter
+                           style="direction: inherit;"/>
                 </div>
             </div>
 
 
-            <div ng-show="isSuccess()">
-                <div>{{'lessons.inviteLesson.' + mode + '.success' | translate}}</div>
-                <input type="text" class="link" ng-value="getLink()" readonly select-all-text-on-click on-enter="enterPressed()"/>
+            <div ng-show="isSuccess()" class="invite-link">
+                <div>{{'lessons.inviteLesson.' + mode + '.success.invite' | translate}}</div>
+                <textarea class="link" readonly select-all-text-on-click
+                       on-enter="enterPressed()">{{getLink()}}</textarea>
             </div>
             <br/>
             <div class="button">
