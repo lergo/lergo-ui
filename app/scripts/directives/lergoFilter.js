@@ -110,8 +110,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                         LergoClient.lessonsInvitations.getClasses()
                     ])
                         .then(function (results) {
-                            scope.students = _.uniq(results[0].data, results[1].data);
-                            scope.classes = _.uniq(results[2].data, results[3].data);
+                            scope.students = _.union(results[0].data, results[1].data);
+                            scope.classes = _.union(results[2].data, results[3].data);
                         });
                 }
                 return result;
