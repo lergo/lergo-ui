@@ -1,3 +1,5 @@
+fix: implement bodyparser extend to overcome report failure on long lessons
+
 fix: report when invitation was deleted
 
 temp: reduce number of total lessons by 900 (the amount that don't have at least 1 question)
