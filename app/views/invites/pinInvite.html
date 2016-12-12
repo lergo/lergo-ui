@@ -3,10 +3,10 @@
         <div class="col-md-12 col-sm-12 text-center vertical-positioning-40">
             <form >
                 <div>
-                    <img src="/images/logos/transparent-beta.png">
+                    <i class="logo-beta transparent"></i>
                 </div>
                 <div>
-                    <input  ng-model="pin" ng-class="{invalid: invalidPin}">
+                    <input  ng-model="pin" ng-class="{invalid: invalidPin}" type="tel" maxlength="6">
                 </div>
                 <br>
                 <div>
@@ -18,3 +18,8 @@
         </div>
     </div>
 </div>
+<style>
+    body{
+        min-width: 110px !important;
+    }
+</style>

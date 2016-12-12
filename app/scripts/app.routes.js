@@ -54,7 +54,10 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/:role/lessons/:lessonId/classInvite', {
         templateUrl: 'views/invites/classInvite.html',
         controller: 'ClassInviteCtrl'
-    }).when('/lessons/invite/pinInvite', {
+    }).when('/lessons/invite/pin', {
+        templateUrl: 'views/invites/pinInvite.html',
+        controller: 'PinInviteCtrl'
+    }).when('/lessons/invite/pininvite', {
         templateUrl: 'views/invites/pinInvite.html',
         controller: 'PinInviteCtrl'
     }).when('/public/lessons/:lessonId/share', {

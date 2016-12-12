@@ -592,7 +592,7 @@
   "loading": "Loading...",
   "login": {
     "invalidUsername": "WRONG USERNAME OR PASSWORD, PLEASE TRY AGAIN",
-    "usernameAlreadyExists": "USERNAME ALREADY TAKEN BY ANOTHER USER, TRY AGAIN WITH A DIFFERENT USERNAME.",
+    "usernameAlreadyExists": "USERNAME ALREADY TAKEN BY ANOTHER USER, TRY AGAIN WITH A DIFFERENT USERNAME",
     "userNotValidated": "User's email has not been validated"
   },
   "loginPage": {

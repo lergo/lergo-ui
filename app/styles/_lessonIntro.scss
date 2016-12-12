@@ -114,90 +114,6 @@
                     font-size: 20px;
                 }
             }
-            .forms {
-                color: #949494;
-                padding: 10px;
-                .lergo-h4 {
-                    color: #949494;
-                }
-                .button {
-                    text-align: center;
-                }
-                .close-button {
-                    float: right;
-                    margin-top: -20px;
-                }
-                .container {
-                    border: 1px solid #949494;
-                    padding: 10px;
-                }
-                .lesson-action-panel {
-                    .lesson-action-panel-navigation {
-                        padding-bottom: 10px;
-                        .lesson-action-panel-link {
-                            cursor: pointer;
-                            float: left;
-                            &:not(:first-child) {
-                                margin-left: 20px;
-                            }
-                            &.active {
-                                font-weight: bold;
-                                border-bottom: 3px solid $LERGO_INTRO_LINK;
-                            }
-                            &:hover {
-                                color: $LERGO_INTRO_LINK;
-                                border-bottom: 3px solid $LERGO_INTRO_LINK;
-                            }
-                        }
-                    }
-                    .action-link {
-                        textarea {
-                            height: 45px;
-                        }
-                    }
-                    .action-embed {
-                        textarea {
-                            height: 80px;
-                        }
-                    }
-                    .close-button {
-                        margin-top: 0px;
-                    }
-                    .lergo-h4 {
-                        font-weight: normal;
-                    }
-                    textarea {
-                        padding: 5px;
-                        resize: none;
-                        text-align: left;
-                        direction: ltr;
-                    }
-
-                }
-                .invite { /*see dedicate directive style*/
-                }
-                .report {
-                    .options {
-                        vertical-align: top;
-                        line-height: 2;
-                        input {
-                            display: inline;
-                            width: 20px;
-                            height: 20px;
-                            min-height: 20px;
-                        }
-                    }
-                    .comment {
-                        margin-bottom: 10px;
-                        textarea {
-                            background: #fafafa;
-                            height: 100px;
-                        }
-                    }
-                }
-                .share {
-                }
-            }
             .description {
                 pre {
                     word-break: break-word;
@@ -352,6 +268,11 @@
         .action-link {
             textarea {
                 height: 45px;
+            }
+        }
+        .invite-link{
+            textarea {
+                height: 60px;
             }
         }
         .action-embed {
