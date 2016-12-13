@@ -14,7 +14,7 @@ angular.module('lergoApp', [
 ]);
 
 
-angular.module('lergoApp').config(
+angular.module('lergoApp').config(['$httpProvider', '$logProvider', '$translateProvider',
     function ($httpProvider, $logProvider, $translateProvider) {
 
 
@@ -38,13 +38,14 @@ angular.module('lergoApp').config(
         $translateProvider.preferredLanguage('en');
         $translateProvider.fallbackLanguage(['en']);
         $translateProvider.useMissingTranslationHandler('missingTranslationFactory');
+        $translateProvider.useSanitizeValueStrategy('escape');
 
 
         // $httpProvider.responseInterceptors.push(interceptor);
         $httpProvider.interceptors.push('RequestProgressInterceptor');
         $httpProvider.interceptors.push('RequestErrorInterceptor');
 
-    });
+    }]);
 
 // guy - this is a temporary fix for angular-bootstrap
 // https://github.com/angular-ui/bootstrap/issues/2828
