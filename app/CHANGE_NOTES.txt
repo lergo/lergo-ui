@@ -1,3 +1,6 @@
+fix: LERGO-657 change angular-translate version to 2.13.1 (previous version not clear) an remove "include
+empty translation = true" so that phraseapp will use default translation
+
 fix: implement bodyparser extend to overcome report failure on long lessons
 
 fix: report when invitation was deleted
