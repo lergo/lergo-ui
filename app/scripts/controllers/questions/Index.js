@@ -20,9 +20,10 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		showCreatedBy : localStorageService.get('questionTypeToLoad') === $scope.QuestionTypeToLoad.all
 	};
 
-	$scope.selectAll = function(checked) {
+	$scope.selectAll = function(event) {
+        var checkbox = event.target;
 		_.each($scope.items, function(item) {
-			item.selected = checked;
+			item.selected = checkbox.checked;
 		});
 	};
 

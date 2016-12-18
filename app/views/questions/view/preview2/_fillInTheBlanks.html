@@ -4,7 +4,8 @@
           ng-repeat="option in quizItem.question.split('___') track by $index">
 			<span class="lergo-h4">{{option}}</span>
 			<span ng-show="!$last" style="display: inline-block;">
-			    <input style="width:50px; display: inline; min-height: 28px;">
+                <dynamic-input quiz="quizItem" index="$index">
+                </dynamic-input>
 			</span>
 		</span>
 </div>
