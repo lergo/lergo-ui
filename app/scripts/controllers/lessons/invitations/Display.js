@@ -117,7 +117,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                     LergoClient.lessonsInvitations.createAnonymous($routeParams.lessonId).then(function (result) {
                         var invitation = result.data;
                         $location.path('/public/lessons/invitations/' + invitation._id + '/display');
-                    })
+                    });
                 } else {
                     $location.path('/errors/notFound');
                 }
