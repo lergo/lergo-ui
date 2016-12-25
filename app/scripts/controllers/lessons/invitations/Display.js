@@ -111,7 +111,16 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             }
         }, function (result) {
             if (result.status) { // lesson invitation might not be found if was temporary. temporary lessons are deleted on finish. (@see Write.js 'endLesson' event)
-                $location.path('/errors/notFound');
+               // incase the invitation is deleted and user tries to "start over" or "continue lesson"
+                // we should insert anonymous invitation
+                if (!!$routeParams.lessonId) {
+                    LergoClient.lessonsInvitations.createAnonymous($routeParams.lessonId).then(function (result) {
+                        var invitation = result.data;
+                        $location.path('/public/lessons/invitations/' + invitation._id + '/display');
+                    });
+                } else {
+                    $location.path('/errors/notFound');
+                }
             }
         });
 
@@ -154,7 +163,6 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                 }).replace();
             }
         }
-
 
 
         var lessonLikeWatch = null;
