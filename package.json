@@ -48,7 +48,7 @@
     "karma-script-launcher": "~0.1.0",
     "log4js": "~0.6.21",
     "matchdep": "~0.1.2",
-    "phantomjs": "^1.9.18"
+    "phantomjs": "^2.1.7"
   },
   "engines": {
     "node": ">=6.0.0"
