@@ -58,15 +58,17 @@ angular.module('lergoApp').directive('tooltip', function () {
         }
     };
 });
-
-angular.module('lergoApp').run(function (Facebook) {
+// jeff: dec 29th 2016
+/*angular.module('lergoApp').run(function (Facebook) {
     if ( typeof(conf) !== 'undefined' ) {
         Facebook.init(conf.facebookAppId);
     }else{
         window.location='/error.html';
         throw new Error('service is down');
     }
-});
+});*/
+
+
 angular.module('lergoApp').value('cgBusyDefaults', {
     message: 'busy.message',
     templateUrl: 'views/busy/template.html'
