@@ -61,6 +61,12 @@
 
 		</div>
 	</span>
+    <span ng-show="!!opts.showHasReviewed">
+		<div class="label">{{'filters.labels.hasReviewed' | translate }}</div>
+		<div class="input">
+            <input type="checkbox" ng-model="hasReviewed"/>
+        </div>
+	</span>
 
     <span ng-show="!!opts.showLimitedSubject">
 		<div class="label">{{'filters.labels.subject' | translate }}</div>

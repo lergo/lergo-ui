@@ -14,7 +14,7 @@
 				<thead>
 					<tr>
 						<td class="checkbox-dropdown">
-                            <span admin-section="lessons.userCanPublish || lessons.userCanUnpublish || lessons.userCanDelete">
+                            <span admin-section="lessons.userCanPublish || lessons.userCanUnpublish || lessons.userCanDelete || lesson.userCanReview|| lesson.userCanUnreview">
                                 <div class="btn-group" dropdown>
                                     <input type="checkbox" ng-change="selectAll()" ng-model="manageLessons.allSelected">
                                     <button type="button" class="btn-link" dropdown-toggle>
@@ -28,6 +28,13 @@
                                         <li admin-section="lessons.userCanUnpublish">
                                             <a  style="outline: none;" class="btn-link" ng-click="makePrivate()">{{'admin.makePrivate'|translate}}</a>
                                         </li>
+                                         <li admin-section="lessons.userCanReview">
+                                            <a  style="outline: none" class="btn-link" ng-click="review()">{{'admin.review'|translate}}</a>
+                                        </li>
+                                         <li admin-section="lessons.userCanUnreview">
+                                            <a  style="outline: none" class="btn-link" ng-click="unreview()">{{'admin.unreview'|translate}}</a>
+                                        </li>
+
                                         <li class="divider" admin-section="lessons.userCanDelete"></li>
                                         <li admin-section="lessons.userCanDelete">
                                             <a  style="outline: none;" class="btn-link" ng-click="deleteLesson()">{{'delete'|translate}}</a>
@@ -43,6 +50,7 @@
 						<td>{{'admin.created'|translate}}</td>
 						<td>{{'admin.publicFrom'|translate}}</td>
 						<td>{{'admin.questions'|translate}}</td>
+                        <td>{{'admin.review'|translate}}</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,6 +72,10 @@
 						<td>{{l.createdAt | date:'d-MMM-yyyy HH:mm'}}</td>
 						<td>{{l.public | date:'d-MMM-yyyy HH:mm' }}</td>
                         <td>{{ l | countQuestionsOnLesson }}</td>
+                        <td>
+                            <p ng-show="l.review">{{'yes'|translate}}</p>
+                            <p ng-show="!l.review">{{'no'|translate}}</p>
+                        </td>
 					</tr>
 				</tbody>
 			</table>

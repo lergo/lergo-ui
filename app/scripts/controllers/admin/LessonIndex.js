@@ -10,6 +10,7 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 	$scope.adminFilterOpts = {
         'showLimitedSubject' : true,
         'showHasQuestions' : true,
+        'showHasReviewed': true,
 		'showLimitedLessonStatus' : true,
 		'showLimitedLanguage' : true,
 		'showLimitedAge' : true,
@@ -127,5 +128,32 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 			});
 		}
 	};
+
+    function makeLessonReviewTrue(lesson, isReview) {
+        if (isReview) {
+            return LergoClient.lessons.review(lesson).then(function (result) {
+                lesson.review = result.data.review;
+            });
+        } else {
+            return LergoClient.lessons.unreview(lesson).then(function (result) {
+                lesson.review = result.data.review;
+            });
+        }
+    }
+
+    function makeLessonReview(lessons, isReview) {
+        var promises = _.map(_.filter(lessons, {selected: true}), function (lesson) {
+            return makeLessonReviewTrue(lesson, isReview);
+        });
+        $q.all(promises).then($scope.loadLessons).then(loadStats);
+    }
+
+    $scope.review = function () {
+        makeLessonReview($scope.lessons, true);
+    };
+
+    $scope.unreview = function () {
+        makeLessonReview($scope.lessons, false);
+    };
 
 });

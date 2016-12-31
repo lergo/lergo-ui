@@ -59,6 +59,14 @@ angular.module('lergoApp').service('LessonsService',
             return $http.post('/backend/lessons/' + lesson._id + '/unpublish');
         };
 
+        this.review = function (lesson) {
+            return $http.post('/backend/lessons/' + lesson._id + '/review');
+        };
+        this.unreview = function (lesson) {
+            return $http.post('/backend/lessons/' + lesson._id + '/unReview');
+        };
+
+
         this.getById = function (id) {
             return $http.get('/backend/lessons/' + id);
         };

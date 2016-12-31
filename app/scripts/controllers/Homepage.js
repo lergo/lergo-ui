@@ -32,8 +32,12 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
         $scope.hasQuestions = function(lesson){
             return LergoClient.lessons.countQuestions(lesson) > 0;
         };
+        $scope.hasReviewed = function(lesson){
+            return !!lesson.review;
+        };
 
-		var queryObj = {
+
+        var queryObj = {
 			'filter' : _.merge(searchFilter, $scope.lessonsFilter),
 			'sort' : {
 				'lastUpdate' : -1

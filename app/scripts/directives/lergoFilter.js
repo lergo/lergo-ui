@@ -246,6 +246,19 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
 
             }
+            function _updateHasReviewed(newValue, oldValue){
+                var modelKey = 'review';
+                if ( newValue !== oldValue ){
+                    if ( newValue ){
+                        $scope.model[modelKey] = { dollar_exists : true };
+                    }else{
+                        delete $scope.model[modelKey];
+                    }
+                }
+            }
+            $scope.$watch('hasReviewed', _updateHasReviewed);
+
+
             $scope.$watch('reportLesson', _updateReportLesson, true);
 
 			function _updateReportStudent() {
@@ -625,6 +638,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.ROLE] =  _updateRole ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORT_LESSON] =  _updateReportLesson ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.HAS_QUESTIONS] =  _updateHasQuestions ;
+            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.HAS_REVIEWED] =  _updateHasReviewed ;
 
             function reload( newValue, oldValue ){
                 if ( !!newValue && !!oldValue && newValue !== oldValue ) {
