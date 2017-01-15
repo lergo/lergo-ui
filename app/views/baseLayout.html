@@ -17,7 +17,7 @@
 							<li>
 								<a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
 								<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-								<a show-anonymous href="#" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
+								<a show-anonymous popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
 									'baseLayout.header.links.create'| translate }} </a>
 							</li>
 							<li ng-repeat="item in ['Parents','Teachers']">

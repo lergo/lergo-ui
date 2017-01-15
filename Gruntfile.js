@@ -376,7 +376,7 @@ module.exports = function (grunt) {
                 configFile: 'karma.conf.js',
                 singleRun:true,
                 port:9001,
-                browsers: ['PhantomJS'],
+                browsers: ['PhantomJS2'],
                 reporters: ['failed']
 
             },
@@ -384,7 +384,7 @@ module.exports = function (grunt) {
                 configFile: 'karma.conf.js',
                 singleRun:true,
                 port:9001,
-                browsers: ['PhantomJS']
+                browsers: ['PhantomJS2']
 
 
             },
