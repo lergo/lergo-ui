@@ -1,6 +1,8 @@
 Lergo-UI
 ===================
 node 6.9.x - December 2016
+ubuntu 16.04 = January 2017
+mongod 2.6.10 = January 2017
 
 
 ## How to Help
