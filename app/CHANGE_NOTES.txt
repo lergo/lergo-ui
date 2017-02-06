@@ -1,3 +1,6 @@
+upgrade: LERGO-659 mongodb driver to 2.2.22 the main change is that 'result' gives the
+full mongo-core object
+
 chore: LERGO-658 upgrade platform to ubuntu 16.04 with mongod upgrade to 2.6.10
 
 fix: LERGO-657 change angular-translate version to 2.13.1 (previous version not clear) an remove "include
