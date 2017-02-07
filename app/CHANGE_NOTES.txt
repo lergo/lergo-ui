@@ -1,3 +1,5 @@
+downgrade: restore mongodb driver to 1.4.8 due to lesson filter problem
+
 upgrade: LERGO-659 mongodb driver to 2.2.22 the main change is that 'result' gives the
 full mongo-core object
 
