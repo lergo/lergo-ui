@@ -115,7 +115,7 @@ angular.module('lergoApp').service('LessonsService',
             for (var i = 0; i < lesson.steps.length; i++) {
                 var id = this.getVideoId(lesson.steps[i]);
                 if (id !== null) {
-                    return $sce.trustAsResourceUrl('http://img.youtube.com/vi/' + id + '/0.jpg');
+                    return $sce.trustAsResourceUrl('https://img.youtube.com/vi/' + id + '/0.jpg');
                 }
             }
         };

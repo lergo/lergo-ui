@@ -46,7 +46,7 @@ describe('Service: LessonsService', function () {
                 {} ,
                 { 'videoUrl': 'https://www.youtube.com/watch?v=heUd26tuinw' }
             ]});
-            expect(sce.valueOf()).toBe('http://img.youtube.com/vi/heUd26tuinw/0.jpg');
+            expect(sce.valueOf()).toBe('https://img.youtube.com/vi/heUd26tuinw/0.jpg');
         });
     });
 
