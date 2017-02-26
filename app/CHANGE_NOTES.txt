@@ -1,3 +1,6 @@
+bug fix: bug fix for ssl: changing the folders for the keys due to permission problems and
+removing places where there is http
+
 Upgrade: LEGRO-661 Implement SSL
 
 upgrade: LERGO-659 AGAIN to mongodb driver 2.2.22 after fixing filter problem
