@@ -1,3 +1,5 @@
+bug fix: add sudo_wget for certificates: otherwise there was still a permission problem (need sudo)
+
 bug fix: bug fix for ssl: changing the folders for the keys due to permission problems and
 removing places where there is http
 
