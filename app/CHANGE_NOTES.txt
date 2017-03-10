@@ -1,3 +1,9 @@
+fix https for local phraseapp file
+
+    after implementing ssl commit, production failed on http request for local phraseapp files.
+    realstaging does not use local files, so bug was not caught there
+
+
 bug fix: add sudo_wget for certificates: otherwise there was still a permission problem (need sudo)
 
 bug fix: bug fix for ssl: changing the folders for the keys due to permission problems and
