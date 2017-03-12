@@ -1,3 +1,5 @@
+feat: add 307 redirect from http to https in nginx
+
 fix https for local phraseapp file
 
     after implementing ssl commit, production failed on http request for local phraseapp files.
