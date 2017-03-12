@@ -1,3 +1,6 @@
+fix bug: need to escape the $host and $request_uri in the redirect
+
+
 feat: add 307 redirect from http to https in nginx
 
 fix https for local phraseapp file
