@@ -1,5 +1,8 @@
-fix bug: need to escape the $host and $request_uri in the redirect
+task: LERGO-663 Cloudbees enforces limit on instances to 2. build-lergo needs 3 simultaneously
+and was therefor getting stuck. Change promote-staging-build and promote-build to be one item
+for staging... called promote-staging-build-and-promote-build
 
+fix bug: need to escape the $host and $request_uri in the redirect
 
 feat: add 307 redirect from http to https in nginx
 
