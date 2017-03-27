@@ -5,9 +5,10 @@ var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 var path = require('path');
 var logger = require('log4js').getLogger('Gruntfile');
+var serveStatic = require('serve-static');
 
 var mountFolder = function (connect, dir) {
-    return connect.static(require('path').resolve(dir));
+    return serveStatic(require('path').resolve(dir));
 };
 
 // # Globbing

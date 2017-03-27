@@ -1,3 +1,7 @@
+upgrade: LERGO-660 upgrade lergo-ui and lergo-ri package.json using npm outdated (still need to do express)
+
+bug: LERGO-662 fix system test : system test was not running, but reported success since node 6.9 upgrade
+
 task: LERGO-663 Cloudbees enforces limit on instances to 2. build-lergo needs 3 simultaneously
 and was therefor getting stuck. Change promote-staging-build and promote-build to be one item
 for staging... called promote-staging-build-and-promote-build
