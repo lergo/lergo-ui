@@ -1,3 +1,5 @@
+bug: fix LERGO-660 no email is sent with npm package nodemailer@3.0.1 so reverting back to 0.7.1
+
 upgrade: LERGO-660 upgrade lergo-ui and lergo-ri package.json using npm outdated (still need to do express)
 
 bug: LERGO-662 fix system test : system test was not running, but reported success since node 6.9 upgrade
