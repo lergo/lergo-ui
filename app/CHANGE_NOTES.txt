@@ -1,4 +1,8 @@
-bug: fix LERGO-660 no email is sent with npm package nodemailer@3.0.1 so reverting back to 0.7.1
+
+
+upgrade LERGO_664 upgrade nodeMailer from 0.7 to 4.01 (lergo - ri)
+this change required moving from aws username / password to key ID / secret Key and
+no longer has an easy option to use non aws SMTP in localhost (gmail / yahoo etc)
 
 upgrade: LERGO-660 upgrade lergo-ui and lergo-ri package.json using npm outdated (still need to do express)
 
