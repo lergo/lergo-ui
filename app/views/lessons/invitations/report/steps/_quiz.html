@@ -6,7 +6,7 @@
 			{{step.title}}
 		</a>
 	</div>
-	<div collapse="!!quizCollapsed" ng-repeat="quizItem in getReportQuizItems(step, $index)">
+	<div dir="auto" collapse="!!quizCollapsed" ng-repeat="quizItem in getReportQuizItems(step, $index)">
 		<div class="quiz">
 			<div ng-include="getQuizItemTemplate(quizItem.type)"></div>
 		</div>

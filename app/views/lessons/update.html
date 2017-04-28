@@ -5,17 +5,17 @@
             <form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
                             <div class="form-section form-group name"
                      ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
-                    <div class="lergo-label">{{ 'lessons.name' | translate }}</div>
+                    <div dir="auto" class="lergo-label">{{ 'lessons.name' | translate }}</div>
                     <div class="lergo-input">
-                        <input required class="form-control" ng-model="lesson.name" name="name"/>
+                        <input dir="auto" required class="form-control" ng-model="lesson.name" name="name"/>
                     </div>
                     <p ng-show="lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine" class="help-block">
                         {{'lessons.error.invalidName' | translate}}</p>
                 </div>
                 <div class="form-section description form-group">
-                    <div class="lergo-label">{{ 'lessons.description' | translate }}</div>
+                    <div dir="auto" class="lergo-label">{{ 'lessons.description' | translate }}</div>
                     <div class="lergo-input">
-                        <textarea class="form-control" ng-model="lesson.description" name="description"></textarea>
+                        <textarea dir="auto" class="form-control" ng-model="lesson.description" name="description" dir="auto"></textarea>
                     </div>
                 </div>
                 <div class="stats form-group">
@@ -101,11 +101,11 @@
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-md-2">
+                        <div dir="auto" class="col-md-2">
                             {{ 'steps.title' | translate }}
                         </div>
                         <div class="col-md-10">
-                            <input ng-model="step.title"/>
+                            <input dir="auto" ng-model="step.title"/>
                         </div>
                     </div>
                     <br/>

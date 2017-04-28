@@ -52,7 +52,7 @@
 						</span>
                     </div>
                     <div class="details">
-                        <div class="name">{{ lesson.name|limitTo:160 }}</div>
+                        <div dir="auto" class="name">{{ lesson.name|limitTo:160 }}</div>
                         <div class="properties">
 							<span tooltip="{{'homepage.tooltip.user' | translate}}">
                                  <a ng-href="#!/public/{{lesson.user.username}}/profile">
@@ -197,7 +197,7 @@
                                         <br/>
                                     </div>
                                     <div ng-repeat="q in questions">
-                                        <div class="question"
+                                        <div dir="auto" class="question"
                                              ng-show="!!q.summary || !!questionsWeCopied[q._id] || !!questionsFromOthers[q._id]">
                                             <!--  <a href="#!/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
                                             <i class="fa fa-question-circle"> </i>

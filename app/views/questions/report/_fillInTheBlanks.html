@@ -4,7 +4,7 @@
 		<div class="quiz-answer">
 			<div>
 				<div class="bold">{{'questions.correctAnswers'|translate}}</div>
-				<div class="question" style="line-height: 2">
+				<div dir="auto" class="question" style="line-height: 2">
 					{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
 					<span style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
 						<span>{{option}}</span>
@@ -18,7 +18,7 @@
 			<br>
 			<div>
 				<div class="bold">{{'questions.yourAnswers'|translate}}</div>
-				<div class="question" style="line-height: 2">
+				<div dir="auto" class="question" style="line-height: 2">
 					{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
 					<span ng-repeat="option in quizItem.question.split('___') track by $index">
 						<span>{{option}}</span>

@@ -1,6 +1,7 @@
+feat: LERGO-665 implement BIDI to allow mixed language content with correct
+alignment, direction and punctuation
 
-
-upgrade LERGO_664 upgrade nodeMailer from 0.7 to 4.01 (lergo - ri)
+upgrade LERGO-664 upgrade nodeMailer from 0.7 to 4.01 (lergo - ri)
 this change required moving from aws username / password to key ID / secret Key and
 no longer has an easy option to use non aws SMTP in localhost (gmail / yahoo etc)
 

@@ -3,7 +3,7 @@
 angular.module('lergoApp')
     .directive('questionReadLink', function ( ) {
         return {
-            template: '<a href="#!/public/questions/{{question._id}}/read"><span ng-show="hasQuestion()">{{question.question |limitTo:80 }}</span><span ng-show="!hasQuestion()">{{"questions.noTitle" | translate }}</span></a>',
+            template: '<a href="#!/public/questions/{{question._id}}/read"><span dir="auto" ng-show="hasQuestion()">{{question.question |limitTo:80 }}</span><span ng-show="!hasQuestion()">{{"questions.noTitle" | translate }}</span></a>',
             restrict: 'A',
             scope: {
                 'question': '='

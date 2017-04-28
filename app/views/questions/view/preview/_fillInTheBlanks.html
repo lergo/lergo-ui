@@ -3,7 +3,7 @@
 		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link hint"
 			popover-trigger="focus" tabindex="0">{{'hint' | translate}}</button>
 	</div>
-	<div class="question-title" style="line-height: 3">
+	<div dir="auto" class="question-title" style="line-height: 3">
 		{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
 		<span class="lergo-h4" style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
 			<span class="lergo-h4">{{option}}</span>
@@ -17,7 +17,7 @@
 			</span>
 		</span>
 	</div>
-	<div class="help">
+	<div dir="auto" class="help">
 		<p class="question-help-text">{{quizItem.helpText}}</p>
 	</div>
 	<div quiz-item-media quiz-item="quizItem"></div>

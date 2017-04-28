@@ -31,14 +31,14 @@
             <tr>
                 <td>{{ 'questions.question' | translate }}</td>
                 <td colspan="7">
-                    <input ng-model="quizItem.question"
+                    <input dir="auto" ng-model="quizItem.question"
                            placeholder="{{quizItem.type==='fillInTheBlanks' ? ('questions.fillInTheBlanks.hint' |translate) : ('questions.questionHint' | translate)}}"/>
                 </td>
             </tr>
             <tr>
                 <td>{{ 'questions.help' | translate }}</td>
                 <td colspan="7">
-                    <input placeholder="{{'questions.helpHint' | translate}}" ng-model="quizItem.helpText"/>
+                    <input  dir="auto" placeholder="{{'questions.helpHint' | translate}}" ng-model="quizItem.helpText"/>
                 </td>
             </tr>
             <tr>

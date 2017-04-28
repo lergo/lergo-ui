@@ -3,10 +3,10 @@
 		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link hint"
 			popover-trigger="focus" tabindex="0">{{'hint' | translate}}</button>
 	</div>
-	<div class="question-title">
+	<div dir="auto" class="question-title">
 		<p class="lergo-h4">{{quizItem.question}}</p>
 	</div>
-	<div class="help">
+	<div dir="auto" class="help">
 		<p class="question-help-text">{{quizItem.helpText}}</p>
 	</div>
 	<div quiz-item-media quiz-item="quizItem"></div>

@@ -7,7 +7,7 @@
             <tr>
                 <td style="vertical-align: top;">
                     <div class="page-content-body">
-                        <div class="question">
+                        <div dir="auto" class="question">
                             <div class="stats">
                                     <span class="stats-button age-limit-{{quizItem.age}} no-color"
                                           ng-show="!!quizItem.age"> {{quizItem.age}}+ {{'homepage.years'|translate}} </span>
@@ -126,7 +126,7 @@
                                     <div class="edit-summary" ng-show="usedInLessons.length>0">
                                         <div ng-show="!!more">
                                             <div class="title">{{'questions.lessonUsed' | translate}}</div>
-                                            <div ng-repeat="l in usedInLessons">
+                                            <div dir="auto" ng-repeat="l in usedInLessons">
                                                 <i class="fa fa-star fa-fw"></i>
                                              <a ng-href="#!/public/lessons/{{l._id}}/intro"> {{l.name}}</a>
                                             </div>

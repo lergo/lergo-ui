@@ -53,7 +53,7 @@
                     <td ng-show="isModal">
                         <input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
                     </td>
-                    <td class="question">
+                    <td dir="auto" class="question">
                         <span ng-show="!!isModal">{{item.question}}</span>
                         <div ng-show="!isModal" question-read-link question="item"></div>
                     </td>

@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row row-nested top10">
             <div class="col-md-10">
-                <p class="lergo-h4" ng-show="!isFillInTheBlanks()">{{quizItem.question}}</p>
+                <p dir="auto" class="lergo-h4" ng-show="!isFillInTheBlanks()">{{quizItem.question}}</p>
                 <p ng-show="!!isFillInTheBlanks()" ng-include="getQuestionTemplate()"></p>
             </div>
             <div class="col-md-2 text-right">
