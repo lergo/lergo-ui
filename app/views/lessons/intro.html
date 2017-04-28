@@ -169,7 +169,7 @@
                                  ng-include="'views/lessons/intro/_reportForm.html'"></div>
                         </div>
                         <div class="description">
-                            <pre ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>
+                            <pre dir="auto" ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>
                             <div ng-show="!!more">
                                 <pre>{{ lesson.description}}</pre>
                                 <div class="edit-summary" ng-show="showEditSummary()">
