@@ -1,3 +1,6 @@
+bug: realstaging fails on update staging -- change lergo-ri package.json to be
+same as lergo.org and limit minor and major upgrades
+
 feat: LERGO-665 implement BIDI to allow mixed language content with correct
 alignment, direction and punctuation
 
