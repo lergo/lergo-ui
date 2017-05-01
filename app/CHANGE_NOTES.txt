@@ -1,3 +1,5 @@
+feat: LERGO-665 continued with more BIDI features
+
 bug: realstaging fails on update staging -- change lergo-ri package.json to be
 same as lergo.org and limit minor and major upgrades
 

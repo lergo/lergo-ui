@@ -8,7 +8,7 @@
 		</div>
 		<div quiz-item-media quiz-item="quizItem"></div>
 		<div class="answers">
-			<input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionText" ng-show="quizItem.subType==='short'" ng-model="quizItem.userAnswer" autofocus />
+			<input dir="auto"   autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionText" ng-show="quizItem.subType==='short'" ng-model="quizItem.userAnswer" autofocus />
 			<textarea dir="auto" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionTextarea" ng-show="quizItem.subType==='long'" ng-model="quizItem.userAnswer" autofocus></textarea>
             <span ng-init="quizItem.subType==='short' ? setFocus('openQuestionText') : setFocus('openQuestionTextarea')"></span>
 		</div>
