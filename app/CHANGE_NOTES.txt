@@ -1,3 +1,6 @@
+feat: more LERGO-665 features for BIDI and translate "Copy of:"
+    when making copies of lessons and questions in Hebrew / Arabic
+
 feat: LERGO-665 continued with more BIDI features
 
 bug: realstaging fails on update staging -- change lergo-ri package.json to be

@@ -52,8 +52,8 @@
 
 <div class="row row-nested top20">
     <div class="row row-nested top10" ng-repeat="item in step.quizItems">
-        <div class="col-md-8">
-            <a dir="auto" href="" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
+        <div dir="auto" class="col-md-8">
+            <a href="" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
         </div>
         <div class="col-md-3 text-right">
             <a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>

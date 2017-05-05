@@ -4,7 +4,7 @@
 		<div class="quiz-answer">
 			<div>
 				<div class="bold">{{'questions.correctAnswers'|translate}}</div>
-				<div ng-repeat="option in quizItem.options">
+				<div dir="auto" ng-repeat="option in quizItem.options">
 					{{option.label}}
 					<i ng-show="!!option.checked" class="fa fa-check correct"></i>
 				</div>
@@ -12,7 +12,7 @@
 			<br>
 			<div>
 				<div class="bold">{{'questions.yourAnswers'|translate}}</div>
-				<div ng-repeat="answer in quizItem.userAnswer">
+				<div dir="auto" ng-repeat="answer in quizItem.userAnswer">
 					{{answer}}
 					<i ng-show="!isCorrectAnswer(quizItem , answer)" class="fa fa-times wrong"></i>
 					<i ng-show="isCorrectAnswer(quizItem , answer)" class="fa fa-check correct"></i>

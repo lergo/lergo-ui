@@ -2,8 +2,8 @@
     <div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">
 
         <span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | translate}}</span>
-        <span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | translate}}: {{getCorrectAnswers(quizItem)}} </span>
-
+        <span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | translate}}:
+            <div dir="auto">{{getCorrectAnswers(quizItem)}}</div></span>
         <div
             ng-show="getAnswer(quizItem).expMessage.length>0 && !getAnswer(quizItem).correct && (!quizItem.explanationMedia || !quizItem.explanationMedia.type)">
             <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate

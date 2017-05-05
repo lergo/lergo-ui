@@ -50,7 +50,7 @@
 						<td>
 							<input type="checkbox" style="margin-left: 5px;" ng-model="l.selected">
 						</td>
-						<td class="name">
+						<td dir="auto" class="name">
 							<a ng-show="!!l.name && l.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">{{
 								l.name }}</a>
 							<a ng-show="!l.name || l.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">[ no
