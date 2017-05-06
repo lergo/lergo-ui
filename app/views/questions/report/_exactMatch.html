@@ -13,15 +13,17 @@
 
             <div>
                 <div class="bold">{{'questions.yourAnswer'|translate}}</div>
-                <div dir="auto">{{quizItem.userAnswer}}</div>
-                <i ng-show="!quizItem.checkAnswer.correct" class="fa fa-times wrong"></i>
-                <i ng-show="!!quizItem.checkAnswer.correct" class="fa fa-check correct"></i>
+                <div dir="auto">
+                    {{quizItem.userAnswer}}
+                    <i ng-show="!quizItem.checkAnswer.correct" class="fa fa-times wrong"></i>
+                    <i ng-show="!!quizItem.checkAnswer.correct" class="fa fa-check correct"></i>
+                </div>
             </div>
             <div ng-show="quizItem.checkAnswer.expMessage.length > 0 ">
                 <br>
 
                 <div class="bold">{{'explanation'|translate}}</div>
-                <div ng-repeat="msg in quizItem.checkAnswer.expMessage">{{msg}}</div>
+                <div dir="auto" ng-repeat="msg in quizItem.checkAnswer.expMessage">{{msg}}</div>
             </div>
             <div ng-show="!!quizItem.explanationMedia">
                 <br>

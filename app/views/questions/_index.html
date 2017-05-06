@@ -57,7 +57,7 @@
                         <span ng-show="!!isModal">{{item.question}}</span>
                         <div ng-show="!isModal" question-read-link question="item"></div>
                     </td>
-                    <td class="answer">{{ getAnswers(item) | limitTo:30}}</td>
+                    <td dir="auto" class="answer">{{ getAnswers(item) | limitTo:30}}</td>
                     <td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
                     <td class="answer">{{item.language && ('filters.languages.' + item.language | translate) || ""}}
                     </td>

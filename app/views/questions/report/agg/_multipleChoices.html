@@ -4,7 +4,7 @@
 		<div class="quiz-answer">
 			<div>
 				<div class="bold">{{'questions.correctAnswers'|translate}}</div>
-				<div ng-repeat="option in quizItem.options">
+				<div dir="auto" ng-repeat="option in quizItem.options">
 					{{option.label}}
 					<i ng-show="!!option.checked" class="fa fa-check correct"></i>
 				</div>
@@ -15,7 +15,7 @@
                 <br>
 
                 <div class="bold">{{'explanation'|translate}}</div>
-                <div ng-repeat="msg in quizItem.checkAnswer.expMessage">{{msg}}</div>
+                <div dir="auto" ng-repeat="msg in quizItem.checkAnswer.expMessage">{{msg}}</div>
             </div>
 			<div ng-show="!!quizItem.explanationMedia">
 				<br>

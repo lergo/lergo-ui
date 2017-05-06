@@ -19,7 +19,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="option in quizItem.options track by $index">
+		<tr dir="auto" ng-repeat="option in quizItem.options track by $index">
 			<td class="optionValue">{{option}}</td>
 			<td><input type="checkbox" ng-true-value="option"
 				ng-false-value="" ng-checked="isCorrectAnswer(option,quizItem)"

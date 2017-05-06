@@ -1,7 +1,8 @@
 <div class="result" ng-show="!!getAnswer(quizItem) && step.testMode!=='True'">
     <div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">
         <span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | translate}}</span>
-        <span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | translate}}: {{getCorrectAnswers(quizItem)}} </span>
+        <span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | translate}}:
+            <div dir="auto">{{getCorrectAnswers(quizItem)}}</div></span>
 
         <div
             ng-show="getAnswer(quizItem).expMessage.length>0 && !getAnswer(quizItem).correct && (!quizItem.explanationMedia || !quizItem.explanationMedia.type)">
@@ -9,7 +10,7 @@
                 }}
             </button>
             <div style="width: 400px; margin: auto" collapse="!!isCollapsed">
-                <div ng-repeat="msg in getAnswer(quizItem).expMessage">{{msg}}</div>
+                <div dir="auto" ng-repeat="msg in getAnswer(quizItem).expMessage">{{msg}}</div>
             </div>
         </div>
     </div>
