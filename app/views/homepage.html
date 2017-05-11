@@ -61,7 +61,7 @@
 							</div>
                             <div dir="auto" class="title">
 								<a href="#!/public/lessons/{{lesson._id}}/intro">
-									{{ lesson.name|limitTo:40 }}
+                                    <span tooltip="{{lesson.name}}">{{ lesson.name|limitTo:40 }}</span>
 									<span ng-show="lesson.name.length >40">...</span>
 								</a>
 							</div>
