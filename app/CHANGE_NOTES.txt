@@ -1,3 +1,6 @@
+fix (bidi): implement bidi on 'more' for lesson description and solve hebrew question not
+getting correct alignmnent after english question
+
 fix (password reset): LERGO-652 add regEx to make password reset case indifferent
     (same as login)  - lergo-ri only
 

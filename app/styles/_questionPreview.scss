@@ -79,6 +79,7 @@
         &[type=radio] {
             width: 20px;
             height: 20px;
+            outline: none;  // used when implementing directive set-focus
         }
     }
 }
