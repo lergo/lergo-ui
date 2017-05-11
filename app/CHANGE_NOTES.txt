@@ -1,3 +1,6 @@
+fix (password reset): LERGO-652 add regEx to make password reset case indifferent
+    (same as login)  - lergo-ri only
+
 feat: more LERGO-665 BIDI features and remove BIDI on placeholder (questions/update)
     add space after "Copy of " and it's translations (lergo-ri)
     submit with known bug that multiple questions on play lesson does not give correct alignment on hebrew
