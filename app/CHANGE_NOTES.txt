@@ -1,3 +1,6 @@
+
+fix (bidi): implement bidi on quiz items in play lesson, lesson report and lesson preview
+
 feat (tooltip): implement tooltip on lesson title to see full time
 
 fix (bidi): implement bidi on 'more' for lesson description and solve hebrew question not

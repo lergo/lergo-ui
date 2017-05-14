@@ -3,7 +3,7 @@
 		<a href="" class="no-underline" ng-click="quizCollapsed=!quizCollapsed">
 			<i ng-show="!quizCollapsed" class="fa fa-minus-square"></i>
 			<i ng-show="!!quizCollapsed" class="fa fa-plus-square"></i>
-			{{step.title}}
+            <span dir="auto">{{step.title}}</span>
 		</a>
 	</div>
 	<div dir="auto" collapse="!!quizCollapsed" ng-repeat="quizItem in getReportQuizItems(step, $index)">
