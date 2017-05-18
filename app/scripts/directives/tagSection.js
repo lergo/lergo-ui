@@ -46,7 +46,8 @@ angular.module('lergoApp')
 
                 function addTag(value) {
                     if (!!$scope.tags && $.grep($scope.tags, function (item/*, index*/) {
-                        return item.label === value;
+                        var value1 = value.toLowerCase();
+                        return item.label === value || item.label === value1;
                     }).length > 0) {
                         $log.info('error on scope');
                         $scope.error = 'tagSection.alreadyExists';
@@ -62,7 +63,8 @@ angular.module('lergoApp')
                             {'label': value}
                         ];
                     } else {
-                        $scope.tags.push({'label': value});
+                        var value1 = value.toLowerCase();
+                        $scope.tags.push({'label': value1});
                     }
                     $scope.newTag = '';
                 }

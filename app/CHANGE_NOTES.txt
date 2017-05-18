@@ -1,20 +1,22 @@
+feat(tags): LERGO-667 making tags only lowercase. Run script to convert all lesson tags and
+question tags to lowercase
 
-fix (bidi): implement bidi on quiz items in play lesson, lesson report and lesson preview
+fix(bidi): implement bidi on quiz items in play lesson, lesson report and lesson preview
 
-feat (tooltip): implement tooltip on lesson title to see full time
+feat(tooltip): implement tooltip on lesson title to see full time
 
-fix (bidi): implement bidi on 'more' for lesson description and solve hebrew question not
+fix(bidi): implement bidi on 'more' for lesson description and solve hebrew question not
 getting correct alignmnent after english question
 
-fix (password reset): LERGO-652 add regEx to make password reset case indifferent
+fix(password reset): LERGO-652 add regEx to make password reset case indifferent
     (same as login)  - lergo-ri only
 
-feat: more LERGO-665 BIDI features and remove BIDI on placeholder (questions/update)
+feat(bidi) : more LERGO-665 BIDI features and remove BIDI on placeholder (questions/update)
     add space after "Copy of " and it's translations (lergo-ri)
     submit with known bug that multiple questions on play lesson does not give correct alignment on hebrew
     after english multiple question without screen reload
 
-feat: more LERGO-665 features for BIDI and translate "Copy of:"
+feat(Copy of): more LERGO-665 features for BIDI and translate "Copy of:"
     when making copies of lessons and questions in Hebrew / Arabic
 
 feat: LERGO-665 continued with more BIDI features
