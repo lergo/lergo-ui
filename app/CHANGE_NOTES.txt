@@ -1,3 +1,5 @@
+feat(lesson report email): LERGO-668 implement hebrew email to invitee when student finishes their hebrew language lesson
+
 feat(tags): LERGO-667 making tags only lowercase. Run script to convert all lesson tags and
 question tags to lowercase
 
