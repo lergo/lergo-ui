@@ -46,6 +46,12 @@
                     <sub> <input type="checkbox" ng-model=step.retryQuestion> </sub>
                 </p>
             </div>
+            <div ng-if="!!step.retryQuestion" class="col-md-5 text-right">
+                <p>
+                    {{'quiz.showCorrectAns' | translate}}
+                    <sub> <input type="checkbox" ng-model=step.showCorrectAns> </sub>
+                </p>
+            </div>
         </div>
     </div>
 </div>

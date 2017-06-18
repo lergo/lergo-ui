@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsStepDisplayCtrl',
-    function ($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce, LergoClient, shuffleFilter, $window) {
+var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce,
+                                       LergoClient, shuffleFilter, localStorageService, $window) {
     $log.info('showing step');
+
+    var defaultRetries = 2;
 
     // used to fix bug where hint stays open when switching between questions.
     $scope.stepDisplay = {showHint: false};
@@ -253,7 +255,9 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl',
 
     $scope.nextQuizItem = function () {
         $log.info('next');
-
+        if (!!$scope.quizItem) {
+            localStorageService.remove($scope.quizItem._id + '-retries');
+        }
         $scope.stepDisplay.showHint = false;
 
         if (!$scope.questions) {
@@ -273,6 +277,7 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl',
                     $log.error('failed handling scenario where last question was answered', e);
                 }
             }
+            localStorageService.set($scope.quizItem._id + '-retries', defaultRetries);
         }
     };
 
@@ -308,13 +313,15 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl',
      * @returns {boolean|step.retryQuestion|*}
      */
     $scope.showNextQuestion = function () {
-        if (isTestMode()) {
+        if (isTestMode() || !$scope.getAnswer()) {
             return false;
         }
-        if ($scope.quizItem.type === LergoClient.questions.QUESTION_TYPE.OPEN_QUESTION && LergoClient.questions.hasExplanation($scope.quizItem) && !!$scope.getAnswer() && $scope.hasNextQuizItem()) {
+        if (LergoClient.questions.isOpenQuestion($scope.quizItem)
+            && LergoClient.questions.hasExplanation($scope.quizItem)
+            && $scope.hasNextQuizItem()) {
             return true;
         }
-        return ($scope.step.retryQuestion || $scope.hasNextQuizItem()) && $scope.getAnswer() && !$scope.getAnswer().correct;
+        return ($scope.step.retryQuestion || $scope.hasNextQuizItem()) && !$scope.getAnswer().correct;
     };
 
     $scope.hasNextQuizItem = function () {
@@ -459,20 +466,45 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl',
         return correctAnswers.length > 1;
     };
 
+
+    function shouldRetry(step) {
+        if (step.showCorrectAns) {
+            return step.retryQuestion
+        }
+        else {
+            return step.retryQuestion && localStorageService.get($scope.quizItem._id + '-retries') > 0;
+        }
+    }
+
     // reach here when you click next after got question wrong
     // if step defined with "allow retry" - we will try again, otherwise we move
     // to next item.
     $scope.retryOrNext = function () {
-        if ($scope.step.retryQuestion && $scope.quizItem.type !== LergoClient.questions.QUESTION_TYPE.OPEN_QUESTION) {
+        if (shouldRetry($scope.step) && !LergoClient.questions.isOpenQuestion($scope.quizItem)) {
             $scope.tryAgain();
         } else {
+            localStorageService.remove($scope.quizItem._id + '-retries');
             $scope.nextQuizItem();
         }
+    };
+
+
+    $scope.retriesLeft = function () {
+        if (!$scope.quizItem) {
+            return false;
+        }
+        else if (localStorageService.get($scope.quizItem._id + '-retries') > 0) {
+            return true;
+        }
+        return false;
     };
 
     $scope.tryAgain = function () {
         $log.info('trying again');
         var quizItem = $scope.quizItem;
+        var retriesLeft = localStorageService.get(quizItem._id + '-retries');
+        localStorageService.set(quizItem._id + '-retries', retriesLeft - 1);
+
         if (!!quizItem.options) {
             quizItem.options.isShuffled = false;
             _.each(quizItem.options, function (option) {
@@ -486,4 +518,5 @@ angular.module('lergoApp').controller('LessonsStepDisplayCtrl',
         quizItem.submitted = false;
     };
 
-});
+};
+angular.module('lergoApp').controller('LessonsStepDisplayCtrl', LessonsStepDisplayCtrl);
