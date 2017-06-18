@@ -316,12 +316,13 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         if (isTestMode() || !$scope.getAnswer()) {
             return false;
         }
-        if (LergoClient.questions.isOpenQuestion($scope.quizItem)
-            && LergoClient.questions.hasExplanation($scope.quizItem)
-            && $scope.hasNextQuizItem()) {
+        var isOpenQuestion = LergoClient.questions.isOpenQuestion($scope.quizItem);
+        var hasExplanation = LergoClient.questions.hasExplanation($scope.quizItem);
+        var hasNextQuizItem = $scope.hasNextQuizItem();
+        if (isOpenQuestion && hasExplanation && hasNextQuizItem) {
             return true;
         }
-        return ($scope.step.retryQuestion || $scope.hasNextQuizItem()) && !$scope.getAnswer().correct;
+        return ($scope.step.retryQuestion || hasNextQuizItem) && !$scope.getAnswer().correct;
     };
 
     $scope.hasNextQuizItem = function () {
@@ -469,7 +470,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
 
     function shouldRetry(step) {
         if (step.showCorrectAns) {
-            return step.retryQuestion
+            return step.retryQuestion;
         }
         else {
             return step.retryQuestion && localStorageService.get($scope.quizItem._id + '-retries') > 0;
