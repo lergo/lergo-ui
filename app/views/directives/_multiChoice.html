@@ -11,7 +11,7 @@
 			</tr>
 			<tr ng-show="!isMultiChoiceMultiAnswer(quizItem)" ng-repeat="option in quizItem.options | shuffle:quizItem.shuffleDisabled">
 				<td style="width: 5%">
-					<input style="" set-focus="true" type="radio" ng-disabled="quizItem.submitted" ng-model="option.userAnswer" ng-value="true" ng-click="setSingleAnswer(quizItem, $index)" />
+					<input style="" set-focus="$first" type="radio" ng-disabled="quizItem.submitted" ng-model="option.userAnswer" ng-value="true" ng-click="setSingleAnswer(quizItem, $index)" />
 				</td>
 				<td>{{option.label}}</td>
 			</tr>

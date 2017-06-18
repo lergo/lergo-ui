@@ -1,13 +1,15 @@
 <div class="result" ng-show="!!getAnswer(quizItem) && step.testMode!=='True'">
-    <div class="{{!getAnswer(quizItem).correct && 'bg-warning' || 'bg-success'}}">
-        <span ng-show="!!getAnswer(quizItem).correct">{{'questions.correctAnswerFilled' | translate}}</span>
-        <span ng-show="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | translate}}:
-            <div dir="auto">{{getCorrectAnswers(quizItem)}}</div></span>
-
-        <div
-            ng-show="getAnswer(quizItem).expMessage.length>0 && !getAnswer(quizItem).correct && (!quizItem.explanationMedia || !quizItem.explanationMedia.type)">
-            <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate
-                }}
+    <div ng-if="getAnswer(quizItem).correct" class="bg-success">
+        <span>{{'questions.correctAnswerFilled' | translate}}</span>
+    </div>
+    <div ng-if="!getAnswer(quizItem).correct" class="bg-warning">
+        <span ng-if="step.showCorrectAns || !retriesLeft()">{{'questions.incorrectAnswerFilled' | translate}}:{{getCorrectAnswers(quizItem)}}</span>
+        <span ng-if="!step.showCorrectAns && retriesLeft()">{{'questions.incorrectAnswerPleaseTry' | translate}}</span>
+        <div ng-show="getAnswer(quizItem).expMessage.length>0
+                        && !!step.showCorrectAns
+                        && (!quizItem.explanationMedia || !quizItem.explanationMedia.type)">
+            <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">
+                {{ 'explanation' | translate}}
             </button>
             <div style="width: 400px; margin: auto" collapse="!!isCollapsed">
                 <div dir="auto" ng-repeat="msg in getAnswer(quizItem).expMessage">{{msg}}</div>

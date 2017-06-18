@@ -95,7 +95,8 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 				}
 
                 var step = {
-                    'testMode' : 'False'
+                    'testMode' : 'False',
+                    'showCorrectAns' : true
                 };
 
                 if ( typeof($index) === 'number' ){

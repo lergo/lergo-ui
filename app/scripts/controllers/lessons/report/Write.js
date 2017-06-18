@@ -76,12 +76,13 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl',
             var newDuration = report.stepDurations[stepIndex];
 
             if (!newDuration) {
-                newDuration = {};
+                newDuration = {
+                    startTime: new Date().getTime(),
+                    testMode: report.data.lesson.steps[stepIndex].testMode,
+                    retryQuestion: report.data.lesson.steps[stepIndex].retryQuestion,
+                    showCorrectAns: report.data.lesson.steps[stepIndex].showCorrectAns
+                };
                 report.stepDurations.push(newDuration);
-            }
-
-            if (!newDuration.startTime) {
-                newDuration.startTime = new Date().getTime();
             }
         }
 

@@ -93,6 +93,7 @@
                 </div>
             </div>
         </div>
+        <!--Report Summary-->
         <div class="collapsible lergo-h1 row">
             <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed">
                 <i ng-show="!!summaryCollapsed" class="fa fa-plus-square"></i>
@@ -156,6 +157,9 @@
                 </div>
             </div>
         </div>
+        <!--End Of Report Summary-->
+
+        <!--Lessons Step-->
         <div class="collapsible lergo-h1 row">
             <a href="" class="no-underline" ng-click="stepCollapsed=!stepCollapsed">
                 <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
@@ -180,9 +184,11 @@
                     </div>
                 </div>
                 <div class="col-md-9 description">
-                    <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
-                        {{'reports.click.video' | translate}}</a>
-                    <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
+                                {{'reports.click.video' | translate}}</a>
+                            <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
                             <span class="inline-table">
                                  <ng-pluralize count="step.quizItems.length" when="{
                                         '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
@@ -206,13 +212,30 @@
                                  </ng-pluralize>
                             </span>
                         </span>
-                    <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
-                        {{'reports.click.step' | translate}}
-                    </a>
+                            <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
+                                {{'reports.click.step' | translate}}
+                            </a>
 
-                    <i ngShow="!!report.stepDurations[$index]" class="fa fa-clock-o">
-                        &nbsp;{{report.stepDurations[$index]|duration}}
-                    </i>
+                            <i ngShow="!!report.stepDurations[$index]" class="fa fa-clock-o">
+                                &nbsp;{{report.stepDurations[$index]|duration}}
+                            </i>
+                        </div>
+                    </div>
+                    <div ng-if="!!step.quizItems && step.testMode === 'False' " class="row top15">
+                        <div class="col-md-12">
+                            <div>
+                                <span> Practise Mode</span>
+                                <span> Repeat Question if question is correct [{{step.retryQuestion}}]</span>
+                                <span> Show Correct Answer [{{step.showCorrectAns}}]</span>
+                                <sup>
+                                    <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                                    <a popover="{{'quiz.testModeHint' | translate}}" class="fa fa-question-circle no-underline-v1"
+                                       popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+                                </sup>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
