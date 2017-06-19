@@ -4,7 +4,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
                                        LergoClient, shuffleFilter, localStorageService, $window) {
     $log.info('showing step');
 
-    var defaultRetries = 2;
+    var defaultRetries = 3;
 
     // used to fix bug where hint stays open when switching between questions.
     $scope.stepDisplay = {showHint: false};
@@ -110,7 +110,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
                 'userAnswer': quizItem.userAnswer,
                 'checkAnswer': result.data,
                 'quizItemId': quizItem._id,
-                'quizItemType':quizItem.type,
+                'quizItemType': quizItem.type,
                 'duration': duration,
                 'isHintUsed': !!quizItem.isHintUsed
             });
@@ -189,28 +189,29 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         });
     };
 
-    // quiz is done only iff all of the following are correct
-    // 1. all questions were answered
-    // 2. no retry required for last question -- which means last answer was
-    // correct or no retry configured
-    // guy - the last question is a special scenario since all the others will
-    // fall on the first condition.
 
-    // if step is not quiz - then we will return "true" as default.
+    /**
+     * @description
+     * quiz is done only iff all of the following are correct
+     * 1. all questions were answered
+     * 2. no retry required for last question -- which means last answer was correct or no retry configured
+     * guy - the last question is a special scenario since all the others will fall on the first condition.
+     * if step is not quiz - then we will return "true" as default.
+     *
+     * @returns {boolean}
+     */
     $scope.isQuizDone = function () {
 
-        if ($scope.step && $scope.step.type !== 'quiz') { // return true if not quiz.
+        if (!StepService.isQuizStep($scope.step)) { // return true if not quiz.
             return true;
         }
-
         var answer = $scope.getAnswer();
         var allQuestionsWereAnswered = !$scope.hasNextQuizItem() && answer;
         if (isTestMode()) {
             return allQuestionsWereAnswered;
         } else {
-            var noRetryOnLast = answer && (answer.correct || !$scope.step.retryQuestion);
-            return allQuestionsWereAnswered && noRetryOnLast; // the full
-            // condition
+            var noRetryOnLast = answer && (answer.correct || !$scope.step.retryQuestion || !$scope.retriesLeft());
+            return allQuestionsWereAnswered && noRetryOnLast; // the full condition
         }
     };
 
@@ -230,7 +231,36 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
      * * do not show explanation if
      *   * user did not answer yet
      *   * user is in test mode
-     *   * question does not have an explanation
+     *   * answer does not have an explanation message
+     *
+     * * show explanation if
+     *   * if chow correct answer is checked
+     *   * or no more retries left
+     *
+     * @returns {boolean}
+     */
+    $scope.shouldShowExplanationMessage = function () {
+        if (isTestMode()) {
+            return false;
+        } else if (!$scope.getAnswer()) {
+            return false;
+        } else if (!$scope.getAnswer().expMessage) {
+            return false;
+        } else if ($scope.getAnswer().expMessage.length <= 0) {
+            return false;
+        } else {
+            return $scope.step.showCorrectAns || !$scope.retriesLeft();
+        }
+    };
+
+    /**
+     *
+     * @description
+     *
+     * * do not show explanation if
+     *   * user did not answer yet
+     *   * user is in test mode
+     *   * question dows not have an explanation
      *
      * * show explanation if
      *   * question is of type open question
@@ -239,17 +269,35 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
      * @returns {boolean}
      */
     $scope.shouldShowExplanationMedia = function () {
-        if (
-            isTestMode() || !$scope.quizItem || !$scope.quizItem.explanationMedia || !$scope.quizItem.explanationMedia.type || !$scope.getAnswer()
-        ) {
+        if (isTestMode()) {
             return false;
+        } else if (!$scope.getAnswer()) {
+            return false;
+        } else if (!$scope.quizItem) {
+            return false;
+        } else if (!$scope.quizItem.explanation) {
+            return false;
+        } else if (!$scope.quizItem.explanationMedia.type) {
+            return false;
+        } else {
+            return !$scope.getAnswer().correct || LergoClient.questions.isOpenQuestion($scope.quizItem);
         }
-
-        if (
-            !$scope.getAnswer().correct ||
-            $scope.quizItem.type === 'openQuestion'
-        ) {
-            return true;
+    };
+    /**
+     * @description
+     * do not show result
+     * 1. in Test Mode
+     *
+     * Show results if
+     * 1. answer is submitted
+     *
+     * @returns {boolean}
+     */
+    $scope.shouldShowResult = function () {
+        if (isTestMode()) {
+            return false;
+        } else {
+            return !!$scope.getAnswer();
         }
     };
 
@@ -281,7 +329,12 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         }
     };
 
-    // simply gets the next quiz item. does not change the state of the page
+    /**
+     * @description
+     *
+     * simply gets the next quiz item. does not change the state of the page
+     * @returns {*}
+     */
     $scope.getNextQuizItemDry = function () {
         if (!$scope.hasNextQuizItem()) {
             return {
@@ -302,6 +355,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     };
 
     /**
+     * @description
      *
      * should we display "next question" button??
      *
@@ -322,7 +376,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         if (isOpenQuestion && hasExplanation && hasNextQuizItem) {
             return true;
         }
-        return ($scope.step.retryQuestion || hasNextQuizItem) && !$scope.getAnswer().correct;
+        return (($scope.step.retryQuestion && $scope.retriesLeft()) || hasNextQuizItem) && !$scope.getAnswer().correct;
     };
 
     $scope.hasNextQuizItem = function () {
@@ -405,8 +459,14 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         }
     };
 
-    // autofocus not working properly in control of partial view when added
-    // through ngInclude this is a hook to get the desired behaviour
+
+    /**
+     * @description
+     *
+     * autofocus not working properly in control of partial view when added
+     * through ngInclude this is a hook to get the desired behaviour
+     * @param id Id of an element
+     */
     $scope.setFocus = function (id) {
         document.getElementById(id).focus();
     };
@@ -467,7 +527,6 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         return correctAnswers.length > 1;
     };
 
-
     function shouldRetry(step) {
         if (step.showCorrectAns) {
             return step.retryQuestion;
@@ -477,18 +536,18 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         }
     }
 
-    // reach here when you click next after got question wrong
-    // if step defined with "allow retry" - we will try again, otherwise we move
-    // to next item.
+    /**
+     * reach here when you click next after got question wrong
+     * if step defined with "allow retry" - we will try again, otherwise we move
+     * to next item.
+     */
     $scope.retryOrNext = function () {
         if (shouldRetry($scope.step) && !LergoClient.questions.isOpenQuestion($scope.quizItem)) {
             $scope.tryAgain();
         } else {
-            localStorageService.remove($scope.quizItem._id + '-retries');
             $scope.nextQuizItem();
         }
     };
-
 
     $scope.retriesLeft = function () {
         if (!$scope.quizItem) {
@@ -518,6 +577,5 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         quizItem.userAnswer = null;
         quizItem.submitted = false;
     };
-
 };
 angular.module('lergoApp').controller('LessonsStepDisplayCtrl', LessonsStepDisplayCtrl);

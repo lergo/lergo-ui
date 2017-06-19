@@ -8,6 +8,9 @@ angular.module('lergoApp')
         this.isTestMode = function (step) {
             return step && step.testMode === 'True';
         };
+        this.isQuizStep = function(step){
+            return step && step.type === 'quiz';
+        };
 
 
     });
