@@ -224,13 +224,17 @@
                     <div ng-if="!!step.quizItems && step.testMode === 'False' " class="row top15">
                         <div class="col-md-12">
                             <div>
-                                <span> Practise Mode</span>
-                                <span> Repeat Question if question is correct [{{step.retryQuestion}}]</span>
-                                <span> Show Correct Answer [{{step.showCorrectAns}}]</span>
+                                <span> {{'report.lessonStep.practiceMode.title' | translate}}</span>
+                                <span> {{'report.lessonStep.practiceMode.repeatQuestion' | translate}}
+                                    [{{'report.lessonStep.practiceMode.'+step.retryQuestion | translate}}]</span>
+                                <span> {{'report.lessonStep.practiceMode.showCorrectAns' | translate}}
+                                    [{{'report.lessonStep.practiceMode.' + step.showCorrectAns | translate}}]</span>
                                 <sup>
                                     <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                    <a popover="{{'quiz.testModeHint' | translate}}" class="fa fa-question-circle no-underline-v1"
-                                       popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+                                    <a popover="{{'quiz.lessonStep.practiceMode.hint' | translate}}"
+                                       class="fa fa-question-circle no-underline-v1"
+                                       popover-placement="top" popover-trigger="focus" tabindex="0"
+                                       style="text-decoration: none"></a>
                                 </sup>
                             </div>
                         </div>

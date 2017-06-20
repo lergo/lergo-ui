@@ -26,8 +26,7 @@
  *
  */
 
-angular.module('lergoApp').controller('LessonsReportWriteCtrl',
-    function ($scope, ReportWriteService, ReportsService, $log, LergoClient,$q) {
+var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsService, $log, LergoClient, $q) {
 
     var report = $scope.report;
     if (!report.answers) {
@@ -40,7 +39,7 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl',
 
     $scope.$on('startLesson', function (event, data) {
         $log.info('starting lesson');
-        _.merge(report.data,data); // since we compacted data on report, report it initialized with partial data
+        _.merge(report.data, data); // since we compacted data on report, report it initialized with partial data
     });
 
     $scope.$on('endLesson', function (/* event, data */) {
@@ -77,11 +76,14 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl',
 
             if (!newDuration) {
                 newDuration = {
-                    startTime: new Date().getTime(),
-                    testMode: report.data.lesson.steps[stepIndex].testMode,
-                    retryQuestion: report.data.lesson.steps[stepIndex].retryQuestion,
-                    showCorrectAns: report.data.lesson.steps[stepIndex].showCorrectAns
+                    startTime: new Date().getTime()
                 };
+                var step = report.data.lesson.steps[stepIndex];
+                if (!!step) {
+                    newDuration.testMode = step.testMode;
+                    newDuration.retryQuestion = step.retryQuestion;
+                    newDuration.showCorrectAns = step.showCorrectAns;
+                }
                 report.stepDurations.push(newDuration);
             }
         }
@@ -119,7 +121,7 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl',
             _.merge(answer, {
                 'stepIndex': stepIndex,
                 'quizItemId': data.quizItemId,
-                'quizItemType':data.quizItemType,
+                'quizItemType': data.quizItemType,
                 'userAnswer': data.userAnswer,
                 'checkAnswer': data.checkAnswer,
                 'isHintUsed': data.isHintUsed,
@@ -170,5 +172,6 @@ angular.module('lergoApp').controller('LessonsReportWriteCtrl',
 
         });
     }
+};
 
-});
+angular.module('lergoApp').controller('LessonsReportWriteCtrl', LessonsReportWriteCtrl);

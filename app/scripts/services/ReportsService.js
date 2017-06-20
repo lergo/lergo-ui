@@ -13,7 +13,7 @@ angular.module('lergoApp')
             return $http.get('/backend/reports/class/' + reportId + '/read');
         };
 
-        this.findStudentLesson = function(like){
+        this.findStudentLesson = function (like) {
             return $http({
                 method: 'GET',
                 url: '/backend/reports/studentslessons/find',
@@ -23,29 +23,35 @@ angular.module('lergoApp')
             });
         };
 
-        this.findLesson = function( like,reportType ){
+        this.findLesson = function (like, reportType) {
             return $http({
                 method: 'GET',
-                url : '/backend/reports/lessons/find',
+                url: '/backend/reports/lessons/find',
                 params: {
-                    'like' : like,
+                    'like': like,
                     'reportType': reportType
                 }
             });
         };
 
-        this.continueLessonUrl = function(report){
-            if ( !!report ) {
-//            http://localhost:9000/#!/public/lessons/invitations/54a7a46d63abbaf42baf8aef/display?lessonId=53ca325179cee56d19e61548&lergoLanguage=en&reportId=54a7a46d63abbaf42baf8af0&currentStepIndex=0
-                return '/#!/public/lessons/invitations/' + report.invitationId + '/display?lessonId=' + report.data.lessonId + '&reportId=' + report._id + '&currentStepIndex=' + this.countCompletedSteps(report);
-            }else{
+        this.continueLessonUrl = function (report) {
+            if (!!report) {
+                /* http://localhost:9000/#!/public/lessons/invitations/54a7a46d63abbaf42baf8aef/display?
+                 * lessonId=53ca325179cee56d19e61548&
+                 * lergoLanguage=en&
+                 * reportId=54a7a46d63abbaf42baf8af0&
+                 * currentStepIndex=0 */
+                return '/#!/public/lessons/invitations/' + report.invitationId +
+                    '/display?lessonId=' + report.data.lessonId + '&reportId=' +
+                    report._id + '&currentStepIndex=' + this.countCompletedSteps(report);
+            } else {
                 return 'N/A';
             }
         };
 
-        this.countCompletedSteps = function(report){
+        this.countCompletedSteps = function (report) {
             var completedSteps = 0;
-            _.each(report.stepDurations, function(elem) {
+            _.each(report.stepDurations, function (elem) {
                 if (angular.isNumber(elem.startTime) && angular.isNumber(elem.endTime)) {
                     completedSteps++;
                 }
@@ -53,11 +59,28 @@ angular.module('lergoApp')
             return completedSteps;
         };
 
-        this.isCompleted = function(report){
-            if ( report.finished ){ // guy - adding this to : (1) shorten the process (2) fix bug where invitation is deleted and then suddenly 'incomplete' appears in reports index page.
+        /**
+         * Report is not completed if
+         * 1. Report is null
+         *
+         *
+         * @param report
+         * @returns {boolean}
+         */
+        this.isCompleted = function (report) {
+            if (!report) {
+                return false;
+            }
+            /*  guy - adding this to :
+             *  (1) shorten the process
+             *  (2) fix bug where invitation is deleted and then suddenly 'incomplete' appears in reports index page.
+             *  return true; */
+            else if (report.finished) {
                 return true;
-            }else {
-                return !!report && !!report.data && !!report.data.lesson && !!report.data.lesson.steps && report.data.lesson.steps.length === this.countCompletedSteps(report);
+            }
+            else {
+                var allStepsCompleted = report.data.lesson.steps.length === this.countCompletedSteps(report);
+                return !!report.data && !!report.data.lesson && !!report.data.lesson.steps && allStepsCompleted;
             }
         };
 
@@ -72,11 +95,11 @@ angular.module('lergoApp')
          */
         //
         //
-        this.getAnswerToQuizItem = function(report, quizItemId, stepIndex ){
-            var result =  _.find(report.answers, function( item ){
+        this.getAnswerToQuizItem = function (report, quizItemId, stepIndex) {
+            var result = _.find(report.answers, function (item) {
                 return (item.quizItemId === quizItemId) && (item.stepIndex === stepIndex);
             });
-            if ( !result ){
+            if (!result) {
                 return null; // make sure to return null, and not any other value like undefined
             }
             return result;
@@ -89,10 +112,10 @@ angular.module('lergoApp')
          * @param stepIndex step we are interested in
          * @returns {object} a map between quiz item id, and the answer
          */
-        this.getAnswersByQuizItemId = function( report, stepIndex ){
+        this.getAnswersByQuizItemId = function (report, stepIndex) {
             var result = {};
-            _.each(report.answers, function(item){
-                if ( item.stepIndex === stepIndex ){
+            _.each(report.answers, function (item) {
+                if (item.stepIndex === stepIndex) {
                     result[item.quizItemId] = item;
                 }
             });
@@ -103,12 +126,13 @@ angular.module('lergoApp')
         /**
          *
          * @param invitation
-         * @param overrides - a temporary solution for allowing users to register their names for each report. contains 'invitee' details in the same structure as it appears on invitation.
-         *                    it will be applied on update, which should happen as soon as lesson starts.
+         * @param overrides - a temporary solution for allowing users to register their names for each report.
+         *                      contains 'invitee' details in the same structure as it appears on invitation.
+         *                      it will be applied on update, which should happen as soon as lesson starts.
          * @returns {*}
          */
-        this.createFromInvitation = function (invitation, overrides ) {
-            return $http.post('/backend/reports/lessoninvitation/' + invitation._id, overrides );
+        this.createFromInvitation = function (invitation, overrides) {
+            return $http.post('/backend/reports/lessoninvitation/' + invitation._id, overrides);
         };
 
         this.update = function (report) {
@@ -116,9 +140,9 @@ angular.module('lergoApp')
         };
 
         this.ready = function (reportId) {
-            if (typeof(reportId) === 'object'){
+            if (typeof(reportId) === 'object') {
                 return $http.post('/backend/reports/' + reportId._id + '/ready');
-            }else{
+            } else {
                 return $http.post('/backend/reports/' + reportId + '/ready');
             }
 
@@ -128,11 +152,11 @@ angular.module('lergoApp')
             return $http.post('/backend/reports/' + report._id + '/delete');
         };
 
-        this.getStudents = function(){
+        this.getStudents = function () {
             return $http.get('/backend/reports/students');
         };
 
-        this.getClasses = function(){
+        this.getClasses = function () {
             return $http.get('/backend/reports/classes');
         };
     });

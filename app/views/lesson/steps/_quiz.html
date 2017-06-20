@@ -49,8 +49,14 @@
             <div ng-if="!!step.retryQuestion" class="col-md-5 text-right">
                 <p>
                     {{'quiz.showCorrectAns' | translate}}
+                    <sup>
+                        <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                        <a popover="{{'quiz.showCorrectAnsHint' | translate}}" class="fa fa-question-circle no-underline-v1"
+                           popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+                    </sup>
                     <sub> <input type="checkbox" ng-model=step.showCorrectAns> </sub>
                 </p>
+
             </div>
         </div>
     </div>
