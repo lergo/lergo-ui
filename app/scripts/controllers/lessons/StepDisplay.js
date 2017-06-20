@@ -585,6 +585,6 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
      */
     $scope.isQuizStep = function () {
         return StepService.isQuizStep($scope.step);
-    }
+    };
 };
 angular.module('lergoApp').controller('LessonsStepDisplayCtrl', LessonsStepDisplayCtrl);
