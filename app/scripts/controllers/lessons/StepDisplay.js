@@ -4,7 +4,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
                                        LergoClient, shuffleFilter, localStorageService, $window) {
     $log.info('showing step');
 
-    var defaultRetries = 3;
+    var defaultRetries = 2;
 
     // used to fix bug where hint stays open when switching between questions.
     $scope.stepDisplay = {showHint: false};
