@@ -24,7 +24,7 @@
 		<div ng-include="'views/questions/view/partials/_actionItems.html'"></div>
 	</div>
 </div>
-<div ng-show="mode==='quiz'">
+<div ng-show="isQuizStep()">
 	<div lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
 		<b>{{progressPercentage}}%</b>
 	</div>
