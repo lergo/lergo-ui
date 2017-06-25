@@ -176,7 +176,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
                     $scope.updateProgressPercent();
                 }
             } else {
-                if (!$scope.step.retryQuestion || result.data.correct || (isSameType && (defaultRetries() > 0 && !$scope.retriesLeft()))) {
+                if (!$scope.step.retryQuestion || result.data.correct || ((isSameType || !$scope.hasNextQuizItem()) && (defaultRetries() > 0 && !$scope.retriesLeft()))) {
                     $scope.updateProgressPercent();
                 }
             }

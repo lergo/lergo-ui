@@ -3,7 +3,9 @@
         <span>{{'questions.correctAnswerFilled' | translate}}</span>
     </div>
     <div ng-if="!getAnswer(quizItem).correct" class="bg-warning">
-        <span ng-if="canShowCrctAns() || !retriesLeft()">{{'questions.incorrectAnswerFilled' | translate}}:{{getCorrectAnswers(quizItem)}}</span>
+        <span ng-if="canShowCrctAns() || !retriesLeft()">{{'questions.incorrectAnswerFilled' | translate}}:
+            <div dir="auto">{{getCorrectAnswers(quizItem)}}</div>
+        </span>
         <span ng-if="!canShowCrctAns() && retriesLeft()">{{'questions.incorrectAnswerPleaseTry' | translate}}</span>
         <div ng-show="shouldShowExplanationMessage()">
             <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">

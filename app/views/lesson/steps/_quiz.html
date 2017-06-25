@@ -57,8 +57,10 @@
                            style="text-decoration: none"></a>
                     </sup>
                     <sub>
-                        <input type="number" style="display: inline;min-height: 0px" max="3" min="1"
-                               ng-model=step.retBefCrctAns>
+                        <select ng-options="o as o for o in [1,2]" ng-model="step.retBefCrctAns">
+                        </select>
+                        <!--<input type="number" style="display: inline;min-height: 0px" max="3" min="1"
+                               ng-model=step.retBefCrctAns>-->
                     </sub>
                     <ng-pluralize count="step.retBefCrctAns" when="{
                         '0': '{{ &quot;report.lessonStep.practiceMode.try.zero&quot;|translate}}',
@@ -79,7 +81,7 @@
         </div>
         <div class="col-md-3 text-right">
             <a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
-            <a href="" ng-click="moveQuizdex,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
+            <a href="" ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
             <a href="" ng-click="removeItemFromQuiz( item, step )">X</a>
         </div>
     </div>

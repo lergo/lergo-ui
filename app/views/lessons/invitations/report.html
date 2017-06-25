@@ -221,7 +221,7 @@
                             </i>
                         </div>
                     </div>
-                    <div ng-if="!!step.quizItems && step.testMode === 'False' " class="row top15">
+                    <div ng-if="!!step.quizItems && step.retryQuestion" class="row top15">
                         <div class="col-md-12">
                             <div>
                                 <span>
@@ -233,7 +233,7 @@
                                 </span>
                                 <sup>
                                     <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                    <a popover="{{'report.lessonStep.practiceMode.hint'|translate}}"
+                                    <a popover="{{'report.lessonStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"
                                        class="fa fa-question-circle no-underline-v1"
                                        popover-placement="top" popover-trigger="focus" tabindex="0"
                                        style="text-decoration: none"></a>
