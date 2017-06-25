@@ -46,15 +46,21 @@
                     <sub> <input type="checkbox" ng-model=step.retryQuestion> </sub>
                 </p>
             </div>
-            <div ng-if="!!step.retryQuestion" class="col-md-5 text-right">
+            <div ng-if="!!step.retryQuestion" class="col-md-6 text-right">
                 <p>
                     {{'quiz.showCorrectAns' | translate}}
                     <sup>
                         <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                        <a popover="{{'quiz.showCorrectAnsHint' | translate}}" class="fa fa-question-circle no-underline-v1"
-                           popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+                        <a popover="{{'quiz.showCorrectAnsHint' | translate}}"
+                           class="fa fa-question-circle no-underline-v1"
+                           popover-placement="top" popover-trigger="focus" tabindex="0"
+                           style="text-decoration: none"></a>
                     </sup>
-                    <sub> <input type="checkbox" ng-model=step.showCorrectAns> </sub>
+                    <sub>
+                        <input type="number" style="display: inline;min-height: 0px" max="3" min="1"
+                               ng-model=step.retBefCrctAns>
+                    </sub>
+                    try/tries
                 </p>
 
             </div>
@@ -69,7 +75,7 @@
         </div>
         <div class="col-md-3 text-right">
             <a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
-            <a href="" ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
+            <a href="" ng-click="moveQuizdex,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
             <a href="" ng-click="removeItemFromQuiz( item, step )">X</a>
         </div>
     </div>

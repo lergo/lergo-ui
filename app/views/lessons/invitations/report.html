@@ -224,11 +224,13 @@
                     <div ng-if="!!step.quizItems && step.testMode === 'False' " class="row top15">
                         <div class="col-md-12">
                             <div>
-                                <span> {{'report.lessonStep.practiceMode.title'|translate}}</span>
-                                <span> {{'report.lessonStep.practiceMode.repeatQuestion'|translate}}
-                                    [{{'report.lessonStep.practiceMode.'+step.retryQuestion|translate}}]</span>
-                                <span> {{'report.lessonStep.practiceMode.showCorrectAns'|translate}}
-                                    [{{'report.lessonStep.practiceMode.' + step.showCorrectAns|translate}}]</span>
+                                <span>
+                                    <ng-pluralize count="step.retBefCrctAns" when="{
+                                        '0': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.zero&quot; | translate}}',
+                                        'one': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.one&quot; | translate}}',
+                                        'other': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.other&quot; | translate}}'}">
+                                    </ng-pluralize>
+                                </span>
                                 <sup>
                                     <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
                                     <a popover="{{'report.lessonStep.practiceMode.hint'|translate}}"
