@@ -60,7 +60,11 @@
                         <input type="number" style="display: inline;min-height: 0px" max="3" min="1"
                                ng-model=step.retBefCrctAns>
                     </sub>
-                    try/tries
+                    <ng-pluralize count="step.retBefCrctAns" when="{
+                        '0': '{{ &quot;report.lessonStep.practiceMode.try.zero&quot;|translate}}',
+                        'one': '{{ &quot;report.lessonStep.practiceMode.try.one&quot;|translate}}',
+                        'other': '{{ &quot;report.lessonStep.practiceMode.try.other&quot;|translate}}'}">
+                    </ng-pluralize>
                 </p>
 
             </div>
