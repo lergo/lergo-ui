@@ -243,7 +243,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
             return false;
         } else if (!$scope.quizItem.explanation) {
             return false;
-        } else if ($scope.quizItem.explanationMedia  && !!$scope.quizItem.explanationMedia.type) {
+        } else if ($scope.quizItem.explanationMedia && !!$scope.quizItem.explanationMedia.type) {
             return false;
         } else if ($scope.quizItem.explanation.length <= 0) {
             return false;
@@ -303,7 +303,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     $scope.nextQuizItem = function () {
         $log.info('next');
         if (!!$scope.quizItem) {
-            //localStorageService.remove($scope.quizItem._id + '-retries');
+            localStorageService.remove($scope.quizItem._id + '-retries');
         }
         $scope.stepDisplay.showHint = false;
 
@@ -324,7 +324,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
                     $log.error('failed handling scenario where last question was answered', e);
                 }
             }
-            //localStorageService.set($scope.quizItem._id + '-retries', defaultRetries());
+            localStorageService.set($scope.quizItem._id + '-retries', defaultRetries());
         }
     };
 
@@ -532,7 +532,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
             return step.retryQuestion;
         }
         else {
-            return step.retryQuestion;// && localStorageService.get($scope.quizItem._id + '-retries') > 0;
+            return step.retryQuestion && localStorageService.get($scope.quizItem._id + '-retries') > 0;
         }
     }
 
@@ -553,14 +553,14 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         if (!$scope.quizItem) {
             return false;
         }
-        return true ; //localStorageService.get($scope.quizItem._id + '-retries') > 0;
+        return localStorageService.get($scope.quizItem._id + '-retries') > 0;
     };
 
     $scope.tryAgain = function () {
         $log.info('trying again');
         var quizItem = $scope.quizItem;
-        //var retriesLeft = localStorageService.get(quizItem._id + '-retries');
-        //localStorageService.set(quizItem._id + '-retries', retriesLeft - 1);
+        var retriesLeft = localStorageService.get(quizItem._id + '-retries');
+        localStorageService.set(quizItem._id + '-retries', retriesLeft - 1);
 
         if (!!quizItem.options) {
             quizItem.options.isShuffled = false;
@@ -585,7 +585,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     };
 
     $scope.canShowCrctAns = function () {
-        return !defaultRetries();
+        return !$scope.step.retryQuestion || !defaultRetries();
     };
 
     function defaultRetries() {
