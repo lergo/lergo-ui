@@ -248,7 +248,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         } else if ($scope.quizItem.explanation.length <= 0) {
             return false;
         } else {
-            return $scope.canShowCrctAns() || !$scope.retriesLeft();
+            return LergoClient.questions.isOpenQuestion($scope.quizItem) || $scope.canShowCrctAns() || !$scope.retriesLeft();
         }
     };
 
