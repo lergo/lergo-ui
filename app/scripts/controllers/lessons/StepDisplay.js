@@ -274,7 +274,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
             return false;
         } else if (!$scope.quizItem) {
             return false;
-        } else if (!$scope.quizItem.explanation) {
+        } else if (!$scope.quizItem.explanationMedia) {
             return false;
         } else if (!$scope.quizItem.explanationMedia.type) {
             return false;
