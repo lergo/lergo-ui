@@ -174,4 +174,5 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
     }
 };
 
-angular.module('lergoApp').controller('LessonsReportWriteCtrl', LessonsReportWriteCtrl);
+angular.module('lergoApp').controller('LessonsReportWriteCtrl', ['$scope', 'ReportWriteService', 'ReportsService',
+    '$log', 'LergoClient', '$q', LessonsReportWriteCtrl]);

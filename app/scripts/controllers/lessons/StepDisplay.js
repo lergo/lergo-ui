@@ -596,4 +596,5 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         }
     }
 };
-angular.module('lergoApp').controller('LessonsStepDisplayCtrl', LessonsStepDisplayCtrl);
+angular.module('lergoApp').controller('LessonsStepDisplayCtrl', ['$scope', '$rootScope', 'StepService', '$log', '$routeParams', '$timeout', '$sce',
+    'LergoClient', 'shuffleFilter', 'localStorageService', '$window',LessonsStepDisplayCtrl]);
