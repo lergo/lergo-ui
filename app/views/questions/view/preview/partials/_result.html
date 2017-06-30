@@ -1,10 +1,11 @@
-<div class="result" ng-show="showShowResult()">
+<div class="result" ng-show="!!getAnswer(quizItem)">
     <div ng-if="getAnswer(quizItem).correct" class="bg-success">
         <span>{{'questions.correctAnswerFilled' | translate}}</span>
     </div>
     <div ng-if="!getAnswer(quizItem).correct" class="bg-warning">
-        <span ng-if="step.showCorrectAns || !retriesLeft()">{{'questions.incorrectAnswerFilled' | translate}}:{{getCorrectAnswers(quizItem)}}</span>
-        <span ng-if="!step.showCorrectAns && retriesLeft()">{{'questions.incorrectAnswerPleaseTry' | translate}}</span>
+        <span ng-if="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | translate}}:
+            <div dir="auto">{{getCorrectAnswers(quizItem)}}</div>
+        </span>
         <div ng-show="shouldShowExplanationMessage()">
             <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">
                 {{ 'explanation' | translate}}

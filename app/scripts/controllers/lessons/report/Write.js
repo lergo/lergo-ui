@@ -82,7 +82,7 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
                 if (!!step) {
                     newDuration.testMode = step.testMode;
                     newDuration.retryQuestion = step.retryQuestion;
-                    newDuration.showCorrectAns = step.showCorrectAns;
+                    newDuration.retBefCrctAns = step.retBefCrctAns;
                 }
                 report.stepDurations.push(newDuration);
             }

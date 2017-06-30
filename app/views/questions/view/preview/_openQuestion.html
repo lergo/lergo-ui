@@ -23,7 +23,7 @@
 	<div ng-show="!!getAnswer(quizItem)">
 		<div class="bg-primary">
 			<span>{{'questions.thankYou' | translate}}</span>
-			<div ng-show="!!quizItem.explanation">
+			<div ng-show="shouldShowExplanationMessage()">
 				<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate }}</button></div>
                 <div dir="auto" style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
 		</div>

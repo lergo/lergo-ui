@@ -46,15 +46,27 @@
                     <sub> <input type="checkbox" ng-model=step.retryQuestion> </sub>
                 </p>
             </div>
-            <div ng-if="!!step.retryQuestion" class="col-md-5 text-right">
+            <div ng-if="!!step.retryQuestion" class="col-md-6 text-right">
                 <p>
                     {{'quiz.showCorrectAns' | translate}}
                     <sup>
                         <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                        <a popover="{{'quiz.showCorrectAnsHint' | translate}}" class="fa fa-question-circle no-underline-v1"
-                           popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+                        <a popover="{{'quiz.showCorrectAnsHint' | translate}}"
+                           class="fa fa-question-circle no-underline-v1"
+                           popover-placement="top" popover-trigger="focus" tabindex="0"
+                           style="text-decoration: none"></a>
                     </sup>
-                    <sub> <input type="checkbox" ng-model=step.showCorrectAns> </sub>
+                    <sub>
+                        <select ng-options="o as o for o in [1,2]" ng-model="step.retBefCrctAns">
+                        </select>
+                        <!--<input type="number" style="display: inline;min-height: 0px" max="3" min="1"
+                               ng-model=step.retBefCrctAns>-->
+                    </sub>
+                    <ng-pluralize count="step.retBefCrctAns" when="{
+                        '0': '{{ &quot;report.lessonStep.practiceMode.try.zero&quot;|translate}}',
+                        'one': '{{ &quot;report.lessonStep.practiceMode.try.one&quot;|translate}}',
+                        'other': '{{ &quot;report.lessonStep.practiceMode.try.other&quot;|translate}}'}">
+                    </ng-pluralize>
                 </p>
 
             </div>

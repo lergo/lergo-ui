@@ -4,8 +4,6 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
                                        LergoClient, shuffleFilter, localStorageService, $window) {
     $log.info('showing step');
 
-    var defaultRetries = 3;
-
     // used to fix bug where hint stays open when switching between questions.
     $scope.stepDisplay = {showHint: false};
 
@@ -19,7 +17,6 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     if (!!$routeParams.data) {
         $scope.step = JSON.parse($routeParams.data);
         shuffleFilter($scope.step.quizItems, !$scope.step.shuffleQuestion);
-        $log.info($scope.step);
     }
 
     function currentIndex() {
@@ -179,7 +176,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
                     $scope.updateProgressPercent();
                 }
             } else {
-                if (!$scope.step.retryQuestion || result.data.correct) {
+                if (!$scope.step.retryQuestion || result.data.correct || ((isSameType || !$scope.hasNextQuizItem()) && (defaultRetries() > 0 && !$scope.retriesLeft()))) {
                     $scope.updateProgressPercent();
                 }
             }
@@ -189,6 +186,10 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         });
     };
 
+
+    $scope.getQuizItem = function () {
+        return $scope.quizItem && $scope.quizItem._id;
+    };
 
     /**
      * @description
@@ -210,13 +211,9 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         if (isTestMode()) {
             return allQuestionsWereAnswered;
         } else {
-            var noRetryOnLast = answer && (answer.correct || !$scope.step.retryQuestion || !$scope.retriesLeft());
+            var noRetryOnLast = answer && (answer.correct || !$scope.step.retryQuestion || ( defaultRetries() > 0 && !$scope.retriesLeft()));
             return allQuestionsWereAnswered && noRetryOnLast; // the full condition
         }
-    };
-
-    $scope.getQuizItem = function () {
-        return $scope.quizItem && $scope.quizItem._id;
     };
 
     $scope.getAnswer = function () {
@@ -244,12 +241,14 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
             return false;
         } else if (!$scope.getAnswer()) {
             return false;
-        } else if (!$scope.getAnswer().expMessage) {
+        } else if (!$scope.quizItem.explanation) {
             return false;
-        } else if ($scope.getAnswer().expMessage.length <= 0) {
+        } else if ($scope.quizItem.explanationMedia && !!$scope.quizItem.explanationMedia.type) {
+            return false;
+        } else if ($scope.quizItem.explanation.length <= 0) {
             return false;
         } else {
-            return $scope.step.showCorrectAns || !$scope.retriesLeft();
+            return LergoClient.questions.isOpenQuestion($scope.quizItem) || $scope.canShowCrctAns() || !$scope.retriesLeft();
         }
     };
 
@@ -275,7 +274,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
             return false;
         } else if (!$scope.quizItem) {
             return false;
-        } else if (!$scope.quizItem.explanation) {
+        } else if (!$scope.quizItem.explanationMedia) {
             return false;
         } else if (!$scope.quizItem.explanationMedia.type) {
             return false;
@@ -325,7 +324,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
                     $log.error('failed handling scenario where last question was answered', e);
                 }
             }
-            localStorageService.set($scope.quizItem._id + '-retries', defaultRetries);
+            localStorageService.set($scope.quizItem._id + '-retries', defaultRetries());
         }
     };
 
@@ -376,7 +375,8 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         if (isOpenQuestion && hasExplanation && hasNextQuizItem) {
             return true;
         }
-        return (($scope.step.retryQuestion && $scope.retriesLeft()) || hasNextQuizItem) && !$scope.getAnswer().correct;
+        var repeatQuestion = $scope.step.retryQuestion && (defaultRetries() === 0 || $scope.retriesLeft());
+        return (repeatQuestion || hasNextQuizItem) && !$scope.getAnswer().correct;
     };
 
     $scope.hasNextQuizItem = function () {
@@ -528,7 +528,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     };
 
     function shouldRetry(step) {
-        if (step.showCorrectAns) {
+        if ($scope.canShowCrctAns()) {
             return step.retryQuestion;
         }
         else {
@@ -553,10 +553,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         if (!$scope.quizItem) {
             return false;
         }
-        else if (localStorageService.get($scope.quizItem._id + '-retries') > 0) {
-            return true;
-        }
-        return false;
+        return localStorageService.get($scope.quizItem._id + '-retries') > 0;
     };
 
     $scope.tryAgain = function () {
@@ -577,5 +574,26 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         quizItem.userAnswer = null;
         quizItem.submitted = false;
     };
+    /**
+     * @description
+     *
+     * Whether a quiz step
+     * @returns {boolean}
+     */
+    $scope.isQuizStep = function () {
+        return StepService.isQuizStep($scope.step);
+    };
+
+    $scope.canShowCrctAns = function () {
+        return !$scope.step.retryQuestion || !defaultRetries();
+    };
+
+    function defaultRetries() {
+        if (!$scope.step.retBefCrctAns) {
+            return 0;
+        } else {
+            return $scope.step.retBefCrctAns - 1;
+        }
+    }
 };
 angular.module('lergoApp').controller('LessonsStepDisplayCtrl', LessonsStepDisplayCtrl);

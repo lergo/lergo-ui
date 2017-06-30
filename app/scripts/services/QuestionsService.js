@@ -50,10 +50,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         if (!question) {
             return false;
         }
-        if (question.type === this.QUESTION_TYPE.OPEN_QUESTION) {
-            return true;
-        }
-        return false;
+        return question.type === this.QUESTION_TYPE.OPEN_QUESTION;
     };
 
     this.updateQuestion = function (question) {
