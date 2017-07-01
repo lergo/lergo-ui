@@ -219,10 +219,15 @@
                             <i ngShow="!!report.stepDurations[$index]" class="fa fa-clock-o">
                                 &nbsp;{{report.stepDurations[$index]|duration}}
                             </i>
+                            <a ng-show="!!step.quizItems && step.retryQuestion && step.testMode === 'False'"
+                               ng-click="stepDetail=!stepDetail">
+                                <i ng-show="!stepDetail" class="fa fa-plus-square"></i>
+                                <i ng-show="!!stepDetail" class="fa fa-minus-square"></i>
+                            </a>
                         </div>
                     </div>
-                    <div ng-if="!!step.quizItems && step.retryQuestion && step.testMode === 'False'" class="row top15">
-                        <div class="col-md-12">
+                    <div  class="row top15">
+                        <div collapse="!stepDetail" class="col-md-12">
                             <div>
                                 <span>
                                     <ng-pluralize count="step.retBefCrctAns" when="{
