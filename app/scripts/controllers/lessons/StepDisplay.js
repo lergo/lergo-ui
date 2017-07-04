@@ -247,8 +247,10 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
             return false;
         } else if ($scope.quizItem.explanation.length <= 0) {
             return false;
+        } else if (LergoClient.questions.isOpenQuestion($scope.quizItem)) {
+            return true;
         } else {
-            return LergoClient.questions.isOpenQuestion($scope.quizItem) || $scope.canShowCrctAns() || !$scope.retriesLeft();
+            return !$scope.getAnswer().correct && ( $scope.canShowCrctAns() || !$scope.retriesLeft());
         }
     };
 
@@ -278,8 +280,10 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
             return false;
         } else if (!$scope.quizItem.explanationMedia.type) {
             return false;
+        } else if (LergoClient.questions.isOpenQuestion($scope.quizItem)) {
+            return true;
         } else {
-            return !$scope.getAnswer().correct || LergoClient.questions.isOpenQuestion($scope.quizItem);
+            return !$scope.getAnswer().correct && ( $scope.canShowCrctAns() || !$scope.retriesLeft());
         }
     };
     /**
@@ -597,4 +601,4 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     }
 };
 angular.module('lergoApp').controller('LessonsStepDisplayCtrl', ['$scope', '$rootScope', 'StepService', '$log', '$routeParams', '$timeout', '$sce',
-    'LergoClient', 'shuffleFilter', 'localStorageService', '$window',LessonsStepDisplayCtrl]);
+    'LergoClient', 'shuffleFilter', 'localStorageService', '$window', LessonsStepDisplayCtrl]);
