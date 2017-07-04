@@ -180,6 +180,7 @@ angular.module('lergoApp').service('LessonsService',
                         'type': 'quiz',
                         'quizItems': [],
                         'testMode': 'False',
+                        'retBefCrctAns': 1,
                         'shuffleQuestion': true,
                         retryQuestion: stepsWithoutRetry.length === 0
                     };

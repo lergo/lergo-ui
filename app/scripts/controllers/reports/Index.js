@@ -142,6 +142,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl',
                 var step = {
                     'type': 'quiz',
                     'quizItems': [],
+                    'retBefCrctAns': 1,
                     'title': $filter('translate')('lesson.practice.step.title')
                 };
                 lesson.steps.push(step);
