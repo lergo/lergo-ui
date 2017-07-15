@@ -222,12 +222,14 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
         $scope.shouldShowExplanationMessage = function () {
             if (!$scope.getAnswer()) {
                 return false;
+            } else if (LergoClient.questions.isOpenQuestion($scope.quizItem)) {
+                return !!$scope.quizItem.explanation;
             } else if ($scope.getAnswer().expMessage.length <= 0) {
                 return false;
             } else if ($scope.quizItem.explanationMedia && !!$scope.quizItem.explanationMedia.type) {
                 return false;
             } else {
-                return LergoClient.questions.isOpenQuestion($scope.quizItem) || !$scope.getAnswer().correct;
+                return !$scope.getAnswer().correct;
             }
         };
 
