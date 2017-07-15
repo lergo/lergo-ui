@@ -241,11 +241,9 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
             return false;
         } else if (!$scope.getAnswer()) {
             return false;
-        } else if (!$scope.quizItem.explanation) {
+        } else if ($scope.getAnswer().expMessage.length<=0) {
             return false;
         } else if ($scope.quizItem.explanationMedia && !!$scope.quizItem.explanationMedia.type) {
-            return false;
-        } else if ($scope.quizItem.explanation.length <= 0) {
             return false;
         } else if (LergoClient.questions.isOpenQuestion($scope.quizItem)) {
             return true;
