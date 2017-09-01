@@ -3,8 +3,8 @@
         <p>{{'quiz.practiseMode' | translate}}
             <sup>
                 <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                <a popover="{{'quiz.testModeHint' | translate}}" class="fa fa-question-circle no-underline-v1"
-                   popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+                <a uib-popover="{{'quiz.testModeHint' | translate}}" class="fa fa-question-circle no-underline-v1"
+                   popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none"></a>
             </sup>
             <sub>
                 <input type="checkbox" ng-true-value="'False'" ng-false-value="'True'" ng-model=step.testMode>
@@ -22,8 +22,8 @@
     <div class="col-md-5 text-right">
         <p>{{'quiz.shuffleQuestion' | translate}}
             <sup>
-                <a popover="{{'quiz.shuffleQuestionHint' | translate}}" class="fa fa-question-circle"
-                   popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+                <a uib-popover="{{'quiz.shuffleQuestionHint' | translate}}" class="fa fa-question-circle"
+                   popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none"></a>
             </sup>
             <sub>
                 <input type="checkbox" ng-model=step.shuffleQuestion>
@@ -39,8 +39,8 @@
                 <p>
                     {{'quiz.allowRetry' | translate}}
                     <sup>
-                        <a popover="{{'quiz.retryQuestionHint' | translate }}" class="fa fa-question-circle"
-                           popover-placement="top" popover-trigger="focus" tabindex="0"
+                        <a uib-popover="{{'quiz.retryQuestionHint' | translate }}" class="fa fa-question-circle"
+                           popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
                            style="text-decoration: none"></a>
                     </sup>
                     <sub> <input type="checkbox" ng-model=step.retryQuestion> </sub>
@@ -51,9 +51,9 @@
                     {{'quiz.showCorrectAns' | translate}}
                     <sup>
                         <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                        <a popover="{{'quiz.showCorrectAnsHint' | translate}}"
+                        <a uib-popover="{{'quiz.showCorrectAnsHint' | translate}}"
                            class="fa fa-question-circle no-underline-v1"
-                           popover-placement="top" popover-trigger="focus" tabindex="0"
+                           popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
                            style="text-decoration: none"></a>
                     </sup>
                     <sub>
@@ -96,8 +96,8 @@
         </button>
         <sup>
             <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-            <a popover="{{'quiz.addQuestionHint' | translate}}" class="fa fa-question-circle"
-               popover-placement="top" popover-trigger="focus" tabindex="0" style="text-decoration: none"></a>
+            <a uib-popover="{{'quiz.addQuestionHint' | translate}}" class="fa fa-question-circle"
+               popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none"></a>
         </sup>
     </div>
 </div>

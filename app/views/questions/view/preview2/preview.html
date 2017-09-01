@@ -7,8 +7,8 @@
             </div>
             <div class="col-md-2 text-right">
                 <button ng-show="!!quizItem.hint" popover-placement="top"
-                        popover="{{quizItem.hint}}" class="btn-link hint"
-                        popover-trigger="focus" tabindex="0">{{'hint' | translate}}
+                        uib-popover="{{quizItem.hint}}" class="btn-link hint"
+                         popover-trigger="'outsideClick'" tabindex="0">{{'hint' | translate}}
                 </button>
             </div>
         </div>

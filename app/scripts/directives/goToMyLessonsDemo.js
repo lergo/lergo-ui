@@ -7,7 +7,7 @@
  * # goToMyLessonsDemo
  */
 angular.module('lergoApp')
-    .directive('goToMyLessonsDemo', function (LergoClient, $modal , $location, localStorageService) {
+    .directive('goToMyLessonsDemo', function (LergoClient, $uibModal , $location, localStorageService) {
         return {
             templateUrl: 'views/demos/goToMyLessonsDemo.html',
             restrict: 'A',
@@ -31,7 +31,7 @@ angular.module('lergoApp')
                 });
 
                 $scope.openGoToMyLessonsDemoDialog = function () {
-                    modalInstance = $modal.open({
+                    modalInstance = $uibModal.open({
                         templateUrl: 'goToMyLessonsDemoDialog.html',
                         size: 'lg',
                         windowClass: 'go-to-my-lessons-demo-dialog',

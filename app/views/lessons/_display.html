@@ -54,8 +54,8 @@
                        ng-disabled="practiseBtnDisable">
                         <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat"></i>
                     </a>
-                    <a show-anonymous href="" popover-placement="bottom" popover-trigger="focus"
-                       popover="{{'lessons.practiceNotAvailable' | translate}}"
+                    <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
+                       uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
                        tabindex="0">
                         <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
                     </a>
@@ -65,8 +65,8 @@
                        ng-disabled="practiseBtnDisable">
                         {{'lessons.practiseWrongQuestion' | translate}}
                     </a>
-                    <a show-anonymous href="" popover-placement="bottom" popover-trigger="focus"
-                       popover="{{'lessons.practiceNotAvailable' | translate}}"
+                    <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
+                       uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
                        tabindex="0">{{'lessons.practiseWrongQuestion' | translate}}</a>
                 </td>
             </tr>
@@ -76,12 +76,12 @@
     <div class="stats">
         <div class="action-items">
 			<span show-logged-in>
-				<button class="btn-link" ng-click="likeLesson()" tooltip="{{'lessons.tooltip.like' | translate}}"
+				<button class="btn-link" ng-click="likeLesson()" uib-tooltip="{{'lessons.tooltip.like' | translate}}"
                         ng-show="!isLiked()">
 					<i class="fa fa-heart-o "></i>
 					{{'like' | translate}}
 				</button>
-				<span class="btn-link dropdown" ng-click="noop()" tooltip="{{'lessons.tooltip.liked' | translate}}"
+				<span class="btn-link dropdown" ng-click="noop()" uib-tooltip="{{'lessons.tooltip.liked' | translate}}"
                       ng-show="!!isLiked()">
 					<span class="dropdown-toggle">
 						<i class="fa fa-heart-o "></i>
@@ -98,26 +98,26 @@
 					</span>
 				</span>
 			</span>
-            <a href="" show-anonymous class="btn-link" popover="{{'lessons.likeNotAvailable' | translate}}"
-               popover-placement="top" popover-trigger="focus"
+            <a href="" show-anonymous class="btn-link" uib-popover="{{'lessons.likeNotAvailable' | translate}}"
+               popover-placement="top" popover-trigger="'outsideClick'"
                tabindex="0">
                 <i class="fa fa-heart-o "></i>
                 {{'like' | translate}}
             </a>
             <button show-logged-in class="btn-link" ng-click="setActiveAction(actionItems.INVITE)"
-                    tooltip="{{'lessons.tooltip.invite' | translate}}">
+                    uib-tooltip="{{'lessons.tooltip.invite' | translate}}">
                 <i class="fa fa-envelope "></i>
                 {{'invite' | translate}}
             </button>
             <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-            <a href="" show-anonymous class="btn-link" popover="{{'lessons.inviteNotAvailable' | translate}}"
-               popover-placement="top" popover-trigger="focus"
+            <a href="" show-anonymous class="btn-link" uib-popover="{{'lessons.inviteNotAvailable' | translate}}"
+               popover-placement="top" popover-trigger="'outsideClick'"
                tabindex="0">
                 <i class="fa fa-envelope "></i>
                 {{'invite' | translate}}
             </a>
             <button class="btn-link" ng-click="setActiveAction(actionItems.SHARE)"
-                    tooltip="{{'lessons.tooltip.share' | translate}}">
+                    uib-tooltip="{{'lessons.tooltip.share' | translate}}">
                 <i class="fa fa-share-alt "></i>
                 {{'share' | translate}}
             </button>

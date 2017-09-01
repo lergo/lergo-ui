@@ -3,7 +3,7 @@
  */
 
 'use strict';
-function lessonPreviewctrl($scope, lesson, questions,$modalInstance) {
+function lessonPreviewctrl($scope, lesson, questions,$uibModalInstance) {
     $scope.lesson = lesson;
     $scope.questions = {};
     _.forEach(questions,function (q){
@@ -13,9 +13,9 @@ function lessonPreviewctrl($scope, lesson, questions,$modalInstance) {
     });
 
     $scope.cancel = function () {
-        $modalInstance.dismiss();
+        $uibModalInstance.dismiss();
     };
 }
 
 
-angular.module('lergoApp').controller('LessonPreviewCtrl', ['$scope', 'lesson', 'questions','$modalInstance',lessonPreviewctrl]);
+angular.module('lergoApp').controller('LessonPreviewCtrl', ['$scope', 'lesson', 'questions','$uibModalInstance',lessonPreviewctrl]);

@@ -7,24 +7,24 @@ describe('Controller: ManageUsersEditRoleDialogCtrl', function () {
 
     var ManageUsersEditRoleDialogCtrl,
         LergoClient,
-        $modalInstance,
+        $uibModalInstance,
         $controller,
         scope;
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function (_$controller_, $rootScope, _LergoClient_, _$modalInstance_  ) {
+    beforeEach(inject(function (_$controller_, $rootScope, _LergoClient_, _$uibModalInstance_  ) {
         scope = $rootScope.$new();
         $controller = _$controller_;
         LergoClient = _LergoClient_;
-        $modalInstance = _$modalInstance_;
+        $uibModalInstance = _$uibModalInstance_;
         ManageUsersEditRoleDialogCtrl = $controller('ManageUsersEditRoleDialogCtrl', {
             $scope: scope
         });
 
         scope.user = {};
 
-        spyOn($modalInstance, 'close');
-        spyOn($modalInstance, 'dismiss');
+        spyOn($uibModalInstance, 'close');
+        spyOn($uibModalInstance, 'dismiss');
         spyOn(LergoClient.users,'patchUserRoles').andReturn(window.mockPromise());
 
     }));
@@ -54,7 +54,7 @@ describe('Controller: ManageUsersEditRoleDialogCtrl', function () {
 
             LergoClient.users.patchUserRoles.andReturn(window.mockPromise({}));
             scope.submit();
-            expect($modalInstance.close).toHaveBeenCalled();
+            expect($uibModalInstance.close).toHaveBeenCalled();
             expect(toastr.success).toHaveBeenCalled();
         });
 
@@ -68,7 +68,7 @@ describe('Controller: ManageUsersEditRoleDialogCtrl', function () {
     describe('#close', function(){
         it('should close the dialog', function(){
             scope.close();
-            expect($modalInstance.dismiss).toHaveBeenCalled();
+            expect($uibModalInstance.dismiss).toHaveBeenCalled();
         });
     });
 

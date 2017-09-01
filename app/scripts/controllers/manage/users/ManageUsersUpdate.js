@@ -8,7 +8,7 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('ManageUsersUpdateCtrl', function ($scope, $routeParams, LergoClient, $modal, $location ) {
+    .controller('ManageUsersUpdateCtrl', function ($scope, $routeParams, LergoClient, $uibModal, $location ) {
 
         function loadUser() {
             LergoClient.users.read($routeParams.userId).then(function (result) {
@@ -29,7 +29,7 @@ angular.module('lergoApp')
             var newScope = $scope.$new(true);
             newScope.user = $scope.user;
             newScope.roles = $scope.roles;
-            $modal.open({
+            $uibModal.open({
                 templateUrl: 'views/manage/users/manageUserEditRoleDialog.html',
                 controller: 'ManageUsersEditRoleDialogCtrl',
                 scope:newScope,

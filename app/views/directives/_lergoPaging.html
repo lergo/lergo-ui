@@ -1,19 +1,15 @@
 <div class="pagination">
-
-    <pagination
-            total-items="page.count"
-            ng-model="page.current"
-            items-per-page="page.size"
-            class="pagination-sm"
-            rotate="false"
-            max-size="5"
-            boundary-links="true"
-            first-text="<<"
-            last-text=">>"
-            previous-text="<"
-            next-text=">">
-        <!--num-pages="numPages"-->
-        <!--ng-change="initPageLessons(currentPage)"-->
-
-    </pagination>
+    <ul uib-pagination
+        total-items="page.count"
+        ng-model="page.current"
+        items-per-page="page.size"
+        class="pagination-sm"
+        rotate="false"
+        max-size="5"
+        boundary-links="true"
+        first-text="<<"
+        last-text=">>"
+        previous-text="<"
+        next-text=">">
+    </ul>
 </div>

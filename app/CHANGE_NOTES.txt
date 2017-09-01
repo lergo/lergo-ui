@@ -1,3 +1,5 @@
+upgrade(angular 1.6.x) LERGO-671: implement all changes required by angular 1.6.6 and fix $digest bug
+also requires changes in lergo-protractor (fix uib-tooltip)
 
 style(lesson report email): LERGO-668 rev1. improve hebrew with bidi, punctuation and less lines
 feat(lesson report email): LERGO-668 implement hebrew email to invitee when student finishes their hebrew language lesson

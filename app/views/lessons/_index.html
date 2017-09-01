@@ -3,20 +3,21 @@
 	<div class="page-content-width page-content-titles">
 		<div class="page-content-body">
 			<div class="lergo-h1">
-				<div class="btn-group" dropdown>
-					<button type="button" class="btn-link" dropdown-toggle style="color: #5fb9ff; text-decoration: none">
-						<span class="fa fa-caret-down"></span>
-						<span class="lergo-h1">{{('lessons.'+ lessonToLoad |translate)}} </span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li>
-							<a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.user)">{{'lessons.myLessons'|translate}}</a>
-							<a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.liked)">{{'lessons.likedLessons'|translate}}</a>
-						</li>
-					</ul>
-				</div>
-				[ {{ 'lessons.total' | translate }}: {{filterPage.count}} ]
-			</div>
+                <!-- using uib-bootstrap code to get dropdown to 'dropdown' in angular 1.6-->
+                <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                     <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
+                         <span class="fa fa-caret-down"></span>
+                         <span class="lergo-h1">{{('lessons.'+ lessonToLoad |translate)}} </span>
+                     </button>
+                     <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                        <li>
+                            <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.user)">{{'lessons.myLessons'|translate}}</a>
+                            <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.liked)">{{'lessons.likedLessons'|translate}}</a>
+                        </li>
+                     </ul>
+                </div>
+                [ {{ 'lessons.total' | translate }}: {{filterPage.count}} ]
+            </div>
 			<div class="page-content-titles-actions">
 				<button ng-click="createLessonBtnDisable || create()" class="btn btn-start" ng-disabled="createLessonBtnDisable">
                     <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
@@ -46,9 +47,9 @@
 				<tbody>
 					<tr ng-repeat="les in lessons |orderBy:'-lastUpdate'">
 						<td dir="auto" class="name">
-							<a ng-show="!!les.name && les.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">{{
+							<a ng-show="!!les.name && les.name.trim().length > 0" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">{{
 								les.name }}</a>
-							<a ng-show="!les.name || les.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">[
+							<a ng-show="!les.name || les.name.trim().length <= 0" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">[
 								no title ]</a>
 						</td>
 						<td class="answer">{{les.language && ('filters.languages.' + les.language | translate) || ""}}</td>

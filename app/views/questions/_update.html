@@ -5,8 +5,8 @@
 			<span class="pop-up-hint">
 				<span>
 					<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-					<button popover="{{'questions.usedByOthersHint' | translate}}" class="fa fa-question-circle"
-                            popover-placement="bottom" popover-trigger="focus"
+					<button uib-popover="{{'questions.usedByOthersHint' | translate}}" class="fa fa-question-circle"
+                            popover-placement="bottom"  popover-trigger="'outsideClick'"
                             tabindex="0"></button>
 				</span>
 			</span>
@@ -84,7 +84,7 @@
                 {{ 'advancedOptions' | translate }}
             </button>
         </div>
-        <div collapse="!isCollapsed" ng-init="">
+        <div uib-collapse="!isCollapsed" ng-init="">
             <hr/>
             <table class=" lergo-table lergo-form">
                 <tbody>

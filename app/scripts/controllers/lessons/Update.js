@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsUpdateCtrl',
-    function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $modal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
+    function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
         $window.scrollTo(0, 0);
         $scope.subjects = LergoFilterService.subjects;
         var addStepClicked = false;
@@ -365,7 +365,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                     return step;
                 }
             };
-            var modelInstance = $modal.open(modelContent);
+            var modelInstance = $uibModal.open(modelContent);
             modelInstance.result.then(function () {
                 scrollToPersistPosition();
             }, function () {
@@ -418,7 +418,6 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 'position': lang && lang.dir === 'rtl' ? 'left' : 'right'
             };
         }, function (newValue) {
-            console.log('popover position', newValue);
             $scope.popoverState = newValue;
         }, true);
     });

@@ -7,7 +7,7 @@
         <img ng-src="{{user.gravatarUrl}}">
         {{user.username}}
     </a>
-    <div class="user-section-menu" dropdown is-open="menuIsOpen">
+    <div class="user-section-menu" uib-dropdown is-open="menuIsOpen">
         <ul class="dropdown-menu">
             <li><a href="/#!/user/create/profile">{{'baseLayout.header.links.profile' | translate}}</a></li>
             <li><a href="/#!/user/create/lessons">{{'baseLayout.header.links.lessons' | translate}}</a></li>

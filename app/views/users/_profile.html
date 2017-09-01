@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right col-edit">
             <a class="btn btn-link  font-lg" ng-click="toggleEdit()" ng-show="userCanEdit()">
-                <i ng-show="!isEditAllow" class="fa fa-edit" tooltip="{{'profile.edit.title'|translate}}"></i>
-                <i ng-show="!!isEditAllow" class="fa fa-save" tooltip="{{'profile.save.title'|translate}}"></i>
+                <i ng-show="!isEditAllow" class="fa fa-edit" uib-tooltip="{{'profile.edit.title'|translate}}"></i>
+                <i ng-show="!!isEditAllow" class="fa fa-save" uib-tooltip="{{'profile.save.title'|translate}}"></i>
             </a>
         </div>
     </div>
@@ -15,8 +15,8 @@
                 <img ng-src="{{user.gravatarUrlLarge}}" class="img-rounded ">
             </div>
             <div ng-show="!!isEditAllow">
-                <a class="btn btn-link" popover-placement="bottom" popover-trigger="focus"
-                   popover="{{'profile.changeImageText' | translate}}" tabindex="0">{{'profile.changeImageTitle' |translate}}
+                <a class="btn btn-link" popover-placement="bottom"  popover-trigger="'outsideClick'"
+                   uib-popover="{{'profile.changeImageText' | translate}}" tabindex="0">{{'profile.changeImageTitle' |translate}}
                 </a>
             </div>
         </div>
@@ -56,8 +56,8 @@
                 <i class="fa fa-question-circle"></i>
                 &#xA0;&#xA0;
                 <a ng-click="showPublicQuestion()" show-logged-in class="txt-color-darken">{{'profile.questionCreated'|translate}}</a>
-                <button popover="{{'profile.questionsNotAvailable' | translate}}"
-                      popover-placement="right" popover-trigger="focus" show-anonymous class=" btn-link txt-color-darken">{{'profile.questionCreated'|translate}}</button>
+                <button uib-popover="{{'profile.questionsNotAvailable' | translate}}"
+                      popover-placement="right"  popover-trigger="'outsideClick'" show-anonymous class=" btn-link txt-color-darken">{{'profile.questionCreated'|translate}}</button>
             </div>
 
         </div>

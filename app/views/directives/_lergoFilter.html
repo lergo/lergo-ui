@@ -3,7 +3,7 @@
         <div class="label">{{'filters.labels.doneByStudent' | translate}}</div>
         <div class="input">
             <input type="text" ng-model-options="{debounce:500}" ng-model="reportStudent"
-                   typeahead="student._id as student._id for student in students | filter:$viewValue | limitTo:15 ">
+                   uib-typeahead="student._id as student._id for student in students | filter:$viewValue | limitTo:15 ">
         </div>
     </div>
 
@@ -11,7 +11,7 @@
         <div class="label">{{'filters.labels.doneByStudentClassname' | translate}}</div>
         <div class="input">
             <input type="text" ng-model-options="{debounce:500}" ng-model="reportClass"
-                   typeahead="class._id as class._id for class in classes | filter:$viewValue | limitTo:15 ">
+                   uib-typeahead="class._id as class._id for class in classes | filter:$viewValue | limitTo:15 ">
         </div>
     </div>
 
@@ -174,21 +174,21 @@
         <div class="label">{{'filters.labels.createdBy' | translate}}</div>
         <div class="input">
             <input type="text" ng-model="createdBy"
-                   typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
+                   uib-typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
         </div>
     </div>
     <div ng-show="!!opts.showReportedBy" class='container-fluid'>
         <div class="label">{{'filters.labels.reportedBy' | translate}}</div>
         <div class="input">
             <input type="text" ng-model="reportedBy"
-                   typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
+                   uib-typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
         </div>
     </div>
     <div ng-show="!!opts.showRoles" class="container-fluid">
         <div class="label">{{'filters.labels.roles' | translate }}</div>
         <div class="input">
             <input type="text" ng-model="role"
-                   typeahead="role as role.name for role in roles | filter:$viewValue | limitTo: 15">
+                   uib-typeahead="role as role.name for role in roles | filter:$viewValue | limitTo: 15">
         </div>
     </div>
     <div ng-show="!!opts.showAbuseReportStatus">

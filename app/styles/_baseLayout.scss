@@ -3,6 +3,9 @@ $HEADER_BACKGROUND_COLOR: $COLOR_13;
 $HEADER_HEIGHT: 110px !default;
 $FOOTER_HEIGHT: 170px !default;
 
+/*jeff - for uib-bootstrap the following code is needed (see uib-bootstrap website)*/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 #wrapper {
     margin-bottom: -$HEADER_HEIGHT;
     min-height: 100%;

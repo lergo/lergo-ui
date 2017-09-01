@@ -6,7 +6,7 @@
 			<span class="lergo-h4" style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
 				<span class="lergo-h4">{{option}}</span>
 				<span ng-show="!$last" style="display: inline-block;">
-					<input style="width:{{getFillIntheBlankSize(quizItem,$index)}}px; display: inline; min-height: 28px;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="quizItem.userAnswer[$index]"
+					<input {{getFillIntheBlankSize(quizItem,$index)}}px; style="display: inline; min-height: 28px;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="quizItem.userAnswer[$index]"
 						set-focus="$first">
 					<span ng-show="getAnswer() && step.testMode!=='True' && !getAnswer().correct ">
 						<i ng-show="!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-times wrong"></i>

@@ -498,9 +498,11 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         }
     };
     $scope.hintUsed = function (quizItem) {
-        if ($scope.stepDisplay.showHint) {
-            quizItem.isHintUsed = true;
-        }
+        $timeout(function() {
+            if ($scope.stepDisplay.showHint) {
+                quizItem.isHintUsed = true;
+            }
+        });
     };
 
     function isTestMode() {

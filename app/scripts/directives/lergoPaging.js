@@ -17,14 +17,14 @@ angular.module('lergoApp')
                         if ( newValue === oldValue ){
                             return;
                         }
-                        scope.change(newValue, oldValue );
+                        scope.change();
                     });
                 // guy - use this as a hook for when we need to trigger change artificially.
                 scope.$watch( 'page.updatedLast', function( newValue, oldValue ){
                     if ( newValue === oldValue ){
                         return;
                     }
-                    scope.change(newValue, oldValue);
+                    scope.change();
                 });
 
                 scope.$evalAsync(scope.load);

@@ -79,9 +79,16 @@ angular.module('lergoApp')
                 return true;
             }
             else {
-                var allStepsCompleted = report.data.lesson.steps.length === this.countCompletedSteps(report);
-                return !!report.data && !!report.data.lesson && !!report.data.lesson.steps && allStepsCompleted;
+                try {
+
+                    var allStepsCompleted = report.data.lesson.steps.length === this.countCompletedSteps(report);
+                    return !!report.data && !!report.data.lesson && !!report.data.lesson.steps && allStepsCompleted;
+                }
+                catch(err) {
+                    /*cannot read length of undefined*/
+                }
             }
+            return false;
         };
 
         /**

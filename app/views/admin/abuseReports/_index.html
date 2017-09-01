@@ -13,9 +13,9 @@
 				<thead>
 					<tr>
 						<td class="checkbox-dropdown">
-							<div class="btn-group" dropdown>
+							<div class="btn-group" uib-dropdown>
 								<input type="checkbox" ng-click="selectAll($event)">
-								<button type="button" class="btn-link" dropdown-toggle>
+								<button type="button" class="btn-link" uib-dropdown-toggle>
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
@@ -49,9 +49,9 @@
 							<input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
 						</td>
 						<td>
-							<a ng-show="!!report.title && report.title.trim().length > 0" tooltip="{{'reports.tooltip.go' | translate}}"
+							<a ng-show="!!report.title && report.title.trim().length > 0" uib-tooltip="{{'reports.tooltip.go' | translate}}"
 								ng-href="#!/user/lessons/{{report.itemId}}/intro">{{ report.title }}</a>
-							<a ng-show="!report.title || report.title.trim().length <= 0" tooltip="{{'reports.tooltip.go' | translate}}"
+							<a ng-show="!report.title || report.title.trim().length <= 0" uib-tooltip="{{'reports.tooltip.go' | translate}}"
 								ng-href="#!/user/lessons/{{report.itemId}}/intro">[ no title ]</a>
 						</td>
 						<td>
@@ -64,7 +64,7 @@
 						<td>
 							{{'abuseReport.reason.'+report.reason|translate}}
 							<span ng-show="!!report.comment">
-								<a class="btn-link" popover="{{report.comment}}" popover-placement="top" popover-trigger="focus" tabindex="0">
+								<a class="btn-link" uib-popover="{{report.comment}}" popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0">
 									<i class="fa fa-comment"></i>
 								</a>
 							</span>

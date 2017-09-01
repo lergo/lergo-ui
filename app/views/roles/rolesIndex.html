@@ -57,7 +57,7 @@
                             <input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
                         </td>-->
                         <td class="name">
-                            <a tooltip="{{'roles.tooltip.go' | translate}}"
+                            <a uib-tooltip="{{'roles.tooltip.go' | translate}}"
                                ng-href="#!/manage/roles/{{role._id}}/update">{{ getRoleName(role) }}</a>
                         </td>
                         <td class="description">

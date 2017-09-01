@@ -1,7 +1,7 @@
 <div class="question-preview">
 	<div class="hint">
-		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" popover="{{quizItem.hint}}" class="btn-link hint"
-			popover-trigger="focus" tabindex="0">{{'hint' | translate}}</button>
+		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" uib-popover="{{quizItem.hint}}" class="btn-link hint"
+			 popover-trigger="'outsideClick'" tabindex="0">{{'hint' | translate}}</button>
 	</div>
 	<div dir="auto" class="question-title">
 		<p class="lergo-h4">{{quizItem.question}}</p>

@@ -1,4 +1,4 @@
-<alert close="hideNotification()" type="success" filter-is-active-show-hide relevancy-opts="relevancyOpts">
-     <span> {{ ( 'filter.activeNotification.' + getSection() + 'msg' ) | translate }} </span><!--
-     --><span lergo-reset-filter class="btn-link">{{ ( 'filter.activeNotification.' + getSection() + 'resetAction' ) | translate }}</span>
-</alert>
+<div uib-alert ng-class="'alert-success'" close="hideNotification()" type="alert" filter-is-active-show-hide relevancy-opts="relevancyOpts">
+     <span> {{ ( 'filter.activeNotification.' + getSection() + 'msg' ) | translate }} </span>
+     <span lergo-reset-filter class="btn-link">{{ ( 'filter.activeNotification.' + getSection() + 'resetAction' ) | translate }}</span>
+</div >

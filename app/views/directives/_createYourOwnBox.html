@@ -8,8 +8,8 @@
             {{ 'homepage.create' | translate }}
         </a>
         <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-        <a show-anonymous class="start btn btn-start" href="" popover-placement="bottom" popover-trigger="focus"
-           popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
+        <a show-anonymous class="start btn btn-start" href="" popover-placement="bottom" popover-trigger="'outsideClick'"
+           uib-popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
             'homepage.create' | translate }}</a>
         <div class="free">{{ 'homepage.free' | translate }}</div>
     </div>

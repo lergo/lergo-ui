@@ -11,15 +11,15 @@
                             <div class="stats">
                                     <span class="stats-button age-limit-{{quizItem.age}} no-color"
                                           ng-show="!!quizItem.age"> {{quizItem.age}}+ {{'homepage.years'|translate}} </span>
-                                    <span class="stats-button" tooltip="{{'homepage.tooltip.views' | translate}}">
+                                    <span class="stats-button" uib-tooltip="{{'homepage.tooltip.views' | translate}}">
                                         <i class="fa fa-eye fa-fw"></i>
                                         {{0+quizItem.views}}
                                     </span>
-                                    <span class="stats-button" tooltip="{{'questions.tooltip.lessons' | translate}}">
+                                    <span class="stats-button" uib-tooltip="{{'questions.tooltip.lessons' | translate}}">
                                         <i class="fa fa-university fa-fw"></i>
                                         {{0+ lessons.length }}
                                     </span>
-                                    <span class="stats-button" tooltip="{{'homepage.tooltip.likes' | translate}}">
+                                    <span class="stats-button" uib-tooltip="{{'homepage.tooltip.likes' | translate}}">
                                         <i class="fa fa-heart-o"></i>
                                         {{0+questionLikes }}
                                     </span>
@@ -29,11 +29,11 @@
                                     <a class="btn-link" ng-click="copyQuestion(quizItem)"
                                        ng-show="!!permissions.canCopy">
                                         <i class="fa fa-copy"
-                                           tooltip="{{'questions.tooltip.copy' | translate}}"></i>
+                                           uib-tooltip="{{'questions.tooltip.copy' | translate}}"></i>
                                     </a>
                                     <br/>
                                     <a class="btn-link" href="#!/user/questions/{{quizItem._id}}/update"
-                                       tooltip="{{'questions.tooltip.edit' | translate}}"
+                                       uib-tooltip="{{'questions.tooltip.edit' | translate}}"
                                        ng-show="!!permissions.canEdit">
                                         <i class="fa fa-pencil-square-o"></i>
                                     </a>
@@ -43,17 +43,17 @@
                             <div ng-include="getQuestionViewTemplate(quizItem)"></div>
                             <div class="details">
                                 <div class="properties">
-						<span tooltip="{{'homepage.tooltip.user' | translate}}">
+						<span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
                              <a ng-href="#!/public/{{quizItem.user.username}}/profile">
                                  <i class="fa fa-user"></i>
                                  <span>{{quizItem.user.username}}</span>
                              </a>
 						</span>
-						<span tooltip="{{'lessons.createdOn' | translate}}">
+						<span uib-tooltip="{{'lessons.createdOn' | translate}}">
 							<i class="fa fa-calendar"></i>
 							<span>{{quizItem.lastUpdate | date:'d-MMM-yyyy'}}</span>
 						</span>
-						<span ng-show="!!quizItem.subject" tooltip="{{'homepage.tooltip.subject' | translate}}">
+						<span ng-show="!!quizItem.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
 							<i class="fa fa-book"></i>
 							<span>{{'filters.subjects.' + quizItem.subject | translate}}</span>
 						</span>
@@ -61,13 +61,13 @@
                                 <div class="action-items">
 						<span show-logged-in>
 							<button class="btn-link" ng-click="like()"
-                                    tooltip="{{'questions.tooltip.like' | translate}}"
+                                    uib-tooltip="{{'questions.tooltip.like' | translate}}"
                                     ng-show="!isLiked()">
                                 <i class="fa fa-heart-o "></i>
                                 {{'like' | translate}}
                             </button>
 							<span class="btn-link dropdown" ng-click="noop()"
-                                  tooltip="{{'questions.tooltip.liked' | translate}}" ng-show="!!isLiked()">
+                                  uib-tooltip="{{'questions.tooltip.liked' | translate}}" ng-show="!!isLiked()">
 								<span class="dropdown-toggle">
 									<i class="fa fa-heart-o "></i>
 									{{'liked' | translate}}
@@ -84,14 +84,14 @@
 							</span>
 						</span>
                                     <a href="" show-anonymous class="btn-link"
-                                       popover="{{'lessons.likeNotAvailable' | translate}}"
-                                       popover-placement="right" popover-trigger="focus"
+                                       uib-popover="{{'lessons.likeNotAvailable' | translate}}"
+                                       popover-placement="right"  popover-trigger="'outsideClick'"
                                        tabindex="0">
                                         <i class="fa fa-heart-o "></i>
                                         {{'like' | translate}}
                                     </a>
                                     <button class="btn-link" ng-click="absoluteShareLink(quizItem)"
-                                            tooltip="{{'questions.tooltip.share' | translate}}">
+                                            uib-tooltip="{{'questions.tooltip.share' | translate}}">
                                         <i class="fa fa-share-alt "></i>
                                         {{'share' | translate}}
                                     </button>

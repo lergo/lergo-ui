@@ -8,7 +8,7 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('ManageUsersEditRoleDialogCtrl', function ($scope, $modalInstance, LergoClient ) {
+    .controller('ManageUsersEditRoleDialogCtrl', function ($scope, $uibModalInstance, LergoClient ) {
 
 
         $scope.roles = _.map($scope.roles, function( role ){
@@ -22,14 +22,14 @@ angular.module('lergoApp')
         $scope.submit = function(){
             LergoClient.users.patchUserRoles($scope.user._id, _.map(_.filter($scope.roles, { checked: true }),'value')).then(function(){
                 toastr.success('roles updated successfully');
-                $modalInstance.close( );
+                $uibModalInstance.close( );
             }, function error(){
                 toastr.error('unable to update roles');
             });
         };
 
         $scope.close = function(){
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
     });

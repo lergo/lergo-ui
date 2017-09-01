@@ -57,7 +57,7 @@
                             <input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
                         </td>-->
                         <td class="name">
-                            <a tooltip="{{'manage.users.index.tooltip.go' | translate}}"
+                            <a uib-tooltip="{{'manage.users.index.tooltip.go' | translate}}"
                                ng-href="#!/manage/users/{{user._id}}/update">{{ user.username }}</a>
                         </td>
                         <td class="description">{{ user.email }}</td><td ng-style="user.validated === FALSE && {'color': 'red'} || user.validated === true && {'color': 'green'}">{{ user.validated || "false" }}</td>

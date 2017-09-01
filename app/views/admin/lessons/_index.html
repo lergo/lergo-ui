@@ -15,9 +15,9 @@
 					<tr>
 						<td class="checkbox-dropdown">
                             <span admin-section="lessons.userCanPublish || lessons.userCanUnpublish || lessons.userCanDelete">
-                                <div class="btn-group" dropdown>
+                                <div class="btn-group" uib-dropdown>
                                     <input type="checkbox" ng-change="selectAll()" ng-model="manageLessons.allSelected">
-                                    <button type="button" class="btn-link" dropdown-toggle>
+                                    <button type="button" class="btn-link" uib-dropdown-toggle>
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
@@ -51,9 +51,9 @@
 							<input type="checkbox" style="margin-left: 5px;" ng-model="l.selected">
 						</td>
 						<td dir="auto" class="name">
-							<a ng-show="!!l.name && l.name.trim().length > 0" tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">{{
+							<a ng-show="!!l.name && l.name.trim().length > 0" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">{{
 								l.name }}</a>
-							<a ng-show="!l.name || l.name.trim().length <= 0" tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">[ no
+							<a ng-show="!l.name || l.name.trim().length <= 0" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">[ no
 								title ]</a>
 						</td>
 						<td>

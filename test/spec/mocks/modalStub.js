@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').service('$modal', function(){
+angular.module('lergoApp').service('$uibModal', function(){
     this.open = function(){
         return {
             result: {
@@ -10,7 +10,7 @@ angular.module('lergoApp').service('$modal', function(){
     };
 });
 
-angular.module('lergoApp').service('$modalInstance', function(){
+angular.module('lergoApp').service('$uibModalInstance', function(){
     this.close = function(){};
     this.dismiss = function(){};
 });

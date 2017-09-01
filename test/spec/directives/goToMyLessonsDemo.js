@@ -14,9 +14,9 @@ describe('Directive: goToMyLessonsDemo', function () {
         $compile,
         scope;
 
-    beforeEach(inject(function ( _$compile_, _$rootScope_, _localStorageService_, _$location_, _$modal_, _$modalInstanceMock_) {
+    beforeEach(inject(function ( _$compile_, _$rootScope_, _localStorageService_, _$location_, _$uibModal_, _$modalInstanceMock_) {
         $compile = _$compile_;
-        $modal = _$modal_;
+        $modal = _$uibModal_;
         localStorageService = _localStorageService_;
         $location = _$location_;
         $rootScope = _$rootScope_;

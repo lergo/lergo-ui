@@ -61,7 +61,7 @@
 							</div>
                             <div dir="auto" class="title">
 								<a href="#!/public/lessons/{{lesson._id}}/intro">
-                                    <span tooltip="{{lesson.name}}">{{ lesson.name|limitTo:40 }}</span>
+                                    <span uib-tooltip="{{lesson.name}}">{{ lesson.name|limitTo:40 }}</span>
 									<span ng-show="lesson.name.length >40">...</span>
 								</a>
 							</div>
@@ -69,19 +69,19 @@
 								<table class="stats-table">
 									<tr>
 										<td>
-											<span tooltip="{{'homepage.tooltip.user' | translate}}">
+											<span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
 												<i class="fa fa-user fa-fw"></i>
 												{{lesson.user.username | limitTo: 8 | lowercase}}
 											</span>
 										</td>
 										<td>
-											<span tooltip="{{'homepage.tooltip.views' | translate}}">
+											<span uib-tooltip="{{'homepage.tooltip.views' | translate}}">
 												<i class="fa fa-eye fa-fw"></i>
 												{{0+lesson.views}}
 											</span>
 										</td>
 										<td>
-											<span ng-show="hasQuestions(lesson)" tooltip="{{'homepage.tooltip.questions' | translate}}">
+											<span ng-show="hasQuestions(lesson)" uib-tooltip="{{'homepage.tooltip.questions' | translate}}">
 												<i class="fa fa-question-circle fa-fw"></i>
 												{{lesson | countQuestionsOnLesson }}
 											</span>
@@ -89,13 +89,13 @@
 									</tr>
 									<tr>
 										<td>
-											<span tooltip="{{'lessons.createdOn' | translate}}">
+											<span uib-tooltip="{{'lessons.createdOn' | translate}}">
 												<i class="fa fa-calendar"></i>
 												{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}
 											</span>
 										</td>
 										<td colspan="2">
-											<span ng-show="!!lesson.subject" tooltip="{{'homepage.tooltip.subject' | translate}}">
+											<span ng-show="!!lesson.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
 												<i class="fa fa-book fa-fw"></i>
 												{{lesson.subject && ('filters.subjects.' + lesson.subject | translate) | limitTo: 8 ||""}}
 											</span>

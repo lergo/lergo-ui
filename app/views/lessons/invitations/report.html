@@ -56,8 +56,8 @@
                            ng-disabled="practiseBtnDisable">
                             <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
-                        <a show-anonymous href="" popover-placement="bottom" popover-trigger="focus"
-                           popover="{{'lessons.practiceNotAvailable' | translate}}"
+                        <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
+                           uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
                            tabindex="0">
                             <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
@@ -79,8 +79,8 @@
                                ng-disabled="practiseBtnDisable">
                                 <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
                             </a>
-                            <a show-anonymous href="" popover-placement="bottom" popover-trigger="focus"
-                               popover="{{'lessons.practiceNotAvailable' | translate}}"
+                            <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
+                               uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
                                tabindex="0">
                             <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
                             </a>
@@ -238,9 +238,9 @@
                                 </span>
                                 <sup>
                                     <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                    <a popover="{{'report.lessonStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"
+                                    <a uib-popover="{{'report.lessonStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"
                                        class="fa fa-question-circle no-underline-v1"
-                                       popover-placement="top" popover-trigger="focus" tabindex="0"
+                                       popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
                                        style="text-decoration: none"></a>
                                 </sup>
                             </div>

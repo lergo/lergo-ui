@@ -22,9 +22,9 @@
                 <thead>
                 <tr>
                     <td class="checkbox-dropdown">
-                        <div class="btn-group" dropdown>
+                        <div class="btn-group" uib-dropdown>
                             <input type="checkbox" ng-click="selectAll($event)" ng-model="reportsPage.selectAll">
-                            <button type="button" class="btn-link" dropdown-toggle>
+                            <button type="button" class="btn-link" uib-dropdown-toggle>
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -56,7 +56,7 @@
                     </td>
                     <td dir="auto" class="name">
                         <a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0"
-                           tooltip="{{'reports.tooltip.go' | translate}}"
+                           uib-tooltip="{{'reports.tooltip.go' | translate}}"
                            ng-href="{{getReportLink(report._id)}}">{{ getReportName(report) }}</a>
                     </td>
                     <td class="answer" ng-show="showStudentCountColumn()">{{report.count}}</td>

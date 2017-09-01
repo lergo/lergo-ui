@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsIntroCtrl',
-    function ($scope, $routeParams, LergoClient, $location, $modal, DisplayRoleService, $log, $rootScope, LergoTranslate, $window, $filter) {
+    function ($scope, $routeParams, LergoClient, $location, $uibModal, DisplayRoleService, $log, $rootScope, LergoTranslate, $window, $filter) {
         $window.scrollTo(0, 0);
         var lessonId = $routeParams.lessonId;
         var invitationId = $routeParams.invitationId;
@@ -96,7 +96,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
                     return $scope.questions;
                 }
             };
-            var modelInstance = $modal.open(modelContent);
+            var modelInstance = $uibModal.open(modelContent);
             modelInstance.result.then(function () {
                 //   scrollToPersistPosition();
             }, function () {

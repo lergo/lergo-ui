@@ -12,10 +12,10 @@
         <input ng-model="newTag" type="text" name="filterName" ng-trim="false"
                typeahead-wait-ms="100"
                placeholder="{{'tagHint' | translate}}"
-               typeahead="tag as tag.label for tag in getTagsLike($viewValue)"
+               uib-typeahead="tag as tag.label for tag in getTagsLike($viewValue)"
                 typeahead-append-to-body="true"
                 typeahead-on-select="addTagFromTypeahead($item, $model, $label)"
-                />
+                class="form-control" style="border-radius: 3px"/>
     </div>
     {{error | translate }}
 </div>

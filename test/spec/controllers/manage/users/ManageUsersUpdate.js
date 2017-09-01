@@ -9,13 +9,13 @@ describe('Controller: ManageUsersUpdateCtrl', function () {
         $controller,
         $location,
         LergoClient,
-        $modal,
+        $uibModal,
         scope;
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function (_$controller_, $rootScope, _$location_, _$modal_, _LergoClient_ ) {
+    beforeEach(inject(function (_$controller_, $rootScope, _$location_, _$uibModal_, _LergoClient_ ) {
         $location = _$location_;
-        $modal = _$modal_;
+        $uibModal = _$uibModal_;
         $controller = _$controller_;
         LergoClient = _LergoClient_;
         scope = $rootScope.$new();
@@ -25,7 +25,7 @@ describe('Controller: ManageUsersUpdateCtrl', function () {
 
         spyOn($location,'path');
         spyOn(LergoClient.roles,'list').andReturn({then:function(){}});
-        spyOn($modal,'open').andCallThrough();
+        spyOn($uibModal,'open').andCallThrough();
         spyOn(LergoClient.users,'read').andReturn({
             then:function(){}
         });
@@ -71,9 +71,9 @@ describe('Controller: ManageUsersUpdateCtrl', function () {
     describe('#editUserRoles', function(){
         it('should open a dialog that invokes loadUser on result', function(){
             var modalResponse = { result : { then:jasmine.createSpy('then')}};
-            $modal.open.andReturn( modalResponse);
+            $uibModal.open.andReturn( modalResponse);
             scope.editUserRoles();
-            expect($modal.open).toHaveBeenCalled();
+            expect($uibModal.open).toHaveBeenCalled();
             expect(modalResponse.result.then).toHaveBeenCalled();
             expect(modalResponse.result.then.mostRecentCall.args[0].name).toBe('loadUser');
         });

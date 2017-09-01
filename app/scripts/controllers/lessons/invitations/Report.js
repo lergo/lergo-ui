@@ -49,10 +49,13 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
         }
 
         $scope.showClassReport = function () {
+
             var report = $scope.report;
-            if (!!report && !!report.data.invitee.class) {
-                if (!!$rootScope.user && report.data.inviter === $rootScope.user._id) {
-                    return true;
+            if (angular.isDefined(report) && (angular.isDefined(report.data.invitee))) {
+                if (!!report && !! report.data.invitee.class)  {
+                    if (!!$rootScope.user && report.data.inviter === $rootScope.user._id) {
+                        return true;
+                    }
                 }
             }
             return false;

@@ -17,9 +17,9 @@
 				<thead>
 					<tr>
 						<td class="checkbox-dropdown">
-							<div class="btn-group" dropdown>
+							<div class="btn-group" uib-dropdown>
 								<input type="checkbox" ng-click="selectAll($event)" ng-model="invitesPage.selectAll">
-								<button type="button" class="btn-link" dropdown-toggle>
+								<button type="button" class="btn-link" uib-dropdown-toggle>
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
@@ -51,7 +51,7 @@
 							<input type="checkbox" style="margin-left: 5px;" ng-model="invite.selected">
 						</td>
 						<td class="name">
-							<a tooltip="{{'invites.tooltip.go' | translate}}" ng-href="{{getInvitationLink(invite)}}">
+							<a uib-tooltip="{{'invites.tooltip.go' | translate}}" ng-href="{{getInvitationLink(invite)}}">
 								<span ng-show="invite.name.trim().length > 0" class="{{!invite.finished && 'bold' || ''}}"> {{ invite.name}} </span>
 								<span ng-show="invite.name.trim().length <= 0" class="{{!invite.finished && 'bold' || ''}}">[ no title ]</span>
 							</a>
