@@ -44,7 +44,7 @@
             </a>
         </div>
         <hr/>
-        <div class="step row" collapse="!!stepCollapsed">
+        <div class="step row" uib-collapse="!!stepCollapsed">
             <div class="row row-nested top20" ng-repeat="step in lesson.steps">
                 <div class="col-md-3">
                     <div class="row">
@@ -83,7 +83,7 @@
                 </a>
             </div>
             <hr/>
-            <div class="recommendation row" collapse="!!recommendationCollapsed">
+            <div class="recommendation row" uib-collapse="!!recommendationCollapsed">
                 <div class="row row-nested top20" ng-show="!!lesson.nextLessonId">
                     <div class="col-md-3">
                         <div class="row">
@@ -130,7 +130,7 @@
                 </a>
             </div>
             <hr/>
-            <div collapse="!!detailCollapsed" class="detail row">
+            <div uib-collapse="!!detailCollapsed" class="detail row">
                 <div class="row row-nested" ng-repeat="step in lesson.steps">
                     <div ng-if="!!step.quizItems" class="col-md-12">
                         <div dir="auto" class="collapsible">{{step.title}}</div>

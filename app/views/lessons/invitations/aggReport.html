@@ -64,7 +64,7 @@
             </span>
         </div>
         <hr/>
-        <div collapse="!!summaryCollapsed" class="summary row">
+        <div uib-collapse="!!summaryCollapsed" class="summary row">
             <div class="row row-nested top20">
                 <div class="col-md-3">
                     <div class="row">
@@ -118,7 +118,7 @@
         </div>
         <hr/>
         <div class="step row">
-            <div collapse="!!stepCollapsed" class="row row-nested top20"
+            <div uib-collapse="!!stepCollapsed" class="row row-nested top20"
                  ng-repeat="step in report.data.lesson.steps">
                 <div class="col-md-3">
                     <div class="row">
@@ -167,7 +167,7 @@
                 </a>
             </div>
             <hr/>
-            <div class="recommendation row" collapse="!!recommendationCollapsed">
+            <div class="recommendation row" uib-collapse="!!recommendationCollapsed">
                 <div class="row row-nested top20" ng-show="!!report.data.lesson.nextLessonId">
                     <div class="col-md-3">
                         <div class="row">
@@ -218,7 +218,7 @@
                 </span>
             </div>
             <hr/>
-            <div collapse="!!detailCollapsed" class="detail row">
+            <div uib-collapse="!!detailCollapsed" class="detail row">
                 <agg-report-view answers="report.answers" quiz-items="report.data.quizItems"></agg-report-view>
             </div>
         </div>

@@ -30,7 +30,7 @@
 		<span>{{'questions.thankYou' | translate}}</span>
 		<div ng-show="shouldShowExplanationMessage()">
 			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate }}</button>
-			<div dir="auto" style="width: 400px; margin: auto" collapse="!!isCollapsed">{{quizItem.explanation}}</div>
+			<div dir="auto" style="width: 400px; margin: auto" uib-collapse="!!isCollapsed">{{quizItem.explanation}}</div>
 		</div>
 	</div>
 </div>

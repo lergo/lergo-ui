@@ -10,7 +10,7 @@
             <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">
                 {{ 'explanation' | translate}}
             </button>
-            <div style="width: 400px; margin: auto" collapse="!!isCollapsed">
+            <div style="width: 400px; margin: auto" uib-collapse="!!isCollapsed">
                 <div dir="auto" ng-repeat="msg in getAnswer(quizItem).expMessage">{{msg}}</div>
             </div>
         </div>
