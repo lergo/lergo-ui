@@ -1,3 +1,6 @@
+fix(report) correctPercent was including openQuestions
+change question.type ==> question.data.type
+
 fix(collapse) on about 9 files collapse --> uib-collapse
 
 fix(report-tries) collapse ==> uib-collapse

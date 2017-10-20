@@ -150,7 +150,7 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
                     var d = $q.defer();
                     var questionPromise = LergoClient.questions.getQuestionById(q);
                     questionPromise.then(function (question) {
-                        if (question.type !== 'openQuestion') {
+                        if (question.data.type !== 'openQuestion') {
                             numberOfQuestions++;
                         }
                         d.resolve();
