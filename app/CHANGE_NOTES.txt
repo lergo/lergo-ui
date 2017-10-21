@@ -1,3 +1,6 @@
+fix(system-test failure) uib-tooltip interferes with index : 0 locator
+causing system test to fail. This is a new problem probably due to chrome upgrade
+
 fix(report) correctPercent was including openQuestions
 change question.type ==> question.data.type
 
