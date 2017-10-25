@@ -22,6 +22,48 @@
 .weight29{font-size:29px;}
 .weight30{font-size:30px;}
 
+.repeat-container{
+    min-height: 380px;
+    padding: 20px 20px 20px 20px;
+    background-color: #efefef;
+    border-radius:10px;
+    border: 3px solid #fafafa;
+}
+
+.lergo-filter-desktop {
+    margin: 14px 0 0 0;
+    border-top: 1px solid #d2e8fa;
+    width: 725px;
+}
+
+.lergo-filter-mobile {
+    margin: -25px 0 0 0;
+}
+
+.image-mobile {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin-top: 20px;*/
+    margin-top: 1.25em;
+    text-align: center;
+    z-index: 0;
+    &, img {
+        /*height: 320px;
+        width: 480px;*/
+        /*height: 20em;*/
+        height: auto;
+        /*width: 28em;*/
+    }
+    a i {
+        font-size: 250px;
+        color: #296CA1;
+        &:before {
+            margin-left: 4px;
+            /*margin-left: 2.5em;*/
+        }
+    }
+}
 
 .homepage{
   hr {
@@ -39,11 +81,11 @@
 
   }
   .article-header {
-    margin-top: 5px;
+    margin: 5px 0 0 0px;
 
     font-weight: bold;
     color: #D8D8D8;
-    min-height: 100px;
+    min-height: 60px;
     text-align: right;
 
     .stats-wrapper{
@@ -54,11 +96,11 @@
       }
     }
     .stats-lessons {
-      width: 1px;
+        padding: 0 10px 10px;
     }
 
     .stats-questions {
-      width: 114px;
+        padding: 0 10px 10px;
     }
 
     .amount {
@@ -69,18 +111,19 @@
       text-transform: uppercase;
     }
     .and-counting {
-      margin-left: 73px;
       font-size: 34px;
       text-transform: uppercase;
       text-align: left;
       position:relative;
       span{
         position:absolute;
-        padding-top:1px;
+        padding: 1px 45px 10px;
         white-space: nowrap;
+        font-size: 34px;
       }
     }
   }
+
   .age-limit {
     width: 90px;
     z-index: 10;
@@ -122,6 +165,7 @@
 	&.age-limit-18  { background-color:#FF9B64 }
 	&.age-limit-18+  { background-color:#FF8181 }
   }
+
   .lessons {
     .image {
       position: relative;
@@ -194,6 +238,187 @@
       }
     }
   }
+}
+
+.text-mobile {
+    padding: 50px 0  0;
+}
+
+.admin{
+  table{
+    tr, td{
+      padding:10px;
+    }
+  }
+}
+
+/*starting exact copy of homepage.sccs from production + '-desktop'*/
+
+.homepage-desktop{
+    hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: $LERGO_HR_COLOR;
+        border-color: $LERGO_HR_COLOR;
+        border-top: 1px solid $LERGO_HR_COLOR;
+    }
+
+    .sidebar-desktop {
+        width: 225px;
+        float: right;
+        margin-top: 0;
+
+    }
+    .article-header {
+        margin-top: 5px;
+
+        font-weight: bold;
+        color: #D8D8D8;
+        min-height: 100px;
+        text-align: right;
+
+        .stats-wrapper-desktop{
+            display:table-row;
+            &>div{
+                display:table-cell;
+                padding-top:6px;
+            }
+        }
+        .stats-lessons-desktop {
+            width: 1px;
+        }
+
+        .stats-questions-desktop {
+            width: 114px;
+        }
+
+        .amount {
+            font-size: 34px;
+        }
+        .type {
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+    }
+    .age-limit {
+        width: 90px;
+        z-index: 10;
+        position: relative;
+        margin-top: 10px;
+        margin-left: 10px;
+        background-color: #6B9BEA;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        overflow-x: hidden;
+        white-space: nowrap;
+        .value {
+            display: inline-block;
+            font-size: 20px;
+        }
+        .units {
+            white-space: normal;
+            width: 35px;
+            text-align: center;
+            display: inline-block;
+            line-height: 15px;
+        }
+        &.age-limit-4   { background-color:#FFB9E4 }
+        &.age-limit-4   { background-color:#D68ED7 }
+        &.age-limit-5   { background-color:#C67BD4 }
+        &.age-limit-6   { background-color:#9E6CC9 }
+        &.age-limit-7   { background-color:#7D6BB1 }
+        &.age-limit-8   { background-color:#736EE2 }
+        &.age-limit-9   { background-color:#6B9BEA }
+        &.age-limit-10  { background-color:#8CE4FA }
+        &.age-limit-11  { background-color:#58DBD9 }
+        &.age-limit-12  { background-color:#51D5A5 }
+        &.age-limit-13  { background-color:#86DE83 }
+        &.age-limit-14  { background-color:#B3F0A8 }
+        &.age-limit-15  { background-color:#D3EA84 }
+        &.age-limit-16  { background-color:#FFEA3C }
+        &.age-limit-17  { background-color:#FED782 }
+        &.age-limit-18  { background-color:#FF9B64 }
+        &.age-limit-18+  { background-color:#FF8181 }
+    }
+
+    .lessons-desktop {
+        .image {
+            position: relative;
+            margin: -35px auto 0 auto;
+            text-align: center;
+            z-index: 0;
+            &, img {
+                height: 120px;
+                width: 180px;
+            }
+            i {
+                font-size: 120px;
+            }
+        }
+        .title {
+            color: #585858;
+            padding: 5px 10px 5px 10px;
+            font-size: 15px;
+            white-space: normal;
+            font-weight: bold;
+            width: 200px;
+            line-height: 15px;
+            margin: 0 auto;
+            min-height: 40px;
+            a {
+                color: #585858;
+                &:hover {
+                    color: blue;
+                }
+            }
+        }
+        .stats-desktop {
+            width: 200px;
+            margin: 0 auto;
+            padding: 5px 0px;
+            font-size: 14px;
+            color: #585858;
+            display: block;
+        }
+        .lesson-desktop {
+            position: relative;
+            height: 256px;
+            width: 233px;
+            float: left;
+            border-radius: 10px;
+            background-color: #EFEFEF;
+            &:hover {
+                background-color: white;
+            }
+
+            margin-top:10px;
+            &:nth-child(n+4) {
+                margin-top: 37px;
+            }
+
+            &:nth-child(3n+2) {
+                margin-left: 15px;
+                margin-right: 15px;
+
+            }
+        }
+        .stats-table {
+            width: 100%;
+            tbody {
+                border: 2px solid #efefef;
+            }
+            td {
+                border: 0px solid #efefef;
+                white-space: nowrap;
+                span i {
+                    text-align:left;
+                    width:13px;
+                }
+                padding-bottom: 5px;
+            }
+        }
+    }
 }
 
 

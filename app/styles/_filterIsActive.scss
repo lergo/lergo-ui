@@ -26,3 +26,70 @@
         text-decoration: underline;
     }
 }
+
+.mobile-filter-button-l{
+    font-size: 0.8em;
+    margin-left: 20px;
+    float: left;
+}
+
+.mobile-filter-button-r{
+    font-size: 0.8em;
+    float: right;
+}
+
+.filter-box {
+    margin-top: 1em;
+    color: #c5c5c5;
+    .filter-label {
+        color: #c5c5c5;
+        padding-bottom: .5em;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
+.filter-buttons {
+    max-width: 155px;
+    background: $LERGO_INPUT_BACKGROUND;
+}
+
+.filter-buttons-double {
+    max-width: 60px;
+    background: $LERGO_INPUT_BACKGROUND;
+}
+a.input-group-addon.show-more-filters-desktop {
+    background-color: transparent;
+    border: transparent;
+    top: 13px;
+    position: relative;
+}
+
+label.filter-label {
+    color: #D8D8D8;
+    padding-bottom: .5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+i.fa.fa-ellipsis-h.fa-2x{
+    position: relative;
+    left: 170px;
+    top: -18px;
+    color: #D8D8D8;
+}
+.input-group-addon:not(:first-child):not(:last-child) {
+    background-color: #fafafa;
+    border-color:  #fafafa;
+}
+
+.rtl {
+    i.fa.fa-ellipsis-h.fa-2x{
+    position: relative;
+    left: -170px;
+    top: -18px;
+    color: #D8D8D8;
+    }
+}
+

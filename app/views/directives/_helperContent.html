@@ -1,9 +1,12 @@
-<div id="HelperContent" class="lergo-form">
-	<div ng-repeat="c in helperContent.contents">
+<div class="container">
+<div class="row">
+
+<div id="HelperContent" >
+	<div ng-repeat="c in helperContent.contents" class="col-xs-12">
 		<div class="helperContent">
 			<div class="video" ng-show="!!c.videoUrl">
-				<div class="lesson-step-video-content">
-					<iframe  ng-src="{{getYoutubeEmbedSource(c.videoUrl)}}" frameborder="0" allowfullscreen></iframe>
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe  class="embed-responsive-item" ng-src="{{getYoutubeEmbedSource(c.videoUrl)}}" frameborder="0" allowfullscreen></iframe>
 				</div>
 				<div class="title" ng-show="!!c.title">{{c.title}}</div>
 			</div>
@@ -54,4 +57,8 @@
 		<a class="btn-link" ng-click="addHelperContent()">{{'helperContent.add' | translate}}</a>
 		<div class="lergo-h3">{{ isSaving() && ('saving'| translate) || ('saved' | translate) }}</div>
 	</div>
+</div>
+
+
+</div>
 </div>

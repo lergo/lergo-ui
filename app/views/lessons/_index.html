@@ -25,13 +25,17 @@
                 </button>
 			</div>
 		</div>
-		<div class="page-content-sidebar">
+		<!--<div class="page-content-sidebar">
 			<div class="lergo-h1">{{ 'lessons.filter' | translate }}</div>
-		</div>
+		</div>-->
 	</div>
 	<div class="page-content-width">
 		<div class="page-content-body">
             <div filter-is-active="lessonsFilterOpts" section="lessons"></div>
+            <div>
+                <div class="lergo-h1">{{ 'lessons.filter' | translate }}</div>
+                <div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
+            </div>
             <table class="table" ng-show="lessons.length > 0">
 				<thead>
 					<tr style="font-weight: bold">
@@ -62,9 +66,9 @@
         <div class="page-content-body text-center" ng-show="!lessons || lessons.length == 0">
             <span class="alert alert-warning font-medium" >{{'lessons.noLessons' | translate}}</span>
         </div>
-		<div class="sidebar page-content-sidebar">
+		<!--<div class="sidebar page-content-sidebar">
 			<div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
-		</div>
+		</div>-->
 	</div>
 	<div lergo-paging page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
 </div>

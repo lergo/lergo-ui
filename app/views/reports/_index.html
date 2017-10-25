@@ -11,13 +11,19 @@
                     ng-options="repType.id as ( 'reports.type.' + repType.id | translate ) for repType in reportTypes">
             </select>
         </div>
-        <div class="page-content-sidebar">
+        <!--<div class="page-content-sidebar">
             <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
-        </div>
+        </div>-->
     </div>
     <div class="page-content-width">
         <div class="page-content-body">
             <div filter-is-active="reportsFilterOpts" section="reports"></div>
+            <div>
+                <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
+                <div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts"
+                     on-load="filterLoaded()" report-type="reportsPage.reportType">
+                </div>
+            </div>
             <table class="lergo-table">
                 <thead>
                 <tr>
@@ -75,11 +81,11 @@
                 </tbody>
             </table>
         </div>
-        <div class="sidebar page-content-sidebar">
+       <!-- <div class="sidebar page-content-sidebar">
             <div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts"
                  on-load="filterLoaded()" report-type="reportsPage.reportType">
             </div>
-        </div>
+        </div>-->
     </div>
     <div lergo-paging page="filterPage" on-change="loadReports()" on-load="pagingLoaded()"></div>
 </div>

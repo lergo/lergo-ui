@@ -3,6 +3,15 @@
     outline: none;
 }
 
+[class^="col"] {
+    padding: 0
+}
+
+.thumbnail {
+    margin-bottom: 0px;
+    min-height: 330px;
+}
+
 .center-block {
     float: none;
 }
@@ -23,7 +32,7 @@
     text-shadow: none;
     background-image: none;
     background-color: #5fb9ff;
-    width: auto;
+    /*width: auto;*/
     padding: 10px;
     text-transform: uppercase;
     color: white;
@@ -179,6 +188,10 @@
 }
 
 .rtl {
+
+    .dropdown-menu > li > a {
+        text-align: right;
+    }
     .nav-tabs-vertical {
         border-left: 1px solid $nav-tabs-border-color;
         border-right: none;

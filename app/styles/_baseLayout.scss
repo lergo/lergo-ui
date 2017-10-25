@@ -3,7 +3,262 @@ $HEADER_BACKGROUND_COLOR: $COLOR_13;
 $HEADER_HEIGHT: 110px !default;
 $FOOTER_HEIGHT: 170px !default;
 
-/*jeff - for uib-bootstrap the following code is needed (see uib-bootstrap website)*/
+
+// jeff's code for mobile first starts here:
+
+#focus-search-mobile {
+    /*margin-left: 80px;*/
+    margin-left: 10px;
+}
+
+label.btn.btn-link {
+    text-transform: capitalize;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.mobile-navbar-menu {
+
+    li {
+        padding: 8px 16px;
+        border-bottom: 1px solid #ddd;
+        font-size: 20px;
+    }
+
+    li:first-child {
+        border-bottom: none;
+        label {
+            color: white;
+            margin: -20px 0 -20px 0;
+        }
+    }
+}
+
+
+
+
+.typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+    position: static;
+    float: none;
+    display: block;
+    min-width: 160px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.row.fix {
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+}
+
+#profileloginbutton-mobile-not-logged-in{
+    padding-top: 16px;
+
+    .header-signup {
+        margin-right: 0;
+        a {
+            color: white;
+            display: inline-block;
+            font-size: 20px;
+            width: 95px;
+            text-decoration: none;
+            padding: 15px 0 15px 0;
+            margin:-15px 0 -3px 0;
+            text-align: center;
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.3)
+            }
+            &:last-child {
+                float: right;
+            }
+        }
+    }
+    .header-login {
+        .user-section-menu {
+        }
+        & > a {
+            color: white;
+            font-size: 18px;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            overflow:hidden;
+            max-width:100%;
+            text-decoration: none;
+            padding: 15px 15px;
+            text-align: center;
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.3)
+            }
+            img{
+                padding-right:5px;
+            }
+        }
+    }
+}
+
+#profileloginbutton-desktop  {
+    padding-top: 16px;
+
+    .header-signup {
+        margin-right: 0;
+        a {
+            color: white;
+            display: inline-block;
+            font-size: 20px;
+            width: 95px;
+            text-decoration: none;
+            padding: 15px 0 15px 0;
+            margin:-15px 0 -3px 0;
+            text-align: center;
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.3)
+            }
+            &:last-child {
+                float: right;
+            }
+        }
+    }
+    .header-login {
+        .user-section-menu {
+        }
+        & > a {
+            color: white;
+            font-size: 18px;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            overflow:hidden;
+            max-width:100%;
+            text-decoration: none;
+            padding: 15px 15px;
+            text-align: center;
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.3)
+            }
+            img{
+                padding-right:5px;
+            }
+        }
+    }
+}
+
+#profileloginbutton-mobile  {
+    padding-top: 16px;
+
+    .header-signup {
+        margin-right: 0;
+        a {
+            color: white;
+            display: inline-block;
+            font-size: 20px;
+            width: 95px;
+            text-decoration: none;
+            padding: 15px 0 15px 0;
+            margin:-15px 0 -3px 0;
+            text-align: center;
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.3)
+            }
+            &:last-child {
+                float: right;
+            }
+        }
+    }
+    .header-login {
+        .user-section-menu {
+        }
+        & > a {
+            color: white;
+            font-size: 18px;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            overflow:hidden;
+            max-width:100%;
+            text-decoration: none;
+            padding: 15px 15px;
+            text-align: center;
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.3)
+            }
+            img{
+                padding-right:5px;
+            }
+        }
+    }
+}
+
+.navbar-toggle {
+    border-color:#91CFFF !important;
+    top: 5px;
+}
+
+ /*for the mobile search only*/
+.navbar-search-mobile {
+    .cancel-search-mobile {
+        position: relative;
+        right: -95px;
+        bottom: 34px;
+        color: darkgrey;
+        font-size: 14px;
+    }
+    .search-mobile {
+        position: relative;
+        bottom: 34px;
+        right: -150px;
+    }
+}
+
+input.form-control.search-input {
+    margin-left: 17px;
+}
+
+#header-mobile {
+    .cancel-search {
+        position: relative;
+        right: 75px;
+        color: darkgrey;
+        font-size: 14px;
+    }
+    .pull-left.logo {
+        margin-left: 210px;
+    }
+}
+
+
+.base-layout, .base-layout-class {
+
+} /*end of base-layout*/
+
+.jumbotron{
+    background-color:#2E2D88;
+    color:white;
+}
+/* Adds borders for tabs */
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.nav-tabs {
+    margin-bottom: 0;
+}
+
+/*from stackoverflow*/
+.row.fix {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+/*from angular-ui*/
+.horizontal-collapse {
+    height: 70px;
+}
+.navbar-collapse.in {
+    overflow-y: hidden;
+}
+
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 #wrapper {
@@ -11,6 +266,27 @@ $FOOTER_HEIGHT: 170px !default;
     min-height: 100%;
 
 }
+
+#simple-dropdown1 {
+    display: inline-block;
+    padding: 12px 50px 20px 50px;
+    color: white;
+    font-size: 1em;
+    margin-right: 165px;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.3)
+    }
+}
+
+.more-links {
+    height: 20px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+
+/** end of jeff's code for mobile first **/
+
 
 /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
 .base-layout, .base-layout-class {
@@ -21,6 +297,62 @@ $FOOTER_HEIGHT: 170px !default;
     .push {
         height: $HEADER_HEIGHT;
         //margin-bottom:-$HEADER_HEIGHT;
+    }
+    #header-mobile {
+        background: $HEADER_BACKGROUND_COLOR;
+        border-bottom: $HEADER_BACKGROUND_COLOR;
+        margin-bottom: 0;
+
+        .search-icon {
+
+            color: white;
+            font-size: 17px;
+            text-decoration: none;
+            margin-left: 100px;
+            padding: 15px 15px 15px 15px;
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.3)
+            }
+            &:after {
+                display: inline-block;
+                content: "|";
+                padding-left: 48px;
+                padding-right: 0;
+                color: #c1def5;
+            }
+            i.fa.fa-search {
+                padding-left: 12px;
+            }
+        }
+        .search-color {
+            color: #802c80;
+        }
+        .header-actions{
+            .header-language{
+                select{
+                    font-size: 18px;
+                    color: white;
+                    border:0;
+                    background-color: $HEADER_BACKGROUND_COLOR;
+                    margin-top: 20px;
+                    margin-left: 11px;
+                }
+            }
+        }
+
+        .header-actions-desktop{
+
+            .header-language{
+                select{
+                    font-weight: normal;
+                    color: black;
+                    border:0;
+                    background-color: transparent;
+                    margin-left: 11px;
+                }
+            }
+        }
+
     }
 
     /** standard widths for this layout **/

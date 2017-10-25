@@ -1,112 +1,198 @@
 <div>
-	<div id="wrapper" class="clearfix">
-		<div id="header" class="not-embed-mode-item" ng-controller="LoginCtrl">
-			<div class="centered-content">
-				<div class="header-main">
-					<div class="header-logo">
-						<a href="#!/user/homepage">
-							<i class="logo-beta"></i>
-						</a>
-					</div>
-                    <div class="header-navigation">
-					    <div class="header-links">
-						<ul>
-							<li>
-								<a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }} </a>
-							</li>
-							<li>
-								<a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
-								<!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-								<a show-anonymous popover-placement="bottom" popover-trigger="'outsideClick'" uib-popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
-									'baseLayout.header.links.create'| translate }} </a>
-							</li>
-							<li ng-repeat="item in ['Parents','Teachers']">
-								<a href="#!/user/{{item}}">{{ 'baseLayout.header.links.' + item.toLowerCase() | translate }}</a>
-							</li>
-							<li>
-								<a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a>
-							</li>
-						</ul>
-					</div>
-					    <div class="header-search" ui-keypress="{enter: 'searchOnHomepage()'}">
-						<!--<div text-filter placeholder="{{'baseLayout.header.searchPlaceholder' | translate  }}" items="typeaheadItems" model="filterTextSearch"
-							on-select="doSearchFromTypeahead($item,$model,$label)"></div>-->
-						<input ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholder' | translate  }}" ng-model="baseLayout.filterTextSearch" />
-						<button ng-click="searchOnHomepage()" class="btn btn-link">
-							<i class="icon-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
-						</button>
-                            <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
-                                <span class="cancel-search"  uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right">X</span>
-                            </a>
-					</div>
-                    </div><!---->
-                    <div class="header-actions">
-                        <div profile-login-button="$root.user"></div> <!-- NOTE: referencing $root.user to fix bug where username displayed is the username we manage. -->
-
-                        <div class="header-language">
-                            <i class="fa fa-globe fa-fw"></i>
-
-                            <select ng-model="baseLayout.language" ng-options="lang.id as ( 'general.translationLanguage.' + lang.id | translate ) for lang in baseLayout.lergoLanguages" uib-tooltip="{{'baseLayout.header.siteLanguage' | translate}}" tooltip-placement="right"></select>
+    <div ng-controller="LoginCtrl">
+         <nav id="header-mobile"  class="navbar navbar-default not-embed-mode-item" role="navigation">
+             <div class="navbar-header">
+                 <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed" >
+                     <span class="sr-only"></span>
+                     <i class="fa fa-ellipsis-v fa-2x" style="padding:0 5px 0 5px"></i>
+                 </button>
+                 <div>
+                     <div class="hidden-lg hidden-md">
+                         <a class="pull-left" style="margin:8px 0 0 20px;" href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
+                     </div>
+                     <div class="hidden-sm hidden-xs">
+                         <a class="pull-left logo"  href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
+                     </div>
+                     <div class="hidden-lg hidden-md">
+                         <div class="col-sm-6 col-xs-6">
+                             <form class="navbar-form" role="search" style="max-width: 166px; border-color: #91CFFF">
+                                 <div class="form-group navbar-search-mobile" ui-keypress="{enter: 'searchOnHomepage()'}">
+                                     <input class="form-control search-input" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                                     <button  ng-click="searchOnHomepage()" class="btn btn-link">
+                                         <i id="icon-search-a" class="fa fa-search search-mobile"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
+                                     </button>
+                                     <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
+                                         <span id="cancel-search-a" class="cancel-search-mobile"  uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right">X</span>
+                                     </a>
+                                 </div>
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
+                 <div class="hidden-sm hidden-xs" style="direction:ltr">
+                        <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form navbar-left header-search-mobile" role="search">
+                            <div class="form-group" ui-keypress="{enter: 'searchOnHomepage()'}">
+                                <input id="focus-search-desktop" class="form-control" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                                <button ng-click="searchOnHomepage()" class="btn btn-link">
+                                    <i id="icon-search-desktop" class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
+                                </button>
+                                <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
+                                    <span class="cancel-search"  uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right">X</span>
+                                </a>
+                            </div>
+                        </form>
+                        <div class="nav navbar-nav lergo-h1 hidden-xs hidden-sm">
+                            <div style="display: inline-block" ng-hide="showForm || baseLayout.filterTextSearch.length > 0 " ng-click="showForm = true; setFocus('focus-search-desktop')"> <span class="search-icon"> {{'baseLayout.navbar.searchLesson' | translate}}    <i class="fa fa-search" aria-hidden="true"></i></span></div>
+                            <div style="display: inline-block" create-your-own-box></div>
                         </div>
                     </div>
-				</div>
-			</div>
-		</div>
-		<div id="content" class="centered-content clearfix" ng-transclude=""></div>
-		<div class="push"></div>
-	</div>
-	<div id="footer" class="not-embed-mode-item">
-		<div class="centered-content">
-			<div class="footer-text">
-				{{'baseLayout.footer.text1' | translate }}
-				<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | translate }};</a>
-				{{'baseLayout.footer.text3' | translate }}
-				<a href="#!/public/terms">{{'baseLayout.footer.text4' | translate }}.</a>
-				{{'baseLayout.footer.text5' | translate }}.
-			</div>
-			<div>
-				<div class="footer-links">
-					<div class=row>
-						<ul>
-							<li>
-								<a href="#!/public/terms">{{'baseLayout.footer.privacyAndTerms' | translate }}</a>
-							</li>
-							<li>
-								<a href="#!/public/about/overview">{{'baseLayout.footer.about' | translate }}</a>
-							</li>
-							<li>
-								<a href="#!/user/homepage"> {{'baseLayout.footer.homepage' | translate }}</a>
-							</li>
-							<li>
-								<a href="#!/public/contact">{{'baseLayout.footer.contact' | translate }}</a>
-							</li>
-							<li admin-section="misc.userCanSeeKitchenSink">
-								<a href="#!/public/kitchenSink">{{'baseLayout.footer.kitchenSink' | translate}}</a>
-							</li>
-						</ul>
-					</div>
-					<div class="row">
-						<ul>
-							<li>
-								<a class="weight12" href="#!/public/feedback">{{'baseLayout.footer.feedback' | translate}}</a>
-							</li>
-							<li>
-								<a class="weight12" href="#!/public/suggest">{{'baseLayout.footer.suggest' | translate}}</a>
-							</li>
-							<li>
-								<a class="weight12" href="#!/public/problem">{{'baseLayout.footer.problem' | translate}}</a>
-							</li>
-							<li>
-								<a class="weight12" href="#!/public/abuse">{{'baseLayout.footer.abuse' | translate}}</a>
-							</li>
-						</ul>
-						<div class="copyrights">
-							<div>&copy; {{'baseLayout.footer.copyright' | translate}}</div>
-							<div>{{'baseLayout.footer.copyrightMsg' | translate}}</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <ul class="nav navbar-nav navbar-right">
+                            <div class="hidden-lg hidden-md">
+                                <div class="mobile-navbar-menu">
+                                    <div class="header-actions">
+                                        <li ng-show="!user">
+                                                <div id="profileloginbutton-mobile-not-logged-in"  profile-login-button="$root.user"></div>
+                                        </li>
+                                        <li ng-show="!user" class="divider"></li>
+                                    </div>
+                                    <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
+                                    <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
+                                        <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
+                                            'baseLayout.header.links.create'| translate }}
+                                        </a>
+                                    </li>
+                                    <li role="menuitem"><a href="#!/user/Parents">{{ 'baseLayout.header.links.' + 'Parents'.toLowerCase() | translate }}</a></li>
+                                    <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
+                                    <li role="menuitem"><a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
+
+                                </div>
+                            </div>
+                            <li>
+                                <div class="hidden-sm hidden-xs">
+                                    <div class="header-actions">
+                                        <div id="profileloginbutton-desktop"  profile-login-button="$root.user"></div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="hidden-lg hidden-md">
+                                    <div class="header-actions">
+                                        <div ng-show="user" id="profileloginbutton-mobile"  profile-login-button="$root.user"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li role="menuitem" style="padding-top: 20px">
+                            <div class="btn-group hidden-lg hidden-md">
+                                <label ng-hide="baseLayout.language == 'en'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'en'">English</label>
+                                <label ng-hide="baseLayout.language == 'he'" class="btn btn-link" ng-model="baseLayout.language" uib-btn-radio="'he'">עברית</label>
+                                <label ng-hide="baseLayout.language == 'ar'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'ar'"> العربية</label>
+                            </div>
+                        </li>
+
+                            <span uib-dropdown on-toggle="toggled(open)"  >
+                              <a href id="simple-dropdown1" uib-dropdown-toggle>
+                                  <div class="hidden-sm hidden-xs">
+                                    <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+                                  </div>
+                              </a>
+                              <ul style="right: 150px" class="dropdown-menu" uib-dropdown role="menu" aria-labelledby="single-button">
+                                  <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
+                                  <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
+                                      <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
+                                            'baseLayout.header.links.create'| translate }} </a></li>
+                                  <li role="menuitem"><a href="#!/user/Parents">{{ 'baseLayout.header.links.' + 'Parents'.toLowerCase() | translate }}</a></li>
+                                  <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
+                                  <li role="menuitem"><a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
+                                  <li class="divider"></li>
+                                  <div class="hidden-sm hidden-xs" >
+                                     <li role="menuitem">
+                                        <div class="btn-group" style="padding-left: 14px;">
+                                            <label ng-hide="baseLayout.language == 'en'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'en'">English</label>
+                                            <label ng-hide="baseLayout.language == 'he'" class="btn btn-link" ng-model="baseLayout.language" uib-btn-radio="'he'">עברית</label>
+                                             <label ng-hide="baseLayout.language == 'ar'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'ar'"> العربية</label>
+                                        </div>
+                                     </li>
+                                  </div>
+                              </ul>
+                            </span>
+                        </ul>
+                    </div>
+                </nav>
+    </div>
+
+    <div>
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                <div id="content" class="centered-content clearfix" ng-transclude=""></div>
+                <div class="push"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+<!--
+    <div>
+        <div id="content" class="centered-content clearfix" ng-transclude=""></div>
+        <div class="push"></div>
+    </div>-->
+
+    <div class="hidden-sm hidden-xs" ng-show="!!loaded">
+        <div id="footer" class="not-embed-mode-item">
+            <div class="centered-content-footer">
+                <div class="footer-text">
+                    {{'baseLayout.footer.text1' | translate }}
+                    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | translate }};</a>
+                    {{'baseLayout.footer.text3' | translate }}
+                    <a href="#!/public/terms">{{'baseLayout.footer.text4' | translate }}.</a>
+                    {{'baseLayout.footer.text5' | translate }}.
+                </div>
+                <div class="footer-links">
+                    <div class=row>
+                            <ul>
+                                <li>
+                                    <a href="#!/public/terms">{{'baseLayout.footer.privacyAndTerms' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href="#!/public/about/overview">{{'baseLayout.footer.about' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href="#!/user/homepage"> {{'baseLayout.footer.homepage' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href="#!/public/contact">{{'baseLayout.footer.contact' | translate }}</a>
+                                </li>
+                                <li admin-section="misc.userCanSeeKitchenSink">
+                                    <a href="#!/public/kitchenSink">{{'baseLayout.footer.kitchenSink' | translate}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    <div class="row">
+                        <ul>
+                            <li>
+                                <a class="weight12" href="#!/public/feedback">{{'baseLayout.footer.feedback' | translate}}</a>
+                            </li>
+                            <li>
+                                <a class="weight12" href="#!/public/suggest">{{'baseLayout.footer.suggest' | translate}}</a>
+                            </li>
+                            <li>
+                                <a class="weight12" href="#!/public/problem">{{'baseLayout.footer.problem' | translate}}</a>
+                            </li>
+                            <li>
+                                <a class="weight12" href="#!/public/abuse">{{'baseLayout.footer.abuse' | translate}}</a>
+                            </li>
+                            </ul>
+                        <div class="copyrights">
+                            <div>&copy; {{'baseLayout.footer.copyright' | translate}}</div>
+                            <div>{{'baseLayout.footer.copyrightMsg' | translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
 </div>

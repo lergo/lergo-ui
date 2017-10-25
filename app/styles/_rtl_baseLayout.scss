@@ -73,12 +73,16 @@ body .rtl{
 
       }
 
+      #simple-dropdown1 {
+          margin-right: 171px;
+      }
+
       .page-content-width {
 
           .page-content-body {
-              float: left;
-              width: 730px;
-              min-width: 730px;
+              /*float: right;*/
+              /*width: 730px;
+              min-width: 730px;*/
           }
 
           .page-content-sidebar {
@@ -90,8 +94,24 @@ body .rtl{
 
       .page-content-titles {
           .page-content-titles-actions {
-              float: left;
+              .btn {
+              }
           }
       }
+      #profileloginbutton-mobile-not-logged-in .header-signup a:last-child {
+          float: left;
+      }
   }
+}
+
+.rtl {
+    #header-mobile {
+        .pull-left.logo {
+            margin-left: 175px;
+        }
+    }
+    input.form-control.search-input {
+        margin-right: 27px;
+    }
+
 }

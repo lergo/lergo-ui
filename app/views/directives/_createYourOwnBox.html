@@ -1,16 +1,10 @@
 <div class="create-your-own-box">
-    <div class="upper-section">
-        <div class="create">{{ 'homepage.createYourOwn' | translate }}</div>
-        <br/>
-        <!-- guy - part of fix for newline on homepage.free -->
-        <a show-logged-in class="start btn btn-start" ng-click="createBtnDisable || create()" ng-disabled="createBtnDisable">
+        <a  show-logged-in  ng-click="createBtnDisable || create()" ng-disabled="createBtnDisable" class="lergo-h1">
             <i ng-show="createBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
-            {{ 'homepage.create' | translate }}
+            {{ 'homepage.createLessons' | translate }}
+            <i class="fa fa-plus" aria-hidden="true"></i>
         </a>
-        <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-        <a show-anonymous class="start btn btn-start" href="" popover-placement="bottom" popover-trigger="'outsideClick'"
-           uib-popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
-            'homepage.create' | translate }}</a>
-        <div class="free">{{ 'homepage.free' | translate }}</div>
-    </div>
+        <a class="lergo-h1" show-anonymous  href="" popover-placement="bottom" popover-trigger="'outsideClick'"
+           uib-popover="{{'createNotAvailable' | translate}}" tabindex="0">{{'homepage.createLessons' | translate }}
+            <i class="fa fa-plus" aria-hidden="true"></i></a>
 </div>

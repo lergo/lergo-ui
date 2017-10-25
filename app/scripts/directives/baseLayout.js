@@ -56,7 +56,7 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
                 scope.baseLayout.language = newValue ;
             });
 
-
+            scope.showForm = false;
             scope.searchOnHomepage = function(){
                 $log.info('searching on homepage', scope.baseLayout.filterTextSearch);
                 $location.search('search', scope.baseLayout.filterTextSearch).path('/user/homepage');
@@ -67,7 +67,7 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
                 $timeout(function(){
 //                    scope.filterTextSearch = textSearch;
                     if ( !!scope.baseLayout && !!scope.baseLayout.filterTextSearch ) {
-                        $('#header .header-search input')[0].setSelectionRange(scope.baseLayout.filterTextSearch.length, scope.baseLayout.filterTextSearch.length);
+                        $('#header-mobile .header-search-mobile input')[0].setSelectionRange(scope.baseLayout.filterTextSearch.length, scope.baseLayout.filterTextSearch.length);
                     }
                 },0);
 

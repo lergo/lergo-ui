@@ -27,13 +27,20 @@
                 </button>
             </div>
         </div>
-        <div class="page-content-sidebar">
+        <!--<div class="page-content-sidebar">
             <div class="lergo-h1">{{ 'questions.filter' | translate }}</div>
-        </div>
+        </div>-->
     </div>
     <div class="page-content-width">
         <div class="page-content-body">
             <div filter-is-active="questionsFilterOpts" section="questions"></div>
+            <div>
+                <div class="lergo-h1">{{ 'questions.filter' | translate }}</div>
+                <div lergo-filter no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
+                     on-load="filterLoaded()"
+                     opts="questionsFilterOpts"></div>
+            </div>
+            </div>
             <table ng-show="items.length > 0" class="table ">
                 <thead>
                 <tr style="font-weight: bold">
@@ -68,11 +75,11 @@
                 class="alert alert-warning font-medium">{{ 'questions.noQuestions' | translate }}</span></div>
         </div>
 
-        <div class="sidebar page-content-sidebar">
+        <!--<div class="sidebar page-content-sidebar">
             <div lergo-filter no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
                  on-load="filterLoaded()"
                  opts="questionsFilterOpts"></div>
-        </div>
+        </div>-->
     </div>
     <div lergo-paging page="filterPage" on-change="loadQuestions()" on-load="pagingLoaded()"></div>
 </div>

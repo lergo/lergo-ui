@@ -1,10 +1,11 @@
+
 'use strict';
 
 angular.module('lergoApp')
-    .directive('lessonTitleImage', function (LergoClient) {
+    .directive('lessonTitleImageMobile', function (LergoClient) {
         return {
-            template: '<img class="img-responsive" ng-show="!!img" ng-src="{{img}}" width="100%" style="min-height: 10em" />' +
-            '<i ng-show="!img" class="fa fa-university"></i>',
+            template: '<img ng-show="!!img" ng-src="{{img}}" />' +
+                '<i ng-show="!img" class="fa fa-university"></i>',
             restrict: 'A',
             scope: {
                 'lesson': '='
