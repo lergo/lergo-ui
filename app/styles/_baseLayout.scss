@@ -206,7 +206,17 @@ label.btn.btn-link {
     .search-mobile {
         position: relative;
         bottom: 34px;
-        right: -150px;
+        right: -160px;
+    }
+}
+
+.rtl {
+
+    .search-mobile {
+        right: 160px;
+    }
+    .cancel-search-mobile {
+        right: 100px;
     }
 }
 
