@@ -76,3 +76,91 @@
         text-align:center;
     }
 }
+
+.rtl {
+    #createLessonPage {
+        .createLesson-form{
+            margin-right: 150px;
+        }
+    }
+}
+
+#createLessonPageMobile{
+    .createLesson-form{
+        display:table;
+        padding-top:10px;
+        width:100%;
+        .lergo-label{
+            padding-top:10px;
+        }
+        .error{
+            display:table-row;
+            font-size: 15px;
+            color: red;
+        }
+        .name{
+            display:table-row;
+        }
+        .description{
+            display:table-row;
+        }
+        .stats{
+            .form-control{
+                width:auto;
+                display:inline;
+            }
+            /*display:table;*/
+            padding-top:10px;
+            padding-bottom:10px;
+            span{
+                padding-right: 10px;
+            }
+            select{
+                margin-right: 10px;
+            }
+
+        }
+        .language{
+            display:table-cell;
+        }
+        .subject{
+            display:table-cell;
+        }
+        .age{
+            display:table-cell;
+
+            input{
+                display:table-cell;
+                width:auto;
+            }
+        }
+        .tag{
+            color:inherit;
+            padding-top:10px;
+            width:100%;
+
+
+            .row{
+                display:table-row;
+                &>span{
+                    display:table-cell;
+                    padding-right: 10px;
+                }
+                .tag-section-wrapper{
+                    margin-top:10px;
+                    display:table-cell;
+                    width:94%;
+
+                }
+            }
+
+        }
+
+    }
+
+    .step-actions{
+        padding: 10px 0;
+        text-align:center;
+    }
+}
+
