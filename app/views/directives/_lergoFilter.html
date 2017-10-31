@@ -102,6 +102,20 @@
                         </div>
                     </div>
 
+                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-6" ng-show="!!opts.showSearchText">
+                        <div class="well well-sm filter-box">
+                            <div class="filter-label">{{'filters.labels.text' | translate }}</div>
+                            <div class="input-group input-group-sm">
+                                <input style="font-size: .9em; height: 33px; background-color: #efefef" type="text" class="form-control" ng-model="model.searchText" ng-model-options="{updateOn:'change blur'}"
+                                       placeholder="{{'filters.labels.text' | translate  }}" style="border-radius: 0"/>
+                                <span class="input-group-addon" style="cursor: pointer">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    </span>
+                                <span ng-show="!!model.searchText" class="cancel-search-mobile-user" ng-click="model.searchText=''">X</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" ng-show="!!opts.showTags">
                         <div class="well well-sm filter-box">
                             <div class="filter-label">{{'filters.labels.tags' | translate }}</div>
@@ -194,6 +208,7 @@
                 <div class="col-lg-11 col-md-11">
                 <div class="row">
 
+
                 <div class="col-lg-4 col-md-4 col-sm-2 col-xs-6"  ng-show="!!opts.showLanguage">
                     <div class="filter-box">
                         <form>
@@ -270,7 +285,22 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" ng-show="!!opts.showReportLesson">
+                        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-6" ng-show="!!opts.showSearchText">
+                            <div class="filter-box">
+                                <div class="filter-label">{{'filters.labels.text' | translate }}</div>
+                                <div class="input-group input-group-sm">
+                                    <input style="font-size: .9em; height: 33px; background-color: #efefef" type="text" class="form-control" ng-model="model.searchText" ng-model-options="{updateOn:'change blur'}"
+                                           placeholder="{{'filters.labels.text' | translate  }}" style="border-radius: 0"/>
+                                    <span class="input-group-addon" style="cursor: pointer">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    </span>
+                                    <span ng-show="!!model.searchText" class="cancel-search-user" ng-click="model.searchText=''">X</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" ng-show="!!opts.showReportLesson">
                     <div class="filter-box">
                         <div class="filter-label">{{'filters.label.reportLesson' | translate }}</div>
                         <div class="input-group input-group-sm">

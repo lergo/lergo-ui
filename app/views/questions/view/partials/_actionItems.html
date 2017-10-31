@@ -1,7 +1,14 @@
 <div class="action-items">
 	<div class="hint" ng-show="!!quizItem.hint">
-		<button popover-animation="false" ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" uib-popover="{{quizItem.hint}}" class="btn-link"
-			popover-is-open="stepDisplay.showHint" tabindex="0">{{'hint' | translate}}</button><!-- focus click - click adds mobile support in ipad/chrome -->
+        <div class="hidden-lg hidden-md">
+            <button popover-animation="false" ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="bottom" uib-popover="{{quizItem.hint}}" class="btn-link"
+                    popover-is-open="stepDisplay.showHint" tabindex="0">{{'hint' | translate}}</button><!-- focus click - click adds mobile support in ipad/chrome -->
+        </div>
+        <div class="hidden-sm hidden-xs">
+            <button popover-animation="false" ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" uib-popover="{{quizItem.hint}}" class="btn-link"
+                    popover-is-open="stepDisplay.showHint" tabindex="0">{{'hint' | translate}}</button><!-- focus click - click adds mobile support in ipad/chrome -->
+        </div>
+
 	</div>
 	<div ng-show="mode==='read'" class="action-item">
 		<hr />

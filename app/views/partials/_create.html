@@ -1,15 +1,37 @@
-<div class="base-layout" id="create">
-	<div>
-		<ul class="nav nav-tabs">
-			<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
-				<a href="#!/user/create/{{section.id}}">
-					<i class="{{section.icon}}"></i>
-					{{'baseLayout.header.links.' + section.id | translate}}
-				</a>
-			</li>
-		</ul>
-		<div class="lergo-tab-content">
-			<div ng-include="currentSection.include"></div>
-		</div>
-	</div>
+<div class="hidden-lg hidden-md">
+    <div class="base-layout" id="create">
+        <div>
+            <ul class="nav nav-tabs">
+                <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                    <a href="#!/user/create/{{section.id}}">
+                        <i class="{{section.icon}}"></i>
+                        {{'baseLayout.header.links.' + section.id | translate}}
+                    </a>
+                </li>
+            </ul>
+            <div class="lergo-tab-content">
+                <div ng-include="currentSection.include"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="hidden-sm hidden-xs">
+    <div class="base-layout" id="create">
+        <div>
+            <ul class="nav nav-tabs">
+                <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                    <a href="#!/user/create/{{section.id}}">
+                        <i class="{{section.icon}}"></i>
+                        <br>
+                        {{'baseLayout.header.links.' + section.id | translate}}
+                    </a>
+                </li>
+            </ul>
+            <div class="lergo-tab-content">
+                <div ng-include="currentSection.include"></div>
+            </div>
+        </div>
+    </div>
 </div>

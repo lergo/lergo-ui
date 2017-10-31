@@ -50,6 +50,45 @@
     }
 }
 
+.cancel-search-mobile-user { // testing this
+    position:relative;
+    right: 57px;
+    top: -11px;
+    color: darkgrey;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index:2;
+}
+
+.rtl {
+    .cancel-search-mobile-user { // testing this
+         right: 57px;
+         top: -12px;
+    }
+}
+
+.cancel-search-user {
+    position:relative;
+    right: 57px;
+    top: -11px;
+    color: darkgrey;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index:2;
+}
+
+.rtl {
+
+    .cancel-search-user {
+        right: -57px;
+        top: -11px;
+    }
+
+}
+
+
 .filter-buttons {
     max-width: 155px;
     background: $LERGO_INPUT_BACKGROUND;

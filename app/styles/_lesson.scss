@@ -38,6 +38,7 @@
         margin-top: 50px;
         margin-left: auto;
         margin-right: auto;
+        background-color: #efefef; // to complete the background color of #questionPreview
     }
 }
 
@@ -67,6 +68,7 @@
         margin-top: 50px;
         margin-left: auto;
         margin-right: auto;
+        background-color: #efefef;  // to complete the background color of #questionPreview
     }
 }
 
@@ -249,7 +251,7 @@
         }
         .lesson-step-title{
             /*width:600px;*/
-            max-width:600px;
+           /* max-width:600px;*/
             text-overflow: ellipsis;
             overflow-x:hidden;
             line-height:40px;
