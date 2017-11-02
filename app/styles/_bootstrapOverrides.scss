@@ -100,6 +100,11 @@
     color: white;
 }
 
+.img-responsive {
+    max-width: 90%;
+    margin: auto;
+}
+
 // Give the tabs something to sit on
 .nav-tabs {
     border-bottom: 1px solid $nav-tabs-border-color;

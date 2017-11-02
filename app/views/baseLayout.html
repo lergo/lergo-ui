@@ -7,23 +7,38 @@
                      <i class="fa fa-ellipsis-v fa-2x" style="padding:0 5px 0 5px"></i>
                  </button>
                  <div>
-                     <div class="hidden-lg hidden-md">
-                         <a class="pull-left" style="margin:8px 0 0 20px;" href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
+                     <div class="hidden-lg hidden-md"> <!-- search icon in nabvar for mobile-->
+                         <a class="pull-left" style=" display: inline-block; margin: 8px 10px 0px 20px;" href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
+                         <div class="col-sm-5 col-sm-push-5 col-xs-3 col-xs-push-3">
+                             <div ng-show="!showSearchbar" ng-init="showSearchbar=false;" ng-click="showSearchbar = true;" style="float: left; margin-top: 29px;">
+                                 <i ng-show="!baseLayout.filterTextSearch" class="fa fa-search fa-lg"></i>
+                             </div>
+                     </div>
                      </div>
                      <div class="hidden-sm hidden-xs">
                          <a class="pull-left logo"  href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
                      </div>
                      <div class="hidden-lg hidden-md">
-                         <div class="col-sm-6 col-xs-6">
-                             <form class="navbar-form" role="search" style="max-width: 166px; border-color: #91CFFF">
-                                 <div class="form-group navbar-search-mobile" ui-keypress="{enter: 'searchOnHomepage()'}">
-                                     <input class="form-control search-input" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
-                                     <button  ng-click="searchOnHomepage()" class="btn btn-link">
-                                         <i id="icon-search-a-not-in-use" class="fa fa-search search-mobile"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
-                                     </button>
-                                     <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
-                                         <span id="cancel-search-a" class="cancel-search-mobile"  uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right">X</span>
-                                     </a>
+                             <div class="col-sm-12 col-xs-12">
+                             <form class="navbar-form" role="search" style="width: auto; border-color: #91CFFF" ng-show="showSearchbar || !!baseLayout.filterTextSearch.length > 0 ">
+                                 <div style= "height: 40px" class=" navbar-group navbar-search-mobile" ui-keypress="{enter: 'searchOnHomepage()'}">
+                                     <div class="col-sm-2 col-sm-push-1  col-xs-2 col-xs-push-1" style="z-index: 2">
+                                         <a ng-show="baseLayout.language == 'he'" style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
+                                             <span ng-show="!!baseLayout.filterTextSearch"  class="cancel-search-mobile"  uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right">X</span>
+                                         </a>
+                                     </div>
+                                     <div class="col-sm-8 col-xs-8">
+                                         <input class="form-control" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                                         <a ng-click="showSearchbar = false" class="btn btn-link search-float">
+                                             <i ng-show="!baseLayout.filterTextSearch" class="fa fa-remove fa-lg search-mobile"></i>
+                                         </a>
+                                     </div>
+                                     <div class="col-sm-2 col-sm-pull-1 col-xs-2 col-xs-pull-1">
+
+                                         <a ng-show="baseLayout.language == 'en'" style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
+                                         <span ng-show="!!baseLayout.filterTextSearch"  class="cancel-search-mobile">X</span>
+                                         </a>
+                                     </div>
                                  </div>
                              </form>
                          </div>

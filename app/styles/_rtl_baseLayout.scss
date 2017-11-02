@@ -109,9 +109,29 @@ body .rtl{
         .pull-left.logo {
             margin-left: 175px;
         }
+        .cancel-search {
+            right: 310px;
+            bottom: 0px;
+        }
     }
     input.form-control.search-input {
-        margin-right: 27px;
+        margin-right: 0px;
     }
-
+    .cancel-search-mobile {
+        /*right: 255px;*/
+        float: left;
+    }
+    .cancel-search {
+        right: 5px;
+        bottom: 0px;
+    }
+    .search-mobile {
+        /*right: 134px;*/
+        float: left;
+        margin-left: 20px;
+    }
+    .search-float {
+        float: left;
+        padding: 2px;
+    }
 }
