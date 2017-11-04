@@ -22,6 +22,9 @@ time, mark, audio, video {
     font-size: 100%;
     vertical-align: baseline;
 }
+/*prevent overflow of mobile view*/
+body, html { overflow-x:hidden; }
+
 
 .lergo-tab-content {
    border-bottom: 1px solid #ddd;
