@@ -6,7 +6,6 @@
 * @description
 * # filterIsActive
 */
-/*
 angular.module('lergoApp')
     .directive('filterIsActive', function (LergoFilterService ) {
         return {
@@ -38,4 +37,3 @@ angular.module('lergoApp')
             }
         };
     });
-*/

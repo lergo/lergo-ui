@@ -6,9 +6,14 @@ $FOOTER_HEIGHT: 170px !default;
 
 // jeff's code for mobile first starts here:
 
-#focus-search-mobile {
-    /*margin-left: 80px;*/
+/*#focus-search-mobile {
     margin-left: 10px;
+}*/
+
+.sidebar-desktop {
+    margin-top: 55px;
+    border-bottom: 1px solid #d2e8fa;
+    padding-bottom: 15px;
 }
 
 label.btn.btn-link {
@@ -197,16 +202,11 @@ label.btn.btn-link {
  /*for the mobile search only*/
 .navbar-search-mobile {
     height: 40px;
-   /* border: 2px solid red;*/
-   /* position: relative;*/
 
     .cancel-search-mobile {
         position: relative;
-        /*right: -268px;*/
-        /*bottom: 36px;*/
         color: darkgrey;
         font-size: 14px;
-        /*border: 2px solid green;*/
         float: left;
     }
     .search-mobile {
@@ -245,10 +245,10 @@ input.form-control.search-input {
 
 } /*end of base-layout*/
 
-.jumbotron{
+/*jumbotron{
     background-color:#2E2D88;
     color:white;
-}
+}*/
 /* Adds borders for tabs */
 .tab-content {
     border-left: 1px solid #ddd;
@@ -338,9 +338,9 @@ input.form-control.search-input {
                 padding-left: 12px;
             }
         }
-        .search-color {
+       /* .search-color {
             color: #802c80;
-        }
+        }*/
         .header-actions{
             .header-language{
                 select{
@@ -354,7 +354,7 @@ input.form-control.search-input {
             }
         }
 
-        .header-actions-desktop{
+      /*  .header-actions-desktop{
 
             .header-language{
                 select{
@@ -365,13 +365,6 @@ input.form-control.search-input {
                     margin-left: 11px;
                 }
             }
-        }
-       /* .cancel-search {
-            position:relative;
-            right: 90px;
-            color: darkgrey;
-            font-size: 14px;
-            bottom: 0px
         }*/
 
     }
@@ -395,12 +388,12 @@ input.form-control.search-input {
             width: 730px;
             min-width: 730px;
         }
-
+/*
         .page-content-sidebar {
             float: right;
             width: 225px;
             min-width: 225px;
-        }
+        }*/
 
     }
 
@@ -434,9 +427,9 @@ input.form-control.search-input {
         height: $HEADER_HEIGHT;
 
 
-        .header-main {
+       /* .header-main {
             position: relative;
-        }
+        }*/
 
         .header-logo, .header-navigation, .header-actions{
             display:inline-block;
@@ -446,7 +439,7 @@ input.form-control.search-input {
         }
 
 
-        .header-logo{
+       /* .header-logo{
             .logo {
                 margin-top: 10px;
                 background: url('/images/homepage/logo.png') no-repeat;
@@ -460,8 +453,8 @@ input.form-control.search-input {
                 height: 90px;
                 width: 166px;
             }
-        }
-        .header-navigation {
+        }*/
+     /*   .header-navigation {
             margin-left: 60px;
             width:520px;
 
@@ -508,7 +501,7 @@ input.form-control.search-input {
                 position: absolute;
                 bottom: 20px;
 
-                width: 500px; /*guy*/
+                width: 500px; !*guy*!
                 height:40px;
                 //    margin-top:30px;
                 //    margin-right:0;
@@ -553,19 +546,19 @@ input.form-control.search-input {
                     background: #C5E6FF;
                     color: white;
                     &::-webkit-input-placeholder {
-                        /* WebKit browsers */
+                        !* WebKit browsers *!
                         color: white;
                     }
                     &:-moz-placeholder {
-                        /* Mozilla Firefox 4 to 18 */
+                        !* Mozilla Firefox 4 to 18 *!
                         color: white;
                     }
                     &::-moz-placeholder {
-                        /* Mozilla Firefox 19+ */
+                        !* Mozilla Firefox 19+ *!
                         color: white;
                     }
                     &:-ms-input-placeholder {
-                        /* Internet Explorer 10+ */
+                        !* Internet Explorer 10+ *!
                         color: white;
                     }
 
@@ -575,14 +568,14 @@ input.form-control.search-input {
                 .search-color {
                     color: #802c80;
                 }
-                /*.cancel-search {
+                !*.cancel-search {
                     position:relative;
                     right: 60px;
                     color: darkgrey;
                     font-size: 14px;
-                }*/
+                }*!
             }
-        }
+        }*/
 
         .header-actions{
             margin-left:20px;
@@ -714,11 +707,11 @@ input.form-control.search-input {
 }
 
 /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
-.container, .base-layout, .base-layout-class {
+/*.container, .base-layout, .base-layout-class {
     &:not(.base-layout-modal) {
         height: 100%;
     }
-}
+}*/
 
 .embed-mode-item {
     /* to display only in embed code */

@@ -21,13 +21,11 @@
 
       }
     }
-
     .lessons{
       .lesson{
         /*float:right;*/
       }
     }
-
     .article-header {
       text-align: right;
       margin-right: 50px;
@@ -46,6 +44,15 @@
       }
     }
   }
+    .homepage-desktop{
+        .lessons-desktop {
+
+            .lesson-desktop {
+               float: right;
+            }
+        }
+    }
+
 }
 
 /* specifics for hebrew */

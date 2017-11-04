@@ -3,7 +3,7 @@
 angular.module('lergoApp')
     .directive('lessonTitleImage', function (LergoClient) {
         return {
-            template: '<img class="img-responsive" ng-show="!!img" ng-src="{{img}}" width="100%" style="min-height: 10em" />' +
+            template: '<img class="img-responsive" ng-show="!!img" ng-src="{{img}}" width="100%" />' +
             '<i ng-show="!img" class="fa fa-university"></i>',
             restrict: 'A',
             scope: {

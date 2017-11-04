@@ -237,6 +237,11 @@
     padding: 50px 0  0;
 }
 
+.text-desktop {
+    float: left;
+    margin-bottom: 20px;
+}
+
 .admin{
   table{
     tr, td{
@@ -379,6 +384,7 @@
             height: 256px;
             width: 233px;
             float: left;
+           /* float: right;*/
             border-radius: 10px;
             background-color: #EFEFEF;
             &:hover {

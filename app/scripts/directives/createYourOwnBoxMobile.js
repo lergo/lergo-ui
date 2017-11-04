@@ -1,12 +1,12 @@
 
-/*'use strict';
+'use strict';
 
 angular.module('lergoApp')
     .directive('createYourOwnBoxMobile', function (LergoClient, $location, $log) {
         return {
             templateUrl: 'views/directives/_createYourOwnBoxMobile.html',
             restrict: 'A',
-            link: function postLink($scope/!*, element, attrs*!/) {
+            link: function postLink($scope/*, element, attrs*/) {
                 $scope.create = function () {
                     $scope.createBtnDisable=true;
                     LergoClient.lessons.create().then(function (result) {
@@ -21,4 +21,4 @@ angular.module('lergoApp')
                 };
             }
         };
-    });*/
+    });

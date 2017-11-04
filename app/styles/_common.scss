@@ -210,12 +210,16 @@ button.action-item {
     padding-top: 20px;
 }
 
+.bottom-padding {
+    padding-bottom: 50px;
+}
+
 .status {
     height: 100px;
 }
 
 .lergo-h0 {
-    font-size: 28px;
+    font-size: 25px;
     white-space: nowrap;
     text-align: justify;
     color: $LERGO_H1_COLOR;

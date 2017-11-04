@@ -106,8 +106,8 @@
                         <div class="well well-sm filter-box">
                             <div class="filter-label">{{'filters.labels.text' | translate }}</div>
                             <div class="input-group input-group-sm">
-                                <input style="font-size: .9em; height: 33px; background-color: #efefef" type="text" class="form-control" ng-model="model.searchText" ng-model-options="{updateOn:'change blur'}"
-                                       placeholder="{{'filters.labels.text' | translate  }}" style="border-radius: 0"/>
+                                <input style="font-size: .9em; height: 33px; background-color: #efefef; border-radius: 0" type="text" class="form-control" ng-model="model.searchText" ng-model-options="{updateOn:'change blur'}"
+                                       placeholder="{{'filters.labels.text' | translate  }}"/>
                                 <span class="input-group-addon" style="cursor: pointer">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                     </span>
@@ -201,170 +201,210 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <div class="hidden-sm hidden-xs"> <!--desktop only code-->
-                <div class="col-lg-11 col-md-11">
-                <div class="row">
-
-
-                <div class="col-lg-4 col-md-4 col-sm-2 col-xs-6"  ng-show="!!opts.showLanguage">
-                    <div class="filter-box">
-                        <form>
-                            <div class="form-group">
-                                <label class="filter-label" for="sel33">{{'filters.labels.language' | translate }}</label>
-                                <select  class="form-control filter-buttons" id="sel33" ng-options="l as ('filters.languages.' + l | translate) for l in languages track by l"
-                                         ng-model="filterLanguage" ng-change="isNavCollapsed = !isNavCollapsed">
-                                </select>
-                            </div>
-                        </form>
+            <div class="hidden-sm hidden-xs"> <!-- desktop only -->
+                <form name="filter" class="filters lergo-form">
+                <div ng-show="!!opts.showStudents" class='container-fluid'>
+                    <div class="label">{{'filters.labels.doneByStudent' | translate}}</div>
+                    <div class="input">
+                        <input type="text" ng-model-options="{debounce:500}" ng-model="reportStudent"
+                               uib-typeahead="student._id as student._id for student in students | filter:$viewValue | limitTo:15 ">
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-6" ng-show="!!opts.showSubject" >
-                    <div class="filter-box">
-                        <form>
-                            <div class="form-group">
-                                <label class="filter-label" for="sel11">{{'filters.labels.subject' | translate }}</label>
-                                <select class="form-control filter-buttons" id="sel11" ng-options="s as ('filters.subjects.' + s | translate) for s in subjects track by s"
-                                        ng-model="model.subject" ng-change="isNavCollapsed = !isNavCollapsed">
-                                    <option value="">{{'filters.all'|translate}}</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-6" ng-show="!!opts.showAge">
-                    <div class="filter-box">
-                        <div class="filter-label">{{'filters.labels.ageRange' | translate }}</div>
-                        <div class="input-group input-group-sm filter-buttons">
-                            <input class="form-control filter-buttons-double" min="4" max="17" type="number" ng-model="ageFilter.min">
-                            <span class="input-group-addon">{{'filters.to'|translate}}</span>
-                            <input class="form-control filter-buttons-double" min="5" max="18" type="number" ng-model="ageFilter.max">
-                        </div>
-                    </div>
-                    <a href ng-click="showMoreFilters = !showMoreFilters" ng-init="showMoreFilters = false">
-                        <i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i>
-                    </a>
 
+                <div ng-show="!!opts.showClass" class='container-fluid'>
+                    <div class="label">{{'filters.labels.doneByStudentClassname' | translate}}</div>
+                    <div class="input">
+                        <input type="text" ng-model-options="{debounce:500}" ng-model="reportClass"
+                               uib-typeahead="class._id as class._id for class in classes | filter:$viewValue | limitTo:15 ">
+                    </div>
                 </div>
+
+                <div ng-show="!!opts.showSearchText">
+                    <div class="label">{{'filters.labels.text' | translate }}</div>
+                    <div class="input-group">
+                        <input ng-model="model.searchText" ng-model-options="{updateOn:'change blur'}"
+                               placeholder="{{'filters.labels.text' | translate  }}" style="border-radius: 0"/>
+                        <span class="input-group-addon" style="cursor: pointer">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+            </span>
+                        <span ng-show="!!model.searchText" class="cancel-search" ng-click="model.searchText=''">
+                X
+            </span>
+
+                    </div>
+                </div>
+
+                <span ng-show="!!opts.showLimitedLanguage">
+
+		<div class="label">{{'filters.labels.language' | translate }}</div>
+		<div class="input">
+
+			<select ng-options="l as ('filters.languages.' + l | translate) for l in limitedLanguages track by l"
+                    ng-model="filterLanguage">
+			</select>
+		</div>
+	</span>
+
+
+                <span ng-show="!!opts.showLanguage">
+		<div class="label">{{'filters.labels.language' | translate }}</div>
+		<div class="input">
+
+			<select ng-options="l as ('filters.languages.' + l | translate) for l in languages track by l"
+                    ng-model="filterLanguage">
+			</select>
+		</div>
+	</span>
+
+
+                <span ng-show="!!opts.showHasQuestions">
+		<div class="label">{{'filters.labels.hasQuestions' | translate }}</div>
+		<div class="input">
+
+			<input type="checkbox" ng-model="hasQuestions"/>
+
+		</div>
+	</span>
+
+                <span ng-show="!!opts.showLimitedSubject">
+		<div class="label">{{'filters.labels.subject' | translate }}</div>
+		<div class="input">
+            <select ng-options="s as ('filters.subjects.' + s | translate) for s in limitedSubjects track by s"
+                    ng-model="model.subject">
+                <option admin-section="!limitations.manageSubject" value="">{{'filters.all'|translate}}</option>
+            </select>
+        </div>
+	</span>
+
+                <span ng-show="!!opts.showSubject">
+		<div class="label">{{'filters.labels.subject' | translate }}</div>
+		<div class="input">
+			<select ng-options="s as ('filters.subjects.' + s | translate) for s in subjects track by s"
+                    ng-model="model.subject">
+				<option value="">{{'filters.all'|translate}}</option>
+			</select>
+		</div>
+	</span>
+
+                <span ng-show="!!opts.showLimitedAge" class="limited-age">
+		<div class="label">{{'filters.labels.ageRange' | translate }}</div>
+		<div>
+            <input min="{{limitAge.min}}" max="{{limitAge.max}}" size="1" class="number" type="number"
+                   ng-model="ageFilter.min"/>
+            {{'filters.to'|translate}}
+            <input min="{{limitAge.min}}" max="{{limitAge.max}}" size="1" class="number" type="number"
+                   ng-model="ageFilter.max"/>
+        </div>
+	</span>
+
+                <span ng-show="!!opts.showAge">
+		<div class="label">{{'filters.labels.ageRange' | translate }}</div>
+		<div>
+			<input min="1" max="100" size="1" class="number" type="number" ng-model="ageFilter.min"/>
+			{{'filters.to'|translate}}
+			<input min="1" max="100" size="1" class="number" type="number" ng-model="ageFilter.max"/>
+		</div>
+	</span>
+
+
+                <span ng-show="!!opts.showViews">
+		<div class="label">{{'filters.labels.views' | translate }}</div>
+		<div>
+			<input min="1" size="1" class="number" type="number" ng-model="viewsFilter.min"/>
+			{{'filters.to'|translate}}
+			<input min="1" size="1" class="number" type="number" ng-model="viewsFilter.max"/>
+		</div>
+	</span>
+                <span ng-show="!!opts.showLimitedLessonStatus">
+		<div class="label">{{'filters.labels.status' | translate }}</div>
+		<div class="input">
+			<select ng-options="s as ('filters.status.' + s | translate) for s in limitedLessonStatus"
+                    ng-model="limitedLessonStatusValue">
+				<option admin-section="!limitations.editOnlyUnpublishedContent"
+                        value="">{{'filters.all'|translate}}</option>
+			</select>
+		</div>
+	</span>
+                <span ng-show="!!opts.showCorrectPercentage">
+		<div class="label">{{'filters.labels.correctPercentage' | translate }}</div>
+		<div>
+			<input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce: 500}"
+                   ng-model="correctPercentage.min"/>
+			{{'filters.to'|translate}}
+			<input min="1" max="100" size="1" ng class="number" type="number" ng-model-options="{debounce: 500}"
+                   ng-model="correctPercentage.max"/>
+		</div>
+	</span>
+                <div ng-show="!!opts.showReportStatus">
+                    <div class="label">{{'filters.labels.status' | translate }}</div>
+                    <div class="input">
+                        <select ng-options="s as ('filters.status.' + s | translate) for s in reportStatus"
+                                ng-model="reportStatusValue">
+                            <option value="">{{'filters.all'|translate}}</option>
+                        </select>
+                    </div>
+                </div>
+                <span ng-show="!!opts.showInviteStatus">
+		<div class="label">{{'filters.labels.status' | translate }}</div>
+		<div class="input">
+			<select ng-options="s as ('filters.status.' + s | translate) for s in reportStatus"
+                    ng-model="inviteStatusValue">
+				<option value="">{{'filters.all'|translate}}</option>
+			</select>
+		</div>
+	</span>
+
+                <div ng-show="!!opts.showReportLesson">
+                    <div class="label">{{'filters.label.reportLesson' | translate }}</div>
+                    <div report-lesson-filter="reportLesson" report-type="reportType"></div>
+                </div>
+                <span ng-show="!!opts.showTags">
+		<div>
+			<div class="label">{{'filters.labels.tags' | translate }}</div>
+			<div>
+				<div tag-section tags="filterTags"></div>
+			</div>
+		</div>
+	</span>
+                <div ng-show="!!opts.showCreatedBy" class='container-fluid'>
+                    <div class="label">{{'filters.labels.createdBy' | translate}}</div>
+                    <div class="input">
+                        <input type="text" ng-model="createdBy"
+                               uib-typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
+                    </div>
+                </div>
+                <div ng-show="!!opts.showReportedBy" class='container-fluid'>
+                    <div class="label">{{'filters.labels.reportedBy' | translate}}</div>
+                    <div class="input">
+                        <input type="text" ng-model="reportedBy"
+                               uib-typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
+                    </div>
+                </div>
+                <div ng-show="!!opts.showRoles" class="container-fluid">
+                    <div class="label">{{'filters.labels.roles' | translate }}</div>
+                    <div class="input">
+                        <input type="text" ng-model="role"
+                               uib-typeahead="role as role.name for role in roles | filter:$viewValue | limitTo: 15">
+                    </div>
+                </div>
+                <div ng-show="!!opts.showAbuseReportStatus">
+                    <div class="label">{{'filters.labels.status' | translate }}</div>
+                    <div class="input">
+                        <select ng-options="s as ('filters.status.' + s | translate) for s in abuseReportStatus"
+                                ng-model="model.status">
+                            <option value="">{{'filters.all'|translate}}</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
             </div>
-                <div ng-show = "showMoreFilters">
-                    <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-6" ng-show="!!opts.showTags">
-                    <div class="filter-box">
-                        <div class="filter-label">{{'filters.labels.tags' | translate }}</div>
-                        <div class="input-group input-group-sm filter-buttons ">
-                            <div tag-section tags="filterTags"></div>
-                            <span class="input-group"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="typeahead-demo"> <!--createdBy-->
-                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-6 " ng-show="!!opts.showCreatedBy">
-                        <div class="filter-box">
-                            <div class="filter-label">{{'filters.labels.createdBy' | translate}}</div>
-                            <div class="input-group input-group-sm">
-                                <div class="custom-typeahead">
-                                    <input style="height: 33px" type="text" ng-model="createdBy" uib-typeahead="user as user.username for user in users  | filter:$viewValue" typeahead-popup-template-url="customPopupTemplate.html" class="form-control filter-buttons"/>
-                                    <span class="input-group"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-6" ng-show="!!opts.showViews">
-                    <div class="filter-box">
-                        <div class="filter-label">{{'filters.labels.views' | translate }}</div>
-                        <div class="input-group input-group-sm filter-buttons">
-                            <input type="number" class="form-control filter-buttons-double" ng-model="viewsFilter.min">
-                            <span class="input-group-addon">To</span>
-                            <input type="number" class="form-control filter-buttons-double" ng-model="viewsFilter.max">
-                            <span class="input-group"></span>
-                        </div>
-                    </div>
-                </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-6" ng-show="!!opts.showSearchText">
-                            <div class="filter-box">
-                                <div class="filter-label">{{'filters.labels.text' | translate }}</div>
-                                <div class="input-group input-group-sm">
-                                    <input style="font-size: .9em; height: 33px; background-color: #efefef" type="text" class="form-control" ng-model="model.searchText" ng-model-options="{updateOn:'change blur'}"
-                                           placeholder="{{'filters.labels.text' | translate  }}" style="border-radius: 0"/>
-                                    <span class="input-group-addon" style="cursor: pointer">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                    </span>
-                                    <span ng-show="!!model.searchText" class="cancel-search-user" ng-click="model.searchText=''">X</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="clear-filter-section" filter-is-active-show-hide relevancy-opts="opts">
+                <button class="btn btn-success wide" lergo-reset-filter> {{ 'filters.actions.clear' | translate }}</button>
+            </div>
 
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" ng-show="!!opts.showReportLesson">
-                    <div class="filter-box">
-                        <div class="filter-label">{{'filters.label.reportLesson' | translate }}</div>
-                        <div class="input-group input-group-sm">
-                            <div report-lesson-filter="reportLesson" report-type="reportType"></div>
-                            <span class="input-group"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="typeahead-demo">
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 " ng-show="!!opts.showStudents">
-                        <div class="filter-box">
-                            <div class="filter-label">{{'filters.labels.doneByStudent' | translate}}</div>
-                            <div class="input-group input-group-sm">
-                                <div class="custom-typeahead">
-                                    <input style="height: auto;" type="text" ng-model-options="{debounce:500}" ng-model="reportStudent" uib-typeahead="student._id as student._id for student in students | filter:$viewValue | limitTo:15 " typeahead-popup-template-url="customPopupTemplate.html" class="form-control"/>
-                                    <span class="input-group"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="typeahead-demo">
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 " ng-show="!!opts.showClass">
-                        <div class="filter-box">
-                            <div class="filter-label">{{'filters.labels.doneByStudentClassname' | translate}}</div>
-                            <div class="input-group input-group-sm">
-                                <div class="custom-typeahead">
-                                    <input style="height: auto;" type="text" ng-model-options="{debounce:500}" ng-model="reportClass" uib-typeahead="class._id as class._id for class in classes | filter:$viewValue | limitTo:15 " typeahead-popup-template-url="customPopupTemplate.html" class="form-control"/>
-                                    <span class="input-group"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" ng-show="!!opts.showCorrectPercentage">
-                    <div style="min-height: 94px">
-                        <div style="padding-bottom: .5em; font-weight: 600">{{'filters.labels.correctPercentage' | translate }}</div>
-                        <div class="input-group input-group-sm">
-                            <input min="1" max="100" size="1" type="number" class="form-control" ng-model-options="{debounce: 500}"
-                                   ng-model="correctPercentage.min">
-                            <span class="input-group-addon">To</span>
-                            <input min="1" max="100" size="1" type="number" class="form-control" ng-model-options="{debounce: 500}"
-                                   ng-model="correctPercentage.max">
-                            <span class="input-group"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6" ng-show="!!opts.showReportStatus" >
-                    <div>
-                        <form>
-                            <div class="form-group">
-                                <label class="filter-label" for="selsRR">{{'filters.labels.status' | translate }}</label>
-                                <select class="form-control" id="selsRR" ng-options="s as ('filters.status.' + s | translate) for s in reportStatus"
-                                        ng-model="reportStatusValue" ng-change="isNavCollapsed = !isNavCollapsed">
-                                    <option value="">{{'filters.all'|translate}}</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-                </div>
-            </div>
-            </div>
         </div>
     </nav>
 </div>

@@ -22,6 +22,9 @@
         </div>
         <div class="page-content-width">
             <div class="page-content-body">
+                <div>
+                    <div lergo-filter model="adminFilter" on-change="loadUsers()" opts="adminFilterOpts" on-load="filterLoaded()"></div>
+                </div>
                 <table class="lergo-table">
                     <thead>
                     <tr>
@@ -72,9 +75,6 @@
                     </tr>
                     </tbody>
                 </table>
-            </div>
-            <div class="sidebar page-content-sidebar">
-            <div lergo-filter model="adminFilter" on-change="loadUsers()" opts="adminFilterOpts" on-load="filterLoaded()"></div>
             </div>
         </div>
         <div lergo-paging page="filterPage" on-change="loadUsers()" on-load="pagingLoaded()"></div>

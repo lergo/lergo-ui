@@ -1,96 +1,93 @@
 <div class="hidden-sm hidden-xs">
     <div id="inviteIndex" load-filter-and-paging="loadInvites()">
-	<div class="page-content-width page-content-titles">
-		<div class="page-content-body">
-			<div class="lergo-h1">
-				{{ 'invites.myInvites' | translate }} [ {{ 'reports.total' | translate }}: {{systemStats.myInvites }} ]
-				<!-- LERGO-457-->
-			</div>
-		</div>
-		<!--<div class="page-content-sidebar">
-			<div class="lergo-h1">{{ 'invites.filter' | translate }}</div>
-		</div>-->
-	</div>
-	<div class="page-content-width">
-		<div class="page-content-body">
-            <div filter-is-active="invitesFilterOpts" section="invites"></div>
-            <div>
-                <div class="lergo-h1">{{ 'invites.filter' | translate }}</div>
-                <div lergo-filter model="invitesFilter" on-change="loadInvites()" opts="invitesFilterOpts" on-load="filterLoaded()"></div>
+        <div class="page-content-width page-content-titles">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8" >
+                        <div class="lergo-h1 col-lg-8 col-md-8 bottom-padding top-padding">
+                            {{ 'invites.myInvites' | translate }} [ {{ 'reports.total' | translate }}: {{systemStats.myInvites }} ]
+                        </div>
+                        <div filter-is-active="invitesFilterOpts" section="invites"></div>
+                        <table class="lergo-table">
+                            <thead>
+                            <tr>
+                                <td class="checkbox-dropdown">
+                                    <div class="btn-group" uib-dropdown>
+                                        <input type="checkbox" ng-click="selectAll($event)" ng-model="invitesPage.selectAll">
+                                        <button type="button" class="btn-link" uib-dropdown-toggle>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="text-left">
+                                                <a style="outline: none;" class="btn-link " ng-click="markAsDone()">{{'invites.markAsDone'|translate}}</a>
+                                                <a style="outline: none;" class="btn-link " ng-click="markAsUndone()">{{'invites.markAsUndone'|translate}}</a>
+                                                <a style="outline: none;" class="btn-link " ng-click="emailNotification()">{{'invites.emailNotificationOff'|translate}}</a>
+                                                <a style="outline: none;" class="btn-link " ng-click="emailNotification(true)">{{'invites.emailNotificationOn'|translate}}</a>
+                                                <a style="outline: none;" class="btn-link " ng-csv="getReports()"
+                                                   csv-header="localizedHeaders()" filename="{{getExportFileName()}}">{{'invites.exportReports'|translate}}</a>
+                                                <hr />
+                                                <a style="outline: none;" class="btn-link delete-menu" ng-click="deleteInvites()">{{'delete'|translate}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>{{ 'name' | translate }}</td>
+                                <td>{{ 'invites.studentOrClass' | translate}}</td>
+                                <td>{{'pin'|translate}}</td>
+                                <td>{{ 'invites.emailNotification' | translate}}</td>
+                                <td>{{ 'filters.labels.language' | translate}}</td>
+                                <td>{{ 'filters.labels.subject' | translate}}</td>
+                                <td>{{ 'questions.age' | translate }}</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="invite in invites |orderBy:'-lastUpdate'">
+                                <td>
+                                    <input type="checkbox" style="margin-left: 5px;" ng-model="invite.selected">
+                                </td>
+                                <td class="name">
+                                    <a uib-tooltip="{{'invites.tooltip.go' | translate}}" ng-href="{{getInvitationLink(invite)}}">
+                                        <span ng-show="invite.name.trim().length > 0" class="{{!invite.finished && 'bold' || ''}}"> {{ invite.name}} </span>
+                                        <span ng-show="invite.name.trim().length <= 0" class="{{!invite.finished && 'bold' || ''}}">[ no title ]</span>
+                                    </a>
+                                </td>
+                                <td class="answer">
+                                    <span class="{{!invite.finished && 'bold' || ''}}">{{invite.invitee.name || invite.invitee.class}}</span>
+                                </td>
+                                <td class="answer">
+                                    {{invite.pin}}
+                                </td>
+                                <td class="answer">
+                                    <span class="text-success" ng-show="invite.emailNotification">{{'on' | translate }} </span>
+                                    <span class= "text-warning" ng-show="!invite.emailNotification">{{'off' | translate}}</span>
+                                </td>
+                                <td class="answer">
+                                    <span class="{{!invite.finished && 'bold' || ''}}">{{invite.language && ('filters.languages.' + invite.language | translate) ||""}}</span>
+                                </td>
+                                <td class="answer">
+                                    <span class="{{!invite.finished && 'bold' || ''}}">{{invite.subject && ('filters.subjects.' + invite.subject | translate) ||""}}</span>
+                                </td>
+                                <td class="answer">
+                                    <span class="{{!invite.finished && 'bold' || ''}}">{{invite.age &&('+'+ invite.age) || ""}}</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-1 col-md-1"></div>
+                    <div class="col-lg-3 col-md-3" >
+                        <div>
+                            <div class="lergo-h1 top-padding">{{ 'invites.filter' | translate }}</div>
+                            <div lergo-filter model="invitesFilter" on-change="loadInvites()" opts="invitesFilterOpts" on-load="filterLoaded()"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-			<table class="lergo-table">
-				<thead>
-					<tr>
-						<td class="checkbox-dropdown">
-							<div class="btn-group" uib-dropdown>
-								<input type="checkbox" ng-click="selectAll($event)" ng-model="invitesPage.selectAll">
-								<button type="button" class="btn-link" uib-dropdown-toggle>
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li class="text-left">
-                                        <a style="outline: none;" class="btn-link " ng-click="markAsDone()">{{'invites.markAsDone'|translate}}</a>
-                                        <a style="outline: none;" class="btn-link " ng-click="markAsUndone()">{{'invites.markAsUndone'|translate}}</a>
-                                        <a style="outline: none;" class="btn-link " ng-click="emailNotification()">{{'invites.emailNotificationOff'|translate}}</a>
-                                        <a style="outline: none;" class="btn-link " ng-click="emailNotification(true)">{{'invites.emailNotificationOn'|translate}}</a>
-                                        <a style="outline: none;" class="btn-link " ng-csv="getReports()"
-                                           csv-header="localizedHeaders()" filename="{{getExportFileName()}}">{{'invites.exportReports'|translate}}</a>
-                                        <hr />
-										<a style="outline: none;" class="btn-link delete-menu" ng-click="deleteInvites()">{{'delete'|translate}}</a>
-									</li>
-								</ul>
-							</div>
-						</td>
-						<td>{{ 'name' | translate }}</td>
-						<td>{{ 'invites.studentOrClass' | translate}}</td>
-                        <td>{{'pin'|translate}}</td>
-                        <td>{{ 'invites.emailNotification' | translate}}</td>
-						<td>{{ 'filters.labels.language' | translate}}</td>
-						<td>{{ 'filters.labels.subject' | translate}}</td>
-						<td>{{ 'questions.age' | translate }}</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="invite in invites |orderBy:'-lastUpdate'">
-						<td>
-							<input type="checkbox" style="margin-left: 5px;" ng-model="invite.selected">
-						</td>
-						<td class="name">
-							<a uib-tooltip="{{'invites.tooltip.go' | translate}}" ng-href="{{getInvitationLink(invite)}}">
-								<span ng-show="invite.name.trim().length > 0" class="{{!invite.finished && 'bold' || ''}}"> {{ invite.name}} </span>
-								<span ng-show="invite.name.trim().length <= 0" class="{{!invite.finished && 'bold' || ''}}">[ no title ]</span>
-							</a>
-						</td>
-						<td class="answer">
-							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.invitee.name || invite.invitee.class}}</span>
-						</td>
-                        <td class="answer">
-                            {{invite.pin}}
-                        </td>
-                        <td class="answer">
-                            <span class="text-success" ng-show="invite.emailNotification">{{'on' | translate }} </span>
-                            <span class= "text-warning" ng-show="!invite.emailNotification">{{'off' | translate}}</span>
-                        </td>
-						<td class="answer">
-							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.language && ('filters.languages.' + invite.language | translate) ||""}}</span>
-						</td>
-						<td class="answer">
-							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.subject && ('filters.subjects.' + invite.subject | translate) ||""}}</span>
-						</td>
-						<td class="answer">
-							<span class="{{!invite.finished && 'bold' || ''}}">{{invite.age &&('+'+ invite.age) || ""}}</span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<!--<div class="sidebar page-content-sidebar">
-			<div lergo-filter model="invitesFilter" on-change="loadInvites()" opts="invitesFilterOpts" on-load="filterLoaded()"></div>
-		</div>-->
-	</div>
-	<div lergo-paging page="filterPage" on-change="loadInvites()" on-load="pagingLoaded()"></div>
+        <div lergo-paging page="filterPage" on-change="loadInvites()" on-load="pagingLoaded()"></div>
+        </div>
+    </div>
 </div>
-</div>
+
 
 <div class="hidden-lg hidden-md">
     <div load-filter-and-paging="loadInvites()">

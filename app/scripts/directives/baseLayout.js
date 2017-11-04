@@ -56,6 +56,8 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
                 scope.baseLayout.language = newValue ;
             });
 
+
+
             scope.showForm = false;
             scope.searchOnHomepage = function(){
                 $log.info('searching on homepage', scope.baseLayout.filterTextSearch);

@@ -3,12 +3,16 @@
 		<div class="page-content-body">
 			<div class="lergo-h1">{{ 'admin.flaggedLesson' | translate }}[ {{ 'lessons.total' | translate }}: {{systemStats.abuseReportsCount}} ]</div>
 		</div>
-		<div class="page-content-sidebar">
+		<!--<div class="page-content-sidebar">
 			<div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
-		</div>
+		</div>-->
 	</div>
 	<div class="page-content-width">
 		<div class="page-content-body">
+            <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
+            <div>
+                <div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
+            </div>
 			<table class="lergo-table ">
 				<thead>
 					<tr>
@@ -74,9 +78,9 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="page-content-sidebar">
+		<!--<div class="page-content-sidebar">
 			<div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
-		</div>
+		</div>-->
 	</div>
 	<div lergo-paging page="filterPage" on-change="load()" on-load="pagingLoaded()"></div>
 </div>
