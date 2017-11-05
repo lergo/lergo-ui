@@ -129,7 +129,8 @@
       "enterPin": "להכנסת קוד",
       "openMenu": "תפריט",
       "searchLesson": "חיפוש שיעור",
-      "updates": "עדכונים"
+      "updates": "עדכונים",
+      "mobileSearchCancel" : "בטל"
     }
   },
   "busy": {

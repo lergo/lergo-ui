@@ -202,19 +202,28 @@ label.btn.btn-link {
  /*for the mobile search only*/
 .navbar-search-mobile {
     height: 40px;
+    border: 10px solid #91cfff;
+    input {
+        border-radius: 10px;
+        font-size: 12px;
+    }
 
     .cancel-search-mobile {
         position: relative;
-        color: darkgrey;
-        font-size: 14px;
+        color: #fff;
+        font-size: 12px;
         text-align: center;
+        bottom: -8px;
+        padding: 7px;
     }
     .search-mobile {
         display: inline-block;
+        font-size: 14px;
+        color: darkgrey;
         position: relative;
-        bottom: 29px;
+        bottom: 23px;
         float: right;
-        font-size: 16px;
+        margin-right: 10px;
     }
 
 }

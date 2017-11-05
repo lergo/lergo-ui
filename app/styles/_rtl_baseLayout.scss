@@ -119,6 +119,8 @@ body .rtl{
     }
     .cancel-search-mobile {
         float: left;
+        bottom: 0px;
+        padding: 10px;
     }
     .cancel-search {
         right: 5px;
@@ -126,11 +128,18 @@ body .rtl{
     }
     .search-mobile {
         float: left;
-        margin-left: 20px;
+        margin-left: 10px;
+        bottom: 25px
     }
     .search-float {
         float: left;
         padding: 2px;
+    }
+
+    .navbar-search-mobile {
+        .col-xs-10, col-sm-10 { /*this is needed for the mobile searchbar - not sure why it is only needed here*/
+            float: right;
+        }
     }
 }
 
