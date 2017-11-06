@@ -31,17 +31,17 @@
                                          </div>
                                          <div class="col-sm-2 col-xs-2">
                                              <div style="height: 34px;">
-                                             <div>
-                                                 <a ng-click="showSearchbar = false">
-                                                 <span class="cancel-search-mobile">{{'baseLayout.navbar.mobileSearchCancel' | translate}}</span>
-                                                 </a>
-                                             </div>
+                                                <div>
+                                                     <a ng-click="showSearchbar = false">
+                                                     <span class="cancel-search-mobile">{{'baseLayout.navbar.mobileSearchCancel' | translate}}</span>
+                                                     </a>
+                                                 </div>
+                                            </div>
                                          </div>
                                      </div>
-                                 </div>
-                             </form>
+                                </form>
+                              </div>
                          </div>
-                     </div>
                      </div>
                  </div>
              </div>
@@ -49,9 +49,9 @@
                  <div class="hidden-sm hidden-xs" style="direction:ltr">
                         <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form navbar-left header-search-mobile" role="search">
                             <div class="form-group" ui-keypress="{enter: 'searchOnHomepage()'}">
-                                <input id="focus-search-desktop" class="form-control" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                                <input class="form-control" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
                                 <button ng-click="searchOnHomepage()" class="btn btn-link">
-                                    <i id="icon-search-desktop" class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
+                                    <i class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
                                 </button>
                                 <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
                                     <span class="cancel-search"  uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right">X</span>
@@ -149,12 +149,6 @@
         </div>
     </div>
     </div>
-<!--
-    <div>
-        <div id="content" class="centered-content clearfix" ng-transclude=""></div>
-        <div class="push"></div>
-    </div>-->
-
     <div class="hidden-sm hidden-xs" ng-show="!!loaded">
         <div id="footer" class="not-embed-mode-item">
             <div class="centered-content-footer">
