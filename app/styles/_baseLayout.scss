@@ -202,7 +202,8 @@ label.btn.btn-link {
  /*for the mobile search only*/
 .navbar-search-mobile {
     height: 40px;
-    border: 10px solid #91cfff;
+    border-top: 10px solid #91cfff;
+    border-bottom: 10px solid #91cfff;
     input {
         border-radius: 10px;
         font-size: 12px;
@@ -210,7 +211,7 @@ label.btn.btn-link {
 
     .cancel-search-mobile {
         position: relative;
-        color: #fff;
+        color: #91cfff;
         font-size: 12px;
         text-align: center;
         bottom: -8px;
