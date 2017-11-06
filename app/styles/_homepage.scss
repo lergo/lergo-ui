@@ -220,20 +220,20 @@
 
       }
     }
-      .lesson-mobile {
-          position: relative;
-          height: auto;
-          border-radius: 10px;
-          background-color: #EFEFEF;
-          &:hover {
-              background-color: white;
-          }
+    .lesson-mobile {
+        position: relative;
+        height: auto;
+        border-radius: 10px;
+        background-color: #EFEFEF;
+        &:hover {
+            background-color: white;
+        }
 
-          margin-top:10px;
-          margin-left: 15px;
-          margin-right: 15px;
-
-    .stats-table {
+        margin-top: 10px;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+      .stats-table {
       width: 100%;
       td {
         span i {
