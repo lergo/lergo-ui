@@ -118,9 +118,10 @@ body .rtl{
         margin-right: 0px;
     }
     .cancel-search-mobile {
-        float: left;
-        bottom: 0px;
-        padding: 10px;
+        bottom: -3px;
+        .cancel-adjust {
+            padding: 10px;
+        }
     }
     .cancel-search {
         right: 5px;

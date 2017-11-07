@@ -23,7 +23,7 @@
                              <div class="row">
                                  <form class="navbar-form" role="search" style=" border-color: #91CFFF" ng-show="showSearchbar || !!baseLayout.filterTextSearch.length > 0 ">
                                      <div  class="navbar-search-mobile" ui-keypress="{enter: 'searchOnHomepage()'}">
-                                         <div class="col-sm-12 col-xs-12" style="border-top: 5px solid white; border-bottom: 5px solid white; height: 44px; background-color: white;">
+                                         <div class="col-sm-12 col-xs-12 navbar-search-adjust">
                                          <div class="col-sm-10 col-xs-10">
                                              <input  class="form-control" style="background-color: #efefef"   ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
                                              <a  style="text-decoration: none;" href="#!/user/homepage">
@@ -31,9 +31,9 @@
                                              </a>
                                          </div>
                                          <div class="col-sm-2 col-xs-2">
-                                                <div>
+                                                <div class="cancel-search-mobile">
                                                      <a ng-click="showSearchbar = false">
-                                                     <span class="cancel-search-mobile">{{'baseLayout.navbar.mobileSearchCancel' | translate}}</span>
+                                                     <span class="cancel-adjust">{{'baseLayout.navbar.mobileSearchCancel' | translate}}</span>
                                                      </a>
                                                  </div>
                                          </div>
