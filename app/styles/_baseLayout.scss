@@ -357,9 +357,6 @@ input.form-control.search-input {
                 padding-left: 12px;
             }
         }
-       /* .search-color {
-            color: #802c80;
-        }*/
         .header-actions{
             .header-language{
                 select{
@@ -372,20 +369,6 @@ input.form-control.search-input {
                 }
             }
         }
-
-      /*  .header-actions-desktop{
-
-            .header-language{
-                select{
-                    font-weight: normal;
-                    color: black;
-                    border:0;
-                    background-color: transparent;
-                    margin-left: 11px;
-                }
-            }
-        }*/
-
     }
 
     /** standard widths for this layout **/
@@ -407,13 +390,6 @@ input.form-control.search-input {
             width: 730px;
             min-width: 730px;
         }
-/*
-        .page-content-sidebar {
-            float: right;
-            width: 225px;
-            min-width: 225px;
-        }*/
-
     }
 
     .page-content-titles {

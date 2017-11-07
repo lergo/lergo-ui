@@ -113,6 +113,16 @@ body .rtl{
             right: 270px;
             bottom: 0px;
         }
+        .search-icon {
+            font-size: 20px;
+        }
+        .search-icon:after {
+                padding-left: 50px;
+        }
+  /*      .create-your-own-box a {
+            font-size: 20px;
+            margin-left: 20px;
+        }*/
     }
     input.form-control.search-input {
         margin-right: 0px;
