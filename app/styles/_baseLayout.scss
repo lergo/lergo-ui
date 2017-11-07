@@ -338,10 +338,11 @@ input.form-control.search-input {
         .search-icon {
 
             color: white;
+            position: relative;
             font-size: 17px;
             text-decoration: none;
             margin-left: 100px;
-            padding: 15px 15px 15px 15px;
+            top: 18px;
             &:hover {
                 background-color: rgba(0, 0, 0, 0.3)
             }
