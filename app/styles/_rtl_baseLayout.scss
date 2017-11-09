@@ -110,19 +110,27 @@ body .rtl{
             margin-left: 175px;
         }
         .cancel-search {
-            right: 270px;
+            right: -80px;
             bottom: 0px;
         }
         .search-icon {
             font-size: 20px;
+            &:after {
+                display: inline-block;
+                content: "";
+                padding-left: 48px;
+                padding-right: 0;
+                /*color: #c1def5;*/
+                color: red;
+            }
+            &:before {
+                display: inline-block;
+                content: "|";
+                padding-left: 48px;
+                padding-right: 0;
+                color: #c1def5;
+            }
         }
-        .search-icon:after {
-                padding-left: 50px;
-        }
-  /*      .create-your-own-box a {
-            font-size: 20px;
-            margin-left: 20px;
-        }*/
     }
     input.form-control.search-input {
         margin-right: 0px;
