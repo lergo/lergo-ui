@@ -46,24 +46,24 @@
                  </div>
              </div>
              <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
-                 <div class="hidden-sm hidden-xs">
-                        <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form navbar-left header-search-mobile" role="search">
-                            <div class="form-group" ui-keypress="{enter: 'searchOnHomepage()'}">
-                                <input class="form-control" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
-                                <button ng-click="searchOnHomepage()" class="btn btn-link">
-                                    <i class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
-                                </button>
-                                <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
-                                    <!--<span class="cancel-search"  uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right">X</span>-->
-                                    <i class="fa fa-times-circle-o fa-lg cancel-search" uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </form>
-                        <div class="nav navbar-nav lergo-h1 hidden-xs hidden-sm">
-                            <div style="display: inline-block" ng-hide="showForm || baseLayout.filterTextSearch.length > 0 " ng-click="showForm = true; setFocus('focus-search-desktop')"> <span class="search-icon"> {{'baseLayout.navbar.searchLesson' | translate}}    <i class="fa fa-search" aria-hidden="true"></i></span></div>
-                            <div style="display: inline-block; float: right" create-your-own-box></div>
+                        <div class="nav navbar-nav  hidden-xs hidden-sm" style=" margin-left: 100px">
+                            <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form navbar-left header-search-mobile" role="search">
+                                <div class="form-group" ui-keypress="{enter: 'searchOnHomepage()'}">
+                                    <input class="form-control" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                                    <button ng-click="searchOnHomepage()" class="btn btn-link">
+                                        <i class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
+                                    </button>
+                                    <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
+                                        <!--<span class="cancel-search"  uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right">X</span>-->
+                                        <i class="fa fa-times-circle-o fa-lg cancel-search" uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </form>
+
+                            <div class="lergo-h1" style="display: inline-block" ng-hide="showForm || baseLayout.filterTextSearch.length > 0 " ng-click="showForm = true; setFocus('focus-search-desktop')"> <span class="search-icon"> {{'baseLayout.navbar.searchLesson' | translate}}    <i class="fa fa-search" aria-hidden="true"></i></span></div>
+                            <div class="lergo-h1" style="display: inline-block; float: right" create-your-own-box></div>
                         </div>
-                    </div>
+                   <!-- </div>-->
                     <ul class="nav navbar-nav navbar-right">
                             <div class="hidden-lg hidden-md">
                                 <div class="mobile-navbar-menu">
