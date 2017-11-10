@@ -1,86 +1,92 @@
 <div load-filter-and-paging="load()" admin-homepage>
-	<div class="page-content-width page-content-titles">
-		<div class="page-content-body">
-			<div class="lergo-h1">{{ 'admin.flaggedLesson' | translate }}[ {{ 'lessons.total' | translate }}: {{systemStats.abuseReportsCount}} ]</div>
-		</div>
-		<!--<div class="page-content-sidebar">
-			<div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
-		</div>-->
-	</div>
-	<div class="page-content-width">
-		<div class="page-content-body">
-            <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
-            <div>
-                <div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
-            </div>
-			<table class="lergo-table ">
-				<thead>
-					<tr>
-						<td class="checkbox-dropdown">
-							<div class="btn-group" uib-dropdown>
-								<input type="checkbox" ng-click="selectAll($event)">
-								<button type="button" class="btn-link" uib-dropdown-toggle>
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li>
-										<a style="outline: none;" class="btn-link" ng-click="pending()">{{'filters.status.pending'|translate}}</a>
-									</li>
-									<li>
-										<a style="outline: none;" class="btn-link" ng-click="resolved()">{{'filters.status.resolved'|translate}}</a>
-									</li>
-									<li>
-										<a style="outline: none;" class="btn-link" ng-click="dismissed()">{{'filters.status.dismissed'|translate}}</a>
-									</li>
-									<li class="divider" admin-section="abuseReports.userCanDelete"></li>
-									<li admin-section="abuseReports.userCanDelete">
-										<a style="outline: none;" class="btn-link" ng-click="deleteReports()">{{'delete'|translate}}</a>
-									</li>
-								</ul>
-							</div>
-						</td>
-						<td>{{'admin.lessonName'|translate}}</td>
-						<td>{{'admin.byCreated'|translate}}</td>
-						<td>{{'admin.byReported'|translate}}</td>
-						<td>{{'admin.created'|translate}}</td>
-						<td>{{'admin.report'|translate}}</td>
-						<td>{{'admin.status'|translate}}</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="report in reports">
-						<td>
-							<input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
-						</td>
-						<td>
-							<a ng-show="!!report.title && report.title.trim().length > 0" uib-tooltip="{{'reports.tooltip.go' | translate}}"
-								ng-href="#!/user/lessons/{{report.itemId}}/intro">{{ report.title }}</a>
-							<a ng-show="!report.title || report.title.trim().length <= 0" uib-tooltip="{{'reports.tooltip.go' | translate}}"
-								ng-href="#!/user/lessons/{{report.itemId}}/intro">[ no title ]</a>
-						</td>
-						<td>
-							<a href="mailto:{{getUser(report.itemUserId).email}}">{{getUser(report.itemUserId).username}}</a>
-						</td>
-						<td>
-							<a href="mailto:{{getUser(report.userId).email}}">{{getUser(report.userId).username}}</a>
-						</td>
-						<td>{{report.lastUpdate | date:'d-MMM-yyyy HH:mm'}}</td>
-						<td>
-							{{'abuseReport.reason.'+report.reason|translate}}
-							<span ng-show="!!report.comment">
-								<a class="btn-link" uib-popover="{{report.comment}}" popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0">
-									<i class="fa fa-comment"></i>
-								</a>
-							</span>
-						</td>
-						<td>{{'filters.status.'+report.status | translate}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<!--<div class="page-content-sidebar">
-			<div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
-		</div>-->
-	</div>
+     <div class="page-content-width page-content-titles">
+                    <div class="page-content-body">
+                        <div class="lergo-h1">{{ 'admin.flaggedLesson' | translate }}[ {{ 'lessons.total' | translate }}: {{systemStats.abuseReportsCount}} ]</div>
+                    </div>
+                </div>
+                <div class="page-content-width">
+                    <div class="page-content-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
+                                    <div>
+                                        <div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                    <div class="table-responsive">
+                                <table class="lergo-table ">
+                                <thead>
+                                    <tr>
+                                        <td class="checkbox-dropdown">
+                                            <div class="btn-group" uib-dropdown>
+                                                <input type="checkbox" ng-click="selectAll($event)">
+                                                <button type="button" class="btn-link" uib-dropdown-toggle>
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a style="outline: none;" class="btn-link" ng-click="pending()">{{'filters.status.pending'|translate}}</a>
+                                                    </li>
+                                                    <li>
+                                                        <a style="outline: none;" class="btn-link" ng-click="resolved()">{{'filters.status.resolved'|translate}}</a>
+                                                    </li>
+                                                    <li>
+                                                        <a style="outline: none;" class="btn-link" ng-click="dismissed()">{{'filters.status.dismissed'|translate}}</a>
+                                                    </li>
+                                                    <li class="divider" admin-section="abuseReports.userCanDelete"></li>
+                                                    <li admin-section="abuseReports.userCanDelete">
+                                                        <a style="outline: none;" class="btn-link" ng-click="deleteReports()">{{'delete'|translate}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td>{{'admin.lessonName'|translate}}</td>
+                                        <td>{{'admin.byCreated'|translate}}</td>
+                                        <td>{{'admin.byReported'|translate}}</td>
+                                        <td>{{'admin.created'|translate}}</td>
+                                        <td>{{'admin.report'|translate}}</td>
+                                        <td>{{'admin.status'|translate}}</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="report in reports">
+                                        <td>
+                                            <input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
+                                        </td>
+                                        <td>
+                                            <a ng-show="!!report.title && report.title.trim().length > 0" uib-tooltip="{{'reports.tooltip.go' | translate}}"
+                                                ng-href="#!/user/lessons/{{report.itemId}}/intro">{{ report.title }}</a>
+                                            <a ng-show="!report.title || report.title.trim().length <= 0" uib-tooltip="{{'reports.tooltip.go' | translate}}"
+                                                ng-href="#!/user/lessons/{{report.itemId}}/intro">[ no title ]</a>
+                                        </td>
+                                        <td>
+                                            <a href="mailto:{{getUser(report.itemUserId).email}}">{{getUser(report.itemUserId).username}}</a>
+                                        </td>
+                                        <td>
+                                            <a href="mailto:{{getUser(report.userId).email}}">{{getUser(report.userId).username}}</a>
+                                        </td>
+                                        <td>{{report.lastUpdate | date:'d-MMM-yyyy HH:mm'}}</td>
+                                        <td>
+                                            {{'abuseReport.reason.'+report.reason|translate}}
+                                            <span ng-show="!!report.comment">
+                                                <a class="btn-link" uib-popover="{{report.comment}}" popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0">
+                                                    <i class="fa fa-comment"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>{{'filters.status.'+report.status | translate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+    </div>
 	<div lergo-paging page="filterPage" on-change="load()" on-load="pagingLoaded()"></div>
 </div>

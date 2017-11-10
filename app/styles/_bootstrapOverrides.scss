@@ -2,8 +2,9 @@
     /** reset chrome's outline **/
     outline: none;
 }
+/*jeff - this is added to change breakpoint for ipad size (sm)*/
 
-@media (max-width: 1200px) { /*jeff - this is added to change breakpoint for ipad size (sm)*/
+@media (max-width: 1200px) {
     .navbar-header {
         float: none;
     }

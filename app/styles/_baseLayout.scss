@@ -421,11 +421,6 @@ input.form-control.search-input {
 
         height: $HEADER_HEIGHT;
 
-
-       /* .header-main {
-            position: relative;
-        }*/
-
         .header-logo, .header-navigation, .header-actions{
             display:inline-block;
             vertical-align: top;
@@ -433,144 +428,6 @@ input.form-control.search-input {
             padding: 12px 0 20px 0;
         }
 
-
-       /* .header-logo{
-            .logo {
-                margin-top: 10px;
-                background: url('/images/homepage/logo.png') no-repeat;
-                display: inline-block;
-                height: 90px;
-                width: 155px;
-            }
-            .logo-beta {
-                background: url('/images/homepage/logo-beta.png') no-repeat;
-                display: inline-block;
-                height: 90px;
-                width: 166px;
-            }
-        }*/
-     /*   .header-navigation {
-            margin-left: 60px;
-            width:520px;
-
-
-            .header-links {
-                //      padding-top: 10px;
-                //      padding-bottom: 10px;
-                //      width: 60%;
-                      display: block;
-                //      margin-top: -100px;
-                //      margin-right:0;
-                //      margin-left: 230px;
-                      white-space: nowrap;
-                      overflow: visible;
-                ul {
-                    list-style: none;
-                    padding: 0;
-                    margin: 0;
-                    max-width:520px;
-                    overflow:visible;
-                    white-space: nowrap;
-                    li {
-                        list-style: none;
-                        padding: 0 22px 0 0;
-                        margin: 0;
-                        display:inline-block;
-                        white-space: nowrap;
-                        &, a {
-                            color: white;
-                        }
-                        &:after {
-                            display: inline-block;
-                            content: "|";
-                            padding-left: 22px;
-                            padding-right: 0;
-                        }
-                        &:last-child:after {
-                            display: none;
-                        }
-                    }
-                }
-            }
-            .header-search {
-                position: absolute;
-                bottom: 20px;
-
-                width: 500px; !*guy*!
-                height:40px;
-                //    margin-top:30px;
-                //    margin-right:0;
-                //    margin-left:230px;
-                background: #2BA2FF;
-                color: white;
-                //
-                border-top-left-radius: 10px;
-                border-top-right-radius: 3px;
-                border-bottom-right-radius: 3px;
-                border-bottom-left-radius: 3px;
-                border-top: 2px solid #87A3B7;
-                border-left: 1px solid #69BEFF;
-                border-right: 1px solid #69BEFF;
-                border-bottom: 1px solid #69BEFF;
-
-                //                    [text-filter]{
-                //                      width:430px;
-                //                      display:inline-block;
-                //                    }
-                i {
-                    font-size: 20px;
-                    padding-left: 5px;
-                    &:before {
-                        display: none
-                    }
-                    width: 26px;
-                    height: 24px;
-                    display: inline-block;
-                    position: absolute;
-                    background: url('/images/homepage/search-icon.png') no-repeat;
-                    margin-left: 5px;
-                    margin-top: -13px;
-                }
-                input {
-                    border-top-left-radius: 8px;
-                    height: 35px;
-                    width: 430px;
-                    font-weight: bold;
-                    border-bottom-left-radius: 3px;
-                    border: none;
-                    background: #C5E6FF;
-                    color: white;
-                    &::-webkit-input-placeholder {
-                        !* WebKit browsers *!
-                        color: white;
-                    }
-                    &:-moz-placeholder {
-                        !* Mozilla Firefox 4 to 18 *!
-                        color: white;
-                    }
-                    &::-moz-placeholder {
-                        !* Mozilla Firefox 19+ *!
-                        color: white;
-                    }
-                    &:-ms-input-placeholder {
-                        !* Internet Explorer 10+ *!
-                        color: white;
-                    }
-
-                    padding: 0 10px;
-
-                }
-                .search-color {
-                    color: #802c80;
-                }
-                !*.cancel-search {
-                    position:relative;
-                    right: 60px;
-                    color: darkgrey;
-                    font-size: 14px;
-                }*!
-            }
-        }*/
 
         .header-actions{
             margin-left:20px;
@@ -701,13 +558,6 @@ input.form-control.search-input {
     }
 }
 
-/** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
-/*.container, .base-layout, .base-layout-class {
-    &:not(.base-layout-modal) {
-        height: 100%;
-    }
-}*/
-
 .embed-mode-item {
     /* to display only in embed code */
     display: none;
@@ -742,3 +592,22 @@ body.ru {
         }
     }
 }
+// allows the pages to be completely responsive while still using production code
+@media screen and (max-width: 1200px) {
+    .base-layout, .base-layout-class {
+        .page-content-width {
+            width: unset;
+            min-width: unset;
+
+            .page-content-body {
+                width: unset;
+                min-width: unset;
+                display: unset;
+            }
+        }
+
+    }
+}
+
+
+
