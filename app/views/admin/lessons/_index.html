@@ -3,7 +3,7 @@
     <div load-filter-and-paging="loadLessons()" admin-homepage>
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="page-content-width page-content-titles">
                         <div class="page-content-body">
                             <div class="lergo-h1 " style="margin-top: 20px;">{{ 'admin.allLessons' | translate }} [ {{ 'lessons.total' | translate }}: {{systemStats.lessonsCount}} ; {{'admin.public'|translate}}:
@@ -11,16 +11,6 @@
                             </div>
                         </div>
                     </div>
-                        <div>
-                            <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
-                            <div>
-                                <div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="table-responsive">
                                 <table class="lergo-table ">
                                 <thead>
@@ -79,6 +69,15 @@
                                     </tr>
                                 </tbody>
                             </table>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <div>
+                        <div class="lergo-h1 top-padding" >{{ 'reports.filter' | translate }}</div>
+                        <div>
+                            <div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
+                        </div>
                     </div>
                 </div>
             </div>
