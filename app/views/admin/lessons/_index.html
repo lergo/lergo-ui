@@ -3,6 +3,16 @@
     <div load-filter-and-paging="loadLessons()" admin-homepage>
         <div class="container">
             <div class="row">
+                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <div>
+                        <div class="lergo-h1 top-padding" >{{ 'reports.filter' | translate }}</div>
+                        <div>
+                            <div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="page-content-width page-content-titles">
                         <div class="page-content-body">
@@ -52,8 +62,8 @@
                                         <td>
                                             <input type="checkbox" style="margin-left: 5px;" ng-model="l.selected">
                                         </td>
-                                        <td dir="auto" class="name">
-                                            <a ng-show="!!l.name && l.name.trim().length > 0" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">{{
+                                        <td dir="auto" class="name " >
+                                            <a style= "white-space: nowrap" ng-show="!!l.name && l.name.trim().length > 0" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">{{
                                                 l.name }}</a>
                                             <a ng-show="!l.name || l.name.trim().length <= 0" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">[ no
                                                 title ]</a>
@@ -69,15 +79,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                    </div>
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                    <div>
-                        <div class="lergo-h1 top-padding" >{{ 'reports.filter' | translate }}</div>
-                        <div>
-                            <div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
-                        </div>
                     </div>
                 </div>
             </div>
