@@ -162,3 +162,28 @@ body .rtl{
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .base-layout, .base-layout-class {
+        /*.page-content-width {
+            width: unset;
+            min-width: unset;
+
+            .page-content-body {
+                width: unset;
+                min-width: unset;
+                display: unset;
+            }
+        }*/
+        .page-content-titles {
+            .page-content-titles-actions {
+               /* display: inline-block;*/
+                float: right;
+               /* margin-top: 20px;
+                margin-bottom: -5px;*/
+
+            }
+        }
+
+    }
+}
+

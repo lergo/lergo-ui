@@ -605,6 +605,15 @@ body.ru {
                 display: unset;
             }
         }
+        .page-content-titles {
+            .page-content-titles-actions {
+                display: inline-block;
+                float: left;
+                margin-top: 20px;
+                margin-bottom: -5px;
+
+            }
+        }
 
     }
 }
