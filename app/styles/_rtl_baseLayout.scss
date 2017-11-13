@@ -74,7 +74,7 @@ body .rtl{
       }
 
       #simple-dropdown1 {
-          margin-right: 171px;
+          margin-right: 40px;
       }
 
       .page-content-width {
@@ -107,7 +107,7 @@ body .rtl{
 .rtl {
     #header-mobile {
         .pull-left.logo {
-            margin-left: 175px;
+            margin-left: 50px;
         }
         .cancel-search {
             right: -80px;
@@ -115,18 +115,18 @@ body .rtl{
         }
         .search-icon {
             font-size: 20px;
+            margin-left: 1px;
             &:after {
                 display: inline-block;
                 content: "";
-                padding-left: 48px;
+                padding-left: 24px;
                 padding-right: 0;
-                /*color: #c1def5;*/
-                color: red;
+                margin-right: 20px;
             }
             &:before {
                 display: inline-block;
                 content: "|";
-                padding-left: 48px;
+                padding-left: 24px;
                 padding-right: 0;
                 color: #c1def5;
             }

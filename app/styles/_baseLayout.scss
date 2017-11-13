@@ -254,7 +254,7 @@ input.form-control.search-input {
         bottom: 0px
     }
     .pull-left.logo {
-        margin-left: 210px;
+        margin-left: 50px;
     }
 }
 
@@ -301,10 +301,10 @@ input.form-control.search-input {
 
 #simple-dropdown1 {
     display: inline-block;
-    padding: 12px 50px 20px 50px;
+    padding: 12px 50px 20px 20px;
     color: white;
     font-size: 1em;
-    margin-right: 130px;
+    margin-right: 40px;
     &:hover {
         background-color: rgba(0, 0, 0, 0.3)
     }
@@ -341,7 +341,7 @@ input.form-control.search-input {
             position: relative;
             font-size: 17px;
             text-decoration: none;
-            margin-left: 100px;
+            margin-left: 20px;
             top: 18px;
             &:hover {
                 background-color: rgba(0, 0, 0, 0.3)
@@ -349,7 +349,7 @@ input.form-control.search-input {
             &:after {
                 display: inline-block;
                 content: "|";
-                padding-left: 48px;
+                padding-left: 24px;
                 padding-right: 0;
                 color: #c1def5;
             }
