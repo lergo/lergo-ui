@@ -49,9 +49,9 @@
              <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed"> <!--new stuff-->
                  <ul class="nav navbar-nav  hidden-xs hidden-sm">
                      <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form navbar-left header-search-mobile" role="search">
-                         <div class="form-group" ui-keypress="{enter: 'searchOnHomepage()'}">
-                             <input class="form-control" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
-                             <button ng-click="searchOnHomepage()" class="btn btn-link">
+                         <div class="form-group"  ui-keypress="{enter: 'searchOnHomepage()'}">
+                             <input style="max-width: 230px;" class="form-control" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                             <button ng-click="searchOnHomepage()" class="btn btn-link" >
                                  <i class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
                              </button>
                              <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
