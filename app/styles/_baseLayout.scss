@@ -349,8 +349,8 @@ input.form-control.search-input {
             &:after {
                 display: inline-block;
                 content: "|";
-                padding-left: 24px;
-                padding-right: 0;
+                margin-left: 5vw;
+                margin-right: 5vw;
                 color: #c1def5;
             }
             i.fa.fa-search {

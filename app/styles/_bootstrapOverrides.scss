@@ -2,7 +2,19 @@
     /** reset chrome's outline **/
     outline: none;
 }
-/*jeff - this is added to change breakpoint for ipad size (sm)*/
+// jeff - desktop navbar: over-ride float left to allow buttons to be in center
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+
+//  jeff - this is added to fix inconsistency of  breakpoint  (sm)
 
 @media (max-width: 992px) {
     .navbar-header {
