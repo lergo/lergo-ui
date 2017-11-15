@@ -13,6 +13,17 @@
     text-align: center;
 }
 
+// jeff: try this to solve the ipad problem on user pages
+@media screen and (max-width: 992px) {
+.table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #ddd;
+    }
+}
+
 
 //  jeff - this is added to fix inconsistency of  breakpoint  (sm)
 
