@@ -13,7 +13,8 @@
     text-align: center;
 }
 
-// jeff: try this to solve the ipad problem on user pages
+// jeff: use this to solve the ipad problem on user pages
+// (without this, between 1200 and 993, the tables are not visible)
 @media screen and (max-width: 992px) {
 .table-responsive {
     width: 100%;
@@ -23,9 +24,35 @@
     border: 1px solid #ddd;
     }
 }
+// allows the pages to be completely responsive while still using production code
+@media screen and (max-width: 1200px) {
+    .base-layout, .base-layout-class {
+        .page-content-width {
+            width: unset;
+            min-width: unset;
+
+            .page-content-body {
+                width: unset;
+                min-width: unset;
+                display: unset;
+            }
+        }
+        .page-content-titles {
+            .page-content-titles-actions {
+                display: inline-block;
+                float: left;
+                margin-top: 20px;
+                margin-bottom: -5px;
+
+            }
+        }
+
+    }
+}
 
 
 //  jeff - this is added to fix inconsistency of  breakpoint  (sm)
+// the navbar and the collapsed mobile icon
 
 @media (max-width: 992px) {
     .navbar-header {
