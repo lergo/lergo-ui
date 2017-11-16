@@ -48,7 +48,15 @@
         }
 
     }
+    .homepage-desktop {
+        .lessons-desktop {
+            .lesson-desktop {
+                width: unset ! important;
+            }
+        }
+    }
 }
+
 
 
 //  jeff - this is added to fix inconsistency of  breakpoint  (sm)
