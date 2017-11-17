@@ -606,5 +606,37 @@ body.ru {
     }
 }
 
+// allows the pages to be completely responsive while still using production code
+@media screen and (max-width: 1200px) {
+    .base-layout, .base-layout-class {
+        .page-content-width {
+            width: unset;
+            min-width: unset;
+
+            .page-content-body {
+                width: unset;
+                min-width: unset;
+                display: unset;
+            }
+        }
+        .page-content-titles {
+            .page-content-titles-actions {
+                display: inline-block;
+                float: left;
+                margin-top: 20px;
+                margin-bottom: -5px;
+
+            }
+        }
+
+    }
+    .homepage-desktop {
+        .lessons-desktop {
+            .lesson-desktop {
+                width: unset ! important;
+            }
+        }
+    }
+}
 
 
