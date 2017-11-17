@@ -57,7 +57,17 @@
     }
 }
 
-
+@media only screen and (min-device-width : 1024px) {
+    .navbar-form .form-control.search-desktop {
+        width: 25vw;
+    }
+}
+// for tables
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .navbar-form .form-control.search-desktop {
+        width: 20vw;
+    }
+}
 
 //  jeff - this is added to fix inconsistency of  breakpoint  (sm)
 // the navbar and the collapsed mobile icon
