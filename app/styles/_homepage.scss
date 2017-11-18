@@ -40,31 +40,6 @@
     margin: -25px 0 0 0;
 }
 
-.image-mobile-not-in-use {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    /*margin-top: 20px;*/
-    margin-top: 1.25em;
-    text-align: center;
-    z-index: 0;
-    &, img {
-        /*height: 320px;
-        width: 480px;*/
-        /*height: 20em;*/
-        height: auto;
-        /*width: 28em;*/
-    }
-    a i {
-        font-size: 250px;
-        color: #296CA1;
-        &:before {
-            margin-left: 4px;
-            /*margin-left: 2.5em;*/
-        }
-    }
-}
-
 .homepage{ // for mobile lessons and for desktop banner
   hr {
     margin-top: 10px;
@@ -273,13 +248,6 @@
         border-color: $LERGO_HR_COLOR;
         border-top: 1px solid $LERGO_HR_COLOR;
     }
-
-    .sidebar-desktop {
-        width: 225px;
-        float: right;
-        margin-top: 0;
-
-    }
     .article-header {
         margin-top: 5px;
 
@@ -431,6 +399,12 @@
             }
         }
     }
+}
+
+.sidebar-desktop {
+    margin-top: 70px;
+    border-bottom: 1px solid #d2e8fa;
+    padding-bottom: 15px;
 }
 
 
