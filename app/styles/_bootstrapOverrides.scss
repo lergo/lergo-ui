@@ -30,6 +30,18 @@
         width: 100%;
         padding: 15px 0 15px 0;
     }
+    lergo-table.override-padding {
+            > thead,
+            > tbody,
+            > tfoot {
+                > tr {
+                    > th,
+                    > td {
+                        padding: 0px;
+                    }
+                }
+            }
+    }
 }
 
 @media only screen and (min-device-width : 1024px) {
