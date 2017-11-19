@@ -3,7 +3,7 @@
     outline: none;
 }
 // jeff - desktop navbar: over-ride float left to allow buttons to be in center
-.navbar .navbar-nav {
+/*.navbar .navbar-nav {
     display: inline-block;
     float: none;
     vertical-align: top;
@@ -11,7 +11,7 @@
 
 .navbar .navbar-collapse {
     text-align: center;
-}
+}*/
 
 // jeff: use this to solve the ipad problem on user pages
 // (without this, between 1200 and 993, the tables are not visible)
@@ -22,6 +22,13 @@
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid #ddd;
+    }
+}
+
+@media (max-width : 768px) {
+    #questionPreview .left.mobile-left-override {
+        width: 100%;
+        padding: 15px 0 15px 0;
     }
 }
 
