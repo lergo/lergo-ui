@@ -1,39 +1,45 @@
-<div class="hidden-lg hidden-md">
-    <div class="lesson-step-quiz-mobile">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-2 col-sm-12 col-xs-12"></div>
+        <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+            <div class="lesson-step-quiz-mobile">
+                <div dir="auto" class="lesson-step-title lergo-h1" style="padding-bottom: 0px; margin-bottom: -30px;">{{step.title}}</div>
+                <div>
+                    <table class="lergo-table override-padding">
+                        <tr>
+                            <td style="vertical-align: top;">
+                                <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top;" ng-show="shouldShowExplanationMedia()" class="quiz-item-explanation">
+                                <div style="border: 5px solid #EE9A00; border-radius: 10px;">
+                                    <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
+                                    <div dir="auto">{{quizItem.explanation}}</div>
+                                    <div quiz-item-explanation-media quiz-item="quizItem"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-2 col-sm-12 col-xs-12"></div>
+    </div>
+
+</div>
+
+
+<!--<div class="hidden-sm hidden-xs">
+    <div class="lesson-step-quiz">
         <div dir="auto" class="lesson-step-title lergo-h1" style="padding-bottom: 0px; margin-bottom: -30px;">{{step.title}}</div>
-        <!--{{answers}}-->
+        &lt;!&ndash;{{answers}}&ndash;&gt;
         <table class="lergo-table override-padding">
             <tr>
                 <td style="vertical-align: top;">
                     <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
                 </td>
-            </tr>
-            <tr>
-                <!-- LERGO-320 - placing the show/hide on the table itself resolves the alignment issue when explanation media is hidden-->
-                <td style="vertical-align: top;" ng-show="shouldShowExplanationMedia()" class="quiz-item-explanation">
-                    <div style="border: 5px solid #EE9A00;
-    border-radius: 10px;" >
-                        <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
-                        <div dir="auto">{{quizItem.explanation}}</div>
-                        <div quiz-item-explanation-media quiz-item="quizItem"></div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
-
-
-<div class="hidden-sm hidden-xs">
-    <div class="lesson-step-quiz">
-        <div dir="auto" class="lesson-step-title lergo-h1" style="padding-bottom: 0px; margin-bottom: -30px;">{{step.title}}</div>
-        <!--{{answers}}-->
-        <table class="lergo-table">
-            <tr>
-                <td style="vertical-align: top;">
-                    <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
-                </td>
-                <!-- LERGO-320 - placing the show/hide on the table itself resolves the alignment issue when explanation media is hidden-->
+                &lt;!&ndash; LERGO-320 - placing the show/hide on the table itself resolves the alignment issue when explanation media is hidden&ndash;&gt;
                 <td style="vertical-align: top;" ng-show="shouldShowExplanationMedia()" class="quiz-item-explanation">
                     <div style="margin-top: 50px" >
                         <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
@@ -44,4 +50,4 @@
             </tr>
         </table>
     </div>
-</div>
+</div>-->
