@@ -1,6 +1,6 @@
 <div>
     <div ng-controller="LoginCtrl">
-         <nav id="header-mobile"  class="navbar navbar-default not-embed-mode-item" role="navigation">
+         <nav id="header-mobile"  class="navbar desktop navbar-default not-embed-mode-item" role="navigation">
              <div class="navbar-header">
                  <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed" >
                      <span class="sr-only"></span>
@@ -46,8 +46,8 @@
                  </div>
              </div>
 
-             <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed"> <!--new stuff-->
-                 <ul class="nav navbar-nav  hidden-xs hidden-sm">
+             <div class="collapse navbar-collapse desktop" uib-collapse="isNavCollapsed"> <!--new stuff-->
+                 <ul class="nav navbar-nav desktop  hidden-xs hidden-sm">
                      <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form navbar-left header-search-mobile" role="search">
                          <div class="form-group"  ui-keypress="{enter: 'searchOnHomepage()'}">
                              <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
@@ -62,7 +62,7 @@
                      <li> <div class="lergo-h1"   ng-hide="showForm || baseLayout.filterTextSearch.length > 0 " ng-click="showForm = true; setFocus('focus-search-desktop')"> <span class="search-icon"> {{'baseLayout.navbar.searchLesson' | translate}}<i class="fa fa-search" aria-hidden="true"></i></span></div></li>
                      <li><div class="lergo-h1" style=" float: right" create-your-own-box></div></li>
                  </ul>
-                 <ul class="nav navbar-nav navbar-right">
+                 <ul class="nav navbar-nav desktop navbar-right">
                       <div class="hidden-lg hidden-md">
                                 <div class="mobile-navbar-menu">
                                     <div class="header-actions">

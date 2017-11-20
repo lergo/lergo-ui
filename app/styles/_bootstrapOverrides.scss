@@ -3,15 +3,15 @@
     outline: none;
 }
 // jeff - desktop navbar: over-ride float left to allow buttons to be in center
-/*.navbar .navbar-nav {
+.navbar.desktop .navbar-nav.desktop {
     display: inline-block;
     float: none;
     vertical-align: top;
 }
 
-.navbar .navbar-collapse {
+.navbar.desktop .navbar-collapse.desktop {
     text-align: center;
-}*/
+}
 
 // jeff: use this to solve the ipad problem on user pages
 // (without this, between 1200 and 993, the tables are not visible)
