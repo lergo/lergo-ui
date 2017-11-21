@@ -1,24 +1,36 @@
-<div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
-	<div class="left">
-		<div dir="auto" class="question">
-			<p class="lergo-h4">{{quizItem.question}}</p>
-		</div>
-		<div dir="auto" class="help">
-			<p class="question-help-text">{{quizItem.helpText}}</p>
-		</div>
-		<div quiz-item-media quiz-item="quizItem"></div>
-		<div class="answers">
-			<input dir="auto" id="exactQuestionText" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="quizItem.userAnswer" autofocus ng-init="setFocus('exactQuestionText')" />
-		</div>
-		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
-	</div>
-	<div class="right">
-		<div ng-include="'views/questions/view/partials/_actionItems.html'"></div>
-	</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
+                <div class="left">
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div dir="auto" class="question">
+                            <p class="lergo-h4">{{quizItem.question}}</p>
+                        </div>
+                    </div>
+                    <div class="right col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                        <div ng-include="'views/questions/view/partials/_actionItems.html'"></div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div dir="auto" class="help">
+                            <p class="question-help-text">{{quizItem.helpText}}</p>
+                        </div>
+                        <div quiz-item-media quiz-item="quizItem"></div>
+                        <div class="answers">
+                            <input dir="auto" id="exactQuestionText" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="quizItem.userAnswer" autofocus ng-init="setFocus('exactQuestionText')" />
+                        </div>
+                        <div ng-include="'views/questions/view/partials/_submit.html'"></div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="isQuizStep()">
+                <div lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></div>
+                <!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
+            </div>
+            <br>
+            <div ng-include="'views/questions/view/partials/_result.html'"></div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+    </div>
 </div>
-<div ng-show="isQuizStep()">
-    <div lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></div>
-    <!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
-</div>
-<br>
-<div ng-include="'views/questions/view/partials/_result.html'"></div>
