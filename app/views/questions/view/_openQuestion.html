@@ -1,39 +1,47 @@
-<div id="questionPreview" ng-keyup="$event.keyCode === 13 && quizItem.subType==='short' ?  enterPressed(quizItem) : null" tabindex="1">
-	<div class="left mobile-left-override">
-		<div dir="auto" class="question">
-			<p class="lergo-h4">{{quizItem.question}}</p>
-		</div>
-		<div dir="auto" class="help">
-			<p class="question-help-text">{{quizItem.helpText}}</p>
-		</div>
-		<div quiz-item-media quiz-item="quizItem"></div>
-		<div class="answers">
-			<input dir="auto"   autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionText" ng-show="quizItem.subType==='short'" ng-model="quizItem.userAnswer" autofocus />
-			<textarea dir="auto" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionTextarea" ng-show="quizItem.subType==='long'" ng-model="quizItem.userAnswer" autofocus></textarea>
-            <span ng-init="quizItem.subType==='short' ? setFocus('openQuestionText') : setFocus('openQuestionTextarea')"></span>
-		</div>
-		<div ng-include="'views/questions/view/partials/_submit.html'"></div>
-	</div>
-	<div class="right">
-		<div ng-include="'views/questions/view/partials/_actionItems.html'"></div>
-	</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div id="questionPreview" ng-keyup="$event.keyCode === 13 && quizItem.subType==='short' ?  enterPressed(quizItem) : null" tabindex="1">
+                <div class="left mobile-left-override">
+                    <div dir="auto" class="question">
+                        <p class="lergo-h4">{{quizItem.question}}</p>
+                    </div>
+                    <div dir="auto" class="help">
+                        <p class="question-help-text">{{quizItem.helpText}}</p>
+                    </div>
+                    <div quiz-item-media quiz-item="quizItem"></div>
+                    <div class="answers">
+                        <input dir="auto"   autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionText" ng-show="quizItem.subType==='short'" ng-model="quizItem.userAnswer" autofocus />
+                        <textarea dir="auto" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionTextarea" ng-show="quizItem.subType==='long'" ng-model="quizItem.userAnswer" autofocus></textarea>
+                        <span ng-init="quizItem.subType==='short' ? setFocus('openQuestionText') : setFocus('openQuestionTextarea')"></span>
+                    </div>
+                    <div ng-include="'views/questions/view/partials/_submit.html'"></div>
+                </div>
+                <div class="right">
+                    <div ng-include="'views/questions/view/partials/_actionItems.html'"></div>
+                </div>
+            </div>
+            <div ng-show="isQuizStep()">
+                <div lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
+                    <b>{{progressPercentage}}%</b>
+                </div>
+            </div>
+            <br>
+            <div class="result" ng-show="!!getAnswer(quizItem)">
+                <div class="bg-primary">
+                    <span>{{'questions.thankYou' | translate}}</span>
+                    <div ng-show="shouldShowExplanationMessage()">
+                        <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate }}</button>
+                        <div dir="auto" style="margin: auto" uib-collapse="!!isCollapsed">{{quizItem.explanation}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="result" ng-show="!getAnswer()">
+                <div class="bg-primary">{{'steps.answer' | translate }}</div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+    </div>
 </div>
-<div ng-show="isQuizStep()">
-	<div lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
-		<b>{{progressPercentage}}%</b>
-	</div>
-	<!--<progressbar animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></progressbar>-->
-</div>
-<br>
-<div class="result" ng-show="!!getAnswer(quizItem)">
-	<div class="bg-primary">
-		<span>{{'questions.thankYou' | translate}}</span>
-		<div ng-show="shouldShowExplanationMessage()">
-			<button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate }}</button>
-			<div dir="auto" style="margin: auto" uib-collapse="!!isCollapsed">{{quizItem.explanation}}</div>
-		</div>
-	</div>
-</div>
-<div class="result" ng-show="!getAnswer()">
-	<div class="bg-primary">{{'steps.answer' | translate }}</div>
-</div>
+
