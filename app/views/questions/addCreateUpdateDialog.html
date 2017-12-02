@@ -3,7 +3,8 @@
         <i class="fa fa-close"></i>
     </button>
 </div>
-<div class="modal-body base-layout-class base-layout-modal" lergo-language-direction-class>
+<div class="hidden-sm hidden-xs">
+    <div class="modal-body base-layout-class base-layout-modal" lergo-language-direction-class>
 	<div ng-show="!isUpdate">
 		<div class="left">
 			<ul class="nav nav-tabs-vertical">
@@ -20,6 +21,39 @@
 	<div ng-show="!!isUpdate">
 		<div ng-include="getInclude()"></div>
 	</div>
+</div>
+</div>
+
+<div class="hidden-lg hidden-md">
+    <div class="modal-body base-layout-class base-layout-modal" lergo-language-direction-class>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div ng-show="!isUpdate">
+                        <div>
+                            <ul class="nav nav-tabs-vertical">
+                                <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
+                                    <a href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.id | translate}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div>
+                        <div ng-show="!!isActive(sections[0])" ng-include="sections[0].page" ng-controller="QuestionsUpdateCtrl"></div>
+                        <div ng-show="!isActive(sections[0])" ng-include="sections[1].page" ng-controller="QuestionsIndexCtrl"></div>
+                    </div>
+                </div>
+                <div ng-show="!!isUpdate">
+            <div ng-include="getInclude()"></div>
+        </div>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="modal-footer" ng-show="!isCreate && !isUpdate">
 	<div>
@@ -43,45 +77,3 @@
 		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' | translate) || ('saved' | translate) }}</div>
 	</div>
 </div>
-<!--  <div ng-show="!isUpdate" class="menu">
-	<div>
-		<a class="btn-link" ng-click="showCreate()" ng-class="{'active-menu' : !!isCreate }">{{'questions.createNewQuestion'|translate}}</a>
-	</div>
-	<div>
-		<a class="btn-link" ng-click="loadQuestions(false)" ng-class="{'active-menu' : !loadPublic && !isCreate }">{{'questions.myQuestions'|translate}}</a>
-	</div>
-	<div>
-		<a class="
-			btn-link" ng-click="loadQuestions(true)" ng-class="{'active-menu' : !!loadPublic && !isCreate }">{{'questions.allQuestions'|translate}}</a>
-	</div>
-</div>
-<div ng-controller="
-			QuestionsIndexCtrl" ng-show="showQuestionBank()">
-	<div>
-		<div class="modal-body base-layout-class base-layout-modal">
-			<div ng-include="'views/questions/_index.html'"></div>
-		</div>
-		<div class="modal-footer">
-			<div>
-				<button class="btn " ng-click="addSelectedItems(items)">{{'add' |translate}}</button>
-				<button class="btn btn-default" ng-click="cancel()">{{'cancel' |translate}}</button>
-			</div>
-			<div ng-show="selectedItems.length===0" class="errorMessage">{{'questions.add.emptySelection' | translate}}</div>
-		</div>
-	</div>
-</div>
-<div ng-controller="QuestionsUpdateCtrl" ng-show="!!isCreate">
-	<div class="modal-body base-layout-class base-layout-modal " style="height: 400px; overflow-y: auto">
-		<div ng-include="'views/questions/_update.html'"></div>
-	</div>
-	<div class="modal-footer" ng-show="!isUpdate">
-		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="addItem(quizItem)">{{'add' | translate}}</button>
-		<button class="btn btn-default" ng-click="cancel(quizItem)">{{'cancel' | translate}}</button>
-		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | translate) || ('saved' | translate) }}</div>
-	</div>
-	<div class="modal-footer" ng-show="!!isUpdate">
-		<button class="btn" ng-click="cancel(quizItem)">{{'back' | translate}}</button>
-		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' + '...' | translate) || ('saved' | translate) }}</div>
-	</div>
-</div>
--->
