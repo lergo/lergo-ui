@@ -550,6 +550,14 @@ input.form-control.search-input {
     }
 }
 
+/** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
+.container, .base-layout, .base-layout-class {
+    &:not(.base-layout-modal) {
+        height: 100%;
+    }
+}
+
+
 .embed-mode-item {
     /* to display only in embed code */
     display: none;
