@@ -9,10 +9,11 @@
 
 
     <script type="text/ng-template" id="inline_lessonCreateInviteFormItem.html">
+        <div class="container" >
+            <div class="row">
         <p ng-show="!isSuccess()">{{'lessons.inviteLesson.' + mode + '.help' | translate }} </p>
         <p ng-show="isSuccess()">{{'lessons.inviteLesson.' + mode + '.success.help' | translate }} </p>
-        <div class="container" style="width: 100%;">
-            <div class="row">
+
                 <div  ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
                     <div style="margin: 0 2vw 0 2vw">{{'name' | translate }}</div>
                     <input style="width: 90%; margin: auto" type="text" ng-model="invitationName" on-enter="enterPressed()"
