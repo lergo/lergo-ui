@@ -4,6 +4,14 @@
         <div class="page-content-width page-content-titles">
         <div class="container">
             <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="padding: 2vw">
+                    <div>
+                        <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
+                        <div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts"
+                             on-load="filterLoaded()" report-type="reportsPage.reportType">
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
                     <div class="lergo-h1 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             {{ 'reports.myReports' | translate }} [ {{ 'reports.total' | translate }}:
@@ -140,15 +148,6 @@
                     </div>
 
                 </div>
-                <div class="col-lg-1 col-md-1"></div>
-                <div class="col-lg-3 col-md-3" >
-                    <div class="hidden-sm hidden-xs">
-                        <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
-                        <div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts"
-                             on-load="filterLoaded()" report-type="reportsPage.reportType">
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -156,94 +155,3 @@
     </div>
 </div>
 
-<!--<div class="hidden-lg hidden-md">
-    <div id="reportIndex" load-filter-and-paging="loadReports()">
-        <br/>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-xs-12">
-                    <div class="lergo-h1 content-margins">
-                        {{ 'reports.myReports' | translate }} [ {{ 'reports.total' | translate }}:
-                        {{systemStats.myReports + + systemStats.myInvitedReports }} ]
-                        &lt;!&ndash; LERGO-457&ndash;&gt;
-                    </div>
-                </div>
-                <div class="col-sm-12 col-xs-12">
-                    <select class="report-type-selection-mobile content-margins" ng-model="reportsPage.reportType"
-                            ng-options="repType.id as ( 'reports.type.' + repType.id | translate ) for repType in reportTypes">
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <div filter-is-active="reportsFilterOpts" section="reports"></div>
-                <div>
-                   &lt;!&ndash; <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>&ndash;&gt;
-                    <div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts"
-                         on-load="filterLoaded()" report-type="reportsPage.reportType">
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="lergo-table">
-                    <thead>
-                    <tr>
-                        <td class="checkbox-dropdown">
-                            <div class="btn-group" uib-dropdown>
-                                <input type="checkbox" ng-click="selectAll($event)" ng-model="reportsPage.selectAll">
-                                <button type="button" class="btn-link" uib-dropdown-toggle>
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a style="outline: none;" class="btn-link"
-                                           ng-click="createLessonFromWrongQuestions()">{{'report.CreateLessonFromWrongQuestions'|translate}}</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a style="outline: none;" class="btn-link delete-menu" ng-click="deleteReports()">{{'delete'|translate}}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>{{ 'name' | translate }}</td>
-                        <td ng-show="showStudentCountColumn()">{{'reports.studentCount' | translate}}</td>
-                        <td ng-show="showStudentColumn()">{{ 'reports.student' | translate}}</td>
-                        <td ng-show="showClassColumn()">{{ 'reports.class' | translate}}</td>
-                        <td>{{ 'reports.subject' | translate}}</td>
-                        <td>{{ 'reports.takenAt' | translate}}</td>
-                        <td>{{ 'reports.correctPercentage' | translate }}</td>
-                        <td>{{ 'reports.duration'|translate}}</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="report in reports |orderBy:'-lastUpdate'">
-                        <td>
-                            <input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
-                        </td>
-                        <td dir="auto" class="name">
-                            <a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0"
-                               uib-tooltip="{{'reports.tooltip.go' | translate}}"
-                               ng-href="{{getReportLink(report._id)}}">{{ getReportName(report) }}</a>
-                        </td>
-                        <td class="answer" ng-show="showStudentCountColumn()">{{report.count}}</td>
-                        <td class="answer" ng-show="showStudentColumn()">{{report.data.invitee.name}}</td>
-                        <td class="answer" ng-show="showClassColumn()">{{report.data.invitee.class}}</td>
-                        <td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject
-                            | translate) ||""}}
-                        </td>
-                        <td class="answer">{{report.lastUpdate| date:'medium'}}</td>
-                        <td class="answer">{{report.correctPercentage | number:0 }}</td>
-                        <td class="answer">
-                            <span ng-show="isCompleted(report)">{{report.duration|duration}}</span>
-                            <span ng-show="!isCompleted(report)">{{'report.incomplete' | translate}}</span>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-        <div lergo-paging page="filterPage" on-change="loadReports()" on-load="pagingLoaded()"></div>
-    </div>
-</div>-->

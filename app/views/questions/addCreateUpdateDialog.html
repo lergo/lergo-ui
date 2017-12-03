@@ -14,8 +14,8 @@
 			</ul>
 		</div>
 		<div class="tab-content-vertical right">
-			<div ng-show="!!isActive(sections[0])" ng-include="sections[0].page" ng-controller="QuestionsUpdateCtrl"></div>
-			<div ng-show="!isActive(sections[0])" ng-include="sections[1].page" ng-controller="QuestionsIndexCtrl"></div>
+			<div style="width: 90%" ng-show="!!isActive(sections[0])" ng-include="sections[0].page" ng-controller="QuestionsUpdateCtrl"></div>
+			<div style="width: 90%" ng-show="!isActive(sections[0])" ng-include="sections[1].page" ng-controller="QuestionsIndexCtrl"></div>
 		</div>
 	</div>
 	<div ng-show="!!isUpdate">

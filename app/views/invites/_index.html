@@ -3,6 +3,12 @@
         <div class="page-content-width page-content-titles">
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="padding: 2vw">
+                        <div>
+                            <div class="lergo-h1 top-padding">{{ 'invites.filter' | translate }}</div>
+                            <div lergo-filter model="invitesFilter" on-change="loadInvites()" opts="invitesFilterOpts" on-load="filterLoaded()"></div>
+                        </div>
+                    </div>
                     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
                         <div class="lergo-h1 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             {{ 'invites.myInvites' | translate }} [ {{ 'reports.total' | translate }}: {{systemStats.myInvites }} ]
@@ -146,14 +152,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-
-                    </div>
-                    <div class="col-lg-1 col-md-1"></div>
-                    <div class="col-lg-3 col-md-3" >
-                        <div class="hidden-sm hidden-xs">
-                            <div class="lergo-h1 top-padding">{{ 'invites.filter' | translate }}</div>
-                            <div lergo-filter model="invitesFilter" on-change="loadInvites()" opts="invitesFilterOpts" on-load="filterLoaded()"></div>
                         </div>
                     </div>
                 </div>
