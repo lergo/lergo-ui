@@ -11,19 +11,19 @@
     <script type="text/ng-template" id="inline_lessonCreateInviteFormItem.html">
         <p ng-show="!isSuccess()">{{'lessons.inviteLesson.' + mode + '.help' | translate }} </p>
         <p ng-show="isSuccess()">{{'lessons.inviteLesson.' + mode + '.success.help' | translate }} </p>
-        <div class="container" style="width: 100%">
+        <div class="container" style="width: 100%;">
             <div class="row">
-                <div ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
-                    <div>{{'name' | translate }}</div>
-                    <input type="text" ng-model="invitationName" on-enter="enterPressed()"
+                <div  ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
+                    <div style="margin: 0 2vw 0 2vw">{{'name' | translate }}</div>
+                    <input style="width: 90%; margin: auto" type="text" ng-model="invitationName" on-enter="enterPressed()"
                            ng-class="{'in-success':isSuccess()}"/>
                 </div>
                 <div ng-show="isSuccess()" class="col-md-8">
 
-                    <p>{{'pin' | translate }}
+                    <p style="margin: 0 2vw 0 2vw">{{'pin' | translate }}
                         <small style="font-size: small">{{'lessons.inviteLesson.'+mode+'.pinHint' | translate}}</small>
                     </p>
-                    <input type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
+                    <input style="width: 90%; margin: auto" type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
                            ng-class="{'in-success':isSuccess()}" select-all-text-on-click on-enter
                            style="direction: inherit;"/>
                 </div>
