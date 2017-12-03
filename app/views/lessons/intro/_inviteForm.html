@@ -11,7 +11,7 @@
     <script type="text/ng-template" id="inline_lessonCreateInviteFormItem.html">
         <p ng-show="!isSuccess()">{{'lessons.inviteLesson.' + mode + '.help' | translate }} </p>
         <p ng-show="isSuccess()">{{'lessons.inviteLesson.' + mode + '.success.help' | translate }} </p>
-        <div class="container">
+        <div class="container" style="width: 100%">
             <div class="row">
                 <div ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
                     <div>{{'name' | translate }}</div>
@@ -52,11 +52,11 @@
     </script>
 
 
-    <div ng-show="isStudentMode()" ng-class="{active:isStudentMode()}" class="container">
+    <div ng-show="isStudentMode()" ng-class="{active:isStudentMode()}">
         <div lesson-create-invite-form-item="student"></div>
     </div>
 
-    <div ng-show="isClassMode()" ng-class="{active:isClassMode()}" class="container">
+    <div ng-show="isClassMode()" ng-class="{active:isClassMode()}">
         <div lesson-create-invite-form-item="class"></div>
     </div>
 </div>
