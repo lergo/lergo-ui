@@ -18,20 +18,19 @@
 			display:table-row;
 		}
 		.stats{
-		.form-control{
-		width:auto;
-		display:inline;
-		}
-			display:table;
-			padding-top:10px;
-			padding-bottom:10px;
-			span{
-			padding-right: 10px;
-			}
-			select{
-			margin-right: 10px;
-			}
-
+            .form-control{
+                width:auto;
+                display:inline;
+            }
+                display:table;
+                padding-top:10px;
+                padding-bottom:10px;
+                span{
+                padding-right: 10px;
+                }
+                select{
+                margin-right: 10px;
+                }
 		}
 		.language{
 			display:table-cell;
@@ -106,7 +105,7 @@
         }
         .stats{
             .form-control{
-                width:auto;
+               /* width:auto;*/  //removed for lergo-ui/app/views/lesson/steps/_video.html
                 display:inline;
             }
             /*display:table;*/
