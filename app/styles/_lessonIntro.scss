@@ -519,8 +519,13 @@
     #lessonIntro-Mobile .lesson .details .action-items > div {
         font-size: 16px;
     }
+    #lessonIntro-Mobile .lesson .details .action-items {
+        text-align: unset;
+    }
     #lessonIntro-Mobile .lesson .details .name {
         font-size: 20px;
     }
 }
+
+
 
