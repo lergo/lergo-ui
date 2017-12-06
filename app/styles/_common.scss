@@ -277,6 +277,29 @@ button.action-item {
     color: $LERGO_ICON_COLOR;
 }
 
+
+// scale all fonts smaller for mobile - jeff
+@media screen and (max-width:768px) {
+
+    .lergo-h1 {
+        font-size:16px;
+        white-space: normal;
+    }
+
+    .lergo-h2 {
+        font-size: 16px;
+    }
+
+    .lergo-h3 {
+        font-size: 13px;
+    }
+
+    .lergo-h4 {
+        font-size: 16px;
+    }
+
+}
+
 /** a toggle widget that uses pressed/unpressed look and feel for active **/
 .buttons-selector {
     $BORDER_RADIUS: 10px;
