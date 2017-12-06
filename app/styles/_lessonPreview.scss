@@ -29,7 +29,7 @@
         }
         height: inherit;
         min-height: 140px;
-        padding: 10px;
+        padding: 10px 20px 10px 20px;
         background-color: #EFEFEF;
         margin-bottom: 20px;
         border-radius: 10px;
@@ -120,7 +120,7 @@
 
 .lesson-preview-dialog .modal-dialog {
     width: 66%;
-   /* min-width: 900px;*/
+    min-width: 320px;
     min-height: 90%;
     .modal-content {
         .modal-header{
@@ -132,6 +132,21 @@
         }
         .modal-footer {
             padding: 5px 15px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .lesson-preview {
+
+        .collapsible {
+            font-size: 16px;
+        }
+        .title {
+            font-size: 11px;
+        }
+        .sub-title {
+            font-size: 14px;
         }
     }
 }
