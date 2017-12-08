@@ -417,6 +417,7 @@
         padding: 0;
     }
     #questionIntro .question .question-preview {
-        width: 290px;
+        /*width: 290px;*/
+        width: unset;
     }
 }
