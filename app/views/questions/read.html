@@ -104,26 +104,26 @@
                                     </span>
                      </div>
                      <div class="hidden-lg hidden-md"> <!--properties - mobile-->
-                         <div class="col-sm-4 col-xs-4">
+                             <div class="col-sm-4 col-xs-4" style="height: 55px;">
                                         <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
                                              <a ng-href="#!/public/{{quizItem.user.username}}/profile">
                                                  <i class="fa fa-user"></i>
                                                  <span>{{quizItem.user.username}}</span>
                                              </a>
                                         </span>
-                         </div>
-                         <div class="col-sm-4 col-xs-4">
+                             </div>
+                             <div class="col-sm-4 col-xs-4"  style="height: 55px">
                                         <span uib-tooltip="{{'lessons.createdOn' | translate}}">
                                             <i class="fa fa-calendar"></i>
                                             <span>{{quizItem.lastUpdate | date:'d-MMM-yyyy'}}</span>
                                         </span>
-                         </div>
-                         <div class="col-sm-4 col-xs-4">
+                             </div>
+                             <div class="col-sm-4 col-xs-4"  style="height: 55px;">
                              <span ng-show="!!quizItem.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
                                  <i class="fa fa-book"></i>
                                  <span>{{'filters.subjects.' + quizItem.subject | translate}}</span>
                              </span>
-                         </div>
+                             </div>
                          </div>
                              <div class=" hidden-lg hidden-md"> <!--action-items mobile-->
                                  <div class="col-sm-6 col-xs-6">
@@ -160,7 +160,7 @@
                                          {{'like' | translate}}
                                      </a>
                                  </div>
-                                 <div class="col-sm-4 col-xs-4">
+                                 <div class="col-sm-6 col-xs-6">
                                      <button class="btn-link" ng-click="absoluteShareLink(quizItem)"
                                              uib-tooltip="{{'questions.tooltip.share' | translate}}">
                                          <i class="fa fa-share-alt "></i>
@@ -207,15 +207,15 @@
                                  </button>
                              </div>
                              <div class="forms">
-                                 <div ng-show="!!share" class="lergo-form share">
-                                     <p class="lergo-h4">{{'questions.shareQuestion' | translate}}</p>
+                                     <div ng-show="!!share" class="lergo-form share">
+                                         <p class="lergo-h4">{{'questions.shareQuestion' | translate}}</p>
 
-                                     <div class="container" style="width: 100%">
-                                         <span>{{'questions.shareQuestionTitle' | translate}}</span>
-                                         <textarea type="text" ng-model="shareLink" readonly select-all-text-on-click></textarea>
+                                         <div class="container" style="width: 100%">
+                                             <span>{{'questions.shareQuestionTitle' | translate}}</span>
+                                             <textarea type="text" ng-model="shareLink" readonly select-all-text-on-click></textarea>
+                                         </div>
                                      </div>
                                  </div>
-                             </div>
                              <div class="description">
                                  <div class="edit-summary"
                                       ng-show="quizItem.summary || (!!originalQuestions && originalQuestions.length>0)">
