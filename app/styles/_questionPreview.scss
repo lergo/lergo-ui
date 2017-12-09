@@ -177,7 +177,7 @@
             .action-items-top {}
             .action-items-bottom {
                 font-size: 30px;
-                margin-top: 40px;
+                margin: 40px -12px 0 12px;
                 a:nth-child(n+2) {
                     margin-top: 10px;
                     display: inline-block;
@@ -207,8 +207,9 @@
                 color: white;
                 border-radius: 10px;
                 float: left;
-                /*width: 90px;*/
                 width: 55px;
+                margin-left: 10px;
+                margin-right: 10px;
             }
             .stats-button-age {
                 background-color: #5fb9ff;
