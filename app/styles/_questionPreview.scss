@@ -433,12 +433,15 @@ textarea#openQuestionTextarea.mobile.width {
         width: unset;
     }
     input#openQuestionText.mobile-width {
-        width: 180px;
+        width: 200px;
     }
     textarea#openQuestionTextarea.mobile-width {
-        width: 180px;
+        width: 200px;
     }
     input#exactQuestionText {
-        width: 180px;
+        width: 200px;
+    }
+    audio.audio-width-mobile {
+        width: 200px;
     }
 }
