@@ -226,9 +226,13 @@
 }
 
 .text-desktop {
-    float: left;
     margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #d2e8fa;
+    max-width: 630px;
+    float: right
 }
+
 
 .admin{
   table{
