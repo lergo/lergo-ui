@@ -620,10 +620,24 @@ body.ru {
     .homepage-desktop {
         .lessons-desktop {
             .lesson-desktop {
-                width: unset ! important;
+                width: unset;
             }
         }
     }
 }
+
+@media screen and (min-device-width : 1024px) and (max-width: 1200px) { // for ipad
+    body {
+        background-color: lightgreen;
+    }
+    .homepage-desktop {
+        .lessons-desktop {
+            .lesson-desktop {
+                width: 190px;
+            }
+        }
+    }
+}
+
 
 
