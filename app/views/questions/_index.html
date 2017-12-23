@@ -32,8 +32,10 @@
             <div class="page-content-body">
                 <div class="container">
                     <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div filter-is-active="questionsFilterOpts" section="questions"></div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12"></div>
+                            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                            <div filter-is-active="questionsFilterOpts" section="questions"></div>
                                 <div>
                                     <div class="lergo-h1">{{ 'questions.filter' | translate }}</div>
                                     <div lergo-filter no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
@@ -41,8 +43,9 @@
                                          opts="questionsFilterOpts"></div>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                            <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12"></div>
+                         </div>
+                            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                             <table ng-show="items.length > 0" class="table ">
                                 <thead>
                                 <tr style="font-weight: bold">
