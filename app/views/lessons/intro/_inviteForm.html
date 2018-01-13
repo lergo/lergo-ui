@@ -22,7 +22,7 @@
                 <div ng-show="isSuccess()" class="col-md-8">
 
                     <p style="margin: 0 2vw 0 2vw">{{'pin' | translate }}
-                        <small style="font-size: small">{{'lessons.inviteLesson.'+mode+'.pinHint' | translate}}</small>
+                        <small style="font-size: 11px">{{'lessons.inviteLesson.'+mode+'.pinHint' | translate}}</small>
                     </p>
                     <input style="width: 90%; margin: auto" type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
                            ng-class="{'in-success':isSuccess()}" select-all-text-on-click on-enter
