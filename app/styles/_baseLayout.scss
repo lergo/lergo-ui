@@ -244,7 +244,7 @@ input.form-control.search-input {
         bottom: 0px
     }
     .pull-left.logo {
-        margin-left: 50px;
+        margin-left: 9vw;
     }
 }
 
@@ -291,7 +291,7 @@ input.form-control.search-input {
 
 #simple-dropdown1 {
     display: inline-block;
-    padding: 12px 50px 20px 20px;
+    padding: 3vh 7vw 1vh 2vw;
     color: white;
     font-size: 1em;
     margin-right: 40px;
@@ -406,7 +406,8 @@ input.form-control.search-input {
     #footer, .push {
         clear: both;
     }
-    #header {
+    // Jeff: removed on Jan 13 2018 - check if needed!
+    /*#header {
         background: $HEADER_BACKGROUND_COLOR;
         width: 100%;
         min-width: 1100px;
@@ -495,7 +496,7 @@ input.form-control.search-input {
 
 
     }
-
+*/
     #footer {
         padding-top: 15px;
         height: $FOOTER_HEIGHT/2+30px;
@@ -593,7 +594,7 @@ body.ru {
     }
 }
 
-// allows the pages to be completely responsive while still using production code
+// Jeff- allows the pages to be completely responsive while still using production code
 @media screen and (max-width: 1200px) {
     .base-layout, .base-layout-class {
         .page-content-width {
