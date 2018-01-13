@@ -405,6 +405,11 @@ input.form-control.search-input {
 
     #footer, .push {
         clear: both;
+        .centered-content-footer {
+            width: 80vw;
+            margin-right: auto;
+            margin-left: auto;
+        }
     }
     // Jeff: removed on Jan 13 2018 - check if needed!
     /*#header {
