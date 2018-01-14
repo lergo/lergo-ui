@@ -1,3 +1,5 @@
+implement gzip in nginx.conf.template to reduce loading time
+current estimate by chrome dev tools is that we can save 5 seconds
 
 remove(console.log) LERGO-674: console.log in server.js if filling up the process.log quickly and is not needed
 
