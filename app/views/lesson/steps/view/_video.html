@@ -2,13 +2,13 @@
     <div class="lesson-step-title lergo-h1">{{step.title}}</div>
     <div class="lesson-step-video-content">
         <div  class="embed-responsive embed-responsive-16by9">
-            <div class="hidden-xs">
+            <div class="hidden-sm hidden-xs">
                 <iframe width="{{videoSize.width}}" height="{{videoSize.height}}" ng-src="{{getYoutubeEmbedSource(step)}}"
                         frameborder="0" allowfullscreen>
                 </iframe>
             </div>
-            <div class="hidden-lg hidden-md hidden-sm">
-                <iframe class="embed-responsive-item" ng-src="{{getYoutubeEmbedSource(step)}}"
+            <div class="hidden-lg hidden-md">
+                <iframe style="width: 100vw;height: 50vw;position: relative;" ng-src="{{getYoutubeEmbedSource(step)}}"
                         frameborder="0" allowfullscreen>
                 </iframe>
             </div>
@@ -23,3 +23,4 @@
         </button>
     </div>
 </div>
+
