@@ -2,8 +2,8 @@
         <span go-to-my-lessons-demo active="{{!isLessonInvalid()}}"></span>
             <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                     <div>
                         <form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
                             <div class="form-section form-group name"
@@ -22,28 +22,28 @@
                     </div>
                 </div>
                 <div class="stats form-group">
-                    <div class="language">
+                    <div class="language top15 col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left:0px">
                         <span>{{ 'filters.labels.language' | translate }}</span>
                         <select class="form-control" ng-model="lesson.language"
                                 ng-options="l as ('filters.languages.' + l| translate) for l in languages"
                                 name="language"></select>
                     </div>
                     <br>
-                    <div class="subject">
+                    <div class="subject col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left:0px">
                         <span>{{ 'filters.labels.subject' | translate }}</span>
                         <select class="form-control" ng-model="lesson.subject"
                                 ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"
                                 name="subject"></select>
                     </div>
                         <br>
-                    <div class="age">
+                    <div class="age col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left:0px">
                         <span>{{ 'fromAge' | translate }}</span>
                         <input class="form-control" type="number" min="4" max="18" step="1" size="2"
                                ng-model="lesson.age" name="age"/>
                     </div>
 
-                    <div class="tag form-group">
-                    <div class="row">
+                    <div class="row top30">
+                    <div class="tag col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin-right: 20px">
                         <span>{{ 'tags' | translate }}</span>
                         <!--<input class="form-control"  ng-model="lesson.tags" name="tag" />-->
                         <div>
@@ -130,8 +130,8 @@
                         </div>
                     </div>
                     <div class="row" ng-include="getStepViewByType(step)"></div>
-                    <div class="row">
-                        <div class="col-md-12 text-center">
+                    <div class="row top20">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <button class="btn" ng-click="displayStep(step)">{{ 'steps.display' | translate }}</button>
                         </div>
                     </div>

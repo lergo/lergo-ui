@@ -1,5 +1,5 @@
 <div class="row row-nested top20" id="quizUpdate">
-    <div class="col-md-3 practise-button">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 practise-button">
         <p>{{'quiz.practiseMode' | translate}}
             <sup>
                 <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
@@ -11,7 +11,7 @@
             </sub>
         </p>
     </div>
-    <div class="col-md-3 ">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <p>
             {{'quiz.testMode' | translate}}
             <sub>
@@ -19,7 +19,7 @@
             </sub>
         </p>
     </div>
-    <div class="col-md-5 text-right">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <p>{{'quiz.shuffleQuestion' | translate}}
             <sup>
                 <a uib-popover="{{'quiz.shuffleQuestionHint' | translate}}" class="fa fa-question-circle"
@@ -33,9 +33,9 @@
 </div>
 
 <div class="row top10 row-nested" ng-show="step.testMode === 'False'">
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-6">
+    <div>
+        <div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <p>
                     {{'quiz.allowRetry' | translate}}
                     <sup>
@@ -46,7 +46,7 @@
                     <sub> <input type="checkbox" ng-model=step.retryQuestion> </sub>
                 </p>
             </div>
-            <div ng-if="!!step.retryQuestion" class="col-md-6 text-right">
+            <div ng-if="!!step.retryQuestion" class=" col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <p>
                     {{'quiz.showCorrectAns' | translate}}
                     <sup>
@@ -76,10 +76,10 @@
 
 <div class="row row-nested top20">
     <div class="row row-nested top10" ng-repeat="item in step.quizItems">
-        <div dir="auto" class="col-md-8">
+        <div dir="auto" class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <a href="" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
         </div>
-        <div class="col-md-3 text-right">
+        <div class="col-md-3 col-sm-12 col-xs-12 text-right">
             <a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
             <a href="" ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
             <a href="" ng-click="removeItemFromQuiz( item, step )">X</a>
@@ -88,7 +88,7 @@
 </div>
 
 <div class="row row-nested top20">
-    <div class="col-md-12">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <button class="btn" ng-click="addQuestionBtnDisable || addCreateQuestion(step)"
                 ng-disabled="addQuestionBtnDisable">
             <i ng-show="addQuestionBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
