@@ -1,7 +1,7 @@
 <div class="base-layout">
     <div class="report">
-        <div class="row header">
-            <div class="col-md-2">
+        <div class="row header" style="margin-right: 15px; margin-left: 15px">
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                 <div class="image">
                     <div class="user">
                         <i class="fa fa-user"></i>
@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 header-name ">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 header-name ">
                 <div ng-show="!!report.data.invitee.name">
 
                     <div><span class="lergo-h1">{{report.data.invitee.name}}</span><span class="class-name">{{report.data.invitee.class}}</span>
@@ -31,27 +31,30 @@
                     <span>{{report.lastUpdate | date:'medium'}}</span>
                 </div>
             </div>
-            <div class="col-md-6 ">
-                <div class="row  header-desc">
-                    <div class="col-md-12">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="header-desc">
+                    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                         <div ng-show="!!report.data.lesson.description">
                             <div class="lergo-h4">{{'report.description'|translate}}</div>
                             <div>{{report.data.lesson.description | limitTo:440}}</div>
                         </div>
                     </div>
+                        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                 </div>
-                <div class="row top20 redo-buttons" ng-show="showClassReport()">
-                    <div class="col-md-6 restart pull-right" ng-show="!report.data.lesson.temporary">
+                <div class="top20 redo-buttons" ng-show="showClassReport()">
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 pull-right restart" ng-show="!report.data.lesson.temporary">
                         <a href="" ng-click="startLesson()">
                             <i class="fa fa-repeat "> {{'lessons.restart' | translate}}</i>
                         </a>
                     </div>
-                    <div class="col-md-6 reports pull-right" ng-show="showClassReport()">
+                    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 reports" ng-show="showClassReport()">
                         <a href="" ng-click="redirectToClassReport()">
                             <i class="fa fa-bar-chart"> {{'report.header.classReport' | translate}}</i>
                         </a>
                     </div>
-                    <div class="col-md-6 practiceMistake pull-right" ng-show="wrongQuestions.length>0">
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 practiceMistake pull-right" ng-show="wrongQuestions.length>0">
                         <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
                            ng-disabled="practiseBtnDisable">
                             <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
@@ -75,15 +78,17 @@
                             <i class="fa fa-repeat "> {{'lessons.restart' | translate}} &nbsp;</i>
                         </a>
                         <span ng-show="wrongQuestions.length>0" class="practiceMistake">
-                            <a show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
-                               ng-disabled="practiseBtnDisable">
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                <a show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
+                                   ng-disabled="practiseBtnDisable">
+                                    <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
+                                </a>
+                                <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
+                                   uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
+                                   tabindex="0">
                                 <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
-                            </a>
-                            <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
-                               uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
-                               tabindex="0">
-                            <i class="fa fa-repeat "> {{'lessons.practiseWrongQuestion' | translate}}</i>
-                            </a>
+                                </a>
+                            </div>
                         </span>
                         <a class="btn-link continue-lesson" href="{{continueLessonUrl(report)}}"
                            ng-show="showContinueLesson()">
@@ -183,9 +188,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9 description">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 description">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                                 {{'reports.click.video' | translate}}</a>
                             <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
