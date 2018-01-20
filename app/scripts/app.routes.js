@@ -136,6 +136,8 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
                 return $sce.trustAsResourceUrl($filter('translate')('parents.teaser.url'));
             };
         }
+    }).when('/user/Privacy', {
+        templateUrl: 'views/partials/_term.html',
     }).when('/user/Teachers', {
         templateUrl: 'views/teachers.html',
         controller: function ($scope, $sce, $filter) {

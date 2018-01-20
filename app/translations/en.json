@@ -108,6 +108,7 @@
         "manageUsers": "Manage Users",
         "parents": "Parents",
         "profile": "Profile",
+        "privacy": "Privacy and Terms",
         "questions": "Questions",
         "reports": "Reports",
         "roles": "Roles",
@@ -713,6 +714,11 @@
   },
   "preview": "Preview",
   "previewQuestion": "Preview",
+  "privacy": {
+     "teaser": {
+        "url": "https://docs.google.com/forms/d/1n4ddLylSr7Tx8qh09M7A-GAMx-6ShIDVxS-DD1mcKhY/viewform"
+     }
+  },
   "Prof": {
     "ArielRubinstein": {
       "desg": "TAU & NYU"
