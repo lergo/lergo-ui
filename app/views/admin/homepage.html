@@ -2,7 +2,7 @@
 <div>
     <div class="base-layout " id="admin">
         <div>
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs hidden-sm hidden-xs">
                 <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" admin-section="{{section.permission}}" class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                     <a href="{{section.url}}">
                         <i class="{{section.icon}}"></i>
