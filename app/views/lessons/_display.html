@@ -136,7 +136,7 @@
 
 <div>
     <div>
-        <div class="hidden-lg hidden-md"> <!--start mobile view -->
+        <div class="hidden-lg hidden-md" style="background-color: #d2e8fa"> <!--start mobile view -->
             <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step-mobile">
                 <div class="congrats">
                     {{ 'congratulations' | translate }}!
@@ -144,13 +144,13 @@
                     <br>
                 </div>
                 <div class="message">
-                    <span>{{ 'lessons.lessonCompleted' | translate }}</span>
-                    <span class="lesson-title">"{{lesson.name}}"</span>
-                    <span class="created-by">{{'lesson.createdBy'|translate}}</span>
-                    <span class="lesson-title">{{lesson.user.username}}</span>
+                    <div>{{ 'lessons.lessonCompleted' | translate }}</div>
+                    <div class="lesson-title">"{{lesson.name}}"</div>
+                    <div class="created-by">{{'lesson.createdBy'|translate}}</div>
+                    <div class="lesson-title">{{lesson.user.username}}</div>
                     <br>
                 </div>
-                <div style="margin-left: 15px; margin-right: 15px">
+                <div style="background-color: #8c8c8b26; padding: 30px; margin-left: 15px; margin-right: 15px; border: 2px #91cfff" >
                     <a href="" ng-show="!lesson.temporary" class="btn-link" ng-click="startBtnDisable || startLesson()"
                        ng-disabled="startBtnDisable">
                         <i style="font-size: 35px; color: #8CC63F;" class="fa fa-repeat "></i>
@@ -197,9 +197,9 @@
                         </a>
                     </div>
 
-                <!--</div>-->
+                </div>
                 <br/>
-                <div class="stats">
+                <div class="stats" style="margin: 15px">
                     <div class="action-items">
 			<span show-logged-in>
 				<button class="btn-link" ng-click="likeLesson()" uib-tooltip="{{'lessons.tooltip.like' | translate}}"
@@ -254,7 +254,6 @@
                         <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
                              on-close="setActiveAction()"></div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>

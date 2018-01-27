@@ -170,7 +170,7 @@
             /*width: 600px;*/
             font-size: 25px;
             text-align: center;
-            margin: 0 auto;
+            margin: 15px auto;
             line-height: 2;
             .lesson-title {
                 font-weight: bold;
@@ -179,7 +179,7 @@
         }
         .report {
             /*width: 600px;*/
-            margin: 0 auto;
+            margin: 15px auto;
             font-size: 20px;
             a {
                 cursor:pointer; /* JIRA-576 - links should have cursor pointers. */
@@ -190,7 +190,7 @@
         }
         .stats {
             /*width: 600px;*/
-            margin: 0 auto;
+            margin: 15px auto;
             .action-items {
                 text-align: right;
             }
