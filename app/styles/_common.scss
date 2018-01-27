@@ -779,8 +779,9 @@ $COLOR_19: #2a6496 !default;
 
 
 .lergo-body-tile{
-    max-width: 600px;
-    position: relative;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 10px;
     background-color: $LERGO_BODY_TILE_BACKGROUND;
 }
