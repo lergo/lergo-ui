@@ -1,13 +1,13 @@
 <div class="submit">
     <div>
         <button ng-show="!getAnswer() && !hideSubmitButton" ng-disabled="submitBtnDisable || !canSubmit(quizItem)" type="submit" class="btn"
-                ng-click="submitBtnDisable || checkAnswer()">
+                ng-click="submitBtnDisable || checkAnswer()" style="margin: 15px 5px">
             <i ng-show="submitBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
             {{ 'button.submit' | translate }}
         </button>
         <div quiz-next-question-button></div>
         <button ng-show="!!isQuizDone()" class="btn lergo-next-step" ng-click="continueBtnDisable || nextStep()"
-                ng-disabled="continueBtnDisable">
+                ng-disabled="continueBtnDisable" style="margin: 15px 5px">
             <i ng-show="continueBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
             {{ 'lessons.letsContinue' | translate }}
         </button>

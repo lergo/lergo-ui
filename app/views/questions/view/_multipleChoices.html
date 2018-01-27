@@ -19,7 +19,7 @@
                         <div class="submit">
                             <div>
                                 <button ng-show="!getAnswer() && isMultiChoiceMultiAnswer(quizItem)" ng-disabled="!canSubmit(quizItem)" type="submit" class="btn"
-                                    ng-click="checkAnswer()">{{ 'button.submit' | translate }}</button>
+                                    ng-click="checkAnswer()" style="margin: 15px 5px">{{ 'button.submit' | translate }}</button>
                                 <div quiz-next-question-button></div>
                                 <button ng-show="!!isQuizDone()" class="btn" ng-click="continueBtnDisable || nextStep()">
                                     <i ng-show="continueBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>

@@ -91,7 +91,10 @@ textarea#openQuestionTextarea.mobile.width {
     }
 }
 
-.result {}
+.result {
+    margin-left: 5px;
+    margin-right: 5px;
+}
 
 .rtl {
     #questionPreview {
