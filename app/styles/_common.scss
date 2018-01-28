@@ -781,9 +781,10 @@ $COLOR_19: #2a6496 !default;
 
 .lergo-body-tile{
     max-width: 600px;
-    position: relative;
-    /*margin-left: auto;
-    margin-right: auto;*/
+    width: 600px;
+    /*position: relative;*/
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 10px;
     background-color: $LERGO_BODY_TILE_BACKGROUND;
 }
@@ -835,4 +836,11 @@ $COLOR_19: #2a6496 !default;
 [select-all-text-on-click]{
     text-align:start;
     direction:ltr;
+}
+
+@media screen and (max-width:768px) {
+    .lergo-body-tile {
+        max-width: unset;
+        width: unset;
+    }
 }
