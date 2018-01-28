@@ -16,7 +16,7 @@
                         </div>
                         <div quiz-item-media quiz-item="quizItem"></div>
                         <div multi-choice quiz-item="quizItem" on-click="checkAnswer()"></div>
-                        <div class="submit">
+                        <div class="submit text-center">
                             <div>
                                 <button ng-show="!getAnswer() && isMultiChoiceMultiAnswer(quizItem)" ng-disabled="!canSubmit(quizItem)" type="submit" class="btn"
                                     ng-click="checkAnswer()" style="margin: 15px 5px">{{ 'button.submit' | translate }}</button>

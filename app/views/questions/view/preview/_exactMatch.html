@@ -14,7 +14,7 @@
 		<input dir="auto" id="exactQuestionText" ng-model="quizItem.userAnswer" autofocus ng-init="setFocus('exactQuestionText')" />
 	</div>
 	<br />
-	<div class="submit">
+	<div class="submit text-center">
 		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | translate }}</button>
 	</div>
 	<br />

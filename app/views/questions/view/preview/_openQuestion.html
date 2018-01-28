@@ -16,7 +16,7 @@
         <span ng-init="quizItem.subType==='short' ? setFocus('openQuestionText') : setFocus('openQuestionTextarea')"></span>
 	</div>
 	<br />
-	<div class="submit">
+	<div class="submit text-center">
 		<button class="btn" type="submit" ng-disabled="!canSubmit(quizItem)" ng-click="checkAnswer()">{{ 'button.submit' | translate }}</button>
 	</div>
 	<br />
