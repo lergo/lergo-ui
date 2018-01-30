@@ -137,12 +137,15 @@
 <div>
     <div>
         <div class="hidden-lg hidden-md" style="background-color: #d2e8fa"> <!--start mobile view -->
-            <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step-mobile">
+            <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step-mobile" >
                 <div class="congrats">
                     {{ 'congratulations' | translate }}!
                     <br>
+                    <div id="grad1">
+                    </div>
                     <br>
                 </div>
+
                 <div class="message">
                     <div>{{ 'lessons.lessonCompleted' | translate }}</div>
                     <div class="lesson-title">"{{lesson.name}}"</div>

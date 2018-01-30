@@ -342,3 +342,13 @@
         }
     }
 }
+
+#grad1 {
+    margin-top: 10px;
+    height: 5px;
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    background: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right, red,  lightgreen, lightblue); /* Standard syntax (must be last) */
+}
