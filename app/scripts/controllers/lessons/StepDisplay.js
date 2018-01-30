@@ -397,6 +397,10 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         var src = '//www.youtube.com/embed/' + $scope.getVideoId(step) + '?autoplay=1&rel=0&iv_load_policy=3';
         return $sce.trustAsResourceUrl(src);
     };
+    $scope.getYoutubeEmbedSourceNoAutoPlay = function (step) { // todo : use service
+        var src = '//www.youtube.com/embed/' + $scope.getVideoId(step) + '?rel=0&iv_load_policy=3';
+        return $sce.trustAsResourceUrl(src);
+    };
 
     $scope.getGoogleSlideEmbedSource = function (url) {
         var src = '//docs.google.com/presentation/d/' + getDocumentIdFromURL(url) + '/embed?start=false&loop=false&delayms=3000';
