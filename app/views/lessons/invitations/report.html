@@ -275,22 +275,22 @@
             </div>
         </div>
         <div ng-show="!!report.data.lesson.nextLessonId || !!report.data.lesson.priorLessonId">
-            <div class="collapsible lergo-h1 row">
-                <a href="" class="no-underline " ng-click="recommendationCollapsed=!recommendationCollapsed">
+            <div class="collapsible lergo-h1 row-nested15 row">
+                <a href="" class="no-underline row-nested15" ng-click="recommendationCollapsed=!recommendationCollapsed">
                     <i ng-show="!!recommendationCollapsed" class="fa fa-plus-square"></i>
                     <i ng-show="!recommendationCollapsed" class="fa fa-minus-square"></i>
                     {{'report.recommendation'|translate}}
                 </a>
             </div>
             <hr/>
-            <div class="recommendation row" uib-collapse="!!recommendationCollapsed">
-                <div class="row row-nested top20" ng-show="!!report.data.lesson.nextLessonId">
+            <div class="recommendation row row-nested15" uib-collapse="!!recommendationCollapsed">
+                <div class="row row-nested15 top20" ng-show="!!report.data.lesson.nextLessonId">
                     <div class="col-md-3">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 row-nested15">
                                 <i class="fa fa-university"></i>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-10 row-nested15">
                                 <span class="title lergo-h1">{{'report.nextLesson' | translate}}</span>
                             </div>
                         </div>
@@ -301,9 +301,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="row row-nested top20" ng-show="!!report.data.lesson.priorLessonId">
+                <div class="row  top20" ng-show="!!report.data.lesson.priorLessonId">
                     <div class="col-md-3">
-                        <div class="row">
+                        <div class="row row-nested15">
                             <div class="col-md-2">
                                 <i class="fa fa-university">&nbsp;</i>
                             </div>
