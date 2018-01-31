@@ -111,12 +111,12 @@
             <hr/>
             <div uib-collapse="!!summaryCollapsed" class="summary ">
                 <div class="row row-nested top20">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-3">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-2">
                                 <i class="fa fa-percent"></i>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-10 col-sm-10">
                                 <span class="lergo-h1">{{'reports.correct'|translate}}</span>
                             </div>
                         </div>
@@ -148,17 +148,17 @@
                     </div>
                 </div>
                 <div class="row row-nested top20">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-3">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-2">
                                 <i class="fa fa-clock-o"></i>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-10 col-sm-10">
                                 <span class="lergo-h1">{{'reports.summary.duration'|translate}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-sm-9">
                         {{report.duration|duration}}
 
                     </div>
@@ -202,7 +202,7 @@
                                 <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                                     {{'reports.click.video' | translate}}</a>
                                 <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
-                                <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
                                     <span class="inline-table">
                                          <ng-pluralize count="step.quizItems.length" when="{
                                                 '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
@@ -285,12 +285,12 @@
             <hr/>
             <div class="recommendation row row-nested15" uib-collapse="!!recommendationCollapsed">
                 <div class="row row-nested15 top20" ng-show="!!report.data.lesson.nextLessonId">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-3 ">
                         <div class="row">
-                            <div class="col-md-2 row-nested15">
+                            <div class="col-md-2 col-sm-2 row-nested15">
                                 <i class="fa fa-university"></i>
                             </div>
-                            <div class="col-md-10 row-nested15">
+                            <div class="col-md-10 col-sm-10 row-nested15">
                                 <span class="title lergo-h1">{{'report.nextLesson' | translate}}</span>
                             </div>
                         </div>
