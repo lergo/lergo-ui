@@ -186,12 +186,12 @@
                            tabindex="0">{{'lessons.practiseWrongQuestion' | translate}}</a>
                     </span>
 
-                    <div style="margin-top: 15px; margin-bottom: 15px">
-                        <a href="" ng-show="!!invitation" class="lergo-lesson-show-report" ng-click="showReport()" >
+                    <div class="text-center top20">
+                        <button type="button" href="" ng-show="!!invitation" class="btn btn-primary" ng-click="showReport()" >
                             <!-- guy : this should not be a link. should be a button. but css is gone, and change would be too big.see LERGO-576 -->
                             <i class="fa fa-bar-chart-o"></i>
                             {{ 'lessons.lessonReport' | translate }}
-                        </a>
+                        </button>
                     </div>
                     <div class="recommended" ng-show="!!lesson.nextLessonId">
                         <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
