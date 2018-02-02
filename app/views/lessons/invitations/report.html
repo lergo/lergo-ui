@@ -320,20 +320,24 @@
                 </div>
             </div>
         </div>
-        <div class="details" style="margin-right: 15px; margin-left: 15px">
-            <div class="collapsible lergo-h1">
-                <a class="no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
-                    <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
-                    <i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
-                    {{'report.detailedReport'|translate}}
-                </a>
-            </div>
-            <hr/>
-            <div uib-collapse="!!detailCollapsed" class="detail row">
-                <div report-view lesson="report.data.lesson" answers="report.answers"
-                     quiz-items="report.data.quizItems"></div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="details" style="margin-right: 15px; margin-left: 15px;">
+                <div class="collapsible lergo-h1">
+                    <a class="no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
+                        <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
+                        <i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
+                        {{'report.detailedReport'|translate}}
+                    </a>
+                </div>
+                <hr/>
+                <div uib-collapse="!!detailCollapsed" class="detail row">
+                    <div report-view lesson="report.data.lesson" answers="report.answers"
+                         quiz-items="report.data.quizItems"></div>
+                </div>
             </div>
         </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
     </div>
     <div powered-by-lergo="report.data.lesson"></div>
 </div>
