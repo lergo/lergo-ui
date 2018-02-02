@@ -247,13 +247,6 @@ button.action-item {
     }
 }
 
-@media screen and (max-width:768px) {
-    .lergo-h1 {
-        font-size: 1em;
-        white-space: normal;
-    }
-}
-
 .lergo-h2 {
     color: $LERGO_H2_COLOR;
     font-size: 20px;
@@ -783,7 +776,6 @@ $COLOR_19: #2a6496 !default;
 .lergo-body-tile{
     max-width: 600px;
     width: 600px;
-    /*position: relative;*/
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
@@ -849,3 +841,4 @@ $COLOR_19: #2a6496 !default;
         width: unset;
     }
 }
+
