@@ -20,26 +20,23 @@ textarea#openQuestionTextarea.mobile.width {
         color: mediumseagreen;
         margin-left: -15px;
     }
-    .left {
-       /* width: 85%;
-        padding: 15px;*/
-       /* float: left;*/
-        .submit {
+
+    .submit {
             margin-top: 10px;
             text-align: center;
             .left-arrow {
                 display: none;
-            }
         }
-        .help {
+    }
+    .help {
             color: grey;
             font-family: cursive;
             margin-top: 10px;
-        }
-        .audio {
-            margin-top: 10px;
-        }
     }
+    .audio {
+            margin-top: 10px;
+    }
+
     .answers {
         margin-top: 10px;
         text-align: center;
@@ -103,15 +100,16 @@ textarea#openQuestionTextarea.mobile.width {
         }
         .left {
             float: right;
-            .submit {
-                .right-arrow {
-                    display: none;
-                }
-                .left-arrow {
-                    display: inline;
-                }
+        }
+        .submit {
+            .right-arrow {
+                display: none;
+            }
+            .left-arrow {
+                display: inline;
             }
         }
+
         .wrong {
             margin-right: -13px;
             position: relative;
