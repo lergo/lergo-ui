@@ -111,17 +111,17 @@
             <hr/>
             <div uib-collapse="!!summaryCollapsed" class="summary ">
                 <div class="row row-nested top20">
-                    <div class="col-md-3 col-sm-3">
+                    <div class="col-md-3 col-xs-3">
                         <div class="row">
-                            <div class="col-md-2 col-sm-2">
+                            <div class="col-md-2 col-xs-2">
                                 <i class="fa fa-percent"></i>
                             </div>
-                            <div class="col-md-10 col-sm-10">
+                            <div class="col-md-10 col-xs-10">
                                 <span class="lergo-h1">{{'reports.correct'|translate}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-xs-9">
                         {{report.correctPercentage}}
                         (
                         <ng-pluralize count="report.data.quizItems.length" when="{
@@ -148,17 +148,17 @@
                     </div>
                 </div>
                 <div class="row row-nested top20">
-                    <div class="col-md-3 col-sm-3">
+                    <div class="col-md-3 col-xs-3">
                         <div class="row">
-                            <div class="col-md-2 col-sm-2">
+                            <div class="col-md-2 col-xs-2">
                                 <i class="fa fa-clock-o"></i>
                             </div>
-                            <div class="col-md-10 col-sm-10">
+                            <div class="col-md-10 col-xs-10">
                                 <span class="lergo-h1">{{'reports.summary.duration'|translate}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9 col-sm-9">
+                    <div class="col-md-9 col-xs-9">
                         {{report.duration|duration}}
 
                     </div>
@@ -186,23 +186,23 @@
                      ng-repeat="step in report.data.lesson.steps">
                     <div class="col-md-3">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-5 col-xs-5">
                                 <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
                                 <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
                                 <i ng-show="!!step.slideURL" class="fa fa-television "></i>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-10 col-sm-12 col-xs-12">
                                 <span dir="auto" class="title lergo-h1">{{step.title}}</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 description">
-                        <div class="row">
+                        <div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                                     {{'reports.click.video' | translate}}</a>
                                 <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
-                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
                                     <span class="inline-table">
                                          <ng-pluralize count="step.quizItems.length" when="{
                                                 '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
@@ -211,7 +211,7 @@
                                          </ng-pluralize>
                                     </span>
                                 </div>
-                                <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+                                <div class="col-lg-2 col-md-3 col-sm-5 col-xs-5">
                                     <div ng-show="!!stats[$index].correct" class="bg-success report-quiz-summary-item">
                                         {{stats[$index].correct}} {{'questions.correct' | translate}}
                                         ({{stats[$index].correctPercentage}}%)
@@ -250,7 +250,7 @@
                             </div>
                         </div>
                         <div  class="row top15">
-                            <div uib-collapse="!stepDetail" class="col-md-12">
+                            <div uib-collapse="!stepDetail" class="col-md-12 col-sm-12 col-xs-12">
                                 <div>
                                     <span>
                                         <ng-pluralize count="step.retBefCrctAns" when="{
@@ -261,7 +261,7 @@
                                     </span>
                                     <sup>
                                         <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                        <a uib-popover="{{'report.lessonStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"
+                                        <a uib-popover="{{'report.lessonStep.practiceMode.hint.'+step.retBefCrctAns|translate| limitTo:10}}"
                                            class="fa fa-question-circle no-underline-v1"
                                            popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
                                            style="text-decoration: none"></a>
