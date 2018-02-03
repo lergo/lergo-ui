@@ -1,4 +1,10 @@
 <style>
+
+    [uib-typeahead-popup].dropdown-menu {
+        display: block;
+        position: fixed ;
+
+    }
     .typeahead-demo .custom-popup-wrapper {
         position: absolute;
         top: 100%;
@@ -22,7 +28,6 @@
 
 <script type="text/ng-template" id="customPopupTemplate.html">
     <div class="custom-popup-wrapper"
-         ng-style="{top: position().top+'px', left: position().left+'px'}"
          style="display: block;"
          ng-show="isOpen() && !moveInProgress"
          aria-hidden="{{!isOpen()}}">
