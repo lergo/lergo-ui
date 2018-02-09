@@ -45,14 +45,14 @@
                             <div class="hidden-sm hidden-xs">
                                 <div filter-is-active="lessonsFilterOpts" section="lessons"></div>
                             </div>
-                            <div class="table-responsive">
-                                <table class="table" ng-show="lessons.length > 0">
+                            <div>
+                                <table class="table table-bordered" ng-show="lessons.length > 0">
                                 <thead>
                                 <tr style="font-weight: bold">
-                                    <td style="width: 100%">{{ 'name' | translate }}</td>
-                                    <td>{{ 'questions.language' | translate}}</td>
-                                    <td>{{ 'questions.subject' | translate}}</td>
-                                    <td>{{ 'questions.age' | translate}}</td>
+                                    <td class="col-sx-4">{{ 'name' | translate }}</td>
+                                    <td class="col-sx-3">{{ 'questions.language' | translate}}</td>
+                                    <td class="col-sx-3">{{ 'questions.subject' | translate}}</td>
+                                    <td class="col-sx-2">{{ 'questions.age' | translate}}</td>
                                 </tr>
                                 </thead>
                                 <tbody>
