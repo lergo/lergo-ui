@@ -41,3 +41,17 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.rtl .tooltipMobile {
+    margin-left: 40px;
+    min-width: 80px;
+}
+
+@media screen and (max-width:768px) {
+    .rtl .tooltipMobile {
+        margin-left: 70px;
+        min-width: 80px;
+    }
+}
+
+
