@@ -1,11 +1,11 @@
 <div class="base-layout" id="createLessonPageMobile" noindex>
         <span go-to-my-lessons-demo active="{{!isLessonInvalid()}}"></span>
-            <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                 <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                     <div>
-                        <form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
+                        <form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm" style="border: 2px solid red">
                             <div class="form-section form-group name"
                                 ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
                                 <div dir="auto" class="lergo-label">{{ 'lessons.name' | translate }}</div>
@@ -16,153 +16,152 @@
                                     {{'lessons.error.invalidName' | translate}}</p>
                             </div>
                             <div class="form-section description form-group">
-                    <div dir="auto" class="lergo-label">{{ 'lessons.description' | translate }}</div>
-                    <div class="lergo-input">
-                        <textarea dir="auto" class="form-control" ng-model="lesson.description" name="description" dir="auto"></textarea>
-                    </div>
-                </div>
-                <div class="stats form-group">
-                    <div class="language top15 col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left:0px">
-                        <span>{{ 'filters.labels.language' | translate }}</span>
-                        <select class="form-control" ng-model="lesson.language"
-                                ng-options="l as ('filters.languages.' + l| translate) for l in languages"
-                                name="language"></select>
-                    </div>
-                    <br>
-                    <div class="subject col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left:0px">
-                        <span>{{ 'filters.labels.subject' | translate }}</span>
-                        <select class="form-control" ng-model="lesson.subject"
-                                ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"
-                                name="subject"></select>
-                    </div>
-                        <br>
-                    <div class="age col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left:0px">
-                        <span>{{ 'fromAge' | translate }}</span>
-                        <input class="form-control" type="number" min="4" max="18" step="1" size="2"
-                               ng-model="lesson.age" name="age"/>
-                    </div>
+                                <div dir="auto" class="lergo-label">{{ 'lessons.description' | translate }}</div>
+                                <div class="lergo-input">
+                                    <textarea dir="auto" class="form-control" ng-model="lesson.description" name="description" dir="auto"></textarea>
+                                </div>
+                            </div>
+                            <div class="stats form-group">
+                                <div class="language top15 col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left:0px">
+                                    <span>{{ 'filters.labels.language' | translate }}</span>
+                                    <select class="form-control" ng-model="lesson.language"
+                                            ng-options="l as ('filters.languages.' + l| translate) for l in languages"
+                                            name="language"></select>
+                                </div>
+                                <br>
+                                <div class="subject col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left:0px">
+                                    <span>{{ 'filters.labels.subject' | translate }}</span>
+                                    <select class="form-control" ng-model="lesson.subject"
+                                            ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"
+                                            name="subject"></select>
+                                </div>
+                                    <br>
+                                <div class="age col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left:0px">
+                                    <span>{{ 'fromAge' | translate }}</span>
+                                    <input class="form-control" type="number" min="4" max="18" step="1" size="2"
+                                           ng-model="lesson.age" name="age"/>
+                                </div>
 
-                    <div class="row top30">
-                    <div class="tag col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin-right: 20px">
-                        <span>{{ 'tags' | translate }}</span>
-                        <!--<input class="form-control"  ng-model="lesson.tags" name="tag" />-->
-                        <div>
-                            <div tag-section tags="lesson.tags" tags-available="allAvailableTags"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="advance-options">
-                        <br>
-                        <button class="btn-link expander" ng-click="isAdvOptOpen = !isAdvOptOpen"
-                                ng-show="!!lesson.name">
-                            <i ng-show="!isAdvOptOpen" class="fa fa-plus-square"></i>
-                            <i ng-show="!!isAdvOptOpen" class="fa fa-minus-square"></i>
-                            {{ 'advancedOptions' | translate }}
-                        </button>
-                    <div uib-collapse="!isAdvOptOpen" class="row">
-                        <hr>
-                        <div class="row row-nested top10">
-                            <div class="col-md-2">
-                                {{ 'lessons.addCoverPage' | translate }}
+                                <div class="row top30">
+                                <div class="tag col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin-right: 20px">
+                                    <span>{{ 'tags' | translate }}</span>
+                                    <!--<input class="form-control"  ng-model="lesson.tags" name="tag" />-->
+                                    <div>
+                                        <div tag-section tags="lesson.tags" tags-available="allAvailableTags"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-10">
-                                <input lergo-input-converter
-                                       placeholder="{{'lessons.addCoverPageHint' | translate}}"
-                                       ng-model="lesson.coverPage"/>
+                            <div class="advance-options">
+                                <br>
+                                <button class="btn-link expander" ng-click="isAdvOptOpen = !isAdvOptOpen"
+                                        ng-show="!!lesson.name">
+                                    <i ng-show="!isAdvOptOpen" class="fa fa-plus-square"></i>
+                                    <i ng-show="!!isAdvOptOpen" class="fa fa-minus-square"></i>
+                                    {{ 'advancedOptions' | translate }}
+                                </button>
+                                <div uib-collapse="!isAdvOptOpen" class="row">
+                                    <hr>
+                                    <div class="row row-nested top10">
+                                        <div class="col-md-2">
+                                            {{ 'lessons.addCoverPage' | translate }}
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input lergo-input-converter
+                                                   placeholder="{{'lessons.addCoverPageHint' | translate}}"
+                                                   ng-model="lesson.coverPage"/>
+                                        </div>
+                                    </div>
+                                    <div class="row row-nested top10">
+                                        <div class="col-md-2">
+                                            {{ 'lessons.recommenedNextLesson' | translate }}
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input placeholder="{{'lessons.recommenedNextLessonText' | translate}}"
+                                                   ng-model="lesson.nextLesson"/>
+                                        </div>
+                                    </div>
+                                    <div class="row row-nested top10">
+                                        <div class="col-md-2">
+                                            {{ 'lessons.recommenedPriorLesson' | translate }}
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input placeholder="{{'lessons.recommenedPriorLessonText' | translate}}"
+                                                   ng-model="lesson.priorLesson"/>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row row-nested top10">
-                            <div class="col-md-2">
-                                {{ 'lessons.recommenedNextLesson' | translate }}
-                            </div>
-                            <div class="col-md-10">
-                                <input placeholder="{{'lessons.recommenedNextLessonText' | translate}}"
-                                       ng-model="lesson.nextLesson"/>
-                            </div>
-                        </div>
-                        <div class="row row-nested top10">
-                            <div class="col-md-2">
-                                {{ 'lessons.recommenedPriorLesson' | translate }}
-                            </div>
-                            <div class="col-md-10">
-                                <input placeholder="{{'lessons.recommenedPriorLessonText' | translate}}"
-                                       ng-model="lesson.priorLesson"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                             <div ng-repeat="step in lesson.steps">
-                    <hr/>
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
-                            <a href="" ng-click="moveStepDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
-                            <a ng-click="deleteStep(step)" href="">
-                                <i class="fa fa-trash-o"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div dir="auto" class="col-md-2">
-                            {{ 'steps.title' | translate }}
-                        </div>
-                        <div class="col-md-10">
-                            <input dir="auto" ng-model="step.title"/>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <p>{{ 'steps.type' | translate }}
-                                <sup>
-                                    <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                    <a uib-popover="{{'steps.typeHint' | translate}}" class="fa fa-question-circle"
-                                       popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
-                                       style="text-decoration: none"></a>
-                                </sup>
-                            </p>
-                        </div>
-                        <div class="col-md-10">
-                            <select ng-model="step.type"
-                                    ng-options="t.id as ('steps.' + t.id | translate) for t in stepTypes">
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row" ng-include="getStepViewByType(step)"></div>
-                    <div class="row top20">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <button class="btn" ng-click="displayStep(step)">{{ 'steps.display' | translate }}</button>
-                        </div>
-                    </div>
-                </div>
-                            <div save-status="saveStatus" class="row top30"></div>
-                            <div>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col-md-12 text-right">
+                                        <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
+                                        <a href="" ng-click="moveStepDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
+                                        <a ng-click="deleteStep(step)" href="">
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div dir="auto" class="col-md-2">
+                                        {{ 'steps.title' | translate }}
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input dir="auto" ng-model="step.title"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <p>{{ 'steps.type' | translate }}
+                                            <sup>
+                                                <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                                                <a uib-popover="{{'steps.typeHint' | translate}}" class="fa fa-question-circle"
+                                                   popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
+                                                   style="text-decoration: none"></a>
+                                            </sup>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <select ng-model="step.type"
+                                                ng-options="t.id as ('steps.' + t.id | translate) for t in stepTypes">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row" ng-include="getStepViewByType(step)"></div>
+                                <div class="row top20">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <button class="btn" ng-click="displayStep(step)">{{ 'steps.display' | translate }}</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="add-step-hint row" >
-                        </div>
+                            <div save-status="saveStatus" class="row top30"></div>
+                            <div></div>
+                            <div class="add-step-hint row" ></div>
                             <div class="lesson-actions row"> <!-- lesson actions -->
-                            <button class="btn" ng-click="done()" ng-disabled="saveButtonDisabled()">{{'done' | translate }}
-                            </button>
-                            <button class="btn" ng-click="done('showLesson')" ng-disabled="saveButtonDisabled()">
-                                {{'button.showLesson' | translate }}
-                            </button>
-                            <span class="pop-up-hint add-step-button">
-                                <button class="btn btn-start" ng-click="addStep(lesson)"
-                                        ng-disabled="saveButtonDisabled()">{{ 'steps.add' | translate }}</button>
-                                <span>
-                                    <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                    <button uib-popover="{{'steps.addHint' | translate}}"
-                                            popover-is-open="popoverState.open"
-                                            popover-placement="{{popoverState.position}}"  popover-trigger="'outsideClick'"
-                                            tabindex="0"></button>
+                                <button class="btn" ng-click="done()" ng-disabled="saveButtonDisabled()">
+                                    {{'done' | translate }}
+                                </button>
+                                <button class="btn" ng-click="done('showLesson')" ng-disabled="saveButtonDisabled()">
+                                    {{'button.showLesson' | translate }}
+                                </button>
+                                <span class="pop-up-hint add-step-button">
+                                    <button class="btn btn-start" ng-click="addStep(lesson)"
+                                            ng-disabled="saveButtonDisabled()">{{ 'steps.add' | translate }}
+                                    </button>
+                                    <span>
+                                        <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                                        <button uib-popover="{{'steps.addHint' | translate}}"
+                                                popover-is-open="popoverState.open"
+                                                popover-placement="{{popoverState.position}}"  popover-trigger="'outsideClick'"
+                                                tabindex="0"></button>
+                                    </span>
                                 </span>
-                            </span>
                             </div>
                         </div>
                         </form>
                     </div>
-
                 </div>
                 <div class="col-lg-4 col-lg-push-1 col-md-4 col-lg-push-1 col-sm-12 col-xs-12">
                     <div class="sidebar page-content-sidebar">
