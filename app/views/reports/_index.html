@@ -31,7 +31,7 @@
 
                     <div class="hidden-lg hidden-md">
                         <div class="table-responsive">
-                            <table class="lergo-table">
+                            <table class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <td class="checkbox-dropdown">
@@ -56,9 +56,9 @@
                                     <td ng-show="showStudentCountColumn()">{{'reports.studentCount' | translate}}</td>
                                     <td ng-show="showStudentColumn()">{{ 'reports.student' | translate}}</td>
                                     <td ng-show="showClassColumn()">{{ 'reports.class' | translate}}</td>
-                                    <td>{{ 'reports.subject' | translate}}</td>
-                                    <td>{{ 'reports.takenAt' | translate}}</td>
                                     <td>{{ 'reports.correctPercentage' | translate }}</td>
+                                    <td>{{ 'reports.takenAt' | translate}}</td>
+                                    <td>{{ 'reports.subject' | translate}}</td>
                                     <td>{{ 'reports.duration'|translate}}</td>
                                 </tr>
                                 </thead>
@@ -75,11 +75,11 @@
                                     <td class="answer" ng-show="showStudentCountColumn()">{{report.count}}</td>
                                     <td class="answer" ng-show="showStudentColumn()">{{report.data.invitee.name}}</td>
                                     <td class="answer" ng-show="showClassColumn()">{{report.data.invitee.class}}</td>
+                                    <td class="answer">{{report.correctPercentage | number:0 }}</td>
+                                    <td class="answer">{{report.lastUpdate| date:'medium'}}</td>
                                     <td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject
                                         | translate) ||""}}
                                     </td>
-                                    <td class="answer">{{report.lastUpdate| date:'medium'}}</td>
-                                    <td class="answer">{{report.correctPercentage | number:0 }}</td>
                                     <td class="answer">
                                         <span ng-show="isCompleted(report)">{{report.duration|duration}}</span>
                                         <span ng-show="!isCompleted(report)">{{'report.incomplete' | translate}}</span>
@@ -117,9 +117,9 @@
                                     <td ng-show="showStudentCountColumn()">{{'reports.studentCount' | translate}}</td>
                                     <td ng-show="showStudentColumn()">{{ 'reports.student' | translate}}</td>
                                     <td ng-show="showClassColumn()">{{ 'reports.class' | translate}}</td>
-                                    <td>{{ 'reports.subject' | translate}}</td>
-                                    <td>{{ 'reports.takenAt' | translate}}</td>
                                     <td>{{ 'reports.correctPercentage' | translate }}</td>
+                                    <td>{{ 'reports.takenAt' | translate}}</td>
+                                    <td>{{ 'reports.subject' | translate}}</td>
                                     <td>{{ 'reports.duration'|translate}}</td>
                                 </tr>
                                 </thead>
@@ -136,11 +136,11 @@
                                     <td class="answer" ng-show="showStudentCountColumn()">{{report.count}}</td>
                                     <td class="answer" ng-show="showStudentColumn()">{{report.data.invitee.name}}</td>
                                     <td class="answer" ng-show="showClassColumn()">{{report.data.invitee.class}}</td>
+                                    <td class="answer">{{report.correctPercentage | number:0 }}</td>
+                                    <td class="answer">{{report.lastUpdate| date:'medium'}}</td>
                                     <td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject
                                         | translate) ||""}}
                                     </td>
-                                    <td class="answer">{{report.lastUpdate| date:'medium'}}</td>
-                                    <td class="answer">{{report.correctPercentage | number:0 }}</td>
                                     <td class="answer">
                                         <span ng-show="isCompleted(report)">{{report.duration|duration}}</span>
                                         <span ng-show="!isCompleted(report)">{{'report.incomplete' | translate}}</span>
