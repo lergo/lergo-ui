@@ -16,11 +16,11 @@
         margin: 10px 20px 10px 20px;
     }
 }
-
-/*
-.rtl #reportIndex {
-    .report-type-selection {
-        float: left;
+@media screen and (max-width:768px) {
+    .rtl {
+        ul.dropdown-menu.dropdown-mobile {
+            right: 0;
+            min-width: 200px;
+        }
     }
 }
-*/
