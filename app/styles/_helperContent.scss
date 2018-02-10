@@ -1,5 +1,5 @@
 #HelperContent {
-    width: 340px;
+    /*width: 340px;*/
     .helperContent {
         border-radius: 3px;
         .video {
@@ -48,7 +48,7 @@
 
 .rtl {
     #HelperContent {
-        margin-right: 175px;
+        /*margin-right: 175px;*/
         .admin {
             .remove {
                 float: left;
@@ -60,7 +60,7 @@
 
 @media screen and (max-width:1230px) {
     [helper-content], #HelperContent {
-        width: 225px;
+        /*width: 225px;*/
     }
 }
 
