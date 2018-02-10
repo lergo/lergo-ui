@@ -1,15 +1,13 @@
+
 body .rtl{
-  /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
   .base-layout, .base-layout-class {
-      #header {
+      /*#header {
           .header-navigation {
               margin-left:0;
               margin-right:60px;
               .header-links {
                   ul {
                       li {
-//                          float: right;
-//                          padding: 0 0 0 26px;
                           &:after {
                               padding-left: 0;
                               padding-right: 31px;
@@ -20,7 +18,6 @@ body .rtl{
               }
 
               .header-search {
-//                  margin-right: 230px;
                   margin-left: 0;
 
                   border-top-right-radius: 10px;
@@ -54,36 +51,21 @@ body .rtl{
           .header-actions {
               margin-left:0;
               margin-right:15px;
-
-//              .header-login {
-//                  float: left;
-//
-//              }
               .header-signup {
                   & > a:last-child {
                       float: left;
                   }
               }
-//              .header-language {
-//                  float: left;
-//
-//              }
           }
 
 
-      }
+      }*/
 
       #simple-dropdown1 {
           margin-right: 40px;
       }
 
       .page-content-width {
-
-          .page-content-body {
-              /*float: right;*/
-              /*width: 730px;
-              min-width: 730px;*/
-          }
 
           .page-content-sidebar {
               display: inline-block;

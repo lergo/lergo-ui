@@ -29,20 +29,6 @@ label.btn.btn-link {
     }
 }
 
-
-
-
-/*.typeahead-demo .custom-popup-wrapper > .dropdown-menu {
-    position: static;
-    float: none;
-    display: block;
-    min-width: 160px;
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-}*/
-
 .row.fix {
     display: flex;
     flex-wrap: wrap;
@@ -492,7 +478,7 @@ input.form-control.search-input {
 /******* LANGUAGE SPECIFIC CORRECTIONS ******/
 
 
-body.ru {
+/*body.ru {
     .base-layout, .base-layout-class {
         #header {
             .header-navigation {
@@ -505,7 +491,7 @@ body.ru {
 
         }
     }
-}
+}*/
 
 // Jeff- allows the pages to be completely responsive while still using production code
 @media screen and (max-width: 1200px) {
