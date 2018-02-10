@@ -67,20 +67,20 @@
                                     <td>
                                         <input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
                                     </td>
-                                    <td dir="auto" class="name">
+                                    <td dir="auto" style="min-width: 200px; white-space: normal">
                                         <a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0"
                                            uib-tooltip="{{'reports.tooltip.go' | translate}}"
                                            ng-href="{{getReportLink(report._id)}}">{{ getReportName(report) }}</a>
                                     </td>
-                                    <td class="answer" ng-show="showStudentCountColumn()">{{report.count}}</td>
-                                    <td class="answer" ng-show="showStudentColumn()">{{report.data.invitee.name}}</td>
-                                    <td class="answer" ng-show="showClassColumn()">{{report.data.invitee.class}}</td>
-                                    <td class="answer">{{report.correctPercentage | number:0 }}</td>
-                                    <td class="answer">{{report.lastUpdate| date:'medium'}}</td>
-                                    <td class="answer">{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject
+                                    <td ng-show="showStudentCountColumn()">{{report.count}}</td>
+                                    <td ng-show="showStudentColumn()">{{report.data.invitee.name}}</td>
+                                    <td ng-show="showClassColumn()">{{report.data.invitee.class}}</td>
+                                    <td >{{report.correctPercentage | number:0 }}</td>
+                                    <td >{{report.lastUpdate| date:'medium'}}</td>
+                                    <td >{{report.data.lesson.subject && ('filters.subjects.' + report.data.lesson.subject
                                         | translate) ||""}}
                                     </td>
-                                    <td class="answer">
+                                    <td>
                                         <span ng-show="isCompleted(report)">{{report.duration|duration}}</span>
                                         <span ng-show="!isCompleted(report)">{{'report.incomplete' | translate}}</span>
                                     </td>
