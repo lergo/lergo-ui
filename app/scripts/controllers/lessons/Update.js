@@ -5,7 +5,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
         $window.scrollTo(0, 0);
         $scope.subjects = LergoFilterService.subjects;
         var addStepClicked = false;
-        $scope.popoverState = {open: false, position: 'left'};
+        $scope.popoverState = {open: false, position: 'top'};
         $scope.languages = LergoFilterService.languages;
         var saveLesson = new ContinuousSave({
             'saveFn': function (value) {
