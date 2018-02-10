@@ -8,7 +8,7 @@
                         <form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
                             <div class="form-section form-group name"
                                 ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
-                                <div dir="auto" class="lergo-label">{{ 'lessons.name' | translate }}</div>
+                                <label dir="auto" class="bot5">{{ 'lessons.name' | translate }}</label>
                                 <div class="lergo-input">
                                     <input dir="auto" required class="form-control" ng-model="lesson.name" name="name"/>
                                 </div>
@@ -16,41 +16,43 @@
                                     {{'lessons.error.invalidName' | translate}}</p>
                             </div>
                             <div class="form-section description form-group">
-                                <div dir="auto" class="lergo-label">{{ 'lessons.description' | translate }}</div>
+                                <label dir="auto" class="bot5 top5">{{ 'lessons.description' | translate }}</label>
                                 <div class="lergo-input">
                                     <textarea dir="auto" class="form-control" ng-model="lesson.description" name="description" dir="auto"></textarea>
                                 </div>
                             </div>
-                            <div class="stats form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="language top15 " style="padding-left:0px">
-                                    <span>{{ 'filters.labels.language' | translate }}</span>
+                            <div class="stats form-group col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                <div class="language top15" style="padding-left:0px">
+                                    <label class="bot5">{{ 'filters.labels.language' | translate }}</label>
                                     <select class="form-control" ng-model="lesson.language"
                                             ng-options="l as ('filters.languages.' + l| translate) for l in languages"
                                             name="language"></select>
                                 </div>
                                 <br>
                                 <div class="subject " style="padding-left:0px">
-                                    <span>{{ 'filters.labels.subject' | translate }}</span>
+                                    <label class="bot5">{{ 'filters.labels.subject' | translate }}</label>
                                     <select class="form-control" ng-model="lesson.subject"
                                             ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"
                                             name="subject"></select>
                                 </div>
                                     <br>
-                                <div class="age" style="padding-left:0px">
-                                    <span>{{ 'fromAge' | translate }}</span>
+                                <div class="age bot15" style="padding-left:0px">
+                                    <label>{{ 'fromAge' | translate }}</label>
                                     <input class="form-control" type="number" min="4" max="18" step="1" size="2"
                                            ng-model="lesson.age" name="age"/>
                                 </div>
 
                                 <div class="row top30">
                                 <div class="tag" style="padding: 0 15px">
-                                    <span>{{ 'tags' | translate }}</span>
+                                    <label class="bot5">{{ 'tags' | translate }}</label>
                                     <!--<input class="form-control"  ng-model="lesson.tags" name="tag" />-->
                                     <div>
                                         <div tag-section tags="lesson.tags" tags-available="allAvailableTags"></div>
                                     </div>
                                 </div>
                             </div>
+                            </div>
+                            <div class="stats form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="advance-options">
                                 <br>
                                 <button class="btn-link expander" ng-click="isAdvOptOpen = !isAdvOptOpen"
@@ -62,7 +64,7 @@
                                 <div uib-collapse="!isAdvOptOpen" class="row">
                                     <hr>
                                     <div class="row row-nested top10">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 bot5">
                                             {{ 'lessons.addCoverPage' | translate }}
                                         </div>
                                         <div class="col-md-10">
@@ -72,7 +74,7 @@
                                         </div>
                                     </div>
                                     <div class="row row-nested top10">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 bot5">
                                             {{ 'lessons.recommenedNextLesson' | translate }}
                                         </div>
                                         <div class="col-md-10">
@@ -81,10 +83,10 @@
                                         </div>
                                     </div>
                                     <div class="row row-nested top10">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 bot5">
                                             {{ 'lessons.recommenedPriorLesson' | translate }}
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-10 ">
                                             <input placeholder="{{'lessons.recommenedPriorLessonText' | translate}}"
                                                    ng-model="lesson.priorLesson"/>
                                         </div>
