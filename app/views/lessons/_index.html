@@ -45,27 +45,27 @@
                             <div class="hidden-sm hidden-xs">
                                 <div filter-is-active="lessonsFilterOpts" section="lessons"></div>
                             </div>
-                            <div>
+                            <div class="table-responsive">
                                 <table class="table table-bordered" ng-show="lessons.length > 0">
                                 <thead>
                                 <tr style="font-weight: bold">
-                                    <td class="col-sx-4">{{ 'name' | translate }}</td>
-                                    <td class="col-sx-3">{{ 'questions.language' | translate}}</td>
-                                    <td class="col-sx-3">{{ 'questions.subject' | translate}}</td>
-                                    <td class="col-sx-2">{{ 'questions.age' | translate}}</td>
+                                    <td>{{ 'name' | translate }}</td>
+                                    <td>{{ 'questions.language' | translate}}</td>
+                                    <td>{{ 'questions.subject' | translate}}</td>
+                                    <td>{{ 'questions.age' | translate}}</td>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="les in lessons |orderBy:'-lastUpdate'">
-                                    <td dir="auto" class="name">
+                                    <td dir="auto"  style="min-width: 200px; white-space: normal">
                                         <a ng-show="!!les.name && les.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">{{
                                             les.name }}</a>
                                         <a ng-show="!les.name || les.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">[
                                             no title ]</a>
                                     </td>
-                                    <td class="answer">{{les.language && ('filters.languages.' + les.language | translate) || ""}}</td>
-                                    <td class="answer">{{les.subject && ('filters.subjects.' + les.subject | translate) ||""}}</td>
-                                    <td class="answer">{{les.age &&('+'+ les.age) || ""}}</td>
+                                    <td >{{les.language && ('filters.languages.' + les.language | translate) || ""}}</td>
+                                    <td >{{les.subject && ('filters.subjects.' + les.subject | translate) ||""}}</td>
+                                    <td >{{les.age &&('+'+ les.age) || ""}}</td>
                                 </tr>
                                 </tbody>
                             </table>
