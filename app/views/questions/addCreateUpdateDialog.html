@@ -3,54 +3,30 @@
         <i class="fa fa-close"></i>
     </button>
 </div>
-<div class="hidden-sm hidden-xs">
-    <div class="modal-body base-layout-class base-layout-modal" lergo-language-direction-class>
-	<div ng-show="!isUpdate">
-		<div class="left">
-			<ul class="nav nav-tabs-vertical">
-				<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
-					<a href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.id | translate}}</a>
-				</li>
-			</ul>
-		</div>
-		<div class="tab-content-vertical right">
-			<div style="width: 90%" ng-show="!!isActive(sections[0])" ng-include="sections[0].page" ng-controller="QuestionsUpdateCtrl"></div>
-			<div style="width: 90%" ng-show="!isActive(sections[0])" ng-include="sections[1].page" ng-controller="QuestionsIndexCtrl"></div>
-		</div>
-	</div>
-	<div ng-show="!!isUpdate">
-		<div ng-include="getInclude()"></div>
-	</div>
-</div>
-</div>
-
-<div class="hidden-lg hidden-md">
+<div>
     <div class="modal-body base-layout-class base-layout-modal" lergo-language-direction-class>
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-xs-12">
+                <div>
                     <div ng-show="!isUpdate">
-                        <div>
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                             <ul class="nav nav-tabs-vertical">
                                 <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
                                     <a href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.id | translate}}</a>
                                 </li>
                             </ul>
                         </div>
+                        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                            <div ng-show="!!isActive(sections[0])" ng-include="sections[0].page" ng-controller="QuestionsUpdateCtrl"></div>
+                            <div ng-show="!isActive(sections[0])" ng-include="sections[1].page" ng-controller="QuestionsIndexCtrl"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12 col-xs-12">
-                    <div>
-                        <div ng-show="!!isActive(sections[0])" ng-include="sections[0].page" ng-controller="QuestionsUpdateCtrl"></div>
-                        <div ng-show="!isActive(sections[0])" ng-include="sections[1].page" ng-controller="QuestionsIndexCtrl"></div>
-                    </div>
+            <div ng-show="!!isUpdate">
+                <div>
+                    <div ng-include="getInclude()"></div>
                 </div>
-                <div ng-show="!!isUpdate">
-            <div ng-include="getInclude()"></div>
-        </div>
-            </div>
             </div>
         </div>
     </div>
