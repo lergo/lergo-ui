@@ -38,6 +38,10 @@
                 }
             }
     }
+    .dropdown-menu {
+        /*position: absolute;*/
+        position: static;
+    }
 }
 
 @media only screen and (min-device-width : 1024px) {
@@ -111,7 +115,6 @@
 
 .dropdown-menu {
     z-index: 100000;
-    position: unset;
     /* LERGO-315 - typeahead for tags in 'add question' from 'edit lesson' */
 }
 

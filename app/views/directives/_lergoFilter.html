@@ -189,9 +189,8 @@
                 <div ng-show="!!opts.showCreatedBy" class='container-fluid'>
                     <div class="label">{{'filters.labels.createdBy' | translate}}</div>
                     <div class="input">
-                        <input type="text" ng-model="createdBy"
-                               uib-typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 "
-                               typeahead-append-to-body="true" >
+                        <input  type="text" ng-model="createdBy"
+                               uib-typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
                     </div>
                 </div>
                 <div ng-show="!!opts.showReportedBy" class='container-fluid'>
