@@ -3,8 +3,8 @@
 <div>
     <nav class="navbar" role="navigation">
         <div class="navbar-header ">
-            <div class="container">
-                <div class="row">
+            <div>
+                <div>
                     <div class="col-sm-8 col-xs-8">
                         <button type="button" class="navbar-toggle  mobile-filter-button-l"  ng-click="isNavCollapsed = !isNavCollapsed">
                             <div >{{'filters.labels.language' | translate}} | {{'filters.labels.subject' | translate}} | {{'filters.labels.age' | translate}}  </div>
@@ -21,8 +21,8 @@
         </div>
 
         <div class="collapse navbar-collapse" uib-collapse="!isNavCollapsed">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <form name="filter" class="filters lergo-form">
+            <div>
+            <form name="filter" class="filters lergo-form filterOffset15"">
                 <div ng-show="!!opts.showStudents" class='container-fluid'>
                     <div class="label">{{'filters.labels.doneByStudent' | translate}}</div>
                     <div class="input">
