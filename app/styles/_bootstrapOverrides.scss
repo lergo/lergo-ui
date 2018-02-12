@@ -39,7 +39,6 @@
             }
     }
     .dropdown-menu {
-        /*position: absolute;*/
         position: static;
     }
 }
@@ -331,4 +330,8 @@ input {
 }
 .facebookCount{
 display:none;
+}
+
+ul.dropdown-menu.overidePositionInherit  {
+    position: absolute;
 }
