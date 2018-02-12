@@ -24,7 +24,7 @@
                                                 <span class="fa fa-caret-down"></span>
                                                 <span class="lergo-h1">{{('lessons.'+ lessonToLoad |translate)}} </span>
                                             </button>
-                                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                                            <ul class="dropdown-menu overidePositionInherit" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
                                                 <li>
                                                     <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.user)">{{'lessons.myLessons'|translate}}</a>
                                                     <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.liked)">{{'lessons.likedLessons'|translate}}</a>

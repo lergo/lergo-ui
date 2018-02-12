@@ -14,7 +14,7 @@
                                         <span class="fa fa-caret-down"></span>
                                         <span class="lergo-h1">{{('questions.'+ questionToLoad |translate)}} </span>
                                     </button>
-                                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                                    <ul class="dropdown-menu overidePositionInherit" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
                                         <li role="menuitem"><a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.user)">{{'questions.myQuestions'|translate}}</a></li>
                                         <li role="menuitem"><a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.all)">{{'questions.allQuestions'|translate}}</a></li>
                                         <li role="menuitem"><a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.liked)">{{'questions.likedQuestions'|translate}}</a></li>
