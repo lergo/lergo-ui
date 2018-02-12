@@ -1,65 +1,6 @@
 
 body .rtl{
   .base-layout, .base-layout-class {
-      /*#header {
-          .header-navigation {
-              margin-left:0;
-              margin-right:60px;
-              .header-links {
-                  ul {
-                      li {
-                          &:after {
-                              padding-left: 0;
-                              padding-right: 31px;
-                          }
-                      }
-
-                  }
-              }
-
-              .header-search {
-                  margin-left: 0;
-
-                  border-top-right-radius: 10px;
-                  border-top-left-radius: 3px;
-                  border-bottom-left-radius: 3px;
-                  border-bottom-right-radius: 3px;
-
-                  input {
-                      border-top-right-radius: 10px;
-                      border-top-left-radius: 3px;
-                      border-bottom-left-radius: 3px;
-                      border-bottom-right-radius: 3px;
-                  }
-
-                  i {
-                      margin-left: 0;
-                      margin-right: 7px;
-                  }
-                  .cancel-search {
-                      right: -60px;
-                  }
-
-              }
-          }
-
-          .dropdown-menu{
-              text-align:right;
-              transform: translateX(-125%);
-          }
-
-          .header-actions {
-              margin-left:0;
-              margin-right:15px;
-              .header-signup {
-                  & > a:last-child {
-                      float: left;
-                  }
-              }
-          }
-
-
-      }*/
 
       #simple-dropdown1 {
           margin-right: 40px;
@@ -142,23 +83,9 @@ body .rtl{
 
 @media screen and (max-width: 1200px) {
     .base-layout, .base-layout-class {
-        /*.page-content-width {
-            width: unset;
-            min-width: unset;
-
-            .page-content-body {
-                width: unset;
-                min-width: unset;
-                display: unset;
-            }
-        }*/
         .page-content-titles {
             .page-content-titles-actions {
-               /* display: inline-block;*/
                 float: right;
-               /* margin-top: 20px;
-                margin-bottom: -5px;*/
-
             }
         }
 
