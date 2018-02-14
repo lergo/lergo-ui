@@ -844,9 +844,7 @@ label {
     font-weight: 500;
 }
 
-.rtlFloatLeft {
-    float: right;
-}
+
 
 
 
@@ -854,9 +852,6 @@ label {
     .lergo-body-tile {
         max-width: unset;
         width: unset;
-    }
-    .rtlFloatLeft {
-        float: left;
     }
 }
 .rtl {
@@ -867,13 +862,17 @@ label {
 
 }
 
-@media  screen and (min-device-width : 768px) {
+@media  screen and (min-width : 768px) {
+    .rtlFloatLeft {
+        float: right;
+    }
     .rtl {
         .rtlFloatLeft {
             float: left;
         }
     }
 }
+
 
 
 
