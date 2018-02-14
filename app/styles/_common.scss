@@ -235,7 +235,7 @@ button.action-item {
 }
 
 .lergo-h1 {
-    font-size: 1.4em;
+    font-size: 22px;
     white-space: nowrap;
     text-align: justify;
     color: $LERGO_H1_COLOR;
@@ -838,21 +838,43 @@ $COLOR_19: #2a6496 !default;
     direction:ltr;
 }
 
-@media screen and (max-width:768px) {
-    .lergo-body-tile {
-        max-width: unset;
-        width: unset;
-    }
-}
+
 
 label {
     font-weight: 500;
 }
 
-.rtl .dropdown-menu {
+.rtlFloatLeft {
     float: right;
-    position: inherit;
 }
+
+
+
+@media screen and (max-width:768px) {
+    .lergo-body-tile {
+        max-width: unset;
+        width: unset;
+    }
+    .rtlFloatLeft {
+        float: left;
+    }
+}
+.rtl {
+    .dropdown-menu {
+        float: right;
+        position: inherit;
+    }
+
+}
+
+@media  screen and (min-device-width : 768px) {
+    .rtl {
+        .rtlFloatLeft {
+            float: left;
+        }
+    }
+}
+
 
 
 

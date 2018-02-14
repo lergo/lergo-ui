@@ -2,12 +2,12 @@
 <div>
     <div id="lessonsIndex" load-filter-and-paging="loadLessons()">
         <br/>
-        <div class="page-content-width">
-            <div class="page-content-body">
+        <div>
+            <div>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" >
                                     <div>
                                         <div class="lergo-h1 top-padding">{{ 'lessons.filter' | translate }}</div>
                                         <div lergo-filter model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
@@ -16,28 +16,31 @@
                             <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"></div>
                         </div>
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                            <div class="page-content-width  page-content-titles">
-                                <div class="page-content-body">
-                                    <div class="lergo-h1" style="padding-top: 11px">
-                                        <div class="btn-group" uib-dropdown dropdown-append-to-body>
-                                            <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
-                                                <span class="fa fa-caret-down"></span>
-                                                <span class="lergo-h1">{{('lessons.'+ lessonToLoad |translate)}} </span>
-                                            </button>
-                                            <ul class="dropdown-menu overidePositionInherit" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
-                                                <li>
-                                                    <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.user)">{{'lessons.myLessons'|translate}}</a>
-                                                    <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.liked)">{{'lessons.likedLessons'|translate}}</a>
-                                                </li>
-                                            </ul>
+                            <div>
+                                <div>
+                                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                        <div class="lergo-h1" style="padding-top: 11px">
+                                            <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                                                <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
+                                                    <span class="fa fa-caret-down"></span>
+                                                    <span class="lergo-h1">{{('lessons.'+ lessonToLoad |translate)}} </span>
+                                                </button>
+                                                <ul class="dropdown-menu overidePositionInherit" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                                                    <li>
+                                                        <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.user)">{{'lessons.myLessons'|translate}}</a>
+                                                        <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.liked)">{{'lessons.likedLessons'|translate}}</a>
+                                                    </li>page</ul>
+                                            </div>
+                                            [ {{ 'lessons.total' | translate }}: {{filterPage.count}} ]
                                         </div>
-                                        [ {{ 'lessons.total' | translate }}: {{filterPage.count}} ]
                                     </div>
-                                    <div class="page-content-titles-actions">
-                                        <button ng-click="createLessonBtnDisable || create()" class="btn btn-start" ng-disabled="createLessonBtnDisable">
-                                            <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
-                                            {{ 'lessons.create' | translate }}
-                                        </button>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="rtlFloatLeft">
+                                            <button ng-click="createLessonBtnDisable || create()" class="btn btn-start" ng-disabled="createLessonBtnDisable">
+                                                <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+                                                {{ 'lessons.create' | translate }}
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
