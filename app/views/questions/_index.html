@@ -60,6 +60,7 @@
                                     <td>{{ 'questions.age' | translate}}</td>
                                 </tr>
                             </thead>
+                            <pre ng-show="!isModal" style="color: white; font-size: 1px">a</pre>
                             <tr ng-repeat="item in items |orderBy:'-lastUpdate'" ng-class="{'disabled':!!item.alreadyAdded}">
                                 <td ng-show="isModal">
                                     <input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
@@ -68,7 +69,7 @@
                                     <span ng-show="!!isModal">{{item.question}}</span>
                                     <div ng-show="!isModal" question-read-link question="item"></div>
                                 </td>
-                                <td dir="auto" style="min-width: 200px; white-space: normal">{{ getAnswers(item) | limitTo:30}}</td>
+                                <td dir="auto" style="min-width: 100px; white-space: normal">{{ getAnswers(item) | limitTo:30}}</td>
                                 <td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
                                 <td>{{item.language && ('filters.languages.' + item.language | translate) || ""}}
                                 </td>
