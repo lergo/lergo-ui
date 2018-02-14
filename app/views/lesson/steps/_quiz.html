@@ -76,10 +76,10 @@
 
 <div class="row row-nested top20">
     <div class="row row-nested top10" ng-repeat="item in step.quizItems">
-        <div dir="auto" class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div dir="auto" class="col-lg-9 col-md-9 col-sm-10 col-xs-10">
             <a href="" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
         </div>
-        <div class="col-md-3 col-sm-12 col-xs-12 text-right">
+        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 text-right">
             <a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
             <a href="" ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
             <a href="" ng-click="removeItemFromQuiz( item, step )">X</a>
