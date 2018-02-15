@@ -165,8 +165,20 @@
                     </div>
                 </div >
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="sidebar page-content-sidebar">
-                        <div helper-content path="'/lesson/update'" user="user"></div>
+                        <div class="hidden-lg hidden-md" style="padding: 0 15px;">
+                            <button style="white-space: normal;" type="button" class="btn btn-default btn-block" ng-click="isCollapsed = !isCollapsed">{{'helperContent.hintsAndVideos' | translate}}
+                            </button>
+                            <hr>
+                            <div uib-collapse="!isCollapsed">
+                                <div helper-content path="'/lesson/update'" user="user"></div>
+                            </div>
+                        </div>
+                    <div class="hidden-sm hidden-xs">
+                        <div class="sidebar page-content-sidebar">
+                            <div>
+                                <div helper-content path="'/lesson/update'" user="user"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
