@@ -182,34 +182,34 @@
             <hr/>
             <div class="recommendation" uib-collapse="!!recommendationCollapsed">
                 <div class="top20" ng-show="!!report.data.lesson.nextLessonId">
-                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="col-md-5 col-sm-12 col-xs-12">
                         <div>
-                            <div class="col-md-2 col-sm-2 col-xs-2">
+                            <div class="col-md-2 col-sm-1 col-xs-1">
                                 <i class="fa fa-university"></i>
                             </div>
-                            <div class="col-md-10 col-sm-10 col-xs-10">
+                            <div class="col-md-10 col-sm-11 col-xs-11">
                                 <span class="title lergo-h1">{{'report.nextLesson' | translate}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9 col-sm-9 col-xs-9 description">
+                    <div class="col-md-7 col-sm-12 col-xs-12 description">
                         <a ng-href="#!/public/lessons/{{report.data.lesson.nextLessonId}}/intro">
                             {{'reports.click.nextLesson' | translate}}
                         </a>
                     </div>
                 </div>
                 <div class="top20" ng-show="!!report.data.lesson.priorLessonId">
-                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="col-md-5 col-sm-12 col-xs-12">
                         <div>
-                            <div class="col-md-2 col-sm-2 col-xs-2">
+                            <div class="col-md-2 col-sm-1 col-xs-1">
                                 <i class="fa fa-university">&nbsp;</i>
                             </div>
-                            <div class="col-md-10 col-sm-10 col-xs-10">
+                            <div class="col-md-10 col-sm-11 col-xs-11">
                                 <span class="title lergo-h1">{{'report.priorLesson' | translate}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9 col-sm-9 col-xs-9 description">
+                    <div class="col-md-7 col-sm-12 col-xs-12 description">
                         <a ng-href="#!/public/lessons/{{report.data.lesson.priorLessonId}}/intro">
                             {{'reports.click.priorLesson' | translate}}
                         </a>
