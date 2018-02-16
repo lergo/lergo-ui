@@ -1,6 +1,7 @@
 <div class="base-layout">
     <div class="report">
         <div class="row header">
+            <div class="hidden-sm hidden-xs">
             <div class="col-md-3">
                 <div class="image-agg">
                     <div class="user">
@@ -17,9 +18,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 header-name ">
-                <div class="class-header lergo-h1">{{'reports.header.className' | translate}}</div>
-                <div class="class-name">{{report.data.invitee.class}}</div>
+            </div>
+
+            <div class="hidden-lg hidden-md">
+                <img img-fluid src="../images/homepage/graduation.jpg" style="padding: unset">
+            </div>
+        <div>
+            <div class="col-md-3 col-sm-12 col-xs-12 header-name">
+                <div class="class-header lergo-h1">{{'reports.header.className' | translate}}</div><div class="class-name">{{report.data.invitee.class}}</div>
                 <br>
                 <div class="lergo-h1">
                     <a ng-show="!report.data.lesson.temporary"
@@ -32,107 +38,112 @@
                     <span>{{report.lastUpdate | date:'medium'}}</span>
                 </div>
             </div>
-            <div class="col-md-6 ">
-                <div class="row  header-desc">
-                    <div class="col-md-12">
+            <div class="col-md-6 col-sm-12 col-xs-12 ">
+                <div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <div ng-show="!!report.data.lesson.description">
-                            <div class="lergo-h4">{{'report.description'|translate}}</div>
-                            <div>{{report.data.lesson.description | limitTo:440}}</div>
+                            <div class="lergo-h4>{{'report.description'|translate}}</div>
+                            <div class="padding-leftRight15">{{report.data.lesson.description | limitTo:440}}</div>
                         </div>
                     </div>
                 </div>
-                <div class="row top20 redo-buttons">
-                    <div class="col-md-12 reports text-right">
+                <div></div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <a href="" ng-click="redirectToIndividualReports()">
-                            <i class="fa fa-bar-chart"> {{'report.header.individualReports' | translate}}</i>
+                            <i class="fa fa-bar-chart top20 padding-leftRight15" style="font-size: 1.5em"> {{'report.header.individualReports' | translate}}</i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+                <span class="collapsible lergo-h1">
+                    <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed">
+                        <i class="fa" ng-class="{'fa-plus-square':summaryCollapsed,'fa-minus-square':!summaryCollapsed}">
+                        </i>
+                        {{'report.summary'|translate}}
+                    </a>
+                </span>
+                <span class="text-primary">
+                        {{'report.summaryHint' | translate:{count:report.count} }}
+                </span>
+        </div>
+        <hr/>
 
-        <div class="row">
-            <span class="collapsible lergo-h1">
-                <a href="" class="no-underline " ng-click="summaryCollapsed=!summaryCollapsed">
-                    <i class="fa" ng-class="{'fa-plus-square':summaryCollapsed,'fa-minus-square':!summaryCollapsed}">
-                    </i>
-                    {{'report.summary'|translate}}
+        <div uib-collapse="!!summaryCollapsed" class="summary">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="top20">
+                    <div class="col-md-3 col-sm-5 col-xs-5">
+                        <div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <i class="fa fa-percent"></i>
+                            </div>
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <span class="lergo-h1">{{'reports.correctAvg'|translate}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-7 col-xs-7" >
+                        <span class="bold">
+                            {{'reports.summary.correctPercentage' | translate:{percentage:report.correctPercentage} }}
+                        </span>
+                        (<ng-pluralize count="report.data.quizItems.length" when="{
+                            '0': '{{ &quot;report.questionsInLesson.zero&quot; | translate}}',
+                            'one': '{} {{ &quot;report.questionsInLesson.one&quot; | translate}}',
+                            'other': '{} {{ &quot;report.questionsInLesson.other&quot; | translate}}'}">
+                        </ng-pluralize>
+                        <ng-pluralize count="openQuestionCount" when="{
+                            '0': '{{&quot;report.openQuestions.zero&quot; | translate}}',
+                            'one': ', {} {{&quot;report.openQuestions.one&quot; | translate}}',
+                            'other': ', {} {{&quot;report.openQuestions.other&quot; | translate}}'}">
+                        </ng-pluralize>)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="top20">
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <span class="lergo-h1">{{'reports.summary.durationAvg'|translate}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-9">
+                        {{report.duration|duration}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 top20">
+            <div class="collapsible lergo-h1 ">
+                <a href="" class="no-underline" ng-click="stepCollapsed=!stepCollapsed">
+                    <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
+                    <i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>
+                    {{'report.lessonSteps'|translate}}
                 </a>
-            </span>
-            <span class="text-primary">
-                    {{'report.summaryHint' | translate:{count:report.count} }}
-            </span>
-        </div>
-        <hr/>
-        <div uib-collapse="!!summaryCollapsed" class="summary row">
-            <div class="row row-nested top20">
-                <div class="col-md-3">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <i class="fa fa-percent"></i>
-                        </div>
-                        <div class="col-md-10">
-                            <span class="lergo-h1">{{'reports.correctAvg'|translate}}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <span class="bold">
-                        {{'reports.summary.correctPercentage' | translate:{percentage:report.correctPercentage} }}
-                    </span>
-                    (<ng-pluralize count="report.data.quizItems.length" when="{
-                        '0': '{{ &quot;report.questionsInLesson.zero&quot; | translate}}',
-                        'one': '{} {{ &quot;report.questionsInLesson.one&quot; | translate}}',
-                        'other': '{} {{ &quot;report.questionsInLesson.other&quot; | translate}}'}">
-                    </ng-pluralize>
-                    <ng-pluralize count="openQuestionCount" when="{
-                        '0': '{{&quot;report.openQuestions.zero&quot; | translate}}',
-                        'one': ', {} {{&quot;report.openQuestions.one&quot; | translate}}',
-                        'other': ', {} {{&quot;report.openQuestions.other&quot; | translate}}'}">
-                    </ng-pluralize>)
-                </div>
             </div>
-            <div class="row row-nested top20">
-                <div class="col-md-3">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <i class="fa fa-clock-o"></i>
-                        </div>
-                        <div class="col-md-10">
-                            <span class="lergo-h1">{{'reports.summary.durationAvg'|translate}}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    {{report.duration|duration}}
 
-                </div>
-            </div>
-        </div>
-        <div class="collapsible lergo-h1 row">
-            <a href="" class="no-underline" ng-click="stepCollapsed=!stepCollapsed">
-                <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
-                <i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>
-                {{'report.lessonSteps'|translate}}
-            </a>
-        </div>
         <hr/>
-        <div class="step row">
-            <div uib-collapse="!!stepCollapsed" class="row row-nested top20"
+        <div class="step">
+            <div uib-collapse="!!stepCollapsed" class="top20"
                  ng-repeat="step in report.data.lesson.steps">
-                <div class="col-md-3">
-                    <div class="row">
-                        <div class="col-md-2">
+                <div class="col-md-5 col-sm-5 col-xs-5">
+                    <div>
+                        <div class="col-md-2 col-sm-2 col-xs-2">
                             <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
                             <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
                             <i ng-show="!!step.slideURL" class="fa fa-television "></i>
                         </div>
-                        <div class="col-md-10">
-                            <span class="title lergo-h1">{{step.title}}</span>
+                        <div class="col-md-10 col-sm-10 col-xs-10">
+                            <span class="lergo-h1">{{step.title}}</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9 description">
+                <div class="col-md-7 col-sm-7 col-xs-7 description">
                     <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                         {{'reports.click.video' | translate}}</a>
                     <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
@@ -158,8 +169,10 @@
                 </div>
             </div>
         </div>
-        <div ng-show="!!report.data.lesson.nextLessonId || !!report.data.lesson.priorLessonId">
-            <div class="collapsible lergo-h1 row">
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 top20">
+            <div ng-show="!!report.data.lesson.nextLessonId || !!report.data.lesson.priorLessonId">
+            <div class="collapsible lergo-h1">
                 <a href="" class="no-underline " ng-click="recommendationCollapsed=!recommendationCollapsed">
                     <i ng-show="!!recommendationCollapsed" class="fa fa-plus-square"></i>
                     <i ng-show="!recommendationCollapsed" class="fa fa-minus-square"></i>
@@ -167,36 +180,36 @@
                 </a>
             </div>
             <hr/>
-            <div class="recommendation row" uib-collapse="!!recommendationCollapsed">
-                <div class="row row-nested top20" ng-show="!!report.data.lesson.nextLessonId">
-                    <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-md-2">
+            <div class="recommendation" uib-collapse="!!recommendationCollapsed">
+                <div class="top20" ng-show="!!report.data.lesson.nextLessonId">
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
                                 <i class="fa fa-university"></i>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-10 col-sm-10 col-xs-10">
                                 <span class="title lergo-h1">{{'report.nextLesson' | translate}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9 description">
+                    <div class="col-md-9 col-sm-9 col-xs-9 description">
                         <a ng-href="#!/public/lessons/{{report.data.lesson.nextLessonId}}/intro">
                             {{'reports.click.nextLesson' | translate}}
                         </a>
                     </div>
                 </div>
-                <div class="row row-nested top20" ng-show="!!report.data.lesson.priorLessonId">
-                    <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-md-2">
+                <div class="top20" ng-show="!!report.data.lesson.priorLessonId">
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
                                 <i class="fa fa-university">&nbsp;</i>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-10 col-sm-10 col-xs-10">
                                 <span class="title lergo-h1">{{'report.priorLesson' | translate}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9 description">
+                    <div class="col-md-9 col-sm-9 col-xs-9 description">
                         <a ng-href="#!/public/lessons/{{report.data.lesson.priorLessonId}}/intro">
                             {{'reports.click.priorLesson' | translate}}
                         </a>
@@ -204,8 +217,9 @@
                 </div>
             </div>
         </div>
+        </div>
         <div class="details">
-            <div class="row">
+            <div>
                 <span class="collapsible lergo-h1">
                      <a class=" no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
                     <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
@@ -218,10 +232,11 @@
                 </span>
             </div>
             <hr/>
-            <div uib-collapse="!!detailCollapsed" class="detail row">
+            <div uib-collapse="!!detailCollapsed" class="detail">
                 <agg-report-view answers="report.answers" quiz-items="report.data.quizItems"></agg-report-view>
             </div>
         </div>
+    </div>
     </div>
     <div powered-by-lergo="report.data.lesson"></div>
 </div>
