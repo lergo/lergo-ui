@@ -41,7 +41,8 @@
                                     </div>
                                 </div>
                             </div>
-                       <div class="col-lg-2 col-md-2" ></div>
+                        <div class="col-lg-2 col-md-2" ></div>
+                        </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="collapsible row">
@@ -97,7 +98,7 @@
                                 <div class="col-md-3">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <i class="fa fa-university"></i>
+                                            <i class="fa fa-university" aria-hidden="true"></i>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="title">{{'report.nextLesson' | translate}}</span>
@@ -129,7 +130,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="details">
                         <div class="collapsible row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -139,26 +139,25 @@
                                     {{'lessonPreview.detailHeader'|translate}}
                                 </a>
                             </div>
-                        <hr/>
-                        <div uib-collapse="!!detailCollapsed" class="detail row">
-                            <div class="row row-nested" ng-repeat="step in lesson.steps">
-                                <div ng-if="!!step.quizItems" class="col-md-12">
-                                    <div dir="auto" class="collapsible">{{step.title}}</div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div ng-repeat="id in step.quizItems"  style="white-space: normal">
-                                            <question-preview quiz-item="questions[id]"></question-preview>
+                            <hr/>
+                            <div uib-collapse="!!detailCollapsed" class="detail row">
+                                <div class="row row-nested" ng-repeat="step in lesson.steps">
+                                    <div ng-if="!!step.quizItems" class="col-md-12">
+                                        <div dir="auto" class="collapsible">{{step.title}}</div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div ng-repeat="id in step.quizItems"  style="white-space: normal">
+                                                <question-preview quiz-item="questions[id]"></question-preview>
+                                            </div>
                                         </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+                                        <br/>
                                     </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-                                    <br/>
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
