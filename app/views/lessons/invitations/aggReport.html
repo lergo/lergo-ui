@@ -20,9 +20,13 @@
             </div>
             </div>
 
-            <div class="hidden-lg hidden-md">
-                <img img-fluid src="../images/homepage/graduation.jpg" style="padding: unset">
-            </div>
+            <div class="hidden-lg hidden-md" >
+            <img img-fluid src="../images/homepage/graduation.jpg" style="padding: unset">
+                <!--<img img-fluid src="../images/homepage/students.png" style="width: 20%; display: inline-block">
+                <img img-fluid src="../images/homepage/students.png" style="width: 20%; display: inline-block">
+                <img img-fluid src="../images/homepage/students.png" style="width: 20%; display: inline-block">
+                <img img-fluid src="../images/homepage/students.png" style="width: 20%; display: inline-block">-->
+        </div>
         <div class="padding-leftRight15">
             <div class="col-md-3 col-sm-12 col-xs-12 header-name">
                 <div class="class-header lergo-h1">{{'reports.header.className' | translate}}</div><div class="class-name">{{report.data.invitee.class}}</div>
@@ -42,7 +46,7 @@
                 <div>
                     <div class="col-md-12 col-sm-12 col-xs-12 padding-leftRight15">
                         <div ng-show="!!report.data.lesson.description">
-                            <div class="lergo-h4>{{'report.description'|translate}}</div>
+                            <div class="lergo-h4">{{'report.description'|translate}}</div>
                             <div class="padding-leftRight15">{{report.data.lesson.description | limitTo:440}}</div>
                         </div>
                     </div>
