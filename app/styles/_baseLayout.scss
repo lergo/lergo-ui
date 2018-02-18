@@ -172,7 +172,11 @@ label.btn.btn-link {
 
 .navbar-toggle {
     border-color:#91CFFF !important;
-    top: 5px;
+    /*top: 5px;*/ // removed this for mobile homepage
+}
+
+.searchIconCenter {
+    float: left; padding: 26px 0;
 }
 
  /*for the mobile search only*/
