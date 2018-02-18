@@ -386,6 +386,7 @@ angular.module('lergoApp')
             'art',
             'music',
             'arabic',
+            'psychometric',
             'signlanguage',
             'financialEducation',
             'physicalEducation',
