@@ -62,7 +62,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             'reportType' : '=?', // for filter report by lesson name
 			'change' : '&onChange',
 			'load' : '&onLoad',
-			'noUrlChanges' : '@noUrlChanges'
+			'noUrlChanges' : '@noUrlChanges',
+            'hideMe': '=hide'
 		},
 		link : function postLink(scope /*, element, attrs */) {
 
