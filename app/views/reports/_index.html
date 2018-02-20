@@ -7,7 +7,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
                         <div>
-                            <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
+                            <div class="lergo-h1 mobile-leftRight20 ">{{ 'reports.filter' | translate }}</div>
                             <div lergo-filter hide=true model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts"
                                  on-load="filterLoaded()" report-type="reportsPage.reportType">
                             </div>
@@ -16,11 +16,11 @@
                     <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"></div>
                 </div>
                 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                    <div class="lergo-h1 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <div class="lergo-h1 mobile-leftRight20">
                             {{ 'reports.myReports' | translate }} [ {{ 'reports.total' | translate }}:
                             {{systemStats.myReports + + systemStats.myInvitedReports }} ]
                     </div>
-                    <div class="lergo-h1 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="lergo-h1 mobile-leftRight20 top15 bot24" >
                             <!-- LERGO-457-->
                         <select class="report-type-selection" ng-model="reportsPage.reportType"
                                 ng-options="repType.id as ( 'reports.type.' + repType.id | translate ) for repType in reportTypes">

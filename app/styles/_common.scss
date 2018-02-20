@@ -785,8 +785,16 @@ $COLOR_19: #2a6496 !default;
     border-radius: 10px;
     background-color: $LERGO_BODY_TILE_BACKGROUND;
 }
+
 .bot5 {
     margin-bottom: 5px;
+}
+
+.bot10 {
+    margin-bottom: 10px;
+}
+.bot24 {
+    margin-bottom: 24px;
 }
 
 .top5 {
@@ -856,10 +864,14 @@ label {
 
 
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:1024px) {
     .lergo-body-tile {
         max-width: unset;
         width: unset;
+    }
+    .mobile-leftRight20 {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 .rtl {
@@ -870,7 +882,7 @@ label {
 
 }
 
-@media  screen and (min-width : 1028px) {
+@media  screen and (min-width : 1024px) {
     .rtlFloatLeft {
         float: right;
     }

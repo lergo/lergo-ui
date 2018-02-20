@@ -9,7 +9,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
                                     <div>
-                                        <div class="lergo-h1 top-padding">{{ 'lessons.filter' | translate }}</div>
+                                        <div class="lergo-h1 top-padding mobile-leftRight20">{{ 'lessons.filter' | translate }}</div>
                                         <div lergo-filter hide=true model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
                                     </div>
                                 </div>
@@ -20,7 +20,7 @@
                                 <div>
                                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
                                         <div class="lergo-h1" style="padding: 16px 0">
-                                            <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                                            <div class="btn-group mobile-leftRight20" uib-dropdown dropdown-append-to-body>
                                                 <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
                                                     <span class="fa fa-caret-down"></span>
                                                     <span class="lergo-h1">{{('lessons.'+ lessonToLoad |translate)}} </span>
@@ -35,7 +35,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                        <div class="rtlFloatLeft">
+                                        <div class="rtlFloatLeft mobile-leftRight20">
                                             <button style="margin-bottom: 40px" ng-click="createLessonBtnDisable || create()" class="btn btn-start" ng-disabled="createLessonBtnDisable">
                                                 <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
                                                 {{ 'lessons.create' | translate }}
