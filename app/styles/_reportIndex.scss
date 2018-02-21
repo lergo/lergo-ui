@@ -16,11 +16,20 @@
         margin: 10px 20px 10px 20px;
     }
 }
-@media screen and (max-width:768px) {
+
+.margin-ri {
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+@media screen and (max-width:1024px) {
     .rtl {
         ul.dropdown-menu.dropdown-mobile {
             right: 0;
             min-width: 200px;
         }
+    }
+    .margin-ri {
+        margin-top: 35px;
+        margin-bottom: 30px;
     }
 }

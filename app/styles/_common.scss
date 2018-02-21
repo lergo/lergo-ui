@@ -859,8 +859,10 @@ $COLOR_19: #2a6496 !default;
 label {
     font-weight: 500;
 }
-
-
+// put inside an empty div to get correct spacing
+.push-down {
+    height: 24px;
+}
 
 
 
@@ -873,6 +875,10 @@ label {
         padding-left: 20px;
         padding-right: 20px;
     }
+    #content > div:first-child {
+        margin-top: 5px;
+    }
+
 }
 .rtl {
     .dropdown-menu {
@@ -892,8 +898,6 @@ label {
         }
     }
 }
-
-
 
 
 
