@@ -16,3 +16,17 @@
         margin: 10px 20px 10px 20px;
     }
 }
+.padding-1 {
+     padding-top: 16px;
+     padding-bottom: 16px;
+}
+
+@media  screen and (max-width : 1024px) {
+    .padding-1 {
+        padding-top: 0;
+        padding-bottom: 22px;
+    }
+    #content > div:first-child {
+        margin-top: 5px;
+    }
+}

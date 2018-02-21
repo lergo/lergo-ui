@@ -2,14 +2,12 @@
 <div>
     <div id="lessonsIndex" load-filter-and-paging="loadLessons()">
         <br/>
-        <div>
-            <div>
-                <div class="container">
+            <div class="container">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
                                     <div>
-                                        <div class="lergo-h1 top-padding mobile-leftRight20">{{ 'lessons.filter' | translate }}</div>
+                                        <div class="lergo-h1 top-padding mobile-leftRight20 hidden-sm hidden-xs">{{ 'lessons.filter' | translate }}</div>
                                         <div lergo-filter hide=true model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
                                     </div>
                                 </div>
@@ -19,7 +17,7 @@
                             <div>
                                 <div>
                                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
-                                        <div class="lergo-h1" style="padding: 16px 0">
+                                        <div class="lergo-h1 padding-1">
                                             <div class="btn-group mobile-leftRight20" uib-dropdown dropdown-append-to-body>
                                                 <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
                                                     <span class="fa fa-caret-down"></span>
@@ -36,7 +34,7 @@
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                         <div class="rtlFloatLeft mobile-leftRight20">
-                                            <button style="margin-bottom: 40px" ng-click="createLessonBtnDisable || create()" class="btn btn-start" ng-disabled="createLessonBtnDisable">
+                                            <button ng-click="createLessonBtnDisable || create()" class="btn btn-start bot24" ng-disabled="createLessonBtnDisable">
                                                 <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
                                                 {{ 'lessons.create' | translate }}
                                             </button>
@@ -76,11 +74,9 @@
                         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                     </div>
                 </div>
-            </div>
             <div class="page-content-body text-center" ng-show="!lessons || lessons.length == 0">
                 <span class="alert alert-warning font-medium" >{{'lessons.noLessons' | translate}}</span>
             </div>
-        </div>
         <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
     </div>
 </div>
