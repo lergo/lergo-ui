@@ -5,17 +5,15 @@
         <div class="navbar-header ">
             <div>
                 <div>
-                    <div class="col-sm-8 col-xs-8">
-                        <button type="button" class="navbar-toggle  mobile-filter-button-l"  ng-click="isNavCollapsed = !isNavCollapsed">
+                        <button style="display: inline-block" type="button" class="navbar-toggle  mobile-filter-button-l"  ng-click="isNavCollapsed = !isNavCollapsed">
                             <div >{{'filters.labels.language' | translate}} | {{'filters.labels.subject' | translate}} | {{'filters.labels.age' | translate}}  </div>
                         </button>
-                    </div>
-                    <div class="col-sm-4 col-xs-4">
-                        <button type="button" class="navbar-toggle mobile-filter-button-r" ng-hide="hideMe==true" >
+
+                        <button style="display: inline-block" type="button" class="navbar-toggle mobile-filter-button-r" ng-hide="hideMe==true" >
                             <a style="color:black" href="#!/lessons/invite/pin">{{'baseLayout.navbar.enterPin' | translate}}
                             </a>
                         </button>
-                    </div>
+
                 </div>
             </div>
         </div>
