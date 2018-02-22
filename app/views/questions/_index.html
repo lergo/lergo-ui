@@ -5,9 +5,21 @@
         <div class="container">
             <div class="row">
                 <div ng-show="!isModal">
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="lergo-h1 content-margins">
+                    <div class="push-down hidden-sm hidden-xs"></div>
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                            <div>
+                                <div class="lergo-h1  hidden-sm hidden-xs">{{ 'questions.filter' | translate }}</div>
+                                <div lergo-filter hide=true no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
+                                     on-load="filterLoaded()"
+                                     opts="questionsFilterOpts">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12"></div>
+                    </div>
+                        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                            <div class="lergo-h1 padding-1  col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="btn-group" uib-dropdown dropdown-append-to-body>
                                     <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle  style="color: #5fb9ff; text-decoration: none">
                                         <span class="fa fa-caret-down"></span>
@@ -22,28 +34,24 @@
 
                                 [ {{ 'questions.total' | translate }}: {{filterPage.count}} ]
                             </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="rtlFloatLeft mobile-leftRight20">
+                                    <button class="btn btn-start bot24" ng-click="createQuestionBtnDisable || createNewQuestion()"
+                                            ng-disabled="createQuestionBtnDisable">
+                                        <i ng-show="createQuestionBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+                                        {{ 'questions.createNew' | translate }}
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <div class="content-margins" >
-                            <button class="btn btn-start" ng-click="createQuestionBtnDisable || createNewQuestion()"
-                                    ng-disabled="createQuestionBtnDisable">
-                                    <i ng-show="createQuestionBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
-                                    {{ 'questions.createNew' | translate }}
-                            </button>
-                        </div>
+
                     </div>
                 </div>
+
                 <div class="hidden-sm hidden-xs" filter-is-active="questionsFilterOpts" section="questions"></div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
-                        <div lergo-filter hide=true no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
-                                 on-load="filterLoaded()"
-                                 opts="questionsFilterOpts">
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12"></div>
-                    </div>
+
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="table-responsive">
                         <table ng-show="items.length > 0" class="table table-bordered">
