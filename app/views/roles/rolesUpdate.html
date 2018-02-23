@@ -1,5 +1,7 @@
 <div class="base-layout " id="updateRolePage">
-    <div class="page-content-width">
+    <div>
+        <div>
+    <div class="padding-leftRight15">
         <form class="lergo-form">
             <div class="form-section form-group role-name">
                 <div class="lergo-label">
@@ -16,22 +18,18 @@
             </div>
 
 
-            <div class="form-section checklist">
+            <div class="form-section checklist hidden-xs">
                 <div ng-repeat="permission in permissions">
-                    <input type="checkbox" checklist-model="role.permissions" checklist-value="permission">
+                    <input  type="checkbox" checklist-model="role.permissions" checklist-value="permission">
                     <div class="label">{{permission}}</div>
                 </div>
             </div>
-
-            <!--<div class="form-section">
-                <div class="permissions checklist">
-                    <div ng-repeat="permission in permissions">
-                        <input type="checkbox" ng-model="permission.checked"/>
-                        <div class="label">{{ permission.label }}</div>
-                    </div>
+            <div class="form-section checklist-xs hidden-lg hidden-md hidden-sm">
+                <div ng-repeat="permission in permissions">
+                    <input  type="checkbox" checklist-model="role.permissions" checklist-value="permission">
+                    <div class="label">{{permission}}</div>
                 </div>
-            </div>-->
-
+            </div>
             <div class="lergo-h1"> Limitations </div>
             <div class="lergo-h2"> Manage Lesson Subject </div>
 
@@ -81,5 +79,6 @@
             </div>
         </form>
     </div>
-
+        </div>
+    </div>
 </div>

@@ -1,35 +1,31 @@
 <div admin-homepage id="rolesIndex">
-    <div > <!-- load-filter-and-paging="loadReports()"-->
+    <div>
         <div class="lergo-label">
             <span class="errorMessage" ng-show='errorMessage' style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
         </div>
         <br />
-        <div class="page-content-width page-content-titles">
-            <div class="page-content-body">
+        <div>
+            <div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" style="margin-top: 20px" >
-                            <div class="lergo-h1">
+                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                            <div class="lergo-h1 padding-1 mobile-leftRight20">
                                 {{ 'roles.myRoles' | translate }} [ {{ 'roles.total' | translate }}: {{roles.length+0}} ]
                             </div>
                         </div>
-                   <!-- </div>
-                    <div class="row">-->
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" style="margin-top: 20px">
-                            <div class="page-content-titles-actions">
-                                <button style="margin-top: -12px" ng-click="create()" class="btn">{{ 'roles.createNew' | translate }}</button>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div class="rtlFloatLeft mobile-leftRight20">
+                                <button  ng-click="create()" class="btn">{{ 'roles.createNew' | translate }}</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="page-content-width">
-            <div class="page-content-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                             <table class="lergo-table">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="push-down"></div>
+            <div class="table-responsive">
+                <table class="table table-bordered">
                     <thead>
                     <tr>
                         <td>{{ 'name' | translate }}</td>
@@ -42,21 +38,15 @@
                             <a uib-tooltip="{{'roles.tooltip.go' | translate}}"
                                ng-href="#!/manage/roles/{{role._id}}/update">{{ getRoleName(role) }}</a>
                         </td>
-                        <td class="description">
+                        <td style="min-width: 250px; white-space: normal" class="description">
                             {{ role.description }}
                         </td>
                     </tr>
                     </tbody>
                 </table>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <!--<div class="sidebar page-content-sidebar">-->
-                <!--<div lergo-filter model="reportsFilter" on-change="loadReports()" opts="reportsFilterOpts" on-load="filterLoaded()"></div>-->
-            <!--</div>-->
         </div>
-        <!--<div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadReports()" on-load="pagingLoaded()"></div>-->
+
     </div>
 
 </div>

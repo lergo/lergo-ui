@@ -1,9 +1,9 @@
 
 <div>
     <div class="base-layout " id="admin">
-        <div>
+        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
             <ul class="nav nav-tabs hidden-sm hidden-xs">
-                <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" admin-section="{{section.permission}}" class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" admin-section="{{section.permission}}" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                     <a href="{{section.url}}">
                         <i class="{{section.icon}}"></i>
                         {{'baseLayout.header.links.' + section.id | translate}}
@@ -12,6 +12,7 @@
             </ul>
 
             <div class="lergo-tab-content">
+                <div class="push-down"></div>
                 <div ng-transclude=""></div>
             </div>
         </div>

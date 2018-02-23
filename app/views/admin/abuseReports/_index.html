@@ -1,25 +1,24 @@
 <div load-filter-and-paging="load()" admin-homepage>
-     <div class="page-content-width page-content-titles">
-                    <div class="page-content-body">
-<!--
-                        <div class="lergo-h1">{{ 'admin.flaggedLessonShort' | translate }}[ {{ 'lessons.total' | translate }}: {{systemStats.abuseReportsCount}} ]</div>
--->
-                    </div>
-                </div>
-                <div class="page-content-width">
-                    <div class="page-content-body">
+                <div >
+                    <div>
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="padding: 2vw">
-                                    <div class="lergo-h1">{{ 'reports.filter' | translate }}</div>
-                                    <div>
+                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
+                                        <div class="lergo-h1 top-padding hidden-sm hidden-xs">{{ 'reports.filter' | translate }}</div>
                                         <div lergo-filter   model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
                                     </div>
                                 </div>
-                                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"></div>
+                                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+
+                                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                            <div class="lergo-h1 padding-1 mobile-leftRight20">{{ 'admin.flaggedLesson' | translate }}</div>
+                                           <!-- <div class="push-down"></div>-->
+
+
                                 <div class="table-responsive">
-                                <table class="lergo-table ">
+                                <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <td class="checkbox-dropdown">
@@ -84,6 +83,7 @@
                                 </tbody>
                             </table>
                             </div>
+                                </div>
                                 </div>
                             </div>
                     </div>

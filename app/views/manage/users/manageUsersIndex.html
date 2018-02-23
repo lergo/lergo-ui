@@ -4,12 +4,12 @@
             <span class="errorMessage" ng-show='errorMessage' style="float: right; font-size: 15px; color: red;">{{errorMessage}}</span>
         </div>
         <br />
-        <div class="page-content-width page-content-titles">
-            <div class="page-content-body">
+        <div>
+            <div>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                            <div class="lergo-h1">
+                            <div class="lergo-h1 mobile-leftRight20">
                             {{ 'manage.users.index.myUsers' | translate }} [ {{ 'manage.users.index.count' | translate }}: {{totalUsers+0}} ]
                             </div>
                         </div>
@@ -17,11 +17,11 @@
                 </div>
             </div>
         </div>
-        <div class="page-content-width">
-            <div class="page-content-body">
+        <div>
+            <div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="padding: 2vw">
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 top-padding">
                             <div>
                                 <div lergo-filter model="adminFilter" on-change="loadUsers()" opts="adminFilterOpts" on-load="filterLoaded()"></div>
                             </div>
@@ -29,7 +29,7 @@
                         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             <div class="table-responsive">
-                                <table class="lergo-table">
+                                <table class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <td>{{ 'manage.users.index.tableTitles.username' | translate }}</td>

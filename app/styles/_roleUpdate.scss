@@ -27,8 +27,11 @@
             width:100%;
 
         }
+        . checklist-mobile {
+            $COLUMNS: 1;
+        }
         .label{
-            width:250px;
+            /*width:250px;*/
         }
     }
 
