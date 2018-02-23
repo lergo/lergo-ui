@@ -46,37 +46,37 @@
         </div>
         <hr/>
         <div class="step row" uib-collapse="!!stepCollapsed">
-            <div class="row row-nested top20" ng-repeat="step in lesson.steps">
-                <div class="col-md-3">
-                    <div class="row">
-                        <div class="col-md-2">
+            <div ng-repeat="step in lesson.steps">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div>
+                        <div class="col-md-1 col-sm-2 col-xs-2">
                             <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
                             <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
                             <i ng-show="!!step.slideURL" class="fa fa-television "></i>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             <span dir="auto" class="title">{{step.title}}</span>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-9 description">
-                    <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}" target="_blank">
-                        {{'reports.click.video' | translate}}</a>
-                    <span ng-show="!!step.quizItems">
-                     <ng-pluralize count="step.quizItems.length" when="{
-                            '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
-                            'one':'{} {{ &quot;report.questionsInQuiz.one&quot; | translate}}',
-                            'other':'{} {{ &quot;report.questionsInQuiz.other&quot; | translate}}'}">
-                     </ng-pluralize>
-                </span>
-                    <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}" target="_blank">
-                        {{'reports.click.step' | translate}}
-                    </a>
+                    <div class="col-md-7 col-sm-6 col-xs-6">
+                        <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}" target="_blank">
+                            {{'reports.click.video' | translate}}</a>
+                        <span ng-show="!!step.quizItems">
+                         <ng-pluralize count="step.quizItems.length" when="{
+                                '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
+                                'one':'{} {{ &quot;report.questionsInQuiz.one&quot; | translate}}',
+                                'other':'{} {{ &quot;report.questionsInQuiz.other&quot; | translate}}'}">
+                         </ng-pluralize>
+                    </span>
+                        <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}" target="_blank">
+                            {{'reports.click.step' | translate}}
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div ng-show="!!lesson.nextLessonId || !!lesson.priorLessonId">
-            <div class="collapsible row">
+        <div class="step row" ng-show="!!lesson.nextLessonId || !!lesson.priorLessonId">
+            <div>
                 <a href="" class="no-underline " ng-click="recommendationCollapsed=!recommendationCollapsed">
                     <i ng-show="!!recommendationCollapsed" class="fa fa-plus-square"></i>
                     <i ng-show="!recommendationCollapsed" class="fa fa-minus-square"></i>
@@ -84,46 +84,46 @@
                 </a>
             </div>
             <hr/>
-            <div class="recommendation row" uib-collapse="!!recommendationCollapsed">
-                <div class="row row-nested top20" ng-show="!!lesson.nextLessonId">
-                    <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-md-2">
+            <div uib-collapse="!!recommendationCollapsed">
+                <div  ng-show="!!lesson.nextLessonId">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div>
+                            <div class="col-md-1 col-sm-2 col-xs-2">
                                 <i class="fa fa-university"></i>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
                                 <span class="title">{{'report.nextLesson' | translate}}</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-9 description">
-                        <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro" target="_blank">
-                            {{'reports.click.nextLesson' | translate}}
-                        </a>
+                        <div class="col-md-7 col-sm-6 col-xs-6">
+                            <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro" target="_blank">
+                                {{'reports.click.nextLesson' | translate}}
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="row row-nested top20" ng-show="!!lesson.priorLessonId">
-                    <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-md-2">
+                <div ng-show="!!lesson.priorLessonId">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div>
+                            <div class="col-md-1 col-sm-2 col-xs-2">
                                 <i class="fa fa-university">&nbsp;</i>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
                                 <span class="title">{{'report.priorLesson' | translate}}</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-9 description">
-                        <a ng-href="#!/public/lessons/{{lesson.priorLessonId}}/intro" target="_blank">
-                            {{'reports.click.priorLesson' | translate}}
-                        </a>
+                        <div class="col-md-7 col-sm-6 col-xs-6">
+                            <a ng-href="#!/public/lessons/{{lesson.priorLessonId}}/intro" target="_blank">
+                                {{'reports.click.priorLesson' | translate}}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="details">
-            <div class="collapsible row">
+        <hr/>
+        <div class="details col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="collapsible ">
                 <a class="no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
                     <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
                     <i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
@@ -132,7 +132,7 @@
             </div>
             <hr/>
             <div uib-collapse="!!detailCollapsed" class="detail row">
-                <div class="row row-nested" ng-repeat="step in lesson.steps">
+                <div ng-repeat="step in lesson.steps">
                     <div ng-if="!!step.quizItems" class="col-md-12">
                         <div dir="auto" class="collapsible">{{step.title}}</div>
                         <div ng-repeat="id in step.quizItems">
