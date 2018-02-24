@@ -134,8 +134,7 @@
     </div>
 </div>
 
-<div>
-    <div>
+
         <div class="hidden-lg hidden-md" style="background-color: #d2e8fa"> <!--start mobile view -->
             <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step-mobile" >
                 <div class="congrats">
@@ -153,7 +152,8 @@
                     <div class="lesson-title">{{lesson.user.username}}</div>
                     <br>
                 </div>
-                <div id="message-buttons">
+                <div id="message-buttons" style="overflow-y: auto">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                     <a href="" ng-show="!lesson.temporary" class="btn-link" ng-click="startBtnDisable || startLesson()"
                        ng-disabled="startBtnDisable">
                         <i style="font-size: 35px; color: #8CC63F;" class="fa fa-repeat "></i>
@@ -193,13 +193,15 @@
                             {{ 'lessons.lessonReport' | translate }}
                         </button>
                     </div>
-                    <div class="recommended" ng-show="!!lesson.nextLessonId">
-                        <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
-                            <i class="fa fa-university"></i>
-                            {{ 'lessons.recommenedNextLesson' | translate }}
-                        </a>
+                    <div class="text-center top20">
+                        <div class="recommended" ng-show="!!lesson.nextLessonId">
+                            <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
+                                <i class="fa fa-university"></i>
+                                {{ 'lessons.recommenedNextLesson' | translate }}
+                            </a>
+                        </div>
                     </div>
-
+                    </div>
                 </div>
                 <br/>
                 <div class="stats" style="margin: 15px">
@@ -260,7 +262,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 

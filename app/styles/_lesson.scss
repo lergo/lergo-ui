@@ -155,10 +155,7 @@
     }
 
     .done-step-mobile {
-        /*background-image: url("../images/certificate.png");*/
         margin: 0 auto;
-        /*width: 800px;
-        height: 550px;*/
         .congrats {
             font-size: 30px;
             text-align: center;
@@ -187,7 +184,6 @@
             }
         }
         .stats {
-            /*width: 600px;*/
             margin: 15px auto;
             .action-items {
                 text-align: right;
@@ -243,6 +239,7 @@
       .message, .report, .stats{
         width:400px;
 
+
         .lesson-title{
           color: #428bca;
           font-size: 17px;
@@ -275,7 +272,6 @@
 .lergo-embed-mode-mobile{
     #lessonDisplay-mobile{
         #content-mobile{
-            /*width:600px;*/
         }
         .lesson-step-title{
             text-overflow: ellipsis;
@@ -348,8 +344,8 @@
 
 #message-buttons {
     padding: 30px;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
     border: 2px #91cfff;
     border-radius: 15px;
     background-color: #cecece;
