@@ -1,9 +1,11 @@
-<div >
+<div>
     <div class="action-items">
-        <div class="hint" ng-show="!!quizItem.hint">
+        <div class="hint" ng-show="!!quizItem.hint" >
             <div class="hidden-lg hidden-md">
-                <button popover-animation="false" ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="bottom-right"  popover-trigger="'focus'" uib-popover="{{quizItem.hint}}" class="btn-link"
+                <div>
+                <button  popover-animation="false" ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="auto bottom-right"  popover-trigger="'focus'" uib-popover="{{quizItem.hint}}" class="btn-link"
                         popover-is-open="stepDisplay.showHint" tabindex="0">{{'hint' | translate}}</button><!-- focus click - click adds mobile support in ipad/chrome -->
+                </div>
             </div>
             <div class="hidden-sm hidden-xs">
                 <button popover-animation="false" ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top"  popover-trigger="'focus'" uib-popover="{{quizItem.hint}}" class="btn-link"

@@ -421,6 +421,16 @@ textarea#openQuestionTextarea.mobile.width {
             }
         }
     }
+    #questionPreview {
+        .right {
+            .action-items {
+
+                .hint {
+                    float: left;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {
