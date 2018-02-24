@@ -49,7 +49,6 @@ textarea#openQuestionTextarea.mobile.width {
         }
     }
     .right {
-       /* width: 15%;*/
         .action-items {
             font-size: 30px;
             text-align: center;
@@ -59,9 +58,8 @@ textarea#openQuestionTextarea.mobile.width {
             .hint {
                 font-size: 20px;
                 margin-top: 0px;
-                /*position: relative;*/
-                float: right;
             }
+
         }
     }
     textarea {
@@ -421,19 +419,9 @@ textarea#openQuestionTextarea.mobile.width {
             }
         }
     }
-    #questionPreview {
-        .right {
-            .action-items {
-
-                .hint {
-                    float: left;
-                }
-            }
-        }
-    }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     #questionIntro .question .details {
         padding: 0;
     }
@@ -452,5 +440,27 @@ textarea#openQuestionTextarea.mobile.width {
     }
     audio.audio-width-mobile {
         width: 200px;
+    }
+
+    #questionPreview {
+        .right {
+            .action-items {
+                .hint {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    .rtl {
+        #questionPreview {
+            .right {
+                .action-items {
+                    .hint {
+                         float: left;
+                    }
+                }
+            }
+        }
     }
 }
