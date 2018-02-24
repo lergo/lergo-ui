@@ -47,14 +47,14 @@
         <hr/>
         <div class="step row" uib-collapse="!!stepCollapsed">
             <div ng-repeat="step in lesson.steps">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot5">
                     <div>
-                        <div class="col-md-1 col-sm-2 col-xs-2">
+                        <div class="col-md-1 col-sm-1 col-xs-1">
                             <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
                             <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
                             <i ng-show="!!step.slideURL" class="fa fa-television "></i>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-4">
+                        <div class="col-md-4 col-sm-5 col-xs-5">
                             <span dir="auto" class="title">{{step.title}}</span>
                         </div>
                     </div>
@@ -88,10 +88,10 @@
                 <div  ng-show="!!lesson.nextLessonId">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div>
-                            <div class="col-md-1 col-sm-2 col-xs-2">
+                            <div class="col-md-1 col-sm-1 col-xs-1">
                                 <i class="fa fa-university"></i>
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-4">
+                            <div class="col-md-4 col-sm-5 col-xs-5">
                                 <span class="title">{{'report.nextLesson' | translate}}</span>
                             </div>
                         </div>
@@ -105,10 +105,10 @@
                 <div ng-show="!!lesson.priorLessonId">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div>
-                            <div class="col-md-1 col-sm-2 col-xs-2">
+                            <div class="col-md-1 col-sm-1 col-xs-1">
                                 <i class="fa fa-university">&nbsp;</i>
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-4">
+                            <div class="col-md-4 col-sm-5 col-xs-5">
                                 <span class="title">{{'report.priorLesson' | translate}}</span>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
             </div>
         </div>
         <hr/>
-        <div class="details col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="details col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;">
             <div class="collapsible ">
                 <a class="no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
                     <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>

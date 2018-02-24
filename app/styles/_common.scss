@@ -278,13 +278,17 @@ button.action-item {
 // scale all fonts smaller for mobile - jeff
 @media screen and (max-width:768px) {
 
+    .lergo-h0 {
+        font-size: 22px;
+    }
+
     .lergo-h1 {
-        font-size:16px;
+        font-size:19px;
         white-space: normal;
     }
 
     .lergo-h2 {
-        font-size: 16px;
+        font-size: 17px;
     }
 
     .lergo-h3 {
@@ -292,7 +296,7 @@ button.action-item {
     }
 
     .lergo-h4 {
-        font-size: 16px;
+        font-size: 17px;
     }
 
 }
@@ -790,6 +794,7 @@ $COLOR_19: #2a6496 !default;
     margin-bottom: 5px;
 }
 
+
 .bot10 {
     margin-bottom: 10px;
 }
@@ -823,6 +828,11 @@ $COLOR_19: #2a6496 !default;
 
 .top30 {
     margin-top: 30px;
+}
+
+.pad-topBot5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .row-nested{
