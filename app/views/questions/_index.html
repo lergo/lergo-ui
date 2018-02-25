@@ -5,11 +5,11 @@
         <div class="container">
             <div class="row">
                 <div ng-show="!isModal">
-                    <div class="push-down hidden-sm hidden-xs"></div>
+                    <div class="hidden-sm hidden-xs"></div>
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                         <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
-                            <div>
-                                <div class="lergo-h1  hidden-sm hidden-xs">{{ 'questions.filter' | translate }}</div>
+                            <div class="top20">
+                                <div class="lergo-h1 push-down  hidden-sm hidden-xs">{{ 'questions.filter' | translate }}</div>
                                 <div lergo-filter   no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
                                      on-load="filterLoaded()"
                                      opts="questionsFilterOpts">
@@ -54,7 +54,7 @@
 
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="table-responsive">
-                        <table ng-show="items.length > 0" class="table   ">
+                        <table ng-show="items.length > 0" class="table">
                             <thead>
                                 <tr style="font-weight: bold">
                                     <td ng-show="isModal">
@@ -75,15 +75,15 @@
                                 <td ng-show="isModal">
                                     <input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
                                 </td>
-                                <td dir="auto" style="min-width: 200px; white-space: normal">
+                                <td dir="auto" style="width: 250px; white-space: normal">
                                     <span ng-show="!!isModal">{{item.question}}</span>
                                     <div ng-show="!isModal" question-read-link question="item"></div>
                                 </td>
-                                <td dir="auto" style="min-width: 100px; white-space: normal">{{ getAnswers(item) | limitTo:30}}</td>
+                                <td dir="auto" style="width: 250px; white-space: normal">{{ getAnswers(item) | limitTo:30}}</td>
                                 <td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
                                 <td>{{item.language && ('filters.languages.' + item.language | translate) || ""}}
                                 </td>
-                                <td>{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
+                                <td style="width: 35px">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
                                 <td>{{item.age &&('+'+ item.age) || ""}}</td>
                             </tr>
                             </tbody>

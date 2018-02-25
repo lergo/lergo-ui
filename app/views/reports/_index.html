@@ -69,7 +69,7 @@
                                     <td>
                                         <input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
                                     </td>
-                                    <td dir="auto" style="min-width: 200px; white-space: normal">
+                                    <td dir="auto" style="width: 250px; white-space: normal">
                                         <a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0"
                                            uib-tooltip="{{'reports.tooltip.go' | translate}}"
                                            ng-href="{{getReportLink(report._id)}}">{{ getReportName(report) }}</a>
