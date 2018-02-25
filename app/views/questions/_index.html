@@ -63,9 +63,9 @@
                                     <td>{{ 'questions.question' | translate }}</td>
                                     <td>{{ 'questions.answer' | translate }}</td>
                                     <td ng-show="questionToLoad ===QuestionTypeToLoad.all">{{ 'questions.createdBy' | translate }}</td>
-                                    <td>{{ 'questions.language' | translate}}</td>
                                     <td>{{ 'questions.subject' | translate}}</td>
                                     <td>{{ 'questions.age' | translate}}</td>
+                                    <td>{{ 'questions.language' | translate}}</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,10 +81,10 @@
                                 </td>
                                 <td dir="auto" style="width: 250px; white-space: normal">{{ getAnswers(item) | limitTo:30}}</td>
                                 <td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
-                                <td>{{item.language && ('filters.languages.' + item.language | translate) || ""}}
-                                </td>
                                 <td style="width: 35px">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
                                 <td>{{item.age &&('+'+ item.age) || ""}}</td>
+                                <td>{{item.language && ('filters.languages.' + item.language | translate) || ""}}
+                                </td>
                             </tr>
                             </tbody>
                         </table>
