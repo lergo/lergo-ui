@@ -1,27 +1,44 @@
-<div class="container" id="Profile">
-
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right col-edit">
-            <a class="btn btn-link  font-lg" ng-click="toggleEdit()" ng-show="userCanEdit()">
-                <i ng-show="!isEditAllow" class="fa fa-edit" tooltip-class="tooltipMobile" uib-tooltip="{{'profile.edit.title'|translate}}"></i>
-                <i ng-show="!!isEditAllow" class="fa fa-save" tooltip-class="tooltipMobile" uib-tooltip="{{'profile.save.title'|translate}}"></i>
-            </a>
-        </div>
+<div id="Profile" style="overflow-y: auto">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right col-edit">
+        <a class="btn btn-link  font-lg" ng-click="toggleEdit()" ng-show="userCanEdit()">
+            <i ng-show="!isEditAllow" class="fa fa-edit" tooltip-class="tooltipMobile" uib-tooltip="{{'profile.edit.title'|translate}}"></i>
+            <i ng-show="!!isEditAllow" class="fa fa-save" tooltip-class="tooltipMobile" uib-tooltip="{{'profile.save.title'|translate}}"></i>
+        </a>
     </div>
-    <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 text-center">
+    <div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-center">
             <div>
                 <img ng-src="{{user.gravatarUrlLarge}}" class="img-rounded ">
             </div>
             <div ng-show="!!isEditAllow">
-                <a class="btn btn-link" popover-placement="bottom"  popover-trigger="'outsideClick'"
+                <a class="btn btn-link" popover-placement="auto bottom"  popover-trigger="'outsideClick'"
                    uib-popover="{{'profile.changeImageText' | translate}}" tabindex="0">{{'profile.changeImageTitle' |translate}}
                 </a>
             </div>
+            <div class=" text-center">
+            <span ng-show="showStats()" class="profile-stats">
+                <br>
+                <h4>
+                    <strong> {{getQuestionsCount()}}</strong>
+                    <br>
+                    <span class="stats-label">
+                        {{'profile.question'|translate}}
+                    </span>
+                </h4>
+                <br>
+                <h4 class="font-md">
+                    <strong> {{getLessonsCount()}}</strong>
+                    <br>
+                    <span class="stats-label">
+                        {{'profile.lesson'|translate}}
+                    </span>
+                </h4>
+            </span>
+            </div>
+
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 ">
-            <div class="lergo-h1 no-case profile-username">
+        <div class="col-lg-8 col-md-8 col-sm-6  col-xs-6">
+            <div class="lergo-h0 no-case profile-username">
                 {{user.username}}
             </div>
             <br>
@@ -29,12 +46,6 @@
             <div ng-show="!isEditAllow && !!user.shortIntro" class="profile-intro"> {{user.shortIntro}}</div>
             <input ng-show="!!isEditAllow" ng-model="user.shortIntro" placeholder="{{'profile.ph.shortIntro'|translate}}"/>
             <br>
-
-
-
-
-
-
             <div class="profile-external-link" ng-show="isEditAllow || user.externalLink">
                 <i class="fa fa-external-link"></i>&#xA0;&#xA0;
                 <input ng-show="!!isEditAllow" ng-model="user.externalLink" placeholder="External link"/>
@@ -42,7 +53,6 @@
                    target="_blank" class="txt-color-darken"> {{user.externalLink}}</a>
             </div>
             <br>
-
             <div>
                 <i class="fa fa-university"></i>
                 &#xA0;
@@ -59,37 +69,11 @@
                 <button uib-popover="{{'profile.questionsNotAvailable' | translate}}"
                       popover-placement="right"  popover-trigger="'outsideClick'" show-anonymous class=" btn-link txt-color-darken">{{'profile.questionCreated'|translate}}</button>
             </div>
-
         </div>
     </div>
-    <div class="row " >
-
-        <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 text-center ">
-            <span ng-show="showStats()" class="profile-stats">
-                <br>
-                <h4>
-                    <strong> {{getQuestionsCount()}}</strong>
-                    <br>
-                    <span class="stats-label">
-                        {{'profile.question'|translate}}
-                    </span>
-
-                </h4>
-                <br>
-                <h4 class="font-md">
-                    <strong> {{getLessonsCount()}}</strong>
-                    <br>
-                    <span class="stats-label">
-                        {{'profile.lesson'|translate}}
-                    </span>
-                </h4>
-            </span>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 profile-details" >
-
-
+    <div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <br>
-
             <div ng-show="!!isEditAllow">
                 <textarea ng-model="user.details" placeholder="{{'profile.ph.details'|translate}}"> </textarea>
             </div>
