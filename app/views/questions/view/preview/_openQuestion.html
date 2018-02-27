@@ -9,7 +9,7 @@
 	<div dir="auto" class="help">
 		<p class="question-help-text">{{quizItem.helpText}}</p>
 	</div>
-	<div quiz-item-media quiz-item="quizItem"></div>
+	<div quiz-item-media class="img-small"   quiz-item="quizItem"></div>
 	<div  class="answers">
 		<input dir="auto" id="openQuestionText" ng-show="quizItem.subType==='short'" ng-model="quizItem.userAnswer" autofocus />
 		<textarea dir="auto" id="openQuestionTextarea" ng-show="quizItem.subType==='long'" ng-model="quizItem.userAnswer" autofocus></textarea>
