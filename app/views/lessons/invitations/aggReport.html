@@ -76,7 +76,7 @@
         <hr/>
 
         <div uib-collapse="!!summaryCollapsed" class="summary">
-            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div>
                 <div class="top20">
                     <div class="col-md-3 col-sm-5 col-xs-5">
                         <div>
@@ -105,7 +105,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div>
                 <div class="top20">
                     <div class="col-md-3 col-sm-5 col-xs-5">
                         <div>
@@ -117,13 +117,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9 col-sm-7col-xs-7">
+                    <div class="col-md-9 col-sm-7 col-xs-7">
                         {{report.duration|duration}}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 top20">
+        <div class="top20">
             <div class="collapsible lergo-h1 ">
                 <a href="" class="no-underline" ng-click="stepCollapsed=!stepCollapsed">
                     <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
@@ -131,51 +131,52 @@
                     {{'report.lessonSteps'|translate}}
                 </a>
             </div>
-
-        <hr/>
-        <div class="step">
+            <hr/>
+            <div class="step" style="overflow-y: auto">
             <div uib-collapse="!!stepCollapsed" class="top20"
                  ng-repeat="step in report.data.lesson.steps">
-                <div class="col-md-5 col-sm-12 col-xs-12">
-                    <div>
-                        <div class="col-md-2 col-sm-1 col-xs-1" >
+                    <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                             <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
                             <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
                             <i ng-show="!!step.slideURL" class="fa fa-television "></i>
                         </div>
-                        <div class="col-md-10 col-sm-11 col-xs-11">
+                        <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-10">
                             <span class="lergo-h1">{{step.title}}</span>
                         </div>
                     </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12 description mobile-topbot10">
+                            <a ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
+                                {{'reports.click.video' | translate}}</a>
+                            <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+                                    <span>
+                                        <ng-pluralize count="step.quizItems.length" when="{
+                                                '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
+                                                'one':'{} {{ &quot;report.questionsInQuiz.one&quot; | translate}}',
+                                                'other':'{} {{ &quot;report.questionsInQuiz.other&quot; | translate}}'}">
+                                         </ng-pluralize>
+                                    </span>
+                                <span class="bold">
+                                    &nbsp;&nbsp;
+                                    {{'reports.stepCorrectAvg' | translate:{percentage:getStepCorrectPercentage($index)} }}
+                                </span>
+                                </span>
+                            <a ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
+                                {{'reports.click.step' | translate}}
+                            </a>
+                        </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 description">
+                        <i class="fa fa-clock-o"></i>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 description">
+                           &nbsp;{{getStepAvgDuration($index)|duration}}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-7 col-sm-12 col-xs-12 description">
-                    <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
-                        {{'reports.click.video' | translate}}</a>
-                    <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
-                            <span class="inline-table">
-                                <ng-pluralize count="step.quizItems.length" when="{
-                                        '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
-                                        'one':'{} {{ &quot;report.questionsInQuiz.one&quot; | translate}}',
-                                        'other':'{} {{ &quot;report.questionsInQuiz.other&quot; | translate}}'}">
-                                 </ng-pluralize>
-                            </span>
-                        <span class="bold">
-                            &nbsp;&nbsp;
-                            {{'reports.stepCorrectAvg' | translate:{percentage:getStepCorrectPercentage($index)} }}
-                        </span>
-                        </span>
-                    <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
-                        {{'reports.click.step' | translate}}
-                    </a>
-                </div>
-                    <i class="fa fa-clock-o top20">
-                        &nbsp;{{getStepAvgDuration($index)|duration}}
-                    </i>
-
             </div>
         </div>
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 top20">
+        <div class="top20">
             <div ng-show="!!report.data.lesson.nextLessonId || !!report.data.lesson.priorLessonId">
             <div class="collapsible lergo-h1">
                 <a href="" class="no-underline " ng-click="recommendationCollapsed=!recommendationCollapsed">
@@ -241,7 +242,6 @@
                 <agg-report-view answers="report.answers" quiz-items="report.data.quizItems"></agg-report-view>
             </div>
         </div>
-    </div>
     </div>
     <div powered-by-lergo="report.data.lesson"></div>
 </div>
