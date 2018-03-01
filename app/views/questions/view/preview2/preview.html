@@ -1,5 +1,5 @@
 <div class="row row-nested top10 quiz">
-    <div class="col-md-12">
+    <div class="col-md-12 row-nested15">
         <div class="row row-nested top10">
             <div class="col-md-10">
                 <p dir="auto" class="lergo-h4" ng-show="!isFillInTheBlanks()">{{quizItem.question}}</p>
@@ -8,7 +8,7 @@
             <div class="col-md-2 text-right">
                 <button ng-show="!!quizItem.hint" popover-placement="top"
                         uib-popover="{{quizItem.hint}}" class="btn-link hint"
-                         popover-trigger="'outsideClick'" tabindex="0">{{'hint' | translate}}
+                        popover-trigger="'outsideClick'" tabindex="0">{{'hint' | translate}}
                 </button>
             </div>
         </div>
@@ -27,4 +27,3 @@
     </div>
 
 </div>
-
