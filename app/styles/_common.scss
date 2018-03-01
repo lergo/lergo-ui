@@ -881,9 +881,6 @@ label {
 .push-down {
     height: 24px;
 }
-
-
-
 @media screen and (max-width:1024px) {
     .lergo-body-tile {
         max-width: unset;
@@ -896,7 +893,6 @@ label {
     #content > div:first-child {
         margin-top: 5px;
     }
-
 }
 .rtl {
     .dropdown-menu {
