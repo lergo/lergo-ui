@@ -1,12 +1,12 @@
 <div class="row row-nested top10 quiz">
     <div class="col-md-12 row-nested15">
         <div class="row row-nested top10">
-            <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                 <p dir="auto" class="lergo-h4" ng-show="!isFillInTheBlanks()">{{quizItem.question}}</p>
                 <p ng-show="!!isFillInTheBlanks()" ng-include="getQuestionTemplate()"></p>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-right">
-                <button ng-show="!!quizItem.hint" popover-placement="top"
+                <button ng-show="!!quizItem.hint" popover-placement="auto top"
                         uib-popover="{{quizItem.hint}}" class="btn-link hint"
                         popover-trigger="'outsideClick'" tabindex="0">{{'hint' | translate}}
                 </button>
