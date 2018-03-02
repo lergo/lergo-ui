@@ -47,18 +47,18 @@
             <hr/>
             <div class="step row" uib-collapse="!!stepCollapsed">
                 <div class="top20" ng-repeat="step in lesson.steps">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot5">
-                        <div class="col-lg-4 col-md-7-col col-sm-7 col-xs-7">
-                            <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
+                        <div class="col-lg-3 col-md-7-col col-sm-7 col-xs-7">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                 <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
                                 <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
                                 <i ng-show="!!step.slideURL" class="fa fa-television "></i>
                             </div>
-                            <div class="col-lg-11 col-md-10 col-sm-10 col-xs-10">
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                 <span dir="auto" class="title">{{step.title}}</span>
                             </div>
                         </div>
-                        <div class="col-lg-8 col-md-5 col-sm-5 col-xs-5 mfont-size13">
+                        <div class="col-lg-9 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
                             <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}" target="_blank">
                                 {{'reports.click.video' | translate}}</a>
                             <span ng-show="!!step.quizItems">
@@ -86,16 +86,16 @@
                 <hr/>
                 <div class="step row" uib-collapse="!!recommendationCollapsed">
                     <div  ng-show="!!lesson.nextLessonId">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top20">
-                            <div class="col-lg-4 col-md-7 col-sm-7 col-xs-7">
-                                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top20 pad-topBot7">
+                            <div class="col-lg-3 col-md-7 col-sm-7 col-xs-7">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                     <i class="fa fa-university"></i>
                                 </div>
-                                <div class="col-lg-11 col-md-10 col-sm-10 col-xs-10">
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                     <span class="title">{{'report.nextLesson' | translate}}</span>
                                 </div>
                             </div>
-                            <div class="col-lg-8 col-md-5 col-sm-5 col-xs-5 mfont-size13">
+                            <div class="col-lg-9 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
                                <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro" target="_blank">
                                   {{'reports.click.nextLesson' | translate}}
                                </a>
@@ -103,19 +103,19 @@
                         </div>
                     </div>
                     <div ng-show="!!lesson.priorLessonId">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="col-lg-4 col-md-7-col col-sm-7 col-xs-7">
-                                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
+                            <div class="col-lg-3 col-md-7-col col-sm-7 col-xs-7">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                     <i class="fa fa-university">&nbsp;</i>
                                 </div>
-                                <div class="col-lg-11 col-md-10 col-sm-10 col-xs-10">
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                     <span class="title">{{'report.priorLesson' | translate}}</span>
                                 </div>
-                                <div class="col-lg-8 col-md-5 col-sm-5 col-xs-5 mfont-size13">
-                                    <a ng-href="#!/public/lessons/{{lesson.priorLessonId}}/intro" target="_blank">
-                                        {{'reports.click.priorLesson' | translate}}
-                                    </a>
-                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
+                                <a ng-href="#!/public/lessons/{{lesson.priorLessonId}}/intro" target="_blank">
+                                    {{'reports.click.priorLesson' | translate}}
+                                </a>
                             </div>
                         </div>
                     </div>
