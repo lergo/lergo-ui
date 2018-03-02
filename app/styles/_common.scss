@@ -916,6 +916,16 @@ label {
             float: left;
         }
     }
+    .mpadl {
+        padding-left: 6px;
+        padding-right: 0px;
+    }
+    .rtl {
+        .mpadl {
+            padding-left: 0px;
+            padding-right: 6px
+        }
+    }
 }
 
 @media screen and (max-width : 1024px) {

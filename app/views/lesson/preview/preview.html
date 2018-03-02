@@ -21,17 +21,21 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs 12" ng-show="!!lesson.description">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="!!lesson.description">
                         <div class="sub-title padding-leftRight15">{{'report.description'|translate}}</div>
                         <div class="padding-leftRight15 mfont-size13">{{lesson.description | limitTo:440}}</div>
                     </div>
                     <div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs 12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="padding-leftRight15 top15">
-                                <span class="bold">{{'fromAge' | translate }}:&nbsp;</span>
-                                {{lesson.age}}&nbsp;&nbsp;&nbsp;
-                                <span class="bold">{{'filters.labels.subject' | translate }}:&nbsp;</span>
-                                {{'filters.subjects.'+lesson.subject | translate}}
+                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                    <span class="bold">{{'fromAge' | translate }}:&nbsp;</span>
+                                    {{lesson.age}}
+                                </div>
+                                <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 mpadding2 mpadl">
+                                    <span class="bold">{{'filters.labels.subject' | translate }}:&nbsp;</span>
+                                    {{'filters.subjects.'+lesson.subject | translate}}
+                                </div>
                             </div>
                         </div>
                     </div>
