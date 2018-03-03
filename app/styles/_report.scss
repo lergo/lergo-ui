@@ -350,3 +350,59 @@
         }
     }
 }
+
+@media screen and (max-width: 1024px) {
+    .report {
+        .lergo-h1 {
+            font-size: 13px;
+        }
+        .header {
+            .lergo-h4 {
+                font-size: 18px;
+            }
+        }
+        .summary{
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+        .step {
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+        .recommendation {
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+
+    }
+    .rtl .report {
+        .lergo-h1 {
+            font-size: 13px;
+        }
+        .header {
+            .lergo-h4 {
+                font-size: 18px;
+            }
+        }
+        .summary{
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+        .step {
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+        .recommendation {
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+
+    }
+
+}

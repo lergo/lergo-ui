@@ -79,7 +79,7 @@
                 <div class="top20 pad-topBot7">
                     <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
                         <div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mfont-size13 mpadding2">
                                 <i class="fa fa-percent"></i>
                             </div>
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7" >
-                        <span class="bold">
+                        <span class="bold mfont-size13 mpadding2">
                             {{'reports.summary.correctPercentage' | translate:{percentage:report.correctPercentage} }}
                         </span>
                         (<ng-pluralize count="report.data.quizItems.length" when="{
@@ -108,15 +108,15 @@
                 <div class="top20">
                     <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
                         <div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mfont-size13 mpadding2">
                                 <i class="fa fa-clock-o"></i>
                             </div>
-                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                <span class="lergo-h1">{{'reports.summary.durationAvg'|translate}}</span>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 lergo-h1 mfont-size13 mpadding2 ">
+                                <span>{{'reports.summary.durationAvg'|translate}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7">
+                    <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 mfont-size13 mpadding2">
                         {{report.duration|duration}}
                     </div>
                 </div>
@@ -165,10 +165,10 @@
                         </a>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5">
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 description">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mfont-size13 mpadding2">
                             <i class="fa fa-clock-o"></i>
                         </div>
-                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 description">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 mfont-size13 mpadding2">
                            &nbsp;{{getStepAvgDuration($index)|duration}}
                         </div>
                     </div>
@@ -188,54 +188,54 @@
             <hr/>
             <div class="step" uib-collapse="!!recommendationCollapsed" style="overflow-y: auto">
                 <div ng-show="!!report.data.lesson.nextLessonId">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top20 pad-topBot7">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top20 pad-topBot7" >
                         <div class="col-lg-3 col-md-7 col-sm-7 col-xs-7">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                 <i class="fa fa-university"></i>
                             </div>
-                            <div class="col-lg-10 col-md-10 col-sm-11 col-xs-11">
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                 <span class="title">{{'report.nextLesson' | translate}}</span>
                             </div>
                         </div>
-                    <div class="col-lg-9 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
-                        <a ng-href="#!/public/lessons/{{report.data.lesson.nextLessonId}}/intro">
-                            {{'reports.click.nextLesson' | translate}}
-                        </a>
-                    </div>
-                </div>
-                <div ng-show="!!report.data.lesson.priorLessonId">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
-                        <div class="col-lg-3 col-md-7-col col-sm-7 col-xs-7">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <i class="fa fa-university">&nbsp;</i>
-                            </div>
-                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                <span class="title">{{'report.priorLesson' | translate}}</span>
-                            </div>
-                        </div>
                         <div class="col-lg-9 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
-                        <a ng-href="#!/public/lessons/{{report.data.lesson.priorLessonId}}/intro">
-                            {{'reports.click.priorLesson' | translate}}
-                        </a>
+                            <a ng-href="#!/public/lessons/{{report.data.lesson.nextLessonId}}/intro">
+                                {{'reports.click.nextLesson' | translate}}
+                            </a>
+                        </div>
+                    </div>
+                    <div ng-show="!!report.data.lesson.priorLessonId">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
+                            <div class="col-lg-3 col-md-7-col col-sm-7 col-xs-7">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <i class="fa fa-university">&nbsp;</i>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                    <span class="title">{{'report.priorLesson' | translate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
+                            <a ng-href="#!/public/lessons/{{report.data.lesson.priorLessonId}}/intro">
+                                {{'reports.click.priorLesson' | translate}}
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
         </div>
         </div>
         </div>
         <div class="details">
             <div>
-                <span class="collapsible lergo-h1">
+                <div class="collapsible lergo-h1">
                      <a class=" no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
                     <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
                     <i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
                     {{'report.questionPerDifficulty'|translate}}
                 </a>
-                </span>
-                <span class="text-primary">
+                </div>
+                <div class="text-primary">
                     {{'report.details.hint' | translate}}
-                </span>
+                </div>
             </div>
             <hr/>
             <div uib-collapse="!!detailCollapsed" class="detail">
