@@ -78,10 +78,10 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
                     <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 ">
                         <div>
-                            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3 mfont-size13">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mfont-size13">
                                 <i class="fa fa-percent"></i>
                             </div>
-                            <div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                 <span class="lergo-h1">{{'reports.correctAvg'|translate}}</span>
                             </div>
                         </div>
@@ -107,10 +107,10 @@
                 <div class="top20 mfont-size13">
                     <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 pad-topBot7">
                         <div>
-                            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 pad-topBot7">
                                 <i class="fa fa-clock-o"></i>
                             </div>
-                            <div class="col-lg-10 col-md-9 col-sm-9 col-xs-9 lergo-h1">
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 lergo-h1">
                                 <span>{{'reports.summary.durationAvg'|translate}}</span>
                             </div>
                         </div>
@@ -132,8 +132,8 @@
             <hr/>
             <div class="step" style="overflow-y: auto">
                 <div uib-collapse="!!stepCollapsed" class="top7" ng-repeat="step in report.data.lesson.steps">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
-                    <div class="col-lg-3 col-md-7 col-sm-7 col-xs-7">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
+                    <div class="col-lg-3 col-md-5 col-sm-5 col-xs-5">
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                             <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
                             <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
@@ -143,7 +143,7 @@
                             <span class="lergo-h1">{{step.title}}</span>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 mfont-size13 mpadding2">
                         <a ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                             {{'reports.click.video' | translate}}</a>
                         <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
@@ -172,7 +172,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
             </div>
         </div>
         <div class="top7">
