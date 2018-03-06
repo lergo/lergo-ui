@@ -157,12 +157,15 @@
                                 &nbsp;&nbsp;
                                 {{'reports.stepCorrectAvg' | translate:{percentage:getStepCorrectPercentage($index)} }}
                             </span>
+                            <div class="hidden-lg hidden-md mpad-topBot2">
+                                <i class="fa fa-clock-o"></i> &nbsp;{{getStepAvgDuration($index)|duration}}
+                            </div>
                         </span>
                         <a ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
                             {{'reports.click.step' | translate}}
                         </a>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 mfont-size13">
+                    <div class=" hidden-sm hidden-xs col-lg-2 col-md-2 col-sm-5 col-xs-5 mfont-size13">
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                             <i class="fa fa-clock-o"></i>
                         </div>
