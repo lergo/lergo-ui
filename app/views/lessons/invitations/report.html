@@ -174,108 +174,94 @@
         <!--End Of Report Summary-->
 
         <!--Lessons Step-->
-        <div class="row" style="margin-right: 15px; margin-left: 15px">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="collapsible lergo-h1">
-                    <a href="" class="no-underline" ng-click="stepCollapsed=!stepCollapsed">
-                        <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
-                        <i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>
-                        {{'report.lessonSteps'|translate}}
-                    </a>
+        <div class="collapsible lergo-h1">
+            <a href="" class="no-underline" ng-click="stepColrlapsed=!stepCollapsed">
+                <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
+                <i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>
+                {{'report.lessonSteps'|translate}}
+            </a>
+        </div>
+        <hr/>
+        <div class="step" style="overflow-y: auto">
+            <div uib-collapse="!!stepCollapsed" class="top7"
+                 ng-repeat="step in report.data.lesson.steps">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7" >
+                <div class="col-md-3">
+                    <div>
+                        <div class="col-md-2">
+                            <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
+                            <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
+                            <i ng-show="!!step.slideURL" class="fa fa-television "></i>
+                        </div>
+                        <div class="col-md-10">
+                            <span dir="auto" class="title lergo-h1">{{step.title}}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <hr/>
-            <div class="step">
-                <div uib-collapse="!!stepCollapsed" class="row row-nested top20"
-                     ng-repeat="step in report.data.lesson.steps">
-                    <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-md-2 col-sm-5 col-xs-5">
-                                <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
-                                <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
-                                <i ng-show="!!step.slideURL" class="fa fa-television "></i>
-                            </div>
-                            <div class="col-md-10 col-sm-12 col-xs-12">
-                                <span dir="auto" class="title lergo-h1">{{step.title}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 description">
-                        <div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
-                                    {{'reports.click.video' | translate}}</a>
-                                <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
-                                <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
-                                    <span class="inline-table">
-                                         <ng-pluralize count="step.quizItems.length" when="{
-                                                '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
-                                                'one':'{} {{ &quot;report.questionsInQuiz.one&quot; | translate}}',
-                                                'other':'{} {{ &quot;report.questionsInQuiz.other&quot; | translate}}'}">
-                                         </ng-pluralize>
-                                    </span>
-                                </div>
-                                <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
-                                    <div ng-show="!!stats[$index].correct" class="bg-success report-quiz-summary-item">
-                                        {{stats[$index].correct}} {{'questions.correct' | translate}}
-                                        ({{stats[$index].correctPercentage}}%)
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
-                                    <div ng-show="!!stats[$index].wrong" class="bg-warning report-quiz-summary-item">
-                                        {{stats[$index].wrong}} {{'questions.incorrect' | translate}}
-                                        ({{stats[$index].wrongPercentage}}%)
-                                    </div>
-                                </div>
-                                 <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
-                                    <div ng-show="!!stats[$index].openQuestions" class="bg-primary report-quiz-summary-item">
-                                        <ng-pluralize count="stats[$index].openQuestions" when="{
-                                                '0':'{{&quot;report.openQuestions.zero&quot; | translate}}',
-                                                'one':'{} {{&quot;report.openQuestions.one&quot; | translate}}',
-                                                'other':'{} {{&quot;report.openQuestions.other&quot; | translate}}'}">
-                                         </ng-pluralize>
-                                    </div>
-                                 </div>
+                <div class="col-md-9 description">
+                    <div>
+                        <div class="col-md-12">
+                            <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
+                                {{'reports.click.video' | translate}}</a>
+                            <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+                            <span class="inline-table">
+                                 <ng-pluralize count="step.quizItems.length" when="{
+                                        '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
+                                        'one':'{} {{ &quot;report.questionsInQuiz.one&quot; | translate}}',
+                                        'other':'{} {{ &quot;report.questionsInQuiz.other&quot; | translate}}'}">
+                                 </ng-pluralize>
                             </span>
-                                <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
-                                    <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
-                                        {{'reports.click.step' | translate}}
-                                    </a>
+                            <span ng-show="!!stats[$index].correct" class="bg-success report-quiz-summary-item">
+                                {{stats[$index].correct}} {{'questions.correct' | translate}}
+                                ({{stats[$index].correctPercentage}}%)
+                            </span>
+                            <span ng-show="!!stats[$index].wrong" class="bg-warning report-quiz-summary-item">
+                                {{stats[$index].wrong}} {{'questions.incorrect' | translate}}
+                                ({{stats[$index].wrongPercentage}}%)
+                            </span>
+                            <span ng-show="!!stats[$index].openQuestions" class="bg-primary report-quiz-summary-item">
+                                <ng-pluralize count="stats[$index].openQuestions" when="{
+                                        '0':'{{&quot;report.openQuestions.zero&quot; | translate}}',
+                                        'one':'{} {{&quot;report.openQuestions.one&quot; | translate}}',
+                                        'other':'{} {{&quot;report.openQuestions.other&quot; | translate}}'}">
+                                 </ng-pluralize>
+                            </span>
+                        </span>
+                            <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
+                                {{'reports.click.step' | translate}}
+                            </a>
 
-                                    <i ngShow="!!report.stepDurations[$index]" class="fa fa-clock-o">
-                                        &nbsp;{{report.stepDurations[$index]|duration}}
-                                    </i>
-                                    <a ng-show="!!step.quizItems && step.retryQuestion && step.testMode === 'False'"
-                                       ng-click="stepDetail=!stepDetail">
-                                        <i ng-show="!stepDetail" class="fa fa-plus-square"></i>
-                                        <i ng-show="!!stepDetail" class="fa fa-minus-square"></i>
-                                    </a>
-                                </div>
-                            </div>
+                            <i ngShow="!!report.stepDurations[$index]" class="fa fa-clock-o">
+                                &nbsp;{{report.stepDurations[$index]|duration}}
+                            </i>
+                            <a ng-show="!!step.quizItems && step.retryQuestion && step.testMode === 'False'"
+                               ng-click="stepDetail=!stepDetail">
+                                <i ng-show="!stepDetail" class="fa fa-plus-square"></i>
+                                <i ng-show="!!stepDetail" class="fa fa-minus-square"></i>
+                            </a>
                         </div>
-                        <div  class="row top15">
-                            <div uib-collapse="!stepDetail" class="col-md-12 col-sm-12 col-xs-12">
-                                <div>
-                                    <span>
-                                        <ng-pluralize count="step.retBefCrctAns" when="{
-                                            '0': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.zero&quot; | translate}}',
-                                            'one': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.one&quot; | translate}}',
-                                            'other': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.other&quot; | translate}}'}">
-                                        </ng-pluralize>
-                                    </span>
-                                    <sup>
-                                        <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                        <a uib-popover="{{'report.lessonStep.practiceMode.hint.'+step.retBefCrctAns|translate| limitTo:10}}"
-                                           class="fa fa-question-circle no-underline-v1"
-                                           popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
-                                           style="text-decoration: none"></a>
-                                    </sup>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+                    <div  class=" top15">
+                        <div uib-collapse="!stepDetail" class="col-md-12">
+                            <div>
+                                <span>
+                                    <ng-pluralize count="step.retBefCrctAns" when="{
+                                        '0': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.zero&quot; | translate}}',
+                                        'one': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.one&quot; | translate}}',
+                                        'other': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.other&quot; | translate}}'}">
+                                    </ng-pluralize>
+                                </span>
+                                <sup>
+                                    <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                                    <a uib-popover="{{'report.lessonStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"
+                                       class="fa fa-question-circle no-underline-v1"
+                                       popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
+                                       style="text-decoration: none"></a>
+                                </sup>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
