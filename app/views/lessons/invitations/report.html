@@ -31,10 +31,9 @@
                     <span>{{report.lastUpdate | date:'medium'}}</span>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 padding-leftRight15">
                 <div class="header-desc">
-                    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                    <div class="col-lg-11 col-md-12 col-sm-12 col-xs-12">
                         <div ng-show="!!report.data.lesson.description">
                             <div class="lergo-h4">{{'report.description'|translate}}</div>
                             <div>{{report.data.lesson.description | limitTo:440}}</div>
@@ -42,16 +41,18 @@
                     </div>
                         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                 </div>
-                <div class="top20 redo-buttons" ng-show="showClassReport()">
+                <div class="redo-buttons" ng-show="showClassReport()">
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 pull-right restart" ng-show="!report.data.lesson.temporary">
+                        <div class="hidden-sm hidden-xs" style="height: 30px"></div>
                         <a href="" ng-click="startLesson()">
-                            <i class="fa fa-repeat "> {{'lessons.restart' | translate}}</i>
+                            <i class="fa fa-repeat d-padBot15 "> {{'lessons.restart' | translate}}</i>
                         </a>
                     </div>
                     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 reports" ng-show="showClassReport()">
+                        <div class="hidden-sm hidden-xs" style="height: 30px"></div>
                         <a href="" ng-click="redirectToClassReport()">
-                            <i class="fa fa-bar-chart"> {{'report.header.classReport' | translate}}</i>
+                            <i class="fa fa-bar-chart d-padBot15"> {{'report.header.classReport' | translate}}</i>
                         </a>
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 practiceMistake pull-right" ng-show="wrongQuestions.length>0">
@@ -153,7 +154,7 @@
                     </div>
                 </div>
                     <div class=" mfont-size13 pad-topBot7">
-                        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 ">
+                        <div class="col-lg-3 col-md-5 col-sm-5 col-xs-5 ">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                 <i class="fa fa-clock-o"></i>
                             </div>
@@ -161,7 +162,7 @@
                                 <span class="lergo-h1">{{'reports.summary.duration'|translate}}</span>
                             </div>
                         </div>
-                    <div class="col-md-9 col-xs-9">
+                    <div class="col-lg-9 col-md-7 col-sm-7 col-xs-7">
                         {{report.duration|duration}}
                     </div>
                 </div>
