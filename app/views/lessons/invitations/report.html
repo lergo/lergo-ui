@@ -266,7 +266,7 @@
             </div>
         </div>
         <div ng-show="!!report.data.lesson.nextLessonId || !!report.data.lesson.priorLessonId">
-            <div class="collapsible lergo-h1 row-nested15 row">
+            <div class="collapsible lergo-h1  row">
                 <a href="" class="no-underline row-nested15" ng-click="recommendationCollapsed=!recommendationCollapsed">
                     <i ng-show="!!recommendationCollapsed" class="fa fa-plus-square"></i>
                     <i ng-show="!recommendationCollapsed" class="fa fa-minus-square"></i>
@@ -274,7 +274,7 @@
                 </a>
             </div>
             <hr/>
-            <div class="recommendation row row-nested15" uib-collapse="!!recommendationCollapsed">
+            <div class="recommendation" uib-collapse="!!recommendationCollapsed">
                 <div class="row row-nested15 top20" ng-show="!!report.data.lesson.nextLessonId">
                     <div class="col-md-3 col-sm-3 ">
                         <div class="row">
