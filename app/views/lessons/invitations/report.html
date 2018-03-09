@@ -51,18 +51,18 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 restart" ng-show="!report.data.lesson.temporary">
                         <a href="" ng-click="startLesson()">
-                            <i class="fa fa-repeat rtlFloatLeft"> {{'lessons.restart' | translate}}</i>
+                            <i class="fa fa-repeat"> {{'lessons.restart' | translate}}</i>
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 practiceMistake" ng-show="wrongQuestions.length>0">
                         <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
                            ng-disabled="practiseBtnDisable">
-                            <i class="fa fa-repeat rtlFloatLeft "> {{'lessons.practiseWrongQuestion' | translate}}</i>
+                            <i class="fa fa-repeat"> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
                         <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
                            uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
                            tabindex="0">
-                            <i class="fa fa-repeat rtlFloatLeft "> {{'lessons.practiseWrongQuestion' | translate}}</i>
+                            <i class="fa fa-repeat"> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
                     </div>
                     <div class="col-md-6 pull-right" ng-show="showContinueLesson()">
