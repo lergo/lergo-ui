@@ -958,6 +958,14 @@ label {
         padding-top: 4px;
         padding-bottom: 4px;
     }
+    .m-right {
+        float: right;
+    }
+    .rtl {
+        m-right {
+            float: left;
+        }
+    }
 }
 
 

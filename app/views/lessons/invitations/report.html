@@ -44,15 +44,14 @@
                         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                 </div>
                 <div class="redo-buttons" ng-show="showClassReport()">
+                    <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 reports" ng-show="showClassReport()">
+                        <a href="" ng-click="redirectToClassReport()">
+                            <i class="fa fa-bar-chart d-padBot15 m-right"> {{'report.header.classReport' | translate}}</i>
+                        </a>
+                    </div>
                     <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 pull-right restart" ng-show="!report.data.lesson.temporary">
                         <a href="" ng-click="startLesson()">
                             <i class="fa fa-repeat"> {{'lessons.restart' | translate}}</i>
-                        </a>
-                    </div>
-                    <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 reports" ng-show="showClassReport()">
-
-                        <a href="" ng-click="redirectToClassReport()">
-                            <i class="fa fa-bar-chart d-padBot15"> {{'report.header.classReport' | translate}}</i>
                         </a>
                     </div>
                     <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 practiceMistake pull-right" ng-show="wrongQuestions.length>0">
