@@ -943,6 +943,9 @@ label {
     .d-padBot15 {
         padding-bottom: 15px;
     }
+    .d-padBot10 {
+        padding-bottom: 10px;
+    }
 }
 
 @media screen and (max-width : 1024px) {
@@ -963,6 +966,9 @@ label {
     .mpad-topBot4 {
         padding-top: 4px;
         padding-bottom: 4px;
+    }
+    .mpad-bot5 {
+        padding-bottom: 5px;
     }
     .m-right {
         float: right;
