@@ -10,10 +10,10 @@
         font-size:20px;
     }
     .pad-percent {
-        padding-top: 2px;
+        padding-top: 0px;
     }
     .pad-clock {
-        padding-top: 2px;
+        padding-top: 0px;
     }
     .redo-buttons {
         font-size: 22px;
@@ -307,6 +307,12 @@
         .redo-buttons {
             font-size: 24px;
         }
+        .pad-percent {
+            padding-top: 1px;
+        }
+        .pad-clock {
+            padding-top: 2px;
+        }
     }
 }
 
@@ -437,6 +443,9 @@
                     font-size: 25px;
                 }
             }
+        }
+        .pad-percent {
+            padding-top: 3px;
         }
 
     }
