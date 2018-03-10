@@ -217,8 +217,16 @@ button.action-item {
     padding-bottom: 50px;
 }
 
+.bottom-padding25 {
+    padding-bottom: 25px;
+}
+
 .padding-leftRight15 {
     padding: 0 15px;
+}
+
+.padding-leftRight2 {
+    padding: 0 2px;
 }
 
 .status {
@@ -843,6 +851,15 @@ $COLOR_19: #2a6496 !default;
     padding-bottom: 7px;
 }
 
+.pad-topBot20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.pad-top20 {
+    padding-top: 20px;
+}
+
 
 .row-nested{
     margin-left: 0px;
@@ -903,7 +920,7 @@ label {
     }
 
 }
-
+ /*Desktop only*/
 @media  screen and (min-width : 1024px) {
     .rtlFloatLeft {
         float: right;
@@ -913,15 +930,21 @@ label {
             float: left;
         }
     }
-    .mpadl {
+    .d-padl {
         padding-left: 6px;
         padding-right: 0px;
     }
     .rtl {
-        .mpadl {
+        .d-padl {
             padding-left: 0px;
             padding-right: 6px
         }
+    }
+    .d-padBot15 {
+        padding-bottom: 15px;
+    }
+    .d-padBot10 {
+        padding-bottom: 10px;
     }
 }
 
@@ -929,6 +952,35 @@ label {
     .mobile-topbot10 {
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+    .mfont-size13 {
+         font-size: 13px;
+    }
+    .mpadding2 {
+         padding: 2px;
+    }
+    .mpad-topBot2 {
+         padding-top: 2px;
+         padding-bottom: 2px;
+    }
+    .mpad-topBot4 {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    .mpad-leftRight8 {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .mpad-bot5 {
+        padding-bottom: 5px;
+    }
+    .m-right {
+        float: right;
+    }
+    .rtl {
+        .m-right {
+            float: left;
+        }
     }
 }
 

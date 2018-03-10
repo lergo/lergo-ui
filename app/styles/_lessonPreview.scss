@@ -136,15 +136,16 @@
     }
 }
 
-@media only screen and (max-width: 1028px) {
+@media only screen and (max-width: 1024px) {
     .lesson-preview {
 
-        .mfont-size13 {
-            font-size: 13px;
-            /*padding: 2px;*/
-        }
         .title {
             font-size: 13px;
+        }
+
+       /* .mfont-size13 {
+            font-size: 13px;
+            !*padding: 2px;*!
         }
         .mpadding2 {
             padding: 2px;
@@ -152,11 +153,11 @@
         .mpad-topBot2 {
             padding-top: 2px;
             padding-bottom: 2px;
-        }
+        }*/
     }
 }
 
-@media only screen and (min-width: 1028px) {
+@media only screen and (min-width: 1024px) {
     .lesson-preview-dialog .modal-dialog .modal-content .modal-body {
         padding-left: 30px;
         padding-right: 30px
