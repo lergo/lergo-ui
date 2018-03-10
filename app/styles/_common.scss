@@ -951,6 +951,14 @@ label {
     .d-padBot10 {
         padding-bottom: 10px;
     }
+    .d-m-left {
+        float: left;
+    }
+    .rtl {
+        d-m-left {
+            float: right;
+        }
+    }
 }
 
 @media screen and (max-width : 1024px) {
@@ -984,6 +992,14 @@ label {
     }
     .rtl {
         .m-right {
+            float: left;
+        }
+    }
+    .d-m-left {
+        float: right;
+    }
+    .rtl {
+        .d-m-left {
             float: left;
         }
     }
