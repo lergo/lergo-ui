@@ -25,14 +25,14 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
-                        <b>{{progressPercentage}}%</b>
-                    </div>
+            </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+            </div>
+        <div class="row">
+                <div style="margin: 0 -5px" lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
+                    <b>{{progressPercentage}}%</b>
                 </div>
                 <br>
-                <div ng-include="'views/questions/view/partials/_result.html'"></div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+                <div style="margin: 0 -5px" ng-include="'views/questions/view/partials/_result.html'"></div>
         </div>
     </div>
