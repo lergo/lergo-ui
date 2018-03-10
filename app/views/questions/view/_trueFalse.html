@@ -1,13 +1,13 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                 <div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
                     <div>
                         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                             <div dir="auto" class="question">
-                                <p class="lergo-h4">{{quizItem.question}}</p>
+                                <p class="lergo-h4 padTop1">{{quizItem.question}}</p>
                             </div>
                         </div>
                         <div class="right col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
             </div>
         <div class="row">
                 <div style="margin: 0 -5px" lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
