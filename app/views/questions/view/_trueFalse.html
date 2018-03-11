@@ -1,22 +1,21 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 pad-leftRight8">
                 <div id="questionPreview" ng-keyup="$event.keyCode === 13 ?  enterPressed(quizItem) : null" tabindex="1">
                     <div style="height: 25px;" ></div>
                     <div>
-                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <div class="col-lg-12 col-md-12 col-sm-10 col-xs-10">
                             <div dir="auto" class="question">
-                                <p class="lergo-h4 mpad-leftRight8">{{quizItem.question}}</p>
+                                <p class="lergo-h4 pad-leftRight8" >{{quizItem.question}}</p>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <div class="mpad-leftRight8" ng-include="'views/questions/view/partials/_actionItems.html'"></div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 hidden-lg hidden-md">
+                            <div class="text-center" ng-include="'views/questions/view/partials/_actionItems.html'"></div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="help">
-                                <p dir="auto" class="question-help-text">{{quizItem.helpText}}</p>
+                            <div dir="auto" class="help">
+                                <p class="question-help-text">{{quizItem.helpText}}</p>
                             </div>
                             <div  quiz-item-media class="img-small"   quiz-item="quizItem"></div>
                             <div class="answers">
@@ -25,15 +24,18 @@
                             <div ng-include="'views/questions/view/partials/_submit.html'" ng-init="hideSubmitButton=true"></div>
                         </div>
                     </div>
-                </div>
+                </div>  <!--id= questionPreview-->
             </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 hidden-sm hidden-xs">
+                <div class="height25" ></div>
+                <div class="text-center" ng-include="'views/questions/view/partials/_actionItems.html'"></div>
             </div>
+        </div> <!--closes row-->
         <div class="row">
-                <div style="margin: 0 -5px" lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
-                    <b>{{progressPercentage}}%</b>
-                </div>
-                <br>
-                <div style="margin: 0 -5px" ng-include="'views/questions/view/partials/_result.html'"></div>
+            <div class="side5m" lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
+                <b>{{progressPercentage}}%</b>
+            </div>
+            <br>
+            <div class="side5m" ng-include="'views/questions/view/partials/_result.html'"></div>
         </div>
     </div>
