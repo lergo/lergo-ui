@@ -927,6 +927,11 @@ label {
 }
  /*Desktop only*/
 @media  screen and (min-width : 1024px) {
+    .d-leftRight15 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
     .rtlFloatLeft {
         float: right;
     }
