@@ -421,6 +421,11 @@ textarea#openQuestionTextarea.mobile.width {
     }
 }
 
+.ai-hint {
+    font-size: 20px;
+    margin-top: -2px;
+}
+
 @media screen and (max-width: 1024px) {
     #questionIntro .question .details {
         padding: 0;
@@ -450,6 +455,10 @@ textarea#openQuestionTextarea.mobile.width {
                 }
             }
         }
+    }
+    .ai-hint {
+        font-size: 20px;
+        margin-top: -6px;
     }
 
     .rtl {
