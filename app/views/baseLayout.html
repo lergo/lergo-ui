@@ -1,57 +1,54 @@
 <div>
     <div ng-controller="LoginCtrl">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-1 col-xs-12"></div>
-                <div class="col-lg-10 col-xs-12">
-                        <div class="col-lg-8 col-xs-12"></div>
-                        <nav id="header-mobile"  class="navbar desktop navbar-default not-embed-mode-item" role="navigation">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed" >
-                                    <!--  <span class="sr-only"></span>-->
-                                    <i class="fa fa-ellipsis-v fa-2x" style="height: 20px"></i>
-                                </button>
-                                <div>
-                                    <div class="hidden-lg hidden-md"> <!-- image and search icon in nabvar for mobile-->
-                                        <a class="pull-left" style=" display: inline-block; margin: 8px 10px 0px 20px;" href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
-                                        <div class="col-sm-5 col-sm-push-5 col-xs-3 col-xs-push-3">
-                                            <div ng-show="!showSearchbar" ng-init="showSearchbar=false;" ng-click="showSearchbar = true;" class="searchIconCenter">
-                                                <i  ng-show="!baseLayout.filterTextSearch" class="fa fa-search fa-lg"></i>
-                                            </div>
+            <div class="row" style="border: 2px solid red">
+                <!--<div class="col-lg-1 col-xs-12"></div>-->
+                <div class="col-lg-12 col-xs-12">
+                    <div class="col-lg-8 col-xs-12"></div>
+                    <nav id="header-mobile"  class="navbar desktop navbar-default not-embed-mode-item" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed" >
+                                <i class="fa fa-ellipsis-v fa-2x" style="height: 20px"></i>
+                            </button>
+                            <div>
+                                <div class="hidden-lg hidden-md"> <!-- image and search icon in nabvar for mobile-->
+                                    <a class="pull-left" style=" display: inline-block; margin: 8px 10px 0px 20px;" href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
+                                    <div class="col-sm-5 col-sm-push-5 col-xs-3 col-xs-push-3">
+                                        <div ng-show="!showSearchbar" ng-init="showSearchbar=false;" ng-click="showSearchbar = true;" class="searchIconCenter">
+                                            <i  ng-show="!baseLayout.filterTextSearch" class="fa fa-search fa-lg"></i>
                                         </div>
-                                        <div> <!-- search bar for mobile appearing only after click on search icon-->
-                                            <div class="container">
-                                                <div class="row">
-                                                    <form class="navbar-form" role="search" style=" border-color: #91CFFF" ng-show="showSearchbar || !!baseLayout.filterTextSearch.length > 0 ">
-                                                        <div  class="navbar-search-mobile" ui-keypress="{enter: 'searchOnHomepage()'}">
-                                                            <div class="col-sm-12 col-xs-12 navbar-search-adjust">
-                                                                <div class="col-sm-10 col-xs-10">
-                                                                    <input  class="form-control" style="background-color: #efefef"   ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
-                                                                    <a  style="text-decoration: none;" href="#!/user/homepage">
-                                                                        <span ng-show="!!baseLayout.filterTextSearch"  class="search-mobile">X</span>
+                                    </div>
+                                    <div> <!-- search bar for mobile appearing only after click on search icon-->
+                                        <div class="container">
+                                            <div class="row">
+                                                <form class="navbar-form" role="search" style=" border-color: #91CFFF" ng-show="showSearchbar || !!baseLayout.filterTextSearch.length > 0 ">
+                                                    <div  class="navbar-search-mobile" ui-keypress="{enter: 'searchOnHomepage()'}">
+                                                        <div class="col-sm-12 col-xs-12 navbar-search-adjust">
+                                                            <div class="col-sm-10 col-xs-10">
+                                                                <input  class="form-control" style="background-color: #efefef"   ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                                                                <a  style="text-decoration: none;" href="#!/user/homepage">
+                                                                    <span ng-show="!!baseLayout.filterTextSearch"  class="search-mobile">X</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-sm-2 col-xs-2">
+                                                                <div class="cancel-search-mobile">
+                                                                    <a ng-click="showSearchbar = false">
+                                                                        <span class="cancel-adjust">{{'baseLayout.navbar.mobileSearchCancel' | translate}}</span>
                                                                     </a>
-                                                                </div>
-                                                                <div class="col-sm-2 col-xs-2">
-                                                                    <div class="cancel-search-mobile">
-                                                                        <a ng-click="showSearchbar = false">
-                                                                            <span class="cancel-adjust">{{'baseLayout.navbar.mobileSearchCancel' | translate}}</span>
-                                                                        </a>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-
                                     </div>
-                                    <div class="hidden-sm hidden-xs"> <!-- image for desktop -->
-                                        <a class="pull-left logo"  href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
-                                    </div>
-
+                                </div>
+                                <div class="hidden-sm hidden-xs"> <!-- image for desktop -->
+                                    <a class="pull-left logo"  href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
                                 </div>
                             </div>
+                        </div>  <!--end of navbar header class -->
 
                             <div class="collapse navbar-collapse desktop" uib-collapse="isNavCollapsed"> <!--new stuff-->
                                 <ul class="nav navbar-nav desktop  hidden-xs hidden-sm">
@@ -103,7 +100,7 @@
                                                 <label ng-click="isNavCollapsed = !isNavCollapsed" ng-hide="baseLayout.language == 'ar'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'ar'"> العربية</label>
                                             </div>
                                         </li>
-                                    </div>
+                                    </div>  <!--end of hidden-lg hidden-md-->
                                     <li>
                                         <div class="hidden-sm hidden-xs">
                                             <div class="header-actions">
@@ -111,46 +108,41 @@
                                             </div>
                                         </div>
                                     </li>
-
-
                                     <span uib-dropdown on-toggle="toggled(open)"  >
-                          <a href id="simple-dropdown1" uib-dropdown-toggle>
-                             <div class="hidden-sm hidden-xs">
-                                  <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
-                             </div>
-                          </a>
-                          <ul class="dropdown-menu overidePositionInherit" uib-dropdown role="menu" aria-labelledby="single-button" style="margin-right: 37px">
-                             <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
-                             <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
-                             <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
-                                            'baseLayout.header.links.create'| translate }} </a></li>
-                             <li role="menuitem"><a href="#!/user/Parents">{{ 'baseLayout.header.links.' + 'Parents'.toLowerCase() | translate }}</a></li>
-                             <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
-                             <li role="menuitem"><a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
-                             <li class="divider"></li>
-                             <div class="hidden-sm hidden-xs" >
-                                 <li role="menuitem">
-                                     <div class="btn-group" style="padding-left: 14px;">
-                                        <label ng-hide="baseLayout.language == 'en'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'en'">English</label>
-                                        <label ng-hide="baseLayout.language == 'he'" class="btn btn-link" ng-model="baseLayout.language" uib-btn-radio="'he'">עברית</label>
-                                        <label ng-hide="baseLayout.language == 'ar'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'ar'"> العربية</label>
-                                     </div>
-                                 </li>
-                             </div>
-                          </ul>
-                      </span>
-                                </ul>
+                                      <a href id="simple-dropdown1" uib-dropdown-toggle>
+                                         <div class="hidden-sm hidden-xs">
+                                              <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+                                         </div>
+                                      </a>
+                                      <ul class="dropdown-menu overidePositionInherit" uib-dropdown role="menu" aria-labelledby="single-button" style="margin-right: 37px">
+                                         <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
+                                         <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
+                                         <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
+                                                        'baseLayout.header.links.create'| translate }} </a></li>
+                                         <li role="menuitem"><a href="#!/user/Parents">{{ 'baseLayout.header.links.' + 'Parents'.toLowerCase() | translate }}</a></li>
+                                         <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
+                                         <li role="menuitem"><a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
+                                         <li class="divider"></li>
+                                         <div class="hidden-sm hidden-xs" >
+                                             <li role="menuitem">
+                                                 <div class="btn-group" style="padding-left: 14px;">
+                                                    <label ng-hide="baseLayout.language == 'en'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'en'">English</label>
+                                                    <label ng-hide="baseLayout.language == 'he'" class="btn btn-link" ng-model="baseLayout.language" uib-btn-radio="'he'">עברית</label>
+                                                    <label ng-hide="baseLayout.language == 'ar'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'ar'"> العربية</label>
+                                                 </div>
+                                             </li>
+                                         </div>
+                                      </ul>
+                                    </span>
+                                 </ul>
                             </div>
-                        </nav>
+                    </nav>
                     </div>
-                <div class="col-lg-1 col-xs-12"></div>
-            </div>
+                <!--<div class="col-lg-1 col-xs-12"></div>-->
             </div>
         </div>
-
-
-    <div>
-        <div class="container">
+    </div>
+    <div class="container"> <!-- start of content -->
         <div class="row">
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
@@ -158,8 +150,7 @@
                 <div class="push"></div>
             </div>
         </div>
-    </div>
-    </div>
+    </div> <! --end of content -->
     <div class="hidden-sm hidden-xs" ng-show="!!loaded">
         <div id="footer" class="not-embed-mode-item">
             <div class="centered-content-footer">
@@ -214,5 +205,4 @@
                 </div>
         </div>
     </div>
-
 </div>
