@@ -30,22 +30,6 @@
     }
 }
 
-// jeff: for responsive google slides
-/*.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 35px;
-    height: 0;
-    overflow: hidden;
-}
-.video-container iframe {
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}*/
-
 .lesson-step-quiz {
     .lesson-step-quiz-next {
         text-align: center;
@@ -355,3 +339,13 @@
     background-color: #cecece;
 }
 
+@media screen and (max-width : 1024px) {
+    .lesson-step {
+        .lesson-step-title {
+            padding-bottom: 0px;
+        }
+        .lergo-h1 {
+            font-size: 22px;
+        }
+    }
+}
