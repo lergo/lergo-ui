@@ -1,16 +1,13 @@
 <div>
     <div ng-controller="LoginCtrl">
         <div class="container">
-            <div class="row" style="border: 2px solid red">
-                <!--<div class="col-lg-1 col-xs-12"></div>-->
-                <div class="col-lg-12 col-xs-12">
-                    <div class="col-lg-8 col-xs-12"></div>
-                    <nav id="header-mobile"  class="navbar desktop navbar-default not-embed-mode-item" role="navigation">
+            <div class="row" >
+                <div class="col-lg-12 col-xs-12" style="border: 2px solid red">
+                    <nav id="header-mobile" role="navigation">
                         <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed" >
-                                <i class="fa fa-ellipsis-v fa-2x" style="height: 20px"></i>
+                            <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed"  >
+                                <i class="fa fa-ellipsis-v fa-2x" style="height: 20px; border: 2px solid green"></i>
                             </button>
-                            <div>
                                 <div class="hidden-lg hidden-md"> <!-- image and search icon in nabvar for mobile-->
                                     <a class="pull-left" style=" display: inline-block; margin: 8px 10px 0px 20px;" href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
                                     <div class="col-sm-5 col-sm-push-5 col-xs-3 col-xs-push-3">
@@ -44,28 +41,53 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="hidden-sm hidden-xs"> <!-- image for desktop -->
-                                    <a class="pull-left logo"  href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
+                        </div>  <!--end of navbar header class -->
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                    <div class="hidden-sm hidden-xs" > <!-- image for desktop -->
+                                        <a style="border: 2px solid yellow; "  href="#!/user/homepage"><img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png"></a>
+                                    </div>
+                                </div>
+
+                        <div class="col-lg-6 col-md-3 col-sm-3 cl-xs-3">
+                        <ul class="hidden-xs hidden-sm">
+                            <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form navbar-left header-search-mobile" role="search">
+                                <div class="form-group"  ui-keypress="{enter: 'searchOnHomepage()'}">
+                                    <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                                    <button ng-click="searchOnHomepage()" class="btn btn-link" >
+                                        <i class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
+                                    </button>
+                                    <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
+                                        <i class="fa fa-times-circle-o fa-lg cancel-search" uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </form>
+                            <div class="col-lg-6 col-md-3 col-sm-3 cl-xs-3">
+
+                                <li><div style="border: 2px solid lime" class="lergo-h1"   ng-hide="showForm || baseLayout.filterTextSearch.length > 0 " ng-click="showForm = true; setFocus('focus-search-desktop')"> <span class="search-icon"> {{'baseLayout.navbar.searchLesson' | translate}}<i class="fa fa-search" aria-hidden="true"></i></span></div></li>
+                            </div>
+                            <div class="col-lg-6 col-md-3 col-sm-3 cl-xs-3">
+                                <li><div style="border: 2px solid lime" class="lergo-h1"  create-your-own-box></div></li>
+                            </div>
+                        </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 cl-xs-3">
+                            <div class="hidden-sm hidden-xs">
+                                <div class="header-actions">
+                                    <div id="profileloginbutton-desktop"  profile-login-button="$root.user"></div>
                                 </div>
                             </div>
-                        </div>  <!--end of navbar header class -->
+                            <div class="hidden-sm hidden-xs">
+                                <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+
+
+
+
 
                             <div class="collapse navbar-collapse desktop" uib-collapse="isNavCollapsed"> <!--new stuff-->
-                                <ul class="nav navbar-nav desktop  hidden-xs hidden-sm">
-                                    <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form navbar-left header-search-mobile" role="search">
-                                        <div class="form-group"  ui-keypress="{enter: 'searchOnHomepage()'}">
-                                            <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
-                                            <button ng-click="searchOnHomepage()" class="btn btn-link" >
-                                                <i class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
-                                            </button>
-                                            <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
-                                                <i class="fa fa-times-circle-o fa-lg cancel-search" uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </form>
-                                    <li> <div class="lergo-h1"   ng-hide="showForm || baseLayout.filterTextSearch.length > 0 " ng-click="showForm = true; setFocus('focus-search-desktop')"> <span class="search-icon"> {{'baseLayout.navbar.searchLesson' | translate}}<i class="fa fa-search" aria-hidden="true"></i></span></div></li>
-                                    <li><div class="lergo-h1" style=" float: right" create-your-own-box></div></li>
-                                </ul>
+
                                 <ul class="nav navbar-nav desktop navbar-right">
                                     <div class="hidden-lg hidden-md">
                                         <div class="mobile-navbar-menu">
@@ -101,18 +123,10 @@
                                             </div>
                                         </li>
                                     </div>  <!--end of hidden-lg hidden-md-->
-                                    <li>
-                                        <div class="hidden-sm hidden-xs">
-                                            <div class="header-actions">
-                                                <div id="profileloginbutton-desktop"  profile-login-button="$root.user"></div>
-                                            </div>
-                                        </div>
-                                    </li>
+
                                     <span uib-dropdown on-toggle="toggled(open)"  >
                                       <a href id="simple-dropdown1" uib-dropdown-toggle>
-                                         <div class="hidden-sm hidden-xs">
-                                              <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
-                                         </div>
+
                                       </a>
                                       <ul class="dropdown-menu overidePositionInherit" uib-dropdown role="menu" aria-labelledby="single-button" style="margin-right: 37px">
                                          <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
@@ -123,7 +137,7 @@
                                          <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
                                          <li role="menuitem"><a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
                                          <li class="divider"></li>
-                                         <div class="hidden-sm hidden-xs" >
+                                         <div class="hidden-sm hidden-xs" style="border: 2px solid blue">
                                              <li role="menuitem">
                                                  <div class="btn-group" style="padding-left: 14px;">
                                                     <label ng-hide="baseLayout.language == 'en'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'en'">English</label>
@@ -142,6 +156,30 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="container"> <!-- start of content -->
         <div class="row">
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
