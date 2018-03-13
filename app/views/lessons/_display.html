@@ -252,9 +252,9 @@
                         </button>
                     </div>
                     <div class="forms">
-                        <div ng-show="isActiveAction(actionItems.SHARE)"
+                        <div ng-class="{'mPaddingActive': isActiveAction(actionItems.SHARE) }" ng-show="isActiveAction(actionItems.SHARE)"
                              ng-include="'views/lessons/intro/_shareForm.html'"></div>
-                        <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
+                        <div ng-class="{'mPaddingActive': isActiveAction(actionItems.INVITE) }" ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
                              on-close="setActiveAction()"></div>
                     </div>
                 </div>

@@ -176,7 +176,7 @@
             }
             .forms {
                 background: #efefef;
-                padding: 5px;
+                padding: 0px;
                 border-radius: 10px;
             }
         }
@@ -365,3 +365,8 @@
     }
 }
 
+// mobile form padding when active so as not to see padding color when collapsed
+
+.mPaddingActive {
+    padding: 8px;
+}
