@@ -146,7 +146,7 @@
             text-align: center;
             font-family: cursive;
             font-weight: bold;
-            padding-top: 75px;
+            padding-top: 45px;
         }
         .message {
             font-size: 25px;
@@ -172,6 +172,7 @@
             margin: 15px auto;
             .action-items {
                 text-align: right;
+                padding-bottom: 20px;
             }
             .forms {
                 background: #efefef;
@@ -346,3 +347,21 @@
         }
     }
 }
+
+.rtl {
+    #lessonDisplay {
+        .done-step-mobile {
+            margin: 0 auto;
+            .congrats {
+                font-size: 36px;
+            }
+            .action-items {
+                 font-size: 20px;
+            }
+        }
+    }
+    #message-buttons {
+       font-size: 20px;
+    }
+}
+
