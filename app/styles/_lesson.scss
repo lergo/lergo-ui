@@ -2,7 +2,6 @@
     .lesson-step-title {
         text-align: center;
         padding-bottom: 20px;
-        margin-bottom: -40px;
     }
     .lergo-h1 {
         font-size: 28px;
@@ -74,16 +73,14 @@
             text-align: center;
         }
     }
-    margin-top: 20px;
+    margin-top: 10px;
     .lergo-h2 {
         text-align: center;
         padding: 10px 0;
     }
     .lesson-step-quiz-content {
-        /*width: 570px;*/
         border: 5px solid #949494;
         border-radius: 10px;
-        margin-top: 50px;
         margin-left: auto;
         margin-right: auto;
         background-color: #efefef;  // to complete the background color of #questionPreview
@@ -342,7 +339,7 @@
 @media screen and (max-width : 1024px) {
     .lesson-step {
         .lesson-step-title {
-            padding-bottom: 0px;
+            padding-bottom: 10px;
         }
         .lergo-h1 {
             font-size: 22px;
