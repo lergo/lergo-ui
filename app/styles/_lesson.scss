@@ -337,6 +337,11 @@
     background-color: #cecece;
 }
 
+.dpadleftRight37 {
+    padding-left: 37px;
+    padding-right: 37px;
+}
+
 @media screen and (max-width : 1024px) {
     .lesson-step {
         .lesson-step-title {
@@ -345,6 +350,10 @@
         .lergo-h1 {
             font-size: 22px;
         }
+    }
+    .dpadleftRight37 {
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }
 
