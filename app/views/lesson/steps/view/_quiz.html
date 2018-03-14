@@ -1,30 +1,30 @@
 <div>
     <div>
-        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+        <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12"></div>
+        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="padding: 0 37px;">
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" ></div>
             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-            <div class="lesson-step-quiz-mobile d-leftRight15">
-                <div dir="auto" class="lesson-step-title lergo-h1">{{step.title}}</div>
-                <div>
-                    <table class="lergo-table">
-                        <tr>
-                            <td style="vertical-align: top;">
-                                <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="vertical-align: top;" ng-show="shouldShowExplanationMedia()" class="quiz-item-explanation">
-                                <div style="border: 5px solid #EE9A00; border-radius: 10px;">
-                                    <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
-                                    <div dir="auto">{{quizItem.explanation}}</div>
-                                    <div quiz-item-explanation-media class="img-small"   quiz-item="quizItem"></div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                <div class="lesson-step-quiz-mobile d-leftRight15">
+                    <div dir="auto" class="lesson-step-title lergo-h1">{{step.title}}</div>
+                    <div>
+                        <table class="lergo-table">
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="vertical-align: top;" ng-show="shouldShowExplanationMedia()" class="quiz-item-explanation">
+                                    <div style="border: 5px solid #EE9A00; border-radius: 10px;">
+                                        <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
+                                        <div dir="auto">{{quizItem.explanation}}</div>
+                                        <div quiz-item-explanation-media class="img-small"   quiz-item="quizItem"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-            </div>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
         </div>
