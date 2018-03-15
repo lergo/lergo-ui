@@ -30,11 +30,11 @@
                 <input dir="auto" id="exactQuestionText" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="quizItem.userAnswer" autofocus ng-init="setFocus('exactQuestionText')" />
             </div>
             <div ng-include="'views/questions/view/partials/_submit.html'"></div>
-            <div class="side5m" ng-show="isQuizStep()">
+            <div class="sideBot5nd" ng-show="isQuizStep()">
                 <div lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar"> <b>{{progressPercentage}}%</b></div>
             </div>
             <br>
-            <div class="side5m" ng-include="'views/questions/view/partials/_result.html'"></div>
+            <div class="sideBot5nd" ng-include="'views/questions/view/partials/_result.html'"></div>
         </div>
     </div>
 </div>
