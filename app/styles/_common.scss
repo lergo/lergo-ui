@@ -797,6 +797,7 @@ $COLOR_19: #2a6496 !default;
     border-radius: 10px;
     background-color: $LERGO_BODY_TILE_BACKGROUND;
     padding-top: 1px;
+    margin-top: 30px;
 }
 
 .bot5 {
@@ -935,14 +936,58 @@ label {
     #content > div:first-child {
         margin-top: 5px;
     }
-}
-.rtl {
-    .dropdown-menu {
-        float: right;
-        position: inherit;
+    .lergo-body-tile{
+        margin-top: 0px;
     }
-
+    .mobile-topbot10 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .mfont-size13 {
+        font-size: 13px;
+    }
+    .mpadding2 {
+        padding: 2px;
+    }
+    .mpad-topBot2 {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    .mpad-topBot4 {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    .mpad-leftRight8 {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .mpad-bot5 {
+        padding-bottom: 5px;
+    }
+    .m-right {
+        float: right;
+    }
+    .d-m-left {
+        float: right;
+    }
+    .rtl {
+        .m-right {
+            float: left;
+        }
+        .d-m-left {
+            float: left;
+        }
+        .dropdown-menu {
+            float: right;
+            position: inherit;
+        }
+    }
 }
+
+
+
+
+
  /*Desktop only*/
 @media  screen and (min-width : 1024px) {
     .d-leftRight15 {
@@ -983,50 +1028,5 @@ label {
         }
     }
 }
-
-@media screen and (max-width : 1024px) {
-    .mobile-topbot10 {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .mfont-size13 {
-         font-size: 13px;
-    }
-    .mpadding2 {
-         padding: 2px;
-    }
-    .mpad-topBot2 {
-         padding-top: 2px;
-         padding-bottom: 2px;
-    }
-    .mpad-topBot4 {
-        padding-top: 4px;
-        padding-bottom: 4px;
-    }
-    .mpad-leftRight8 {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-    .mpad-bot5 {
-        padding-bottom: 5px;
-    }
-    .m-right {
-        float: right;
-    }
-    .rtl {
-        .m-right {
-            float: left;
-        }
-    }
-    .d-m-left {
-        float: right;
-    }
-    .rtl {
-        .d-m-left {
-            float: left;
-        }
-    }
-}
-
 
 
