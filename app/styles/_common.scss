@@ -796,6 +796,8 @@ $COLOR_19: #2a6496 !default;
     margin-right: auto;
     border-radius: 10px;
     background-color: $LERGO_BODY_TILE_BACKGROUND;
+    padding-top: 1px;
+    margin-top: 30px;
 }
 
 .bot5 {
@@ -840,6 +842,24 @@ $COLOR_19: #2a6496 !default;
 .top90 {
     margin-top: 90px;
 }
+.sideBot5nd {
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-bottom: -5px;
+
+}
+.side10 {
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.height25 {
+    height: 25px;
+}
+.margin-botN45 {
+    margin-bottom: -45px;
+}
 
 .pad-topBot5 {
     padding-top: 5px;
@@ -858,6 +878,11 @@ $COLOR_19: #2a6496 !default;
 
 .pad-top20 {
     padding-top: 20px;
+}
+
+.pad-leftRight8 {
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 
@@ -912,16 +937,65 @@ label {
     #content > div:first-child {
         margin-top: 5px;
     }
-}
-.rtl {
-    .dropdown-menu {
-        float: right;
-        position: inherit;
+    .lergo-body-tile{
+        margin-top: 0px;
     }
-
+    .mobile-topbot10 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .mfont-size13 {
+        font-size: 13px;
+    }
+    .mpadding2 {
+        padding: 2px;
+    }
+    .mpad-topBot2 {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    .mpad-topBot4 {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    .mpad-leftRight8 {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .mpad-bot5 {
+        padding-bottom: 5px;
+    }
+    .m-right {
+        float: right;
+    }
+    .d-m-left {
+        float: right;
+    }
+    .rtl {
+        .m-right {
+            float: left;
+        }
+        .d-m-left {
+            float: left;
+        }
+        .dropdown-menu {
+            float: right;
+            position: inherit;
+        }
+    }
 }
+
+
+
+
+
  /*Desktop only*/
 @media  screen and (min-width : 1024px) {
+    .d-leftRight15 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
     .rtlFloatLeft {
         float: right;
     }
@@ -946,43 +1020,14 @@ label {
     .d-padBot10 {
         padding-bottom: 10px;
     }
-}
-
-@media screen and (max-width : 1024px) {
-    .mobile-topbot10 {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .mfont-size13 {
-         font-size: 13px;
-    }
-    .mpadding2 {
-         padding: 2px;
-    }
-    .mpad-topBot2 {
-         padding-top: 2px;
-         padding-bottom: 2px;
-    }
-    .mpad-topBot4 {
-        padding-top: 4px;
-        padding-bottom: 4px;
-    }
-    .mpad-leftRight8 {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-    .mpad-bot5 {
-        padding-bottom: 5px;
-    }
-    .m-right {
-        float: right;
+    .d-m-left {
+        float: left;
     }
     .rtl {
-        .m-right {
-            float: left;
+        d-m-left {
+            float: right;
         }
     }
 }
-
 
 

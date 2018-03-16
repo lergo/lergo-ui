@@ -1,6 +1,8 @@
 <div class="lesson-step-video" ng-init="scrollUp()">
+    <div style="height: 12px" class="hidden-lg hidden-md"></div>
     <div class="lesson-step-title lergo-h1">{{step.title}}</div>
-    <div class="lesson-step-video-content" style="margin-top: 38px">
+    <div style="height: 7px" class="hidden-lg hidden-md"></div>
+    <div class="lesson-step-video-content">
         <div  class="embed-responsive embed-responsive-16by9">
             <div class="hidden-sm hidden-xs">
                 <iframe width="{{videoSize.width}}" height="{{videoSize.height}}" ng-src="{{getYoutubeEmbedSource(step)}}"

@@ -136,13 +136,13 @@
 
 
         <div class="hidden-lg hidden-md" style="background-color: #d2e8fa"> <!--start mobile view -->
-            <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step-mobile" >
+            <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step-mobile">
                 <div class="congrats">
+                    {{scrollToTop()}}
                     {{ 'congratulations' | translate }}!
                     <br>
                     <div id="grad1">
                     </div>
-                    <br>
                 </div>
 
                 <div class="message">
@@ -150,7 +150,6 @@
                     <div class="lesson-title">"{{lesson.name}}"</div>
                     <div class="created-by">{{'lesson.createdBy'|translate}}</div>
                     <div class="lesson-title">{{lesson.user.username}}</div>
-                    <br>
                 </div>
                 <div id="message-buttons" style="overflow-y: auto">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -254,9 +253,9 @@
                         </button>
                     </div>
                     <div class="forms">
-                        <div ng-show="isActiveAction(actionItems.SHARE)"
+                        <div ng-class="{'mPaddingActive': isActiveAction(actionItems.SHARE) }" ng-show="isActiveAction(actionItems.SHARE)"
                              ng-include="'views/lessons/intro/_shareForm.html'"></div>
-                        <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
+                        <div ng-class="{'mPaddingActive': isActiveAction(actionItems.INVITE) }" ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
                              on-close="setActiveAction()"></div>
                     </div>
                 </div>

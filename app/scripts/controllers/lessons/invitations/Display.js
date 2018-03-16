@@ -3,6 +3,13 @@
 angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
     function ($scope, $filter, LergoClient, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope) {
 
+
+
+        // $window is not doing the job, so had to use document.body
+        $scope.scrollToTop = function() {
+            document.body.scrollTop = 0;
+        };
+
         $log.info('loading invitation', $routeParams.invitationId);
         var errorWhileSaving = false;
         $scope.shareSection = 'link';

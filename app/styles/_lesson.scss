@@ -2,7 +2,7 @@
     .lesson-step-title {
         text-align: center;
         padding-bottom: 20px;
-        margin-bottom: -40px;
+        padding-top: 31px;
     }
     .lergo-h1 {
         font-size: 28px;
@@ -29,22 +29,6 @@
         display: inline-block;
     }
 }
-
-// jeff: for responsive google slides
-/*.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 35px;
-    height: 0;
-    overflow: hidden;
-}
-.video-container iframe {
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}*/
 
 .lesson-step-quiz {
     .lesson-step-quiz-next {
@@ -90,16 +74,14 @@
             text-align: center;
         }
     }
-    margin-top: 20px;
+    /*margin-top: 10px;*/
     .lergo-h2 {
         text-align: center;
         padding: 10px 0;
     }
     .lesson-step-quiz-content {
-        /*width: 570px;*/
         border: 5px solid #949494;
         border-radius: 10px;
-        margin-top: 50px;
         margin-left: auto;
         margin-right: auto;
         background-color: #efefef;  // to complete the background color of #questionPreview
@@ -165,7 +147,7 @@
             text-align: center;
             font-family: cursive;
             font-weight: bold;
-            padding-top: 75px;
+            padding-top: 45px;
         }
         .message {
             font-size: 25px;
@@ -191,10 +173,11 @@
             margin: 15px auto;
             .action-items {
                 text-align: right;
+                padding-bottom: 20px;
             }
             .forms {
                 background: #efefef;
-                padding: 5px;
+                padding: 0px;
                 border-radius: 10px;
             }
         }
@@ -355,3 +338,49 @@
     background-color: #cecece;
 }
 
+.dpadleftRight37 {
+    padding-left: 37px;
+    padding-right: 37px;
+}
+
+@media screen and (max-width : 1024px) {
+    .lesson-step {
+        .lesson-step-title {
+            padding-bottom: 2px;
+            padding-top: 0px;
+        }
+        .lergo-h1 {
+            font-size: 22px;
+        }
+    }
+    .dpadleftRight37 {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    #message-buttons {
+        padding: 15px;
+    }
+}
+
+.rtl {
+    #lessonDisplay {
+        .done-step-mobile {
+            margin: 0 auto;
+            .congrats {
+                font-size: 36px;
+            }
+            .action-items {
+                 font-size: 20px;
+            }
+        }
+    }
+    #message-buttons {
+       font-size: 20px;
+    }
+}
+
+// mobile form padding when active so as not to see padding color when collapsed
+
+.mPaddingActive {
+    padding: 8px;
+}

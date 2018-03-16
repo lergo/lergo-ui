@@ -1,7 +1,7 @@
 
 <div class="base-layout">
     <div class="report padding-leftRight15">
-        <div class="row header">
+        <div class="header">
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding-leftRight15">
                 <div class="image">
                     <div class="user">
@@ -76,7 +76,7 @@
                         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <a ng-click="startLesson()" ng-show="!report.data.lesson.temporary"
                                class="restart no-underline">
-                                <i class="fa fa-repeat left mpad-bot5 "> {{'lessons.restart' | translate}}</i>
+                                <i class="fa fa-repeat d-m-left mpad-bot5 "> {{'lessons.restart' | translate}}</i>
                             </a>
                         </div>
                         <span ng-show="wrongQuestions.length>0" class="practiceMistake">
@@ -283,9 +283,12 @@
                         <div class="col-lg-9 col-md-7 col-sm-7 col-xs-7 description">
                             <div>
                                 <div class="col-md-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                                         {{'reports.click.video' | translate}}</a>
+                                    </div>
                                     <div ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+
                                 <div class="inline-table">
                                      <ng-pluralize count="step.quizItems.length" when="{
                                             '0': '{{ &quot;report.questionsInQuiz.zero&quot; | translate}}',
