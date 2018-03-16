@@ -57,7 +57,7 @@
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 practiceMistake" ng-show="wrongQuestions.length>0">
                         <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
                            ng-disabled="practiseBtnDisable">
-                            <i class="fa fa-repeat d-padBot10 m-right mpad-bot5"> {{'lessons.practiseWrongQuestion' | translate}}</i>
+                            <i class="fa fa-repeat d-padBot10 m-right mpad-bot5" style="white-space: nowrap;"> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
                         <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
                            uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
@@ -83,7 +83,7 @@
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <a show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
                                    ng-disabled="practiseBtnDisable">
-                                    <i class="fa fa-repeat mpad-bot5 "> {{'lessons.practiseWrongQuestion' | translate}}</i>
+                                    <i class="fa fa-repeat mpad-bot5 " style="white-space: nowrap;"> {{'lessons.practiseWrongQuestion' | translate}}</i>
                                 </a>
                                 <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
                                    uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
