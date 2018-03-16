@@ -1,11 +1,4 @@
 .report {
-    .header {
-        .header-name {
-            .class-header.lergo-h1 {
-                font-size: 20px;
-            }
-        }
-    }
     .collapsible.lergo-h1{
         font-size:20px;
     }
@@ -119,6 +112,11 @@
         background-color: #EFEFEF;
         margin-bottom: 20px;
         border-radius: 10px;
+        .header-name {
+            .class-header.lergo-h1 {
+                font-size: 20px;
+            }
+        }
         .lergo-h4 {
             font-size: 18px;
             color: #949494;
@@ -390,7 +388,11 @@
             .lergo-h4 {
                 font-size: 18px;
             }
+            .header-desc {
+                min-height: 10px;
+            }
         }
+
         .summary{
             .lergo-h1 {
                 font-size: 15px;
