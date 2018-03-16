@@ -1,4 +1,4 @@
-<div class="question-preview">
+<div class="question-preview" ng-init="scrollToTop()">
 	<div class="hint">
 		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" uib-popover="{{quizItem.hint}}" class="btn-link hint"
 			 popover-trigger="'outsideClick'" tabindex="0">{{'hint' | translate}}</button>
