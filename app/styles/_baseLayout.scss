@@ -228,10 +228,9 @@ input.form-control.search-input {
 #header-mobile {
     .cancel-search {
         position:relative;
-        right: 90px;
+        right: -309px;
         color: darkgrey;
-        /*font-size: 14px;*/
-        bottom: 0px
+        bottom: 39px
     }
     .pull-left.logo {
         margin-left: 1vw;
@@ -323,13 +322,6 @@ input.form-control.search-input {
             top: 18px;
             &:hover {
                 color: rgba(0, 0, 0, 0.3);
-            }
-            &:after {
-               /* display: inline-block;
-                content: "|";
-                margin-left: 5vw;
-                margin-right: 5vw;
-                color: #c1def5;*/
             }
             i.fa.fa-search {
                 padding-left: 12px;

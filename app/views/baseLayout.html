@@ -52,7 +52,7 @@
 
                         <div class="col-lg-8 col-md-3 col-sm-3 cl-xs-3">
                            <div class="hidden-xs hidden-sm" >
-                                <div class="col-lg-7" style="border: 2px solid gold" >
+                                <div class="col-lg-7" style="border: 2px solid gold; height: 60px" >
                                     <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form" role="search">
                                         <div class="form-group"  ui-keypress="{enter: 'searchOnHomepage()'}">
                                             <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
