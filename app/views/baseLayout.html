@@ -2,7 +2,7 @@
     <div ng-controller="LoginCtrl">
         <div class="container">
             <div class="row" >
-                <div class="col-lg-12 col-xs-12" style="border: 2px solid red">
+                <div class="col-lg-12 col-xs-12">
                     <nav id="header-mobile" role="navigation">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed"  >
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                         </div>  <!--end of navbar header class -->
-                                <div class="col-lg-3" style="border: 2px solid yellow; ">
+                                <div class="col-lg-1" style="border: 2px solid yellow; ">
                                     <div class="hidden-sm hidden-xs" > <!-- image for desktop -->
                                         <a  href="#!/user/homepage">
                                             <img src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png">
@@ -50,34 +50,35 @@
                                     </div>
                                 </div>
 
-                        <div class="col-lg-6 col-md-3 col-sm-3 cl-xs-3">
-                        <div class="col-lg-12" style="border: 2px solid gold">
-                        <div class="hidden-xs hidden-sm" >
-                            <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form" role="search">
-                                <div class="form-group"  ui-keypress="{enter: 'searchOnHomepage()'}">
-                                    <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
-                                    <button ng-click="searchOnHomepage()" class="btn btn-link" >
-                                        <i class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
-                                    </button>
-                                    <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
-                                        <i class="fa fa-times-circle-o fa-lg cancel-search" uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </form>
-                            <div class="col-lg-6 col-md-3 col-sm-3 cl-xs-3">
-                                <div>
-                                    <div  class="lergo-h1"   ng-hide="showForm || baseLayout.filterTextSearch.length > 0 " ng-click="showForm = true; setFocus('focus-search-desktop')">
-                                        <span class="search-icon"> {{'baseLayout.navbar.searchLesson' | translate}}
-                                            <i class="fa fa-search" aria-hidden="true">
-                                            </i>
-                                        </span>
+                        <div class="col-lg-8 col-md-3 col-sm-3 cl-xs-3">
+                           <div class="hidden-xs hidden-sm" >
+                                <div class="col-lg-8" style="border: 2px solid gold" >
+                                    <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form" role="search">
+                                        <div class="form-group"  ui-keypress="{enter: 'searchOnHomepage()'}">
+                                            <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                                            <button ng-click="searchOnHomepage()" class="btn btn-link" >
+                                                <i class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
+                                            </button>
+                                            <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
+                                                <i class="fa fa-times-circle-o fa-lg cancel-search" uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </form>
+                                    <div>
+                                        <div class="col-lg-6"></div>
+                                        <div class="col-lg-6">
+                                            <div  class="lergo-h1"   ng-hide="showForm || baseLayout.filterTextSearch.length > 0 " ng-click="showForm = true; setFocus('focus-search-desktop')">
+                                                <span class="search-icon"> {{'baseLayout.navbar.searchLesson' | translate}}
+                                                    <i class="fa fa-search" aria-hidden="true">
+                                                    </i>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6 col-md-3 col-sm-3 cl-xs-3">
-                                <div style="border: 2px solid lime" class="lergo-h1"  create-your-own-box></div>
-                            </div>
-                        </div>
+                                <div class="col-lg-4 col-md-3 col-sm-3 cl-xs-3">
+                                    <div style="border: 2px solid lime" class="lergo-h1"  create-your-own-box></div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 cl-xs-3">
@@ -90,8 +91,32 @@
                             </div>
                             <div class="col-lg-3 " style="border: 2px solid purple">
                                 <div class="hidden-sm hidden-xs">
-                                    <i style="padding: 17px" class="fa fa-bars fa-2x" aria-hidden="true"></i>
-                                </div>
+
+                                <span uib-dropdown on-toggle="toggled(open)"  >
+                                      <a href id="simple-dropdown1" uib-dropdown-toggle style="border: 2px solid blue">
+                                        <i  class="fa fa-bars fa-2x" aria-hidden="true"></i>
+                                      </a>
+                                      <ul class="dropdown-menu overidePositionInherit" uib-dropdown role="menu" aria-labelledby="single-button" style="margin-right: 37px">
+                                         <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
+                                         <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
+                                         <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
+                                                        'baseLayout.header.links.create'| translate }} </a></li>
+                                         <li role="menuitem"><a href="#!/user/Parents">{{ 'baseLayout.header.links.' + 'Parents'.toLowerCase() | translate }}</a></li>
+                                         <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
+                                         <li role="menuitem"><a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
+                                         <li class="divider"></li>
+                                         <div class="hidden-sm hidden-xs" style="border: 2px solid blue">
+                                             <li role="menuitem">
+                                                 <div class="btn-group" style="padding-left: 14px;">
+                                                    <label ng-hide="baseLayout.language == 'en'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'en'">English</label>
+                                                    <label ng-hide="baseLayout.language == 'he'" class="btn btn-link" ng-model="baseLayout.language" uib-btn-radio="'he'">עברית</label>
+                                                    <label ng-hide="baseLayout.language == 'ar'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'ar'"> العربية</label>
+                                                 </div>
+                                             </li>
+                                         </div>
+                                      </ul>
+                                    </span>
+                            </div>
                             </div>
                         </div>
 
@@ -138,30 +163,7 @@
                                         </li>
                                     </div>  <!--end of hidden-lg hidden-md-->
 
-                                    <span uib-dropdown on-toggle="toggled(open)"  >
-                                      <a href id="simple-dropdown1" uib-dropdown-toggle>
 
-                                      </a>
-                                      <ul class="dropdown-menu overidePositionInherit" uib-dropdown role="menu" aria-labelledby="single-button" style="margin-right: 37px">
-                                         <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
-                                         <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
-                                         <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
-                                                        'baseLayout.header.links.create'| translate }} </a></li>
-                                         <li role="menuitem"><a href="#!/user/Parents">{{ 'baseLayout.header.links.' + 'Parents'.toLowerCase() | translate }}</a></li>
-                                         <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
-                                         <li role="menuitem"><a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
-                                         <li class="divider"></li>
-                                         <div class="hidden-sm hidden-xs" style="border: 2px solid blue">
-                                             <li role="menuitem">
-                                                 <div class="btn-group" style="padding-left: 14px;">
-                                                    <label ng-hide="baseLayout.language == 'en'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'en'">English</label>
-                                                    <label ng-hide="baseLayout.language == 'he'" class="btn btn-link" ng-model="baseLayout.language" uib-btn-radio="'he'">עברית</label>
-                                                    <label ng-hide="baseLayout.language == 'ar'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'ar'"> العربية</label>
-                                                 </div>
-                                             </li>
-                                         </div>
-                                      </ul>
-                                    </span>
                                  </ul>
                             </div>
                     </nav>
