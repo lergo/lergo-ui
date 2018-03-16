@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 restart" ng-show="!report.data.lesson.temporary">
                         <a href="" ng-click="startLesson()">
-                            <i class="fa fa-repeat d-padBot10 m-right mpad-bot5" > {{'lessons.restart' | translate}}</i>
+                            <i class="fa fa-repeat d-padBot10 m-right mpad-bot5 d-padr15" > {{'lessons.restart' | translate}}</i>
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 practiceMistake" ng-show="wrongQuestions.length>0">
@@ -76,7 +76,7 @@
                         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <a ng-click="startLesson()" ng-show="!report.data.lesson.temporary"
                                class="restart no-underline">
-                                <i class="fa fa-repeat d-m-left mpad-bot5 "> {{'lessons.restart' | translate}}</i>
+                                <i class="fa fa-repeat mpad-bot5 d-padr15 "> {{'lessons.restart' | translate}}</i>
                             </a>
                         </div>
                         <span ng-show="wrongQuestions.length>0" class="practiceMistake">
