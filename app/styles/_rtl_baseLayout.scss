@@ -33,12 +33,12 @@ body .rtl{
             margin-left: 1vw;
         }
         .cancel-search {
-            right: -80px;
-            bottom: 0px;
+            right: 310px;
+            bottom: 37px;
         }
         .search-icon {
             font-size: 20px;
-            margin-left: 4vw;
+            /*margin-left: 4vw;
             &:after {
                 content: "";
             }
@@ -48,7 +48,7 @@ body .rtl{
                 margin-left: 5vw;
                 margin-right: 4.1vw;
                 color: #c1def5;
-            }
+            }*/
         }
     }
     input.form-control.search-input {

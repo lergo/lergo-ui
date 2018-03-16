@@ -325,11 +325,11 @@ input.form-control.search-input {
                 color: rgba(0, 0, 0, 0.3);
             }
             &:after {
-                display: inline-block;
+               /* display: inline-block;
                 content: "|";
                 margin-left: 5vw;
                 margin-right: 5vw;
-                color: #c1def5;
+                color: #c1def5;*/
             }
             i.fa.fa-search {
                 padding-left: 12px;
