@@ -26,4 +26,4 @@ angular.module('lergoApp').directive('setFocus', function($timeout, $parse) {
     };
 });
 
-
+/*maybe use a different setFocus directive: https://gist.github.com/danrigsby/643a812edb6f77926f00*/
