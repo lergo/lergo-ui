@@ -43,11 +43,7 @@
     }
 }
 
-@media only screen and (min-device-width : 1024px) {
-    .navbar-form .form-control.search-desktop {
-        width: 25vw;
-    }
-}
+
 // for tables
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     .navbar-form .form-control.search-desktop {

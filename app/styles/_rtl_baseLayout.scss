@@ -28,55 +28,53 @@ body .rtl{
 }
 
 .rtl {
-    #header-mobile {
-        .pull-left.logo {
-            margin-left: 1vw;
+    .base-layout {
+        #header-mobile {
+            .pull-left.logo {
+                margin-left: 1vw;
+            }
+            .cancel-search {
+                right: 25vw;
+                bottom: 37px;
+            }
+            .search-icon {
+                font-size: 20px;
+                float: left;
+            }
+            i.fa.fa-search {
+                padding-left: 0px;
+                padding-right: 3px;
+                float: left;
+
+            }
+        }
+        input.form-control.search-input {
+            margin-right: 0px;
+        }
+        .cancel-search-mobile {
+            bottom: -3px;
+            .cancel-adjust {
+                padding: 10px;
+            }
         }
         .cancel-search {
-            right: 310px;
-            bottom: 37px;
+            right: 5px;
+            bottom: 0px;
         }
-        .search-icon {
-            font-size: 20px;
-            /*margin-left: 4vw;
-            &:after {
-                content: "";
-            }
-            &:before {
-                display: inline-block;
-                content: "|";
-                margin-left: 5vw;
-                margin-right: 4.1vw;
-                color: #c1def5;
-            }*/
+        .search-mobile {
+            float: left;
+            margin-left: 25px;
+            bottom: 25px
         }
-    }
-    input.form-control.search-input {
-        margin-right: 0px;
-    }
-    .cancel-search-mobile {
-        bottom: -3px;
-        .cancel-adjust {
-            padding: 10px;
+        .search-float {
+            float: left;
+            padding: 2px;
         }
-    }
-    .cancel-search {
-        right: 5px;
-        bottom: 0px;
-    }
-    .search-mobile {
-        float: left;
-        margin-left: 25px;
-        bottom: 25px
-    }
-    .search-float {
-        float: left;
-        padding: 2px;
-    }
 
-    .navbar-search-mobile {
-        .col-xs-10, col-sm-10 { /*this is needed for the mobile searchbar - not sure why it is only needed here*/
-            float: right;
+        .navbar-search-mobile {
+            .col-xs-10, col-sm-10 { /*this is needed for the mobile searchbar - not sure why it is only needed here*/
+                float: right;
+            }
         }
     }
 }

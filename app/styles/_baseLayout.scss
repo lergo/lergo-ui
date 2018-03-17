@@ -228,7 +228,7 @@ input.form-control.search-input {
 #header-mobile {
     .cancel-search {
         position:relative;
-        right: -309px;
+        right: -25vw;
         color: darkgrey;
         bottom: 39px
     }
@@ -526,6 +526,11 @@ input.form-control.search-input {
                 width: unset;
             }
         }
+    }
+}
+@media screen and (min-width: 1024px) {
+    .navbar-form .form-control.search-desktop {
+        width: 28vw;
     }
 }
 
