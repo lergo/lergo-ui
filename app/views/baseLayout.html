@@ -54,7 +54,7 @@
                            <div class="hidden-xs hidden-sm" >
                                 <div class="col-lg-7 col-md-7" style=" height: 60px" >
                                     <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form" role="search">
-                                        <div style="margin: 0 -15px" class="form-group"  ui-keypress="{enter: 'searchOnHomepage()'}">
+                                        <div style="margin: 4px -15px" class="form-group"  ui-keypress="{enter: 'searchOnHomepage()'}">
                                             <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
                                             <button ng-click="searchOnHomepage()" class="btn btn-link" >
                                                 <i class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
