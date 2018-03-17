@@ -8,6 +8,11 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
         var audio = new Audio('../audio/correctanswer.mp3');
         $window.scrollTo(0, 0);
 
+        $scope.scrollToTop = function() {
+            document.body.scrollTop = 80;
+        };
+
+
         QuestionsService.getQuestionById(questionId).then(function (result) {
             $scope.quizItem = result.data;
             LergoTranslate.setLanguageByName($scope.quizItem.language);

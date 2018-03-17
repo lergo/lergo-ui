@@ -912,7 +912,6 @@ $COLOR_19: #2a6496 !default;
     text-align: center;
 }
 
-
 // settings this as default behavior as I assume that all text for copy-paste is in english and usually links or embed snippet
 [select-all-text-on-click]{
     text-align:start;
@@ -1023,9 +1022,15 @@ label {
     .d-m-left {
         float: left;
     }
+    .d-padr15 {
+        padding-right: 15px
+    }
     .rtl {
         d-m-left {
             float: right;
+        }
+        .d-padr15 {
+            padding-right: 0px
         }
     }
 }

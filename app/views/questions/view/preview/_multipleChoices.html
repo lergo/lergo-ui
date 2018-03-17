@@ -1,11 +1,15 @@
-<div class="question-preview">
-	<div class="hint">
-		<button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" uib-popover="{{quizItem.hint}}" class="btn-link hint"
-			 popover-trigger="'outsideClick'" tabindex="0">{{'hint' | translate}}</button>
-	</div>
-	<div dir="auto" class="question-title">
-		<p class="lergo-h4">{{quizItem.question}}</p>
-	</div>
+<div class="question-preview" ng-init="scrollToTop()">
+    <div class="col-lg-12 col-md-12 col-sm-10 col-xs-10">
+        <div dir="auto" class="question-title">
+            <p class="lergo-h4">{{quizItem.question}}</p>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <div class="hint">
+            <button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="top" uib-popover="{{quizItem.hint}}" class="btn-link hint"
+                    popover-trigger="'outsideClick'" tabindex="0">{{'hint' | translate}}</button>
+        </div>
+    </div>
 	<div dir="auto" class="help">
 		<p class="question-help-text">{{quizItem.helpText}}</p>
 	</div>

@@ -359,6 +359,11 @@
     }
     #message-buttons {
         padding: 15px;
+        .m-repeat1 {
+            font-size: 35px;
+            color: #8CC63F;
+            padding-left: 15px;
+        }
     }
 }
 
@@ -376,6 +381,9 @@
     }
     #message-buttons {
        font-size: 20px;
+        .m-repeat1 {
+            padding-left: 0px;
+        }
     }
 }
 
