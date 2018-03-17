@@ -28,8 +28,8 @@
         </div> <!--closes row-->
         <div class="row">
             <div class="answers">
-                <input dir="auto"   autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionText" ng-show="quizItem.subType==='short'" ng-model="quizItem.userAnswer" autofocus />
-                <textarea dir="auto" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionTextarea" ng-show="quizItem.subType==='long'" ng-model="quizItem.userAnswer" autofocus></textarea>
+                <input dir="auto"   autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionText" ng-show="quizItem.subType==='short'" ng-model="quizItem.userAnswer"/>
+                <textarea dir="auto" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="openQuestionTextarea" ng-show="quizItem.subType==='long'" ng-model="quizItem.userAnswer"></textarea>
                 <span ng-init="quizItem.subType==='short' ? setFocus('openQuestionText') : setFocus('openQuestionTextarea')"></span>
             </div>
             <div ng-include="'views/questions/view/partials/_submit.html'"></div>
