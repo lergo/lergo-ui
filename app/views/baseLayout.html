@@ -180,62 +180,71 @@
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                 <div id="content" class="centered-content clearfix" ng-transclude=""></div>
-                <div class="push"></div>
+                <!--<div class="push"></div>-->
             </div>
         </div>
     </div> <! --end of content -->
+
+
     <div class="hidden-sm hidden-xs" ng-show="!!loaded">
-        <div id="footer" class="not-embed-mode-item">
-            <div class="centered-content-footer">
-                <div class="footer-text">
-                    {{'baseLayout.footer.text1' | translate }}
-                    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | translate }};</a>
-                    {{'baseLayout.footer.text3' | translate }}
-                    <a href="#!/public/terms">{{'baseLayout.footer.text4' | translate }}.</a>
-                    {{'baseLayout.footer.text5' | translate }}.
-                </div>
-                <div class="footer-links">
-                    <div class=row>
-                            <ul>
-                                <li>
-                                    <a href="#!/public/terms">{{'baseLayout.footer.privacyAndTerms' | translate }}</a>
-                                </li>
-                                <li>
-                                    <a href="#!/public/about/overview">{{'baseLayout.footer.about' | translate }}</a>
-                                </li>
-                                <li>
-                                    <a href="#!/user/homepage"> {{'baseLayout.footer.homepage' | translate }}</a>
-                                </li>
-                                <li>
-                                    <a href="#!/public/contact">{{'baseLayout.footer.contact' | translate }}</a>
-                                </li>
-                                <li admin-section="misc.userCanSeeKitchenSink">
-                                    <a href="#!/public/kitchenSink">{{'baseLayout.footer.kitchenSink' | translate}}</a>
-                                </li>
-                            </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="footer" class="not-embed-mode-item">
+                    <div class="centered-content-footer">
+                        <div class="footer-text">
+                            {{'baseLayout.footer.text1' | translate }}
+                            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{{'baseLayout.footer.text2' | translate }};</a>
+                            {{'baseLayout.footer.text3' | translate }}
+                            <a href="#!/public/terms">{{'baseLayout.footer.text4' | translate }}.</a>
+                            {{'baseLayout.footer.text5' | translate }}.
                         </div>
-                    <div class="row">
-                        <ul>
-                            <li>
-                                <a class="weight12" href="#!/public/feedback">{{'baseLayout.footer.feedback' | translate}}</a>
-                            </li>
-                            <li>
-                                <a class="weight12" href="#!/public/suggest">{{'baseLayout.footer.suggest' | translate}}</a>
-                            </li>
-                            <li>
-                                <a class="weight12" href="#!/public/problem">{{'baseLayout.footer.problem' | translate}}</a>
-                            </li>
-                            <li>
-                                <a class="weight12" href="#!/public/abuse">{{'baseLayout.footer.abuse' | translate}}</a>
-                            </li>
-                            </ul>
-                        <div class="copyrights">
-                            <div>&copy; {{'baseLayout.footer.copyright' | translate}}</div>
-                            <div>{{'baseLayout.footer.copyrightMsg' | translate}}</div>
+                        <div class="footer-links">
+                            <div class=row>
+                                <ul>
+                                    <li>
+                                        <a href="#!/public/terms">{{'baseLayout.footer.privacyAndTerms' | translate }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/public/about/overview">{{'baseLayout.footer.about' | translate }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/user/homepage"> {{'baseLayout.footer.homepage' | translate }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/public/contact">{{'baseLayout.footer.contact' | translate }}</a>
+                                    </li>
+                                    <li admin-section="misc.userCanSeeKitchenSink">
+                                        <a href="#!/public/kitchenSink">{{'baseLayout.footer.kitchenSink' | translate}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="row">
+                                <ul>
+                                    <li>
+                                        <a class="weight12" href="#!/public/feedback">{{'baseLayout.footer.feedback' | translate}}</a>
+                                    </li>
+                                    <li>
+                                        <a class="weight12" href="#!/public/suggest">{{'baseLayout.footer.suggest' | translate}}</a>
+                                    </li>
+                                    <li>
+                                        <a class="weight12" href="#!/public/problem">{{'baseLayout.footer.problem' | translate}}</a>
+                                    </li>
+                                    <li>
+                                        <a class="weight12" href="#!/public/abuse">{{'baseLayout.footer.abuse' | translate}}</a>
+                                    </li>
+                                </ul>
+                                <div class="copyrights">
+                                    <div>&copy; {{'baseLayout.footer.copyright' | translate}}</div>
+                                    <div>{{'baseLayout.footer.copyrightMsg' | translate}}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
