@@ -53,7 +53,7 @@ label.btn.btn-link {
                 background-color: rgba(0, 0, 0, 0.3)
             }
             &:last-child {
-                float: right;
+                /*float: right;*/
             }
         }
     }
@@ -554,7 +554,7 @@ input.form-control.search-input {
     }
 
     .rtl #header-mobile .search-icon {
-        font-size: 20px;
+        font-size: 22px;
         margin-left: 0px;
     }
 }
