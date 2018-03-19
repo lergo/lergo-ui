@@ -3,10 +3,11 @@
                  tabindex="1">
     <div class="col-lg-1 col-md-2 col-sm-12 col-xs-12"></div>
     <div class="col-lg-10 col-md-8 col-sm-12 col-xs-12" style="padding: 0 25px">
+       <div class="hidden-sm hidden-xs" style="height: 34px"></div>
        <table class="lergo-table">
          <tr>
              <td style="vertical-align: top;">
-                <div dir="auto" class="question">
+                <div dir="auto" class="question mpad-top10">
                     <div class="stats hidden-sm hidden-xs">
                                          <span class="stats-button age-limit-{{quizItem.age}} no-color"
                                                ng-show="!!quizItem.age"> {{quizItem.age}}+ {{'homepage.years'|translate}} </span>
@@ -23,7 +24,7 @@
                                         {{0+questionLikes }}
                                         </span>
                     </div>
-                    <div class=" hidden-lg hidden-md"> <!--stats-->
+                    <div class=" hidden-lg hidden-md mpad-leftRight16"> <!--stats-->
                         <div class="col-sm-3 col-xs-3">
                                         <span class="stats-button age-limit-{{quizItem.age}} no-color"
                                               ng-show="!!quizItem.age"> {{quizItem.age}}+ {{'homepage.years'|translate}} </span>
@@ -75,7 +76,7 @@
                                 </a>
                                 <br/>
                             </div>
-                            <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-6 col-xs-6 mpad-leftRight16">
                                 <a class="btn-link" href="#!/user/questions/{{quizItem._id}}/update"
                                    uib-tooltip="{{'questions.tooltip.edit' | translate}}"
                                    ng-show="!!permissions.canEdit">
@@ -102,7 +103,7 @@
                                             <span>{{'filters.subjects.' + quizItem.subject | translate}}</span>
                                         </span>
                         </div>
-                        <div class="hidden-lg hidden-md"> <!--properties - mobile-->
+                        <div class="hidden-lg hidden-md mpad-leftRight16"> <!--properties - mobile-->
                              <div class="col-sm-4 col-xs-4" style="height: 55px;">
                                         <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
                                              <a ng-href="#!/public/{{quizItem.user.username}}/profile">
@@ -154,7 +155,7 @@
                                          {{'like' | translate}}
                                      </a>
                                  </div>
-                                 <div class="col-sm-6 col-xs-6">
+                                 <div class="col-sm-6 col-xs-6 mpad-leftRight16">
                                      <button class="btn-link" ng-click="absoluteShareLink(quizItem)"
                                              uib-tooltip="{{'questions.tooltip.share' | translate}}">
                                          <i class="fa fa-share-alt "></i>

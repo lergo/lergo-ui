@@ -964,8 +964,16 @@ label {
         padding-left: 8px;
         padding-right: 8px;
     }
+
+    .mpad-leftRight16 {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
     .mpad-bot5 {
         padding-bottom: 5px;
+    }
+    .mpad-top10 {
+        padding-top: 10px;
     }
     .m-right {
         float: right;
@@ -993,6 +1001,8 @@ label {
 
  /*Desktop only*/
 @media  screen and (min-width : 1024px) {
+
+
     .d-leftRight15 {
         padding-left: 15px;
         padding-right: 15px;
