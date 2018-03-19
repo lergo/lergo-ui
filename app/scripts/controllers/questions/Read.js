@@ -9,7 +9,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
         $window.scrollTo(0, 0);
 
         $scope.scrollToTop = function() {
-            document.body.scrollTop = 80;
+            document.body.scrollTop = 0;
         };
 
 
