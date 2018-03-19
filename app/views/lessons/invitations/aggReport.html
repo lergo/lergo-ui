@@ -19,9 +19,9 @@
                 </div>
             </div>
             </div>
-            <div class="hidden-lg hidden-md" >
+           <!-- <div class="hidden-lg hidden-md" >
                 <img img-fluid src="https://s3-eu-west-1.amazonaws.com/lergo-dropbox-links/Public/students-n-resize.png" style="display: block; margin: 0 auto; padding: 10px">
-            </div>
+            </div>-->
             <div class="padding-leftRight15">
                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 header-name">
                     <div class="class-header lergo-h1">{{'reports.header.className' | translate}}</div><div class="class-name lergo-h4">{{report.data.invitee.class}}</div>
@@ -61,7 +61,7 @@
                     <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed">
                         <i class="fa" ng-class="{'fa-plus-square':summaryCollapsed,'fa-minus-square':!summaryCollapsed}">
                         </i>
-                        {{'report.summary'|translate}}
+                        {{'report.classSummary'|translate}}
                     </a>
                 </span>
                 <span class="text-primary">
