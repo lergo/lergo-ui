@@ -26,26 +26,30 @@
                     </div>
                     <div class=" hidden-lg hidden-md mpad-leftRight16"> <!--stats-->
                         <div class="col-sm-3 col-xs-3">
-                                        <span class="stats-button age-limit-{{quizItem.age}} no-color"
+                             <span class="stats-button left age-limit-{{quizItem.age}} no-color"
                                               ng-show="!!quizItem.age"> {{quizItem.age}}+ {{'homepage.years'|translate}} </span>
                         </div>
                         <div class="col-sm-3 col-xs-3">
-                                        <span class="stats-button" uib-tooltip="{{'homepage.tooltip.views' | translate}}">
-                                                <i class="fa fa-eye fa-fw"></i>
+                            <div class="text-center">
+                                <span class="stats-button" uib-tooltip="{{'homepage.tooltip.views' | translate}}">
+                                      <i class="fa fa-eye fa-fw"></i>
                                                 {{0+quizItem.views}}
-                                            </span>
+                                </span>
+                            </div>
                         </div>
                         <div class="col-sm-3 col-xs-3">
-                                        <span class="stats-button" uib-tooltip="{{'questions.tooltip.lessons' | translate}}">
-                                        <i class="fa fa-university fa-fw"></i>
+                            <div class="text-center">
+                                <span class="stats-button" uib-tooltip="{{'questions.tooltip.lessons' | translate}}">
+                                   <i class="fa fa-university fa-fw"></i>
                                         {{0+ lessons.length }}
-                                        </span>
+                                </span>
+                            </div>
                         </div>
                         <div class="col-sm-3 col-xs-3">
-                                        <span class="stats-button" uib-tooltip="{{'homepage.tooltip.likes' | translate}}">
-                                            <i class="fa fa-heart-o"></i>
+                             <span class="stats-button right" uib-tooltip="{{'homepage.tooltip.likes' | translate}}">
+                                  <i class="fa fa-heart-o"></i>
                                             {{0+questionLikes }}
-                                        </span>
+                             </span>
                         </div>
                     </div>
                     <div class="action-items hidden-xs hidden-sm" ng-show="!!permissions">
