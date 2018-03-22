@@ -298,7 +298,7 @@ textarea#openQuestionTextarea.mobile.width {
             }
             .description {
                 pre {
-                    word-break: break-word;
+                    /*word-break: break-word;*/
                     background: transparent;
                 }
                 font-size: 17px;
@@ -436,6 +436,14 @@ audio.audio-width-mobile {
 
     #questionIntro .question .details {
         padding: 0;
+        .description {
+            .edit-summary {
+                .title {
+                    /*padding-top: 80px;*/
+                }
+            }
+
+        }
     }
     #questionIntro .question .question-preview {
         /*width: 290px;*/

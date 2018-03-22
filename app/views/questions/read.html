@@ -155,25 +155,25 @@
                         </div>
                     </div>
                     </div>
-                     <div class="details">
+                     <div class="details" style=" border: 2px solid red">
                          <div class="properties hidden-sm hidden-xs">
                              <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
-                                             <a ng-href="#!/public/{{quizItem.user.username}}/profile">
-                                                 <i class="fa fa-user"></i>
-                                                 <span>{{quizItem.user.username}}</span>
-                                             </a>
-                                        </span>
+                                   <a ng-href="#!/public/{{quizItem.user.username}}/profile">
+                                        <i class="fa fa-user"></i>
+                                        <span>{{quizItem.user.username}}</span>
+                                   </a>
+                             </span>
                              <span uib-tooltip="{{'lessons.createdOn' | translate}}">
-                                            <i class="fa fa-calendar"></i>
-                                            <span>{{quizItem.lastUpdate | date:'d-MMM-yyyy'}}</span>
-                                        </span>
+                                    <i class="fa fa-calendar"></i>
+                                    <span>{{quizItem.lastUpdate | date:'d-MMM-yyyy'}}</span>
+                             </span>
                              <span ng-show="!!quizItem.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
-                                            <i class="fa fa-book"></i>
-                                            <span>{{'filters.subjects.' + quizItem.subject | translate}}</span>
-                                        </span>
+                                     <i class="fa fa-book"></i>
+                                     <span>{{'filters.subjects.' + quizItem.subject | translate}}</span>
+                             </span>
                         </div>
 
-                             <div class="action-items hidden-sm hidden-xs">
+                        <div class="action-items hidden-sm hidden-xs">
                                   <span show-logged-in>
                                       <button class="btn-link" ng-click="like()"
                                               uib-tooltip="{{'questions.tooltip.like' | translate}}"
@@ -211,49 +211,48 @@
                                      {{'share' | translate}}
                                  </button>
                              </div>
-                             <div class="forms">
-                                 <div ng-show="!!share" class="lergo-form share">
-                                     <p class="lergo-h4">{{'questions.shareQuestion' | translate}}</p>
+                         <div class="forms">
+                             <div ng-show="!!share" class="lergo-form share">
+                                 <p class="lergo-h4">{{'questions.shareQuestion' | translate}}</p>
 
-                                     <div class="container" style="width: 100%">
-                                         <span>{{'questions.shareQuestionTitle' | translate}}</span>
-                                         <textarea type="text" ng-model="shareLink" readonly select-all-text-on-click></textarea>
+                                 <div class="container" style="width: 100%">
+                                     <span>{{'questions.shareQuestionTitle' | translate}}</span>
+                                     <textarea type="text" ng-model="shareLink" readonly select-all-text-on-click></textarea>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="description mpad-leftRight16">
+                             <div class="edit-summary"
+                                  ng-show="quizItem.summary || (!!originalQuestions && originalQuestions.length>0)">
+                                 <br/>
+                                 <div class="title">{{'questions.editSummary'|translate}}</div>
+                                 <div style="padding: 5px 0 10px 0;" class="summary"
+                                      ng-show="quizItem.summary"
+                                      btf-markdown="quizItem.summary"></div>
+                                 <div ng-repeat="q in originalQuestions">
+                                     <div style="padding: 5px 0 10px 0;" class="summary">
+                                         Copied from
+                                         <span question-read-link question="q"></span>
+                                         by {{q.user.username}}
                                      </div>
                                  </div>
                              </div>
-                             <div class="description">
-                                 <div class="edit-summary"
-                                      ng-show="quizItem.summary || (!!originalQuestions && originalQuestions.length>0)">
-                                     <br/>
-
-                                     <div class="title">{{'questions.editSummary'|translate}}</div>
-                                     <div style="padding: 5px 0 10px 0;" class="summary"
-                                          ng-show="quizItem.summary"
-                                          btf-markdown="quizItem.summary"></div>
-                                     <div ng-repeat="q in originalQuestions">
-                                         <div style="padding: 5px 0 10px 0;" class="summary">
-                                             Copied from
-                                             <span question-read-link question="q"></span>
-                                             by {{q.user.username}}
-                                         </div>
+                             <div class="edit-summary" ng-show="usedInLessons.length>0">
+                                 <div ng-show="!!more">
+                                     <div class="title">{{'questions.lessonUsed' | translate}}</div>
+                                     <div dir="auto" ng-repeat="l in usedInLessons">
+                                         <i class="fa fa-star fa-fw"></i>
+                                         <a ng-href="#!/public/lessons/{{l._id}}/intro"> {{l.name}}</a>
                                      </div>
                                  </div>
-                                 <div class="edit-summary" ng-show="usedInLessons.length>0">
-                                     <div ng-show="!!more">
-                                         <div class="title">{{'questions.lessonUsed' | translate}}</div>
-                                         <div dir="auto" ng-repeat="l in usedInLessons">
-                                             <i class="fa fa-star fa-fw"></i>
-                                             <a ng-href="#!/public/lessons/{{l._id}}/intro"> {{l.name}}</a>
-                                         </div>
-                                     </div>
-                                     <div class="read-more" ng-click="more=!more">
-                                         <hr class="dashes">
-                                         <span ng-show="!more">{{'lessons.readMore' | translate}}</span>
-                                         <span ng-show="!!more">{{'lessons.readLess' | translate}}</span>
-                                         <hr class="dashes">
-                                     </div>
+                                 <div class="read-more" ng-click="more=!more">
+                                     <hr class="dashes">
+                                     <span ng-show="!more">{{'lessons.readMore' | translate}}</span>
+                                     <span ng-show="!!more">{{'lessons.readLess' | translate}}</span>
+                                     <hr class="dashes">
                                  </div>
                              </div>
+                         </div>
                          </div>
                      </div>
              </td>
