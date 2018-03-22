@@ -76,7 +76,7 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
             LergoClient.questions.checkAnswer(quizItem).then(function (result) {
                 $scope.answer = result.data;
                 if ($scope.answer.correct) {
-                    voiceFeedback()
+                    voiceFeedback();
                 }else{ // if we want the to scroll lower down to see the explanation
                     document.body.scrollTop = 1000;
                 }
