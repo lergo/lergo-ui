@@ -138,22 +138,12 @@
 
 @media only screen and (max-width: 1024px) {
     .lesson-preview {
-
         .title {
             font-size: 13px;
         }
-
-       /* .mfont-size13 {
-            font-size: 13px;
-            !*padding: 2px;*!
-        }
-        .mpadding2 {
-            padding: 2px;
-        }
-        .mpad-topBot2 {
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }*/
+    }
+    .lesson-preview-dialog .modal-dialog {
+        width: 95%;
     }
 }
 
