@@ -274,12 +274,12 @@
                                         <div lesson-title-image lesson="lesson"></div>
                                     </div>
                                     <div class="start-lesson">
-						<span class="button">
-							<button class="btn-link" ng-click="startLesson()" ng-show="!!lesson" autofocus
-                                    on-enter="startLesson()">
-                                <i  class="fa fa-play-circle-o " uib-tooltip="{{'lessons.startLesson' | translate}}"></i>
-                            </button>
-						</span>
+                                        <span class="button">
+                                            <button class="btn-link" ng-click="startLesson()" ng-show="!!lesson" autofocus
+                                                    on-enter="startLesson()">
+                                                <i  class="fa fa-play-circle-o " uib-tooltip="{{'lessons.startLesson' | translate}}"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                     <div class="action-items" ng-show="!!permissions">
                                         <div class="action-items-top">
@@ -304,136 +304,147 @@
                                     </div>
                                     <div class="stats">
                                         <span class="stats-button age-limit-{{lesson.age}} no-color" ng-show="!!lesson.age"> {{lesson.age}}+ {{'homepage.years'|translate}} </span>
-                                        <span class="stats-button" uib-tooltip="{{'homepage.tooltip.views' | translate}}">
-							<i class="fa fa-eye fa-fw"></i>
-							{{0+lesson.views}}
-						</span>
-                                        <span class="stats-button" uib-tooltip="{{'homepage.tooltip.questions' | translate}}">
-							<i class="fa fa-question-circle fa-fw"></i>
-							{{ lesson | countQuestionsOnLesson }}
-						</span>
+                                            <span class="stats-button" uib-tooltip="{{'homepage.tooltip.views' | translate}}">
+                                                <i class="fa fa-eye fa-fw"></i>
+                                                {{0+lesson.views}}
+                                            </span>
+                                            <span class="stats-button" uib-tooltip="{{'homepage.tooltip.questions' | translate}}">
+                                                <i class="fa fa-question-circle fa-fw"></i>
+                                                {{ lesson | countQuestionsOnLesson }}
+						                    </span>
                                         <span class="stats-button" uib-tooltip="{{'homepage.tooltip.likes' | translate}}">
-							<i class="fa fa-heart-o"></i>
-							{{ lessonLikes }}
-						</span>
+                                            <i class="fa fa-heart-o"></i>
+                                            {{ lessonLikes }}
+						                </span>
                                     </div>
                                     <div class="details">
-                                        <div dir="auto" class="name">{{ lesson.name|limitTo:160 }}</div>
-                                        <div class="properties">
-							<span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
-                                 <a ng-href="#!/public/{{lesson.user.username}}/profile">
-                                     <i class="fa fa-user"></i>
-                                     <span> {{lesson.user.username}}</span>
-                                 </a>
-                            </span>
-                                            <span uib-tooltip="{{'lessons.createdOn' | translate}}">
-								<i class="fa fa-calendar"></i>
-								<span>{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
-							</span>
-                                            <span ng-show="!!lesson.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
-								<i class="fa fa-book"></i>
-								<span>{{'filters.subjects.' + lesson.subject | translate}}</span>
-							</span>
+                                                    <div dir="auto" class="name">{{ lesson.name|limitTo:160 }}</div>
+                                                    <div class="properties">
+                                        <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
+                                             <a ng-href="#!/public/{{lesson.user.username}}/profile">
+                                                 <i class="fa fa-user"></i>
+                                                 <span> {{lesson.user.username}}</span>
+                                             </a>
+                                        </span>
+                                                        <span uib-tooltip="{{'lessons.createdOn' | translate}}">
+                                            <i class="fa fa-calendar"></i>
+                                            <span>{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
+                                        </span>
+                                                        <span ng-show="!!lesson.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
+                                            <i class="fa fa-book"></i>
+                                            <span>{{'filters.subjects.' + lesson.subject | translate}}</span>
+                                        </span>
                                         </div>
                                         <div class="action-items">
-                                            <div class="action-item">
-                                                <button class="btn-link" ng-click="startLesson()"
-                                                        uib-tooltip="{{'lessons.tooltip.start' | translate}}">
-                                                    <i class="fa fa-play-circle-o "></i>
-                                                    {{'start' | translate}}
-                                                </button>
+                                            <div class="col-xs-3"> <!--1-start-->
+                                             <div class="action-item">
+                                                 <button class="btn-link" ng-click="startLesson()"
+                                                         uib-tooltip="{{'lessons.tooltip.start' | translate}}">
+                                                     <i class="fa fa-play-circle-o "></i>
+                                                     {{'start' | translate}}
+                                                 </button>
+                                             </div>
                                             </div>
-                                            <div class="action-item">
-                                                <div show-logged-in>
-                                                    <button class="btn-link" ng-click="likeLesson()"
-                                                            uib-tooltip="{{'lessons.tooltip.like' | translate}}" ng-show="!isLiked()">
-                                                        <i class="fa fa-heart-o "></i>
-                                                        {{'like' | translate}}
+                                            <div class="col-xs-3"> <!--2-invite-->
+                                                <div class="action-item">
+                                                    <button show-logged-in class="btn-link" ng-click="setActiveAction(actionItems.INVITE)"
+                                                            uib-tooltip="{{'lessons.tooltip.invite' | translate}}">
+                                                        <i class="fa fa-envelope "></i>
+                                                        {{'invite' | translate}}
                                                     </button>
-                                                    <div class="btn-group" uib-dropdown ng-show="!!isLiked()">
+                                                    <a href="" show-anonymous class="btn-link"
+                                                       uib-popover="{{'lessons.inviteNotAvailable' | translate}}" popover-placement="top"
+                                                       popover-trigger="'outsideClick'"
+                                                       tabindex="0">
+                                                        <i class="fa fa-envelope "></i>
+                                                        {{'invite' | translate}}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3"> <!--3 - share-->
+                                                <div class="action-item">
+                                                    <button class="btn-link" ng-click="setActiveAction(actionItems.SHARE)"
+                                                            uib-tooltip="{{'lessons.tooltip.share' | translate}}">
+                                                        <i class="fa fa-share-alt "></i>
+                                                        {{'share' | translate}}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3"> <!--4 - abuse-->
+                                                <div class="action-item">
+                                                    <div class="btn-group" uib-dropdown ng-click="$event.stopPropagation()">
                                                         <button class="btn-link" uib-dropdown-toggle>
-                                                            <i class="fa fa-heart-o "></i>
-                                                            {{'liked' | translate}}
-                                                            <span class="fa fa-caret-down"></span>
+                                                            <span class="fa fa-chevron-down" style="vertical-align: super;"></span>
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li>
-                                                                <a class="btn-link" style="outline: none;" ng-click="unlikeLesson()">{{
-                                                                    'unlike' | translate }}</a>
+                                                                <a show-logged-in class="btn-link" style="outline: none;"
+                                                                   ng-click="setActiveAction(actionItems.REPORT)">
+                                                                    <i class="fa fa-flag "></i>
+                                                                    {{'reportAbuse.title'|translate}}
+                                                                </a>
+                                                                <a href="" show-anonymous class="btn-link"
+                                                                   uib-popover="{{'lessons.reportAbuseNotAvailable' | translate}}"
+                                                                   popover-placement="top"
+                                                                   popover-trigger="'outsideClick'" tabindex="0">
+                                                                    <i class="fa fa-flag "></i>
+                                                                    {{'reportAbuse.title'|translate}}
+                                                                </a>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div show-anonymous>
-                                                    <button class="btn-link" uib-popover="{{'lessons.likeNotAvailable' | translate}}"
-                                                            popover-placement="top" popover-trigger="'outsideClick'" tabindex="0">
-                                                        <i class="fa fa-heart-o "></i>
-                                                        {{'like' | translate}}
-                                                    </button>
-                                                </div>
                                             </div>
-                                            <div class="action-item">
-                                                <button show-logged-in class="btn-link" ng-click="setActiveAction(actionItems.INVITE)"
-                                                        uib-tooltip="{{'lessons.tooltip.invite' | translate}}">
-                                                    <i class="fa fa-envelope "></i>
-                                                    {{'invite' | translate}}
-                                                </button>
-                                                <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                                <a href="" show-anonymous class="btn-link"
-                                                   uib-popover="{{'lessons.inviteNotAvailable' | translate}}" popover-placement="top"
-                                                   popover-trigger="'outsideClick'"
-                                                   tabindex="0">
-                                                    <i class="fa fa-envelope "></i>
-                                                    {{'invite' | translate}}
-                                                </a>
+                                            <div class="col-xs-3"> <!--5 - like-->
+                                             <div class="action-item">
+                                                  <div show-logged-in>
+                                                      <button class="btn-link" ng-click="likeLesson()"
+                                                              uib-tooltip="{{'lessons.tooltip.like' | translate}}" ng-show="!isLiked()">
+                                                          <i class="fa fa-heart-o "></i>
+                                                          {{'like' | translate}}
+                                                      </button>
+                                                      <div class="btn-group" uib-dropdown ng-show="!!isLiked()">
+                                                          <button class="btn-link" uib-dropdown-toggle>
+                                                              <i class="fa fa-heart-o "></i>
+                                                              {{'liked' | translate}}
+                                                              <span class="fa fa-caret-down"></span>
+                                                          </button>
+                                                          <ul class="dropdown-menu" role="menu">
+                                                              <li>
+                                                                  <a class="btn-link" style="outline: none;" ng-click="unlikeLesson()">{{
+                                                                      'unlike' | translate }}</a>
+                                                              </li>
+                                                          </ul>
+                                                      </div>
+                                                  </div>
+                                                  <div show-anonymous>
+                                                      <button class="btn-link" uib-popover="{{'lessons.likeNotAvailable' | translate}}"
+                                                              popover-placement="top" popover-trigger="'outsideClick'" tabindex="0">
+                                                          <i class="fa fa-heart-o "></i>
+                                                          {{'like' | translate}}
+                                                      </button>
+                                                  </div>
+                                             </div>
                                             </div>
-                                            <div class="action-item">
-                                                <button class="btn-link" ng-click="setActiveAction(actionItems.SHARE)"
-                                                        uib-tooltip="{{'lessons.tooltip.share' | translate}}">
-                                                    <i class="fa fa-share-alt "></i>
-                                                    {{'share' | translate}}
-                                                </button>
+                                            <div class="col-xs-3"> <!-- preview -->
+                                             <div class="action-item" show-logged-in ng-show="!isInvitationLink()">
+                                                 <button class="btn-link" ng-click="previewLesson()"
+                                                         uib-tooltip="{{'lessons.tooltip.preview' | translate}}">
+                                                     <i class="fa fa-search-plus"></i>
+                                                     {{'lessonIntro.action.preview.title' | translate}}
+                                                 </button>
+                                              </div>
                                             </div>
-                                            <div class="action-item" show-logged-in ng-show="!isInvitationLink()">
-                                                <button class="btn-link" ng-click="previewLesson()"
-                                                        uib-tooltip="{{'lessons.tooltip.preview' | translate}}">
-                                                    <i class="fa fa-search-plus"></i>
-                                                    {{'lessonIntro.action.preview.title' | translate}}
-                                                </button>
-                                            </div>
-                                            <div class="action-item">
-                                                <div class="btn-group" uib-dropdown ng-click="$event.stopPropagation()">
-                                                    <button class="btn-link" uib-dropdown-toggle>
-                                                        <span class="fa fa-chevron-down" style="vertical-align: super;"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li>
-                                                            <a show-logged-in class="btn-link" style="outline: none;"
-                                                               ng-click="setActiveAction(actionItems.REPORT)">
-                                                                <i class="fa fa-flag "></i>
-                                                                {{'reportAbuse.title'|translate}}
-                                                            </a>
-                                                            <a href="" show-anonymous class="btn-link"
-                                                               uib-popover="{{'lessons.reportAbuseNotAvailable' | translate}}"
-                                                               popover-placement="top"
-                                                               popover-trigger="'outsideClick'" tabindex="0">
-                                                                <i class="fa fa-flag "></i>
-                                                                {{'reportAbuse.title'|translate}}
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
                                         </div>
                                         <div class="forms">
-                                            <div ng-show="isActiveAction(actionItems.SHARE)"
-                                                 ng-include="'views/lessons/intro/_shareForm.html'"></div>
-                                            <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
-                                                 on-close="setActiveAction()"></div>
-                                            <div ng-show="isActiveAction(actionItems.REPORT)"
-                                                 ng-include="'views/lessons/intro/_reportForm.html'"></div>
-                                        </div>
+                                                        <div ng-show="isActiveAction(actionItems.SHARE)"
+                                                             ng-include="'views/lessons/intro/_shareForm.html'"></div>
+                                                        <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
+                                                             on-close="setActiveAction()"></div>
+                                                        <div ng-show="isActiveAction(actionItems.REPORT)"
+                                                             ng-include="'views/lessons/intro/_reportForm.html'"></div>
+                                                    </div>
+                                        <div class="row"></div>
                                         <div class="description">
                                             <pre dir="auto" ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>
                                             <div ng-show="!!more">
@@ -503,14 +514,13 @@
                         </div>
                         <div powered-by-lergo="lesson"></div>
                         <div class="not-embed-mode-item" style="margin-top: 10px;">
-                            <div class="comments " show-logged-in>
-                                <div disqus-embed lesson="lesson"></div>
-                            </div>
-                        </div>
+                                        <div class="comments " show-logged-in>
+                                            <div disqus-embed lesson="lesson"></div>
+                                        </div>
+                                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

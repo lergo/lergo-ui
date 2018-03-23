@@ -289,14 +289,14 @@
                     color: $LERGO_LINK_HOVER;
                 }
                 & > .btn-link, & > div {
-                    display: inline-block;
-                    margin-left: 8px;
+                    /*display: inline-block;
+                    margin-left: 8px;*/
                     font-size: 20px;
                 }
             }
             .description {
                 pre {
-                    word-break: break-word;
+                    /*word-break: break-word;*/
                     white-space: pre-wrap;
                     background: transparent;
                 }
