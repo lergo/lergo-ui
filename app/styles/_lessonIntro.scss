@@ -282,8 +282,8 @@
             .action-items {
                 margin-top: 20px;
                 text-align: right;
-                padding-bottom: 10px;
-                border-bottom: 1px solid silver;
+                /*padding-bottom: 10px;
+                border-bottom: 10px solid silver;*/
                 color: #949494;
                 &:hover {
                     color: $LERGO_LINK_HOVER;
@@ -295,6 +295,11 @@
                 }
             }
             .description {
+                padding-top: 10px;
+                border-top: 1px solid silver;
+                color: #949494;
+
+
                 pre {
                     /*word-break: break-word;*/
                     white-space: pre-wrap;
