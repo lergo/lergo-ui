@@ -904,6 +904,7 @@
     "answer": {
       "stat": "{{avgCorrectPercentage | number:0}} % Correct ({{correct}} of {{count}} correct responses)"
     },
+    "classSummary": "Class Report Summary",
     "completed": "has completed the lesson",
     "correctQuestions": {
       "one": "Correct Answer",
@@ -979,6 +980,7 @@
     "saved": {
       "successfully": "Report saved successfully"
     },
+    "studentSummary": "Student Report Summary",
     "summary": "Report Summary",
     "summaryHint": "The report is made of {{count}} complete student reports.",
     "wrongQuestions": {

@@ -1,27 +1,27 @@
-<div class="base-layout">
+<div class="base-layout" ng-init="scrollToTop()">
     <div class="report padding-leftRight15">
-        <div class="row header">
+        <div class="row header row-nested">
             <div class="hidden-sm hidden-xs">
-            <div class="col-lg-3 col-md-3 padding-leftRight15" >
-                <div class="image-agg">
-                    <div class="user">
-                        <i class="fa fa-users"></i>
-                    </div>
-                    <div class="cap-small-first">
-                        <i class="fa fa-graduation-cap"></i>
-                    </div>
-                    <div class="cap">
-                        <i class="fa fa-graduation-cap"></i>
-                    </div>
-                    <div class="cap-small-last">
-                        <i class="fa fa-graduation-cap fa-flip-horizontal"></i>
+                <div class="col-lg-3 col-md-3 padding-leftRight15" >
+                    <div class="image-agg">
+                        <div class="user">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <div class="cap-small-first">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <div class="cap">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <div class="cap-small-last">
+                            <i class="fa fa-graduation-cap fa-flip-horizontal"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
-            <div class="hidden-lg hidden-md" >
+           <!-- <div class="hidden-lg hidden-md" >
                 <img img-fluid src="https://s3-eu-west-1.amazonaws.com/lergo-dropbox-links/Public/students-n-resize.png" style="display: block; margin: 0 auto; padding: 10px">
-            </div>
+            </div>-->
             <div class="padding-leftRight15">
                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 header-name">
                     <div class="class-header lergo-h1">{{'reports.header.className' | translate}}</div><div class="class-name lergo-h4">{{report.data.invitee.class}}</div>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-md-5 col-sm-12 col-xs-12 ">
                     <div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 padding-leftRight15">
+                        <div class="col-md-12 col-sm-12 col-xs-12 padding-leftRight15 hidden-sm hidden-xs">
                             <div ng-show="!!report.data.lesson.description">
                                 <div class="lergo-h4">{{'report.description'|translate}}</div>
                                 <div>{{report.data.lesson.description | limitTo:440}}</div>
@@ -56,17 +56,17 @@
                     </div>
                 </div>
         </div>
-        <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
-                <span class="collapsible lergo-h1">
-                    <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed">
-                        <i class="fa" ng-class="{'fa-plus-square':summaryCollapsed,'fa-minus-square':!summaryCollapsed}">
-                        </i>
-                        {{'report.summary'|translate}}
-                    </a>
-                </span>
-                <span class="text-primary">
+        <div>
+           <span class="collapsible lergo-h1">
+               <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed">
+                  <i class="fa" ng-class="{'fa-plus-square':summaryCollapsed,'fa-minus-square':!summaryCollapsed}">
+                  </i>
+                  {{'report.classSummary'|translate}}
+               </a>
+           </span>
+            <span class="text-primary">
                         {{'report.summaryHint' | translate:{count:report.count} }}
-                </span>
+            </span>
             <hr/>
         </div>
 
@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="top20">
-            <div class="collapsible lergo-h1 ">
+            <div class="collapsible lergo-h1">
                 <a href="" class="no-underline" ng-click="stepCollapsed=!stepCollapsed">
                     <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
                     <i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>

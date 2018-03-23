@@ -1,9 +1,9 @@
 
-<div class="base-layout">
+<div class="base-layout" ng-init="scrollToTop()">
     <div class="report padding-leftRight15">
-        <div class="header">
+        <div class="header" style="overflow-y: auto">
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding-leftRight15">
-                <div class="image">
+                <div class="image hidden-sm hidden-xs">
                     <div class="user">
                         <i class="fa fa-user"></i>
                     </div>
@@ -35,7 +35,7 @@
             <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 padding-leftRight15">
                 <div class="header-desc">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div ng-show="!!report.data.lesson.description">
+                        <div ng-show="!!report.data.lesson.description" class="hidden-sm hidden-xs">
                             <div class="lergo-h4">{{'report.description'|translate}}</div>
                             <div>{{report.data.lesson.description | limitTo:440}}</div>
                         </div>
@@ -106,7 +106,7 @@
                     <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed">
                         <i ng-show="!!summaryCollapsed" class="fa fa-plus-square"></i>
                         <i ng-show="!summaryCollapsed" class="fa fa-minus-square"></i>
-                        {{'report.summary'|translate}}
+                        {{'report.studentSummary'|translate}}
                     </a>
                 </div>
                 <hr/>
