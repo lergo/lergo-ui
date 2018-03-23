@@ -390,18 +390,14 @@ input.form-control.search-input {
         }
     }
 
-    #footer, .push {
+   /* #footer, .push {
         clear: both;
-        .centered-content-footer {
-            width: 80vw;
-            margin-right: auto;
-            margin-left: auto;
-        }
-    }
+    }*/
 
     #footer {
-        padding-top: 15px;
-        height: $FOOTER_HEIGHT/2+30px;
+        padding: 15px;
+       /* height: 103px;*/
+        font-size: 90%;
 
         background-color: #296CA1;
         width: 100%;
@@ -409,7 +405,7 @@ input.form-control.search-input {
         .footer-text {
             color: white;
             padding-bottom: 15px;
-            font-size: 12px;
+            font-size: 10px;
             a {
                 color: white
             }
@@ -446,7 +442,7 @@ input.form-control.search-input {
 #content {
     height: auto !important;
     min-height: 750px;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
     & > div:first-child {
         /* guy - written like this so that we can override if needed */
         margin-top: 10px;
