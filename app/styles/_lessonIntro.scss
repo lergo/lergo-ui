@@ -195,7 +195,7 @@
         .start-lesson {
             position: relative;
             width: 40px;
-            margin: -190px auto 140px;
+            margin: -168px auto 140px;
             i {
                 font-size: 60px;
             }
@@ -210,7 +210,7 @@
             .action-items-top {
             }
             .action-items-bottom {
-                margin-top: 70px;
+                margin-top: 36px;
                 a:nth-child(n+2) {
                     margin-top: 10px;
                     display: inline-block;
@@ -247,6 +247,7 @@
                 border-radius: 10px;
                 float: left;
                 width: 90px;
+                opacity: .9;
             }
             .stats-button-age {
                 background-color: #5fb9ff;
