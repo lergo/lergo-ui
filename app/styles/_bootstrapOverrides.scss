@@ -43,6 +43,12 @@
     }
 }
 
+@media (min-width: 1048px) {
+    .img-responsive {
+        max-width: 90%;
+    }
+}
+
 
 // for tables
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -189,7 +195,7 @@
 }
 
 .img-responsive {
-    max-width: 90%;
+    max-width: 100%;
     margin: auto;
 }
 
