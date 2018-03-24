@@ -186,14 +186,14 @@
                 font-size: 200px;
                 color: #296CA1;
                 &:before {
-                    margin-left: 40px;
+                    margin-left: 45px;
                 }
             }
         }
         .start-lesson {
             position: relative;
-            width: 43px;
-            margin: -134px auto 140px;
+            width: 30px;
+            margin: -134px auto 76px;
             i {
                 font-size: 60px;
             }
@@ -201,7 +201,7 @@
         & > .action-items {
             position: relative; // to bring the icons in front of the image
             float: right;
-            margin-top: -250px;
+            margin-top: -182px;
             margin-right: 10px;
             font-size: 20px;
             text-align: center;
@@ -225,7 +225,7 @@
             z-index: 0;
             position: relative;
             display: block;
-            margin-top: -250px;
+            margin-top: -182px;
             margin-left: 20px;
             float: left;
             width: 50px;
@@ -387,7 +387,7 @@
         .lesson {
 
             .start-lesson {
-                width: 72px;
+                width: 81px;
             }
         }
     }
