@@ -16,7 +16,7 @@
 
                 <div  ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
                     <div style="margin: 0 2vw 0 2vw">{{'name' | translate }}</div>
-                    <input style="width: 90%; margin: auto" type="text" ng-model="invitationName" on-enter="enterPressed()"
+                    <input style="width: 90%; margin: auto;" type="text" ng-model="invitationName" on-enter="enterPressed()"
                            ng-class="{'in-success':isSuccess()}"/>
                 </div>
                 <div ng-show="isSuccess()" class="col-md-8">
@@ -24,9 +24,8 @@
                     <p style="margin: 0 2vw 0 2vw">{{'pin' | translate }}
                         <small style="font-size: 11px">{{'lessons.inviteLesson.'+mode+'.pinHint' | translate}}</small>
                     </p>
-                    <input style="width: 90%; margin: auto" type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
-                           ng-class="{'in-success':isSuccess()}" select-all-text-on-click on-enter
-                           style="direction: inherit;"/>
+                    <input style="width: 90%; margin: auto; direction: inherit" type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
+                           ng-class="{'in-success':isSuccess()}" select-all-text-on-click on-enter/>
                 </div>
             </div>
 
