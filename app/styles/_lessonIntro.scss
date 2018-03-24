@@ -22,7 +22,7 @@
         }
         .start-lesson {
             position: relative;
-            width: 40px;
+            width: 46px;
             margin: -190px auto 140px;
             i {
                 font-size: 60px;
@@ -194,7 +194,7 @@
         }
         .start-lesson {
             position: relative;
-            width: 40px;
+            width: 43px;
             margin: -168px auto 140px;
             i {
                 font-size: 60px;
@@ -378,7 +378,19 @@
                 }
             }
         }
+        .start-lesson {
+            width: 68px;
+        }
     }
+}
+
+.rtl {
+    #lessonIntro-Mobile {
+        .lesson {
+
+            .start-lesson {
+                width: 72px;
+            }
 }
 
 
