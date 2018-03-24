@@ -341,7 +341,9 @@
                                                         <button class="btn-link" uib-dropdown-toggle>
                                                             <span class="fa fa-chevron-down" style="vertical-align: super;"></span>
                                                         </button>
-                                                        <ul class="dropdown-menu" role="menu">
+                                                        <br>
+                                                        <br>
+                                                        <ul class="dropdown-menu" style="position: absolute" role="menu">
                                                             <li>
                                                                 <a show-logged-in class="btn-link" style="outline: none;"
                                                                    ng-click="setActiveAction(actionItems.REPORT)">
@@ -435,6 +437,7 @@
                                               </div>
                                             </div>
                                         </div>
+                                        <div class="row"></div>
                                         <div class="forms">
                                                         <div ng-show="isActiveAction(actionItems.SHARE)"
                                                              ng-include="'views/lessons/intro/_shareForm.html'"></div>
