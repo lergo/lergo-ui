@@ -172,7 +172,6 @@
 
 #lessonIntro-Mobile {
     .lesson {
-       /* float: right;*/
         .image {
             position: relative;
             margin-left: auto;
@@ -181,11 +180,10 @@
             text-align: center;
             z-index: 0;
             &, img {
-               /* height: 320px;
-                width: 480px;*/
+              height: 200px;
             }
             i {
-                font-size: 240px;
+                font-size: 200px;
                 color: #296CA1;
                 &:before {
                     margin-left: 40px;
@@ -195,7 +193,7 @@
         .start-lesson {
             position: relative;
             width: 43px;
-            margin: -168px auto 140px;
+            margin: -134px auto 140px;
             i {
                 font-size: 60px;
             }
@@ -555,11 +553,11 @@
                     }
                 }
             }
-            .image {
+            /*.image {
                 img {
                     min-height: 236px;
                 }
-            }
+            }*/
         }
     }
 }
