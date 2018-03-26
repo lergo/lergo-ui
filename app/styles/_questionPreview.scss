@@ -131,8 +131,8 @@ textarea#openQuestionTextarea.mobile.width {
     .question {
         .question-preview {
             margin-top: 30px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 94px;
+           /* margin-right: auto;*/
             border: 5px solid #C6C6C6;
             border-radius: 10px;
             padding: 10px;
@@ -140,7 +140,7 @@ textarea#openQuestionTextarea.mobile.width {
         }
         .hint {
             font-size: 20px;
-            position: relative;
+           /* position: relative;*/
             text-align: right;
         }
         .submit {
@@ -195,7 +195,7 @@ textarea#openQuestionTextarea.mobile.width {
             z-index: 0;
             position: relative;
             display: block;
-            margin-top: 30px;
+            margin-top: 55px;
             margin-left: -30px;
             float: left;
             width: 50px;
@@ -446,7 +446,7 @@ audio.audio-width-mobile {
         }
     }
     #questionIntro .question .question-preview {
-        /*width: 290px;*/
+        margin-left: unset;
         width: unset;
     }
     input#openQuestionText.mobile-width {

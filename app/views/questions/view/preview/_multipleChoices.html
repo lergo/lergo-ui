@@ -1,4 +1,5 @@
-<div class="question-preview" ng-init="scrollToTop()">
+<div style="height: 1px"></div>
+<div class="question-preview" ng-init="scrollToTop()" style="overflow-y: auto">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -19,6 +20,8 @@
                 </div>
             </div>
             <div quiz-item-media class="img-small"   quiz-item="quizItem"></div>
+        </div>
+        <div class="row">
             <div multi-choice quiz-item="quizItem" on-click="checkAnswer()"></div>
             <br />
             <div class="submit text-center" ng-show="isMultiChoiceMultiAnswer(quizItem)">
