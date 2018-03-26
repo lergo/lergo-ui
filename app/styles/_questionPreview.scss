@@ -131,8 +131,7 @@ textarea#openQuestionTextarea.mobile.width {
     .question {
         .question-preview {
             margin-top: 30px;
-            margin-left: 94px;
-           /* margin-right: auto;*/
+            margin-left: 89px;
             border: 5px solid #C6C6C6;
             border-radius: 10px;
             padding: 10px;
@@ -383,6 +382,10 @@ textarea#openQuestionTextarea.mobile.width {
 .rtl {
     #questionIntro {
         .question {
+            .question-preview {
+                margin-left: unset;
+                margin-right: 95px;
+            }
             .hint {
                 text-align: left;
             }
@@ -447,6 +450,7 @@ audio.audio-width-mobile {
     }
     #questionIntro .question .question-preview {
         margin-left: unset;
+        margin-right: unset;
         width: unset;
     }
     input#openQuestionText.mobile-width {
