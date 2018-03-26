@@ -77,8 +77,6 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
                 $scope.answer = result.data;
                 if ($scope.answer.correct) {
                     voiceFeedback();
-                }else{ // if we want the to scroll lower down to see the explanation
-                    document.body.scrollTop = 1000;
                 }
             }, function () {
                 $log.error('there was an error checking answer');
