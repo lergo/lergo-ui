@@ -380,6 +380,9 @@
         }
     }
 }
+.m-left {
+    float: left;
+}
 
 .rtl {
     #lessonIntro-Mobile {
@@ -389,6 +392,9 @@
                 width: 53px;
             }
         }
+    }
+    .m-left {
+        float: right;
     }
 }
 
