@@ -31,6 +31,7 @@
             <div class="answers">
                 <div true-false quiz-item="quizItem" on-click="checkAnswer()"></div>
             </div>
+            <div class="height25" ></div>
             <div ng-include="'views/questions/view/partials/_submit.html'" ng-init="hideSubmitButton=true"></div>
             <div class="sideBot5nd" lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
                 <b>{{progressPercentage}}%</b>
