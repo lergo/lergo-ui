@@ -317,24 +317,30 @@
 						                </span>
                                     </div>
                                     <div class="details">
-                                                    <div dir="auto" class="name">{{ lesson.name|limitTo:160 }}</div>
-                                                    <div class="properties">
-                                        <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
-                                             <a ng-href="#!/public/{{lesson.user.username}}/profile">
-                                                 <i class="fa fa-user"></i>
-                                                 <span> {{lesson.user.username}}</span>
-                                             </a>
-                                        </span>
-                                                        <span uib-tooltip="{{'lessons.createdOn' | translate}}">
-                                            <i class="fa fa-calendar"></i>
-                                            <span>{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
-                                        </span>
-                                                        <span ng-show="!!lesson.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
-                                            <i class="fa fa-book"></i>
-                                            <span>{{'filters.subjects.' + lesson.subject | translate}}</span>
-                                        </span>
+                                        <div dir="auto" class="name">{{ lesson.name|limitTo:160 }}</div>
+                                        <div class="row row-nested properties">
+                                            <div class="col-xs-3">
+                                            <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
+                                                 <a ng-href="#!/public/{{lesson.user.username}}/profile">
+                                                     <i class="fa fa-user"></i>
+                                                     <span> {{lesson.user.username}}</span>
+                                                 </a>
+                                            </span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                            <span uib-tooltip="{{'lessons.createdOn' | translate}}">
+                                                <i class="fa fa-calendar"></i>
+                                                <span>{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
+                                            </span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                            <span ng-show="!!lesson.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
+                                                <i class="fa fa-book"></i>
+                                                <span>{{'filters.subjects.' + lesson.subject | translate}}</span>
+                                            </span>
+                                            </div>
                                         </div>
-                                        <div class="action-items">
+                                        <div class="row row-nested action-items">
                                             <div class="col-xs-3"> <!--4 - abuse-->
                                                 <div class="action-item">
                                                     <div class="btn-group" uib-dropdown ng-click="$event.stopPropagation()">
