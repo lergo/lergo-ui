@@ -47,16 +47,16 @@
                                     </div>
                                 </div>
                         </div>  <!--end of navbar header class -->
+
+
                         <div class="hidden-sm hidden-xs">
-                            <div> <!-- image for desktop -->
-                                <div class="col-lg-1 col-md-1">
-                                        <a  href="#!/user/homepage">
-                                            <img style="padding: 0 15px;" src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png">
-                                        </a>
-                                    </div>
+
+                            <div class="col-lg-2">  <!-- image for desktop -->
+                                    <a  href="#!/user/homepage">
+                                        <img style="padding: 0 45px;" src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png">
+                                    </a>
                                 </div>
-                            <div>
-                                <div class="col-lg-8 col-md-8 col-sm-3 cl-xs-3">
+                            <div class="col-lg-7 col-md-8">
                                     <div class="col-lg-7 col-md-7" style=" height: 60px" >
                                         <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form" role="search">
                                             <div style="margin: 4px -15px" class="form-group"  ui-keypress="{enter: 'searchOnHomepage()'}">
@@ -86,43 +86,38 @@
                                         <div class="lergo-h1"  create-your-own-box></div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 cl-xs-3">
-                                <div>
-                                    <div class="col-lg-9 col-md-9 ">
-                                        <div class="header-actions">
-                                            <div id="profileloginbutton-desktop"  profile-login-button="$root.user"></div>
-                                        </div>
+                            <div class="col-lg-3">
+                                <div class="col-lg-7">
+                                    <div class="header-actions">
+                                        <div id="profileloginbutton-desktop"  profile-login-button="$root.user"></div>
                                     </div>
                                 </div>
-                                <div>
-                            <div class="col-lg-3 col-md-3 ">
-                                <span uib-dropdown on-toggle="toggled(open)"  >
-                                      <a href id="simple-dropdown1" uib-dropdown-toggle>
-                                        <i  class="fa fa-bars fa-2x" aria-hidden="true"></i>
-                                      </a>
-                                      <ul class="dropdown-menu overidePositionInherit" uib-dropdown role="menu" aria-labelledby="single-button" style="margin-right: 37px">
-                                         <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
-                                         <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
-                                         <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
-                                                        'baseLayout.header.links.create'| translate }} </a></li>
-                                         <li role="menuitem"><a href="#!/user/Parents">{{ 'baseLayout.header.links.' + 'Parents'.toLowerCase() | translate }}</a></li>
-                                         <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
-                                         <li role="menuitem"><a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
-                                         <li class="divider"></li>
-                                         <div>
-                                             <li role="menuitem">
-                                                 <div class="btn-group" style="padding-left: 14px;">
-                                                    <label ng-hide="baseLayout.language == 'en'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'en'">English</label>
-                                                    <label ng-hide="baseLayout.language == 'he'" class="btn btn-link" ng-model="baseLayout.language" uib-btn-radio="'he'">עברית</label>
-                                                    <label ng-hide="baseLayout.language == 'ar'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'ar'"> العربية</label>
-                                                 </div>
-                                             </li>
-                                         </div>
-                                      </ul>
+                                <div class="col-lg-5 ">
+                                    <span uib-dropdown on-toggle="toggled(open)"  >
+                                          <a href id="simple-dropdown1" uib-dropdown-toggle>
+                                            <i style="padding: 0 40px" class="fa fa-bars fa-2x" aria-hidden="true"></i>
+                                          </a>
+                                          <ul class="dropdown-menu overidePositionInherit" uib-dropdown role="menu" aria-labelledby="single-button" style="margin-right: 37px">
+                                             <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
+                                             <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
+                                             <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
+                                                            'baseLayout.header.links.create'| translate }} </a></li>
+                                             <li role="menuitem"><a href="#!/user/Parents">{{ 'baseLayout.header.links.' + 'Parents'.toLowerCase() | translate }}</a></li>
+                                             <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
+                                             <li role="menuitem"><a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
+                                             <li class="divider"></li>
+                                             <div>
+                                                 <li role="menuitem">
+                                                     <div class="btn-group" style="padding-left: 14px;">
+                                                        <label ng-hide="baseLayout.language == 'en'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'en'">English</label>
+                                                        <label ng-hide="baseLayout.language == 'he'" class="btn btn-link" ng-model="baseLayout.language" uib-btn-radio="'he'">עברית</label>
+                                                        <label ng-hide="baseLayout.language == 'ar'" class="btn btn-link " ng-model="baseLayout.language" uib-btn-radio="'ar'"> العربية</label>
+                                                     </div>
+                                                 </li>
+                                             </div>
+                                          </ul>
                                     </span>
                                 </div>
-                            </div>
                             </div>
                         </div>
 
