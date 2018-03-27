@@ -43,6 +43,7 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
     });
 
     $scope.$on('endLesson', function (/* event, data */) {
+        document.body.scrollTop = 0;  //  bring congrats page to top
         $log.info('lesson ended');
         // mark invitation as finished
         if (!report.data.finished) {
