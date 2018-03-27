@@ -439,3 +439,22 @@
     }
   }
 }
+
+// is this correct for ipad?
+@media (min-width: 768px ) and (max-width: 992px) {
+    .homepage {
+        .lessons {
+            .image {
+                height: unset;
+                img {
+                    height:440px;
+                    width: 600px;
+                }
+                i {
+                    font-size:440px;
+                }
+            }
+        }
+    }
+}
+
