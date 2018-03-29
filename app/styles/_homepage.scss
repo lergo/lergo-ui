@@ -418,6 +418,14 @@
     margin-top: 70px;
     border-bottom: 1px solid #d2e8fa;
     padding-bottom: 16px;
+    .welcome {
+        margin-top: -60px;
+        font-size: 30px;
+    }
+    button {
+        padding: 6px;
+        margin-top: 12px;
+    }
 }
 
 // put inside an empty div to get correct spacing

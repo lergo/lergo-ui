@@ -574,7 +574,8 @@
     },
     "total": "סך הכל",
     "videoURL": "ה- URL של הסרטון",
-    "videoURLHelpText": "נא להכניס קישור / URL לוידאו של YouTube."
+    "videoURLHelpText": "נא להכניס קישור / URL לוידאו של YouTube.",
+    "welcome": "ברוכים הבאים ללרגו"
   },
   "lessons_": {
     "inviteLesson": "להזמין לשיעור",

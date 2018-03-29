@@ -594,7 +594,8 @@
     },
     "total": "Total",
     "videoURL": "Video URL",
-    "videoURLHelpText": "Insert the URL of the YouTube video here."
+    "videoURLHelpText": "Insert the URL of the YouTube video here.",
+    "welcome": "Welcome to lergo"
   },
   "lessons_": {
     "inviteLesson": "Invite to lesson",
