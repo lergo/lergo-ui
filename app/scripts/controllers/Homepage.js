@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location, $window) {
+angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location, $route,  $window) {
+
+
+    $scope.route= $route;
 
 	$scope.loaded = false;
 	$scope.lessonsFilter = {
@@ -17,6 +20,8 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
         'showTags': true,
         'showCreatedBy': true
 	};
+
+	$scope.thisRoute = $routeParams.search;
 
 	$scope.loadLessons = function() {
 
