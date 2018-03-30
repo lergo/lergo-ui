@@ -113,7 +113,7 @@ label.btn.btn-link {
             overflow:hidden;
             max-width:100%;
             text-decoration: none;
-            padding: 15px 15px;
+            padding: 15px 15px 7px;
             text-align: center;
             &:hover {
                 background-color: rgba(0, 0, 0, 0.3)
@@ -123,6 +123,11 @@ label.btn.btn-link {
             }
         }
     }
+}
+
+// drop-downs show menu on hover
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 #profileloginbutton-mobile  {
