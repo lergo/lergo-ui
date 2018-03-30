@@ -125,10 +125,7 @@ label.btn.btn-link {
     }
 }
 
-// drop-downs show menu on hover
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
+
 
 #profileloginbutton-mobile  {
     padding-top: 16px;
@@ -498,8 +495,14 @@ input.form-control.search-input {
         }
     }
 }*/
+// drop-downs show menu on hover for desktop only - not good for iphone
+@media screen  and (min-width: 1200px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
 
-// Jeff- allows the pages to be completely responsive while still using production code
+// Jeff- allows the pages to be  responsive while still using production code
 @media screen and (max-width: 1200px) {
     .base-layout, .base-layout-class {
         .page-content-width {
@@ -559,6 +562,24 @@ input.form-control.search-input {
     body {
         background-color: green;
     }
+
+    #header-mobile {
+        .navbar-form {
+            .form-group.search-homepage-desktop {
+                margin: 4px 0px 4px 62px;
+            }
+        }
+    }
+    .rtl {
+        #header-mobile {
+            .navbar-form {
+                .form-group.search-homepage-desktop {
+                    margin: 4px 62px 4px 0px;
+                }
+            }
+        }
+    }
+
     .homepage-desktop {
         .lessons-desktop {
             .lesson-desktop {
@@ -576,6 +597,13 @@ input.form-control.search-input {
     .rtl #header-mobile .search-icon {
         font-size: 22px;
         margin-left: 0px;
+    }
+    #profileloginbutton-desktop {
+        .header-signup {
+         a  {
+             width: unset;
+            }
+        }
     }
 }
 
