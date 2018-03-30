@@ -234,7 +234,7 @@ button.action-item {
 }
 
 .lergo-h0 {
-    font-size: 25px;
+    font-size: 28px;
     white-space: nowrap;
     text-align: justify;
     color: $LERGO_H1_COLOR;
@@ -781,6 +781,9 @@ $COLOR_19: #2a6496 !default;
 
     .modal-footer{
         text-align: right;
+    }
+    .lergo-h0 {
+        font-size: 34px;
     }
 }
 
