@@ -78,6 +78,8 @@ label.btn.btn-link {
     }
 }
 
+
+
 #profileloginbutton-desktop  {
     padding-top: 16px;
 
@@ -295,12 +297,18 @@ input.form-control.search-input {
 
 .dropdown-align {
     margin-right: 37px;
-    margin-left: -37px;
+    margin-left: 20px;
     margin-top: 40px;
+}
+.dropdown-align-user {
+    margin-left: 0px;
 }
 .rtl {
     .dropdown-align {
-        margin-left: 3px;
+        margin-left: 0px;
+    }
+    .dropdown-align-user {
+        margin-left: -59px;
     }
 }
 
