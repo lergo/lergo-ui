@@ -94,7 +94,7 @@
                                           <a href id="simple-dropdown1" uib-dropdown-toggle>
                                             <i style="padding: 0 40px" class="fa fa-bars fa-2x" aria-hidden="true"></i>
                                           </a>
-                                          <ul class="dropdown-menu overidePositionInherit" uib-dropdown role="menu" aria-labelledby="single-button" style="margin-right: 37px">
+                                          <ul class="dropdown-menu overidePositionInherit dropdown-align" uib-dropdown role="menu" aria-labelledby="single-button">
                                              <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
                                              <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
                                              <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
@@ -179,7 +179,7 @@
     <div class="hidden-sm hidden-xs" ng-show="!!loaded">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12">
                     <div id="footer" class="not-embed-mode-item" style="overflow-y: auto">
                         <div class="centered-content-footer row-nested30">
                             <div class="footer-text">

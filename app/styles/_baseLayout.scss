@@ -4,8 +4,6 @@ $HEADER_HEIGHT: 110px !default;
 $FOOTER_HEIGHT: 170px !default;
 
 
-// jeff's code for mobile first starts here:
-
 label.btn.btn-link {
     text-transform: capitalize;
     text-decoration: none;
@@ -174,7 +172,6 @@ label.btn.btn-link {
 
 .navbar-toggle {
     border-color:#91CFFF !important;
-    /*top: 5px;*/ // removed this for mobile homepage
 }
 
 .searchIconCenter {
@@ -246,10 +243,6 @@ input.form-control.search-input {
 
 } /*end of base-layout*/
 
-/*jumbotron{
-    background-color:#2E2D88;
-    color:white;
-}*/
 /* Adds borders for tabs */
 .tab-content {
     border-left: 1px solid #ddd;
@@ -300,8 +293,17 @@ input.form-control.search-input {
     font-size: 14px;
 }
 
+.dropdown-align {
+    margin-right: 37px;
+    margin-left: -37px;
+    margin-top: 40px;
+}
+.rtl {
+    .dropdown-align {
+        margin-left: 3px;
+    }
+}
 
-/** end of jeff's code for mobile first **/
 
 
 /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
@@ -405,7 +407,7 @@ input.form-control.search-input {
 
         background-color: #296CA1;
         width: 100%;
-        min-width: 1100px;
+        /*min-width: 1100px;*/
         .footer-text {
             color: white;
             padding-bottom: 15px;
@@ -495,7 +497,8 @@ input.form-control.search-input {
         }
     }
 }*/
-// drop-downs show menu on hover for desktop only - not good for iphone
+// desktop only! - not ipad
+// drop-downs show menu on hover for desktop only
 @media screen  and (min-width: 1200px) {
     .dropdown:hover .dropdown-menu {
         display: block;
@@ -534,6 +537,8 @@ input.form-control.search-input {
         }
     }
 }
+
+// ipad and desktop
 @media screen and (min-width: 1024px) {
     #header-mobile {
         .navbar-form {
@@ -557,10 +562,11 @@ input.form-control.search-input {
     }
 }
 
+// ipad only
+@media screen and (min-device-width : 1024px) and (max-width: 1200px) {
 
-@media screen and (min-device-width : 1024px) and (max-width: 1200px) { // for ipad
-    body {
-        background-color: green;
+    .dropdown-align {
+        margin-left:-33px;
     }
 
     #header-mobile {
@@ -577,6 +583,10 @@ input.form-control.search-input {
                     margin: 4px 62px 4px 0px;
                 }
             }
+        }
+        .dropdown-align {
+            margin-left:3px;
+            margin-top: 49px;
         }
     }
 
