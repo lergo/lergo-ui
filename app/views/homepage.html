@@ -8,7 +8,7 @@
         </div>
         <div ng-show="!!loaded">
             <div class="container">
-                <div class="row top35">
+                <div class="row top30">
                     <div class="hidden-sm hidden-xs">
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12"></div>
@@ -20,9 +20,9 @@
                                             <a style="color:black;" href="#!/lessons/invite/pin">{{'baseLayout.navbar.desktopPin' | translate}}
                                             </a>
                                         </button>
-                                        <div style="height: 13px;"></div>
+                                        <div style="height: 5px;"></div>
                                     </div>
-                                    <div class="lergo-h0">{{ 'lessons.filter' | translate }}</div>
+                                    <div style="margin-bottom: 10px" class="lergo-h0">{{ 'lessons.filter' | translate }}</div>
                                 </div>
                                 <div>
                                     <div lergo-filter   model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>

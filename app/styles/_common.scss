@@ -826,7 +826,6 @@ $COLOR_19: #2a6496 !default;
 .top10 {
     margin-top: 10px;
 }
-
 .top15 {
     margin-top: 15px;
 }
@@ -843,9 +842,6 @@ $COLOR_19: #2a6496 !default;
     margin-top: 30px;
 }
 
-.top35 {
-    margin-top: 35px;
-}
 .top90 {
     margin-top: 90px;
 }
@@ -861,6 +857,11 @@ $COLOR_19: #2a6496 !default;
 
 }
 
+.side15n {
+    margin-left: -15px;
+    margin-right: -15px;
+
+}
 .height25 {
     height: 25px;
 }
