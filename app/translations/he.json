@@ -126,6 +126,8 @@
       }
     },
     "navbar": {
+      "pinHelp":"מה זה?",
+      "pinHelpText": "Nava writes text here",
       "desktopPin": "להכנסת קוד לשיעור",
       "enterPin": "להכנסת קוד",
       "openMenu": "תפריט",

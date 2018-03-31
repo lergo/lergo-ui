@@ -127,6 +127,8 @@
       }
     },
     "navbar": {
+      "pinHelp":"what's this",
+      "pinHelpText": "Nava writes text here",
       "desktopPin": "Enter Lesson PIN",
       "enterPin": "Enter PIN",
       "openMenu": "Menu",

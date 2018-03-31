@@ -15,11 +15,14 @@
                             <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
                                 <div class="sidebar-desktop" >
                                     <div>
+                                        {{translate.use}}
                                         <div class = "welcome">{{'lessons.welcome' | translate}}</div>
                                         <button type="button">
                                             <a style="color:black;" href="#!/lessons/invite/pin">{{'baseLayout.navbar.desktopPin' | translate}}
                                             </a>
                                         </button>
+                                        <a ng-show="baseLayout.language == 'he'" uib-popover="{{'baseLayout.navbar.pinHelpText' | translate}}"   popover-placement="top" popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none">{{'baseLayout.navbar.pinHelp' | translate}}</a>
+                                        <a ng-show="baseLayout.language != 'he'" uib-popover="{{'baseLayout.navbar.pinHelpText' | translate}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none"></a>
                                         <div style="height: 5px;"></div>
                                     </div>
                                     <div style="margin-bottom: 10px" class="lergo-h0">{{ 'lessons.filter' | translate }}</div>
