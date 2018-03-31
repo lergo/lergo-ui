@@ -127,6 +127,7 @@
       }
     },
     "navbar": {
+      "desktopPin": "Enter Lesson PIN",
       "enterPin": "Enter PIN",
       "openMenu": "Menu",
       "searchLesson": "Search Lesson",

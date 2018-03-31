@@ -126,6 +126,7 @@
       }
     },
     "navbar": {
+      "desktopPin": "להכנסת קוד לשיעור",
       "enterPin": "להכנסת קוד",
       "openMenu": "תפריט",
       "searchLesson": "חיפוש שיעור ",
