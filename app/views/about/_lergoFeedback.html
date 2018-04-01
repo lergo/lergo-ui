@@ -1,3 +1,4 @@
-<div class="lergo-feedback" ng-init="scrollUp()">
-    <iframe ng-src="{{currentSection.url()}}" style="padding: 0 20px;" width="100%"></iframe>
+<div ng-init="scrollUp()">
+    <iframe ng-show="$root.lergoLanguage!=='he'" ng-src="{{currentSection.url()}}" style="padding: 0 20px;" width="100%" height="800px" ></iframe>
+    <iframe ng-show="$root.lergoLanguage==='he'" ng-src="{{currentSection.url()}}" style="padding: 0 20px;" width="100%" height="4425px" ></iframe>
 </div>
