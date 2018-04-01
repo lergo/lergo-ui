@@ -1,7 +1,7 @@
 
 <div class="base-layout" id="about">
 	<div class="mobile-leftRight12">
-		<ul class="nav nav-tabs-vertical ">
+		<ul class="nav nav-tabs-vertical hidden-sm hidden-xs">
 			<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
 				<a href="#!/public/about/{{section.id}}">{{'about.' + section.id | translate}}</a>
 			</li>
