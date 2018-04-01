@@ -47,6 +47,11 @@ angular.module('lergoApp').controller('AboutCtrl', function($scope, $routeParams
 	$scope.scrollUp = function() {
 		$window.scrollTo(0, 0);
 	};
+
+    $scope.scrollToTop = function() {
+        document.body.scrollTop = 0;
+    };
+
 	$scope.currentSection = _.find($scope.sections, function(section) {
 		return $routeParams.activeAboutTab === section.id;
 	});
