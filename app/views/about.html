@@ -1,13 +1,26 @@
 
 <div class="base-layout" id="about">
-	<div class="mobile-leftRight12">
-		<ul class="nav nav-tabs-vertical hidden-sm hidden-xs">
-			<li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
-				<a href="#!/public/about/{{section.id}}">{{'about.' + section.id | translate}}</a>
-			</li>
-		</ul>
-		<div class="tab-content-vertical">
-			<div ng-include="getInclude()"></div>
-		</div>
+	<div>
+        <div class="col-lg-1 col-md-1 "></div>
+        <div class="col-lg-3 col-md-3 top30">
+            <div class="col-lg-2 col-md-2 "></div>
+            <div class="col-lg-9 col-md-9">
+                <ul class="nav nav-tabs-vertical hidden-sm hidden-xs">
+                    <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}">
+                        <a href="#!/public/about/{{section.id}}">{{'about.' + section.id | translate}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 top30">
+            <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                <div>
+                    <div ng-include="getInclude()"></div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+        </div>
+        <div class="col-lg-1 col-md-1 "></div>
 	</div>
 </div>
