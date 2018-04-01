@@ -2,6 +2,10 @@
 
 angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location,  $window) {
 
+    $scope.scrollToTop = function() {
+        document.body.scrollTop = 0;
+    };
+
 	$scope.loaded = false;
 	$scope.lessonsFilter = {
 		'public' : {
