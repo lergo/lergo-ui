@@ -51,13 +51,13 @@
                         </div>  <!--end of navbar header class -->
 
                         <div class="hidden-sm hidden-xs" >
-                            <div class="col-lg-1 col-md-1">  <!-- image for desktop -->
+                            <div class="col-lg-2 col-md-2">  <!-- image for desktop -->
                                 <a  href="#!/user/homepage">
                                     <img style="padding: 0 50px;" src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png">
                                 </a>
                             </div>
                             <div class="col-lg-8 col-md-8">
-                                <div class="col-lg-7 col-md-7" style=" height: 60px" >
+                                <div class="col-lg-5 col-md-5" style=" height: 60px" >
                                     <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form" role="search">
                                         <div class="form-group search-homepage-desktop"  ui-keypress="{enter: 'searchOnHomepage()'}">
                                             <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
@@ -70,23 +70,20 @@
                                         </div>
                                     </form>
                                     <div>
-                                        <div class="col-lg-6 col-md-6"></div>
-                                        <div class="col-lg-6 col-md-6">
                                             <div class=" rtlFloatLeft lergo-h1"   ng-hide="showForm || baseLayout.filterTextSearch.length > 0 " ng-click="showForm = true; setFocus('focus-search-desktop')">
                                                 <span class="search-icon"> {{'baseLayout.navbar.searchLesson' | translate}}
                                                      <i class="fa fa-search" aria-hidden="true">
                                                      </i>
                                                  </span>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
-                                <div style="height: 60px;color: #c1def5; padding-top: 20px" class="col-lg-1 col-md-1 text-center">|</div>
-                                <div class="col-lg-4 col-md-4">
+                                <div style="height: 60px;color: #c1def5; padding-top: 20px" class="col-lg-2 col-md-2 text-center">|</div>
+                                <div class="col-lg-5 col-md-5">
                                     <div class="lergo-h1"  create-your-own-box></div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3">
+                            <div class="col-lg-2 col-md-2">
                                 <div class="col-lg-6 col-md-6">
                                     <div class="header-actions">
                                         <div id="profileloginbutton-desktop"  profile-login-button="$root.user"></div>
