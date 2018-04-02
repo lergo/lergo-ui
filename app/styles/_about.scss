@@ -195,8 +195,8 @@
         }
     }
     .nav-tabs-vertical {
-        width: 225px;
-        float: left;
+        max-width: 225px;
+       /* float: left;*/
         > li {
             &.active > a {
                 &,
