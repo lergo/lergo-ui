@@ -944,6 +944,9 @@ label {
         max-width: unset;
         width: unset;
     }
+    .m-bot0 {
+        margin-bottom: 0px;
+    }
     .mobile-leftRight12 {
         padding-left: 12px;
         padding-right: 12px;
@@ -1015,10 +1018,12 @@ label {
 
 
 
- /*Desktop only*/
+ /*Desktop and iPad only*/
 @media  screen and (min-width : 1024px) {
 
-
+    .d-top30 {
+        margin-top: 30px;
+    }
     .d-leftRight15 {
         padding-left: 15px;
         padding-right: 15px;
