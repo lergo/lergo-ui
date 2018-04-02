@@ -231,7 +231,7 @@ input.form-control.search-input {
 #header-mobile {
     .cancel-search {
         position:relative;
-        right: -26vw;
+        right: -308px;
         color: darkgrey;
         bottom: 39px
     }
@@ -551,10 +551,10 @@ input.form-control.search-input {
         .navbar-form {
             padding: 0px;
             .form-control.search-desktop {
-                width: 29vw;
+                width: 349px;
             }
             .form-group.search-homepage-desktop {
-                margin: 4px 0px 4px 97px;
+                margin: 4px 0px 4px 3px;
             }
         }
     }
@@ -562,7 +562,7 @@ input.form-control.search-input {
         #header-mobile {
             .navbar-form {
                 .form-group.search-homepage-desktop {
-                    margin: 4px 94px 4px 0px;
+                    margin: 4px 3px 4px 0px;
                 }
             }
         }
