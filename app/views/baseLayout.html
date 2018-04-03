@@ -127,10 +127,10 @@
                         </div>
                         <div class="collapse navbar-collapse desktop" uib-collapse="isNavCollapsed"> <!--new stuff-->
                             <ul class="hidden-lg hidden-md nav navbar-nav desktop navbar-right">
-                                <div>
+                                <div class="padding-leftRight15">
                                     <div class="mobile-navbar-menu">
-                                        <div class="header-actions">
-                                            <li ng-show="!user">
+                                        <div>
+                                            <li ng-show="!user" >
                                                 <div id="profileloginbutton-mobile-not-logged-in"  profile-login-button="$root.user"></div>
                                             </li>
                                             <li ng-show="!user" class="divider"></li>
@@ -149,7 +149,7 @@
                                     </div>
                                     <li>
                                         <div>
-                                            <div class="header-actions">
+                                            <div>
                                                 <div ng-show="user" id="profileloginbutton-mobile"  profile-login-button="$root.user"></div>
                                             </div>
                                         </div>

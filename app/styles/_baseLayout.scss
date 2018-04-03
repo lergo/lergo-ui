@@ -352,9 +352,7 @@ input.form-control.search-input {
 
         }
         .header-actions{
-            max-width: 200px;
-            margin-top: -8px;
-            float: right;
+           /* margin-top: -8px;*/
 
             .header-language{
                 select{
@@ -544,13 +542,6 @@ input.form-control.search-input {
 
             }
         }
-        #header-mobile {
-            .header-actions {
-                max-width: unset;
-                /*float: left;*/
-            }
-        }
-
     }
     .homepage-desktop {
         .lessons-desktop {
@@ -564,6 +555,10 @@ input.form-control.search-input {
 // ipad and desktop
 @media screen and (min-width: 1024px) {
     #header-mobile {
+        .header-actions {
+           margin-top: -8px;
+           float: right;
+        }
         .navbar-form {
             padding: 0px;
             .form-control.search-desktop {

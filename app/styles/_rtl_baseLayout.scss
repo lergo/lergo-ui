@@ -87,6 +87,7 @@ body .rtl{
                 float: right;
             }
         }
+
     }
 }
 
@@ -97,16 +98,6 @@ body .rtl{
         .page-content-titles {
             .page-content-titles-actions {
                 float: right;
-            }
-        }
-
-    }
-    .rtl {
-        .base-layout {
-            #header-mobile {
-                .header-actions {
-                    /*float: right;*/
-                }
             }
         }
     }
