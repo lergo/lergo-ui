@@ -281,7 +281,7 @@ input.form-control.search-input {
     padding: 11px 14px 6px 12px;
     color: white;
     font-size: 1em;
-    margin-right: 0px;
+    margin-right:40px;
     float: right;
     &:hover {
         background-color: rgba(0, 0, 0, 0.3)
@@ -295,8 +295,7 @@ input.form-control.search-input {
 }
 
 .dropdown-align {
-    margin-right: 37px;
-    margin-left: 20px;
+    margin-left: 62px;
     margin-top: 40px;
 }
 .dropdown-align-user {
@@ -304,7 +303,7 @@ input.form-control.search-input {
 }
 .rtl {
     .dropdown-align {
-        margin-left: 0px;
+        margin-left: 22px;
     }
     .dropdown-align-user {
         margin-left: -42px;
@@ -326,6 +325,12 @@ input.form-control.search-input {
         background: $HEADER_BACKGROUND_COLOR;
         border-bottom: $HEADER_BACKGROUND_COLOR;
         margin-bottom: 0;
+
+        img.d-image {
+            margin-left: 45px;
+            margin-right: 45px;
+            padding: 0 50px;
+        }
 
         .search-icon {
             color: white;
