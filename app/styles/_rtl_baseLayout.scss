@@ -101,5 +101,14 @@ body .rtl{
         }
 
     }
+    .rtl {
+        .base-layout {
+            #header-mobile {
+                .header-actions {
+                    float: right;
+                }
+            }
+        }
+    }
 }
 
