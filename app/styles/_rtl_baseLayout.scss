@@ -35,17 +35,20 @@ body .rtl{
                 margin-left: 1vw;
             }
             .cancel-search {
-                right: 26vw;
-                bottom: 37px;
+                right: -75px;
             }
             .search-icon {
-                font-size: 20px;
+                font-size: 22px;
+                float: right;
+            }
+            .header-actions {
+                margin-top: 14px;
                 float: left;
             }
             i.fa.fa-search {
                 padding-left: 0px;
                 padding-right: 3px;
-                float: left;
+                float: right;
 
             }
         }
@@ -57,10 +60,6 @@ body .rtl{
             .cancel-adjust {
                 padding: 10px;
             }
-        }
-        .cancel-search {
-            right: 5px;
-            bottom: 0px;
         }
         .search-mobile {
             float: left;

@@ -52,12 +52,12 @@
                         </div>  <!--end of navbar header class -->
 
                         <div class="hidden-sm hidden-xs" >
-                            <div class="col-lg-2 col-md-2">  <!-- image for desktop -->
+                            <div class="col-lg-1 col-md-2">  <!-- image for desktop -->
                                 <a  href="#!/user/homepage">
                                     <img style="padding: 0 50px;" src="../images/homepage/lergo-logo-no-tagline-blue-background-resize.png">
                                 </a>
                             </div>
-                            <div class="col-lg-8 col-md-8">
+                            <div class="col-lg-10 col-md-8">
                                 <div class="col-lg-5 col-md-5">
                                     <div class="rtlFloatLeft lergo-h1"  create-your-own-box></div>
                                 </div>
@@ -65,33 +65,38 @@
                                 <div class="col-lg-5 col-md-5" style=" height: 60px" >
                                     <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form" role="search">
                                         <div class="form-group search-homepage-desktop"  ui-keypress="{enter: 'searchOnHomepage()'}">
-                                            <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
-                                            <button ng-click="searchOnHomepage()" class="btn btn-link" >
-                                                <i class="fa fa-search"  uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"></i>
-                                            </button>
-                                            <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
-                                                <i class="fa fa-times-circle-o fa-lg cancel-search" uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="right" aria-hidden="true"></i>
-                                            </a>
+                                            <div class="input-group">
+                                                <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                                                <div class="input-group-btn">
+                                                    <button ng-click="searchOnHomepage()" class="btn btn-link" >
+                                                        <i class="fa fa-search" tooltip-class="tooltip-width1" uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="right"  aria-hidden="true"></i>
+                                                    </button>
+                                                    <a style="text-decoration: none;" href="#!/user/homepage" class="btn btn-link">
+                                                        <i class="fa fa-times fa-lg cancel-search" uib-tooltip="{{'homepage.tooltip.searchReset' | translate}}" tooltip-placement="bottom-left" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
                                     <div>
                                         <div class=" lergo-h1"   ng-hide="showForm || baseLayout.filterTextSearch.length > 0 " ng-click="showForm = true; setFocus('focus-search-desktop')">
-                                                <span class="search-icon"> {{'baseLayout.navbar.searchLesson' | translate}}
+                                                <span class="search-icon"> &nbsp{{'baseLayout.navbar.searchLesson' | translate}}
                                                      <i class="fa fa-search" aria-hidden="true">
                                                      </i>
                                                  </span>
+                                        </div>
+                                        <div >
+                                            <div class="header-actions" ng-if="!showForm">
+                                                <div id="profileloginbutton-desktop"  profile-login-button="$root.user"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="header-actions" ng-if="false">
-                                        <div id="profileloginbutton-desktop"  profile-login-button="$root.user"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 ">
+                            <div class="col-lg-1 col-md-2">
+
+                                <div>
                                         <span uib-dropdown on-toggle="toggled(open)"  >
                                               <a href id="simple-dropdown1" uib-dropdown-toggle>
                                                 <i style="padding: 0 40px" class="fa fa-bars fa-2x" aria-hidden="true"></i>

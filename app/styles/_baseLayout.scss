@@ -81,7 +81,6 @@ label.btn.btn-link {
 
 
 #profileloginbutton-desktop  {
-    padding-top: 16px;
 
     .header-signup {
         margin-right: 0;
@@ -231,9 +230,9 @@ input.form-control.search-input {
 #header-mobile {
     .cancel-search {
         position:relative;
-        right: -308px;
+        right: 78px;
         color: darkgrey;
-        bottom: 39px
+        bottom: 2px;
     }
     .pull-left.logo {
         margin-left: 1vw;
@@ -322,7 +321,6 @@ input.form-control.search-input {
     }
     .push {
         height: $HEADER_HEIGHT;
-        //margin-bottom:-$HEADER_HEIGHT;
     }
     #header-mobile {
         background: $HEADER_BACKGROUND_COLOR;
@@ -333,7 +331,6 @@ input.form-control.search-input {
             color: white;
             position: relative;
             font-size: 19px;
-            /*margin-left: 3vw;*/
             top: 18px;
             &:hover {
                 color: rgba(0, 0, 0, 0.3);
@@ -343,6 +340,9 @@ input.form-control.search-input {
             }
         }
         .header-actions{
+            max-width: 200px;
+            margin-top: -8px;
+
             .header-language{
                 select{
                     font-size: 18px;
@@ -405,9 +405,6 @@ input.form-control.search-input {
         }
     }
 
-   /* #footer, .push {
-        clear: both;
-    }*/
 
     #footer {
         padding: 15px;
@@ -613,11 +610,6 @@ input.form-control.search-input {
     .base-layout #header-mobile .search-icon {
         margin-left: 0px;
     }
-
-    .rtl #header-mobile .search-icon {
-        font-size: 22px;
-        margin-left: 0px;
-    }
     #profileloginbutton-desktop {
         .header-signup {
          a  {
@@ -625,6 +617,10 @@ input.form-control.search-input {
             }
         }
     }
+}
+
+.tooltip-width1 {
+    width: 200px;
 }
 
 
