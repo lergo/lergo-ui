@@ -332,6 +332,7 @@ input.form-control.search-input {
             position: relative;
             font-size: 19px;
             top: 18px;
+            margin-left: -50px;
             &:hover {
                 color: rgba(0, 0, 0, 0.3);
             }
@@ -550,6 +551,7 @@ input.form-control.search-input {
             padding: 0px;
             .form-control.search-desktop {
                 width: 349px;
+                /*margin-left: -48px;*/
             }
             .form-group.search-homepage-desktop {
                 margin: 4px 0px 4px 3px;
@@ -607,9 +609,6 @@ input.form-control.search-input {
     }
     .sidebar-desktop {
         padding-bottom: 7px;
-    }
-    .base-layout #header-mobile .search-icon {
-        margin-left: 0px;
     }
     #profileloginbutton-desktop {
         .header-signup {

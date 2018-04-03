@@ -28,9 +28,18 @@ body .rtl{
   }
 }
 
+
+
+
 .rtl {
     .base-layout {
         #header-mobile {
+
+            .navbar-form {
+                .form-control.search-desktop {
+                    margin-right: -45px;
+                }
+            }
             .pull-left.logo {
                 margin-left: 1vw;
             }
@@ -40,6 +49,7 @@ body .rtl{
             .search-icon {
                 font-size: 22px;
                 float: right;
+                margin-right: -45px
             }
             .header-actions {
                 margin-top: 14px;
