@@ -1001,7 +1001,15 @@ label {
     .d-m-left {
         float: right;
     }
+    .mpadrtl10 {
+        padding-left: 10px;
+        padding-right: 0px;
+    }
     .rtl {
+        .mpadrtl10 {
+            padding-left: 0px;
+            padding-right: 10px;
+        }
         .m-right {
             float: left;
         }

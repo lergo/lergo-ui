@@ -341,9 +341,14 @@ input.form-control.search-input {
             &:hover {
                 color: rgba(0, 0, 0, 0.3);
             }
-            i.fa.fa-search {
-                padding-left: 12px;
-            }
+
+        }
+        i.fa.fa-search {
+            padding-left: 10px;
+            padding-right: 0px;
+
+
+
         }
         .header-actions{
             max-width: 200px;
