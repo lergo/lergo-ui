@@ -34,7 +34,8 @@ label.btn.btn-link {
 }*/
 
 #profileloginbutton-mobile-not-logged-in{
-    padding-top: 16px;
+   /* padding-top: 16px;*/ -
+    float: left;
 
     .header-signup {
         margin-right: 0;
@@ -545,7 +546,8 @@ input.form-control.search-input {
         }
         #header-mobile {
             .header-actions {
-                float: left;
+                max-width: unset;
+                /*float: left;*/
             }
         }
 
