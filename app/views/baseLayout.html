@@ -65,7 +65,7 @@
                                     <form ng-show="showForm || baseLayout.filterTextSearch.length > 0 " class="navbar-form" role="search">
                                         <div class="form-group search-homepage-desktop"  ui-keypress="{enter: 'searchOnHomepage()'}">
                                             <div class="input-group">
-                                                <input class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
+                                                <input ng-attr-autofocus="{{showForm}}" class="form-control search-desktop" ng-class="{'search-color' : baseLayout.filterTextSearch.length > 0 }" placeholder="{{'baseLayout.header.searchPlaceholderMobile' | translate  }}" ng-model="baseLayout.filterTextSearch"  />
                                                 <div class="input-group-btn">
                                                     <button ng-click="searchOnHomepage()" class="btn btn-link" >
                                                         <i class="fa fa-search" tooltip-class="tooltip-width1" uib-tooltip="{{'homepage.tooltip.searchWord' | translate}}" tooltip-placement="bottom-right"  aria-hidden="true"></i>
