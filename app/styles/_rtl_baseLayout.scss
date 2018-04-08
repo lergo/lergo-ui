@@ -23,8 +23,14 @@ body .rtl{
               }
           }
       }
-      #profileloginbutton-mobile-not-logged-in .header-signup a:last-child {
-          float: left;
+      #profileloginbutton-mobile-not-logged-in {
+          float: right;
+          .header-signup a:last-child {
+              /*float: left;*/
+              margin-right: 150px;
+              margin-left: 0px;
+
+            }
       }
   }
 }
