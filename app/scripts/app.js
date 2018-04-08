@@ -10,7 +10,8 @@ angular.module('lergoApp', [
     'btford.markdown',
     'ngStorage',
     'ngCsv',
-    'cgBusy'
+    'cgBusy',
+    'focus-if',
 ]);
 
 
