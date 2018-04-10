@@ -1040,6 +1040,14 @@ label {
     .d-leftRight80 {
         padding-left: 80px;
         padding-right: 80px;
+
+    }.d-margin-rtl {
+        margin-left: 70px;
+         }
+    .rtl {
+        .d-margin-rtl {
+            margin-right: 70px;
+        }
     }
 
     .rtlFloatLeft {
