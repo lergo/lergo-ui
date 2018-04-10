@@ -9,7 +9,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                             <div class="top20">
-                                <div class="lergo-h1 push-down  hidden-sm hidden-xs">{{ 'questions.filter' | translate }}</div>
+                                <div class="lergo-h1-orig push-down  hidden-sm hidden-xs">{{ 'questions.filter' | translate }}</div>
                                 <div lergo-filter   no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
                                      on-load="filterLoaded()"
                                      opts="questionsFilterOpts">
@@ -19,11 +19,11 @@
                         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                     </div>
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                            <div class="lergo-h1 padding-1  col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="lergo-h1-orig padding-1  col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="btn-group" uib-dropdown dropdown-append-to-body>
                                     <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle  style="color: #5fb9ff; text-decoration: none">
                                         <span class="fa fa-caret-down"></span>
-                                        <span class="lergo-h1">{{('questions.'+ questionToLoad |translate)}} </span>
+                                        <span class="lergo-h1-orig">{{('questions.'+ questionToLoad |translate)}} </span>
                                     </button>
                                     <ul class="dropdown-menu overidePositionInherit " uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
                                         <li role="menuitem"><a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.user)">{{'questions.myQuestions'|translate}}</a></li>

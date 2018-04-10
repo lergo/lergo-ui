@@ -7,7 +7,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
                                     <div>
-                                        <div class="lergo-h1 top-padding hidden-sm hidden-xs">{{ 'lessons.filter' | translate }}</div>
+                                        <div class="filter-lessons lergo-h1-orig hidden-sm hidden-xs">{{ 'lessons.filter' | translate }}</div>
                                         <div lergo-filter   model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
                                     </div>
                                 </div>
@@ -17,11 +17,11 @@
                             <div>
                                 <div>
                                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
-                                        <div class="lergo-h1 padding-1">
+                                        <div class="lergo-h1-orig padding-1 d-underline1" >
                                             <div class="btn-group mobile-leftRight20" uib-dropdown dropdown-append-to-body>
                                                 <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
                                                     <span class="fa fa-caret-down"></span>
-                                                    <span class="lergo-h1">{{('lessons.'+ lessonToLoad |translate)}} </span>
+                                                    <span class="lergo-h1-orig d-padBot15">{{('lessons.'+ lessonToLoad |translate)}} </span>
                                                 </button>
                                                 <ul class="dropdown-menu overidePositionInherit" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
                                                     <li>
@@ -34,8 +34,8 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                        <div class="rtlFloatLeft mobile-leftRight20">
-                                            <button ng-click="createLessonBtnDisable || create()" class="btn btn-start bot24" ng-disabled="createLessonBtnDisable">
+                                        <div class="mobile-leftRight20 d-underline1" >
+                                            <button ng-click="createLessonBtnDisable || create()" class="btn btn-start" style="margin-top: 8px; margin-bottom:17px;" ng-disabled="createLessonBtnDisable">
                                                 <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
                                                 {{ 'lessons.create' | translate }}
                                             </button>

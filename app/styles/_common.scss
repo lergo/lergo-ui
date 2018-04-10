@@ -246,6 +246,19 @@ button.action-item {
     }
 }
 
+.lergo-h1-orig {
+    font-size: 28px;
+    white-space: nowrap;
+    text-align: justify;
+    color: $LERGO_H1_COLOR;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &.no-case{
+        text-transform: none;
+    }
+}
+
 .lergo-h1 {
     font-size: 22px;
     white-space: nowrap;
@@ -290,8 +303,13 @@ button.action-item {
         font-size: 22px;
     }
 
+    .lergo-h1-orig {
+        font-size: 19px;
+        white-space: normal;
+    }
+
     .lergo-h1 {
-        font-size:19px;
+        font-size: 19px;
         white-space: normal;
     }
 
@@ -1048,7 +1066,12 @@ label {
         padding-left: 80px;
         padding-right: 80px;
 
-    }.d-margin-rtl {
+    }
+    .d-underline1 {
+        border-bottom: 1px solid #d2e8fa;
+    }
+
+    .d-margin-rtl {
         margin-left: 70px;
          }
     .rtl {
