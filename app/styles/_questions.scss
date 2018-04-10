@@ -265,12 +265,11 @@
 }
 
 
-@media screen and (min-width : 1048px) {
+@media screen and (min-width : 1024px) {
     .filterOffset15 {
         max-width: 226px;
         margin-left: -15px;
         margin-right: -15px;
-        /*border-top: 1px solid #d2e8fa;*/
         margin-top: -2px;
     }
     .table-responsive {

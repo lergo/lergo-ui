@@ -13,6 +13,7 @@
     text-align: center;
 }
 
+
 // jeff: use this to solve the ipad problem on user pages
 // (without this, between 1200 and 993, the tables are not visible)
 @media screen and (max-width: 992px) {
@@ -43,7 +44,7 @@
     }
 }
 
-@media (min-width: 1048px) {
+@media (min-width: 1024px) {
     .img-responsive {
         max-width: 90%;
     }
