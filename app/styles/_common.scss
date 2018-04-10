@@ -1071,15 +1071,6 @@ label {
         border-bottom: 1px solid #d2e8fa;
     }
 
-    .d-margin-rtl {
-        margin-left: 70px;
-         }
-    .rtl {
-        .d-margin-rtl {
-            margin-right: 70px;
-        }
-    }
-
     .rtlFloatLeft {
         float: right;
     }
@@ -1116,6 +1107,17 @@ label {
         }
         .d-padr15 {
             padding-right: 0px
+        }
+    }
+}
+
+@media  screen and (min-width : 1200px) {
+    .d-margin-rtl {
+        margin-left: 70px;
+    }
+    .rtl {
+        .d-margin-rtl {
+            margin-right: 70px;
         }
     }
 }
