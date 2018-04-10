@@ -40,6 +40,12 @@
 }
 
 #questionsIndex {
+    .filter-questions {
+        padding-top: 20px;
+        border-bottom: 1px solid #d2e8fa;
+        padding-bottom: 17px;
+    }
+
     table {
         .question {
             width: 70%;
