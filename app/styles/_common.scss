@@ -295,8 +295,14 @@ button.action-item {
     color: $LERGO_ICON_COLOR;
 }
 
+//ipad only
+@media (min-width: 1024px ) and (max-width: 1200px) {
+    .lergo-h1-orig {
+        font-size: 24px;
+    }
+}
 
-// scale all fonts smaller for mobile - jeff
+// scale all fonts smaller for mobile
 @media screen and (max-width:768px) {
 
     .lergo-h0 {

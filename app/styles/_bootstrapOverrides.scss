@@ -44,13 +44,14 @@
     }
 }
 
+
 @media (min-width: 1024px) {
     .img-responsive {
         max-width: 90%;
     }
 }
 
-// is this correct for ipad?
+
 @media (min-width: 768px ) and (max-width: 992px) {
     img-responsive {
         height: unset;
