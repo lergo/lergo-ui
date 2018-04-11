@@ -13,16 +13,6 @@
         padding-top: 16px;
         padding-bottom: 16px;
     }
-    .select-lessons {
-        padding-top: 5px;
-        padding-bottom: 16px;
-
-        .lesson-type-selection {
-            background: none;
-            border: none;
-            margin-top: 6px;
-        }
-    }
     .create {
         button {
             margin-top: 8px;
@@ -31,35 +21,23 @@
     }
 }
 @media screen and (min-width: 1024px) {
-    .my-lessons {
-        border-bottom: 1px solid #d2e8fa;
-    }
-    .create {
-        border-bottom: 1px solid #d2e8fa;
+    #lessonsIndex {
+        .my-lessons {
+            border-bottom: 1px solid #d2e8fa;
+        }
+        .create {
+            border-bottom: 1px solid #d2e8fa;
+        }
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .create {
-        padding: 0 15px;
-    }
-}
-
-
-
-#lessonsIndex-mobile{
-    table{
-        .name{
-            width:100%;
+    #lessonsIndex {
+        .create {
+            padding: 0 15px;
         }
     }
-    .content-margins {
-        margin: 10px 20px 10px 20px;
-    }
-}
-.padding-1 {
-     padding-top: 16px;
-     padding-bottom: 16px;
+
 }
 
 @media  screen and (max-width : 1024px) {
