@@ -17,8 +17,8 @@
                             <div>
                                 <div>
                                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
-                                        <div class="lergo-h1-orig padding-1 d-underline1" >
-                                            <div class="btn-group mobile-leftRight20" uib-dropdown dropdown-append-to-body>
+                                        <div class="my-lessons lergo-h1-orig" >
+                                            <div class="btn-group mobile-leftRight15" uib-dropdown dropdown-append-to-body>
                                                 <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
                                                     <span class="fa fa-caret-down"></span>
                                                     <span class="lergo-h1-orig d-padBot15">{{('lessons.'+ lessonToLoad |translate)}} </span>
@@ -34,8 +34,8 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                        <div class="mobile-leftRight20 d-underline1" >
-                                            <button ng-click="createLessonBtnDisable || create()" class="btn btn-start" style="margin-top: 8px; margin-bottom:17px;" ng-disabled="createLessonBtnDisable">
+                                        <div class="create" >
+                                            <button ng-click="createLessonBtnDisable || create()" class="btn btn-start"  ng-disabled="createLessonBtnDisable">
                                                 <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
                                                 {{ 'lessons.create' | translate }}
                                             </button>

@@ -9,6 +9,40 @@
         border-bottom: 1px solid #d2e8fa;
         padding-bottom: 17px;
     }
+    .my-lessons {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+    .select-lessons {
+        padding-top: 5px;
+        padding-bottom: 16px;
+
+        .lesson-type-selection {
+            background: none;
+            border: none;
+            margin-top: 6px;
+        }
+    }
+    .create {
+        button {
+            margin-top: 8px;
+            margin-bottom:17px;
+        }
+    }
+}
+@media screen and (min-width: 1024px) {
+    .my-lessons {
+        border-bottom: 1px solid #d2e8fa;
+    }
+    .create {
+        border-bottom: 1px solid #d2e8fa;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .create {
+        padding: 0 15px;
+    }
 }
 
 
