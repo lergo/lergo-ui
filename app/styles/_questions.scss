@@ -45,6 +45,16 @@
         border-bottom: 1px solid #d2e8fa;
         padding-bottom: 17px;
     }
+    .my-questions {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+    .create {
+        button {
+            margin-top: 8px;
+            margin-bottom:17px;
+        }
+    }
 
     table {
         .question {
@@ -54,32 +64,29 @@
             width: 30%;
         }
     }
-    .content-margins {
+    /*.content-margins {
         margin: 10px 20px 10px 20px;
-    }
+    }*/
 }
-
-.question-display {
-    .question-submit {
-        text-align: center;
-        padding: 20px 0;
-    }
-    .question-content, .question-submit {
-        background-color: gainsboro;
-        width: 400px;
-        margin: 0 auto;
-    }
-    .question-true-false {
-        .true-false-options {
-            .true-false-option {
-                padding: 15px;
-                margin-left: 5px;
-            }
-            text-align: center;
+@media screen and (min-width: 1024px) {
+    #questionsIndex {
+        .my-questions {
+            border-bottom: 1px solid #d2e8fa;
+        }
+        .create {
+            border-bottom: 1px solid #d2e8fa;
         }
     }
 }
 
+@media screen and (max-width: 1024px) {
+    #questionsIndex {
+        .create {
+            padding: 0 15px;
+        }
+    }
+
+}
 .question-help-text {
     color: grey;
     font-family: cursive;
@@ -93,6 +100,7 @@
     }
 }
 
+/*
 .filters {
     margin-top: 6px;
     .input {
@@ -134,10 +142,12 @@
         font-weight: bold;
     }
 }
+*/
 
+/*
 .question-bank-dialog .modal-dialog {
     width: 96%;
-    /*min-width: 1000px;*/
+    !*min-width: 1000px;*!
     .modal-content {
         .modal-header{
             padding: 0px;
@@ -189,8 +199,9 @@
         }
     }
 }
+*/
 
-.shuffle {
+/*.shuffle {
     display: table;
     padding: 8px;
     width: 100%;
@@ -216,7 +227,7 @@
     .right-cell {
         display: table-cell;
     }
-}
+}*/
 
 .questions-exact-match {
     input {

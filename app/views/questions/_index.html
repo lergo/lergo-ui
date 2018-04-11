@@ -19,7 +19,7 @@
                         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                     </div>
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                            <div class="lergo-h1-orig padding-1 d-underline1 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                            <div class="my-questions lergo-h1-orig col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <div class="btn-group" uib-dropdown dropdown-append-to-body>
                                     <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle  style="color: #5fb9ff; text-decoration: none">
                                         <span class="fa fa-caret-down"></span>
@@ -35,8 +35,8 @@
                                 [ {{ 'questions.total' | translate }}: {{filterPage.count}} ]
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="mobile-leftRight20 d-underline1">
-                                    <button class="btn btn-start" style="margin-top: 8px; margin-bottom:17px;" ng-click="createQuestionBtnDisable || createNewQuestion()"
+                                <div class="create">
+                                    <button class="btn btn-start" ng-click="createQuestionBtnDisable || createNewQuestion()"
                                             ng-disabled="createQuestionBtnDisable">
                                         <i ng-show="createQuestionBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
                                         {{ 'questions.createNew' | translate }}
