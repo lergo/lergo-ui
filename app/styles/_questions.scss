@@ -100,7 +100,6 @@
     }
 }
 
-/*
 .filters {
     margin-top: 6px;
     .input {
@@ -142,12 +141,10 @@
         font-weight: bold;
     }
 }
-*/
 
-/*
 .question-bank-dialog .modal-dialog {
     width: 96%;
-    !*min-width: 1000px;*!
+    /*min-width: 1000px;*/
     .modal-content {
         .modal-header{
             padding: 0px;
@@ -199,9 +196,8 @@
         }
     }
 }
-*/
 
-/*.shuffle {
+.shuffle {
     display: table;
     padding: 8px;
     width: 100%;
@@ -227,7 +223,7 @@
     .right-cell {
         display: table-cell;
     }
-}*/
+}
 
 .questions-exact-match {
     input {

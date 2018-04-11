@@ -48,3 +48,28 @@
         margin-top: 5px;
     }
 }
+
+#inviteIndex {
+    .filter-invites {
+        padding-top: 20px;
+        border-bottom: 1px solid #d2e8fa;
+        padding-bottom: 17px;
+    }
+    .my-invites {
+        padding-top: 19px;
+        padding-bottom: 16px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #inviteIndex {
+        .my-invites {
+            border-bottom: 1px solid #d2e8fa;
+        }
+        .table-margin {
+            margin-top: 26px;
+        }
+    }
+}
+
+
