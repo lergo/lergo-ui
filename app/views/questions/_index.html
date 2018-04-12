@@ -71,15 +71,15 @@
                             <tbody>
                             <!--this invisible text makes the hebrew mobile alignment correct-->
                             <pre ng-show="!isModal" style="color: white; font-size: 1px">a</pre>
-                            <tr ng-repeat="item in items |orderBy:'-lastUpdate'" ng-class="{'disabled':!!item.alreadyAdded}">
+                            <tr  ng-repeat="item in items |orderBy:'-lastUpdate'" ng-class="{'disabled':!!item.alreadyAdded}">
                                 <td ng-show="isModal">
                                     <input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
                                 </td>
-                                <td dir="auto" style="width: 250px; white-space: normal">
+                                <td dir="auto">
                                     <span ng-show="!!isModal">{{item.question}}</span>
                                     <div ng-show="!isModal" question-read-link question="item"></div>
                                 </td>
-                                <td dir="auto" style="width: 250px; white-space: normal">{{ getAnswers(item) | limitTo:30}}</td>
+                                <td dir="auto">{{ getAnswers(item) | limitTo:30}}</td>
                                 <td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
                                 <td style="width: 35px">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
                                 <td>{{item.age &&('+'+ item.age) || ""}}</td>

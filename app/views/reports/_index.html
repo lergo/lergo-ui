@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12">
-                        <div class="select-report lergo-h1-orig">
+                        <div class="select-report">
                                 <!-- LERGO-457-->
                             <select class="report-type-selection" ng-model="reportsPage.reportType"
                                     ng-options="repType.id as ( 'reports.type.' + repType.id | translate ) for repType in reportTypes">
@@ -32,8 +32,8 @@
                     <div class="hidden-sm hidden-xs" filter-is-active="reportsFilterOpts" section="reports"></div>
                         <div class="table-responsive" style="border: 1px solid #FAFAFA"> <!--without a style, iPad does not show content!-->
                             <table class="table">
-                                <thead style="white-space: nowrap">
-                                <tr>
+                                <thead>
+                                <tr style="font-weight: bold">
                                     <td class="checkbox-dropdown">
                                         <div class="btn-group" uib-dropdown>
                                             <input type="checkbox" ng-click="selectAll($event)" ng-model="reportsPage.selectAll">
@@ -67,7 +67,7 @@
                                     <td>
                                         <input type="checkbox" style="margin-left: 5px;" ng-model="report.selected">
                                     </td>
-                                    <td dir="auto" style="width: 250px; white-space: normal">
+                                    <td dir="auto">
                                         <a ng-show="!!report.data.lesson.name && report.data.lesson.name.trim().length > 0"
                                            uib-tooltip="{{'reports.tooltip.go' | translate}}"
                                            ng-href="{{getReportLink(report._id)}}">{{ getReportName(report) }}</a>

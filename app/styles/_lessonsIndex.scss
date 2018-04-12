@@ -1,8 +1,9 @@
 #lessonsIndex{
-  table{
-    .name{
-      width:100%;
-    }
+  table {
+      thead:first-child > tr:first-child > td:first-child {
+          width: 520px;
+          white-space: normal;
+      }
   }
     .filter-lessons {
         padding-top: 20px;

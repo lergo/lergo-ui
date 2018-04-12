@@ -58,11 +58,14 @@
     }
 
     table {
-        .question {
-            width: 70%;
+        thead:first-child > tr:first-child > td:nth-child(2) {
+            width: 300px;
+            white-space: normal;
         }
-        .answer {
-            width: 30%;
+
+        thead:first-child > tr:first-child > td:nth-child(3) {
+            width: 230px;
+            white-space: normal;
         }
     }
     /*.content-margins {

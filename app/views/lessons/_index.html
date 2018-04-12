@@ -50,7 +50,7 @@
                                 <table class="table   " ng-show="lessons.length > 0">
                                 <thead>
                                 <tr style="font-weight: bold">
-                                    <td>{{ 'name' | translate }}</td>
+                                    <td class="col1">{{ 'name' | translate }}</td>
                                     <td>{{ 'questions.subject' | translate}}</td>
                                     <td>{{ 'questions.age' | translate}}</td>
                                     <td>{{ 'questions.language' | translate}}</td>
@@ -58,7 +58,7 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="les in lessons |orderBy:'-lastUpdate'">
-                                    <td dir="auto"  style="width: 250px; white-space: normal">
+                                    <td dir="auto">
                                         <a ng-show="!!les.name && les.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">{{
                                             les.name }}</a>
                                         <a ng-show="!les.name || les.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">[

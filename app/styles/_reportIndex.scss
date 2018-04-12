@@ -10,8 +10,8 @@
         margin-bottom: 18px;
     }
     .select-report {
-        padding-top: 5px;
-        padding-bottom: 16px;
+        padding-top: 14px;
+        padding-bottom: 20px;
 
         .report-type-selection {
             background: none;
@@ -19,28 +19,41 @@
             margin-top: 6px;
         }
     }
+    table {
+        thead:first-child > tr:first-child > td:nth-child(2) {
+            width: 250px;
+            white-space: normal;
+        }
+    }
+
     .delete-menu {
         margin-top: -10px;
     }
 }
 @media screen and (min-width: 1024px) {
-    .my-reports {
-        border-bottom: 1px solid #d2e8fa;
-    }
-    .select-report {
-        border-bottom: 1px solid #d2e8fa;
+    #reportIndex {
+        .my-reports {
+            border-bottom: 1px solid #d2e8fa;
+        }
+        .select-report {
+            border-bottom: 1px solid #d2e8fa;
+        }
     }
 }
 
 @media screen and (max-width:1024px) {
-    .my-reports {
-        padding-left: 15px;
-        padding-right: 15px;
+    #reportIndex {
+        .my-reports {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-bottom: -11px;
+        }
+        .select-report {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
-    .select-report {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
+
     .rtl {
         ul.dropdown-menu.dropdown-mobile {
             right: 0;
