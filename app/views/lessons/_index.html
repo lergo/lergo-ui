@@ -75,7 +75,7 @@
                         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                     </div>
                 </div>
-            <div class="page-content-body text-center" ng-show="!lessons || lessons.length == 0">
+            <div class="page-content-body text-center" ng-hide="!!lessons || lessons.length != 0">
                 <span class="alert alert-warning font-medium" >{{'lessons.noLessons' | translate}}</span>
             </div>
         <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
