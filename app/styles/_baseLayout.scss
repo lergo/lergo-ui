@@ -544,6 +544,7 @@ input.form-control.search-input {
 // ipad and desktop
 @media screen and (min-width: 1024px) {
     #header-mobile {
+        height: 60px;
         .header-actions {
            margin-top: -8px;
            float: right;
