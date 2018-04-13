@@ -509,8 +509,7 @@ input.form-control.search-input {
     }
 }
 
-// Jeff- allows the pages to be  responsive while still using production code
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1023px) {
     .base-layout, .base-layout-class {
         .page-content-width {
             width: unset;
@@ -522,6 +521,18 @@ input.form-control.search-input {
                 display: unset;
             }
         }
+        .page-content-titles-actions {
+             float: right;
+        }
+
+
+        #header-mobile {
+            i.fa.fa-search {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+        }
+
         .page-content-titles {
             .page-content-titles-actions {
                 display: inline-block;
@@ -571,7 +582,7 @@ input.form-control.search-input {
 }
 
 // ipad only
-@media screen and (min-device-width : 1024px) and (max-width: 1119px) {
+@media screen and (min-device-width : 1024px) and (max-width: 1199px) {
 
     .dropdown-align {
         margin-left:-33px;
@@ -582,19 +593,6 @@ input.form-control.search-input {
             .form-group.search-homepage-desktop {
                 margin: 4px 0px 4px 62px;
             }
-        }
-    }
-    .rtl {
-        #header-mobile {
-            .navbar-form {
-                .form-group.search-homepage-desktop {
-                    margin: 4px 62px 4px 0px;
-                }
-            }
-        }
-        .dropdown-align {
-            margin-left:3px;
-            margin-top: 49px;
         }
     }
 

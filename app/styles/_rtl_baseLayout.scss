@@ -99,13 +99,35 @@ body .rtl{
 
 
 
-@media screen and (max-width: 1200px) {
-    .base-layout, .base-layout-class {
-        .page-content-titles {
-            .page-content-titles-actions {
-                float: right;
+@media screen and (max-width: 1199px) {
+    .rtl {
+        .base-layout {
+            #header-mobile {
+                i.fa.fa-search {
+                    padding-left: 0px;
+                    padding-right: 0px;
+                }
             }
         }
     }
 }
+
+// ipad only
+@media screen and (min-device-width : 1024px) and (max-width: 1199px) {
+    .rtl {
+        #header-mobile {
+            .navbar-form {
+                .form-group.search-homepage-desktop {
+                    margin: 4px 62px 4px 0px;
+                }
+            }
+        }
+        .dropdown-align {
+            margin-left: 3px;
+            margin-top: 49px;
+        }
+    }
+}
+
+
 
