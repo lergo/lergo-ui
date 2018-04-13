@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-                <div class="text-center" ng-show="!items || items.length == 0">
+                <div class="text-center" ng-hide="items || items.length != 0">
                     <span class="alert alert-warning font-medium">{{ 'questions.noQuestions' | translate }}</span>
                 </div>
                 <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadQuestions()" on-load="pagingLoaded()"></div>
