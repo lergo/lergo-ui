@@ -74,4 +74,22 @@
     }
 }
 
+@media screen and (max-width: 1023px) {
+    #inviteIndex {
+        .my-invites {
+            border-bottom: 1px solid #d2e8fa;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .name {
+            white-space: normal;
+        }
+        table {
+            thead:first-child > tr:first-child > td:nth-child(5) {
+                white-space: normal;
+            }
+        }
+    }
+}
+
 
