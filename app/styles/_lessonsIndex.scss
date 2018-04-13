@@ -29,6 +29,14 @@
         }
         .create {
             border-bottom: 1px solid #d2e8fa;
+            float: right;
+        }
+    }
+    .rtl {
+        #lessonsIndex {
+            .create {
+                float: left;
+            }
         }
     }
 }

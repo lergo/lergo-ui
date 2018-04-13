@@ -54,6 +54,7 @@
         button {
             margin-top: 8px;
             margin-bottom:17px;
+
         }
     }
     .question {
@@ -85,6 +86,14 @@
         }
         .create {
             border-bottom: 1px solid #d2e8fa;
+            float:right;
+        }
+    }
+    .rtl {
+        #questionsIndex {
+            .create {
+                float: left;
+            }
         }
     }
 }
