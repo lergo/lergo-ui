@@ -27,14 +27,8 @@ label.btn.btn-link {
     }
 }
 
-/*.row.fix {
-    display: flex;
-    flex-wrap: wrap;
-    width:100%;
-}*/
 
 #profileloginbutton-mobile-not-logged-in{
-   /* padding-top: 16px;*/
     float: left;
 
     .header-signup {
@@ -218,10 +212,10 @@ label.btn.btn-link {
     }
 
 }
-.search-float {
+/*.search-float {
     float: right;
     padding: 2px;
-}
+}*/
 
 input.form-control.search-input {
     margin: 20px 1px -20px 1px;
@@ -249,20 +243,20 @@ input.form-control.search-input {
     margin: 0;
 }
 /*from angular-ui*/
-.horizontal-collapse {
+/*.horizontal-collapse {
     height: 70px;
-}
+}*/
 .navbar-collapse.in {
     overflow-y: hidden;
 }
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
-#wrapper {
+/*#wrapper {
     margin-bottom: -$HEADER_HEIGHT;
     min-height: 100%;
 
-}
+}*/
 
 #simple-dropdown1 {
     display: inline-block;
@@ -276,27 +270,27 @@ input.form-control.search-input {
     }
 }
 
-.more-links {
+/*.more-links {
     height: 20px;
     margin-left: 10px;
     font-size: 14px;
-}
+}*/
 
 .dropdown-align {
     margin-left: 62px;
     margin-top: 40px;
 }
-.dropdown-align-user {
+/*.dropdown-align-user {
     margin-left: 0px;
-}
-.rtl {
+}*/
+/*.rtl {
     .dropdown-align {
         margin-left: 22px;
     }
     .dropdown-align-user {
         margin-left: -15px;
     }
-}
+}*/
 
 
 
@@ -351,7 +345,7 @@ input.form-control.search-input {
 
         }
         .header-actions{
-           /* margin-top: -8px;*/
+
 
             .header-language{
                 select{
@@ -368,8 +362,6 @@ input.form-control.search-input {
 
     /** standard widths for this layout **/
     .page-content-width {
-        /*min-width: 1100px;
-        width: 1100px;*/
         margin-left: auto;
         margin-right: auto;
 
@@ -389,7 +381,7 @@ input.form-control.search-input {
         }
     }
 
-    .page-content-titles {
+    /*.page-content-titles {
         margin-bottom: 25px;
         .page-content-body, .page-content-sidebar {
             border-bottom: 1px solid $LERGO_HR_COLOR;
@@ -413,12 +405,11 @@ input.form-control.search-input {
             margin-bottom: -2px;
 
         }
-    }
+    }*/
 
 
     #footer {
         padding: 15px;
-       /* height: 103px;*/
 
         background-color: #296CA1;
         width: 100%;
@@ -462,7 +453,6 @@ input.form-control.search-input {
 #content {
     height: auto !important;
     min-height: 750px;
-    /*padding-bottom: 20px;*/
     & > div:first-child {
         /* guy - written like this so that we can override if needed */
         margin-top: 10px;
