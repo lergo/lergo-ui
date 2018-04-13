@@ -76,8 +76,8 @@
                                     <input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
                                 </td>
                                 <td class="question" dir="auto">
-                                    <span ng-show="!!isModal">{{item.question}}</span>
-                                    <div ng-show="!isModal" question-read-link question="item"></div>
+                                    <span  ng-show="!!isModal">{{item.question}}</span>
+                                    <div class="question-width" ng-show="!isModal" question-read-link question="item"></div>
                                 </td>
                                 <td class="answers" dir="auto">{{ getAnswers(item) | limitTo:30}}</td>
                                 <td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
