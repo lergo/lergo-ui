@@ -75,11 +75,11 @@
                                 <td ng-show="isModal">
                                     <input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
                                 </td>
-                                <td dir="auto">
+                                <td class="question" dir="auto">
                                     <span ng-show="!!isModal">{{item.question}}</span>
                                     <div ng-show="!isModal" question-read-link question="item"></div>
                                 </td>
-                                <td dir="auto">{{ getAnswers(item) | limitTo:30}}</td>
+                                <td class="answers" dir="auto">{{ getAnswers(item) | limitTo:30}}</td>
                                 <td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
                                 <td style="width: 35px">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
                                 <td>{{item.age &&('+'+ item.age) || ""}}</td>

@@ -58,7 +58,7 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="les in lessons |orderBy:'-lastUpdate'">
-                                    <td dir="auto">
+                                    <td class="name" dir="auto">
                                         <a ng-show="!!les.name && les.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">{{
                                             les.name }}</a>
                                         <a ng-show="!les.name || les.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">[

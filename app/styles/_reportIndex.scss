@@ -41,7 +41,7 @@
     }
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1023px) {
     #reportIndex {
         .my-reports {
             padding-left: 15px;
@@ -51,6 +51,9 @@
         .select-report {
             padding-left: 15px;
             padding-right: 15px;
+        }
+        .name {
+            white-space: normal;
         }
     }
 

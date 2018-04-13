@@ -56,6 +56,12 @@
             margin-bottom:17px;
         }
     }
+    .question {
+        white-space: normal;
+    }
+    .answers {
+        white-space: normal;
+    }
 
     table {
         thead:first-child > tr:first-child > td:nth-child(2) {
@@ -148,7 +154,6 @@
 
 .question-bank-dialog .modal-dialog {
     width: 96%;
-    /*min-width: 1000px;*/
     .modal-content {
         .modal-header{
             padding: 0px;
