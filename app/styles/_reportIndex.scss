@@ -30,18 +30,29 @@
         margin-top: -10px;
     }
 }
+
 @media screen and (min-width: 1024px) {
     #reportIndex {
         .my-reports {
             border-bottom: 1px solid #d2e8fa;
         }
         .select-report {
+            float: right;
+        }
+        .col-border-bottom {
             border-bottom: 1px solid #d2e8fa;
+        }
+    }
+    .rtl {
+        #reportIndex {
+            .select-report {
+                float: left;
+            }
         }
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     #reportIndex {
         .my-reports {
             padding-left: 15px;
@@ -55,12 +66,13 @@
         .name {
             white-space: normal;
         }
-    }
 
-    .rtl {
-        ul.dropdown-menu.dropdown-mobile {
-            right: 0;
-            min-width: 200px;
+        .rtl {
+            ul.dropdown-menu.dropdown-mobile {
+                right: 0;
+                min-width: 200px;
+            }
         }
     }
 }
+
