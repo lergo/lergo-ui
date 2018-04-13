@@ -227,18 +227,6 @@ input.form-control.search-input {
     margin: 20px 1px -20px 1px;
 }
 
-#header-mobile {
-    .cancel-search {
-        position:relative;
-        right: 78px;
-        color: darkgrey;
-        bottom: 2px;
-    }
-    .pull-left.logo {
-        margin-left: 1vw;
-    }
-}
-
 
 .base-layout, .base-layout-class {
 
@@ -325,6 +313,18 @@ input.form-control.search-input {
         background: $HEADER_BACKGROUND_COLOR;
         border-bottom: $HEADER_BACKGROUND_COLOR;
         margin-bottom: 0;
+
+        .cancel-search {
+            position:relative;
+            right: 78px;
+            color: darkgrey;
+            bottom: 2px;
+        }
+        .pull-left.logo {
+            margin-left: 1vw;
+        }
+
+
 
         img.d-image {
             margin-left: 45px;
@@ -562,7 +562,6 @@ input.form-control.search-input {
             padding: 0px;
             .form-control.search-desktop {
                 width: 349px;
-                /*margin-left: -48px;*/
             }
             .form-group.search-homepage-desktop {
                 margin: 4px 0px 4px -41px;
@@ -581,7 +580,7 @@ input.form-control.search-input {
 }
 
 // ipad only
-@media screen and (min-device-width : 1024px) and (max-width: 1200px) {
+@media screen and (min-device-width : 1024px) and (max-width: 1119px) {
 
     .dropdown-align {
         margin-left:-33px;
