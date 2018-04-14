@@ -24,7 +24,7 @@
                                         <a ng-show="baseLayout.language != 'he'" uib-popover="{{'baseLayout.navbar.pinHelpText' | translate}}" class="fa fa-question-circle" popover-placement="top" popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none"></a>
                                         <div style="height: 5px;"></div>
                                     </div>
-                                    <div style="margin-bottom: 10px" class="lergo-h0">{{ 'lessons.filter' | translate }}</div>
+                                    <div class="filter-heading lergo-h0">{{ 'lessons.filter' | translate }}</div>
                                 </div>
                                 <div>
                                     <div lergo-filter   model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>
