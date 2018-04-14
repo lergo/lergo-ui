@@ -303,7 +303,7 @@ button.action-item {
 }
 
 // scale all fonts smaller for mobile
-@media screen and (max-width:768px) {
+@media screen and (max-width:1199px) {
 
     .lergo-h0 {
         font-size: 22px;
@@ -329,6 +329,11 @@ button.action-item {
 
     .lergo-h4 {
         font-size: 17px;
+    }
+    .rtl {
+        .lergo-h0 {
+            font-size: 24px !important;
+        }
     }
 
 }
