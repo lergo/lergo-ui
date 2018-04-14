@@ -5,7 +5,6 @@
         <div class="container">
             <div class="row">
                 <div ng-show="!isModal">
-                    <div class="hidden-sm hidden-xs"></div>
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                             <div>
@@ -45,9 +44,7 @@
                             </div>
                         </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-
-                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
                 </div>
 
                 <div class="hidden-sm hidden-xs" filter-is-active="questionsFilterOpts" section="questions"></div>
@@ -91,11 +88,11 @@
                     </div>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-                <div class="text-center" ng-hide="items || items.length != 0">
-                    <span class="alert alert-warning font-medium">{{ 'questions.noQuestions' | translate }}</span>
-                </div>
-                <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadQuestions()" on-load="pagingLoaded()"></div>
             </div>
+            <div class="text-center" ng-hide="items || items.length != 0">
+                <span class="alert alert-warning font-medium">{{ 'questions.noQuestions' | translate }}</span>
+            </div>
+            <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadQuestions()" on-load="pagingLoaded()"></div>
         </div>
     </div>
 </div>
