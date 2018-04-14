@@ -2,10 +2,8 @@
     background: #eeeeee;
     border-radius: 10px;
     padding: 10px;
-    .col-edit {
-        margin-bottom: -40px;
-        z-index: 1000;
-    }
+    margin-top: 10px;
+
     a {
         position: relative;
     }
@@ -25,7 +23,29 @@
     .btn{
         text-transform: none;
     }
+    .profile-first-block {
+        margin: 18px 2px;
+    }
+    .profile-lessons {
+         margin: 36px 0px 15px;
+    }
+    .profile-lessons-count {
+        margin: 15px 0px;
+    }
+
+    .float-rtl {
+        float: right;
+    }
 }
+
+.rtl {
+    #Profile {
+        .float-rtl {
+            float: left;
+        }
+    }
+}
+
 
 .public-profile-page{
     #Profile{
