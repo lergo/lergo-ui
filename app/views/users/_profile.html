@@ -28,7 +28,7 @@
                     <input ng-show="!!isEditAllow" ng-model="user.shortIntro" placeholder="{{'profile.ph.shortIntro'|translate}}"/>
                     <div class="profile-external-link" ng-show="isEditAllow || user.externalLink">
                         <i class="fa fa-external-link"></i>&nbsp;&nbsp
-                        <input ng-show="!!isEditAllow" ng-model="user.externalLink" placeholder="External link"/>
+                        <input class="ext-link" ng-show="!!isEditAllow" ng-model="user.externalLink" placeholder="External link"/>
                         <a  ng-show="!isEditAllow" ng-href="http://{{user.externalLink}}"
                            target="_blank" class="txt-color-darken"> {{user.externalLink}}</a>
                     </div>

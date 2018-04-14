@@ -14,7 +14,7 @@
         border-radius: 5px;
     }
     textarea {
-        width: 249px;
+        max-width: 249px;
         height: 144px;
         border-radius: 5px;
         padding: 5px;
@@ -22,6 +22,7 @@
     }
     blockquote {
         margin: 0 10px;
+
     }
     .btn{
         text-transform: none;
@@ -81,6 +82,12 @@
         }
         blockquote {
             margin: 0 20px;
+        }
+        .ext-link {
+            max-width: 140px;
+        }
+        textarea {
+            max-width: 170px
         }
     }
 
