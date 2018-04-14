@@ -49,24 +49,28 @@
         </div>
     </div>
             <div class="row">
-            <div class="col-lg-2 col-md-2"  style="text-align: center">
-             <div ng-show="showStats()">
-                <h4>
-                    <strong> {{getQuestionsCount()}}</strong>
-                    <br>
-                    <span>
-                        {{'profile.question'|translate}}
-                    </span>
-                </h4>
-                <h4 class="profile-lessons-count">
-                    <strong> {{getLessonsCount()}}</strong>
-                    <br>
-                    <div>
-                        {{'profile.lesson'|translate}}
-                    </div>
-                </h4>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6"  style="text-align: center">
+                <div ">
+                 <div ng-show="showStats()">
+                    <h4>
+                        <strong> {{getQuestionsCount()}}</strong>
+                        <br>
+                        <span>
+                            {{'profile.question'|translate}}
+                        </span>
+                    </h4>
+                 </div>
+                </div>
+                 <div>
+                    <h4 class="profile-lessons-count">
+                        <strong> {{getLessonsCount()}}</strong>
+                        <br>
+                        <div>
+                            {{'profile.lesson'|translate}}
+                        </div>
+                    </h4>
+                </div>
             </div>
-        </div>
             <div class="col-lg-10 col-md-10">
                 <div ng-show="!!isEditAllow">
                     <textarea ng-model="user.details" placeholder="{{'profile.ph.details'|translate}}"> </textarea>

@@ -20,6 +20,9 @@
         padding: 5px;
         background: #fafafa;
     }
+    blockquote {
+        margin: 0 10px;
+    }
     .btn{
         text-transform: none;
     }
@@ -67,11 +70,20 @@
     min-width: 80px;
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:1199px) {
     .rtl .tooltipMobile {
         margin-left: 70px;
         min-width: 80px;
     }
+    #Profile {
+        .float-rtl {
+            padding: 0;
+        }
+        blockquote {
+            margin: 0 20px;
+        }
+    }
+
 }
 
 
