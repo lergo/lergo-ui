@@ -137,7 +137,7 @@
                 <hr/>
                 <div uib-collapse="!!detailCollapsed" class="detail row">
                     <div class="row row-nested" ng-repeat="step in lesson.steps" style="margin: 10px 15px 15px 15px;">
-                        <div ng-if="!!step.quizItems" class="col-md-12">
+                        <div ng-if="!!step.quizItems" class="col-md-12 col-sm-12 col-xs-12">
                             <div dir="auto" class="collapsible">{{step.title}}</div>
                             <div ng-repeat="id in step.quizItems">
                                 <question-preview quiz-item="questions[id]"></question-preview>
