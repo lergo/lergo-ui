@@ -8,10 +8,10 @@
     <div>
         <div class="lesson-preview">
             <div class="row header">
-                <div class="col-md-2 img-responsive hidden-sm hidden-xs" >
+                <div class="col-md-2 col-sm-12 col-xs-12 img-responsive hidden-sm hidden-xs" >
                     <div lesson-title-image lesson="lesson"></div>
                 </div>
-                <div class="col-md-4 header-name ">
+                <div class="col-md-4 col-sm-12 col-xs-12 header-name ">
                     <div>
                         <div class="sub-title">{{'lessonPreview.header.title' | translate}}</div>
                         <br/>
@@ -20,7 +20,7 @@
                         {{lesson.name| limitTo:40}}
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden-sm hidden-xs" ng-show="!!lesson.description">
                         <div class="sub-title padding-leftRight15">{{'report.description'|translate}}</div>
                         <div class="padding-leftRight15 mfont-size13">{{lesson.description | limitTo:440}}</div>
