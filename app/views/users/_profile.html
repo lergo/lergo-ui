@@ -1,10 +1,10 @@
-<div>
+<div class="col-lg-11 col-md-11 col-sm-12 col-s-12">
     <div id="Profile">
         <div>
             <div class="row profile-first-block">
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
                     <div>
-                        <img ng-src="{{user.gravatarUrlLarge}}" class="img-rounded ">
+                        <img ng-src="{{user.gravatarUrlLarge}}" class="img-rounded">
                     </div>
                     <div ng-show="!!isEditAllow">
                         <a class="btn btn-link" popover-placement="auto bottom"  popover-trigger="'outsideClick'"
@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-6 col-xs-6">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="lergo-h0 no-case">
+                        <div class="lergo-h1-orig no-case">
                             {{user.username}}
                         </div>
                     </div>
@@ -83,5 +83,6 @@
         </div>
     </div>
 </div>
-    </div>
+</div>
+<div class="col-lg-1 col-md-1 hidden-sm hidden-xs" style="border: 10px solid #FAFAFA; height: 50px; margin-top: -5px;"></div>
 
