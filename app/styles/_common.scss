@@ -1138,3 +1138,13 @@ label {
 }
 
 
+all-rtl-float-right {
+    float: right;
+    .rtl {
+        all-rtl-float-right {
+            float: left;
+        }
+    }
+}
+
+
