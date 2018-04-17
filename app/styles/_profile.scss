@@ -29,6 +29,9 @@
     }
     .profile-first-block {
         margin: 18px 2px;
+        .can-edit {
+            min-height: 40px;
+        }
     }
     .profile-lessons {
          margin: 15px 0px 15px;

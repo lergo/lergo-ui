@@ -13,16 +13,18 @@
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-6 col-xs-6">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="lergo-h1-orig no-case">
-                            {{user.username}}
+                    <div class="row row-nested15">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="lergo-h1-orig no-case">
+                                {{user.username}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <a class="btn btn-link font-lg float-rtl" ng-click="toggleEdit()" ng-show="userCanEdit()">
-                            <i ng-show="!isEditAllow" class="fa fa-edit" tooltip-class="tooltipMobile" uib-tooltip="{{'profile.edit.title'|translate}}"></i>
-                            <i ng-show="!!isEditAllow" class="fa fa-save" tooltip-class="tooltipMobile" uib-tooltip="{{'profile.save.title'|translate}}"></i>
-                        </a>
+                        <div class="can-edit col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <a class="btn btn-link font-lg float-rtl" ng-click="toggleEdit()" ng-show="userCanEdit()">
+                                <i ng-show="!isEditAllow" class="fa fa-edit" tooltip-class="tooltipMobile" uib-tooltip="{{'profile.edit.title'|translate}}"></i>
+                                <i ng-show="!!isEditAllow" class="fa fa-save" tooltip-class="tooltipMobile" uib-tooltip="{{'profile.save.title'|translate}}"></i>
+                            </a>
+                        </div>
                     </div>
                     <div ng-show="!isEditAllow && !!user.shortIntro" class="profile-intro"> {{user.shortIntro}}</div>
                     <input ng-show="!!isEditAllow" ng-model="user.shortIntro" placeholder="{{'profile.ph.shortIntro'|translate}}"/>
