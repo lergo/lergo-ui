@@ -29,6 +29,13 @@
     }
     .profile-first-block {
         margin: 18px 2px;
+        .margin-adjust {
+            margin-left: -70px;
+            .user {
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+        }
         .can-edit {
             min-height: 40px;
         }
@@ -54,6 +61,12 @@
     #Profile {
         .float-rtl {
             float: left;
+        }
+        .profile-first-block {
+            .margin-adjust {
+                margin-right: -70px;
+                margin-left: 0px;
+            }
         }
     }
 }
@@ -84,6 +97,18 @@
         margin-left: 70px;
         min-width: 80px;
     }
+    .rtl {
+        #Profile {
+            .profile-first-block {
+                .margin-adjust {
+                    margin-right: 0px;
+                    margin-left: 0px;
+                    padding: 0px;
+                }
+            }
+        }
+    }
+
     #Profile {
         .float-rtl {
             padding: 0;
@@ -96,6 +121,13 @@
         }
         textarea {
             max-width: 170px
+        }
+        .profile-first-block {
+            .margin-adjust {
+                margin-right: 0px;
+                margin-left: 0px;
+                padding:0px;
+            }
         }
     }
 
