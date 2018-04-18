@@ -115,16 +115,21 @@ body .rtl{
 // ipad only
 @media screen and (min-device-width : 1024px) and (max-width: 1199px) {
     .rtl {
-        #header-mobile {
-            .navbar-form {
-                .form-group.search-homepage-desktop {
-                    margin: 4px 62px 4px 0px;
+        .base-layout {
+            #header-mobile {
+                .navbar-form {
+                    .form-group.search-homepage-desktop {
+                        margin: 4px 62px 4px 0px;
+                    }
+                }
+                .search-icon {
+                    margin-right: -35px;
                 }
             }
-        }
-        .dropdown-align {
-            margin-left: 3px;
-            margin-top: 49px;
+            .dropdown-align {
+                margin-left: 3px;
+                margin-top: 49px;
+            }
         }
     }
 }

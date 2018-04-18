@@ -1099,13 +1099,13 @@ label {
         padding-bottom: 10px;
     }
     .d-m-left {
-        float: left;
+        float: unset;
     }
     .d-padr15 {
         padding-right: 15px
     }
     .rtl {
-        d-m-left {
+        .d-m-left {
             float: right;
         }
         .d-padr15 {

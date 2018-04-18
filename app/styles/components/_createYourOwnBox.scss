@@ -3,7 +3,7 @@
 
   line-height: 35px;
   white-space: nowrap;
-  margin: 11px -43px 0 -70px;
+  margin: 11px -33px 0 -70px;
 
   color: #C5C5C5;
 
@@ -11,7 +11,6 @@
       color: white;
       font-size: 19px;
       text-decoration: none;
-     /* margin-left: 14px;*/
       &:hover {
             color: rgba(0, 0, 0, 0.3);
         }
@@ -27,7 +26,7 @@
         margin: 11px -43px 0 -70px;
          a {
             font-size: 22px;
-            margin-left: 17px;
+            margin-left: 32px;
         }
         .fa.fa-plus {
             margin-top: 6px;
@@ -77,6 +76,11 @@
         color: #676767;
         font-size: 17px;
     }
+}
+
+// ipad only
+@media screen and (min-device-width : 1024px) and (max-width: 1199px) {
+
 }
 
 
