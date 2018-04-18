@@ -435,6 +435,7 @@ audio.audio-width-mobile {
     #questionIntro .question {
         width: unset;
         margin: 0 -30px;
+        overflow-y: auto;
     }
 
     #questionIntro .question .details {
