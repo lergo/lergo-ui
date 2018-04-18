@@ -1,11 +1,11 @@
 <div class="row row-nested top10 quiz">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="row row-nested top10">
-            <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <p dir="auto" class="lergo-h4" ng-show="!isFillInTheBlanks()">{{quizItem.question}}</p>
                 <p ng-show="!!isFillInTheBlanks()" ng-include="getQuestionTemplate()"></p>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <button ng-show="!!quizItem.hint" popover-placement="auto bottom"
                         uib-popover="{{quizItem.hint}}" class="btn-link hint"
                         popover-trigger="'outsideClick'" tabindex="0">{{'hint' | translate}}
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="row row-nested top10 help">
-            <div dir="auto" class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+            <div dir="auto" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <p class="question-help-text">{{quizItem.helpText}}</p>
             </div>
         </div>

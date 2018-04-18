@@ -82,9 +82,8 @@
             background-color: #EFEFEF;
             margin-bottom: 20px;
             border-radius: 10px;
-            /*padding: 10px;*/
             .quiz {
-                padding: 5px;
+                padding: 5px 15px;
                 border-radius: 10px;
                 border: 5px solid #949494;
                 .bold {
@@ -136,10 +135,19 @@
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1023px) {
     .lesson-preview {
         .title {
             font-size: 15px;
+        }
+        .details {
+            .detail {
+                .quiz {
+                    background-color: pink;
+                    padding: 5px;
+                }
+
+            }
         }
     }
     .lesson-preview-dialog .modal-dialog {
