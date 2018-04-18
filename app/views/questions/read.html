@@ -155,7 +155,7 @@
                         </div>
                     </div>
                     </div>
-                     <div class="details">
+                    <div class="details">
                          <div class="properties hidden-sm hidden-xs">
                              <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
                                    <a ng-href="#!/public/{{quizItem.user.username}}/profile">
@@ -174,44 +174,44 @@
                         </div>
 
                         <div class="action-items hidden-sm hidden-xs">
-                                  <span show-logged-in>
-                                      <button class="btn-link" ng-click="like()"
-                                              uib-tooltip="{{'questions.tooltip.like' | translate}}"
-                                              ng-show="!isLiked()">
+                            <span show-logged-in>
+                               <button class="btn-link" ng-click="like()"
+                                       uib-tooltip="{{'questions.tooltip.like' | translate}}"
+                                       ng-show="!isLiked()">
                                               <i class="fa fa-heart-o "></i>
                                               {{'like' | translate}}
-                                      </button>
-                                      <span class="btn-link dropdown" ng-click="noop()"
-                                            uib-tooltip="{{'questions.tooltip.liked' | translate}}" ng-show="!!isLiked()">
-                                            <span class="dropdown-toggle">
-                                                <i class="fa fa-heart-o "></i>
+                               </button>
+                               <span class="btn-link dropdown" ng-click="noop()"
+                                     uib-tooltip="{{'questions.tooltip.liked' | translate}}" ng-show="!!isLiked()">
+                                  <span class="dropdown-toggle">
+                                          <i class="fa fa-heart-o "></i>
                                                 {{'liked' | translate}}
-                                                <i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
-                                            <span ng-show="!!showMenu">
-                                                                <button class="btn-link">{{'dislike' | translate}}</button>
-                                            </span>
-                                            </span>
-                                            <span class="dropdown-menu">
-                                                   <li>
-                                                   <button class="btn-link" ng-click="unlike()">{{ 'unlike' | translate }}</button>
-                                                   </li>
-                                             </span>
-                                      </span>
+                                          <i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
+                                          <span ng-show="!!showMenu">
+                                                                    <button class="btn-link">{{'dislike' | translate}}</button>
+                                          </span>
                                   </span>
-                                 <a href="" show-anonymous class="btn-link"
-                                    uib-popover="{{'lessons.likeNotAvailable' | translate}}"
-                                    popover-placement="right"  popover-trigger="'outsideClick'"
-                                    tabindex="0">
-                                     <i class="fa fa-heart-o "></i>
-                                     {{'like' | translate}}
-                                 </a>
-                                 <button class="btn-link" ng-click="absoluteShareLink(quizItem)"
-                                         uib-tooltip="{{'questions.tooltip.share' | translate}}">
-                                     <i class="fa fa-share-alt "></i>
-                                     {{'share' | translate}}
-                                 </button>
-                             </div>
-                         <div class="forms">
+                                  <span class="dropdown-menu">
+                                         <li>
+                                             <button class="btn-link" ng-click="unlike()">{{ 'unlike' | translate }}</button>
+                                         </li>
+                                  </span>
+                               </span>
+                            </span>
+                            <a href="" show-anonymous class="btn-link"
+                               uib-popover="{{'lessons.likeNotAvailable' | translate}}"
+                               popover-placement="right"  popover-trigger="'outsideClick'"
+                               tabindex="0">
+                                <i class="fa fa-heart-o "></i>
+                                {{'like' | translate}}
+                            </a>
+                            <button class="btn-link" ng-click="absoluteShareLink(quizItem)"
+                                    uib-tooltip="{{'questions.tooltip.share' | translate}}">
+                                <i class="fa fa-share-alt "></i>
+                                {{'share' | translate}}
+                            </button>
+                        </div>
+                        <div class="forms">
                              <div ng-show="!!share" class="lergo-form share">
                                  <p class="lergo-h4">{{'questions.shareQuestion' | translate}}</p>
 
@@ -253,8 +253,8 @@
                                  </div>
                              </div>
                          </div>
-                         </div>
-                     </div>
+                        </div>
+                 </div>
              </td>
          </tr>
          <tr>
