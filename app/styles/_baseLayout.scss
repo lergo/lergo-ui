@@ -270,29 +270,10 @@ input.form-control.search-input {
     }
 }
 
-/*.more-links {
-    height: 20px;
-    margin-left: 10px;
-    font-size: 14px;
-}*/
-
 .dropdown-align {
     margin-left: 62px;
     margin-top: 40px;
 }
-/*.dropdown-align-user {
-    margin-left: 0px;
-}*/
-/*.rtl {
-    .dropdown-align {
-        margin-left: 22px;
-    }
-    .dropdown-align-user {
-        margin-left: -15px;
-    }
-}*/
-
-
 
 /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
 .base-layout, .base-layout-class {
