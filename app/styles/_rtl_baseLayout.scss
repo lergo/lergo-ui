@@ -26,7 +26,6 @@ body .rtl{
       #profileloginbutton-mobile-not-logged-in {
           float: right;
           .header-signup a:last-child {
-              /*float: left;*/
               margin-right: 150px;
               margin-left: 0px;
 
@@ -51,7 +50,8 @@ body .rtl{
                 margin-left: 1vw;
             }
             .cancel-search {
-                right: -75px;
+                right: -67px;
+                bottom: 3px;
             }
             .search-icon {
                 font-size: 22px;
@@ -64,8 +64,9 @@ body .rtl{
             }
             i.fa.fa-search {
                 padding-left: 0px;
-                padding-right: 10px;
+                padding-right: 0px;
                 float: right;
+                margin-top: -6px;
 
             }
         }
