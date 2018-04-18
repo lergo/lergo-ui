@@ -6,11 +6,6 @@
                     <div>
                         <img ng-src="{{user.gravatarUrlLarge}}" class="img-rounded">
                     </div>
-                    <div ng-show="!!isEditAllow">
-                        <a class="btn btn-link" popover-placement="auto bottom"  popover-trigger="'outsideClick'"
-                           uib-popover="{{'profile.changeImageText' | translate}}" tabindex="0">{{'profile.changeImageTitle' |translate}}
-                        </a>
-                    </div>
                 </div>
                 <div class="margin-adjust col-lg-9 col-md-9 col-sm-6 col-xs-6">
                     <div class="row user">
@@ -52,6 +47,11 @@
     </div>
         <div class="row profile-second-block">
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6"  style="text-align: center">
+                <div ng-show="!!isEditAllow">
+                    <a class="btn btn-link profile-change-image" popover-placement="auto bottom"  popover-trigger="'outsideClick'"
+                       uib-popover="{{'profile.changeImageText' | translate}}" tabindex="0">{{'profile.changeImageTitle' |translate}}
+                    </a>
+                </div>
                  <div ng-show="showStats()">
                     <h4>
                         <strong> {{getQuestionsCount()}}</strong>
