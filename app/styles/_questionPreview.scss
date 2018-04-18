@@ -431,7 +431,7 @@ audio.audio-width-mobile {
     padding: 0 8px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
     #questionIntro .question {
         width: unset;
         margin: 0 -30px;
@@ -487,6 +487,13 @@ audio.audio-width-mobile {
                     .hint {
                          float: left;
                     }
+                }
+            }
+        }
+        #questionIntro {
+            .question {
+                .question-preview {
+                    margin-right: 0px;
                 }
             }
         }
