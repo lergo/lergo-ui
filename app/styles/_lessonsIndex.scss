@@ -28,8 +28,11 @@
             margin-bottom: 18px;
         }
         .create {
-            border-bottom: 1px solid #d2e8fa;
+           /* border-bottom: 1px solid #d2e8fa;*/
             float: right;
+        }
+        .col-border-bottom {
+            border-bottom: 1px solid #d2e8fa;
         }
     }
     .rtl {
