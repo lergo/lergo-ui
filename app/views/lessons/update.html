@@ -4,7 +4,6 @@
             <div class="row">
                 <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                 <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                    <div>
                         <form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
                             <div class="form-section form-group name"
                                 ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
@@ -21,35 +20,42 @@
                                     <textarea dir="auto" class="form-control" ng-model="lesson.description" name="description" dir="auto"></textarea>
                                 </div>
                             </div>
-                            <div class="stats form-group col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                                <div class="language top15" style="padding-left:0px">
-                                    <label class="bot5">{{ 'filters.labels.language' | translate }}</label>
-                                    <select class="form-control" ng-model="lesson.language"
-                                            ng-options="l as ('filters.languages.' + l| translate) for l in languages"
-                                            name="language"></select>
-                                </div>
-                                <br>
-                                <div class="subject " style="padding-left:0px">
-                                    <label class="bot5">{{ 'filters.labels.subject' | translate }}</label>
-                                    <select class="form-control" ng-model="lesson.subject"
-                                            ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"
-                                            name="subject"></select>
-                                </div>
-                                    <br>
-                                <div class="age bot15" style="padding-left:0px">
-                                    <label>{{ 'fromAge' | translate }}</label>
-                                    <input class="form-control" type="number" min="4" max="18" step="1" size="2"
-                                           ng-model="lesson.age" name="age"/>
-                                </div>
+                            <div class="stats form-group">
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <div class="language ">
+                                            <label>{{ 'filters.labels.language' | translate }}</label>
+                                            <select class="form-control" ng-model="lesson.language"
+                                                    ng-options="l as ('filters.languages.' + l| translate) for l in languages"
+                                                    name="language"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <div class="subject">
+                                            <label>{{ 'filters.labels.subject' | translate }}</label>
+                                            <select class="form-control" ng-model="lesson.subject"
+                                                    ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"
+                                                    name="subject"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="age">
+                                            <label>{{ 'fromAge' | translate }}</label>
+                                            <input  class="form-control" type="number" min="4" max="18" step="1" size="2"
+                                                   ng-model="lesson.age" name="age"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+                                 </div>
 
-                                <div class="row top30">
-                                <div class="tag padding-leftRight15">
-                                    <label class="bot5">{{ 'tags' | translate }}</label>
-                                    <div>
-                                        <div tag-section tags="lesson.tags" tags-available="allAvailableTags"></div>
+                                 <div class=" col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                    <div class="tag">
+                                        <label>{{ 'tags' | translate }}</label>
+                                        <div>
+                                            <div tag-section tags="lesson.tags" tags-available="allAvailableTags"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             </div>
                             <div class="stats form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="advance-options">
@@ -161,9 +167,8 @@
                                 </span>
                             </div>
                         </div>
-                        </form>
-                    </div>
-                </div >
+                    </form>
+                </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="hidden-lg hidden-md padding-leftRight15">
                             <button style="white-space: normal;" type="button" class="btn btn-default btn-block" ng-click="isCollapsed = !isCollapsed">{{'helperContent.hintsAndVideos' | translate}}
@@ -174,8 +179,8 @@
                             </div>
                         </div>
                     <div class="hidden-sm hidden-xs">
-                        <div class="sidebar page-content-sidebar">
-                            <div>
+                        <div>
+                            <div class="create-lesson-sidebar">
                                 <div helper-content path="'/lesson/update'" user="user"></div>
                             </div>
                         </div>
