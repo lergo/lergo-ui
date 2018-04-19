@@ -40,8 +40,7 @@
                 }
             }
             .tag {
-                margin: 10px -10px;
-                color: red;
+                margin: 10px -15px;
                 color: inherit;
                 padding: 10px 0;
                     & > span {
@@ -51,11 +50,20 @@
                     }
 
             }
+            .advanced-options {
+                margin-left: -15px;
+
+            }
+            .lesson-actions {
+                margin-left: -15px;
+            }
         }
     }
+
     .create-lesson-sidebar {
         padding: 12px 25px;
     }
+
     .step-actions{
         padding: 10px 0;
         text-align:center;

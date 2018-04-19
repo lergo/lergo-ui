@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="stats form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="advance-options">
+                                <div class="advanced-options">
                                 <br>
                                 <button class="btn-link expander" ng-click="isAdvOptOpen = !isAdvOptOpen"
                                         ng-show="!!lesson.name">
@@ -98,74 +98,74 @@
                                     </div>
                                 </div>
                             </div>
-                            <div ng-repeat="step in lesson.steps">
-                                <hr/>
-                                <div class="row">
-                                    <div class="col-md-12 text-right">
-                                        <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
-                                        <a href="" ng-click="moveStepDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
-                                        <a ng-click="deleteStep(step)" href="">
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
+                                <div ng-repeat="step in lesson.steps">
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
+                                            <a href="" ng-click="moveStepDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
+                                            <a ng-click="deleteStep(step)" href="">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div dir="auto" class="col-md-2">
+                                            {{ 'steps.title' | translate }}
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input dir="auto" ng-model="step.title"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <p>{{ 'steps.type' | translate }}
+                                                <sup>
+                                                    <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                                                    <a uib-popover="{{'steps.typeHint' | translate}}" class="fa fa-question-circle"
+                                                       popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
+                                                       style="text-decoration: none"></a>
+                                                </sup>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <select ng-model="step.type"
+                                                    ng-options="t.id as ('steps.' + t.id | translate) for t in stepTypes">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-include="getStepViewByType(step)"></div>
+                                    <div class="row top20">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <button class="btn" ng-click="displayStep(step)">{{ 'steps.display' | translate }}</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <br/>
-                                <div class="row">
-                                    <div dir="auto" class="col-md-2">
-                                        {{ 'steps.title' | translate }}
-                                    </div>
-                                    <div class="col-md-10">
-                                        <input dir="auto" ng-model="step.title"/>
-                                    </div>
-                                </div>
-                                <br/>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <p>{{ 'steps.type' | translate }}
-                                            <sup>
-                                                <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                                <a uib-popover="{{'steps.typeHint' | translate}}" class="fa fa-question-circle"
-                                                   popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
-                                                   style="text-decoration: none"></a>
-                                            </sup>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <select ng-model="step.type"
-                                                ng-options="t.id as ('steps.' + t.id | translate) for t in stepTypes">
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row" ng-include="getStepViewByType(step)"></div>
-                                <div class="row top20">
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <button class="btn" ng-click="displayStep(step)">{{ 'steps.display' | translate }}</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div save-status="saveStatus" class="row top30"></div>
-                            <div></div>
-                            <div class="add-step-hint row" ></div>
-                            <div class="lesson-actions row padding-leftRight15"> <!-- lesson actions -->
-                                <button style=" font-size: 13px" class="btn" ng-click="done()" ng-disabled="saveButtonDisabled()">
-                                    {{'done' | translate }}
-                                </button>
-                                <button style=" font-size: 13px" class="btn" ng-click="done('showLesson')" ng-disabled="saveButtonDisabled()">
-                                    {{'button.showLesson' | translate }}
-                                </button>
-                                <span class="pop-up-hint add-step-button">
-                                    <button style=" font-size: 13px" class="btn btn-start" ng-click="addStep(lesson)"
-                                            ng-disabled="saveButtonDisabled()">{{ 'steps.add' | translate }}
+                                <div save-status="saveStatus" class="row top30"></div>
+                                <div></div>
+                                <div class="add-step-hint row" ></div>
+                                <div class="lesson-actions row"> <!-- lesson actions -->
+                                    <button style=" font-size: 13px" class="btn" ng-click="done()" ng-disabled="saveButtonDisabled()">
+                                        {{'done' | translate }}
                                     </button>
-                                    <span>
-                                        <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                        <button uib-popover="{{'steps.addHint' | translate}}"
-                                                popover-is-open="popoverState.open"
-                                                popover-placement="{{popoverState.position}}"  popover-trigger="'outsideClick'"
-                                                tabindex="0"></button>
+                                    <button style=" font-size: 13px" class="btn" ng-click="done('showLesson')" ng-disabled="saveButtonDisabled()">
+                                        {{'button.showLesson' | translate }}
+                                    </button>
+                                    <span class="pop-up-hint add-step-button">
+                                        <button style=" font-size: 13px" class="btn btn-start" ng-click="addStep(lesson)"
+                                                ng-disabled="saveButtonDisabled()">{{ 'steps.add' | translate }}
+                                        </button>
+                                        <span>
+                                            <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                                            <button uib-popover="{{'steps.addHint' | translate}}"
+                                                    popover-is-open="popoverState.open"
+                                                    popover-placement="{{popoverState.position}}"  popover-trigger="'outsideClick'"
+                                                    tabindex="0"></button>
+                                        </span>
                                     </span>
-                                </span>
-                            </div>
+                                </div>
                         </div>
                     </form>
                 </div>
