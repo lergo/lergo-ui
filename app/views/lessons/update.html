@@ -48,7 +48,7 @@
                                     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                                  </div>
 
-                                 <div class=" col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                 <div class=" col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                     <div class="tag">
                                         <label>{{ 'tags' | translate }}</label>
                                         <div>
@@ -59,45 +59,45 @@
                             </div>
                             <div class="stats form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="advanced-options">
-                                <br>
-                                <button class="btn-link expander" ng-click="isAdvOptOpen = !isAdvOptOpen"
-                                        ng-show="!!lesson.name">
-                                    <i ng-show="!isAdvOptOpen" class="fa fa-plus-square"></i>
-                                    <i ng-show="!!isAdvOptOpen" class="fa fa-minus-square"></i>
-                                    {{ 'advancedOptions' | translate }}
-                                </button>
-                                <div uib-collapse="!isAdvOptOpen" class="row">
-                                    <hr>
-                                    <div class="row row-nested top10">
-                                        <div class="col-md-2 bot5">
-                                            {{ 'lessons.addCoverPage' | translate }}
+                                    <br>
+                                    <button class="btn-link expander" ng-click="isAdvOptOpen = !isAdvOptOpen"
+                                            ng-show="!!lesson.name">
+                                        <i ng-show="!isAdvOptOpen" class="fa fa-plus-square"></i>
+                                        <i ng-show="!!isAdvOptOpen" class="fa fa-minus-square"></i>
+                                        {{ 'advancedOptions' | translate }}
+                                    </button>
+                                    <div uib-collapse="!isAdvOptOpen" class="row">
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                                {{ 'lessons.addCoverPage' | translate }}
+                                            </div>
+                                            <div class="col-md-10 col-sm-12 col-xs-12">
+                                                <input lergo-input-converter
+                                                       placeholder="{{'lessons.addCoverPageHint' | translate}}"
+                                                       ng-model="lesson.coverPage"/>
+                                            </div>
                                         </div>
-                                        <div class="col-md-10">
-                                            <input lergo-input-converter
-                                                   placeholder="{{'lessons.addCoverPageHint' | translate}}"
-                                                   ng-model="lesson.coverPage"/>
+                                        <div class="row">
+                                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                                {{ 'lessons.recommenedNextLesson' | translate }}
+                                            </div>
+                                            <div class="col-md-10 col-sm-12 col-xs-12">
+                                                <input placeholder="{{'lessons.recommenedNextLessonText' | translate}}"
+                                                       ng-model="lesson.nextLesson"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row row-nested top10">
-                                        <div class="col-md-2 bot5">
-                                            {{ 'lessons.recommenedNextLesson' | translate }}
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input placeholder="{{'lessons.recommenedNextLessonText' | translate}}"
-                                                   ng-model="lesson.nextLesson"/>
-                                        </div>
-                                    </div>
-                                    <div class="row row-nested top10">
-                                        <div class="col-md-2 bot5">
-                                            {{ 'lessons.recommenedPriorLesson' | translate }}
-                                        </div>
-                                        <div class="col-md-10 ">
-                                            <input placeholder="{{'lessons.recommenedPriorLessonText' | translate}}"
-                                                   ng-model="lesson.priorLesson"/>
+                                        <div class="row">
+                                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                                {{ 'lessons.recommenedPriorLesson' | translate }}
+                                            </div>
+                                            <div class="col-md-10 ">
+                                                <input placeholder="{{'lessons.recommenedPriorLessonText' | translate}}"
+                                                       ng-model="lesson.priorLesson"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                                 <div ng-repeat="step in lesson.steps">
                                     <hr/>
                                     <div class="row">

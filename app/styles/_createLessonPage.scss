@@ -52,10 +52,15 @@
             }
             .advanced-options {
                 margin-left: -15px;
+                .row {
+                    margin-left: 0px;
+                    padding: 10px 0;
+                }
 
             }
             .lesson-actions {
                 margin-left: -15px;
+
             }
         }
     }
