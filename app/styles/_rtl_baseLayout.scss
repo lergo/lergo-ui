@@ -40,7 +40,6 @@ body .rtl{
 .rtl {
     .base-layout {
         #header-mobile {
-
             .navbar-form {
                 .form-control.search-desktop {
                     margin-right: -45px;
@@ -51,7 +50,7 @@ body .rtl{
             }
             .cancel-search {
                 right: -67px;
-                bottom: 4px;
+                bottom: 3px;
             }
             .search-icon {
                 font-size: 22px;
@@ -66,9 +65,13 @@ body .rtl{
                 padding-left: 0px;
                 padding-right: 0px;
                 float: right;
-                margin-top: -3px;
-
+                margin-top: 0px;
             }
+            i.fa.fa-search.desktop-search {
+
+                margin-top: -3px;
+            }
+
         }
         input.form-control.search-input {
             margin-right: 0px;
