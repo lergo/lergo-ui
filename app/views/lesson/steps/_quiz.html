@@ -79,10 +79,12 @@
         <div dir="auto" class="col-lg-9 col-md-9 col-sm-10 col-xs-10 open-update">
             <a href="" ng-click="openUpdateQuestion(step,item)">{{getQuestion(item)}}</a>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 move-quiz">
-            <a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
-            <a href="" ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
-            <a href="" ng-click="removeItemFromQuiz( item, step )">X</a>
+        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+            <div class="move-quiz">
+                <a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
+                <a href="" ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
+                <a href="" ng-click="removeItemFromQuiz( item, step )">X</a>
+            </div>
         </div>
     </div>
 </div>
