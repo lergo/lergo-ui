@@ -11,7 +11,7 @@
     <div class="col-md-10">
         <div class="form-group"
              ng-class="{ 'has-error' : slideForm.slideURL.$invalid && !slideForm.slideURL.$pristine }">
-            <input required class="form-control" name="slideURL"
+            <input required class="form-control slides-url" name="slideURL"
                    placeholder="{{'lessons.slideURLHelpText' | translate }}" ng-model="step.slideURL"
                    ng-pattern="/^(?:https?:\/\/)?(?:www\.)?((drive|docs)\.google\.com(.*))\/((presentation\/d\/)|(open\?id=))[-\w]{25,}/">
             <p ng-show="slideForm.slideURL.$error.pattern || (slideForm.slideURL.$invalid && !slideForm.slideURL.$pristine)"
