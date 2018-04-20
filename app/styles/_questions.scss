@@ -125,6 +125,16 @@
             width: 100%;
         }
     }
+   .tag-section-wrapper {
+        .tags-section {
+            .tag-input {
+                width: 25%;
+                border-radius: 3px;
+                background-color:#efefef;
+            }
+        }
+    }
+
 }
 
 .filters {
@@ -294,6 +304,20 @@
         padding-left: 5px;
         padding-right: 5px;
         height: 55px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    #questions-update {
+
+        .tag-section-wrapper {
+            .tags-section {
+                .tag-input {
+                    width: 100%;
+                }
+            }
+        }
+
     }
 }
 

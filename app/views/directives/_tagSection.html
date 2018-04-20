@@ -14,7 +14,7 @@
                placeholder="{{'tagHint' | translate}}"
                uib-typeahead="tag as tag.label for tag in getTagsLike($viewValue)"
                 typeahead-on-select="addTagFromTypeahead($item, $model, $label)"
-                class="form-control" style="border-radius: 3px; background-color:#efefef"/>
+                class="form-control tag-input"/>
     </div>
     {{error | translate }}
 </div>
