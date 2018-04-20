@@ -24,6 +24,7 @@
 	</span>
 </div>
 <fieldset ng-disabled="!permissions.canEdit">
+    <div ng-hide="!!showUsedByOthers() || !!canCopyAndOverride()" class="top30"></div>
                 <!-- http://stackoverflow.com/a/21638542/1068746 -->
     <div>
         <div class="table-responsive">
