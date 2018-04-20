@@ -1,22 +1,22 @@
 
-#createLessonPageMobile{
-    .createLesson-form{
-        display:table;
-        padding-top:10px;
-        width:100%;
-        .lergo-label{
-            padding-top:10px;
+#createLessonPageMobile {
+    .createLesson-form {
+        display: table;
+        padding-top: 10px;
+        width: 100%;
+        .lergo-label {
+            padding-top: 10px;
         }
-        .error{
-            display:table-row;
+        .error {
+            display: table-row;
             font-size: 15px;
             color: red;
         }
-        .name{
-            display:table-row;
+        .name {
+            display: table-row;
         }
-        .description{
-            display:table-row;
+        .description {
+            display: table-row;
         }
         .stats {
             margin-top: 20px;
@@ -43,11 +43,17 @@
                 margin: 10px -15px;
                 color: inherit;
                 padding: 10px 0;
-                    & > span {
-                       /* padding-right: 10px;*/
+                & > span {
+                    /* padding-right: 10px;*/
+                }
+                .tag-section-wrapper {
+                    .tags-section {
+                        input {
+                            max-width: 30%;
+                        }
+
                     }
-                    .tag-section-wrapper {
-                    }
+                }
 
             }
             .advanced-options {
@@ -61,6 +67,16 @@
             .lesson-actions {
                 margin-left: -15px;
 
+            }
+            button.btn.display-step {
+                float: right;
+            }
+            .retry-question {
+                float: right;
+            }
+            .move-quiz {
+                padding-right: 60px;
+                float: right;
             }
         }
     }
@@ -80,59 +96,19 @@
         .createLesson-form {
 
             }
-            .error{
+            .stats {
 
-            }
-            .name{
-
-            }
-            .description{
-
-            }
-            .stats{
-                .form-control{
-
-
+                .retry-question {
+                    float: left;
+                }
+                .open-update {
+                    padding-left: 30px;
                 }
 
-                span{
-
-                }
-                select{
-
-                }
-
-            }
-            .language{
-
-
-            }
-            .subject{
-
-
-            }
-            .age{
-
-
-
-                input, label {
-
-                    display: block;
-
+                button.btn.display-step {
+                    float: left;
                 }
             }
-            .tag {
-
-
-
-                .row{
-
-                    }
-                }
-
-        .step-actions{
-
-        }
     }
 
 }
