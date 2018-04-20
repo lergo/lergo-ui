@@ -23,10 +23,6 @@
             .form-control {
                 display: inline;
                 margin: 10px 0;
-                span {
-                }
-                select {
-                }
             }
             .language {
                 padding: 0px
@@ -66,8 +62,8 @@
                 margin-left: -15px;
 
             }
-            button.btn.display-step {
-                float: right;
+            .button-align {
+                text-align: center
             }
             .retry-question {
                 float: right;
@@ -75,6 +71,9 @@
             .move-quiz {
                 padding-right: 60px;
                 float: right;
+            }
+            .video-url {
+                margin-left: 15px;
             }
         }
     }
@@ -103,8 +102,8 @@
                     padding-left: 30px;
                 }
 
-                button.btn.display-step {
-                    float: left;
+                .video-url {
+                    margin-right: 15px;
                 }
             }
     }

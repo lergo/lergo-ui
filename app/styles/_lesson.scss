@@ -197,6 +197,7 @@
 
 .video-tip {
     display: inline-block;
+    margin-left: -15px;
 }
 
 
@@ -321,13 +322,6 @@
     background: linear-gradient(to right, red,  lightgreen, #066685); /* Standard syntax (must be last) */
 }
 
-.rtl {
-    #quizUpdate {
-        .practise-button {
-            padding-right: 15px;
-        }
-    }
-}
 
 #message-buttons {
     padding: 30px;
@@ -343,7 +337,7 @@
     padding-right: 37px;
 }
 
-@media screen and (max-width : 1024px) {
+@media screen and (max-width : 1023px) {
     .lesson-step {
         .lesson-step-title {
             padding-bottom: 2px;
@@ -368,6 +362,11 @@
 }
 
 .rtl {
+    #quizUpdate {
+        .practise-button {
+            padding-right: 15px;
+        }
+    }
     #lessonDisplay {
         .done-step-mobile {
             margin: 0 auto;
@@ -384,6 +383,13 @@
         .m-repeat1 {
             padding-left: 0px;
         }
+    }
+    .video-tip {
+        display: inline-block;
+        span: first-child {
+            margin-right: -15px;
+        }
+
     }
 }
 
