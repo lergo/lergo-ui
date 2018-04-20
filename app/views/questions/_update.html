@@ -23,146 +23,138 @@
 		</span>
 	</span>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
-            <fieldset ng-disabled="!permissions.canEdit">
+<fieldset ng-disabled="!permissions.canEdit">
                 <!-- http://stackoverflow.com/a/21638542/1068746 -->
-                <div>
-                    <div class="table-responsive">
-                        <table class=" lergo-table lergo-form" style="width: 100%">
-                        <tbody>
-                        <tr>
-                            <td>{{ 'questions.question' | translate }}</td>
-                            <td colspan="7">
-                                <input dir="auto" ng-model="quizItem.question"
-                                       placeholder="{{quizItem.type==='fillInTheBlanks' ? ('questions.fillInTheBlanks.hint' |translate) : ('questions.questionHint' | translate)}}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>{{ 'questions.help' | translate }}</td>
-                            <td colspan="7">
-                                <input  dir="auto" placeholder="{{'questions.helpHint' | translate}}" ng-model="quizItem.helpText"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>{{ 'questions.questionType' | translate }}</td>
-                            <td>
-                                <select ng-model="quizItem.type"
-                                        ng-options="t.id as ('questions.types.' + t.id | translate) for t in types"></select>
-                            </td>
-                            <td>{{ 'filters.labels.language' | translate }}</td>
-                            <td>
-                                <select ng-model="quizItem.language"
-                                        ng-options="l as ('filters.languages.' + l | translate) for l in languages"></select>
-                            </td>
-                            <td>{{ 'filters.labels.subject' | translate }}</td>
-                            <td>
-                                <select ng-model="quizItem.subject"
-                                        ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"></select>
-                            </td>
-                            <td>{{ 'fromAge' | translate }}</td>
-                            <td>
-                                <input type="number" min="4" max="18" step="1" size="2" ng-model="quizItem.age"/>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-                <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
-                <table class="lergo-table lergo-form" ng-show="!!quizItem.question && !!quizItem.type">
-                    <tr>
-                        <td style="width: 17%">{{ 'tags' | translate }}</td>
-                        <td>
-                            <div tag-section tags="quizItem.tags" tags-available="allAvailableTags"></div>
-                        </td>
-                    </tr>
-                </table>
-                <div class="advance-options">
-                    <div class="lergo-h1">
-                        <br>
-                        <button class="btn-link expander" ng-click="isCollapsed = !isCollapsed"
-                                ng-show="!!quizItem.question && !!quizItem.type">
-                            <i ng-show="!isCollapsed" class="fa fa-plus-square"></i>
-                            <i ng-show="!!isCollapsed" class="fa fa-minus-square"></i>
-                            {{ 'advancedOptions' | translate }}
-                        </button>
-                    </div>
-                    <div uib-collapse="!isCollapsed" ng-init="">
-                        <hr/>
-                        <table class=" lergo-table lergo-form">
-                            <tbody>
-                            <tr>
-                                <td style="width: 15%">{{ 'questions.addMedia' | translate }}</td>
-                                <td style="width: 10%">
-                                    <select ng-model="quizItem.media.type"
-                                            ng-options="m as ('questions.media.' + m | translate) for m in ['audio','image']">
-                                        <option value=""></option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <div ng-show="!!quizItem.media" ng-include="getMediaTemplate(quizItem)"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>{{ 'questions.addHint' | translate }}</td>
-                                <td colspan="2">
-                                    <input placeholder="{{'questions.hintHelpText' | translate}}" ng-model="quizItem.hint"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>{{ 'questions.addExplanation' | translate }}</td>
-                                <td colspan="2">
-                                    <input placeholder="{{'questions.explanationHelpText' | translate}}"
-                                           ng-model="quizItem.explanation"/>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td colspan="2">
-                                    <div class="lergo-h1" ng-show="canShowExpPerAns(quizItem)">
-                                        <button class="btn-link expander"
-                                                ng-click="expPerAnsCollapsed = !expPerAnsCollapsed">
-                                            <i ng-show="!expPerAnsCollapsed" class="fa fa-plus-square"></i>
-                                            <i ng-show="!!expPerAnsCollapsed" class="fa fa-minus-square"></i>
-                                            {{ 'showExplanationPerAnswer.'+quizItem.type | translate }}
-                                        </button>
-                                    </div>
-                                    <div uib-collapse="!expPerAnsCollapsed"
-                                         ng-include="getExplanationPerAnswerTemplate(quizItem)"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 15%">{{ 'questions.addExplanationMedia' | translate }}</td>
-                                <td style="width: 10%">
-                                    <select ng-model="quizItem.explanationMedia.type"
-                                            ng-options="m as ('questions.media.' + m | translate) for m in ['audio','image','video']">
-                                        <option value=""></option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <div ng-show="!!quizItem.explanationMedia"
-                                         ng-include="getExplanationMediaTemplate(quizItem)"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>{{ 'questions.editSummary' | translate }}</td>
-                                <td colspan="2">
-                                    <input placeholder="{{'questions.editSummaryHelpText' | translate}}" ng-model="quizItem.summary"/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-
-                    </div>
-                </div>
-            </fieldset>
+    <div>
+        <div class="table-responsive">
+            <table class=" lergo-table lergo-form" style="width: 100%">
+                <tbody>
+                <tr>
+                    <td>{{ 'questions.question' | translate }}</td>
+                    <td colspan="7">
+                        <input dir="auto" ng-model="quizItem.question"
+                               placeholder="{{quizItem.type==='fillInTheBlanks' ? ('questions.fillInTheBlanks.hint' |translate) : ('questions.questionHint' | translate)}}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ 'questions.help' | translate }}</td>
+                    <td colspan="7">
+                        <input  dir="auto" placeholder="{{'questions.helpHint' | translate}}" ng-model="quizItem.helpText"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ 'questions.questionType' | translate }}</td>
+                    <td>
+                        <select ng-model="quizItem.type"
+                                ng-options="t.id as ('questions.types.' + t.id | translate) for t in types"></select>
+                    </td>
+                    <td>{{ 'filters.labels.language' | translate }}</td>
+                    <td>
+                        <select ng-model="quizItem.language"
+                                ng-options="l as ('filters.languages.' + l | translate) for l in languages"></select>
+                    </td>
+                    <td>{{ 'filters.labels.subject' | translate }}</td>
+                    <td>
+                        <select ng-model="quizItem.subject"
+                                ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"></select>
+                    </td>
+                    <td>{{ 'fromAge' | translate }}</td>
+                    <td>
+                        <input type="number" min="4" max="18" step="1" size="2" ng-model="quizItem.age"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
     </div>
-</div>
+    <table class="lergo-table lergo-form" ng-show="!!quizItem.question && !!quizItem.type">
+        <tr>
+            <td style="width: 17%">{{ 'tags' | translate }}</td>
+            <td>
+                <div tag-section tags="quizItem.tags" tags-available="allAvailableTags"></div>
+            </td>
+        </tr>
+    </table>
+    <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
+    <div class="advance-options">
+        <div class="lergo-h1">
+            <br>
+            <button class="btn-link expander" ng-click="isCollapsed = !isCollapsed"
+                    ng-show="!!quizItem.question && !!quizItem.type">
+                <i ng-show="!isCollapsed" class="fa fa-plus-square"></i>
+                <i ng-show="!!isCollapsed" class="fa fa-minus-square"></i>
+                {{ 'advancedOptions' | translate }}
+            </button>
+        </div>
+        <div uib-collapse="!isCollapsed" ng-init="">
+            <hr/>
+            <table class=" lergo-table lergo-form">
+                <tbody>
+                <tr>
+                    <td style="width: 15%">{{ 'questions.addMedia' | translate }}</td>
+                    <td style="width: 10%">
+                        <select ng-model="quizItem.media.type"
+                                ng-options="m as ('questions.media.' + m | translate) for m in ['audio','image']">
+                            <option value=""></option>
+                        </select>
+                    </td>
+                    <td>
+                        <div ng-show="!!quizItem.media" ng-include="getMediaTemplate(quizItem)"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ 'questions.addHint' | translate }}</td>
+                    <td colspan="2">
+                        <input placeholder="{{'questions.hintHelpText' | translate}}" ng-model="quizItem.hint"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ 'questions.addExplanation' | translate }}</td>
+                    <td colspan="2">
+                        <input placeholder="{{'questions.explanationHelpText' | translate}}"
+                               ng-model="quizItem.explanation"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2">
+                        <div class="lergo-h1" ng-show="canShowExpPerAns(quizItem)">
+                            <button class="btn-link expander"
+                                    ng-click="expPerAnsCollapsed = !expPerAnsCollapsed">
+                                <i ng-show="!expPerAnsCollapsed" class="fa fa-plus-square"></i>
+                                <i ng-show="!!expPerAnsCollapsed" class="fa fa-minus-square"></i>
+                                {{ 'showExplanationPerAnswer.'+quizItem.type | translate }}
+                            </button>
+                        </div>
+                        <div uib-collapse="!expPerAnsCollapsed"
+                             ng-include="getExplanationPerAnswerTemplate(quizItem)"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%">{{ 'questions.addExplanationMedia' | translate }}</td>
+                    <td style="width: 10%">
+                        <select ng-model="quizItem.explanationMedia.type"
+                                ng-options="m as ('questions.media.' + m | translate) for m in ['audio','image','video']">
+                            <option value=""></option>
+                        </select>
+                    </td>
+                    <td>
+                        <div ng-show="!!quizItem.explanationMedia"
+                             ng-include="getExplanationMediaTemplate(quizItem)"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ 'questions.editSummary' | translate }}</td>
+                    <td colspan="2">
+                        <input placeholder="{{'questions.editSummaryHelpText' | translate}}" ng-model="quizItem.summary"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</fieldset>
+
+
+
 
