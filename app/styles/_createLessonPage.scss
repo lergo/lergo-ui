@@ -25,7 +25,7 @@
                 margin: 10px 0;
             }
             .language {
-                padding: 0px
+                padding: 0 10px 0 10px;
             }
             .subject {
                 padding: 0 15px;
@@ -38,7 +38,7 @@
             .tag {
                 margin: 10px -15px;
                 color: inherit;
-                padding: 10px 0;
+                padding: 10px 10px;
 
                 .tag-section-wrapper {
                     .tags-section {
@@ -99,6 +99,9 @@
             .stats {
                 .lesson-actions {
                     margin-right: -30px;
+                }
+                .advanced-options {
+                    margin-right: -15px;
                 }
 
                 .open-update {
