@@ -43,9 +43,7 @@
                 margin: 10px -15px;
                 color: inherit;
                 padding: 10px 0;
-                & > span {
-                    /* padding-right: 10px;*/
-                }
+
                 .tag-section-wrapper {
                     .tags-section {
                         input {
@@ -109,6 +107,29 @@
                     float: left;
                 }
             }
+    }
+
+}
+
+@media screen and (max-width: 1023px ){
+    #createLessonPageMobile {
+        .createLesson-form {
+            .stats {
+                .move-quiz {
+                    padding-right: 0px;
+                }
+                .tag {
+                    .tag-section-wrapper {
+                        .tags-section {
+                            input {
+                                max-width: 80%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
 }
