@@ -59,7 +59,7 @@
 
             }
             .lesson-actions {
-                margin-left: -15px;
+                margin-left: -30px;
 
             }
             .button-align {
@@ -74,6 +74,9 @@
             }
             .video-url {
                 margin-left: 15px;
+            }
+            .shuffle-questions {
+                text-align: center;
             }
         }
     }
@@ -94,10 +97,10 @@
 
             }
             .stats {
-
-                .retry-question {
-                    float: left;
+                .lesson-actions {
+                    margin-right: -30px;
                 }
+
                 .open-update {
                     padding-left: 30px;
                 }

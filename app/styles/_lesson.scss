@@ -306,8 +306,7 @@
 }
 
 #quizUpdate {
-    .practise-button {
-        padding-right: 0px;
+    .practice-button {
     }
 }
 
@@ -363,8 +362,7 @@
 
 .rtl {
     #quizUpdate {
-        .practise-button {
-            padding-right: 15px;
+        .practice-button {
         }
     }
     #lessonDisplay {
@@ -398,3 +396,15 @@
 .mPaddingActive {
     padding: 8px;
 }
+
+@media screen and (max-width: 1023px) {
+    rtl {
+        #quizUpdate {
+            .practice-button {
+                padding-right: 15px;
+            }
+        }
+    }
+}
+
+
