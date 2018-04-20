@@ -7,11 +7,13 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     // used to fix bug where hint stays open when switching between questions.
     $scope.stepDisplay = {showHint: false};
 
+    document.body.scrollTop = 0;
     $window.scrollTo(0, 0);
     var audio = new Audio('../audio/correctanswer.mp3');
 
     $scope.scrollUp = function () {
-        $window.scrollTo(0, 0);
+        /*$window.scrollTo(0, 0);*/
+        document.body.scrollTop = 0;
     };
 
     if (!!$routeParams.data) {
