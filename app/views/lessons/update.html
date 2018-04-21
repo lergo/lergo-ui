@@ -91,7 +91,7 @@
                                             <div class="col-md-2 col-sm-12 col-xs-12">
                                                 {{ 'lessons.recommenedPriorLesson' | translate }}
                                             </div>
-                                            <div class="col-md-10 ">
+                                            <div class="col-md-10 col-sm-12 col-xs-12">
                                                 <input placeholder="{{'lessons.recommenedPriorLessonText' | translate}}"
                                                        ng-model="lesson.priorLesson"/>
                                             </div>
@@ -111,16 +111,16 @@
                                     </div>
                                     <br/>
                                     <div class="row">
-                                        <div dir="auto" class="col-md-2">
+                                        <div dir="auto" class="col-md-2 col-sm-12 col-xs-12">
                                             {{ 'steps.title' | translate }}
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-10 col-sm-12 col-xs-12">
                                             <input dir="auto" ng-model="step.title"/>
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 col-sm-12 col-xs-12">
                                             <p>{{ 'steps.type' | translate }}
                                                 <sup>
                                                     <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
@@ -130,7 +130,7 @@
                                                 </sup>
                                             </p>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-10 col-sm-12 col-xs-12">
                                             <select ng-model="step.type"
                                                     ng-options="t.id as ('steps.' + t.id | translate) for t in stepTypes">
                                             </select>
