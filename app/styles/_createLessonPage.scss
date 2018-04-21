@@ -36,19 +36,27 @@
                 }
             }
             .tag {
-                margin: 10px -15px;
+                margin: 10px -5px;
                 color: inherit;
-                padding: 10px 10px;
-
-                .tag-section-wrapper {
-                    .tags-section {
-                        input {
-                            max-width: 30%;
-                        }
-
+                padding: 10px 0;
+                    & > span {
+                        /* padding-right: 10px;*/
                     }
-                }
+                    .tag-section-wrapper {
+                        .tags-section {
+                            input {
+                                width: 40%;
+                                border-radius: 3px;
+                                background-color: #efefef;
+                                margin-top: -10px;
+                            }
+                        }
+                    }
 
+            }
+            .status-save {
+                height: 10px;
+                margin-left: -30px;
             }
             .hr-width {
                 margin-left: -14px;
@@ -126,6 +134,9 @@
                     padding-left: 100px;
 
                 }
+                .status-save {
+                    margin-right: -30px;
+                }
             }
     }
 
@@ -142,7 +153,7 @@
                     .tag-section-wrapper {
                         .tags-section {
                             input {
-                                max-width: 80%;
+                                width: unset;
                             }
                         }
                     }
