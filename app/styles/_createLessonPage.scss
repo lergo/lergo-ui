@@ -55,8 +55,8 @@
 
             }
             .status-save {
-                height: 10px;
-                margin-left: -30px;
+                margin-left: -26px;
+                margin-bottom: 2px;
             }
             .hr-width {
                 margin-left: -14px;
@@ -111,7 +111,6 @@
     #createLessonPageMobile{
         .createLesson-form {
 
-            }
             .stats {
                 .lesson-actions {
                     margin-right: -30px;
@@ -135,9 +134,10 @@
 
                 }
                 .status-save {
-                    margin-right: -30px;
+                    margin-right: -26px;
                 }
             }
+        }
     }
 
 }
