@@ -50,20 +50,25 @@
                 }
 
             }
+            .hr-width {
+                margin-left: -14px;
+                margin-right: -14px;
+            }
             .advanced-options {
                 margin-left: -15px;
                 .row {
                     margin-left: 0px;
                     padding: 10px 0;
                 }
-
             }
             .lesson-actions {
                 margin-left: -30px;
 
             }
             .button-align {
-                text-align: center
+                text-align: center;
+                padding-right: 100px;
+
             }
             .retry-question {
                 float: right;
@@ -79,6 +84,9 @@
                 text-align: center;
             }
         }
+    }
+    select:nth-child(1) {
+        margin-bottom: -8px;
     }
 
     .create-lesson-sidebar {
@@ -113,6 +121,10 @@
 
                 .video-url, .slides-url {
                     margin-right: 15px;
+                }
+                .button-align {
+                    padding-left: 100px;
+
                 }
             }
     }
