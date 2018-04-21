@@ -197,6 +197,14 @@
                 float: right;
                 width: 84%;
             }
+
+        }
+        .tag-section-wrapper {
+            .tags-section {
+                input {
+                    width: 30%;
+                }
+            }
         }
         .modal-footer {
             padding: 5px 20px 5px;
@@ -319,6 +327,19 @@
         }
 
     }
+    .question-bank-dialog .modal-dialog {
+        .modal-content {
+            .modal-body {
+                .tag-section-wrapper {
+                    .tags-section {
+                        input {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -333,4 +354,6 @@
         overflow-x: unset;
     }
 }
+
+
 

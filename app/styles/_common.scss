@@ -960,6 +960,16 @@ label {
     font-weight: 500;
 }
 
+/*used to remove ends of lines*/
+.white-box {
+    height: 53px;
+    margin-left: -203px;
+    width: 212px;
+    float: left;
+    margin-top: -54px;
+    background-color: white;
+}
+
 @media screen and (max-width:1024px) {
     .lergo-body-tile {
         max-width: unset;
