@@ -11,6 +11,7 @@
                     <button class="btn" ng-click="done()" ng-disabled="isSaving()||!isValid(quizItem)">{{ 'done' | translate }}</button>
                     <a class="btn update-question-preview" ng-disabled="isSaving()||!isValid(quizItem)" href="#!/user/questions/{{quizItem._id}}/read"> {{ 'previewQuestion' | translate }} </a>
                 </div>
+                <div class="hidden-sm hidden-xs" style="height: 30px"></div>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
         </div>
