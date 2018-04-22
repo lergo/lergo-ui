@@ -25,7 +25,7 @@
                 margin: 10px 0;
             }
             .language {
-                padding: 0 10px 0 10px;
+                padding: 0 10px;
             }
             .subject {
                 padding: 0 15px;
@@ -36,11 +36,10 @@
                 }
             }
             .tag {
-                margin: 10px -5px;
+                margin: 10px 5px;
                 color: inherit;
                 padding: 10px 0;
                     & > span {
-                        /* padding-right: 10px;*/
                     }
                     .tag-section-wrapper {
                         .tags-section {
@@ -75,7 +74,7 @@
             }
             .button-align {
                 text-align: center;
-                padding-right: 100px;
+                padding-right: 210px;
 
             }
             .retry-question {
@@ -130,7 +129,7 @@
                     margin-right: 15px;
                 }
                 .button-align {
-                    padding-left: 100px;
+                    padding-left: 210px;
 
                 }
                 .status-save {
@@ -160,6 +159,16 @@
                 }
                 .age {
                     margin: 0 15px;
+                }
+                .hr-width {
+                    margin-left: 0px;
+                    margin-right:0px;
+                }
+                .button-align {
+                    text-align: center;
+                    padding-right: 0px;
+                    padidng-left: 0px;
+
                 }
             }
         }
