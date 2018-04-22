@@ -26,7 +26,7 @@
     }
 }
 
-@media (max-width : 768px) {
+@media screen and (max-width : 768px) {
     lergo-table.override-padding {
             > thead,
             > tbody,
@@ -45,14 +45,14 @@
 }
 
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
     .img-responsive {
         max-width: 90%;
     }
 }
 
 
-@media (min-width: 768px ) and (max-width: 992px) {
+@media screen and (min-width: 768px ) and (max-width: 992px) {
     img-responsive {
         height: unset;
 
@@ -62,7 +62,7 @@
 
 
 // for tables
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+@media screen and (min-width : 768px) and (max-width : 1023px) {
     .navbar-form .form-control.search-desktop {
         width: 20vw;
     }
@@ -71,7 +71,7 @@
 //  jeff - this is added to fix inconsistency of  breakpoint  (sm)
 // the navbar and the collapsed mobile icon
 
-@media (max-width: 992px) {
+@media screen and  (max-width: 992px) {
     .navbar-header {
         float: none;
     }

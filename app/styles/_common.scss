@@ -64,7 +64,7 @@ body{
 
  *
 **/
-@media screen and (max-width:1099px) {
+@media screen and (max-width: 1199px) {
 
     body{
         &.lergo-embed-mode{
@@ -284,7 +284,7 @@ button.action-item {
 }
 
 //ipad only
-@media (min-width: 1024px ) and (max-width: 1200px) {
+@media screen and (min-width: 1024px ) and (max-width: 1119px) {
     .lergo-h1-orig {
         font-size: 24px;
     }
@@ -970,7 +970,7 @@ label {
     background-color: white;
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1023px) {
     .lergo-body-tile {
         max-width: unset;
         width: unset;

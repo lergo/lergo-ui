@@ -570,7 +570,7 @@ input.form-control.search-input {
 }
 
 // ipad only
-@media screen and (min-device-width : 1024px) and (max-width: 1199px) {
+@media screen and (min-width : 1024px) and (max-width: 1199px) {
 
     .dropdown-align {
         margin-left:-33px;

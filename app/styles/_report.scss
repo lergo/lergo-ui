@@ -360,7 +360,7 @@
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+@media screen and (min-width : 320px) and (max-width : 480px) {
     .report .details .detail .quiz .duration {
         float: unset;
     }
