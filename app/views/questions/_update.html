@@ -68,6 +68,7 @@
             </table>
         </div>
     </div>
+    <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
     <table class="lergo-table lergo-form" ng-show="!!quizItem.question && !!quizItem.type">
         <tr>
             <td style="width: 17%">{{ 'tags' | translate }}</td>
@@ -76,7 +77,7 @@
             </td>
         </tr>
     </table>
-    <div ng-include="getQuestionUpdateTemplate(quizItem)"></div>
+
     <div class="advance-options">
         <div class="lergo-h1">
             <br>

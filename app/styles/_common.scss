@@ -674,7 +674,7 @@ $COLOR_19: #2a6496 !default;
         background: $COLOR_1;
         color: white;
         margin-top: 12px;
-        margin-left: 3px;
+        margin-left: 6px;
         display: inline-block;
         white-space: nowrap;
         .lergo-tag-item-remove {
@@ -691,9 +691,10 @@ $COLOR_19: #2a6496 !default;
     }
     input {
         display: inline-block;
-        width: 100%;
-        max-width: 500px;
+        width: 30%;
         font-size: 0.9em;
+        margin-top: -20px;
+        margin-left: 3px;
     }
 }
 
