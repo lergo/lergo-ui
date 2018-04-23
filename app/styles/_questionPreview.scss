@@ -135,7 +135,7 @@ textarea#openQuestionTextarea.mobile.width {
             border: 5px solid #C6C6C6;
             border-radius: 10px;
             padding: 10px;
-            width: 564px;
+            width: 443px;
         }
         .hint {
             font-size: 20px;
@@ -168,7 +168,7 @@ textarea#openQuestionTextarea.mobile.width {
             }
         }
 
-        width: 745px;
+        width: 600px;
         margin: 0 auto;
         position: relative;
         /*float: right;*/
@@ -179,7 +179,7 @@ textarea#openQuestionTextarea.mobile.width {
             margin-top: 30px;
             font-size: 20px;
             text-align: right;
-            margin-right: 20px;
+            margin-right: 2px;
             .action-items-top {}
             .action-items-bottom {
                 font-size: 30px;
@@ -384,10 +384,13 @@ textarea#openQuestionTextarea.mobile.width {
         .question {
             .question-preview {
                 margin-left: unset;
-                margin-right: 95px;
+                margin-right: 72px;
             }
             .hint {
                 text-align: left;
+            }
+            & > .action-items {
+                margin-right: 15px;
             }
             .details {
                 .properties {
