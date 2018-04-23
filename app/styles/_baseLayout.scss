@@ -452,6 +452,9 @@ input.form-control.search-input {
     &:not(.base-layout-modal) {
         height: 100%;
     }
+    .add-create {
+        width: 964px;
+    }
 }
 
 
@@ -529,6 +532,9 @@ input.form-control.search-input {
                 margin-bottom: -5px;
 
             }
+        }
+        .add-create {
+            width: unset;
         }
     }
     .homepage-desktop {

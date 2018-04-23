@@ -9,10 +9,10 @@
             <div class="row">
                 <div>
                     <div ng-show="!isUpdate">
-                        <div>
+                        <div class="add-create">
                             <ul class="nav nav-tabs">
-                                <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                                    <a id="horizontalTabs" href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.id | translate}}</a>
+                                <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                    <a class="text-center" id="horizontalTabs" href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.id | translate}}</a>
                                 </li>
                             </ul>
                         </div>
