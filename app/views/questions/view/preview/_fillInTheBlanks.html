@@ -2,13 +2,13 @@
 <div class="question-preview" ng-init="scrollToTop()" style="overflow-y: auto">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-2 col-xs-2">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="hint">
                     <button ng-show="!!quizItem.hint" ng-click="hintUsed(quizItem)" popover-placement="auto bottom-right" uib-popover="{{quizItem.hint}}" class="btn-link hint"
                             popover-trigger="'outsideClick'" tabindex="0">{{'hint' | translate}}</button>
                 </div>
             </div>
-            <div class="col-lg-12 col-md-12 col-sm-10 col-xs-10">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div dir="auto" class="question-title" style="line-height: 3">
                     {{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
                     <span class="lergo-h4" style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
