@@ -426,10 +426,14 @@ textarea#openQuestionTextarea.mobile.width {
     }
 }
 
-.ai-hint {
-    font-size: 20px;
-    margin-top: -2px;
+.action-items {
+    .ai-hint {
+        font-size: 20px;
+        margin-top: 1px;
+        padding: 0 13px;
+    }
 }
+
 audio.audio-width-mobile {
     padding: 0 8px;
 }
