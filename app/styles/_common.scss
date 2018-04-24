@@ -968,7 +968,14 @@ label {
     font-weight: 500;
 }
 
+.multi-choice-font {
+    font-size: 20px;
+}
+
 @media screen and (max-width:1023px) {
+    .multi-choice-font {
+        font-size: 16px;
+    }
     .lergo-body-tile {
         max-width: unset;
         width: unset;

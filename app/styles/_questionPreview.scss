@@ -128,9 +128,6 @@ textarea#openQuestionTextarea.mobile.width {
 }
 
 #questionIntro {
-    .multi-choice-font {
-        font-size: 20px;
-    }
     .question {
         .question-preview {
             margin-top: 30px;
@@ -438,11 +435,6 @@ audio.audio-width-mobile {
 }
 
 @media screen and (max-width: 1023px) {
-    #questionIntro {
-        .multi-choice-font {
-            font-size: 16px;
-        }
-    }
     #questionIntro .question {
         width: unset;
         margin: 0 -30px;
