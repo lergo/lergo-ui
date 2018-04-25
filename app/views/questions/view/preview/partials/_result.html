@@ -2,7 +2,7 @@
     <div ng-if="getAnswer(quizItem).correct" class="bg-success">
         <span>{{'questions.correctAnswerFilled' | translate}}</span>
     </div>
-    <div ng-if="!getAnswer(quizItem).correct" class="bg-warning">
+    <div ng-if="!getAnswer(quizItem).correct" class="bg-warning" style="padding-bottom: 1px">
         <span ng-if="!getAnswer(quizItem).correct">{{'questions.incorrectAnswerFilled' | translate}}:
             <div dir="auto">{{getCorrectAnswers(quizItem)}}</div>
         </span>
@@ -15,6 +15,19 @@
             </div>
         </div>
     </div>
+    <table class="lergo-table">
+        <tr>
+            <!-- LERGO-320 - placing the show/hide on the table itself resolves the alignment issue when explanation media is hidden-->
+            <td style="vertical-align: top; background-color:  #EE9A00; padding: 0" ng-show="shouldShowExplanationMedia()"
+                class="quiz-item-explanation">
+                <div class="text-center">
+                    <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
+                    <div dir="auto">{{quizItem.explanation}}</div>
+                    <div quiz-item-explanation-media class="img-small" style="margin-left: auto; margin-right: auto"   quiz-item="quizItem"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
 <div class="result" ng-show="!getAnswer()">
     <div class="bg-primary">{{'steps.answer' | translate }}</div>
