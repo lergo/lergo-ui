@@ -280,16 +280,15 @@
             .action-items {
                 margin-top: 20px;
                 text-align: right;
-                /*padding-bottom: 10px;
-                border-bottom: 10px solid silver;*/
                 color: #949494;
                 &:hover {
                     color: $LERGO_LINK_HOVER;
                 }
                 & > .btn-link, & > div {
-                    /*display: inline-block;
-                    margin-left: 8px;*/
                     font-size: 20px;
+                }
+                .invite {
+                    margin-top: 2px;
                 }
             }
             .description {
@@ -304,7 +303,7 @@
                     background: transparent;
                 }
                 font-size: 17px;
-                margin-top: 10px;
+                /*margin-top: 10px;*/
                 .edit-summary {
                     .question {
                         .title-question {
