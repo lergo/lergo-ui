@@ -85,7 +85,7 @@
                                                  </span>
                                         </div>
                                         <div >
-                                            <div class="header-actions" ng-if="!showForm">
+                                            <div class="header-actions" ng-if="!(showForm || baseLayout.filterTextSearch.length > 0)">
                                                 <div id="profileloginbutton-desktop"  profile-login-button="$root.user"></div>
                                             </div>
                                         </div>
