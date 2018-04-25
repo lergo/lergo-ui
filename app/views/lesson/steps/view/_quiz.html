@@ -13,15 +13,6 @@
                                     <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td style="vertical-align: top;" ng-show="shouldShowExplanationMedia()" class="quiz-item-explanation">
-                                    <div style="border: 5px solid #EE9A00; border-radius: 10px;">
-                                        <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
-                                        <div dir="auto">{{quizItem.explanation}}</div>
-                                        <div quiz-item-explanation-media class="img-small"   quiz-item="quizItem"></div>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </div>

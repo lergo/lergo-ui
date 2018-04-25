@@ -2,12 +2,12 @@
     <div ng-if="getAnswer(quizItem).correct" class="bg-success">
         <span>{{'questions.correctAnswerFilled' | translate}}</span>
     </div>
-    <div ng-if="!getAnswer(quizItem).correct" class="bg-warning">
+    <div ng-if="!getAnswer(quizItem).correct" class="bg-warning" style="padding-bottom: 0">
         <span ng-if="canShowCrctAns() || !retriesLeft()">{{'questions.incorrectAnswerFilled' | translate}}:
             <div dir="auto">{{getCorrectAnswers(quizItem)}}</div>
         </span>
         <span ng-if="!canShowCrctAns() && retriesLeft()">{{'questions.incorrectAnswerPleaseTry' | translate}}</span>
-        <div ng-show="shouldShowExplanationMessage()">
+        <div  ng-show="shouldShowExplanationMessage()">
             <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">
                 {{ 'explanation' | translate}}
             </button>
@@ -16,6 +16,18 @@
             </div>
         </div>
     </div>
+    <table class="lergo-table">
+        <tr>
+            <td style="vertical-align: top; padding: 0" ng-show="shouldShowExplanationMedia()" class="quiz-item-explanation">
+                <div style="background-color: #EE9A00;">
+                <div class="text-center">
+                    <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
+                    <div dir="auto">{{quizItem.explanation}}</div>
+                    <div quiz-item-explanation-media class="img-small" style="margin-left: auto ; margin-right: auto"  quiz-item="quizItem"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
 <div class="result" ng-show="!getAnswer()">
     <div class="bg-primary">{{'steps.answer' | translate }}</div>
