@@ -2,7 +2,8 @@
 
 angular.module('lergoApp').controller('LessonsUpdateCtrl',
     function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
-        $window.scrollTo(0, 0);
+        /*$window.scrollTo(0, 0);*/
+        document.body.scrollTo(0,0);
         $scope.subjects = LergoFilterService.subjects;
         var addStepClicked = false;
         $scope.popoverState = {open: false, position: 'top'};
