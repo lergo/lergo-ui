@@ -135,7 +135,7 @@
 </div>
 
 
-<div class="hidden-lg hidden-md" style="background-color: #d2e8fa"> <!--start mobile view -->
+<div class="hidden-lg hidden-md"> <!--start mobile view -->
     <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step-mobile">
         <div class="congrats">
             {{ 'congratulations' | translate }}!
@@ -201,7 +201,7 @@
             </div>
         </div>
         <br/>
-        <div class="stats" style="margin: 15px">
+        <div class="stats">
             <div class="action-items">
 			<span show-logged-in>
 				<button class="btn-link" ng-click="likeLesson()" uib-tooltip="{{'lessons.tooltip.like' | translate}}"

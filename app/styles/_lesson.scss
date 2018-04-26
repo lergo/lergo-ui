@@ -141,6 +141,7 @@
     }
 
     .done-step-mobile {
+        background-color: #d2e8fa;
         margin: 0 auto;
         .congrats {
             font-size: 30px;
@@ -153,7 +154,7 @@
             font-size: 25px;
             text-align: center;
             margin: 15px auto;
-            line-height: 2;
+            line-height: 1.5;
             .lesson-title {
                 font-weight: bold;
                 color: #428bca;
@@ -170,7 +171,7 @@
             }
         }
         .stats {
-            margin: 15px auto;
+            margin: 0px auto;
             .action-items {
                 text-align: right;
                 padding-bottom: 20px;
