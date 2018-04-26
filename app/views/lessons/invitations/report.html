@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="redo-buttons" ng-show="showClassReport()">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 reports" ng-show="showClassReport()">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 reports" ng-show="showClassReport()">
                         <a href="" ng-click="redirectToClassReport()">
                             <i class="fa fa-bar-chart d-padBot15 mpad-bot5"> {{'report.header.classReport' | translate}}</i>
                         </a>
@@ -82,7 +82,7 @@
                             </a>
                         </div>
                         <span ng-show="wrongQuestions.length>0" class="practiceMistake">
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <a show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
                                    ng-disabled="practiseBtnDisable">
                                     <i class="fa fa-repeat mpad-bot5 " style="white-space: nowrap;"> {{'lessons.practiseWrongQuestion' | translate}}</i>
@@ -190,9 +190,9 @@
                             </div>
                         </div>
                       <!--  ipad horizontal needs more work to be same as desktop-->
-                        <div class="col-lg-9 col-md-12 col-sm-7 col-xs-7 description">
+                        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 description">
                         <div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
                                 <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                                     {{'reports.click.video' | translate}}</a>
                                 <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
@@ -234,7 +234,7 @@
                             </div>
                         </div>
                         <div  class=" top15">
-                            <div uib-collapse="!stepDetail" class="col-md-12">
+                            <div uib-collapse="!stepDetail" class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="pad-top20">
                                     <span>
                                         <ng-pluralize count="step.retBefCrctAns" when="{
@@ -285,7 +285,7 @@
                         </div>
                         <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 description">
                             <div>
-                                <div class="col-md-12">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                                         {{'reports.click.video' | translate}}</a>
@@ -330,7 +330,7 @@
                                 </div>
                             </div>
                             <div  class=" top15">
-                                <div uib-collapse="!stepDetail" class="col-md-12">
+                                <div uib-collapse="!stepDetail" class="col-md-12 col-sm-12 col-xs-12">
                                     <div>
                                     <span>
                                         <ng-pluralize count="step.retBefCrctAns" when="{
