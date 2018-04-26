@@ -133,9 +133,15 @@
                 text-align: right;
             }
             .forms {
-                background: #efefef;
+                background: #F7F8FB;
                 padding: 5px;
                 border-radius: 10px;
+                max-width: 20px;
+                .form-color {
+                    background: #efefef;
+                    width: 600px;
+                    max-width: 600px;
+                }
             }
         }
     }

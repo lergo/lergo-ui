@@ -125,10 +125,12 @@
                 </button>
             </div>
             <div class="forms">
-                <div ng-show="isActiveAction(actionItems.SHARE)"
-                     ng-include="'views/lessons/intro/_shareForm.html'"></div>
-                <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
-                     on-close="setActiveAction()"></div>
+                <div class="form-color">
+                    <div ng-show="isActiveAction(actionItems.SHARE)"
+                         ng-include="'views/lessons/intro/_shareForm.html'"></div>
+                    <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
+                         on-close="setActiveAction()"></div>
+                </div>
             </div>
         </div>
     </div>
