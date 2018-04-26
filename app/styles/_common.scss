@@ -973,6 +973,12 @@ label {
 }
 
 @media screen and (max-width:1023px) {
+    .tag-section-wrapper {
+        input {
+            max-width: 70%
+        }
+    }
+
     .multi-choice-font {
         font-size: 16px;
     }

@@ -125,16 +125,6 @@
             width: 100%;
         }
     }
-   .tag-section-wrapper {
-        .tags-section {
-           /* .tag-input {
-                width: 25%;
-                border-radius: 3px;
-                background-color:#efefef;
-            }*/
-        }
-    }
-
 }
 
 .filters {
@@ -203,6 +193,7 @@
             .tags-section {
                 input {
                     width: 30%;
+                    background-color: red;
                 }
             }
         }
@@ -317,15 +308,6 @@
 
 @media screen and (max-width: 1023px) {
     #questions-update {
-
-        .tag-section-wrapper {
-            .tags-section {
-                /*.tag-input {
-                    width: 100%;
-                }*/
-            }
-        }
-
     }
     .question-bank-dialog .modal-dialog {
         .modal-content {
