@@ -18,12 +18,11 @@
     <table class="lergo-table">
         <tr>
             <!-- LERGO-320 - placing the show/hide on the table itself resolves the alignment issue when explanation media is hidden-->
-            <td style="vertical-align: top; background-color:  #EE9A00; padding: 0" ng-show="shouldShowExplanationMedia()"
-                class="quiz-item-explanation">
+            <td  ng-show="shouldShowExplanationMedia()" class="result-explanation">
                 <div class="text-center">
                     <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
                     <div dir="auto">{{quizItem.explanation}}</div>
-                    <div quiz-item-explanation-media class="img-small" style="margin-left: auto; margin-right: auto"   quiz-item="quizItem"></div>
+                    <div quiz-item-explanation-media class="img-small centered-content"    quiz-item="quizItem"></div>
                 </div>
             </td>
         </tr>

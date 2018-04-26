@@ -132,6 +132,15 @@ textarea#openQuestionTextarea.mobile.width {
 }
 
 #questionIntro {
+    .result {
+        margin-left: 5px;
+        margin-right: 5px;
+        .result-explanation {
+            vertical-align: top;
+            padding: 0;
+            background-color: #EE9A00;
+        }
+    }
 
     .question {
 
