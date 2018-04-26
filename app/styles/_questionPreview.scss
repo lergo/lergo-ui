@@ -9,6 +9,15 @@ textarea#openQuestionTextarea.mobile.width {
     width: 100%;
     display: inline-table;
     background-color: #EFEFEF;
+    .result {
+        margin-left: 5px;
+        margin-right: 5px;
+        .result-explanation {
+            vertical-align: top;
+            padding: 0;
+            background-color: #EE9A00;
+        }
+    }
     .bold {
         font-weight: bold;
     }
@@ -86,11 +95,6 @@ textarea#openQuestionTextarea.mobile.width {
     }
 }
 
-.result {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
 .rtl {
     #questionPreview {
         .right {
@@ -128,7 +132,9 @@ textarea#openQuestionTextarea.mobile.width {
 }
 
 #questionIntro {
+
     .question {
+
         .question-preview {
             margin-top: 30px;
             margin-left: 89px;
