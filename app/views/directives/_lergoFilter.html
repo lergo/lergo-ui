@@ -5,13 +5,13 @@
         <div class="navbar-header ">
             <div>
                 <div class="hidden-lg hidden-md">
-                    <button style="display: inline-block" type="button" class="navbar-toggle  mobile-filter-button-l"  ng-click="isNavCollapsed = !isNavCollapsed">
+                    <button style="display: inline-block" type="button" class="navbar-toggle  mobile-filter-button-l"  ng-click="isFilterCollapsed = !isFilterCollapsed">
                         <div >{{'filters.labels.language' | translate}} | {{'filters.labels.subject' | translate}} | {{'filters.labels.age' | translate}}  </div>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="collapse navbar-collapse" uib-collapse="!isNavCollapsed">
+        <div class="collapse navbar-collapse" uib-collapse="!isFilterCollapsed">
             <div>
             <form name="filter" class="filters lergo-form filterOffset15">
                 <div ng-show="!!opts.showStudents" class='container-fluid'>

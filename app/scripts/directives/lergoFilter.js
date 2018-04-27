@@ -76,6 +76,9 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 				}
 				scope.change();
                 scope.isNavCollapsed = false;
+                $timeout(function () {
+                    scope.isFilterCollapsed = false;
+                }, 3000);
 			}, true);
 
 			var $scope = scope;
