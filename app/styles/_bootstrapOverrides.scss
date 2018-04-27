@@ -345,6 +345,8 @@ input {
 display:none;
 }
 
-ul.dropdown-menu.overidePositionInherit1 {
-    position: absolute;
+@media screen and (max-width: 768px) {
+    .dropdown-menu {
+        position: absolute;
+    }
 }
