@@ -95,17 +95,17 @@
                 <span ng-show="!!opts.showAge">
                     <div class="label">{{'filters.labels.ageRange' | translate }}</div>
                     <div>
-                        <input min="1" max="100" size="1" class="number" type="number" ng-model="ageFilter.min"/>
+                        <input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="ageFilter.min"/>
                         {{'filters.to'|translate}}
-                        <input min="1" max="100" size="1" class="number" type="number" ng-model="ageFilter.max"/>
+                        <input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="ageFilter.max"/>
                     </div>
                 </span>
                 <span ng-show="!!opts.showViews">
                     <div class="label">{{'filters.labels.views' | translate }}</div>
                     <div>
-                        <input min="1" size="1" class="number" type="number" ng-model="viewsFilter.min"/>
+                        <input min="1" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="viewsFilter.min"/>
                         {{'filters.to'|translate}}
-                        <input min="1" size="1" class="number" type="number" ng-model="viewsFilter.max"/>
+                        <input min="1" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="viewsFilter.max"/>
                     </div>
                 </span>
                 <span ng-show="!!opts.showLimitedLessonStatus">
