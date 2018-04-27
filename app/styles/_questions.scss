@@ -167,6 +167,15 @@
         cursor: pointer;
         font-weight: bold;
     }
+    .tags-filter {
+        .tag-section-wrapper {
+            input {
+                max-width: 100%;
+                margin-top: -14px;
+            }
+        }
+
+    }
 }
 
 .question-bank-dialog .modal-dialog {
