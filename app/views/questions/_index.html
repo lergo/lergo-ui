@@ -74,7 +74,7 @@
                                 </td>
                                 <td class="question" dir="auto">
                                     <span  ng-show="!!isModal">{{item.question}}</span>
-                                    <div class="question-width" ng-show="!isModal" question-read-link question="item"></div>
+                                    <div ng-show="!isModal" question-read-link question="item"></div>
                                 </td>
                                 <td class="answers" dir="auto">{{ getAnswers(item) | limitTo:30}}</td>
                                 <td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
