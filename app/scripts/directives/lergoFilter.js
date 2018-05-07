@@ -290,7 +290,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                     $timeout(function () {
                         $log.info('class changed', arguments);
                         _updateReportClass();
-               }, 3000);
+                    }, 3000);
                 }
             });
 
