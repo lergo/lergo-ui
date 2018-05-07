@@ -1,4 +1,9 @@
 .clear-filter-section{
- /*   padding-top:20px;*/
     padding-bottom: 20px;
+}
+
+@media screen and (max-width: 1023px) {
+    .clear-filter-section {
+        padding-top: 20px;
+    }
 }
