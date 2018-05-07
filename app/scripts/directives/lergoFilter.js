@@ -75,10 +75,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 					return;
 				}
 				scope.change();
-				/*scope.isFilterCollapsed = false;*/
-                $timeout(function () {
+				scope.isFilterCollapsed = false;
+                /*$timeout(function () {
                     scope.isFilterCollapsed = false;
-                }, 3000);
+                }, 3000);*/
 			}, true);
 
 			var $scope = scope;
@@ -263,8 +263,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
 			$scope.$watch('reportStudent', function(newValue, oldValue) {
 				if (newValue !== oldValue) {
-					$log.info('student changed', arguments);
-					_updateReportStudent();
+                    $timeout(function () {
+                        $log.info('student changed', arguments);
+                        _updateReportStudent();
+                    }, 2000);
 				}
 			});
 
@@ -285,8 +287,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
             $scope.$watch('reportClass', function(newValue, oldValue) {
                 if (newValue !== oldValue) {
-                    $log.info('c;ass changed', arguments);
-                    _updateReportClass();
+                    $timeout(function () {
+                        $log.info('class changed', arguments);
+                        _updateReportClass();
+               }, 3000);
                 }
             });
 
