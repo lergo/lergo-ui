@@ -9,6 +9,9 @@ textarea#openQuestionTextarea.mobile.width {
     width: 100%;
     display: inline-table;
     background-color: #EFEFEF;
+    .input-block {
+        padding: 10px 16px 0 16px;
+    }
     .result {
         margin-left: 5px;
         margin-right: 5px;
@@ -445,7 +448,8 @@ textarea#openQuestionTextarea.mobile.width {
     .ai-hint {
         font-size: 20px;
         margin-top: 1px;
-        padding: 0 13px;
+        /*padding: 0 13px;*/
+        float: right;
     }
 }
 
@@ -517,6 +521,17 @@ audio.audio-width-mobile {
             .question {
                 .question-preview {
                     margin-right: 0px;
+                }
+            }
+        }
+    }
+}
+.rtl {
+    #questionPreview {
+        .right {
+            .action-items {
+                .hint {
+                    float: left;
                 }
             }
         }
