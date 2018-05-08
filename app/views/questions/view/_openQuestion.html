@@ -28,14 +28,14 @@
                 <span ng-init="quizItem.subType==='short' ? setFocus('openQuestionText') : setFocus('openQuestionTextarea')"></span>
             </div>
             <div ng-include="'views/questions/view/partials/_submit.html'"></div>
-                <div ng-show="isQuizStep()">
+                <div class="sideBot5nd" ng-show="isQuizStep()">
                     <div lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
                         <b>{{progressPercentage}}%</b>
                     </div>
                 </div>
                 <br>
                 <div class="result" ng-show="!!getAnswer(quizItem)">
-                    <div class="bg-primary">
+                    <div class="sideBot5nd bg-primary">
                         <span>{{'questions.thankYou' | translate}}</span>
                         <div ng-show="shouldShowExplanationMessage()">
                             <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate }}</button>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="result" ng-show="!getAnswer()">
-                    <div  class="bg-primary side10">{{'steps.answer' | translate }}</div>
+                    <div class="sideBot5nd bg-primary">{{'steps.answer' | translate }}</div>
                 </div>
         </div>
     </div>
