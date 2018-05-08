@@ -2,7 +2,7 @@
     <div ng-if="getAnswer(quizItem).correct" class="bg-success">
         <span>{{'questions.correctAnswerFilled' | translate}}</span>
     </div>
-    <div ng-if="!getAnswer(quizItem).correct" class="bg-warning" style="padding-bottom: 0">
+    <div ng-if="!getAnswer(quizItem).correct" class="bg-warning">
         <span ng-if="canShowCrctAns() || !retriesLeft()">{{'questions.incorrectAnswerFilled' | translate}}:
             <div dir="auto">{{getCorrectAnswers(quizItem)}}</div>
         </span>
@@ -22,7 +22,7 @@
                 <div>
                     <div class="text-center">
                         <div style="font-weight: bold">{{ 'explanation' | translate }}</div>
-                        <div dir="auto">{{quizItem.explanation}}</div>
+                        <div class="explanation-text" dir="auto">{{quizItem.explanation}}</div>
                         <div quiz-item-explanation-media class="img-small centered-content"  quiz-item="quizItem"></div>
                     </div>
                 </div>
