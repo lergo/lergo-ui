@@ -344,6 +344,9 @@ display:none;
 
 @media screen and (max-width: 768px) {
     .dropdown-menu {
+        position: absolute;
+    }
+    [uib-typeahead-popup].dropdown-menu {
         position: static;
     }
 }
