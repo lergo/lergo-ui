@@ -448,8 +448,14 @@ textarea#openQuestionTextarea.mobile.width {
     .ai-hint {
         font-size: 20px;
         margin-top: 1px;
-        /*padding: 0 13px;*/
         float: right;
+    }
+}
+.rtl {
+    .action-items {
+        .ai-hint {
+            float: left;
+        }
     }
 }
 
