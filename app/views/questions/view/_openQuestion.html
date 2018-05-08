@@ -29,13 +29,13 @@
             </div>
             <div ng-include="'views/questions/view/partials/_submit.html'"></div>
                 <div ng-show="isQuizStep()">
-                    <div class="side10" lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
+                    <div lergo-progress-bar ng-ready="updateProgress()" animate="true" value="progressPercentage" type="primary" class="progressbar">
                         <b>{{progressPercentage}}%</b>
                     </div>
                 </div>
                 <br>
                 <div class="result" ng-show="!!getAnswer(quizItem)">
-                    <div class="bg-primary side10">
+                    <div class="bg-primary">
                         <span>{{'questions.thankYou' | translate}}</span>
                         <div ng-show="shouldShowExplanationMessage()">
                             <button class="btn-link" style="color: white" ng-click="isCollapsed = !isCollapsed">{{ 'explanation' | translate }}</button>
