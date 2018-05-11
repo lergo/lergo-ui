@@ -397,11 +397,13 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 }
             }
         });
+        /*the below is a hack to solve the problem that  $window.scrollY is not working so here we scroll
+        to the bottom of the page: document.body.scrollHeight*/
         function persistScroll() {
             if (!$rootScope.scrollPosition) {
                 $rootScope.scrollPosition = {};
             }
-            $rootScope.scrollPosition[$location.path()] = $window.scrollY;
+            $rootScope.scrollPosition[$location.path()] =  document.body.scrollHeight;  /*$window.scrollY;*/
         }
 
         function scrollToPersistPosition() {
@@ -409,7 +411,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             if (!!$rootScope.scrollPosition) {
                 scrollY = $rootScope.scrollPosition[$location.path()] || 0;
             }
-            $window.scrollTo(0, scrollY);
+            document.body.scrollTop = scrollY;
         }
 
 
