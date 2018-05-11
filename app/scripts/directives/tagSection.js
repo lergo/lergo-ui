@@ -3,12 +3,18 @@
 angular.module('lergoApp')
     .directive('tagSection', function ($log, TagsService ) {
         return {
-            templateUrl: 'views/directives/_tagSection.html',
+            /*templateUrl: 'views/directives/_tagSection.html',*/
+
             restrict: 'A',
             scope: {
-                'tags': '='
+                'tags': '=',
+                'url' : '=',
             },
+
             link: function postLink($scope, element, attrs) {
+                console.log("scope.url", $scope.url);
+                console.log("attrs.url", attrs.url);
+
                 var separator = attrs.separator || ',';
                 var lowerCase = !!attrs.lowerCase;
 
@@ -94,6 +100,9 @@ angular.module('lergoApp')
                     }
                 });
 
+            },
+            templateUrl: function(elem, attrs) {
+                return attrs.url
             }
         };
     });
