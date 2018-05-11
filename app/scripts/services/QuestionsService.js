@@ -119,7 +119,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
                         answers.push(value.label);
                     }
                 });
-            };
+            }
 
             if (answers.length === 1) {  // todo: we don't need this, join will take care of this
                 return answers[0];
