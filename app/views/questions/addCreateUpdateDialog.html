@@ -40,7 +40,7 @@
 	<div ng-show="selectedItems.length===0" class="errorMessage">{{'questions.add.emptySelection' | translate}}</div>
 </div>
 <div class="modal-footer" ng-show="!!isCreate && !isUpdate">
-	<div>
+	<div class="modal-buttons">
 		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="currentSection.add(quizItem)">{{'add' |translate}}</button>
 		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="currentSection.addClose(quizItem)">{{'addClose' |translate}}</button>
 		<button class="btn btn-default" ng-click="cancel()">{{'cancel' |translate}}</button>

@@ -1063,6 +1063,14 @@ label {
         padding-left: 10px;
         padding-right: 0px;
     }
+    .modal-footer{
+        text-align: left;
+        .modal-buttons {
+            button {
+                font-size: 12px;
+            }
+        }
+    }
     .rtl {
         .mpadrtl10 {
             padding-left: 0px;
