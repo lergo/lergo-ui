@@ -12,8 +12,6 @@ angular.module('lergoApp')
             },
 
             link: function postLink($scope, element, attrs) {
-                console.log("scope.url", $scope.url);
-                console.log("attrs.url", attrs.url);
 
                 var separator = attrs.separator || ',';
                 var lowerCase = !!attrs.lowerCase;
@@ -103,6 +101,6 @@ angular.module('lergoApp')
             },
             templateUrl: function(elem, attrs) {
                 return attrs.url || 'views/directives/_tagSection.html'
-            }
+            };
         };
     });
