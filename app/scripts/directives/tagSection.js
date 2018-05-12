@@ -8,7 +8,7 @@ angular.module('lergoApp')
             restrict: 'A',
             scope: {
                 'tags': '=',
-                'url' : '=',
+                'url': '=',
             },
 
             link: function postLink($scope, element, attrs) {
@@ -37,7 +37,7 @@ angular.module('lergoApp')
                     $scope.tags.splice($scope.tags.indexOf(tag), 1);
                 };
 
-                TagsService.getAllAvailableTags().then(function(result){
+                TagsService.getAllAvailableTags().then(function (result) {
                     $scope.availableTags = result.data;
                 });
 
@@ -79,7 +79,7 @@ angular.module('lergoApp')
                 };
 
                 $scope.$watch('newTag', function (newValue, oldValue) {
-                    if ( newValue === oldValue ){
+                    if (newValue === oldValue) {
                         return;
                     }
                     $log.debug('newTag changed', newValue, oldValue);
@@ -99,8 +99,8 @@ angular.module('lergoApp')
                 });
 
             },
-            templateUrl: function(elem, attrs) {
-                return attrs.url || 'views/directives/_tagSection.html'
-            };
+            templateUrl: function (elem, attrs) {
+                return attrs.url || 'views/directives/_tagSection.html';
+            }
         };
     });
