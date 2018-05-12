@@ -10,6 +10,7 @@
         <!--ng-show="!!tagsAvailable"-->
             <br>
             <input ng-model="newTag" type="text" name="filterName" ng-trim="false"
+                   autocomplete="off"
                    typeahead-wait-ms="100"
                    placeholder="{{'tagHint' | translate}}"
                    uib-typeahead="tag as tag.label for tag in getTagsLike($viewValue)"
