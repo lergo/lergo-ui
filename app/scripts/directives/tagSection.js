@@ -102,7 +102,7 @@ angular.module('lergoApp')
 
             },
             templateUrl: function(elem, attrs) {
-                return attrs.url
+                return attrs.url || 'views/directives/_tagSection.html'
             }
         };
     });

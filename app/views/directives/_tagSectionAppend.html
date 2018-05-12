@@ -1,0 +1,32 @@
+
+<div class="tag-section-wrapper" >
+    <div class="tags-section">
+        <span ng-repeat="tag in tags"><span class="lergo-tag-item">{{tag.label}}<span class="lergo-tag-item-remove fa fa-times" ng-show="canRemoveTags" ng-click="removeTag(tag)">
+        </span>
+        </span>
+        </span>
+        <!-- if no tags avaiable, hide typeahead or otherwise we will get errors in the console -->
+        <!--<input ng-model="newTag" type="text" ng-show="!tagsAvailable" placeholder="{{'tagHint' | translate}}" ui-keypress="{enter: 'finishTyping(newTag)'}"/>-->
+        <!--ng-show="!!tagsAvailable"-->
+        <div class="hidden-sm hidden-xs">
+            <br>
+            <input ng-model="newTag" type="text" name="filterName" ng-trim="false"
+                   typeahead-wait-ms="100"
+                   typeahead-append-to-body="true"
+                   placeholder="{{'tagHint' | translate}}"
+                   uib-typeahead="tag as tag.label for tag in getTagsLike($viewValue)"
+                    typeahead-on-select="addTagFromTypeahead($item, $model, $label)"
+                    class="form-control"/>
+        </div>
+        <div class="hidden-lg hidden-md">
+            <br>
+            <input ng-model="newTag" type="text" name="filterName" ng-trim="false"
+                   typeahead-wait-ms="100"
+                   placeholder="{{'tagHint' | translate}}"
+                   uib-typeahead="tag as tag.label for tag in getTagsLike($viewValue)"
+                   typeahead-on-select="addTagFromTypeahead($item, $model, $label)"
+                   class="form-control"/>
+        </div>
+    </div>
+    {{error | translate }}
+</div>
