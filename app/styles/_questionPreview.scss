@@ -155,7 +155,6 @@ textarea#openQuestionTextarea.mobile.width {
     }
 
     .question {
-
         .question-preview {
             margin-top: 30px;
             margin-left: 89px;
@@ -473,28 +472,72 @@ audio.audio-width-mobile {
 }
 
 @media screen and (max-width: 1023px) {
-    #questionIntro .question {
+    /*#questionIntro .question {
         width: unset;
         margin: 0 -30px;
         overflow-y: auto;
+        border: 2px solid red;
+    }*/
+
+    #questionIntro {
+        .question {
+            width: unset;
+            margin: 0 -30px;
+            overflow-y: auto;
+            padding-top: 10px;
+            .details {
+                padding: 0;
+                .description {
+                    .edit-summary {
+                        .title {
+                            padding-top: 80px;
+                        }
+                    }
+
+                }
+            }
+            .question-preview {
+                margin-left: unset;
+                margin-right: unset;
+                width: unset;
+            }
+            .action-items-mobile {
+                padding-left: 16px;
+                padding-right: 16px;
+
+                .copy-edit {
+                    font-size: 30px;
+                }
+            }
+            .properties-mobile {
+                border: 1px solid #EEEEEF;  /*this border is needed to prevent the div from collapsing*/
+                padding-top: 10px;
+            }
+            .like-share {
+                margin-top: -5px;
+                margin-bottom; 10px;
+            }
+        }
     }
 
-    #questionIntro .question .details {
+   /* #questionIntro .question .details {
         padding: 0;
+        border: 2px solid orange;
         .description {
             .edit-summary {
                 .title {
                     padding-top: 80px;
+                    border: 2px solid black;
                 }
             }
 
         }
-    }
-    #questionIntro .question .question-preview {
+    }*/
+   /* #questionIntro .question .question-preview {
         margin-left: unset;
         margin-right: unset;
         width: unset;
-    }
+    }*/
     input#openQuestionText.mobile-width {
         width: 200px;
     }
