@@ -685,6 +685,7 @@ $COLOR_19: #2a6496 !default;
         background: $COLOR_1;
         color: white;
         margin-top: 12px;
+        margin-bottom: 16px;
         margin-left: 6px;
         display: inline-block;
         white-space: nowrap;
@@ -699,6 +700,9 @@ $COLOR_19: #2a6496 !default;
                 background: yellow;
             }
         }
+    }
+    .append-tweak {
+        margin-bottom: 0px;
     }
     input {
         display: inline-block;
