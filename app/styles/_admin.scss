@@ -1,0 +1,19 @@
+#admin {
+    .filter-lessons {
+        border-bottom: 1px solid #d2e8fa;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+    .admin-lessons {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #d2e8fa;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width : 1023px) {
+    .admin-lessons {
+        padding: 0 15px;
+    }
+}
