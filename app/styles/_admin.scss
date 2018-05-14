@@ -1,4 +1,4 @@
-#admin {
+.admin {
     .filter-lessons {
         border-bottom: 1px solid #d2e8fa;
         padding-top: 16px;
@@ -13,7 +13,28 @@
 }
 
 @media screen and (max-width : 1023px) {
-    .admin-lessons {
-        padding: 0 15px;
+    .admin {
+        .admin-lessons {
+            padding: 0 15px;
+        }
     }
 }
+
+#usersIndex {
+    .filter-users {
+        border-bottom: 1px solid #d2e8fa;
+        width: 1070px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+}
+
+@media screen and (max-width : 1023px) {
+    #usersIndex {
+        .filter-users {
+            padding: 0 15px;
+            width: unset;
+        }
+    }
+}
+

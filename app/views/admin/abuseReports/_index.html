@@ -1,11 +1,11 @@
 <div load-filter-and-paging="load()" admin-homepage>
-                <div >
+                <div class="admin">
                     <div>
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
-                                        <div class="lergo-h1 top-padding hidden-sm hidden-xs">{{ 'reports.filter' | translate }}</div>
+                                        <div class="lergo-h1 filter-lessons hidden-sm hidden-xs">{{ 'reports.filter' | translate }}</div>
                                         <div lergo-filter   model="adminFilter" opts="adminFilterOpts" on-change="load()" on-load="filterLoaded()"></div>
                                     </div>
                                 </div>
@@ -13,7 +13,7 @@
                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
                                         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                                            <div class="lergo-h1 padding-1 mobile-leftRight20">{{ 'admin.flaggedLesson' | translate }}</div>
+                                            <div class="lergo-h1 admin-lessons">{{ 'admin.flaggedLesson' | translate }}</div>
                                            <!-- <div class="push-down"></div>-->
 
 
