@@ -157,7 +157,14 @@
                                         <button style=" font-size: 13px" class="btn btn-start" ng-click="addStep(lesson)"
                                                 ng-disabled="saveButtonDisabled()">{{ 'steps.add' | translate }}
                                         </button>
-                                        <span>
+                                        <span class="hidden-xs">
+                                            <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                                            <button uib-popover="{{'steps.addHint' | translate}}"
+                                                    popover-is-open="popoverState.open"
+                                                    popover-placement="{{popoverState.position}}"  popover-trigger="'outsideClick'"
+                                                    tabindex="0"></button>
+                                        </span>
+                                        <span class="hidden-lg hidden-md hidden-sm">
                                             <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
                                             <button uib-popover="{{'steps.addHint' | translate}}"
                                                     popover-is-open="popoverState.open"
