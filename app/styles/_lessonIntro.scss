@@ -113,6 +113,10 @@
                     margin-left: 8px;
                     font-size: 20px;
                 }
+                .dropdown-menu {
+                    width: 100px;
+                    min-width: 100px;
+                }
             }
             .description {
                 pre {
@@ -293,7 +297,17 @@
                 }
                 .col-like {
                     float: right;
-                    padding-top: 10px
+                    padding-top: 10px;
+
+                    .action-item {
+                        .dropdown-menu {
+                            min-width: 85px;
+                            width: 85px;
+                            > li > a {
+                                padding: 3px 10px;
+                            }
+                        }
+                    }
                 }
                 .col-preview {
                     float: right;
