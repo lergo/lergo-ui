@@ -140,6 +140,7 @@
     "message": "נא להמתין..."
   },
   "button": {
+    "createNewAccount": "ליצור חשבון חדש",
     "forgotPassword": "שכחתי סיסמה",
     "login": "כניסה",
     "newInvite": "הזמנה חדשה",

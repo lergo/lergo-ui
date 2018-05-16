@@ -141,6 +141,7 @@
     "message": "Please wait ..."
   },
   "button": {
+    "createNewAccount": "Create new account",
     "forgotPassword": "Forgot password?",
     "login": "Login",
     "newInvite": "New Invite",

@@ -1,6 +1,7 @@
 <div class="login-form lergo-form" ng-controller="LoginCtrl">
 	<div class="loader"></div>
 	<form ng-submit='login()'>
+        <a class="signup" href="#!/public/session/signup">{{ 'button.createNewAccount' | translate }}</a>
 		<div class="section">
 			<div class="label">
 				<span class="errorMessage" ng-show='errorMessage'>{{errorMessage | translate}}</span>
@@ -27,16 +28,10 @@
 				<input ng-model="form.password" required type="password" />
 			</div>
 		</div>
-		<!--<div class="section horizontal ">-->
-		<!--<div class="input">-->
-		<!--<input ng-model="form.rememberMe" type="checkbox" />-->
-		<!--</div>-->
-		<!--<div class="label">Keep Me Logged In</div>-->
-		<!--</div>-->
 		<div class="center">
-			<button type="submit" class="btn">{{ 'button.login' | translate }}</button>
-			<a href="#!/public/session/signup">{{ 'button.signup' | translate }}</a>
+			<button type="submit" class="login btn">{{ 'button.login' | translate }}</button>
 			<br />
+            <br />
 			<a href="#!/public/session/resetPasswordRequest">{{ 'button.forgotPassword' | translate }}</a>
 		</div>
 	</form>
