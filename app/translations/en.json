@@ -141,6 +141,7 @@
     "message": "Please wait ..."
   },
   "button": {
+    "alreadyHaveAccount": "Already have an account?",
     "createNewAccount": "Create new account",
     "forgotPassword": "Forgot password?",
     "login": "Login",
@@ -148,6 +149,7 @@
     "resendValidationEmail": "Resend validation email",
     "showLesson": "Display Lesson",
     "signup": "Signup",
+    "signupSubmit": "SIGNUP",
     "submit": "Submit"
   },
   "cancel": "Close",

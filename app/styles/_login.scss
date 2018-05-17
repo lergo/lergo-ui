@@ -2,28 +2,37 @@
 #loginPage, #signUpPage, #resetPasswordRequestPage, #changePassword {
   #content {
     .centered-content {
-      width: 250px;
-      margin: 30px auto 0 auto;
-      .center {
-        text-align: center;
-      }
+          width: 250px;
+          margin: 30px auto 0 auto;
+          .center {
+            text-align: center;
+          }
     }
   }
-
+  .submit {
+      padding: 3px;
+      width: 100%;
+      font-size: 20px;
+  }
+  .have-account {
+      float: right;
+      margin: 0 -20px;
+      font-size: 16px;
+  }
   .instructions {
     margin: 10px auto;
     padding:20px;
     text-align: center;
   }
 
-.errorMessage {
-	font-size: 15px;
-	color: red;
-}
+  .errorMessage {
+      font-size: 15px;
+      color: red;
+  }
 
-.bg-warning, .bg-success{
-    padding:10px;
-    text-align:center;
+  .bg-warning, .bg-success{
+      padding:10px;
+      text-align:center;
   }
 
 }
@@ -42,4 +51,12 @@
   padding:10px;
   text-align:inherit;
   }
+}
+
+.rtl {
+    #signUpPage {
+        .have-account {
+            float: left;
+        }
+    }
 }

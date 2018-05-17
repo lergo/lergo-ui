@@ -140,6 +140,7 @@
     "message": "נא להמתין..."
   },
   "button": {
+    "alreadyHaveAccount": "כבר יש לך חשבון?",
     "createNewAccount": "ליצור חשבון חדש",
     "forgotPassword": "שכחתי סיסמה",
     "login": "כניסה",
@@ -147,6 +148,7 @@
     "resendValidationEmail": "שלח אימייל אימות שוב",
     "showLesson": "הצגת שיעור",
     "signup": "הרשמה",
+    "signupSubmit": "הרשמה",
     "submit": "שליחה"
   },
   "cancel": "לסגור",

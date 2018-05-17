@@ -1,7 +1,7 @@
 <div class="base-layout" id="signUpPage">
    <div class="centered-content" ng-controller="SignupCtrl"> <!-- needed to use the form.. does not work well with transcluded content hack -->
-
       <form ng-submit='submit()' name="signupForm" class="login-form Signup-form lergo-form">
+          <a class="have-account" href="#!/public/session/login"> {{'button.alreadyHaveAccount' | translate}}</a>
          <div class="section form-group">
             <div class="label">
                <span class="errorMessage" ng-show='errorMessage'>{{errorMessage | translate}}</span>
@@ -55,7 +55,7 @@
             </div>
          </div>
          <div>
-            <button type="submit" ng-disabled="signupForm.$invalid" class="btn">{{ 'button.submit' | translate }}</button>
+            <button type="submit" ng-disabled="signupForm.$invalid" class="submit btn">{{ 'button.signupSubmit' | translate }}</button>
          </div>
       </form>
    </div>
