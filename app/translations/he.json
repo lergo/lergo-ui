@@ -417,6 +417,7 @@
   "input": {
     "confirmNewPassword": "אשר/י סיסמה חדשה",
     "confirmPassword": "אישור סיסמה",
+    "changePassword" : "שנה סיסמא",
     "email": "אימייל",
     "emailConfirm": "אישור אימייל",
     "enterNewPassword": "הקלד/י סיסמה חדשה",

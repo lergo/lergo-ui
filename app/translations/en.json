@@ -429,6 +429,7 @@
   "input": {
     "confirmNewPassword": "Confirm New Password",
     "confirmPassword": "confirm password",
+    "changePassword": "CHANGE PASSWORD",
     "email": "email",
     "emailConfirm": "Confirm Email",
     "enterNewPassword": "Enter New Password",
