@@ -9,16 +9,24 @@
           }
     }
   }
+  .or {
+      text-align: center;
+      margin-bottom: 5px;
+  }
   .submit {
-      padding: 3px;
+      padding:3px;
       width: 100%;
-      font-size: 20px;
   }
-  .have-account {
-      float: right;
-      margin: 0 -20px;
-      font-size: 16px;
-  }
+
+    .reset-submit {
+        width: 100%;
+        padding: 7px;
+    }
+    .have-account {
+        float: right;
+        margin: 0 -20px;
+        font-size: 16px;
+    }
   .instructions {
     margin: 10px auto;
     padding:20px;

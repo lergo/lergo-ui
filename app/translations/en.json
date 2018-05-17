@@ -143,6 +143,7 @@
   "button": {
     "alreadyHaveAccount": "Already have an account?",
     "createNewAccount": "Create new account",
+    "or":"or",
     "forgotPassword": "Forgot password?",
     "login": "Login",
     "newInvite": "New Invite",
