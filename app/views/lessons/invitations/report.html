@@ -67,7 +67,7 @@
                             <i class="fa fa-repeat d-padBot10 m-right mpad-bot5"> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
                     </div>
-                    <div class="col-md-6 pull-right" ng-show="showContinueLesson()">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-right" ng-show="showContinueLesson()">
                         <a class="btn-link" href="{{continueLessonUrl(report)}}">
                             <i class="fa fa-repeat d-padBot10 "> {{'lessons.continueLesson' | translate}}</i>
                         </a>
@@ -94,10 +94,12 @@
                                 </a>
                             </div>
                         </span>
-                        <a class="btn-link continue-lesson" href="{{continueLessonUrl(report)}}"
-                           ng-show="showContinueLesson()">
-                            <i class="fa fa-repeat "> {{'lessons.continueLesson' | translate}}</i>
-                        </a>
+                        <span class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <a class="btn-link continue-lesson" href="{{continueLessonUrl(report)}}"
+                               ng-show="showContinueLesson()">
+                                <i class="fa fa-repeat "> {{'lessons.continueLesson' | translate}}</i>
+                            </a>
+                        </span>
                     </div>
                 </div>
             </div>
