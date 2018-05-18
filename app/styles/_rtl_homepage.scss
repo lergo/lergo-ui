@@ -65,6 +65,8 @@
 
 
 
+
+
 /* specifics for hebrew */
 .he{
   .homepage{
@@ -87,4 +89,20 @@
 			float:right;
 		}
 	}
+}
+
+@media screen and ( min-width: 768px ) and (max-width: 1200px) {
+    .rtl {
+        .sidebar-desktop {
+            .welcome {
+                font-size: 22px;
+            }
+            button > a {
+                font-size: 13px;
+            }
+            a {
+                font-size: 13px;
+            }
+        }
+    }
 }

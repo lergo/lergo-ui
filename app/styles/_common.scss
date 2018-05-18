@@ -1168,6 +1168,13 @@ label {
         }
     }
 }
+@media screen and ( min-width: 768px ) and (max-width: 1200px) {
+    .d-leftRight80 {
+        padding-left: 0px;
+        padding-right: 0px;
+
+    }
+}
 
 
 all-rtl-float-right {
