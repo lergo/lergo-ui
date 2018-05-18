@@ -575,7 +575,6 @@ input.form-control.search-input {
     }
 }
 
-// ipad only
 @media screen and (min-width : 1024px) and (max-width: 1200px) {
 
     .dropdown-align {
@@ -605,6 +604,8 @@ input.form-control.search-input {
     }
     #profileloginbutton-desktop {
         .header-signup {
+            margin-left: -26px;
+            margin-right: -26px;
          a  {
              width: 70px;
             }
