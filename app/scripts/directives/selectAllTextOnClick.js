@@ -16,12 +16,14 @@ angular.module('lergoApp')
                         element.select();
                         try {
                             if (document.execCommand('Copy')) {
-                                console.log('copied');
+                                scope.copied = true;
+                                console.log('copied: ' + scope.copied);
                             }
                         } catch (e) {
                         }
                     }, 0);
                 });
+                scope.copied = false;
             }
         };
     });

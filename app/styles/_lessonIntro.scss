@@ -491,6 +491,16 @@
                 }
             }
         }
+        .links-facebook {
+            display: inline-block;
+            margin-right: 100px;
+        }
+        .links-sharing {
+
+            border: 1px solid #DFC57D;
+            background-color: #F3ECC4;
+            padding:5px;
+        }
         .action-link {
             textarea {
                 height: 45px;
@@ -612,6 +622,13 @@
                 .name {
                     /*font-size: 25px;*/
                 }
+            }
+        }
+    }
+    .forms {
+        .lesson-action-panel {
+            .links-facebook {
+                margin-right: 60px;
             }
         }
     }
