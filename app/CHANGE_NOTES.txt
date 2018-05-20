@@ -1,3 +1,5 @@
+feat(add subject: technology) LERGO-676
+
 feat(add subject: psychometic) LERGO-675
 
 undo 'implement gzip in nginx.conf.template to reduce loading time' because build was not working
