@@ -1,6 +1,6 @@
 <div class="lergo-form invite lesson-action-panel">
     <div class="invite-sections sections-links lesson-action-panel-navigation clearfix">
-        <p class="lergo-h4 lesson-action-panel-link" ng-class="{active:isStudentMode()}" ng-click="setStudentMode()">
+        <p class="lergo-h4 lesson-action-panel-link" ng-class="{active:isStudentMode()}" ng-click="setStudentMode() ">
             {{'lessons.inviteLesson.student.msg'| translate}}</p>
         <p class="lergo-h4 lesson-action-panel-link" ng-class="{active:isClassMode()}" ng-click="setClassMode()">
             {{'lessons.inviteLesson.class.msg' | translate }}</p>
@@ -11,30 +11,33 @@
     <script type="text/ng-template" id="inline_lessonCreateInviteFormItem.html">
         <div class="container" style="width: 100%" >
             <div class="row" style="margin: 0">
-        <p ng-show="!isSuccess()">{{'lessons.inviteLesson.' + mode + '.help' | translate }} </p>
-        <p ng-show="isSuccess()">{{'lessons.inviteLesson.' + mode + '.success.help' | translate }} </p>
+                <p ng-show="!isSuccess()">{{'lessons.inviteLesson.' + mode + '.help' | translate }} </p>
+                <p ng-show="isSuccess()">{{'lessons.inviteLesson.' + mode + '.success.help' | translate }} </p>
+                <div class="invite-form-link">
+                    <div  ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
+                        <div style="margin: 0 1vw 0 1vw">{{'name' | translate }}</div>
+                        <input style="width: 90%; margin: auto;" type="text" ng-model="invitationName" on-enter="enterPressed()"
+                               ng-class="{'in-success':isSuccess()}"/>
+                    </div>
+                    <div ng-show="isSuccess()" class="col-md-8">
 
-                <div  ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
-                    <div style="margin: 0 2vw 0 2vw">{{'name' | translate }}</div>
-                    <input style="width: 90%; margin: auto;" type="text" ng-model="invitationName" on-enter="enterPressed()"
-                           ng-class="{'in-success':isSuccess()}"/>
-                </div>
-                <div ng-show="isSuccess()" class="col-md-8">
+                        <p style="margin: 0 2vw 0 2vw">{{'pin' | translate }}
+                            <small style="font-size: 11px">{{'lessons.inviteLesson.'+mode+'.pinHint' | translate}}</small>
+                        </p>
+                        <input style="width: 90%; margin: auto; direction: inherit" type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
+                               ng-class="{'in-success':isSuccess()}" select-all-text-on-click on-enter/>
+                    </div>
 
-                    <p style="margin: 0 2vw 0 2vw">{{'pin' | translate }}
-                        <small style="font-size: 11px">{{'lessons.inviteLesson.'+mode+'.pinHint' | translate}}</small>
-                    </p>
-                    <input style="width: 90%; margin: auto; direction: inherit" type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
-                           ng-class="{'in-success':isSuccess()}" select-all-text-on-click on-enter/>
+
+
+                <div ng-show="isSuccess()" class="invite-link">
+                    <div class="links-sharing" ng-show="copied"> <i class="fa fa-copy"></i> &nbsp;{{'invitations.linkCopied' | translate}}&nbsp;</div>
+                    <div ng-show="!copied">{{'lessons.inviteLesson.' + mode + '.success.invite' | translate}}</div>
+                    <textarea class="link" readonly select-all-text-on-click
+                           on-enter="enterPressed()">{{getLink()}}</textarea>
                 </div>
             </div>
-
-
-            <div ng-show="isSuccess()" class="invite-link">
-                <div>{{'lessons.inviteLesson.' + mode + '.success.invite' | translate}}</div>
-                <textarea class="link" readonly select-all-text-on-click
-                       on-enter="enterPressed()">{{getLink()}}</textarea>
-            </div>
+        </div>
             <br/>
             <div class="button">
                 <button class="btn" ng-click="sendInvite()" ng-show="!isSuccess()" ng-disabled="!isValid()">{{
@@ -50,6 +53,7 @@
 
         </div>
     </script>
+
 
 
     <div ng-show="isStudentMode()" ng-class="{active:isStudentMode()}">
