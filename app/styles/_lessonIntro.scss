@@ -498,14 +498,17 @@
         }
         .links-facebook {
             display: inline-block;
-            margin-right: 100px;
+            margin-right: 120px;
             margin-left: 0px;
         }
         .links-sharing {
-
+            color: black;
             border: 1px solid #DFC57D;
             background-color: #F3ECC4;
-            padding:5px;
+            padding:10px;
+                .fa {
+                    font-size: 22px;
+                }
         }
         .action-link {
             textarea {
@@ -578,7 +581,7 @@
         .lesson-action-panel {
             .links-facebook {
                 margin-right: 0px;
-                margin-left: 100px;
+                margin-left: 144px;
             }
         }
     }
