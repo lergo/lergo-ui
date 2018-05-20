@@ -18,7 +18,7 @@ angular.module('lergoApp')
                             if (document.execCommand('Copy')) {
                                 scope.copied = true;
                                 console.log('copied: ' + scope.copied);
-                                $timeout(function() {scope.copied = false; console.log('slept for a while')}, 2000);
+                                $timeout(function() {scope.copied = false; console.log('slept for a while');}, 2000);
 
                             }
                         } catch (e) {
