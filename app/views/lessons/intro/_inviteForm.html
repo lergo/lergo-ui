@@ -14,6 +14,8 @@
                 <p ng-show="!isSuccess()">{{'lessons.inviteLesson.' + mode + '.help' | translate }} </p>
                 <p ng-show="isSuccess()">{{'lessons.inviteLesson.' + mode + '.success.help' | translate }} </p>
                 <div class="invite-form-link">
+                    <div class="links-sharing" ng-show="copied"> <i class="fa fa-copy"></i> &nbsp;{{'invitations.linkCopied' | translate}}&nbsp;</div>
+
                     <div  ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
                         <div style="margin: 0 1vw 0 1vw">{{'name' | translate }}</div>
                         <input style="width: 90%; margin: auto;" type="text" ng-model="invitationName" on-enter="enterPressed()"
@@ -21,7 +23,7 @@
                     </div>
                     <div ng-show="isSuccess()" class="col-md-8">
 
-                        <p style="margin: 0 2vw 0 2vw">{{'pin' | translate }}
+                        <p style="margin: 0 1vw 0 1vw">{{'pin' | translate }}
                             <small style="font-size: 11px">{{'lessons.inviteLesson.'+mode+'.pinHint' | translate}}</small>
                         </p>
                         <input style="width: 90%; margin: auto; direction: inherit" type="text" ng-value="getPin()" readonly on-enter="enterPressed()"
@@ -31,7 +33,6 @@
 
 
                 <div ng-show="isSuccess()" class="invite-link">
-                    <div class="links-sharing" ng-show="copied"> <i class="fa fa-copy"></i> &nbsp;{{'invitations.linkCopied' | translate}}&nbsp;</div>
                     <div ng-show="!copied">{{'lessons.inviteLesson.' + mode + '.success.invite' | translate}}</div>
                     <textarea class="link" readonly select-all-text-on-click
                            on-enter="enterPressed()">{{getLink()}}</textarea>

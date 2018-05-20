@@ -18,7 +18,8 @@ angular.module('lergoApp').directive('lessonCreateInviteFormItem', function(Lerg
     return {
         restrict: 'A',
         scope:{
-            mode: '@lessonCreateInviteFormItem'
+            mode: '@lessonCreateInviteFormItem',
+            copied: '@'
         },
         templateUrl: 'inline_lessonCreateInviteFormItem.html',
         link: function($scope){
