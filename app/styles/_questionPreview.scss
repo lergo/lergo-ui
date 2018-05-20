@@ -320,10 +320,14 @@ textarea#openQuestionTextarea.mobile.width {
                         padding: 10px;
                     }
                 }
+                .links-sharing {
+                    border: 1px solid #DFC57D;
+                    background-color: #F3ECC4;
+                    padding:5px;
+                }
             }
             .description {
                 pre {
-                    /*word-break: break-word;*/
                     background: transparent;
                 }
                 font-size: 17px;

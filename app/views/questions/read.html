@@ -218,7 +218,9 @@
                                  <p class="lergo-h4">{{'questions.shareQuestion' | translate}}</p>
 
                                  <div class="container" style="width: 100%">
-                                     <span>{{'questions.shareQuestionTitle' | translate}}</span>
+                                     <div class="links-sharing" ng-show="copied"> <i class="fa fa-copy"></i> &nbsp;{{'invitations.linkCopied' | translate}}&nbsp;</div>
+
+                                     <span ng-show="!copied">{{'questions.shareQuestionTitle' | translate}}</span>
                                      <textarea type="text" ng-model="shareLink" readonly select-all-text-on-click></textarea>
                                  </div>
                              </div>
