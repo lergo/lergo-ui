@@ -443,6 +443,7 @@
     "create": "Create New Invite",
     "createdSuccessfully": "We created your invitation",
     "error": "Error sending invitation :(",
+    "linkCopied": "Link copied to clipboard",
     "sending": "Sending invite, please wait...",
     "sent": "Invitation successfully sent"
   },

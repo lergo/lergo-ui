@@ -494,6 +494,7 @@
         .links-facebook {
             display: inline-block;
             margin-right: 100px;
+            margin-left: 0px;
         }
         .links-sharing {
 
@@ -569,6 +570,12 @@
                 }
             }
         }
+        .lesson-action-panel {
+            .links-facebook {
+                margin-right: 0px;
+                margin-left: 100px;
+            }
+        }
     }
 }
 
@@ -628,7 +635,18 @@
     .forms {
         .lesson-action-panel {
             .links-facebook {
-                margin-right: 60px;
+                margin-right: 40px;
+                margin-left: 0px;
+            }
+        }
+    }
+    .rtl {
+        .forms {
+            .lesson-action-panel {
+                .links-facebook {
+                    margin-right: 0px;
+                    margin-left: 40px;
+                }
             }
         }
     }
