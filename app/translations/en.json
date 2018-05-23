@@ -444,6 +444,7 @@
     "createdSuccessfully": "We created your invitation",
     "error": "Error sending invitation :(",
     "linkCopied": "Link copied to clipboard",
+    "pinCopied": "PIN Code was  copied to clipboard",
     "sending": "Sending invite, please wait...",
     "sent": "Invitation successfully sent"
   },

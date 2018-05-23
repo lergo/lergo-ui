@@ -16,7 +16,7 @@ the format from interfering with the before lesson invite form-->
             <input type="text" ng-model="invitationName" on-enter="enterPressed()" />
             <div ng-show="isSuccess()">
                 <div>{{'lessons.inviteLesson.' + mode + '.success' | translate}}</div>
-                <input type="text" ng-value="getLink()" readonly select-all-text-on-click on-enter="enterPressed()" placeholder=mode />
+                <input type="text" ng-value="getLink()" readonly select-all-text-on-click="link" on-enter="enterPressed()" placeholder=mode />
             </div>
             <br/>
             <div class="button">

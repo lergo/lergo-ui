@@ -18,13 +18,13 @@
         </div>
 		<div ng-show="shareSection === 'link' ">
 			<span>{{'lessons.shareLessonTitle' | translate}}</span>
-			<textarea type="text" ng-model="shareLink" readonly select-all-text-on-click></textarea>
+			<textarea type="text" ng-model="shareLink" readonly select-all-text-on-click="link"></textarea>
 		</div>
 	</div>
 	<div class="share-embed action-embed" ng-show="shareSection === 'embed' ">
 		<div style="margin-top: 10px">
 			<span>{{'lessons.embedLessonTitle' | translate }}</span>
-			<textarea ng-model="embedCode" readonly select-all-text-on-click></textarea>
+			<textarea ng-model="embedCode" readonly select-all-text-on-click="link"></textarea>
 		</div>
 	</div>
 </div>
