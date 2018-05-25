@@ -1,3 +1,18 @@
+feat(add subject: technology) LERGO-676
+
+feat(add subject: psychometic) LERGO-675
+
+undo 'implement gzip in nginx.conf.template to reduce loading time' because build was not working
+
+implement gzip in nginx.conf.template to reduce loading time
+current estimate by chrome dev tools is that we can save 5 seconds
+
+remove(console.log) LERGO-674: console.log in server.js if filling up the process.log quickly and is not needed
+
+fix(build) LERGO-673:  change bower.json to fix angular-mocks at 1.6.6. Angular-mocks 1.6.7 causes karma
+unit test to fail on ERROR: Unexpected request: GET views/homepage.html
+
+
 fix(system-test failure) uib-tooltip interferes with index : 0 locator
 causing system test to fail. This is a new problem probably due to chrome upgrade
 
