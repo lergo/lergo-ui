@@ -321,9 +321,14 @@ textarea#openQuestionTextarea.mobile.width {
                     }
                 }
                 .links-sharing {
+                    text-align: center;
+                    color: black;
                     border: 1px solid #DFC57D;
                     background-color: #F3ECC4;
-                    padding:5px;
+                    padding: 10px;
+                    .fa {
+                        font-size: 22px;
+                    }
                 }
             }
             .description {
