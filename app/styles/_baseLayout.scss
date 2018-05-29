@@ -95,27 +95,30 @@ label.btn.btn-link {
             }
         }
     }
-    .header-login {
-        .user-section-menu {
-        }
-        & > a {
-            color: white;
-            font-size: 18px;
-            text-overflow:ellipsis;
-            white-space: nowrap;
-            overflow:hidden;
-            max-width:100%;
-            text-decoration: none;
-            padding: 15px 15px 7px;
-            text-align: center;
-            &:hover {
-                background-color: rgba(0, 0, 0, 0.3)
+    .header-login-dropdown {
+        .header-login {
+            .user-section-menu {
             }
-            img{
-                padding-right:5px;
+            & > a {
+                color: white;
+                font-size: 18px;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+                overflow:hidden;
+                max-width:100%;
+                text-decoration: none;
+                padding: 15px 15px 7px;
+                text-align: center;
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.3)
+                }
+                img{
+                    padding-right:5px;
+                }
             }
         }
     }
+
 }
 
 
@@ -495,8 +498,16 @@ input.form-control.search-input {
 // desktop only! - not ipad
 // drop-downs show menu on hover for desktop only
 @media screen  and (min-width: 1200px) {
-    .dropdown:hover .dropdown-menu {
-        display: block;
+    .header-login-dropdown {
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    }
+    .simple-dropdown {
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
     }
 }
 

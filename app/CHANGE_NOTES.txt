@@ -1,3 +1,6 @@
+bug(fix) LERGO-677 admin homepage -sub menu of publish to be visible, fix width of abuse dropdown and remove
+hover dropdown on abuse and pubish. ALSO embed: remove navbar and make desktop size (not xs)
+
 bug(fix) LERGO-678 add Filters to qeustions in popup from edit lesson -quiz
 
 feat(add subject: technology) LERGO-676

@@ -117,6 +117,11 @@
                     width: 100px;
                     min-width: 100px;
                 }
+                .abuse-chevron {
+                    .dropdown-menu {
+                        width: unset;
+                    }
+                }
             }
             .description {
                 pre {
@@ -441,6 +446,13 @@
             min-width: 0;
             width: auto;
         }
+    }
+    #lessonIntro-Mobile .lesson .image img {
+          height: 240px;
+          width: 60%;
+       }
+    .lergo-body-tile {
+        width: 80%;
     }
 }
 
