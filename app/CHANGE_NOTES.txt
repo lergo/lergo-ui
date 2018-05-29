@@ -1,3 +1,5 @@
+bug(fix) LERGO-678 add Filters to qeustions in popup from edit lesson -quiz
+
 feat(add subject: technology) LERGO-676
 
 feat(add subject: psychometic) LERGO-675

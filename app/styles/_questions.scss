@@ -45,6 +45,9 @@
         border-bottom: 1px solid #d2e8fa;
         padding-bottom: 17px;
     }
+    .active-filter-modal {
+        margin-right: 22px;
+    }
     .my-questions {
         padding-top: 16px;
         padding-bottom: 16px;
@@ -196,7 +199,7 @@
         .tag-section-wrapper {
             .tags-section {
                 input {
-                    width: 30%;
+                    /*width: 30%;*/
                 }
             }
         }
@@ -231,6 +234,12 @@
     .filters{
         .cancel-search {
             right: -60px;
+        }
+    }
+    #questionsIndex {
+
+        .active-filter-modal {
+            margin-right: 22px;
         }
     }
 }

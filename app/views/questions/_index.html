@@ -4,19 +4,19 @@
         <br/>
         <div class="container">
             <div class="row">
-                <div ng-show="!isModal">
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                            <div>
-                                <div class="lergo-h1-orig filter-questions hidden-sm hidden-xs">{{ 'questions.filter' | translate }}</div>
-                                <div lergo-filter   no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
-                                     on-load="filterLoaded()"
-                                     opts="questionsFilterOpts">
-                                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div>
+                            <div class="lergo-h1-orig filter-questions hidden-sm hidden-xs">{{ 'questions.filter' | translate }}</div>
+                            <div lergo-filter   no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
+                                 on-load="filterLoaded()"
+                                 opts="questionsFilterOpts">
                             </div>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                     </div>
+                    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+                </div>
+                <div ng-show="!isModal">
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             <div class="my-questions lergo-h1-orig col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <div class="btn-group" uib-dropdown dropdown-append-to-body>
@@ -46,10 +46,11 @@
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
                 </div>
-
-                <div class="hidden-sm hidden-xs" filter-is-active="questionsFilterOpts" section="questions"></div>
+                <div ng-show="isModal" style="height: 19px"></div>
+                <div class="hidden-sm hidden-xs" filter-is-active="questionsFilterOpts" section="questions" ng-class="!!isModal==true ? 'active-filter-modal': 'active-filter'"></div>
 
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
                     <div class="table-responsive">
                         <table ng-show="items.length > 0" class="table">
                             <thead>
@@ -87,7 +88,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+              <!--  <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>-->
             </div>
             <div class="text-center" ng-hide="items || items.length != 0">
                 <span class="alert alert-warning font-medium">{{ 'questions.noQuestions' | translate }}</span>
