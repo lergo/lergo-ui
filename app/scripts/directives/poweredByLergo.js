@@ -3,7 +3,7 @@
 angular.module('lergoApp')
     .directive('poweredByLergo', function (LessonsService) {
         return {
-            template: '<div class="embed-mode-item watch-on-lergo text-center"> <a  href="{{shareLink}}" target="_blank">{{"powered.by.lergo"|translate}}</a> </div>',
+            template: '<div class="embed-mode-item watch-on-lergo"> <a  href="{{shareLink}}" target="_blank">{{"powered.by.lergo"|translate}}</a> </div>',
             restrict: 'A',
             scope: {
                 'lesson': '=poweredByLergo'

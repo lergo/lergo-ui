@@ -449,12 +449,14 @@
     }
     #lessonIntro-Mobile .lesson .image img {
           height: 240px;
-          width: 60%;
+          width: 75%;
        }
     .lergo-body-tile {
         width: 80%;
     }
 }
+
+
 
 .rtl.lergo-embed-mode {
     .watch-on-lergo {
@@ -621,11 +623,9 @@
                     }
                 }
             }
-            /*.image {
-                img {
-                    min-height: 236px;
-                }
-            }*/
+        }
+        .embed-powered-by-lergo {
+            margin: 20px 60px;
         }
     }
 }
@@ -669,6 +669,16 @@
                     margin-left: 40px;
                 }
             }
+        }
+    }
+}
+
+@media screen and ( max-width: 480px ) {
+    .lergo-embed-mode {
+
+        #lessonIntro-Mobile .lesson .image img {
+            height: 240px;
+            width: 100%;
         }
     }
 }
