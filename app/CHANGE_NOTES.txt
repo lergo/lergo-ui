@@ -1,3 +1,5 @@
+improve(embed and play lesson) for mobile sizes above 400px by limiting width to 400px
+
 improve(embed) increase size of intro page, remove centered "powered by lergo"
 
 bug(fix) LERGO-677 admin homepage -sub menu of publish to be visible, fix width of abuse dropdown and remove

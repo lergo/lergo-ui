@@ -27,6 +27,12 @@
     text-align: center;
     .lesson-step-video-content {
         display: inline-block;
+        .lesson-step-video-embed {
+            width: 100vw;
+            max-width:400px;
+            height: 56vw;
+            position: relative;
+        }
     }
 }
 
@@ -344,10 +350,11 @@
     padding-right: 37px;
 }
 
-@media screen and (max-width : 1023px) {
+@media screen and (max-width : 1024px) {
     .lesson-step-quiz-mobile {
         .lesson-step-quiz-content {
             width: unset;
+            max-width: 400px;
         }
     }
 
