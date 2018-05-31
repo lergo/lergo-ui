@@ -49,7 +49,10 @@ module.exports = function (config) {
         colors: true,
         logLevel: 'info',
         autoWatch: true,
-        captureTimeout: 15000,
+        captureTimeout: 210000,
+        browserDisconnectTolerance: 3,
+        browserDisconnectTimeout : 210000,
+        browserNoActivityTimeout : 210000,
         singleRun: false,
         coverageReporter: {
             type: 'html',

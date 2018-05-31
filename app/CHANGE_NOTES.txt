@@ -1,4 +1,5 @@
-improve( 400px to 768px)  play lesson and lesson intro
+
+fix(karma.conf timeout using https://github.com/jasmine/jasmine/issues/1413
 
 improve(embed and play lesson) for mobile sizes above 400px by limiting width to 400px
 
