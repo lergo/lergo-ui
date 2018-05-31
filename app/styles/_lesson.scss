@@ -29,7 +29,6 @@
         display: inline-block;
         .lesson-step-video-embed {
             width: 100vw;
-            max-width:400px;
             height: 56vw;
             position: relative;
         }
@@ -429,6 +428,22 @@
         #quizUpdate {
             .practice-button {
                 padding-right: 15px;
+            }
+        }
+    }
+}
+
+@media screen and ( min-width : 400px ) and (max-width : 768px ) {
+    .lesson-step {
+        .video-container {
+            max-width: 400px;
+            margin: auto;
+        }
+    }
+    .lesson-step-video {
+        .lesson-step-video-content {
+            .lesson-step-video-embed {
+                max-width:400px;
             }
         }
     }

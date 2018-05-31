@@ -1,3 +1,5 @@
+improve( 400px to 768px)  play lesson and lesson intro
+
 improve(embed and play lesson) for mobile sizes above 400px by limiting width to 400px
 
 improve(embed) increase size of intro page, remove centered "powered by lergo"
