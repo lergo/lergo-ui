@@ -31,40 +31,10 @@
             width: 100vw;
             height: 56vw;
             position: relative;
+            /*float: right;*/
         }
     }
 }
-
-/*.lesson-step-quiz {
-    .lesson-step-quiz-next {
-        text-align: center;
-    }
-    .lergo-progress-bar {}
-    .question-true-false {
-        .true-false-options {
-            .true-false-option {
-                padding: 15px;
-                margin-left: 5px;
-            }
-            text-align: center;
-        }
-    }
-    margin-top: 20px;
-    .lergo-h2 {
-        text-align: center;
-        padding: 10px 0;
-    }
-    .lesson-step-quiz-content {
-        width: 570px;
-        border: 5px solid #949494;
-        border-radius: 10px;
-        margin-top: 50px;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: #efefef; // to complete the background color of #questionPreview
-    }
-}*/
-
 .lesson-step-quiz-mobile {
     .lesson-step-quiz-next {
         text-align: center;
@@ -192,6 +162,11 @@
                 padding: 0px;
                 border-radius: 10px;
             }
+        }
+    }
+    .embed-congrats {
+        .congrats {
+            max-width: 530px;
         }
     }
     .loading {
@@ -353,7 +328,7 @@
     .lesson-step-quiz-mobile {
         .lesson-step-quiz-content {
             width: unset;
-            max-width: 485px;
+            max-width: 530px;
         }
     }
 
@@ -434,6 +409,14 @@
 }
 
 @media screen and ( min-width : 400px ) and (max-width : 768px ) {
+    #lessonDisplay {
+        .done-step-mobile {
+            max-width: 530px;
+        }
+    }
+    #grad1 {
+        width: 88vw;
+    }
     .lesson-step {
         .video-container {
             max-width: 400px;
@@ -443,7 +426,7 @@
     .lesson-step-video {
         .lesson-step-video-content {
             .lesson-step-video-embed {
-                max-width:485px;
+                max-width:546px;
             }
         }
     }
