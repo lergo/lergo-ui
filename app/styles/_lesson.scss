@@ -302,7 +302,6 @@
 #grad1 {
     margin-top: 10px;
     height: 5px;
-    width: 90vw;
     margin-left: auto;
     margin-right: auto;
     background: red; /* For browsers that do not support gradients */
@@ -413,9 +412,6 @@
         .done-step-mobile {
             max-width: 530px;
         }
-    }
-    #grad1 {
-        width: 88vw;
     }
     .lesson-step {
         .video-container {
