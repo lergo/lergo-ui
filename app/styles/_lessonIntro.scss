@@ -120,6 +120,7 @@
                 .abuse-chevron {
                     .dropdown-menu {
                         width: unset;
+                        top: 68%;
                     }
                 }
             }
@@ -623,6 +624,13 @@
                     }
                     & > .btn-link, & > div {
                         font-size: 16px;
+                    }
+                    .action-item {
+                        .abuse-chevron-mobile {
+                            .dropdown-menu {
+                                top:45%;
+                            }
+                        }
                     }
                 }
             }

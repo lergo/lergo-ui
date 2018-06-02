@@ -130,7 +130,7 @@
                                                             <td colspan="2">
                                                                 <span ng-show="!!lesson.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
                                                                       <i class="fa fa-book fa-fw"></i>
-                                                                            {{lesson.subject && ('filters.subjects.' + lesson.subject | translate) | limitTo: 8 ||""}}
+                                                                            {{lesson.subject && ('filters.subjects.' + lesson.subject | translate)}}
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -198,7 +198,7 @@
 										<td colspan="2">
 											<span ng-show="!!lesson.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
 												<i class="fa fa-book fa-fw"></i>
-												{{lesson.subject && ('filters.subjects.' + lesson.subject | translate) | limitTo: 8 ||""}}
+												{{lesson.subject && ('filters.subjects.' + lesson.subject | translate)}}
 											</span>
 										</td>
 									</tr>

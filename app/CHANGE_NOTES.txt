@@ -1,5 +1,7 @@
 
-fix(karma.conf timeout using https://github.com/jasmine/jasmine/issues/1413
+fix (various pixel perfect) abuse dropdown position, remove limit:8 on subject @ homepage and fix embed width
+
+fix( build-lergo) karma.conf timeout using https://github.com/jasmine/jasmine/issues/1413
 
 improve(embed and play lesson) for mobile sizes above 400px by limiting width to 400px
 
