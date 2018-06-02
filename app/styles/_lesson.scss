@@ -327,7 +327,7 @@
     .lesson-step-quiz-mobile {
         .lesson-step-quiz-content {
             width: unset;
-            max-width: 530px;
+            max-width: 548px;
         }
     }
 
@@ -407,10 +407,10 @@
     }
 }
 
-@media screen and ( min-width : 400px ) and (max-width : 768px ) {
+@media screen and ( min-width : 400px ) and (max-width : 1024px ) {
     #lessonDisplay {
         .done-step-mobile {
-            max-width: 530px;
+            max-width: 548px;
         }
     }
     .lesson-step {
