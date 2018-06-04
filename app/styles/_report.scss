@@ -27,6 +27,9 @@
                 color: #337ab7;
             }
         }
+        .popover .popover-content {
+            width: 220px;
+        }
     }
     .lergo-h1 {
         font-size: 20px;
@@ -106,7 +109,7 @@
     }
     .header {
         height: inherit;
-        min-height: 210px;
+        min-height: 220px;
         padding: 10px;
         background-color: #EFEFEF;
         margin-bottom: 20px;
@@ -264,6 +267,9 @@
             }
         }
     }
+    .report-numbers {
+        font-size: 14px;
+    }
 }
 
 .rtl {
@@ -409,6 +415,11 @@
                 font-size: 15px;
             }
         }
+        .redo-buttons {
+            .popover .popover-content {
+                width: 290px;
+            }
+        }
 
     }
     .rtl .report {
@@ -450,7 +461,6 @@
         .pad-percent {
             padding-top: 3px;
         }
-
     }
     .rtl {
         .header-name {

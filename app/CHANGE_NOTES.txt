@@ -1,3 +1,5 @@
+fix( various pixel perfect) lesson summary space, lesson report number font-size, 3 bar dropdown placement, change
+order of menu in user dropdown, change order of tabs in user menu, change position of "not logged in" practice mistake popoup
 
 fix (various pixel perfect) abuse dropdown position, remove limit:8 on subject @ homepage and fix embed width
 

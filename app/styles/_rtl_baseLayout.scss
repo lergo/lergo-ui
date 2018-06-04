@@ -117,6 +117,16 @@ body .rtl{
     }
 }
 
+@media screen and ( min-width : 1200px ) {
+    .rtl {
+
+        .dropdown-align {
+            margin-left: 32px;
+        }
+
+    }
+}
+
 // ipad only
 @media screen and (min-width : 1024px) and (max-width: 1200px) {
     .rtl {
