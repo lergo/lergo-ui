@@ -1,3 +1,6 @@
+
+LERGO-678 bug(remove {overflow-x: hidden} and remove scrollToTop from all places in code
+
 fix( various pixel perfect) lesson summary space, lesson report number font-size, 3 bar dropdown placement, change
 order of menu in user dropdown, change order of tabs in user menu, change position of "not logged in" practice mistake popoup
 

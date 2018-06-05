@@ -3,9 +3,6 @@
 angular.module('lergoApp').controller('LessonsIntroCtrl',
     function ($scope, $routeParams, LergoClient, $location, $uibModal, DisplayRoleService, $log, $rootScope, LergoTranslate, $window, $filter) {
         $window.scrollTo(0, 0);
-        $scope.scrollToTop = function() {
-            document.body.scrollTop = 0;
-        };
         var lessonId = $routeParams.lessonId;
         var invitationId = $routeParams.invitationId;
         var preview = !!$routeParams.preview;

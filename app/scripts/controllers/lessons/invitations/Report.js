@@ -112,9 +112,5 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
                 }
             });
         }
-        $scope.scrollToTop = function() {
-            document.body.scrollTop = 0;
-        };
-
     })
 ;
