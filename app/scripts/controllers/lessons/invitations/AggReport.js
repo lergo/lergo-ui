@@ -52,6 +52,5 @@ angular.module('lergoApp').controller('LessonsInvitationsAggReportCtrl',
                 })
             });
         };
-
-
+        $window.scrollTo(0, 0);
     });

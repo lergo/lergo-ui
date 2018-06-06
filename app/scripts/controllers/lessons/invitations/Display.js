@@ -2,7 +2,7 @@
 
 angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
     function ($scope, $filter, LergoClient, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope) {
-
+        $window.scrollTo(0, 0);
         $log.info('loading invitation', $routeParams.invitationId);
         var errorWhileSaving = false;
         $scope.shareSection = 'link';

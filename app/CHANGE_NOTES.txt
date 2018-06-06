@@ -1,4 +1,6 @@
 
+LERGO-678-cont : fix scrollUp issues
+
 LERGO-678 bug(remove {overflow-x: hidden} and remove scrollToTop from all places in code
 
 fix( various pixel perfect) lesson summary space, lesson report number font-size, 3 bar dropdown placement, change

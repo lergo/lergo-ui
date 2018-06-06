@@ -2,6 +2,7 @@
 
 angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location,  $window) {
 
+    $window.scrollTo(0, 0);
 
 	$scope.loaded = false;
 	$scope.lessonsFilter = {

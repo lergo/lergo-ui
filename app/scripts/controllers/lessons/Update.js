@@ -2,9 +2,7 @@
 
 angular.module('lergoApp').controller('LessonsUpdateCtrl',
     function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
-        /*$window.scrollTo(0, 0);*/
-        document.body.scrollTop = 0;
-        console.log('scrollTo in Update.js');
+        $window.scrollTo(0, 0);
         $scope.subjects = LergoFilterService.subjects;
         var addStepClicked = false;
         $scope.popoverState = {open: false, position: 'top'};
@@ -397,13 +395,12 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 }
             }
         });
-        /*the below is a hack to solve the problem that  $window.scrollY is not working so here we scroll
-        to the bottom of the page: document.body.scrollHeight*/
+
         function persistScroll() {
             if (!$rootScope.scrollPosition) {
                 $rootScope.scrollPosition = {};
             }
-            $rootScope.scrollPosition[$location.path()] =  document.body.scrollHeight;  /*$window.scrollY;*/
+            $rootScope.scrollPosition[$location.path()] = $window.scrollY;
         }
 
         function scrollToPersistPosition() {
@@ -411,7 +408,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             if (!!$rootScope.scrollPosition) {
                 scrollY = $rootScope.scrollPosition[$location.path()] || 0;
             }
-            document.body.scrollTop = scrollY;
+            $window.scrollTo(0, scrollY);
         }
 
 
