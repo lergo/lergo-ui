@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsInvitationsAggReportCtrl',
-    function ($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope) {
+    function ($window, $scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope) {
         $log.info('loading');
         LergoClient.reports.getClassReportById($routeParams.reportId).then(function (result) {
             $scope.report = result.data;

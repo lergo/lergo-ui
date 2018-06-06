@@ -26,7 +26,7 @@
  *
  */
 
-var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsService, $log, LergoClient, $q) {
+var LessonsReportWriteCtrl = function ($window, $scope, ReportWriteService, ReportsService, $log, LergoClient, $q) {
 
     var report = $scope.report;
     if (!report.answers) {

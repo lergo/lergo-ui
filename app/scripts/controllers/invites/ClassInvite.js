@@ -8,7 +8,7 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('ClassInviteCtrl', function ($scope, LergoClient, $routeParams, $log, LergoTranslate, $rootScope , $location ) {
+    .controller('ClassInviteCtrl', function ($window, $scope, LergoClient, $routeParams, $log, LergoTranslate, $rootScope , $location ) {
         $window.scrollTo(0, 0);
 
         $scope.classInvite = {};
