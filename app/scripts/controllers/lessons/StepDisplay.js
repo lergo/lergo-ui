@@ -303,6 +303,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     };
 
     $scope.nextQuizItem = function () {
+        window.scrollTo(0,68);
         $log.info('next');
         if (!!$scope.quizItem) {
             localStorageService.remove($scope.quizItem._id + '-retries');
