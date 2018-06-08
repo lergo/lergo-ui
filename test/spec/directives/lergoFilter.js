@@ -35,8 +35,7 @@ describe('Directive: lergoFilter', function () {
 
         generate( $rootScope );
 
-        console.log('should have a form in display - not running yet');
-        /*expect($(element).find('form').length === 1 || $(element).is('form')).toBe(true);*/
+        expect($(element).find('form').length === 1 || $(element).is('form')).toBe(true);
     }));
 
 
@@ -101,7 +100,7 @@ describe('Directive: lergoFilter', function () {
         testChangeProperty('reportLesson', { '_id' : 'this is reportLesson' }, 'data.lessonId', 'this is reportLesson');
     });
 
-    console.log('should update reportStudent - not yet working in mobile version due to timeout issue');
+    console.log('should update reportStudent - not yet working in mobile version');
 
     /*it('should update reportStudent', function(){
         testChangeProperty('reportStudent', 'the name', 'data.invitee.name', 'the name' );

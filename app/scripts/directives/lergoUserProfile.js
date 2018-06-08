@@ -78,7 +78,6 @@ angular.module('lergoApp')
 
                 LergoClient.users.getProfile(attrs.username).then(function (result) {
                     $scope.user = result.data;
-                    console.log('got user', result.data);
                     if ($scope.userCanEdit()) { // watch for changes
                         $scope.$watch('user', saveProfile.onValueChange, true);
                     }

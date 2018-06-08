@@ -9,7 +9,6 @@ describe('Directive: lessonTitleImage', function () {
         element = angular.element('<div lesson-title-image></div>');
         element = $compile(element)($rootScope);
         $rootScope.$digest();
-        console.log('should show i element .... not working yet');
-        /*expect(element.find('i').length).toBe(1);*/
+        expect(element.find('i').length).toBe(1);
     }));
 });
