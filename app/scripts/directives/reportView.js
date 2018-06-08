@@ -13,7 +13,7 @@ angular.module('lergoApp').directive('reportView', function ($log, LergoClient) 
             'quizItems': '='
         },
         link: function ($scope/* , element, attrs */) {
-
+            window.scrollTo(0,0);
             $log.info('showing lesson report');
 
             function getAnswer(quizItemId, index) {

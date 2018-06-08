@@ -31,7 +31,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
 
     function reload() {
         $log.info('reload display for step');
-
+        window.scrollTo(0,0);
         // guy - when we watch an invitation, we get all the questions for all
         // steps pre-resolved.
         // however, when we preview a lesson, this controller/scope are
@@ -565,6 +565,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     };
 
     $scope.tryAgain = function () {
+        window.scrollTo(0,0);
         $log.info('trying again');
         var quizItem = $scope.quizItem;
         var retriesLeft = localStorageService.get(quizItem._id + '-retries');
