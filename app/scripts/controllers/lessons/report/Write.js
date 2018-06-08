@@ -27,7 +27,7 @@
  */
 
 var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsService, $log, LergoClient, $q) {
-
+    window.scrollTo(0, 0);
     var report = $scope.report;
     console.log('report', report);
     if (!report.answers) {
@@ -44,7 +44,7 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
     });
 
     $scope.$on('endLesson', function (/* event, data */) {
-      /*  $window.scrollTo(0, 0); */ //  was for congrats, but caused karma:unit to fail
+        window.scrollTo(0, 0);  //  $window was for congrats, but caused karma:unit to fail
         $log.info('lesson ended');
         // mark invitation as finished
         if (!report.data.finished) {
