@@ -1,3 +1,5 @@
+LERGO-678-cont2 : add scrollTo(0,68) to play lesson "next" and "trying again"
+
 LERGO-678-cont1 : still adding scrolluP on this and previous commits
 
 LERGO-678-cont : fix scrollUp issues

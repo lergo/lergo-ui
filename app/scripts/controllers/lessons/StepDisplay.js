@@ -566,7 +566,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     };
 
     $scope.tryAgain = function () {
-        window.scrollTo(0,0);
+        window.scrollTo(0,68);
         $log.info('trying again');
         var quizItem = $scope.quizItem;
         var retriesLeft = localStorageService.get(quizItem._id + '-retries');
