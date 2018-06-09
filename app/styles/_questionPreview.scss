@@ -532,11 +532,12 @@ audio.audio-width-mobile {
         width: 75%;
     }
     audio.audio-width-mobile {
-        width: 200px;
+        max-width: 250px;
     }
     .rtl {
         audio.audio-width-mobile {
-            width: 200px;
+           /* width: 200px;*/
+            max-width:unset;
         }
     }
 
