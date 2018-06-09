@@ -1,4 +1,27 @@
 <div class="overview" ng-init="scrollUp()">
+    <div class="hidden-lg hidden-md">
+        <div class="homepage-overview">
+            <div statistics-banner class="page-content-width-overview">
+                <div class="article-header page-content-body">
+                    <div class="stats-wrapper">
+                        <div class="stats-lessons">
+                            <div class="amount">{{systemStats.lessonsCount-900}}</div>
+                            <div class="type">{{ 'homepage.lessons' | translate }}</div>
+                        </div>
+                        <div class="stats-questions">
+                            <div class="amount">{{systemStats.questionsCount}}</div>
+                            <div class="type">{{ 'homepage.questions' | translate }}</div>
+                        </div>
+                        <div>
+                            <div class="and-counting item">
+                                <span>{{ 'homepage.andCounting' | translate }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="title">{{'overview.title'|translate}}</div>
     <div class="desc">{{'overview.desc'|translate}}</div>
 </div>

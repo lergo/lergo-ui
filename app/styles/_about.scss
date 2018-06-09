@@ -212,6 +212,54 @@
         float: right;
     }
 }
+.homepage-overview { // mobile stats on "about"
+    .page-content-width-overview {
+        margin: -56px auto 0 auto;
+    }
+    .article-header {
+        margin: 5px 0 0 0px;
+
+        font-weight: bold;
+        color: #D8D8D8;
+        min-height: 60px;
+        text-align: right;
+
+        .stats-wrapper {
+            display: table-row;
+            & > div {
+                display: table-cell;
+                padding-top: 6px;
+            }
+        }
+        .stats-lessons {
+            padding: 0 10px 10px;
+        }
+    }
+
+    .stats-questions {
+        padding: 0 10px 10px;
+    }
+
+    .amount {
+        font-size: 22px;
+    }
+    .and-counting {
+        font-size: 34px;
+        text-transform: uppercase;
+        text-align: left;
+        position:relative;
+        span{
+            position:absolute;
+            padding: 1px 10px 10px;
+            white-space: nowrap;
+            font-size: 16px;
+        }
+    }
+    .type {
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+}
 
 .rtl {
     #about {
@@ -230,6 +278,18 @@
         }
         .tab-content-vertical {
             float: left;
+        }
+    }
+    .homepage-overview { // mobile stats on "about"
+        .page-content-width-overview {
+            margin: -23px auto 0 auto;
+        }
+        .and-counting {
+            font-size: 34px;
+            span{
+                padding: 1px 10px 10px;
+                font-size: 22px;
+            }
         }
     }
 }
