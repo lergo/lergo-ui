@@ -481,12 +481,6 @@ audio.audio-width-mobile {
 }
 
 @media screen and (max-width: 1023px) {
-    /*#questionIntro .question {
-        width: unset;
-        margin: 0 -30px;
-        overflow-y: auto;
-        border: 2px solid red;
-    }*/
 
     #questionIntro {
         .question {
@@ -528,25 +522,6 @@ audio.audio-width-mobile {
             }
         }
     }
-
-   /* #questionIntro .question .details {
-        padding: 0;
-        border: 2px solid orange;
-        .description {
-            .edit-summary {
-                .title {
-                    padding-top: 80px;
-                    border: 2px solid black;
-                }
-            }
-
-        }
-    }*/
-   /* #questionIntro .question .question-preview {
-        margin-left: unset;
-        margin-right: unset;
-        width: unset;
-    }*/
     input#openQuestionText.mobile-width {
         width: 200px;
     }
@@ -557,7 +532,7 @@ audio.audio-width-mobile {
         width: 75%;
     }
     audio.audio-width-mobile {
-        width: 200px;
+       /* width: 200px;*/
     }
 
     #questionPreview {
