@@ -36,6 +36,7 @@ angular.module('lergoApp').directive('reportView', function ($log, LergoClient) 
             }
 
             $scope.getQuizItemTemplate = function (type) {
+                console.log('getQuizItemTemplate @ reportView.js');
                 return LergoClient.questions.getTypeById(type).reportTemplate;
             };
             // This will test in case of multi choice multi answer that which
@@ -164,6 +165,8 @@ angular.module('lergoApp').directive('reportView', function ($log, LergoClient) 
             };
 
             $scope.getStepViewByType = function (step) {
+                console.log('getStepViewByType in reportView.js');
+                window.scrollUp(0,68);
                 return '/views/lessons/invitations/report/steps/_' + step.type + '.html';
             };
         }

@@ -11,6 +11,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl',
 	// otherwise we get a flash of the last screen (LERGO-358).
 	$scope.loaded = false;
 	$window.scrollTo(0, 0);
+	console.log('lessonDisplayCtrl');
 	$controller('LessonsStepDisplayCtrl', {
 		$scope : $scope
 	});

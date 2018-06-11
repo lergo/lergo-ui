@@ -8,7 +8,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
         $scope.shareSection = 'link';
         var updateChange = new ContinuousSaveReports({
             'saveFn': function (value) {
-                window.scrollTo(0, 68);
+              /*  window.scrollTo(0, 68);*/
                 $log.info('updating report');
                 var finished = value.finished; // value.data is the invitation. we
                 // want the report.

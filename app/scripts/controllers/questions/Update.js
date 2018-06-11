@@ -3,6 +3,7 @@
 angular.module('lergoApp').controller('QuestionsUpdateCtrl',
     function ($scope, QuestionsService, LergoClient, $routeParams, ContinuousSave, $log, $location, LergoFilterService, TagsService, $window, $filter) {
         $window.scrollTo(0, 0);
+        console.log('questionsUpdate.js');
         var saveQuestion = new ContinuousSave({
             'saveFn': function (value) {
                 return QuestionsService.updateQuestion(value);
