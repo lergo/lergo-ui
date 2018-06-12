@@ -10,8 +10,6 @@
 angular.module('lergoApp')
     .controller('ClassInviteCtrl', function ($window, $scope, LergoClient, $routeParams, $log, LergoTranslate, $rootScope , $location ) {
         $window.scrollTo(0, 0);
-        console.log('ClassInviteCtrl');
-
         $scope.classInvite = {};
         var invitation;
         var lessonId = $routeParams.lessonId;

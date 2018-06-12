@@ -7,7 +7,6 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
         $scope.noop = angular.noop;
         var audio = new Audio('../audio/correctanswer.mp3');
         $window.scrollTo(0, 0);
-        console.log('questionsRead.js');
 
         QuestionsService.getQuestionById(questionId).then(function (result) {
             $scope.quizItem = result.data;

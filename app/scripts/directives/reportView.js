@@ -36,7 +36,6 @@ angular.module('lergoApp').directive('reportView', function ($log, LergoClient) 
             }
 
             $scope.getQuizItemTemplate = function (type) {
-                console.log('getQuizItemTemplate @ reportView.js');
                 return LergoClient.questions.getTypeById(type).reportTemplate;
             };
             // This will test in case of multi choice multi answer that which

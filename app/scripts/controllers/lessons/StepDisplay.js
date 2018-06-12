@@ -8,7 +8,6 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     $scope.stepDisplay = {showHint: false};
 
     $window.scrollTo(0, 0);
-    console.log('stepDisplay');
     var audio = new Audio('../audio/correctanswer.mp3');
 
     $scope.scrollUp = function () {
@@ -77,8 +76,6 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
 
     $scope.$watch('step', reload);
     $scope.getQuizItemTemplate = function () {
-        window.scrollTo(0, 68);
-        console.log('getting Quiz item template');
         if (!!$scope.questions) {
             if (!!$scope.quizItem && !$scope.quizItem.startTime) {
                 $scope.quizItem.startTime = new Date().getTime();
@@ -101,9 +98,6 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
         // we use a flag because no other property is eligible
         // `userAnswer` does not necessarily exist , nor exists only after submission..
         quizItem.submitted = true; // a flag to know if submitted
-        console.log('quiz item submitted');
-        window.scrollTo(0, 68);
-        console.log('scrolled to 68');
 
         var duration = Math.max(0, new Date().getTime() - quizItem.startTime);
         // using max with 0 just in case something went wrong and startTime >

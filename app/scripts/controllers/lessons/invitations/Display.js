@@ -2,13 +2,12 @@
 
 angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
     function ($window, $scope, $filter, LergoClient, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope) {
-        /*$window.scrollTo(0, 0);*/
+        $window.scrollTo(0, 0);
         $log.info('loading invitation', $routeParams.invitationId);
         var errorWhileSaving = false;
         $scope.shareSection = 'link';
         var updateChange = new ContinuousSaveReports({
             'saveFn': function (value) {
-              /*  window.scrollTo(0, 68);*/
                 $log.info('updating report');
                 var finished = value.finished; // value.data is the invitation. we
                 // want the report.

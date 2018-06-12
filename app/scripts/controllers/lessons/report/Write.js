@@ -28,7 +28,6 @@
 
 var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsService, $log, LergoClient, $q) {
     window.scrollTo(0, 0);
-    console.log('running write.js');
     var report = $scope.report;
     if (!report.answers) {
         report.answers = [];
