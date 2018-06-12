@@ -12,7 +12,6 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
 
     $scope.scrollUp = function () {
         $window.scrollTo(0, 0);
-        console.log('after showing step');
     };
 
     if (!!$routeParams.data) {
