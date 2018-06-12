@@ -164,8 +164,6 @@ angular.module('lergoApp').directive('reportView', function ($log, LergoClient) 
             };
 
             $scope.getStepViewByType = function (step) {
-                console.log('getStepViewByType in reportView.js');
-                window.scrollUp(0,68);
                 return '/views/lessons/invitations/report/steps/_' + step.type + '.html';
             };
         }
