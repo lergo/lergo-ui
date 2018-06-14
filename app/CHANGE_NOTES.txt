@@ -1,3 +1,6 @@
+fix(bug: similar to LERGO-677) hebrew mobile dropdown for lessons and invitations is not completely visible. Add
+class for rtl mobile.
+
 feat(add stats to mobile) implement # of lessons, questions on about/overview for mobile
 
 LERGO-678-cont2 : add scrollTo(0,68) to play lesson "next" and "trying again"

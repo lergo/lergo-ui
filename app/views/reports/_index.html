@@ -35,21 +35,23 @@
                                 <thead>
                                 <tr style="font-weight: bold">
                                     <td class="checkbox-dropdown">
-                                        <div class="btn-group" uib-dropdown>
-                                            <input type="checkbox" ng-click="selectAll($event)" ng-model="reportsPage.selectAll">
-                                            <button type="button" class="btn-link" uib-dropdown-toggle>
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu overidePositionInherit dropdown-mobile" role="menu">
-                                                <li>
-                                                    <a style="outline: none;" class="btn-link"
-                                                       ng-click="createLessonFromWrongQuestions()">{{'report.CreateLessonFromWrongQuestions'|translate}}</a>
-                                                </li>
-                                                <li class="divider"></li>
-                                                <li>
-                                                    <a style="outline: none;" class="btn-link delete-menu" ng-click="deleteReports()">{{'delete'|translate}}</a>
-                                                </li>
-                                            </ul>
+                                        <div class="lessons-dropdown">
+                                            <div class="btn-group" uib-dropdown>
+                                                <input type="checkbox" ng-click="selectAll($event)" ng-model="reportsPage.selectAll">
+                                                <button type="button" class="btn-link" uib-dropdown-toggle>
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu overidePositionInherit dropdown-mobile" role="menu">
+                                                    <li>
+                                                        <a style="outline: none;" class="btn-link"
+                                                           ng-click="createLessonFromWrongQuestions()">{{'report.CreateLessonFromWrongQuestions'|translate}}</a>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li>
+                                                        <a style="outline: none;" class="btn-link delete-menu" ng-click="deleteReports()">{{'delete'|translate}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>{{ 'name' | translate }}</td>

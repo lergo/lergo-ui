@@ -107,4 +107,16 @@
     }
 }
 
+@media screen and ( max-width : 768px ) {
+    .rtl {
+        #inviteIndex {
+            .invites-dropdown {
+                .dropdown-menu {
+                    margin-left: -125px;
+                }
+            }
+        }
+    }
+}
+
 

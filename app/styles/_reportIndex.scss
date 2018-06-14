@@ -73,6 +73,19 @@
                 min-width: 200px;
             }
         }
+
+    }
+}
+
+@media screen and ( max-width : 768px ) {
+    .rtl {
+        #reportIndex {
+            .lessons-dropdown {
+                .dropdown-menu {
+                    margin-left: -153px;
+                }
+            }
+        }
     }
 }
 
