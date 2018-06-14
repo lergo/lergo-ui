@@ -1,3 +1,5 @@
+fix(bug) mobile audio in explanation needs to fit in
+
 fix(bug: similar to LERGO-677) hebrew mobile dropdown for lessons and invitations is not completely visible. Add
 class for rtl mobile.
 
