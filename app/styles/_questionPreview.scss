@@ -480,10 +480,6 @@ audio.audio-width-mobile {
     padding: 0 8px;
 }
 
-audio.audio-width-mobile-explanation {
-    padding: 0 8px;
-}
-
 @media screen and (max-width: 1023px) {
 
     #questionIntro {
@@ -544,9 +540,6 @@ audio.audio-width-mobile-explanation {
             max-width:unset;
         }
     }
-    audio.audio-width-mobile-explanation {
-        max-width: 250px;
-    }
 
     #questionPreview {
         .right {
@@ -593,11 +586,5 @@ audio.audio-width-mobile-explanation {
                 }
             }
         }
-    }
-    .modal-audio {
-        audio.audio-width-mobile {
-            max-width: 250px;
-        }
-
     }
 }
