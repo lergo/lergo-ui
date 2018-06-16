@@ -534,13 +534,6 @@ audio.audio-width-mobile {
     audio.audio-width-mobile {
         max-width: 250px;
     }
-    .rtl {
-        audio.audio-width-mobile {
-           /* width: 200px;*/
-            max-width:unset;
-        }
-    }
-
     #questionPreview {
         .right {
             .action-items {
