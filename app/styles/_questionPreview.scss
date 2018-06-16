@@ -594,4 +594,10 @@ audio.audio-width-mobile-explanation {
             }
         }
     }
+    .modal-audio {
+        audio.audio-width-mobile {
+            max-width: 250px;
+        }
+
+    }
 }
