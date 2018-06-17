@@ -222,7 +222,6 @@
         font-weight: bold;
         color: #D8D8D8;
         min-height: 60px;
-        text-align: right;
 
         .stats-wrapper {
             display: table-row;
@@ -232,7 +231,7 @@
             }
         }
         .stats-lessons {
-            padding: 0 10px 10px;
+            /*padding: 0 0 10px;*/
         }
     }
 
@@ -284,11 +283,14 @@
         .page-content-width-overview {
             margin: -23px auto 0 auto;
         }
+        .article-header {
+            text-align: right
+        }
         .and-counting {
             font-size: 34px;
             span{
                 padding: 1px 10px 10px;
-                font-size: 22px;
+                font-size: 20px;
             }
         }
     }
