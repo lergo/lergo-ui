@@ -398,7 +398,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-    rtl {
+    .rtl {
         #quizUpdate {
             .practice-button {
                 padding-right: 15px;
@@ -425,6 +425,34 @@
                 max-width:546px;
             }
         }
+    }
+    #lessonIntro-Mobile {
+        .lesson {
+            .image {
+                img {
+                    height: 240px;
+                    max-width: 80%
+                }
+            }
+        }
+    }
+    .homepage {
+        .lessons {
+            .image {
+                img {
+                    width: 300px;
+                }
+            }
+            .lesson-mobile {
+                width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+    }
+    .lergo-body-tile {
+        max-width: 500px;
     }
 }
 
