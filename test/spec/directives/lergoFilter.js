@@ -100,11 +100,9 @@ describe('Directive: lergoFilter', function () {
         testChangeProperty('reportLesson', { '_id' : 'this is reportLesson' }, 'data.lessonId', 'this is reportLesson');
     });
 
-    console.log('should update reportStudent - not yet working in mobile version');
-
-    /*it('should update reportStudent', function(){
+    it('should update reportStudent', function(){
         testChangeProperty('reportStudent', 'the name', 'data.invitee.name', 'the name' );
-    });*/
+    });
 
     it('should update hasQuestions', function(){
         testChangeProperty('hasQuestions', true, 'steps.quizItems.1', { dollar_exists : true } );

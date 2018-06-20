@@ -263,10 +263,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
 			$scope.$watch('reportStudent', function(newValue, oldValue) {
 				if (newValue !== oldValue) {
-                    $timeout(function () {
-                        $log.info('student changed', arguments);
-                        _updateReportStudent();
-                    }, 2000);
+                    _updateReportStudent();
 				}
 			});
 
