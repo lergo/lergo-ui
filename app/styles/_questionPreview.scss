@@ -515,10 +515,53 @@ audio.audio-width-mobile {
             .properties-mobile {
                 border: 1px solid #EEEEEF;  /*this border is needed to prevent the div from collapsing*/
                 padding-top: 10px;
+                .user-hebrew {
+                    visibility: hidden;
+                }
+                .user-english {
+                    visibility: visible;
+                }
+                .rtl {
+                    float: left;
+                }
             }
             .like-share {
                 margin-top: -5px;
                 margin-bottom: 10px;
+                .like-btn {
+                }
+                .like-caret {
+                    .dropdown-menu {
+                        min-width: 96px;
+                    }
+                }
+            }
+        }
+    }
+
+    .rtl {
+        #questionIntro {
+            .question {
+                .like-share {
+                    .like-btn {
+                        float: left;
+                    }
+                    .like-caret {
+                        float:left;
+                    }
+                }
+                .properties-mobile {
+                    .user {
+                        float: left;
+                    }
+                    .user-english {
+                        visibility: hidden;
+                    }
+                    .user-hebrew {
+                        visibility: visible;
+                        float: left;
+                    }
+                }
             }
         }
     }

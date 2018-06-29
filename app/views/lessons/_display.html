@@ -77,29 +77,26 @@
         <br/>
         <div class="stats">
             <div class="action-items">
-			<span show-logged-in>
-				<button class="btn-link" ng-click="likeLesson()" uib-tooltip="{{'lessons.tooltip.like' | translate}}"
-                        ng-show="!isLiked()">
-					<i class="fa fa-heart-o "></i>
-					{{'like' | translate}}
-				</button>
-				<span class="btn-link dropdown" ng-click="noop()" uib-tooltip="{{'lessons.tooltip.liked' | translate}}"
-                      ng-show="!!isLiked()">
-					<span class="dropdown-toggle">
-						<i class="fa fa-heart-o "></i>
-						{{'liked' | translate}}
-						<i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
-						<span ng-show="!!showMenu">
-							<button class="btn-link">{{'dislike' | translate}}</button>
-						</span>
-					</span>
-					<span class="dropdown-menu">
-						<li>
-							<button class="btn-link" ng-click="unlikeLesson()">{{ 'unlike' | translate }}</button>
-						</li>
-					</span>
-				</span>
-			</span>
+                <span show-logged-in>
+                    <button class="btn-link" ng-click="likeLesson()"
+                            uib-tooltip="{{'lessons.tooltip.like' | translate}}" ng-show="!isLiked()">
+                        <i class="fa fa-heart-o "></i>
+                        {{'like' | translate}}
+                    </button>
+                    <div class="like-caret btn-group" uib-dropdown ng-show="!!isLiked()">
+                        <button class="btn-link" uib-dropdown-toggle>
+                            <i class="fa fa-heart-o "></i>
+                            {{'liked' | translate}}
+                            <span class="fa fa-caret-down"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a class="btn-link" style="outline: none;" ng-click="unlikeLesson()">{{
+                                    'unlike' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </span>
                 <a href="" show-anonymous class="btn-link" uib-popover="{{'lessons.likeNotAvailable' | translate}}"
                    popover-placement="top" popover-trigger="'outsideClick'"
                    tabindex="0">
@@ -145,7 +142,6 @@
             <div id="grad1">
             </div>
         </div>
-
         <div class="message">
             <div>{{ 'lessons.lessonCompleted' | translate }}</div>
             <div class="lesson-title">"{{lesson.name}}"</div>
@@ -205,29 +201,25 @@
         <br/>
         <div class="stats">
             <div class="action-items">
-			<span show-logged-in>
-				<button class="btn-link" ng-click="likeLesson()" uib-tooltip="{{'lessons.tooltip.like' | translate}}"
-                        ng-show="!isLiked()">
-					<i class="fa fa-heart-o "></i>
-					{{'like' | translate}}
-				</button>
-				<span class="btn-link dropdown" ng-click="noop()" uib-tooltip="{{'lessons.tooltip.liked' | translate}}"
-                      ng-show="!!isLiked()">
-					<span class="dropdown-toggle">
-						<i class="fa fa-heart-o "></i>
-						{{'liked' | translate}}
-						<i class="fa fa-caret-down " ng-click="openLikeMenu()"></i>
-						<span ng-show="!!showMenu">
-							<button class="btn-link">{{'dislike' | translate}}</button>
-						</span>
-					</span>
-					<span class="dropdown-menu">
-						<li>
-							<button class="btn-link" ng-click="unlikeLesson()">{{ 'unlike' | translate }}</button>
-						</li>
-					</span>
-				</span>
-			</span>
+                <span show-logged-in>
+                    <button class="btn-link" ng-click="likeLesson()" ng-show="!isLiked()">
+                        <i class="fa fa-heart-o "></i>
+                        {{'like' | translate}}
+                    </button>
+                    <div class="like-caret btn-group" uib-dropdown ng-show="!!isLiked()">
+                        <button class="btn-link" uib-dropdown-toggle>
+                            <i class="fa fa-heart-o "></i>
+                            {{'liked' | translate}}
+                            <span class="fa fa-caret-down"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a class="btn-link" style="outline: none;" ng-click="unlikeLesson()">{{
+                                    'unlike' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </span>
                 <a href="" show-anonymous class="btn-link" uib-popover="{{'lessons.likeNotAvailable' | translate}}"
                    popover-placement="top" popover-trigger="'outsideClick'"
                    tabindex="0">

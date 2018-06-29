@@ -323,6 +323,16 @@
     padding-right: 37px;
 }
 
+.stats { // on congrats page
+    .action-items {
+        .like-caret {
+            .dropdown-menu {
+                min-width: 96px;
+            }
+        }
+    }
+}
+
 @media screen and (max-width : 1024px) {
     .lesson-step-quiz-mobile {
         .lesson-step-quiz-content {
