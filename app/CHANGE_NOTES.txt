@@ -1,3 +1,5 @@
+fix(facebook share image bug) remove all pre-load and pre-connect in index.html to enable the facebook image share to work correctly
+
 feat(loading speed) implement preloading in lergo-ui, add more gzip types and caching in lergo-ri
 
 fix(bug: similar to LERGO-677) hebrew mobile dropdown for lessons and invitations is not completely visible. Add
