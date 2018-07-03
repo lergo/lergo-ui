@@ -1069,6 +1069,12 @@ label {
             }
         }
     }
+    .hide-hebrew {
+        display: block;
+    }
+    .hide-english {
+        display: none;
+    }
     .rtl {
         .mpadrtl10 {
             padding-left: 0px;
@@ -1082,6 +1088,12 @@ label {
         }
         .dropdown-menu {
             float: right;
+        }
+        .hide-english {
+            display: block;
+        }
+        .hide-hebrew {
+            display: none;
         }
     }
 }
