@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LessonsUpdateCtrl',
+angular.module('lergoApp').controller('PlayListsUpdateCtrl',
     function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
         $window.scrollTo(0, 0);
         $scope.subjects = LergoFilterService.subjects;
