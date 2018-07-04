@@ -8,7 +8,7 @@ angular.module('lergoApp')
             link: function postLink($scope/*, element, attrs*/) {
                 $scope.create = function () {
                     $scope.createBtnDisable=true;
-                    LergoClient.playlist.create().then(function (result) {
+                    LergoClient.playLists.create().then(function (result) {
                         var playlist = result.data;
                         $scope.errorMessage = null;
                         $location.path('/user/playlists/' + playlist._id + '/update');
