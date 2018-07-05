@@ -9,9 +9,9 @@ angular.module('lergoApp').service('PlayListsService',
             return $http.post('/backend/PlayLists/create'); // PlayListsController.js
         };
 
-        // will get all lessons - including private.
+        // will get all playLists - including private.
         // if user not allowed, will return 400.
-        // to get user's lessons, use UserDataService
+        // to get user's playLists, use UserDataService
         this.getAll = function (queryObj) {
             if (!queryObj) {
                 throw new Error('should have at least a query object with pagination..');
@@ -30,66 +30,66 @@ angular.module('lergoApp').service('PlayListsService',
 
             });
         };
-        // lessons ==> PlayLists && Question ==>  Lesson (Jeff)
-        this.getPlayListsWhoUseThisLesson = function (questionId) {
-            return $http.get('/backend/lessons/using/question/' + questionId);
+        // playLists ==> PlayLists && Question ==>  PlayList (Jeff)
+        this.getPlayListsWhoUseThisPlayList = function (questionId) {
+            return $http.get('/backend/playLists/using/question/' + questionId);
         };
 
-        this.overrideQuestion = function (lessonId, questionId) {
-            return $http.post('/backend/lessons/' + lessonId + '/question/' + questionId + '/override');
+        this.overrideQuestion = function (playListId, questionId) {
+            return $http.post('/backend/playLists/' + playListId + '/question/' + questionId + '/override');
         };
 
         this.delete = function (id) {
-            return $http.post('/backend/lessons/' + id + '/delete');
+            return $http.post('/backend/playLists/' + id + '/delete');
         };
 
         this.getPermissions = function (id) {
-            return $http.get('/backend/lessons/' + id + '/permissions');
+            return $http.get('/backend/playLists/' + id + '/permissions');
         };
 
-        this.update = function (lesson) {
-            return $http.post('/backend/lessons/' + lesson._id + '/update', lesson);
+        this.update = function (playList) {
+            return $http.post('/backend/playLists/' + playList._id + '/update', playList);
         };
 
-        this.publish = function (lesson) {
-            return $http.post('/backend/lessons/' + lesson._id + '/publish');
+        this.publish = function (playList) {
+            return $http.post('/backend/playLists/' + playList._id + '/publish');
         };
 
-        this.unpublish = function (lesson) {
-            return $http.post('/backend/lessons/' + lesson._id + '/unpublish');
+        this.unpublish = function (playList) {
+            return $http.post('/backend/playLists/' + playList._id + '/unpublish');
         };
 
         this.getById = function (id) {
-            return $http.get('/backend/lessons/' + id);
+            return $http.get('/backend/playLists/' + id);
         };
 
-        this.findLessonsById = function (ids) {
+        this.findPlayListsById = function (ids) {
             return $http({
-                'url': '/backend/lessons/find',
+                'url': '/backend/playLists/find',
                 'method': 'GET',
                 params: {
-                    'lessonsId': ids
+                    'playListsId': ids
                 }
             });
         };
 
-        this.getLessonIntro = function (id) {
-            return $http.get('/backend/lessons/' + id + '/intro');
+        this.getPlayListIntro = function (id) {
+            return $http.get('/backend/playLists/' + id + '/intro');
         };
 
-        this.getPublicLessons = function (queryObj) {
+        this.getPublicPlayLists = function (queryObj) {
             if (!queryObj) {
                 throw new Error('you should at least have {"public" : { "exists" : 1 } } ');
             }
             return $http({
                 'method': 'GET',
-                'url': '/backend/public/lessons',
+                'url': '/backend/public/playLists',
                 'params': {'query': JSON.stringify(queryObj)} /* stringify the queryObj as it contains $ signs which angular filters out */
             });
         };
 
-        this.copyLesson = function (id) {
-            return $http.post('/backend/lessons/' + id + '/copy');
+        this.copyPlayList = function (id) {
+            return $http.post('/backend/playLists/' + id + '/copy');
         };
 
         var statsPromise = null;
@@ -101,19 +101,19 @@ angular.module('lergoApp').service('PlayListsService',
 
         };
 
-        this.getTitleImage = function (lesson) {
+        this.getTitleImage = function (playList) {
 
-            if (!lesson) {
+            if (!playList) {
                 return;
             }
-            if (!!lesson.coverPage) {
-                return lesson.coverPage;
+            if (!!playList.coverPage) {
+                return playList.coverPage;
             }
-            if (!lesson.steps || lesson.steps.length < 1) {
+            if (!playList.steps || playList.steps.length < 1) {
                 return;
             }
-            for (var i = 0; i < lesson.steps.length; i++) {
-                var id = this.getVideoId(lesson.steps[i]);
+            for (var i = 0; i < playList.steps.length; i++) {
+                var id = this.getVideoId(playList.steps[i]);
                 if (id !== null) {
                     return $sce.trustAsResourceUrl('https://img.youtube.com/vi/' + id + '/0.jpg');
                 }
@@ -122,7 +122,7 @@ angular.module('lergoApp').service('PlayListsService',
 
         /**
          *
-         * @param {Lesson} item
+         * @param {PlayList} item
          * @returns {number}
          */
         this.countQuestions = function (item) {
@@ -149,33 +149,33 @@ angular.module('lergoApp').service('PlayListsService',
             return value;
         };
 
-        this.getShareLink = function (lesson) {
-            return $window.location.origin + '/index.html#!/public/lessons/' + lesson._id + '/intro';
+        this.getShareLink = function (playList) {
+            return $window.location.origin + '/index.html#!/public/playLists/' + playList._id + '/intro';
         };
 
-        this.getIntroLink = function (lesson) {
-            return '/public/lessons/' + lesson._id + '/intro';
+        this.getIntroLink = function (playList) {
+            return '/public/playLists/' + playList._id + '/intro';
         };
 
-        this.createLessonFromWrongQuestions = function (report, wrongQuestions) {
+        this.createPlayListFromWrongQuestions = function (report, wrongQuestions) {
             return $q(function (resolve, reject) {
                 if (!wrongQuestions || wrongQuestions.length === 0) {
                     reject();
                 }
                 self.create().then(function (result) {
-                    var lesson = result.data;
-                    lesson.name = $filter('translate')('lesson.practice.title') + report.data.lesson.name;
-                    lesson.language = report.data.lesson.language;
-                    lesson.subject = report.data.lesson.subject;
-                    lesson.steps = [];
-                    var stepsWithoutRetry = _.filter(report.data.lesson.steps, function (s) {
+                    var playList = result.data;
+                    playList.name = $filter('translate')('playList.practice.title') + report.data.playList.name;
+                    playList.language = report.data.playList.language;
+                    playList.subject = report.data.playList.subject;
+                    playList.steps = [];
+                    var stepsWithoutRetry = _.filter(report.data.playList.steps, function (s) {
                         if (s.type === 'quiz') {
                             return !s.retryQuestion;
                         }
                     });
-                    lesson.description = report.data.lesson.description;
-                    lesson.lastUpdate = new Date().getTime();
-                    lesson.temporary = true;
+                    playList.description = report.data.playList.description;
+                    playList.lastUpdate = new Date().getTime();
+                    playList.temporary = true;
                     var step = {
                         'type': 'quiz',
                         'quizItems': [],
@@ -184,10 +184,10 @@ angular.module('lergoApp').service('PlayListsService',
                         'shuffleQuestion': true,
                         retryQuestion: stepsWithoutRetry.length === 0
                     };
-                    lesson.steps.push(step);
-                    lesson.steps[0].quizItems = _.uniq(wrongQuestions);
-                    self.update(lesson).then(function () {
-                        resolve(lesson);
+                    playList.steps.push(step);
+                    playList.steps[0].quizItems = _.uniq(wrongQuestions);
+                    self.update(playList).then(function () {
+                        resolve(playList);
                     });
                 });
             });
