@@ -85,7 +85,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'views/lessons/update.html',
         controller: 'LessonsUpdateCtrl',
         reloadOnSearch: false
-    }).when('/user/playlists/:lessonId/update', {
+    }).when('/user/playlists/:playListId/update', {
         templateUrl: 'views/playLists/update.html',
         controller: 'PlayListsUpdateCtrl',
         reloadOnSearch: false

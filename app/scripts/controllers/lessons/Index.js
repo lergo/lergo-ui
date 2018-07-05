@@ -68,7 +68,7 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 			$scope.errorMessage = null;
 			$location.path('/user/lessons/' + lesson._id + '/update');
 		}, function(result) {
-			$scope.errorMessage = 'Error in creating Lesson : ' + result.data.message;
+			$scope.errorMessage = 'Error in Index.jscreating Lesson : ' + result.data.message;
 			$log.error($scope.errorMessage);
             $scope.createLessonBtnDisable=false;
 		});
