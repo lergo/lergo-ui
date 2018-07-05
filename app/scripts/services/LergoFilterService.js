@@ -197,7 +197,7 @@ angular.module('lergoApp')
             Filter.apply(this, arguments);
 
             this.isActive = function( relevancyOpts ){
-                return !!this.isRelevant(relevancyOpts) && me.getSavedValue(this) !== LergoTranslate.getLanguageObject().name;
+                return !!this.isRelevant(relevancyOpts) && me.getSavedValue(this) !== LergoTranslate.getLanguageObject().name || 'en';
             };
 
             this.reset = function(){

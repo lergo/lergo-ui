@@ -41,7 +41,7 @@ angular.module('lergoApp').controller('PlayListsUpdateCtrl',
                 $scope.playList.tags = [];
             }
             if (!$scope.playList.language) {
-                $scope.playList.language = LergoTranslate.getLanguageObject().name;
+                $scope.playList.language = LergoTranslate.getLanguageObject().name || 'en';
             }
             // Advance option should be open is any of the below properties are defined/non-empty
             $scope.isAdvOptOpen = !!$scope.playList.nextPlayList || !!$scope.playList.priorPlayList || !!$scope.playList.coverPage;
