@@ -6,7 +6,7 @@ angular.module('lergoApp').service('PlayListsService',
         var self = this;
 
         this.create = function () {
-            return $http.post('/backend/Lessons/create'); // PlayListsActions.js ??
+            return $http.post('/backend/PlayLists/create'); // PlayListsActions.js ??
         };
 
         // will get all lessons - including private.
