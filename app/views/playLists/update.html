@@ -7,7 +7,7 @@
                         <form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
                             <div class="form-section form-group name"
                                 ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
-                                <label dir="auto" class="bot5">{{ 'lessons.name' | translate }}</label>
+                                <label dir="auto" class="bot5">{{ 'playLists.name' | translate }}</label>
                                 <div class="lergo-input" style="border: 2px solid red">
                                     <input dir="auto" required class="form-control" ng-model="lesson.name" name="name"/>
                                 </div>
