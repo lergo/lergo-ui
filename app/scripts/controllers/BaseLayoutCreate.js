@@ -22,7 +22,7 @@ angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $
         id : 'playLists',
         icon : 'fa fa-certificate',
         controller : 'PlayListsIndexCtrl',
-        include : 'views/playListss/_index.html'
+        include : 'views/playLists/_index.html'
     },{
         id : 'questions',
         icon : 'fa fa-question-circle',
