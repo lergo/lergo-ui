@@ -1247,6 +1247,7 @@
     "presentation": {
       "hint": "Make sure to change the \"share\" settings of the presentation to \"on - anyone with the link\": click on \"share\" and then click on  \"advanced\" and then select \"change\" re who has access."
     },
+    "lesson": "Lesson",
     "quiz": "Quiz",
     "required": "required",
     "selectAnAnswer": "Select an Answer",

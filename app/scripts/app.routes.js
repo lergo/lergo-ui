@@ -20,6 +20,8 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         controller: 'QuestionsReadCtrl'
     }).when('/user/lessons/step/display', {
         templateUrl: 'views/lessons/stepDisplay.html'
+    }).when('/user/playLists/step/display', {
+        templateUrl: 'views/playLists/stepDisplay.html'
     }).when('/user/lessons/:lessonId/display', {
         templateUrl: 'views/lessons/display.html',
         controller: 'LessonsDisplayCtrl',
