@@ -150,6 +150,7 @@
     "newInvite": "New Invite",
     "resendValidationEmail": "Resend validation email",
     "showLesson": "Display Lesson",
+    "showPlayList": "Display Playlist",
     "signup": "Signup",
     "signupSubmit": "SIGNUP",
     "submit": "Submit"
@@ -278,6 +279,10 @@
       "lessons": {
         "msg": "Lessons are filtered.",
         "resetAction": "Click here to view all lessons."
+      },
+      "playLists": {
+          "msg": "playlists are filtered.",
+          "resetAction": "Click here to view all playlists."
       },
       "questions": {
         "msg": "Questions are filtered.",
@@ -735,27 +740,27 @@
     }
   },
   "playLists": {
-      "addCoverPage": "Add cover image for playList intro",
-      "addCoverPageHint": "To add your cover image to playList please paste here the image URL.",
+      "addCoverPage": "Add cover image for playlist intro",
+      "addCoverPageHint": "To add your cover image to playlist please paste here the image URL.",
       "addQuestion": "Add Questions to Quiz",
       "addQuestionFromAll": "from all questions",
       "areYouReady": "Are you ready to start learning?",
-      "available": "Available playLists",
+      "available": "Available playlists",
       "comment": "Comments",
-      "continueplayList": "Continue playList",
-      "create": "Create New playList",
+      "continueplayList": "Continue playlist",
+      "create": "Create New playlist",
       "createdOn": "created on",
-      "description": "playList Description",
+      "description": "playlist Description",
       "edit": {
           "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
           "noPermissionsTitle": "You don't have permissions to edit this."
       },
       "embedplayList": "Embed",
-      "embedplayListTitle": "Copy the code below to embed playList on your webpage or blog",
+      "embedplayListTitle": "Copy the code below to embed playlist on your webpage or blog",
       "error": {
-          "invalidName": "playList name is a required field. Please fill it out before adding a step to the playList."
+          "invalidName": "playlist name is a required field. Please fill it out before adding a step to the playlist."
       },
-      "filter": "Filter playLists",
+      "filter": "Filter playlists",
       "filters": {
           "labels": {
               "age range": "Age Range",
@@ -769,69 +774,69 @@
           "class": {
               "help": "Invite CLASS: To generate a PIN number or link to the invite, please enter your class name and press submit.",
               "msg": "Invite Class",
-              "noteMessage": "You will receive your students playList reports upon completion of each playList.",
+              "noteMessage": "You will receive your students playlist reports upon completion of each playlist.",
               "noteTitle": "Note",
               "pinHint": "(students to enter it at lergo.it).",
               "success": {
-                  "help": "To invite your CLASS to the playList, students should enter PIN code at www.lergo.it - or- copy and give students the invite link.",
-                  "invite": "Link to playList Invite"
+                  "help": "To invite your CLASS to the playlist, students should enter PIN code at www.lergo.it - or- copy and give students the invite link.",
+                  "invite": "Link to playlist Invite"
               }
           },
           "student": {
               "help": "Invite STUDENT: To generate a link for the invite please enter student's first name and press submit.",
               "msg": "Invite Student",
-              "noteMessage": "You will receive your kid's/student's playList report upon completion of playList.",
+              "noteMessage": "You will receive your kid's/student's playlist report upon completion of playlist.",
               "noteTitle": " Note",
               "pinHint": "(students to enter it at lergo.it).",
               "success": {
-                  "help": "To invite your STUDENT to the playList, student should enter PIN code at www.lergo.it - or- copy and give student the invite link.",
-                  "invite": "Link to playList invite"
+                  "help": "To invite your STUDENT to the playlist, student should enter PIN code at www.lergo.it - or- copy and give student the invite link.",
+                  "invite": "Link to playlist invite"
               }
           }
       },
       "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a playList.",
-      "inviteSuccessText": "Copy the link below to invite a student to the playList",
-      "playListCompleted": "You have completed the playList",
-      "playListReport": "playList Report",
+      "inviteSuccessText": "Copy the link below to invite a student to the playlist",
+      "playListCompleted": "You have completed the playlist",
+      "playListReport": "playlist Report",
       "letsContinue": "OK! Let's Continue",
       "letsGo": "Let's LerGO!",
-      "likedPlayLists": "Liked playLists",
-      "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like playLists.",
-      "myPlayLists": "My playLists",
-      "name": "playList Name",
-      "noplayLists": "To create a new playList please click on \"Create New playList\".",
+      "likedPlayLists": "Liked playlists",
+      "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like playlists.",
+      "myPlayLists": "My playlists",
+      "name": "playlist Name",
+      "noplayLists": "To create a new playlist please click on \"Create New playlist\".",
       "note": "Note",
-      "noteMessage": "You will receive your kid's/student's playList report upon completion of playList.",
+      "noteMessage": "You will receive your kid's/student's playlist report upon completion of playlist.",
       "practiceNotAvailable": "Please signup or login to LerGO. Only registered users can use this feature.",
       "practiseWrongQuestion": "Practice Mistakes",
       "readLess": "Read Less",
       "readMore": "Read More",
-      "recommenedNextplayList": "Recommended Next playList",
-      "recommenedNextplayListText": "Copy and paste here the URL/link that appears when you press \"share\" on the playList intro/details page.",
-      "recommenedPriorplayList": "Recommended Previous playList",
-      "recommenedPriorplayListText": "Copy and paste here the URL/link that appears when you press \"share\" on the playList intro/details page.",
-      "reportAbuseNotAvailable": "To flag playList or report abuse please login or register to LerGO. Alternately, you can also use the Report Abuse button at the footer below.",
+      "recommenedNextplayList": "Recommended Next playlist",
+      "recommenedNextplayListText": "Copy and paste here the URL/link that appears when you press \"share\" on the playlist intro/details page.",
+      "recommenedPriorplayList": "Recommended Previous playlist",
+      "recommenedPriorplayListText": "Copy and paste here the URL/link that appears when you press \"share\" on the playlist intro/details page.",
+      "reportAbuseNotAvailable": "To flag playlist or report abuse please login or register to LerGO. Alternately, you can also use the Report Abuse button at the footer below.",
       "restart": "Start Over",
       "seeReport": "See Report",
       "shareplayList": "Share",
-      "shareplayListTitle": "Copy the link below to share playList with friends",
+      "shareplayListTitle": "Copy the link below to share playlist with friends",
       "slideURL": "Presentation URL",
       "slideURLHelpText": "Insert the URL of the Google Slides presentation here.",
-      "startplayList": "Start playList",
+      "startplayList": "Start playlist",
       "tags": "Tags",
       "tooltip": {
           "comment": "Comments",
-          "copy": "Copy playList",
-          "delete": "Delete playList",
-          "edit": "Edit playList",
-          "go": "go to playList",
+          "copy": "Copy playlist",
+          "delete": "Delete playlist",
+          "edit": "Edit playlist",
+          "go": "go to playlist",
           "invite": "invite students",
-          "like": "like this playList",
-          "liked": "you liked this playList",
-          "preview": "Preview playList",
+          "like": "like this playlist",
+          "liked": "you liked this playlist",
+          "preview": "Preview playlist",
           "restart": "Start again",
           "share": "share with friends",
-          "start": "start playList"
+          "start": "start playlist"
       },
       "total": "Total",
       "videoURL": "Video URL",
