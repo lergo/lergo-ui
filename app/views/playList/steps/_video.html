@@ -1,0 +1,27 @@
+<ng-form class="row" name="videoForm">
+    <div class=" col-lg-2 col-md-2 col-sm-12 col-xs-12 video-tip">
+        <span>{{ 'lessons.videoURL' | translate }}</span>
+        <span>
+					<a href="" ng-click="showTip=!showTip">
+						<i class="fa fa-question-circle"></i>
+					</a>
+        </span>
+    </div>
+    <div class="col-lg-10 md-10 sm-10 xs-10">
+        <div class="form-group"
+             ng-class="{ 'has-error' : videoForm.videoURL.$invalid && !videoForm.videoURL.$pristine }">
+            <input  required class="form-control video-url" name="videoURL"
+                   placeholder="{{'lessons.videoURLHelpText' | translate }}" ng-model="step.videoUrl"
+                   ng-pattern="/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/">
+            <p ng-show="videoForm.videoURL.$error.pattern || (videoForm.videoURL.$invalid && !videoForm.videoURL.$pristine)"
+               class="help-block">{{'steps.invalidURL'
+                | translate}}</p>
+        </div>
+        <div uib-collapse="!showTip">
+            {{ 'lessons.genericVideosPre' | translate }}
+            <a ng-href="https://docs.google.com/spreadsheets/d/1g_JlB6lSM0N1X-oTb_kEP6UgggCVfLuvkRCe-h7Oqjo/edit?usp=sharing/{{hash}}"
+               target="_videoblank">{{'clickHere'
+                | translate}}</a><span> {{ 'lessons.genericVideosPost' | translate }}</span>
+        </div>
+    </div>
+</ng-form>

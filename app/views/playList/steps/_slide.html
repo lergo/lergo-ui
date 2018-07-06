@@ -1,0 +1,23 @@
+<ng-form class="row" name="slideForm">
+    <div class="col-md-2 video-tip">
+        <p style="line-height: 1.5">{{ 'lessons.slideURL' | translate }}
+            <sup>
+                <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                <a uib-popover="{{'steps.presentation.hint' | translate}}" class="fa fa-question-circle"
+                   popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none"></a>
+            </sup>
+        </p>
+    </div>
+    <div class="col-md-10">
+        <div class="form-group"
+             ng-class="{ 'has-error' : slideForm.slideURL.$invalid && !slideForm.slideURL.$pristine }">
+            <input required class="form-control slides-url" name="slideURL"
+                   placeholder="{{'lessons.slideURLHelpText' | translate }}" ng-model="step.slideURL"
+                   ng-pattern="/^(?:https?:\/\/)?(?:www\.)?((drive|docs)\.google\.com(.*))\/((presentation\/d\/)|(open\?id=))[-\w]{25,}/">
+            <p ng-show="slideForm.slideURL.$error.pattern || (slideForm.slideURL.$invalid && !slideForm.slideURL.$pristine)"
+               class="help-block">{{'steps.invalidSlideURL' | translate}}</p>
+        </div>
+    </div>
+</ng-form>
+
+<!--ng-pattern="/^(?:https?:\/\/)?(?:www\.)?(docs\.google\.com(.*)\/presentation\/d\/)[-\w]{25,}/">-->
