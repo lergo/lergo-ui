@@ -11,11 +11,28 @@ angular.module('lergoApp').service('UserDataService', function UserDataService($
 			}
 		});
 	};
-
-	this.getLikedLessons = function(queryObj) {
+    this.getLikedLessons = function(queryObj) {
+        return $http({
+            'method' : 'GET',
+            'url' : '/backend/user/me/liked/lessons',
+            'params' : {
+                'query' : queryObj
+            }
+        });
+    };
+    this.getPlayLists = function(queryObj) {
+        return $http({
+            'method' : 'GET',
+            'url' : '/backend/user/me/playLists',
+            'params' : {
+                'query' : queryObj
+            }
+        });
+    };
+	this.getLikedPlayLists = function(queryObj) {
 		return $http({
 			'method' : 'GET',
-			'url' : '/backend/user/me/liked/lessons',
+			'url' : '/backend/user/me/liked/playLists',
 			'params' : {
 				'query' : queryObj
 			}
