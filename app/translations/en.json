@@ -197,6 +197,12 @@
   "deleteLessons": {
     "Confirm": "Are you sure you want to delete selected lessons? This action cannot be undone."
   },
+  "deletePlayList": {
+    "Confirm": "For the playlist to be created and saved, you must fill at least the Name field. By leaving this page without filling this field, all changes will be lost."
+  },
+  "deletePlayLists": {
+        "Confirm": "Are you sure you want to delete selected playlists? This action cannot be undone."
+  },
   "deleteQuestion": {
     "Confirm": "For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost."
   },

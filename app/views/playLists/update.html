@@ -8,7 +8,7 @@
                             <div class="form-section form-group name"
                                 ng-class="{ 'has-error' : playListCreateForm.name.$invalid && !playListCreateForm.$pristine }">
                                 <label dir="auto" class="bot5">{{ 'playLists.name' | translate }}</label>
-                                <div class="lergo-input" style="border: 2px solid red">
+                                <div class="lergo-input">
                                     <input dir="auto" required class="form-control" ng-model="playList.name" name="name"/>
                                 </div>
                                 <p ng-show="playListCreateForm.name.$invalid && !playListCreateForm.$pristine" class="help-block">
