@@ -271,7 +271,7 @@ angular.module('lergoApp').controller('PlayListsUpdateCtrl',
 
         };
 
-        function playListOverrideQuestion(questionIdToOverride, callback) {
+        function lessonOverrideQuestion(questionIdToOverride, callback) {
             $log.info('in playList controller, overriding question');
             LergoClient.playLists.overrideQuestion($scope.playList._id, questionIdToOverride).then(function (result) {
                 if (!!callback) {
@@ -283,11 +283,11 @@ angular.module('lergoApp').controller('PlayListsUpdateCtrl',
             });
         }
 
-        // this is a wrapper to 'playListOverrideQuestion' which will, after
+        // this is a wrapper to 'lessonOverrideQuestion' which will, after
         // playList update
         // list on quizItemsData change ONCE and reopens the dialog
-        function playListOverrideQuestionAndReopenDialog(step, questionIdToOverride) {
-            playListOverrideQuestion(questionIdToOverride, function (newQuizItemId) {
+        function lessonOverrideQuestionAndReopenDialog(step, questionIdToOverride) {
+            lessonOverrideQuestion(questionIdToOverride, function (newQuizItemId) {
 
                 // first - lets watch
                 // http://stackoverflow.com/a/13652152/1068746
@@ -349,8 +349,8 @@ angular.module('lergoApp').controller('PlayListsUpdateCtrl',
             modelContent.backdrop = 'static';
             modelContent.controller = 'QuestionsAddUpdateDialogCtrl';
             modelContent.resolve = {
-                playListOverrideQuestion: function () {
-                    return playListOverrideQuestionAndReopenDialog;
+                lessonOverrideQuestion: function () {
+                    return lessonOverrideQuestionAndReopenDialog;
                 },
                 quizItem: function () {
                     return quizItem;
