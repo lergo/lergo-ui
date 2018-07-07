@@ -1,0 +1,55 @@
+<div class="modal-header text-right">
+    <button class="btn btn-link btn-lg btn-close-preview" type="button" ng-click="cancel()">
+        <i class="fa fa-close"></i>
+    </button>
+</div>
+<div>
+    <div class="modal-body base-layout-class base-layout-modal" lergo-language-direction-class>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <div ng-show="!isUpdate">
+                        <div class="add-create">
+                            <ul class="nav nav-tabs">
+                                <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                    <a class="text-center" id="horizontalTabs" href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.id | translate}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                            <div ng-show="!!isActive(sections[0])" ng-include="sections[0].page" ng-controller="QuestionsUpdateCtrl"></div>
+                            <div ng-show="!isActive(sections[0])" ng-include="sections[1].page" ng-controller="QuestionsIndexCtrl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="!!isUpdate">
+                <div>
+                    <div ng-include="getInclude()"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer" ng-show="!isCreate && !isUpdate">
+	<div>
+		<button class="btn " ng-click="currentSection.add()">{{'add' |translate}}</button>
+		<button class="btn " ng-click="currentSection.addClose()">{{'addClose' |translate}}</button>
+		<button class="btn btn-default" ng-click="cancel()">{{'cancel' |translate}}</button>
+	</div>
+	<div ng-show="selectedItems.length===0" class="errorMessage">{{'questions.add.emptySelection' | translate}}</div>
+</div>
+<div class="modal-footer" ng-show="!!isCreate && !isUpdate">
+	<div class="modal-buttons">
+		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="currentSection.add(quizItem)">{{'add' |translate}}</button>
+		<button class="btn " ng-disabled="isSaving()||!isValid(quizItem)" ng-click="currentSection.addClose(quizItem)">{{'addClose' |translate}}</button>
+		<button class="btn btn-default" ng-click="cancel()">{{'cancel' |translate}}</button>
+		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' | translate) || ('saved' | translate) }}</div>
+	</div>
+</div>
+<div class="modal-footer" ng-show="!!isCreate && !!isUpdate">
+	<div>
+		<button class="btn" ng-disabled="isSaving()" ng-click="cancel(quizItem)">{{'back' | translate}}</button>
+		<div class="lergo-h3" ng-show="isValid(quizItem)">{{ isSaving() && ('saving' | translate) || ('saved' | translate) }}</div>
+	</div>
+</div>
