@@ -499,7 +499,8 @@
       "header": {
         "title": "Lesson Preview (2)"
       }
-    }
+    },
+    "shuffleLessons": "Shuffle Lessons"
   },
   "lessonIntro": {
     "action": {
@@ -521,6 +522,7 @@
     "addCoverPage": "Add cover image for lesson intro",
     "addCoverPageHint": "To add your cover image to lesson please paste here the image URL.",
     "addQuestion": "Add Questions to Quiz",
+    "addLesson" : "Add Lesson to Playlist",
     "addQuestionFromAll": "from all questions",
     "areYouReady": "Are you ready to start learning?",
     "available": "Available Lessons",
