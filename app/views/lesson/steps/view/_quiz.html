@@ -1,3 +1,8 @@
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 <div>
     <div>
         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
@@ -6,21 +11,24 @@
             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                 <div class="lesson-step-quiz-mobile d-leftRight80">
                     <div dir="auto" class="lesson-step-title lergo-h1">{{step.title}}</div>
-                    <div>
-                        <table class="lergo-table">
-                            <tr>
-                                <td style="vertical-align: top;">
-                                    <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+
+                        <span class="back-button-alignment hidden-sm hidden-xs" >
+                         <a  onclick="goBack()"><span class="back-button">&nbsp {{'lesson.back' | translate}} &nbsp</span></a>
+                    </span>
+
+
+                    <table class="lergo-table">
+                        <tr>
+                            <td style="vertical-align: top;">
+                                <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
         </div>
         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
     </div>
-
 </div>
 

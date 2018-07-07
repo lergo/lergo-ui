@@ -486,7 +486,9 @@
       "header": {
         "title": "Lesson Preview (2)"
       }
-    }
+    },
+    "shuffleLessons": "Shuffle Lessons",
+    "back": "back to edit lesson"
   },
   "lessonIntro": {
     "action": {
