@@ -63,51 +63,42 @@
     }
 
 }
-
 .back-button-alignment {
-    .back-button {
-        padding: 24px;
-        margin: 2px;
+    margin-left: -240px;
+    float: left;
+    .angle-eng {
+        display: inline;
+        .back-button {
+        }
     }
-    .back-button:before {
-        content: "\f053";
-        font-family: FontAwesome;
-        font-style: normal;
-        font-weight: normal;
-        text-decoration: inherit;
-        color: #949494;
-        font-size: 18px;
-        /*padding: 0 10px;*/
-        /*position: absolute;*/
-        /* top: 0px;
-         left: 0;*/
+    .angle-heb {
+        display: none;
     }
+    i.fa {
+        vertical-align: middle;
+    }
+    a {
+        text-decoration: none;
+    }
+
 }
+
 
 .rtl {
-        .back-button-alignment {
-            float: left;
+    .back-button-alignment {
+        margin-left: -240px;
+        float: left;
+        .angle-eng {
+            display: none;
+        }
+        .angle-heb {
+            display: inline;
             .back-button {
             }
-            .back-button:after {
-                content: "\f053";
-                font-family: FontAwesome;
-                font-style: normal;
-                font-weight: normal;
-                text-decoration: inherit;
-                color: #949494;
-                font-size: 18px;
-               /* padding-right: 0.5em;*/
-                /*position: absolute;*/
-                /*top: 0px;
-                left: 0;*/
-            }
-            .back-button:before {
-                display: none;
-            }
         }
-
+    }
 }
+
 
 #lessonDisplay {
     #content {
