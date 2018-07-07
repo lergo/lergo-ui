@@ -61,30 +61,30 @@
         margin-right: auto;
         background-color: #efefef;  // to complete the background color of #questionPreview
     }
-    .back-button-alignment {
-        .back-button {
-            padding: 24px;
-            margin: 2px;
-        }
-        .back-button:before {
-            content: "\f053";
-            font-family: FontAwesome;
-            font-style: normal;
-            font-weight: normal;
-            text-decoration: inherit;
-            color: #949494;
-            font-size: 18px;
-            /*padding: 0 10px;*/
-            /*position: absolute;*/
-           /* top: 0px;
-            left: 0;*/
-        }
-    }
 
 }
 
+.back-button-alignment {
+    .back-button {
+        padding: 24px;
+        margin: 2px;
+    }
+    .back-button:before {
+        content: "\f053";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        color: #949494;
+        font-size: 18px;
+        /*padding: 0 10px;*/
+        /*position: absolute;*/
+        /* top: 0px;
+         left: 0;*/
+    }
+}
+
 .rtl {
-    .lesson-step-quiz-mobile {
         .back-button-alignment {
             float: left;
             .back-button {
@@ -106,7 +106,7 @@
                 display: none;
             }
         }
-    }
+
 }
 
 #lessonDisplay {
