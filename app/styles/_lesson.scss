@@ -61,44 +61,7 @@
         margin-right: auto;
         background-color: #efefef;  // to complete the background color of #questionPreview
     }
-
 }
-.back-button-alignment {
-    margin-left: -240px;
-    float: left;
-    .angle-eng {
-        display: inline;
-        .back-button {
-        }
-    }
-    .angle-heb {
-        display: none;
-    }
-    i.fa {
-        vertical-align: middle;
-    }
-    a {
-        text-decoration: none;
-    }
-
-}
-
-
-.rtl {
-    .back-button-alignment {
-        margin-left: -240px;
-        float: left;
-        .angle-eng {
-            display: none;
-        }
-        .angle-heb {
-            display: inline;
-            .back-button {
-            }
-        }
-    }
-}
-
 
 #lessonDisplay {
     #content {
