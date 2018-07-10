@@ -5,22 +5,27 @@
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" ></div>
             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                 <div class="lesson-step-quiz-mobile d-leftRight80">
+                    <span class="back-button-alignment hidden-sm hidden-xs" ng-show="currentUrl" >
+                        <span class="angle-eng">
+                               <a  ng-click="goBack()"><span class="back-button"><i class="fa fa-angle-left fa-2x"></i>&nbsp {{'lesson.back' | translate}} &nbsp</span></a>
+                        </span>
+                        <span class="angle-heb">
+                             <a  ng-click="goBack()"><span class="back-button">&nbsp {{'lesson.back' | translate}} &nbsp<i class="fa fa-angle-left fa-2x "></i></span></a>
+                        </span>
+                    </span>
                     <div dir="auto" class="lesson-step-title lergo-h1">{{step.title}}</div>
-                    <div>
-                        <table class="lergo-table">
-                            <tr>
-                                <td style="vertical-align: top;">
-                                    <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                    <table class="lergo-table">
+                        <tr>
+                            <td style="vertical-align: top;">
+                                <div class="lesson-step-quiz-content" ng-include="getQuizItemTemplate()" ng-init="mode='quiz'"></div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
         </div>
         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
     </div>
-
 </div>
 

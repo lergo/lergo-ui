@@ -3,6 +3,19 @@
 angular.module('lergoApp').controller('LessonsUpdateCtrl',
     function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
         $window.scrollTo(0, 0);
+
+        // back button for 'step/display' in edit lesson
+        $scope.currentUrl = false;
+        var absUrl = $location.absUrl();
+        if (absUrl.indexOf('/lessons/step/display') > -1) {
+            $scope.currentUrl = true;
+        }
+
+        $scope.goBack = function() {
+            window.history.back();
+        };
+
+
         $scope.subjects = LergoFilterService.subjects;
         var addStepClicked = false;
         $scope.popoverState = {open: false, position: 'top'};
