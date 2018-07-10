@@ -1,3 +1,5 @@
+feat(return_button) implement return-button on quiz, video, presentation. Use $location to hide in playlesson and add controller to route
+
 feat(change color of play button in lesson intro and move action item button to left for mobile hebrew)
 
 fix(facebook share image bug) remove all pre-load and pre-connect in index.html to enable the facebook image share to work correctly
