@@ -1,3 +1,5 @@
+bug(hint) implement hint for desktop "fill in the blanks" and reinclude gzip,caching in nginx
+
 feat(return_button) implement return-button on quiz, video, presentation. Use $location to hide in playlesson and add controller to route
 
 feat(change color of play button in lesson intro and move action item button to left for mobile hebrew)
