@@ -1,3 +1,5 @@
+feat(LERGO-681 lergo-ri only!) Improve Invite Class Email and use javascript template strings instead of ejs
+
 bug(hint) implement hint for desktop "fill in the blanks" and reinclude gzip,caching in nginx
 
 feat(return_button) implement return-button on quiz, video, presentation. Use $location to hide in playlesson and add controller to route
