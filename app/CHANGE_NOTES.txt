@@ -1,3 +1,5 @@
+bug(LERGO-682) "my-invites" options to send emails. 1 will always be sent!
+
 feat(LERGO-681 lergo-ri only!) Improve Invite Class Email and use javascript template strings instead of ejs
 
 bug(hint) implement hint for desktop "fill in the blanks" and reinclude gzip,caching in nginx

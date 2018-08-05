@@ -451,15 +451,18 @@
   },
   "invite": "Invite",
   "invites": {
+    "classInvite": "Class",
     "emailNotification": "Email Notifications",
     "emailNotificationOff": "Turn off email notifications",
     "emailNotificationOn": "Turn on email notifications",
     "exportReports": "Export reports",
     "filter": "Filter Invites",
+    "invitation": "Student / Class Name",
     "markAsDone": "Mark as done",
     "markAsUndone": "Mark as undone",
     "myInvites": "My Invites",
     "studentOrClass": "Student / Class",
+    "studentInvite": "Student",
     "tooltip": {
       "go": "Click here to play the lesson."
     }
