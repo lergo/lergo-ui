@@ -72,7 +72,7 @@
                                     </td>
                                     <td class="answer">
                                         <span class="text-success" ng-show="invite.invitee.class">{{'invites.classInvite' | translate }} </span>
-                                        <span class= "text-warning" ng-show="!invite.invitee.class">{{'invites.studentInvite' | translate}}</span>
+                                        <span class= "text-info" ng-show="!invite.invitee.class">{{'invites.studentInvite' | translate}}</span>
                                     </td>
                                     <td class="answer">
                                         <span class="{{!invite.finished && 'bold' || ''}}">{{invite.language && ('filters.languages.' + invite.language | translate) ||""}}</span>
