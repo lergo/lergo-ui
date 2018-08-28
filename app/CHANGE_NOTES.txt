@@ -1,3 +1,6 @@
+lergo-ri package.json update: remove crypto (and use node build in crypto) replace node-uuid with uuid,
+upgrade grunt-curl and loggly
+
 upgrade mongodb (LERGO-683) upgrade mongodb from 2.6 to 3.2 and implement 'hack' in models/User.js to prevent returning
 an object without the userId. This problem only arose when moving to mongodb > 3.0
 
