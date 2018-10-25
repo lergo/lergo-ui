@@ -544,6 +544,7 @@
       "class": {
         "help": "Invite CLASS: To generate a PIN number or link to the invite, please enter your class name and press submit.",
         "msg": "Invite Class",
+        "name": "Class name",
         "noteMessage": "You will receive your students lesson reports upon completion of each lesson.",
         "noteTitle": "Note",
         "pinHint": "(students to enter it at lergo.it).",
@@ -555,6 +556,7 @@
       "student": {
         "help": "Invite STUDENT: To generate a link for the invite please enter student's first name and press submit.",
         "msg": "Invite Student",
+        "name": "Student name",
         "noteMessage": "You will receive your kid's/student's lesson report upon completion of lesson.",
         "noteTitle": " Note",
         "pinHint": "(students to enter it at lergo.it).",
