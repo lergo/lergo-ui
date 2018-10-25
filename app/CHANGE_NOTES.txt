@@ -1,3 +1,5 @@
+SEO - implement "noindex" on highest, non relevant google search links: /about/_keyContributors.html,
+manage/users/* , directives/_lergoFilter.html
 
 LERGO-684 Replace "Name" key in invites to "student.name" for student invite and "class.name" for class invite
 
