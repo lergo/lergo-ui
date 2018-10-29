@@ -9,6 +9,9 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/user/lessons', {
         templateUrl: 'views/lessons/index.html',
         controller: 'LessonsIndexCtrl'
+    }).when('/user/playLists', {
+        templateUrl: 'views/playLists/index.html',
+        controller: 'playListsIndexCtrl'
     }).when('/user/questions', {
         templateUrl: 'views/questions/index.html',
         controller: 'QuestionsIndexCtrl'
@@ -22,9 +25,16 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'views/lessons/stepDisplay.html'
     }).when('/user/playLists/step/display', {
         templateUrl: 'views/playLists/stepDisplay.html'
+    }).when('/user/playLists/step/display', {
+        templateUrl: 'views/playLists/stepDisplay.html'
     }).when('/user/lessons/:lessonId/display', {
         templateUrl: 'views/lessons/display.html',
         controller: 'LessonsDisplayCtrl',
+        reloadOnSearch: false,
+        params: {'preview': true}
+    }).when('/user/playLists/:playListsId/display', {
+        templateUrl: 'views/playLists/display.html',
+        controller: 'playListsDisplayCtrl',
         reloadOnSearch: false,
         params: {'preview': true}
     }).when('/manage/users', {
@@ -50,6 +60,10 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'views/lessons/invitations/display.html',
         controller: 'LessonsInvitationsDisplayCtrl',
         reloadOnSearch: false
+    }).when('/public/playLists/invitations/:invitationId/display', {
+        templateUrl: 'views/playLists/invitations/display.html',
+        controller: 'PlayListsInvitationsDisplayCtrl',
+        reloadOnSearch: false
     }).when('/:role/lessons/:lessonId/intro', {
         templateUrl: 'views/lessons/intro.html',
         controller: 'LessonsIntroCtrl'
@@ -59,21 +73,39 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/:role/lessons/:lessonId/classInvite', {
         templateUrl: 'views/invites/classInvite.html',
         controller: 'ClassInviteCtrl'
+    }).when('/:role/playLists/:playListId/classInvite', {
+        templateUrl: 'views/invites/classInvite.html',
+        controller: 'ClassInviteCtrl'
     }).when('/lessons/invite/pin', {
+        templateUrl: 'views/invites/pinInvite.html',
+        controller: 'PinInviteCtrl'
+    }).when('/playLists/invite/pin', {
         templateUrl: 'views/invites/pinInvite.html',
         controller: 'PinInviteCtrl'
     }).when('/lessons/invite/pininvite', {
         templateUrl: 'views/invites/pinInvite.html',
         controller: 'PinInviteCtrl'
+    }).when('/playLists/invite/pininvite', {
+        templateUrl: 'views/invites/pinInvite.html',
+        controller: 'PinInviteCtrl'
     }).when('/public/lessons/:lessonId/share', {
         template: '',
         controller: 'LessonsInvitesPublicShareCtrl'
+    }).when('/public/playLists/:playListId/share', {
+        template: '',
+        controller: 'playListInvitesPublicShareCtrl'
     }).when('/public/lessons/reports/:reportId/display', {
         templateUrl: 'views/lessons/invitations/report.html',
         controller: 'LessonsInvitationsReportCtrl'
+    }).when('/public/playLists/reports/:reportId/display', {
+        templateUrl: 'views/playLists/invitations/report.html',
+        controller: 'playListsInvitationsReportCtrl'
     }).when('/public/lessons/reports/agg/:reportId/display', {
         templateUrl: 'views/lessons/invitations/aggReport.html',
         controller: 'LessonsInvitationsAggReportCtrl'
+    }).when('/public/playLists/reports/agg/:reportId/display', {
+        templateUrl: 'views/playLists/invitations/aggReport.html',
+        controller: 'playListsInvitationsAggReportCtrl'
     }).when('/user/questions/:questionId/update', {
         templateUrl: 'views/questions/update.html',
         controller: 'QuestionsUpdateCtrl',
@@ -97,6 +129,9 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/user/lessons/:lessonId/invitations', {
         templateUrl: 'views/lessons/invitations/create.html',
         controller: 'LessonsInvitesCreateCtrl'
+    }).when('/user/playLists/:playListId/invitations', {
+        templateUrl: 'views/playList/invitations/create.html',
+        controller: 'playListInvitesCreateCtrl'
     }).when('/public/:username/profile', {
         templateUrl: 'views/users/profile.html',
         controller: 'UsersProfileCtrl'
@@ -163,6 +198,13 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         reloadOnSearch: false,
         'params': {
             'activeTab': 'lessons'
+        }
+    }).when('/admin/homepage/playLists', {
+        templateUrl: 'views/admin/playLists/_index.html',
+        controller: 'AdminLessonIndexCtrl',
+        reloadOnSearch: false,
+        'params': {
+            'activeTab': 'playLists'
         }
     }).when('/admin/homepage/abuseReports', {
         templateUrl: 'views/admin/abuseReports/_index.html',

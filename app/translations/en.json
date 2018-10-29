@@ -772,6 +772,13 @@
       },
       "genericVideosPost": " The list will open in a new tab.",
       "genericVideosPre": "For a list of generic animated videos please",
+      "Intro": {
+            "action": {
+                "preview": {
+                    "title": "Preview"
+                }
+            }
+      },
       "inviteplayList": {
           "class": {
               "help": "Invite CLASS: To generate a PIN number or link to the invite, please enter your class name and press submit.",
