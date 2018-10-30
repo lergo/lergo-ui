@@ -2,21 +2,21 @@
 
 /**
  * @ngdoc directive
- * @name lergoApp.directive:goToMyPlayListsDemo
+ * @name lergoApp.directive:goToMyPlaylistsDemo
  * @description
- * # goToMyPlayListsDemo
+ * # goToMyPlaylistsDemo
  */
 angular.module('lergoApp')
-    .directive('goToMyPlayListsDemo', function (LergoClient, $uibModal , $location, localStorageService) {
+    .directive('goToMyPlaylistsDemo', function (LergoClient, $uibModal , $location, localStorageService) {
         return {
-            templateUrl: 'views/demos/goToMyPlayListsDemo.html',
+            templateUrl: 'views/demos/goToMyPlaylistsDemo.html',
             restrict: 'A',
             link: function postLink( $scope, element, attrs ) {
 
                 var modalInstance;
                 var goToUrl;
 
-                var SEEN_DEMO_STORAGE_KEY='seen.goToMyPlayListsDemo';
+                var SEEN_DEMO_STORAGE_KEY='seen.goToMyPlaylistsDemo';
 
                 if ( localStorageService.get(SEEN_DEMO_STORAGE_KEY) ){
                     return;
@@ -26,15 +26,15 @@ angular.module('lergoApp')
                     if ( attrs.active !== 'false') {
                         goToUrl = $location.url();
                         event.preventDefault();
-                        $scope.openGoToMyPlayListsDemoDialog();
+                        $scope.openGoToMyPlaylistsDemoDialog();
                     }
                 });
 
-                $scope.openGoToMyPlayListsDemoDialog = function () {
+                $scope.openGoToMyPlaylistsDemoDialog = function () {
                     modalInstance = $uibModal.open({
-                        templateUrl: 'goToMyPlayListsDemoDialog.html',
+                        templateUrl: 'goToMyPlaylistsDemoDialog.html',
                         size: 'lg',
-                        windowClass: 'go-to-my-play-lists-demo-dialog',
+                        windowClass: 'go-to-my-playlists-demo-dialog',
                         scope: $scope
                     });
                 };

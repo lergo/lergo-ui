@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('lergoApp').controller('PlayListsIntroCtrl',
+angular.module('lergoApp').controller('PlaylistsIntroCtrl',
     function ($scope, $routeParams, LergoClient, $location, $uibModal, DisplayRoleService, $log, $rootScope, LergoTranslate, $window, $filter) {
         $window.scrollTo(0, 0);
-        var playListId = $routeParams.playListId;
+        var playlistId = $routeParams.playlistId;
         var invitationId = $routeParams.invitationId;
         var preview = !!$routeParams.preview;
         var autoPlay = $routeParams.autoPlay;
@@ -13,84 +13,84 @@ angular.module('lergoApp').controller('PlayListsIntroCtrl',
 
         function redirectToInvitation() {
 
-            if (!$scope.playList.temporary) {
-                $location.path('/public/playLists/invitations/' + invitationId + '/display').search({
-                    playListId: $scope.playList._id,
+            if (!$scope.playlist.temporary) {
+                $location.path('/public/playlists/invitations/' + invitationId + '/display').search({
+                    playlistId: $scope.playlist._id,
                     reportId: $routeParams.reportId,
                     currentStepIndex: 0 // required, otherwise we will get 'unsaved changes' alert
                 });
             } else {
-                $location.path('/public/playLists/invitations/' + invitationId + '/display').search({
-                    playListId: $scope.playList._id
+                $location.path('/public/playlists/invitations/' + invitationId + '/display').search({
+                    playlistId: $scope.playlist._id
                 }).replace();
             }
         }
 
         function redirectToPreview() {
-            $location.path('/user/playLists/' + playListId + '/display');
+            $location.path('/user/playlists/' + playlistId + '/display');
 
         }
 
-        $scope.copyPlayList = function () {
+        $scope.copyPlaylist = function () {
             $scope.copyBtnDisable = true;
-            $scope.copyPlayListPromise = LergoClient.playLists.copyPlayList(playListId);
-            $scope.copyPlayListPromise.then(function (result) {
-                $location.path('/user/playLists/' + result.data._id + '/update');
+            $scope.copyPlaylistPromise = LergoClient.playlists.copyPlaylist(playlistId);
+            $scope.copyPlaylistPromise.then(function (result) {
+                $location.path('/user/playlists/' + result.data._id + '/update');
             }, function (result) {
                 $scope.copyBtnDisable = false;
                 $log.error(result);
             });
         };
 
-        var playListLikeWatch = null;
-        $scope.$watch('playList', function loadLike(newValue) {
+        var playlistLikeWatch = null;
+        $scope.$watch('playlist', function loadLike(newValue) {
             if (!!newValue) {
-                // get my like - will decide if I like this playList or not
-                LergoClient.likes.getMyPlayListLike($scope.playList).then(function (result) {
-                    $scope.playListLike = result.data;
+                // get my like - will decide if I like this playlist or not
+                LergoClient.likes.getMyPlaylistLike($scope.playlist).then(function (result) {
+                    $scope.playlistLike = result.data;
                 });
 
-                if (playListLikeWatch === null) {
-                    playListLikeWatch = $scope.$watch('playListLike', function countLikes() {
-                        // get count of likes for playList
-                        LergoClient.likes.countPlayListLikes($scope.playList).then(function (result) {
-                            $scope.playListLikes = result.data.count;
+                if (playlistLikeWatch === null) {
+                    playlistLikeWatch = $scope.$watch('playlistLike', function countLikes() {
+                        // get count of likes for playlist
+                        LergoClient.likes.countPlaylistLikes($scope.playlist).then(function (result) {
+                            $scope.playlistLikes = result.data.count;
                         });
                     });
                 }
             }
         });
 
-        $scope.likePlayList = function () {
-            $log.info('liking playList');
-            LergoClient.likes.likePlayList($scope.playList).then(function (result) {
-                $scope.playListLike = result.data;
+        $scope.likePlaylist = function () {
+            $log.info('liking playlist');
+            LergoClient.likes.likePlaylist($scope.playlist).then(function (result) {
+                $scope.playlistLike = result.data;
             });
         };
 
-        $scope.unlikePlayList = function () {
-            $log.info('unliking playList');
-            LergoClient.likes.deletePlayListLike($scope.playList).then(function () {
-                $scope.playListLike = null;
+        $scope.unlikePlaylist = function () {
+            $log.info('unliking playlist');
+            LergoClient.likes.deletePlaylistLike($scope.playlist).then(function () {
+                $scope.playlistLike = null;
             });
         };
 
         $scope.isLiked = function () {
-            return !!$scope.playListLike;
+            return !!$scope.playlistLike;
         };
 
 
-        $scope.previewPlayList = function () {
+        $scope.previewPlaylist = function () {
 
             // persistScroll();
             var modelContent = {};
-            modelContent.templateUrl = 'views/playList/preview/preview.html';
-            modelContent.windowClass = 'playList-preview-dialog ' + LergoTranslate.getDirection();
+            modelContent.templateUrl = 'views/playlist/preview/preview.html';
+            modelContent.windowClass = 'playlist-preview-dialog ' + LergoTranslate.getDirection();
             modelContent.backdrop = 'static';
-            modelContent.controller = 'PlayListPreviewCtrl';
+            modelContent.controller = 'PlaylistPreviewCtrl';
             modelContent.resolve = {
-                playList: function () {
-                    return $scope.playList;
+                playlist: function () {
+                    return $scope.playlist;
                 },
                 questions: function () {
                     return $scope.questions;
@@ -109,22 +109,22 @@ angular.module('lergoApp').controller('PlayListsIntroCtrl',
         };
 
         $scope.showActionItems = function () {
-            return DisplayRoleService.canSeeActionItemsOnPlayListIntroPage();
+            return DisplayRoleService.canSeeActionItemsOnPlaylistIntroPage();
         };
 
-        $scope.deletePlayList = function (playList) {
+        $scope.deletePlaylist = function (playlist) {
             var str = $filter('translate')('deleteIntro.Confirm');
             var canDelete = confirm($filter('format')(str, {
-                '0': playList.name
+                '0': playlist.name
             }));
             if (canDelete) {
-                $scope.deletePlayListPromise = LergoClient.playLists.delete(playList._id);
-                $scope.deletePlayListPromise.then(function () {
+                $scope.deletePlaylistPromise = LergoClient.playlists.delete(playlist._id);
+                $scope.deletePlaylistPromise.then(function () {
                     $scope.errorMessage = null;
-                    $log.info('PlayList deleted sucessfully');
-                    $location.path('/user/create/playLists');
+                    $log.info('Playlist deleted sucessfully');
+                    $location.path('/user/create/playlists');
                 }, function (result) {
-                    $scope.errorMessage = 'Error in deleting PlayList : ' + result.data.message;
+                    $scope.errorMessage = 'Error in deleting Playlist : ' + result.data.message;
                     $log.error($scope.errorMessage);
                 });
             }
@@ -138,8 +138,8 @@ angular.module('lergoApp').controller('PlayListsIntroCtrl',
             })));
         }
 
-        // we want to show edit summary in case this playList is a copy of another
-        // playList
+        // we want to show edit summary in case this playlist is a copy of another
+        // playlist
         // or if we have an edit summary on one of the questions.
 
         // edit summary is used here as an abstraction and does not refer to the
@@ -149,7 +149,7 @@ angular.module('lergoApp').controller('PlayListsIntroCtrl',
 
             // we want to keep the information about copyOf if copied from yourself.
             // we do not want to display it in the edit summary though
-            if (!!$scope.playList && !!$scope.playList.copyOf && !!$scope.copyOfItems && _.size($scope.copyOfItems) > 0) {
+            if (!!$scope.playlist && !!$scope.playlist.copyOf && !!$scope.copyOfItems && _.size($scope.copyOfItems) > 0) {
                 return true;
             }
 
@@ -165,22 +165,22 @@ angular.module('lergoApp').controller('PlayListsIntroCtrl',
             return !!withSummary && withSummary.length > 0;
         };
 
-        LergoClient.playLists.getPermissions(playListId).then(function (result) {
+        LergoClient.playlists.getPermissions(playlistId).then(function (result) {
             $scope.permissions = result.data;
         });
 
         $scope.showReadMore = function (filteredDescription) {
 
-            $scope.more = !$scope.playList || !$scope.playList.description || $scope.playList.description === '';
-            return (!!$scope.playList && !!$scope.playList.description && !!filteredDescription && filteredDescription.length !== $scope.playList.description.length) || $scope.showEditSummary();
+            $scope.more = !$scope.playlist || !$scope.playlist.description || $scope.playlist.description === '';
+            return (!!$scope.playlist && !!$scope.playlist.description && !!filteredDescription && filteredDescription.length !== $scope.playlist.description.length) || $scope.showEditSummary();
         };
 
-        $scope.startPlayList = function () {
+        $scope.startPlaylist = function () {
 
-            if (!!preview) { // preview - no playList report, no invitation
+            if (!!preview) { // preview - no playlist report, no invitation
                 redirectToPreview();
             } else if (!invitationId) { // prepared invitation
-                LergoClient.playListsInvitations.createAnonymous(playListId).then(function (result) {
+                LergoClient.playlistsInvitations.createAnonymous(playlistId).then(function (result) {
                     invitationId = result.data._id;
                     redirectToInvitation();
                 });
@@ -209,7 +209,7 @@ angular.module('lergoApp').controller('PlayListsIntroCtrl',
         $scope.abuseReport = {};
         $scope.submitAbuseReport = function () {
             $scope.submit = true;
-            LergoClient.abuseReports.abusePlayList($scope.abuseReport, $scope.playList);
+            LergoClient.abuseReports.abusePlaylist($scope.abuseReport, $scope.playlist);
         };
 
         $scope.isInvitationLink = function () {
@@ -250,10 +250,10 @@ angular.module('lergoApp').controller('PlayListsIntroCtrl',
                         /* map each question we copied to the original */
                         /*
                          * remove question that was created by the same user who
-                         * owns this playList
+                         * owns this playlist
                          */
                         questionsWeCopied = _.filter(questionsWeCopied, function (q) {
-                            return !_.isEmpty(_.reject(q.originals, {userId: $scope.playList.userId}));
+                            return !_.isEmpty(_.reject(q.originals, {userId: $scope.playlist.userId}));
                         });
 
                         $scope.questionsWeCopied = _.keyBy(questionsWeCopied, '_id');
@@ -264,7 +264,7 @@ angular.module('lergoApp').controller('PlayListsIntroCtrl',
         }
 
         function giveCreditToQuestionsWeUseFromOthers(questions) {
-            var questionsFromOthers = _.reject(questions, {userId: $scope.playList.userId});
+            var questionsFromOthers = _.reject(questions, {userId: $scope.playlist.userId});
             var others = _.uniq(_.compact(_.map(questionsFromOthers, 'userId')));
 
             if (!others || others.length === 0) {
@@ -287,10 +287,10 @@ angular.module('lergoApp').controller('PlayListsIntroCtrl',
         function loadQuestions() {
 
             var questionsId = [];
-            if (!!$scope.playList && !!$scope.playList.steps) {
+            if (!!$scope.playlist && !!$scope.playlist.steps) {
 
-                for (var i = 0; i < $scope.playList.steps.length; i++) {
-                    var items = $scope.playList.steps[i].quizItems;
+                for (var i = 0; i < $scope.playlist.steps.length; i++) {
+                    var items = $scope.playlist.steps[i].quizItems;
                     if (!!items && angular.isArray(items)) {
                         questionsId.push.apply(questionsId, items);
                     }
@@ -305,53 +305,53 @@ angular.module('lergoApp').controller('PlayListsIntroCtrl',
         }
 
         // once we have the copyOf details, we need to fetch details about it like
-        // users and playLists.
+        // users and playlists.
         // we only want to do this once. We can implement 'unregister' or simply
         // return at the beginning.
         // either way is fine with me.
-        $scope.$watch('playList', function loadCopyOfDetails(newValue) {
+        $scope.$watch('playlist', function loadCopyOfDetails(newValue) {
             if (!!$scope.copyOfItem) {
                 return;
 
             }
 
             if (!!newValue) {
-                $scope.shareLink = LergoClient.playLists.getShareLink(newValue);
+                $scope.shareLink = LergoClient.playlists.getShareLink(newValue);
                 $scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="600" frameBorder="0"></iframe>';
             }
 
             if (!!newValue && !!newValue.copyOf) {
-                LergoClient.playLists.findPlayListsById([].concat(newValue.copyOf)).then(function (result) {
+                LergoClient.playlists.findPlaylistsById([].concat(newValue.copyOf)).then(function (result) {
                     // we want to keep the information about copyOf if copied from
                     // yourself.
                     // we do not want to display it in the edit summary though
-                    var copyOfPlayLists = _.compact(_.reject(result.data, {'userId': $scope.playList.userId}));
-                    LergoClient.users.findUsersById(_.map(copyOfPlayLists, 'userId')).then(function (result) {
+                    var copyOfPlaylists = _.compact(_.reject(result.data, {'userId': $scope.playlist.userId}));
+                    LergoClient.users.findUsersById(_.map(copyOfPlaylists, 'userId')).then(function (result) {
                         var copyOfUsers = result.data;
                         // turn list of users to map
                         var copyOfUsersById = _.keyBy(copyOfUsers, '_id');
 
-                        _.each(copyOfPlayLists, function (l) {
+                        _.each(copyOfPlaylists, function (l) {
                             l.userDetails = copyOfUsersById[l.userId];
                         });
 
-                        $scope.copyOfItems = copyOfPlayLists;
+                        $scope.copyOfItems = copyOfPlaylists;
 
                     });
                 });
             }
         });
 
-        LergoClient.playLists.getPlayListIntro(playListId).then(function (result) {
-            $scope.playList = result.data;
+        LergoClient.playlists.getPlaylistIntro(playlistId).then(function (result) {
+            $scope.playlist = result.data;
             $rootScope.page = {
-                'title': $scope.playList.name,
-                'description': $scope.playList.description
+                'title': $scope.playlist.name,
+                'description': $scope.playlist.description
             };
             loadQuestions();
-            LergoTranslate.setLanguageByName($scope.playList.language);
+            LergoTranslate.setLanguageByName($scope.playlist.language);
             if (!!autoPlay) {
-                $scope.startPlayList();
+                $scope.startPlaylist();
             }
         }, function (result) {
             if (result.status === 404) {

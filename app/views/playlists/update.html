@@ -1,23 +1,23 @@
-<div class="base-layout" id="createPlayListPageMobile" noindex>
-        <span go-to-my-playLists-demo active="{{!isPlayListInvalid()}}"></span>
+<div class="base-layout" id="createPlaylistPageMobile" noindex>
+        <span go-to-my-playlists-demo active="{{!isPlaylistInvalid()}}"></span>
         <div class="container">
             <div class="row">
                 <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                 <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                        <form ng-submit='create()' class="createPlayList-form lergo-form container" name="playListCreateForm">
+                        <form ng-submit='create()' class="createPlaylist-form lergo-form container" name="playlistCreateForm">
                             <div class="form-section form-group name"
-                                ng-class="{ 'has-error' : playListCreateForm.name.$invalid && !playListCreateForm.$pristine }">
-                                <label dir="auto" class="bot5">{{ 'playLists.name' | translate }}</label>
+                                ng-class="{ 'has-error' : playlistCreateForm.name.$invalid && !playlistCreateForm.$pristine }">
+                                <label dir="auto" class="bot5">{{ 'playlists.name' | translate }}</label>
                                 <div class="lergo-input">
-                                    <input dir="auto" required class="form-control" ng-model="playList.name" name="name"/>
+                                    <input dir="auto" required class="form-control" ng-model="playlist.name" name="name"/>
                                 </div>
-                                <p ng-show="playListCreateForm.name.$invalid && !playListCreateForm.$pristine" class="help-block">
-                                    {{'playLists.error.invalidName' | translate}}</p>
+                                <p ng-show="playlistCreateForm.name.$invalid && !playlistCreateForm.$pristine" class="help-block">
+                                    {{'playlists.error.invalidName' | translate}}</p>
                             </div>
                             <div class="form-section description form-group">
-                                <label dir="auto" class="bot5 top5">{{ 'playLists.description' | translate }}</label>
+                                <label dir="auto" class="bot5 top5">{{ 'playlists.description' | translate }}</label>
                                 <div class="lergo-input">
-                                    <textarea dir="auto" class="form-control" ng-model="playList.description" name="description" dir="auto"></textarea>
+                                    <textarea dir="auto" class="form-control" ng-model="playlist.description" name="description" dir="auto"></textarea>
                                 </div>
                             </div>
                             <div class="stats form-group">
@@ -25,7 +25,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                         <div class="language ">
                                             <label>{{ 'filters.labels.language' | translate }}</label>
-                                            <select class="form-control" ng-model="playList.language"
+                                            <select class="form-control" ng-model="playlist.language"
                                                     ng-options="l as ('filters.languages.' + l| translate) for l in languages"
                                                     name="language"></select>
                                         </div>
@@ -33,7 +33,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                         <div class="subject">
                                             <label>{{ 'filters.labels.subject' | translate }}</label>
-                                            <select class="form-control" ng-model="playList.subject"
+                                            <select class="form-control" ng-model="playlist.subject"
                                                     ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"
                                                     name="subject"></select>
                                         </div>
@@ -42,7 +42,7 @@
                                         <div class="age">
                                             <label>{{ 'fromAge' | translate }}</label>
                                             <input  class="form-control" type="number" min="4" max="18" step="1" size="2"
-                                                   ng-model="playList.age" name="age"/>
+                                                   ng-model="playlist.age" name="age"/>
                                         </div>
                                     </div>
                                     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
@@ -52,7 +52,7 @@
                                     <div class="tag form-group">
                                         <label>{{ 'tags' | translate }}</label>
                                         <div>
-                                            <div tag-section tags="playList.tags" tags-available="allAvailableTags"></div>
+                                            <div tag-section tags="playlist.tags" tags-available="allAvailableTags"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                 <div class="advanced-options">
                                     <br>
                                     <button class="btn-link expander" ng-click="isAdvOptOpen = !isAdvOptOpen"
-                                            ng-show="!!playList.name">
+                                            ng-show="!!playlist.name">
                                         <i ng-show="!isAdvOptOpen" class="fa fa-plus-square"></i>
                                         <i ng-show="!!isAdvOptOpen" class="fa fa-minus-square"></i>
                                         {{ 'advancedOptions' | translate }}
@@ -70,36 +70,36 @@
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-2 col-sm-12 col-xs-12">
-                                                {{ 'playLists.addCoverPage' | translate }}
+                                                {{ 'playlists.addCoverPage' | translate }}
                                             </div>
                                             <div class="col-md-10 col-sm-12 col-xs-12">
                                                 <input lergo-input-converter
-                                                       placeholder="{{'playLists.addCoverPageHint' | translate}}"
-                                                       ng-model="playList.coverPage"/>
+                                                       placeholder="{{'playlists.addCoverPageHint' | translate}}"
+                                                       ng-model="playlist.coverPage"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-2 col-sm-12 col-xs-12">
-                                                {{ 'playLists.recommendedNextPlaylist' | translate }}
+                                                {{ 'playlists.recommendedNextPlaylist' | translate }}
                                             </div>
                                             <div class="col-md-10 col-sm-12 col-xs-12">
-                                                <input placeholder="{{'playLists.recommendedNextPlaylistText' | translate}}"
-                                                       ng-model="playList.nextPlayList"/>
+                                                <input placeholder="{{'playlists.recommendedNextPlaylistText' | translate}}"
+                                                       ng-model="playlist.nextPlaylist"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-2 col-sm-12 col-xs-12">
-                                                {{ 'playLists.recommendedPriorPlaylist' | translate }}
+                                                {{ 'playlists.recommendedPriorPlaylist' | translate }}
                                             </div>
                                             <div class="col-md-10 col-sm-12 col-xs-12">
-                                                <input placeholder="{{'playLists.recommendedPriorPlaylistText' | translate}}"
-                                                       ng-model="playList.priorPlayList"/>
+                                                <input placeholder="{{'playlists.recommendedPriorPlaylistText' | translate}}"
+                                                       ng-model="playlist.priorPlaylist"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div ng-repeat="step in playList.steps">
-                                    <hr class="hr-width-create-playList"/>
+                                <div ng-repeat="step in playlist.steps">
+                                    <hr class="hr-width-create-playlist"/>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
@@ -146,15 +146,15 @@
                                 <div save-status="saveStatus" class="row top30 status-save"></div>
                                 <div></div>
                                 <div class="add-step-hint row" ></div>
-                                <div class="playList-actions row"> <!-- playList actions -->
+                                <div class="playlist-actions row"> <!-- playlist actions -->
                                     <button style=" font-size: 13px" class="btn" ng-click="done()" ng-disabled="saveButtonDisabled()">
                                         {{'done' | translate }}
                                     </button>
-                                    <button style=" font-size: 13px" class="btn" ng-click="done('showPlayList')" ng-disabled="saveButtonDisabled()">
-                                        {{'button.showPlayList' | translate }}
+                                    <button style=" font-size: 13px" class="btn" ng-click="done('showPlaylist')" ng-disabled="saveButtonDisabled()">
+                                        {{'button.showPlaylist' | translate }}
                                     </button>
                                     <span class="pop-up-hint add-step-button">
-                                        <button style=" font-size: 13px" class="btn btn-start" ng-click="addStep(playList)"
+                                        <button style=" font-size: 13px" class="btn btn-start" ng-click="addStep(playlist)"
                                                 ng-disabled="saveButtonDisabled()">{{ 'steps.add' | translate }}
                                         </button>
                                         <span class="hidden-xs">
@@ -182,13 +182,13 @@
                             </button>
                             <hr>
                             <div uib-collapse="!isCollapsed">
-                                <div helper-content path="'/playList/update'" user="user"></div>
+                                <div helper-content path="'/playlist/update'" user="user"></div>
                             </div>
                         </div>
                     <div class="hidden-sm hidden-xs">
                         <div>
-                            <div class="create-playList-sidebar">
-                                <div helper-content path="'/playList/update'" user="user"></div>
+                            <div class="create-playlist-sidebar">
+                                <div helper-content path="'/playlist/update'" user="user"></div>
                             </div>
                         </div>
                     </div>

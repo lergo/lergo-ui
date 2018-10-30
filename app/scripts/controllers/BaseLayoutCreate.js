@@ -19,10 +19,10 @@ angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $
         controller : 'LessonsIndexCtrl',
         include : 'views/lessons/_index.html'
 	},{
-        id : 'playLists',
+        id : 'playlists',
         icon : 'fa fa-certificate',
-        controller : 'PlayListsIndexCtrl',
-        include : 'views/playLists/_index.html'
+        controller : 'PlaylistsIndexCtrl',
+        include : 'views/playlists/_index.html'
     },{
         id : 'questions',
         icon : 'fa fa-question-circle',

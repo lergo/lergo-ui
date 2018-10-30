@@ -1,6 +1,6 @@
 'use strict';
 
-var PlayListsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce,
+var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce,
                                        LergoClient, shuffleFilter, localStorageService, $window) {
     $log.info('showing step');
 
@@ -34,7 +34,7 @@ var PlayListsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         window.scrollTo(0,0);
         // guy - when we watch an invitation, we get all the questions for all
         // steps pre-resolved.
-        // however, when we preview a playList, this controller/scope are
+        // however, when we preview a playlist, this controller/scope are
         // responsible for resolving the questions
         // and they resolve it for each step anew.
         // so we have 2 different algorithms for resolving questions for quiz.
@@ -391,7 +391,7 @@ var PlayListsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         if (!!step && !!step.type) {
             type = step.type;
         }
-        return 'views/playList/steps/view/_' + type + '.html';
+        return 'views/playlist/steps/view/_' + type + '.html';
     };
 
     $scope.getYoutubeEmbedSource = function (step) { // todo : use service
@@ -606,5 +606,5 @@ var PlayListsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         }
     }
 };
-angular.module('lergoApp').controller('PlayListsStepDisplayCtrl', ['$scope', '$rootScope', 'StepService', '$log', '$routeParams', '$timeout', '$sce',
-    'LergoClient', 'shuffleFilter', 'localStorageService', '$window', PlayListsStepDisplayCtrl]);
+angular.module('lergoApp').controller('PlaylistsStepDisplayCtrl', ['$scope', '$rootScope', 'StepService', '$log', '$routeParams', '$timeout', '$sce',
+    'LergoClient', 'shuffleFilter', 'localStorageService', '$window', PlaylistsStepDisplayCtrl]);

@@ -1,14 +1,14 @@
 
 <div>
-    <div id="playListsIndex" load-filter-and-paging="loadPlayLists()">
+    <div id="playlistsIndex" load-filter-and-paging="loadPlaylists()">
         <br/>
             <div class="container">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
                                     <div>
-                                        <div class="filter-playLists lergo-h1-orig hidden-sm hidden-xs">{{ 'playLists.filter' | translate }}</div>
-                                        <div lergo-filter   model="playListsFilter" on-change="loadPlayLists()" opts="playListsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
+                                        <div class="filter-playlists lergo-h1-orig hidden-sm hidden-xs">{{ 'playlists.filter' | translate }}</div>
+                                        <div lergo-filter   model="playlistsFilter" on-change="loadPlaylists()" opts="playlistsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
                                     </div>
                                 </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
@@ -17,37 +17,37 @@
                             <div>
                                 <div>
                                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
-                                        <div class="my-playLists lergo-h1-orig" >
+                                        <div class="my-playlists lergo-h1-orig" >
                                             <div class="btn-group mobile-leftRight15" uib-dropdown dropdown-append-to-body>
                                                 <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
                                                     <span class="fa fa-caret-down"></span>
-                                                    <span class="lergo-h1-orig d-padBot15">{{('playLists.'+ playListToLoad |translate)}} </span>
+                                                    <span class="lergo-h1-orig d-padBot15">{{('playlists.'+ playlistToLoad |translate)}} </span>
                                                 </button>
                                                 <ul class="dropdown-menu overidePositionInherit" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
                                                     <li>
-                                                        <a class="btn-link" style="outline: none;" ng-click="load(PlayListTypeToLoad.user)">{{'playLists.myPlayLists'|translate}}</a>
-                                                        <a class="btn-link" style="outline: none;" ng-click="load(PlayListTypeToLoad.liked)">{{'playLists.likedPlayLists'|translate}}</a>
+                                                        <a class="btn-link" style="outline: none;" ng-click="load(PlaylistTypeToLoad.user)">{{'playlists.myPlaylists'|translate}}</a>
+                                                        <a class="btn-link" style="outline: none;" ng-click="load(PlaylistTypeToLoad.liked)">{{'playlists.likedPlaylists'|translate}}</a>
                                                     </li>
                                                 </ul>
                                             </div>
-                                            [ {{ 'playLists.total' | translate }}: {{filterPage.count}} ]
+                                            [ {{ 'playlists.total' | translate }}: {{filterPage.count}} ]
                                         </div>
                                     </div>
                                     <div class="col-border-bottom col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                         <div class="create" >
-                                            <button ng-click="createPlayListBtnDisable || create()" class="btn btn-start"  ng-disabled="createPlayListBtnDisable">
-                                                <i ng-show="createPlayListBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
-                                                {{ 'playLists.create' | translate }}
+                                            <button ng-click="createPlaylistBtnDisable || create()" class="btn btn-start"  ng-disabled="createPlaylistBtnDisable">
+                                                <i ng-show="createPlaylistBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+                                                {{ 'playlists.create' | translate }}
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class=" hidden-sm hidden-xs">
-                                <div filter-is-active="playListsFilterOpts" section="playLists"></div>
+                                <div filter-is-active="playlistsFilterOpts" section="playlists"></div>
                             </div>
                             <div class="table-responsive"style="border: 1px solid #FAFAFA"> <!--without a style, iPad does not show content!-->
-                                <table class="table   " ng-show="playLists.length > 0">
+                                <table class="table   " ng-show="playlists.length > 0">
                                 <thead>
                                 <tr style="font-weight: bold">
                                     <td class="col1">{{ 'name' | translate }}</td>
@@ -57,11 +57,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="les in playLists |orderBy:'-lastUpdate'">
+                                <tr ng-repeat="les in playlists |orderBy:'-lastUpdate'">
                                     <td class="name" dir="auto">
-                                        <a ng-show="!!les.name && les.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'playLists.tooltip.go' | translate}}" ng-href="#!/user/playLists/{{les._id}}/intro">{{
+                                        <a ng-show="!!les.name && les.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'playlists.tooltip.go' | translate}}" ng-href="#!/user/playlists/{{les._id}}/intro">{{
                                             les.name }}</a>
-                                        <a ng-show="!les.name || les.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'playLists.tooltip.go' | translate}}" ng-href="#!/user/playLists/{{les._id}}/intro">[
+                                        <a ng-show="!les.name || les.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'playlists.tooltip.go' | translate}}" ng-href="#!/user/playlists/{{les._id}}/intro">[
                                             no title ]</a>
                                     </td>
                                     <td >{{les.subject && ('filters.subjects.' + les.subject | translate) ||""}}</td>
@@ -75,10 +75,10 @@
                         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                     </div>
                 </div>
-            <div class="page-content-body text-center" ng-hide="!!playLists || playLists.length != 0">
-                <span class="alert alert-warning font-medium" >{{'playLists.noPlayLists' | translate}}</span>
+            <div class="page-content-body text-center" ng-hide="!!playlists || playlists.length != 0">
+                <span class="alert alert-warning font-medium" >{{'playlists.noPlaylists' | translate}}</span>
             </div>
-        <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadPlayLists()" on-load="pagingLoaded()"></div>
+        <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadPlaylists()" on-load="pagingLoaded()"></div>
     </div>
 </div>
 

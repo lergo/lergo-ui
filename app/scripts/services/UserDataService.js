@@ -20,19 +20,19 @@ angular.module('lergoApp').service('UserDataService', function UserDataService($
             }
         });
     };
-    this.getPlayLists = function(queryObj) {
+    this.getPlaylists = function(queryObj) {
         return $http({
             'method' : 'GET',
-            'url' : '/backend/user/me/playLists',
+            'url' : '/backend/user/me/playlists',
             'params' : {
                 'query' : queryObj
             }
         });
     };
-	this.getLikedPlayLists = function(queryObj) {
+	this.getLikedPlaylists = function(queryObj) {
 		return $http({
 			'method' : 'GET',
-			'url' : '/backend/user/me/liked/playLists',
+			'url' : '/backend/user/me/liked/playlists',
 			'params' : {
 				'query' : queryObj
 			}

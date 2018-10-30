@@ -107,7 +107,7 @@
         "manageRoles": "Manage Roles",
         "manageUsers": "Manage Users",
         "parents": "Parents",
-        "playLists": "Playlists",
+        "playlists": "Playlists",
         "profile": "Profile",
         "privacy": "Privacy and Terms",
         "questions": "Questions",
@@ -150,7 +150,7 @@
     "newInvite": "New Invite",
     "resendValidationEmail": "Resend validation email",
     "showLesson": "Display Lesson",
-    "showPlayList": "Display Playlist",
+    "showPlaylist": "Display Playlist",
     "signup": "Signup",
     "signupSubmit": "SIGNUP",
     "submit": "Submit"
@@ -198,10 +198,10 @@
   "deleteLessons": {
     "Confirm": "Are you sure you want to delete selected lessons? This action cannot be undone."
   },
-  "deletePlayList": {
+  "deletePlaylist": {
     "Confirm": "For the playlist to be created and saved, you must fill at least the Name field. By leaving this page without filling this field, all changes will be lost."
   },
-  "deletePlayLists": {
+  "deletePlaylists": {
         "Confirm": "Are you sure you want to delete selected playlists? This action cannot be undone."
   },
   "deleteQuestion": {
@@ -280,7 +280,7 @@
         "msg": "Lessons are filtered.",
         "resetAction": "Click here to view all lessons."
       },
-      "playLists": {
+      "playlists": {
           "msg": "playlists are filtered.",
           "resetAction": "Click here to view all playlists."
       },
@@ -421,7 +421,7 @@
     "andCounting": "and counting...",
     "create": "create",
     "createLessons": "Create Lesson",
-    "createPlayLists": "Create Play List",
+    "createPlaylists": "Create Play List",
     "createYourOwn": "Create Your Own Lesson",
     "exploreLessons": "Explore Lessons",
     "free": "it's free!",
@@ -741,7 +741,7 @@
       "lergo": "Powered by LerGO"
     }
   },
-  "playLists": {
+  "playlists": {
       "addCoverPage": "Add cover image for playlist intro",
       "addCoverPageHint": "To add your cover image to playlist please paste here the image URL.",
       "addQuestion": "Add Questions to Quiz",
@@ -749,7 +749,7 @@
       "areYouReady": "Are you ready to start learning?",
       "available": "Available playlists",
       "comment": "Comments",
-      "continueplayList": "Continue playlist",
+      "continueplaylist": "Continue playlist",
       "create": "Create New playlist",
       "createdOn": "created on",
       "description": "playlist Description",
@@ -757,8 +757,8 @@
           "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
           "noPermissionsTitle": "You don't have permissions to edit this."
       },
-      "embedplayList": "Embed",
-      "embedplayListTitle": "Copy the code below to embed playlist on your webpage or blog",
+      "embedplaylist": "Embed",
+      "embedplaylistTitle": "Copy the code below to embed playlist on your webpage or blog",
       "error": {
           "invalidName": "playlist name is a required field. Please fill it out before adding a step to the playlist."
       },
@@ -779,7 +779,7 @@
                 }
             }
       },
-      "inviteplayList": {
+      "inviteplaylist": {
           "class": {
               "help": "Invite CLASS: To generate a PIN number or link to the invite, please enter your class name and press submit.",
               "msg": "Invite Class",
@@ -803,17 +803,17 @@
               }
           }
       },
-      "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a playList.",
+      "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a playlist.",
       "inviteSuccessText": "Copy the link below to invite a student to the playlist",
-      "playListCompleted": "You have completed the playlist",
-      "playListReport": "playlist Report",
+      "playlistCompleted": "You have completed the playlist",
+      "playlistReport": "playlist Report",
       "letsContinue": "OK! Let's Continue",
       "letsGo": "Let's LerGO!",
-      "likedPlayLists": "Liked playlists",
+      "likedPlaylists": "Liked playlists",
       "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like playlists.",
-      "myPlayLists": "My playlists",
+      "myPlaylists": "My playlists",
       "name": "playlist Name",
-      "noplayLists": "To create a new playlist please click on \"Create New playlist\".",
+      "noplaylists": "To create a new playlist please click on \"Create New playlist\".",
       "note": "Note",
       "noteMessage": "You will receive your kid's/student's playlist report upon completion of playlist.",
       "practiceNotAvailable": "Please signup or login to LerGO. Only registered users can use this feature.",
@@ -827,11 +827,11 @@
       "reportAbuseNotAvailable": "To flag playlist or report abuse please login or register to LerGO. Alternately, you can also use the Report Abuse button at the footer below.",
       "restart": "Start Over",
       "seeReport": "See Report",
-      "sharePlayList": "Share",
-      "sharePlayListTitle": "Copy the link below to share playlist with friends",
+      "sharePlaylist": "Share",
+      "sharePlaylistTitle": "Copy the link below to share playlist with friends",
       "slideURL": "Presentation URL",
       "slideURLHelpText": "Insert the URL of the Google Slides presentation here.",
-      "startPlayList": "Start playlist",
+      "startPlaylist": "Start playlist",
       "tags": "Tags",
       "tooltip": {
           "comment": "Comments",

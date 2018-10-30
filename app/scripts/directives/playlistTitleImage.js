@@ -11,8 +11,8 @@ angular.module('lergoApp')
             },
             link: function postLink(scope/*, element, attrs*/) {
 
-                scope.$watch('playList', function () {
-                    scope.img = LergoClient.playLists.getTitleImage(scope.playList);
+                scope.$watch('playlist', function () {
+                    scope.img = LergoClient.playlists.getTitleImage(scope.playlist);
                 });
 
             }

@@ -1,5 +1,5 @@
-#playListIntro {
-    .playList {
+#playlistIntro {
+    .playlist {
         .image {
             position: relative;
             margin-left: auto;
@@ -19,7 +19,7 @@
                 }
             }
         }
-        .start-playList {
+        .start-playlist {
             position: relative;
             width: 46px;
             margin: -190px auto 140px;
@@ -180,8 +180,8 @@
 }
 
 
-#playListIntro-Mobile {
-    .playList {
+#playlistIntro-Mobile {
+    .playlist {
         .image {
             position: relative;
             margin-left: auto;
@@ -200,7 +200,7 @@
                 }
             }
         }
-        .start-playList {
+        .start-playlist {
             position: relative;
             width: 55px;
             margin: -149px auto 101px;
@@ -388,8 +388,8 @@
 
 
 .rtl {
-    #playListIntro {
-        .playList {
+    #playlistIntro {
+        .playlist {
             .details {
                 .properties {
                     & > span {
@@ -410,7 +410,7 @@
                 }
             }
         }
-        .start-playList {
+        .start-playlist {
             width: 68px;
         }
     }
@@ -420,10 +420,10 @@
 }
 
 .rtl {
-    #playListIntro-Mobile {
-        .playList {
+    #playlistIntro-Mobile {
+        .playlist {
 
-            .start-playList {
+            .start-playlist {
                 width: 53px;
             }
         }
@@ -443,7 +443,7 @@
     .watch-on-lergo {
        /* margin-left: -56px*/
     }
-    #playListIntro {
+    #playlistIntro {
         .page-content-width {
             width: auto;
             min-width: 0;
@@ -454,7 +454,7 @@
             width: auto;
         }
     }
-    #playListIntro-Mobile .playList .image img {
+    #playlistIntro-Mobile .playlist .image img {
           height: 240px;
           width: 75%;
        }
@@ -496,10 +496,10 @@
         color: #91CFFF;
 
     }
-    .playList-action-panel {
-        .playList-action-panel-navigation {
+    .playlist-action-panel {
+        .playlist-action-panel-navigation {
             padding-bottom: 10px;
-            .playList-action-panel-link {
+            .playlist-action-panel-link {
                 cursor: pointer;
                 float: left;
                 &:not(:first-child) {
@@ -595,15 +595,15 @@
         .close-button {
             float: left;
         }
-        .playList-action-panel {
-            .playList-action-panel-link {
+        .playlist-action-panel {
+            .playlist-action-panel-link {
                 float: right;
                 &:not(:first-child) {
                     margin-right: 20px;
                 }
             }
         }
-        .playList-action-panel {
+        .playlist-action-panel {
             .links-facebook {
                 margin-right: 0px;
                 margin-left: 144px;
@@ -613,8 +613,8 @@
 }
 
 @media screen and (max-width : 1023px) {
-    #playListIntro-Mobile {
-        .playList {
+    #playlistIntro-Mobile {
+        .playlist {
             .details {
                 padding: 0 10px 40px 10px;
                 .name {
@@ -648,8 +648,8 @@
 }
 
 @media screen and (min-width: 768px ) and (max-width: 992px) {
-    #playListIntro-Mobile {
-        .playList {
+    #playlistIntro-Mobile {
+        .playlist {
             .image {
                 &, img {
                     /*height: 240px;*/
@@ -661,8 +661,8 @@
 }
 
 @media screen and (max-width: 768px ) {
-    #playListIntro-Mobile {
-        .playList {
+    #playlistIntro-Mobile {
+        .playlist {
             .details {
                 .name {
                     /*font-size: 25px;*/
@@ -671,7 +671,7 @@
         }
     }
     .forms {
-        .playList-action-panel {
+        .playlist-action-panel {
             .links-facebook {
                 margin-right: 40px;
                 margin-left: 0px;
@@ -680,7 +680,7 @@
     }
     .rtl {
         .forms {
-            .playList-action-panel {
+            .playlist-action-panel {
                 .links-facebook {
                     margin-right: 0px;
                     margin-left: 40px;
@@ -693,7 +693,7 @@
 @media screen and ( max-width: 480px ) {
     .lergo-embed-mode {
 
-        #playListIntro-Mobile .playList .image img {
+        #playlistIntro-Mobile .playlist .image img {
             height: 240px;
             width: 100%;
         }

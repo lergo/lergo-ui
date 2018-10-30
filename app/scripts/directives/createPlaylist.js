@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('lergoApp')
-    .directive('createPlayList', function (LergoClient, $location, $log) {
+    .directive('createPlaylist', function (LergoClient, $location, $log) {
         return {
-            templateUrl: 'views/directives/_createPlayList.html',
+            templateUrl: 'views/directives/_createPlaylist.html',
             restrict: 'A',
             link: function postLink($scope/*, element, attrs*/) {
                 $scope.create = function () {
                     $scope.createBtnDisable=true;
-                    LergoClient.playLists.create().then(function (result) {
+                    LergoClient.playlists.create().then(function (result) {
                         var playlist = result.data;
                         $scope.errorMessage = null;
                         $location.path('/user/playlists/' + playlist._id + '/update');

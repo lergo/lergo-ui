@@ -1,24 +1,24 @@
 'use strict';
 
-angular.module('lergoApp').service('PlayListsService',
-    function PlayListsService($http, $sce, $q, $window, VideoService, $log, $filter) {
+angular.module('lergoApp').service('PlaylistsService',
+    function PlaylistsService($http, $sce, $q, $window, VideoService, $log, $filter) {
 
         var self = this;
 
         this.create = function () {
-            return $http.post('/backend/PlayLists/create'); // PlayListsController.js
+            return $http.post('/backend/Playlists/create'); // PlaylistsController.js
         };
 
-        // will get all playLists - including private.
+        // will get all playlists - including private.
         // if user not allowed, will return 400.
-        // to get user's playLists, use UserDataService
+        // to get user's playlists, use UserDataService
         this.getAll = function (queryObj) {
             if (!queryObj) {
                 throw new Error('should have at least a query object with pagination..');
             }
             return $http({
                 'method': 'GET',
-                'url': '/backend/playLists/get/all',
+                'url': '/backend/playlists/get/all',
                 'params': {
                     'query': queryObj
                 }
@@ -30,66 +30,66 @@ angular.module('lergoApp').service('PlayListsService',
 
             });
         };
-        // playLists ==> PlayLists && Question ==>  PlayList (Jeff)
-        this.getPlayListsWhoUseThisPlayList = function (questionId) {
-            return $http.get('/backend/playLists/using/question/' + questionId);
+        // playlists ==> Playlists && Question ==>  Playlist (Jeff)
+        this.getPlaylistsWhoUseThisPlaylist = function (questionId) {
+            return $http.get('/backend/playlists/using/question/' + questionId);
         };
 
-        this.overrideQuestion = function (playListId, questionId) {
-            return $http.post('/backend/playLists/' + playListId + '/question/' + questionId + '/override');
+        this.overrideQuestion = function (playlistId, questionId) {
+            return $http.post('/backend/playlists/' + playlistId + '/question/' + questionId + '/override');
         };
 
         this.delete = function (id) {
-            return $http.post('/backend/playLists/' + id + '/delete');
+            return $http.post('/backend/playlists/' + id + '/delete');
         };
 
         this.getPermissions = function (id) {
-            return $http.get('/backend/playLists/' + id + '/permissions');
+            return $http.get('/backend/playlists/' + id + '/permissions');
         };
 
-        this.update = function (playList) {
-            return $http.post('/backend/playLists/' + playList._id + '/update', playList);
+        this.update = function (playlist) {
+            return $http.post('/backend/playlists/' + playlist._id + '/update', playlist);
         };
 
-        this.publish = function (playList) {
-            return $http.post('/backend/playLists/' + playList._id + '/publish');
+        this.publish = function (playlist) {
+            return $http.post('/backend/playlists/' + playlist._id + '/publish');
         };
 
-        this.unpublish = function (playList) {
-            return $http.post('/backend/playLists/' + playList._id + '/unpublish');
+        this.unpublish = function (playlist) {
+            return $http.post('/backend/playlists/' + playlist._id + '/unpublish');
         };
 
         this.getById = function (id) {
-            return $http.get('/backend/playLists/' + id);
+            return $http.get('/backend/playlists/' + id);
         };
 
-        this.findPlayListsById = function (ids) {
+        this.findPlaylistsById = function (ids) {
             return $http({
-                'url': '/backend/playLists/find',
+                'url': '/backend/playlists/find',
                 'method': 'GET',
                 params: {
-                    'playListsId': ids
+                    'playlistsId': ids
                 }
             });
         };
 
-        this.getPlayListIntro = function (id) {
-            return $http.get('/backend/playLists/' + id + '/intro');
+        this.getPlaylistIntro = function (id) {
+            return $http.get('/backend/playlists/' + id + '/intro');
         };
 
-        this.getPublicPlayLists = function (queryObj) {
+        this.getPublicPlaylists = function (queryObj) {
             if (!queryObj) {
                 throw new Error('you should at least have {"public" : { "exists" : 1 } } ');
             }
             return $http({
                 'method': 'GET',
-                'url': '/backend/public/playLists',
+                'url': '/backend/public/playlists',
                 'params': {'query': JSON.stringify(queryObj)} /* stringify the queryObj as it contains $ signs which angular filters out */
             });
         };
 
-        this.copyPlayList = function (id) {
-            return $http.post('/backend/playLists/' + id + '/copy');
+        this.copyPlaylist = function (id) {
+            return $http.post('/backend/playlists/' + id + '/copy');
         };
 
         var statsPromise = null;
@@ -101,19 +101,19 @@ angular.module('lergoApp').service('PlayListsService',
 
         };
 
-        this.getTitleImage = function (playList) {
+        this.getTitleImage = function (playlist) {
 
-            if (!playList) {
+            if (!playlist) {
                 return;
             }
-            if (!!playList.coverPage) {
-                return playList.coverPage;
+            if (!!playlist.coverPage) {
+                return playlist.coverPage;
             }
-            if (!playList.steps || playList.steps.length < 1) {
+            if (!playlist.steps || playlist.steps.length < 1) {
                 return;
             }
-            for (var i = 0; i < playList.steps.length; i++) {
-                var id = this.getVideoId(playList.steps[i]);
+            for (var i = 0; i < playlist.steps.length; i++) {
+                var id = this.getVideoId(playlist.steps[i]);
                 if (id !== null) {
                     return $sce.trustAsResourceUrl('https://img.youtube.com/vi/' + id + '/0.jpg');
                 }
@@ -122,7 +122,7 @@ angular.module('lergoApp').service('PlayListsService',
 
         /**
          *
-         * @param {PlayList} item
+         * @param {Playlist} item
          * @returns {number}
          */
         this.countQuestions = function (item) {
@@ -149,33 +149,33 @@ angular.module('lergoApp').service('PlayListsService',
             return value;
         };
 
-        this.getShareLink = function (playList) {
-            return $window.location.origin + '/index.html#!/public/playLists/' + playList._id + '/intro';
+        this.getShareLink = function (playlist) {
+            return $window.location.origin + '/index.html#!/public/playlists/' + playlist._id + '/intro';
         };
 
-        this.getIntroLink = function (playList) {
-            return '/public/playLists/' + playList._id + '/intro';
+        this.getIntroLink = function (playlist) {
+            return '/public/playlists/' + playlist._id + '/intro';
         };
 
-        this.createPlayListFromWrongQuestions = function (report, wrongQuestions) {
+        this.createPlaylistFromWrongQuestions = function (report, wrongQuestions) {
             return $q(function (resolve, reject) {
                 if (!wrongQuestions || wrongQuestions.length === 0) {
                     reject();
                 }
                 self.create().then(function (result) {
-                    var playList = result.data;
-                    playList.name = $filter('translate')('playList.practice.title') + report.data.playList.name;
-                    playList.language = report.data.playList.language;
-                    playList.subject = report.data.playList.subject;
-                    playList.steps = [];
-                    var stepsWithoutRetry = _.filter(report.data.playList.steps, function (s) {
+                    var playlist = result.data;
+                    playlist.name = $filter('translate')('playlist.practice.title') + report.data.playlist.name;
+                    playlist.language = report.data.playlist.language;
+                    playlist.subject = report.data.playlist.subject;
+                    playlist.steps = [];
+                    var stepsWithoutRetry = _.filter(report.data.playlist.steps, function (s) {
                         if (s.type === 'quiz') {
                             return !s.retryQuestion;
                         }
                     });
-                    playList.description = report.data.playList.description;
-                    playList.lastUpdate = new Date().getTime();
-                    playList.temporary = true;
+                    playlist.description = report.data.playlist.description;
+                    playlist.lastUpdate = new Date().getTime();
+                    playlist.temporary = true;
                     var step = {
                         'type': 'quiz',
                         'quizItems': [],
@@ -184,10 +184,10 @@ angular.module('lergoApp').service('PlayListsService',
                         'shuffleQuestion': true,
                         retryQuestion: stepsWithoutRetry.length === 0
                     };
-                    playList.steps.push(step);
-                    playList.steps[0].quizItems = _.uniq(wrongQuestions);
-                    self.update(playList).then(function () {
-                        resolve(playList);
+                    playlist.steps.push(step);
+                    playlist.steps[0].quizItems = _.uniq(wrongQuestions);
+                    self.update(playlist).then(function () {
+                        resolve(playlist);
                     });
                 });
             });
