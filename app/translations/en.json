@@ -40,6 +40,7 @@
   "addClose": "Add and Close",
   "admin": {
     "allLessons": "All Lessons",
+    "allPlaylists": "All Playlists",
     "by": "By",
     "byCreated": "Lesson created by",
     "byReported": "Reported By",
@@ -104,7 +105,7 @@
         "logout": "Logout",
         "manageAbuseReports": "Manage Abuse Report",
         "manageLessons": "Manage Lessons",
-        "managePlaylistss": "Manage Playlists",
+        "managePlaylists": "Manage Playlists",
         "manageRoles": "Manage Roles",
         "manageUsers": "Manage Users",
         "parents": "Parents",
