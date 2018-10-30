@@ -34,7 +34,7 @@ angular.module('lergoApp')
                     modalInstance = $uibModal.open({
                         templateUrl: 'goToMyPlayListsDemoDialog.html',
                         size: 'lg',
-                        windowClass: 'go-to-my-PlayLists-demo-dialog',
+                        windowClass: 'go-to-my-play-lists-demo-dialog',
                         scope: $scope
                     });
                 };
