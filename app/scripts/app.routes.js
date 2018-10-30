@@ -26,7 +26,8 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/user/playlists/step/display', {
         templateUrl: 'views/playlists/stepDisplay.html'
     }).when('/user/playlists/step/display', {
-        templateUrl: 'views/playlists/stepDisplay.html'
+        templateUrl: 'views/playlists/stepDisplay.html',
+        controller: 'LessonsUpdateCtrl'
     }).when('/user/lessons/:lessonId/display', {
         templateUrl: 'views/lessons/display.html',
         controller: 'LessonsDisplayCtrl',

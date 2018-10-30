@@ -17,7 +17,7 @@
                     <div class="links-sharing" ng-show="copied"> <i class="fa fa-copy"></i> &nbsp;{{messageText | translate}}&nbsp;</div>
 
                     <div  ng-class="{'col-md-4':isSuccess(),'col-md-12':!isSuccess() }">
-                        <div style="margin: 0 1vw 0 1vw">{{'name' | translate }}</div>
+                        <div  style="margin: 0 1vw 0 1vw"> {{'lessons.inviteLesson.' + mode + '.name' | translate }} </div>
                         <input style="width: 90%; margin: auto;" type="text" ng-model="invitationName" on-enter="enterPressed()"
                                ng-class="{'in-success':isSuccess()}"/>
                     </div>

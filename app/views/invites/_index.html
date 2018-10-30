@@ -33,8 +33,8 @@
                                                     <li class="text-left">
                                                         <a style="outline: none;" class="btn-link " ng-click="markAsDone()">{{'invites.markAsDone'|translate}}</a>
                                                         <a style="outline: none;" class="btn-link " ng-click="markAsUndone()">{{'invites.markAsUndone'|translate}}</a>
-                                                        <a style="outline: none;" class="btn-link " ng-click="emailNotification()">{{'invites.emailNotificationOff'|translate}}</a>
-                                                        <a style="outline: none;" class="btn-link " ng-click="emailNotification(true)">{{'invites.emailNotificationOn'|translate}}</a>
+                                                        <!--<a style="outline: none;" class="btn-link " ng-click="emailNotification()">{{'invites.emailNotificationOff'|translate}}</a>
+                                                        <a style="outline: none;" class="btn-link " ng-click="emailNotification(true)">{{'invites.emailNotificationOn'|translate}}</a>-->
                                                         <a style="outline: none;" class="btn-link " ng-csv="getReports()"
                                                            csv-header="localizedHeaders()" filename="{{getExportFileName()}}">{{'invites.exportReports'|translate}}</a>
                                                         <hr />
@@ -45,9 +45,9 @@
                                         </div>
                                     </td>
                                     <td>{{ 'name' | translate }}</td>
-                                    <td style="white-space: normal">{{ 'invites.studentOrClass' | translate}}</td>
+                                    <td style="white-space: normal">{{ 'invites.invitation' | translate}}</td>
                                     <td style="white-space: normal">{{'pin'|translate}}</td>
-                                    <td>{{ 'invites.emailNotification' | translate}}</td>
+                                    <td>{{ 'invites.studentOrClass' | translate}}</td>
                                     <td>{{ 'filters.labels.language' | translate}}</td>
                                     <td>{{ 'filters.labels.subject' | translate}}</td>
                                     <td>{{ 'questions.age' | translate }}</td>
@@ -71,8 +71,8 @@
                                         {{invite.pin}}
                                     </td>
                                     <td class="answer">
-                                        <span class="text-success" ng-show="invite.emailNotification">{{'on' | translate }} </span>
-                                        <span class= "text-warning" ng-show="!invite.emailNotification">{{'off' | translate}}</span>
+                                        <span class="text-success" ng-show="invite.invitee.class">{{'invites.classInvite' | translate }} </span>
+                                        <span class= "text-info" ng-show="!invite.invitee.class">{{'invites.studentInvite' | translate}}</span>
                                     </td>
                                     <td class="answer">
                                         <span class="{{!invite.finished && 'bold' || ''}}">{{invite.language && ('filters.languages.' + invite.language | translate) ||""}}</span>

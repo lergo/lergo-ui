@@ -62,6 +62,71 @@
         background-color: #efefef;  // to complete the background color of #questionPreview
     }
 }
+.back-button-alignment {
+    margin-left: -31%;
+    float: left;
+    .angle-eng {
+        display: inline;
+        .back-button {
+        }
+    }
+    .angle-heb {
+        display: none;
+    }
+    i.fa {
+        vertical-align: middle;
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+.rtl {
+    .back-button-alignment {
+
+        .angle-eng {
+            display: none;
+        }
+        .angle-heb {
+            display: inline;
+            .back-button {
+            }
+        }
+    }
+}
+.back-button-alignment-video {
+    margin-left: -70%;
+    .angle-eng {
+        display: inline;
+        .back-button {
+        }
+    }
+    .angle-heb {
+        display: none;
+    }
+    i.fa {
+        vertical-align: middle;
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+
+.rtl {
+    .back-button-alignment-video {
+
+        .angle-eng {
+            display: none;
+        }
+        .angle-heb {
+            display: inline;
+            .back-button {
+            }
+        }
+    }
+}
+
 
 #lessonDisplay {
     #content {

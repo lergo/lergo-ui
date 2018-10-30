@@ -1,4 +1,12 @@
 <div class="lesson-step-video" ng-init="scrollUp()">
+    <span class="back-button-alignment-video hidden-sm hidden-xs" ng-show="currentUrl" >
+                <span class="angle-eng">
+                    <a  ng-click="goBack()"><span class="back-button"><i class="fa fa-angle-left fa-2x"></i>&nbsp {{'lesson.back' | translate}} &nbsp</span></a>
+                </span>
+                <span class="angle-heb">
+                    <a  ng-click="goBack()"><span class="back-button">&nbsp {{'lesson.back' | translate}} &nbsp<i class="fa fa-angle-left fa-2x "></i></span></a>
+                </span>
+            </span>
     <div style="height: 12px" class="hidden-lg hidden-md"></div>
     <div class="lesson-step-title lergo-h1">{{step.title}}</div>
     <div style="height: 7px" class="hidden-lg hidden-md"></div>

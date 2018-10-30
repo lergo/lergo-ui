@@ -469,15 +469,18 @@
   },
   "invite": "Invite",
   "invites": {
+    "classInvite": "Class",
     "emailNotification": "Email Notifications",
     "emailNotificationOff": "Turn off email notifications",
     "emailNotificationOn": "Turn on email notifications",
     "exportReports": "Export reports",
     "filter": "Filter Invites",
+    "invitation": "Student / Class Name",
     "markAsDone": "Mark as done",
     "markAsUndone": "Mark as undone",
     "myInvites": "My Invites",
     "studentOrClass": "Student / Class",
+    "studentInvite": "Student",
     "tooltip": {
       "go": "Click here to play the lesson."
     }
@@ -505,7 +508,8 @@
         "title": "Lesson Preview (2)"
       }
     },
-    "shuffleLessons": "Shuffle Lessons"
+    "shuffleLessons": "Shuffle Lessons",
+    "back": "back to edit lesson"
   },
   "lessonIntro": {
     "action": {
@@ -559,6 +563,7 @@
       "class": {
         "help": "Invite CLASS: To generate a PIN number or link to the invite, please enter your class name and press submit.",
         "msg": "Invite Class",
+        "name": "Class name",
         "noteMessage": "You will receive your students lesson reports upon completion of each lesson.",
         "noteTitle": "Note",
         "pinHint": "(students to enter it at lergo.it).",
@@ -570,6 +575,7 @@
       "student": {
         "help": "Invite STUDENT: To generate a link for the invite please enter student's first name and press submit.",
         "msg": "Invite Student",
+        "name": "Student name",
         "noteMessage": "You will receive your kid's/student's lesson report upon completion of lesson.",
         "noteTitle": " Note",
         "pinHint": "(students to enter it at lergo.it).",

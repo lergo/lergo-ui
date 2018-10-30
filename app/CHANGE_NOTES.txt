@@ -1,3 +1,27 @@
+SEO (bug - grunt test fails) remove "noindex" from directives/_lergoFilter.html
+
+SEO - implement "noindex" on highest, non relevant google search links: /about/_keyContributors.html,
+manage/users/* , directives/_lergoFilter.html
+
+LERGO-684 Replace "Name" key in invites to "student.name" for student invite and "class.name" for class invite
+
+update lodash for security issue and lergo-ui fix all bower packages at 1.6.6 and implement angular-animate
+with bower instead of bootstrap script and fix to 1.6.6'
+
+lergo-ri package.json update: remove crypto (and use node build in crypto) replace node-uuid with uuid,
+upgrade grunt-curl and loggly
+
+upgrade mongodb (LERGO-683) upgrade mongodb from 2.6 to 3.2 and implement 'hack' in models/User.js to prevent returning
+an object without the userId. This problem only arose when moving to mongodb > 3.0
+
+bug(LERGO-682) "my-invites" options to send emails. 1 will always be sent!
+
+feat(LERGO-681 lergo-ri only!) Improve Invite Class Email and use javascript template strings instead of ejs
+
+bug(hint) implement hint for desktop "fill in the blanks" and reinclude gzip,caching in nginx
+
+feat(return_button) implement return-button on quiz, video, presentation. Use $location to hide in playlesson and add controller to route
+
 feat(change color of play button in lesson intro and move action item button to left for mobile hebrew)
 
 fix(facebook share image bug) remove all pre-load and pre-connect in index.html to enable the facebook image share to work correctly
