@@ -201,7 +201,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         }
     }).when('/admin/homepage/playlists', {
         templateUrl: 'views/admin/playlists/_index.html',
-        controller: 'AdminLessonIndexCtrl',
+        controller: 'AdminPlaylistIndexCtrl',
         reloadOnSearch: false,
         'params': {
             'activeTab': 'playlists'
