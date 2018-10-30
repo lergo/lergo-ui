@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
-    function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
+    function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal, TagsService, QuestionsService, LessonsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
         $window.scrollTo(0, 0);
         $scope.subjects = LergoFilterService.subjects;
         var addStepClicked = false;
@@ -339,6 +339,25 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 $scope.errorMessage = 'Error in creating questions : ' + result.data.message;
                 $log.error($scope.errorMessage);
                 $scope.addQuestionBtnDisable = false;
+            });
+        };
+
+        $scope.addCreateLesson = function (step) {
+            $scope.addLessonBtnDisable = true;
+            LessonsService.createLesson({
+                'subject': $scope.playlist.subject,
+                'age': $scope.playlist.age,
+                'language': $scope.playlist.language,
+                'tags': $scope.playlist.tags
+            }).then(function (result) {
+                $scope.errorMessage = null;
+                openLessonDialog(step, result.data, false);
+                $scope.addQuestionBtnDisable = false;
+            }, function (result) {
+                $scope.error = result.data;
+                $scope.errorMessage = 'Error in creating lessons : ' + result.data.message;
+                $log.error($scope.errorMessage);
+                $scope.addLessonsBtnDisable = false;
             });
         };
 

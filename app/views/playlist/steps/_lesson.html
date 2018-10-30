@@ -91,14 +91,14 @@
 
 <div class="row row-nested top20">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <button class="btn" ng-click="addQuestionBtnDisable || addCreateQuestion(step)"
-                ng-disabled="addQuestionBtnDisable">
-            <i ng-show="addQuestionBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+        <button class="btn" ng-click="addLessonBtnDisable || addCreateLesson(step)"
+                ng-disabled="addLessonBtnDisable">
+            <i ng-show="addLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
             {{ 'lessons.addLesson' | translate }}
         </button>
         <sup>
             <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-            <a uib-popover="{{'quiz.addQuestionHint' | translate}}" class="fa fa-question-circle"
+            <a uib-popover="{{'lesson.addLessonHint' | translate}}" class="fa fa-question-circle"
                popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none"></a>
         </sup>
     </div>

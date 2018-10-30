@@ -11,7 +11,6 @@ angular.module('lergoApp')
 //
 //        }
 
-
         function _getLabels() {
             var deferred = $q.defer();
             deferred.resolve(labels);
