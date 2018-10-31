@@ -1265,6 +1265,7 @@
     "invalidSlideURL": "Please enter valid URL for Google Slides presentation.",
     "invalidURL": "Please enter valid URL of YouTube video.",
     "noMoreQuestions": "Let's Go to Next Step",
+    "playlist": "Playlist",
     "presentation": {
       "hint": "Make sure to change the \"share\" settings of the presentation to \"on - anyone with the link\": click on \"share\" and then click on  \"advanced\" and then select \"change\" re who has access."
     },
