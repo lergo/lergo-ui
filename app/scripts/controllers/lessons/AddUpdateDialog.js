@@ -142,7 +142,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			} ];
 
             $scope.lessonsections = [ {
-                id : 'createNewQuestion',
+                id : 'create',
                 controller : 'QuestionsUpdateCtrl',
                 tooltip : $filter('translate')('questions.createNewQuestion'),
                 page : 'views/questions/_update.html',
@@ -154,11 +154,11 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
                     addItem(item, true);
                 }
             }, {
-                id : 'myQuestions',
-                controller : 'QuestionsIndexCtrl',
-                tooltip : $filter('translate')('questions.selectMyQuestions'),
-                page : 'views/questions/_index.html',
-                questionTypeToLoad : 'myQuestions',
+                id : 'myLessons',
+                controller : 'LessonsIndexCtrl',
+                tooltip : $filter('translate')('lessons.selectMyLessons'),
+                page : 'views/lessons/_index.html',
+                lessonTypeToLoad : 'myLessons',
                 isCreate : false,
                 add : function() {
                     addSelectedItems(false);
@@ -167,11 +167,11 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
                     addSelectedItems(true);
                 }
             }, {
-                id : 'allQuestions',
-                controller : 'QuestionsIndexCtrl',
-                tooltip : $filter('translate')('questions.selectAllQuestions'),
-                page : 'views/questions/_index.html',
-                questionTypeToLoad : 'allQuestions',
+                id : 'allLessons',
+                controller : 'LessonsIndexCtrl',
+                tooltip : $filter('translate')('lessons.selectAllLessons'),
+                page : 'views/lessons/_index.html',
+                lessonTypeToLoad : 'allLessons',
                 isCreate : false,
                 add : function() {
                     addSelectedItems(false);
@@ -180,11 +180,11 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
                     addSelectedItems(true);
                 }
             }, {
-                id : 'likedQuestions',
-                controller : 'QuestionsIndexCtrl',
-                tooltip : $filter('translate')('questions.selectLikedQuestions'),
-                page : 'views/questions/_index.html',
-                questionTypeToLoad : 'likedQuestions',
+                id : 'likedLessons',
+                controller : 'LessonsIndexCtrl',
+                tooltip : $filter('translate')('lessons.selectLikedLessons'),
+                page : 'views/lessons/_index.html',
+                lessonTypeToLoad : 'likedLessons',
                 isCreate : false,
                 add : function() {
                     addSelectedItems(false);
