@@ -87,6 +87,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 					});
 				}
 			}
+
 			$scope.sections = [ {
 				id : 'createNewQuestion',
 				controller : 'QuestionsUpdateCtrl',
@@ -139,6 +140,61 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 					addSelectedItems(true);
 				}
 			} ];
+
+            $scope.lessonsections = [ {
+                id : 'createNewQuestion',
+                controller : 'QuestionsUpdateCtrl',
+                tooltip : $filter('translate')('questions.createNewQuestion'),
+                page : 'views/questions/_update.html',
+                isCreate : true,
+                add : function(item) {
+                    addItem(item, false);
+                },
+                addClose : function(item) {
+                    addItem(item, true);
+                }
+            }, {
+                id : 'myQuestions',
+                controller : 'QuestionsIndexCtrl',
+                tooltip : $filter('translate')('questions.selectMyQuestions'),
+                page : 'views/questions/_index.html',
+                questionTypeToLoad : 'myQuestions',
+                isCreate : false,
+                add : function() {
+                    addSelectedItems(false);
+                },
+                addClose : function() {
+                    addSelectedItems(true);
+                }
+            }, {
+                id : 'allQuestions',
+                controller : 'QuestionsIndexCtrl',
+                tooltip : $filter('translate')('questions.selectAllQuestions'),
+                page : 'views/questions/_index.html',
+                questionTypeToLoad : 'allQuestions',
+                isCreate : false,
+                add : function() {
+                    addSelectedItems(false);
+                },
+                addClose : function() {
+                    addSelectedItems(true);
+                }
+            }, {
+                id : 'likedQuestions',
+                controller : 'QuestionsIndexCtrl',
+                tooltip : $filter('translate')('questions.selectLikedQuestions'),
+                page : 'views/questions/_index.html',
+                questionTypeToLoad : 'likedQuestions',
+                isCreate : false,
+                add : function() {
+                    addSelectedItems(false);
+                },
+                addClose : function() {
+                    addSelectedItems(true);
+                }
+            } ];
+
+
 			$scope.setCurrentSelection = function(section) {
 				$scope.currentSection = section;
 				$scope.isCreate = section.isCreate;
