@@ -424,7 +424,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
             persistScroll();
             var modelContent = {};
-             modelContent.templateUrl = 'views/lessons/playlist/addCreateUpdateDialog.html';
+             modelContent.templateUrl = 'views/lessons/playlist/addCreateUpdateLessondialog.html';
              modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
              modelContent.backdrop = 'static';
              modelContent.controller = 'LessonsAddUpdateDialogCtrl';
