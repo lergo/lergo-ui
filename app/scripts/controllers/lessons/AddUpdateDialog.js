@@ -144,9 +144,9 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				return 'myLessons' === section.id;
 			});
 
-            /*function isCreateNewQuestionSection (){
+            function isCreateNewQuestionSection (){
                 return $scope.currentSection.id === 'myLessons';
-            }*/
+            }
 
 			$controller('LessonsIndexCtrl', {
 				$scope : $scope
