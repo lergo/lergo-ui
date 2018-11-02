@@ -34,7 +34,7 @@
  * Exposes question CRUD from lesson edit view.
  *
  */
-angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
+angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 		function($scope, $uibModalInstance, quizItem, lessonOverrideQuestion, QuestionsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
 
 			$scope.quizItem = quizItem;
@@ -46,18 +46,18 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 			$scope.quizItem = quizItem;
 			$scope.isUpdate = isUpdate;
 			$scope.questionTypeFormAddQuizPopup = {
-				value : 'myQuestions'
+				value : 'myLessons'
 			};
 			var items = [];
-			$scope.$on('questionsLoaded', function(event, data) {
+			$scope.$on('lessonsloaded', function(event, data) {
 				items = data.items;
-				if (!!step && !!step.quizItems) {
+				/*if (!!step && !!step.quizItems) {
 					_.each(items, function(q) {
 						if (step.quizItems.indexOf(q._id) !== -1) {
 							q.alreadyAdded = true;
 						}
 					});
-				}
+				}*/
 
 			});
 			function addSelectedItems(canClose) {
@@ -87,82 +87,77 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 					});
 				}
 			}
-			$scope.sections = [ {
-				id : 'createNewQuestion',
-				controller : 'QuestionsUpdateCtrl',
-				tooltip : $filter('translate')('questions.createNewQuestion'),
-				page : 'views/questions/_update.html',
-				isCreate : true,
-				add : function(item) {
-					addItem(item, false);
-				},
-				addClose : function(item) {
-					addItem(item, true);
-				}
-			}, {
-				id : 'myQuestions',
-				controller : 'QuestionsIndexCtrl',
-				tooltip : $filter('translate')('questions.selectMyQuestions'),
-				page : 'views/questions/_index.html',
-				questionTypeToLoad : 'myQuestions',
-				isCreate : false,
-				add : function() {
-					addSelectedItems(false);
-				},
-				addClose : function() {
-					addSelectedItems(true);
-				}
-			}, {
-				id : 'allQuestions',
-				controller : 'QuestionsIndexCtrl',
-				tooltip : $filter('translate')('questions.selectAllQuestions'),
-				page : 'views/questions/_index.html',
-				questionTypeToLoad : 'allQuestions',
-				isCreate : false,
-				add : function() {
-					addSelectedItems(false);
-				},
-				addClose : function() {
-					addSelectedItems(true);
-				}
-			}, {
-				id : 'likedQuestions',
-				controller : 'QuestionsIndexCtrl',
-				tooltip : $filter('translate')('questions.selectLikedQuestions'),
-				page : 'views/questions/_index.html',
-				questionTypeToLoad : 'likedQuestions',
-				isCreate : false,
-				add : function() {
-					addSelectedItems(false);
-				},
-				addClose : function() {
-					addSelectedItems(true);
-				}
-			} ];
+
+
+            $scope.sections = [ {
+                id : 'myLessons',
+                controller : 'LessonsIndexCtrl',
+                tooltip : $filter('translate')('lessons.selectMyLessons'),
+                page : 'views/lessons/_index.html',
+                lessonTypeToLoad : 'myLessons',
+                isCreate : false,
+                add : function() {
+                    addSelectedItems(false);
+                },
+                addClose : function() {
+                    addSelectedItems(true);
+                }
+          /*  }, {
+                id : 'allLessons',
+                controller : 'LessonsIndexCtrl',
+                tooltip : $filter('translate')('lessons.selectAllLessons'),
+                page : 'views/lessons/_index.html',
+                lessonTypeToLoad : 'allLessons',
+                isCreate : false,
+                add : function() {
+                    addSelectedItems(false);
+                },
+                addClose : function() {
+                    addSelectedItems(true);
+                }
+            }, {
+                id : 'likedLessons',
+                controller : 'LessonsIndexCtrl',
+                tooltip : $filter('translate')('lessons.selectLikedLessons'),
+                page : 'views/lessons/_index.html',
+                lessonTypeToLoad : 'likedLessons',
+                isCreate : false,
+                add : function() {
+                    addSelectedItems(false);
+                },
+                addClose : function() {
+                    addSelectedItems(true);
+                }*/
+            } ];
+
 			$scope.setCurrentSelection = function(section) {
-				$scope.currentSection = section;
+                $scope.currentSection = section;
 				$scope.isCreate = section.isCreate;
-				if (!!section.questionTypeToLoad) {
+				/*if (!!section.questionTypeToLoad) {
 					$scope.questionTypeFormAddQuizPopup.value = section.questionTypeToLoad;
-				}
+				}*/
 
 			};
 
+
 			$scope.currentSection = _.find($scope.sections, function(section) {
-				return 'createNewQuestion' === section.id;
+				return 'myLessons' === section.id;
 			});
 
-            function isCreateNewQuestionSection (){
-                return $scope.currentSection.id === 'createNewQuestion';
-            }
+            /*function isCreateNewQuestionSection (){
+                return $scope.currentSection.id === 'myLessons';
+            }*/
 
-			$controller($scope.currentSection.controller, {
+			$controller('LessonsIndexCtrl', {
 				$scope : $scope
 			});
 
-			$scope.isActive = function(section) {
-				return !!$scope.currentSection && section.id === $scope.currentSection.id;
-			};
+
+
+            $scope.isActive = function(section) {
+                return !!$scope.currentSection && section.id === $scope.currentSection.id;
+            };
+
 
 			$scope.getInclude = function() {
 				return $scope.currentSection.page;

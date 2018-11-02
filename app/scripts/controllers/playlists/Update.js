@@ -418,6 +418,84 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             }
         });
 
+
+        $scope.addCreateLesson = function (step) {
+            $scope.addQuestionBtnDisable = true;
+            QuestionsService.createQuestion({
+                'subject': $scope.playlist.subject,
+                'age': $scope.playlist.age,
+                'language': $scope.playlist.language,
+                'tags': $scope.playlist.tags
+            }).then(function (result) {
+                $scope.errorMessage = null;
+                openLessonDialog(step, result.data, false);
+                $scope.addQuestionBtnDisable = false;
+            }, function (result) {
+                $scope.error = result.data;
+                $scope.errorMessage = 'Error in creating questions : ' + result.data.message;
+                $log.error($scope.errorMessage);
+                $scope.addQuestionBtnDisable = false;
+            });
+        };
+
+
+        function openLessonDialog(step, quizItem, isUpdate) {
+
+            persistScroll();
+            var modelContent = {};
+             modelContent.templateUrl = 'views/lessons/playlist/addCreateUpdateLessondialog.html';
+             modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
+             modelContent.backdrop = 'static';
+             modelContent.controller = 'LessonsAddUpdateDialogCtrl';
+            modelContent.resolve = {
+                lessonOverrideQuestion: function () {
+                    return lessonOverrideQuestionAndReopenDialog;
+                },
+                quizItem: function () {
+                    return quizItem;
+                },
+                isUpdate: function () {
+                    return isUpdate;
+                },
+                addItemToQuiz: function () {
+                    return addItemToQuiz;
+                },
+                step: function () {
+                    return step;
+                }
+            };
+            var modelInstance = $uibModal.open(modelContent);
+            modelInstance.result.then(function () {
+                scrollToPersistPosition();
+            }, function () {
+                scrollToPersistPosition();
+            });
+        }
+
+        $scope.isPlaylistInvalid = function () {
+            return !!$scope.playlist && !$scope.playlist.name;
+        };
+
+        $scope.$on('$locationChangeStart', function (event) { // guy -
+            // TODO - consider using route change instead.
+            persistScroll();
+            if ($scope.isPlaylistInvalid()) {
+                var answer = confirm($filter('translate')('deletePlaylist.Confirm'));
+                if (!answer) {
+                    event.preventDefault();
+                } else {
+                    LergoClient.playlists.delete($scope.playlist._id).then(function () {
+                        $scope.errorMessage = null;
+                        $log.info('Playlist deleted sucessfully');
+                    }, function (result) {
+                        $scope.errorMessage = 'Error in deleting Playlist : ' + result.data.message;
+                        $log.error($scope.errorMessage);
+                    });
+                }
+            }
+        });
+
+
         function persistScroll() {
             if (!$rootScope.scrollPosition) {
                 $rootScope.scrollPosition = {};
