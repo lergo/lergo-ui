@@ -21,6 +21,11 @@ angular.module('lergoApp')
                     'permission' : '!!lessons'
 
                 }, {
+                    'id': 'playlists',
+                    icon: 'fa fa-file',
+                    'url' : '#!/admin/homepage/playlists',
+                    'permission' : '!!playlists'
+                }, {
                     'id': 'abuseReports',
                     icon: 'fa fa-flag',
                     'url' : '#!/admin/homepage/abuseReports',
