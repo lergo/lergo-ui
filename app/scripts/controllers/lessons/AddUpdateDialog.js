@@ -140,7 +140,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			};
 
 
-			$scope.currentSection = _.find($scope.lessonssections, function(section) {
+			$scope.currentSection = _.find($scope.sections, function(section) {
 				return 'myLessons' === section.id;
 			});
 
