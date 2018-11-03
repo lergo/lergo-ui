@@ -52,7 +52,9 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			var items = [];
 			$scope.$on('lessonsLoaded', function(event, data) {
 				items = data.items;
+				console.log('items', items, items.selected);
 				if (!!step && !!step.quizItems) {
+				    console.log('!!step', step.quizItems);
 					_.each(items, function(q) {
 						if (step.quizItems.indexOf(q._id) !== -1) {
 							q.alreadyAdded = true;
@@ -63,9 +65,12 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			});
 			function addSelectedItems(canClose) {
                 // lessons should be added in the ascending order of data e.g lesson created first should come first
-
+                console.log('inside AddUpdateDialog - addSelectedItems');
 				$scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');
+                /*$scope.selectedItems = items;*/
 				angular.forEach($scope.selectedItems, function(item) {
+				    console.log('selectedItems  ', item);
+				    console.log('the items in addUpdateDialog.js ', items);
 					addItemToQuiz(item, step);
 					item.selected = false;
 					item.alreadyAdded = true;

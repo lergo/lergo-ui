@@ -23,6 +23,7 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 	$scope.selectAll = function(event) {
         var checkbox = event.target;
 		_.each($scope.items, function(item) {
+		    console.log('item.selected  ', item, checkbox.checked);
 			item.selected = checkbox.checked;
 		});
 	};
