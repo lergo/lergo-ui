@@ -9,12 +9,12 @@
  *
  * This dialog supports "limited editors" feature. For sake of documentation here is how it behaves, starting from "edit lesson" view.
  *
- * * Edit Lesson  - Limited editor can see all questions in quiz step, even those they cannot edit (for example, wrong language or subject)
- * * Clicking the question - will open the dialog if user is owner of lesson or if editor can edit
- * * CopyAndOverride option will be displayed if - user cannot edit the question.
+ * * Edit Lesson  - Limited editor can see all lessons in quiz step, even those they cannot edit (for example, wrong language or subject)
+ * * Clicking the lesson - will open the dialog if user is owner of lesson or if editor can edit
+ * * CopyAndOverride option will be displayed if - user cannot edit the lesson.
  *
  *
- * ## Question
+ * ## Lesson
  * Why does "CopyAndOverride" work? Why do we not check for "is owner of lesson"?
  *
  * ## Answer
@@ -29,39 +29,41 @@
 
 /***
  *
- * @module QuestionsAddUpdateDialogCtrl
+ * @module LessonsAddUpdateDialogCtrl
  * @description
- * Exposes question CRUD from lesson edit view.
+ * Exposes lesson CRUD from lesson edit view.
  *
  */
 angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
-		function($scope, $uibModalInstance, quizItem, lessonOverrideQuestion, QuestionsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
+		function($scope, $uibModalInstance, quizItem, lessonOverrideQuestion, LessonsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
 
 			$scope.quizItem = quizItem;
 			// this object will be updated by child scope
-			// QuestionsUpdateCtrl.
+			// LessonsUpdateCtrl.
 			$scope.permissions = {};
 			$scope.isModal = true;
 			$scope.isCreate = true;
 			$scope.quizItem = quizItem;
 			$scope.isUpdate = isUpdate;
-			$scope.questionTypeFormAddQuizPopup = {
+			$scope.lessonTypeFormAddQuizPopup = {
 				value : 'myLessons'
 			};
+
 			var items = [];
-			$scope.$on('lessonsloaded', function(event, data) {
+			$scope.$on('lessonsLoaded', function(event, data) {
 				items = data.items;
-				/*if (!!step && !!step.quizItems) {
+				if (!!step && !!step.quizItems) {
 					_.each(items, function(q) {
 						if (step.quizItems.indexOf(q._id) !== -1) {
 							q.alreadyAdded = true;
 						}
 					});
-				}*/
+				}
 
 			});
 			function addSelectedItems(canClose) {
-                // questions should be added in the ascending order of data e.g question created first should come first
+                // lessons should be added in the ascending order of data e.g lesson created first should come first
+
 				$scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');
 				angular.forEach($scope.selectedItems, function(item) {
 					addItemToQuiz(item, step);
@@ -77,7 +79,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				if (!!canClose) {
 					$scope.cancel();
 				} else {
-					QuestionsService.createQuestion({
+					LessonsService.createLesson({
 						'subject' : $scope.quizItem.subject,
 						'age' : $scope.quizItem.age,
 						'language' : $scope.quizItem.language,
@@ -133,9 +135,9 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			$scope.setCurrentSelection = function(section) {
                 $scope.currentSection = section;
 				$scope.isCreate = section.isCreate;
-				/*if (!!section.questionTypeToLoad) {
-					$scope.questionTypeFormAddQuizPopup.value = section.questionTypeToLoad;
-				}*/
+				if (!!section.lessonTypeToLoad) {
+					$scope.lessonTypeFormAddQuizPopup.value = section.lessonTypeToLoad;
+				}
 
 			};
 
@@ -144,7 +146,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				return 'myLessons' === section.id;
 			});
 
-            function isCreateNewQuestionSection (){
+            function isCreateNewLessonSection (){
                 return $scope.currentSection.id === 'myLessons';
             }
 
@@ -167,11 +169,11 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				var item = $scope.quizItem;
 				if (!!item && !$scope.isValid(item)) {
                     var answer = true;
-                    if ( isCreateNewQuestionSection() ){
-                        answer = confirm($filter('translate')('deleteQuestion.Confirm'));
+                    if ( isCreateNewLessonSection() ){
+                        answer = confirm($filter('translate')('deleteLesson.Confirm'));
                     }
                     if ( !!answer ) {
-                        QuestionsService.deleteQuestion(item._id);
+                        LessonsService.deleteLesson(item._id);
                     }else{
                         return; // do nothing!
                     }
@@ -203,11 +205,11 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				// user should be able to copy
 			};
 
-			$scope.copyAndReplaceQuestion = function(item) {
-				$log.info('copying and replacing question from modal instance');
+			$scope.copyAndReplaceLesson = function(item) {
+				$log.info('copying and replacing lesson from modal instance');
                 $uibModalInstance.close(item);
 				// we will soon open the new modal instance with
-				// the copied question.
+				// the copied lesson.
 				lessonOverrideQuestion(step, item._id);
 			};
 
@@ -215,7 +217,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				if (!quizItem || !quizItem.type) {
 					return false;
 				}
-				return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
+				return LessonsService.getTypeById(quizItem.type).isValid(quizItem);
 			};
 
 		});

@@ -110,7 +110,7 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 		});
 	}
 
-	$scope.getAnswers = function(quizItem) {
+	/*$scope.getAnswers = function(quizItem) {
 		if (!quizItem.type) {
 			return '';
 		}
@@ -119,7 +119,7 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 			return '';
 		}
 		return type.answers(quizItem);
-	};
+	};*/
 
 	var path = $location.path();
 	$scope.$on('$locationChangeStart', function() {

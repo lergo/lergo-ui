@@ -1,4 +1,5 @@
-<div>
+<div style="border: 6px solid orange">
+    <p style="color: orange">This is lessons/playlist/_index.html and the controller is lessons/Playlistindex.js </p>
     <div id="lessonsPlaylistindex" load-filter-and-paging="loadLessons()">
         <span class="error">{{error}}</span>
         <br/>
@@ -60,7 +61,6 @@
                                     </td>
                                     <td class="col-width-mobile">{{ 'lessons.name' | translate }}</td>
                                     <td class="col-width-mobile">{{ 'lessons.description' | translate }}</td>
-                                    <!--<td>{{ 'lessons.answer' | translate }}</td>-->
                                     <td ng-show="lessonToLoad ===LessonTypeToLoad.all">{{ 'lessons.createdBy' | translate }}</td>
                                     <td>{{ 'lessons.subject' | translate}}</td>
                                     <td>{{ 'lessons.age' | translate}}</td>
