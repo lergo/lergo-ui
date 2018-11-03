@@ -35,7 +35,7 @@
  *
  */
 angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
-		function($scope, $uibModalInstance, quizItem, lessonOverrideQuestion, LessonsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
+		function($scope, $uibModalInstance, quizItem, playlistOverrideLesson, LessonsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
 
 			$scope.quizItem = quizItem;
 			// this object will be updated by child scope
@@ -197,7 +197,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				// for my $scope.permissions model rather
 				// than overriding it
 
-				return !!lessonOverrideQuestion &&
+				return !!playlistOverrideLesson &&
 				// we should have a parent's function to
 				// complete the task
 				!!$scope.quizItem && !!$scope.quizItem._id &&
@@ -215,7 +215,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
                 $uibModalInstance.close(item);
 				// we will soon open the new modal instance with
 				// the copied lesson.
-				lessonOverrideQuestion(step, item._id);
+				playlistOverrideLesson(step, item._id);
 			};
 
 			$scope.isValid = function(quizItem) {

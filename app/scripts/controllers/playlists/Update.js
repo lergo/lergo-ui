@@ -1,8 +1,21 @@
 'use strict';
 
 angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
-    function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
+    function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal, TagsService, QuestionsService, LessonsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
         $window.scrollTo(0, 0);
+
+        // back button for 'step/display' in edit playlist
+        $scope.currentUrl = false;
+        var absUrl = $location.absUrl();
+        if (absUrl.indexOf('/playlists/step/display') > -1) {
+            $scope.currentUrl = true;
+        }
+
+        $scope.goBack = function() {
+            window.history.back();
+        };
+
+
         $scope.subjects = LergoFilterService.subjects;
         var addStepClicked = false;
         $scope.popoverState = {open: false, position: 'top'};
@@ -86,6 +99,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             'id': 'slide',
             'label': 'Slide'
         }];
+
 
         $scope.getPlaylistIntroLink = function (playlist) {
             return LergoClient.playlists.getIntroLink(playlist);
@@ -171,7 +185,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         var quizItemsWatch = [];
         $scope.quizItemsData = {};
 
-        $scope.getQuestion = function (item) {
+        $scope.getLesson = function (item) {
             if ($scope.quizItemsData.hasOwnProperty(item)) {
                 return $scope.quizItemsData[item].question;
             }
@@ -210,7 +224,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         }, function (newValue, oldValue) {
             if (!!newValue && newValue.length > 0) {
                 $log.info('quizItems changed', newValue, oldValue);
-                LergoClient.questions.findQuestionsById(newValue).then(function (result) {
+                LergoClient.questions.findLessonsById(newValue).then(function (result) {
                     var newObj = {};
                     for (var i = 0; i < result.data.length; i++) {
                         newObj[result.data[i]._id] = result.data[i];
@@ -274,9 +288,9 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
         };
 
-        function lessonOverrideQuestion(questionIdToOverride, callback) {
+        function playlistOverrideLesson(questionIdToOverride, callback) {
             $log.info('in playlist controller, overriding question');
-            LergoClient.playlists.overrideQuestion($scope.playlist._id, questionIdToOverride).then(function (result) {
+            LergoClient.playlists.overrideLesson($scope.playlist._id, questionIdToOverride).then(function (result) {
                 if (!!callback) {
                     callback(result.data.quizItem._id);
                 }
@@ -286,11 +300,11 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             });
         }
 
-        // this is a wrapper to 'lessonOverrideQuestion' which will, after
+        // this is a wrapper to 'playlistOverrideLesson' which will, after
         // playlist update
         // list on quizItemsData change ONCE and reopens the dialog
-        function lessonOverrideQuestionAndReopenDialog(step, questionIdToOverride) {
-            lessonOverrideQuestion(questionIdToOverride, function (newQuizItemId) {
+        function playlistOverrideLessonAndReopenDialog(step, questionIdToOverride) {
+            playlistOverrideLesson(questionIdToOverride, function (newQuizItemId) {
 
                 // first - lets watch
                 // http://stackoverflow.com/a/13652152/1068746
@@ -301,7 +315,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                     }
 
                     try {
-                        $scope.openQuestionDialog(step, $scope.quizItemsData[newQuizItemId], false);
+                        $scope.openLessonDialog(step, $scope.quizItemsData[newQuizItemId], false);
                     } finally {
                         unregister();
                     }
@@ -309,12 +323,12 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             });
         }
 
-        $scope.openUpdateQuestion = function (step, quizItemId) {
-            QuestionsService.getPermissions(quizItemId).then(function (result) {
+        $scope.openUpdateLesson = function (step, quizItemId) {
+            LessonsService.getPermissions(quizItemId).then(function (result) {
 
                 var canEditOrCopy = result.data.canEdit || isOwnerOfPlaylist();
                 if ($scope.quizItemsData.hasOwnProperty(quizItemId) && canEditOrCopy) {
-                    openQuestionDialog(step, $scope.quizItemsData[quizItemId], true);
+                    openLessonDialog(step, $scope.quizItemsData[quizItemId], true);
                 }
 
                 if (!canEditOrCopy) {
@@ -323,82 +337,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             });
 
         };
-        $scope.addCreateQuestion = function (step) {
-            $scope.addQuestionBtnDisable = true;
-            QuestionsService.createQuestion({
-                'subject': $scope.playlist.subject,
-                'age': $scope.playlist.age,
-                'language': $scope.playlist.language,
-                'tags': $scope.playlist.tags
-            }).then(function (result) {
-                $scope.errorMessage = null;
-                openQuestionDialog(step, result.data, false);
-                $scope.addQuestionBtnDisable = false;
-            }, function (result) {
-                $scope.error = result.data;
-                $scope.errorMessage = 'Error in creating questions : ' + result.data.message;
-                $log.error($scope.errorMessage);
-                $scope.addQuestionBtnDisable = false;
-            });
-        };
-
-
-        function openQuestionDialog(step, quizItem, isUpdate) {
-
-            persistScroll();
-            var modelContent = {};
-            modelContent.templateUrl = 'views/questions/addCreateUpdateDialog.html';
-            modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
-            modelContent.backdrop = 'static';
-            modelContent.controller = 'QuestionsAddUpdateDialogCtrl';
-            modelContent.resolve = {
-                lessonOverrideQuestion: function () {
-                    return lessonOverrideQuestionAndReopenDialog;
-                },
-                quizItem: function () {
-                    return quizItem;
-                },
-                isUpdate: function () {
-                    return isUpdate;
-                },
-                addItemToQuiz: function () {
-                    return addItemToQuiz;
-                },
-                step: function () {
-                    return step;
-                }
-            };
-            var modelInstance = $uibModal.open(modelContent);
-            modelInstance.result.then(function () {
-                scrollToPersistPosition();
-            }, function () {
-                scrollToPersistPosition();
-            });
-        }
-
-        $scope.isPlaylistInvalid = function () {
-            return !!$scope.playlist && !$scope.playlist.name;
-        };
-
-        $scope.$on('$locationChangeStart', function (event) { // guy -
-            // TODO - consider using route change instead.
-            persistScroll();
-            if ($scope.isPlaylistInvalid()) {
-                var answer = confirm($filter('translate')('deletePlaylist.Confirm'));
-                if (!answer) {
-                    event.preventDefault();
-                } else {
-                    LergoClient.playlists.delete($scope.playlist._id).then(function () {
-                        $scope.errorMessage = null;
-                        $log.info('Playlist deleted sucessfully');
-                    }, function (result) {
-                        $scope.errorMessage = 'Error in deleting Playlist : ' + result.data.message;
-                        $log.error($scope.errorMessage);
-                    });
-                }
-            }
-        });
-
 
         $scope.addCreateLesson = function (step) {
             $scope.addQuestionBtnDisable = true;
@@ -424,13 +362,13 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
             persistScroll();
             var modelContent = {};
-             modelContent.templateUrl = 'views/lessons/playlist/addCreateUpdateLessondialog.html';
-             modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
-             modelContent.backdrop = 'static';
-             modelContent.controller = 'LessonsAddUpdateDialogCtrl';
+            modelContent.templateUrl = 'views/lessons/playlist/addCreateUpdateLessondialog.html';
+            modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
+            modelContent.backdrop = 'static';
+            modelContent.controller = 'LessonsAddUpdateDialogCtrl';
             modelContent.resolve = {
-                lessonOverrideQuestion: function () {
-                    return lessonOverrideQuestionAndReopenDialog;
+                playlistOverrideLesson: function () {
+                    return playlistOverrideLessonAndReopenDialog;
                 },
                 quizItem: function () {
                     return quizItem;
@@ -475,7 +413,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 }
             }
         });
-
 
         function persistScroll() {
             if (!$rootScope.scrollPosition) {
