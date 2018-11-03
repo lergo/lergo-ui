@@ -68,6 +68,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
                 console.log('inside AddUpdateDialog - addSelectedItems');
 				/*$scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');*/
                 $scope.selectedItems = items;
+                console.log('***********************this select must be fixed....................');
 				angular.forEach($scope.selectedItems, function(item) {
 				    console.log('selectedItems  ', item);
 				    console.log('the items in addUpdateDialog.js ', items);
