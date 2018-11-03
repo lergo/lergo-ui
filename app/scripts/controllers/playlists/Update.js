@@ -224,7 +224,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         }, function (newValue, oldValue) {
             if (!!newValue && newValue.length > 0) {
                 $log.info('quizItems changed', newValue, oldValue);
-                LergoClient.questions.findLessonsById(newValue).then(function (result) {
+                LergoClient.lessons.findLessonsById(newValue).then(function (result) {
                     var newObj = {};
                     for (var i = 0; i < result.data.length; i++) {
                         newObj[result.data[i]._id] = result.data[i];
