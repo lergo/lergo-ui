@@ -1,5 +1,5 @@
 <div>
-    <div id="questionsIndex" load-filter-and-paging="loadQuestions()">
+    <div id="lessonsIndex" load-filter-and-paging="loadLessons()">
         <span class="error">{{error}}</span>
         <br/>
         <div class="container">
@@ -7,10 +7,10 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                         <div>
-                            <div class="lergo-h1-orig filter-questions hidden-sm hidden-xs">{{ 'questions.filter' | translate }}</div>
-                            <div lergo-filter   no-url-changes="{{isModal}}" model="questionsFilter" on-change="loadQuestions()"
+                            <div class="lergo-h1-orig filter-lessons hidden-sm hidden-xs">{{ 'lessons.filter' | translate }}</div>
+                            <div lergo-filter   no-url-changes="{{isModal}}" model="lessonsFilter" on-change="loadLessons()"
                                  on-load="filterLoaded()"
-                                 opts="questionsFilterOpts">
+                                 opts="lessonsFilterOpts">
                             </div>
                         </div>
                     </div>
@@ -18,27 +18,27 @@
                 </div>
                 <div ng-show="!isModal">
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                            <div class="my-questions lergo-h1-orig col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                            <div class="my-lessons lergo-h1-orig col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <div class="btn-group" uib-dropdown dropdown-append-to-body>
                                     <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle  style="color: #5fb9ff; text-decoration: none">
                                         <span class="fa fa-caret-down"></span>
-                                        <span class="lergo-h1-orig">{{('questions.'+ questionToLoad |translate)}} </span>
+                                        <span class="lergo-h1-orig">{{('lessons.'+ lessonToLoad |translate)}} </span>
                                     </button>
                                     <ul class="dropdown-menu overidePositionInherit " uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
-                                        <li role="menuitem"><a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.user)">{{'questions.myQuestions'|translate}}</a></li>
-                                        <li role="menuitem"><a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.all)">{{'questions.allQuestions'|translate}}</a></li>
-                                        <li role="menuitem"><a class="btn-link" style="outline: none;" ng-click="load(QuestionTypeToLoad.liked)">{{'questions.likedQuestions'|translate}}</a></li>
+                                        <li role="menuitem"><a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.user)">{{'lessons.myLessons'|translate}}</a></li>
+                                        <li role="menuitem"><a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.all)">{{'lessons.allLessons'|translate}}</a></li>
+                                        <li role="menuitem"><a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.liked)">{{'lessons.likedLessons'|translate}}</a></li>
                                     </ul>
                                 </div>
 
-                                [ {{ 'questions.total' | translate }}: {{filterPage.count}} ]
+                                [ {{ 'lessons.total' | translate }}: {{filterPage.count}} ]
                             </div>
                             <div class="col-border-bottom col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="create">
-                                    <button class="btn btn-start" ng-click="createQuestionBtnDisable || createNewQuestion()"
-                                            ng-disabled="createQuestionBtnDisable">
-                                        <i ng-show="createQuestionBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
-                                        {{ 'questions.createNew' | translate }}
+                                    <button class="btn btn-start" ng-click="createLessonBtnDisable || createNewLesson()"
+                                            ng-disabled="createLessonBtnDisable">
+                                        <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+                                        {{ 'lessons.createNew' | translate }}
                                     </button>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
                 </div>
                 <div ng-show="isModal" style="height: 19px"></div>
-                <div class="hidden-sm hidden-xs" filter-is-active="questionsFilterOpts" section="questions" ng-class="!!isModal==true ? 'active-filter-modal': 'active-filter'"></div>
+                <div class="hidden-sm hidden-xs" filter-is-active="lessonsFilterOpts" section="lessons" ng-class="!!isModal==true ? 'active-filter-modal': 'active-filter'"></div>
 
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
@@ -58,12 +58,12 @@
                                     <td ng-show="isModal">
                                         <input type="checkbox" ng-click="selectAll($event)"/>
                                     </td>
-                                    <td class="col-width-mobile">{{ 'questions.question' | translate }}</td>
-                                    <td>{{ 'questions.answer' | translate }}</td>
-                                    <td ng-show="questionToLoad ===QuestionTypeToLoad.all">{{ 'questions.createdBy' | translate }}</td>
-                                    <td>{{ 'questions.subject' | translate}}</td>
-                                    <td>{{ 'questions.age' | translate}}</td>
-                                    <td>{{ 'questions.language' | translate}}</td>
+                                    <td class="col-width-mobile">{{ 'lessons.name' | translate }}</td>
+                                    <!--<td>{{ 'lessons.answer' | translate }}</td>-->
+                                    <td ng-show="lessonToLoad ===LessonTypeToLoad.all">{{ 'lessons.createdBy' | translate }}</td>
+                                    <td>{{ 'lessons.subject' | translate}}</td>
+                                    <td>{{ 'lessons.age' | translate}}</td>
+                                    <td>{{ 'lessons.language' | translate}}</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,12 +73,12 @@
                                 <td ng-show="isModal">
                                     <input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
                                 </td>
-                                <td class="question" dir="auto">
-                                    <span  ng-show="!!isModal">{{item.question}}</span>
-                                    <div ng-show="!isModal" question-read-link question="item"></div>
+                                <td class="lesson" dir="auto">
+                                    <span style="border: 10px solid orange" ng-show="!!isModal">{{item.lesson}}</span>
+                                    <div ng-show="!isModal" lesson-read-link lesson="item"></div>
                                 </td>
                                 <td class="answers" dir="auto">{{ getAnswers(item) | limitTo:30}}</td>
-                                <td ng-show="questionToLoad ===QuestionTypeToLoad.all" class="answer">{{item.user.username}}</td>
+                                <td ng-show="lessonToLoad ===LessonTypeToLoad.all" class="answer">{{item.user.username}}</td>
                                 <td style="width: 35px">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
                                 <td>{{item.age &&('+'+ item.age) || ""}}</td>
                                 <td>{{item.language && ('filters.languages.' + item.language | translate) || ""}}
@@ -91,9 +91,9 @@
               <!--  <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>-->
             </div>
             <div class="text-center" ng-hide="items || items.length != 0">
-                <span class="alert alert-warning font-medium">{{ 'questions.noQuestions' | translate }}</span>
+                <span class="alert alert-warning font-medium">{{ 'lessons.noLessons' | translate }}</span>
             </div>
-            <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadQuestions()" on-load="pagingLoaded()"></div>
+            <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
         </div>
     </div>
 </div>

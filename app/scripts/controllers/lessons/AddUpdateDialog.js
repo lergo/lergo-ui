@@ -91,9 +91,9 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 
             $scope.sections = [ {
                 id : 'myLessons',
-                controller : 'LessonsIndexCtrl',
+                controller : 'LessonsPlaylistindexCtrl',
                 tooltip : $filter('translate')('lessons.selectMyLessons'),
-                page : 'views/lessons/_index.html',
+                page : 'views/lessons/playlist/_index.html',
                 lessonTypeToLoad : 'myLessons',
                 isCreate : false,
                 add : function() {
@@ -102,11 +102,11 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
                 addClose : function() {
                     addSelectedItems(true);
                 }
-          /*  }, {
+            }, {
                 id : 'allLessons',
-                controller : 'LessonsIndexCtrl',
+                controller : 'LessonsPlaylistindexCtrl',
                 tooltip : $filter('translate')('lessons.selectAllLessons'),
-                page : 'views/lessons/_index.html',
+                page : 'views/lessons/playlist/_index.html',
                 lessonTypeToLoad : 'allLessons',
                 isCreate : false,
                 add : function() {
@@ -117,9 +117,9 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
                 }
             }, {
                 id : 'likedLessons',
-                controller : 'LessonsIndexCtrl',
+                controller : 'LessonsPlaylistindexCtrl',
                 tooltip : $filter('translate')('lessons.selectLikedLessons'),
-                page : 'views/lessons/_index.html',
+                page : 'views/lessons/playlist/_index.html',
                 lessonTypeToLoad : 'likedLessons',
                 isCreate : false,
                 add : function() {
@@ -127,7 +127,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
                 },
                 addClose : function() {
                     addSelectedItems(true);
-                }*/
+                }
             } ];
 
 			$scope.setCurrentSelection = function(section) {
