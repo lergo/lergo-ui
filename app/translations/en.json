@@ -534,6 +534,7 @@
     "addQuestion": "Add Questions to Quiz",
     "addLesson" : "Add Lesson to Playlist",
     "addQuestionFromAll": "from all questions",
+    "age": "Age",
     "allLessons": "All Lessons",
     "areYouReady": "Are you ready to start learning?",
     "available": "Available Lessons",
@@ -590,6 +591,7 @@
     "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
     "inviteSuccessText": "Copy the link below to invite a student to the lesson",
     "lessonCompleted": "You have completed the lesson",
+    "language" : "Language",
     "lessonReport": "Lesson Report",
     "letsContinue": "OK! Let's Continue",
     "letsGo": "Let's LerGO!",
@@ -616,6 +618,7 @@
     "slideURL": "Presentation URL",
     "slideURLHelpText": "Insert the URL of the Google Slides presentation here.",
     "startLesson": "Start Lesson",
+    "subject" : "Subject",
     "tags": "Tags",
     "tooltip": {
       "comment": "Comments",

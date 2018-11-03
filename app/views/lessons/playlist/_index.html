@@ -1,5 +1,5 @@
 <div>
-    <div id="lessonsIndex" load-filter-and-paging="loadLessons()">
+    <div id="lessonsPlaylistindex" load-filter-and-paging="loadLessons()">
         <span class="error">{{error}}</span>
         <br/>
         <div class="container">
@@ -56,9 +56,10 @@
                             <thead>
                                 <tr style="font-weight: bold">
                                     <td ng-show="isModal">
-                                        <input type="checkbox" ng-click="selectAll($event)"/>
+                                        <input style="width: 30px"  type="checkbox" ng-click="selectAll($event)"/>
                                     </td>
                                     <td class="col-width-mobile">{{ 'lessons.name' | translate }}</td>
+                                    <td class="col-width-mobile">{{ 'lessons.description' | translate }}</td>
                                     <!--<td>{{ 'lessons.answer' | translate }}</td>-->
                                     <td ng-show="lessonToLoad ===LessonTypeToLoad.all">{{ 'lessons.createdBy' | translate }}</td>
                                     <td>{{ 'lessons.subject' | translate}}</td>
@@ -71,13 +72,16 @@
                             <pre ng-show="!isModal" style="color: white; font-size: 1px">a</pre>
                             <tr  ng-repeat="item in items |orderBy:'-lastUpdate'" ng-class="{'disabled':!!item.alreadyAdded}">
                                 <td ng-show="isModal">
-                                    <input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
+                                    <input style="width: 30px" ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
                                 </td>
                                 <td class="lesson" dir="auto">
-                                    <span style="border: 10px solid orange" ng-show="!!isModal">{{item.lesson}}</span>
+                                    <span  ng-show="!!isModal">{{item.name}}</span>
                                     <div ng-show="!isModal" lesson-read-link lesson="item"></div>
                                 </td>
-                                <td class="answers" dir="auto">{{ getAnswers(item) | limitTo:30}}</td>
+                                <td class="lesson" dir="auto">
+                                    <span  ng-show="!!isModal">{{item.description}}</span>
+                                    <div ng-show="!isModal" lesson-read-link lesson="item"></div>
+                                </td>
                                 <td ng-show="lessonToLoad ===LessonTypeToLoad.all" class="answer">{{item.user.username}}</td>
                                 <td style="width: 35px">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
                                 <td>{{item.age &&('+'+ item.age) || ""}}</td>
