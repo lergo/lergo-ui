@@ -186,8 +186,10 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         $scope.quizItemsData = {};
 
         $scope.getLesson = function (item) {
-            if ($scope.quizItemsData.hasOwnProperty(item)) {
-                return $scope.quizItemsData[item].question;
+            console.log('inside playlists/Update.js and need to fix this hack');
+            /*if (!$scope.quizItemsData.hasOwnProperty(item)) {*/
+            if (true) {
+                return $scope.quizItemsData[item].name;
             }
             return null;
         };
