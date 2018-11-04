@@ -52,9 +52,7 @@ angular.module('lergoApp').controller('LessonsPlaylistAddUpdateDialogCtrl',
 			var items = [];
 			$scope.$on('lessonsLoaded', function(event, data) {
 				items = data.items;
-				console.log('items', items, items.selected);
 				if (!!step && !!step.quizItems) {
-				    console.log('!!step', step.quizItems);
 					_.each(items, function(q) {
 						if (step.quizItems.indexOf(q._id) !== -1) {
 							q.alreadyAdded = true;
@@ -63,23 +61,21 @@ angular.module('lergoApp').controller('LessonsPlaylistAddUpdateDialogCtrl',
 				}
 
 			});
-			function addSelectedItems(canClose) {
-                // lessons should be added in the ascending order of data e.g lesson created first should come first
-                console.log('inside AddUpdateDialog - addSelectedItems');
-				/*$scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');*/
-                $scope.selectedItems = items;
-                console.log('***********************this select must be fixed....................');
-				angular.forEach($scope.selectedItems, function(item) {
-				    console.log('selectedItems  ', item);
-				    console.log('the items in addUpdateDialog.js ', items);
-					addItemToQuiz(item, step);
-					item.selected = false;
-					item.alreadyAdded = true;
-				});
-				if ($scope.selectedItems.length > 0 && !!canClose) {
-					$scope.cancel();
-				}
-			}
+
+
+            function addSelectedItems(canClose) {
+                // lessons should be added in the ascending order of data e.g lessons created first should come first
+                $scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');
+                console.log('inside addSelectedItems ', items);
+                angular.forEach($scope.selectedItems, function(item) {
+                    addItemToQuiz(item, step);
+                    item.selected = false;
+                    item.alreadyAdded = true;
+                });
+                if ($scope.selectedItems.length > 0 && !!canClose) {
+                    $scope.cancel();
+                }
+            }
 			function addItem(item, canClose) {
 				addItemToQuiz(item, step);
 				if (!!canClose) {
