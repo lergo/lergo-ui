@@ -193,4 +193,8 @@ angular.module('lergoApp').service('LessonsService',
             });
         };
 
+        this.deleteLesson = function (id) { // for Playlists
+            return $http.post('/backend/lessons/' + id + '/delete');
+        };
+
     });
