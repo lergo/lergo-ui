@@ -367,7 +367,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             modelContent.templateUrl = 'views/lessons/playlist/addCreateUpdateLessondialog.html';
             modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
             modelContent.backdrop = 'static';
-            modelContent.controller = 'LessonsAddUpdateDialogCtrl';
+            modelContent.controller = 'LessonsPlaylistAddUpdateDialogCtrl';
             modelContent.resolve = {
                 playlistOverrideLesson: function () {
                     return playlistOverrideLessonAndReopenDialog;

@@ -34,7 +34,7 @@
  * Exposes lesson CRUD from lesson edit view.
  *
  */
-angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
+angular.module('lergoApp').controller('LessonsPlaylistAddUpdateDialogCtrl',
 		function($scope, $uibModalInstance, quizItem, playlistOverrideLesson, LessonsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
 
 			$scope.quizItem = quizItem;
