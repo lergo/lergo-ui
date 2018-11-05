@@ -78,6 +78,7 @@ angular.module('lergoApp').service('LessonsService',
         };
 
         this.getPublicLessons = function (queryObj) {
+            console.log('inside LessonsService.js', queryObj);
             if (!queryObj) {
                 throw new Error('you should at least have {"public" : { "exists" : 1 } } ');
             }

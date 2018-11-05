@@ -22,6 +22,7 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 
 	$scope.selectAll = function(event) {
         var checkbox = event.target;
+        console.log('inside "selectAll of lessons/Playlistindexjs');
 		_.each($scope.items, function(item) {
 		    console.log('item.selected  ', item, checkbox.checked);
 			item.selected = checkbox.checked;
@@ -78,7 +79,9 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 		}
 
 		getLessonsPromise.then(function(result) {
+            console.log('insidePlaylistindex.js result ',result);
 			$scope.items = result.data.data;
+            console.log('inside Playlistindex.js ', $scope.items);
 			$rootScope.$broadcast('lessonsLoaded', {
 				'items' : $scope.items
 			});

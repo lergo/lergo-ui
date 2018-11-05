@@ -1,5 +1,5 @@
 <div style="border: 6px solid orange">
-    <p style="color: orange">This is lessons/playlist/_index.html and the controller is lessons/Playlistindex.js </p>
+    <p style="color: orange; font-size: 24px">lessons/playlist/_index.html[lessons/Playlistindex.js] </p>
     <div id="lessonsPlaylistindex" load-filter-and-paging="loadLessons()">
         <span class="error">{{error}}</span>
         <br/>
@@ -63,7 +63,8 @@
                                     <td class="col-width-mobile">{{ 'lessons.description' | translate }}</td>
                                     <td ng-show="lessonToLoad ===LessonTypeToLoad.all">{{ 'lessons.createdBy' | translate }}</td>
                                     <td>{{ 'lessons.subject' | translate}}</td>
-                                    <td>{{ 'lessons.age' | translate}}</td>
+                                   <!-- <td>{{ 'lessons.age' | translate}}</td>-->
+                                    <td>item is selected</td>
                                     <td>{{ 'lessons.language' | translate}}</td>
                                 </tr>
                             </thead>
@@ -84,7 +85,8 @@
                                 </td>
                                 <td ng-show="lessonToLoad ===LessonTypeToLoad.all" class="answer">{{item.user.username}}</td>
                                 <td style="width: 35px">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
-                                <td>{{item.age &&('+'+ item.age) || ""}}</td>
+                              <!--  <td>{{item.age &&('+'+ item.age) || ""}}</td>-->
+                                <td>{{item.selected}}</td>
                                 <td>{{item.language && ('filters.languages.' + item.language | translate) || ""}}
                                 </td>
                             </tr>

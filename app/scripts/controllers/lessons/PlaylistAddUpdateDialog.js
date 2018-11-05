@@ -68,6 +68,7 @@ angular.module('lergoApp').controller('LessonsPlaylistAddUpdateDialogCtrl',
                 $scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');
                 console.log('inside addSelectedItems ', items);
                 angular.forEach($scope.selectedItems, function(item) {
+                    console.log('after "forEach ', items);
                     addItemToQuiz(item, step);
                     item.selected = false;
                     item.alreadyAdded = true;
@@ -94,6 +95,19 @@ angular.module('lergoApp').controller('LessonsPlaylistAddUpdateDialogCtrl',
 
 
             $scope.sections = [ {
+                id : 'createNewLesson',
+                controller : 'LessonsUpdateCtrl',
+                tooltip : $filter('translate')('lessons.createNewLesson'),
+                page : 'views/lessons/_update.html',
+                isCreate : true,
+                add : function(item) {
+                    addItem(item, false);
+                },
+                addClose : function(item) {
+                    addItem(item, true);
+                }
+            },
+                {
                 id : 'myLessons',
                 controller : 'LessonsPlaylistindexCtrl',
                 tooltip : $filter('translate')('lessons.selectMyLessons'),
@@ -145,17 +159,16 @@ angular.module('lergoApp').controller('LessonsPlaylistAddUpdateDialogCtrl',
 
 
 			$scope.currentSection = _.find($scope.sections, function(section) {
-				return 'myLessons' === section.id;
+				return 'createNewLesson' === section.id;
 			});
 
             function isCreateNewLessonSection (){
                 return $scope.currentSection.id === 'myLessons';
             }
 
-			$controller('LessonsIndexCtrl', {
-				$scope : $scope
-			});
-
+            $controller($scope.currentSection.controller, {
+                $scope : $scope
+            });
 
 
             $scope.isActive = function(section) {
