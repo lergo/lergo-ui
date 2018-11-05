@@ -542,6 +542,7 @@
     "continueLesson": "Continue Lesson",
     "create": "Create New Lesson",
     "createdOn": "created on",
+    "createNewLesson": "Create New Lesson",
     "description": "Lesson Description",
     "edit": {
       "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",

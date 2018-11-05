@@ -63,8 +63,7 @@
                                     <td class="col-width-mobile">{{ 'lessons.description' | translate }}</td>
                                     <td ng-show="lessonToLoad ===LessonTypeToLoad.all">{{ 'lessons.createdBy' | translate }}</td>
                                     <td>{{ 'lessons.subject' | translate}}</td>
-                                   <!-- <td>{{ 'lessons.age' | translate}}</td>-->
-                                    <td>item is selected</td>
+                                    <td>{{ 'lessons.age' | translate}}</td>
                                     <td>{{ 'lessons.language' | translate}}</td>
                                 </tr>
                             </thead>
@@ -85,8 +84,7 @@
                                 </td>
                                 <td ng-show="lessonToLoad ===LessonTypeToLoad.all" class="answer">{{item.user.username}}</td>
                                 <td style="width: 35px">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
-                              <!--  <td>{{item.age &&('+'+ item.age) || ""}}</td>-->
-                                <td>{{item.selected}}</td>
+                                <td>{{item.age &&('+'+ item.age) || ""}}</td>
                                 <td>{{item.language && ('filters.languages.' + item.language | translate) || ""}}
                                 </td>
                             </tr>
