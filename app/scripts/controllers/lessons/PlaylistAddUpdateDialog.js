@@ -66,9 +66,7 @@ angular.module('lergoApp').controller('LessonsPlaylistAddUpdateDialogCtrl',
             function addSelectedItems(canClose) {
                 // lessons should be added in the ascending order of data e.g lessons created first should come first
                 $scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');
-                console.log('inside addSelectedItems ', items);
                 angular.forEach($scope.selectedItems, function(item) {
-                    console.log('after "forEach ', items);
                     addItemToQuiz(item, step);
                     item.selected = false;
                     item.alreadyAdded = true;
