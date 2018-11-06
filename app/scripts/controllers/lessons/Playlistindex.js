@@ -20,18 +20,9 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 		showCreatedBy : localStorageService.get('lessonTypeToLoad') === $scope.LessonTypeToLoad.all
 	};
 
-    /*$scope.lessonsFilter = {
-        'public' : {
-            'dollar_exists' : 1
-        }
-    };*/
-
-
     $scope.selectAll = function(event) {
         var checkbox = event.target;
-        console.log('inside "selectAll of lessons/Playlistindexjs');
 		_.each($scope.items, function(item) {
-		    console.log('item.selected  ', item, checkbox.checked);
 			item.selected = checkbox.checked;
 		});
 	};
@@ -52,7 +43,6 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 	};
 
 	$scope.$watch('lessonTypeFormAddQuizPopup', function(newValue) {
-	    console.log('inside lessons/Playlistindex.js newValue', newValue);
 		if (!!newValue) {
 			$scope.load(newValue.value);
 		}
@@ -78,22 +68,13 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 		};
 		var getLessonsPromise = null;
 		if ($scope.lessonToLoad === $scope.LessonTypeToLoad.all) {
-       /* queryObj = {
-            'filter' : _.merge({'public' : {'dollar_exists' : 1}}, $scope.lessonsFilter),
-            'sort' : {
-                 'lastUpdate' : -1
-             },
-             'dollar_page' : $scope.filterPage
-        };*/
-       var pubFilter = { 'filter' : {'public' : {'dollar_exists' : 1}}};
-        _.merge(queryObj, pubFilter);
+            var pubFilter = { 'filter' : {'public' : {'dollar_exists' : 1}}};
+            _.merge(queryObj, pubFilter);
 			getLessonsPromise = LessonsService.getPublicLessons(queryObj);
-			console.log('Playlistindex getPublicLessons(queryObj', queryObj);
 		} else if ($scope.lessonToLoad === $scope.LessonTypeToLoad.liked) {
 			getLessonsPromise = LergoClient.userData.getLikedLessons(queryObj);
 		} else {
 			getLessonsPromise = LergoClient.userData.getLessons(queryObj);
-            console.log('Playlistindex myLessons(queryObj', queryObj);
 			$scope.lessonToLoad = $scope.LessonTypeToLoad.user;
 		}
 
