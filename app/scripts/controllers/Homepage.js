@@ -45,7 +45,6 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			'dollar_page' : $scope.filterPage
 		};
 		LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
-		    console.log('Homepage queryObj',queryObj);
 			$scope.lessons = result.data.data;
 			$scope.filterPage.count = result.data.count; // the number of
 			// lessons found
