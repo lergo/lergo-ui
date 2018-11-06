@@ -52,6 +52,7 @@ angular.module('lergoApp').controller('LessonsPlaylistAddUpdateDialogCtrl',
 			var items = [];
 			$scope.$on('lessonsLoaded', function(event, data) {
 				items = data.items;
+				console.log('PlaylistAddUpdateDialog items.length=',items.length);
 				if (!!step && !!step.quizItems) {
 					_.each(items, function(q) {
 						if (step.quizItems.indexOf(q._id) !== -1) {
