@@ -160,6 +160,10 @@ angular.module('lergoApp').controller('LessonsPlaylistAddUpdateDialogCtrl',
 				return 'createNewLesson' === section.id;
 			});
 
+            $scope.currentSection = _.find($scope.sections, function(section) {
+                return 'myLessons' === section.id;
+            });
+
             function isCreateNewLessonSection (){
                 return $scope.currentSection.id === 'myLessons';
             }
