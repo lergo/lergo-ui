@@ -157,9 +157,9 @@ angular.module('lergoApp').controller('LessonsPlaylistAddUpdateDialogCtrl',
 			};
 
 
-			$scope.currentSection = _.find($scope.sections, function(section) {
+			/*$scope.currentSection = _.find($scope.sections, function(section) {
 				return 'createNewLesson' === section.id;
-			});
+			});*/
 
             $scope.currentSection = _.find($scope.sections, function(section) {
                 return 'myLessons' === section.id;
