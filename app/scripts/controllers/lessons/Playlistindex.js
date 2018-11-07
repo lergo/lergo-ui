@@ -9,9 +9,9 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 	};
 
 	$scope.totalResults = 0;
-	$scope.lessonsFilter = {};
+	$scope.playlistsFilter = {};
 	$scope.filterPage = {};
-	$scope.lessonsFilterOpts = {
+	$scope.playlistsFilterOpts = {
 		showSubject : true,
 		showLanguage : true,
 		showAge : true,
@@ -50,7 +50,7 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 	$scope.load = function(lessonTypeToLoad) {
 		var oldValue = localStorageService.get('lessonTypeToLoad');
 		if (oldValue !== lessonTypeToLoad) {
-			$scope.lessonsFilterOpts.showCreatedBy = lessonTypeToLoad === $scope.LessonTypeToLoad.all;
+			$scope.playlistsFilterOpts.showCreatedBy = lessonTypeToLoad === $scope.LessonTypeToLoad.all;
 			localStorageService.set('lessonTypeToLoad', lessonTypeToLoad);
 			$scope.filterPage.current = 1;
 			$scope.filterPage.updatedLast = new Date().getTime();
@@ -60,7 +60,7 @@ angular.module('lergoApp').controller('LessonsPlaylistindexCtrl', function($scop
 	$scope.loadLessons = function() {
 		$scope.lessonToLoad = localStorageService.get('lessonTypeToLoad');
 		var queryObj = {
-			'filter' : _.merge({}, $scope.lessonsFilter),
+			'filter' : _.merge({}, $scope.playlistsFilter),
 			'sort' : {
 				'lastUpdate' : -1
 			},

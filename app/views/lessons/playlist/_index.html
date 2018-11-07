@@ -9,9 +9,9 @@
                     <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                         <div>
                             <div class="lergo-h1-orig filter-lessons hidden-sm hidden-xs">{{ 'lessons.filter' | translate }}</div>
-                            <div lergo-filter   no-url-changes="{{isModal}}" model="lessonsFilter" on-change="loadLessons()"
+                            <div lergo-filter   no-url-changes="{{isModal}}" model="playlistsFilter" on-change="loadLessons()"
                                  on-load="filterLoaded()"
-                                 opts="lessonsFilterOpts">
+                                 opts="playlistsFilterOpts">
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
                 </div>
                 <div ng-show="isModal" style="height: 19px"></div>
-                <div class="hidden-sm hidden-xs" filter-is-active="lessonsFilterOpts" section="lessons" ng-class="!!isModal==true ? 'active-filter-modal': 'active-filter'"></div>
+                <div class="hidden-sm hidden-xs" filter-is-active="playlistsFilterOpts" section="lessons" ng-class="!!isModal==true ? 'active-filter-modal': 'active-filter'"></div>
 
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
