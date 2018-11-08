@@ -90,8 +90,8 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             'id': 'video',
             'label': 'Video'
         }, {
-            'id': 'quiz',
-            'label': 'Quiz'
+            'id': 'quizt',
+            'label': 'Quiz',
         }, {
             'id': 'lesson',
             'label': 'Lesson'
