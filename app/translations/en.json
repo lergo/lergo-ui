@@ -869,6 +869,13 @@
       "videoURLHelpText": "Insert the URL of the YouTube video here.",
       "welcome": "Welcome to lergo"
   },
+  "playlistIntro": {
+     "action": {
+        "preview": {
+            "title": "Preview"
+        }
+     }
+  },
   "preview": "Preview",
   "previewQuestion": "Preview",
   "privacy": {
