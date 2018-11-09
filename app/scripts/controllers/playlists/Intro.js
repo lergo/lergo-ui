@@ -92,8 +92,8 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 playlist: function () {
                     return $scope.playlist;
                 },
-                questions: function () {
-                    return $scope.questions;
+                lessons: function () {
+                    return $scope.lessons;
                 }
             };
             var modelInstance = $uibModal.open(modelContent);
@@ -132,18 +132,18 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
 
         $scope.noop = angular.noop;
 
-        function getQuestionsWithSummary() {
-            return _.compact([].concat(_.find($scope.questions || [], function (q) {
+        function getLessonsWithSummary() {
+            return _.compact([].concat(_.find($scope.lessons || [], function (q) {
                 return !!q.summary;
             })));
         }
 
         // we want to show edit summary in case this playlist is a copy of another
         // playlist
-        // or if we have an edit summary on one of the questions.
+        // or if we have an edit summary on one of the lessons.
 
         // edit summary is used here as an abstraction and does not refer to the
-        // question model field 'edit summary'
+        // lesson model field 'edit summary'
 
         $scope.showEditSummary = function () {
 
@@ -153,15 +153,15 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 return true;
             }
 
-            if (!!$scope.questionsFromOthers && _.size($scope.questionsFromOthers) > 0) {
+            if (!!$scope.lessonsFromOthers && _.size($scope.lessonsFromOthers) > 0) {
                 return true;
             }
 
-            if (!!$scope.questionsWeCopied && _.size($scope.questionsWeCopied) > 0) {
+            if (!!$scope.lessonsWeCopied && _.size($scope.lessonsWeCopied) > 0) {
                 return true;
             }
 
-            var withSummary = getQuestionsWithSummary();
+            var withSummary = getLessonsWithSummary();
             return !!withSummary && withSummary.length > 0;
         };
 
@@ -216,18 +216,18 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
             return !!invitationId;
         };
 
-        function giveCreditToQuestionsWeCopied(questions) {
+        function giveCreditToLessonsWeCopied(lessons) {
 
-            var questionsWeCopied = _.filter(questions, 'copyOf');
-            // find all questions with copy of
-            var questionsWithCopyOf = _.compact(_.flatten(_.map(questionsWeCopied, 'copyOf')));
+            var lessonsWeCopied = _.filter(lessons, 'copyOf');
+            // find all lessons with copy of
+            var lessonsWithCopyOf = _.compact(_.flatten(_.map(lessonsWeCopied, 'copyOf')));
 
-            if (!!questionsWithCopyOf && _.size(questionsWithCopyOf) > 0) {
-                // get all of these questions
-                LergoClient.questions.findQuestionsById(questionsWithCopyOf).then(function (result) {
-                    var originalQuestions = result.data;
+            if (!!lessonsWithCopyOf && _.size(lessonsWithCopyOf) > 0) {
+                // get all of these lessons
+                LergoClient.lessons.findLessonsById(lessonsWithCopyOf).then(function (result) {
+                    var originalLessons = result.data;
 
-                    var usersWeCopiedFrom = _.uniq(_.compact(_.map(originalQuestions, 'userId')));
+                    var usersWeCopiedFrom = _.uniq(_.compact(_.map(originalLessons, 'userId')));
 
                     // get all users we copied from..
                     LergoClient.users.findUsersById(usersWeCopiedFrom).then(function (result) {
@@ -235,37 +235,37 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                         // turn list of users to map where id is map
                         var copyOfUsersById = _.keyBy(copyOfUsers, '_id');
 
-                        _.each(originalQuestions, function (q) {
+                        _.each(originalLessons, function (q) {
                             q.userDetails = copyOfUsersById[q.userId];
                         });
 
-                        var originalsById = _.keyBy(originalQuestions, '_id');
+                        var originalsById = _.keyBy(originalLessons, '_id');
 
-                        _.each(questionsWeCopied, function (q) {
+                        _.each(lessonsWeCopied, function (q) {
                             q.originals = _.map(q.copyOf, function (c) {
                                 return originalsById[c];
                             });
                         });
 
-                        /* map each question we copied to the original */
+                        /* map each lesson we copied to the original */
                         /*
-                         * remove question that was created by the same user who
+                         * remove lesson that was created by the same user who
                          * owns this playlist
                          */
-                        questionsWeCopied = _.filter(questionsWeCopied, function (q) {
+                        lessonsWeCopied = _.filter(lessonsWeCopied, function (q) {
                             return !_.isEmpty(_.reject(q.originals, {userId: $scope.playlist.userId}));
                         });
 
-                        $scope.questionsWeCopied = _.keyBy(questionsWeCopied, '_id');
+                        $scope.lessonsWeCopied = _.keyBy(lessonsWeCopied, '_id');
                     });
                 });
 
             }
         }
 
-        function giveCreditToQuestionsWeUseFromOthers(questions) {
-            var questionsFromOthers = _.reject(questions, {userId: $scope.playlist.userId});
-            var others = _.uniq(_.compact(_.map(questionsFromOthers, 'userId')));
+        function giveCreditToLessonsWeUseFromOthers(lessons) {
+            var lessonsFromOthers = _.reject(lessons, {userId: $scope.playlist.userId});
+            var others = _.uniq(_.compact(_.map(lessonsFromOthers, 'userId')));
 
             if (!others || others.length === 0) {
                 return;
@@ -275,31 +275,31 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 var othersUsers = result.data;
                 var othersUsersById = _.keyBy(othersUsers, '_id');
 
-                _.each(questionsFromOthers, function (q) {
+                _.each(lessonsFromOthers, function (q) {
                     q.userDetails = othersUsersById[q.userId];
                 });
 
-                $scope.questionsFromOthers = _.keyBy(questionsFromOthers, '_id');
+                $scope.lessonsFromOthers = _.keyBy(lessonsFromOthers, '_id');
             });
 
         }
 
-        function loadQuestions() {
+        function loadLessons() {
 
-            var questionsId = [];
+            var lessonsId = [];
             if (!!$scope.playlist && !!$scope.playlist.steps) {
 
                 for (var i = 0; i < $scope.playlist.steps.length; i++) {
                     var items = $scope.playlist.steps[i].quizItems;
                     if (!!items && angular.isArray(items)) {
-                        questionsId.push.apply(questionsId, items);
+                        lessonsId.push.apply(lessonsId, items);
                     }
                 }
-                LergoClient.questions.findQuestionsById(questionsId).then(function (result) {
-                    $scope.questions = result.data;
-                    $scope.questionsWithSummary = _.filter(result.data, 'summary');
-                    giveCreditToQuestionsWeUseFromOthers($scope.questions);
-                    giveCreditToQuestionsWeCopied($scope.questions);
+                LergoClient.lessons.findLessonsById(lessonsId).then(function (result) {
+                    $scope.lessons = result.data;
+                    $scope.lessonsWithSummary = _.filter(result.data, 'summary');
+                    giveCreditToLessonsWeUseFromOthers($scope.lessons);
+                    giveCreditToLessonsWeCopied($scope.lessons);
                 });
             }
         }
@@ -348,7 +348,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 'title': $scope.playlist.name,
                 'description': $scope.playlist.description
             };
-            loadQuestions();
+            loadLessons();
             LergoTranslate.setLanguageByName($scope.playlist.language);
             if (!!autoPlay) {
                 $scope.startPlaylist();

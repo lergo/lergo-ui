@@ -1,34 +1,34 @@
 
 <div class="hidden-sm hidden-xs">
     <div class="base-layout" id="playlistIntro" ng-init="scrollUp()">
+        <div>
             <div>
-                <div>
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" ></div>
                     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                         <div class="clearfix">
                             <div class="page-content-body">
-                                <div cg-busy="[copyLessonPromise,deleteLessonPromise,]" class="playlist lergo-body-tile">
+                                <div cg-busy="[copyPlaylistPromise,deletePlaylistPromise,]" class="playlist lergo-body-tile">
                                     <div class="image" style="max-width: 480px;">
                                         <div playlist-title-image playlist="playlist"></div>
                                     </div>
                                     <div class="start-playlist">
                                         <span class="button">
-                                            <button class="btn-link" ng-click="startLesson()" ng-show="!!playlist" autofocus
-                                                    on-enter="startLesson()">
-                                                <i class="fa fa-play-circle-o " uib-tooltip="{{'playlists.startLesson' | translate}}"></i>
+                                            <button class="btn-link" ng-click="startPlaylist()" ng-show="!!playlist" autofocus
+                                                    on-enter="startPlaylist()">
+                                                <i class="fa fa-play-circle-o " uib-tooltip="{{'playlists.startPlaylist' | translate}}"></i>
                                             </button>
                                         </span>
                                     </div>
                                     <div class="action-items" ng-show="!!permissions">
                                         <div class="action-items-top">
-                                            <a class="btn-link" ng-click="deleteLesson(playlist)" ng-show="!!permissions.canDelete">
+                                            <a class="btn-link" ng-click="deletePlaylist(playlist)" ng-show="!!permissions.canDelete">
                                                 <i class="fa fa-trash-o" uib-tooltip="{{'playlists.tooltip.delete' | translate}}"></i>
                                             </a>
                                             <br/>
                                         </div>
                                         <div class="action-items-bottom">
-                                            <button class="btn-link" ng-click="copyBtnDisable || copyLesson(playlist)"
+                                            <button class="btn-link" ng-click="copyBtnDisable || copyPlaylist(playlist)"
                                                     ng-show="!!permissions.canCopy">
                                                 <i class="fa fa-copy" uib-tooltip="{{'playlists.tooltip.copy' | translate}}"></i>
                                             </button>
@@ -48,9 +48,9 @@
                                             <i class="fa fa-eye fa-fw"></i>
                                             {{0+playlist.views}}
                                         </span>
-                                         <span class="stats-button" uib-tooltip="{{'homepage.tooltip.questions' | translate}}">
-                                            <i class="fa fa-question-circle fa-fw"></i>
-                                            {{ playlist | countQuestionsOnLesson }}
+                                        <span class="stats-button" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
+                                            <i class="fa fa-lesson-circle fa-fw"></i>
+                                            {{ playlist | countLessonsOnPlaylist }}
                                         </span>
                                         <span class="stats-button" uib-tooltip="{{'homepage.tooltip.likes' | translate}}">
                                             <i class="fa fa-heart-o"></i>
@@ -66,18 +66,18 @@
                                                  <span> {{playlist.user.username}}</span>
                                              </a>
                                         </span>
-                                        <span uib-tooltip="{{'playlists.createdOn' | translate}}">
+                                            <span uib-tooltip="{{'playlists.createdOn' | translate}}">
                                             <i class="fa fa-calendar"></i>
                                             <span>{{playlist | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
                                         </span>
-                                        <span ng-show="!!playlist.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
+                                            <span ng-show="!!playlist.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
                                             <i class="fa fa-book"></i>
                                             <span>{{'filters.subjects.' + playlist.subject | translate}}</span>
                                         </span>
                                         </div>
                                         <div class="action-items">
                                             <div class="action-item">
-                                                <button class="btn-link" ng-click="startLesson()"
+                                                <button class="btn-link" ng-click="startPlaylist()"
                                                         uib-tooltip="{{'playlists.tooltip.start' | translate}}">
                                                     <i class="fa fa-play-circle-o "></i>
                                                     {{'start' | translate}}
@@ -85,7 +85,7 @@
                                             </div>
                                             <div class="action-item">
                                                 <div show-logged-in>
-                                                    <button class="btn-link" ng-click="likeLesson()"
+                                                    <button class="btn-link" ng-click="likePlaylist()"
                                                             uib-tooltip="{{'playlists.tooltip.like' | translate}}" ng-show="!isLiked()">
                                                         <i class="fa fa-heart-o "></i>
                                                         {{'like' | translate}}
@@ -98,7 +98,7 @@
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li>
-                                                                <a class="btn-link" style="outline: none;" ng-click="unlikeLesson()">{{
+                                                                <a class="btn-link" style="outline: none;" ng-click="unlikePlaylist()">{{
                                                                     'unlike' | translate }}</a>
                                                             </li>
                                                         </ul>
@@ -135,10 +135,10 @@
                                                 </button>
                                             </div>
                                             <div class="action-item" show-logged-in ng-show="!isInvitationLink()">
-                                                <button class="btn-link" ng-click="previewLesson()"
+                                                <button class="btn-link" ng-click="previewPlaylist()"
                                                         uib-tooltip="{{'playlists.tooltip.preview' | translate}}">
                                                     <i class="fa fa-search-plus"></i>
-                                                    {{'playlists.Intro.action.preview.title' | translate}}
+                                                    {{'playlistIntro.action.preview.title' | translate}}
                                                 </button>
                                             </div>
                                             <div class="action-item">
@@ -180,22 +180,22 @@
                                                 <pre dir="auto">{{ playlist.description}}</pre>
                                                 <div class="edit-summary" ng-show="showEditSummary()">
                                                     <br/>
-                                                    <span class="title">{{'questions.editSummary'|translate}}</span>
+                                                    <span class="title">{{'lessons.editSummary'|translate}}</span>
                                                     <br/>
                                                     <br/>
                                                     <!-- show copy of playlist -->
                                                     <div ng-show="copyOfItems.length > 0">
                                                 <span ng-show="copyOfItems.length === 1" ng-repeat="item in copyOfItems">
-                                                    {{ 'playlistIntro.copiedFromLesson' | translate}}
+                                                    {{ 'playlistIntro.copiedFromPlaylist' | translate}}
                                                     <span playlist-intro-link playlist="item">{{item.name}}</span>
-                                                    {{ 'playlistIntro.copiedFromLessonBy' | translate }} {{item.userDetails.username }}
+                                                    {{ 'playlistIntro.copiedFromPlaylistBy' | translate }} {{item.userDetails.username }}
                                                 </span>
                                                         <span ng-show="copyOfItems.length > 1">
-                                                    {{ 'playlistIntro.copiedFromPlaylist' | translate }}
+                                                    {{ 'playlistIntro.copiedFromPlaylists' | translate }}
                                                     <ul>
                                                         <li ng-repeat="item in copyOfItems track by $index">
                                                             <span playlist-intro-link playlist="item">{{item.name}}</span>
-                                                            {{ 'playlistIntro.copiedFromLessonBy' | translate }}
+                                                            {{ 'playlistIntro.copiedFromPlaylistBy' | translate }}
                                                             {{item.userDetails.username }}
                                                         </li>
                                                     </ul>
@@ -203,26 +203,26 @@
                                                         <br/>
                                                     </div>
                                                     <br />
-                                                    <div ng-repeat="q in questions">
-                                                        <div dir="auto" class="question"
-                                                             ng-show="!!q.summary || !!questionsWeCopied[q._id] || !!questionsFromOthers[q._id]">
-                                                            <!--  <a href="#!/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
-                                                            <i class="fa fa-question-circle"> </i>
-                                                            <span class="title-question"> {{q.question | limitTo :50}} </span>
+                                                    <div ng-repeat="q in lessons">
+                                                        <div dir="auto" class="lesson"
+                                                             ng-show="!!q.summary || !!lessonsWeCopied[q._id] || !!lessonsFromOthers[q._id]">
+                                                            <!--  <a href="#!/user/lessons/{{q._id}}/read"> Q:{{q.lesson | limitTo :30}}</a>-->
+                                                            <i class="fa fa-lesson-circle"> </i>
+                                                            <span class="title-lesson"> {{q.lesson | limitTo :50}} </span>
                                                         </div>
-                                                        <div ng-show="!!questionsFromOthers[q._id]">
-                                                            <div class="summary">Question created by
-                                                                {{questionsFromOthers[q._id].userDetails.username}}
+                                                        <div ng-show="!!lessonsFromOthers[q._id]">
+                                                            <div class="summary">Lesson created by
+                                                                {{lessonsFromOthers[q._id].userDetails.username}}
                                                             </div>
                                                         </div>
                                                         <div ng-show="!!q.summary">
                                                             <div class="summary" btf-markdown="q.summary"></div>
                                                         </div>
-                                                        <div ng-show="!!questionsWeCopied[q._id]">
-                                                            <div ng-repeat="o in questionsWeCopied[q._id].originals track by $index">
+                                                        <div ng-show="!!lessonsWeCopied[q._id]">
+                                                            <div ng-repeat="o in lessonsWeCopied[q._id].originals track by $index">
                                                                 <div class="summary">
                                                                     Copied from
-                                                                    <span question-read-link question="o"></span>
+                                                                    <span lesson-read-link lesson="o"></span>
                                                                     by {{o.userDetails.username}}
                                                                 </div>
                                                             </div>
@@ -248,7 +248,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
-                     <div class="col-lg-8 col-md-8  col-sm-12 col-xs-12">
+                    <div class="col-lg-8 col-md-8  col-sm-12 col-xs-12">
                         <div class="not-embed-mode-item" style="margin-top: 10px;">
                             <div class="comments " show-logged-in>
                                 <div disqus-embed playlist="playlist"></div>
@@ -270,27 +270,27 @@
                     <div>
                         <div class="playlist-intro-content clearfix">
                             <div>
-                                <div cg-busy="[copyLessonPromise,deleteLessonPromise,]" class="playlist lergo-body-tile">
+                                <div cg-busy="[copyPlaylistPromise,deletePlaylistPromise,]" class="playlist lergo-body-tile">
                                     <div class="image">
                                         <div playlist-title-image playlist="playlist"></div>
                                     </div>
                                     <div class="start-playlist">
                                         <span class="button">
-                                            <button class="btn-link" ng-click="startLesson()" ng-show="!!playlist" autofocus
-                                                    on-enter="startLesson()">
-                                                <i  class="fa fa-play-circle-o " uib-tooltip="{{'playlists.startLesson' | translate}}"></i>
+                                            <button class="btn-link" ng-click="startPlaylist()" ng-show="!!playlist" autofocus
+                                                    on-enter="startPlaylist()">
+                                                <i  class="fa fa-play-circle-o " uib-tooltip="{{'playlists.startPlaylist' | translate}}"></i>
                                             </button>
                                         </span>
                                     </div>
                                     <div class="action-items" ng-show="!!permissions">
                                         <div class="action-items-top">
-                                            <a class="btn-link" ng-click="deleteLesson(playlist)" ng-show="!!permissions.canDelete">
+                                            <a class="btn-link" ng-click="deletePlaylist(playlist)" ng-show="!!permissions.canDelete">
                                                 <i class="fa fa-trash-o" uib-tooltip="{{'playlists.tooltip.delete' | translate}}"></i>
                                             </a>
                                             <br/>
                                         </div>
                                         <div class="action-items-bottom">
-                                            <button class="btn-link" ng-click="copyBtnDisable || copyLesson(playlist)"
+                                            <button class="btn-link" ng-click="copyBtnDisable || copyPlaylist(playlist)"
                                                     ng-show="!!permissions.canCopy">
                                                 <i class="fa fa-copy" uib-tooltip="{{'playlists.tooltip.copy' | translate}}"></i>
                                             </button>
@@ -305,13 +305,13 @@
                                     </div>
                                     <div class="stats">
                                         <span class="stats-button age-limit-{{playlist.age}} no-color" ng-show="!!playlist.age"> {{playlist.age}}+ {{'homepage.years'|translate}} </span>
-                                            <span class="stats-button" uib-tooltip="{{'homepage.tooltip.views' | translate}}">
+                                        <span class="stats-button" uib-tooltip="{{'homepage.tooltip.views' | translate}}">
                                                 <i class="fa fa-eye fa-fw"></i>
                                                 {{0+playlist.views}}
                                             </span>
-                                            <span class="stats-button" uib-tooltip="{{'homepage.tooltip.questions' | translate}}">
-                                                <i class="fa fa-question-circle fa-fw"></i>
-                                                {{ playlist | countQuestionsOnLesson }}
+                                        <span class="stats-button" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
+                                                <i class="fa fa-lesson-circle fa-fw"></i>
+                                                {{ playlist | countLessonsOnPlaylist }}
 						                    </span>
                                         <span class="stats-button" uib-tooltip="{{'homepage.tooltip.likes' | translate}}">
                                             <i class="fa fa-heart-o"></i>
@@ -373,7 +373,7 @@
                                             </div>
                                             <div class="col-xs-3 hide-hebrew"> <!--1-start-->
                                                 <div class="action-item">
-                                                    <button class="btn-link" ng-click="startLesson()"
+                                                    <button class="btn-link" ng-click="startPlaylist()"
                                                             uib-tooltip="{{'playlists.tooltip.start' | translate}}">
                                                         <i class="fa fa-play-circle-o "></i>
                                                         {{'start' | translate}}
@@ -407,7 +407,7 @@
                                             </div>
                                             <div class="col-xs-3 hide-english"> <!--1-start-->
                                                 <div class="action-item">
-                                                    <button class="btn-link" ng-click="startLesson()"
+                                                    <button class="btn-link" ng-click="startPlaylist()"
                                                             uib-tooltip="{{'playlists.tooltip.start' | translate}}">
                                                         <i class="fa fa-play-circle-o "></i>
                                                         {{'start' | translate}}
@@ -415,55 +415,55 @@
                                                 </div>
                                             </div>
                                             <div class="col-xs-3 col-like"> <!--5 - like-->
-                                             <div class="action-item">
-                                                  <div show-logged-in>
-                                                      <button class="btn-link" ng-click="likeLesson()"
-                                                              uib-tooltip="{{'playlists.tooltip.like' | translate}}" ng-show="!isLiked()">
-                                                          <i class="fa fa-heart-o "></i>
-                                                          {{'like' | translate}}
-                                                      </button>
-                                                      <div class="btn-group" uib-dropdown ng-show="!!isLiked()">
-                                                          <button class="btn-link" uib-dropdown-toggle>
-                                                              <i class="fa fa-heart-o "></i>
-                                                              {{'liked' | translate}}
-                                                              <span class="fa fa-caret-down"></span>
-                                                          </button>
-                                                          <ul class="dropdown-menu" role="menu">
-                                                              <li>
-                                                                  <a class="btn-link" style="outline: none;" ng-click="unlikeLesson()">{{
-                                                                      'unlike' | translate }}</a>
-                                                              </li>
-                                                          </ul>
-                                                      </div>
-                                                  </div>
-                                                  <div show-anonymous>
-                                                      <button class="btn-link" uib-popover="{{'playlists.likeNotAvailable' | translate}}"
-                                                              popover-placement="auto top" popover-trigger="'outsideClick'" tabindex="0">
-                                                          <i class="fa fa-heart-o "></i>
-                                                          {{'like' | translate}}
-                                                      </button>
-                                                  </div>
-                                             </div>
+                                                <div class="action-item">
+                                                    <div show-logged-in>
+                                                        <button class="btn-link" ng-click="likePlaylist()"
+                                                                uib-tooltip="{{'playlists.tooltip.like' | translate}}" ng-show="!isLiked()">
+                                                            <i class="fa fa-heart-o "></i>
+                                                            {{'like' | translate}}
+                                                        </button>
+                                                        <div class="btn-group" uib-dropdown ng-show="!!isLiked()">
+                                                            <button class="btn-link" uib-dropdown-toggle>
+                                                                <i class="fa fa-heart-o "></i>
+                                                                {{'liked' | translate}}
+                                                                <span class="fa fa-caret-down"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu" role="menu">
+                                                                <li>
+                                                                    <a class="btn-link" style="outline: none;" ng-click="unlikePlaylist()">{{
+                                                                        'unlike' | translate }}</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div show-anonymous>
+                                                        <button class="btn-link" uib-popover="{{'playlists.likeNotAvailable' | translate}}"
+                                                                popover-placement="auto top" popover-trigger="'outsideClick'" tabindex="0">
+                                                            <i class="fa fa-heart-o "></i>
+                                                            {{'like' | translate}}
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="col-xs-3 col-preview"> <!-- preview -->
-                                             <div class="action-item" show-logged-in ng-show="!isInvitationLink()">
-                                                 <button class="btn-link" ng-click="previewLesson()"
-                                                         uib-tooltip="{{'playlists.tooltip.preview' | translate}}">
-                                                     <i class="fa fa-search-plus"></i>
-                                                     {{'playlistIntro.action.preview.title' | translate}}
-                                                 </button>
-                                              </div>
+                                                <div class="action-item" show-logged-in ng-show="!isInvitationLink()">
+                                                    <button class="btn-link" ng-click="previewPlaylist()"
+                                                            uib-tooltip="{{'playlists.tooltip.preview' | translate}}">
+                                                        <i class="fa fa-search-plus"></i>
+                                                        {{'playlistIntro.action.preview.title' | translate}}
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row"></div>
                                         <div class="forms">
-                                                        <div ng-show="isActiveAction(actionItems.SHARE)"
-                                                             ng-include="'views/playlists/intro/_shareForm.html'"></div>
-                                                        <div ng-show="isActiveAction(actionItems.INVITE)" playlist-create-invite-form
-                                                             on-close="setActiveAction()"></div>
-                                                        <div ng-show="isActiveAction(actionItems.REPORT)"
-                                                             ng-include="'views/playlists/intro/_reportForm.html'"></div>
-                                                    </div>
+                                            <div ng-show="isActiveAction(actionItems.SHARE)"
+                                                 ng-include="'views/playlists/intro/_shareForm.html'"></div>
+                                            <div ng-show="isActiveAction(actionItems.INVITE)" playlist-create-invite-form
+                                                 on-close="setActiveAction()"></div>
+                                            <div ng-show="isActiveAction(actionItems.REPORT)"
+                                                 ng-include="'views/playlists/intro/_reportForm.html'"></div>
+                                        </div>
                                         <div class="row"></div>
                                         <div class="description">
                                             <pre dir="auto" ng-show="!more">{{ filteredDescription =(playlist.description| limitTo:320 | multilineEllipsis) }}</pre>
@@ -471,48 +471,48 @@
                                                 <pre dir="auto">{{ playlist.description}}</pre>
                                                 <div class="edit-summary" ng-show="showEditSummary()">
                                                     <br/>
-                                                    <span class="title">{{'questions.editSummary'|translate}}</span>
+                                                    <span class="title">{{'lessons.editSummary'|translate}}</span>
                                                     <br/>
                                                     <br/>
                                                     <!-- show copy of playlist -->
                                                     <div ng-show="copyOfItems.length > 0">
 										<span ng-show="copyOfItems.length === 1" ng-repeat="item in copyOfItems">
-											{{ 'playlistIntro.copiedFromLesson' | translate}}
+											{{ 'playlistIntro.copiedFromPlaylist' | translate}}
 											<span playlist-intro-link playlist="item">{{item.name}}</span>
-											{{ 'playlistIntro.copiedFromLessonBy' | translate }} {{item.userDetails.username }}
+											{{ 'playlistIntro.copiedFromPlaylistBy' | translate }} {{item.userDetails.username }}
 										</span>
                                                         <span ng-show="copyOfItems.length > 1">
-											{{ 'playlistIntro.copiedFromPlaylist' | translate }}
+											{{ 'playlistIntro.copiedFromPlaylists' | translate }}
 											<ul>
                                                 <li ng-repeat="item in copyOfItems track by $index">
                                                     <span playlist-intro-link playlist="item">{{item.name}}</span>
-                                                    {{ 'playlistIntro.copiedFromLessonBy' | translate }}
+                                                    {{ 'playlistIntro.copiedFromPlaylistBy' | translate }}
                                                     {{item.userDetails.username }}
                                                 </li>
                                             </ul>
 										</span>
                                                         <br/>
                                                     </div>
-                                                    <div ng-repeat="q in questions">
-                                                        <div dir="auto" class="question"
-                                                             ng-show="!!q.summary || !!questionsWeCopied[q._id] || !!questionsFromOthers[q._id]">
-                                                            <!--  <a href="#!/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
-                                                            <i class="fa fa-question-circle"> </i>
-                                                            <span class="title-question"> {{q.question | limitTo :50}} </span>
+                                                    <div ng-repeat="q in lessons">
+                                                        <div dir="auto" class="lesson"
+                                                             ng-show="!!q.summary || !!lessonsWeCopied[q._id] || !!lessonsFromOthers[q._id]">
+                                                            <!--  <a href="#!/user/lessons/{{q._id}}/read"> Q:{{q.lesson | limitTo :30}}</a>-->
+                                                            <i class="fa fa-lesson-circle"> </i>
+                                                            <span class="title-lesson"> {{q.lesson | limitTo :50}} </span>
                                                         </div>
-                                                        <div ng-show="!!questionsFromOthers[q._id]">
-                                                            <div class="summary">Question created by
-                                                                {{questionsFromOthers[q._id].userDetails.username}}
+                                                        <div ng-show="!!lessonsFromOthers[q._id]">
+                                                            <div class="summary">Lesson created by
+                                                                {{lessonsFromOthers[q._id].userDetails.username}}
                                                             </div>
                                                         </div>
                                                         <div ng-show="!!q.summary">
                                                             <div class="summary" btf-markdown="q.summary"></div>
                                                         </div>
-                                                        <div ng-show="!!questionsWeCopied[q._id]">
-                                                            <div ng-repeat="o in questionsWeCopied[q._id].originals track by $index">
+                                                        <div ng-show="!!lessonsWeCopied[q._id]">
+                                                            <div ng-repeat="o in lessonsWeCopied[q._id].originals track by $index">
                                                                 <div class="summary">
                                                                     Copied from
-                                                                    <span question-read-link question="o"></span>
+                                                                    <span lesson-read-link lesson="o"></span>
                                                                     by {{o.userDetails.username}}
                                                                 </div>
                                                             </div>
@@ -535,13 +535,14 @@
                         </div>
 
                         <div class="not-embed-mode-item" style="margin-top: 10px;">
-                                        <div class="comments " show-logged-in>
-                                            <div disqus-embed playlist="playlist"></div>
-                                        </div>
-                                    </div>
+                            <div class="comments " show-logged-in>
+                                <div disqus-embed playlist="playlist"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
