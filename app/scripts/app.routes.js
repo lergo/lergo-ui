@@ -11,7 +11,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         controller: 'LessonsIndexCtrl'
     }).when('/user/playlists', {
         templateUrl: 'views/playlists/index.html',
-        controller: 'playlistsIndexCtrl'
+        controller: 'PlaylistsIndexCtrl'
     }).when('/user/questions', {
         templateUrl: 'views/questions/index.html',
         controller: 'QuestionsIndexCtrl'
