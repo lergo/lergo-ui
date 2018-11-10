@@ -1,3 +1,7 @@
+playlist - add most of the required scripts services and views in li and ri. Create playlist works almost ok,
+there is the issue with the different controller to allow it to refresh on likedLessons and All lesson.
+It stops working on Play
+
 SEO (bug - grunt test fails) remove "noindex" from directives/_lergoFilter.html
 
 SEO - implement "noindex" on highest, non relevant google search links: /about/_keyContributors.html,
