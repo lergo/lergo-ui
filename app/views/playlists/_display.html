@@ -1,5 +1,5 @@
 <div ng-show="loaded && showSteps() && hasNextStep() " class="next-step" ng-cloak>
-    <div ng-include="'/views/lessons/_stepDisplay.html'"></div>
+    <div ng-include="'/views/playlists/_stepDisplay.html'"></div>
 </div>
 <div ng-show="!loaded" class="loading">
     <div>
@@ -8,17 +8,17 @@
 </div>
 
 <div class="hidden-sm hidden-xs">
-    <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step">
+    <div ng-show="loaded && !hasNextStep() && playlist.steps.length>0" class="done-step">
         <div class="congrats">
             {{ 'congratulations' | translate }}!
             <br>
             <br>
         </div>
         <div class="message">
-            <span>{{ 'lessons.lessonCompleted' | translate }}</span>
-            <span class="lesson-title">"{{lesson.name}}"</span>
-            <span class="created-by">{{'lesson.createdBy'|translate}}</span>
-            <span class="lesson-title">{{lesson.user.username}}</span>
+            <span>{{ 'playlists.playlistCompleted' | translate }}</span>
+            <span class="playlist-title">"{{playlist.name}}"</span>
+            <span class="created-by">{{'playlist.createdBy'|translate}}</span>
+            <span class="playlist-title">{{playlist.user.username}}</span>
             <br>
         </div>
         <div class="report">
@@ -26,50 +26,50 @@
                 <tr>
                     <td style="width: 100%;">
                         <div>
-                            <a href="" ng-show="!!invitation" class="lergo-lesson-show-report" ng-click="showReport()">
+                            <a href="" ng-show="!!invitation" class="lergo-playlist-show-report" ng-click="showReport()">
                                 <!-- guy : this should not be a link. should be a button. but css is gone, and change would be too big.see LERGO-576 -->
                                 <i class="fa fa-bar-chart-o"></i>
-                                {{ 'lessons.lessonReport' | translate }}
+                                {{ 'playlists.playlistReport' | translate }}
                             </a>
                         </div>
-                        <div class="recmmonded" ng-show="!!lesson.nextLessonId">
-                            <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
+                        <div class="recmmonded" ng-show="!!playlist.nextPlaylistId">
+                            <a ng-href="#!/public/playlists/{{playlist.nextPlaylistId}}/intro">
                                 <i class="fa fa-university"></i>
-                                {{ 'lessons.recommenedNextLesson' | translate }}
+                                {{ 'playlists.recommenedNextPlaylist' | translate }}
                             </a>
                         </div>
                     </td>
                     <td rowspan="2">
-                        <a href="" ng-show="!lesson.temporary" class="btn-link" ng-click="startBtnDisable || startLesson()"
+                        <a href="" ng-show="!playlist.temporary" class="btn-link" ng-click="startBtnDisable || startPlaylist()"
                            ng-disabled="startBtnDisable">
                             <i style="font-size: 35px; color: #8CC63F;" class="fa fa-repeat "></i>
                         </a>
                     </td>
                     <td>
-                        <a href="" ng-show="!lesson.temporary" ng-click="startBtnDisable || startLesson() "
+                        <a href="" ng-show="!playlist.temporary" ng-click="startBtnDisable || startPlaylist() "
                            ng-disabled="startBtnDisable">
-                            {{'lessons.restart' | translate}}
+                            {{'playlists.restart' | translate}}
                         </a>
                     </td>
-                    <td rowspan="2" ng-show="wrongQuestions.length>0">
+                    <td rowspan="2" ng-show="wrongLessons.length>0">
                         <a href="" show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
                            ng-disabled="practiseBtnDisable">
                             <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat"></i>
                         </a>
                         <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
-                           uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
+                           uib-popover="{{'playlists.practiceNotAvailable' | translate}}"
                            tabindex="0">
                             <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
                         </a>
                     </td>
-                    <td ng-show="wrongQuestions.length>0">
+                    <td ng-show="wrongLessons.length>0">
                         <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
                            ng-disabled="practiseBtnDisable">
-                            {{'lessons.practiseWrongQuestion' | translate}}
+                            {{'playlists.practiseWrongLesson' | translate}}
                         </a>
                         <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
-                           uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
-                           tabindex="0">{{'lessons.practiseWrongQuestion' | translate}}</a>
+                           uib-popover="{{'playlists.practiceNotAvailable' | translate}}"
+                           tabindex="0">{{'playlists.practiseWrongLesson' | translate}}</a>
                     </td>
                 </tr>
             </table>
@@ -78,8 +78,8 @@
         <div class="stats">
             <div class="action-items">
                 <span show-logged-in>
-                    <button class="btn-link" ng-click="likeLesson()"
-                            uib-tooltip="{{'lessons.tooltip.like' | translate}}" ng-show="!isLiked()">
+                    <button class="btn-link" ng-click="likePlaylist()"
+                            uib-tooltip="{{'playlists.tooltip.like' | translate}}" ng-show="!isLiked()">
                         <i class="fa fa-heart-o "></i>
                         {{'like' | translate}}
                     </button>
@@ -91,32 +91,32 @@
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a class="btn-link" style="outline: none;" ng-click="unlikeLesson()">{{
+                                <a class="btn-link" style="outline: none;" ng-click="unlikePlaylist()">{{
                                     'unlike' | translate }}</a>
                             </li>
                         </ul>
                     </div>
                 </span>
-                <a href="" show-anonymous class="btn-link" uib-popover="{{'lessons.likeNotAvailable' | translate}}"
+                <a href="" show-anonymous class="btn-link" uib-popover="{{'playlists.likeNotAvailable' | translate}}"
                    popover-placement="top" popover-trigger="'outsideClick'"
                    tabindex="0">
                     <i class="fa fa-heart-o "></i>
                     {{'like' | translate}}
                 </a>
                 <button show-logged-in class="btn-link" ng-click="setActiveAction(actionItems.INVITE)"
-                        uib-tooltip="{{'lessons.tooltip.invite' | translate}}">
+                        uib-tooltip="{{'playlists.tooltip.invite' | translate}}">
                     <i class="fa fa-envelope "></i>
                     {{'invite' | translate}}
                 </button>
                 <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                <a href="" show-anonymous class="btn-link" uib-popover="{{'lessons.inviteNotAvailable' | translate}}"
+                <a href="" show-anonymous class="btn-link" uib-popover="{{'playlists.inviteNotAvailable' | translate}}"
                    popover-placement="top" popover-trigger="'outsideClick'"
                    tabindex="0">
                     <i class="fa fa-envelope "></i>
                     {{'invite' | translate}}
                 </a>
                 <button class="btn-link" ng-click="setActiveAction(actionItems.SHARE)"
-                        uib-tooltip="{{'lessons.tooltip.share' | translate}}">
+                        uib-tooltip="{{'playlists.tooltip.share' | translate}}">
                     <i class="fa fa-share-alt "></i>
                     {{'share' | translate}}
                 </button>
@@ -124,8 +124,8 @@
             <div class="forms">
                 <div class="form-color">
                     <div ng-show="isActiveAction(actionItems.SHARE)"
-                         ng-include="'views/lessons/intro/_shareForm.html'"></div>
-                    <div ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
+                         ng-include="'views/playlists/intro/_shareForm.html'"></div>
+                    <div ng-show="isActiveAction(actionItems.INVITE)" playlist-create-invite-form
                          on-close="setActiveAction()"></div>
                 </div>
             </div>
@@ -135,7 +135,7 @@
 
 
 <div class="hidden-lg hidden-md"> <!--start mobile view -->
-    <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step-mobile">
+    <div ng-show="loaded && !hasNextStep() && playlist.steps.length>0" class="done-step-mobile">
         <div class="congrats">
             {{ 'congratulations' | translate }}!
             <br>
@@ -143,40 +143,40 @@
             </div>
         </div>
         <div class="message">
-            <div>{{ 'lessons.lessonCompleted' | translate }}</div>
-            <div class="lesson-title">"{{lesson.name}}"</div>
-            <div class="created-by">{{'lesson.createdBy'|translate}}</div>
-            <div class="lesson-title">{{lesson.user.username}}</div>
+            <div>{{ 'playlists.playlistCompleted' | translate }}</div>
+            <div class="playlist-title">"{{playlist.name}}"</div>
+            <div class="created-by">{{'playlist.createdBy'|translate}}</div>
+            <div class="playlist-title">{{playlist.user.username}}</div>
         </div>
         <div id="message-buttons" style="overflow-y: auto">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <a href="" ng-show="!lesson.temporary" class="btn-link" ng-click="startBtnDisable || startLesson()"
+                <a href="" ng-show="!playlist.temporary" class="btn-link" ng-click="startBtnDisable || startPlaylist()"
                    ng-disabled="startBtnDisable">
                     <i class="fa fa-repeat m-repeat1"></i>
                 </a>
-                <a href="" ng-show="!lesson.temporary" ng-click="startBtnDisable || startLesson() "
+                <a href="" ng-show="!playlist.temporary" ng-click="startBtnDisable || startPlaylist() "
                    ng-disabled="startBtnDisable">
-                    {{'lessons.restart' | translate}}
+                    {{'playlists.restart' | translate}}
                 </a>
-                <span  ng-show="wrongQuestions.length>0">
+                <span  ng-show="wrongLessons.length>0">
                     <a href="" show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
                        ng-disabled="practiseBtnDisable">
                                 <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat"></i>
                     </a>
                     <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
-                       uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
+                       uib-popover="{{'playlists.practiceNotAvailable' | translate}}"
                        tabindex="0">
                                 <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
                     </a>
                 </span>
-                <span ng-show="wrongQuestions.length>0">
+                <span ng-show="wrongLessons.length>0">
                     <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
                        ng-disabled="practiseBtnDisable">
-                                {{'lessons.practiseWrongQuestion' | translate}}
+                                {{'playlists.practiseWrongLesson' | translate}}
                      </a>
                      <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
-                               uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
-                               tabindex="0">{{'lessons.practiseWrongQuestion' | translate}}
+                               uib-popover="{{'playlists.practiceNotAvailable' | translate}}"
+                               tabindex="0">{{'playlists.practiseWrongLesson' | translate}}
                      </a>
                 </span>
             </div>
@@ -185,14 +185,14 @@
                     <button type="button" href="" ng-show="!!invitation" class="btn btn-primary" ng-click="showReport()" >
                         <!-- guy : this should not be a link. should be a button. but css is gone, and change would be too big.see LERGO-576 -->
                         <i class="fa fa-bar-chart-o"></i>
-                        {{ 'lessons.lessonReport' | translate }}
+                        {{ 'playlists.playlistReport' | translate }}
                     </button>
                 </div>
                 <div class="text-center top20">
-                    <div class="recommended" ng-show="!!lesson.nextLessonId">
-                        <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
+                    <div class="recommended" ng-show="!!playlist.nextPlaylistId">
+                        <a ng-href="#!/public/playlists/{{playlist.nextPlaylistId}}/intro">
                             <i class="fa fa-university"></i>
-                            {{ 'lessons.recommenedNextLesson' | translate }}
+                            {{ 'playlists.recommenedNextPlaylist' | translate }}
                         </a>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
         <div class="stats">
             <div class="action-items">
                 <span show-logged-in>
-                    <button class="btn-link" ng-click="likeLesson()" ng-show="!isLiked()">
+                    <button class="btn-link" ng-click="likePlaylist()" ng-show="!isLiked()">
                         <i class="fa fa-heart-o "></i>
                         {{'like' | translate}}
                     </button>
@@ -214,40 +214,40 @@
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a class="btn-link" style="outline: none;" ng-click="unlikeLesson()">{{
+                                <a class="btn-link" style="outline: none;" ng-click="unlikePlaylist()">{{
                                     'unlike' | translate }}</a>
                             </li>
                         </ul>
                     </div>
                 </span>
-                <a href="" show-anonymous class="btn-link" uib-popover="{{'lessons.likeNotAvailable' | translate}}"
+                <a href="" show-anonymous class="btn-link" uib-popover="{{'playlists.likeNotAvailable' | translate}}"
                    popover-placement="top" popover-trigger="'outsideClick'"
                    tabindex="0">
                     <i class="fa fa-heart-o "></i>
                     {{'like' | translate}}
                 </a>
                 <button show-logged-in class="btn-link" ng-click="setActiveAction(actionItems.INVITE)"
-                        uib-tooltip="{{'lessons.tooltip.invite' | translate}}">
+                        uib-tooltip="{{'playlists.tooltip.invite' | translate}}">
                     <i class="fa fa-envelope "></i>
                     {{'invite' | translate}}
                 </button>
                 <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                <a href="" show-anonymous class="btn-link" uib-popover="{{'lessons.inviteNotAvailable' | translate}}"
+                <a href="" show-anonymous class="btn-link" uib-popover="{{'playlists.inviteNotAvailable' | translate}}"
                    popover-placement="top" popover-trigger="'outsideClick'"
                    tabindex="0">
                     <i class="fa fa-envelope "></i>
                     {{'invite' | translate}}
                 </a>
                 <button class="btn-link" ng-click="setActiveAction(actionItems.SHARE)"
-                        uib-tooltip="{{'lessons.tooltip.share' | translate}}">
+                        uib-tooltip="{{'playlists.tooltip.share' | translate}}">
                     <i class="fa fa-share-alt "></i>
                     {{'share' | translate}}
                 </button>
             </div>
             <div class="forms">
                 <div ng-class="{'mPaddingActive': isActiveAction(actionItems.SHARE) }" ng-show="isActiveAction(actionItems.SHARE)"
-                     ng-include="'views/lessons/intro/_shareForm.html'"></div>
-                <div ng-class="{'mPaddingActive': isActiveAction(actionItems.INVITE) }" ng-show="isActiveAction(actionItems.INVITE)" lesson-create-invite-form
+                     ng-include="'views/playlists/intro/_shareForm.html'"></div>
+                <div ng-class="{'mPaddingActive': isActiveAction(actionItems.INVITE) }" ng-show="isActiveAction(actionItems.INVITE)" playlist-create-invite-form
                      on-close="setActiveAction()"></div>
             </div>
         </div>
