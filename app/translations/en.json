@@ -797,10 +797,11 @@
                 }
             }
       },
-      "inviteplaylist": {
+      "invitePlaylist": {
           "class": {
               "help": "Invite CLASS: To generate a PIN number or link to the invite, please enter your class name and press submit.",
               "msg": "Invite Class",
+              "name": "Name",
               "noteMessage": "You will receive your students playlist reports upon completion of each playlist.",
               "noteTitle": "Note",
               "pinHint": "(students to enter it at lergo.it).",
@@ -812,6 +813,7 @@
           "student": {
               "help": "Invite STUDENT: To generate a link for the invite please enter student's first name and press submit.",
               "msg": "Invite Student",
+              "name": "Name",
               "noteMessage": "You will receive your kid's/student's playlist report upon completion of playlist.",
               "noteTitle": " Note",
               "pinHint": "(students to enter it at lergo.it).",
