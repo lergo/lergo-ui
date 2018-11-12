@@ -759,6 +759,12 @@
       "lergo": "Powered by LerGO"
     }
   },
+  "playlistPreview" : {
+      "detailHeader": "Preview of Lessons in Playlist",
+      "header" : {
+          "title" : "Playlist Previrew"
+      }
+  },
   "playlists": {
       "addCoverPage": "Add cover image for playlist intro",
       "addCoverPageHint": "To add your cover image to playlist please paste here the image URL.",
@@ -1100,6 +1106,11 @@
       "individualReports": "To Student Reports"
     },
     "incomplete": "Incomplete",
+    "lessonsInQuiz": {
+          "one": "lesson in Step",
+          "other": "Different Lessons in Step",
+          "zero": " ."
+    },
     "lessonStep": {
       "practiceMode": {
         "false": "No",
@@ -1130,6 +1141,10 @@
       "one": "Open Question",
       "other": "Open Questions",
       "zero": "."
+    },
+    "playlistSteps": "Playlist Steps",
+      "missing": {
+          "info": "Missing information"
     },
     "priorLesson": "Recommended Previous Lesson",
     "questionPerDifficulty": "Questions per Difficulty",
