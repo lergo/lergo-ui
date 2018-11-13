@@ -72,6 +72,18 @@
                                         'other':'{} {{ &quot;report.lessonsInQuiz.other&quot; | translate}}'}">
                                  </ng-pluralize>
                             </span>
+                            <div uib-collapse="!!detailCollapsed" class="detail row"> <!-- jeff-->
+                                <div class="row row-nested" ng-repeat="step in playlist.steps" style="margin: 10px 15px 15px 15px;">
+                                    <div ng-if="!!step.quizItems" class="col-md-12 col-sm-12 col-xs-12">
+                                        <div dir="auto" class="collapsible">{{step.title}}</div>
+                                        <div ng-repeat="id in step.quizItems">
+                                           <!-- <lesson-preview quiz-item="lessons[id]"></lesson-preview>-->
+                                            <a ng-click="cancel()" style="display: inline-block; font-size: 20px" ng-href="#!/user/lessons/{{lessons[id]._id}}/intro">{{lessons[id].name}}</a>
+                                        </div>
+                                        <br/>
+                                    </div>
+                                </div>
+                            </div>
                             <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}" target="_blank">
                                 {{'reports.click.step' | translate}}
                             </a>
@@ -135,7 +147,7 @@
                     </a>
                 </div>
                 <hr/>
-                <div uib-collapse="!!detailCollapsed" class="detail row">
+                <!--<div uib-collapse="!!detailCollapsed" class="detail row">
                     <div class="row row-nested" ng-repeat="step in playlist.steps" style="margin: 10px 15px 15px 15px;">
                         <div ng-if="!!step.quizItems" class="col-md-12 col-sm-12 col-xs-12">
                             <div dir="auto" class="collapsible">{{step.title}}</div>
@@ -145,7 +157,7 @@
                             <br/>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
