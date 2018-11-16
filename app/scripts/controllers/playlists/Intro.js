@@ -92,7 +92,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 playlist: function () {
                     return $scope.playlist;
                 },
-                lessons: function () {
+                lesson: function () {
                     return $scope.lessons;
                 },
                 questions: function () {

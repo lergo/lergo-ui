@@ -7,14 +7,21 @@
 angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window, localStorageService) {
 */
 
-angular.module('lergoApp').controller('PlaylistPreviewCtrl', function ($scope, playlist, lessons, questions, $uibModalInstance) {
+angular.module('lergoApp').controller('PlaylistPreviewCtrl', function ($scope, playlist, lesson, questions, $uibModalInstance) {
 /*function playlistPreviewctrl($scope, playlist, lessons, questions, $uibModalInstance) {*/
     $scope.playlist = playlist;
-    $scope.lessons = {};
+    $scope.lesson = lesson;
     $scope.questions = {};
-    _.forEach(lessons,function (q){
+
+    _.forEach(lesson,function (q){
         {
-            $scope.lessons[q._id]= q;
+            $scope.lesson[q._id]= q;
+        }
+    });
+
+    _.forEach(questions,function (q){
+        {
+            $scope.questions[q._id]= q;
         }
     });
 

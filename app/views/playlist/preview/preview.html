@@ -72,8 +72,9 @@
                                         'other':'{} {{ &quot;report.lessonsInQuiz.other&quot; | translate}}'}">
                                  </ng-pluralize>
                             </span>
-                            <div uib-collapse="!!detailCollapsed" class="detail row"> <!-- jeff-->
-                                <div class="row row-nested" ng-repeat="step in playlist.steps" style="margin: 10px 15px 15px 15px;">
+                            <br><br><div uib-collapse="!!detailCollapsed" class="detail row"> <!-- jeff-->
+                                <div>
+                                    <!--<div class="row row-nested" ng-repeat="step in playlist.steps" style="margin: 10px 15px 15px 15px;">-->
                                     <div ng-if="!!step.quizItems" class="col-md-12 col-sm-12 col-xs-12">
                                         <div ng-repeat="id in step.quizItems">
                                         {{$index + 1}}&nbsp &nbsp <a ng-click="cancel()" style="font-size: 20px" ng-href="#!/user/lessons/{{lessons[id]._id}}/intro">{{lessons[id].name}}</a>
@@ -141,21 +142,24 @@
                     <a class="no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
                         <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
                         <i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
-                        {{'playlistPreview.detailHeader'|translate}}
+                        {{'lessonPreview.detailHeader'|translate}}
                     </a>
                 </div>
                 <hr/>
-                <!--<div uib-collapse="!!detailCollapsed" class="detail row">
-                    <div class="row row-nested" ng-repeat="step in playlist.steps" style="margin: 10px 15px 15px 15px;">
-                        <div ng-if="!!step.quizItems" class="col-md-12 col-sm-12 col-xs-12">
-                            <div dir="auto" class="collapsible">{{step.title}}</div>
-                            <div ng-repeat="id in step.quizItems">
-                                <lesson-preview quiz-item="lessons[id]"></lesson-preview>
+                <div uib-collapse="!!detailCollapsed" class="detail row">
+                    <div ng-repeat="mylesson in lesson">
+                        <div style="font-size: 24px; color: #3da6ff">Lesson Name: {{mylesson.name}}</div>
+                        <div class="row row-nested" ng-repeat="step in mylesson.steps" style="margin: 10px 15px 15px 15px;">
+                            <div ng-if="!!step.quizItems" class="col-md-12 col-sm-12 col-xs-12">
+                                <div dir="auto" class="collapsible">{{step.title}}</div>
+                                <div ng-repeat="id in step.quizItems">
+                                    <question-preview quiz-item="questions[id]"></question-preview>
+                                </div>
+                                <br/>
                             </div>
-                            <br/>
                         </div>
                     </div>
-                </div>-->
+                </div>
             </div>
         </div>
     </div>

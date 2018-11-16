@@ -5,7 +5,7 @@
 
 
 angular.module('lergoApp')
-    .directive('lessonPreview', function () {
+    .directive('lessonPreview',function (QuestionsService) {
         return {
             templateUrl: 'views/lessons/view/preview2/preview.html',
             restrict: 'E',
@@ -16,13 +16,14 @@ angular.module('lergoApp')
             link: function ($scope) {
 
                 $scope.getLessonTemplate = function () {
-                   /* return 'views/lessons/view/preview2/preview.html';*/
-                    return 'views/lessons/view/preview2/_showLessons.html';
+                    return 'views/questions/view/preview2/_' + $scope.quizItem.type + '.html';
+                    /*return 'views/lessons/view/preview2/_showLessons.html';*/
                 };
 
-                /*$scope.isFillInTheBlanks = function () {
-                    return lessonsService.lesson_TYPE.FILL_IN_THE_BLANKS === $scope.quizItem.type;
-                };*/
+                $scope.isFillInTheBlanks = function () {
+                    return questionsService.lesson_TYPE.FILL_IN_THE_BLANKS === $scope.quizItem.type;
+                };
             }
         };
     });
+
