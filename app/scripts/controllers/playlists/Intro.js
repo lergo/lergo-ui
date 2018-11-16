@@ -85,7 +85,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
             // persistScroll();
             var modelContent = {};
             modelContent.templateUrl = 'views/playlist/preview/preview.html';
-            modelContent.windowClass = 'playlist-preview-dialog ' + LergoTranslate.getDirection();
+            modelContent.windowClass = 'lesson-preview-dialog ' + LergoTranslate.getDirection();
             modelContent.backdrop = 'static';
             modelContent.controller = 'PlaylistPreviewCtrl';
             modelContent.resolve = {
