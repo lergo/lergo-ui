@@ -72,12 +72,13 @@
                                         'other':'{} {{ &quot;report.lessonsInQuiz.other&quot; | translate}}'}">
                                  </ng-pluralize>
                             </span>
-                            <br><br><div uib-collapse="!!detailCollapsed" class="detail row"> <!-- jeff-->
+                            <br><br>
+                            <div uib-collapse="!!detailCollapsed" class="detail row"> <!-- jeff-->
                                 <div>
-                                    <!--<div class="row row-nested" ng-repeat="step in playlist.steps" style="margin: 10px 15px 15px 15px;">-->
                                     <div ng-if="!!step.quizItems" class="col-md-12 col-sm-12 col-xs-12">
                                         <div ng-repeat="id in step.quizItems">
-                                        {{$index + 1}}&nbsp &nbsp <a ng-click="cancel()" style="font-size: 20px" ng-href="#!/user/lessons/{{lessons[id]._id}}/intro">{{lessons[id].name}}</a>
+                                            <br>
+                                       ({{$index + 1}}) &nbsp &nbsp <a ng-click="cancel()" style="font-size: 16px" ng-href="#!/user/lessons/{{lesson[id]._id}}/intro">{{lesson[id].name}}</a>
                                         </div>
                                         <br/>
                                     </div>
