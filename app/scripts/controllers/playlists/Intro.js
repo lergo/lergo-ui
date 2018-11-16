@@ -303,7 +303,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                     $scope.lessonsWithSummary = _.filter(result.data, 'summary');
                     giveCreditToLessonsWeUseFromOthers($scope.lessons);
                     giveCreditToLessonsWeCopied($scope.lessons);
-                }).then(function (results) {
+                }).then(function () {
                     loadQuestions();
                 });
 

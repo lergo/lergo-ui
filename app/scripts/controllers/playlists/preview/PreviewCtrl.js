@@ -3,9 +3,15 @@
  */
 
 'use strict';
-function playlistPreviewctrl($scope, playlist, lessons,$uibModalInstance) {
+/*
+angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window, localStorageService) {
+*/
+
+angular.module('lergoApp').controller('PlaylistPreviewCtrl', function ($scope, playlist, lessons, questions, $uibModalInstance) {
+/*function playlistPreviewctrl($scope, playlist, lessons, questions, $uibModalInstance) {*/
     $scope.playlist = playlist;
     $scope.lessons = {};
+    $scope.questions = {};
     _.forEach(lessons,function (q){
         {
             $scope.lessons[q._id]= q;
@@ -15,7 +21,8 @@ function playlistPreviewctrl($scope, playlist, lessons,$uibModalInstance) {
     $scope.cancel = function () {
         $uibModalInstance.dismiss();
     };
-}
+
+});
 
 
-angular.module('lergoApp').controller('PlaylistPreviewCtrl', ['$scope', 'playlist', 'lessons','$uibModalInstance',playlistPreviewctrl]);
+/*angular.module('lergoApp').controller('PlaylistPreviewCtrl', ['$scope', 'playlist', 'lessons', 'questions', '$uibModalInstance',playlistPreviewctrl]);*/
