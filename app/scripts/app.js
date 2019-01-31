@@ -6,7 +6,15 @@ angular.module('lergoApp', [
     'checklist-model',
     'ngRoute',
     'ui.bootstrap',
-    'ui.utils',
+   /*  'ui.utils', */
+    'ui.event',
+    'ui.format',
+    'ui.highlight',
+    'ui.include',
+    'ui.indeterminate',
+    'ui.inflector',
+    'ui.jq',
+   /*  'ui.keypress', */
     'btford.markdown',
     'ngStorage',
     'ngCsv',
