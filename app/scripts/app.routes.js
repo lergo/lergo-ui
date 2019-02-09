@@ -27,15 +27,15 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         reloadOnSearch: false,
         params: {'preview': true}
     }).when('/manage/users', {
-        templateUrl: 'views/manage/users/manageUsersIndex.html',
-        controller: 'ManageUsersIndexCtrl',
+        templateUrl: 'manage/users/manageUsersIndex.html',
+        controller: 'manage/users/ManageUsersIndexCtrl',
         reloadOnSearch: false,
         params: {
             'activeTab': 'users'
         }
     }).when('/manage/users/:userId/update', {
-        templateUrl: 'views/manage/users/manageUserUpdate.html',
-        controller: 'ManageUsersUpdateCtrl'
+        templateUrl: 'manage/users/update/manageUserUpdate.html',
+        controller: 'manage/users/update/ManageUsersUpdateCtrl'
     }).when('/manage/roles', {
         templateUrl: 'views/roles/rolesIndex.html',
         controller: 'RolesIndexCtrl',
