@@ -22,8 +22,8 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'views/lessons/stepDisplay.html',
         controller: 'LessonsUpdateCtrl'
     }).when('/user/lessons/:lessonId/display', {
-        templateUrl: 'views/lessons/display.html',
-        controller: 'LessonsDisplayCtrl',
+        templateUrl: 'user/lessons/display/display.html',
+        controller: 'users/lessons/display/DisplayCtrl',
         reloadOnSearch: false,
         params: {'preview': true}
     }).when('/manage/users', {
