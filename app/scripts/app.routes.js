@@ -7,14 +7,14 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         'templateUrl': 'user/lesson/create.html',
         'controller': 'user/lesson/CreateLessonCtrl'
     }).when('/user/lessons', {
-        templateUrl: 'views/lessons/index.html',
-        controller: 'LessonsIndexCtrl'
+        templateUrl: 'user/lessons/index.html',
+        controller: 'user/lessons/LessonsIndexCtrl'
     }).when('/user/questions', {
-        templateUrl: 'views/questions/index.html',
-        controller: 'QuestionsIndexCtrl'
+        templateUrl: 'user/questions/index.html',
+        controller: 'user/questions/QuestionsIndexCtrl'
     }).when('/public/questions/:questionId/read', {
-        templateUrl: 'views/questions/read.html',
-        controller: 'QuestionsReadCtrl'
+        templateUrl: 'user/questions/read.html',
+        controller: 'user/questions/QuestionsReadCtrl'
     }).when('/user/questions/:questionId/read', {
         templateUrl: 'views/questions/read.html',
         controller: 'QuestionsReadCtrl'
