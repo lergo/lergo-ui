@@ -14,16 +14,16 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         controller: 'user/questions/QuestionsIndexCtrl'
     }).when('/public/questions/:questionId/read', {
         templateUrl: 'user/questions/read.html',
-        controller: 'user/questions/QuestionsReadCtrl'
+        controller: 'user/questions/ReadCtrl'
     }).when('/user/questions/:questionId/read', {
-        templateUrl: 'views/questions/read.html',
-        controller: 'QuestionsReadCtrl'
+        templateUrl: 'user/questions/read.html',
+        controller: 'user/questions/ReadCtrl'
     }).when('/user/lessons/step/display', {
-        templateUrl: 'views/lessons/stepDisplay.html',
-        controller: 'LessonsUpdateCtrl'
+        templateUrl: 'user/lessons/step/display/stepDisplay.html',
+        controller: 'user/lessons/step/display/UpdateCtrl'
     }).when('/user/lessons/:lessonId/display', {
         templateUrl: 'user/lessons/display/display.html',
-        controller: 'users/lessons/display/DisplayCtrl',
+        controller: 'user/lessons/display/DisplayCtrl',
         reloadOnSearch: false,
         params: {'preview': true}
     }).when('/manage/users', {
@@ -37,17 +37,17 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'manage/users/update/manageUserUpdate.html',
         controller: 'manage/users/update/ManageUsersUpdateCtrl'
     }).when('/manage/roles', {
-        templateUrl: 'views/roles/rolesIndex.html',
-        controller: 'RolesIndexCtrl',
+        templateUrl: 'manage/roles/rolesIndex.html',
+        controller: 'manage/roles/RolesIndexCtrl',
         'params': {
             'activeTab': 'roles'
         }
     }).when('/manage/roles/:roleId/update', {
-        templateUrl: 'views/roles/rolesUpdate.html',
-        controller: 'RolesUpdateCtrl'
+        templateUrl: 'manage/roles/update/rolesUpdate.html',
+        controller: 'manage/roles/update/RolesUpdateCtrl'
     }).when('/public/lessons/invitations/:invitationId/display', {
-        templateUrl: 'views/lessons/invitations/display.html',
-        controller: 'LessonsInvitationsDisplayCtrl',
+        templateUrl: 'user/lessons/invitations/display/display.html',
+        controller: 'user/lessons/invitations/display/DisplayCtrl',
         reloadOnSearch: false
     }).when('/:role/lessons/:lessonId/intro', {
         templateUrl: 'views/lessons/intro.html',
