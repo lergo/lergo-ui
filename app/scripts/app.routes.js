@@ -4,8 +4,8 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
 
 
     $routeProvider.when('/user/lesson/create', {
-        'templateUrl': 'views/lesson/create.html',
-        'controller': 'CreateLessonCtrl'
+        'templateUrl': 'user/lesson/create.html',
+        'controller': 'user/lesson/CreateLessonCtrl'
     }).when('/user/lessons', {
         templateUrl: 'views/lessons/index.html',
         controller: 'LessonsIndexCtrl'
