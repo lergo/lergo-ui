@@ -38,7 +38,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         controller: 'manage/users/update/ManageUsersUpdateCtrl'
     }).when('/manage/roles', {
         templateUrl: 'manage/roles/rolesIndex.html',
-        controller: 'manage/roles/RolesIndexCtrl',
+        controller: 'RolesIndexCtrl',
         'params': {
             'activeTab': 'roles'
         }
@@ -47,7 +47,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         controller: 'manage/roles/update/RolesUpdateCtrl'
     }).when('/public/lessons/invitations/:invitationId/display', {
         templateUrl: 'user/lessons/invitations/display/display.html',
-        controller: 'user/lessons/invitations/display/DisplayCtrl',
+        controller: 'LessonsInvitationsDisplayCtrl',
         reloadOnSearch: false
     }).when('/:role/lessons/:lessonId/intro', {
         templateUrl: 'views/lessons/intro.html',

@@ -358,7 +358,7 @@ module.exports = function (grunt) {
             ],
             watch:[
                 'watch:compass',
-                'watch:jshint',
+               /*  'watch:jshint', */
                 'watch:livereload'
             ],
             server: [
