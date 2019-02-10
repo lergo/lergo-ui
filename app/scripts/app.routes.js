@@ -5,37 +5,37 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
 
     $routeProvider.when('/user/lesson/create', {
         'templateUrl': 'user/lesson/create.html',
-        'controller': 'user/lesson/CreateLessonCtrl'
+        'controller': 'CreateLessonCtrl'
     }).when('/user/lessons', {
         templateUrl: 'user/lessons/index.html',
-        controller: 'user/lessons/LessonsIndexCtrl'
+        controller: 'LessonsIndexCtrl'
     }).when('/user/questions', {
         templateUrl: 'user/questions/index.html',
-        controller: 'user/questions/QuestionsIndexCtrl'
+        controller: 'QuestionsIndexCtrl'
     }).when('/public/questions/:questionId/read', {
         templateUrl: 'user/questions/read.html',
-        controller: 'user/questions/ReadCtrl'
+        controller: 'QuestionsReadCtrl'
     }).when('/user/questions/:questionId/read', {
         templateUrl: 'user/questions/read.html',
-        controller: 'user/questions/ReadCtrl'
+        controller: 'QuestionsReadCtrl'
     }).when('/user/lessons/step/display', {
         templateUrl: 'user/lessons/step/display/stepDisplay.html',
-        controller: 'user/lessons/step/display/UpdateCtrl'
+        controller: 'LessonsUpdateCtrl'
     }).when('/user/lessons/:lessonId/display', {
         templateUrl: 'user/lessons/display/display.html',
-        controller: 'user/lessons/display/DisplayCtrl',
+        controller: 'LessonsDisplayCtrl',
         reloadOnSearch: false,
         params: {'preview': true}
     }).when('/manage/users', {
         templateUrl: 'manage/users/manageUsersIndex.html',
-        controller: 'manage/users/ManageUsersIndexCtrl',
+        controller: 'ManageUsersIndexCtrl',
         reloadOnSearch: false,
         params: {
             'activeTab': 'users'
         }
     }).when('/manage/users/:userId/update', {
         templateUrl: 'manage/users/update/manageUserUpdate.html',
-        controller: 'manage/users/update/ManageUsersUpdateCtrl'
+        controller: 'ManageUsersUpdateCtrl'
     }).when('/manage/roles', {
         templateUrl: 'manage/roles/rolesIndex.html',
         controller: 'RolesIndexCtrl',
@@ -44,7 +44,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         }
     }).when('/manage/roles/:roleId/update', {
         templateUrl: 'manage/roles/update/rolesUpdate.html',
-        controller: 'manage/roles/update/RolesUpdateCtrl'
+        controller: 'RolesUpdateCtrl'
     }).when('/public/lessons/invitations/:invitationId/display', {
         templateUrl: 'user/lessons/invitations/display/display.html',
         controller: 'LessonsInvitationsDisplayCtrl',
