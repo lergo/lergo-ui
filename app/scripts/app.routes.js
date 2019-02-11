@@ -83,7 +83,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         controller: 'BaseLayoutCreateCtrl',
         reloadOnSearch: false
     }).when('/user/lessons/:lessonId/update', {
-        templateUrl: 'views/lessons/update.html',
+        templateUrl: 'lessons/update1/update.html',
         controller: 'LessonsUpdateCtrl',
         reloadOnSearch: false
     }).when('/user/lessons/:lessonId/invitations', {
