@@ -56,26 +56,26 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'lessons/classInvite/classInvite.html',
         controller: 'ClassInviteCtrl'
     }).when('/lessons/invite/pin', {
-        templateUrl: 'views/invites/pinInvite.html',
+        templateUrl: 'lessons/pinInvite/pinInvite.html',
         controller: 'PinInviteCtrl'
     }).when('/lessons/invite/pininvite', {
-        templateUrl: 'views/invites/pinInvite.html',
+        templateUrl: 'lessons/pinInvite/pinInvite.html',
         controller: 'PinInviteCtrl'
     }).when('/public/lessons/:lessonId/share', {
         template: '',
         controller: 'LessonsInvitesPublicShareCtrl'
     }).when('/public/lessons/reports/:reportId/display', {
-        templateUrl: 'views/lessons/invitations/report.html',
+        templateUrl: 'lessons/invitations/report/report.html',
         controller: 'LessonsInvitationsReportCtrl'
     }).when('/public/lessons/reports/agg/:reportId/display', {
-        templateUrl: 'views/lessons/invitations/aggReport.html',
+        templateUrl: 'lessons/invitations/aggReport/aggReport.html',
         controller: 'LessonsInvitationsAggReportCtrl'
     }).when('/user/questions/:questionId/update', {
-        templateUrl: 'views/questions/update.html',
+        templateUrl: 'questions/update/update.html',
         controller: 'QuestionsUpdateCtrl',
         reloadOnSearch: false
     }).when('/public/homepage', {
-        templateUrl: 'views/homepage.html',
+        templateUrl: 'homepage/homepage.html',
         controller: 'HomepageCtrl',
         reloadOnSearch: false
     }).when('/user/create/:activeTab', {
