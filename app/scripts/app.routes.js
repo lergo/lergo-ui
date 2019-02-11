@@ -79,7 +79,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         controller: 'HomepageCtrl',
         reloadOnSearch: false
     }).when('/user/create/:activeTab', {
-        templateUrl: 'views/partials/_create.html', // todo: move this view to view/create/_lessons.html
+        templateUrl: 'baseLayout/create/_create.html', // todo: move this view to view/create/_lessons.html
         controller: 'BaseLayoutCreateCtrl',
         reloadOnSearch: false
     }).when('/user/lessons/:lessonId/update', {
