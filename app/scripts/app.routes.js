@@ -116,13 +116,13 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'login/login.html',
         controller: 'LoginCtrl'
     }).when('/public/user/validate', {
-        templateUrl: 'views/users/validate.html',
+        templateUrl: 'users/validate/validate.html',
         controller: 'UsersValidateCtrl'
     }).when('/public/user/changePassword', {
-        templateUrl: 'views/users/changePassword.html',
+        templateUrl: 'users/change/changePassword.html',
         controller: 'UsersChangePasswordCtrl'
     }).when('/public/about/:activeAboutTab', {
-        templateUrl: 'views/about.html',
+        templateUrl: 'about/about.html',
         controller: 'AboutCtrl',
         reloadOnSearch: false
     }).when('/public/session/resetPasswordRequest', {
