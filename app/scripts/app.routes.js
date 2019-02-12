@@ -87,10 +87,10 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         controller: 'LessonsUpdateCtrl',
         reloadOnSearch: false
     }).when('/user/lessons/:lessonId/invitations', {
-        templateUrl: 'views/lessons/invitations/create.html',
-        controller: 'LessonsInvitesCreateCtrl'
+        templateUrl: 'lessons/invites/create/create.html',
+        controller: 'LessonsInvitesCreateCtrl'  // jeff: this has not been found or  moved! It doesn't seem to exist!
     }).when('/public/:username/profile', {
-        templateUrl: 'views/users/profile.html',
+        templateUrl: 'users/profile/profile.html',
         controller: 'UsersProfileCtrl'
     }).when('/public/kitchenSink', {
         templateUrl: 'views/kitchenSink.html',
@@ -113,7 +113,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/public/session/signupConfirmation', {
         templateUrl: 'views/session/signupConfirmation.html'
     }).when('/public/session/login', {
-        templateUrl: 'views/session/login.html',
+        templateUrl: 'login/login.html',
         controller: 'LoginCtrl'
     }).when('/public/user/validate', {
         templateUrl: 'views/users/validate.html',
