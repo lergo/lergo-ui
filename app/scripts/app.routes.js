@@ -93,7 +93,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'users/profile/profile.html',
         controller: 'UsersProfileCtrl'
     }).when('/public/kitchenSink', {
-        templateUrl: 'views/kitchenSink.html',
+        templateUrl: 'static/kitchenSink.html',
     }).when('/public/feedback', {
         templateUrl: 'partials/_feedback.html'
     }).when('/public/abuse', {
@@ -107,11 +107,11 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/public/suggest', {
         templateUrl: 'partials/_suggest.html'
     }).when('/public/session/signup', {
-        templateUrl: 'views/session/signup.html',
+        templateUrl: 'session/signup.html',
         controller: function () {
         } // we will assign the controller on the view deliberately. angular bugs.
     }).when('/public/session/signupConfirmation', {
-        templateUrl: 'views/session/signupConfirmation.html'
+        templateUrl: 'session/signupConfirmation.html'
     }).when('/public/session/login', {
         templateUrl: 'login/login.html',
         controller: 'LoginCtrl'
@@ -131,7 +131,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/user/homepage', {
         redirectTo: '/public/homepage'
     }).when('/user/Parents', {
-        templateUrl: 'views/parents.html',
+        templateUrl: 'static/parents.html',
         controller: function ($scope, $sce, $filter) {
             window.scrollTo(0,0);
             $scope.url = function () {
@@ -141,7 +141,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/user/Privacy', {
         templateUrl: 'partials/_term.html',
     }).when('/user/Teachers', {
-        templateUrl: 'views/teachers.html',
+        templateUrl: 'static/teachers.html',
         controller: function ($scope, $sce, $filter) {
             window.scrollTo(0,0);
             $scope.url = function () {
@@ -169,12 +169,12 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/public/contribute', {
         templateUrl: 'partials/_contribute.html'
     }).when('errors/notFound', {
-        templateUrl: 'views/errors/notFound.html'
+        templateUrl: 'static/errors/notFound.html'
     }).when('/', {
         redirectTo: '/public/homepage'
         // redirectTo: '/public/session/login'
     }).otherwise({
-        templateUrl: 'views/errors/notFound.html'
+        templateUrl: 'static/errors/notFound.html'
         // redirectTo: '/'
     });
 });
