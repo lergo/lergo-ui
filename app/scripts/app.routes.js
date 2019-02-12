@@ -95,17 +95,17 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/public/kitchenSink', {
         templateUrl: 'views/kitchenSink.html',
     }).when('/public/feedback', {
-        templateUrl: 'views/partials/_feedback.html'
+        templateUrl: 'partials/_feedback.html'
     }).when('/public/abuse', {
-        templateUrl: 'views/partials/_abuse.html'
+        templateUrl: 'partials/_abuse.html'
     }).when('/public/contact', {
-        templateUrl: 'views/partials/_contact.html'
+        templateUrl: 'partials/_contact.html'
     }).when('/public/terms', {
-        templateUrl: 'views/partials/_term.html'
+        templateUrl: 'partials/_term.html'
     }).when('/public/problem', {
-        templateUrl: 'views/partials/_problem.html'
+        templateUrl: 'partials/_problem.html'
     }).when('/public/suggest', {
-        templateUrl: 'views/partials/_suggest.html'
+        templateUrl: 'partials/_suggest.html'
     }).when('/public/session/signup', {
         templateUrl: 'views/session/signup.html',
         controller: function () {
@@ -126,7 +126,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         controller: 'AboutCtrl',
         reloadOnSearch: false
     }).when('/public/session/resetPasswordRequest', {
-        templateUrl: 'views/session/resetPasswordRequest.html',
+        templateUrl: 'session/reset/resetPasswordRequest.html',
         controller: 'SessionResetPasswordRequestCtrl'
     }).when('/user/homepage', {
         redirectTo: '/public/homepage'
@@ -139,7 +139,7 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
             };
         }
     }).when('/user/Privacy', {
-        templateUrl: 'views/partials/_term.html',
+        templateUrl: 'partials/_term.html',
     }).when('/user/Teachers', {
         templateUrl: 'views/teachers.html',
         controller: function ($scope, $sce, $filter) {
@@ -150,14 +150,14 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         }
         ////////////////// admin section
     }).when('/admin/homepage/lessons', {
-        templateUrl: 'views/admin/lessons/_index.html',
+        templateUrl: 'admin/lessons/_index.html',
         controller: 'AdminLessonIndexCtrl',
         reloadOnSearch: false,
         'params': {
             'activeTab': 'lessons'
         }
     }).when('/admin/homepage/abuseReports', {
-        templateUrl: 'views/admin/abuseReports/_index.html',
+        templateUrl: 'admin/abuse/_index.html',
         controller: 'AdminAbuseReportIndexCtrl',
         reloadOnSearch: false,
         'params': {
@@ -165,9 +165,9 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         }
     }).when('/disqus/:disqus_identifier', {
         controller: 'DisqusPageCtrl',
-        templateUrl: 'views/disqusPage.html'
+        templateUrl: 'disqus/disqusPage.html'
     }).when('/public/contribute', {
-        templateUrl: 'views/partials/_contribute.html'
+        templateUrl: 'partials/_contribute.html'
     }).when('errors/notFound', {
         templateUrl: 'views/errors/notFound.html'
     }).when('/', {
