@@ -1,6 +1,9 @@
+(function(){
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location,  $window) {
+	HomepageCtrl.$inject = ['$scope', 'LergoClient', 'TagsService', '$rootScope', '$filter', '$log', '$routeParams', '$location', '$window'];
+
+	function HomepageCtrl($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location,  $window) {
 
     $window.scrollTo(0, 0);
 
@@ -95,4 +98,9 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		$window.scrollTo(0, scrollY);
 	}
 
-});
+}
+
+	angular.module('lergoApp')
+		.controller('HomepageCtrl', HomepageCtrl);
+
+})();	
