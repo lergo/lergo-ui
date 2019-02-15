@@ -2,7 +2,7 @@
 
 angular.module('lergoApp').directive('aggReportView', function ($log, LergoClient) {
     return {
-        templateUrl: 'views/directives/_aggReportView.html',
+        templateUrl: 'aggReportView/_aggReportView.html',
         restrict: 'E',
         scope: {
             'answers': '=',

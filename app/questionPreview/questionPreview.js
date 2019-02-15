@@ -7,7 +7,7 @@
 angular.module('lergoApp')
     .directive('questionPreview', function (QuestionsService) {
         return {
-            templateUrl: 'views/questions/view/preview2/preview.html',
+            templateUrl: 'questionPreviw/preview2/preview.html',
             restrict: 'E',
             transclude: true,
             scope: {
@@ -16,7 +16,7 @@ angular.module('lergoApp')
             link: function ($scope) {
 
                 $scope.getQuestionTemplate = function () {
-                    return 'views/questions/view/preview2/_' + $scope.quizItem.type + '.html';
+                    return 'questionPreviw/preview2/_' + $scope.quizItem.type + '.html';
                 };
 
                 $scope.isFillInTheBlanks = function () {

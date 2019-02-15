@@ -6,7 +6,7 @@
 
 var dynamicInput = function () {
     return {
-        templateUrl: 'views/directives/_dynamicInput.html',
+        templateUrl: 'dynamicInput/_dynamicInput.html',
         restrict: 'E',
         scope: {
             'quiz': '=',
