@@ -1,7 +1,8 @@
-/**
- * Created by rahul on 5/9/16.
- */
-'use strict';
+(function(){
+    /**
+     * Created by rahul on 5/9/16.
+     */
+    'use strict';
 
 
 angular.module('lergoApp')
@@ -25,3 +26,4 @@ angular.module('lergoApp')
             }
         };
     });
+});
