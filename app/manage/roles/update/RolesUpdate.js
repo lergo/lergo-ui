@@ -80,4 +80,4 @@
             getRole();
             loadPermissions();
         });
-    });        
+    })();        
