@@ -1,4 +1,4 @@
-(function(){
+(function () {
 	'use strict';
 
 	angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoClient, $location, $rootScope) {
@@ -66,4 +66,4 @@
 
 
 	});
-});
+})();

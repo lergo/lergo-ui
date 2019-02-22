@@ -13,4 +13,4 @@
                 $log.info('I got an error');
             });
         });
-});
+})();

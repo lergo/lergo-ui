@@ -29,4 +29,4 @@ angular.module('lergoApp')
             }
         }
     });
-});
+})();

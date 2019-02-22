@@ -436,5 +436,5 @@
                 $scope.popoverState = newValue;
             }, true);
         });
-    });
+    })();
     
