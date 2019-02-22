@@ -1,7 +1,8 @@
-/**
- * Created by rahul on 6/11/16.
- */
-'use strict';
+(function(){    
+    /**
+     * Created by rahul on 6/11/16.
+     */
+    'use strict';
 angular.module('lergoApp')
     .controller('PinInviteCtrl', function ($scope, LessonsInvitationsService, $location) {
 
@@ -28,3 +29,4 @@ angular.module('lergoApp')
             }
         }
     });
+});
