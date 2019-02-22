@@ -1,7 +1,9 @@
 (function(){
 	'use strict';
 
-	angular.module('lergoApp').controller('AdminAbuseReportIndexCtrl', function($scope, LergoClient, $log, $filter) {
+	AdminAbuseReportIndex.$inject = ['$scope', 'LergoClinet', '$log', '$filter'];
+
+	function AdminAbuseReportIndex($scope, LergoClient, $log, $filter) {
 
 		$scope.adminFilter = {};
 		$scope.filterPage = {};
@@ -127,5 +129,8 @@
 			});
 		};
 
-	});
+	}
+
+	angular.module('lergoApp')
+		.controller('AdminAbuseReportIndexCtrl',AdminAbuseReportIndex );
 })();

@@ -1,7 +1,7 @@
 (function(){  
         'use strict';
-
-        angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $routeParams, $controller) {
+        BaseLayoutCreateCtrl.$index = ['$scope', '$routeParams', '$controller']
+        function BaseLayoutCreateCtrl($scope, $routeParams, $controller) {
 
                 $scope.sections = [ {
                 id : 'invites',
@@ -43,5 +43,7 @@
                         return !!$scope.currentSection && section.id === $scope.currentSection.id;
                 };
 
-        });
+        }
+
+        angular.module('lergoApp').controller('BaseLayoutCreateCtrl', );
 })();       

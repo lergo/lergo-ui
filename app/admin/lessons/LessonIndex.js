@@ -1,7 +1,8 @@
 (function(){
 	'use strict';
 
-	angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, LergoClient, $log, $filter, $q) {
+	AdminLessonIndexCtrl.$inject = ['$scope', 'LergoClient', '$log', '$filter', '$q'];
+	function AdminLessonIndexCtrl($scope, LergoClient, $log, $filter, $q) {
 
 		$scope.adminFilter = {};
 		$scope.filterPage = {};
@@ -129,5 +130,7 @@
 			}
 		};
 
-	});
+	}
+	angular.module('lergoApp')
+	.controller('AdminLessonIndexCtrl', AdminLessonIndexCtrl );
 })();

@@ -1,7 +1,7 @@
  (function(){
     'use strict';
-
-    angular.module('lergoApp').directive('aggReportView', function ($log, LergoClient) {
+    aggReportView.$inject = ['$log', 'LergoClient'];
+    function aggReportView($log, LergoClient) {
         return {
             templateUrl: 'aggReportView/_aggReportView.html',
             restrict: 'E',
@@ -27,5 +27,7 @@
                 };
             }
         };
-    });
+    }
+
+    angular.module('lergoApp').directive('aggReportView', aggReportView );
  })();
