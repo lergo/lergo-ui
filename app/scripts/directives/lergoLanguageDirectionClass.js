@@ -1,33 +1,35 @@
-'use strict';
+(function () {
+    'use strict';
 
-angular.module('lergoApp')
-    .directive('lergoLanguageDirectionClass', function (LergoTranslate) {
-        return {
-            restrict: 'A',
-            link: function postLink(scope, element/*, attrs*/) {
+    angular.module('lergoApp')
+        .directive('lergoLanguageDirectionClass', function (LergoTranslate) {
+            return {
+                restrict: 'A',
+                link: function postLink(scope, element/*, attrs*/) {
 
-                toastr.options.onShown = function() {
-                    $(this).parent().addClass(LergoTranslate.getDirection(LergoTranslate.getLanguage()));
-                };
+                    toastr.options.onShown = function() {
+                        $(this).parent().addClass(LergoTranslate.getDirection(LergoTranslate.getLanguage()));
+                    };
 
-                scope.$watch(function () {
-                        return LergoTranslate.getLanguage();
-                    },
-                    function (newValue, oldValue) {
-                        try {
+                    scope.$watch(function () {
+                            return LergoTranslate.getLanguage();
+                        },
+                        function (newValue, oldValue) {
+                            try {
 
-                            var oldDirection = LergoTranslate.getDirection(oldValue);
-                            element.removeClass(oldDirection);
-                        } catch (e) {
+                                var oldDirection = LergoTranslate.getDirection(oldValue);
+                                element.removeClass(oldDirection);
+                            } catch (e) {
+                            }
+
+                            try {
+                                var newDirection = LergoTranslate.getDirection(newValue);
+                                element.addClass(newDirection);
+                            } catch (e) {
+                            }
                         }
-
-                        try {
-                            var newDirection = LergoTranslate.getDirection(newValue);
-                            element.addClass(newDirection);
-                        } catch (e) {
-                        }
-                    }
-                );
-            }
-        };
+                    );
+                }
+            };
     });
+})();
