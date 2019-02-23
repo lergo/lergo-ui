@@ -72,5 +72,5 @@
 				this.faqs = FaqsService;
 
 
-		});
-	})();
+			});
+})();

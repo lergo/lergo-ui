@@ -23,5 +23,5 @@
                     // NOTE: no need to support navigation IMO since it is meant only for robots
                 }
             };
-    });
+        });
 })();

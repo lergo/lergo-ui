@@ -167,5 +167,5 @@
             this.getClasses = function () {
                 return $http.get('/backend/reports/classes');
             };
-    });
+        });
 })();

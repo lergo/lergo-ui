@@ -68,5 +68,5 @@
                 return $http({'url' : '/backend/roles/' + roleId , 'method' : 'DELETE'});
             };
             // AngularJS will instantiate a singleton by calling "new" on this function
-    });
+        });
 })();

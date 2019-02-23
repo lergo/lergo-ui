@@ -408,6 +408,6 @@
             me.reportStatus = [ 'complete', 'incomplete' ];
             me.abuseReportStatus=['pending', 'resolved','dismissed'];
 
-    });
+        });
 })();
 

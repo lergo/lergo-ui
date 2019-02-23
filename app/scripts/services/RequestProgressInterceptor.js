@@ -53,6 +53,6 @@
                     return $q.reject(rejection);
                 }
             };
-    });
+        });
 })();
 

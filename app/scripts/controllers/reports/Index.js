@@ -228,5 +228,5 @@
                 $window.scrollTo(0, scrollY);
             }
 
-    });
+        });
 })();

@@ -25,5 +25,5 @@
                 array.isShuffled =true;
                 return array;
             };
-    });
+        });
 })();

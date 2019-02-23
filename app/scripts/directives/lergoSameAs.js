@@ -46,5 +46,5 @@
                     ctrl.$parsers.unshift(validate);
                 }
             };
-    });
+        });
 })();

@@ -55,5 +55,5 @@
                 return deleteLike('question',item);
             };
 
-    });
+        });
 })();

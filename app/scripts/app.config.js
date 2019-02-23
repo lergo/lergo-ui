@@ -1,5 +1,5 @@
-(function () {    
-    'use strict'
+(function () {
+    'use strict';
     angular.module('lergoApp').config(['$httpProvider', '$logProvider', '$translateProvider',
         function ($httpProvider, $logProvider, $translateProvider) {
 
@@ -32,4 +32,4 @@
             $httpProvider.interceptors.push('RequestErrorInterceptor');
 
         }]);
-    })();
+})();

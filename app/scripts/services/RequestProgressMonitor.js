@@ -28,5 +28,5 @@
                 return new Monitor();
 
             };
-    });
+        });
 })();

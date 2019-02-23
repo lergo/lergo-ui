@@ -33,5 +33,5 @@
                 $uibModalInstance.dismiss();
             };
 
-    });
+        });
 })();

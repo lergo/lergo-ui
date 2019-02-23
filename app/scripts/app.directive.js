@@ -1,5 +1,5 @@
 (function () {
-    'use strict'
+    'use strict';
     // guy - this is a temporary fix for angular-bootstrap
     // https://github.com/angular-ui/bootstrap/issues/2828
     angular.module('lergoApp').directive('tooltip', function () {

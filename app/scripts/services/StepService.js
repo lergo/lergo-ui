@@ -12,5 +12,5 @@
             this.isQuizStep = function(step){
                 return step && step.type === 'quiz';
             };
-    });
+        });
 })();

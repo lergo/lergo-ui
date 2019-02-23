@@ -224,5 +224,5 @@
 					return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
 				};
 
-		});
+			});
 })();

@@ -6,5 +6,5 @@
             return function (input, values) {
                 return input.format(values);
             };
-    });
+        });
 })();

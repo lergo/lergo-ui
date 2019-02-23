@@ -38,5 +38,5 @@
                     scope.copied = false;
                 }
             };
-    });
+        });
 })();

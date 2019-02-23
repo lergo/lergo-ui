@@ -38,5 +38,5 @@
             return function (input ,limit) {
                 return !input ? '' : truncate(input, limit );
             };
-    });
+        });
 })();

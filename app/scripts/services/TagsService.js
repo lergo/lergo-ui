@@ -14,5 +14,5 @@
                     params: { like : like, 'lessonsId[]' : lessonsId, 'questionsId[]' : questionsId }
                 });
             };
-    });
+        });
 })();

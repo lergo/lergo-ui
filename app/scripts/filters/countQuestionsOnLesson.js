@@ -10,5 +10,5 @@
 
             countQuestionsOnLesson.$stateful = true;
             return countQuestionsOnLesson;
-    });
+        });
 })();

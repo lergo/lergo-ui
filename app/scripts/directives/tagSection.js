@@ -104,5 +104,5 @@
                     return attrs.url || 'views/directives/_tagSection.html';
                 }
             };
-    });
+        });
 })();

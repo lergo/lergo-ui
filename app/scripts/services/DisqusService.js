@@ -32,5 +32,5 @@
             $rootScope.$watch('user', getDisqusDetails);
 
 
-    });
+        });
 })();
