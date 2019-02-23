@@ -1,6 +1,6 @@
 (function(){  
         'use strict';
-        BaseLayoutCreateCtrl.$index = ['$scope', '$routeParams', '$controller']
+        BaseLayoutCreateCtrl.$index = ['$scope', '$routeParams', '$controller'];
         function BaseLayoutCreateCtrl($scope, $routeParams, $controller) {
 
                 $scope.sections = [ {
