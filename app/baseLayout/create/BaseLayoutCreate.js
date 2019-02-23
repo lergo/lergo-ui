@@ -45,5 +45,5 @@
 
         }
 
-        angular.module('lergoApp').controller('BaseLayoutCreateCtrl', );
+        angular.module('lergoApp').controller('BaseLayoutCreateCtrl');
 })();       

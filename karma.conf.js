@@ -36,6 +36,7 @@ module.exports = function (config) {
             'app/node_modules/ng-csv/build/ng-csv.min.js',
             'app/node_modules/ng-focus-if/focusIf.js',
             'app/node_modules/angular-busy/angular-busy.js', 
+            'app/scripts/app.js',
             'app/*/*.js',
             'app/*/*/*.js',
             '.tmp/html2js/*.js',
