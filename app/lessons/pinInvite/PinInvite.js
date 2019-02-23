@@ -3,8 +3,8 @@
      * Created by rahul on 6/11/16.
      */
     'use strict';
-angular.module('lergoApp')
-    .controller('PinInviteCtrl', function ($scope, LessonsInvitationsService, $location) {
+    PinInviteCtrl.$inject = ['$scope', 'LessonsInvitationsService', '$location'];
+    function PinInviteCtrl($scope, LessonsInvitationsService, $location) {
 
 
         $scope.getLesson = function () {
@@ -28,5 +28,7 @@ angular.module('lergoApp')
                 {'invitationId': invitation._id});
             }
         }
-    });
+    }
+angular.module('lergoApp')
+    .controller('PinInviteCtrl', PinInviteCtrl);
 })();
