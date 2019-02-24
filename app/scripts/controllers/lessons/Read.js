@@ -1,7 +1,7 @@
 (function () {
     'use strict';
-
-    angular.module('lergoApp').controller('LessonsReadCtrl', function ($scope, $routeParams, $location, $log, LergoClient, VideoService) {
+    LessonsReadCtr.$inject = ['$scope', '$routeParams', '$location', '$log', 'LergoClient', 'VideoService'];
+    function LessonsReadCtr($scope, $routeParams, $location, $log, LergoClient, VideoService) {
         LergoClient.lessons.getById($routeParams.lessonId).then(function (result) {
             $scope.lesson = result.data;
             $scope.errorMessage = null;
@@ -25,6 +25,9 @@
         };
 
 
-    });
+    }
+
+    angular.module('lergoApp')
+        .controller('LessonsReadCtrl', LessonsReadCtr );
 })();
 

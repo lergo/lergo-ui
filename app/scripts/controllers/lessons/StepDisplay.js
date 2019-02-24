@@ -1,8 +1,9 @@
 (function () {
     'use strict';
 
-    var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce,
-                                        LergoClient, shuffleFilter, localStorageService, $window) {
+    LessonsStepDisplayCtrl.$inject = ['$scope', '$rootScope', 'StepService', '$log', '$routeParams', '$timeout', '$sce', 'LergoClient', 'shuffleFilter', 'localStorageService', '$window'];
+
+    function LessonsStepDisplayCtrl($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce, LergoClient, shuffleFilter, localStorageService, $window) {
         $log.info('showing step');
 
         // used to fix bug where hint stays open when switching between questions.
@@ -606,7 +607,9 @@
                 return $scope.step.retBefCrctAns - 1;
             }
         }
-    };
-    angular.module('lergoApp').controller('LessonsStepDisplayCtrl', ['$scope', '$rootScope', 'StepService', '$log', '$routeParams', '$timeout', '$sce',
-        'LergoClient', 'shuffleFilter', 'localStorageService', '$window', LessonsStepDisplayCtrl]);
+    }
+
+    angular.module('lergoApp')
+        .controller('LessonsStepDisplayCtrl', LessonsStepDisplayCtrl);
+
 })();

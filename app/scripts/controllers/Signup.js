@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
-
-	angular.module('lergoApp').controller('SignupCtrl', function($scope, $log, LergoClient, $location) {
+	SignupCtrl.$inject = ['$scope', '$log', 'LergoClient', '$location'];
+	function SignupCtrl($scope, $log, LergoClient, $location) {
 
 
 		$scope.submit = function() {
@@ -41,5 +41,6 @@
 		$scope.setFocus = function(id) {
 			document.getElementById(id).focus();
 		};
-	});
+	}
+	angular.module('lergoApp').controller('SignupCtrl', SignupCtrl);
 })();
