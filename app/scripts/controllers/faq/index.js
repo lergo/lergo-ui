@@ -13,7 +13,8 @@
      *  - when you modify the order, you actually update a single model with items index changed.
      *
      */
-    angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $log, LergoTranslate, ContinuousSave, LergoClient ) {
+    FaqIndexCtrl.$inject = ['$scope', '$log', 'LergoTranslate', 'ContinuousSave', 'LergoClient'];
+    function FaqIndexCtrl($scope, $log, LergoTranslate, ContinuousSave, LergoClient ) {
 
         function init() {
             stopWatch();
@@ -97,5 +98,7 @@
         $scope.moveDown = function(index) {
             $scope.moveUp(index+1);
         };
-    });
+    }
+    angular.module('lergoApp')
+        .controller('FaqIndexCtrl', FaqIndexCtrl);
 })();

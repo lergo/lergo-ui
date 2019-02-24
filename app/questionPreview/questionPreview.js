@@ -3,10 +3,7 @@
      * Created by rahul on 5/9/16.
      */
     'use strict';
-
-
-angular.module('lergoApp')
-    .directive('questionPreview', function (QuestionsService) {
+    function questionPreview(QuestionsService) {
         return {
             templateUrl: 'questionPreviw/preview2/preview.html',
             restrict: 'E',
@@ -25,5 +22,9 @@ angular.module('lergoApp')
                 };
             }
         };
-    });
+    }
+
+
+angular.module('lergoApp')
+    .directive('questionPreview', questionPreview );
 })();

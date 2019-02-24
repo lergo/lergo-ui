@@ -4,6 +4,7 @@
      */
 
     'use strict';
+    lessonPreviewctrl.$index = ['$scope', 'lesson', 'questions','$uibModalInstance'];
     function lessonPreviewctrl($scope, lesson, questions,$uibModalInstance) {
         $scope.lesson = lesson;
         $scope.questions = {};

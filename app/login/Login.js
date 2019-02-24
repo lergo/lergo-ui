@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
-
-	angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoClient, $location, $rootScope) {
+	LoginCtrl.$inject = ['$scope', '$log', 'LergoClient', '$location', '$rootScope'];
+	function LoginCtrl($scope, $log, LergoClient, $location, $rootScope) {
 
 		$scope.showLoginPage = false;
 
@@ -65,5 +65,8 @@
 		};
 
 
-	});
+	}
+
+	angular.module('lergoApp')
+		.controller('LoginCtrl',LoginCtrl );
 })();

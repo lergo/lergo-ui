@@ -1,9 +1,7 @@
 (function(){
 	'use strict';
-
-	angular.module('lergoApp').controller('InvitesIndexCtrl',
-		function($scope, LergoClient, TagsService, $routeParams, $log,
-				$location, $rootScope, localStorageService, $window, $filter,$q,$translate) {
+	InvitesIndexCtrl.$inject = ['$scope', 'LergoClient', 'TagsService', '$routeParams', '$log', '$location', '$rootScope', 'localStorageService', '$window', '$filter','$q','$translate'];
+	function InvitesIndexCtrl($scope, LergoClient, TagsService, $routeParams, $log, $location, $rootScope, localStorageService, $window, $filter,$q,$translate) {
 
 		$scope.invitesFilter = {};
 		$scope.filterPage = {};
@@ -241,5 +239,8 @@
 			return 'reports_'+  $filter('date')(Date.now(), 'medium')+'.csv';
 		};
 
-	});
+	}
+
+	angular.module('lergoApp')
+		.controller('InvitesIndexCtrl', InvitesIndexCtrl);
 })();

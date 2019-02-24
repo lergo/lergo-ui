@@ -27,7 +27,8 @@
      *
      */
 
-    var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsService, $log, LergoClient, $q) {
+    LessonsReportWriteCtrl.$inject = ['$scope', 'ReportWriteService', 'ReportsService', '$log', 'LergoClient', '$q', ];
+    function LessonsReportWriteCtrl($scope, ReportWriteService, ReportsService, $log, LergoClient, $q) {
         window.scrollTo(0, 0);
         var report = $scope.report;
         if (!report.answers) {
@@ -174,8 +175,8 @@
 
             });
         }
-    };
+    }
 
-    angular.module('lergoApp').controller('LessonsReportWriteCtrl', ['$scope', 'ReportWriteService', 'ReportsService',
-        '$log', 'LergoClient', '$q', LessonsReportWriteCtrl]);
+    angular.module('lergoApp')
+        .controller('LessonsReportWriteCtrl', LessonsReportWriteCtrl);
 })();
