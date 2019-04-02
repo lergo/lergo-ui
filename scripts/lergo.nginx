@@ -1,0 +1,49 @@
+
+upstream lergo-backend {
+    server localhost:3000;
+}
+
+server {
+
+  listen        1616 default_server;
+  server_name   localhost;
+
+
+  root /var/www/lergo-ui/package;
+  index index.html
+  autoindex off;
+
+  location ~ /index.html {
+    set $test "";
+
+    if ( $http_user_agent ~* "(Google|facebook)" ) {
+      set $test  A;
+    }
+
+    if ( $args !~ "_escaped_fragment_" ){
+     set $test "${test}B";
+    }
+
+   if ( $test = AB ){
+      set $args _escaped_fragment_=/;
+   }
+
+    if ( $args ~ "_escaped_fragment_") {
+         rewrite ^(.*)$ /backend/crawler;
+    }
+  }
+
+
+ location /backend{
+      proxy_pass http://lergo-backend;
+      proxy_set_header Host      $host:$server_port;
+      proxy_set_header X-Real-IP $remote_addr;
+ }
+
+
+ location ~ \.html$ {
+    expires -1;
+    add_header Cache-Control "no-cache, no-store";
+ }
+
+}

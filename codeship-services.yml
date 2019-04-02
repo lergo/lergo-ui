@@ -1,0 +1,5 @@
+lergo-build:
+  build:
+    image: lergo-build
+    dockerfile: Dockerfile
+  encrypted_env_file: env.encrypted

@@ -1,0 +1,9 @@
+- name: install_build_upload
+  service: lergo-build
+  command: bash -c /app/lergo/lergo-build/scripts/install_build_upload.sh
+- name: test-ri 
+  service: lergo-build
+  command: bash -c /app/lergo/lergo-build/scripts/test_ri.sh
+- name: upgrade_staging
+  service: lergo-build
+  command: bash -c /app/lergo/lergo-build/scripts/upgrade_staging.sh

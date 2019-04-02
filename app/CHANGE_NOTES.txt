@@ -1,3 +1,5 @@
+Adding codeship build (lergo-codeship-build) to lergo-ui
+
 SEO (bug - grunt test fails) remove "noindex" from directives/_lergoFilter.html
 
 SEO - implement "noindex" on highest, non relevant google search links: /about/_keyContributors.html,

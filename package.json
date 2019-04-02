@@ -7,7 +7,15 @@
     "requirejs": "^2.3.2"
   },
   "scripts": {
-    "test": "grunt jshint && grunt test"
+    "test": "grunt jshint && grunt test",
+    "prebuild": "npm run cleanup",
+    "build": "jet steps --ci-build-id=001 build-lergo",
+    "setup": "jet load lergo-build",
+    "env:encrypt": "jet encrypt dev/env.decrypted env.encrypted",
+    "env:decrypt": "jet decrypt env.encrypted dev/env.decrypted",
+    "cleanup": "jet cleanup",
+    "pretestme:decrypt": "npm run env:decrypt",
+    "testme:decrypt": "source dev/env.decrypted && openssl aes-256-cbc -d -a -in scripts/testMe.json.enc -out dev/testMe.json -pass pass:$TESTME_KEY"
   },
   "devDependencies": {
     "connect-livereload": "~0.6.0",
