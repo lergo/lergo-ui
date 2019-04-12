@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo using lergo-ri as a base to send emails (realstaging)
+echo 'using lergo-ri as a base to send emails for realstaging build'
 cd lergo-ri
 source ~/.nvm/nvm.sh
 nvm install
