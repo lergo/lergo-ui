@@ -7,3 +7,6 @@
 - name: upgrade_staging
   service: lergo-build
   command: bash -c /app/lergo/lergo-build/scripts/upgrade_staging.sh
+- name: send-emails 
+  service: lergo-build
+  command: bash -c /app/lergo/lergo-build/scripts/send_emails.sh     

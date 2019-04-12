@@ -1,3 +1,5 @@
+lergo-ui: add sending email on realstaging upgade
+
 lergo-ri: fix all cases express deprecated res.send(status, body): Use res.status(status).send(body)
 
 lergo-ri: lergo-ri npm upgrade adding request-param module to deal with express console warning
