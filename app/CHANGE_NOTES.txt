@@ -1,3 +1,5 @@
+LERGO-686 (cont) bug(fix) implementing case for user without roles
+
 LERGO-686 - (lergo-ri) mongodb .eval() has been deprecated and is being replaced with queries. This effects the user permissions on login. 
 This upgrade is necessary to enable moving to higher versions of mongodb
 
