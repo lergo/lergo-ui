@@ -34,7 +34,7 @@ module.exports = function (grunt) {
 
 
 
-
+    
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
@@ -401,7 +401,7 @@ module.exports = function (grunt) {
                 html: ['<%= yeoman.dist %>/*.html']
             }
         },
-        ngmin: {
+        ngAnnotate: {
             dist: {
                 files: [
                     {
@@ -471,7 +471,7 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'concat',
         'copy',
-        'ngmin',
+        'ngAnnotate',
         'cssmin',
         'uglify',
         'rev',
