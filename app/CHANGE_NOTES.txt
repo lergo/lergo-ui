@@ -1,3 +1,6 @@
+updating ui package.json with ngmin => ngAmimate and removing karma and requirejs from dependencies
+plus a few more minor changes
+
 LERGO-686 (cont-1) bug(fix) implementing case for user whos roles were removed
 
 LERGO-686 (cont) bug(fix) implementing case for user without roles
