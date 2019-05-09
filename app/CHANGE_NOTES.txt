@@ -1,3 +1,5 @@
+
+LERGO-687 (cont)  changing all insert to insertOne for the mongo driver upgrade to 3.2.2
 LERGO-687 - Upgrade mongodb from 3.2 to 3.4 - and driver from 2.2.2 to 3.2.2
 
 updating ui package.json with ngmin => ngAmimate and removing karma and requirejs from dependencies
