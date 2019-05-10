@@ -183,6 +183,9 @@ angular.module('lergoApp').controller('ReportsIndexCtrl',
             if (confirm($filter('translate')('deleteReports.Confirm'))) {
                 angular.forEach($scope.reports, function (report) {
                     if (report.selected === true) {
+                        if (isClassReports()) {
+                            report.isClassReport = true;
+                        }
                         toDelete++;
                         LergoClient.reports.deleteReport(report).then(function () {
                             toDelete--;

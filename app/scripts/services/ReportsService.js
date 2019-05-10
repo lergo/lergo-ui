@@ -156,7 +156,11 @@ angular.module('lergoApp')
         };
 
         this.deleteReport = function (report) {
-            return $http.post('/backend/reports/' + report._id + '/delete');
+            if (report.isClassReport === true) {
+                return $http.post('/backend/reports/class/' + report._id + '/delete');
+            } else {
+                return $http.post('/backend/reports/' + report._id + '/delete');
+            }
         };
 
         this.getStudents = function () {
