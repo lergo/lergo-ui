@@ -1,3 +1,4 @@
+LERGO_689 bug(fix) saving class report
 LERGO-688 bug(fix) enabling deleting of class reports
 LERGO-687 (cont)  changing all insert to insertOne for the mongo driver upgrade to 3.2.2
 LERGO-687 - Upgrade mongodb from 3.2 to 3.4 - and driver from 2.2.2 to 3.2.2
