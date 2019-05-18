@@ -111,8 +111,12 @@ angular.module('lergoApp').controller('InvitesIndexCtrl',
 		angular.forEach($scope.invites, function(invite) {
 			if (invite.selected === true) {
 				toUpdate++;
-				delete invite.finished;
-				delete invite.selected;
+				//delete invite.finished;
+				//delete invite.selected; 
+
+				// update one no longer changes removed fields. It changes fields that are different
+				invite.finished = null;
+				invite.selected = null;
 				LergoClient.lessonsInvitations.update(invite).then(function() {
 					toUpdate--;
 					$scope.errorMessage = null;
