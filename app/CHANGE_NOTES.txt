@@ -1,4 +1,5 @@
-bug(fix) lergo-ri countPublicLessonsByUser for public profile
+
+reducing the  computation load for profile not logged in
 bug(fix) filter reports by lesson and removing testReportsController testing which fails for this upgrade
 bug(fix) filter for invitations marked as complete or incomplete
 bug(fix) invitations can be marked as complete or incomplete
