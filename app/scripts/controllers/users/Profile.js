@@ -17,12 +17,14 @@
 
 angular.module('lergoApp').controller('UsersProfileCtrl', function ($scope, $routeParams, $rootScope ) {
     $scope.username = $routeParams.username;
+    $scope.loggedInUser = '';
 
 
     $scope.getMode = function(){
         if (!$rootScope.user ){
             return 'anonymous';
         }
+        $scope.loggedInUser = $rootScope.user.username;
         return $rootScope.user.username === $scope.username ? 'private' : 'public';
     };
 
