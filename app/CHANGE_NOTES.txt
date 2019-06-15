@@ -1,3 +1,4 @@
+Update build service logo from cloudbees to codeship 
 improve(profile view): prevent preview of logged in user when viewing lesson created by profile
 reducing the  computation load for profile not logged in
 bug(fix) filter reports by lesson and removing testReportsController testing which fails for this upgrade
