@@ -1,4 +1,5 @@
-fix security vulnerablity - change bower in package-lock.json from 1.8.4 to 1.8.8
+fix security vulnerablity - change bower in package-lock.json from 1.8.4 to 1.8.8 and in ri : update mongoose to 5.7.7 for security vulnerability
+    and add useUnifiedTopology: true to all mongoClient constructors - future deprecation'
 LERGO-693 bug(fix) Admin cannot unpublish lessons
 Update build service logo from cloudbees to codeship 
 improve(profile view): prevent preview of logged in user when viewing lesson created by profile
