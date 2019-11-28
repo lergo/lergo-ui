@@ -1,3 +1,4 @@
+fix security vulnerablity - change bower in package-lock.json from 1.8.4 to 1.8.8
 LERGO-693 bug(fix) Admin cannot unpublish lessons
 Update build service logo from cloudbees to codeship 
 improve(profile view): prevent preview of logged in user when viewing lesson created by profile
