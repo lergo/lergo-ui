@@ -279,4 +279,14 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
     this.getShareLink = function (question) {
         return $window.location.origin + '/#!/public/questions/' + question._id + '/read';
     };
+
+    this.getQuizItemCreatedOn = function(quizItem) {
+
+        var hexDecimal = quizItem._id.substring(0,8);
+        var stdDecimal = parseInt(hexDecimal, 16);
+        quizItem.createdOn = new Date(stdDecimal*1000);
+        return this.quizItem.createdOn;
+
+
+    }
 });

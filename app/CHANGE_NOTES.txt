@@ -1,3 +1,4 @@
+bug(fix) date of question created is actually date of last update. Needs to be fixed.
 bug(fix) 3 bar menu placement - desktop hebrew
 fix security vulnerablity - change bower in package-lock.json from 1.8.4 to 1.8.8 and in ri : update mongoose to 5.7.7 for security vulnerability
     and add useUnifiedTopology: true to all mongoClient constructors - future deprecation'
