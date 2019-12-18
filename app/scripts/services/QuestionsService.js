@@ -290,5 +290,5 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
        
 
 
-    }
+    };
 });
