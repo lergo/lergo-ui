@@ -281,11 +281,13 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
     };
 
     this.getQuizItemCreatedOn = function(quizItem) {
-
-        var hexDecimal = quizItem._id.substring(0,8);
-        var stdDecimal = parseInt(hexDecimal, 16);
-        quizItem.createdOn = new Date(stdDecimal*1000);
-        return this.quizItem.createdOn;
+        if (quizItem._id) {
+            var hexDecimal = quizItem._id.substring(0,8);
+            var stdDecimal = parseInt(hexDecimal, 16);
+            quizItem.createdOn = new Date(stdDecimal*1000);
+            return this.quizItem.createdOn;
+        }
+       
 
 
     }
