@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsUpdateCtrl',
-    function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal, TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate) {
+    function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal,
+        TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate)
+         {
         $window.scrollTo(0, 0);
 
         // back button for 'step/display' in edit lesson
@@ -50,6 +52,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             $scope.$watch('lesson', saveLesson.onValueChange, true);
             $scope.$watch('lesson.nextLesson', updateNextLesson);
             $scope.$watch('lesson.priorLesson', updatePriorLesson);
+            $scope.$watch('lesson.wikiLink', updateWikiLink);
             if (!$scope.lesson.tags) {
                 $scope.lesson.tags = [];
             }
@@ -57,7 +60,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 $scope.lesson.language = LergoTranslate.getLanguageObject().name;
             }
             // Advance option should be open is any of the below properties are defined/non-empty
-            $scope.isAdvOptOpen = !!$scope.lesson.nextLesson || !!$scope.lesson.priorLesson || !!$scope.lesson.coverPage;
+            $scope.isAdvOptOpen = !!$scope.lesson.nextLesson || !!$scope.lesson.priorLesson || !!$scope.lesson.coverPage || !!$scope.lesson.wikiLink;
 
         }, function (result) {
             $scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
@@ -66,7 +69,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
         function updateNextLesson(newValue, oldValue) {
             if (!newValue) {
-                delete $scope.lesson.nextLessonId;
+                $scope.lesson.nextLessonId='';
             } else if (!!newValue && newValue !== oldValue) {
                 var id = newValue.substring(0, newValue.lastIndexOf('/'));
                 id = id.substring(id.lastIndexOf('/') + 1);
@@ -77,7 +80,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
         function updatePriorLesson(newValue, oldValue) {
             if (!newValue) {
-                delete $scope.lesson.priorLessonId;
+                $scope.lesson.priorLessonId='';
             } else if (!!newValue && newValue !== oldValue) {
                 var id = newValue.substring(0, newValue.lastIndexOf('/'));
                 id = id.substring(id.lastIndexOf('/') + 1);
@@ -85,6 +88,18 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
             }
         }
+
+        function updateWikiLink(newValue, oldValue) {
+            if (!newValue) {
+                $scope.lesson.wikiLinkId = '';
+            } else if (!!newValue && newValue !== oldValue) {
+                var id = newValue.substring(0, newValue.lastIndexOf('/'));
+                id = id.substring(id.lastIndexOf('/') + 1);
+                $scope.lesson.wikiLinkId = id;
+
+            }
+        }
+
 
         $scope.stepTypes = [{
             'id': 'video',

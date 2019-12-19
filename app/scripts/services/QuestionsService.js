@@ -287,8 +287,5 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
             quizItem.createdOn = new Date(stdDecimal*1000);
             return this.quizItem.createdOn;
         }
-       
-
-
     };
 });

@@ -178,6 +178,31 @@
                                             <pre dir="auto" ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>
                                             <div ng-show="!!more">
                                                 <pre dir="auto">{{ lesson.description}}</pre>
+                                                
+                                                <div class="read-more" style="text-align: center">
+                                                    <hr class="dashes">
+                                                    <br>
+                                                    <div class="recmmonded" ng-show="!!lesson.nextLessonId">
+                                                            <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
+                                                                <i class="fa fa-university"></i>
+                                                                {{ 'lessons.recommenedNextLesson' | translate }}
+                                                            </a>
+                                                    </div>
+                                                    <br>
+                                                    <div class="recmmonded" ng-show="!!lesson.priorLessonId">
+                                                            <a ng-href="#!/public/lessons/{{lesson.priorLessonId}}/intro">
+                                                                <i class="fa fa-university"></i>
+                                                                {{'lessons.recommenedPriorLesson' | translate}}
+                                                            </a>
+                                                    </div>
+                                                    <br>
+                                                    <div class="recmmonded" ng-show="!!lesson.wikiLink">
+                                                        <a ng-href="{{lesson.wikiLink}}" target="_blank">
+                                                            {{'lessons.wikiLink' | translate}}
+                                                        </a>
+                                                     </div>
+                                                </div>
+                                                 
                                                 <div class="edit-summary" ng-show="showEditSummary()">
                                                     <br/>
                                                     <span class="title">{{'questions.editSummary'|translate}}</span>
@@ -467,8 +492,34 @@
                                         <div class="row"></div>
                                         <div class="description">
                                             <pre dir="auto" ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>
+                                            
                                             <div ng-show="!!more">
+                                                    </p><a ng-href="{{lesson.wikiLink}}" target="_blank">{{'lessons.wikiLink' | translate}}</a></p>  
+                                                    <hr class="dashes">
                                                 <pre dir="auto">{{ lesson.description}}</pre>
+                                                <div class="read-more" style="text-align: center">
+                                                        <hr class="dashes">
+                                                        <br>
+                                                        <div class="recmmonded" ng-show="!!lesson.nextLessonId">
+                                                                <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
+                                                                    <i class="fa fa-university"></i>
+                                                                    {{ 'lessons.recommenedNextLesson' | translate }}
+                                                                </a>
+                                                        </div>
+                                                        <br>
+                                                        <div class="recmmonded" ng-show="!!lesson.priorLessonId">
+                                                                <a ng-href="#!/public/lessons/{{lesson.priorLessonId}}/intro">
+                                                                    <i class="fa fa-university"></i>
+                                                                    {{'lessons.recommenedPriorLesson' | translate}}
+                                                                </a>
+                                                        </div>
+                                                        <br>
+                                                        <div class="recmmonded" ng-show="!!lesson.wikiLink">
+                                                            <a ng-href="{{lesson.wikiLink}}" target="_blank">
+                                                                {{'lessons.wikiLink' | translate}}
+                                                            </a>
+                                                         </div>
+                                                    </div>
                                                 <div class="edit-summary" ng-show="showEditSummary()">
                                                     <br/>
                                                     <span class="title">{{'questions.editSummary'|translate}}</span>
@@ -521,11 +572,13 @@
                                                 </div>
                                             </div>
                                             <div class="read-more" style="text-align: center"
-                                                 ng-show="showReadMore(filteredDescription) " ng-click="more=!more">
+                                                ng-show="showReadMore(filteredDescription)"
+                                                ng-click="more=!more">
                                                 <hr class="dashes">
                                                 <span ng-show="!more">{{'lessons.readMore' | translate}}</span>
                                                 <span ng-show="!!more">{{'lessons.readLess' | translate}}</span>
                                                 <hr class="dashes">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -535,10 +588,10 @@
                         </div>
 
                         <div class="not-embed-mode-item" style="margin-top: 10px;">
-                                        <div class="comments " show-logged-in>
-                                            <div disqus-embed lesson="lesson"></div>
-                                        </div>
-                                    </div>
+                            <div class="comments " show-logged-in>
+                                <div disqus-embed lesson="lesson"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
