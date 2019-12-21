@@ -616,7 +616,8 @@
     "videoURLHelpText": "Insert the URL of the YouTube video here.",
     "welcome": "Welcome to lergo",
     "wikiLink": "Wikipedia Wikibooks Wiktionary",
-    "wikiLinkText": "Paste wikipedia / wikibooks / wiktionary link here"
+    "wikiLinkText": "Paste wikipedia / wikibooks / wiktionary link here",
+    "wikiLinkTitle": "Wikipedia"
   },
   "lessons_": {
     "inviteLesson": "Invite to lesson",
