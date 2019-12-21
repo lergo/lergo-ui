@@ -10,9 +10,6 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
 
         QuestionsService.getQuestionById(questionId).then(function (result) {
             $scope.quizItem = result.data;
-            
-            $scope.quizItem.createdOn = QuestionsService.getQuizItemCreatedOn($scope.quizItem);
-
             LergoTranslate.setLanguageByName($scope.quizItem.language);
             $scope.errorMessage = null;
 

@@ -89,7 +89,7 @@
                                         <div class="text-center">
                                                     <span  uib-tooltip="{{'lessons.createdOn' | translate}}">
                                                         <i class="fa fa-calendar "></i>
-                                                        <span>{{quizItem.createdOn | date:'d-MMM-yyyy'}}</span>
+                                                        <span>{{quizItem | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
                                                     </span>
                                         </div>
                                     </div>
@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>git 
                         <div class="details">
                              <div class="properties hidden-sm hidden-xs">
                                  <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
@@ -147,7 +147,7 @@
                                             <span>{{quizItem.user.username}}</span>
                                        </a>
                                  </span>
-                                 <span uib-tooltip="{{'lessons.createdOn' | translate}}"><i class="fa fa-calendar"></i><span>{{quizItem.createdOn | date:'d-MMM-yyyy'}}</span></span>
+                                 <span uib-tooltip="{{'lessons.createdOn' | translate}}"><i class="fa fa-calendar"></i><span>{{quizItem | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span></span>
                                  <span ng-show="!!quizItem.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
                                          <i class="fa fa-book"></i>
                                          <span>{{'filters.subjects.' + quizItem.subject | translate}}</span>
