@@ -1,3 +1,4 @@
+bug(fix) mobile -english, hebrew: name of lesson not aligned to edge
 bug(fix) edit / copy keys on questions not visible (related to lastUpdate)
 bug(fix) date of question created is actually date of last update. Needs to be fixed.
 bug(fix) 3 bar menu placement - desktop hebrew
