@@ -1,3 +1,5 @@
+feat(lrego-ri) add backend/lesson to server.js to facilitate lambda pinging lergo backend status
+feat adding 'top-100-lesson-creators' from the kibana dashboard
 bug(fix) updateOn reverse previous changes and use mongoIdToTimestamp directive and fix key for wikilink
 bug(fix) fixing the display of wikilinks and prior / next lessons
 bug(fix) mobile -english, hebrew: name of lesson not aligned to edge
