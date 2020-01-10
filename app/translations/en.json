@@ -17,6 +17,13 @@
     "keyContributors": "Key Contributors",
     "keyFunders": "Key Funders List",
     "keyFundersPictures": "Funders Picture Collage",
+    "keyLessonCreators": "Key Lesson Creators",
+    "lessonCreators": {
+      "desc1": "LerGO's site is the first community site of people working together to build and share high quality and interactive online lessons for kids. Since LerGO is 100% user generated we are incredibly greatful for all of you who are creating lessons for LerGO! Thanks to every one of you for every single lesson you created! ",
+      "desc2": "\n Our special thanks goes out to our top lesson creators - you are amazing!",
+      "thanks": "The Lergo Team",
+      "title": "Key Lesson Creators Cloud"
+    },
     "lergoFeedback": "Feedback",
     "overview": "Overview",
     "privacy": "Privacy and Terms",

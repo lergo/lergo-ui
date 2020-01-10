@@ -10,6 +10,10 @@ angular.module('lergoApp').controller('AboutCtrl', function($scope, $routeParams
 
         },
         {
+            id: 'keyLessonCreators'
+
+        },
+        {
             id: 'keyContributors'
 
         },
