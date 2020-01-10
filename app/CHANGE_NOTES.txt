@@ -1,3 +1,4 @@
+update key contributor cloud image
 feat(lrego-ri) add backend/lesson to server.js to facilitate lambda pinging lergo backend status
 feat adding 'top-100-lesson-creators' from the kibana dashboard
 bug(fix) updateOn reverse previous changes and use mongoIdToTimestamp directive and fix key for wikilink
