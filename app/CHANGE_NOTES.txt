@@ -1,4 +1,4 @@
-add link to lergo.org at lergo.it
+add link to lergo.org at lergo.it - without https
 update key contributor cloud image
 feat(lrego-ri) add backend/lesson to server.js to facilitate lambda pinging lergo backend status
 feat adding 'top-100-lesson-creators' from the kibana dashboard
