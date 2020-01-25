@@ -1,3 +1,5 @@
+lergo-ri bug(fix) AbstractModel add projections to options to remove warning "Third parameter to find()...."
+lergo-ri bug(fix) Lambda function ping add error handling
 add link to lergo.org at lergo.it - without https
 update key contributor cloud image
 feat(lrego-ri) add backend/lesson to server.js to facilitate lambda pinging lergo backend status
