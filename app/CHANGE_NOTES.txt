@@ -1,3 +1,4 @@
+lergo-ri Add then() and catch() to updateOne promise for better error handling. (possible cause of Phantom exit 0)
 lergo-ri process.output errors issue: adding bing to http_user_agent
 lergo-ri bug(fix) AbstractModel add projections to options to remove warning "Third parameter to find()...."
 lergo-ri bug(fix) Lambda function ping add error handling
