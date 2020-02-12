@@ -1,3 +1,4 @@
+lergo-ri - reset previous commit and then revert then() catch() commit due to errors in console and probably not needed
 lergo-ri bug(updateOne) removing callback due to errors in node console
 lergo-ri Add then() and catch() to updateOne promise for better error handling. (possible cause of Phantom exit 0)
 lergo-ri process.output errors issue: adding bing to http_user_agent
