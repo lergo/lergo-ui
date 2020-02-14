@@ -1,3 +1,4 @@
+lergo-ri updating .nvmrc to node 8.17.0
 lergo-ri upgrade packages using npm fix - otherwise grunt fails
 lergo-ri replacing phantom with puppeteer for prerender
 lergo-ri upgrade creationix and nvm use 8.17.0 (for build: prepare-machine.sh)
