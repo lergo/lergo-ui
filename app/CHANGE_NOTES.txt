@@ -1,3 +1,4 @@
+lergo-ri apt-get repositories for puppeteer
 lergo-ri update node-sass to prevent build failure of python2
 upgrading lergo-ui to 8.17.0 , lergo-ri reverting commit to update package.json but updating grunt-jsdoc
 lergo-ri updating .nvmrc to node 8.17.0
