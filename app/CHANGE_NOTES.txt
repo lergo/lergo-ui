@@ -1,4 +1,4 @@
-
+lergo-ri replacing phantom with puppeteer for prerender
 lergo-ri upgrade creationix and nvm use 8.17.0 (for build: prepare-machine.sh)
 lergo-ri - reset previous commit and then revert then() catch() commit due to errors in console and probably not needed
 lergo-ri bug(updateOne) removing callback due to errors in node console
