@@ -1,3 +1,4 @@
+upgrading lergo-ui to 8.17.0 , lergo-ri reverting commit to update package.json but updating grunt-jsdoc
 lergo-ri updating .nvmrc to node 8.17.0
 lergo-ri upgrade packages using npm fix - otherwise grunt fails
 lergo-ri replacing phantom with puppeteer for prerender
