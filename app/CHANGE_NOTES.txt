@@ -1,3 +1,4 @@
+lergo-ri phantomjs adding filter to allow lessons/#/intro only and exiting phantom after then()
 lergo-ri reinstate phantom, comment out puppeteer
 lergo-ri apt-get repositories for puppeteer
 lergo-ri update node-sass to prevent build failure of python2
