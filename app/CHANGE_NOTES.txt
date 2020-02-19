@@ -1,3 +1,4 @@
+lergo-ri phantom prevent identical url to run > 4 times consecutively
 lergo-ri phantomjs putting phInstance.exit() after .close() reversed: it caused realstaging to crash on facebook share
 lergo-ri phantomjs adding filter to allow lessons/#/intro only and exiting phantom after then()
 lergo-ri reinstate phantom, comment out puppeteer
