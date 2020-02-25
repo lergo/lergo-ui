@@ -1,4 +1,4 @@
-
+lergo-ri phantom update homepage rendering to be identical to sitemap
 lergo-ri phantom - removing puppeteer, implementing caching to allow index.html and lessons/intro without counting to 4
 lergo-ri phantom prevent identical url to run > 4 times consecutively
 lergo-ri phantomjs putting phInstance.exit() after .close() reversed: it caused realstaging to crash on facebook share
