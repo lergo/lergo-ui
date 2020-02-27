@@ -1,3 +1,4 @@
+lergo-ri prerender bug fix - previousdate was changing incorrectly. and add to regex for homepage
 lergo-ri prerender - seems that google must have index.html access. Adding index.html to prerender cache
 lergo-ri phantom update homepage rendering to be identical to sitemap
 lergo-ri phantom - removing puppeteer, implementing caching to allow index.html and lessons/intro without counting to 4
