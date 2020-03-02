@@ -1,3 +1,4 @@
+lergo-ri: Revert: prerender: fixing bug in lesson caching and adding 6 sec delay to using cached link
 lergo-ri prerender: fixing bug in lesson caching and adding 6 sec delay to using cached link and removing logger.info on questions
 lergo-ri prerender bug fix - previousdate was changing incorrectly. and add to regex for homepage
 lergo-ri prerender - seems that google must have index.html access. Adding index.html to prerender cache
