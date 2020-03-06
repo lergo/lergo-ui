@@ -1,4 +1,5 @@
-lergo-ri did hard reset to 1. Revert:... 
+lergo-ri updating sitemap with index.html in urls
+lergo-ri did hard reset to 1. Revert:... (reverts sitemap changes and goes back to phantom)
 lergo-ri prerender: replacing phantomjs with phantom-pool and update sitemap.xml with 'index.html'
 lergo-ri prerender remove lesson/intro caching and delay and implement max repeats of 4
 lergo-ri 1. Revert: prerender: fixing bug in lesson caching and adding 6 sec delay to using cached link
