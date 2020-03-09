@@ -1,3 +1,4 @@
+lergo-ri replace phantom with phantom-pool, limit prerender lessons to 4 and check homepage prerender prior to caching
 lergo-ri updating sitemap with index.html in urls
 lergo-ri did hard reset to 1. Revert:... (reverts sitemap changes and goes back to phantom)
 lergo-ri prerender: replacing phantomjs with phantom-pool and update sitemap.xml with 'index.html'
