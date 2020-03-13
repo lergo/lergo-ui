@@ -1,3 +1,4 @@
+lergo-ri limiting the request rate on nginx /backend to 10 per minute and changing prerender limit from 4 to 10
 lergo-ri adding phantom-pool to package.json
 lergo-ri replace phantom with phantom-pool, limit prerender lessons to 4 and check homepage prerender prior to caching
 lergo-ri updating sitemap with index.html in urls
