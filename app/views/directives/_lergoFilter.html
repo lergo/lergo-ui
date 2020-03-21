@@ -92,22 +92,49 @@
                                ng-model="ageFilter.max"/>
                     </div>
                 </span>
-                <span ng-show="!!opts.showAge">
-                    <div class="label">{{'filters.labels.ageRange' | translate }}</div>
-                    <div>
-                        <input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="ageFilter.min"/>
-                        {{'filters.to'|translate}}
-                        <input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="ageFilter.max"/>
-                    </div>
-                </span>
-                <span ng-show="!!opts.showViews">
-                    <div class="label">{{'filters.labels.views' | translate }}</div>
-                    <div>
-                        <input min="1" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="viewsFilter.min"/>
-                        {{'filters.to'|translate}}
-                        <input min="1" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="viewsFilter.max"/>
-                    </div>
-                </span>
+                <!-- mobile - bounce = 4 secs -->
+                <div class="hidden-lg hidden-md">
+                    <span ng-show="!!opts.showAge">
+                        <div class="label">{{'filters.labels.ageRange' | translate }}</div>
+                        <div>
+                            <input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="ageFilter.min"/>
+                            {{'filters.to'|translate}}
+                            <input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="ageFilter.max"/>
+                        </div>
+                    </span>
+                    <span ng-show="!!opts.showViews">
+                        <div class="label">{{'filters.labels.views' | translate }}</div>
+                        <div>
+                            <input min="1" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="viewsFilter.min"/>
+                            {{'filters.to'|translate}}
+                            <input min="1" size="1" class="number" type="number" ng-model-options="{debounce:4000}" ng-model="viewsFilter.max"/>
+                        </div>
+                    </span>
+                </div>
+                <!-- desktop - bounce = 1 sec -->
+                <div class="hidden-sm hidden-xs">
+                    <span ng-show="!!opts.showAge">
+                        <div class="label">{{'filters.labels.ageRange' | translate }}</div>
+                        <div>
+                            <input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce:1000}" ng-model="ageFilter.min"/>
+                            {{'filters.to'|translate}}
+                            <input min="1" max="100" size="1" class="number" type="number" ng-model-options="{debounce:1000}" ng-model="ageFilter.max"/>
+                        </div>
+                    </span>
+                    <span ng-show="!!opts.showViews">
+                        <div class="label">{{'filters.labels.views' | translate }}</div>
+                        <div>
+                            <input min="1" size="1" class="number" type="number" ng-model-options="{debounce:1000}" ng-model="viewsFilter.min"/>
+                            {{'filters.to'|translate}}
+                            <input min="1" size="1" class="number" type="number" ng-model-options="{debounce:1000}" ng-model="viewsFilter.max"/>
+                        </div>
+                    </span>
+                </div>
+
+
+
+
+
                 <span ng-show="!!opts.showLimitedLessonStatus">
                     <div class="label">{{'filters.labels.status' | translate }}</div>
                     <div class="input">
