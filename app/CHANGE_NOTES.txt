@@ -1,3 +1,4 @@
+lergo-ri implementing caching on tags for homepage to deduce load on mongodb
 lergo-ui changing DEFAULT_LANGUAGE, preferredLanguage and fallbackLanguage to 'he'
 lergo-ri implement express throttling (15:10)
 lergo-ri adding phantom-pool to package.json
