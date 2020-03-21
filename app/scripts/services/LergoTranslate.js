@@ -24,7 +24,7 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
             'name' : 'arabic',
             'dir': 'rtl'
         }];
-        var DEFAULT_LANGUAGE = 'en';
+        var DEFAULT_LANGUAGE = 'he';
 
         this.getSupportedLanguages = function(){
             return _.clone(supportedLanguages);

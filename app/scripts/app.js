@@ -36,8 +36,8 @@ angular.module('lergoApp').config(['$httpProvider', '$logProvider', '$translateP
         }
 
         $translateProvider.useUrlLoader('/backend/system/translations/angular-translate.json');
-        $translateProvider.preferredLanguage('en');
-        $translateProvider.fallbackLanguage(['en']);
+        $translateProvider.preferredLanguage('he');
+        $translateProvider.fallbackLanguage(['he']);
         $translateProvider.useMissingTranslationHandler('missingTranslationFactory');
         $translateProvider.useSanitizeValueStrategy('escape');
 
