@@ -2,6 +2,7 @@
 <input placeholder="{{placeholder}}"
        uib-typeahead="item as  ( item | limitTo:60 ) for  item in searchTypeahead | filter:$viewValue | limitTo:15 "
        typeahead-append-to-body="true"
+       typeahead-min-length="3"
        typeahead-on-select="applyOnModel($item, $model, $label)"
        ng-model="model"/>
 
