@@ -131,7 +131,7 @@ angular.module('lergoApp').directive('lessonCreateInviteForm', function() {
                 STUDENT: 'student'
             };
 
-            $scope.mode = Modes.STUDENT;
+            $scope.mode = Modes.CLASS;
 
             $scope.setMode = function( mode ){
                 $scope.mode = mode;
@@ -175,7 +175,7 @@ angular.module('lergoApp').directive('lessonCreateInviteFormAfter', function() {
                 STUDENT: 'student'
             };
 
-            $scope.mode = Modes.STUDENT;
+            $scope.mode = Modes.CLASS;
 
             $scope.setMode = function( mode ){
                 $scope.mode = mode;
