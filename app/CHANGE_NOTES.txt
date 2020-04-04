@@ -1,3 +1,5 @@
+lergo-ri bug(fix) fixing security issue on lessons returning userid with all other non private details
+    may have been due to minor upgrade of mongoose. Added explicit "project" to get only 2 fields
 lergo-ui changing invite default settings from Student to Class
 lergo-ui adding typeahead-min-length="3" to some typeaheads to reduce tags.label reqeusts to mongodb
 lergo-ui changing debounce to 1 sec for age and vies - desktop only
