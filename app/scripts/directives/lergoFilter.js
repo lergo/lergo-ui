@@ -136,8 +136,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 var allPublicUsers = _.map(result.data.data, function (o) {
                     return _.pick(o, ['userId', 'username']);
                 });
-                allPublicUsers = _.uniqBy(result.data.data, 'userId');
-                b = allPublicUsers.map(function(obj) {
+                var uniquePublicUsers = _.uniqBy(allPublicUsers, 'userId');
+                b = uniquePublicUsers.map(function(obj) {
                         return _.mapKeys(obj, function(value, key) {
                             return keyMap[key];
                         });

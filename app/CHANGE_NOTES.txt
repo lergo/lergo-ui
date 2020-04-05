@@ -1,3 +1,4 @@
+lergo-ui bug(fix) incorrect use of variables for usernames
 lergo-ri and ui: bug(fix) projection on complexSearch incorrect syntax, improve user/usernames to only have users with public lessons
 lergo-ri bug(fix) fixing security issue on lessons returning userid with all other non private details
     may have been due to minor upgrade of mongoose. Added explicit "project" to get only 2 fields
