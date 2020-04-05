@@ -53,6 +53,16 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			scrollToPersistPosition();
 			$scope.loaded = true;
 		});
+		// getting users out of public lessons
+		/* var o = '';
+		var queryObjUnlimited = {filter: {'public': {$exists: 1}}, limit: 0};
+		LergoClient.lessons.getPublicLessons(queryObjUnlimited).then(function(result) {
+			console.log('query object is: ', queryObjUnlimited);
+			var allPublicUsers = _.map(result.data.data, o => _.pick(o, ['userId', 'username']));
+			$scope.myUsers = _.uniqBy(allPublicUsers, 'userId');
+			console.log('myUsers are: ', $scope.myUsers);
+			
+		}); */
 
 	};
 

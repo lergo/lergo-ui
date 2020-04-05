@@ -123,9 +123,23 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             });
 
 
-			LergoClient.users.getUsernames().then(function(result) {
+			/* LergoClient.users.getUsernames().then(function(result) {
 				scope.users = result.data;
-			});
+            }); */
+            
+            // getting users out of public lessons
+            var queryObjUnlimited = {filter: {'public': {$exists: 1}}, limit: 0, projection: { 'userId': 1, 'username': 1, '_id': 0} };
+            var keyMap  = { userId: '_id', username: 'username'};
+            LergoClient.lessons.getPublicLessons(queryObjUnlimited).then(function(result) {
+                var allPublicUsers = _.uniqBy(result.data.data, 'userId');
+                var b = allPublicUsers.map(function(obj) {
+                        _.mapKeys(obj, function(value, key) {
+                            return keyMap[key];
+                        });
+                    });
+                $scope.users = b;
+                $log.info('the number of users who made public lessons is ',b.length);
+            });
 
 
             var userPermissions = null;
