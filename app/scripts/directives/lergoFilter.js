@@ -133,7 +133,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             LergoClient.lessons.getPublicLessons(queryObjUnlimited).then(function(result) {
                 var allPublicUsers = _.uniqBy(result.data.data, 'userId');
                 var b = allPublicUsers.map(function(obj) {
-                        _.mapKeys(obj, function(value, key) {
+                        return _.mapKeys(obj, function(value, key) {
                             return keyMap[key];
                         });
                     });
