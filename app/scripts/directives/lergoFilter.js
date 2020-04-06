@@ -129,15 +129,23 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             
             // getting users out of public lessons
             
-            var queryObjUnlimited = { filter: {'public': {$exists: 1}}, projection: { 'userId': 1, 'username': 1, _id: 0 } , limit: 0 };
-            var b = {};
-            var keyMap  = { userId: '_id', username: 'username'};
+            var queryObjUnlimited = { filter: {'public': {$exists: 1}}, projection: { 'userId': 1, _id: 0 } , limit: 0 };
+            
             LergoClient.lessons.getPublicLessons(queryObjUnlimited).then(function(result) {
+                var b = {};
+                var keyMap  = { _id: '_id', username: 'username'};
+                var finalArray = [];
+                function flattenObject(item) {
+                    finalArray.push(item.user);
+                }
+
                 var allPublicUsers = _.map(result.data.data, function (o) {
-                    return _.pick(o, ['userId', 'username']);
+                    return _.pick(o, ['user._id', 'user.username']);
                 });
-                var uniquePublicUsers = _.uniqBy(allPublicUsers, 'userId');
-                b = uniquePublicUsers.map(function(obj) {
+                var uniquePublicUsers = _.uniqBy(allPublicUsers, 'user._id');
+                uniquePublicUsers.forEach(flattenObject);
+                 
+                b = finalArray.map(function(obj) {
                         return _.mapKeys(obj, function(value, key) {
                             return keyMap[key];
                         });
@@ -145,7 +153,6 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 $scope.users = b;
                 $log.info('number of users with public lessons is ',b.length);
             });
-
 
             var userPermissions = null;
 
