@@ -1,3 +1,4 @@
+lergo-ri implementing caching for STATS (non-logged-in) and use obj for cache in usernames
 lergo-ri implementing caching for usernames
 lergo-ui bug(fix) dealing with database differences required changing projection and flattening of output
 lergo-ui bug(fix) incorrect use of variables for usernames
