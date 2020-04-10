@@ -1,3 +1,4 @@
+lergo-ri bug(fix) tag filter not working: add useOwnProperty to test for usage
 lergo-ri bug(fix) filters dont work: adding conditions to cache lessons to exclude filter parameters being cached
 lergo-ri implementing homepage lesson caching for english, hebrew, arabic
 lergo-ri implementing caching for STATS (non-logged-in) and use obj for cache in usernames
