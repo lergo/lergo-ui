@@ -1,3 +1,4 @@
+lergo-ri caching user stats for logged in user in addition to not logged in, and lergo-ui adding comment in index.html
 lergo-ri homepage cache testing -  refresh after every hour instead of every day
 lergo-ri bug(fix) tag filter not working: add useOwnProperty to test for usage
 lergo-ri bug(fix) filters dont work: adding conditions to cache lessons to exclude filter parameters being cached
