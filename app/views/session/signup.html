@@ -27,7 +27,7 @@
           <div class="section form-group" ng-class="{ 'has-error' : signupForm.emailConfirm.$invalid && !signupForm.emailConfirm.$pristine }" >
               <div class="label">{{ 'input.emailConfirm' | translate }}</div>
               <div class="lergo-input">
-                  <input ng-model="emailConfirm" ng-model-options="{ updateOn: 'blur' }" name="emailConfirm" lergo-same-as="signupForm.email" class="form-control" type="email" required clear-errors/>
+                  <input ng-model="emailConfirm" ng-model-options="{ updateOn: 'blur' }" name="emailConfirm" lergo-same-as="signupForm.email" class="form-control" type="email" ng-paste="$event.preventDefault();" placeholder="{{'loginPage.retypeEmail' | translate }}" required clear-errors/>
                   <p ng-show="signupForm.emailConfirm.$error.lergoSameAs && !signupForm.emailConfirm.$pristine" class="help-block">{{'signup.error.emailMismatch' | translate}}</p>
               </div>
           </div>

@@ -648,11 +648,13 @@
   "login": {
     "invalidUsername": "WRONG USERNAME OR PASSWORD, PLEASE TRY AGAIN",
     "usernameAlreadyExists": "Username already taken by another user, try again with a different username.",
+    "emailAlreadyExists": "This email is used, you probably already have an account",
     "userNotValidated": "User's email has not been validated"
   },
   "loginPage": {
     "login": "Login",
     "password": "Password",
+    "retypeEmail": "Please retype email",
     "signup": "Signup",
     "username": "Username"
   },
