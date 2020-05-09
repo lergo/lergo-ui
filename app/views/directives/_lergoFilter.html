@@ -49,14 +49,7 @@
                         </select>
 		            </div>
 	            </span>
-                <span ng-show="!!opts.showLanguage">
-                    <div class="label">{{'filters.labels.language' | translate }}</div>
-                    <div class="input">
-                        <select ng-options="l as ('filters.languages.' + l | translate) for l in languages track by l"
-                                ng-model="filterLanguage">
-                        </select>
-                    </div>
-	            </span>
+                
                 <span ng-show="!!opts.showHasQuestions">
                     <div class="label">{{'filters.labels.hasQuestions' | translate }}</div>
                     <div class="input">
@@ -185,6 +178,14 @@
                         </div>
                     </div>
                 </span>
+                <span ng-show="!!opts.showLanguage">
+                    <div class="label">{{'filters.labels.language' | translate }}</div>
+                    <div class="input">
+                        <select ng-options="l as ('filters.languages.' + l | translate) for l in languages track by l"
+                                ng-model="filterLanguage">
+                        </select>
+                    </div>
+	            </span>
                 <div ng-show="!!opts.showCreatedBy" class='container-fluid'>
                     <div class="label">{{'filters.labels.createdBy' | translate}}</div>
                     <div class="input">

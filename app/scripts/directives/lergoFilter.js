@@ -91,7 +91,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             // support for limit subjects
 			$scope.limitedSubjects = null;
 
-			$scope.languages = ['all'].concat(LergoFilterService.languages,'other');
+			$scope.languages = ['all'].concat(LergoFilterService.languages);
             $scope.limitedLanguages = _.clone($scope.languages);
 
 
@@ -215,8 +215,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                         $log.debug('updating language to', newValue);
                         if ( newValue === 'all' ){
                             delete $scope.model.language;
-                        }else if ( newValue === 'other'){
-                            $scope.model.language = { 'dollar_nin' : _.clone( LergoFilterService.languages )};
+                      /*   }else if ( newValue === 'other'){
+                            $scope.model.language = { 'dollar_nin' : _.clone( LergoFilterService.languages )}; */
                         }else{
                             $scope.model.language = newValue;
                         }

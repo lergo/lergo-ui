@@ -16,10 +16,6 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
             'name' : 'hebrew',
             'dir': 'rtl'
         }, {
-            'id': 'ru',
-            'name' : 'russian',
-            'dir': 'ltr'
-        }, {
             'id': 'ar',
             'name' : 'arabic',
             'dir': 'rtl'

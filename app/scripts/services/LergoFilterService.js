@@ -352,7 +352,7 @@ angular.module('lergoApp')
                 return _.clone(limitations);
 
             }else{
-                return ['all'].concat(me.languages,'other');
+                return ['all'].concat(me.languages);
             }
         };
 
@@ -367,13 +367,14 @@ angular.module('lergoApp')
         });
 
         me.subjects = [
-            'english',
             'math',
             'geometry',
             'science',
             'technology',
-            'language',
+            'english',
+            'arabic',
             'holidays',
+            'language',
             'grammar',
             'spelling',
             'literature',
@@ -386,7 +387,6 @@ angular.module('lergoApp')
             'geography',
             'art',
             'music',
-            'arabic',
             'psychometric',
             'signlanguage',
             'financialEducation',
