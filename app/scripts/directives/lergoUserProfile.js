@@ -71,6 +71,12 @@ angular.module('lergoApp')
                     }
                 };
 
+                $scope.getCreatedByAllFilter = function(){
+                    if ( $scope.user ) {
+                        return JSON.stringify({_id: $scope.user._id, username: $scope.user.username});
+                    }
+                };
+
                 $scope.userCanEdit = function(){
                     return $scope.mode === Modes.PRIVATE;
                 };

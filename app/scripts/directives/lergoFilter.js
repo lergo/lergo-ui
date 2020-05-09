@@ -122,10 +122,10 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 return result;
             });
 
-
-			/* LergoClient.users.getUsernames().then(function(result) {
-				scope.users = result.data;
-            }); */
+            // get all users for admin lesson filter
+			LergoClient.users.getUsernames().then(function(result) {
+				scope.allUsers = result.data;
+            });
             
             // getting users out of public lessons
             
@@ -208,6 +208,18 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 				}
 			}
             $scope.$watch('createdBy', _updateCreatedBy, true);
+
+            // createdByAll access to all users for admin filter
+            function _updateCreatedByAll(newValue, oldValue) {
+				if (newValue !== oldValue) {
+					if (!!newValue && newValue.hasOwnProperty('_id')) {
+						$scope.model.userId = $scope.createdByAll._id;
+					} else {
+						delete $scope.model.userId;
+					}
+				}
+			}
+            $scope.$watch('createdByAll', _updateCreatedByAll, true);
 
             function _updateLanguage(newValue, oldValue){
                 if ( newValue !== oldValue  || !$scope.model  || scope.model.language !== newValue  ){

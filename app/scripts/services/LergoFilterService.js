@@ -227,6 +227,7 @@ angular.module('lergoApp')
             'MODEL_STATUS':                    new Filter(                    'model.status',                     'showAbuseReportStatus'    ),
 
             'MODEL_SEARCH_TEXT':               new Filter(                    'model.searchText',                 'showSearchText'           ),
+            'CREATED_BY_ALL':                  new Filter(                    'createdByAll',                     'showCreatedByAll'         ),
             'CREATED_BY':                      new Filter(                    'createdBy',                        'showCreatedBy'            ),
             'REPORTED_BY':                     new Filter(                    'reportedBy',                       'showReportedBy'           ),
             'ROLE':                            new Filter(                    'role',                             'showRoles'                ),

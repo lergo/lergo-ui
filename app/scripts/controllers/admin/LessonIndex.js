@@ -16,6 +16,7 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 		'showViews' : true,
 		'showTags' : true,
 		'showCreatedBy' : true,
+		'showCreatedByAll': true,
 		'showSearchText' : true
 	};
 

@@ -1,3 +1,5 @@
+lergo-ui admin lessons filter for users without public lessons and comment in index.html
+lergo-ui remove Russian and Other from filters and more and reposition language filter and subject
 lergo-ui prevent pasting in email verification in login, lergo-ri separate error message for signup email or username
 lergo-ri homepage cache testing -  refresh after every hour instead of every day
 lergo-ri bug(fix) tag filter not working: add useOwnProperty to test for usage

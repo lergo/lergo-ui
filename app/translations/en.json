@@ -305,6 +305,7 @@
       "ageRange": "Age Range",
       "correctPercentage": "% Correct Range",
       "createdBy": "Created By",
+      "createdByAll": "Created By All",
       "doneByStudent": "Student",
       "doneByStudentClassname": "Class",
       "duration": "Duration (in seconds)",

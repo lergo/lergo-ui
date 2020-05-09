@@ -194,6 +194,14 @@
                                uib-typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
                     </div>
                 </div>
+                <div ng-show="!!opts.showCreatedByAll" class='container-fluid'>
+                    <div class="label">{{'filters.labels.createdByAll' | translate}}</div>
+                    <div class="input">
+                        <input  type="text" ng-model="createdByAll"
+                               typeahead-min-length="3"
+                               uib-typeahead="user as user.username for user in allUsers | filter:$viewValue | limitTo:15 ">
+                    </div>
+                </div>
                 <div ng-show="!!opts.showReportedBy" class='container-fluid'>
                     <div class="label">{{'filters.labels.reportedBy' | translate}}</div>
                     <div class="input">
