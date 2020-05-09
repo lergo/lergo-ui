@@ -364,7 +364,12 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			function setDefaultLanguage(force) {
 				try {
 					if ((!!scope.opts.showLanguage && !scope.filterLanguage) || !!force) {
-						scope.filterLanguage = LergoTranslate.getLanguageObject().name;
+                        if (LergoTranslate.getLanguageObject()) {
+                            scope.filterLanguage = LergoTranslate.getLanguageObject().name;
+                        } else {
+                            scope.filterLanguage = 'hebrew';
+                            $log.info('getLanguageObject was undefined');
+                        }
 						//scope.filterLanguage = languageObjToFilterLanguage(LergoTranslate.getLanguageObject());
                         _updateLanguage(scope.filterLanguage);
 					}

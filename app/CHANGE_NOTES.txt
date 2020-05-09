@@ -1,3 +1,4 @@
+lergo-ui bug - adding default case to language : realstaging sometimes showing getlanguageObject not defined / language filter is empty 
 lergo-ui admin lessons filter for users without public lessons and comment in index.html
 lergo-ui remove Russian and Other from filters and more and reposition language filter and subject
 lergo-ui prevent pasting in email verification in login, lergo-ri separate error message for signup email or username
