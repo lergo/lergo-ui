@@ -21,7 +21,9 @@ angular.module('lergoApp')
          */
         this.LINK_TYPE = {
             GOOGLE_DRIVE_1: { 'id' : 'google-drive', 'regex' : 'drive.google.com/file/d/', replace: { from: '(https://drive.google.com)/file/d/(.+)/.*', to: '$1/uc?export=view&id=$2'}},
-            GOOGLE_DRIVE_2: { 'id' : 'google-drive', 'regex' : 'drive.google.com/open\\?id=', replace:{ from: '(https://drive.google.com)/open\\?id=(.+)', to: '$1/uc?export=view&id=$2'}}
+            GOOGLE_DRIVE_2: { 'id' : 'google-drive', 'regex' : 'drive.google.com/open\\?id=', replace:{ from: '(https://drive.google.com)/open\\?id=(.+)', to: '$1/uc?export=view&id=$2'}},
+            YOUTUBE_1: { 'id' : 'youtube', 'regex' : 'youtu.be/', replace:{ from: '(https://youtu.be/.{11})\\?t=.+', to: '$1'}},
+            YOUTUBE_2: { 'id' : 'youtube', 'regex' : 'youtube.com/watch\\?v=.{11}', replace:{ from: '(https://www.youtube.com/watch\\?v=.{11})&.+', to: '$1'}}
         };
 
         this.getLinkType = function(link){

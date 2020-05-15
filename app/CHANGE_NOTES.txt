@@ -1,3 +1,5 @@
+lergo-ui update lergo-input-converter to deal with youtube issues (starting time, playlist, etc)
+lergo-ri bug(fix) user stats cache was mixing data between not logged in and last user
 lergo-ui bug - adding default case to language : realstaging sometimes showing getlanguageObject not defined / language filter is empty 
 lergo-ui admin lessons filter for users without public lessons and comment in index.html
 lergo-ui remove Russian and Other from filters and more and reposition language filter and subject
