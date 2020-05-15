@@ -1,3 +1,4 @@
+lergo-ui warn users that image and audio links should be from google drive - using new directive for all usages
 lergo-ui update lergo-input-converter to deal with youtube issues (starting time, playlist, etc)
 lergo-ri bug(fix) user stats cache was mixing data between not logged in and last user
 lergo-ui bug - adding default case to language : realstaging sometimes showing getlanguageObject not defined / language filter is empty 

@@ -68,6 +68,8 @@
                                 </button>
                                 <div uib-collapse="!isAdvOptOpen" class="row">
                                     <hr>
+
+
                                     <div class="row">
                                         <div class="col-md-2 col-sm-12 col-xs-12">
                                             {{ 'lessons.addCoverPage' | translate }}
@@ -76,8 +78,11 @@
                                             <input lergo-input-converter
                                                    placeholder="{{'lessons.addCoverPageHint' | translate}}"
                                                    ng-model="lesson.coverPage"/>
+                                                   <url-google-drive-validation-warning google-drive-link="{{ lesson.coverPage }}"></url-google-drive-validation-warning>
                                         </div>
                                     </div>
+                                   
+
                                     <div class="row">
                                         <div class="col-md-2 col-sm-12 col-xs-12">
                                             {{ 'lessons.recommenedNextLesson' | translate }}
