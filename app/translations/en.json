@@ -29,7 +29,8 @@
     "privacy": "Privacy and Terms",
     "sections": {
       "lergoFeedbackUrl": "https://docs.google.com/forms/d/1EWBSsbLsBtWLu8-3Q-D3X12COQXvGYQPu08LLOONAiA/viewform "
-    }
+    },
+    "webinar": "Webinar"
   },
   "abuseReport": {
     "addComments": "Additional details:",
@@ -98,7 +99,8 @@
       "text2": "Creative Commons Attribution-NonCommercial-ShareAlike License",
       "text3": "additional terms may apply. By using this site, you agree to the",
       "text4": "Terms of Use and Privacy Policy",
-      "text5": "LerGO is an open source EdTech venture of LerGO-Educate Yourself (R.A), a registered nonprofit organisation"
+      "text5": "LerGO is an open source EdTech venture of LerGO-Educate Yourself (R.A), a registered nonprofit organisation",
+      "webinar": "Register to webinar"
     },
     "header": {
       "links": {
@@ -446,6 +448,7 @@
     "emailConfirm": "Confirm Email",
     "enterNewPassword": "Enter New Password",
     "fullName": "full name",
+    "gpdrOptIn": " I agree to the terms of use and privacy policy of lergo and to receiving updates by email from LerGO",
     "password": "password",
     "passwordConfirm": "Confirm password",
     "resetPassword": "Reset Password",
@@ -1137,6 +1140,7 @@
     },
     "error": {
       "confPasswordRequired": "Confirm password is required.",
+      "checkRequired": "Confirm checkbox is required",
       "emailMismatch": "Emails do not match",
       "invalidChar": "Username should only contain alphanumeric characters and underscore.",
       "invalidEmail": "Enter valid email.",

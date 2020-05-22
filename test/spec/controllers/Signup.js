@@ -62,7 +62,8 @@ describe('Controller: SignupCtrl', function () {
                 emailConfirm: {},
                 password: {},
                 passwordConfirm : {},
-                username : {}
+                username : {},
+                gpdrOptIn : {}
             } ;
         });
 

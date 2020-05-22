@@ -19,7 +19,8 @@ angular.module('lergoApp').controller('SignupCtrl', function($scope, $log, Lergo
             fullName : $scope.signupForm.name.$viewValue,
             password : $scope.signupForm.password.$viewValue,
             passwordConfirm : $scope.signupForm.passwordConfirm.$viewValue,
-            username : $scope.signupForm.username.$viewValue
+			username : $scope.signupForm.username.$viewValue,
+			gpdrOptIn : $scope.signupForm.gpdrOptIn.$viewValue
 
         }).then(function() {
 			$log.info('got success');

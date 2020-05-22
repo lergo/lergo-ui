@@ -1,3 +1,4 @@
+lergo-ui implement webinar link in footer and about, add checkbox for gpdr
 lergo-ui implement admin improvements (signup date, copyOf checkbox, public lesson filter search, remember pagination)
 lergo-ri bug(fix) stats were not updating (not logged in);
 lergo-ui warn users that image and audio links should be from google drive - using new directive for all usages

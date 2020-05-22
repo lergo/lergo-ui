@@ -46,7 +46,12 @@ angular.module('lergoApp').controller('AboutCtrl', function($scope, $routeParams
         {
             id: 'contact'
 
+        },
+        {
+            id: 'webinar'
         }
+            
+            
     ];
 	$scope.scrollUp = function() {
 		$window.scrollTo(0, 0);
