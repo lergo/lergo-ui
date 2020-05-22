@@ -215,6 +215,7 @@ angular.module('lergoApp')
         me.FILTERS = {
             'MODEL_SUBJECT':                   new Filter(                    'model.subject',                    'showSubject'              ),
             'HAS_QUESTIONS':                   new Filter(                    'hasQuestions',                     'showHasQuestions'         ),
+            'IS_COPY_OF':                      new Filter(                    'isCopyOf',                         'showIsCopyOf'             ),
             'REPORT_STUDENT':                  new Filter(                    'reportStudent',                    'showStudents'             ),
             'REPORT_CLASS':                    new Filter(                    'reportClass',                      'showClass'                ),
             'AGE_FILTER':                      new Filter(                    'ageFilter',                        'showAge'                  ),

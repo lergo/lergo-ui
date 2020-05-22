@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp')
-    .directive('lergoPaging', function ( ) {
+    .directive('lergoPaging', function ($sessionStorage ) {
         return {
             templateUrl: 'views/directives/_lergoPaging.html',
             restrict: 'A',
@@ -17,6 +17,9 @@ angular.module('lergoApp')
                         if ( newValue === oldValue ){
                             return;
                         }
+                        if (newValue && newValue !== 1){
+                            scope.pagePersist = $sessionStorage.pagination = newValue;
+                        }
                         scope.change();
                     });
                 // guy - use this as a hook for when we need to trigger change artificially.
@@ -26,7 +29,10 @@ angular.module('lergoApp')
                     }
                     scope.change();
                 });
-
+                scope.setPage = function() {
+                    scope.page.current = $sessionStorage.pagination;
+                };
+                scope.pagePersist = $sessionStorage.pagination;
                 scope.$evalAsync(scope.load);
 
             }

@@ -310,9 +310,12 @@
       "doneByStudentClassname": "Class",
       "duration": "Duration (in seconds)",
       "hasQuestions": "Has Questions",
+      "isCopyOf": "Is a Copy",
       "language": "Language",
       "reportedBy": "Reported By",
+      "reset": "Reset Cache",
       "roles": "Role",
+      "search": "Min Users public lessons",
       "status": "Status",
       "subject": "Subject",
       "tags": "Tags",
@@ -543,7 +546,8 @@
       "labels": {
         "age range": "Age Range",
         "language": "Language",
-        "subject": "Subject"
+        "subject": "Subject",
+        "pagination": "Return to previous page"
       }
     },
     "genericVideosPost": " The list will open in a new tab.",
@@ -687,7 +691,8 @@
         "tableTitles": {
           "email": "Email",
           "username": "Username",
-          "validated": "Email Validated"
+          "validated": "Email Validated",
+          "date": "Signup Date"
         },
         "tooltip": {
           "go": "Edit User"

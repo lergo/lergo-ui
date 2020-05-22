@@ -34,6 +34,7 @@
                                     <td>{{ 'manage.users.index.tableTitles.username' | translate }}</td>
                                     <td>{{ 'manage.users.index.tableTitles.email' | translate }} </td>
                                     <td>{{ 'manage.users.index.tableTitles.validated' | translate }} </td>
+                                    <td>{{ 'manage.users.index.tableTitles.date' | translate }} </td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,7 +44,9 @@
                                         <a uib-tooltip="{{'manage.users.index.tooltip.go' | translate}}"
                                            ng-href="#!/manage/users/{{user._id}}/update">{{ user.username }}</a>
                                     </td>
-                                    <td class="description">{{ user.email }}</td><td ng-style="user.validated === FALSE && {'color': 'red'} || user.validated === true && {'color': 'green'}">{{ user.validated || "false" }}</td>
+                                    <td class="description">{{ user.email }}</td>
+                                    <td ng-style="user.validated === FALSE && {'color': 'red'} || user.validated === true && {'color': 'green'}">{{ user.validated || "false" }}</td>
+                                    <td>{{ getUserSignUpDate(user) | date : 'y.MM.dd.hh.mm' }}</td>
                                 </tr>
                                 </tbody>
                             </table>

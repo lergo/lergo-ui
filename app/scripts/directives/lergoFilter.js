@@ -274,6 +274,20 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             }
             $scope.$watch('hasQuestions', _updateHasQuestions);
 
+            // isCopyOf: for Admin use
+            function _updateIsCopyOf(newValue, oldValue){
+                var modelKey = 'copyOf';
+                if ( newValue !== oldValue ){
+                    if ( newValue ){
+                        $scope.model[modelKey] = { dollar_exists : true };
+                    }else{
+                        delete $scope.model[modelKey];
+                    }
+                }
+            }
+            $scope.$watch('isCopyOf', _updateIsCopyOf);
+
+
             function _updateReportLesson(newValue, oldValue){
                 $log.info('report lesson was updated!!');
                 if ( newValue !== oldValue ){

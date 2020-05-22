@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, LergoClient, $log, $filter, $q) {
-
+angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, LergoClient, $log, $filter, $q, $sessionStorage) {
+	
 	$scope.adminFilter = {};
 	$scope.filterPage = {};
 
@@ -16,8 +16,9 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 		'showViews' : true,
 		'showTags' : true,
 		'showCreatedBy' : true,
-		'showCreatedByAll': true,
-		'showSearchText' : true
+		'showCreatedByAll' : true,
+		'showSearchText' : true,
+		'showIsCopyOf' : true
 	};
 
     var defaultFilter = {};
@@ -25,10 +26,35 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
         if ( permissions && permissions.limitations && permissions.limitations.editOnlyUnpublishedContent ){
             defaultFilter.public = { $exists : false } ;
         }
-    });
+	});
+
+	var publicCountSearchDefault = 3;
+	$scope.publicCountSearch =  $sessionStorage.publicCountSearch || publicCountSearchDefault;
+	/* for sorting the table */
+	$scope.greaterThan = function(prop, val){
+		return function(item){
+			$scope.updatedValue = val;
+		    return item[prop] >= val;
+		};
+	};
+	$scope.resetPublicCountSearch = function() {
+		$sessionStorage.publicCountSearch = publicCountSearchDefault;
+		$scope.publicCountSearch = publicCountSearchDefault;
+	};
+
+	// need to persist the textSearch
+	$scope.$watch('updatedValue', function(newValue) {
+		if (newValue !== publicCountSearchDefault) {
+			$sessionStorage.publicCountSearch = newValue;
+		} else {
+			$scope.publicCountSearch = publicCountSearchDefault;
+		}
+	});
+
 
 	$scope.loadLessons = function() {
-
+		//increase page size
+		$scope.filterPage.size = 90;
 		var queryObj = {
             // make merge first argument be an empty object, otherwise "defaultFilter" is modified
             // and the merge result is remembered forever!
@@ -40,6 +66,11 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 			'dollar_page' : $scope.filterPage
 		};
 		LergoClient.lessons.getAll(queryObj).then(function(result) {
+			_.forEach(result.data.data, function(lesson) {
+				if (!lesson.publicCount) {
+					lesson.publicCount = 0;
+				}
+			});
 			$scope.lessons = result.data.data;
 			$scope.filterPage.count = result.data.count; // the number of
 			// lessons found
@@ -66,6 +97,7 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 		}
 	});
 
+	
     $scope.$watch(function allSelected(){
         return _.isEmpty(_.filter($scope.lessons, function(l){ return !l.selected; }));
     }, function( value ){

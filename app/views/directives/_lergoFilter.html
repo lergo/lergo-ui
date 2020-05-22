@@ -54,9 +54,17 @@
                     <div class="label">{{'filters.labels.hasQuestions' | translate }}</div>
                     <div class="input">
                         <input type="checkbox" ng-model="hasQuestions"/>
-
                     </div>
                 </span>
+
+               <!--  isCopyOf: for admin use -->
+               <span ng-show="!!opts.showIsCopyOf">
+                <div class="label">{{'filters.labels.isCopyOf' | translate }}</div>
+                <div class="input">
+                    <input type="checkbox" ng-model="isCopyOf"/>
+                </div>
+            </span>
+
                 <span ng-show="!!opts.showLimitedSubject">
                     <div class="label">{{'filters.labels.subject' | translate }}</div>
                     <div class="input">

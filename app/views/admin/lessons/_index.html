@@ -11,10 +11,14 @@
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="lergo-h1 admin-lessons">{{ 'admin.allLessons' | translate }} [ {{ 'lessons.total' | translate }}: {{systemStats.lessonsCount}} ; {{'admin.public'|translate}}:
-                    {{systemStats.publicLessonsCount}} ]
+                    {{ systemStats.publicLessonsCount}} ]
                 </div>
-                <div class="table-responsive">
-                    <table class="table   ">
+                <label>{{ 'filters.labels.search' | translate }} :</label>
+                <input type='text' ng-model='publicCountSearch'>
+                <button ng-click='resetPublicCountSearch()'>{{'filters.labels.reset' | translate}}</Button>
+
+                <div class="table-responsive" id="publicCountSearchResults">
+                    <table class="table">
                         <thead>
                         <tr>
                             <td class="checkbox-dropdown">
@@ -50,7 +54,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="l in lessons">
+                           <!--  <tr ng-repeat="l in lessons  | filter: { publicCount:'!!'}"> -->
+                        <tr ng-repeat="l in lessons  | filter:greaterThan('publicCount',publicCountSearch)">
                             <td>
                                 <input type="checkbox" style="margin-left: 5px;" ng-model="l.selected">
                             </td>
