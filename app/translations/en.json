@@ -657,6 +657,7 @@
     "login": "Login",
     "password": "Password",
     "retypeEmail": "Please retype email",
+    "retypePassword": "Please retype password",
     "signup": "Signup",
     "username": "Username"
   },

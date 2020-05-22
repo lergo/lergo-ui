@@ -49,7 +49,7 @@
          <div class="section form-group" ng-class="{ 'has-error' : signupForm.passwordConfirm.$invalid && !signupForm.passwordConfirm.$pristine }">
             <div class="label">{{ 'input.passwordConfirm' | translate }}</div>
             <div class="lergo-input">
-               <input ng-model="passwordConfirm" ng-model-options="{ updateOn: 'blur' }" name="passwordConfirm" class="form-control" required type="password" lergo-same-as="signupForm.password" clear-errors />
+               <input ng-model="passwordConfirm" ng-model-options="{ updateOn: 'blur' }" name="passwordConfirm" class="form-control" required type="password" lergo-same-as="signupForm.password" placeholder="{{'loginPage.retypePassword' | translate }}" clear-errors />
                <p ng-show="signupForm.passwordConfirm.$error.required && !signupForm.passwordConfirm.$pristine" class="help-block">{{'signup.error.confPasswordRequired' | translate}}</p>
                <p ng-show="signupForm.passwordConfirm.$error.lergoSameAs && !signupForm.passwordConfirm.$pristine" class="help-block">{{'signup.error.passwordMismatch' | translate}}</p>
             </div>
