@@ -8,10 +8,6 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
          }*/
 
         var supportedLanguages = [{
-            'id': 'en',
-            'name' : 'english',
-            'dir': 'ltr'
-        }, {
             'id': 'he',
             'name' : 'hebrew',
             'dir': 'rtl'
@@ -19,6 +15,11 @@ angular.module('lergoApp').service('LergoTranslate', function($routeParams, $htt
             'id': 'ar',
             'name' : 'arabic',
             'dir': 'rtl'
+        },
+        {
+            'id': 'en',
+            'name' : 'english',
+            'dir': 'ltr'
         }];
         var DEFAULT_LANGUAGE = 'he';
 
