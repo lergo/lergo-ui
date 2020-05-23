@@ -54,13 +54,19 @@
                <p ng-show="signupForm.passwordConfirm.$error.lergoSameAs && !signupForm.passwordConfirm.$pristine" class="help-block">{{'signup.error.passwordMismatch' | translate}}</p>
             </div>
          </div>
+
          <div class="section form-group" ng-class="{ 'has-error' : signupForm.gpdrOptIn.$invalid && !signupForm.gpdrOptIn.$pristine }">
-            <div class="lergo-input">
-               <input ng-model="gpdrOptIn" name="gpdrOptIn" class="form-control" required type="checkbox" />
+            <div class="col-md-2 col-sm-2 col-xs-2">
+               <div class="lergo-input">
+                  <input ng-model="gpdrOptIn" name="gpdrOptIn" class="form-control" required type="checkbox" />
+               </div>
+            </div>
+            <div class="col-md-10 col-sm-10 col-xs10">
                <p ng-show="signupForm.gpdrOptIn.$invalid && !signupForm.gpdrOptIn.$pristine" class="help-block">{{'signup.error.checkRequired' |
                   translate}}</p>
-               <div class="long-text">{{ 'input.gpdrOptIn' | translate }}</div>
-            </div>
+               <div class="long-text">{{ 'input.gpdrOptIn' | translate }} <a href="https://realstaging.lergodev.info/index.html#!/public/terms" >{{ 'input.learnMore' | translate }}</div>
+               <br>
+            </div>   
          </div>
          <div>
             <button type="submit" ng-disabled="signupForm.$invalid" class="submit btn">{{ 'button.signupSubmit' | translate }}</button>

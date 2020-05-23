@@ -1,3 +1,5 @@
+lergo-ui improvements to previous ui-build - copyOf filter changed to NotCopyOf, alignmnet of pagination text, improve admin search 
+    for public lessons, improve style on gpdr signup
 lergo-ri implement nginx "if_modified_since off;" and lergo-ui change link for webinar
 lergo-ui implement webinar link in footer and about, add checkbox for gpdr
 lergo-ui implement admin improvements (signup date, copyOf checkbox, public lesson filter search, remember pagination)

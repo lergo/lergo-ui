@@ -1,5 +1,8 @@
-<a s href="" ng-click="setPage()">{{'lessons.filters.labels.pagination' | translate }}</a>
-<div class="pagination">
+
+<div id="pagination-block">
+&nbsp <a admin-section id="pagination-block1"  href="" ng-click="setPage()">{{'lessons.filters.labels.pagination' | translate }}</a>
+&nbsp
+<div class="pagination" id="pagination-block2">
     <ul uib-pagination
         total-items="page.count"
         ng-model="page.current"
@@ -13,4 +16,5 @@
         previous-text="<"
         next-text=">">
     </ul>
+</div>
 </div>

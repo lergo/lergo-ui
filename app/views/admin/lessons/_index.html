@@ -14,8 +14,8 @@
                     {{ systemStats.publicLessonsCount}} ]
                 </div>
                 <label>{{ 'filters.labels.search' | translate }} :</label>
-                <input type='text' ng-model='publicCountSearch'>
-                <button ng-click='resetPublicCountSearch()'>{{'filters.labels.reset' | translate}}</Button>
+                <input  style="width:30px" type='text' ng-model='publicCountSearch'>
+                <a href="" style=" padding: 3px" ng-click='resetPublicCountSearch()'>X</a>
 
                 <div class="table-responsive" id="publicCountSearchResults">
                     <table class="table">

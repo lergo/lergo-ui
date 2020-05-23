@@ -279,7 +279,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 var modelKey = 'copyOf';
                 if ( newValue !== oldValue ){
                     if ( newValue ){
-                        $scope.model[modelKey] = { dollar_exists : true };
+                        $scope.model[modelKey] = { dollar_exists : false };
                     }else{
                         delete $scope.model[modelKey];
                     }
