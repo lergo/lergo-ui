@@ -1,3 +1,4 @@
+lergo-ui change webinar link to google forms
 lergo-ui bug(fix) learn more was directing to realstaging instead of lergo.org
 lergo-ui improvements to previous ui-build - copyOf filter changed to NotCopyOf, alignmnet of pagination text, improve admin search 
     for public lessons, improve style on gpdr signup
