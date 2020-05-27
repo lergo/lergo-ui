@@ -688,6 +688,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.ROLE] =  _updateRole ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORT_LESSON] =  _updateReportLesson ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.HAS_QUESTIONS] =  _updateHasQuestions ;
+            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.IS_COPY_OF] =  _updateIsCopyOf ;
 
             function reload( newValue, oldValue ){
                 if ( !!newValue && !!oldValue && newValue !== oldValue ) {
