@@ -46,7 +46,7 @@
                                     </td>
                                     <td class="description">{{ user.email }}</td>
                                     <td ng-style="user.validated === FALSE && {'color': 'red'} || user.validated === true && {'color': 'green'}">{{ user.validated || "false" }}</td>
-                                    <td>{{ getUserSignUpDate(user) | date : 'y.MM.dd.hh.mm' }}</td>
+                                    <td>{{ getUserSignUpDate(user) | date:'d-MMM-yyyy HH:mm' }}</td>
                                 </tr>
                                 </tbody>
                             </table>
