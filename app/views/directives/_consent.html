@@ -1,0 +1,30 @@
+
+
+<!-- <div style="position: relative; z-index: 1000">
+    <div style="height: 200px; background: orange; position: fixed; bottom: 0; left: 0; right: 0" ng-hide="consent()"><a href="" ng-click="consent(true)">I'm cookie consent</a></div>
+</div> -->
+<div class="container">
+    <div class="row desktop-consent-position">
+        <div class="col-md-12 hidden-sm hidden-xs banner" ng-hide="consent()" >
+            <div class="col-md-elevenhalf banner-dim">
+                <p class="consent-text">{{'cookieConsent.text1' | translate }}&nbsp;&nbsp; <a class="learn-more" href="#!/public/terms">{{'input.learnMore' | translate }}</a></p>
+            </div>
+            <div class="col-md-half agree-box">
+                <h1 class="character-div"><a class="character"  href=""  ng-click="consent(true)">X</a></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mobile-consent-position">
+        <div class="col-md-8 hidden-lg hidden-md banner" ng-hide="consent()">
+            <div class="col-xs-11 text-box">
+                <p class="consent-text">{{'cookieConsent.text1' | translate }}&nbsp;&nbsp; <a class="learn-more" href="#!/public/terms">{{'input.learnMore' | translate }}</a></p>
+            </div>
+            <div class="col-xs-1 agree-box">
+                <h1 class="character-div"><a  href=""  ng-click="consent(true)" class="character">X</a></h1>
+            </div>
+        </div>
+    </div>
+</div>

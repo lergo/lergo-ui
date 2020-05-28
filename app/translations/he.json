@@ -154,6 +154,10 @@
     "signupSubmit": "הרשמה",
     "submit": "שליחה"
   },
+  "cookieConsent": {
+    "text1": "אתר זה משתמש בעוגיות כדי להבטיח שתקבלו את החוויה הטובה ביותר באתר שלנו. באמצעות השימוש באתר זה אתם מקבלים שימוש זה, וגם מקבלים את תנאי השימוש ומדיניות הפרטיות של LerGO.",
+    "text2": "By using this website you accept this use, as well as accept LerGO’s Terms of Use and Privacy Policy"
+  },
   "cancel": "לסגור",
   "changePassword": {
     "error": "הייתה בעיה בשינוי הסיסמה",
@@ -427,6 +431,7 @@
     "enterNewPassword": "הקלד/י סיסמה חדשה",
     "fullName": "שם מלא",
     "gpdrOptIn": "אני מסכימ/ה לתנאי השימוש ומדיניות פרטיות של לרגו ולקבלת עדכונים באימייל מלרגו.",
+    "learnMore": "למד עוד",
     "password": "סיסמה",
     "passwordConfirm": "אישור סיסמה",
     "resetPassword": "איפוס או שינוי סיסמה",

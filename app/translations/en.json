@@ -162,6 +162,10 @@
     "signupSubmit": "SIGNUP",
     "submit": "Submit"
   },
+  "cookieConsent": {
+    "text1": "This site uses cookies to ensure you get the best experience on our website.By using this website you accept this use, as well as accept LerGO’s Terms of Use and Privacy Policy.  ",
+    "text2": "By using this website you accept this use, as well as accept LerGO’s Terms of Use and Privacy Policy"
+  },
   "cancel": "Close",
   "changePassword": {
     "error": "There was an error changing your password",

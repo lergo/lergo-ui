@@ -175,10 +175,6 @@ ul.lergo-menu {
     }
 }
 
-body div.container {
-    /*width: 100%;*/
-}
-
 button.action-item {
     background: $LERGO_ACTION_BACKGROUND;
     padding: 8px;
@@ -441,9 +437,6 @@ button.action-item {
         display: inline-block;
         background: url("../images/logos/transparent-beta.png");
     }
-}
-
-.btn {
 }
 
 .clickable {
