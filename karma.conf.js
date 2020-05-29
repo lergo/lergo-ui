@@ -30,7 +30,6 @@ module.exports = function (config) {
             'app/bower_components/ng-csv/build/ng-csv.min.js',
             'app/bower_components/ng-focus-if/focusIf.js',
             'app/bower_components/angular-busy/angular-busy.js',
-            'app/bower_components/angular-cookies/angular-cookies.js',
             'app/scripts/*.js',
             '.tmp/html2js/*.js',
             'app/scripts/**/*.js',

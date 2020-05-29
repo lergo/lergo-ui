@@ -11,8 +11,7 @@ angular.module('lergoApp', [
     'ngStorage',
     'ngCsv',
     'cgBusy',
-    'focus-if',
-    'ngCookies'
+    'focus-if'
 ]);
 
 
