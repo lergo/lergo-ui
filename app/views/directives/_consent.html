@@ -2,10 +2,11 @@
 <div class="container">
     <div class="row mobile-consent-position">
         <div class="col-xs-12 banner" ng-hide="consent()">
-            <div class="col-md-11 col-xs-11 text-box">
+            <div class="col-md-1 col-xs-1 agree-box"></div>
+            <div class="col-md-10 col-xs-10 text-box">
                 <p class="consent-text">{{'cookieConsent.text1' | translate }}&nbsp;&nbsp; <a class="learn-more" href="#!/public/terms">{{'input.learnMore' | translate }}</a></p>
             </div>
-            <div class="col-md-1 col-xs-1 agree-box">
+            <div class="col-md-1 col-xs-1 agree-box pull-left">
                 <h1 class="character-div"><a  href=""  ng-click="consent(true)" class="character">X</a></h1>
             </div>
         </div>
