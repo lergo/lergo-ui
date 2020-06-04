@@ -18,7 +18,9 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 		'showCreatedBy' : true,
 		'showCreatedByAll' : true,
 		'showSearchText' : true,
-		'showIsCopyOf' : true
+		'showIsCopyOf' : true,
+		'showHasAdminComment' : true,
+		'showAdminRating' : true
 	};
 
     var defaultFilter = {};

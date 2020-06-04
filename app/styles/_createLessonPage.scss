@@ -105,6 +105,13 @@
         text-align:center;
     }
 }
+.admin-background {
+    padding: 10px;
+    background-color:#d4dfdf;
+    & i {
+        margin: 5px;
+    }
+}
 
 .rtl {
     #createLessonPageMobile{

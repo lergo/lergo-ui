@@ -86,7 +86,9 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			$scope.ageFilter = null; //should be null to properly load from localStorage
             $scope.limitAge = null;
 
-			$scope.subjects = LergoFilterService.subjects;
+            $scope.subjects = LergoFilterService.subjects;
+            
+            $scope.adminRatings = ['all'].concat(LergoFilterService.adminRatings);  // need to understand and deal with limited...
 
             // support for limit subjects
 			$scope.limitedSubjects = null;
@@ -287,6 +289,18 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             }
             $scope.$watch('isCopyOf', _updateIsCopyOf);
 
+            // hasAdminComment: for Admin use
+            function _updateHasAdminComment(newValue, oldValue){
+                var modelKey = 'adminComment';
+                if ( newValue !== oldValue ){
+                    if ( newValue ){
+                        $scope.model[modelKey] = { dollar_exists : false };
+                    }else{
+                        delete $scope.model[modelKey];
+                    }
+                }
+            }
+            $scope.$watch('hasAdminComment', _updateHasAdminComment);
 
             function _updateReportLesson(newValue, oldValue){
                 $log.info('report lesson was updated!!');
@@ -564,8 +578,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			$scope.$watch('model', function(newValue, oldValue) {
 
                 if (newValue !== oldValue) {
-                    _.each(['subject', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'finished', 'data.lessonId'], function (prop) {
-                        if ($scope.model[prop] === undefined || $scope.model[prop] === null || $scope.model[prop] === '') {
+                    _.each(['subject', 'adminRating', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'finished', 'data.lessonId'], function (prop) {
+                        if ($scope.model[prop] === undefined || $scope.model[prop] === null || $scope.model[prop] === '' || $scope.model[prop] === 'all') {
                             delete $scope.model[prop];
                         }
                     });
@@ -689,6 +703,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORT_LESSON] =  _updateReportLesson ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.HAS_QUESTIONS] =  _updateHasQuestions ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.IS_COPY_OF] =  _updateIsCopyOf ;
+            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.HAS_ADMIN_COMMENT] =  _updateHasAdminComment ;
 
             function reload( newValue, oldValue ){
                 if ( !!newValue && !!oldValue && newValue !== oldValue ) {

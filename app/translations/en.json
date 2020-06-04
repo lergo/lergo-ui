@@ -47,6 +47,7 @@
   "add": "Add to quiz",
   "addClose": "Add and Close",
   "admin": {
+    "adminComments": "Admin Comments",
     "allLessons": "All Lessons",
     "by": "By",
     "byCreated": "Lesson created by",
@@ -67,6 +68,7 @@
     "views": "# Views"
   },
   "advancedOptions": "Advanced options",
+  "adminComments": "Admin comments",
   "AlexanderNelles": {
     "desg": "Head of Assisted Channels Capabilities @ Vodafone Germany"
   },
@@ -316,8 +318,10 @@
       "doneByStudentClassname": "Class",
       "duration": "Duration (in seconds)",
       "hasQuestions": "Has Questions",
+      "noAdminComment": "No Admin Comment",
       "isNotCopyOf": "Is not a Copy",
       "language": "Language",
+      "adminRating": "Admin Rating",
       "reportedBy": "Reported By",
       "roles": "Role",
       "search": "Min Users public lessons",
@@ -334,6 +338,13 @@
       "hebrew": "Hebrew",
       "other": "Other",
       "russian": "Russian"
+    },
+    "adminRatings": {
+      "all": "All",
+      "a": "A",
+      "b": "B",
+      "c": "C",
+      "d": "D"
     },
     "status": {
       "complete": "Complete",
@@ -528,7 +539,9 @@
     }
   },
   "lessons": {
+    "addAdminComment": "Add Admin comment",
     "addCoverPage": "Add cover image for lesson intro",
+    "addAdminCommentPlaceholder": "Admin Comment",
     "addCoverPageHint": "To add your cover image to lesson please paste here the image URL.",
     "addQuestion": "Add Questions to Quiz",
     "addQuestionFromAll": "from all questions",

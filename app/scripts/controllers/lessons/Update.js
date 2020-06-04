@@ -19,6 +19,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
 
         $scope.subjects = LergoFilterService.subjects;
+        $scope.adminRatings = LergoFilterService.adminRatings;
         var addStepClicked = false;
         $scope.popoverState = {open: false, position: 'top'};
         $scope.languages = LergoFilterService.languages;
@@ -59,9 +60,11 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             if (!$scope.lesson.language) {
                 $scope.lesson.language = LergoTranslate.getLanguageObject().name;
             }
+
+            // AdminCommentOpen
+            $scope.isAdminCommentOpen = !!$scope.lesson.adminComment || !!$scope.lesson.adminRating;
+
             // Advance option should be open is any of the below properties are defined/non-empty
-          
-            
             $scope.isAdvOptOpen = !!$scope.lesson.nextLesson || !!$scope.lesson.priorLesson || !!$scope.lesson.coverPage || !!$scope.lesson.wikiLink;
 
         }, function (result) {

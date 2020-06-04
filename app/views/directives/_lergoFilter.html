@@ -59,12 +59,30 @@
 
                <!--  isCopyOf: for admin use -->
                <span ng-show="!!opts.showIsCopyOf">
-                <div class="label">{{'filters.labels.isNotCopyOf' | translate }}</div>
-                <div class="input">
-                    <input type="checkbox" ng-model="isCopyOf"/>
-                </div>
-            </span>
+                    <div class="label">{{'filters.labels.isNotCopyOf' | translate }}</div>
+                        <div class="input">
+                            <input type="checkbox" ng-model="isCopyOf"/>
+                        </div>
+                </span>
 
+               <!--  hasAdminComment: for admin use -->
+                <span ng-show="!!opts.showHasAdminComment">
+                    <div class="label">{{'filters.labels.noAdminComment' | translate }}</div>
+                    <div class="input">
+                        <input type="checkbox" ng-model="hasAdminComment"/>
+                    </div>
+                </span>
+
+                <!-- AdminRating: for admin use -->
+                <span ng-show="!!opts.showAdminRating">
+                    <div class="label">{{'filters.labels.adminRating' | translate }}</div>
+                    <div class="input">
+                        <select ng-options="ar as ('filters.adminRatings.' + ar | translate) for ar in adminRatings track by ar"
+                                ng-model="model.adminRating">
+                            <!-- <option admin-section="!limitations.manageSubject" value="">{{'filters.all'|translate}}</option> -->
+                        </select>
+                    </div>
+                </span>    
                 <span ng-show="!!opts.showLimitedSubject">
                     <div class="label">{{'filters.labels.subject' | translate }}</div>
                     <div class="input">

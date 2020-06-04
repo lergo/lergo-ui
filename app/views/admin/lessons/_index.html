@@ -51,6 +51,7 @@
                             <td>{{'admin.created'|translate}}</td>
                             <td>{{'admin.publicFrom'|translate}}</td>
                             <td>{{'admin.questions'|translate}}</td>
+                            <td>{{'admin.adminComments'|translate}}</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -73,6 +74,7 @@
                             <td>{{l.createdAt | date:'d-MMM-yyyy HH:mm'}}</td>
                             <td>{{l.public | date:'d-MMM-yyyy HH:mm' }}</td>
                             <td>{{ l | countQuestionsOnLesson }}</td>
+                            <td>{{ l.adminComment}}</td>
                         </tr>
                         </tbody>
                     </table>

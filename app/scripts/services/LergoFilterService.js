@@ -214,6 +214,8 @@ angular.module('lergoApp')
 
         me.FILTERS = {
             'MODEL_SUBJECT':                   new Filter(                    'model.subject',                    'showSubject'              ),
+            'MODEL_ADMIN_RATING':              new Filter(                    'model.adminRating',                'showAdminRating'          ),
+            'HAS_ADMIN_COMMENT':               new Filter(                    'hasAdminComment',                  'showHasAdminComment'      ),
             'HAS_QUESTIONS':                   new Filter(                    'hasQuestions',                     'showHasQuestions'         ),
             'IS_COPY_OF':                      new Filter(                    'isCopyOf',                         'showIsCopyOf'             ),
             'REPORT_STUDENT':                  new Filter(                    'reportStudent',                    'showStudents'             ),
@@ -367,6 +369,13 @@ angular.module('lergoApp')
         me.languages = _.map(LergoTranslate.getSupportedLanguages(), function( l ){
             return l.name;
         });
+
+        me.adminRatings = [
+            'a',
+            'b',
+            'c',
+            'd'
+        ];
 
         me.subjects = [
             'math',

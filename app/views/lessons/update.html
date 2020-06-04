@@ -57,6 +57,44 @@
                                 </div>
                             </div>
                         </div>
+
+                    <!-- starting admin-comment section  -->
+                    <div admin-section>
+                        <div class="stats admin-background form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="advanced-options">
+                                <button class="btn-link expander" ng-click="isAdminCommentOpen = !isAdminCommentOpen"
+                                        ng-show="!!lesson.name">
+                                    <i ng-show="!isAdminCommentOpen" class="fa fa-plus-square"></i>
+                                    <i ng-show="!!isAdminCommentOpen" class="fa fa-minus-square"></i>
+                                    {{ 'adminComments' | translate }}
+                                </button>
+                                <div uib-collapse="!isAdminCommentOpen" class="row">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                            <div class="subject">
+                                                <label>{{ 'filters.labels.adminRating' | translate }}</label>
+                                                <select class="form-control" ng-model="lesson.adminRating"
+                                                        ng-options="a as ('filters.adminRatings.' + a| translate) for a in adminRatings"
+                                                        name="adminRating"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-11 col-sm-12 col-xs-12">
+                                            <div class="subject">
+                                                <label>{{ 'lessons.addAdminComment' | translate }}</label> 
+                                                <input class="form-control" placeholder="{{ 'lessons.addAdminCommentPlaceholder' | translate }}" ng-model="lesson.adminComment">  
+                                            </div>         
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                       <!--  end of admin-comment section -->
+
+
                         <div class="stats form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="advanced-options">
                                 <br>
