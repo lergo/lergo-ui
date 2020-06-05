@@ -1,4 +1,5 @@
-lergo-ri - facebook is not sharing - try reverting last week's nginx commit (for white screen)
+lergo-ri - revert did not help facebook share, so revert the revert
+lergo-ri - facebook is not sharing - try reverting last week's nginx commit (for white screen )
 lergo-ui changing lergo logo-beta for lergo.it and keys for lergo.it
 lergo-ui feat adding admin comment space for lessons
 lergo-ui using local storage instead of cookies for consent banner to get extended storage on mobile
