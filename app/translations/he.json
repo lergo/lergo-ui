@@ -713,7 +713,7 @@
   "pin": {
     "number" : "PIN Number",
     "redirect": "לכל השיעורים",
-    "placeholder": "להזין את הקוד",
+    "placeholder":".                    להזין את הקוד              .",
     "enter": "להיכנס"
   },
   "popular": "פופולריים",
