@@ -7,17 +7,16 @@
                     <i class="logo-beta transparent"></i>
                 </div>
                 <div>
-                    <input  ng-model="pin" ng-class="{invalid: invalidPin}" type="tel" maxlength="6">
+                    <input placeholder="{{'pin.placeholder' | translate  }}"  ng-model="pin" ng-class="{invalid: invalidPin}" type="tel" maxlength="6">
                 </div>
                 <br>
                 <div>
-                    <button class="btn btn-default" ng-click="getLesson()">Enter</button>
+                    <button class="btn btn-default" ng-click="getLesson()">{{ 'pin.enter' | translate }}</button>
                 </div>
                 <br><br><br><br><br><br><br><br>
                 
-                <p>For all lessons  <a href="https://www.lergo.org"><b>www.lergo.org</b></a></p>
+                <p>{{ 'pin.redirect' | translate }}  <a href="https://www.lergo.org"><b>www.lergo.org</b></a></p>
                 <br>
-                <p><a href="http://www.lergo.org/index.html#!/public/homepage?lergoLanguage=he&lergoFilter.model.language=%22hebrew%22"><b>www.lergo.org.il</b></a>    לכל השיעורים</p>
 
             </form>
 

@@ -710,6 +710,12 @@
       "url": "https://docs.google.com/a/lergo.org/forms/d/1abGljmYFqKe6-9zRs-G-jUzer3PmhVuCYNoZLKO1_5I/viewform"
     }
   },
+  "pin": {
+    "number" : "PIN Number",
+    "redirect": "לכל השיעורים",
+    "placeholder": "להזין את הקוד",
+    "enter": "להיכנס"
+  },
   "popular": "פופולריים",
   "powered": {
     "by": {

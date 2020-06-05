@@ -767,7 +767,12 @@
       "url": "https://docs.google.com/forms/d/1n4ddLylSr7Tx8qh09M7A-GAMx-6ShIDVxS-DD1mcKhY/viewform"
     }
   },
-  "pin": "PIN Number",
+  "pin": {
+    "number" : "PIN Number",
+    "redirect": "For all lessons",
+    "placeholder": "Enter code",
+    "enter": "Enter"
+  },
   "popular": "Popular",
   "powered": {
     "by": {
