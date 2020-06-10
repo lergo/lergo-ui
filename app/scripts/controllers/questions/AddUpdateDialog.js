@@ -35,7 +35,7 @@
  *
  */
 angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
-		function($scope, $uibModalInstance, quizItem, lessonOverrideQuestion, QuestionsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
+		function($scope, $uibModalInstance, quizItem, lessonOverrideQuestion, LergoClient, QuestionsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
 
 			$scope.quizItem = quizItem;
 			// this object will be updated by child scope
@@ -168,6 +168,27 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 				return $scope.currentSection.page;
 			};
 
+			/* remove deleted question from all quizItems in all lessons */
+			function getLessonWhoUseThisQuestionAndRemoveQuestion(questionId) {
+					var lessonsWhoUseThisQuestion = null;
+					LergoClient.lessons.getLessonsWhoUseThisQuestion(questionId || $scope.quizItem._id).then(function (result) {
+						lessonsWhoUseThisQuestion = result.data;
+						$log.debug('usage of this question in lessons is ',lessonsWhoUseThisQuestion.length);
+						angular.forEach(lessonsWhoUseThisQuestion, function(lesson) {
+							for (var i in lesson.steps ) {
+								if (lesson.steps[i].quizItems && lesson.steps[i].quizItems.indexOf(questionId) !== -1) {
+									lesson.steps[i].quizItems.splice(lesson.steps[i].quizItems.indexOf(questionId), 1);
+									LergoClient.lessons.update(lesson);
+								}
+							}
+							$log.debug('deleting questionId ',questionId);
+							QuestionsService.deleteQuestion(questionId);
+						});
+					}, function (result) {
+						toastr.error('cannot find usages, got error', result.data);
+					});
+				}
+
 			$scope.cancel = function() {
 				var item = $scope.quizItem;
 				if (!!item && !$scope.isValid(item)) {
@@ -176,13 +197,17 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
                         answer = confirm($filter('translate')('deleteQuestion.Confirm'));
                     }
                     if ( !!answer ) {
-                        QuestionsService.deleteQuestion(item._id);
+						
+						getLessonWhoUseThisQuestionAndRemoveQuestion(item._id);
+						
                     }else{
                         return; // do nothing!
                     }
 				}
                 $uibModalInstance.dismiss();
 			};
+
+			
 			/**
 			 * There are so many things we need to have to enable copy and
 			 * override, we better wrap it in a function.

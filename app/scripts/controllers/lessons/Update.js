@@ -47,30 +47,106 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             return $scope.isSaving() || !$scope.lesson || !$scope.lesson.name;
         };
 
-        LergoClient.lessons.getById($routeParams.lessonId).then(function (result) {
-            $scope.lesson = result.data;
-            $scope.errorMessage = null;
-            $scope.$watch('lesson', saveLesson.onValueChange, true);
-            $scope.$watch('lesson.nextLesson', updateNextLesson);
-            $scope.$watch('lesson.priorLesson', updatePriorLesson);
-            $scope.$watch('lesson.wikiLink', updateWikiLink);
-            if (!$scope.lesson.tags) {
-                $scope.lesson.tags = [];
+        function persistScroll() {
+            if (!$rootScope.scrollPosition) {
+                $rootScope.scrollPosition = {};
             }
-            if (!$scope.lesson.language) {
-                $scope.lesson.language = LergoTranslate.getLanguageObject().name;
+            $rootScope.scrollPosition[$location.path()] = $window.scrollY;
+        }
+
+        function scrollToPersistPosition() {
+            var scrollY = 0;
+            if (!!$rootScope.scrollPosition) {
+                scrollY = $rootScope.scrollPosition[$location.path()] || 0;
             }
+            $window.scrollTo(0, scrollY);
+        }
 
-            // AdminCommentOpen
-            $scope.isAdminCommentOpen = !!$scope.lesson.adminComment || !!$scope.lesson.adminRating;
+        function addItemToQuiz(item, step) {
+            step.quizItems = step.quizItems || [];
+            if (step.quizItems.indexOf(item._id) < 0) {
+                if (!$scope.lesson.subject) {
+                    $scope.lesson.subject = item.subject;
+                }
+                if (!$scope.lesson.age) {
+                    $scope.lesson.age = item.age;
+                }
+                if (!$scope.lesson.language) {
+                    $scope.lesson.language = item.language;
+                }
+                if (!$scope.lesson.tags || $scope.lesson.tags.length === 0) {
+                    $scope.lesson.tags = item.tags;
+                }
+                step.quizItems.push(item._id);
+            }
+        }
 
-            // Advance option should be open is any of the below properties are defined/non-empty
-            $scope.isAdvOptOpen = !!$scope.lesson.nextLesson || !!$scope.lesson.priorLesson || !!$scope.lesson.coverPage || !!$scope.lesson.wikiLink;
+        function lessonOverrideQuestion(questionIdToOverride, callback) {
+            $log.info('in lesson controller, overriding question');
+            LergoClient.lessons.overrideQuestion($scope.lesson._id, questionIdToOverride).then(function (result) {
+                if (!!callback) {
+                    callback(result.data.quizItem._id);
+                }
+                $scope.lesson = result.data.lesson;
+            }, function (result) {
+                toastr.error('error while overriding question', result.data);
+            });
+        }
 
-        }, function (result) {
-            $scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
-            $log.error($scope.errorMessage);
-        });
+        // this is a wrapper to 'lessonOverrideQuestion' which will, after
+        // lesson update
+        // list on quizItemsData change ONCE and reopens the dialog
+        function lessonOverrideQuestionAndReopenDialog(step, questionIdToOverride) {
+            lessonOverrideQuestion(questionIdToOverride, function (newQuizItemId) {
+
+                // first - lets watch
+                // http://stackoverflow.com/a/13652152/1068746
+                var unregister = $scope.$watch('quizItemsData', function () {
+
+                    if (!$scope.quizItemsData.hasOwnProperty(newQuizItemId)) {
+                        return; // wait for it to exist ;
+                    }
+
+                    try {
+                        $scope.openQuestionDialog(step, $scope.quizItemsData[newQuizItemId], false);
+                    } finally {
+                        unregister();
+                    }
+                });
+            });
+        }
+
+        function openQuestionDialog(step, quizItem, isUpdate) {
+            persistScroll();
+            var modelContent = {};
+            modelContent.templateUrl = 'views/questions/addCreateUpdateDialog.html';
+            modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
+            modelContent.backdrop = 'static';
+            modelContent.controller = 'QuestionsAddUpdateDialogCtrl';
+            modelContent.resolve = {
+                lessonOverrideQuestion: function () {
+                    return lessonOverrideQuestionAndReopenDialog;
+                },
+                quizItem: function () {
+                    return quizItem;
+                },
+                isUpdate: function () {
+                    return isUpdate;
+                },
+                addItemToQuiz: function () {
+                    return addItemToQuiz;
+                },
+                step: function () {
+                    return step;
+                }
+            };
+            var modelInstance = $uibModal.open(modelContent);
+            modelInstance.result.then(function () {
+                scrollToPersistPosition();
+            }, function () {
+                scrollToPersistPosition();
+            });
+        }
 
         function updateNextLesson(newValue, oldValue) {
             if (!newValue) {
@@ -104,6 +180,31 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
             }
         }
+
+        LergoClient.lessons.getById($routeParams.lessonId).then(function (result) {
+            $scope.lesson = result.data;
+            $scope.errorMessage = null;
+            $scope.$watch('lesson', saveLesson.onValueChange, true);
+            $scope.$watch('lesson.nextLesson', updateNextLesson);
+            $scope.$watch('lesson.priorLesson', updatePriorLesson);
+            $scope.$watch('lesson.wikiLink', updateWikiLink);
+            if (!$scope.lesson.tags) {
+                $scope.lesson.tags = [];
+            }
+            if (!$scope.lesson.language) {
+                $scope.lesson.language = LergoTranslate.getLanguageObject().name;
+            }
+
+            // AdminCommentOpen
+            $scope.isAdminCommentOpen = !!$scope.lesson.adminComment || !!$scope.lesson.adminRating;
+
+            // Advance option should be open is any of the below properties are defined/non-empty
+            $scope.isAdvOptOpen = !!$scope.lesson.nextLesson || !!$scope.lesson.priorLesson || !!$scope.lesson.coverPage || !!$scope.lesson.wikiLink;
+
+        }, function (result) {
+            $scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
+            $log.error($scope.errorMessage);
+        });
 
 
         $scope.stepTypes = [{
@@ -265,25 +366,6 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             }
         };
 
-        function addItemToQuiz(item, step) {
-            step.quizItems = step.quizItems || [];
-            if (step.quizItems.indexOf(item._id) < 0) {
-                if (!$scope.lesson.subject) {
-                    $scope.lesson.subject = item.subject;
-                }
-                if (!$scope.lesson.age) {
-                    $scope.lesson.age = item.age;
-                }
-                if (!$scope.lesson.language) {
-                    $scope.lesson.language = item.language;
-                }
-                if (!$scope.lesson.tags || $scope.lesson.tags.length === 0) {
-                    $scope.lesson.tags = item.tags;
-                }
-                step.quizItems.push(item._id);
-            }
-        }
-
         $scope.moveQuizItemUp = function (index, step) {
             if (!!step.quizItems) {
                 var temp = step.quizItems[index - 1];
@@ -303,41 +385,6 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             }
 
         };
-
-        function lessonOverrideQuestion(questionIdToOverride, callback) {
-            $log.info('in lesson controller, overriding question');
-            LergoClient.lessons.overrideQuestion($scope.lesson._id, questionIdToOverride).then(function (result) {
-                if (!!callback) {
-                    callback(result.data.quizItem._id);
-                }
-                $scope.lesson = result.data.lesson;
-            }, function (result) {
-                toastr.error('error while overriding question', result.data);
-            });
-        }
-
-        // this is a wrapper to 'lessonOverrideQuestion' which will, after
-        // lesson update
-        // list on quizItemsData change ONCE and reopens the dialog
-        function lessonOverrideQuestionAndReopenDialog(step, questionIdToOverride) {
-            lessonOverrideQuestion(questionIdToOverride, function (newQuizItemId) {
-
-                // first - lets watch
-                // http://stackoverflow.com/a/13652152/1068746
-                var unregister = $scope.$watch('quizItemsData', function () {
-
-                    if (!$scope.quizItemsData.hasOwnProperty(newQuizItemId)) {
-                        return; // wait for it to exist ;
-                    }
-
-                    try {
-                        $scope.openQuestionDialog(step, $scope.quizItemsData[newQuizItemId], false);
-                    } finally {
-                        unregister();
-                    }
-                });
-            });
-        }
 
         $scope.openUpdateQuestion = function (step, quizItemId) {
             QuestionsService.getPermissions(quizItemId).then(function (result) {
@@ -373,38 +420,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
         };
 
 
-        function openQuestionDialog(step, quizItem, isUpdate) {
-
-            persistScroll();
-            var modelContent = {};
-            modelContent.templateUrl = 'views/questions/addCreateUpdateDialog.html';
-            modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
-            modelContent.backdrop = 'static';
-            modelContent.controller = 'QuestionsAddUpdateDialogCtrl';
-            modelContent.resolve = {
-                lessonOverrideQuestion: function () {
-                    return lessonOverrideQuestionAndReopenDialog;
-                },
-                quizItem: function () {
-                    return quizItem;
-                },
-                isUpdate: function () {
-                    return isUpdate;
-                },
-                addItemToQuiz: function () {
-                    return addItemToQuiz;
-                },
-                step: function () {
-                    return step;
-                }
-            };
-            var modelInstance = $uibModal.open(modelContent);
-            modelInstance.result.then(function () {
-                scrollToPersistPosition();
-            }, function () {
-                scrollToPersistPosition();
-            });
-        }
+        
 
         $scope.isLessonInvalid = function () {
             return !!$scope.lesson && !$scope.lesson.name;
@@ -428,21 +444,6 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 }
             }
         });
-
-        function persistScroll() {
-            if (!$rootScope.scrollPosition) {
-                $rootScope.scrollPosition = {};
-            }
-            $rootScope.scrollPosition[$location.path()] = $window.scrollY;
-        }
-
-        function scrollToPersistPosition() {
-            var scrollY = 0;
-            if (!!$rootScope.scrollPosition) {
-                scrollY = $rootScope.scrollPosition[$location.path()] || 0;
-            }
-            $window.scrollTo(0, scrollY);
-        }
 
 
         $scope.$watch(function () {

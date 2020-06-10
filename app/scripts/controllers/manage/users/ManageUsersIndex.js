@@ -30,7 +30,6 @@ angular.module('lergoApp')
             $log.debug('loading users');
             LergoClient.users.getAll(queryObj).then(function(result) {
                 $scope.users = result.data.data;
-                console.log($scope.users);
                 $scope.totalUsers = result.data.count;
                 $scope.filterPage.count = result.data.count; // the number of
                 // lessons found
