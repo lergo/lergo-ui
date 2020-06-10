@@ -51,7 +51,7 @@
                             <td>{{'admin.created'|translate}}</td>
                             <td>{{'admin.publicFrom'|translate}}</td>
                             <td>{{'admin.questions'|translate}}</td>
-                            <td>{{'admin.adminComments'|translate}}</td>
+                            <td class="col-width-mobile" >{{'admin.adminComments'|translate}}</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@
                             <td>
                                 <input type="checkbox" style="margin-left: 5px;" ng-model="l.selected">
                             </td>
-                            <td dir="auto" class="name" style="width: 200px; white-space: normal">
+                            <td dir="auto" style="width: 200px; white-space: normal">
                                 <a ng-show="!!l.name && l.name.trim().length > 0" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">{{
                                     l.name }}</a>
                                 <a ng-show="!l.name || l.name.trim().length <= 0" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{l._id}}/intro">[ no
@@ -74,7 +74,7 @@
                             <td>{{l.createdAt | date:'d-MMM-yyyy HH:mm'}}</td>
                             <td>{{l.public | date:'d-MMM-yyyy HH:mm' }}</td>
                             <td>{{ l | countQuestionsOnLesson }}</td>
-                            <td>{{ l.adminComment}}</td>
+                            <td style="width: 200px; white-space: normal">{{ l.adminComment}}</td>
                         </tr>
                         </tbody>
                     </table>

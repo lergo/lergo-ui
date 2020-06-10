@@ -49,3 +49,14 @@
     }
 }
 
+// small hack to have a clickable filter in manage lessons view
+
+#admin{
+    tr[ng-repeat^="l in lessons"]{
+        .name{
+            a{
+                word-break: break-all;
+            }
+        }
+    }
+}
