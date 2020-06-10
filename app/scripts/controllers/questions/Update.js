@@ -15,6 +15,33 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
         $scope.types = QuestionsService.questionsType;
         $scope.subjects = LergoFilterService.subjects;
         $scope.languages = LergoFilterService.languages;
+        
+        function isExpPerAnsCollapsed(quizItem) {
+            return _.some(quizItem.options, function (option) {
+                return !option.checked && !!option.textExplanation;
+            });
+        }
+
+        /* remove deleted question from all quizItems in all lessons */
+		function getLessonWhoUseThisQuestionAndRemoveQuestion(questionId) {
+            var lessonsWhoUseThisQuestion = null;
+            LergoClient.lessons.getLessonsWhoUseThisQuestion(questionId || $scope.quizItem._id).then(function (result) {
+                lessonsWhoUseThisQuestion = result.data;
+                $log.debug('usage of this question in lessons is ',lessonsWhoUseThisQuestion.length);
+                angular.forEach(lessonsWhoUseThisQuestion, function(lesson) {
+                    for (var i in lesson.steps ) {
+                        if (lesson.steps[i].quizItems && lesson.steps[i].quizItems.indexOf(questionId) !== -1) {
+                            lesson.steps[i].quizItems.splice(lesson.steps[i].quizItems.indexOf(questionId), 1);
+                            LergoClient.lessons.update(lesson);
+                        }
+                    }
+                    $log.debug('deleting questionId ',questionId);
+                    QuestionsService.deleteQuestion(questionId);
+                });
+            }, function (result) {
+                toastr.error('cannot find usages, got error', result.data);
+            });
+        }
 
         function loadQuestion() {
             QuestionsService.getQuestionById(questionId).then(function (result) {
@@ -32,13 +59,6 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
                 $log.error($scope.errorMessage);
             });
         }
-
-        function isExpPerAnsCollapsed(quizItem) {
-            return _.some(quizItem.options, function (option) {
-                return !option.checked && !!option.textExplanation;
-            });
-        }
-
 
         if (!!questionId) {
             loadQuestion();
@@ -140,7 +160,9 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
                 if (!answer) {
                     event.preventDefault();
                 } else {
-                    QuestionsService.deleteQuestion(questionId);
+
+                    getLessonWhoUseThisQuestionAndRemoveQuestion(questionId);
+                    /* QuestionsService.deleteQuestion(questionId); */
                 }
             }
         });
