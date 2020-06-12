@@ -444,6 +444,39 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 }
             }
         });
+        
+
+        //delete invalid step in lesson on location change
+        $scope.$on('$locationChangeStart', function () {
+            if ($scope.lesson) {
+                var lesson = $scope.lesson;
+                for (var i in lesson.steps ) {
+                    if (!$scope.isStepValid(lesson.steps[i])) {
+                        $log.info('deleting invalid step');
+                        lesson.steps.splice(i, 1);
+                        LergoClient.lessons.update(lesson);
+                    }
+                }
+            }
+        });
+            
+
+        //determine if step is valid 
+        $scope.isStepValid = function (step) {
+            if (!step.title) {
+                return false;
+            }
+            if (!step.type) {
+                return false;
+            }
+            if (step.type === 'video' || step.type === 'slide') {
+                return true;
+            }
+            if (!step.quizItems || !step.quizItems[0] || step.quizItems[0].length === 0) {
+                return false;
+            }
+            return true;
+        };
 
 
         $scope.$watch(function () {
