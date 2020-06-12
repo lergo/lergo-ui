@@ -374,11 +374,7 @@ angular.module('lergoApp')
             'a',
             'b',
             'c',
-            'd',
-            'e',
-            'f',
-            'g',
-            'h'
+            'd'
         ];
 
         me.subjects = [
