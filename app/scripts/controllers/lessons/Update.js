@@ -450,9 +450,9 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
         $scope.$on('$locationChangeStart', function () {
             if ($scope.lesson) {
                 var lesson = $scope.lesson;
-                for (var i in lesson.steps ) {
+                for (var i = lesson.steps.length -1; i >= 0; i--) {
                     if (!$scope.isStepValid(lesson.steps[i])) {
-                        $log.info('deleting invalid step');
+                        $log.info('deleting invalid step ',i);
                         lesson.steps.splice(i, 1);
                         LergoClient.lessons.update(lesson);
                     }
@@ -463,15 +463,29 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
         //determine if step is valid 
         $scope.isStepValid = function (step) {
-            if (!step.type) {
+
+            if (!step.type) { // step type must be defined
                 return false;
             }
-            if (step.type === 'video' || step.type === 'slide') {
-                return true;
+
+            if (step.type === 'video'){
+                if (!step.videoUrl) {  // video must have something - will be red if invalid url
+                    return false;
+                }
             }
-            if (!step.quizItems || !step.quizItems[0] || step.quizItems[0].length === 0) {
-                return false;
+
+            if (step.type === 'slide') {
+                if(!step.slideURL) { // presentation must have something - will be red if invalid url
+                    return false;
+                }
             }
+
+            if (step.type === 'quiz') { // question must be added to quiz
+                if (!step.quizItems || !step.quizItems[0] || step.quizItems[0].length === 0) {
+                    return false;
+                }
+            }
+            
             return true;
         };
 
