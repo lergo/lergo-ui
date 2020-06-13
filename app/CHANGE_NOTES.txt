@@ -1,3 +1,4 @@
+lergo-ui bug(fix) change step.title to not be a requirement for a valid step
 lergo-ui remove invalid lesson.step of type quiz when the location changes 
 lergo-ui add 4 more options to admin ratings
 lergo-ui adding lesson correction for "my questions"

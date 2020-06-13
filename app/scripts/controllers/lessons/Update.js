@@ -463,9 +463,6 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
         //determine if step is valid 
         $scope.isStepValid = function (step) {
-            if (!step.title) {
-                return false;
-            }
             if (!step.type) {
                 return false;
             }
