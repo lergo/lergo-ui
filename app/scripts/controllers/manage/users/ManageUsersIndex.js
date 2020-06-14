@@ -42,11 +42,10 @@ angular.module('lergoApp')
 
         $scope.getUsersFromSignUpDate = function() {
             var queryObj = {
-                'filter' : _.merge({}, $scope.adminFilter),
+                'filter' : _.merge({'days': '90'}, $scope.adminFilter),
                 'sort' : {
                     '_id' : -1
                 },
-                'dollar_page' : $scope.filterPage
             };
             $log.debug('loading limitedUsers');
             console.log('in manageusersIndex queryObj: ', queryObj);
