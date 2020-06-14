@@ -40,7 +40,7 @@ angular.module('lergoApp')
             });
         };
 
-        $scope.getLimitedUsers = function() {
+        $scope.getUsersFromSignUpDate = function() {
             var queryObj = {
                 'filter' : _.merge({}, $scope.adminFilter),
                 'sort' : {
