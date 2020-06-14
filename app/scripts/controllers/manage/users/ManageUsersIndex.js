@@ -42,9 +42,7 @@ angular.module('lergoApp')
 
         $scope.getLimitedUsers = function() {
             var queryObj = {
-                'filter' : _.merge({
-                    }
-            , $scope.adminFilter),
+                'filter' : _.merge({}, $scope.adminFilter),
                 'sort' : {
                     '_id' : -1
                 },
@@ -52,7 +50,7 @@ angular.module('lergoApp')
             };
             $log.debug('loading limitedUsers');
             console.log('in manageusersIndex queryObj: ', queryObj);
-            LergoClient.users.getDays(queryObj).then(function(result) {
+            LergoClient.users.getDate(queryObj).then(function(result) {
                 $scope.limitedUsers = result.data.data;
                 $scope.totalLimitedUsers = result.data.count;
                 $scope.filterPage.count = result.data.count; // the number of

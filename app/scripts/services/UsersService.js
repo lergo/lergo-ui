@@ -13,6 +13,15 @@ angular.module('lergoApp').service('UsersService', function UsersService($http, 
         }});
     };
 
+    this.getDate = function( queryObj ) {
+        if ( !queryObj ){
+            throw new Error('should have at least a query object with pagination..');
+        }
+        return $http({'method' : 'GET' ,'url' : '/backend/users/get/date', 'params' : {
+            'query' : queryObj
+        }});
+    };
+
     var me = this;
 
     $rootScope.$watch('user', function( ){
