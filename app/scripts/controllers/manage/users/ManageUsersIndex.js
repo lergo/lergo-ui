@@ -41,21 +41,10 @@ angular.module('lergoApp')
         };
 
         $scope.getUsersFromSignUpDate = function() {
-            var queryObj = {
-                'filter' : _.merge({'days': '90'}, $scope.adminFilter),
-                'sort' : {
-                    '_id' : -1
-                },
-            };
-            $log.debug('loading limitedUsers');
-            console.log('in manageusersIndex queryObj: ', queryObj);
-            LergoClient.users.getDate(queryObj).then(function(result) {
+            $log.debug('gettingUsersFromSignUpDate');
+            LergoClient.users.getDate().then(function(result) {
                 $scope.limitedUsers = result.data.data;
                 $scope.totalLimitedUsers = result.data.count;
-                $scope.filterPage.count = result.data.count; // the number of
-                // lessons found
-                // after filtering
-                // them.
             });
         };
 
