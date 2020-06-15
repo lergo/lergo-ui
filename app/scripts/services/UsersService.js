@@ -13,8 +13,8 @@ angular.module('lergoApp').service('UsersService', function UsersService($http, 
         }});
     };
 
-    this.getDate = function() {
-        return $http({'method' : 'GET' ,'url' : '/backend/users/get/date'});
+    this.getDate = function(days) {
+        return $http({'method' : 'GET' ,'url' : '/backend/users/get/date', 'params' : { 'days': days}});
     };
 
     var me = this;

@@ -24,9 +24,23 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 top-padding">
                             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
                                 <div lergo-filter model="adminFilter" on-change="loadUsers()" opts="adminFilterOpts" on-load="filterLoaded()"></div>
-                                <div> <button type="button" ng-click="getUsersFromSignUpDate()" > show limited users {{ totalLimitedUsers }} </button> </div>   
                             </div>
+                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
+
+                                <div >Download by number of days</div>
+                                <div class="lergo-form">
+                                    <input type="text" ng-model="days" >
+                                    <div> 
+                                        <a type="button" ng-click="getUsersFromSignUpDate(days)" > 
+                                            Get users after signup day {{ totalLimitedUsers }} 
+                                        </a>
+                                     </div>  
+                                </div>
+                            </div>  
                         </div>
+
+                       
+                       
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             <div class="table-responsive">
                                 <table class="table   ">

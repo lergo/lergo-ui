@@ -39,11 +39,15 @@ angular.module('lergoApp')
                 // them.
             });
         };
-
-        $scope.getUsersFromSignUpDate = function() {
+        $scope.days = '30';
+        $scope.getUsersFromSignUpDate = function(days) {
+            // if (days > 99) {
+            //     days = 99
+            // }
             $log.debug('gettingUsersFromSignUpDate');
-            LergoClient.users.getDate().then(function(result) {
+            LergoClient.users.getDate(days).then(function(result) {
                 $scope.limitedUsers = result.data.data;
+                console.log('..............', $scope.limitedUsers);
                 $scope.totalLimitedUsers = result.data.count;
             });
         };
