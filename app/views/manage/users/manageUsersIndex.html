@@ -25,10 +25,10 @@
                             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
                                 <div lergo-filter model="adminFilter" on-change="loadUsers()" opts="adminFilterOpts" on-load="filterLoaded()"></div>
                             </div>
-                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" style="padding:0 15px" >
+                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 by-days" >
                                 <form name="filter" class="filters lergo-form">
                                     <div>
-                                        <div class="label">User by sign-up</div>
+                                        <div class="label">{{'admin.users.byDays' | translate}}</div>
                                         <div class="input-group">
                                             <input ng-model="days" ng-model-options="{updateOn:'change blur'}"
                                                 placeholder="Enter number" style="border-radius: 0"/>

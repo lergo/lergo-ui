@@ -65,6 +65,9 @@
     "questions": "# Q.",
     "report": "Report",
     "status": "Status",
+    "users" : {
+      "byDays": "User by days"
+    },
     "views": "# Views"
   },
   "advancedOptions": "Advanced options",
