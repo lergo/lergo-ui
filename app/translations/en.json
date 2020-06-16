@@ -67,7 +67,8 @@
     "status": "Status",
     "users" : {
       "byDays": "User by days",
-      "newUsers": "New Users"
+      "newUsers": "New Users",
+      "download": "download new users"
     },
     "views": "# Views"
   },

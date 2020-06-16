@@ -25,7 +25,7 @@
                             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
                                 <div lergo-filter model="adminFilter" on-change="loadUsers()" opts="adminFilterOpts" on-load="filterLoaded()"></div>
                             </div>
-                            <div class="col-lg-10 col-md-10 col-sm-12 hidden-xs by-days" >
+                            <div class="col-lg-5 col-5-10 col-sm-12 hidden-xs by-days" >
                                 <form name="filter" class="filters lergo-form">
                                     <div>
                                         <div class="label">{{'admin.users.byDays' | translate}}</div>
@@ -38,10 +38,8 @@
                                         </div>
                                         <br>
                                         <div>{{'admin.users.newUsers' | translate }}: {{totalLimitedUsers}}</div>
-                                        <a style="outline: none;" csv-header="['email', 'fullname', 'username', 'validated', 'sign up date']" class="btn-link "  filename="20-July-2020.csv" ng-csv="limitedUsers" >{{'invites.exportReports'|translate}}</a>
-                                        <!-- csv-header="localizedHeaders()" filename="20-July-2020">{{'invites.exportReports'|translate}}</a> -->
+                                        <a style="outline: none;" csv-header="['email', 'fullname', 'username', 'validated', 'sign up date']" class="btn-link "  filename="20-July-2020.csv" ng-csv="limitedUsers" >{{'admin.users.download'|translate}}</a>
                                      <hr />
-                                     <!-- <a ng-click="getReports()">test reports</a> -->
                                     </div>
                                 </form>
                             </div>  
