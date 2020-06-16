@@ -8,7 +8,7 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('ManageUsersIndexCtrl', function($scope, LergoClient, $log) {
+    .controller('ManageUsersIndexCtrl', function($scope, LergoClient, $log, $translate) {
 
 
         $scope.adminFilter = {};
@@ -51,38 +51,28 @@ angular.module('lergoApp')
             LergoClient.users.getDate(days).then(function(result) {
                 $scope.limitedUsers = result.data.data;
                 console.log('..............', $scope.limitedUsers);
-                userData = $scope.limitedUsers;
                 $scope.totalLimitedUsers = result.data.count;
-                //ng-csv
-                // var headers = $scope.localizedHeaders();
-                
             });
         };
-
+        // use this ng-csv users
         // $scope.getReports = function () {
-            
         //     var headers = $scope.localizedHeaders();
-    
         //         var data = _.map($scope.limitedUsers, function (item) {
-        //             console.log('item is ', item);
+        //             console.log('................................the item is: ', item);
         //             var report = {};
-        //             report[headers[0]] = item.data.lesson.name;
-        //             report[headers[1]] = item.data.invitee.name;
-        //             report[headers[2]] = item.data.invitee.class;
-        //             report[headers[3]] = $translate.instant('filters.subjects.'+item.data.lesson.subject);
-        //             report[headers[4]] = $filter('date')(item.lastUpdate, 'medium');
-        //             report[headers[5]] = item.correctPercentage;
-        //             if (item.duration !== 0) {
-        //                 report[headers[6]] = $filter('duration')(item.duration);
-        //             } else {
-        //                 report[headers[6]] = $translate.instant('report.incomplete');
-        //             }
+        //             report[headers[0]] = item.email;
+        //             report[headers[1]] = item.fullName;
+        //             report[headers[2]] = item.userName;
+        //             report[headers[3]] = item.validated;
+        //             report[headers[4]] = item._id;
+        //             console.log('the report is ', report);
         //             return report;
-        //         }
-               
+        //         });
+        //         console.log('the data is: ', data);
         // };
+    
 
-       
+        
 
         $scope.getUserSignUpDate = function (user) {
             return new Date(parseInt(user._id.substring(0, 8), 16) * 1000);
