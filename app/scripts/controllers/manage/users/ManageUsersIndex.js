@@ -56,9 +56,9 @@ angular.module('lergoApp')
                         $scope.limitedUsers[i].validated = false;
                         }
                     $scope.limitedUsers[i].signupDate = $scope.getUserSignUpDate($scope.limitedUsers[i]);
+                    delete $scope.limitedUsers[i]._id;  //remove the _id field
                 }
                 
-                $scope.limitedUsers.forEach(user => user.signupDate = $scope.getUserSignUpDate(user));
                 console.log('..............', $scope.limitedUsers);
                 $scope.totalLimitedUsers = result.data.count;
             });
