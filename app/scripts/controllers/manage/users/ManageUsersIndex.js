@@ -55,17 +55,18 @@ angular.module('lergoApp')
                     if (!$scope.limitedUsers[i].validated || $scope.limitedUsers[i].validated !== true) {
                         $scope.limitedUsers[i].validated = false;
                     }
-                    $scope.limitedUsers[i].signupDate = $scope.getUserSignUpDate($scope.limitedUsers[i]);
+                    $scope.limitedUsers[i].signupDate = $scope.getUserSignUpDateForDownload($scope.limitedUsers[i]);
                     delete $scope.limitedUsers[i]._id;  //remove the _id field
                 }
                 $scope.totalLimitedUsers = result.data.count;
             });
         };
     
-        $scope.getUserSignUpDate = function (user) {
+        $scope.getUserSignUpDateForDownload = function (user) {
             var signupDate = new Date(parseInt(user._id.substring(0, 8), 16) * 1000);
             return signupDate.toISOString().substring(0,10);
         };
-
-
+        $scope.getUserSignUpDate = function (user) {
+            return new Date(parseInt(user._id.substring(0, 8), 16) * 1000);
+        };
     });
