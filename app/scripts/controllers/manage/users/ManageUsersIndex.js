@@ -43,7 +43,6 @@ angular.module('lergoApp')
         $scope.localizedHeaders = function () {
             return _.map($scope.headers, $translate.instant);
         };
-        var userData = null;
         $scope.getUsersFromSignUpDate = function(days) {
             // if (days > 99) {
             //     days = 99
@@ -59,9 +58,6 @@ angular.module('lergoApp')
                 
             });
         };
-        $scope.getUserData = function() {
-            return userData;
-        }
 
         // $scope.getReports = function () {
             
