@@ -84,7 +84,7 @@ angular.module('lergoApp')
 
         $scope.getUserSignUpDate = function (user) {
             var signupDate = new Date(parseInt(user._id.substring(0, 8), 16) * 1000);
-            return signupDate.toISOString().substring(0,20);
+            return signupDate.toISOString().substring(0,12);
         };
 
 
