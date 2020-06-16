@@ -49,7 +49,10 @@ angular.module('lergoApp')
             // }
             $log.debug('gettingUsersFromSignUpDate');
             LergoClient.users.getDate(days).then(function(result) {
+                
                 $scope.limitedUsers = result.data.data;
+                
+                $scope.limitedUsers.forEach(user => user.signupDate = $scope.getUserSignUpDate(user));
                 console.log('..............', $scope.limitedUsers);
                 $scope.totalLimitedUsers = result.data.count;
             });
