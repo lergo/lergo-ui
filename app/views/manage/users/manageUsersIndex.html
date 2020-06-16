@@ -38,7 +38,7 @@
                                         </div>
                                         <br>
                                         <div>{{'admin.users.newUsers' | translate }}: {{totalLimitedUsers}}</div>
-                                        <a style="outline: none;" class="btn-link "  filename="20-July-2020.csv" ng-csv="limitedUsers" >{{'invites.exportReports'|translate}}</a>
+                                        <a style="outline: none;" csv-header="['email', 'fullname', 'username', 'validated', 'sign up date']" class="btn-link "  filename="20-July-2020.csv" ng-csv="limitedUsers" >{{'invites.exportReports'|translate}}</a>
                                         <!-- csv-header="localizedHeaders()" filename="20-July-2020">{{'invites.exportReports'|translate}}</a> -->
                                      <hr />
                                      <!-- <a ng-click="getReports()">test reports</a> -->
