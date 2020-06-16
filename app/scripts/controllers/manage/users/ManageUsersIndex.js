@@ -51,6 +51,12 @@ angular.module('lergoApp')
             LergoClient.users.getDate(days).then(function(result) {
                 
                 $scope.limitedUsers = result.data.data;
+                for (var i = 0; i < $scope.limitedUsers.length; i++) {
+                    if (!$scope.limitedUsers[i].validated || $scope.limitedUsers[i].validated !== true) {
+                        $scope.limitedUsers[i].validated = false;
+                        }
+                    $scope.limitedUsers[i].signupDate = $scope.getUserSignUpDate($scope.limitedUsers[i]);
+                }
                 
                 $scope.limitedUsers.forEach(user => user.signupDate = $scope.getUserSignUpDate(user));
                 console.log('..............', $scope.limitedUsers);
@@ -58,21 +64,20 @@ angular.module('lergoApp')
             });
         };
         // use this ng-csv users
-        // $scope.getReports = function () {
-        //     var headers = $scope.localizedHeaders();
-        //         var data = _.map($scope.limitedUsers, function (item) {
-        //             console.log('................................the item is: ', item);
-        //             var report = {};
-        //             report[headers[0]] = item.email;
-        //             report[headers[1]] = item.fullName;
-        //             report[headers[2]] = item.userName;
-        //             report[headers[3]] = item.validated;
-        //             report[headers[4]] = item._id;
-        //             console.log('the report is ', report);
-        //             return report;
-        //         });
-        //         console.log('the data is: ', data);
-        // };
+        $scope.getReports = function () {
+            var headers = $scope.localizedHeaders();
+                var data = _.map($scope.limitedUsers, function (item) {
+                    var report = {};
+                    report[headers[0]] = item.email;
+                    report[headers[1]] = item.fullName;
+                    report[headers[2]] = item.username;
+                    report[headers[3]] = item.validated;
+                    report[headers[4]] = item.signupDate
+                    console.log('the report is ', report);
+                    return report;
+                });
+                console.log('the data is: ', data);
+        };
     
 
         
