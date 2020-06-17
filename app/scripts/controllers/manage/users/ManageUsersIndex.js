@@ -39,16 +39,41 @@ angular.module('lergoApp')
                 // them.
             });
         };
-        $scope.days = '30';
+
+        var getDateNow = function() {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1;
+            var yyyy = today.getFullYear();
+            var hh = today.getHours();
+            var min = today.getMinutes();
+            if(dd<10) {
+                dd='0'+dd;
+            }
+            if(mm<10) {
+                mm='0'+mm;
+            }
+            if(hh<10) {
+                hh='0'+hh;
+            }
+            if(min<10) {
+                min='0'+min;
+            }
+            today = `${dd}-${mm}-${yyyy}-${hh}:${min}`;
+            return 'latestUsers-'+today;
+        };
+
+        $scope.usermodel = {};
+        $scope.usermodel.days = '30';
         $scope.localizedHeaders = function () {
             return _.map($scope.headers, $translate.instant);
         };
-        $scope.getUsersFromSignUpDate = function(days) {
-            if (days > 99) {
-                days = 60;
+        $scope.getUsersFromSignUpDate = function() {
+            if ($scope.usermodel.days > 99) {
+                $scope.usermodel.days = 30;
             }
             $log.debug('gettingUsersFromSignUpDate');
-            LergoClient.users.getDate(days).then(function(result) {
+            LergoClient.users.getDate($scope.usermodel.days).then(function(result) {
                 
                 $scope.limitedUsers = result.data.data;
                 for (var i = 0; i < $scope.limitedUsers.length; i++) {
@@ -59,6 +84,7 @@ angular.module('lergoApp')
                     delete $scope.limitedUsers[i]._id;  //remove the _id field
                 }
                 $scope.totalLimitedUsers = result.data.count;
+                $scope.usermodel.name = getDateNow();
             });
         };
     
