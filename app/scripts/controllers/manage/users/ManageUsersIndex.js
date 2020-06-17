@@ -59,8 +59,8 @@ angular.module('lergoApp')
             if(min<10) {
                 min='0'+min;
             }
-            today = `${dd}-${mm}-${yyyy}-${hh}:${min}`;
-            return 'latestUsers-'+today;
+            var name = 'latestUsers-'+dd+'-'+mm+'-'+yyyy+'-'+hh+':'+min;
+            return name;
         };
 
         $scope.usermodel = {};
