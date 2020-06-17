@@ -59,7 +59,7 @@ angular.module('lergoApp')
             if(min<10) {
                 min='0'+min;
             }
-            var name = 'latestUsers-'+dd+'-'+mm+'-'+yyyy+'-'+hh+':'+min;
+            var name = 'latestUsers-'+dd+'-'+mm+'-'+yyyy+'-'+hh+':'+min+'.csv';
             return name;
         };
 
