@@ -153,7 +153,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                         });
                     });
                 $scope.users = b;
-                $log.info('number of users with public lessons is ',b.length);
+                $log.info('finding number of users with public lessons');
             });
 
             var userPermissions = null;
@@ -449,12 +449,12 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             /**
              *
              * @param propertyName
-             * @param scopeVariable
+             * @param scopeVariabl
              * @returns {Function}
              */
 			function minMaxFilter(propertyName, scopeVariable ) {
 				return function(newValue, oldValue) {
-					$log.info('min max filter changed ', scopeVariable, newValue, oldValue, propertyName);
+					$log.info('min max filter changed ', oldValue);
 
 
                     var model = $scope.model[propertyName];
@@ -719,7 +719,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
             setDefaultLanguage(); // have to be below "persistAll" or otherwise default value will apply regardless
 
-			$log.info('filter loaded. calling callback', scope.load);
+			$log.info('filter loaded. calling callback');
 
             // load triggers now moved to 'permissions' callback.. only after we apply limits is the filter really loaded.
 

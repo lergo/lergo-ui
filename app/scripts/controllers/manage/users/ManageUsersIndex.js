@@ -28,7 +28,6 @@ angular.module('lergoApp')
                 },
                 'dollar_page' : $scope.filterPage
             };
-            console.log('queryObj.filter: ', queryObj.filter);
             $log.debug('loading users');
             LergoClient.users.getAll(queryObj).then(function(result) {
                 $scope.users = result.data.data;
