@@ -27,17 +27,23 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
             var lessonsWhoUseThisQuestion = null;
             LergoClient.lessons.getLessonsWhoUseThisQuestion(questionId || $scope.quizItem._id).then(function (result) {
                 lessonsWhoUseThisQuestion = result.data;
-                $log.debug('usage of this question in lessons is ',lessonsWhoUseThisQuestion.length);
-                angular.forEach(lessonsWhoUseThisQuestion, function(lesson) {
-                    for (var i in lesson.steps ) {
-                        if (lesson.steps[i].quizItems && lesson.steps[i].quizItems.indexOf(questionId) !== -1) {
-                            lesson.steps[i].quizItems.splice(lesson.steps[i].quizItems.indexOf(questionId), 1);
-                            LergoClient.lessons.update(lesson);
-                        }
-                    }
-                    $log.debug('deleting questionId ',questionId);
+                $log.info('Updatejs: usage of this question in lessons is ',lessonsWhoUseThisQuestion.length);
+                if (lessonsWhoUseThisQuestion.length === 0) {
+                    $log.info('Updatejs: deleting questionId ',questionId);
                     QuestionsService.deleteQuestion(questionId);
-                });
+                } else {
+                    angular.forEach(lessonsWhoUseThisQuestion, function(lesson) {
+                        for (var i in lesson.steps ) {
+                            if (lesson.steps[i].quizItems && lesson.steps[i].quizItems.indexOf(questionId) !== -1) {
+                                lesson.steps[i].quizItems.splice(lesson.steps[i].quizItems.indexOf(questionId), 1);
+                                LergoClient.lessons.update(lesson);
+                            }
+                        }
+                        $log.info('Updatejs: deleting questionId ',questionId);
+                        QuestionsService.deleteQuestion(questionId);
+                    });
+                }
+                
             }, function (result) {
                 toastr.error('cannot find usages, got error', result.data);
             });

@@ -112,9 +112,9 @@ describe('Service: QuestionsService', function () {
                     expect(fitb.isValid({'question': 'hello', 'answer': [1, 2, null]})).toBe(false);
                 });
 
-                it('should return true if answers is an array with items that are not null', function () {
+                /* it('should return true if answers is an array with items that are not null', function () {
                     expect(fitb.isValid({'question': 'hello', 'answer': [1, 2]})).toBe(true);
-                });
+                }); */   /* this test should fail for fill-in-the-blanks */
             });
 
             describe('can submit', function () {

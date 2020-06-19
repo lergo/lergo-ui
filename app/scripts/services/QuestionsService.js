@@ -240,6 +240,10 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
             if (quizItem.answer.length === 0) {
                 return false;
             }
+            if ((quizItem.question.split('___').length -1) !== quizItem.answer.length ) {
+                return false;
+            }
+
             var result = true;
             quizItem.answer.forEach(function (value) {
                 if (!value) {
