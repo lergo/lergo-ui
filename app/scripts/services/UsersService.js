@@ -13,6 +13,10 @@ angular.module('lergoApp').service('UsersService', function UsersService($http, 
         }});
     };
 
+    this.getDate = function(days) {
+        return $http({'method' : 'GET' ,'url' : '/backend/users/get/date', 'params' : { 'days': days}});
+    };
+
     var me = this;
 
     $rootScope.$watch('user', function( ){

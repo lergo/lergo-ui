@@ -1,3 +1,4 @@
+lergo-ui and lergo-ri - adding csv capability to download users by period
 lergo-ui steps without any link (video or presentation) are also invalid. fix bug to remove more 
     than 1 invalid step by doing splice in reverse order
 lergo-ui bug(fix) change step.title to not be a requirement for a valid step

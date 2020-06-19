@@ -25,7 +25,26 @@
                             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
                                 <div lergo-filter model="adminFilter" on-change="loadUsers()" opts="adminFilterOpts" on-load="filterLoaded()"></div>
                             </div>
+                            <div class="col-lg-7 col-md-8 col-sm-12 hidden-xs by-days" >
+                                <form name="filter" class="filters lergo-form">
+                                    <div>
+                                        <div class="label">{{'admin.users.byDays' | translate}}</div>
+                                        <div class="input-group">
+                                            <input ng-model="usermodel.days" ng-model-options="{updateOn:'change blur'}"
+                                                placeholder="Enter number" style="border-radius: 0"/>
+                                            <span class="input-group-addon" style="cursor: pointer">
+                                                <a ng-click="getUsersFromSignUpDate()"><i class="fa fa-search" aria-hidden="true"></i></a> 
+                                            </span>
+                                        </div>
+                                        <br>
+                                        <div>{{'admin.users.newUsers' | translate }}: {{totalLimitedUsers}}</div>
+                                        <a style="outline: none;" csv-header="['Email', 'Full name', 'User name', 'Validated', 'Sign up date']" class="btn-link "  filename="{{usermodel.name}}" ng-csv="limitedUsers" >{{'admin.users.download'|translate}}</a>
+                                     <hr />
+                                    </div>
+                                </form>
+                            </div>  
                         </div>
+ 
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             <div class="table-responsive">
                                 <table class="table   ">
