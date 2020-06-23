@@ -307,7 +307,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 var modelKey = 'removeCreatedBy';
                 if ( newValue !== oldValue ){
                     if ( newValue ){
-                        $scope.model[modelKey] = { dollar_exists : false };
+                        $scope.model[modelKey] = { dollar_exists : true };
                     }else{
                         delete $scope.model[modelKey];
                     }
