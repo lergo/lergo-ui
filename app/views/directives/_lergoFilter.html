@@ -101,6 +101,15 @@
                         </select>
                     </div>
                 </span>
+
+                 <!--  removeSubject: for admin use -->
+                <span ng-show="!!opts.showRemoveSubject">
+                        <div class="label">{{'filters.labels.removeSubject' | translate }}</div>
+                            <div class="input">
+                                <input type="checkbox" ng-model="removeSubject"/>
+                            </div>
+                    </span>
+
                 <span ng-show="!!opts.showLimitedAge" class="limited-age">
                     <div class="label">{{'filters.labels.ageRange' | translate }}</div>
                     <div>
@@ -220,6 +229,14 @@
                                uib-typeahead="user as user.username for user in users | filter:$viewValue | limitTo:15 ">
                     </div>
                 </div>
+                <!--  removeCreatedBy: for admin use -->
+                <span ng-show="!!opts.showRemoveCreatedBy">
+                    <div class="label">{{'filters.labels.removeCreatedBy' | translate }}</div>
+                        <div class="input">
+                            <input type="checkbox" ng-model="removeCreatedBy"/>
+                        </div>
+                </span>
+
                 <div ng-show="!!opts.showCreatedByAll" class='container-fluid'>
                     <div class="label">{{'filters.labels.createdByAll' | translate}}</div>
                     <div class="input">

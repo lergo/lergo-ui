@@ -289,6 +289,32 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             }
             $scope.$watch('isCopyOf', _updateIsCopyOf);
 
+            // removeSubject: for Admin use
+            function _updateRemoveSubject(newValue, oldValue){
+                var modelKey = 'removeSubject';
+                if ( newValue !== oldValue ){
+                    if ( newValue ){
+                        $scope.model[modelKey] = { dollar_exists : false };
+                    }else{
+                        delete $scope.model[modelKey];
+                    }
+                }
+            }
+            $scope.$watch('removeSubject', _updateRemoveSubject);
+
+            // removeCreatedBy: for Admin use
+            function _updateRemoveCreatedBy(newValue, oldValue){
+                var modelKey = 'removeCreatedBy';
+                if ( newValue !== oldValue ){
+                    if ( newValue ){
+                        $scope.model[modelKey] = { dollar_exists : false };
+                    }else{
+                        delete $scope.model[modelKey];
+                    }
+                }
+            }
+            $scope.$watch('removeCreatedBy', _updateRemoveCreatedBy);
+
             // hasAdminComment: for Admin use
             function _updateHasAdminComment(newValue, oldValue){
                 var modelKey = 'adminComment';
@@ -703,6 +729,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORT_LESSON] =  _updateReportLesson ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.HAS_QUESTIONS] =  _updateHasQuestions ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.IS_COPY_OF] =  _updateIsCopyOf ;
+            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REMOVE_CREATED_BY] =  _updateRemoveCreatedBy ;
+            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REMOVE_SUBJECT] =  _updateRemoveSubject ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.HAS_ADMIN_COMMENT] =  _updateHasAdminComment ;
 
             function reload( newValue, oldValue ){
