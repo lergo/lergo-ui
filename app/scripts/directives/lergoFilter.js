@@ -312,6 +312,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                         $scope.model[modelKey] = { dollar_exists : false };
                     }else{
                         delete $scope.model[modelKey];
+                        $scope.ninSubject = [];
+
                     }
                 }
             }
@@ -602,14 +604,19 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             }
 
 			// handle 'all' values or null values - simply remove them from the
-			// model.
+            // model.
+            $scope.ninSubject = [];
 			$scope.$watch('model', function(newValue, oldValue) {
 
                 if (newValue !== oldValue) {
                     _.each(['subject', 'adminRating', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'finished', 'data.lessonId'], function (prop) {
                         if ($scope.model[prop] === undefined || $scope.model[prop] === null || $scope.model[prop] === '' || $scope.model[prop] === 'all') {
                             delete $scope.model[prop];
-                        }
+                        } else {
+                            if(prop === 'subject') {
+                                $scope.ninSubject = _.union([$scope.model[prop]], $scope.ninSubject);
+                            }
+                        } 
                     });
                 }
 
