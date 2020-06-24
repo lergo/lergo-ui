@@ -234,7 +234,7 @@
                     <div class="label" >{{'filters.labels.removeCreatedBy' | translate }}</div>
                         <div class="input">
                             <input style="outline: 2px solid aquamarine" type="checkbox" ng-model="removeCreatedBy"/>
-                            <span style="font-size: 12px;" ng-show="removeCreatedBy">{{ninCreatedBy}}</span>
+                            <span  ng-show="removeCreatedBy" ng-repeat="name in ninCreatedBy" > {{name}} </span>
                         </div>
                    
                 </span>
