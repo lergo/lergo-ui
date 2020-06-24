@@ -232,9 +232,9 @@
                 <!--  removeCreatedBy: for admin use -->
                 <span ng-show="!!opts.showRemoveCreatedBy">
                     <div class="label" >{{'filters.labels.removeCreatedBy' | translate }}</div>
-                        <div class="input">
-                            <input style="outline: 2px solid aquamarine" type="checkbox" ng-model="removeCreatedBy"/>
-                            <span style="display: table-cell; display: inline; background-color: rgb(240, 221, 187);"  ng-show="removeCreatedBy" ng-repeat="name in ninCreatedBy" > {{name}}, </span>
+                        <div class="input admin-filter">
+                            <input type="checkbox" ng-model="removeCreatedBy"/>
+                            <span ng-show="removeCreatedBy" ng-repeat="name in ninCreatedBy" > {{name}}, </span>
                         </div>
                    
                 </span>
