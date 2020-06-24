@@ -199,17 +199,33 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 },1);
 
             });
-
+            $scope.ninCreatedBy = [];
 			function _updateCreatedBy(newValue, oldValue) {
 				if (newValue !== oldValue) {
 					if (!!newValue && newValue.hasOwnProperty('_id')) {
-						$scope.model.userId = $scope.createdBy._id;
+                        $scope.model.userId = $scope.createdBy._id;
+                            $scope.ninCreatedBy = _.union([$scope.createdBy.username], $scope.ninCreatedBy);
+                            console.log('---------the createdBy arrays is ', $scope.ninCreatedBy);
 					} else {
-						delete $scope.model.userId;
+                        delete $scope.model.userId;
 					}
 				}
 			}
             $scope.$watch('createdBy', _updateCreatedBy, true);
+
+            // removeCreatedBy: for Admin use
+            function _updateRemoveCreatedBy(newValue, oldValue){
+                var modelKey = 'removeCreatedBy';
+                if ( newValue !== oldValue ){
+                    if ( newValue ){
+                        $scope.model[modelKey] = { dollar_exists : true };
+                    }else{
+                        delete $scope.model[modelKey];
+                        $scope.ninCreatedBy = [];
+                    }
+                }
+            }
+            $scope.$watch('removeCreatedBy', _updateRemoveCreatedBy);
 
             // createdByAll access to all users for admin filter
             function _updateCreatedByAll(newValue, oldValue) {
@@ -301,19 +317,6 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 }
             }
             $scope.$watch('removeSubject', _updateRemoveSubject);
-
-            // removeCreatedBy: for Admin use
-            function _updateRemoveCreatedBy(newValue, oldValue){
-                var modelKey = 'removeCreatedBy';
-                if ( newValue !== oldValue ){
-                    if ( newValue ){
-                        $scope.model[modelKey] = { dollar_exists : true };
-                    }else{
-                        delete $scope.model[modelKey];
-                    }
-                }
-            }
-            $scope.$watch('removeCreatedBy', _updateRemoveCreatedBy);
 
             // hasAdminComment: for Admin use
             function _updateHasAdminComment(newValue, oldValue){
