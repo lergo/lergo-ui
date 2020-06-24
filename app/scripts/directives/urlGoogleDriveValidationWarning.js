@@ -23,7 +23,8 @@ angular.module('lergoApp')
                         scope.preferedLink = true;
                         if (scope.googleDriveLink ) {
                             var validCoverPageUrl = /^https:\/\/drive\.google\.com/.test(scope.googleDriveLink);
-                            if (!validCoverPageUrl) {
+                            var awsValidCoverPage = /^https:\/\/s3-eu-west-1\.amazonaws\.com/.test(scope.googleDriveLink);
+                            if (!validCoverPageUrl && !awsValidCoverPage) {
                                 scope.preferedLink = false;
                                 setTimeout(function(){ scope.preferedLink = true; }, 3000);
                             }
