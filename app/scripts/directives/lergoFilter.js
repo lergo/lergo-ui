@@ -204,8 +204,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 				if (newValue !== oldValue) {
 					if (!!newValue && newValue.hasOwnProperty('_id')) {
                         $scope.model.userId = $scope.createdBy._id;
-                            $scope.ninCreatedBy = _.union([$scope.createdBy.username], $scope.ninCreatedBy);
-                            console.log('---------the createdBy arrays is ', $scope.ninCreatedBy);
+                        $scope.ninCreatedBy = _.union([$scope.createdBy.username], $scope.ninCreatedBy);
 					} else {
                         delete $scope.model.userId;
 					}

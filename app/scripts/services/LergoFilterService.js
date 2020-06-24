@@ -217,7 +217,7 @@ angular.module('lergoApp')
             'MODEL_ADMIN_RATING':              new Filter(                    'model.adminRating',                'showAdminRating'          ),
             'HAS_ADMIN_COMMENT':               new Filter(                    'hasAdminComment',                  'showHasAdminComment'      ),
             'HAS_QUESTIONS':                   new Filter(                    'hasQuestions',                     'showHasQuestions'         ),
-            'IS_COPY_OF':                      new Filter(                    'isCopyOf',                         'showIsCopyOf'             ),  
+            'IS_COPY_OF':                      new Filter(                    'isCopyOf',                         'showIsCopyOf'             ),
             'REMOVE_CREATED_BY':               new Filter(                    'removeCreatedBy',                  'showRemoveCreatedBy'      ),
             'REMOVE_SUBJECT':                  new Filter(                    'removeSubject',                    'showRemoveSubject'        ),
             'REPORT_STUDENT':                  new Filter(                    'reportStudent',                    'showStudents'             ),
