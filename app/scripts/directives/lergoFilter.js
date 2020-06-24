@@ -616,7 +616,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                             if(prop === 'subject') {
                                 $scope.ninSubject = _.union([$scope.model[prop]], $scope.ninSubject);
                             }
-                        } 
+                        }
                     });
                 }
 
