@@ -20,7 +20,9 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 		'showSearchText' : true,
 		'showIsCopyOf' : true,
 		'showHasAdminComment' : true,
-		'showAdminRating' : true
+		'showAdminRating' : true,
+		'showRemoveCreatedBy': true,
+		'showRemoveSubject': true
 	};
 
     var defaultFilter = {};

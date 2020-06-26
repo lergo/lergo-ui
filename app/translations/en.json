@@ -327,6 +327,8 @@
       "isNotCopyOf": "Is not a Copy",
       "language": "Language",
       "adminRating": "Admin Rating",
+      "removeCreatedBy": "Remove Createdby",
+      "removeSubject" : "Remove Subject",
       "reportedBy": "Reported By",
       "roles": "Role",
       "search": "Min Users public lessons",

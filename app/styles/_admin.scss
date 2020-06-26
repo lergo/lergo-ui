@@ -31,6 +31,16 @@
         padding-right: 15px;
     }
 }
+.admin-filter {
+    input { 
+        outline: 2px solid aquamarine
+    }
+    span {
+        display: table-cell; 
+        display: inline; background-color: rgb(240, 221, 187)
+    }
+}
+
 .rtl {
     #usersIndex {
         .by-days {

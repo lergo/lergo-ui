@@ -199,17 +199,32 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 },1);
 
             });
-
+            $scope.ninCreatedBy = [];
 			function _updateCreatedBy(newValue, oldValue) {
 				if (newValue !== oldValue) {
 					if (!!newValue && newValue.hasOwnProperty('_id')) {
-						$scope.model.userId = $scope.createdBy._id;
+                        $scope.model.userId = $scope.createdBy._id;
+                        $scope.ninCreatedBy = _.union([$scope.createdBy.username], $scope.ninCreatedBy);
 					} else {
-						delete $scope.model.userId;
+                        delete $scope.model.userId;
 					}
 				}
 			}
             $scope.$watch('createdBy', _updateCreatedBy, true);
+
+            // removeCreatedBy: for Admin use
+            function _updateRemoveCreatedBy(newValue, oldValue){
+                var modelKey = 'removeCreatedBy';
+                if ( newValue !== oldValue ){
+                    if ( newValue ){
+                        $scope.model[modelKey] = { dollar_exists : true };
+                    }else{
+                        delete $scope.model[modelKey];
+                        $scope.ninCreatedBy = [];
+                    }
+                }
+            }
+            $scope.$watch('removeCreatedBy', _updateRemoveCreatedBy);
 
             // createdByAll access to all users for admin filter
             function _updateCreatedByAll(newValue, oldValue) {
@@ -288,6 +303,21 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 }
             }
             $scope.$watch('isCopyOf', _updateIsCopyOf);
+
+            // removeSubject: for Admin use
+            function _updateRemoveSubject(newValue, oldValue){
+                var modelKey = 'removeSubject';
+                if ( newValue !== oldValue ){
+                    if ( newValue ){
+                        $scope.model[modelKey] = { dollar_exists : false };
+                    }else{
+                        delete $scope.model[modelKey];
+                        $scope.ninSubject = [];
+
+                    }
+                }
+            }
+            $scope.$watch('removeSubject', _updateRemoveSubject);
 
             // hasAdminComment: for Admin use
             function _updateHasAdminComment(newValue, oldValue){
@@ -574,13 +604,18 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             }
 
 			// handle 'all' values or null values - simply remove them from the
-			// model.
+            // model.
+            $scope.ninSubject = [];
 			$scope.$watch('model', function(newValue, oldValue) {
 
                 if (newValue !== oldValue) {
                     _.each(['subject', 'adminRating', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'finished', 'data.lessonId'], function (prop) {
                         if ($scope.model[prop] === undefined || $scope.model[prop] === null || $scope.model[prop] === '' || $scope.model[prop] === 'all') {
                             delete $scope.model[prop];
+                        } else {
+                            if(prop === 'subject') {
+                                $scope.ninSubject = _.union([$scope.model[prop]], $scope.ninSubject);
+                            }
                         }
                     });
                 }
@@ -703,6 +738,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REPORT_LESSON] =  _updateReportLesson ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.HAS_QUESTIONS] =  _updateHasQuestions ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.IS_COPY_OF] =  _updateIsCopyOf ;
+            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REMOVE_CREATED_BY] =  _updateRemoveCreatedBy ;
+            UPDATE_FUNCTIONS[LergoFilterService.FILTERS.REMOVE_SUBJECT] =  _updateRemoveSubject ;
             UPDATE_FUNCTIONS[LergoFilterService.FILTERS.HAS_ADMIN_COMMENT] =  _updateHasAdminComment ;
 
             function reload( newValue, oldValue ){

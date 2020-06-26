@@ -1,3 +1,5 @@
+lergo-ui and lergo-ri (feat-admin) remove lessons from  admin view using subject, createdBy.
+    Remove alert when using media stored in s3
 lergo-ui fillInTheBlanks check for errors and erase if needed, and fix question removal even for question
     without being part of a lesson (bug fix)
 lergo-ui and lergo-ri - adding csv capability to download users by period
