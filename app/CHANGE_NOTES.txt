@@ -1,3 +1,4 @@
+lergo-ui fix(bug) admin removeSubjects / removeCreatedby lists for user must persist after navigating back
 lergo-ui and lergo-ri (feat-admin) remove lessons from  admin view using subject, createdBy.
     Remove alert when using media stored in s3
 lergo-ui fillInTheBlanks check for errors and erase if needed, and fix question removal even for question

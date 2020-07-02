@@ -107,7 +107,7 @@
                     <div class="label">{{'filters.labels.removeSubject' | translate }}</div>
                     <div class="input admin-filter">
                         <input type="checkbox" ng-model="removeSubject"/>
-                        <span ng-show="removeSubject" ng-repeat="name in ninSubject" > {{name}}, </span>
+                        <span ng-show="removeSubject" ng-repeat="name in trigger.storedSubjectNin"  > {{name}} </span>
                     </div>
                 </span>
 
@@ -235,7 +235,7 @@
                     <div class="label" >{{'filters.labels.removeCreatedBy' | translate }}</div>
                         <div class="input admin-filter">
                             <input type="checkbox" ng-model="removeCreatedBy"/>
-                            <span ng-show="removeCreatedBy" ng-repeat="name in ninCreatedBy" > {{name}}, </span>
+                            <span ng-show="removeCreatedBy" ng-repeat="name in trigger.storedCreatedByNin" > {{name}}, </span>
                         </div>
                 </span>
 

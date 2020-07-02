@@ -48,10 +48,19 @@
  *
  * Language gets a special treatment. By default it will be the website's language.
  *
- *
+ * Special admin feature
+ * =====================
+ * 
+ *  - removeSubjects and removeCreatedBy work differently than the other filters
+ *    the same interface is used as for Subjects and CreatedBy, but afater clicking the box(s) 
+ *    each chosen subject (createdBy) is added to a list in the backend to be removed from the results
+ *    as this list is not made in the front end, and additonal list needs to be made to display to the user
+ *    the chosen items to be removed
+ *    for createdBy, this was a bit more difficult to insure that the current createdBy would be added to the 
+ *    local list after the box is clicked 
  */
 
-angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTranslate, LergoClient, TagsService, $timeout, $q, $log, LergoFilterService) {
+angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTranslate, LergoClient, TagsService, $timeout, $q, $log, LergoFilterService, localStorageService) {
 
 	return {
 		templateUrl : 'views/directives/_lergoFilter.html',
@@ -201,10 +210,16 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             });
             $scope.ninCreatedBy = [];
 			function _updateCreatedBy(newValue, oldValue) {
+                $scope.updateCreatedByNewValue = newValue; // save the last value in storage when removeCreatedBy is clicked
+                $scope.updateCreatedByOldValue = oldValue;
 				if (newValue !== oldValue) {
 					if (!!newValue && newValue.hasOwnProperty('_id')) {
                         $scope.model.userId = $scope.createdBy._id;
-                        $scope.ninCreatedBy = _.union([$scope.createdBy.username], $scope.ninCreatedBy);
+                        if ($scope.removeCreatedBy) {
+                            $scope.ninCreatedBy = _.union([$scope.createdBy.username], $scope.ninCreatedBy);
+                            localStorageService.set('storeNinCreatedBy', _.union($scope.ninCreatedBy,localStorageService.get('storeNinCreatedBy')));
+                            $scope.trigger.storedCreatedByNin = localStorageService.get('storeNinCreatedBy');
+                        }
 					} else {
                         delete $scope.model.userId;
 					}
@@ -218,13 +233,23 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 if ( newValue !== oldValue ){
                     if ( newValue ){
                         $scope.model[modelKey] = { dollar_exists : true };
+                        _updateCreatedBy($scope.updateCreatedByNewValue,  $scope.updateCreatedByOldValue);
                     }else{
                         delete $scope.model[modelKey];
                         $scope.ninCreatedBy = [];
+                        $scope.trigger.storedCreatedByNin = [];
+                        localStorageService.set('storeNinCreatedBy', null);
                     }
                 }
             }
             $scope.$watch('removeCreatedBy', _updateRemoveCreatedBy);
+
+            // persist the removeCreatedBy list after returning to page
+            $scope.$watch('trigger.storedCreatedByNin', function(newValue) {
+                if (!newValue ) {
+                    $scope.trigger.storedCreatedByNin = localStorageService.get('storeNinCreatedBy');
+                }
+            });
 
             // createdByAll access to all users for admin filter
             function _updateCreatedByAll(newValue, oldValue) {
@@ -313,11 +338,19 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                     }else{
                         delete $scope.model[modelKey];
                         $scope.ninSubject = [];
-
+                       /*  localStorageService.remove($scope.ninSubject); */
                     }
                 }
             }
             $scope.$watch('removeSubject', _updateRemoveSubject);
+
+
+            // persist the removeSubject list after returning to page
+            $scope.$watch('trigger.storedSubjectNin', function(newValue) {
+                if (!newValue ) {
+                    $scope.trigger.storedSubjectNin = localStorageService.get('storeNinSubject');
+                }
+            });
 
             // hasAdminComment: for Admin use
             function _updateHasAdminComment(newValue, oldValue){
@@ -605,16 +638,24 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
 			// handle 'all' values or null values - simply remove them from the
             // model.
+            // dealing with the two special cases of removeSubject and removeCreatedBy where the lists
+            // are not part of the model
+            $scope.trigger = {};
             $scope.ninSubject = [];
 			$scope.$watch('model', function(newValue, oldValue) {
-
                 if (newValue !== oldValue) {
-                    _.each(['subject', 'adminRating', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'finished', 'data.lessonId'], function (prop) {
+                    _.each(['subject', 'removeSubject', 'adminRating', 'public', 'status', 'age', 'userId', 'views', 'searchText', 'correctPercentage', 'finished', 'data.lessonId'], function (prop) {
                         if ($scope.model[prop] === undefined || $scope.model[prop] === null || $scope.model[prop] === '' || $scope.model[prop] === 'all') {
                             delete $scope.model[prop];
+                            if (prop === 'removeSubject') {
+                                localStorageService.set('storeNinSubject', null );
+                            }
+
                         } else {
-                            if(prop === 'subject') {
+                            if(prop === 'subject' && $scope.removeSubject) {
                                 $scope.ninSubject = _.union([$scope.model[prop]], $scope.ninSubject);
+                                localStorageService.set('storeNinSubject', _.union($scope.ninSubject,localStorageService.get('storeNinSubject')));
+                                $scope.trigger.storedSubjectNin = localStorageService.get('storeNinSubject');
                             }
                         }
                     });
