@@ -13,7 +13,7 @@ angular.module('lergoApp')
             $scope.requestError = false;
             $scope.requestInProgress = true;
             $http.post('/backend/users/requestPasswordReset', $scope.resetForm).then(function (result) {
-                $log.info('got response', result.data);
+                $log.info('got response',result);
                 $scope.requestInProgress = false;
                 $scope.requestSuccess = true;
             }, function (result) {

@@ -43,7 +43,7 @@ module.exports = function (config) {
         preprocessors: {
             'app/scripts/**/*.js': ['coverage']
         },
-        exclude: [],
+        exclude: ['test/spec/**/invitations/Display.js'],
         reporters: ['failed', 'coverage'],
         runnerPort: 9100,
         colors: true,

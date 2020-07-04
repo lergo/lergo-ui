@@ -44,7 +44,7 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
 
             scope.$watch('baseLayout.language', function (newValue/* , oldValue */) {
                 if ( newValue ) {
-                    $log.info('new language', newValue);
+                    $log.info('new language');
 
                     LergoTranslate.setLanguage(newValue);
                 }
@@ -60,7 +60,7 @@ angular.module('lergoApp').directive('baseLayout', function ($rootScope, $timeou
 
             scope.showForm = false;
             scope.searchOnHomepage = function(){
-                $log.info('searching on homepage', scope.baseLayout.filterTextSearch);
+                $log.info('searching on homepage');
                 $location.search('search', scope.baseLayout.filterTextSearch).path('/user/homepage');
 //                var textSearch = scope.filterTextSearch;
                 // keep focus on the input element

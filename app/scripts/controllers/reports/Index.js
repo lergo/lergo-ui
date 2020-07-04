@@ -97,7 +97,7 @@ angular.module('lergoApp').controller('ReportsIndexCtrl',
 
             $scope.reportsPage.selectAll = false;
 
-            $log.info('loading reports', $scope.reportsFilter);
+            $log.info('loading reports');
 
             if (!$scope.filterPage.current) {
                 return;

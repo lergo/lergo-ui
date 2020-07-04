@@ -10,14 +10,14 @@ angular.module('lergoApp')
                 ready: '&ngReady'
             },
             link: function postLink(scope, element, attrs) {
-                var id = new Date().getTime();
+               /*  var id = new Date().getTime(); */
                 var maxValue = attrs.maxValue || 100;
                 var minValue = attrs.minValue || 0;
 
 
                 scope.$watch('value', function (newValue, oldValue) {
 
-                    $log.info('value has changed', newValue, oldValue, ' id ', id);
+                    $log.info('value has changed');
                     if (!!newValue) {
                         newValue = Math.min(newValue, maxValue);
                         newValue = Math.max(newValue, minValue);

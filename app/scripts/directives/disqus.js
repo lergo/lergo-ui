@@ -36,7 +36,7 @@ angular.module('lergoApp')
                         }
                     });
 
-                    $log.info('diqusDetails', JSON.stringify(disqusDetails));
+                    $log.info('diqusDetails available here');
                     window.disqus_config = function () {
                         if (!this.page) {
                             this.page = {};

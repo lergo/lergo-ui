@@ -89,7 +89,7 @@ angular.module('lergoApp').directive('lessonCreateInviteFormItem', function(Lerg
 
             $scope.sendInvite = function () {
                 $scope.createError = false;
-                $log.info('inviting', invite);
+                $log.info('inviting');
                 return LergoClient.lessonsInvitations.create($routeParams.lessonId, invite).then(function (result) {
                     invitation = result.data;
                 }, function () {

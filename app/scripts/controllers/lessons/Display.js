@@ -24,7 +24,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl',
     }
 
 	$scope.currentStepIndex = parseInt($routeParams.currentStepIndex || 0, 10);
-	$log.info('current step index', $scope.currentStepIndex);
+	$log.info('current step index');
 
     // for quiz steps, we also put "answers" on the scope in case user refreshes the page etc.
     function updateQuestionsAnswers(){
@@ -69,7 +69,7 @@ angular.module('lergoApp').controller('LessonsDisplayCtrl',
 
 	$scope.$watch('currentStepIndex', function(newValue, oldValue) {
         if ( !!$scope.lesson ) {
-            $log.info('currentStepIndex changed', newValue, oldValue);
+            $log.info('currentStepIndex changed');
             updateCurrentStep();
 
             // in case of temporary lesson we don't want to remember history

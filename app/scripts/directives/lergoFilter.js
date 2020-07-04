@@ -371,7 +371,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                     if ( !!newValue && newValue.hasOwnProperty('_id')) {
 
                         $scope.model['data.lessonId'] = $scope.reportLesson._id;
-                        $log.info('lessonId was changed',$scope.model);
+                        $log.info('lessonId was changed');
                     }
                     else {
                         $scope.model['data.lessonId'] = undefined;
@@ -414,7 +414,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
             $scope.$watch('reportClass', function(newValue, oldValue) {
                 if (newValue !== oldValue) {
                     $timeout(function () {
-                        $log.info('class changed', arguments);
+                        $log.info('class changed');
                         _updateReportClass();
                     }, 3000);
                 }
@@ -430,7 +430,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
 			var _updateStatusValue = function(newValue, oldValue) {
 				if (oldValue !== newValue) {
-					$log.info('statusValue changed', newValue, oldValue);
+					$log.info('statusValue changed');
 
 					if (newValue === 'private') {
 						$scope.model.public = {
@@ -473,7 +473,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 			$scope.$watch(function() {
 				return LergoTranslate.getLanguage();
 			}, function(newValue, oldValue) {
-				$log.info('should change language in filter?', newValue, oldValue);
+				$log.info('should change language in filter?');
 				if (!!newValue && !!oldValue && newValue !== oldValue) {
 					setDefaultLanguage(true);
 				}
@@ -516,8 +516,8 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
              * @returns {Function}
              */
 			function minMaxFilter(propertyName, scopeVariable ) {
-				return function(newValue, oldValue) {
-					$log.info('min max filter changed ', oldValue);
+				return function(newValue) {
+					$log.info('min max filter changed ');
 
 
                     var model = $scope.model[propertyName];
@@ -550,7 +550,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
 
 
-					$log.info('min max filter applied', $scope.model[propertyName]);
+					$log.info('min max filter applied');
 				};
 			}
 
@@ -672,7 +672,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
 			$scope.filterTags = null;
 			var _updateFilterTags = function() {
-				$log.info('filterTags changed', $scope.filterTags);
+				$log.info('filterTags changed');
 				if (!$scope.filterTags || $scope.filterTags.length === 0) {
 					delete $scope.model['tags.label'];
 				} else {

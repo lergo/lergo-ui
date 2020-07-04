@@ -192,5 +192,32 @@ angular.module('lergoApp').service('LessonsService',
                 });
             });
         };
+        this.checkIfStepIsValid = function (step) {
+
+                if (!step.type) { // step type must be defined
+                    return false;
+                }
+    
+                if (step.type === 'video'){
+                    if (!step.videoUrl) {  // video must have something - will be red if invalid url
+                        return false;
+                    }
+                }
+    
+                if (step.type === 'slide') {
+                    if(!step.slideURL) { // presentation must have something - will be red if invalid url
+                        return false;
+                    }
+                }
+    
+                if (step.type === 'quiz') { // question must be added to quiz
+                    if (!step.quizItems || !step.quizItems[0] || step.quizItems[0].length === 0) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            
+            };
 
     });

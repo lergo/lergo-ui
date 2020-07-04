@@ -9,7 +9,7 @@ angular.module('lergoApp')
                 var filterLoaded = false;
                 var pagingLoaded = false;
 
-                $log.info('when both are loaded I will run ', attrs.loadFilterAndPaging);
+                $log.info('when both are loaded I will run ... ');
                 var expressionHandler = $parse(attrs.loadFilterAndPaging);
 
 

@@ -17,7 +17,7 @@ angular.module('lergoApp')
 
         function getRole() {
             return LergoClient.roles.read($routeParams.roleId).then(function success(result) {
-                $log.info('got role', result.data);
+                $log.info('got role');
                 $scope.role = result.data;
             }, function error(result) {
                 $log.error('got error', result.data);

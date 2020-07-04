@@ -20,7 +20,7 @@ angular.module('lergoApp')
         });
 
         function getDisqusDetails(user) {
-            $log.info('user changed on rootScope', $rootScope.user);
+            $log.info('user changed on rootScope');
             if (!!user) {
                 $http.get('/backend/user/disqusLogin').then(function (result) {
                     loginDefer.resolve(result.data);

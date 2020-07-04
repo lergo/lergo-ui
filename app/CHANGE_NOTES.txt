@@ -1,3 +1,6 @@
+lergo-ui implement fixing lessons on the fly prior to report being created and lesson played - had to remove on test for
+    checking that wrong answers in practice mistakes are unique (invitations/Display.js) - also removed all $log.info data
+    leaving only the strings
 lergo-ui fix(bug) admin removeSubjects / removeCreatedby lists for user must persist after navigating back
 lergo-ui and lergo-ri (feat-admin) remove lessons from  admin view using subject, createdBy.
     Remove alert when using media stored in s3

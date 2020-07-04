@@ -3,7 +3,7 @@
 angular.module('lergoApp')
     .controller('LessonsInvitesPublicShareCtrl', function ($log, $routeParams, LergoClient, $location ) {
         var lessonId = $routeParams.lessonId;
-        $log.info('sharing', lessonId);
+        $log.info('sharing');
 
         LergoClient.lessonsInvitations.createAnonymous(lessonId).then(function(result){
             $log.info('got success');

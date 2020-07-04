@@ -67,7 +67,7 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
     // });
 
     $scope.$on('stepIndexChange', function (event, data) {
-        $log.info('stepIndexChange', data);
+        $log.info('stepIndexChange');
         /* jshint -W052 */
         stepIndex = ~~data.new;
         // update new duration only if we are still looking at steps inside the
@@ -107,7 +107,7 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
     // in order to track down each answer and its correlating step
 
     $scope.$on('questionAnswered', function (event, data) {
-        $log.info('question was answered', data);
+        $log.info('question was answered');
 
         // find answer
         // in case user answered a question, and then changed the answer, we
@@ -169,7 +169,7 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
                 report.correctPercentage = Math.round((correctAnswers.length * 100) / numberOfQuestions);
             }
 
-            $log.info('new correct percentage is : ', report.correctPercentage);
+            $log.info('new correct percentage is : ');
 
         });
     }

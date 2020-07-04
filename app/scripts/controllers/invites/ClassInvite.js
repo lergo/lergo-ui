@@ -37,7 +37,7 @@ angular.module('lergoApp')
             $scope.classInvite.error = null;
             LergoClient.reports.createFromInvitation(invitation, {invitee: {name: $scope.classInvite.studentName}})
                 .then(function success(result) {
-                    $log.info('invite is ready', result.data);
+                    $log.info('invite is ready');
                     $scope.classInvite.data = result.data;
                     $location.path('/public/lessons/' + lessonId + '/intro').search({
                         lessonId: lessonId,

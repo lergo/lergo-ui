@@ -63,7 +63,7 @@ angular.module('lergoApp')
             if ( !roleId ){
                 throw new Error('missing roleId');
             }
-            $log.info('deleting role', roleId);
+            $log.info('deleting role');
             return $http({'url' : '/backend/roles/' + roleId , 'method' : 'DELETE'});
         };
         // AngularJS will instantiate a singleton by calling "new" on this function

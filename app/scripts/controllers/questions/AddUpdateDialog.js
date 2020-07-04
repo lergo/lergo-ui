@@ -175,7 +175,7 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 						lessonsWhoUseThisQuestion = result.data;
 						$log.info('AddUpdateDialog: usage of this question in lessons is ',lessonsWhoUseThisQuestion.length);
 						if (lessonsWhoUseThisQuestion.length === 0) {
-							$log.info('AddUpdateDialog: deleting questionId ',questionId);
+							$log.info('AddUpdateDialog: deleting questionId ');
 							QuestionsService.deleteQuestion(questionId);
 						} else {
 							angular.forEach(lessonsWhoUseThisQuestion, function(lesson) {
@@ -185,7 +185,7 @@ angular.module('lergoApp').controller('QuestionsAddUpdateDialogCtrl',
 										LergoClient.lessons.update(lesson);
 									}
 								}
-								$log.info('AddUpdateDialog: deleting questionId ',questionId);
+								$log.info('AddUpdateDialog: deleting questionId ');
 								QuestionsService.deleteQuestion(questionId);
 							});
 						}

@@ -113,7 +113,6 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
         'answers': function (quizItem) {
             var answers = [];
             if (quizItem.options !== undefined) {
-                /*console.log('quizItem.options', quizItem.options);*/
                 quizItem.options.forEach(function (value) {
                     if (!!value.checked) {
                         answers.push(value.label);

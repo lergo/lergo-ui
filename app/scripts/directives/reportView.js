@@ -82,7 +82,7 @@ angular.module('lergoApp').directive('reportView', function ($log, LergoClient) 
 
                 var quizItemsIds = $scope.lesson.steps[index].quizItems;
 
-                $log.info('getting report quiz Items', step);
+                $log.info('getting report quiz Items');
 
                 _.each(quizItemsIds, function (qiId) {
                     var answer = getAnswer(qiId, index);
@@ -96,7 +96,7 @@ angular.module('lergoApp').directive('reportView', function ($log, LergoClient) 
                     }
                 });
 
-                $log.info('quizItems', results);
+                $log.info('quizItems');
                 reportQuizItems['' + index] = results;
                 $scope.getAnswerStats(results, index);
                 return results;

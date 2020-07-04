@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
-    function ($window, $scope, $filter, LergoClient, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope) {
+    function ($window, $scope, $filter, LergoClient, QuestionsService, LessonsService, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope) {
         $window.scrollTo(0, 0);
-        $log.info('loading invitation', $routeParams.invitationId);
+        $log.info('loading invitation');
         var errorWhileSaving = false;
         $scope.shareSection = 'link';
         var updateChange = new ContinuousSaveReports({
@@ -42,8 +42,52 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             }
         });
 
-        function initializeReport(invitation) {
+        $scope.isValid = function(quizItem) {
+            if (!quizItem || !quizItem.type) {
+                return false;
+            }
+            return QuestionsService.getTypeById(quizItem.type).isValid(quizItem);
+        };
 
+        function initializeReport(invitation) {
+            /**  prior to creating a new report and starting a lesson, check that the lesson is valid 
+             *   first check if each quiz item is valid - if not, remove from local lesson and lesson in dB and questionId in dB
+             *   then check that each step is valid - remove locally and on dB
+            */
+            var steps = invitation.lesson.steps;
+            var quizItems = invitation.quizItems;
+            for (var k = quizItems.length -1; k >= 0; k--) {
+                if ($scope.isValid(quizItems[k])) {
+                    $log.debug('valid quizItem');
+                } else {
+                    var illegalId = quizItems[k]._id;
+                    quizItems.splice(quizItems.indexOf(illegalId), 1);
+                    for (var i = steps.length -1; i >= 0; i--) {
+                        if (steps[i].quizItems) {
+                            for (var j = steps[i].quizItems.length -1; j >= 0; j--) {
+                                var questionId = steps[i].quizItems[j];
+                                if (questionId === illegalId){
+                                    steps[i].quizItems.splice(steps[i].quizItems.indexOf(illegalId), 1);
+                                    $log.info('updating fixed lesson');
+                                    LergoClient.lessons.update(invitation.lesson);
+                                    $log.info('deleting invalid question ');
+                                    QuestionsService.deleteQuestion(questionId);
+                                }
+                               
+                            }
+                        }
+                    }
+                }
+            }
+           
+            for (var l = steps.length -1; l >= 0; l--) {
+                if (!LessonsService.checkIfStepIsValid(steps[l])) {
+                    $log.info('deleting invalid step ',l);
+                    steps.splice(l, 1);
+                    LergoClient.lessons.update(invitation.lesson);
+                }
+            }
+           
             // broadcast start of lesson
             function initializeReportWriter(report) {
                 $scope.report = report;
@@ -207,7 +251,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             $scope.practiseBtnDisable = true;
             LergoClient.lessons.createLessonFromWrongQuestions($scope.report, $scope.wrongQuestions).then(
                 function (lesson) {
-                    console.log('Starting Lesson');
+                    $log.info('Starting practice mistakes');
                     $scope.startLesson(lesson._id);
                     $scope.practiseBtnDisable = false;
                 }, function () {

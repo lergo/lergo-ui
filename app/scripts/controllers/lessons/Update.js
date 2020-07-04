@@ -2,7 +2,7 @@
 
 angular.module('lergoApp').controller('LessonsUpdateCtrl',
     function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal,
-        TagsService, QuestionsService, $rootScope, $window, $filter, LergoTranslate, $translate)
+        TagsService, QuestionsService, LessonsService, $rootScope, $window, $filter, LergoTranslate, $translate)
          {
         $window.scrollTo(0, 0);
 
@@ -338,9 +338,9 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 });
             }
             return quizItemsWatch;
-        }, function (newValue, oldValue) {
+        }, function (newValue) {
             if (!!newValue && newValue.length > 0) {
-                $log.info('quizItems changed', newValue, oldValue);
+                $log.info('quizItems changed');
                 LergoClient.questions.findQuestionsById(newValue).then(function (result) {
                     var newObj = {};
                     for (var i = 0; i < result.data.length; i++) {
@@ -459,36 +459,10 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 }
             }
         });
-            
-
-        //determine if step is valid 
+ 
         $scope.isStepValid = function (step) {
-
-            if (!step.type) { // step type must be defined
-                return false;
-            }
-
-            if (step.type === 'video'){
-                if (!step.videoUrl) {  // video must have something - will be red if invalid url
-                    return false;
-                }
-            }
-
-            if (step.type === 'slide') {
-                if(!step.slideURL) { // presentation must have something - will be red if invalid url
-                    return false;
-                }
-            }
-
-            if (step.type === 'quiz') { // question must be added to quiz
-                if (!step.quizItems || !step.quizItems[0] || step.quizItems[0].length === 0) {
-                    return false;
-                }
-            }
-            
-            return true;
+            return LessonsService.checkIfStepIsValid(step);
         };
-
 
         $scope.$watch(function () {
             var lang = LergoTranslate.getLanguageObj();

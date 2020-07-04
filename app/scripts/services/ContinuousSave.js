@@ -147,7 +147,7 @@ angular.module('lergoApp')
 
             function _updateRemoteVersion(newValue){
                 if ( newValue ){
-                    $log.debug('updating continuous save', newValue.lastUpdate );
+                    $log.debug('updating continuous save');
                 }
                 if ( !!newValue && !!_remoteVersion && newValue.lastUpdate < _remoteVersion.lastUpdate ){
                     $log.error('got old version from sever');
@@ -159,7 +159,7 @@ angular.module('lergoApp')
             function _save() {
 
 
-                $log.info(_localVersion);
+                $log.info('_localVersion');
 
                 if (!!_status.saving || _versionMatch()) {
                     return; //already saving
