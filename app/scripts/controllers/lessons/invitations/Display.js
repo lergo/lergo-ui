@@ -50,7 +50,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
         };
 
         function initializeReport(invitation) {
-            /**  if user is not logged in, then corrections will only be made locally
+            /**  
              *   prior to creating a new report and starting a lesson, check that the lesson is valid 
              *   first check if each quiz item is valid - if not, remove from local lesson and lesson in dB and questionId in dB
              *   then check that each step is valid - remove locally and on dB
