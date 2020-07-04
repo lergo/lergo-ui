@@ -55,14 +55,6 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
              *   first check if each quiz item is valid - if not, remove from local lesson and lesson in dB and questionId in dB
              *   then check that each step is valid - remove locally and on dB
             */
-
-            var isLoggedIn = false;
-            if ($rootScope.user) {
-                isLoggedIn = true;
-            } else {
-                isLoggedIn = false;
-            }
-
             var steps = invitation.lesson.steps;
             var quizItems = invitation.quizItems;
             for (var k = quizItems.length -1; k >= 0; k--) {
@@ -78,15 +70,11 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                                 if (questionId === illegalId){
                                     steps[i].quizItems.splice(steps[i].quizItems.indexOf(illegalId), 1);
                                     $log.info('fixing lesson locally');
-                                    if (isLoggedIn) {
-                                        $log.info('updating fixed lesson on Db');
-                                        LergoClient.lessons.update(invitation.lesson);
-                                        $log.info('deleting invalid question on Db');
-                                        QuestionsService.deleteQuestion(questionId);
-                                    }
-                                    
+                                    $log.info('updating fixed lesson on Db');
+                                    LergoClient.lessons.fix(invitation.lesson);
+                                    $log.info('deleting invalid question on Db');
+                                    QuestionsService.removeQuestion(questionId);
                                 }
-                               
                             }
                         }
                     }
@@ -97,10 +85,8 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                 if (!LessonsService.checkIfStepIsValid(steps[l])) {
                     $log.info('deleting invalid step locally ',l);
                     steps.splice(l, 1);
-                    if (isLoggedIn) {
-                        $log.info('removing step on Db');
-                        LergoClient.lessons.update(invitation.lesson);
-                    }
+                    $log.info('removing step on Db');
+                    LergoClient.lessons.fix(invitation.lesson);
                 }
             }
            

@@ -30,7 +30,7 @@ angular.module('lergoApp').service('LessonsService',
 
             });
         };
-
+ 
         this.getLessonsWhoUseThisQuestion = function (questionId) {
             return $http.get('/backend/lessons/using/question/' + questionId);
         };
@@ -49,6 +49,10 @@ angular.module('lergoApp').service('LessonsService',
 
         this.update = function (lesson) {
             return $http.post('/backend/lessons/' + lesson._id + '/update', lesson);
+        };
+        /* used for deleting invalid question / steps in lesson before running a lesson */
+        this.fix = function (lesson) {
+            return $http.post('/backend/lessons/' + lesson._id + '/fix', lesson);
         };
 
         this.publish = function (lesson) {

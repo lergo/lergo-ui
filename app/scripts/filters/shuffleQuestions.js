@@ -58,7 +58,7 @@ angular.module('lergoApp')
                 $log.error('one of stepIndex or report exists, but the other does not. seems like a bug to me..');
             }
 
-            $log.debug('this is the shuffled array',opts.array);
+            $log.debug('this is the shuffled array');
 
             return opts.array;
         };

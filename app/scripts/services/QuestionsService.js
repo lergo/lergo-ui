@@ -56,7 +56,7 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
     this.updateQuestion = function (question) {
         return $http.post('/backend/questions/' + question._id + '/update', question);
     };
-
+ 
     this.checkAnswer = function (question) {
         return $http.post('/backend/questions/checkAnswer', question);
 
@@ -68,6 +68,10 @@ angular.module('lergoApp').service('QuestionsService', function QuestionsService
 
     this.deleteQuestion = function (id) {
         return $http.post('/backend/questions/' + id + '/delete');
+    };
+    /* used for deleting invalid question before running a lesson */
+    this.removeQuestion = function (id) {
+        return $http.post('/backend/questions/' + id + '/remove');
     };
 
     this.QUESTION_TYPE={
