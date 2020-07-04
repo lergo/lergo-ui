@@ -1,3 +1,4 @@
+lergo-ui and lergo-ri adding routes for invalid lessons to be healed even when user not logged in
 lergo-ui implement fixing lessons on the fly prior to report being created and lesson played - had to remove on test for
     checking that wrong answers in practice mistakes are unique (invitations/Display.js) - also removed all $log.info data
     leaving only the strings
