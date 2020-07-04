@@ -50,10 +50,19 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
         };
 
         function initializeReport(invitation) {
-            /**  prior to creating a new report and starting a lesson, check that the lesson is valid 
+            /**  if user is not logged in, then corrections will only be made locally
+             *   prior to creating a new report and starting a lesson, check that the lesson is valid 
              *   first check if each quiz item is valid - if not, remove from local lesson and lesson in dB and questionId in dB
              *   then check that each step is valid - remove locally and on dB
             */
+
+            var isLoggedIn = false;
+            if ($rootScope.user) {
+                isLoggedIn = true;
+            } else {
+                isLoggedIn = false;
+            }
+
             var steps = invitation.lesson.steps;
             var quizItems = invitation.quizItems;
             for (var k = quizItems.length -1; k >= 0; k--) {
@@ -68,10 +77,14 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                                 var questionId = steps[i].quizItems[j];
                                 if (questionId === illegalId){
                                     steps[i].quizItems.splice(steps[i].quizItems.indexOf(illegalId), 1);
-                                    $log.info('updating fixed lesson');
-                                    LergoClient.lessons.update(invitation.lesson);
-                                    $log.info('deleting invalid question ');
-                                    QuestionsService.deleteQuestion(questionId);
+                                    $log.info('fixing lesson locally');
+                                    if (isLoggedIn) {
+                                        $log.info('updating fixed lesson on Db');
+                                        LergoClient.lessons.update(invitation.lesson);
+                                        $log.info('deleting invalid question on Db');
+                                        QuestionsService.deleteQuestion(questionId);
+                                    }
+                                    
                                 }
                                
                             }
@@ -82,9 +95,12 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
            
             for (var l = steps.length -1; l >= 0; l--) {
                 if (!LessonsService.checkIfStepIsValid(steps[l])) {
-                    $log.info('deleting invalid step ',l);
+                    $log.info('deleting invalid step locally ',l);
                     steps.splice(l, 1);
-                    LergoClient.lessons.update(invitation.lesson);
+                    if (isLoggedIn) {
+                        $log.info('removing step on Db');
+                        LergoClient.lessons.update(invitation.lesson);
+                    }
                 }
             }
            
