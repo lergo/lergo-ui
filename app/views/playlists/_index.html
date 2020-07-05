@@ -65,7 +65,6 @@
                                     </td>
                                     <td >{{play.subject && ('filters.subjects.' + play.subject | translate) ||""}}</td>
                                     <td >{{play.age &&('+'+ play.age) || ""}}</td>
-                                    <!-- <td >{{play.language && ('filters.languages.' + play.language | translate) || ""}}</td> -->
                                 </tr>
                                 </tbody>
                             </table>
@@ -84,7 +83,7 @@
                                     <tr ng-repeat="list in playlists track by $index">
                                         <td class="name" dir="auto">
                                             <a  ng-href="#!/user/lessons/{{play._id}}/intro">{{
-                                                list.name }} </a>
+                                                list[0].name }} </a>
                                             <!-- <a ng-show="!play.name || play.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{play._id}}/intro">[
                                                 no title ]</a> -->
                                         </td>

@@ -27,11 +27,6 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		}
 	};
 	
-	$scope.GetRowIndex = function (index) {
-		// $window.alert("Row Index: " + index + " the lesson is: " + $scope.playlists[index].name);
-		$scope.playlistToShow = $scope.playlists[index];
-		console.log('the playlists[index] is', $scope.playlists[index]);
-	};
 
     $scope.playlist0 = 
         [
@@ -64,7 +59,13 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
     $scope.playlists = 
         [
             $scope.playlist0, $scope.playlist1, $scope.playlist2
-        ]    
+		] 
+		
+		$scope.playlistToShow = $scope.playlists[0];
+		$scope.GetRowIndex = function (index) {
+			$scope.playlistToShow = $scope.playlists[index];
+			// console.log('the playlists[index] is', $scope.playlists[index]);
+		};	
 
 	$scope.loadLessons = function() {
 		$log.info('loading lessons');
