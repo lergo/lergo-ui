@@ -25,7 +25,42 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 			$scope.filterPage.current = 1;
 			$scope.filterPage.updatedLast = new Date().getTime();
 		}
-	};
+    };
+    
+    $scope.playlists = [
+        {
+            "_id" : "536df82d634d2fc25445ee40",
+            "description" : "manually creating a playlist based on a lesson format - changing _id to40 from 39",
+            "lastUpdate" : 1403236370393,
+            "name" : "playlist number 1 test",
+            "steps" : [
+                {
+                    "title" : "תרגול",
+                    "type" : "quiz",
+                    "quizItems" : [
+                        "536df871beb2119a597a7c37",
+                        "536df8b4d0cdc0245b4c996d"
+                    ],
+                    "retBefCrctAns" : 1
+                }
+            ],
+            "userId" : "53aec297f9fcc48f0cfe2f5a",
+            "views" : 5,
+            "subject" : "english",
+            "language" : "hebrew",
+            "age" : 8,
+            "createdAt" : "2014-05-10T09:58:05.000Z",
+            "username" : "navalevy"
+        }
+        
+    ]
+
+    $scope.playlist = [
+        {"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 1 test" },
+        {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name"},
+        {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 2 (7 - 12)"},
+        {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"}
+    ]
 
 	$scope.loadLessons = function() {
 		$log.info('loading lessons');
