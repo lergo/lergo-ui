@@ -10,9 +10,9 @@
                                         <div lergo-filter   model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
                                     </div>
                                 </div>
-                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" ></div>
                         </div>
-                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div>
                                 <div>
                                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
@@ -32,7 +32,7 @@
                                             [ {{ 'lessons.total' | translate }}: {{filterPage.count}} ]
                                         </div>
                                     </div>
-                                    <div class="col-border-bottom col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <div class="col-border-bottom col-lg-3 col-md-3 col-sm-12 col-xs-12" >
                                         <div class="create" >
                                             <button ng-click="createLessonBtnDisable || create()" class="btn btn-start"  ng-disabled="createLessonBtnDisable">
                                                 <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
@@ -52,26 +52,53 @@
                                     <td class="col1">{{ 'name' | translate }}</td>
                                     <td>{{ 'questions.subject' | translate}}</td>
                                     <td>{{ 'questions.age' | translate}}</td>
-                                    <td>{{ 'questions.language' | translate}}</td>
+                                    <!-- <td>{{ 'questions.language' | translate}}</td> -->
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr ng-repeat="play in playlist |orderBy:'-lastUpdate'">
+                                <tbody> 
+                                <tr ng-repeat="play in playlist1 |orderBy:'-lastUpdate'">
                                     <td class="name" dir="auto">
-                                        <a ng-show="!!play.name && play.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{play._id}}/intro">{{
+                                        <a ng-show="!!play && play.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{play._id}}/intro">{{
                                             play.name }}</a>
                                         <a ng-show="!play.name || play.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{play._id}}/intro">[
                                             no title ]</a>
                                     </td>
                                     <td >{{play.subject && ('filters.subjects.' + play.subject | translate) ||""}}</td>
                                     <td >{{play.age &&('+'+ play.age) || ""}}</td>
-                                    <td >{{play.language && ('filters.languages.' + play.language | translate) || ""}}</td>
+                                    <!-- <td >{{play.language && ('filters.languages.' + play.language | translate) || ""}}</td> -->
                                 </tr>
                                 </tbody>
                             </table>
                             </div>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div style="height: 37px;"></div>
+                                <div class="table-responsive"style="border: 1px solid #FAFAFA"> <!--without a style, iPad does not show content!-->
+                                    <table class="table   " ng-show="lessons.length > 0">
+                                    <thead>
+                                    <tr style="font-weight: bold">
+                                        <td class="col1">{{ 'name' | translate }}</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody> 
+                                    <tr ng-repeat="list in playlists track by $index">
+                                        <td class="name" dir="auto">
+                                            <a  ng-href="#!/user/lessons/{{play._id}}/intro">{{
+                                                list.name }} : {{$index}} </a>
+                                            <!-- <a ng-show="!play.name || play.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{play._id}}/intro">[
+                                                no title ]</a> -->
+                                        </td>
+                                        <td> {{$index}}</td>
+                                        <td >{{play.subject && ('filters.subjects.' + play.subject | translate) ||""}}</td>
+                                        <td >{{play.age &&('+'+ play.age) || ""}}</td>
+                                        <td><input type="button" value="Get Row Index" ng-click="GetRowIndex($index)" /></td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <div class="page-content-body text-center" ng-hide="!!lessons || lessons.length != 0">
