@@ -25,36 +25,45 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 			$scope.filterPage.current = 1;
 			$scope.filterPage.updatedLast = new Date().getTime();
 		}
-    };
+	};
+	
+	$scope.GetRowIndex = function (index) {
+		// $window.alert("Row Index: " + index + " the lesson is: " + $scope.playlists[index].name);
+		$scope.playlistToShow = $scope.playlists[index];
+		console.log('the playlists[index] is', $scope.playlists[index]);
+	};
+
+    $scope.playlist0 = 
+        [
+			{"_id" : "1", "name" : "playlist #1" },
+			{"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 1 test" },
+            {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name 1"},
+            {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 1 (7 - 12)"},
+            {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"}
+        ]
 
     $scope.playlist1 = 
-        [
-            {"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 1 test" },
-            {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name"},
+        [	
+			{"_id" : "2", "name" : "playlist #2" },
+            {"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 2 test" },
+            {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name 2"},
             {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 2 (7 - 12)"},
-            {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"}
-        ]
-
-    $scope.playlist2 = 
-        [
-            {"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 1 test" },
-            {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name"},
-            {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 2 (7 - 12)"},
-            {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"}
+            {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 2- lesson 3"}
         ]
     
-    $scope.playlist3 = 
+    $scope.playlist2 = 
 
         [
-            {"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 1 test" },
-            {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name"},
-            {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 2 (7 - 12)"},
-            {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"}
+			{"_id" : "3", "name" : "playlist #3" },
+            {"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 3 test" },
+            {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name 3"},
+            {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 3 (7 - 12)"},
+            {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 3 - lesson 3"}
         ]
         
     $scope.playlists = 
         [
-            $scope.playlist1[0], $scope.playlist2[1], $scope.playlist3[2]
+            $scope.playlist0, $scope.playlist1, $scope.playlist2
         ]    
 
 	$scope.loadLessons = function() {

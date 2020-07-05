@@ -56,10 +56,10 @@
                                 </tr>
                                 </thead>
                                 <tbody> 
-                                <tr ng-repeat="play in playlist1 |orderBy:'-lastUpdate'">
+                                <tr ng-repeat="play in playlistToShow |orderBy:'-lastUpdate'">
                                     <td class="name" dir="auto">
                                         <a ng-show="!!play && play.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{play._id}}/intro">{{
-                                            play.name }}</a>
+                                            play.name }} </a>
                                         <a ng-show="!play.name || play.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{play._id}}/intro">[
                                             no title ]</a>
                                     </td>
@@ -84,7 +84,7 @@
                                     <tr ng-repeat="list in playlists track by $index">
                                         <td class="name" dir="auto">
                                             <a  ng-href="#!/user/lessons/{{play._id}}/intro">{{
-                                                list.name }} : {{$index}} </a>
+                                                list.name }} </a>
                                             <!-- <a ng-show="!play.name || play.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{play._id}}/intro">[
                                                 no title ]</a> -->
                                         </td>
