@@ -32,7 +32,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
         [
 			{"_id" : "1", "name" : "playlist #1" },
 			{"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 1 test" },
-            {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name 1"},
+            {"_id" : "5eba8713011aee65253b74ae", "name" : "different name"},
             {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 1 (7 - 12)"},
             {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"}
         ]
@@ -40,10 +40,10 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
     $scope.playlist1 = 
         [	
 			{"_id" : "2", "name" : "playlist #2" },
-            {"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 2 test" },
-            {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name 2"},
-            {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 2 (7 - 12)"},
-            {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 2- lesson 3"}
+            {"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number" },
+            {"_id" : "5eba8713011aee65253b74ae", "name" : "ignore name"},
+            {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Vocabulary "},
+            {"_id" : "5d050600ef7df85ff68c8de9", "name": "Japanese "}
         ]
     
     $scope.playlist2 = 
