@@ -28,34 +28,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	};
 	
 
-    $scope.playlist0 = 
-        [
-			{"_id" : "1", "name" : "playlist #1" },
-			{"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 1 test" },
-            {"_id" : "5eba8713011aee65253b74ae", "name" : "different name"},
-            {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 1 (7 - 12)"},
-            {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"}
-        ]
-
-    $scope.playlist1 = 
-        [	
-			{"_id" : "2", "name" : "playlist #2" },
-            {"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number" },
-            {"_id" : "5eba8713011aee65253b74ae", "name" : "ignore name"},
-            {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Vocabulary "},
-            {"_id" : "5d050600ef7df85ff68c8de9", "name": "Japanese "}
-        ]
     
-    $scope.playlist2 = 
-
-        [
-			{"_id" : "3", "name" : "playlist #3" },
-            {"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 3 test" },
-            {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name 3"},
-            {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 3 (7 - 12)"},
-            {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 3 - lesson 3"}
-		]
-		
 	$scope.playlists = 
 	[
 		{
@@ -85,7 +58,55 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 				{"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 1 test" },
 				{"_id" : "5eba8713011aee65253b74ae", "name" : "different name"},
 				{"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 1 (7 - 12)"},
-				{"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"}
+				{"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"},
+				{
+					"_id" : "536df82d634d2fc25445ee39",
+					"description" : "שיעור זה כולל לימוד אוצר מילים למילים הכי נפוצות בשפה.",
+					"lastUpdate" : 1403236370393,
+					"name" : "שיעור אנגלית - אוצר מילים 1",
+					"steps" : [
+						{
+							"title" : "תרגול",
+							"type" : "quiz",
+							"quizItems" : [
+								"536df871beb2119a597a7c37",
+								"536df8b4d0cdc0245b4c996d"
+							],
+							"retBefCrctAns" : 1
+						}
+					],
+					"userId" : "53aec297f9fcc48f0cfe2f5a",
+					"views" : 6,
+					"subject" : "english",
+					"language" : "hebrew",
+					"age" : 8,
+					"createdAt" : "2014-05-10T09:58:05.000Z",
+					"username" : "navalevy"
+				},
+				{
+					"_id" : "53a5cac15c26c2ca3dbb9da1",
+					"userId" :  ("5353ccbb73d77eb17ea37b12"),
+					"createdAt" : "2014-06-21T18:11:13.955Z",
+					"age" : 11,
+					"timeStamp" : "2014-06-21T18:11:13.000Z",
+					"questionsCount" : 0,
+					"lastUpdate" :   ("1403374418460"),
+					"name" : "Colors",
+					"language" : "other",
+					"subject" : "spelling",
+					"steps" : [
+						{
+							"title" : "vocabulary",
+							"type" : "quiz",
+							"quizItems" : [
+								"53a5cae75c26c2ca3dbb9da2"
+							],
+							"retBefCrctAns" : 1
+						}
+					],
+					"views" : 1,
+					"username" : "jlevym"
+				}
 			]
 		}
 	]
@@ -102,7 +123,6 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		$scope.playlistToShow = $scope.playlists[0];
 		$scope.GetRowIndex = function (index) {
 			$scope.playlistToShow = $scope.playlists[index];
-			console.log('------------------------the playlistToShow.list is ', $scope.playlistToShow.list);
 		};	
 
 	$scope.loadLessons = function() {
