@@ -56,12 +56,10 @@
                                 </tr>
                                 </thead>
                                 <tbody> 
-                                <tr ng-repeat="play in playlistToShow |orderBy:'-lastUpdate'">
+                                <tr ng-repeat="play in playlistToShow.list">
                                     <td class="name" dir="auto">
-                                        <a ng-show="!!play && play.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{play._id}}/intro">{{
-                                            play.list.name }} </a>
-                                        <a ng-show="!play.name || play.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{play._id}}/intro">[
-                                            no title ]</a>
+                                        <a  ng-href="#!/user/lessons/{{play._id}}/intro">{{
+                                            play.name}} </a>
                                     </td>
                                     <!-- <td >{{play.subject && ('filters.subjects.' + play.subject | translate) ||""}}</td>
                                     <td >{{play.age &&('+'+ play.age) || ""}}</td> -->

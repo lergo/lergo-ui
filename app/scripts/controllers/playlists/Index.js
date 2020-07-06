@@ -102,7 +102,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		$scope.playlistToShow = $scope.playlists[0];
 		$scope.GetRowIndex = function (index) {
 			$scope.playlistToShow = $scope.playlists[index];
-			// console.log('the playlists[index] is', $scope.playlists[index]);
+			console.log('------------------------the playlistToShow.list is ', $scope.playlistToShow.list);
 		};	
 
 	$scope.loadLessons = function() {
