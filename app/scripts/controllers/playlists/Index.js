@@ -54,12 +54,50 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
             {"_id" : "5eba8713011aee65253b74ae", "name" : "no-name 3"},
             {"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 3 (7 - 12)"},
             {"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 3 - lesson 3"}
-        ]
+		]
+		
+	$scope.playlists = 
+	[
+		{
+			"id": 1, "name": "firstPlaylist", "list": 
+				[
+					{"_id" : "3", "name" : "playlist #3" },
+					{"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 3 test" },
+					{"_id" : "5eba8713011aee65253b74ae", "name" : "no-name 3"},
+					{"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 3 (7 - 12)"},
+					{"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 3 - lesson 3"}
+				]
+		},
+		{
+			"id": 2, "name": "secondPlaylist", "list":
+				[	
+					{"_id" : "2", "name" : "playlist #2" },
+					{"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number" },
+					{"_id" : "5eba8713011aee65253b74ae", "name" : "ignore name"},
+					{"_id" : "5d23fce0ef7df85ff68cae07", "name": "Vocabulary "},
+					{"_id" : "5d050600ef7df85ff68c8de9", "name": "Japanese "}
+				],
+		},
+		{
+			"id": 3, "name": "thirdPlaylist", "list":
+			[
+				{"_id" : "1", "name" : "playlist #1" },
+				{"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 1 test" },
+				{"_id" : "5eba8713011aee65253b74ae", "name" : "different name"},
+				{"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 1 (7 - 12)"},
+				{"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"}
+			]
+		}
+	]
+		
+
+	
+	 console.log($scope.playlists);
         
-    $scope.playlists = 
-        [
-            $scope.playlist0, $scope.playlist1, $scope.playlist2
-		] 
+    // $scope.playlists = 
+    //     [
+    //         $scope.playlist0, $scope.playlist1, $scope.playlist2
+	// 	] 
 		
 		$scope.playlistToShow = $scope.playlists[0];
 		$scope.GetRowIndex = function (index) {
