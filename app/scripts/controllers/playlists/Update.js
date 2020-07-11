@@ -2,14 +2,14 @@
 
 angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
     function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal,
-        TagsService, QuestionsService, LessonsService, $rootScope, $window, $filter, LergoTranslate, $translate)
+        TagsService, QuestionsService, PlaylistsService, $rootScope, $window, $filter, LergoTranslate, $translate)
          {
         $window.scrollTo(0, 0);
 
-        // back button for 'step/display' in edit lesson
+        // back button for 'step/display' in edit playlist
         $scope.currentUrl = false;
         var absUrl = $location.absUrl();
-        if (absUrl.indexOf('/lessons/step/display') > -1) {
+        if (absUrl.indexOf('/playlists/step/display') > -1) {
             $scope.currentUrl = true;
         }
 
@@ -23,28 +23,28 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         var addStepClicked = false;
         $scope.popoverState = {open: false, position: 'top'};
         $scope.languages = LergoFilterService.languages;
-        var saveLesson = new ContinuousSave({
+        var savePlaylist = new ContinuousSave({
             'saveFn': function (value) {
-                return LergoClient.lessons.update(value);
+                return LergoClient.playlists.update(value);
             }
         });
 
         $scope.isSaving = function () {
-            return !!saveLesson.getStatus().saving;
+            return !!savePlaylist.getStatus().saving;
         };
 
         $scope.$watch(function () {
-            return saveLesson.getStatus();
+            return savePlaylist.getStatus();
         }, function (newValue) {
             $scope.saveStatus = newValue;
         }, true);
 
         $scope.displayStep = function (step) {
-            $location.path('/user/lessons/step/display').search('data', JSON.stringify(step));
+            $location.path('/user/playlists/step/display').search('data', JSON.stringify(step));
         };
 
         $scope.saveButtonDisabled = function () {
-            return $scope.isSaving() || !$scope.lesson || !$scope.lesson.name;
+            return $scope.isSaving() || !$scope.playlist || !$scope.playlist.name;
         };
 
         function persistScroll() {
@@ -65,39 +65,39 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         function addItemToQuiz(item, step) {
             step.quizItems = step.quizItems || [];
             if (step.quizItems.indexOf(item._id) < 0) {
-                if (!$scope.lesson.subject) {
-                    $scope.lesson.subject = item.subject;
+                if (!$scope.playlist.subject) {
+                    $scope.playlist.subject = item.subject;
                 }
-                if (!$scope.lesson.age) {
-                    $scope.lesson.age = item.age;
+                if (!$scope.playlist.age) {
+                    $scope.playlist.age = item.age;
                 }
-                if (!$scope.lesson.language) {
-                    $scope.lesson.language = item.language;
+                if (!$scope.playlist.language) {
+                    $scope.playlist.language = item.language;
                 }
-                if (!$scope.lesson.tags || $scope.lesson.tags.length === 0) {
-                    $scope.lesson.tags = item.tags;
+                if (!$scope.playlist.tags || $scope.playlist.tags.length === 0) {
+                    $scope.playlist.tags = item.tags;
                 }
                 step.quizItems.push(item._id);
             }
         }
 
-        function lessonOverrideQuestion(questionIdToOverride, callback) {
-            $log.info('in lesson controller, overriding question');
-            LergoClient.lessons.overrideQuestion($scope.lesson._id, questionIdToOverride).then(function (result) {
+        function playlistOverrideQuestion(questionIdToOverride, callback) {
+            $log.info('in playlist controller, overriding question');
+            LergoClient.playlists.overrideQuestion($scope.playlist._id, questionIdToOverride).then(function (result) {
                 if (!!callback) {
                     callback(result.data.quizItem._id);
                 }
-                $scope.lesson = result.data.lesson;
+                $scope.playlist = result.data.playlist;
             }, function (result) {
                 toastr.error('error while overriding question', result.data);
             });
         }
 
-        // this is a wrapper to 'lessonOverrideQuestion' which will, after
-        // lesson update
+        // this is a wrapper to 'playlistOverrideQuestion' which will, after
+        // playlist update
         // list on quizItemsData change ONCE and reopens the dialog
-        function lessonOverrideQuestionAndReopenDialog(step, questionIdToOverride) {
-            lessonOverrideQuestion(questionIdToOverride, function (newQuizItemId) {
+        function playlistOverrideQuestionAndReopenDialog(step, questionIdToOverride) {
+            playlistOverrideQuestion(questionIdToOverride, function (newQuizItemId) {
 
                 // first - lets watch
                 // http://stackoverflow.com/a/13652152/1068746
@@ -124,8 +124,8 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             modelContent.backdrop = 'static';
             modelContent.controller = 'QuestionsAddUpdateDialogCtrl';
             modelContent.resolve = {
-                lessonOverrideQuestion: function () {
-                    return lessonOverrideQuestionAndReopenDialog;
+                playlistOverrideQuestion: function () {
+                    return playlistOverrideQuestionAndReopenDialog;
                 },
                 quizItem: function () {
                     return quizItem;
@@ -148,61 +148,61 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             });
         }
 
-        function updateNextLesson(newValue, oldValue) {
+        function updateNextPlaylist(newValue, oldValue) {
             if (!newValue) {
-                $scope.lesson.nextLessonId='';
+                $scope.playlist.nextPlaylistId='';
             } else if (!!newValue && newValue !== oldValue) {
                 var id = newValue.substring(0, newValue.lastIndexOf('/'));
                 id = id.substring(id.lastIndexOf('/') + 1);
-                $scope.lesson.nextLessonId = id;
+                $scope.playlist.nextPlaylistId = id;
             }
 
         }
 
-        function updatePriorLesson(newValue, oldValue) {
+        function updatePriorPlaylist(newValue, oldValue) {
             if (!newValue) {
-                $scope.lesson.priorLessonId='';
+                $scope.playlist.priorPlaylistId='';
             } else if (!!newValue && newValue !== oldValue) {
                 var id = newValue.substring(0, newValue.lastIndexOf('/'));
                 id = id.substring(id.lastIndexOf('/') + 1);
-                $scope.lesson.priorLessonId = id;
+                $scope.playlist.priorPlaylistId = id;
 
             }
         }
 
         function updateWikiLink(newValue, oldValue) {
             if (!newValue) {
-                $scope.lesson.wikiLinkId = '';
+                $scope.playlist.wikiLinkId = '';
             } else if (!!newValue && newValue !== oldValue) {
                 var id = newValue.substring(0, newValue.lastIndexOf('/'));
                 id = id.substring(id.lastIndexOf('/') + 1);
-                $scope.lesson.wikiLinkId = id;
+                $scope.playlist.wikiLinkId = id;
 
             }
         }
 
-        LergoClient.lessons.getById($routeParams.lessonId).then(function (result) {
-            $scope.lesson = result.data;
+        LergoClient.playlists.getById($routeParams.playlistId).then(function (result) {
+            $scope.playlist = result.data;
             $scope.errorMessage = null;
-            $scope.$watch('lesson', saveLesson.onValueChange, true);
-            $scope.$watch('lesson.nextLesson', updateNextLesson);
-            $scope.$watch('lesson.priorLesson', updatePriorLesson);
-            $scope.$watch('lesson.wikiLink', updateWikiLink);
-            if (!$scope.lesson.tags) {
-                $scope.lesson.tags = [];
+            $scope.$watch('playlist', savePlaylist.onValueChange, true);
+            $scope.$watch('playlist.nextPlaylist', updateNextPlaylist);
+            $scope.$watch('playlist.priorPlaylist', updatePriorPlaylist);
+            $scope.$watch('playlist.wikiLink', updateWikiLink);
+            if (!$scope.playlist.tags) {
+                $scope.playlist.tags = [];
             }
-            if (!$scope.lesson.language) {
-                $scope.lesson.language = LergoTranslate.getLanguageObject().name;
+            if (!$scope.playlist.language) {
+                $scope.playlist.language = LergoTranslate.getLanguageObject().name;
             }
 
             // AdminCommentOpen
-            $scope.isAdminCommentOpen = !!$scope.lesson.adminComment || !!$scope.lesson.adminRating;
+            $scope.isAdminCommentOpen = !!$scope.playlist.adminComment || !!$scope.playlist.adminRating;
 
             // Advance option should be open is any of the below properties are defined/non-empty
-            $scope.isAdvOptOpen = !!$scope.lesson.nextLesson || !!$scope.lesson.priorLesson || !!$scope.lesson.coverPage || !!$scope.lesson.wikiLink;
+            $scope.isAdvOptOpen = !!$scope.playlist.nextPlaylist || !!$scope.playlist.priorPlaylist || !!$scope.playlist.coverPage || !!$scope.playlist.wikiLink;
 
         }, function (result) {
-            $scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
+            $scope.errorMessage = 'Error in fetching Playlist by id : ' + result.data.message;
             $log.error($scope.errorMessage);
         });
 
@@ -218,14 +218,14 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             'label': 'Slide'
         }];
 
-        $scope.getLessonIntroLink = function (lesson) {
-            return LergoClient.lessons.getIntroLink(lesson);
+        $scope.getPlaylistIntroLink = function (playlist) {
+            return LergoClient.playlists.getIntroLink(playlist);
         };
 
-        $scope.addStep = function (lesson, $index) {
+        $scope.addStep = function (playlist, $index) {
             addStepClicked = true;
-            if (!lesson.steps) {
-                lesson.steps = [];
+            if (!playlist.steps) {
+                playlist.steps = [];
             }
 
             var step = {
@@ -234,23 +234,23 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             };
 
             if (typeof($index) === 'number') {
-                lesson.steps.splice($index, 0, step); //  http://stackoverflow.com/a/586189/1068746
+                playlist.steps.splice($index, 0, step); //  http://stackoverflow.com/a/586189/1068746
             } else {
-                lesson.steps.push(step);
+                playlist.steps.push(step);
             }
         };
         $scope.moveStepUp = function (index) {
-            var temp = $scope.lesson.steps[index - 1];
+            var temp = $scope.playlist.steps[index - 1];
             if (temp) {
-                $scope.lesson.steps[index - 1] = $scope.lesson.steps[index];
-                $scope.lesson.steps[index] = temp;
+                $scope.playlist.steps[index - 1] = $scope.playlist.steps[index];
+                $scope.playlist.steps[index] = temp;
             }
         };
         $scope.moveStepDown = function (index) {
-            var temp = $scope.lesson.steps[index + 1];
+            var temp = $scope.playlist.steps[index + 1];
             if (temp) {
-                $scope.lesson.steps[index + 1] = $scope.lesson.steps[index];
-                $scope.lesson.steps[index] = temp;
+                $scope.playlist.steps[index + 1] = $scope.playlist.steps[index];
+                $scope.playlist.steps[index] = temp;
             }
 
         };
@@ -260,7 +260,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 '0': step.title
             }));
             if (canDelete) {
-                var steps = $scope.lesson.steps;
+                var steps = $scope.playlist.steps;
                 if (!!steps && steps.length > 0 && steps.indexOf(step) >= 0) {
                     steps.splice(steps.indexOf(step), 1);
                 }
@@ -268,8 +268,8 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             }
         };
 
-        function isOwnerOfLesson() {
-            return $rootScope.user._id === $scope.lesson.userId;
+        function isOwnerOfPlaylist() {
+            return $rootScope.user._id === $scope.playlist.userId;
         }
 
         /**
@@ -278,16 +278,16 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
          */
         $scope.done = function (type) {
 
-            if (type === 'showLesson') {
-                $location.path($scope.getLessonIntroLink($scope.lesson));
+            if (type === 'showPlaylist') {
+                $location.path($scope.getPlaylistIntroLink($scope.playlist));
                 return;
             }
 
-            if ($rootScope.user && !isOwnerOfLesson()) { // admin
-                $location.path('/admin/homepage/lessons');
+            if ($rootScope.user && !isOwnerOfPlaylist()) { // admin
+                $location.path('/admin/homepage/playlists');
 
             } else { // user
-                $location.path('/user/create/lessons');
+                $location.path('/user/create/playlists');
             }
         };
 
@@ -296,7 +296,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             if (!!step && !!step.type) {
                 type = step.type;
             }
-            return 'views/lesson/steps/_' + type + '.html';
+            return 'views/playlist/steps/_' + type + '.html';
         };
 
         var quizItemsWatch = [];
@@ -318,13 +318,13 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
          * and turns the quizItems arrays to a single array *
          */
         $scope.$watch(function () {
-            if (!$scope.lesson) {
+            if (!$scope.playlist) {
                 return quizItemsWatch;
             }
 
             quizItemsWatch.splice(0, quizItemsWatch.length);
-            if (!!$scope.lesson.steps) {
-                $scope.lesson.steps.forEach(function (step) {
+            if (!!$scope.playlist.steps) {
+                $scope.playlist.steps.forEach(function (step) {
                     if (!!step.quizItems && step.quizItems.length > 0) {
 
                         step.quizItems.forEach(function (quizItem) {
@@ -356,7 +356,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             if (!!step && !!step.type) {
                 type = step.type;
             }
-            return 'views/lesson/steps/_' + type + '.html';
+            return 'views/playlist/steps/_' + type + '.html';
         };
 
 
@@ -389,13 +389,13 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         $scope.openUpdateQuestion = function (step, quizItemId) {
             QuestionsService.getPermissions(quizItemId).then(function (result) {
 
-                var canEditOrCopy = result.data.canEdit || isOwnerOfLesson();
+                var canEditOrCopy = result.data.canEdit || isOwnerOfPlaylist();
                 if ($scope.quizItemsData.hasOwnProperty(quizItemId) && canEditOrCopy) {
                     openQuestionDialog(step, $scope.quizItemsData[quizItemId], true);
                 }
 
                 if (!canEditOrCopy) {
-                    toastr.error($translate.instant('lessons.edit.noPermissionsDescription'), $translate.instant('lessons.edit.noPermissionsTitle'));
+                    toastr.error($translate.instant('playlists.edit.noPermissionsDescription'), $translate.instant('playlists.edit.noPermissionsTitle'));
                 }
             });
 
@@ -403,10 +403,10 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         $scope.addCreateQuestion = function (step) {
             $scope.addQuestionBtnDisable = true;
             QuestionsService.createQuestion({
-                'subject': $scope.lesson.subject,
-                'age': $scope.lesson.age,
-                'language': $scope.lesson.language,
-                'tags': $scope.lesson.tags
+                'subject': $scope.playlist.subject,
+                'age': $scope.playlist.age,
+                'language': $scope.playlist.language,
+                'tags': $scope.playlist.tags
             }).then(function (result) {
                 $scope.errorMessage = null;
                 openQuestionDialog(step, result.data, false);
@@ -422,23 +422,23 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
         
 
-        $scope.isLessonInvalid = function () {
-            return !!$scope.lesson && !$scope.lesson.name;
+        $scope.isPlaylistInvalid = function () {
+            return !!$scope.playlist && !$scope.playlist.name;
         };
 
         $scope.$on('$locationChangeStart', function (event) { // guy -
             // TODO - consider using route change instead.
             persistScroll();
-            if ($scope.isLessonInvalid()) {
-                var answer = confirm($filter('translate')('deleteLesson.Confirm'));
+            if ($scope.isPlaylistInvalid()) {
+                var answer = confirm($filter('translate')('deletePlaylist.Confirm'));
                 if (!answer) {
                     event.preventDefault();
                 } else {
-                    LergoClient.lessons.delete($scope.lesson._id).then(function () {
+                    LergoClient.playlists.delete($scope.playlist._id).then(function () {
                         $scope.errorMessage = null;
-                        $log.info('Lesson deleted sucessfully');
+                        $log.info('Playlist deleted sucessfully');
                     }, function (result) {
-                        $scope.errorMessage = 'Error in deleting Lesson : ' + result.data.message;
+                        $scope.errorMessage = 'Error in deleting Playlist : ' + result.data.message;
                         $log.error($scope.errorMessage);
                     });
                 }
@@ -446,22 +446,22 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         });
         
 
-        //delete invalid step in lesson on location change
+        //delete invalid step in playlist on location change
         $scope.$on('$locationChangeStart', function () {
-            if ($scope.lesson) {
-                var lesson = $scope.lesson;
-                for (var i = lesson.steps.length -1; i >= 0; i--) {
-                    if (!$scope.isStepValid(lesson.steps[i])) {
+            if ($scope.playlist) {
+                var playlist = $scope.playlist;
+                for (var i = playlist.steps.length -1; i >= 0; i--) {
+                    if (!$scope.isStepValid(playlist.steps[i])) {
                         $log.info('deleting invalid step ',i);
-                        lesson.steps.splice(i, 1);
-                        LergoClient.lessons.update(lesson);
+                        playlist.steps.splice(i, 1);
+                        LergoClient.playlists.update(playlist);
                     }
                 }
             }
         });
  
         $scope.isStepValid = function (step) {
-            return LessonsService.checkIfStepIsValid(step);
+            return PlaylistsService.checkIfStepIsValid(step);
         };
 
         $scope.$watch(function () {
