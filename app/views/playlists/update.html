@@ -1,10 +1,10 @@
-<div class="base-layout" id="createPlaylistPageMobile" noindex>
-    <span go-to-my-playlists-demo active="{{!isPlaylistInvalid()}}"></span>
+<div class="base-layout" id="createLessonPageMobile" noindex>
+    <span go-to-my-lessons-demo active="{{!isPlaylistInvalid()}}"></span>
     <div class="container">
         <div class="row">
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
             <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                    <form ng-submit='create()' class="createPlaylist-form lergo-form container" name="playlistCreateForm">
+                    <form ng-submit='create()' class="createLesson-form lergo-form container" name="playlistCreateForm">
                         <div class="form-section form-group name"
                             ng-class="{ 'has-error' : playlistCreateForm.name.$invalid && !playlistCreateForm.$pristine }">
                             <label dir="auto" class="bot5">{{ 'playlists.name' | translate }}</label>
@@ -159,7 +159,7 @@
                                 </div>
                             </div>
                             <div ng-repeat="step in playlist.steps">
-                                <hr class="hr-width-create-playlist"/>
+                                <hr class="hr-width-create-lesson"/>
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
@@ -206,7 +206,7 @@
                             <div save-status="saveStatus" class="row top30 status-save"></div>
                             <div></div>
                             <div class="add-step-hint row" ></div>
-                            <div class="playlist-actions row"> <!-- playlist actions -->
+                            <div class="lesson-actions row"> <!-- playlist actions -->
                                 <button style=" font-size: 13px" class="btn" ng-click="done()" ng-disabled="saveButtonDisabled()">
                                     {{'done' | translate }}
                                 </button>
@@ -242,13 +242,13 @@
                         </button>
                         <hr>
                         <div uib-collapse="!isCollapsed">
-                            <div helper-content path="'/playlist/update'" user="user"></div>
+                            <div helper-content path="'/lesson/update'" user="user"></div>
                         </div>
                     </div>
                 <div class="hidden-sm hidden-xs">
                     <div>
-                        <div class="create-playlist-sidebar">
-                            <div helper-content path="'/playlist/update'" user="user"></div>
+                        <div class="create-lesson-sidebar">
+                            <div helper-content path="'/lesson/update'" user="user"></div>
                         </div>
                     </div>
                 </div>
