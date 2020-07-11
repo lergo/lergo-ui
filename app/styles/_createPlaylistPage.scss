@@ -1,0 +1,184 @@
+#createPlaylistPageMobile {
+    .createPlaylist-form {
+        display: table;
+        padding-top: 10px;
+        width: 100%;
+        .lergo-label {
+            padding-top: 10px;
+        }
+        .error {
+            display: table-row;
+            font-size: 15px;
+            color: red;
+        }
+        .name {
+            display: table-row;
+        }
+        .description {
+            display: table-row;
+        }
+        .stats {
+            margin-top: 20px;
+            .form-control {
+                display: inline;
+                margin: 10px 0;
+            }
+            .language {
+                padding: 0 10px;
+            }
+            .subject {
+                padding: 0 15px;
+            }
+            .age {
+                input, label {
+                    display: block;
+                }
+            }
+            .tag {
+                margin: 10px 10px;
+                color: inherit;
+                padding: 10px 0;
+                    & > span {
+                    }
+                    .tag-section-wrapper {
+                        .tags-section {
+                            input {
+                                width: 40%;
+                                border-radius: 3px;
+                                background-color: #efefef;
+                                margin-top: -10px;
+                            }
+                        }
+                    }
+
+            }
+            .status-save {
+                margin-left: -26px;
+                margin-bottom: 2px;
+            }
+            .hr-width-create-playlist {
+                margin-left: -14px;
+                margin-right: -14px;
+            }
+            .advanced-options {
+                margin-left: -15px;
+                .row {
+                    margin-left: 0px;
+                    padding: 10px 0;
+                }
+            }
+            .playlist-actions {
+                margin-left: -30px;
+
+            }
+            .button-align {
+                text-align: center;
+                padding-right: 210px;
+
+            }
+            .retry-question {
+                float: right;
+            }
+            .move-quiz {
+                padding-right: 60px;
+                float: right;
+            }
+            .video-url, .slides-url {
+                margin-left: 15px;
+            }
+            .shuffle-questions {
+                text-align: center;
+            }
+        }
+    }
+    select:nth-child(1) {
+        margin-bottom: -8px;
+    }
+
+    .create-playlist-sidebar {
+        padding: 12px 25px;
+    }
+
+    .step-actions{
+        padding: 10px 0;
+        text-align:center;
+    }
+}
+.admin-background {
+    padding: 10px;
+    background-color:#d4dfdf;
+    & i {
+        margin: 5px;
+    }
+}
+
+.rtl {
+    #createPlaylistPageMobile{
+        .createPlaylist-form {
+
+            .stats {
+                .playlist-actions {
+                    margin-right: -30px;
+                }
+                .advanced-options {
+                    margin-right: -15px;
+                    .row {
+                        margin-right: 0px;
+                    }
+                }
+
+                .open-update {
+                    padding-left: 30px;
+                }
+
+                .video-url, .slides-url {
+                    margin-right: 15px;
+                }
+                .button-align {
+                    padding-left: 210px;
+
+                }
+                .status-save {
+                    margin-right: -26px;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 1023px ){
+    #createPlaylistPageMobile {
+        .createPlaylist-form {
+            .stats {
+                .move-quiz {
+                    padding-right: 0px;
+                }
+                .tag {
+                    .tag-section-wrapper {
+                        .tags-section {
+                            input {
+                                width: unset;
+                            }
+                        }
+                    }
+                }
+                .age {
+                    margin: 0 15px;
+                }
+                .hr-width {
+                    margin-left: 0px;
+                    margin-right:0px;
+                }
+                .button-align {
+                    text-align: center;
+                    padding-right: 0px;
+                    padidng-left: 0px;
+
+                }
+            }
+        }
+
+    }
+
+}

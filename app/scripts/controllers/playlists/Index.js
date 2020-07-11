@@ -2,7 +2,7 @@
 
 angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window, localStorageService) {
 	// enum
-	$scope.LessonTypeToLoad = {
+	$scope.PlaylistTypeToLoad = {
 		user : 'myPlaylists',
 		liked : 'likedPlaylists'
 	};
@@ -125,7 +125,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		// 	$scope.playlistToShow = $scope.playlists[index];
 		// };	
 
-	$scope.loadLessons = function() {
+	$scope.loadPlaylists = function() {
 		$log.info('loading playlists');
 		var queryObj = {
 			'filter' : _.merge({}, $scope.playlistsFilter),
@@ -135,15 +135,15 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 			'dollar_page' : $scope.filterPage
 		};
 		$scope.playlistToLoad = localStorageService.get('playlistToLoad');
-		var getLessonsPromise = null;
-		if ($scope.playlistToLoad === $scope.LessonTypeToLoad.liked) {
-			getLessonsPromise = LergoClient.userData.getLikedLessons(queryObj);
+		var getPlaylistsPromise = null;
+		if ($scope.playlistToLoad === $scope.PlaylistTypeToLoad.liked) {
+			getPlaylistsPromise = LergoClient.userData.getLikedPlaylists(queryObj);
 		} else {
-			getLessonsPromise = LergoClient.userData.getLessons(queryObj);
-			$scope.playlistToLoad = $scope.LessonTypeToLoad.user;
+			getPlaylistsPromise = LergoClient.userData.getPlaylists(queryObj);
+			$scope.playlistToLoad = $scope.PlaylistTypeToLoad.user;
 		}
 
-		getLessonsPromise.then(function(result) {
+		getPlaylistsPromise.then(function(result) {
 			$scope.playlists = result.data.data;
 			$scope.filterPage.count = result.data.count; // number of playlists
 			// after filtering
@@ -151,10 +151,10 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 			// pagination.
 			$scope.totalResults = result.data.total;
 			$scope.errorMessage = null;
-			$log.info('Lesson fetched successfully');
+			$log.info('Playlist fetched successfully');
 			scrollToPersistPosition();
 		}, function(result) {
-			$scope.errorMessage = 'Error in fetching Lessons : ' + result.data.message;
+			$scope.errorMessage = 'Error in fetching Playlists : ' + result.data.message;
 			$log.error($scope.errorMessage);
 		});
 	};
