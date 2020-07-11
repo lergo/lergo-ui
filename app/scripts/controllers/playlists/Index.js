@@ -6,10 +6,10 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		user : 'myPlaylists',
 		liked : 'likedPlaylists'
 	};
-	$scope.lessonsFilter = {};
+	$scope.playlistsFilter = {};
 	$scope.filterPage = {};
 	$scope.totalResults = 0;
-	$scope.lessonsFilterOpts = {
+	$scope.playlistsFilterOpts = {
 		'showSubject' : true,
 		'showLanguage' : true,
 		'showAge' : true,
@@ -18,10 +18,10 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		'showSearchText' : true
 	};
 
-	$scope.load = function(lessonToLoad) {
-		var oldValue = localStorageService.get('lessonToLoad');
-		if (oldValue !== lessonToLoad) {
-			localStorageService.set('lessonToLoad', lessonToLoad);
+	$scope.load = function(playlistToLoad) {
+		var oldValue = localStorageService.get('playlistToLoad');
+		if (oldValue !== playlistToLoad) {
+			localStorageService.set('playlistToLoad', playlistToLoad);
 			$scope.filterPage.current = 1;
 			$scope.filterPage.updatedLast = new Date().getTime();
 		}
@@ -38,7 +38,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 					{"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 3 test" },
 					{"_id" : "5eba8713011aee65253b74ae", "name" : "no-name 3"},
 					{"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 3 (7 - 12)"},
-					{"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 3 - lesson 3"}
+					{"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 3 - playlist 3"}
 				]
 		},
 		{
@@ -58,7 +58,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 				{"_id" : "536df82d634d2fc25445ee39", "name" : "playlist number 1 test" },
 				{"_id" : "5eba8713011aee65253b74ae", "name" : "different name"},
 				{"_id" : "5d23fce0ef7df85ff68cae07", "name": "Japanese II Vocabulary - Part 1 (7 - 12)"},
-				{"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - lesson 3"},
+				{"_id" : "5d050600ef7df85ff68c8de9", "name": "GENKI - 1 - playlist 3"},
 				{
 					"_id" : "536df82d634d2fc25445ee39",
 					"description" : "שיעור זה כולל לימוד אוצר מילים למילים הכי נפוצות בשפה.",
@@ -126,26 +126,26 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		};	
 
 	$scope.loadLessons = function() {
-		$log.info('loading lessons');
+		$log.info('loading playlists');
 		var queryObj = {
-			'filter' : _.merge({}, $scope.lessonsFilter),
+			'filter' : _.merge({}, $scope.playlistsFilter),
 			'sort' : {
 				'lastUpdate' : -1
 			},
 			'dollar_page' : $scope.filterPage
 		};
-		$scope.lessonToLoad = localStorageService.get('lessonToLoad');
+		$scope.playlistToLoad = localStorageService.get('playlistToLoad');
 		var getLessonsPromise = null;
-		if ($scope.lessonToLoad === $scope.LessonTypeToLoad.liked) {
+		if ($scope.playlistToLoad === $scope.LessonTypeToLoad.liked) {
 			getLessonsPromise = LergoClient.userData.getLikedLessons(queryObj);
 		} else {
 			getLessonsPromise = LergoClient.userData.getLessons(queryObj);
-			$scope.lessonToLoad = $scope.LessonTypeToLoad.user;
+			$scope.playlistToLoad = $scope.LessonTypeToLoad.user;
 		}
 
 		getLessonsPromise.then(function(result) {
-			$scope.lessons = result.data.data;
-			$scope.filterPage.count = result.data.count; // number of lessons
+			$scope.playlists = result.data.data;
+			$scope.filterPage.count = result.data.count; // number of playlists
 			// after filtering
 			// .. changing
 			// pagination.
@@ -160,15 +160,15 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	};
 
 	$scope.create = function() {
-        $scope.createLessonBtnDisable=true;
-		LergoClient.lessons.create().then(function(result) {
-			var lesson = result.data;
+        $scope.createPlaylistBtnDisable=true;
+		LergoClient.playlists.create().then(function(result) {
+			var playlist = result.data;
 			$scope.errorMessage = null;
-			$location.path('/user/lessons/' + lesson._id + '/update');
+			$location.path('/user/playlists/' + playlist._id + '/update');
 		}, function(result) {
-			$scope.errorMessage = 'Error in creating Lesson : ' + result.data.message;
+			$scope.errorMessage = 'Error in creating Playlist : ' + result.data.message;
 			$log.error($scope.errorMessage);
-            $scope.createLessonBtnDisable=false;
+            $scope.createPlaylistBtnDisable=false;
 		});
 	};
 

@@ -621,7 +621,6 @@
     "likedLessons": "Liked Lessons",
     "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like lessons.",
     "myLessons": "My Lessons",
-    "myPlaylists": "My Playlist",
     "name": "Lesson Name",
     "noLessons": "To create a new lesson please click on \"Create New Lesson\".",
     "note": "Note",
@@ -785,6 +784,13 @@
     "redirect": "For all lessons",
     "placeholder": "Enter code",
     "enter": "Enter"
+  },
+  "playlists" : {
+    "create": "Create New Playlist",
+    "filter": "Filter Playlists",
+    "myPlaylists": "My Playlists",
+    "likedPlaylists": "Liked Playlists",
+    "total": "total"
   },
   "popular": "Popular",
   "powered": {
