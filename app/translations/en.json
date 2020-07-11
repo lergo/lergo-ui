@@ -785,7 +785,123 @@
     "placeholder": "Enter code",
     "enter": "Enter"
   },
-  "playlists" : {
+  "playlists": {
+    "addAdminComment": "Add Admin comment",
+    "addCoverPage": "Add cover image for playlist intro",
+    "addAdminCommentPlaceholder": "Admin Comment",
+    "addCoverPageHint": "To add your cover image to playlist please paste here the image URL.",
+    "addQuestion": "Add Questions to Quiz",
+    "addQuestionFromAll": "from all questions",
+    "areYouReady": "Are you ready to start learning?",
+    "available": "Available Playlists",
+    "comment": "Comments",
+    "continuePlaylist": "Continue Playlist",
+    "create": "Create New Playlist",
+    "createdOn": "created on",
+    "description": "Playlist Description",
+    "edit": {
+      "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
+      "noPermissionsTitle": "You don't have permissions to edit this."
+    },
+    "embedPlaylist": "Embed",
+    "embedPlaylistTitle": "Copy the code below to embed playlist on your webpage or blog",
+    "error": {
+      "invalidName": "Playlist name is a required field. Please fill it out before adding a step to the playlist."
+    },
+    "filter": "Filter Playlists",
+    "filters": {
+      "labels": {
+        "age range": "Age Range",
+        "language": "Language",
+        "subject": "Subject",
+        "pagination": "Return to previous page"
+      }
+    },
+    "genericVideosPost": " The list will open in a new tab.",
+    "genericVideosPre": "For a list of generic animated videos please",
+    "invalidCoverPageLink": "Please make sure to upload image to your google drive and share link here",
+    "invalidLink": "Please paste a valid link for Wikipedia, Wikibooks or Wiktionary",
+    "invitePlaylist": {
+      "class": {
+        "help": "Invite CLASS: To generate a PIN number or link to the invite, please enter your class name and press submit.",
+        "msg": "Invite Class",
+        "name": "Class name",
+        "noteMessage": "You will receive your students playlist reports upon completion of each playlist.",
+        "noteTitle": "Note",
+        "pinHint": "(students to enter it at lergo.it).",
+        "success": {
+          "help": "To invite your CLASS to the playlist, students should enter PIN code at www.lergo.it - or- copy and give students the invite link.",
+          "invite": "Link to Playlist Invite"
+        }
+      },
+      "student": {
+        "help": "Invite STUDENT: To generate a link for the invite please enter student's first name and press submit.",
+        "msg": "Invite Student",
+        "name": "Student name",
+        "noteMessage": "You will receive your kid's/student's playlist report upon completion of playlist.",
+        "noteTitle": " Note",
+        "pinHint": "(students to enter it at lergo.it).",
+        "success": {
+          "help": "To invite your STUDENT to the playlist, student should enter PIN code at www.lergo.it - or- copy and give student the invite link.",
+          "invite": "Link to playlist invite"
+        }
+      }
+    },
+    "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a playlist.",
+    "inviteSuccessText": "Copy the link below to invite a student to the playlist",
+    "playlistCompleted": "You have completed the playlist",
+    "playlistReport": "Playlist Report",
+    "letsContinue": "OK! Let's Continue",
+    "letsGo": "Let's LerGO!",
+    "likedPlaylists": "Liked Playlists",
+    "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like playlists.",
+    "myPlaylists": "My Playlists",
+    "name": "Playlist Name",
+    "noPlaylists": "To create a new playlist please click on \"Create New Playlist\".",
+    "note": "Note",
+    "noteMessage": "You will receive your kid's/student's playlist report upon completion of playlist.",
+    "practiceNotAvailable": "Please signup or login to LerGO. Only registered users can use this feature.",
+    "practiseWrongQuestion": "Practice Mistakes",
+    "readLess": "Read Less",
+    "readMore": "Read More",
+    "recommenedNextPlaylist": "Recommended Next Playlist",
+    "recommenedNextPlaylistText": "Copy and paste here the URL/link that appears when you press \"share\" on the playlist intro/details page.",
+    "recommenedPriorPlaylist": "Recommended Previous Playlist",
+    "recommenedPriorPlaylistText": "Copy and paste here the URL/link that appears when you press \"share\" on the playlist intro/details page.",
+    "reportAbuseNotAvailable": "To flag playlist or report abuse please login or register to LerGO. Alternately, you can also use the Report Abuse button at the footer below.",
+    "restart": "Start Over",
+    "seeReport": "See Report",
+    "sharePlaylist": "Share",
+    "sharePlaylistTitle": "Copy the link below to share playlist with friends",
+    "slideURL": "Presentation URL",
+    "slideURLHelpText": "Insert the URL of the Google Slides presentation here.",
+    "startPlaylist": "Start Playlist",
+    "tags": "Tags",
+    "tooltip": {
+      "comment": "Comments",
+      "copy": "Copy Playlist",
+      "delete": "Delete Playlist",
+      "edit": "Edit Playlist",
+      "go": "go to playlist",
+      "invite": "invite students",
+      "like": "like this playlist",
+      "liked": "you liked this playlist",
+      "preview": "Preview Playlist",
+      "restart": "Start again",
+      "share": "share with friends",
+      "start": "start playlist"
+    },
+    "total": "Total",
+    "videoURL": "Video URL",
+    "videoURLHelpText": "Insert the URL of the YouTube video here.",
+    "welcome": "Welcome to lergo",
+    "wikiLink": "Wikipedia Wikibooks Wiktionary",
+    "wikiLinkText": "Paste wikipedia / wikibooks / wiktionary link here",
+    "wikiLinkTitle": "Wikipedia"
+  },
+
+
+  "playlists1" : {
     "create": "Create New Playlist",
     "filter": "Filter Playlists",
     "myPlaylists": "My Playlists",

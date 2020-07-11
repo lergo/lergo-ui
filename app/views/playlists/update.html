@@ -1,23 +1,23 @@
-<div class="base-layout" id="createLessonPageMobile" noindex>
-    <span go-to-my-lessons-demo active="{{!isLessonInvalid()}}"></span>
+<div class="base-layout" id="createPlaylistPageMobile" noindex>
+    <span go-to-my-playlists-demo active="{{!isPlaylistInvalid()}}"></span>
     <div class="container">
         <div class="row">
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
             <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                    <form ng-submit='create()' class="createLesson-form lergo-form container" name="lessonCreateForm">
+                    <form ng-submit='create()' class="createPlaylist-form lergo-form container" name="playlistCreateForm">
                         <div class="form-section form-group name"
-                            ng-class="{ 'has-error' : lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine }">
-                            <label dir="auto" class="bot5">{{ 'lessons.name' | translate }}</label>
+                            ng-class="{ 'has-error' : playlistCreateForm.name.$invalid && !playlistCreateForm.$pristine }">
+                            <label dir="auto" class="bot5">{{ 'playlists.name' | translate }}</label>
                             <div class="lergo-input">
-                                <input dir="auto" required class="form-control" ng-model="lesson.name" name="name"/>
+                                <input dir="auto" required class="form-control" ng-model="playlist.name" name="name"/>
                             </div>
-                            <p ng-show="lessonCreateForm.name.$invalid && !lessonCreateForm.$pristine" class="help-block">
-                                {{'lessons.error.invalidName' | translate}}</p>
+                            <p ng-show="playlistCreateForm.name.$invalid && !playlistCreateForm.$pristine" class="help-block">
+                                {{'playlists.error.invalidName' | translate}}</p>
                         </div>
                         <div class="form-section description form-group">
-                            <label dir="auto" class="bot5 top5">{{ 'lessons.description' | translate }}</label>
+                            <label dir="auto" class="bot5 top5">{{ 'playlists.description' | translate }}</label>
                             <div class="lergo-input">
-                                <textarea dir="auto" class="form-control" ng-model="lesson.description" name="description" dir="auto"></textarea>
+                                <textarea dir="auto" class="form-control" ng-model="playlist.description" name="description" dir="auto"></textarea>
                             </div>
                         </div>
                         <div class="stats form-group">
@@ -25,7 +25,7 @@
                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                     <div class="language ">
                                         <label>{{ 'filters.labels.language' | translate }}</label>
-                                        <select class="form-control" ng-model="lesson.language"
+                                        <select class="form-control" ng-model="playlist.language"
                                                 ng-options="l as ('filters.languages.' + l| translate) for l in languages"
                                                 name="language"></select>
                                     </div>
@@ -33,7 +33,7 @@
                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                     <div class="subject">
                                         <label>{{ 'filters.labels.subject' | translate }}</label>
-                                        <select class="form-control" ng-model="lesson.subject"
+                                        <select class="form-control" ng-model="playlist.subject"
                                                 ng-options="s as ('filters.subjects.' + s | translate) for s in subjects"
                                                 name="subject"></select>
                                     </div>
@@ -42,7 +42,7 @@
                                     <div class="age">
                                         <label>{{ 'fromAge' | translate }}</label>
                                         <input  class="form-control" type="number" min="4" max="18" step="1" size="2"
-                                               ng-model="lesson.age" name="age"/>
+                                               ng-model="playlist.age" name="age"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
@@ -52,18 +52,18 @@
                                 <div class="tag form-group">
                                     <label>{{ 'tags' | translate }}</label>
                                     <div>
-                                        <div tag-section tags="lesson.tags" tags-available="allAvailableTags"></div>
+                                        <div tag-section tags="playlist.tags" tags-available="allAvailableTags"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                     <!-- starting admin-comment section  -->
-                    <div admin-section="lessons.userCanEdit">
+                    <div admin-section="playlists.userCanEdit">
                         <div class="stats admin-background form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="advanced-options">
                                 <button class="btn-link expander" ng-click="isAdminCommentOpen = !isAdminCommentOpen"
-                                        ng-show="!!lesson.name">
+                                        ng-show="!!playlist.name">
                                     <i ng-show="!isAdminCommentOpen" class="fa fa-plus-square"></i>
                                     <i ng-show="!!isAdminCommentOpen" class="fa fa-minus-square"></i>
                                     {{ 'adminComments' | translate }}
@@ -73,7 +73,7 @@
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="subject">
                                                 <label>{{ 'filters.labels.adminRating' | translate }}</label>
-                                                <select class="form-control" ng-model="lesson.adminRating"
+                                                <select class="form-control" ng-model="playlist.adminRating"
                                                         ng-options="a as ('filters.adminRatings.' + a| translate) for a in adminRatings"
                                                         name="adminRating"></select>
                                             </div>
@@ -83,8 +83,8 @@
                                     <div class="row">
                                         <div class="col-md-11 col-sm-12 col-xs-12">
                                             <div class="subject">
-                                                <label>{{ 'lessons.addAdminComment' | translate }}</label> 
-                                                <input class="form-control" placeholder="{{ 'lessons.addAdminCommentPlaceholder' | translate }}" ng-model="lesson.adminComment">  
+                                                <label>{{ 'playlists.addAdminComment' | translate }}</label> 
+                                                <input class="form-control" placeholder="{{ 'playlists.addAdminCommentPlaceholder' | translate }}" ng-model="playlist.adminComment">  
                                             </div>         
                                         </div>
                                     </div>
@@ -99,7 +99,7 @@
                             <div class="advanced-options">
                                 <br>
                                 <button class="btn-link expander" ng-click="isAdvOptOpen = !isAdvOptOpen"
-                                        ng-show="!!lesson.name">
+                                        ng-show="!!playlist.name">
                                     <i ng-show="!isAdvOptOpen" class="fa fa-plus-square"></i>
                                     <i ng-show="!!isAdvOptOpen" class="fa fa-minus-square"></i>
                                     {{ 'advancedOptions' | translate }}
@@ -110,56 +110,56 @@
 
                                     <div class="row">
                                         <div class="col-md-2 col-sm-12 col-xs-12">
-                                            {{ 'lessons.addCoverPage' | translate }}
+                                            {{ 'playlists.addCoverPage' | translate }}
                                         </div>
                                         <div class="col-md-10 col-sm-12 col-xs-12">
                                             <input lergo-input-converter
-                                                   placeholder="{{'lessons.addCoverPageHint' | translate}}"
-                                                   ng-model="lesson.coverPage"/>
-                                                   <url-google-drive-validation-warning google-drive-link="{{ lesson.coverPage }}"></url-google-drive-validation-warning>
+                                                   placeholder="{{'playlists.addCoverPageHint' | translate}}"
+                                                   ng-model="playlist.coverPage"/>
+                                                   <url-google-drive-validation-warning google-drive-link="{{ playlist.coverPage }}"></url-google-drive-validation-warning>
                                         </div>
                                     </div>
                                    
 
                                     <div class="row">
                                         <div class="col-md-2 col-sm-12 col-xs-12">
-                                            {{ 'lessons.recommenedNextLesson' | translate }}
+                                            {{ 'playlists.recommenedNextPlaylist' | translate }}
                                         </div>
                                         <div class="col-md-10 col-sm-12 col-xs-12">
-                                            <input placeholder="{{'lessons.recommenedNextLessonText' | translate}}"
-                                                   ng-model="lesson.nextLesson"/>
+                                            <input placeholder="{{'playlists.recommenedNextPlaylistText' | translate}}"
+                                                   ng-model="playlist.nextPlaylist"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2 col-sm-12 col-xs-12">
-                                            {{ 'lessons.recommenedPriorLesson' | translate }}
+                                            {{ 'playlists.recommenedPriorPlaylist' | translate }}
                                         </div>
                                         <div class="col-md-10 col-sm-12 col-xs-12">
-                                            <input placeholder="{{'lessons.recommenedPriorLessonText' | translate}}"
-                                                   ng-model="lesson.priorLesson"/>
+                                            <input placeholder="{{'playlists.recommenedPriorPlaylistText' | translate}}"
+                                                   ng-model="playlist.priorPlaylist"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <ng-form name="wikiForm">
                                             <div style="padding-top: 20px" class=" col-lg-2 col-md-2 col-sm-12 col-xs-12 wiki-tip">
-                                                {{ 'lessons.wikiLinkTitle' | translate }}
+                                                {{ 'playlists.wikiLinkTitle' | translate }}
                                             </div>
                                             <div class="col-lg-10 md-10 sm-10 xs-10">
                                                 <div class="form-group"
                                                      ng-class="{ 'has-error' : wikiForm.wikiLINK.$invalid && !wikiForm.wikiLINK.$pristine }">
                                                     <input class="form-control wiki-url" name="wikiLINK"
-                                                           placeholder="{{'lessons.wikiLink' | translate }}" ng-model="lesson.wikiLink"
+                                                           placeholder="{{'playlists.wikiLink' | translate }}" ng-model="playlist.wikiLink"
                                                            ng-pattern="/http(s):\/\/..\.wik[a-z]+\.org\/wiki\//">
                                                     <p ng-show="wikiForm.wikiLINK.$error.pattern || (wikiForm.wikiLINK.$invalid && !wikiForm.wikiLINK.$pristine)"
-                                                       class="help-block">{{'lessons.invalidLink'| translate}}</p>
+                                                       class="help-block">{{'playlists.invalidLink'| translate}}</p>
                                                 </div>
                                             </div>
                                         </ng-form>
                                     </div>
                                 </div>
                             </div>
-                            <div ng-repeat="step in lesson.steps">
-                                <hr class="hr-width-create-lesson"/>
+                            <div ng-repeat="step in playlist.steps">
+                                <hr class="hr-width-create-playlist"/>
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
@@ -206,15 +206,15 @@
                             <div save-status="saveStatus" class="row top30 status-save"></div>
                             <div></div>
                             <div class="add-step-hint row" ></div>
-                            <div class="lesson-actions row"> <!-- lesson actions -->
+                            <div class="playlist-actions row"> <!-- playlist actions -->
                                 <button style=" font-size: 13px" class="btn" ng-click="done()" ng-disabled="saveButtonDisabled()">
                                     {{'done' | translate }}
                                 </button>
-                                <button style=" font-size: 13px" class="btn" ng-click="done('showLesson')" ng-disabled="saveButtonDisabled()">
-                                    {{'button.showLesson' | translate }}
+                                <button style=" font-size: 13px" class="btn" ng-click="done('showPlaylist')" ng-disabled="saveButtonDisabled()">
+                                    {{'button.showPlaylist' | translate }}
                                 </button>
                                 <span class="pop-up-hint add-step-button">
-                                    <button style=" font-size: 13px" class="btn btn-start" ng-click="addStep(lesson)"
+                                    <button style=" font-size: 13px" class="btn btn-start" ng-click="addStep(playlist)"
                                             ng-disabled="saveButtonDisabled()">{{ 'steps.add' | translate }}
                                     </button>
                                     <span class="hidden-xs">
@@ -242,13 +242,13 @@
                         </button>
                         <hr>
                         <div uib-collapse="!isCollapsed">
-                            <div helper-content path="'/lesson/update'" user="user"></div>
+                            <div helper-content path="'/playlist/update'" user="user"></div>
                         </div>
                     </div>
                 <div class="hidden-sm hidden-xs">
                     <div>
-                        <div class="create-lesson-sidebar">
-                            <div helper-content path="'/lesson/update'" user="user"></div>
+                        <div class="create-playlist-sidebar">
+                            <div helper-content path="'/playlist/update'" user="user"></div>
                         </div>
                     </div>
                 </div>
