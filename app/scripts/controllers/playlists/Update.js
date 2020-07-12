@@ -119,7 +119,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         function openQuestionDialog(step, quizItem, isUpdate) {
             persistScroll();
             var modelContent = {};
-            modelContent.templateUrl = 'views/questions/addCreateUpdateDialog.html';
+            modelContent.templateUrl = 'views/lessons/addCreateUpdateDialog.html';
             modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
             modelContent.backdrop = 'static';
             modelContent.controller = 'LessonsAddUpdateDialogCtrl';
