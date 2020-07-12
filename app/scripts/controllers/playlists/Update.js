@@ -207,16 +207,21 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         });
 
 
+        // $scope.stepTypes = [{
+        //     'id': 'video',
+        //     'label': 'Video'
+        // }, {
+        //     'id': 'quiz',
+        //     'label': 'Quiz'
+        // }, {
+        //     'id': 'slide',
+        //     'label': 'Slide'
+        // }];
+
         $scope.stepTypes = [{
-            'id': 'video',
-            'label': 'Video'
-        }, {
-            'id': 'quiz',
-            'label': 'Quiz'
-        }, {
-            'id': 'slide',
-            'label': 'Slide'
-        }];
+            'id': 'lesson',
+            'label': 'Lessons'
+        }]
 
         $scope.getPlaylistIntroLink = function (playlist) {
             return LergoClient.playlists.getIntroLink(playlist);
