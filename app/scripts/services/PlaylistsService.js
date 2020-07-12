@@ -64,6 +64,7 @@ angular.module('lergoApp').service('PlaylistsService',
         };
 
         this.getById = function (id) {
+            console.log('===========trying to get by id -playlistsService', id);
             return $http.get('/backend/playlists/' + id);
         };
 

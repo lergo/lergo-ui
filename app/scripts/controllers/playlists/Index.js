@@ -26,9 +26,10 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 			$scope.filterPage.updatedLast = new Date().getTime();
 		}
 	};
-	
+
 	$scope.loadPlaylists = function() {
 		$log.info('loading playlists');
+
 		var queryObj = {
 			'filter' : _.merge({}, $scope.playlistsFilter),
 			'sort' : {
@@ -37,6 +38,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 			'dollar_page' : $scope.filterPage
 		};
 		$scope.playlistToLoad = localStorageService.get('playlistToLoad');
+		console.log($scope.playlists);
 		var getPlaylistsPromise = null;
 		if ($scope.playlistToLoad === $scope.PlaylistTypeToLoad.liked) {
 			getPlaylistsPromise = LergoClient.userData.getLikedPlaylists(queryObj);
