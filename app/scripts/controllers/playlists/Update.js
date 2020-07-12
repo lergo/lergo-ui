@@ -81,7 +81,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             }
         }
 
-        function lessonOverrideQuestion(questionIdToOverride, callback) {
+        function playlistOverrideLesson(questionIdToOverride, callback) {
             $log.info('in playlist controller, overriding question');
             LergoClient.lessons.overrideQuestion($scope.playlist._id, questionIdToOverride).then(function (result) {
                 if (!!callback) {
@@ -97,7 +97,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         // playlist update
         // list on quizItemsData change ONCE and reopens the dialog
         function playlistOverrideQuestionAndReopenDialog(step, questionIdToOverride) {
-            lessonOverrideQuestion(questionIdToOverride, function (newQuizItemId) {
+            playlistOverrideLesson(questionIdToOverride, function (newQuizItemId) {
 
                 // first - lets watch
                 // http://stackoverflow.com/a/13652152/1068746
@@ -122,9 +122,9 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             modelContent.templateUrl = 'views/questions/addCreateUpdateDialog.html';
             modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
             modelContent.backdrop = 'static';
-            modelContent.controller = 'QuestionsAddUpdateDialogCtrl';
+            modelContent.controller = 'LessonsAddUpdateDialogCtrl';
             modelContent.resolve = {
-                lessonOverrideQuestion: function () {
+                playlistOverrideLesson: function () {
                     return playlistOverrideQuestionAndReopenDialog;
                 },
                 quizItem: function () {
