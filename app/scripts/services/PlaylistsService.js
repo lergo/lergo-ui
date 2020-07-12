@@ -64,11 +64,12 @@ angular.module('lergoApp').service('PlaylistsService',
         };
 
         this.getById = function (id) {
-            console.log('===========trying to get by id -playlistsService', id);
+            console.log('===========trying to getByID -playlistsService', id);
             return $http.get('/backend/playlists/' + id);
         };
 
         this.findPlaylistsById = function (ids) {
+            console.log('===========findPlaylistsByid -playlistsService', ids);
             return $http({
                 'url': '/backend/playlists/find',
                 'method': 'GET',

@@ -15,6 +15,7 @@ angular.module('lergoApp')
                 'data': '=saveStatus'
             },
             link: function postLink(scope/*, element, attrs*/) {
+                console.log('------------------------------------saveStatus Directive');
                 var translateFilter = $filter('translate');
                 scope.getLabel = function(){
                     if ( scope.data.saving ){
