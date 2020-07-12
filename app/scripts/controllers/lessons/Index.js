@@ -38,7 +38,6 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 			'dollar_page' : $scope.filterPage
 		};
 		$scope.lessonToLoad = localStorageService.get('lessonToLoad');
-		console.log($scope.lessons);
 		var getLessonsPromise = null;
 		if ($scope.lessonToLoad === $scope.LessonTypeToLoad.liked) {
 			getLessonsPromise = LergoClient.userData.getLikedLessons(queryObj);

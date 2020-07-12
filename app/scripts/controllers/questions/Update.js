@@ -106,9 +106,6 @@ angular.module('lergoApp').controller('QuestionsUpdateCtrl',
 
         $scope.$watch('quizItem', saveQuestion.onValueChange, true);
 
-        // setInterval( function(){ console.log($scope.quizItem)},
-        // 1000);
-
         $scope.getQuestionUpdateTemplate = function () {
             if (!!$scope.quizItem && !!$scope.quizItem.type) {
                 var type = QuestionsService.getTypeById($scope.quizItem.type);

@@ -31,12 +31,12 @@ angular.module('lergoApp').service('PlaylistsService',
             });
         };
  
-        this.getPlaylistsWhoUseThisQuestion = function (questionId) {
-            return $http.get('/backend/playlists/using/question/' + questionId);
+        this.getPlaylistsWhoUseThisLesson = function (lessonId) {
+            return $http.get('/backend/playlists/using/lesson/' + lessonId);
         };
 
-        this.overrideQuestion = function (lessonId, questionId) {
-            return $http.post('/backend/playlists/' + lessonId + '/question/' + questionId + '/override');
+        this.overrideLesson = function (playlistId, lessonId) {
+            return $http.post('/backend/playlists/' + playlistId + '/lesson/' + lessonId + '/override');
         };
 
         this.delete = function (id) {
@@ -50,7 +50,7 @@ angular.module('lergoApp').service('PlaylistsService',
         this.update = function (playlist) {
             return $http.post('/backend/playlists/' + playlist._id + '/update', playlist);
         };
-        /* used for deleting invalid question / steps in playlist before running a playlist */
+        /* used for deleting invalid lesson / steps in playlist before running a playlist */
         this.fix = function (playlist) {
             return $http.post('/backend/playlists/' + playlist._id + '/fix', playlist);
         };
@@ -64,12 +64,10 @@ angular.module('lergoApp').service('PlaylistsService',
         };
 
         this.getById = function (id) {
-            console.log('===========trying to getByID -playlistsService', id);
             return $http.get('/backend/playlists/' + id);
         };
 
         this.findPlaylistsById = function (ids) {
-            console.log('===========findPlaylistsByid -playlistsService', ids);
             return $http({
                 'url': '/backend/playlists/find',
                 'method': 'GET',
@@ -131,7 +129,7 @@ angular.module('lergoApp').service('PlaylistsService',
          * @param {Playlist} item
          * @returns {number}
          */
-        this.countQuestions = function (item) {
+        this.countLessons = function (item) {
             try {
                 return _.sumBy(item.steps, function (step) {
                     return step.type === 'quiz' ? _.size(step.quizItems) : 0;
@@ -163,9 +161,9 @@ angular.module('lergoApp').service('PlaylistsService',
             return '/public/playlists/' + playlist._id + '/intro';
         };
 
-        this.createPlaylistFromWrongQuestions = function (report, wrongQuestions) {
+        this.createPlaylistFromWrongLessons = function (report, wrongLessons) {
             return $q(function (resolve, reject) {
-                if (!wrongQuestions || wrongQuestions.length === 0) {
+                if (!wrongLessons || wrongLessons.length === 0) {
                     reject();
                 }
                 self.create().then(function (result) {
@@ -176,7 +174,7 @@ angular.module('lergoApp').service('PlaylistsService',
                     playlist.steps = [];
                     var stepsWithoutRetry = _.filter(report.data.playlist.steps, function (s) {
                         if (s.type === 'quiz') {
-                            return !s.retryQuestion;
+                            return !s.retryLesson;
                         }
                     });
                     playlist.description = report.data.playlist.description;
@@ -187,11 +185,11 @@ angular.module('lergoApp').service('PlaylistsService',
                         'quizItems': [],
                         'testMode': 'False',
                         'retBefCrctAns': 1,
-                        'shuffleQuestion': true,
-                        retryQuestion: stepsWithoutRetry.length === 0
+                        'shuffleLesson': true,
+                        retryLesson: stepsWithoutRetry.length === 0
                     };
                     playlist.steps.push(step);
-                    playlist.steps[0].quizItems = _.uniq(wrongQuestions);
+                    playlist.steps[0].quizItems = _.uniq(wrongLessons);
                     self.update(playlist).then(function () {
                         resolve(playlist);
                     });
@@ -216,7 +214,7 @@ angular.module('lergoApp').service('PlaylistsService',
                     }
                 }
     
-                if (step.type === 'quiz') { // question must be added to quiz
+                if (step.type === 'quiz') { // lesson must be added to quiz
                     if (!step.quizItems || !step.quizItems[0] || step.quizItems[0].length === 0) {
                         return false;
                     }

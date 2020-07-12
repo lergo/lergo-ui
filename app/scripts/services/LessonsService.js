@@ -64,12 +64,10 @@ angular.module('lergoApp').service('LessonsService',
         };
 
         this.getById = function (id) {
-            console.log('===========trying to getByID -lessonsService', id);
             return $http.get('/backend/lessons/' + id);
         };
 
         this.findLessonsById = function (ids) {
-            console.log('===========findLessonsByid -lessonsService', ids);
             return $http({
                 'url': '/backend/lessons/find',
                 'method': 'GET',
