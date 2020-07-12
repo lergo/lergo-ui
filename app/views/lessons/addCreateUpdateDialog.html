@@ -12,13 +12,13 @@
                         <div class="add-create">
                             <ul class="nav nav-tabs">
                                 <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                    <a class="text-center" id="horizontalTabs" href="" ng-click="setCurrentSelection(section)">{{'questions.' + section.id | translate}}</a>
+                                    <a class="text-center" id="horizontalTabs" href="" ng-click="setCurrentSelection(section)">{{'lessons.' + section.id | translate}}</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                            <div ng-show="!!isActive(sections[0])" ng-include="sections[0].page" ng-controller="QuestionsUpdateCtrl"></div>
-                            <div ng-show="!isActive(sections[0])" ng-include="sections[1].page" ng-controller="QuestionsIndexCtrl"></div>
+                            <div ng-show="!!isActive(sections[0])" ng-include="sections[0].page" ng-controller="LessonsUpdateCtrl"></div>
+                            <div ng-show="!isActive(sections[0])" ng-include="sections[1].page" ng-controller="LessonsIndexCtrl"></div>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
 		<button class="btn " ng-click="currentSection.addClose()">{{'addClose' |translate}}</button>
 		<button class="btn btn-default" ng-click="cancel()">{{'cancel' |translate}}</button>
 	</div>
-	<div ng-show="selectedItems.length===0" class="errorMessage">{{'questions.add.emptySelection' | translate}}</div>
+	<div ng-show="selectedItems.length===0" class="errorMessage">{{'lessons.add.emptySelection' | translate}}</div>
 </div>
 <div class="modal-footer" ng-show="!!isCreate && !isUpdate">
 	<div class="modal-buttons">
