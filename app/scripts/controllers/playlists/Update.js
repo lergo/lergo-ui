@@ -427,43 +427,43 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
         
 
-        $scope.isPlaylistInvalid = function () {
-            return !!$scope.playlist && !$scope.playlist.name;
-        };
+        // $scope.isPlaylistInvalid = function () {
+        //     return !!$scope.playlist && !$scope.playlist.name;
+        // };
 
         $scope.$on('$locationChangeStart', function (event) { // guy -
             // TODO - consider using route change instead.
             persistScroll();
-            if ($scope.isPlaylistInvalid()) {
-                var answer = confirm($filter('translate')('deletePlaylist.Confirm'));
-                if (!answer) {
-                    event.preventDefault();
-                } else {
-                    LergoClient.playlists.delete($scope.playlist._id).then(function () {
-                        $scope.errorMessage = null;
-                        $log.info('Playlist deleted sucessfully');
-                    }, function (result) {
-                        $scope.errorMessage = 'Error in deleting Playlist : ' + result.data.message;
-                        $log.error($scope.errorMessage);
-                    });
-                }
-            }
+            // if ($scope.isPlaylistInvalid()) {
+            //     var answer = confirm($filter('translate')('deletePlaylist.Confirm'));
+            //     if (!answer) {
+            //         event.preventDefault();
+            //     } else {
+            //         LergoClient.playlists.delete($scope.playlist._id).then(function () {
+            //             $scope.errorMessage = null;
+            //             $log.info('Playlist deleted sucessfully');
+            //         }, function (result) {
+            //             $scope.errorMessage = 'Error in deleting Playlist : ' + result.data.message;
+            //             $log.error($scope.errorMessage);
+            //         });
+            //     }
+            // }
         });
         
 
         //delete invalid step in playlist on location change
-        $scope.$on('$locationChangeStart', function () {
-            if ($scope.playlist) {
-                var playlist = $scope.playlist;
-                for (var i = playlist.steps.length -1; i >= 0; i--) {
-                    if (!$scope.isStepValid(playlist.steps[i])) {
-                        $log.info('deleting invalid step ',i);
-                        playlist.steps.splice(i, 1);
-                        LergoClient.playlists.update(playlist);
-                    }
-                }
-            }
-        });
+        // $scope.$on('$locationChangeStart', function () {
+        //     if ($scope.playlist) {
+        //         var playlist = $scope.playlist;
+        //         for (var i = playlist.steps.length -1; i >= 0; i--) {
+        //             if (!$scope.isStepValid(playlist.steps[i])) {
+        //                 $log.info('deleting invalid step ',i);
+        //                 playlist.steps.splice(i, 1);
+        //                 LergoClient.playlists.update(playlist);
+        //             }
+        //         }
+        //     }
+        // });
  
         $scope.isStepValid = function (step) {
             return PlaylistsService.checkIfStepIsValid(step);
