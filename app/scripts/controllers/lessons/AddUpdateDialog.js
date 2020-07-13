@@ -50,6 +50,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			};
 			var items = [];
 			$scope.$on('lessonsLoaded', function(event, data) {
+				console.log('--------------------------------------this should be triggered');
 				items = data.items;
 				if (!!step && !!step.quizItems) {
 					_.each(items, function(q) {

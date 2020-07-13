@@ -10,6 +10,7 @@
                 <div>
                     <div ng-show="!isUpdate">
                         <div class="add-create">
+                            <div>this is lessons/addCreateUpdateDialog</div>
                             <ul class="nav nav-tabs">
                                 <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                     <a class="text-center" id="horizontalTabs" href="" ng-click="setCurrentSelection(section)">{{'lessons.' + section.id | translate}}</a>

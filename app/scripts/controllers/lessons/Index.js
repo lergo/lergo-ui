@@ -9,14 +9,15 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 	$scope.lessonsFilter = {};
 	$scope.filterPage = {};
 	$scope.totalResults = 0;
-	$scope.lessonsFilterOpts = {
-		'showSubject' : true,
-		'showLanguage' : true,
-		'showAge' : true,
-		'showViews' : true,
-		'showTags' : true,
-		'showSearchText' : true
-	};
+	// $scope.lessonsFilterOpts = {
+	// 	'showSubject' : true,
+	// 	'showLanguage' : true,
+	// 	'showAge' : true,
+	// 	'showViews' : true,
+	// 	'showTags' : true,
+	// 	'showSearchText' : true
+	// };
+	$scope.lessonsFilterOpts = {};
 
 	$scope.load = function(lessonToLoad) {
 		var oldValue = localStorageService.get('lessonToLoad');
