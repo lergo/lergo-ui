@@ -9,15 +9,14 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 	$scope.lessonsFilter = {};
 	$scope.filterPage = {};
 	$scope.totalResults = 0;
-	// $scope.lessonsFilterOpts = {
-	// 	'showSubject' : true,
-	// 	'showLanguage' : true,
-	// 	'showAge' : true,
-	// 	'showViews' : true,
-	// 	'showTags' : true,
-	// 	'showSearchText' : true
-	// };
-	$scope.lessonsFilterOpts = {};
+	$scope.lessonsFilterOpts = {
+		'showSubject' : true,
+		'showLanguage' : true,
+		'showAge' : true,
+		'showViews' : true,
+		'showTags' : true,
+		'showSearchText' : true
+	};
 
 	$scope.load = function(lessonToLoad) {
 		var oldValue = localStorageService.get('lessonToLoad');
@@ -30,7 +29,6 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 
 	$scope.loadLessons = function() {
 		$log.info('loading lessons');
-
 		var queryObj = {
 			'filter' : _.merge({}, $scope.lessonsFilter),
 			'sort' : {
