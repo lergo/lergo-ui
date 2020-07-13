@@ -102,9 +102,9 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				}
 			}, {
 				id : 'myLessons',
-				controller : 'LessonsIndexCtrl',
+				controller : 'LessonsPlaylistsIndexCtrl',
 				tooltip : $filter('translate')('lessons.selectMyLessons'),
-				page : 'views/lessons/_index.html',
+				page : 'views/lessons/playlists/_index.html',
 				lessonTypeToLoad : 'myLessons',
 				isCreate : false,
 				add : function() {
@@ -115,9 +115,9 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				}
 			}, {
 				id : 'allLessons',
-				controller : 'LessonsIndexCtrl',
+				controller : 'LessonsPlaylistsIndexCtrl',
 				tooltip : $filter('translate')('lessons.selectAllLessons'),
-				page : 'views/lessons/_index.html',
+				page : 'views/lessons/playlists/_index.html',
 				lessonTypeToLoad : 'allLessons',
 				isCreate : false,
 				add : function() {
