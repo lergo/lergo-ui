@@ -1,5 +1,5 @@
 <div>
-        <div id="lessonsIndex" load-filter-and-paging="loadLessons()">
+        <div id="subjectIndex" load-filter-and-paging="loadLessons()">
             <span class="error">{{error}}</span>
             <br/>
             <div class="container">
@@ -58,8 +58,8 @@
                                         <td ng-show="isModal">
                                             <input type="checkbox" ng-click="selectAll($event)"/>
                                         </td>
-                                        <td class="col-width-mobile">{{ 'lessons.lesson' | translate }}</td>
-                                        <td>{{ 'lessons.answer' | translate }}</td>
+                                        <td class="col-width-mobile">{{ 'lessons.name' | translate }}</td>
+                                        <!-- <td>{{ 'lessons.answer' | translate }}</td> -->
                                         <td ng-show="lessonToLoad ===LessonTypeToLoad.all">{{ 'lessons.createdBy' | translate }}</td>
                                         <td>{{ 'lessons.subject' | translate}}</td>
                                         <td>{{ 'lessons.age' | translate}}</td>
@@ -74,10 +74,10 @@
                                         <input ng-disabled="!!item.alreadyAdded" type="checkbox" ng-model="item.selected"/>
                                     </td>
                                     <td class="lesson" dir="auto">
-                                        <span  ng-show="!!isModal">{{item.lesson}}</span>
+                                        <span  ng-show="!!isModal">{{item.name}}</span>
                                         <div ng-show="!isModal" lesson-read-link lesson="item"></div>
                                     </td>
-                                    <td class="answers" dir="auto">{{ getAnswers(item) | limitTo:30}}</td>
+                                    <!-- <td class="answers" dir="auto">{{ getAnswers(item) | limitTo:30}}</td> -->
                                     <td ng-show="lessonToLoad ===LessonTypeToLoad.all" class="answer">{{item.user.username}}</td>
                                     <td style="width: 35px">{{item.subject && ('filters.subjects.' + item.subject | translate) ||""}}</td>
                                     <td>{{item.age &&('+'+ item.age) || ""}}</td>

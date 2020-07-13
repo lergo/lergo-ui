@@ -557,6 +557,7 @@
     "addCoverPageHint": "To add your cover image to lesson please paste here the image URL.",
     "addQuestion": "Add Questions to Quiz",
     "addQuestionFromAll": "from all questions",
+    "age": "Age",
     "allLessons": "All Lessons",
     "areYouReady": "Are you ready to start learning?",
     "available": "Available Lessons",
@@ -565,6 +566,7 @@
     "continueLesson": "Continue Lesson",
     "create": "Create New Lesson",
     "createdOn": "created on",
+    "createdBy": "Created by",
     "description": "Lesson Description",
     "edit": {
       "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
@@ -616,6 +618,7 @@
     },
     "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
     "inviteSuccessText": "Copy the link below to invite a student to the lesson",
+    "language": "language",
     "lessonCompleted": "You have completed the lesson",
     "lessonReport": "Lesson Report",
     "letsContinue": "OK! Let's Continue",
@@ -643,6 +646,7 @@
     "slideURL": "Presentation URL",
     "slideURLHelpText": "Insert the URL of the Google Slides presentation here.",
     "startLesson": "Start Lesson",
+    "subject": "subject",
     "tags": "Tags",
     "tooltip": {
       "comment": "Comments",

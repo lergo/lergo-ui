@@ -10,7 +10,8 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 
 	$scope.totalResults = 0;
 	$scope.lessonsFilter = {};
-	$scope.filterPage = {};
+    $scope.filterPage = {};
+    // $scope.lessonsFilterOpts = {};
 	$scope.lessonsFilterOpts = {
 		showSubject : true,
 		showLanguage : true,
@@ -58,7 +59,7 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 	};
 
 	$scope.loadLessons = function() {
-		$scope.lessonToLoad = localStorageService.get('lessonTypeToLoad');
+        $scope.lessonToLoad = localStorageService.get('lessonTypeToLoad');
 		var queryObj = {
 			'filter' : _.merge({}, $scope.lessonsFilter),
 			'sort' : {
@@ -68,7 +69,7 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 		};
 		var getLessonsPromise = null;
 		if ($scope.lessonToLoad === $scope.LessonTypeToLoad.all) {
-			getLessonsPromise = LessonsService.getPublicLessons(queryObj);
+            getLessonsPromise = LessonsService.getPublicLessons(queryObj);
 		} else if ($scope.lessonToLoad === $scope.LessonTypeToLoad.liked) {
 			getLessonsPromise = LergoClient.userData.getLikedLessons(queryObj);
 		} else {
@@ -77,7 +78,8 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 		}
 
 		getLessonsPromise.then(function(result) {
-			$scope.items = result.data.data;
+            $scope.items = result.data.data;
+            console.log('the items are', $scope.items[0].name);
 			$rootScope.$broadcast('lessonsLoaded', {
 				'items' : $scope.items
 			});
