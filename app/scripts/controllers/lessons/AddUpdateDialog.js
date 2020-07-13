@@ -42,7 +42,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			// LessonsUpdateCtrl.
 			$scope.permissions = {};
 			$scope.isModal = true;
-			$scope.isCreate = true;
+			$scope.isCreate = false;
 			$scope.quizItem = quizItem;
 			$scope.isUpdate = isUpdate;
 			$scope.lessonTypeFormAddQuizPopup = {
@@ -50,7 +50,6 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			};
 			var items = [];
 			$scope.$on('lessonsLoaded', function(event, data) {
-				console.log('--------------------------------------this should be triggered');
 				items = data.items;
 				if (!!step && !!step.quizItems) {
 					_.each(items, function(q) {
@@ -64,6 +63,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			function addSelectedItems(canClose) {
                 // lessons should be added in the ascending order of data e.g lesson created first should come first
 				$scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');
+				console.log('...............the selected items are :', selectedItems);
 				angular.forEach($scope.selectedItems, function(item) {
 					addItemToQuiz(item, step);
 					item.selected = false;
@@ -170,34 +170,34 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			};
 
 			/* remove deleted lesson from all quizItems in all playlists */
-			function getPlaylistWhoUseThisLessonAndRemoveLesson(lessonId) {
-					var playlistsWhoUseThisLesson = null;
-					LergoClient.playlists.getPlaylistsWhoUseThisLesson(lessonId || $scope.quizItem._id).then(function (result) {
-						playlistsWhoUseThisLesson = result.data;
-						$log.info('AddUpdateDialog: usage of this lesson in playlists is ',playlistsWhoUseThisLesson.length);
-						if (playlistsWhoUseThisLesson.length === 0) {
-							$log.info('AddUpdateDialog: deleting lessonId ');
-							LessonsService.deleteLesson(lessonId);
-						} else {
-							angular.forEach(playlistsWhoUseThisLesson, function(playlist) {
-								for (var i in playlist.steps ) {
-									if (playlist.steps[i].quizItems && playlist.steps[i].quizItems.indexOf(lessonId) !== -1) {
-										playlist.steps[i].quizItems.splice(playlist.steps[i].quizItems.indexOf(lessonId), 1);
-										LergoClient.playlists.update(playlist);
-									}
-								}
-								$log.info('AddUpdateDialog: deleting lessonId ');
-								LessonsService.deleteLesson(lessonId);
-							});
-						}
-					}, function (result) {
-						toastr.error('cannot find usages, got error', result.data);
-					});
-				}
+			// function getPlaylistWhoUseThisLessonAndRemoveLesson(lessonId) {
+			// 		var playlistsWhoUseThisLesson = null;
+			// 		LergoClient.playlists.getPlaylistsWhoUseThisLesson(lessonId || $scope.quizItem._id).then(function (result) {
+			// 			playlistsWhoUseThisLesson = result.data;
+			// 			$log.info('AddUpdateDialog: usage of this lesson in playlists is ',playlistsWhoUseThisLesson.length);
+			// 			if (playlistsWhoUseThisLesson.length === 0) {
+			// 				$log.info('AddUpdateDialog: deleting lessonId ');
+			// 				LessonsService.deleteLesson(lessonId);
+			// 			} else {
+			// 				angular.forEach(playlistsWhoUseThisLesson, function(playlist) {
+			// 					for (var i in playlist.steps ) {
+			// 						if (playlist.steps[i].quizItems && playlist.steps[i].quizItems.indexOf(lessonId) !== -1) {
+			// 							playlist.steps[i].quizItems.splice(playlist.steps[i].quizItems.indexOf(lessonId), 1);
+			// 							LergoClient.playlists.update(playlist);
+			// 						}
+			// 					}
+			// 					$log.info('AddUpdateDialog: deleting lessonId ');
+			// 					LessonsService.deleteLesson(lessonId);
+			// 				});
+			// 			}
+			// 		}, function (result) {
+			// 			toastr.error('cannot find usages, got error', result.data);
+			// 		});
+			// 	}
 
 			$scope.cancel = function() {
 				var item = $scope.quizItem;
-				if (!!item && !$scope.isValid(item)) {
+				if (!!item) {
                     var answer = true;
                     if ( isCreateNewLessonSection() ){
                         answer = confirm($filter('translate')('deleteLesson.Confirm'));
@@ -247,11 +247,11 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				playlistOverrideLesson(step, item._id);
 			};
 
-			$scope.isValid = function(quizItem) {
-				if (!quizItem || !quizItem.type) {
-					return false;
-				}
-				return LessonsService.getTypeById(quizItem.type).isValid(quizItem);
-			};
+			// $scope.isValid = function(quizItem) {
+			// 	if (!quizItem || !quizItem.type) {
+			// 		return false;
+			// 	}
+			// 	return LessonsService.getTypeById(quizItem.type).isValid(quizItem);
+			// };
 
 		});
