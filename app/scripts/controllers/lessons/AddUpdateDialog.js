@@ -63,7 +63,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			function addSelectedItems(canClose) {
                 // lessons should be added in the ascending order of data e.g lesson created first should come first
 				$scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');
-				console.log('...............the selected items are :', selectedItems);
+				console.log('....addSelectedItems..........the selected items are :', $scope.selectedItems);
 				angular.forEach($scope.selectedItems, function(item) {
 					addItemToQuiz(item, step);
 					item.selected = false;
@@ -74,6 +74,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				}
 			}
 			function addItem(item, canClose) {
+				console.log('......addItem.........the selected items are :', item);
 				addItemToQuiz(item, step);
 				if (!!canClose) {
 					$scope.cancel();
