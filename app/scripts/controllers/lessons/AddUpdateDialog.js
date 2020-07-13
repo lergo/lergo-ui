@@ -202,12 +202,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
                     var answer = true;
                     if ( isCreateNewLessonSection() ){
                         answer = confirm($filter('translate')('deleteLesson.Confirm'));
-                    }
-                    if ( !!answer ) {
-						
-						getPlaylistWhoUseThisLessonAndRemoveLesson(item._id);
-						
-                    }else{
+                    } else {
                         return; // do nothing!
                     }
 				}

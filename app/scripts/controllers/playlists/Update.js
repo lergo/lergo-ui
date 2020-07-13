@@ -434,6 +434,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         $scope.$on('$locationChangeStart', function (event) { // guy -
             // TODO - consider using route change instead.
             persistScroll();
+            console.log('event', event);
             // if ($scope.isPlaylistInvalid()) {
             //     var answer = confirm($filter('translate')('deletePlaylist.Confirm'));
             //     if (!answer) {
