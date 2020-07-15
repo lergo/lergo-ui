@@ -63,7 +63,6 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			function addSelectedItems(canClose) {
                 // lessons should be added in the ascending order of data e.g lesson created first should come first
 				$scope.selectedItems = _.sortBy(_.filter(items, 'selected'),'lastUpdate');
-				console.log('....addSelectedItems..........the selected items are :', $scope.selectedItems);
 				angular.forEach($scope.selectedItems, function(item) {
 					addItemToQuiz(item, step);
 					item.selected = false;
@@ -74,7 +73,6 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				}
 			}
 			function addItem(item, canClose) {
-				console.log('......addItem.........the selected items are :', item);
 				addItemToQuiz(item, step);
 				if (!!canClose) {
 					$scope.cancel();
@@ -197,15 +195,6 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			// 	}
 
 			$scope.cancel = function() {
-				var item = $scope.quizItem;
-				if (!!item) {
-                    var answer = true;
-                    if ( isCreateNewLessonSection() ){
-                        answer = confirm($filter('translate')('deleteLesson.Confirm'));
-                    } else {
-                        return; // do nothing!
-                    }
-				}
                 $uibModalInstance.dismiss();
 			};
 
@@ -243,11 +232,11 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				playlistOverrideLesson(step, item._id);
 			};
 
-			// $scope.isValid = function(quizItem) {
-			// 	if (!quizItem || !quizItem.type) {
-			// 		return false;
-			// 	}
-			// 	return LessonsService.getTypeById(quizItem.type).isValid(quizItem);
-			// };
+			$scope.isValid = function(quizItem) {
+				if (!quizItem) {
+					return false;
+				}
+			};
+			$scope.isValid = true;
 
 		});

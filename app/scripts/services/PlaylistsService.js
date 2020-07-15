@@ -50,10 +50,6 @@ angular.module('lergoApp').service('PlaylistsService',
         this.update = function (playlist) {
             return $http.post('/backend/playlists/' + playlist._id + '/update', playlist);
         };
-        /* used for deleting invalid lesson / steps in playlist before running a playlist */
-        this.fix = function (playlist) {
-            return $http.post('/backend/playlists/' + playlist._id + '/fix', playlist);
-        };
 
         this.publish = function (playlist) {
             return $http.post('/backend/playlists/' + playlist._id + '/publish');
@@ -196,32 +192,4 @@ angular.module('lergoApp').service('PlaylistsService',
                 });
             });
         };
-        this.checkIfStepIsValid = function (step) {
-
-                if (!step.type) { // step type must be defined
-                    return false;
-                }
-    
-                if (step.type === 'video'){
-                    if (!step.videoUrl) {  // video must have something - will be red if invalid url
-                        return false;
-                    }
-                }
-    
-                if (step.type === 'slide') {
-                    if(!step.slideURL) { // presentation must have something - will be red if invalid url
-                        return false;
-                    }
-                }
-    
-                if (step.type === 'quiz') { // lesson must be added to quiz
-                    if (!step.quizItems || !step.quizItems[0] || step.quizItems[0].length === 0) {
-                        return false;
-                    }
-                }
-                
-                return true;
-            
-            };
-
     });
