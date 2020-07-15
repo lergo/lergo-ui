@@ -75,7 +75,7 @@
                                     <thead>
                                     <tr style="font-weight: bold">
                                         <td class="col1">{{ 'name' | translate }}</td>
-                                        <td class="col1">{{ 'lessons.index' | translate }}</td>
+                                        <!-- <td class="col1">{{ 'lessons.index' | translate }}</td> -->
                                         <td class="col1">{{ 'lessons.subject' | translate }}</td>
                                         <td class="col1">{{ 'lessons.age' | translate }}</td>
                                     </tr>
@@ -83,14 +83,13 @@
                                     <tbody> 
                                     <tr ng-repeat="list in playlists track by $index">
                                         <td class="name" dir="auto">
-                                            <input type="button" value="{{list.name }}"   ng-click="GetRowIndex($index)"> 
+                                            <input  value="{{list.name }}"   ng-click="GetRowIndex($index)"> 
                                             <!-- <a ng-show="!play.name || play.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'  playlists.tooltip.go' | translate}}" ng-href="#!/user/  playlists/{{play._id}}/intro">[
                                                 no title ]</a> -->
                                         </td>
                                         <td> {{$index}}</td>
                                         <td >{{list.subject && ('filters.subjects.' + list.subject | translate) ||""}}</td>
                                         <td >{{list.age &&('+'+ list.age) || ""}}</td>
-                                        <td><input type="button" value="Get Row Index" ng-click="GetRowIndex($index)" /></td>
 
                                     </tr>
                                     </tbody>
