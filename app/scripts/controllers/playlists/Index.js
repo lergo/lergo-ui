@@ -18,6 +18,12 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		'showSearchText' : true
 	};
 
+	$scope.playlistToShow = $scope.playlists;
+		$scope.GetRowIndex = function (index) {
+			$scope.playlistToShow = $scope.playlists[index];
+			console.log('the playlist to show is ', $scope.playlistToShow )
+		};	
+
 	$scope.load = function(playlistToLoad) {
 		var oldValue = localStorageService.get('playlistToLoad');
 		if (oldValue !== playlistToLoad) {
@@ -38,7 +44,6 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 			'dollar_page' : $scope.filterPage
 		};
 		$scope.playlistToLoad = localStorageService.get('playlistToLoad');
-		console.log($scope.playlists);
 		var getPlaylistsPromise = null;
 		if ($scope.playlistToLoad === $scope.PlaylistTypeToLoad.liked) {
 			getPlaylistsPromise = LergoClient.userData.getLikedPlaylists(queryObj);

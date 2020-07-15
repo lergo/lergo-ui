@@ -616,6 +616,7 @@
         }
       }
     },
+    "index": "index",
     "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
     "inviteSuccessText": "Copy the link below to invite a student to the lesson",
     "language": "language",
