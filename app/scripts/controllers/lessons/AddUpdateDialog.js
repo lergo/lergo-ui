@@ -237,6 +237,4 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 					return false;
 				}
 			};
-			$scope.isValid = true;
-
 		});
