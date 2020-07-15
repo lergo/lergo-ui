@@ -83,7 +83,7 @@
                                     <tbody> 
                                     <tr ng-repeat="list in playlists track by $index">
                                         <td class="name" dir="auto">
-                                            <a  ng-href="#!/user/  playlists/{{play._id}}/intro">{{list.name }} </a>
+                                            <input type="button" value="{{list.name }}"   ng-click="GetRowIndex($index)"> 
                                             <!-- <a ng-show="!play.name || play.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'  playlists.tooltip.go' | translate}}" ng-href="#!/user/  playlists/{{play._id}}/intro">[
                                                 no title ]</a> -->
                                         </td>
