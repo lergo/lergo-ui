@@ -19,17 +19,17 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	};
 
 	$scope.playlistToShow = $scope.playlists;
-		$scope.GetRowIndex = function (index) {
-			$scope.playlistToShow = $scope.playlists[index];
-			var list = $scope.playlistToShow.steps[0].quizItems
-			LergoClient.lessons.findLessonsById(list).then(function (result) {
-				var newObj = {};
-				for (var i = 0; i < result.data.length; i++) {
-					newObj[result.data[i]._id] = result.data[i];
-				}
-				$scope.quizItemsData = newObj;
-			});		
-		};
+	$scope.GetRowIndex = function (index) {
+		$scope.playlistToShow = $scope.playlists[index];
+		var list = $scope.playlistToShow.steps[0].quizItems;
+		LergoClient.lessons.findLessonsById(list).then(function (result) {
+			var newObj = {};
+			for (var i = 0; i < result.data.length; i++) {
+				newObj[result.data[i]._id] = result.data[i];
+			}
+			$scope.quizItemsData = newObj;
+		});
+	};
 	// this needs to run with the array of lessons from the playlist	
 	
  
