@@ -47,9 +47,9 @@
                                                 <i class="fa fa-eye fa-fw"></i>
                                                 {{0+playlist.views}}
                                             </span>
-                                             <span class="stats-button" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
-                                                <i class="fa fa-lesson-circle fa-fw"></i>
-                                                {{ playlist | countLessonsOnPlaylist }}
+                                             <span class="stats-button" uib-tooltip="{{'homepage.tooltip.questions' | translate}}">
+                                                <i class="fa fa-question-circle fa-fw"></i>
+                                                {{ playlist | countQuestionsOnPlaylist }}
                                             </span>
                                             <span class="stats-button" uib-tooltip="{{'homepage.tooltip.likes' | translate}}">
                                                 <i class="fa fa-heart-o"></i>
@@ -211,7 +211,7 @@
                                                      
                                                     <div class="edit-summary" ng-show="showEditSummary()">
                                                         <br/>
-                                                        <span class="title">{{'lessons.editSummary'|translate}}</span>
+                                                        <span class="title">{{'questions.editSummary'|translate}}</span>
                                                         <br/>
                                                         <br/>
                                                         <!-- show copy of playlist -->
@@ -234,26 +234,26 @@
                                                             <br/>
                                                         </div>
                                                         <br />
-                                                        <div ng-repeat="q in lessons">
-                                                            <div dir="auto" class="lesson"
-                                                                 ng-show="!!q.summary || !!lessonsWeCopied[q._id] || !!lessonsFromOthers[q._id]">
-                                                                <!--  <a href="#!/user/lessons/{{q._id}}/read"> Q:{{q.lesson | limitTo :30}}</a>-->
-                                                                <i class="fa fa-lesson-circle"> </i>
-                                                                <span class="title-lesson"> {{q.lesson | limitTo :50}} </span>
+                                                        <div ng-repeat="q in questions">
+                                                            <div dir="auto" class="question"
+                                                                 ng-show="!!q.summary || !!questionsWeCopied[q._id] || !!questionsFromOthers[q._id]">
+                                                                <!--  <a href="#!/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
+                                                                <i class="fa fa-question-circle"> </i>
+                                                                <span class="title-question"> {{q.question | limitTo :50}} </span>
                                                             </div>
-                                                            <div ng-show="!!lessonsFromOthers[q._id]">
-                                                                <div class="summary">Lesson created by
-                                                                    {{lessonsFromOthers[q._id].userDetails.username}}
+                                                            <div ng-show="!!questionsFromOthers[q._id]">
+                                                                <div class="summary">Question created by
+                                                                    {{questionsFromOthers[q._id].userDetails.username}}
                                                                 </div>
                                                             </div>
                                                             <div ng-show="!!q.summary">
                                                                 <div class="summary" btf-markdown="q.summary"></div>
                                                             </div>
-                                                            <div ng-show="!!lessonsWeCopied[q._id]">
-                                                                <div ng-repeat="o in lessonsWeCopied[q._id].originals track by $index">
+                                                            <div ng-show="!!questionsWeCopied[q._id]">
+                                                                <div ng-repeat="o in questionsWeCopied[q._id].originals track by $index">
                                                                     <div class="summary">
                                                                         Copied from
-                                                                        <span lesson-read-link lesson="o"></span>
+                                                                        <span question-read-link question="o"></span>
                                                                         by {{o.userDetails.username}}
                                                                     </div>
                                                                 </div>
@@ -340,9 +340,9 @@
                                                     <i class="fa fa-eye fa-fw"></i>
                                                     {{0+playlist.views}}
                                                 </span>
-                                                <span class="stats-button" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
-                                                    <i class="fa fa-lesson-circle fa-fw"></i>
-                                                    {{ playlist | countLessonsOnPlaylist }}
+                                                <span class="stats-button" uib-tooltip="{{'homepage.tooltip.questions' | translate}}">
+                                                    <i class="fa fa-question-circle fa-fw"></i>
+                                                    {{ playlist | countQuestionsOnPlaylist }}
                                                 </span>
                                             <span class="stats-button" uib-tooltip="{{'homepage.tooltip.likes' | translate}}">
                                                 <i class="fa fa-heart-o"></i>
@@ -531,7 +531,7 @@
                                                         </div>
                                                     <div class="edit-summary" ng-show="showEditSummary()">
                                                         <br/>
-                                                        <span class="title">{{'lessons.editSummary'|translate}}</span>
+                                                        <span class="title">{{'questions.editSummary'|translate}}</span>
                                                         <br/>
                                                         <br/>
                                                         <!-- show copy of playlist -->
@@ -553,26 +553,26 @@
                                             </span>
                                                             <br/>
                                                         </div>
-                                                        <div ng-repeat="q in lessons">
-                                                            <div dir="auto" class="lesson"
-                                                                 ng-show="!!q.summary || !!lessonsWeCopied[q._id] || !!lessonsFromOthers[q._id]">
-                                                                <!--  <a href="#!/user/lessons/{{q._id}}/read"> Q:{{q.lesson | limitTo :30}}</a>-->
-                                                                <i class="fa fa-lesson-circle"> </i>
-                                                                <span class="title-lesson"> {{q.lesson | limitTo :50}} </span>
+                                                        <div ng-repeat="q in questions">
+                                                            <div dir="auto" class="question"
+                                                                 ng-show="!!q.summary || !!questionsWeCopied[q._id] || !!questionsFromOthers[q._id]">
+                                                                <!--  <a href="#!/user/questions/{{q._id}}/read"> Q:{{q.question | limitTo :30}}</a>-->
+                                                                <i class="fa fa-question-circle"> </i>
+                                                                <span class="title-question"> {{q.question | limitTo :50}} </span>
                                                             </div>
-                                                            <div ng-show="!!lessonsFromOthers[q._id]">
-                                                                <div class="summary">Lesson created by
-                                                                    {{lessonsFromOthers[q._id].userDetails.username}}
+                                                            <div ng-show="!!questionsFromOthers[q._id]">
+                                                                <div class="summary">Question created by
+                                                                    {{questionsFromOthers[q._id].userDetails.username}}
                                                                 </div>
                                                             </div>
                                                             <div ng-show="!!q.summary">
                                                                 <div class="summary" btf-markdown="q.summary"></div>
                                                             </div>
-                                                            <div ng-show="!!lessonsWeCopied[q._id]">
-                                                                <div ng-repeat="o in lessonsWeCopied[q._id].originals track by $index">
+                                                            <div ng-show="!!questionsWeCopied[q._id]">
+                                                                <div ng-repeat="o in questionsWeCopied[q._id].originals track by $index">
                                                                     <div class="summary">
                                                                         Copied from
-                                                                        <span lesson-read-link lesson="o"></span>
+                                                                        <span question-read-link question="o"></span>
                                                                         by {{o.userDetails.username}}
                                                                     </div>
                                                                 </div>
