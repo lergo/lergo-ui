@@ -1,0 +1,42 @@
+<!--jeff: this is a new invite form used after the playlist is played. It prevents
+the format from interfering with the before playlist invite form-->
+
+<div class="card">
+    <div class="card-block">
+        <span class="playlist-invite-after" ng-class="{instanceafter:isStudentMode()}"  ng-click="setStudentMode()">{{'playlists.invitePlaylist.student.msg'| translate}}</span>
+        <span class="playlist-invite-after" ng-class="{instanceafter:isClassMode()}"   ng-click="setClassMode()"> {{'playlists.invitePlaylist.class.msg' | translate }}</span>
+        <button  class="playlist-invite-close-button btn-link close-button" ng-click="onCloseAfter()"><span class="fa fa-times"></span></button>
+    </div>
+
+    <script type="text/ng-template" id="inline_playlistCreateInviteFormItem.html">
+        <br>
+        <p>{{'playlists.invitePlaylist.' + mode + '.help'  | translate }} </p>
+        <div class="container">
+            <!--<div>{{'name' | translate }}</div>-->
+            <input type="text" ng-model="invitationName" on-enter="enterPressed()" />
+            <div ng-show="isSuccess()">
+                <div>{{'playlists.invitePlaylist.' + mode + '.success' | translate}}</div>
+                <input type="text" ng-value="getLink()" readonly select-all-text-on-click="link" on-enter="enterPressed()" placeholder=mode />
+            </div>
+            <br/>
+            <div class="button">
+                <button class="btn" ng-click="sendInvite()" ng-show="!isSuccess()" ng-disabled="!isValid()">{{ 'button.submit' | translate }}</button>
+                <button ng-click="newInvite()" class="btn" ng-show="isSuccess()">{{ 'button.newInvite' | translate }}</button>
+            </div>
+            <div>
+                <span class="lergo-h4">{{'playlists.invitePlaylist.' + mode + '.noteTitle' | translate}}:</span>
+                {{'playlists.invitePlaylist.' + mode + '.noteMessage' | translate}}
+            </div>
+
+        </div>
+    </script>
+
+
+        <div ng-show="isStudentMode()" ng-class="{active:isStudentMode()}" class="container">
+            <div playlist-create-invite-form-item="student"></div>
+        </div>
+
+        <div ng-show="isClassMode()" ng-class="{active:isClassMode()}" class="container">
+            <div playlist-create-invite-form-item="class"></div>
+        </div>
+</div>
