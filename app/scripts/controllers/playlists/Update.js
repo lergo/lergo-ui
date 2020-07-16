@@ -325,18 +325,14 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             if (!$scope.playlist) {
                 return quizItemsWatch;
             }
-
             quizItemsWatch.splice(0, quizItemsWatch.length);
             if (!!$scope.playlist.steps) {
                 $scope.playlist.steps.forEach(function (step) {
                     if (!!step.quizItems && step.quizItems.length > 0) {
-
                         step.quizItems.forEach(function (quizItem) {
-
                             if (quizItemsWatch.indexOf(quizItem) < 0) {
                                 quizItemsWatch.push(quizItem);
                             }
-
                         });
                     }
                 });
@@ -346,6 +342,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             if (!!newValue && newValue.length > 0) {
                 $log.info('quizItems changed');
                 LergoClient.lessons.findLessonsById(newValue).then(function (result) {
+                    console.log('the new value is ',newValue);
                     var newObj = {};
                     for (var i = 0; i < result.data.length; i++) {
                         newObj[result.data[i]._id] = result.data[i];

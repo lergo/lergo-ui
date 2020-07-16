@@ -1,6 +1,7 @@
 <div>
     <div id="playlistsIndex" load-filter-and-paging="loadPlaylists()">
         <br/>
+
             <div class="container">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -49,10 +50,9 @@
                                 </tr>
                                 </thead>
                                 <tbody> 
-                                <tr ng-repeat="play in playlistToShow.steps[0].quizItems">
+                                <tr ng-repeat="item in playlistToShow.steps[0].quizItems">
                                     <td class="name" dir="auto">
-                                        <a  ng-href="#!/user/  playlists/{{play._id}}/intro">{{
-                                            play}} </a>
+                                        <a  ng-href="#!/user/  playlists/{{play._id}}/intro">{{getLesson(item)}} </a>
                                     </td>
                                     <!-- <td >{{play.subject && ('filters.subjects.' + play.subject | translate) ||""}}</td>
                                     <td >{{play.age &&('+'+ play.age) || ""}}</td> -->

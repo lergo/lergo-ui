@@ -22,12 +22,17 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		$scope.GetRowIndex = function (index) {
 			$scope.playlistToShow = $scope.playlists[index];
 			var list = $scope.playlistToShow.steps[0].quizItems
-			for (var i =0;  i < list.length;  i++) { 
-				console.log('the lesson id is', list[i]);
-
-			}
-		};	
-
+			LergoClient.lessons.findLessonsById(list).then(function (result) {
+				var newObj = {};
+				for (var i = 0; i < result.data.length; i++) {
+					newObj[result.data[i]._id] = result.data[i];
+				}
+				$scope.quizItemsData = newObj;
+			});		
+		};
+	// this needs to run with the array of lessons from the playlist	
+	
+ 
 	$scope.load = function(playlistToLoad) {
 		var oldValue = localStorageService.get('playlistToLoad');
 		if (oldValue !== playlistToLoad) {
@@ -109,4 +114,11 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		}
 		$window.scrollTo(0, scrollY);
 	}
+	$scope.getLesson = function (item) {
+		if ($scope.quizItemsData.hasOwnProperty(item)) {
+			return $scope.quizItemsData[item].name;
+		}
+		return null;
+	};
+	
 });
