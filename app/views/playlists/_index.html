@@ -19,7 +19,7 @@
                                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
                                         <div class="my-  playlists lergo-h1-orig" >
                                             <div class="btn-group mobile-leftRight15" uib-dropdown dropdown-append-to-body>
-                                                <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
+                                                <!-- <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
                                                     <span class="fa fa-caret-down"></span>
                                                     <span class="lergo-h1-orig d-padBot15">{{('  playlists.'+ playlistToLoad |translate)}} </span>
                                                 </button>
@@ -28,9 +28,11 @@
                                                         <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.user)">{{'  playlists.myPlaylists'|translate}}</a>
                                                         <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.liked)">{{'  playlists.likedPlaylists'|translate}}</a>
                                                     </li>
-                                                </ul>
+                                                </ul> -->
                                             </div>
-                                            [ {{ '  playlists.total' | translate }}: {{filterPage.count}} ]
+                                            <div>playlist name:</div> 
+                                            <div>{{playlistToShow.name}}</div> 
+                                            <!-- [ {{ '  playlists.total' | translate }}: {{filterPage.count}} ] -->
                                         </div>
                                     </div>
                                    
@@ -43,16 +45,17 @@
                                 <table class="table   " ng-show="  playlists.length > 0">
                                 <thead>
                                 <tr style="font-weight: bold">
-                                    <td class="col1">{{ 'name' | translate }}</td>
+                                    <td class="col1">{{ 'lessons.name' | translate }}</td>
                                     <td></td>
                                     <td></td>
                                     <!-- <td>{{ 'questions.language' | translate}}</td> -->
                                 </tr>
                                 </thead>
                                 <tbody> 
+                                    
                                 <tr ng-repeat="item in playlistToShow.steps[0].quizItems">
                                     <td class="name" dir="auto">
-                                        <a  ng-href="#!/user/  playlists/{{play._id}}/intro">{{getLesson(item)}} </a>
+                                        <a  ng-href="#!/user/lessons/{{item}}/intro">{{getLesson(item)}} </a>
                                     </td>
                                     <!-- <td >{{play.subject && ('filters.subjects.' + play.subject | translate) ||""}}</td>
                                     <td >{{play.age &&('+'+ play.age) || ""}}</td> -->
@@ -75,7 +78,7 @@
                                     <table class="table   " ng-show="  playlists.length > 0">
                                     <thead>
                                     <tr style="font-weight: bold">
-                                        <td class="col1">{{ 'name' | translate }}</td>
+                                        <td class="col1">{{ 'playlists.name' | translate }}</td>
                                         <td class="col1">{{ 'lessons.subject' | translate }}</td>
                                         <td class="col1">{{ 'lessons.age' | translate }}</td>
                                     </tr>

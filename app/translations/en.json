@@ -842,6 +842,7 @@
           "invite": "Link to Playlist Invite"
         }
       },
+      "name": "Playlist name",
       "student": {
         "help": "Invite STUDENT: To generate a link for the invite please enter student's first name and press submit.",
         "msg": "Invite Student",
