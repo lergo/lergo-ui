@@ -102,7 +102,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 // first - lets watch
                 // http://stackoverflow.com/a/13652152/1068746
                 var unregister = $scope.$watch('quizItemsData', function () {
-
                     if (!$scope.quizItemsData.hasOwnProperty(newQuizItemId)) {
                         return; // wait for it to exist ;
                     }
@@ -307,9 +306,9 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         var quizItemsWatch = [];
         $scope.quizItemsData = {};
 
-        $scope.getQuestion = function (item) {
+        $scope.getLesson = function (item) {
             if ($scope.quizItemsData.hasOwnProperty(item)) {
-                return $scope.quizItemsData[item].question;
+                return $scope.quizItemsData[item].name;
             }
             return null;
         };
@@ -346,7 +345,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         }, function (newValue) {
             if (!!newValue && newValue.length > 0) {
                 $log.info('quizItems changed');
-                LergoClient.questions.findQuestionsById(newValue).then(function (result) {
+                LergoClient.lessons.findLessonsById(newValue).then(function (result) {
                     var newObj = {};
                     for (var i = 0; i < result.data.length; i++) {
                         newObj[result.data[i]._id] = result.data[i];

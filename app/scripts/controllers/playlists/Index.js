@@ -21,7 +21,11 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	$scope.playlistToShow = $scope.playlists;
 		$scope.GetRowIndex = function (index) {
 			$scope.playlistToShow = $scope.playlists[index];
-			console.log('the playlist to show is ', $scope.playlistToShow )
+			var list = $scope.playlistToShow.steps[0].quizItems
+			for (var i =0;  i < list.length;  i++) { 
+				console.log('the lesson id is', list[i]);
+
+			}
 		};	
 
 	$scope.load = function(playlistToLoad) {
