@@ -114,6 +114,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		}
 		$window.scrollTo(0, scrollY);
 	}
+	$scope.quizItemsData = {};
 	$scope.getLesson = function (item) {
 		if ($scope.quizItemsData.hasOwnProperty(item)) {
 			return $scope.quizItemsData[item].name;
