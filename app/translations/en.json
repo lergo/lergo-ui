@@ -792,6 +792,24 @@
     "placeholder": "Enter code",
     "enter": "Enter"
   },
+  "playlist": {
+    "playlistIntro": {
+      "action": {
+        "preview": {
+          "title": "Preview"
+        }
+      },
+      "copiedFromPlaylist": "Playlist was originally copied from playlist",
+      "copiedFromPlaylistBy": "by",
+      "copiedFromPlaylists": "Some of the content of this playlist were orignially copied from"
+    },
+    "PlaylistPreview": {
+      "detailHeader": "Preview of lessons in Playlist",
+      "header": {
+        "title": "Playlist Preview"
+      }
+    }
+  }
   "playlists": {
     "addAdminComment": "Add Admin comment",
     "addCoverPage": "Add cover image for playlist intro",
