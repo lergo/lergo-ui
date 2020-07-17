@@ -1199,6 +1199,16 @@
       "other": "Open Questions",
       "zero": "."
     },
+    "lessonsInPlaylist": {
+      "one": "Lesson in Playlist",
+      "other": "Different Lessons in Playlist",
+      "zero": " There are no Lessons in this playlist"
+    },
+    "lessonsInQuiz": {
+      "one": "Lesson in Quiz",
+      "other": "Different Lessons in Quiz",
+      "zero": " ."
+    },
     "playlistSteps": "Playlist Steps",
     "priorLesson": "Recommended Previous Lesson",
     "questionPerDifficulty": "Questions per Difficulty",
