@@ -1,5 +1,21 @@
 .playlist-preview {
 
+    .lessons-mobile {
+        .image {
+            position: relative;
+            margin: -35px auto 0 auto;
+            text-align: center;
+            z-index: 0;
+            &, img {
+                height: 120px;
+                width: 180px;
+            }
+            i {
+                font-size: 120px;
+            }
+        }
+    }
+
     .collapsible {
         @extend .lergo-h1;
         font-size: 20px;
