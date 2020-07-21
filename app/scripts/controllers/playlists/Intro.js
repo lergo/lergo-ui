@@ -17,7 +17,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 console.log('the routeparams is:' ,$routeParams );
                 $location.path('/public/playlists/invitations/' + invitationId + '/display').search({
                     playlistId: $scope.playlist._id,
-                    reportId: $routeParams.reportId,
+                    playlistRprtId: $routeParams.playlistRprtId,
                     currentStepIndex: 0 // required, otherwise we will get 'unsaved changes' alert
                 });
             } else {
@@ -178,7 +178,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
 
         $scope.startPlaylist = function () {
 
-            if (!!preview) { // preview - no playlist report, no invitation
+            if (!!preview) { // preview - no playlist playlistRprt, no invitation
                 redirectToPreview();
             } else if (!invitationId) { // prepared invitation
                 LergoClient.playlistsInvitations.createAnonymous(playlistId).then(function (result) {
@@ -193,7 +193,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
 
         // enum{
         $scope.actionItems = {
-            REPORT: 'report',
+            REPORT: 'playlistRprt',
             INVITE: 'invite',
             SHARE: 'share'
         };
@@ -208,10 +208,10 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
         $scope.isActiveAction = function (actionItem) {
             return activeAction === actionItem;
         };
-        $scope.abuseReport = {};
-        $scope.submitAbuseReport = function () {
+        $scope.abusePlaylistRprt = {};
+        $scope.submitAbusePlaylistRprt = function () {
             $scope.submit = true;
-            LergoClient.abuseReports.abusePlaylist($scope.abuseReport, $scope.playlist);
+            LergoClient.abusePlaylistRprts.abusePlaylist($scope.abusePlaylistRprt, $scope.playlist);
         };
 
         $scope.isInvitationLink = function () {

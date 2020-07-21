@@ -1,40 +1,40 @@
 'use strict';
 
 angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
-    function ($window, $scope, $filter, LergoClient, LessonsService, PlaylistsService, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope) {
+    function ($window, $scope, $filter, LergoClient, LessonsService, PlaylistsService, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSavePlaylistRprts, $rootScope) {
         $window.scrollTo(0, 0);
         $log.info('loading invitation');
         var errorWhileSaving = false;
         $scope.shareSection = 'link';
-        var updateChange = new ContinuousSaveReports({
+        var updateChange = new ContinuousSavePlaylistRprts({
             'saveFn': function (value) {
                /* window.scrollTo(0, 68);*/
-                $log.info('updating report');
+                $log.info('updating playlistRprt');
                 var finished = value.finished; // value.data is the invitation. we
-                // want the report.
+                // want the playlistRprt.
 
                 if (finished) {
                     getWrongLesson(value);
                 }
 
-                return LergoClient.reports.update(value).then(function (result) {
+                return LergoClient.playlistRprts.update(value).then(function (result) {
                     if (finished) {
                         if (errorWhileSaving) {
-                            toastr.success($filter('translate')('report.saved.successfully'));
+                            toastr.success($filter('translate')('playlistRprt.saved.successfully'));
                         }
                         errorWhileSaving = false;
                         if (!$scope.invitation.anonymous && !!$scope.invitation.emailNotification) {
-                            LergoClient.reports.ready($routeParams.reportId);
+                            LergoClient.playlistRprts.ready($routeParams.playlistRprtId);
                         } else {
-                            $log.info('not sending report link because anonymous');
+                            $log.info('not sending playlistRprt link because anonymous');
                         }
                     }
                     return result;
                 }, function (result) {
                     if (finished) {
                         errorWhileSaving = true;
-                        toastr.error($filter('translate')('report.error.while.updating'));
-                        $log.error('error while updating report', result.data);
+                        toastr.error($filter('translate')('playlistRprt.error.while.updating'));
+                        $log.error('error while updating playlistRprt', result.data);
                     }
                     return result;
                 });
@@ -49,10 +49,10 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             return LessonsService.getTypeById(quizItem.type).isValid(quizItem);
         };
 
-        function initializeReport(invitation) {
+        function initializePlaylistRprt(invitation) {
             /**  
              *   for playlist,this is not needed
-             *      prior to creating a new report and starting a playlist, check that the playlist is valid 
+             *      prior to creating a new playlistRprt and starting a playlist, check that the playlist is valid 
              *      first check if each quiz item is valid - if not, remove from local playlist and playlist in dB and lessonId in dB
              *      then check that each step is valid - remove locally and on dB
             */
@@ -92,30 +92,30 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             // }
            
             // broadcast start of playlist
-            function initializeReportWriter(report) {
-                $scope.report = report;
-                $scope.$watch('report', updateChange.onValueChange, true);
-                $controller('PlaylistsReportWriteCtrl', {
+            function initializePlaylistRprtWriter(playlistRprt) {
+                $scope.playlistRprt = playlistRprt;
+                $scope.$watch('playlistRprt', updateChange.onValueChange, true);
+                $controller('PlaylistsPlaylistRprtWriteCtrl', {
                     $scope: $scope
                 });
 
                 $controller('PlaylistsDisplayCtrl', {
                     $scope: $scope
                 }); // display should be initialized here, we should not show playlist
-                // before we can report.
+                // before we can playlistRprt.
                 $rootScope.$broadcast('startPlaylist', invitation);
             }
 
-            var reportId = $routeParams.reportId;
-            if (!!reportId) {
-                LergoClient.reports.getById(reportId).then(function (result) {
+            var playlistRprtId = $routeParams.playlistRprtId;
+            if (!!playlistRprtId) {
+                LergoClient.playlistRprts.getById(playlistRprtId).then(function (result) {
 
-                    initializeReportWriter(result.data);
+                    initializePlaylistRprtWriter(result.data);
                 });
             } else {
-                LergoClient.reports.createFromInvitation(invitation).then(function (result) {
-                    $location.search('reportId', result.data._id).replace();
-                    initializeReportWriter(result.data);
+                LergoClient.playlistRprts.createFromInvitation(invitation).then(function (result) {
+                    $location.search('playlistRprtId', result.data._id).replace();
+                    initializePlaylistRprtWriter(result.data);
                 });
             }
         }
@@ -125,7 +125,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             return !!$scope.invitation && !!$scope.hasNextStep && !$scope.hasNextStep();
         }, function (newValue/* , oldValue */) {
             if (!!newValue) {
-                // just notify end playlist. do nothing else. wait for report to
+                // just notify end playlist. do nothing else. wait for playlistRprt to
                 // update.
                 $rootScope.$broadcast('endPlaylist');
                 if (!!$scope.invitation) {
@@ -136,8 +136,8 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         });
 
         // todo: technically we don't need to build playlist invitation anymore..
-        // todo: we should build the report instead since all data is on the report and display the data from there.
-        // todo: the display will still be for playlist invitation, but the data should come from report. (this resolves ambiguity regarding display for report.. there's only one).
+        // todo: we should build the playlistRprt instead since all data is on the playlistRprt and display the data from there.
+        // todo: the display will still be for playlist invitation, but the data should come from playlistRprt. (this resolves ambiguity regarding display for playlistRprt.. there's only one).
         LergoClient.playlistsInvitations.build($routeParams.invitationId, true, false).then(function (result) {
             $scope.invitation = result.data;
             $scope.playlist = result.data.playlist;
@@ -147,7 +147,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             $scope.shareLink = LergoClient.playlists.getShareLink($scope.playlist);
             $scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="600" frameBorder="0"></iframe>';
 
-            initializeReport($scope.invitation);
+            initializePlaylistRprt($scope.invitation);
             var items = result.data.quizItems;
             if (!items) {
                 return;
@@ -252,7 +252,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 
         $scope.practiceMistakes = function () {
             $scope.practiseBtnDisable = true;
-            LergoClient.playlists.createPlaylistFromWrongLessons($scope.report, $scope.wrongLessons).then(
+            LergoClient.playlists.createPlaylistFromWrongLessons($scope.playlistRprt, $scope.wrongLessons).then(
                 function (playlist) {
                     $log.info('Starting practice mistakes');
                     $scope.startPlaylist(playlist._id);
@@ -262,9 +262,9 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                     $scope.practiseBtnDisable = false;
                 });
         };
-        function getWrongLesson(report) {
+        function getWrongLesson(playlistRprt) {
             $scope.wrongLessons = [];
-            angular.forEach(report.answers, function (answer) {
+            angular.forEach(playlistRprt.answers, function (answer) {
                 if (!answer.checkAnswer.correct) {
                     $scope.wrongLessons.push(answer.quizItemId);
                 }
@@ -273,21 +273,21 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 
         // function createPlaylistFromWrongLessons() {
         //     if ($scope.wrongLessons.length > 0) {
-        //         var report = $scope.report;
+        //         var playlistRprt = $scope.playlistRprt;
         //         LergoClient.playlists.create().then(function (result) {
         //             var playlist = result.data;
-        //             playlist.name = $filter('translate')('playlist.practice.title') + report.data.playlist.name;
+        //             playlist.name = $filter('translate')('playlist.practice.title') + playlistRprt.data.playlist.name;
         //
         //             playlist.language = LergoTranslate.getLanguageObject().name;
-        //             playlist.subject = report.data.playlist.subject;
+        //             playlist.subject = playlistRprt.data.playlist.subject;
         //             playlist.steps = [];
-        //             var stepsWithoutRetry = _.filter(report.data.playlist.steps, function (s) {
+        //             var stepsWithoutRetry = _.filter(playlistRprt.data.playlist.steps, function (s) {
         //                 if (s.type === 'quiz') {
         //                     return !s.retryLesson;
         //                 }
         //             });
         //
-        //             playlist.description = report.data.playlist.description;
+        //             playlist.description = playlistRprt.data.playlist.description;
         //             playlist.lastUpdate = new Date().getTime();
         //             playlist.temporary = true;
         //             var step = {
@@ -313,12 +313,12 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         //
         // }
 
-        $scope.showReport = function () {
+        $scope.showPlaylistRprt = function () {
             // in case of temporary playlist we don't want to remember history
             if (!$scope.playlist.temporary) {
-                $location.path('/public/playlists/reports/' + $scope.report._id + '/display');
+                $location.path('/public/playlists/playlistRprts/' + $scope.playlistRprt._id + '/display');
             } else {
-                $location.path('/public/playlists/reports/' + $scope.report._id + '/display').replace();
+                $location.path('/public/playlists/playlistRprts/' + $scope.playlistRprt._id + '/display').replace();
             }
         };
 

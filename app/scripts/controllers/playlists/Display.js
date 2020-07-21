@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('lergoApp').controller('PlaylistsDisplayCtrl',
-    function($scope, $routeParams, LergoClient, ReportsService, $log, $controller, $rootScope, $location, shuffleLessonsFilter, $window, $route ,$timeout) {
+    function($scope, $routeParams, LergoClient, PlaylistRprtsService, $log, $controller, $rootScope, $location, shuffleLessonsFilter, $window, $route ,$timeout) {
 
 	// guy - using this flag because ng-cloak and other solutions will not apply
 	// to this scenario.
 	// the display to the playlist is simply taking time, because we have to fetch
-	// the playlist and the report
+	// the playlist and the playlistRprt
 	// so once they are loaded, we will switch that flag to true.
 	// otherwise we get a flash of the last screen (LERGO-358).
 	$scope.loaded = false;
@@ -30,8 +30,8 @@ angular.module('lergoApp').controller('PlaylistsDisplayCtrl',
     function updateLessonsAnswers(){
         if ( !!$scope.step && !!$scope.step.quizItems && $scope.answers ){
 
-            if ( !!$scope.report && !isNaN(parseInt($scope.currentStepIndex,10))  ){
-                $scope.answers = ReportsService.getAnswersByQuizItemId( $scope.report, parseInt($scope.currentStepIndex,10) );
+            if ( !!$scope.playlistRprt && !isNaN(parseInt($scope.currentStepIndex,10))  ){
+                $scope.answers = PlaylistRprtsService.getAnswersByQuizItemId( $scope.playlistRprt, parseInt($scope.currentStepIndex,10) );
             }
         }
     }
@@ -47,7 +47,7 @@ angular.module('lergoApp').controller('PlaylistsDisplayCtrl',
                 updateLessonsAnswers();
 
 				if (!!$scope.step) {
-					shuffleLessonsFilter( { 'array' : $scope.step.quizItems, 'disabled' : !$scope.step.shuffleLesson , 'report' : $scope.report , 'stepIndex' : $scope.currentStepIndex } );
+					shuffleLessonsFilter( { 'array' : $scope.step.quizItems, 'disabled' : !$scope.step.shuffleLesson , 'playlistRprt' : $scope.playlistRprt , 'stepIndex' : $scope.currentStepIndex } );
 				}
 			} else {
 				$scope.step = null;

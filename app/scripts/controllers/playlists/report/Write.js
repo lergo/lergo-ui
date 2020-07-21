@@ -2,14 +2,14 @@
 
 /**
  *
- * This controller write the events from a playlist a report model
+ * This controller write the events from a playlist a playlistRprt model
  *
  * Usage example: // example - lets say we have viewing a playlist $scope.data =
- * playlist; // lets add a report to the playlist playlist.report = {}; // lets put
- * the report on the scope $scope.report = playlist.report; // call the report
- * controller - the controller will look for "report" on the scope
- * $controller('PlaylistsReportWriteCtrl', {$scope: $scope}); // listen to writing
- * on the report and do something with it $scope.$watch('report', function(){
+ * playlist; // lets add a playlistRprt to the playlist playlist.playlistRprt = {}; // lets put
+ * the playlistRprt on the scope $scope.playlistRprt = playlist.playlistRprt; // call the playlistRprt
+ * controller - the controller will look for "playlistRprt" on the scope
+ * $controller('PlaylistsPlaylistRprtWriteCtrl', {$scope: $scope}); // listen to writing
+ * on the playlistRprt and do something with it $scope.$watch('playlistRprt', function(){
  *
  * do something when the repost changes
  *
@@ -19,42 +19,42 @@
  *
  *
  *
- * The proper structure for a report is the same as a constructed invitation but
+ * The proper structure for a playlistRprt is the same as a constructed invitation but
  * with more data on it - it holds the real quiz item instead of an ID - it
  * holds the user's answer for each quiz item - it holds the "checkAnswer"
  * response for each answer
  *
  */
 
-var PlaylistsReportWriteCtrl = function ($scope, ReportWriteService, ReportsService, $log, LergoClient, $q) {
+var PlaylistsPlaylistRprtWriteCtrl = function ($scope, PlaylistRprtWriteService, PlaylistRprtsService, $log, LergoClient, $q) {
     window.scrollTo(0, 0);
-    var report = $scope.report;
-    if (!report.answers) {
-        report.answers = [];
+    var playlistRprt = $scope.playlistRprt;
+    if (!playlistRprt.answers) {
+        playlistRprt.answers = [];
     }
-    if (!report.stepDurations) {
-        report.stepDurations = [];
+    if (!playlistRprt.stepDurations) {
+        playlistRprt.stepDurations = [];
     }
     var stepIndex = 0;
 
     $scope.$on('startPlaylist', function (event, data) {
         $log.info('starting playlist');
-        _.merge(report.data, data); // since we compacted data on report, report it initialized with partial data
+        _.merge(playlistRprt.data, data); // since we compacted data on playlistRprt, playlistRprt it initialized with partial data
     });
 
     $scope.$on('endPlaylist', function (/* event, data */) {
         window.scrollTo(0, 0);  //  $window was for congrats, but caused karma:unit to fail
         $log.info('playlist ended');
         // mark invitation as finished
-        if (!report.data.finished) {
-            report.data.finished = true;
+        if (!playlistRprt.data.finished) {
+            playlistRprt.data.finished = true;
         }
-        // mark report as finished
-        if (!report.finished) {
-            report.finished = true;
+        // mark playlistRprt as finished
+        if (!playlistRprt.finished) {
+            playlistRprt.finished = true;
         }
-        if (!!report.data.playlist.temporary) {
-            LergoClient.playlists.delete(report.data.playlist._id);
+        if (!!playlistRprt.data.playlist.temporary) {
+            LergoClient.playlists.delete(playlistRprt.data.playlist._id);
         }
     });
 
@@ -72,37 +72,37 @@ var PlaylistsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServ
         stepIndex = ~~data.new;
         // update new duration only if we are still looking at steps inside the
         // playlist.
-        if (stepIndex <= report.data.playlist.steps.length) {
-            var newDuration = report.stepDurations[stepIndex];
+        if (stepIndex <= playlistRprt.data.playlist.steps.length) {
+            var newDuration = playlistRprt.stepDurations[stepIndex];
 
             if (!newDuration) {
                 newDuration = {
                     startTime: new Date().getTime()
                 };
-                var step = report.data.playlist.steps[stepIndex];
+                var step = playlistRprt.data.playlist.steps[stepIndex];
                 if (!!step) {
                     newDuration.testMode = step.testMode;
                     newDuration.retryLesson = step.retryLesson;
                     newDuration.retBefCrctAns = step.retBefCrctAns;
                 }
-                report.stepDurations.push(newDuration);
+                playlistRprt.stepDurations.push(newDuration);
             }
         }
 
 
         if (~~data.old !== ~~data.new) {
-            ReportWriteService.calculateOldStepDuration(report, data); // updates report model
+            PlaylistRprtWriteService.calculateOldStepDuration(playlistRprt, data); // updates playlistRprt model
         }
-        report.duration = ReportWriteService.calculateReportDuration(report); // does not update report model
+        playlistRprt.duration = PlaylistRprtWriteService.calculatePlaylistRprtDuration(playlistRprt); // does not update playlistRprt model
     });
 
 
     // the idea is we always keep data without changing it.
-    // when the report is done, playlist should look like playlist,
+    // when the playlistRprt is done, playlist should look like playlist,
     // quizItems should be ids,
     // lessons should be the object for the quiz items..
     // just like in DB...
-    // the report only adds the answers the user game and whether they are right
+    // the playlistRprt only adds the answers the user game and whether they are right
     // or not.
     // in order to track down each answer and its correlating step
 
@@ -112,11 +112,11 @@ var PlaylistsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServ
         // find answer
         // in case user answered a lesson, and then changed the answer, we
         // will need to find the answer again
-        var answer = ReportsService.getAnswerToQuizItem(report, data.quizItemId, stepIndex);
+        var answer = PlaylistRprtsService.getAnswerToQuizItem(playlistRprt, data.quizItemId, stepIndex);
 
         if (!answer) { // add if not exists
             answer = {};
-            report.answers.push(answer);
+            playlistRprt.answers.push(answer);
 
             // update the answer
             _.merge(answer, {
@@ -135,17 +135,17 @@ var PlaylistsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServ
             answer.retries.push(data);
         }
 
-        calculateCorrectPercentage(report);
+        calculateCorrectPercentage(playlistRprt);
 
     });
 
-    $log.info('report writer initialized');
+    $log.info('playlistRprt writer initialized');
 
-    function calculateCorrectPercentage(report) {
-        report.correctPercentage = 0;
+    function calculateCorrectPercentage(playlistRprt) {
+        playlistRprt.correctPercentage = 0;
         var numberOfLessons = 0;
         var promises = [];
-        angular.forEach(report.data.playlist.steps, function (step) {
+        angular.forEach(playlistRprt.data.playlist.steps, function (step) {
             if (step.type === 'quiz' && !!step.quizItems) {
                 angular.forEach(step.quizItems, function (q) {
                     var d = $q.defer();
@@ -162,11 +162,11 @@ var PlaylistsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServ
         });
 
         $q.all(promises).then(function () {
-            if (!!report.data.quizItems && numberOfLessons > 0) {
-                var correctAnswers = _.filter(report.answers, function (answer) {
+            if (!!playlistRprt.data.quizItems && numberOfLessons > 0) {
+                var correctAnswers = _.filter(playlistRprt.answers, function (answer) {
                     return answer.quizItemType !== 'openLesson' && answer.checkAnswer.correct === true;
                 });
-                report.correctPercentage = Math.round((correctAnswers.length * 100) / numberOfLessons);
+                playlistRprt.correctPercentage = Math.round((correctAnswers.length * 100) / numberOfLessons);
             }
 
             $log.info('new correct percentage is : ');
@@ -175,5 +175,5 @@ var PlaylistsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServ
     }
 };
 
-angular.module('lergoApp').controller('PlaylistsReportWriteCtrl', ['$scope', 'ReportWriteService', 'ReportsService',
-    '$log', 'LergoClient', '$q', PlaylistsReportWriteCtrl]);
+angular.module('lergoApp').controller('PlaylistsPlaylistRprtWriteCtrl', ['$scope', 'PlaylistRprtWriteService', 'PlaylistRprtsService',
+    '$log', 'LergoClient', '$q', PlaylistsPlaylistRprtWriteCtrl]);

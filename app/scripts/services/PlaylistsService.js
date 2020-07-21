@@ -157,23 +157,23 @@ angular.module('lergoApp').service('PlaylistsService',
             return '/public/playlists/' + playlist._id + '/intro';
         };
 
-        this.createPlaylistFromWrongLessons = function (report, wrongLessons) {
+        this.createPlaylistFromWrongLessons = function (PlaylistRprt, wrongLessons) {
             return $q(function (resolve, reject) {
                 if (!wrongLessons || wrongLessons.length === 0) {
                     reject();
                 }
                 self.create().then(function (result) {
                     var playlist = result.data;
-                    playlist.name = $filter('translate')('playlist.practice.title') + report.data.playlist.name;
-                    playlist.language = report.data.playlist.language;
-                    playlist.subject = report.data.playlist.subject;
+                    playlist.name = $filter('translate')('playlist.practice.title') + PlaylistRprt.data.playlist.name;
+                    playlist.language = PlaylistRprt.data.playlist.language;
+                    playlist.subject = PlaylistRprt.data.playlist.subject;
                     playlist.steps = [];
-                    var stepsWithoutRetry = _.filter(report.data.playlist.steps, function (s) {
+                    var stepsWithoutRetry = _.filter(PlaylistRprt.data.playlist.steps, function (s) {
                         if (s.type === 'quiz') {
                             return !s.retryLesson;
                         }
                     });
-                    playlist.description = report.data.playlist.description;
+                    playlist.description = PlaylistRprt.data.playlist.description;
                     playlist.lastUpdate = new Date().getTime();
                     playlist.temporary = true;
                     var step = {
