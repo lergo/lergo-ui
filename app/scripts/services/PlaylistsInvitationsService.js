@@ -1,4 +1,4 @@
-'use strict'; 
+'use strict';
 
 angular.module('lergoApp').service('PlaylistsInvitationsService', function PlaylistsInvitationsService($http) {
 

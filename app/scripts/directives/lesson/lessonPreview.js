@@ -5,7 +5,7 @@
 
 
 angular.module('lergoApp')
-    .directive('lessonPreview', function (LessonsService) {
+    .directive('lessonPreview', function () {
         return {
             templateUrl: 'views/lessons/view/preview2/preview.html',
             restrict: 'E',
