@@ -49,6 +49,10 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'views/lessons/invitations/display.html',
         controller: 'LessonsInvitationsDisplayCtrl',
         reloadOnSearch: false
+    }).when('/public/playlists/invitations/:invitationId/display', {
+        templateUrl: 'views/playlists/invitations/display.html',
+        controller: 'PlaylistsInvitationsDisplayCtrl',
+        reloadOnSearch: false
     }).when('/:role/lessons/:lessonId/intro', {
         templateUrl: 'views/lessons/intro.html',
         controller: 'LessonsIntroCtrl'
