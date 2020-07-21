@@ -51,44 +51,45 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 
         function initializeReport(invitation) {
             /**  
-             *   prior to creating a new report and starting a playlist, check that the playlist is valid 
-             *   first check if each quiz item is valid - if not, remove from local playlist and playlist in dB and lessonId in dB
-             *   then check that each step is valid - remove locally and on dB
+             *   for playlist,this is not needed
+             *      prior to creating a new report and starting a playlist, check that the playlist is valid 
+             *      first check if each quiz item is valid - if not, remove from local playlist and playlist in dB and lessonId in dB
+             *      then check that each step is valid - remove locally and on dB
             */
-            var steps = invitation.playlist.steps;
-            var quizItems = invitation.quizItems;
-            for (var k = quizItems.length -1; k >= 0; k--) {
-                if ($scope.isValid(quizItems[k])) {
-                    $log.debug('valid quizItem');
-                } else {
-                    var illegalId = quizItems[k]._id;
-                    quizItems.splice(quizItems.indexOf(illegalId), 1);
-                    for (var i = steps.length -1; i >= 0; i--) {
-                        if (steps[i].quizItems) {
-                            for (var j = steps[i].quizItems.length -1; j >= 0; j--) {
-                                var lessonId = steps[i].quizItems[j];
-                                if (lessonId === illegalId){
-                                    steps[i].quizItems.splice(steps[i].quizItems.indexOf(illegalId), 1);
-                                    $log.info('fixing playlist locally');
-                                    $log.info('updating fixed playlist on Db');
-                                    LergoClient.playlists.fix(invitation.playlist);
-                                    $log.info('deleting invalid lesson on Db');
-                                    LessonsService.removeLesson(lessonId);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            // var steps = invitation.playlist.steps;
+            // var quizItems = invitation.quizItems;
+            // for (var k = quizItems.length -1; k >= 0; k--) {
+            //     if ($scope.isValid(quizItems[k])) {
+            //         $log.debug('valid quizItem');
+            //     } else {
+            //         var illegalId = quizItems[k]._id;
+            //         quizItems.splice(quizItems.indexOf(illegalId), 1);
+            //         for (var i = steps.length -1; i >= 0; i--) {
+            //             if (steps[i].quizItems) {
+            //                 for (var j = steps[i].quizItems.length -1; j >= 0; j--) {
+            //                     var lessonId = steps[i].quizItems[j];
+            //                     if (lessonId === illegalId){
+            //                         steps[i].quizItems.splice(steps[i].quizItems.indexOf(illegalId), 1);
+            //                         $log.info('fixing playlist locally');
+            //                         $log.info('updating fixed playlist on Db');
+            //                         LergoClient.playlists.fix(invitation.playlist);
+            //                         $log.info('deleting invalid lesson on Db');
+            //                         LessonsService.removeLesson(lessonId);
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
            
-            for (var l = steps.length -1; l >= 0; l--) {
-                if (!PlaylistsService.checkIfStepIsValid(steps[l])) {
-                    $log.info('deleting invalid step locally ',l);
-                    steps.splice(l, 1);
-                    $log.info('removing step on Db');
-                    LergoClient.playlists.fix(invitation.playlist);
-                }
-            }
+            // for (var l = steps.length -1; l >= 0; l--) {
+            //     if (!PlaylistsService.checkIfStepIsValid(steps[l])) {
+            //         $log.info('deleting invalid step locally ',l);
+            //         steps.splice(l, 1);
+            //         $log.info('removing step on Db');
+            //         LergoClient.playlists.fix(invitation.playlist);
+            //     }
+            // }
            
             // broadcast start of playlist
             function initializeReportWriter(report) {
