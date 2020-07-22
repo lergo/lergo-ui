@@ -17,30 +17,31 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 if (finished) {
                     getWrongLesson(value);
                 }
-                console.log('----------------------commenting out all the report update code');
-                return ''
-
-                // return LergoClient.playlistRprts.update(value).then(function (result) {
-                //     if (finished) {
-                //         if (errorWhileSaving) {
-                //             toastr.success($filter('translate')('playlistRprt.saved.successfully'));
-                //         }
-                //         errorWhileSaving = false;
-                //         if (!$scope.invitation.anonymous && !!$scope.invitation.emailNotification) {
-                //             LergoClient.playlistRprts.ready($routeParams.playlistRprtId);
-                //         } else {
-                //             $log.info('not sending playlistRprt link because anonymous');
-                //         }
-                //     }
-                //     return result;
-                // }, function (result) {
-                //     if (finished) {
-                //         errorWhileSaving = true;
-                //         toastr.error($filter('translate')('playlistRprt.error.while.updating'));
-                //         $log.error('error while updating playlistRprt', result.data);
-                //     }
-                //     return result;
-                // });
+                console.log('----------------------commenting out all the report update code, not at the moment!');
+                // return ''
+                console.log('this is where we have an error in the return............', )
+                return LergoClient.playlistRprts.update(value).then(function (result) {
+                    console.log('this is the playlistRprts update value ', value);
+                    if (finished) {
+                        if (errorWhileSaving) {
+                            toastr.success($filter('translate')('playlistRprt.saved.successfully'));
+                        }
+                        errorWhileSaving = false;
+                        if (!$scope.invitation.anonymous && !!$scope.invitation.emailNotification) {
+                            LergoClient.playlistRprts.ready($routeParams.playlistRprtId);
+                        } else {
+                            $log.info('not sending playlistRprt link because anonymous');
+                        }
+                    }
+                    return result;
+                }, function (result) {
+                    if (finished) {
+                        errorWhileSaving = true;
+                        toastr.error($filter('translate')('playlistRprt.error.while.updating'));
+                        $log.error('error while updating playlistRprt', result.data);
+                    }
+                    return result;
+                });
 
             }
         });

@@ -8,18 +8,12 @@ written in  in _display.html?
     </div>
 </div> -->
 
-<div ng-repeat="les in lessons">
-    {{les.name}}
-</div>
-
 
 <div ng-repeat="les in lessons">
+    <div style="border: 2px solid blue">
         <lesson-preview quiz-item="lessons[les._id]"></lesson-preview>
+    </div>
 </div>
-
-<!-- <div ng-repeat="id in step.quizItems">
-        <lesson-preview quiz-item="lessons[id]"></lesson-preview>
-    </div> -->
 
 
 
