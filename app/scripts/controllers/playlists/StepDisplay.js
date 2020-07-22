@@ -47,6 +47,7 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         }
 
         if (!$scope.step) {
+            console.log('--------checking if we have a $scope.step - no!')
             return;
         }
 
