@@ -79,6 +79,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
             if (!!$scope.quizItem && !$scope.quizItem.startTime) {
                 $scope.quizItem.startTime = new Date().getTime();
             }
+            console.log('LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate', LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate)
             return !!$scope.quizItem && LergoClient.questions.getTypeById($scope.quizItem.type).viewTemplate || '';
         }
         return '';

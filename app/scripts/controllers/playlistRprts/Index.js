@@ -154,9 +154,10 @@ angular.module('lergoApp').controller('PlaylistRprtsIndexCtrl',
                     }
                 });
                 playlist.name = playlist.name.slice(0, -1);
-                LergoClient.playlists.update(playlist).then(function () {
-                    $location.path('/user/playlists/' + playlist._id + '/intro');
-                });
+                console.log('currently not able to do update and it gives a running error');
+                // LergoClient.playlists.update(playlist).then(function () {
+                //     $location.path('/user/playlists/' + playlist._id + '/intro');
+                // });
             });
 
         };

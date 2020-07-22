@@ -7,6 +7,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         var errorWhileSaving = false;
         $scope.shareSection = 'link';
         var updateChange = new ContinuousSavePlaylistRprts({
+
             'saveFn': function (value) {
                /* window.scrollTo(0, 68);*/
                 $log.info('updating playlistRprt');
@@ -16,28 +17,30 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 if (finished) {
                     getWrongLesson(value);
                 }
+                console.log('commenting out all the report update code');
+                return ''
 
-                return LergoClient.playlistRprts.update(value).then(function (result) {
-                    if (finished) {
-                        if (errorWhileSaving) {
-                            toastr.success($filter('translate')('playlistRprt.saved.successfully'));
-                        }
-                        errorWhileSaving = false;
-                        if (!$scope.invitation.anonymous && !!$scope.invitation.emailNotification) {
-                            LergoClient.playlistRprts.ready($routeParams.playlistRprtId);
-                        } else {
-                            $log.info('not sending playlistRprt link because anonymous');
-                        }
-                    }
-                    return result;
-                }, function (result) {
-                    if (finished) {
-                        errorWhileSaving = true;
-                        toastr.error($filter('translate')('playlistRprt.error.while.updating'));
-                        $log.error('error while updating playlistRprt', result.data);
-                    }
-                    return result;
-                });
+                // return LergoClient.playlistRprts.update(value).then(function (result) {
+                //     if (finished) {
+                //         if (errorWhileSaving) {
+                //             toastr.success($filter('translate')('playlistRprt.saved.successfully'));
+                //         }
+                //         errorWhileSaving = false;
+                //         if (!$scope.invitation.anonymous && !!$scope.invitation.emailNotification) {
+                //             LergoClient.playlistRprts.ready($routeParams.playlistRprtId);
+                //         } else {
+                //             $log.info('not sending playlistRprt link because anonymous');
+                //         }
+                //     }
+                //     return result;
+                // }, function (result) {
+                //     if (finished) {
+                //         errorWhileSaving = true;
+                //         toastr.error($filter('translate')('playlistRprt.error.while.updating'));
+                //         $log.error('error while updating playlistRprt', result.data);
+                //     }
+                //     return result;
+                // });
 
             }
         });

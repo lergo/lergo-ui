@@ -79,7 +79,9 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
             if (!!$scope.quizItem && !$scope.quizItem.startTime) {
                 $scope.quizItem.startTime = new Date().getTime();
             }
-            return !!$scope.quizItem && LergoClient.lessons.getTypeById($scope.quizItem.type).viewTemplate || '';
+            console.log('the lessons are ', $scope.lessons);
+            return !!$scope.quizItem && 'views/lessons/view/_exactMatch.html'
+            //return !!$scope.quizItem && LergoClient.lessons.getTypeById($scope.quizItem.type).viewTemplate || '';
         }
         return '';
     };

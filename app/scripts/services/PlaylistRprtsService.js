@@ -143,6 +143,8 @@ angular.module('lergoApp')
         };
 
         this.update = function (playlistRprt) {
+            console.log('the playlistRprt is: ',playlistRprt);
+            return '';
             return $http.post('/backend/playlistRprts/' + playlistRprt._id + '/update', playlistRprt);
         };
 
