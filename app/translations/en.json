@@ -124,6 +124,7 @@
         "manageUsers": "Manage Users",
         "parents": "Parents",
         "playlists": "Playlists",
+        "playlistRprts": "Playlist Reports",
         "profile": "Profile",
         "privacy": "Privacy and Terms",
         "questions": "Questions",
@@ -941,6 +942,47 @@
     "myPlaylists": "My Playlists",
     "likedPlaylists": "Liked Playlists",
     "total": "total"
+  },
+  "playlistRprts": {
+    "class": "Class",
+    "click": {
+      "nextPlaylist": "Link to lesson",
+      "priorPlaylist": "Link to lesson",
+      "step": "Link to presentation",
+      "video": "Link to video"
+    },
+    "correct": "Correct",
+    "correctAvg": "Class average",
+    "correctPercentage": "% Correct",
+    "duration": "Duration",
+    "filter": "Filter P-Report",
+    "header": {
+      "className": "Class PlaylistRprt"
+    },
+    "hintAgg": {
+      "one": "Watched hint : {{hintUsedBy}} of {{total}} student ",
+      "other": "Watched hint : {{hintUsedBy}} of {{total}} students"
+    },
+    "myPlaylistRprts": "My P-Reports",
+    "stepCorrectAvg": "{{percentage | number:0}} % correct (average)",
+    "student": "Student",
+    "studentCount": "# PlaylistRprts",
+    "subject": "Subject",
+    "summary": {
+      "correctPercentage": "{{percentage | number:0}} % correct",
+      "duration": "Playlist Duration",
+      "durationAvg": "Average duration"
+    },
+    "takenAt": "Taken at",
+    "tooltip": {
+      "go": "go to lesson's playlistRprt"
+    },
+    "total": "Total",
+    "type": {
+      "class": "Class playlistRprts",
+      "mine": "Playlists done by me",
+      "students": "Student playlistRprts"
+    }
   },
   "popular": "Popular",
   "powered": {
