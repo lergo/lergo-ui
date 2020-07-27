@@ -47,7 +47,6 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         }
 
         if (!$scope.step) {
-            console.log('--------checking if we have a $scope.step - no!')
             return;
         }
 
@@ -81,7 +80,7 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
                 $scope.quizItem.startTime = new Date().getTime();
             }
             console.log('the lessons are ', $scope.lessons);
-            return !!$scope.quizItem && 'views/lessons/view/_exactMatch.html'
+            return !!$scope.quizItem && 'views/lessons/view/_exactMatch.html';
             //return !!$scope.quizItem && LergoClient.lessons.getTypeById($scope.quizItem.type).viewTemplate || '';
         }
         return '';

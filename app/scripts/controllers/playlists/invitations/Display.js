@@ -17,9 +17,6 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 if (finished) {
                     getWrongLesson(value);
                 }
-                console.log('----------------------commenting out all the report update code, not at the moment!');
-                // return ''
-                console.log('this is where we have an error in the return............', )
                 return LergoClient.playlistRprts.update(value).then(function (result) {
                     console.log('this is the playlistRprts update value ', value);
                     if (finished) {
