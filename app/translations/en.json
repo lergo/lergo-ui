@@ -794,6 +794,107 @@
     "placeholder": "Enter code",
     "enter": "Enter"
   },
+
+  "playlistRprt": {
+    "answer": {
+      "stat": "{{avgCorrectPercentage | number:0}} % Correct ({{correct}} of {{count}} correct responses)"
+    },
+    "classSummary": "Class PlaylistRprt Summary",
+    "completed": "has completed the playlist",
+    "correctQuestions": {
+      "one": "Correct Answer",
+      "other": "Correct Answers",
+      "zero": "."
+    },
+    "CreatePlaylistFromWrongQuestions": "Create quiz from incorrect answers",
+    "date": "Date",
+    "description": "Playlist Description",
+    "detailedPlaylistRprt": "Detailed PlaylistRprt",
+    "details": {
+      "hint": "Note: The questions in this section are ordered according to their level of difficulty for the students."
+    },
+    "did": {
+      "not": {
+        "finish": "Did not finish"
+      }
+    },
+    "error": {
+      "while": {
+        "updating": "Error while updating playlistRprt"
+      }
+    },
+    "header": {
+      "classPlaylistRprt": "To Class PlaylistRprt",
+      "individualPlaylistRprts": "To Student PlaylistRprts"
+    },
+    "incomplete": "Incomplete",
+    "playlistStep": {
+      "practiceMode": {
+        "false": "No",
+        "hint": {
+          "1": "The correct answer was presented to the student after 1 try / 1 incorrect answer. The question was then presented again until the student entered a correct answer.",
+          "2": "Whenever the student had 2 incorrect tries / answers, the correct answer was presented to him, before moving on to next question. "
+        },
+        "showCorrectAns": {
+          "one": "The correct answer was shown after 1 try / incorrect answer.",
+          "other": "The correct answer was shown after 2 tries / incorrect answers."
+        },
+        "title": "Practice Mode",
+        "true": "Yes",
+        "try": {
+          "one": "try",
+          "other": "tries",
+          "zero": "try"
+        }
+      }
+    },
+    "playlistSteps": "Playlist Steps",
+    "missing": {
+      "info": "Missing information"
+    },
+    "nextPlaylist": "Recommended Next Playlist",
+    "notCompletedTitle": "has not yet completed the playlist",
+    "openQuestions": {
+      "one": "Open Question",
+      "other": "Open Questions",
+      "zero": "."
+    },
+    "playlistsInPlaylist": {
+      "one": "Playlist in Playlist",
+      "other": "Different Playlists in Playlist",
+      "zero": " There are no Playlists in this playlist"
+    },
+    "playlistsInQuiz": {
+      "one": "Playlist in Quiz",
+      "other": "Different Playlists in Quiz",
+      "zero": " ."
+    },
+    "playlistSteps": "Playlist Steps",
+    "priorPlaylist": "Recommended Previous Playlist",
+    "questionPerDifficulty": "Questions per Difficulty",
+    "questionsInPlaylist": {
+      "one": "Question in Playlist",
+      "other": "Different Questions in Playlist",
+      "zero": " There are no questions in this playlist"
+    },
+    "questionsInQuiz": {
+      "one": "Question in Quiz",
+      "other": "Different Questions in Quiz",
+      "zero": " ."
+    },
+    "recommendation": "Recommendations",
+    "saved": {
+      "successfully": "PlaylistRprt saved successfully"
+    },
+    "studentSummary": "Student PlaylistRprt Summary",
+    "summary": "PlaylistRprt Summary",
+    "summaryHint": "The playlistRprt is made of {{count}} complete student playlistRprts.",
+    "wrongQuestions": {
+      "one": "Incorrect Answer",
+      "other": "Incorrect Answers",
+      "zero": "."
+    }
+  },
   
   "playlistIntro": {
     "action": {

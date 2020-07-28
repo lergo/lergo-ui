@@ -1,332 +1,234 @@
 
 <div class="base-layout" ng-init="scrollUp()">
-    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-        <div class="report padding-leftRight15">
-        <div class="header" style="overflow-y: auto">
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 padding-leftRight15">
-                <div class="image hidden-sm hidden-xs">
-                    <div class="user">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <div class="cap">
-                        <i class="fa fa-graduation-cap"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 header-name ">
-                playlistRprt.html
-                /playlists/invitations/PlaylistRprt.js
-                <div ng-show="!!report.data.invitee.name">
-
-                    <div><span class="lergo-h1">{{report.data.invitee.name}}</span><span class="class-name">{{report.data.invitee.class}}</span>
-                    </div>
-                    <div class="lergo-h4" ng-show="isCompleted(report)">{{'report.completed'|translate}}:</div>
-                    <div class="lergo-h4" ng-show="!isCompleted(report)">{{'report.notCompletedTitle'|translate}}:</div>
-                    <br/>
-                </div>
-                <div class="lergo-h1">
-                    <a ng-show="!report.data.playlist.temporary"
-                       ng-href="#!/public/playlists/{{report.data.playlist._id}}/intro">{{report.data.playlist.name|
-                        limitTo:40}}</a>
-                    <span ng-show="!!report.data.playlist.temporary">{{report.data.playlist.name| limitTo:40}}</span>
-                </div>
-                <div>
-                    <span class="lergo-h4">{{'report.date'|translate}}:</span>
-                    <span>{{report.lastUpdate | date:'medium'}}</span>
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 padding-leftRight15">
-                <div class="header-desc">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div ng-show="!!report.data.playlist.description" class="hidden-sm hidden-xs">
-                            <div class="lergo-h4">{{'report.description'|translate}}</div>
-                            <div>{{report.data.playlist.description | limitTo:440}}</div>
+        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+            <div class="playlistRprt padding-leftRight15">
+            <div class="header" style="overflow-y: auto">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 padding-leftRight15">
+                    <div class="image hidden-sm hidden-xs">
+                        <div class="user">
+                            <i class="fa fa-user"></i>
                         </div>
-                        <div class="hidden-sm hidden-xs" style="height: 30px;"></div>
-                        <div class="hidden-lg hidden-md" style="height: 20px;"></div>
+                        <div class="cap">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="redo-buttons" ng-show="showClassReport()">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 reports" ng-show="showClassReport()">
-                        <a href="" ng-click="redirectToClassReport()">
-                            <i class="fa fa-bar-chart d-padBot15 mpad-bot5"> {{'report.header.classReport' | translate}}</i>
-                        </a>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 header-name ">
+                    <div ng-show="!!playlistRprt.data.invitee.name">
+    
+                        <div><span class="lergo-h1">{{playlistRprt.data.invitee.name}}</span><span class="class-name">{{playlistRprt.data.invitee.class}}</span>
+                        </div>
+                        <div class="lergo-h4" ng-show="isCompleted(playlistRprt)">{{'playlistRprt.completed'|translate}}:</div>
+                        <div class="lergo-h4" ng-show="!isCompleted(playlistRprt)">{{'playlistRprt.notCompletedTitle'|translate}}:</div>
+                        <br/>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 restart" ng-show="!report.data.playlist.temporary">
-                        <a href="" ng-click="startPlaylist()">
-                            <i class="fa fa-repeat d-padBot10 m-right mpad-bot5 d-padr15" > {{'playlists.restart' | translate}}</i>
-                        </a>
+                    <div class="lergo-h1">
+                        <a ng-show="!playlistRprt.data.playlist.temporary"
+                           ng-href="#!/public/playlists/{{playlistRprt.data.playlist._id}}/intro">{{playlistRprt.data.playlist.name|
+                            limitTo:40}}</a>
+                        <span ng-show="!!playlistRprt.data.playlist.temporary">{{playlistRprt.data.playlist.name| limitTo:40}}</span>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 practiceMistake" ng-show="wrongLessons.length>0">
-                        <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
-                           ng-disabled="practiseBtnDisable">
-                            <i class="fa fa-repeat d-padBot10 m-right mpad-bot5" style="white-space: nowrap;"> {{'playlists.practiseWrongLesson' | translate}}</i>
-                        </a>
-                        <a show-anonymous href="" popover-placement=" bottom" popover-trigger="'outsideClick'"
-                           uib-popover="{{'playlists.practiceNotAvailable' | translate}}"
-                           tabindex="0">
-                            <i class="fa fa-repeat d-padBot10 m-right mpad-bot5"> {{'playlists.practiseWrongLesson' | translate}}</i>
-                        </a>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-right" ng-show="showContinuePlaylist()">
-                        <a class="btn-link" href="{{continuePlaylistUrl(report)}}">
-                            <i class="fa fa-repeat d-padBot10 "> {{'playlists.continuePlaylist' | translate}}</i>
-                        </a>
+                    <div>
+                        <span class="lergo-h4">{{'playlistRprt.date'|translate}}:</span>
+                        <span>{{playlistRprt.lastUpdate | date:'medium'}}</span>
                     </div>
                 </div>
-                <div class="redo-buttons" ng-show="!showClassReport()">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right bottom-padding25">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <a ng-click="startPlaylist()" ng-show="!report.data.playlist.temporary"
-                               class="restart no-underline">
-                                <i class="fa fa-repeat mpad-bot5 d-padr15 "> {{'playlists.restart' | translate}}</i>
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 padding-leftRight15">
+                    <div class="header-desc">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div ng-show="!!playlistRprt.data.playlist.description" class="hidden-sm hidden-xs">
+                                <div class="lergo-h4">{{'playlistRprt.description'|translate}}</div>
+                                <div>{{playlistRprt.data.playlist.description | limitTo:440}}</div>
+                            </div>
+                            <div class="hidden-sm hidden-xs" style="height: 30px;"></div>
+                            <div class="hidden-lg hidden-md" style="height: 20px;"></div>
+                        </div>
+                    </div>
+                    <div class="redo-buttons" ng-show="showClassPlaylistRprt()">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 playlistRprts" ng-show="showClassPlaylistRprt()">
+                            <a href="" ng-click="redirectToClassPlaylistRprt()">
+                                <i class="fa fa-bar-chart d-padBot15 mpad-bot5"> {{'playlistRprt.header.classPlaylistRprt' | translate}}</i>
                             </a>
                         </div>
-                        <span ng-show="wrongLessons.length>0" class="practiceMistake">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 restart" ng-show="!playlistRprt.data.playlist.temporary">
+                            <a href="" ng-click="startPlaylist()">
+                                <i class="fa fa-repeat d-padBot10 m-right mpad-bot5 d-padr15" > {{'playlists.restart' | translate}}</i>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 practiceMistake" ng-show="wrongQuestions.length>0">
+                            <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
+                               ng-disabled="practiseBtnDisable">
+                                <i class="fa fa-repeat d-padBot10 m-right mpad-bot5" style="white-space: nowrap;"> {{'playlists.practiseWrongQuestion' | translate}}</i>
+                            </a>
+                            <a show-anonymous href="" popover-placement=" bottom" popover-trigger="'outsideClick'"
+                               uib-popover="{{'playlists.practiceNotAvailable' | translate}}"
+                               tabindex="0">
+                                <i class="fa fa-repeat d-padBot10 m-right mpad-bot5"> {{'playlists.practiseWrongQuestion' | translate}}</i>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-right" ng-show="showContinuePlaylist()">
+                            <a class="btn-link" href="{{continuePlaylistUrl(playlistRprt)}}">
+                                <i class="fa fa-repeat d-padBot10 "> {{'playlists.continuePlaylist' | translate}}</i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="redo-buttons" ng-show="!showClassPlaylistRprt()">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right bottom-padding25">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <a show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
-                                   ng-disabled="practiseBtnDisable">
-                                    <i class="fa fa-repeat mpad-bot5 " style="white-space: nowrap;"> {{'playlists.practiseWrongLesson' | translate}}</i>
-                                </a>
-                                <a show-anonymous href="" popover-placement="auto" popover-trigger="'outsideClick'"
-                                   uib-popover="{{'playlists.practiceNotAvailable' | translate}}"
-                                   tabindex="0">
-                                <i class="fa fa-repeat "> {{'playlists.practiseWrongLesson' | translate}}</i>
+                                <a ng-click="startPlaylist()" ng-show="!playlistRprt.data.playlist.temporary"
+                                   class="restart no-underline">
+                                    <i class="fa fa-repeat mpad-bot5 d-padr15 "> {{'playlists.restart' | translate}}</i>
                                 </a>
                             </div>
-                        </span>
-                        <span class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <a class="btn-link continue-playlist" href="{{continuePlaylistUrl(report)}}"
-                               ng-show="showContinuePlaylist()">
-                                <i class="fa fa-repeat "> {{'playlists.continuePlaylist' | translate}}</i>
-                            </a>
-                        </span>
+                            <span ng-show="wrongQuestions.length>0" class="practiceMistake">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <a show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
+                                       ng-disabled="practiseBtnDisable">
+                                        <i class="fa fa-repeat mpad-bot5 " style="white-space: nowrap;"> {{'playlists.practiseWrongQuestion' | translate}}</i>
+                                    </a>
+                                    <a show-anonymous href="" popover-placement="auto" popover-trigger="'outsideClick'"
+                                       uib-popover="{{'playlists.practiceNotAvailable' | translate}}"
+                                       tabindex="0">
+                                    <i class="fa fa-repeat "> {{'playlists.practiseWrongQuestion' | translate}}</i>
+                                    </a>
+                                </div>
+                            </span>
+                            <span class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <a class="btn-link continue-playlist" href="{{continuePlaylistUrl(playlistRprt)}}"
+                                   ng-show="showContinuePlaylist()">
+                                    <i class="fa fa-repeat "> {{'playlists.continuePlaylist' | translate}}</i>
+                                </a>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--Report Summary-->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!--PlaylistRprt Summary-->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="collapsible lergo-h1">
+                        <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed">
+                            <i ng-show="!!summaryCollapsed" class="fa fa-plus-square"></i>
+                            <i ng-show="!summaryCollapsed" class="fa fa-minus-square"></i>
+                            {{'playlistRprt.studentSummary'|translate}}
+                        </a>
+                    </div>
+                    <hr/>
+                </div>
+                <div uib-collapse="!!summaryCollapsed" class="summary">
+                        <div class="top7"></div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 ">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mfont-size13">
+                                    <i class="fa fa-percent"></i>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                    <span class="lergo-h1">{{'playlistRprts.correct'|translate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 playlistRprt-numbers">
+                                    <span class="bold mpadding2">
+                                {{playlistRprt.correctPercentage}}
+                                    </span>
+                                (
+                                <ng-pluralize count="playlistRprt.data.quizItems.length" when="{
+                                    '0': '{{ &quot;playlistRprt.questionsInPlaylist.zero&quot; | translate}}',
+                                    'one': '{} {{ &quot;playlistRprt.questionsInPlaylist.one&quot; | translate}}',
+                                    'other': '{} {{ &quot;playlistRprt.questionsInPlaylist.other&quot; | translate}}'}">
+                                </ng-pluralize>
+                                <ng-pluralize count="playlistRprtStats.correct" when="{
+                                    '0': '{{&quot;playlistRprt.correctQuestions.zero&quot; | translate}}',
+                                    'one': ', {} {{&quot;playlistRprt.correctQuestions.one&quot; | translate}}',
+                                    'other': ', {} {{&quot;playlistRprt.correctQuestions.other&quot; | translate}}'}">
+                                </ng-pluralize>
+                                <ng-pluralize count="playlistRprtStats.wrong" when="{
+                                    '0': '{{&quot;playlistRprt.wrongQuestions.zero&quot; | translate}}',
+                                    'one': ', {} {{&quot;playlistRprt.wrongQuestions.one&quot; | translate}}',
+                                    'other': ', {} {{&quot;playlistRprt.wrongQuestions.other&quot; | translate}}'}">
+                                </ng-pluralize>
+                                <ng-pluralize count="playlistRprtStats.openQuestions" when="{
+                                    '0': '{{&quot;playlistRprt.openQuestions.zero&quot; | translate}}',
+                                    'one': ', {} {{&quot;playlistRprt.openQuestions.one&quot; | translate}}',
+                                    'other': ', {} {{&quot;playlistRprt.openQuestions.other&quot; | translate}}'}">
+                                </ng-pluralize>
+                                )
+                            </div>
+                        </div>
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 pad-topBot7" >
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                    <span class="lergo-h1">{{'playlistRprts.summary.duration'|translate}}</span>
+                                </div>
+                            </div>
+                        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 pad-topBot7 playlistRprt-numbers">
+                            {{playlistRprt.duration|duration}}
+                        </div>
+                </div>
+            <!--End Of PlaylistRprt Summary-->
+    
+            <!--Playlists Step for Desktop-->
+            <div class="hidden-sm hidden-xs">
                 <div class="collapsible lergo-h1">
-                    <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed">
-                        <i ng-show="!!summaryCollapsed" class="fa fa-plus-square"></i>
-                        <i ng-show="!summaryCollapsed" class="fa fa-minus-square"></i>
-                        {{'report.studentSummary'|translate}}
+                    <a href="" class="no-underline" ng-click="stepCollapsed=!stepCollapsed">
+                        <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
+                        <i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>
+                        {{'playlistRprt.playlistSteps'|translate}}
                     </a>
                 </div>
                 <hr/>
-            </div>
-            <div uib-collapse="!!summaryCollapsed" class="summary">
-                    <div class="top7"></div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
-                        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 ">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mfont-size13">
-                                <i class="fa fa-percent"></i>
-                            </div>
-                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                <span class="lergo-h1">{{'reports.correct'|translate}}</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 report-numbers">
-                                <span class="bold mpadding2">
-                            {{report.correctPercentage}}
-                                </span>
-                            (
-                            <ng-pluralize count="report.data.quizItems.length" when="{
-                                '0': '{{ &quot;report.lessonsInPlaylist.zero&quot; | translate}}',
-                                'one': '{} {{ &quot;report.lessonsInPlaylist.one&quot; | translate}}',
-                                'other': '{} {{ &quot;report.lessonsInPlaylist.other&quot; | translate}}'}">
-                            </ng-pluralize>
-                            <ng-pluralize count="reportStats.correct" when="{
-                                '0': '{{&quot;report.correctLessons.zero&quot; | translate}}',
-                                'one': ', {} {{&quot;report.correctLessons.one&quot; | translate}}',
-                                'other': ', {} {{&quot;report.correctLessons.other&quot; | translate}}'}">
-                            </ng-pluralize>
-                            <ng-pluralize count="reportStats.wrong" when="{
-                                '0': '{{&quot;report.wrongLessons.zero&quot; | translate}}',
-                                'one': ', {} {{&quot;report.wrongLessons.one&quot; | translate}}',
-                                'other': ', {} {{&quot;report.wrongLessons.other&quot; | translate}}'}">
-                            </ng-pluralize>
-                            <ng-pluralize count="reportStats.openLessons" when="{
-                                '0': '{{&quot;report.openLessons.zero&quot; | translate}}',
-                                'one': ', {} {{&quot;report.openLessons.one&quot; | translate}}',
-                                'other': ', {} {{&quot;report.openLessons.other&quot; | translate}}'}">
-                            </ng-pluralize>
-                            )
-                        </div>
-                    </div>
-                        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 pad-topBot7" >
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                <span class="lergo-h1">{{'reports.summary.duration'|translate}}</span>
-                            </div>
-                        </div>
-                    <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 pad-topBot7 report-numbers">
-                        {{report.duration|duration}}
-                    </div>
-            </div>
-        <!--End Of Report Summary-->
-
-        <!--Playlists Step for Desktop-->
-        <div class="hidden-sm hidden-xs">
-            <div class="collapsible lergo-h1">
-                <a href="" class="no-underline" ng-click="stepCollapsed=!stepCollapsed">
-                    <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
-                    <i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>
-                    {{'report.playlistSteps'|translate}}
-                </a>
-            </div>
-            <hr/>
-            <div class="step" style="overflow-y: auto">
-                <div uib-collapse="!!stepCollapsed" class="top7" ng-repeat="step in report.data.playlist.steps">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot20" >
-                        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
-                                <i ng-show="!!step.quizItems" class="fa fa-lesson-circle"></i>
-                                <i ng-show="!!step.slideURL" class="fa fa-television "></i>
-                            </div>
-                            <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-10  padding-leftRight2">
-                                <span dir="auto" class="title lergo-h1">{{step.title}}</span>
-                            </div>
-                        </div>
-                      <!--  ipad horizontal needs more work to be same as desktop-->
-                        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 description">
-                        <div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
-                                    {{'reports.click.video' | translate}}</a>
-                                <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
-                                <span class="inline-table report-numbers">
-                                     <ng-pluralize count="step.quizItems.length" when="{
-                                            '0': '{{ &quot;report.lessonsInQuiz.zero&quot; | translate}}',
-                                            'one':'{} {{ &quot;report.lessonsInQuiz.one&quot; | translate}}',
-                                            'other':'{} {{ &quot;report.lessonsInQuiz.other&quot; | translate}}'}">
-                                     </ng-pluralize>
-                                </span>
-                                <span ng-show="!!stats[$index].correct" class="bg-success report-quiz-summary-item">
-                                    {{stats[$index].correct}} {{'lessons.correct' | translate}}
-                                    ({{stats[$index].correctPercentage}}%)
-                                </span>
-                                <span ng-show="!!stats[$index].wrong" class="bg-warning report-quiz-summary-item">
-                                    {{stats[$index].wrong}} {{'lessons.incorrect' | translate}}
-                                    ({{stats[$index].wrongPercentage}}%)
-                                </span>
-                                <span ng-show="!!stats[$index].openLessons" class="bg-primary report-quiz-summary-item">
-                                    <ng-pluralize count="stats[$index].openLessons" when="{
-                                            '0':'{{&quot;report.openLessons.zero&quot; | translate}}',
-                                            'one':'{} {{&quot;report.openLessons.one&quot; | translate}}',
-                                            'other':'{} {{&quot;report.openLessons.other&quot; | translate}}'}">
-                                     </ng-pluralize>
-                                </span>
-                            </span>
-                                <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
-                                    {{'reports.click.step' | translate}}
-                                </a>
-
-                                <i ngShow="!!report.stepDurations[$index]" class="fa fa-clock-o">
-                                    &nbsp;<span class="report-numbers"> {{report.stepDurations[$index]|duration}}</span>
-                                </i>
-                                <a ng-show="!!step.quizItems && step.retryLesson && step.testMode === 'False'"
-                                   ng-click="stepDetail=!stepDetail">
-                                    <i ng-show="!stepDetail" class="fa fa-plus-square"></i>
-                                    <i ng-show="!!stepDetail" class="fa fa-minus-square"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div  class=" top15">
-                            <div uib-collapse="!stepDetail" class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="pad-top20">
-                                    <span>
-                                        <ng-pluralize count="step.retBefCrctAns" when="{
-                                            '0': '{{ &quot;report.playlistStep.practiceMode.showCorrectAns.zero&quot; | translate}}',
-                                            'one': '{{ &quot;report.playlistStep.practiceMode.showCorrectAns.one&quot; | translate}}',
-                                            'other': '{{ &quot;report.playlistStep.practiceMode.showCorrectAns.other&quot; | translate}}'}">
-                                        </ng-pluralize>
-                                    </span>
-                                    <sup>
-                                        <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                        <a uib-popover="{{'report.playlistStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"
-                                           class="fa fa-lesson-circle no-underline-v1"
-                                           popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
-                                           style="text-decoration: none"></a>
-                                    </sup>
+                <div class="step" style="overflow-y: auto">
+                    <div uib-collapse="!!stepCollapsed" class="top7" ng-repeat="step in playlistRprt.data.playlist.steps">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot20" >
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
+                                    <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
+                                    <i ng-show="!!step.slideURL" class="fa fa-television "></i>
+                                </div>
+                                <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-10  padding-leftRight2">
+                                    <span dir="auto" class="title lergo-h1">{{step.title}}</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Playlists Step for mobile-->
-        <div class="hidden-lg hidden-md">
-            <div class="collapsible lergo-h1">
-                <a href="" class="no-underline" ng-click="stepColrlapsed=!stepCollapsed">
-                    <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
-                    <i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>
-                    {{'report.playlistSteps'|translate}}
-                </a>
-            </div>
-            <hr/>
-            <div class="step" style="overflow-y: auto">
-                <div uib-collapse="!!stepCollapsed" class="top7" ng-repeat="step in report.data.playlist.steps">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7" >
-                        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
-                                <i ng-show="!!step.quizItems" class="fa fa-lesson-circle"></i>
-                                <i ng-show="!!step.slideURL" class="fa fa-television "></i>
-                            </div>
-                            <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-10  padding-leftRight2">
-                                <span dir="auto" class="title lergo-h1">{{step.title}}</span>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 description">
+                          <!--  ipad horizontal needs more work to be same as desktop-->
+                            <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 description">
                             <div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
-                                        {{'reports.click.video' | translate}}</a>
-                                    </div>
-                                    <div ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
-
-                                <div class="inline-table report-numbers">
-                                     <ng-pluralize count="step.quizItems.length" when="{
-                                            '0': '{{ &quot;report.lessonsInQuiz.zero&quot; | translate}}',
-                                            'one':'{} {{ &quot;report.lessonsInQuiz.one&quot; | translate}}',
-                                            'other':'{} {{ &quot;report.lessonsInQuiz.other&quot; | translate}}'}">
-                                     </ng-pluralize>
-                                </div>
-                                <div ng-show="!!stats[$index].correct" class="bg-success report-quiz-summary-item">
-                                    {{stats[$index].correct}} {{'lessons.correct' | translate}}
-                                    ({{stats[$index].correctPercentage}}%)
-                                </div>
-                                <div ng-show="!!stats[$index].wrong" class="bg-warning report-quiz-summary-item">
-                                    {{stats[$index].wrong}} {{'lessons.incorrect' | translate}}
-                                    ({{stats[$index].wrongPercentage}}%)
-                                </div>
-                                <div ng-show="!!stats[$index].openLessons" class="bg-primary report-quiz-summary-item">
-                                    <ng-pluralize count="stats[$index].openLessons" when="{
-                                            '0':'{{&quot;report.openLessons.zero&quot; | translate}}',
-                                            'one':'{} {{&quot;report.openLessons.one&quot; | translate}}',
-                                            'other':'{} {{&quot;report.openLessons.other&quot; | translate}}'}">
-                                     </ng-pluralize>
-                                </div>
-                            </div>
+                                        {{'playlistRprts.click.video' | translate}}</a>
+                                    <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+                                    <span class="inline-table playlistRprt-numbers">
+                                         <ng-pluralize count="step.quizItems.length" when="{
+                                                '0': '{{ &quot;playlistRprt.questionsInQuiz.zero&quot; | translate}}',
+                                                'one':'{} {{ &quot;playlistRprt.questionsInQuiz.one&quot; | translate}}',
+                                                'other':'{} {{ &quot;playlistRprt.questionsInQuiz.other&quot; | translate}}'}">
+                                         </ng-pluralize>
+                                    </span>
+                                    <span ng-show="!!stats[$index].correct" class="bg-success playlistRprt-quiz-summary-item">
+                                        {{stats[$index].correct}} {{'questions.correct' | translate}}
+                                        ({{stats[$index].correctPercentage}}%)
+                                    </span>
+                                    <span ng-show="!!stats[$index].wrong" class="bg-warning playlistRprt-quiz-summary-item">
+                                        {{stats[$index].wrong}} {{'questions.incorrect' | translate}}
+                                        ({{stats[$index].wrongPercentage}}%)
+                                    </span>
+                                    <span ng-show="!!stats[$index].openQuestions" class="bg-primary playlistRprt-quiz-summary-item">
+                                        <ng-pluralize count="stats[$index].openQuestions" when="{
+                                                '0':'{{&quot;playlistRprt.openQuestions.zero&quot; | translate}}',
+                                                'one':'{} {{&quot;playlistRprt.openQuestions.one&quot; | translate}}',
+                                                'other':'{} {{&quot;playlistRprt.openQuestions.other&quot; | translate}}'}">
+                                         </ng-pluralize>
+                                    </span>
+                                </span>
                                     <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
-                                        {{'reports.click.step' | translate}}
+                                        {{'playlistRprts.click.step' | translate}}
                                     </a>
-
-                                    <i ngShow="!!report.stepDurations[$index]" class="fa fa-clock-o">
-                                        &nbsp;<span class="report-numbers"> {{report.stepDurations[$index]|duration}}</span>
+    
+                                    <i ngShow="!!playlistRprt.stepDurations[$index]" class="fa fa-clock-o">
+                                        &nbsp;<span class="playlistRprt-numbers"> {{playlistRprt.stepDurations[$index]|duration}}</span>
                                     </i>
-                                    <a ng-show="!!step.quizItems && step.retryLesson && step.testMode === 'False'"
+                                    <a ng-show="!!step.quizItems && step.retryQuestion && step.testMode === 'False'"
                                        ng-click="stepDetail=!stepDetail">
                                         <i ng-show="!stepDetail" class="fa fa-plus-square"></i>
                                         <i ng-show="!!stepDetail" class="fa fa-minus-square"></i>
@@ -335,18 +237,18 @@
                             </div>
                             <div  class=" top15">
                                 <div uib-collapse="!stepDetail" class="col-md-12 col-sm-12 col-xs-12">
-                                    <div>
-                                    <span>
-                                        <ng-pluralize count="step.retBefCrctAns" when="{
-                                            '0': '{{ &quot;report.playlistStep.practiceMode.showCorrectAns.zero&quot; | translate}}',
-                                            'one': '{{ &quot;report.playlistStep.practiceMode.showCorrectAns.one&quot; | translate}}',
-                                            'other': '{{ &quot;report.playlistStep.practiceMode.showCorrectAns.other&quot; | translate}}'}">
-                                        </ng-pluralize>
-                                    </span>
+                                    <div class="pad-top20">
+                                        <span>
+                                            <ng-pluralize count="step.retBefCrctAns" when="{
+                                                '0': '{{ &quot;playlistRprt.playlistStep.practiceMode.showCorrectAns.zero&quot; | translate}}',
+                                                'one': '{{ &quot;playlistRprt.playlistStep.practiceMode.showCorrectAns.one&quot; | translate}}',
+                                                'other': '{{ &quot;playlistRprt.playlistStep.practiceMode.showCorrectAns.other&quot; | translate}}'}">
+                                            </ng-pluralize>
+                                        </span>
                                         <sup>
                                             <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                            <a uib-popover="{{'report.playlistStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"
-                                               class="fa fa-lesson-circle no-underline-v1"
+                                            <a uib-popover="{{'playlistRprt.playlistStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"
+                                               class="fa fa-question-circle no-underline-v1"
                                                popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
                                                style="text-decoration: none"></a>
                                         </sup>
@@ -354,79 +256,177 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--End of Playlists Step for mobile-->
-
-
-        <div ng-show="!!report.data.playlist.nextPlaylistId || !!report.data.playlist.priorPlaylistId">
-            <div class="collapsible lergo-h1  row">
-                <a href="" class="no-underline row-nested15" ng-click="recommendationCollapsed=!recommendationCollapsed">
-                    <i ng-show="!!recommendationCollapsed" class="fa fa-plus-square"></i>
-                    <i ng-show="!recommendationCollapsed" class="fa fa-minus-square"></i>
-                    {{'report.recommendation'|translate}}
-                </a>
-            </div>
-            <hr/>
-            <div class="recommendation" uib-collapse="!!recommendationCollapsed" style="overflow-y: auto">
-                <div ng-show="!!report.data.playlist.nextPlaylistId">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7" >
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                    <i class="fa fa-university"></i>
-                                </div>
-                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                    <span class="title lergo-h1">{{'report.nextPlaylist' | translate}}</span>
-                                </div>
-                        </div>
-                        <div class="col-lg-9 col-md-9 col-sm-6 col-xs-6">
-                            <a ng-href="#!/public/playlists/{{report.data.playlist.nextPlaylistId}}/intro">
-                                {{'reports.click.nextPlaylist' | translate}}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="top20" ng-show="!!report.data.playlist.priorPlaylistId">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <i class="fa fa-university">&nbsp;</i>
-                            </div>
-                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                <span class="title lergo-h1">{{'report.priorPlaylist' | translate}}</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6">
-                            <a ng-href="#!/public/playlists/{{report.data.playlist.priorPlaylistId}}/intro">
-                                {{'reports.click.priorPlaylist' | translate}}
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="details">
+    
+            <!--Playlists Step for mobile-->
+            <div class="hidden-lg hidden-md">
                 <div class="collapsible lergo-h1">
-                    <a class="no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
-                        <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
-                        <i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
-                        {{'report.detailedReport'|translate}}
+                    <a href="" class="no-underline" ng-click="stepColrlapsed=!stepCollapsed">
+                        <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
+                        <i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>
+                        {{'playlistRprt.playlistSteps'|translate}}
                     </a>
                 </div>
                 <hr/>
-                <div uib-collapse="!!detailCollapsed" class="detail">
-                    <div report-view playlist="report.data.playlist" answers="report.answers"
-                         quiz-items="report.data.quizItems"></div>
+                <div class="step" style="overflow-y: auto">
+                    <div uib-collapse="!!stepCollapsed" class="top7" ng-repeat="step in playlistRprt.data.playlist.steps">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7" >
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
+                                    <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
+                                    <i ng-show="!!step.slideURL" class="fa fa-television "></i>
+                                </div>
+                                <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-10  padding-leftRight2">
+                                    <span dir="auto" class="title lergo-h1">{{step.title}}</span>
+                                </div>
+    
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7 description">
+                                <div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
+                                            {{'playlistRprts.click.video' | translate}}</a>
+                                        </div>
+                                        <div ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+    
+                                    <div class="inline-table playlistRprt-numbers">
+                                         <ng-pluralize count="step.quizItems.length" when="{
+                                                '0': '{{ &quot;playlistRprt.questionsInQuiz.zero&quot; | translate}}',
+                                                'one':'{} {{ &quot;playlistRprt.questionsInQuiz.one&quot; | translate}}',
+                                                'other':'{} {{ &quot;playlistRprt.questionsInQuiz.other&quot; | translate}}'}">
+                                         </ng-pluralize>
+                                    </div>
+                                    <div ng-show="!!stats[$index].correct" class="bg-success playlistRprt-quiz-summary-item">
+                                        {{stats[$index].correct}} {{'questions.correct' | translate}}
+                                        ({{stats[$index].correctPercentage}}%)
+                                    </div>
+                                    <div ng-show="!!stats[$index].wrong" class="bg-warning playlistRprt-quiz-summary-item">
+                                        {{stats[$index].wrong}} {{'questions.incorrect' | translate}}
+                                        ({{stats[$index].wrongPercentage}}%)
+                                    </div>
+                                    <div ng-show="!!stats[$index].openQuestions" class="bg-primary playlistRprt-quiz-summary-item">
+                                        <ng-pluralize count="stats[$index].openQuestions" when="{
+                                                '0':'{{&quot;playlistRprt.openQuestions.zero&quot; | translate}}',
+                                                'one':'{} {{&quot;playlistRprt.openQuestions.one&quot; | translate}}',
+                                                'other':'{} {{&quot;playlistRprt.openQuestions.other&quot; | translate}}'}">
+                                         </ng-pluralize>
+                                    </div>
+                                </div>
+                                        <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}">
+                                            {{'playlistRprts.click.step' | translate}}
+                                        </a>
+    
+                                        <i ngShow="!!playlistRprt.stepDurations[$index]" class="fa fa-clock-o">
+                                            &nbsp;<span class="playlistRprt-numbers"> {{playlistRprt.stepDurations[$index]|duration}}</span>
+                                        </i>
+                                        <a ng-show="!!step.quizItems && step.retryQuestion && step.testMode === 'False'"
+                                           ng-click="stepDetail=!stepDetail">
+                                            <i ng-show="!stepDetail" class="fa fa-plus-square"></i>
+                                            <i ng-show="!!stepDetail" class="fa fa-minus-square"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div  class=" top15">
+                                    <div uib-collapse="!stepDetail" class="col-md-12 col-sm-12 col-xs-12">
+                                        <div>
+                                        <span>
+                                            <ng-pluralize count="step.retBefCrctAns" when="{
+                                                '0': '{{ &quot;playlistRprt.playlistStep.practiceMode.showCorrectAns.zero&quot; | translate}}',
+                                                'one': '{{ &quot;playlistRprt.playlistStep.practiceMode.showCorrectAns.one&quot; | translate}}',
+                                                'other': '{{ &quot;playlistRprt.playlistStep.practiceMode.showCorrectAns.other&quot; | translate}}'}">
+                                            </ng-pluralize>
+                                        </span>
+                                            <sup>
+                                                <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
+                                                <a uib-popover="{{'playlistRprt.playlistStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"
+                                                   class="fa fa-question-circle no-underline-v1"
+                                                   popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
+                                                   style="text-decoration: none"></a>
+                                            </sup>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!--End of Playlists Step for mobile-->
+    
+    
+            <div ng-show="!!playlistRprt.data.playlist.nextPlaylistId || !!playlistRprt.data.playlist.priorPlaylistId">
+                <div class="collapsible lergo-h1  row">
+                    <a href="" class="no-underline row-nested15" ng-click="recommendationCollapsed=!recommendationCollapsed">
+                        <i ng-show="!!recommendationCollapsed" class="fa fa-plus-square"></i>
+                        <i ng-show="!recommendationCollapsed" class="fa fa-minus-square"></i>
+                        {{'playlistRprt.recommendation'|translate}}
+                    </a>
+                </div>
+                <hr/>
+                <div class="recommendation" uib-collapse="!!recommendationCollapsed" style="overflow-y: auto">
+                    <div ng-show="!!playlistRprt.data.playlist.nextPlaylistId">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7" >
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                        <i class="fa fa-university"></i>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                        <span class="title lergo-h1">{{'playlistRprt.nextPlaylist' | translate}}</span>
+                                    </div>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-6 col-xs-6">
+                                <a ng-href="#!/public/playlists/{{playlistRprt.data.playlist.nextPlaylistId}}/intro">
+                                    {{'playlistRprts.click.nextPlaylist' | translate}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top20" ng-show="!!playlistRprt.data.playlist.priorPlaylistId">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <i class="fa fa-university">&nbsp;</i>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                    <span class="title lergo-h1">{{'playlistRprt.priorPlaylist' | translate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6">
+                                <a ng-href="#!/public/playlists/{{playlistRprt.data.playlist.priorPlaylistId}}/intro">
+                                    {{'playlistRprts.click.priorPlaylist' | translate}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="details">
+                    <div class="collapsible lergo-h1">
+                        <a class="no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
+                            <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
+                            <i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
+                            {{'playlistRprt.detailedPlaylistRprt'|translate}}
+                        </a>
+                    </div>
+                    <hr/>
+                    nothing here
+                    <div uib-collapse="!!detailCollapsed" class="detail">
+                        <div playlistRprt-view playlist="playlistRprt.data.playlist" answers="playlistRprt.answers"
+                             quiz-items="playlistRprt.data.quizItems"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+        <div powered-by-lergo="playlistRprt.data.playlist"></div>
     </div>
-    </div>
-    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-    <div powered-by-lergo="report.data.playlist"></div>
-</div>
+    
