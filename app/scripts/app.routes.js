@@ -77,6 +77,12 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/public/lessons/reports/agg/:reportId/display', {
         templateUrl: 'views/lessons/invitations/aggReport.html',
         controller: 'LessonsInvitationsAggReportCtrl'
+    }).when('/public/playlists/playlistRprts/:playlistRprtId/display', {
+        templateUrl: 'views/playlists/invitations/playlistRprt.html',
+        controller: 'PlaylistsInvitationsPlaylistRprtCtrl'
+    }).when('/public/playlists/playlistRprts/agg/:playlistRprtId/display', {
+        templateUrl: 'views/playlists/invitations/aggPlaylistRprt.html',
+        controller: 'PlaylistsInvitationsAggPlaylistRprtCtrl'
     }).when('/user/questions/:questionId/update', {
         templateUrl: 'views/questions/update.html',
         controller: 'QuestionsUpdateCtrl',
