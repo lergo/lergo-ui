@@ -5,6 +5,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsPlaylistRprtCtrl',
         $log.info('loading');
         LergoClient.playlistRprts.getById($routeParams.playlistRprtId).then(function (result) {
             $scope.playlistRprt = result.data;
+            console.log('--------------this is the playlistRprt',$scope.playlistRprt);
             getWrongLesson($scope.playlistRprt);
             $rootScope.page = {
                 'title': $scope.playlistRprt.data.playlist.name,

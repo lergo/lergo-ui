@@ -1,0 +1,24 @@
+<div class="bg-primary report-quiz-question-header">
+    <span class="inline-table">{{quizItem.question}}</span>
+    <div class="duration" ng-init="updateStats(quizItem)">
+        <span ng-show="!!quizItem.hint && !!quizItem.stats.hintUsed">
+            <i class="fa fa-eye">&nbsp; </i>
+            <span>
+                <ng-pluralize count="quizItem.stats.count" when="{
+                    '0': '{{ &quot;reports.hintAgg.zero&quot; | translate}}',
+                    'one':'{{ &quot;reports.hintAgg.one&quot; | translate:{hintUsedBy:quizItem.stats.hintUsed,total:quizItem.stats.count} }}',
+                    'other':'{{ &quot;reports.hintAgg.other&quot; | translate:{hintUsedBy:quizItem.stats.hintUsed,total:quizItem.stats.count} }}'}">
+                </ng-pluralize>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+		</span>
+
+
+		<span class="inline-table">
+			<i class="fa fa-clock-o"></i>
+			{{quizItem.stats.avgDuration |duration}}
+		</span>
+    </div>
+</div>
+<div dir="auto" ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
+<div class="question-media img-small  " quiz-item-media quiz-item="quizItem"></div>

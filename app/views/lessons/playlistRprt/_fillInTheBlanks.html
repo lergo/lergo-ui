@@ -1,0 +1,45 @@
+<div class="questions-exact-match lergo-form">
+	<div class="{{!quizItem.checkAnswer.correct && 'quiz-wrong' || 'quiz-correct'}}">
+		<div ng-include="'views/questions/report/partial/_questionHeader.html'"></div>
+		<div class="quiz-answer">
+			<div>
+				<div class="bold">{{'questions.correctAnswers'|translate}}</div>
+				<div dir="auto" class="question" style="line-height: 2">
+					{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
+					<span style="line-height: 0.75" ng-repeat="option in quizItem.question.split('___') track by $index">
+						<span>{{option}}</span>
+						<span ng-show="!$last">
+							<span class="bold" style="text-decoration: underline">{{!quizItem.answer[$index] && '________' || quizItem.answer[$index].replace(';','
+								/ ')}} </span>
+						</span>
+					</span>
+				</div>
+			</div>
+			<br>
+			<div>
+				<div class="bold">{{'questions.yourAnswers'|translate}}</div>
+				<div dir="auto" class="question" style="line-height: 2">
+					{{!quizItem.userAnswer && (quizItem.userAnswer=[])||""}}
+					<span ng-repeat="option in quizItem.question.split('___') track by $index">
+						<span>{{option}}</span>
+						<span ng-show="!$last">
+							<span class="bold" style="text-decoration: underline">{{!quizItem.userAnswer[$index] && '________' || quizItem.userAnswer[$index]}} </span>
+							<i ng-show="!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-times wrong"></i>
+							<i ng-show="!!isCorrectFillInTheBlanks(quizItem , $index)" class="fa fa-check correct"></i>
+						</span>
+					</span>
+				</div>
+			</div>
+            <div ng-show="quizItem.checkAnswer.expMessage.length > 0 ">
+                <br>
+
+                <div class="bold">{{'explanation'|translate}}</div>
+                <div dir="auto" ng-repeat="msg in quizItem.checkAnswer.expMessage">{{msg}}</div>
+            </div>
+			<div ng-show="!!quizItem.explanationMedia">
+				<br>
+				<div quiz-item-explanation-media class="img-small"   quiz-item="quizItem"></div>
+			</div>
+		</div>
+	</div>
+</div>
