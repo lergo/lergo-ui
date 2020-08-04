@@ -86,30 +86,34 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             $scope.isSuccess = function(){
                 return !!invitation;
             };
-
-            
-
+            var lesson; 
+            var lessonInvite = {};
+            async function lessonInviteFunction() {
+                for (lesson of lessonsArray) {
+                    lessonInvite = {
+                        'invitee': { 'name' : invite.invitee },
+                        'lessonId': lesson._id
+                    }
+                // wait for this to resolve and after that move to next object
+                let result = await LergoClient.lessonsInvitations.create(lesson, lessonInvite);
+                console.log('...........................the result is ', result);
+                }
+            }
+            var lessonsArray = [];
             $scope.sendInvite = function () {
 
                 $scope.createError = false;
                 $log.info('inviting');
+                console.log(' the playlist invite is ', invite);
                 // creating and adding an invitation for each lesson in the playlist
                     LergoClient.playlists.getById( invite.playlistId).then(function(result){
-                        var lessonsArray = result.data.steps[0].quizItems;
+                        lessonsArray = result.data.steps[0].quizItems;
                         // for each lesson make an invitation and get the invitationId
                         // still to be done
-                        var i;
-                        for (i = 0; i < lessonsArray.length; i++ ) {
-                            console.log('the lessonId is : ',lessonsArray[i]);
-                            }
-                        });
-                
-
-
-
-
-
-
+                        
+                        
+                        lessonInviteFunction();
+                    });        
                 return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
                     invitation = result.data;
                 }, function () {
