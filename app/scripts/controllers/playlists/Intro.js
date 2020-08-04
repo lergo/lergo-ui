@@ -1,4 +1,5 @@
 'use strict';
+ 
 
 angular.module('lergoApp').controller('PlaylistsIntroCtrl',
     function ($scope, $routeParams, LergoClient, $location, $uibModal, DisplayRoleService, $log, $rootScope, LergoTranslate, $window, $filter) {
@@ -48,6 +49,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
             if (!!newValue) {
                 // get my like - will decide if I like this playlist or not
                 LergoClient.likes.getMyPlaylistLike($scope.playlist).then(function (result) {
+                    console.log('this is playlistLike...',result.data);
                     $scope.playlistLike = result.data;
                 });
 

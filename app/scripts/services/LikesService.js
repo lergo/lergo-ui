@@ -11,9 +11,9 @@ angular.module('lergoApp')
             return getLike('lesson', item);
         };
 
-        this.getMyPlaylistLike = function (item) {
-            return getLike('playlist', item);
-        };
+        // this.getMyPlaylistLike = function (item) {
+        //     return getLike('playlist', item);
+        // };
 
         this.getMyQuestionLike = function (item) {
             return getLike('question', item);
@@ -28,9 +28,9 @@ angular.module('lergoApp')
             return countLikes('lesson', item);
         };
 
-        this.countPlaylistLikes = function (item) {
-            return countLikes('playlist', item);
-        };
+        // this.countPlaylistLikes = function (item) {
+        //     return countLikes('playlist', item);
+        // };
 
         this.countQuestionLikes = function (item) {
             return countLikes('question', item);
