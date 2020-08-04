@@ -86,18 +86,27 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             $scope.isSuccess = function(){
                 return !!invitation;
             };
-            var lesson; 
+            var inviteArray = [];
+            var lessonId; 
             var lessonInvite = {};
             async function lessonInviteFunction() {
-                for (lesson of lessonsArray) {
+                for (lessonId of lessonsArray) {
                     lessonInvite = {
                         'invitee': { 'name' : invite.invitee },
-                        'lessonId': lesson._id
+                        'lessonId': lessonId
                     }
-                // wait for this to resolve and after that move to next object
-                let result = await LergoClient.lessonsInvitations.create(lesson, lessonInvite);
-                console.log('...........................the result is ', result);
-                }
+                // wait for this to resolve and after that move to next lesson
+                let result = await LergoClient.lessonsInvitations.create(lessonId, lessonInvite);
+                var lessonInvitationId = result.data._id;
+                
+                var  playlistLessonInvitation = { 
+                    'lesson' : { 'lessonId' : lessonId },
+                    'invitationId' : lessonInvitationId
+                } 
+            
+                inviteArray.push(playlistLessonInvitation)
+                console.log('the inviteArray is :', inviteArray) 
+            }           
             }
             var lessonsArray = [];
             $scope.sendInvite = function () {
