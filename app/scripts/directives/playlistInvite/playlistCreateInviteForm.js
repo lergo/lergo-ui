@@ -109,16 +109,15 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                     LergoClient.playlists.getById( invite.playlistId).then(function(result){
                         lessonsArray = result.data.steps[0].quizItems;
                         // for each lesson make an invitation and get the invitationId
-                        // still to be done
-                        
-                        
-                        lessonInviteFunction();
+                        lessonInviteFunction().then(function() {
+                            return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
+                                invitation = result.data;
+                            }, function () {
+                                $scope.createError = true;
+                            });
+                        });
                     });        
-                return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
-                    invitation = result.data;
-                }, function () {
-                    $scope.createError = true;
-                });
+                
             };
 
             $scope.isValid = function(){
