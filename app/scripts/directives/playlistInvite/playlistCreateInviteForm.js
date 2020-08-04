@@ -106,8 +106,9 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             
                 inviteArray.push(playlistLessonInvitation)
                 console.log('the inviteArray is :', inviteArray) 
-            }           
+                }           
             }
+            invite.lessonInvitation = [];
             var lessonsArray = [];
             $scope.sendInvite = function () {
 
@@ -119,6 +120,7 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                         lessonsArray = result.data.steps[0].quizItems;
                         // for each lesson make an invitation and get the invitationId
                         lessonInviteFunction().then(function() {
+                            invite.lessonInvitation = inviteArray;
                             return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
                                 invitation = result.data;
                             }, function () {
