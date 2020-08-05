@@ -30,7 +30,7 @@ angular.module('lergoApp').service('PlaylistsInvitationsService', function Playl
 
 	};
 	this.update = function(invitation) {
-		return $http.post('/backend/invitations/' + invitation._id + '/update', invitation);
+		return $http.post('/backend/playlistinvitations/' + invitation._id + '/update', invitation);
 	};
 
     this.getLink = function(invitation){
@@ -38,15 +38,15 @@ angular.module('lergoApp').service('PlaylistsInvitationsService', function Playl
     };
 
     this.get = function( invitationId ){
-        return $http.get('/backend/invitations/' + invitationId + '/get' );
+        return $http.get('/backend/playlistinvitations/' + invitationId + '/get' );
     };
 
     this.getByPin = function( pin ){
-        return $http.get('/backend/invitations/pin/' + pin );
+        return $http.get('/backend/playlistinvitations/pin/' + pin );
     };
 
 	this.remove = function(invitation) {
-		return $http.post('/backend/invitations/' + invitation._id + '/delete');
+		return $http.post('/backend/playlistinvitations/' + invitation._id + '/delete');
 	};
 
     this.getStudents = function(){
