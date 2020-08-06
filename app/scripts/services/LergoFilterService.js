@@ -86,6 +86,26 @@ angular.module('lergoApp')
          * @param {string} relevancy
          * @constructor
          */
+
+        function doSave( filter , changeUrl, newValue ){
+            if ( typeof(newValue) !== 'boolean' && _.isEmpty(newValue)) {
+                newValue = null;
+            }
+
+            if ( typeof(newValue) === 'boolean' && !newValue  ){
+                newValue = null;
+            }
+
+            $log.info(filter + ' has changed. persisting [' + newValue + ']');
+            var filterName = filter.getFullKeyName();
+            if ( $sessionStorage[filterName] !== newValue ) {
+                $sessionStorage[filterName] = angular.toJson(newValue);
+            }
+            if ( changeUrl && $routeParams[filterName] !== newValue ) {
+                $location.search(filterName, newValue === null ? null : angular.toJson(newValue));
+            }
+        }
+         
         function Filter( key, relevancy ){
 
             this.key = key;
@@ -294,25 +314,6 @@ angular.module('lergoApp')
             }
 
         };
-
-        function doSave( filter , changeUrl, newValue ){
-            if ( typeof(newValue) !== 'boolean' && _.isEmpty(newValue)) {
-                newValue = null;
-            }
-
-            if ( typeof(newValue) === 'boolean' && !newValue  ){
-                newValue = null;
-            }
-
-            $log.info(filter + ' has changed. persisting [' + newValue + ']');
-            var filterName = filter.getFullKeyName();
-            if ( $sessionStorage[filterName] !== newValue ) {
-                $sessionStorage[filterName] = angular.toJson(newValue);
-            }
-            if ( changeUrl && $routeParams[filterName] !== newValue ) {
-                $location.search(filterName, newValue === null ? null : angular.toJson(newValue));
-            }
-        }
 
         /**
          *

@@ -69,7 +69,7 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
     $scope.$on('stepIndexChange', function (event, data) {
         $log.info('stepIndexChange');
         /* jshint -W052 */
-        stepIndex = ~~data.new;
+        stepIndex = Math.floor(data.new);
         // update new duration only if we are still looking at steps inside the
         // lesson.
         if (stepIndex <= report.data.lesson.steps.length) {
@@ -90,7 +90,7 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
         }
 
 
-        if (~~data.old !== ~~data.new) {
+        if (Math.floor(data.old) !== Math.floor(data.new)) {
             ReportWriteService.calculateOldStepDuration(report, data); // updates report model
         }
         report.duration = ReportWriteService.calculateReportDuration(report); // does not update report model

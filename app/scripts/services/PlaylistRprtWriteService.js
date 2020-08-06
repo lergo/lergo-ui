@@ -8,7 +8,7 @@ angular.module('lergoApp')
             // calculate old step only if we are in new step (which cannot be old) and old step is defined..
             // first step is the end case we are testing here - if we are in the first step, we might get old == 0 or undefined.
             if (data.old !== data.new && data.old !== undefined && data.old !== null && !isNaN(parseInt(data.old, 10))) {
-                var finishedStepIndex = ~~data.old;
+                var finishedStepIndex = Math.floor(data.old);
                 var oldStep = playlistRprt.data.playlist.steps[finishedStepIndex];
                 var oldDuration = playlistRprt.stepDurations[finishedStepIndex];
                 if (!!oldStep && oldStep.type === 'quiz' && !!oldDuration) {

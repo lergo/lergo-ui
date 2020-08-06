@@ -2,7 +2,8 @@
 
 angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location,  $window) {
 
-    $window.scrollTo(0, 0);
+	$window.scrollTo(0, 0);
+	var path = $location.path();
 
 	$scope.loaded = false;
 	$scope.lessonsFilter = {
@@ -44,6 +45,14 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			},
 			'dollar_page' : $scope.filterPage
 		};
+
+		function scrollToPersistPosition() {
+			var scrollY = 0;
+			if (!!$rootScope.scrollPosition) {
+				scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
+			}
+			$window.scrollTo(0, scrollY);
+		}
 		LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
 			$scope.lessons = result.data.data;
 			$scope.filterPage.count = result.data.count; // the number of
@@ -80,6 +89,7 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		return window.location.origin + '/#!/public/lessons/' + lesson._id + '/share';
 	};
 
+
 	function persistScroll(pageNumber) {
 		if (!$rootScope.scrollPosition) {
 			$rootScope.scrollPosition = {};
@@ -87,10 +97,12 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		$rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
 	}
 
-	var path = $location.path();
+	
 	$scope.$on('$locationChangeStart', function() {
 		persistScroll($scope.filterPage.current);
 	});
+
+	
 
 	$scope.$watch('filterPage.current', function(newValue, oldValue) {
 		if (!!oldValue) {
@@ -98,13 +110,5 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			persistScroll(oldValue);
 		}
 	});
-	
-	function scrollToPersistPosition() {
-		var scrollY = 0;
-		if (!!$rootScope.scrollPosition) {
-			scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
-		}
-		$window.scrollTo(0, scrollY);
-	}
 
 });
