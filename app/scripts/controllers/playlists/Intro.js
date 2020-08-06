@@ -65,15 +65,10 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
         });
 
         $scope.getPlaylistInvite = function () {
-            console.log('getting the playlistInvite for lessonInvitationId with an invitationId of ',invitationId);
             LergoClient.playlistsInvitations.get(invitationId).then(function (result) {
                 $scope.playlistInvitation = result;
-                console.log('the playlistInvitation is ', $scope.playlistInvitation);
-                return result;
-            })
+            });
         };
-
-        console.log('the getPlaylistInvite is ', $scope.getPlaylistInvite());
 
         $scope.likePlaylist = function () {
             $log.info('liking playlist');
@@ -92,8 +87,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
         $scope.isLiked = function () {
             return !!$scope.playlistLike;
         };
-
-
+        
         $scope.previewPlaylist = function () {
 
             // persistScroll();

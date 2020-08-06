@@ -86,8 +86,10 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             $scope.isSuccess = function(){
                 return !!invitation;
             };
+
+/* jshint ignore:start */
             var inviteArray = [];
-            var lessonId; 
+            var lessonId;
             var lessonInvite = {};
             async function lessonInviteFunction() {
                 for (lessonId of lessonsArray) {
@@ -108,6 +110,8 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                 console.log('the inviteArray is :', inviteArray) 
                 }           
             }
+            /* jshint ignore:end */
+
             invite.lessonInvitation = [];
             var lessonsArray = [];
             $scope.sendInvite = function () {
