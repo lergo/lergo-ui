@@ -8,6 +8,7 @@ angular.module('lergoApp')
 
 
         var _preventedFlag = {};
+        var retries = 0;
 
         function impl(opts) {
 
@@ -95,42 +96,6 @@ angular.module('lergoApp')
                 _preventedFlag = {};
                 deregisterLocationChangeSuccess();
             });
-
-            function _onValueChange(newValue, oldValue) {
-                if ( newValue === oldValue ){
-                    return;
-                }
-
-                if (!newValue) { // page still not initialized
-                    return;
-                }
-
-                if (!!oldValue && !!newValue && oldValue.lastUpdate !== newValue.lastUpdate) {
-                    return; // ignore changes to 'last update'
-                }
-
-                _status.isSaved = false;
-                newValue.lastUpdate = new Date().getTime();
-                localStorageService.add(newValue._id, newValue);
-                _localVersion = newValue;
-
-
-                $timeout(_save, 0);
-            }
-
-            var retries = 0;
-
-            function _updateRemoteVersion(newValue){
-                if ( newValue ){
-                    $log.debug('updating continuous save');
-                }
-                if ( !!newValue && !!_remoteVersion && newValue.lastUpdate < _remoteVersion.lastUpdate ){
-                    $log.error('got old version from sever');
-                    return;
-                }
-                _remoteVersion = newValue;
-            }
-
             function _save() {
 
 
@@ -150,6 +115,16 @@ angular.module('lergoApp')
                 }
 
                 _status.saving = true;
+                function _updateRemoteVersion(newValue){
+                    if ( newValue ){
+                        $log.debug('updating continuous save');
+                    }
+                    if ( !!newValue && !!_remoteVersion && newValue.lastUpdate < _remoteVersion.lastUpdate ){
+                        $log.error('got old version from sever');
+                        return;
+                    }
+                    _remoteVersion = newValue;
+                }
                 _saveFn(_localVersion).then(function (result) {
                     retries = 0;
                     _updateRemoteVersion(result.data);
@@ -174,6 +149,28 @@ angular.module('lergoApp')
                 });
 
 
+            }
+
+            function _onValueChange(newValue, oldValue) {
+                if ( newValue === oldValue ){
+                    return;
+                }
+
+                if (!newValue) { // page still not initialized
+                    return;
+                }
+
+                if (!!oldValue && !!newValue && oldValue.lastUpdate !== newValue.lastUpdate) {
+                    return; // ignore changes to 'last update'
+                }
+
+                _status.isSaved = false;
+                newValue.lastUpdate = new Date().getTime();
+                localStorageService.add(newValue._id, newValue);
+                _localVersion = newValue;
+
+
+                $timeout(_save, 0);
             }
 
             _me.versionMatch = _versionMatch;
