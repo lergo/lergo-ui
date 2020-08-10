@@ -27,6 +27,7 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             var playlistId = $routeParams.playlistId;
             var user = null;
             var invite = null;
+            $log.info('using');
 
             $scope.newInvite = function(){
                 invitation = null;
@@ -110,7 +111,6 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                 console.log('the inviteArray is :', inviteArray) 
                 }           
             }
-            /* jshint ignore:end */
 
             invite.lessonInvitation = [];
             var lessonsArray = [];
@@ -134,6 +134,7 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                     });        
                 
             };
+            /* jshint ignore:end */
 
             $scope.isValid = function(){
                 if ( isStudentMode() ){

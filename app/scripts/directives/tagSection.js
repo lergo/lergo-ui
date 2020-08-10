@@ -17,6 +17,30 @@ angular.module('lergoApp')
                 var lowerCase = !!attrs.lowerCase;
 
                 $scope.canRemoveTags = true;
+                function addTag(value) {
+                    if (!!$scope.tags && $.grep($scope.tags, function (item/*, index*/) {
+                        var value1 = value.toLowerCase();
+                        return item.label === value || item.label === value1;
+                    }).length > 0) {
+                        $log.info('error on scope');
+                        $scope.error = 'tagSection.alreadyExists';
+                        return;
+                    }
+                    if (!value || value.trim() === '' || value.indexOf(separator) >= 0) {
+                        $log.info('error on scope');
+                        $scope.error = 'tagSection.invalidTag';
+                        return;
+                    }
+                    if (!$scope.tags) {
+                        $scope.tags = [
+                            {'label': value}
+                        ];
+                    } else {
+                        var value1 = value.toLowerCase();
+                        $scope.tags.push({'label': value1});
+                    }
+                    $scope.newTag = '';
+                }
 
                 $scope.addTagFromTypeahead = function ($item/*, $model, $label*/) {
                     $scope.error = 'tagSection.alreadyExists';  // guy - todo - this line is strange.. need to remove?
@@ -46,32 +70,6 @@ angular.module('lergoApp')
                         return result.data;
                     });
                 };
-
-
-                function addTag(value) {
-                    if (!!$scope.tags && $.grep($scope.tags, function (item/*, index*/) {
-                        var value1 = value.toLowerCase();
-                        return item.label === value || item.label === value1;
-                    }).length > 0) {
-                        $log.info('error on scope');
-                        $scope.error = 'tagSection.alreadyExists';
-                        return;
-                    }
-                    if (!value || value.trim() === '' || value.indexOf(separator) >= 0) {
-                        $log.info('error on scope');
-                        $scope.error = 'tagSection.invalidTag';
-                        return;
-                    }
-                    if (!$scope.tags) {
-                        $scope.tags = [
-                            {'label': value}
-                        ];
-                    } else {
-                        var value1 = value.toLowerCase();
-                        $scope.tags.push({'label': value1});
-                    }
-                    $scope.newTag = '';
-                }
 
                 $scope.finishTyping = function (tag) {
 
