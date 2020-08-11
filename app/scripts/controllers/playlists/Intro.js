@@ -74,7 +74,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                     console.log('the playlistInvitation is ', $scope.playlistInvitation);
                     return result;
                 });
-            };
+            }
         };
 
         console.log('the getPlaylistInvite is ', $scope.getPlaylistInvite());
