@@ -38,6 +38,7 @@ angular.module('lergoApp').service('PlaylistsInvitationsService', function Playl
     };
 
     this.get = function( invitationId ){
+        console.log('this is the playlist get error place ...................................in service');
         return $http.get('/backend/playlistinvitations/' + invitationId + '/get' );
     };
 

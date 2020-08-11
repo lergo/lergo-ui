@@ -574,6 +574,7 @@
       "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
       "noPermissionsTitle": "You don't have permissions to edit this."
     },
+    "editSummary": "editSummary",
     "embedLesson": "Embed",
     "embedLessonTitle": "Copy the code below to embed lesson on your webpage or blog",
     "error": {

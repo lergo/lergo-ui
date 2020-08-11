@@ -57,7 +57,7 @@
                                             </span>
                                         </div>
                                         <div class="details">
-                                            <div dir="auto" class="name">{{ playlist.name|limitTo:160 }}</div>
+                                            <div dir="auto" class="name">{{ playlist.name|limitTo:160 }} (playlist)</div>
                                             <div class="properties">
                                             <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
                                                  <a ng-href="#!/public/{{playlist.user.username}}/profile">
@@ -350,7 +350,7 @@
                                             </span>
                                         </div>
                                         <div class="details">
-                                            <span dir="auto" class="name">{{ playlist.name|limitTo:160 }}</span>
+                                            <span dir="auto" class="name">{{ playlist.name|limitTo:160 }} playlist</span>
                                             <div class="row row-nested properties">
                                                 <div class="col-xs-3 m-right" style="height: 15px"></div>
                                                 <div class="col-xs-3 m-left">
