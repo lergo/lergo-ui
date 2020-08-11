@@ -13,7 +13,7 @@
  *
  */
 
-angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(LergoClient, $routeParams, $log){
+angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(LergoClient, $routeParams, $q, $log){
 
     return {
         restrict: 'A',
@@ -87,26 +87,28 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                 return !!invitation;
             };
             var inviteArray = [];
-            var lessonId; 
             var lessonInvite = {};
-            async function lessonInviteFunction() {
-                for (lessonId of lessonsArray) {
+
+            function lessonInviteFunction() {
+                console.log('.....................................lessonsArray', lessonsArray);
+                var promises = _.map(lessonsArray, function(lessonId){
+                    console.log('the lessonId is ................ ', lessonId);
                     lessonInvite = {
                         'invitee': { 'name' : invite.invitee },
                         'lessonId': lessonId
-                    }
-                // wait for this to resolve and after that move to next lesson
-                let result = await LergoClient.lessonsInvitations.create(lessonId, lessonInvite);
-                var lessonInvitationId = result.data._id;
+                    };
+                    LergoClient.lessonsInvitations.create(lessonId, lessonInvite).then(function(result) {
+                        var lessonInvitationId = result.data._id;
                 
-                var  playlistLessonInvitation = { 
-                    'lesson' : { 'lessonId' : lessonId },
-                    'invitationId' : lessonInvitationId
-                } 
-            
-                inviteArray.push(playlistLessonInvitation)
-                console.log('the inviteArray is :', inviteArray) 
-                }           
+                        var  playlistLessonInvitation = {
+                            'lesson' : { 'lessonId' : lessonId },
+                            'invitationId' : lessonInvitationId
+                        };
+                        inviteArray.push(playlistLessonInvitation);
+                        console.log('the inviteArray is :', inviteArray);
+                    });
+                });
+                return $q.all(promises);
             }
             invite.lessonInvitation = [];
             var lessonsArray = [];
@@ -116,19 +118,18 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                 $log.info('inviting');
                 console.log(' the playlist invite is ', invite);
                 // creating and adding an invitation for each lesson in the playlist
-                    LergoClient.playlists.getById( invite.playlistId).then(function(result){
-                        lessonsArray = result.data.steps[0].quizItems;
-                        // for each lesson make an invitation and get the invitationId
-                        lessonInviteFunction().then(function() {
-                            invite.lessonInvitation = inviteArray;
-                            return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
-                                invitation = result.data;
-                            }, function () {
-                                $scope.createError = true;
-                            });
+                LergoClient.playlists.getById( invite.playlistId).then(function(result){
+                    lessonsArray = result.data.steps[0].quizItems;
+                    // for each lesson make an invitation and get the invitationId
+                    lessonInviteFunction().then(function() {
+                        invite.lessonInvitation = inviteArray;
+                        return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
+                            invitation = result.data;
+                        }, function () {
+                            $scope.createError = true;
                         });
-                    });        
-                
+                    });
+                });
             };
 
             $scope.isValid = function(){
