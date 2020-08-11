@@ -90,9 +90,7 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             var lessonInvite = {};
 
             function lessonInviteFunction() {
-                console.log('.....................................lessonsArray', lessonsArray);
                 var promises = _.map(lessonsArray, function(lessonId){
-                    console.log('the lessonId is ................ ', lessonId);
                     lessonInvite = {
                         'invitee': { 'name' : invite.invitee },
                         'lessonId': lessonId
@@ -113,7 +111,6 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             invite.lessonInvitation = [];
             var lessonsArray = [];
             $scope.sendInvite = function () {
-
                 $scope.createError = false;
                 $log.info('inviting');
                 console.log(' the playlist invite is ', invite);
