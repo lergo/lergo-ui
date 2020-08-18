@@ -88,6 +88,8 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             };
 
             // start with new code for sendInvite
+            var inviteArray = [];
+            var lessonInvite = {};
             invite.lessonInvitation = [];
             var lessonsArray = [];
 
