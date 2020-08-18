@@ -11,7 +11,8 @@ angular.module('lergoApp')
             restrict: 'E',
             transclude: true,
             scope: {
-                'quizItem': '='
+                'quizItem': '=',
+                'lessonInvite': '='
             },
             link: function ($scope) {
 

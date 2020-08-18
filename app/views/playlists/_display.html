@@ -9,13 +9,14 @@ written in  in _display.html?
 </div> -->
 
 
-<div ng-repeat="les in lessons">
+<div ng-repeat="les in playlistInvitation.data.lessonInvitation">
+    the les is {{les.lesson.lessonId}}, and the lessonInvitationId is {{les.invitationId}}
     <div>new line</div>
-    <!-- <div>this is playlistInvitation: {{playlistInvitation}}</div> -->
+    <div>this is playlistInvitation: {{playlistInvitation.data.lessonInvitation}}</div>
     <div>contoller: {{stepDisplay}}</div>
     <div style="font-size: 16px;color:green">the controller is /playlists/StepDisplay.js</div>
     <div style="border: 2px solid blue">
-        <lesson-preview quiz-item="lessons[les._id]"></lesson-preview>
+        <lesson-preview quiz-item="lessons[les.lesson.lessonId]" lesson-invite="les.invitationId"></lesson-preview>
     </div>
 </div>
 
