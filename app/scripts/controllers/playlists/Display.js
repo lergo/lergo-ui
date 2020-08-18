@@ -21,7 +21,8 @@ angular.module('lergoApp').controller('PlaylistsDisplayCtrl',
         }, function(){
             toastr.error('failed loading playlist', 'error');
         });
-    }
+	}
+	$scope.display = '/playlists/Display.js';
 
 	$scope.currentStepIndex = parseInt($routeParams.currentStepIndex || 0, 10);
 	$log.info('current step index');

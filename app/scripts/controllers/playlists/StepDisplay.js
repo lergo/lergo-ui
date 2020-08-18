@@ -73,9 +73,24 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         }
     }
 
+    // jeff - we need the playlist invitation for the lesson invitation ids
+    // this is the code from intro.js
+    $scope.stepDisplay = '/playlists/StepDisplay.js';
+	var getPlaylistInvite = function () {
+		console.log('$routeParamsinvitationId', $routeParams.invitationId);
+		if (true) {
+			LergoClient.playlistsInvitations.get($routeParams.invitationId).then(function (result) {
+				$scope.playlistInvitation = result || 'no result';
+				console.log('--------------------the playlistInvitation is ', $scope.playlistInvitation);
+				return result;
+			});
+		}
+    };
+    console.log('getting stepDisplay to work..................', getPlaylistInvite());
+
     $scope.$watch('step', reload);
     $scope.getQuizItemTemplate = function () {
-        if (!!$scope.lessons) {
+        if (!!$scope.lessons ) {
             if (!!$scope.quizItem && !$scope.quizItem.startTime) {
                 $scope.quizItem.startTime = new Date().getTime();
             }

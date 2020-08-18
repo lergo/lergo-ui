@@ -86,16 +86,42 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             $scope.isSuccess = function(){
                 return !!invitation;
             };
-            var inviteArray = [];
-            var lessonInvite = {};
 
+            // start with new code for sendInvite
+            invite.lessonInvitation = [];
+            var lessonsArray = [];
+
+			$scope.sendInvite = function () {
+                $scope.createError = false;
+                $log.info('inviting');
+                console.log(' the playlist invite is ', invite);
+                // create an array of playlist lessons from the invite (playlistId)
+                LergoClient.playlists.getById( invite.playlistId).then(function(result){
+                    lessonsArray = result.data.steps[0].quizItems;
+                    // create the lessonsInviteId for each lesson
+                    lessonInviteFunction();
+                });
+            };
+
+            // loop over all the lessons in the playlist and create the
+            // inviteArray
             function lessonInviteFunction() {
                 var promises = _.map(lessonsArray, function(lessonId){
                     lessonInvite = {
                         'invitee': { 'name' : invite.invitee },
                         'lessonId': lessonId
                     };
-                    LergoClient.lessonsInvitations.create(lessonId, lessonInvite).then(function(result) {
+                    return makeLessonInvitationforPlaylistInvitation(lessonId)
+                });
+                // finish the loop
+                $q.all(promises).then(createPlaylist);
+            }
+
+
+            // let's make a function for creating each lessonInvitation
+            // and adding the lessonInvitation Id to the inviteArray
+            function makeLessonInvitationforPlaylistInvitation(lessonId) {
+            	return LergoClient.lessonsInvitations.create(lessonId, lessonInvite).then(function(result) {
                         var lessonInvitationId = result.data._id;
                 
                         var  playlistLessonInvitation = {
@@ -105,29 +131,21 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                         inviteArray.push(playlistLessonInvitation);
                         console.log('the inviteArray is :', inviteArray);
                     });
-                });
-                return $q.all(promises);
             }
-            invite.lessonInvitation = [];
-            var lessonsArray = [];
-            $scope.sendInvite = function () {
-                $scope.createError = false;
-                $log.info('inviting');
-                console.log(' the playlist invite is ', invite);
-                // creating and adding an invitation for each lesson in the playlist
-                LergoClient.playlists.getById( invite.playlistId).then(function(result){
-                    lessonsArray = result.data.steps[0].quizItems;
-                    // for each lesson make an invitation and get the invitationId
-                    lessonInviteFunction().then(function() {
-                        invite.lessonInvitation = inviteArray;
-                        return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
-                            invitation = result.data;
-                        }, function () {
-                            $scope.createError = true;
-                        });
-                    });
-                });
+
+            //function to create the playlistInvite
+            function createPlaylist() {
+            	invite.lessonInvitation = inviteArray;
+                    return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
+                        invitation = result.data;
+                     }, function () {
+                        $scope.createError = true;
+                 });
             };
+
+            //end of new code 
+
+
 
             $scope.isValid = function(){
                 if ( isStudentMode() ){
