@@ -113,7 +113,7 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                         'invitee': { 'name' : invite.invitee },
                         'lessonId': lessonId
                     };
-                    return makeLessonInvitationforPlaylistInvitation(lessonId)
+                    return makeLessonInvitationforPlaylistInvitation(lessonId);
                 });
                 // finish the loop
                 $q.all(promises).then(createPlaylist);
@@ -123,27 +123,25 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             // let's make a function for creating each lessonInvitation
             // and adding the lessonInvitation Id to the inviteArray
             function makeLessonInvitationforPlaylistInvitation(lessonId) {
-            	return LergoClient.lessonsInvitations.create(lessonId, lessonInvite).then(function(result) {
-                        var lessonInvitationId = result.data._id;
-                
-                        var  playlistLessonInvitation = {
-                            'lesson' : { 'lessonId' : lessonId },
-                            'invitationId' : lessonInvitationId
-                        };
-                        inviteArray.push(playlistLessonInvitation);
-                        console.log('the inviteArray is :', inviteArray);
-                    });
+                return LergoClient.lessonsInvitations.create(lessonId, lessonInvite).then(function(result) {
+                    var lessonInvitationId = result.data._id;
+                    var  playlistLessonInvitation = {
+                        'lesson' : { 'lessonId' : lessonId },
+                        'invitationId' : lessonInvitationId
+                    };
+                    inviteArray.push(playlistLessonInvitation);
+                });
             }
 
             //function to create the playlistInvite
             function createPlaylist() {
-            	invite.lessonInvitation = inviteArray;
-                    return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
+                invite.lessonInvitation = inviteArray;
+                return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
                         invitation = result.data;
-                     }, function () {
+                    }, function () {
                         $scope.createError = true;
-                 });
-            };
+                    });
+            }
 
             //end of new code 
 
