@@ -77,14 +77,20 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
     // this is the code from intro.js
     $scope.stepDisplay = '/playlists/StepDisplay.js';
 	var getPlaylistInvite = function () {
-		console.log('$routeParamsinvitationId', $routeParams.invitationId);
-		if (true) {
+		console.log('$routeParamsinvitationId', );
+		if ($routeParams.invitationId) {
 			LergoClient.playlistsInvitations.get($routeParams.invitationId).then(function (result) {
 				$scope.playlistInvitation = result || 'no result';
-				console.log('--------------------the playlistInvitation is ', $scope.playlistInvitation);
+                if ($scope.playlistInvitation.data.lessonInvitation) {
+                    $scope.lessonInvitationData = $scope.playlistInvitation.data.lessonInvitation;
+                } else {
+                    $scope.lessonInvitationData = $scope.playlistInvitation.data.playlist.steps[0].quizItems;
+                }
 				return result;
 			});
-		}
+		} else {
+            console.log('-----------------------------no $routeParams.invitationId');
+        }
     };
     console.log('getting stepDisplay to work..................', getPlaylistInvite());
 
