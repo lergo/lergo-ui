@@ -1,7 +1,8 @@
 <div ng-show="loaded && showSteps() && hasNextStep() " class="next-step" ng-cloak>
     <div ng-include="'/views/playlists/_stepDisplay.html'"></div>
 </div>
-written in  in _display.html?
+written in  in /playlists/_display.html?
+<div style="font-size: 16px;color:green">the controller is /playlists/StepDisplay.js</div>
 <!-- <div ng-show="!loaded" class="loading">
     <div>
         <i class="fa fa-cog fa-spin"></i>
@@ -10,11 +11,6 @@ written in  in _display.html?
 
 
 <div ng-repeat="les in lessonInvitationData">
-    the les is {{les.lesson.lessonId}}, and the lessonInvitationId is {{les.invitationId}}
-    <div>new line</div>
-    <div>this is playlistInvitation: {{playlistInvitation.data.lessonInvitation}}</div>
-    <div>contoller: {{stepDisplay}}</div>
-    <div style="font-size: 16px;color:green">the controller is /playlists/StepDisplay.js</div>
     <div style="border: 2px solid blue">
         <lesson-preview quiz-item="lessons[les.lesson.lessonId]" lesson-invite="les.invitationId"></lesson-preview>
     </div>

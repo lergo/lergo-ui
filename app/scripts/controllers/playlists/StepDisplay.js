@@ -75,21 +75,27 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
 
     // jeff - we need the playlist invitation for the lesson invitation ids
     // this is the code from intro.js
+    // for anonymous invitation, the lessonId data needs to be reformated to be used by the same ng-repeat in _display.html
+    $scope.lessonInvitationData = [];
     $scope.stepDisplay = '/playlists/StepDisplay.js';
 	var getPlaylistInvite = function () {
-		console.log('$routeParamsinvitationId', );
 		if ($routeParams.invitationId) {
 			LergoClient.playlistsInvitations.get($routeParams.invitationId).then(function (result) {
 				$scope.playlistInvitation = result || 'no result';
                 if ($scope.playlistInvitation.data.lessonInvitation) {
                     $scope.lessonInvitationData = $scope.playlistInvitation.data.lessonInvitation;
                 } else {
-                    $scope.lessonInvitationData = $scope.playlistInvitation.data.playlist.steps[0].quizItems;
+                    for (var i = 0; i < $scope.playlistInvitation.data.playlist.steps[0].quizItems.length; i++) {
+                        $scope.lessonInvitationData[i] = {};
+                        $scope.lessonInvitationData[i].lesson = {};
+                        $scope.lessonInvitationData[i].lesson.lessonId = $scope.playlistInvitation.data.playlist.steps[0].quizItems[i];
+                    }
+                    
                 }
 				return result;
 			});
 		} else {
-            console.log('-----------------------------no $routeParams.invitationId');
+            $log.info('no $routeParams.invitationId');
         }
     };
     console.log('getting stepDisplay to work..................', getPlaylistInvite());
@@ -100,9 +106,7 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
             if (!!$scope.quizItem && !$scope.quizItem.startTime) {
                 $scope.quizItem.startTime = new Date().getTime();
             }
-            console.log('the lessons are ', $scope.lessons);
             return !!$scope.quizItem && 'views/lessons/view/_exactMatch.html';
-            //return !!$scope.quizItem && LergoClient.lessons.getTypeById($scope.quizItem.type).viewTemplate || '';
         }
         return '';
     };
