@@ -63,6 +63,16 @@ angular.module('lergoApp').service('LessonsService',
             return $http.post('/backend/lessons/' + lesson._id + '/unpublish');
         };
 
+        //commentEmailSent
+        this.commentEmailSent = function (lesson) {
+            return $http.post('/backend/lessons/' + lesson._id + '/commentEmailSent');
+        };
+
+        this.commentEmailNotSent = function (lesson) {
+            return $http.post('/backend/lessons/' + lesson._id + '/commentEmailNotSent');
+        };
+
+
         this.getById = function (id) {
             return $http.get('/backend/lessons/' + id);
         };

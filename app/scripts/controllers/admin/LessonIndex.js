@@ -22,7 +22,8 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 		'showHasAdminComment' : true,
 		'showAdminRating' : true,
 		'showRemoveCreatedBy': true,
-		'showRemoveSubject': true
+		'showRemoveSubject': true,
+		'showHasAdminCommentEmailSent': true
 	};
 
     var defaultFilter = {};
@@ -130,11 +131,30 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
                 delete lesson.public;
             });
         }
+	}
+	// Jeff: add comment email sent / not sent
+	function makeCommentEmailSent( lesson, hasBeenSent ){
+        if ( hasBeenSent ){
+            return LergoClient.lessons.commentEmailSent(lesson).then(function( result ){
+                lesson.commentEmailSent = result.data.commentEmailSent;
+            });
+        }else{
+            return LergoClient.lessons.commentEmailNotSent(lesson).then(function(){
+                delete lesson.commentEmailSent;
+            });
+        }
     }
 
     function makeAllPublic(lessons, isPublic){
         var promises = _.map(_.filter(lessons, {selected:true}),function(lesson) {
             return makeLessonPublic(lesson,isPublic);
+        });
+        $q.all(promises).then($scope.loadLessons).then(loadStats);
+
+	}
+	function makeAllSent(lessons, hasBeenSent){
+        var promises = _.map(_.filter(lessons, {selected:true}),function(lesson) {
+            return makeCommentEmailSent(lesson,hasBeenSent);
         });
         $q.all(promises).then($scope.loadLessons).then(loadStats);
 
@@ -146,6 +166,14 @@ angular.module('lergoApp').controller('AdminLessonIndexCtrl', function($scope, L
 
 	$scope.makePrivate = function() {
 		makeAllPublic( $scope.lessons, false );
+	};
+
+	$scope.emailHasBeenSent = function() {
+        makeAllSent( $scope.lessons, true);
+    };
+
+	$scope.emailHasNotBeenSent = function() {
+		makeAllSent( $scope.lessons, false );
 	};
 
 	$scope.deleteLesson = function() {

@@ -97,7 +97,7 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
 
             $scope.subjects = LergoFilterService.subjects;
             
-            $scope.adminRatings = ['all'].concat(LergoFilterService.adminRatings);  // need to understand and deal with limited...
+            $scope.adminRatings = LergoFilterService.adminRatings;  // need to understand and deal with limited...
 
             // support for limit subjects
 			$scope.limitedSubjects = null;
@@ -364,6 +364,19 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 }
             }
             $scope.$watch('hasAdminComment', _updateHasAdminComment);
+
+            //adminCommentEmailSent
+            function _updateAdminCommentEmailSent(newValue, oldValue){
+                var modelKey = 'adminCommentEmailSent';
+                if ( newValue !== oldValue ){
+                    if ( newValue ){
+                        $scope.model[modelKey] = { dollar_exists : false };
+                    }else{
+                        delete $scope.model[modelKey];
+                    }
+                }
+            }
+            $scope.$watch('hasAdminCommentEmailSent', _updateAdminCommentEmailSent);
 
             function _updateReportLesson(newValue, oldValue){
                 $log.info('report lesson was updated!!');
