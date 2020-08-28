@@ -122,22 +122,40 @@
                                    
 
                                     <div class="row">
-                                        <div class="col-md-2 col-sm-12 col-xs-12">
-                                            {{ 'lessons.recommenedNextLesson' | translate }}
-                                        </div>
-                                        <div class="col-md-10 col-sm-12 col-xs-12">
-                                            <input placeholder="{{'lessons.recommenedNextLessonText' | translate}}"
-                                                   ng-model="lesson.nextLesson"/>
-                                        </div>
+                                        <ng-form name="nextLessonForm">
+                                            <div style="padding-top: 20px" class=" col-lg-2 col-md-2 col-sm-12 col-xs-12 ">
+                                                {{ 'lessons.recommenedNextLesson' | translate }}
+                                            </div>
+                                            <div class="col-lg-10 md-10 sm-10 xs-10">
+                                                <div class="form-group"
+                                                     ng-class="{ 'has-error' : nextLessonForm.nextLesson.$invalid && !nextLessonForm.nextLesson.$invalid.$pristine }">
+                                                    <input lergo-input-converter class="form-control" name="nextLesson"
+                                                    placeholder="{{'lessons.recommenedNextLessonText' | translate}}"
+                                                    ng-model="lesson.nextLesson"
+                                                    ng-pattern="/.*\/lessons\/.{24}\/intro/">
+                                                    <p ng-show="nextLessonForm.nextLesson.$error.pattern || (nextLessonForm.nextLesson.$invalid && !nextLessonForm.nextLesson.$pristine)"
+                                                       class="help-block">{{'lessons.recommendedLesson'| translate}}</p>
+                                                </div>
+                                            </div>
+                                        </ng-form>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-2 col-sm-12 col-xs-12">
-                                            {{ 'lessons.recommenedPriorLesson' | translate }}
-                                        </div>
-                                        <div class="col-md-10 col-sm-12 col-xs-12">
-                                            <input placeholder="{{'lessons.recommenedPriorLessonText' | translate}}"
-                                                   ng-model="lesson.priorLesson"/>
-                                        </div>
+                                        <ng-form name="priorLessonForm">
+                                            <div style="padding-top: 20px" class=" col-lg-2 col-md-2 col-sm-12 col-xs-12 ">
+                                                {{ 'lessons.recommenedPriorLesson' | translate }}
+                                            </div>
+                                            <div class="col-lg-10 md-10 sm-10 xs-10">
+                                                <div class="form-group"
+                                                     ng-class="{ 'has-error' : priorLessonForm.priorLesson.$invalid && !priorLessonForm.priorLesson.$invalid.$pristine }">
+                                                    <input lergo-input-converter class="form-control" name="priorLesson"
+                                                    placeholder="{{'lessons.recommenedPriorLessonText' | translate}}"
+                                                    ng-model="lesson.priorLesson"
+                                                    ng-pattern="/.*\/lessons\/.{24}\/intro/">
+                                                    <p ng-show="priorLessonForm.priorLesson.$error.pattern || (priorLessonForm.priorLesson.$invalid && !priorLessonForm.priorLesson.$pristine)"
+                                                       class="help-block">{{'lessons.recommendedLesson'| translate}}</p>
+                                                </div>
+                                            </div>
+                                        </ng-form>
                                     </div>
                                     <div class="row">
                                         <ng-form name="wikiForm">

@@ -25,7 +25,8 @@ angular.module('lergoApp')
             YOUTUBE_1: { 'id' : 'youtube', 'regex' : 'youtu.be/', replace:{ from: '(https://youtu.be/.{11})\\?t=.+', to: '$1'}},
             YOUTUBE_2: { 'id' : 'youtube', 'regex' : 'youtube.com/watch\\?v=.{11}', replace:{ from: '(https://www.youtube.com/watch\\?v=.{11})&.+', to: '$1'}},
             YOUTUBE_3: { 'id' : 'youtube', 'regex' : 'youtube.com/watch\\?time_continue=.{2}&v=.{11}&', replace:{ from: '(https://www.youtube.com/watch\\?)time_continue=.{2}&(v=.{11})&.+', to: '$1$2'}},
-            YOUTUBE_4: { 'id' : 'youtube', 'regex' : 'youtube.com/watch\\?time_continue=.{1}&v=.{11}&', replace:{ from: '(https://www.youtube.com/watch\\?)time_continue=.{1}&(v=.{11})&.+', to: '$1$2'}}
+            YOUTUBE_4: { 'id' : 'youtube', 'regex' : 'youtube.com/watch\\?time_continue=.{1}&v=.{11}&', replace:{ from: '(https://www.youtube.com/watch\\?)time_continue=.{1}&(v=.{11})&.+', to: '$1$2'}},
+            LERGO_1: { 'id' : 'lergo', 'regex' : '.*\/user\/lessons\/.{24}\/intro', replace:{ from: '(.*)\/user\/(lessons\/.{24}\/intro)', to: '$1\/public\/$2'}}
         };
 
         this.getLinkType = function(link){
