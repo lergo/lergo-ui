@@ -1,4 +1,5 @@
-lergo-ri implementing redis server and caching lessonIntro and questionsas they are used
+lergo-ri adding npm redis - mocha exploded when it could not find the module
+lergo-ri implementing redis server  and caching lessonIntro and questionsas they are used
 lergo-ui limit max of 20 characters in username
 lergo-ui commenting out footer link and "about" to webinar
 lergo-ui bug(fix) adding closing tag in signup submit and adding subject: hebrew-hsl
