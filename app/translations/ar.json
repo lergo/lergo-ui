@@ -137,6 +137,7 @@
     },
     "subjects": {
       "arabic": "العربية",
+      "hebrewHsl" :" العبرية للعربية",
       "art": "فن",
       "biology": "علم الاحياء",
       "chemistry": "كيمياء",

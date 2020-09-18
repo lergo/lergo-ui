@@ -391,6 +391,7 @@ angular.module('lergoApp')
             'technology',
             'english',
             'arabic',
+            'hebrewHsl',
             'holidays',
             'language',
             'grammar',
