@@ -46,10 +46,10 @@ angular.module('lergoApp').controller('AboutCtrl', function($scope, $routeParams
         {
             id: 'contact'
 
-        },
-        {
-            id: 'webinar'
         }
+      /*   {
+            id: 'webinar'
+        } */
             
             
     ];
