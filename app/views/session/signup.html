@@ -12,8 +12,9 @@
                <span>{{ 'input.username' | translate }} </span>
             </div>
             <div class="lergo-input">
-               <input ng-model="username" class="form-control" name="username" ng-minlength="3" required ng-pattern="/^[a-zA-Z0-9\_]+$/" id="signup-username" autofocus/>
+               <input ng-model="username" class="form-control" name="username" ng-minlength="3" ng-maxlength="20" required ng-pattern="/^[a-zA-Z0-9\_]+$/" id="signup-username" autofocus/>
                <p ng-show="signupForm.username.$error.minlength" class="help-block">{{'signup.error.minLength' | translate}}</p>
+               <p ng-show="signupForm.username.$error.maxlength" class="help-block">{{'signup.error.maxLength' | translate}}</p>
                <p ng-show="signupForm.username.$error.pattern" class="help-block">{{'signup.error.invalidChar' | translate}}</p>
             </div>
          </div>

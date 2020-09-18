@@ -1183,6 +1183,7 @@
       "emailMismatch": "Emails do not match",
       "invalidChar": "Username should only contain alphanumeric characters and underscore.",
       "invalidEmail": "Enter valid email.",
+      "maxLength": "Username should contain less than 21 characters",
       "minLength": "Username should contain at least 3 characters.",
       "nameRequired": "Name is required.",
       "passwordMismatch": "Confirm password does not match the password.",
