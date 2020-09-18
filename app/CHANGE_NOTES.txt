@@ -1,4 +1,4 @@
-lergo-ri adding npm redis - mocha exploded when it could not find the module
+lergo-ri adding npm redis - mocha exploded when it could not find the module 3rd try
 lergo-ri implementing redis server  and caching lessonIntro and questionsas they are used
 lergo-ui limit max of 20 characters in username
 lergo-ui commenting out footer link and "about" to webinar
