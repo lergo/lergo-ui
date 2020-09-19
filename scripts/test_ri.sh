@@ -4,8 +4,8 @@ echo build lergo-ri
 cd lergo-ri
 source ~/.nvm/nvm.sh
 nvm install
-echo ---------- redis-server
-redis-server
+echo ---------- redis-server --daemonize yes
+redis-server --daemonize yes
 
 echo decoding me.conf
 mkdir -p conf/dev
