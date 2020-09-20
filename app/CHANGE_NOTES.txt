@@ -1,3 +1,4 @@
+lergo-ri reimplementing mocha beforeBuild tests now that redis is working in build
 lergo-ui script/test_ri.sh bug fix for openSSL and add redis-server
 lergo-ri adding npm redis - mocha exploded when it could not find the module 5th try
 lergo-ri implementing redis server  and caching lessonIntro and questionsas they are used
