@@ -102,6 +102,26 @@ angular.module('lergoApp').service('LessonsService',
             });
         };
 
+        this.getPublicHomepageLessons = function (queryObj) {
+            if (!queryObj) {
+                throw new Error('you should at least have {"public" : { "exists" : 1 } } ');
+            }
+            return $http({
+                'method': 'GET',
+                'url': '/backend/public/homepageLessons',
+                'params': {'query': JSON.stringify(queryObj)} /* stringify the queryObj as it contains $ signs which angular filters out */
+            });
+        };
+
+        this.getPublicLessonsUsernames = function() {
+            return $http({
+                'method': 'GET',
+                'url' : '/backend/public/publicLessonsUsernames',
+            });
+        };
+
+
+
         this.copyLesson = function (id) {
             return $http.post('/backend/lessons/' + id + '/copy');
         };

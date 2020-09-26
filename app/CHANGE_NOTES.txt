@@ -1,3 +1,5 @@
+lergo-ri and lergo-ui:  reverting previous caching method for homepage lessons and users, implementing redis caching with 1 hour TTL ...
+... for these features. Downloading allUsers (for admin) only when admin is logged in
 lergo-ri adding expiry date to lessonsIntro and questions to update number of views on the lessons weekly
 lergo-ri bug(fix) TTL date in lessonsInvitations was not ISO, change key to willExpireOn and add TTL index
 db removed all non validated users older than 6 weeks and all anonymous lessonsInvitations older than 6 weeks

@@ -16,7 +16,7 @@ describe('Controller: HomepageCtrl', function() {
 
         LergoClient = {
             lessons : {
-                getPublicLessons : function( /*queryObj*/ ){
+                getPublicHomepageLessons : function( /*queryObj*/ ){
                     return {
                         'then' : function( success ){
                             success( { 'data' : { 'data' : 'this is data' ,  'count' : 10 } } );
@@ -34,9 +34,9 @@ describe('Controller: HomepageCtrl', function() {
 
     describe('load lessons', function(){
         it('should load lessons', function(){
-            spyOn(LergoClient.lessons, 'getPublicLessons').andCallThrough();
+            spyOn(LergoClient.lessons, 'getPublicHomepageLessons').andCallThrough();
             scope.loadLessons();
-            expect(LergoClient.lessons.getPublicLessons).toHaveBeenCalled();
+            expect(LergoClient.lessons.getPublicHomepageLessons).toHaveBeenCalled();
             expect(scope.filterPage.count).toBe(10);
             expect(scope.lessons).toBe('this is data');
         });

@@ -133,43 +133,25 @@ angular.module('lergoApp').directive('lergoFilter', function($rootScope, LergoTr
                 return result;
             });
 
-            // get all users for admin lesson filter
-			LergoClient.users.getUsernames().then(function(result) {
-				scope.allUsers = result.data;
-            });
-            
-            // getting users out of public lessons
-            
-            var queryObjUnlimited = { filter: {'public': {$exists: 1}}, projection: { 'userId': 1, _id: 0 } , limit: 0 };
-            
-            LergoClient.lessons.getPublicLessons(queryObjUnlimited).then(function(result) {
-                var b = {};
-                var keyMap  = { _id: '_id', username: 'username'};
-                var finalArray = [];
-                function flattenObject(item) {
-                    finalArray.push(item.user);
-                }
-
-                var allPublicUsers = _.map(result.data.data, function (o) {
-                    return _.pick(o, ['user._id', 'user.username']);
-                });
-                var uniquePublicUsers = _.uniqBy(allPublicUsers, 'user._id');
-                uniquePublicUsers.forEach(flattenObject);
-                 
-                b = finalArray.map(function(obj) {
-                        return _.mapKeys(obj, function(value, key) {
-                            return keyMap[key];
-                        });
+            LergoClient.isAdmin(true).then(function (result) {
+                if (result && result.data && result.data.admin) {
+                    // get all users for admin lesson filter
+                    LergoClient.users.getUsernames().then(function(result) {
+                        scope.allUsers = result.data;
                     });
-                $scope.users = b;
-                $log.info('finding number of users with public lessons');
+                } else {
+                    //console.log('you are not admin');
+                }
+            });
+
+            // getting users with public lessons (for createdBy) from redis cache / publicLessons
+            LergoClient.lessons.getPublicLessonsUsernames().then(function(result) {
+				scope.users = result.data;
             });
 
             var userPermissions = null;
 
             $q.all([LergoClient.isLoggedIn(true), LergoClient.users.getUserPermissions()]).then(function( result ){
-
-
                 var userResult = result[0].data;
                 var permissionsResult = result[1];
                 userPermissions = permissionsResult;

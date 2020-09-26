@@ -24,6 +24,14 @@ angular.module('lergoApp').service('LergoClient',
                 return isLoggedInPromise;
 			};
 
+			var isAdminPromise  = null;
+			this.isAdmin = function( cached ) {
+                if ( !cached || !isAdminPromise ){
+                    isAdminPromise =  $http.get('/backend/user/isAdmin');
+                }
+                return isAdminPromise;
+			};
+
 			this.logout = function() {
 				return $http.post('backend/users/logout');
 			};

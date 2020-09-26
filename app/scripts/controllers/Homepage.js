@@ -44,15 +44,41 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			},
 			'dollar_page' : $scope.filterPage
 		};
-		LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
-			$scope.lessons = result.data.data;
-			$scope.filterPage.count = result.data.count; // the number of
-			// lessons found
-			// after filtering
-			// them.
-			scrollToPersistPosition();
-			$scope.loaded = true;
-		});
+		
+		// mustHaveUndefined  for homepage loading with only language filter
+		// getPublicHomePageLessons is used to access and save the homepage in redis cache
+		var mustHaveUndefined = !queryObj.hasOwnProperty('tags.label') &&
+		queryObj.filter.showSubject	=== undefined &&
+		queryObj.filter.age			=== undefined &&
+		queryObj.filter.userId		=== undefined &&
+		queryObj.filter.searchText	=== undefined &&
+		queryObj.filter.showViews	=== undefined;
+		if (mustHaveUndefined) {
+			// will be used exclusively for homepage loading - which will be cached 
+			LergoClient.lessons.getPublicHomepageLessons(queryObj).then(function(result) {
+				$scope.lessons = result.data.data;
+				$scope.filterPage.count = result.data.count; // the number of
+				// lessons found
+				// after filtering
+				// them.
+				scrollToPersistPosition();
+				$scope.loaded = true;
+			});
+		} else {
+			LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
+				$scope.lessons = result.data.data;
+				$scope.filterPage.count = result.data.count; // the number of
+				// lessons found
+				// after filtering
+				// them.
+				scrollToPersistPosition();
+				$scope.loaded = true;
+			});
+		}
+		
+
+
+		
 		// getting users out of public lessons
 		/* var o = '';
 		var queryObjUnlimited = {filter: {'public': {$exists: 1}}, limit: 0};
