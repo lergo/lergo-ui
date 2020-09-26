@@ -1,3 +1,5 @@
+lergo-ri bug(fix) TTL date in lessonsInvitations was not ISO, change key to willExpireOn and add TTL index
+db removed all non validated users older than 6 weeks and all anonymous lessonsInvitations older than 6 weeks
 lergo-ri git commit redis caching bug(fix) questions are not returned as objects so code changes needed for stringify
 lergo-ri reimplementing mocha beforeBuild tests now that redis is working in build
 lergo-ui script/test_ri.sh bug fix for openSSL and add redis-server
