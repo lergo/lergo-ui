@@ -47,12 +47,12 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		
 		// mustHaveUndefined  for homepage loading with only language filter
 		// getPublicHomePageLessons is used to access and save the homepage in redis cache
-		var mustHaveUndefined = !queryObj.hasOwnProperty('tags.label') &&
-		queryObj.filter.showSubject	=== undefined &&
+		var mustHaveUndefined = !queryObj.filter.hasOwnProperty('tags.label') &&
+		queryObj.filter.subject	=== undefined &&
 		queryObj.filter.age			=== undefined &&
 		queryObj.filter.userId		=== undefined &&
 		queryObj.filter.searchText	=== undefined &&
-		queryObj.filter.showViews	=== undefined;
+		queryObj.filter.views	=== undefined;
 		if (mustHaveUndefined) {
 			// will be used exclusively for homepage loading - which will be cached 
 			LergoClient.lessons.getPublicHomepageLessons(queryObj).then(function(result) {
