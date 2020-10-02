@@ -1,3 +1,4 @@
+bug(fix - redis homepage cache) correct code on filterPage
 lergo-ui bug(fix pagination) add page request to filtering out cached homepage requests and update test
 lergo-ui bug(fix for previous build) fixing filter for choosing homempage caching or mongodb query.
 lergo-ri and lergo-ui:  reverting previous caching method for homepage lessons and users, implementing redis caching with 1 hour TTL ...

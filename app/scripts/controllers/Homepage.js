@@ -53,8 +53,9 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		queryObj.filter.userId		=== undefined &&
 		queryObj.filter.searchText	=== undefined &&
 		queryObj.filter.views		=== undefined &&
-		$scope.filterPage === 1;  //insure not a page request
+		$scope.filterPage.current === 1;  //insure not a page request
 		if (mustHaveUndefined) {
+			$log.info('using redis cache for homepage');
 			// will be used exclusively for homepage loading - which will be cached 
 			LergoClient.lessons.getPublicHomepageLessons(queryObj).then(function(result) {
 				$scope.lessons = result.data.data;
