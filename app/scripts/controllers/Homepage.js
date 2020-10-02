@@ -45,14 +45,15 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			'dollar_page' : $scope.filterPage
 		};
 		
-		// mustHaveUndefined  for homepage loading with only language filter
-		// getPublicHomePageLessons is used to access and save the homepage in redis cache
+		// Jeff mustHaveUndefined  for homepage loading with only language filter
+		// Jeff getPublicHomePageLessons is used to access and save the homepage in redis cache
 		var mustHaveUndefined = !queryObj.filter.hasOwnProperty('tags.label') &&
-		queryObj.filter.subject	=== undefined &&
+		queryObj.filter.subject		=== undefined &&
 		queryObj.filter.age			=== undefined &&
 		queryObj.filter.userId		=== undefined &&
 		queryObj.filter.searchText	=== undefined &&
-		queryObj.filter.views	=== undefined;
+		queryObj.filter.views		=== undefined &&
+		$scope.filterPage === 1;  //insure not a page request
 		if (mustHaveUndefined) {
 			// will be used exclusively for homepage loading - which will be cached 
 			LergoClient.lessons.getPublicHomepageLessons(queryObj).then(function(result) {
@@ -76,8 +77,6 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			});
 		}
 		
-
-
 		
 		// getting users out of public lessons
 		/* var o = '';
