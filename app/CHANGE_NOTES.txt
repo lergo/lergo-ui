@@ -1,3 +1,5 @@
+lergo-ri adding willExpireOn dates for reports and users that are not validated - 
+... adding corresponding indexes to mongo
 bug(fix - redis homepage cache) correct code on filterPage
 lergo-ui bug(fix pagination) add page request to filtering out cached homepage requests and update test
 lergo-ui bug(fix for previous build) fixing filter for choosing homempage caching or mongodb query.
