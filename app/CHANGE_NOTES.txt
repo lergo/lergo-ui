@@ -1,3 +1,5 @@
+lergo-ri 1. redis connect moved to service with only one connection instance. 2. fix exactMatch bug where ... 
+... correct answer was also incorrect answer with explanation
 lergo-ri adding willExpireOn dates for reports and users that are not validated - 
 ... adding corresponding indexes to mongo
 bug(fix - redis homepage cache) correct code on filterPage
