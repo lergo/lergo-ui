@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
-    function ($window, $scope, $filter, LergoClient, QuestionsService, LessonsService, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope) {
+    function ($window, $scope, $filter, LergoClient, QuestionsService, LessonsService, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope, ShareService) {
         $window.scrollTo(0, 0);
         $log.info('loading invitation');
         var errorWhileSaving = false;
@@ -11,7 +11,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                /* window.scrollTo(0, 68);*/
                 $log.info('updating report');
                 // extracting the invitee name from url for classInvitation repeat lesson
-                var inviteeName = $location.search().inviteeName;
+                var inviteeName =  ShareService.getInvitee();
                 if (inviteeName) {
                     value.inviteeOverride = { name: inviteeName };
                 }

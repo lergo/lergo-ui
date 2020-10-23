@@ -1,3 +1,5 @@
+lergo-ui bug(fix) invitee.name was only working for "Start-Over" in reports, not on certificates
+    redid code to use a Service and removed $location'
 lergo-ui reverting previous commit - commenting out  getMyLessonLike and getMyQuestionLike and removing 
     the test/spec (it is used!!!)
 lergo-ui 1. change desktop embed-responsive to NoAutoPlay

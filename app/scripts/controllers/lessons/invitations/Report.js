@@ -24,28 +24,26 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
         $scope.absoluteShareLink = function (id) {
             return window.location.origin + '/#!/public/lessons/' + id + '/intro';
         };
-        // jeff: invitee name is in the lesson report and needs to be included for replay lessons - lessonsInvitations.
+        
         $scope.startLesson = function (lessonId) {
             $scope.startBtnDisable=true;
             if (!lessonId) {
-                redirectToInvitation($scope.report.data.lesson._id, $scope.report.invitationId, $scope.report.data.invitee.name);
+                redirectToInvitation($scope.report.data.lesson._id, $scope.report.invitationId);
             } else {
                 LergoClient.lessonsInvitations.createAnonymous(lessonId).then(function (result) {
                     redirectToInvitation(lessonId, result.data._id);
                 });
             }
         };
-        function redirectToInvitation(lessonId, invId, invitee) {
+        function redirectToInvitation(lessonId, invId) {
             // in case of temporary lesson we don't want to remember history
-            if (!$scope.report.data.lesson.temporary && !invitee) {
+            if (!$scope.report.data.lesson.temporary) {
                 $location.path('/public/lessons/invitations/' + invId + '/display').search({
                     lessonId: lessonId
                 });
             } else {
-                //jeff: adding invitee to url for replay lesson from classInvitation
                 $location.path('/public/lessons/invitations/' + invId + '/display').search({
-                    lessonId: lessonId,
-                    inviteeName: invitee
+                    lessonId: lessonId
                 }).replace();
             }
         }
