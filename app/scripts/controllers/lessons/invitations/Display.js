@@ -10,6 +10,12 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             'saveFn': function (value) {
                /* window.scrollTo(0, 68);*/
                 $log.info('updating report');
+                // extracting the invitee name from url for classInvitation repeat lesson
+                var inviteeName = $location.search().inviteeName;
+                if (inviteeName) {
+                    value.inviteeOverride = { name: inviteeName };
+                }
+               
                 var finished = value.finished; // value.data is the invitation. we
                 // want the report.
 
@@ -18,6 +24,8 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                 }
 
                 return LergoClient.reports.update(value).then(function (result) {
+                   
+                    result.data.data.invitee = result.data.invitee;
                     if (finished) {
                         if (errorWhileSaving) {
                             toastr.success($filter('translate')('report.saved.successfully'));

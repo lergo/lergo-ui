@@ -1,4 +1,6 @@
-
+lergo-ui 1. change desktop embed-responsive to NoAutoPlay
+    2. Add invitee.name to report for lessonsInvitation "Start Over"
+   
 lergo-ui commenting out  getMyLessonLike and getMyQuestionLike and removing 
     the test/spec (not used but gives error in console)
 lergo-ri 1. redis connect moved to service with only one connection instance. 2. fix exactMatch bug where ... 
