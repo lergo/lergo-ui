@@ -136,9 +136,9 @@ angular.module('lergoApp').controller('QuestionsReadCtrl',
         $scope.$watch('quizItem', function (newValue) {
             if (!!newValue) {
                 // get my like - will decide if I like this question or not
-                LergoClient.likes.getMyQuestionLike($scope.quizItem).then(function (result) {
+                /* LergoClient.likes.getMyQuestionLike($scope.quizItem).then(function (result) {
                     $scope.questionLike = result.data;
-                });
+                }); */
 
                 if (questionLikeWatch === null) {
                     questionLikeWatch = $scope.$watch('questionLike', function () {

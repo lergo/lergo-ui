@@ -1,3 +1,6 @@
+
+lergo-ui commenting out  getMyLessonLike and getMyQuestionLike and removing 
+    the test/spec (not used but gives error in console)
 lergo-ri 1. redis connect moved to service with only one connection instance. 2. fix exactMatch bug where ... 
 ... correct answer was also incorrect answer with explanation
 lergo-ri adding willExpireOn dates for reports and users that are not validated - 

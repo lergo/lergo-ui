@@ -391,16 +391,16 @@ describe('Controller: LessonsIntroCtrl', function () {
 
 
         describe('$$loadLike', function () {
-            it('should getMyLessonLike', function () {
+            /* it('should getMyLessonLike', function () {
                 watchers(scope).loadLike({});
                 expect(LergoClient.likes.getMyLessonLike).toHaveBeenCalled();
-            });
+            }); */
 
-            it('should put lesson like on scope', function () {
+            /* it('should put lesson like on scope', function () {
                 LergoClient.likes.getMyLessonLike.andReturn(window.mockPromise({data: 'foo'}));
                 watchers(scope).loadLike({});
                 expect(scope.lessonLike).toBe('foo');
-            });
+            }); */
 
             it('should watch lessonLike', function () {
                 watchers(scope).loadLike({});
