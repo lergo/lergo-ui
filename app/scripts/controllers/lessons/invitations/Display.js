@@ -224,9 +224,9 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
         $scope.$watch('lesson', function (newValue) {
             if (!!newValue) {
                 // get my like - will decide if I like this lesson or not
-                /* LergoClient.likes.getMyLessonLike($scope.lesson).then(function (result) {
+                LergoClient.likes.getMyLessonLike($scope.lesson).then(function (result) {
                     $scope.lessonLike = result.data;
-                }); */
+                });
 
                 if (lessonLikeWatch === null) {
                     lessonLikeWatch = $scope.$watch('lessonLike', function () {
