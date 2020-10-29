@@ -10,7 +10,6 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             'saveFn': function (value) {
                /* window.scrollTo(0, 68);*/
                 $log.info('updating report');
-                // extracting the invitee name from url for classInvitation repeat lesson
                 var inviteeName =  ShareService.getInvitee();
                 if (inviteeName) {
                     value.inviteeOverride = { name: inviteeName };

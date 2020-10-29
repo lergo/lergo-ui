@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
-    function ($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope) {
+    function ($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope, ShareService) {
         $log.info('loading');
         LergoClient.reports.getById($routeParams.reportId).then(function (result) {
             $scope.report = result.data;
+            ShareService.setInvitee($scope.report.data.invitee.name);
             getWrongQuestion($scope.report);
             $rootScope.page = {
                 'title': $scope.report.data.lesson.name,
@@ -20,7 +21,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
             $scope.reportStats.wrong = _.sumBy($scope.stats, 'uwq');
             $scope.reportStats.openQuestions = _.sumBy($scope.stats, 'openQuestions');
         });
-
+ 
         $scope.absoluteShareLink = function (id) {
             return window.location.origin + '/#!/public/lessons/' + id + '/intro';
         };
