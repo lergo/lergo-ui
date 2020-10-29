@@ -57,7 +57,7 @@
                             <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat"></i>
                         </a>
                         <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
-                           uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
+                           uib-popover="david 2"
                            tabindex="0">
                             <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
                         </a>
@@ -67,9 +67,10 @@
                            ng-disabled="practiseBtnDisable">
                             {{'lessons.practiseWrongQuestion' | translate}}
                         </a>
-                        <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
-                           uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
-                           tabindex="0">{{'lessons.practiseWrongQuestion' | translate}}</a>
+                        <a show-anonymous href="" ng-click="practiseBtnDisable || practiceMistakesAnon()"
+                        ng-disabled="practiseBtnDisable">
+                         {{'lessons.practiseWrongQuestion' | translate}}
+                        </a>
                     </td>
                 </tr>
             </table>
@@ -164,7 +165,7 @@
                                 <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat"></i>
                     </a>
                     <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
-                       uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
+                       uib-popover="jeff1"
                        tabindex="0">
                                 <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
                     </a>
@@ -174,9 +175,9 @@
                        ng-disabled="practiseBtnDisable">
                                 {{'lessons.practiseWrongQuestion' | translate}}
                      </a>
-                     <a show-anonymous href="" popover-placement="bottom" popover-trigger="'outsideClick'"
-                               uib-popover="{{'lessons.practiceNotAvailable' | translate}}"
-                               tabindex="0">{{'lessons.practiseWrongQuestion' | translate}}
+                     <a show-anonymous href="" ng-click="practiseBtnDisable || practiceMistakesAnon()"
+                     ng-disabled="practiseBtnDisable">
+                      {{'lessons.practiseWrongQuestion' | translate}}
                      </a>
                 </span>
             </div>

@@ -9,6 +9,10 @@ angular.module('lergoApp').service('LessonsService',
             return $http.post('/backend/lessons/create');
         };
 
+        this.createAnon = function () {
+            return $http.post('/backend/lessons/createAnon');
+        };
+
         // will get all lessons - including private.
         // if user not allowed, will return 400.
         // to get user's lessons, use UserDataService
@@ -43,6 +47,10 @@ angular.module('lergoApp').service('LessonsService',
             return $http.post('/backend/lessons/' + id + '/delete');
         };
 
+        this.deleteAnon = function (id) { // delete practice mistakes lesson by anonymous user
+            return $http.post('/backend/lessons/' + id + '/deleteAnon');
+        };
+
         this.getPermissions = function (id) {
             return $http.get('/backend/lessons/' + id + '/permissions');
         };
@@ -50,6 +58,10 @@ angular.module('lergoApp').service('LessonsService',
         this.update = function (lesson) {
             return $http.post('/backend/lessons/' + lesson._id + '/update', lesson);
         };
+        this.updateAnon = function (lesson) {
+            return $http.post('/backend/lessons/' + lesson._id + '/updateAnon', lesson);
+        };
+
         /* used for deleting invalid question / steps in lesson before running a lesson */
         this.fix = function (lesson) {
             return $http.post('/backend/lessons/' + lesson._id + '/fix', lesson);
@@ -226,6 +238,43 @@ angular.module('lergoApp').service('LessonsService',
                 });
             });
         };
+
+        this.createLessonFromWrongQuestionsForAnon = function (report, wrongQuestions) {
+            return $q(function (resolve, reject) {
+                if (!wrongQuestions || wrongQuestions.length === 0) {
+                    reject();
+                }
+                self.createAnon().then(function (result) {
+                    var lesson = result.data;
+                    lesson.name = $filter('translate')('lesson.practice.title') + report.data.lesson.name;
+                    lesson.language = report.data.lesson.language;
+                    lesson.subject = report.data.lesson.subject;
+                    lesson.steps = [];
+                    var stepsWithoutRetry = _.filter(report.data.lesson.steps, function (s) {
+                        if (s.type === 'quiz') {
+                            return !s.retryQuestion;
+                        }
+                    });
+                    lesson.description = report.data.lesson.description;
+                    lesson.lastUpdate = new Date().getTime();
+                    lesson.temporary = true;
+                    var step = {
+                        'type': 'quiz',
+                        'quizItems': [],
+                        'testMode': 'False',
+                        'retBefCrctAns': 1,
+                        'shuffleQuestion': true,
+                        retryQuestion: stepsWithoutRetry.length === 0
+                    };
+                    lesson.steps.push(step);
+                    lesson.steps[0].quizItems = _.uniq(wrongQuestions);
+                    self.updateAnon(lesson).then(function () {
+                        resolve(lesson);
+                    });
+                });
+            });
+        };
+
         this.checkIfStepIsValid = function (step) {
 
                 if (!step.type) { // step type must be defined

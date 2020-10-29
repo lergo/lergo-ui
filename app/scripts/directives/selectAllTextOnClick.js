@@ -26,7 +26,6 @@ angular.module('lergoApp')
                                 var select = 'selectAllTextOnClick';
                                 scope.messageText = getMessageText(attrs[select]);
                                 scope.copied = true;
-                                console.log('copied: ' + scope.copied);
                                 $timeout(function() {scope.copied = false; console.log('slept for 5secs');}, 5000);
 
                             }

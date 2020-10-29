@@ -135,7 +135,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                 // just notify end lesson. do nothing else. wait for report to
                 // update.
                 $rootScope.$broadcast('endLesson');
-                if (!!$scope.invitation) {
+                if (!!$scope.invitation && !$scope.invitation.lesson.temporary) {
                     $scope.invitation.finished = true;
                     LergoClient.lessonsInvitations.update($scope.invitation);
                 }
@@ -278,47 +278,18 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             });
         }
 
-        // function createLessonFromWrongQuestions() {
-        //     if ($scope.wrongQuestions.length > 0) {
-        //         var report = $scope.report;
-        //         LergoClient.lessons.create().then(function (result) {
-        //             var lesson = result.data;
-        //             lesson.name = $filter('translate')('lesson.practice.title') + report.data.lesson.name;
-        //
-        //             lesson.language = LergoTranslate.getLanguageObject().name;
-        //             lesson.subject = report.data.lesson.subject;
-        //             lesson.steps = [];
-        //             var stepsWithoutRetry = _.filter(report.data.lesson.steps, function (s) {
-        //                 if (s.type === 'quiz') {
-        //                     return !s.retryQuestion;
-        //                 }
-        //             });
-        //
-        //             lesson.description = report.data.lesson.description;
-        //             lesson.lastUpdate = new Date().getTime();
-        //             lesson.temporary = true;
-        //             var step = {
-        //                 'type': 'quiz',
-        //                 'quizItems': [],
-        //                 'testMode': 'False',
-        //                 'shuffleQuestion': true,
-        //                 retryQuestion: stepsWithoutRetry.length === 0
-        //             };
-        //             lesson.steps.push(step);
-        //
-        //             // NOTE: using unique here on purpose.
-        //             // because we don't support repeating same question in the same quiz.
-        //             // the answers model in StepDisplay assumes uniqueness.
-        //
-        //             lesson.steps[0].quizItems = _.uniq($scope.wrongQuestions);
-        //             LergoClient.lessons.update(lesson).then(function () {
-        //                 $scope.startLesson(lesson._id);
-        //                 $scope.practiseBtnDisable = false;
-        //             });
-        //         });
-        //     }
-        //
-        // }
+        $scope.practiceMistakesAnon = function () {
+            $scope.practiseBtnDisable = true;
+            LergoClient.lessons.createLessonFromWrongQuestionsForAnon($scope.report, $scope.wrongQuestions).then(
+                function (lesson) {
+                    $log.info('Starting practice mistakes for Anon');
+                    $scope.startLesson(lesson._id);
+                    $scope.practiseBtnDisable = false;
+                }, function () {
+                    $log.error('Error in creating Practise Lesson');
+                    $scope.practiseBtnDisable = false;
+                });
+        };
 
         $scope.showReport = function () {
             // in case of temporary lesson we don't want to remember history

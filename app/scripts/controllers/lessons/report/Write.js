@@ -54,8 +54,13 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
             report.finished = true;
         }
         if (!!report.data.lesson.temporary) {
-            LergoClient.lessons.delete(report.data.lesson._id);
+            if (!report.data.lesson.userId) { // practice mistakes by user not logged in
+                LergoClient.lessons.deleteAnon(report.data.lesson._id);
+            } else {
+                LergoClient.lessons.delete(report.data.lesson._id);
+            }
         }
+    
     });
 
     // data is step

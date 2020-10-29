@@ -1,3 +1,5 @@
+lergo-ui and ri feature(allow non logged in user to do practice mistakes) instead of non logged in user getting warning
+     to first sign in, he will be able to do practice mistakes
 lergo-ui feat(validate signup on change password) for unvalidated user, initiating change password autovalidates the user
 lergo-ui bug(fix) invitee.name was only working for "Start-Over" in reports, not on certificates
     redid code to use a Service and removed $location'
