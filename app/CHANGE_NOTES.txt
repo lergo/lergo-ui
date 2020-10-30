@@ -1,3 +1,5 @@
+lergo-ui fix(bug - non logged in user) completed code for non logged in user in reports practice mistakes. Add if statement for
+    ShareService
 lergo-ui invitee name must also be visible when user does Start Over
 lergo-ui and ri feature(allow non logged in user to do practice mistakes) instead of non logged in user getting warning
      to first sign in, he will be able to do practice mistakes
