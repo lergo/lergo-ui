@@ -166,7 +166,13 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 var id = newValue.substring(0, newValue.lastIndexOf('/'));
                 id = id.substring(id.lastIndexOf('/') + 1);
                 $scope.lesson.priorLessonId = id;
+            }
+        }
 
+        function updateAdminComment(newValue, oldValue) {
+            if (!!newValue && newValue !== oldValue) {
+                var timeStamp = new Date().getTime();
+                $scope.lesson.adminCommentTimeStamp = timeStamp;
             }
         }
 
@@ -178,6 +184,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
                 id = id.substring(id.lastIndexOf('/') + 1);
                 $scope.lesson.wikiLinkId = id;
 
+
             }
         }
 
@@ -187,6 +194,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
             $scope.$watch('lesson', saveLesson.onValueChange, true);
             $scope.$watch('lesson.nextLesson', updateNextLesson);
             $scope.$watch('lesson.priorLesson', updatePriorLesson);
+            $scope.$watch('lesson.adminComment', updateAdminComment);
             $scope.$watch('lesson.wikiLink', updateWikiLink);
             if (!$scope.lesson.tags) {
                 $scope.lesson.tags = [];

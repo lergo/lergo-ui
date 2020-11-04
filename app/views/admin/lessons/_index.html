@@ -36,6 +36,12 @@
                                         <li admin-section="lessons.userCanUnpublish">
                                             <a  style="outline: none;" class="btn-link" ng-click="makePrivate()">{{'admin.makePrivate'|translate}}</a>
                                         </li>
+                                        <li admin-section="lessons.userEmailSent">
+                                            <a  style="outline: none;" class="btn-link" ng-click="emailHasBeenSent()">{{'admin.emailHasBeenSent'|translate}}</a>
+                                        </li>
+                                        <li admin-section="lessons.userEmailNotSent">
+                                            <a  style="outline: none;" class="btn-link" ng-click="emailHasNotBeenSent()">{{'admin.emailHasNotBeenSent'|translate}}</a>
+                                        </li>
                                         <li class="divider" admin-section="lessons.userCanDelete"></li>
                                         <li admin-section="lessons.userCanDelete">
                                             <a  style="outline: none;" class="btn-link" ng-click="deleteLesson()">{{'delete'|translate}}</a>
@@ -52,6 +58,7 @@
                             <td>{{'admin.created'|translate}}</td>
                             <td>{{'admin.publicFrom'|translate}}</td>
                             <td class="col-width-mobile" >{{'admin.adminComments'|translate}}</td>
+                            <td>{{'admin.emailSent'|translate}}</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -72,9 +79,11 @@
                             <td>{{l.publicCount}}</td>
                             <td>{{l.views}}</td>
                             <td>{{ l | countQuestionsOnLesson }}</td>
-                            <td>{{l.createdAt | date:'d-MMM-yyyy HH:mm'}}</td>
-                            <td>{{l.public | date:'d-MMM-yyyy HH:mm' }}</td>
-                            <td style="width: 200px; white-space: normal">{{ l.adminComment}}</td>
+                            <td>{{l.createdAt | date:'d-MMM-yy HH:mm'}}</td>
+                            <td>{{l.public | date:'d-MMM-yy HH:mm'  }}</td>
+                            <td style="width: 200px; white-space: normal">{{ l.adminComment}} <br> {{l.adminCommentTimeStamp | date:'d-MMM-yy HH:mm'  }}</td>
+                            <td>{{l.adminCommentEmailSent | date:'d-MMM-yy HH:mm' }}</td>
+
                         </tr>
                         </tbody>
                     </table>

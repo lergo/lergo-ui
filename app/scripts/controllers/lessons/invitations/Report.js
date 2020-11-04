@@ -1,10 +1,13 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
-    function ($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope) {
+    function ($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope, ShareService) {
         $log.info('loading');
         LergoClient.reports.getById($routeParams.reportId).then(function (result) {
             $scope.report = result.data;
+            if ($scope.report.data.invitee && $scope.report.data.invitee.name) {
+                ShareService.setInvitee($scope.report.data.invitee.name);
+            }
             getWrongQuestion($scope.report);
             $rootScope.page = {
                 'title': $scope.report.data.lesson.name,
@@ -20,11 +23,11 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
             $scope.reportStats.wrong = _.sumBy($scope.stats, 'uwq');
             $scope.reportStats.openQuestions = _.sumBy($scope.stats, 'openQuestions');
         });
-
+ 
         $scope.absoluteShareLink = function (id) {
             return window.location.origin + '/#!/public/lessons/' + id + '/intro';
         };
-
+        
         $scope.startLesson = function (lessonId) {
             $scope.startBtnDisable=true;
             if (!lessonId) {
@@ -96,6 +99,17 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
         $scope.practiceMistakes = function () {
             $scope.practiseBtnDisable = true;
             LergoClient.lessons.createLessonFromWrongQuestions($scope.report, $scope.wrongQuestions).then(
+                function (lesson) {
+                    $scope.startLesson(lesson._id);
+                    $scope.practiseBtnDisable = false;
+                }, function () {
+                    $log.error('Error in creating Practise Lesson');
+                    $scope.practiseBtnDisable = false;
+                });
+        };
+        $scope.practiceMistakesAnon = function () {
+            $scope.practiseBtnDisable = true;
+            LergoClient.lessons.createLessonFromWrongQuestionsForAnon($scope.report, $scope.wrongQuestions).then(
                 function (lesson) {
                     $scope.startLesson(lesson._id);
                     $scope.practiseBtnDisable = false;

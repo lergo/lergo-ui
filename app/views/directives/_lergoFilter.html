@@ -72,6 +72,13 @@
                         <input type="checkbox" ng-model="hasAdminComment"/>
                     </div>
                 </span>
+                <!--  hasAdminCommentEmailSent: for admin use -->
+                <span ng-show="!!opts.showHasAdminCommentEmailSent">
+                    <div class="label">{{'filters.labels.noAdminCommentEmailSent' | translate }}</div>
+                    <div class="input">
+                        <input type="checkbox" ng-model="hasAdminCommentEmailSent"/>
+                    </div>
+                </span>
 
                 <!-- AdminRating: for admin use -->
                 <span ng-show="!!opts.showAdminRating">
@@ -79,7 +86,7 @@
                     <div class="input">
                         <select ng-options="ar as ('filters.adminRatings.' + ar | translate) for ar in adminRatings track by ar"
                                 ng-model="model.adminRating">
-                            <!-- <option admin-section="!limitations.manageSubject" value="">{{'filters.all'|translate}}</option> -->
+                                <option value="">{{'filters.all'|translate}}</option>
                         </select>
                     </div>
                 </span>    

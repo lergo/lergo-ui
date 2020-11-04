@@ -45,34 +45,56 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			},
 			'dollar_page' : $scope.filterPage
 		};
-
-		function scrollToPersistPosition() {
-			var scrollY = 0;
-			if (!!$rootScope.scrollPosition) {
-				scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
-			}
-			$window.scrollTo(0, scrollY);
+		// jeff: this was the merge conflict that I removed!
+		// function scrollToPersistPosition() {
+		// 	var scrollY = 0;
+		// 	if (!!$rootScope.scrollPosition) {
+		// 		scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
+		// 	}
+		// 	$window.scrollTo(0, scrollY);
+		// }
+		// LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
+		// 	$scope.lessons = result.data.data;
+		// 	$scope.filterPage.count = result.data.count; // the number of
+		// 	// lessons found
+		// 	// after filtering
+		// 	// them.
+		// 	scrollToPersistPosition();
+		// 	$scope.loaded = true;
+		// });
+		
+		// Jeff mustHaveUndefined  for homepage loading with only language filter
+		// Jeff getPublicHomePageLessons is used to access and save the homepage in redis cache
+		var mustHaveUndefined = !queryObj.filter.hasOwnProperty('tags.label') &&
+		queryObj.filter.subject		=== undefined &&
+		queryObj.filter.age			=== undefined &&
+		queryObj.filter.userId		=== undefined &&
+		queryObj.filter.searchText	=== undefined &&
+		queryObj.filter.views		=== undefined &&
+		$scope.filterPage.current === 1;  //insure not a page request
+		if (mustHaveUndefined) {
+			$log.info('using redis cache for homepage');
+			// will be used exclusively for homepage loading - which will be cached 
+			LergoClient.lessons.getPublicHomepageLessons(queryObj).then(function(result) {
+				$scope.lessons = result.data.data;
+				$scope.filterPage.count = result.data.count; // the number of
+				// lessons found
+				// after filtering
+				// them.
+				scrollToPersistPosition();
+				$scope.loaded = true;
+			});
+		} else {
+			LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
+				$scope.lessons = result.data.data;
+				$scope.filterPage.count = result.data.count; // the number of
+				// lessons found
+				// after filtering
+				// them.
+				scrollToPersistPosition();
+				$scope.loaded = true;
+			});
 		}
-		LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
-			$scope.lessons = result.data.data;
-			$scope.filterPage.count = result.data.count; // the number of
-			// lessons found
-			// after filtering
-			// them.
-			scrollToPersistPosition();
-			$scope.loaded = true;
-		});
-		// getting users out of public lessons
-		/* var o = '';
-		var queryObjUnlimited = {filter: {'public': {$exists: 1}}, limit: 0};
-		LergoClient.lessons.getPublicLessons(queryObjUnlimited).then(function(result) {
-			console.log('query object is: ', queryObjUnlimited);
-			var allPublicUsers = _.map(result.data.data, o => _.pick(o, ['userId', 'username']));
-			$scope.myUsers = _.uniqBy(allPublicUsers, 'userId');
-			console.log('myUsers are: ', $scope.myUsers);
-			
-		}); */
-
 	};
 
     var translate = $filter('translate');

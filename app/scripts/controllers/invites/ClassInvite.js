@@ -8,7 +8,7 @@
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('ClassInviteCtrl', function ($window, $scope, LergoClient, $routeParams, $log, LergoTranslate, $rootScope , $location ) {
+    .controller('ClassInviteCtrl', function ($window, $scope, LergoClient, $routeParams, $log, LergoTranslate, $rootScope , $location, ShareService ) {
         $window.scrollTo(0, 0);
 
         $scope.classInvite = {};
@@ -30,11 +30,9 @@ angular.module('lergoApp')
             $rootScope.lergoLanguage = LergoTranslate.setLanguageByName(result.data.language);
         });
 
-
-
-
         $scope.createReportFromClassInvite = function () {
             $scope.classInvite.error = null;
+            ShareService.setInvitee($scope.classInvite.studentName);
             LergoClient.reports.createFromInvitation(invitation, {invitee: {name: $scope.classInvite.studentName}})
                 .then(function success(result) {
                     $log.info('invite is ready');

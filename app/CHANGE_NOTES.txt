@@ -1,3 +1,37 @@
+lergo-ui fix(bug - non logged in user) completed code for non logged in user in reports practice mistakes. Add if statement for
+    ShareService
+lergo-ui invitee name must also be visible when user does Start Over
+lergo-ui and ri feature(allow non logged in user to do practice mistakes) instead of non logged in user getting warning
+     to first sign in, he will be able to do practice mistakes
+lergo-ui feat(validate signup on change password) for unvalidated user, initiating change password autovalidates the user
+lergo-ui bug(fix) invitee.name was only working for "Start-Over" in reports, not on certificates
+    redid code to use a Service and removed $location'
+lergo-ui reverting previous commit - commenting out  getMyLessonLike and getMyQuestionLike and removing 
+    the test/spec (it is used!!!)
+lergo-ui 1. change desktop embed-responsive to NoAutoPlay
+    2. Add invitee.name to report for lessonsInvitation "Start Over"
+lergo-ui commenting out  getMyLessonLike and getMyQuestionLike and removing 
+    the test/spec (not used but gives error in console)
+lergo-ri 1. redis connect moved to service with only one connection instance. 2. fix exactMatch bug where ... 
+... correct answer was also incorrect answer with explanation
+lergo-ri adding willExpireOn dates for reports and users that are not validated - 
+... adding corresponding indexes to mongo
+bug(fix - redis homepage cache) correct code on filterPage
+lergo-ui bug(fix pagination) add page request to filtering out cached homepage requests and update test
+lergo-ui bug(fix for previous build) fixing filter for choosing homempage caching or mongodb query.
+lergo-ri and lergo-ui:  reverting previous caching method for homepage lessons and users, implementing redis caching with 1 hour TTL ...
+... for these features. Downloading allUsers (for admin) only when admin is logged in
+lergo-ri adding expiry date to lessonsIntro and questions to update number of views on the lessons weekly
+lergo-ri bug(fix) TTL date in lessonsInvitations was not ISO, change key to willExpireOn and add TTL index
+db removed all non validated users older than 6 weeks and all anonymous lessonsInvitations older than 6 weeks
+lergo-ri git commit redis caching bug(fix) questions are not returned as objects so code changes needed for stringify
+lergo-ri reimplementing mocha beforeBuild tests now that redis is working in build
+lergo-ui script/test_ri.sh bug fix for openSSL and add redis-server
+lergo-ri adding npm redis - mocha exploded when it could not find the module 5th try
+lergo-ri implementing redis server  and caching lessonIntro and questionsas they are used
+lergo-ui limit max of 20 characters in username
+lergo-ui commenting out footer link and "about" to webinar
+lergo-ui bug(fix) adding closing tag in signup submit and adding subject: hebrew-hsl
 lergo-ui and lergo-ri adding routes for invalid lessons to be healed even when user not logged in
 lergo-ui implement fixing lessons on the fly prior to report being created and lesson played - had to remove on test for
     checking that wrong answers in practice mistakes are unique (invitations/Display.js) - also removed all $log.info data
