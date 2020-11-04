@@ -46,13 +46,13 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			'dollar_page' : $scope.filterPage
 		};
 		// jeff: this was the merge conflict that I removed!
-		// function scrollToPersistPosition() {
-		// 	var scrollY = 0;
-		// 	if (!!$rootScope.scrollPosition) {
-		// 		scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
-		// 	}
-		// 	$window.scrollTo(0, scrollY);
-		// }
+		function scrollToPersistPosition() {
+			var scrollY = 0;
+			if (!!$rootScope.scrollPosition) {
+				scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
+			}
+			$window.scrollTo(0, scrollY);
+		}
 		// LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
 		// 	$scope.lessons = result.data.data;
 		// 	$scope.filterPage.count = result.data.count; // the number of
