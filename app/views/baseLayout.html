@@ -103,7 +103,9 @@
                                               <ul class="dropdown-menu overidePositionInherit dropdown-align" uib-dropdown role="menu" aria-labelledby="single-button">
                                                  <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
                                                  <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
-                                                 <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
+                                                 <a show-anonymous href="#!/public/session/login" tooltip-placement="bottom" tooltip-trigger="focus" 
+                                                 uib-tooltip-template="'views/lessons/signupTemplates/inviteSignupTemplate.html'"
+                                                 tabindex="0">{{
                                                                 'baseLayout.header.links.create'| translate }} </a></li>
                                                  <li role="menuitem"><a href="#!/user/Parents">{{ 'baseLayout.header.links.' + 'Parents'.toLowerCase() | translate }}</a></li>
                                                  <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
@@ -137,8 +139,9 @@
                                         </div>
                                         <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
                                         <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
-                                            <a show-anonymous href="#!/public/session/login" popover-placement="bottom" popover-trigger="focus" popover="{{'createNotAvailable' | translate}}" tabindex="0">{{
-                                                'baseLayout.header.links.create'| translate }}
+                                            <a show-anonymous href="#!/public/session/login" tooltip-placement="bottom" tooltip-trigger="'outsideClick'"
+                                            uib-tooltip-template="'views/lessons/signupTemplates/inviteSignupTemplate.html'"
+                                            tabindex="0">{{'baseLayout.header.links.create'| translate }}
                                             </a>
                                         </li>
                                         <li role="menuitem"><a href="#!/user/Parents">{{ 'baseLayout.header.links.' + 'Parents'.toLowerCase() | translate }}</a></li>

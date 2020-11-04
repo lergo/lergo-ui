@@ -1,3 +1,6 @@
+
+lergo-ui implementing "uib-tooltop-template" to replace popover for non logged in users and
+    fixing direction of pagination for Arabic.
 lergo-ui fix(bug - non logged in user) completed code for non logged in user in reports practice mistakes. Add if statement for
     ShareService
 lergo-ui invitee name must also be visible when user does Start Over
