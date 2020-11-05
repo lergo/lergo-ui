@@ -1,0 +1,33 @@
+<div class="question-multi-choice">
+	<div class="{{!quizItem.checkAnswer.correct && 'quiz-wrong' || 'quiz-correct'}}">
+		<div ng-include="'views/questions/report/partial/_questionHeader.html'"></div>
+		<div class="quiz-answer">
+			<div>
+				<div class="bold">{{'questions.correctAnswers'|translate}}</div>
+				<div dir="auto" ng-repeat="option in quizItem.options">
+					{{option.label}}
+					<i ng-show="!!option.checked" class="fa fa-check correct"></i>
+				</div>
+			</div>
+			<br>
+			<div>
+				<div class="bold">{{'questions.yourAnswers'|translate}}</div>
+				<div dir="auto" ng-repeat="answer in quizItem.userAnswer">
+					{{answer}}
+					<i ng-show="!isCorrectAnswer(quizItem , answer)" class="fa fa-times wrong"></i>
+					<i ng-show="isCorrectAnswer(quizItem , answer)" class="fa fa-check correct"></i>
+				</div>
+			</div>
+            <div ng-show="quizItem.checkAnswer.expMessage.length > 0 ">
+                <br>
+
+                <div class="bold">{{'explanation'|translate}}</div>
+                <div dir="auto" ng-repeat="msg in quizItem.checkAnswer.expMessage">{{msg}}</div>
+            </div>
+			<div ng-show="!!quizItem.explanationMedia">
+				<br>
+				<div quiz-item-explanation-media class="img-small"   quiz-item="quizItem"></div>
+			</div>
+		</div>
+	</div>
+</div>

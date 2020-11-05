@@ -231,6 +231,7 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
         };
 
         $scope.addStep = function (lesson, $index) {
+            console.log('adding a step in Update.js lesson, $index', lesson, $index);
             addStepClicked = true;
             if (!lesson.steps) {
                 lesson.steps = [];

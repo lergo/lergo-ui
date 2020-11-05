@@ -1,0 +1,157 @@
+<div class="modal-header text-right">
+        <button class="btn btn-link btn-lg btn-close-preview" type="button" ng-click="cancel()">
+            <i class="fa fa-close"></i>
+        </button>
+    </div> 
+    
+    <div class="modal-body" id="modal-body">
+        <div>
+            <div class="playlist-preview">
+                <div class="row header">
+                    <div class="col-md-2 col-sm-12 col-xs-12 img-responsive hidden-sm hidden-xs" >
+                        <div playlist-title-image playlist="playlist"></div>
+                    /views/playlist/preview/preview.html
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12 header-name ">
+                        <div>
+                            <div class="sub-title">{{'playlistPreview.header.title' | translate}}</div>
+                            <br/>
+                        </div>
+                        <div class="title">
+                            {{playlist.name| limitTo:40}}
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden-sm hidden-xs" ng-show="!!playlist.description">
+                            <div class="sub-title padding-leftRight15">{{'report.description'|translate}}</div>
+                            <div class="padding-leftRight15 mfont-size13">{{playlist.description | limitTo:440}}</div>
+                        </div>
+                        <div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="padding-leftRight15 top15">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <span class="bold">{{'fromAge' | translate }}:&nbsp;</span>
+                                        {{playlist.age}}
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 mpad-topBot2 d-padl">
+                                        <span class="bold">{{'filters.labels.subject' | translate }}:&nbsp;</span>
+                                        {{'filters.subjects.'+playlist.subject | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapsible row">
+                    <a href="" class="no-underline" ng-click="stepCollapsed=!stepCollapsed">
+                        <i ng-show="!!stepCollapsed" class="fa fa-plus-square"></i>
+                        <i ng-show="!stepCollapsed" class="fa fa-minus-square"></i>
+                        {{'report.playlistSteps'|translate}}
+                    </a>
+                </div>
+                <hr/>
+                <div class="step row" uib-collapse="!!stepCollapsed">
+                    <div class="top20" ng-repeat="step in playlist.steps">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
+                            <div class="col-lg-3 col-md-7-col col-sm-7 col-xs-7">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
+                                    <i ng-show="!!step.quizItems" class="fa fa-lesson-circle"></i>
+                                    <i ng-show="!!step.slideURL" class="fa fa-television "></i>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                    <span dir="auto" class="title">{{step.title}}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
+                                <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}" target="_blank">
+                                    {{'reports.click.video' | translate}}</a>
+                                <span ng-show="!!step.quizItems">
+                                     <ng-pluralize count="step.quizItems.length" when="{
+                                            '0': '{{ &quot;report.lessonsInQuiz.zero&quot; | translate}}',
+                                            'one':'{} {{ &quot;report.lessonsInQuiz.one&quot; | translate}}',
+                                            'other':'{} {{ &quot;report.lessonsInQuiz.other&quot; | translate}}'}">
+                                     </ng-pluralize>
+                                </span>
+                                <a class="inline-table" ng-show="!!step.slideURL" ng-href="{{step.slideURL}}" target="_blank">
+                                    {{'reports.click.step' | translate}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="!!playlist.nextPlaylistId || !!playlist.priorPlaylistId">
+                    <div class="collapsible row">
+                        <a href="" class="no-underline " ng-click="recommendationCollapsed=!recommendationCollapsed">
+                            <i ng-show="!!recommendationCollapsed" class="fa fa-plus-square"></i>
+                            <i ng-show="!recommendationCollapsed" class="fa fa-minus-square"></i>
+                            {{'report.recommendation'|translate}}
+                        </a>
+                    </div>
+                    <hr/>
+                    <div class="step row" uib-collapse="!!recommendationCollapsed">
+                        <div  ng-show="!!playlist.nextPlaylistId">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top20 pad-topBot7">
+                                <div class="col-lg-3 col-md-7 col-sm-7 col-xs-7">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                        <i class="fa fa-university"></i>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                        <span class="title">{{'report.nextPlaylist' | translate}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
+                                   <a ng-href="#!/public/playlists/{{playlist.nextPlaylistId}}/intro" target="_blank">
+                                      {{'reports.click.nextPlaylist' | translate}}
+                                   </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="!!playlist.priorPlaylistId">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad-topBot7">
+                                <div class="col-lg-3 col-md-7-col col-sm-7 col-xs-7">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                        <i class="fa fa-university">&nbsp;</i>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                        <span class="title">{{'report.priorPlaylist' | translate}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
+                                    <a ng-href="#!/public/playlists/{{playlist.priorPlaylistId}}/intro" target="_blank">
+                                        {{'reports.click.priorPlaylist' | translate}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="details col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;">
+                    <div class="collapsible row">
+                        <a class="no-underline" href="" ng-click="detailCollapsed=!detailCollapsed">
+                            <i ng-show="!!detailCollapsed" class="fa fa-plus-square"></i>
+                            <i ng-show="!detailCollapsed" class="fa fa-minus-square"></i>
+                            {{'playlistPreview.detailHeader'|translate}}
+                        </a>
+                    </div>
+                    <hr/>
+                    <div uib-collapse="!!detailCollapsed" class="detail row">
+                        <div class="row row-nested" ng-repeat="step in playlist.steps" style="margin: 10px 15px 15px 15px;">
+                            <div ng-if="!!step.quizItems" class="col-md-12 col-sm-12 col-xs-12">
+                                <div dir="auto" class="collapsible">{{step.title}}</div>
+                                <div ng-repeat="id in step.quizItems">
+                                    <lesson-preview quiz-item="lessons[id]"></lesson-preview>
+                                </div>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" ng-click="cancel()">{{'cancel' |translate}}</button>
+    </div>
+    

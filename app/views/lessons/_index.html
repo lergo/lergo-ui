@@ -1,86 +1,84 @@
 
 <div>
-    <div id="lessonsIndex" load-filter-and-paging="loadLessons()">
-        <br/>
-            <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
-                                    <div>
-                                        <div class="filter-lessons lergo-h1-orig hidden-sm hidden-xs">{{ 'lessons.filter' | translate }}</div>
-                                        <div lergo-filter   model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
+        <div id="lessonsIndex" load-filter-and-paging="loadLessons()">
+            <br/>
+                <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
+                                        <div>
+                                            <div class="filter-lessons lergo-h1-orig hidden-sm hidden-xs">{{ 'lessons.filter' | translate }}</div>
+                                            <div lergo-filter   model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
+                                        </div>
                                     </div>
-                                </div>
-                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
-                        </div>
-                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                            <div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                 <div>
-                                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
-                                        <div class="my-lessons lergo-h1-orig" >
-                                            <div class="btn-group mobile-leftRight15" uib-dropdown dropdown-append-to-body>
-                                                <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
-                                                    <span class="fa fa-caret-down"></span>
-                                                    <span class="lergo-h1-orig d-padBot15">{{('lessons.'+ lessonToLoad |translate)}} </span>
-                                                </button>
-                                                <ul class="dropdown-menu overidePositionInherit" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
-                                                    <li>
-                                                        <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.user)">{{'lessons.myLessons'|translate}}</a>
-                                                        <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.liked)">{{'lessons.likedLessons'|translate}}</a>
-                                                    </li>
-                                                </ul>
+                                    <div>
+                                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
+                                            <div class="my-lessons lergo-h1-orig" >
+                                                <div class="btn-group mobile-leftRight15" uib-dropdown dropdown-append-to-body>
+                                                    <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
+                                                        <span class="fa fa-caret-down"></span>
+                                                        <span class="lergo-h1-orig d-padBot15">{{('lessons.'+ lessonToLoad |translate)}} </span>
+                                                    </button>
+                                                    <ul class="dropdown-menu overidePositionInherit" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                                                        <li>
+                                                            <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.user)">{{'lessons.myLessons'|translate}}</a>
+                                                            <a class="btn-link" style="outline: none;" ng-click="load(LessonTypeToLoad.liked)">{{'lessons.likedLessons'|translate}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                [ {{ 'lessons.total' | translate }}: {{filterPage.count}} ]
                                             </div>
-                                            [ {{ 'lessons.total' | translate }}: {{filterPage.count}} ]
                                         </div>
-                                    </div>
-                                    <div class="col-border-bottom col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                        <div class="create" >
-                                            <button ng-click="createLessonBtnDisable || create()" class="btn btn-start"  ng-disabled="createLessonBtnDisable">
-                                                <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
-                                                {{ 'lessons.create' | translate }}
-                                            </button>
+                                        <div class="col-border-bottom col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                            <div class="create" >
+                                                <button ng-click="createLessonBtnDisable || create()" class="btn btn-start"  ng-disabled="createLessonBtnDisable">
+                                                    <i ng-show="createLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+                                                    {{ 'lessons.create' | translate }}
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class=" hidden-sm hidden-xs">
+                                    <div filter-is-active="lessonsFilterOpts" section="lessons"></div>
+                                </div>
+                                <div class="table-responsive"style="border: 1px solid #FAFAFA"> <!--without a style, iPad does not show content!-->
+                                    <table class="table   " ng-show="lessons.length > 0">
+                                    <thead>
+                                    <tr style="font-weight: bold">
+                                        <td class="col1">{{ 'name' | translate }}</td>
+                                        <td>{{ 'questions.subject' | translate}}</td>
+                                        <td>{{ 'questions.age' | translate}}</td>
+                                        <td>{{ 'questions.language' | translate}}</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="les in lessons |orderBy:'-lastUpdate'">
+                                        <td class="name" dir="auto">
+                                            <a ng-show="!!les.name && les.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">{{
+                                                les.name }}</a>
+                                            <a ng-show="!les.name || les.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">[
+                                                no title ]</a>
+                                        </td>
+                                        <td >{{les.subject && ('filters.subjects.' + les.subject | translate) ||""}}</td>
+                                        <td >{{les.age &&('+'+ les.age) || ""}}</td>
+                                        <td >{{les.language && ('filters.languages.' + les.language | translate) || ""}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div>
                             </div>
-                            <div class=" hidden-sm hidden-xs">
-                                <div filter-is-active="lessonsFilterOpts" section="lessons"></div>
-                            </div>
-                            <div class="table-responsive"style="border: 1px solid #FAFAFA"> <!--without a style, iPad does not show content!-->
-                                <table class="table   " ng-show="lessons.length > 0">
-                                <thead>
-                                <tr style="font-weight: bold">
-                                    <td class="col1">{{ 'name' | translate }}</td>
-                                    <td>{{ 'questions.subject' | translate}}</td>
-                                    <td>{{ 'questions.age' | translate}}</td>
-                                    <td>{{ 'questions.language' | translate}}</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr ng-repeat="les in lessons |orderBy:'-lastUpdate'">
-                                    <td class="name" dir="auto">
-                                        <a ng-show="!!les.name && les.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">{{
-                                            les.name }}</a>
-                                        <a ng-show="!les.name || les.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'lessons.tooltip.go' | translate}}" ng-href="#!/user/lessons/{{les._id}}/intro">[
-                                            no title ]</a>
-                                    </td>
-                                    <td >{{les.subject && ('filters.subjects.' + les.subject | translate) ||""}}</td>
-                                    <td >{{les.age &&('+'+ les.age) || ""}}</td>
-                                    <td >{{les.language && ('filters.languages.' + les.language | translate) || ""}}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
                     </div>
+                <div class="page-content-body text-center" ng-hide="!!lessons || lessons.length != 0">
+                    <span class="alert alert-warning font-medium" >{{'lessons.noLessons' | translate}}</span>
                 </div>
-            <div class="page-content-body text-center" ng-hide="!!lessons || lessons.length != 0">
-                <span class="alert alert-warning font-medium" >{{'lessons.noLessons' | translate}}</span>
-            </div>
-        <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
+            <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
+        </div>
     </div>
-</div>
-
-
-
+    

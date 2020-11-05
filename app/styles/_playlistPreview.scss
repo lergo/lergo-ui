@@ -1,0 +1,179 @@
+.playlist-preview {
+
+    .lessons-mobile {
+        .image {
+            position: relative;
+            margin: -35px auto 0 auto;
+            text-align: center;
+            z-index: 0;
+            &, img {
+                height: 120px;
+                width: 180px;
+            }
+            i {
+                font-size: 120px;
+            }
+        }
+    }
+
+    .collapsible {
+        @extend .lergo-h1;
+        font-size: 20px;
+    }
+    .title {
+        @extend .lergo-h1;
+        font-size: 15px;
+        white-space: normal;
+    }
+    .sub-title {
+        @extend .lergo-h4;
+        font-size: 18px;
+        color: #949494;
+    }
+    margin: 20px 10px;
+    .header {
+        img {
+            width: 100%;
+
+        }
+        .fa-university {
+            @extend .fa-university;
+            font-size: 105px;
+        }
+        .title {
+            text-align: center;
+        }
+        height: inherit;
+        min-height: 140px;
+        padding: 10px 20px 10px 20px;
+        background-color: #EFEFEF;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        .header-name {
+            text-align: center;
+            border: 3px solid blue;
+            border-radius: 10px;
+            padding: 30px;
+        }
+    }
+    .header-desc {
+        min-height: 80px;
+    }
+
+    .step {
+        padding: 1px 20px 20px;
+        background-color: #EFEFEF;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        .icon {
+            width: 5%;
+        }
+        .title {
+            width: 20%;
+        }
+        .description {
+            .bg-success {
+                margin: 5px;
+            }
+            .bg-warning {
+                margin: 5px;
+            }
+            .bg-primary {
+                margin: 5px;
+            }
+            i {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    }
+    .recommendation {
+        padding: 1px 10px 20px;
+        background-color: #EFEFEF;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+    .details {
+        .detail {
+            background-color: #EFEFEF;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            .quiz {
+                padding: 5px 15px;
+                border-radius: 10px;
+                border: 5px solid #949494;
+                .bold {
+                    font-weight: bold;
+                }
+                .specific-explanation {
+                    display: block;
+                    font-weight: bold;
+                }
+                .quiz-answer {
+                    padding: 10px;
+                }
+                .help-text {
+                    font-style: italic;
+                    color: #949494;
+                    padding: 10px;
+                }
+                .question-media {
+                    padding-left: 10px;
+                }
+                .answers {
+                    .true-false-options {
+                        .true-false-option {
+                            padding: 15px;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.playlist-preview-dialog .modal-dialog {
+    width: 66%;
+    min-width: 320px;
+    min-height: 90%;
+    .modal-content {
+        .modal-header{
+            padding: 0px;
+        }
+        .modal-body {
+            height: 500px;
+            overflow-y: auto;
+        }
+        .modal-footer {
+            padding: 5px 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .playlist-preview {
+        .title {
+            font-size: 15px;
+        }
+        .details {
+            .detail {
+                .quiz {
+                    padding: 5px;
+                }
+
+            }
+        }
+    }
+    .playlist-preview-dialog .modal-dialog {
+        width: 95%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .playlist-preview-dialog .modal-dialog .modal-content .modal-body {
+        padding-left: 30px;
+        padding-right: 30px
+    }
+}
+

@@ -18,13 +18,12 @@ angular.module('lergoApp').service('UsersService', function UsersService($http, 
     };
 
     var me = this;
+    var permissionsPromise;
 
     $rootScope.$watch('user', function( ){
         permissionsPromise = null;
         me.getUserPermissions();
     });
-
-    var permissionsPromise;
 
     // returns an object of all permissions.
     // if the permissions are for example 'lesson.canEdit', 'lesson.canView', 'question.canEdit'

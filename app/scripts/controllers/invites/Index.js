@@ -17,6 +17,13 @@ angular.module('lergoApp').controller('InvitesIndexCtrl',
 	$scope.invitesPage = {
 		selectAll : false
 	};
+	function scrollToPersistPosition() {
+		var scrollY = 0;
+		if (!!$rootScope.scrollPosition) {
+			scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
+		}
+		$window.scrollTo(0, scrollY);
+	}
 
     $scope.getInvitationLink = function(invite){
         if ( invite.invitee.name ) {
@@ -152,7 +159,13 @@ angular.module('lergoApp').controller('InvitesIndexCtrl',
         });
     };
 
-    var path = $location.path();
+	var path = $location.path();
+	function persistScroll(pageNumber) {
+		if (!$rootScope.scrollPosition) {
+			$rootScope.scrollPosition = {};
+		}
+		$rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
+	}
 	$scope.$on('$locationChangeStart', function() {
 		persistScroll($scope.filterPage.current);
 	});
@@ -163,19 +176,7 @@ angular.module('lergoApp').controller('InvitesIndexCtrl',
 			persistScroll(oldValue);
 		}
 	});
-	function persistScroll(pageNumber) {
-		if (!$rootScope.scrollPosition) {
-			$rootScope.scrollPosition = {};
-		}
-		$rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
-	}
-	function scrollToPersistPosition() {
-		var scrollY = 0;
-		if (!!$rootScope.scrollPosition) {
-			scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
-		}
-		$window.scrollTo(0, scrollY);
-	}
+
 
     function getReportForSelectedInvites() {
 

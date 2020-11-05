@@ -1,0 +1,31 @@
+<div class="lergo-form share playlist-action-panel">
+        <div class="share-navigation clearfix playlist-action-panel-navigation">
+            <p class="lergo-h4 share-section-link playlist-action-panel-link" ng-click="shareSection = 'link'; copied = false" ng-class="{'active' : shareSection === 'link'}">{{'playlists.sharePlaylist'
+                | translate}}</p>
+            <p class="lergo-h4 share-section-link playlist-action-panel-link" ng-click="shareSection = 'embed'; copied = false" ng-class="{'active' : shareSection === 'embed'}">{{'playlists.embedPlaylist'
+                | translate}}</p>
+            <button class="btn-link close-button" ng-click="setActiveAction()"><span class="fa fa-times"></span></button>
+        </div>
+        <div class="share-link action-link">
+            <div class="links-facebook">
+                <div ng-show="shareSection === 'link'">
+                    <button facebook class="btn-link" url="shareLink">
+                    </button>
+                </div>
+            </div>
+            <div  style="display: inline-block">
+                <span class="links-sharing" ng-show="copied"> <i class="fa fa-copy"></i> &nbsp;{{'invitations.linkCopied' | translate}}&nbsp;</span>
+            </div>
+            <div ng-show="shareSection === 'link' ">
+                <span>{{'playlists.sharePlaylistTitle' | translate}}</span>
+                <textarea type="text" ng-model="shareLink" readonly select-all-text-on-click="link"></textarea>
+            </div>
+        </div>
+        <div class="share-embed action-embed" ng-show="shareSection === 'embed' ">
+            <div style="margin-top: 10px">
+                <span>{{'playlists.embedPlaylistTitle' | translate }}</span>
+                <textarea ng-model="embedCode" readonly select-all-text-on-click="link"></textarea>
+            </div>
+        </div>
+    </div>
+    </div>

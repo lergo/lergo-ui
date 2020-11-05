@@ -1,0 +1,82 @@
+<!--Nothing to display as answer-->
+<!-- <div>
+   <label style='color:rgb(32, 18, 156) ;font-size: 20px'> quizItem name: {{quizItem.name}}</label>
+   <p> quizItem subject: {{quizItem.subject}}</p>
+   <div> quizItem age: {{quizItem.age}}</div>
+   <div> quizItem language: {{quizItem.language}}</div>
+</div> -->
+<div> <!--start of mobile view of quizItems-->
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            /views/lessons/view/preview2/_exactMatch.html
+         <div class="homepage-desktop">
+             <div >
+                 <div class="lessons-desktop">
+                     <div class="age-limit age-limit-{{quizItem.age}}">
+                         <div class="value">{{quizItem.age}}+</div>
+                         <div class="units">
+                             <i class="fa fa-arrow-up"></i>
+                             {{'homepage.years'|translate}}
+                         </div>
+                     </div>
+                     <!-- age limit -->
+                     <div class="image">
+                         <a href="#!/public/lessons/{{quizItem._id}}/intro">
+                             <div lesson-title-image lesson="quizItem"></div>
+                         </a>
+                     </div>
+                     <div dir="auto" class="title">
+                         <br>
+                         <a href="#!/public/lessons/{{quizItem._id}}/intro">
+                             <span uib-tooltip="{{quizItem.name}}">{{ quizItem.name|limitTo:60 }}</span>
+                             <span ng-show="quizItem.name.length >60">...</span>
+                         </a>
+                     </div>
+                     <div class="stats">
+                         <table class="stats-table">
+                             <tr>
+                                 <td>
+                                   <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
+                                         <i class="fa fa-user fa-fw"></i>
+                                             {{quizItem.user.username | limitTo: 8 | lowercase}}
+                                   </span>
+                                 </td>
+                                 <td>
+                                    <span uib-tooltip="{{'homepage.tooltip.views' | translate}}">
+                                       <i class="fa fa-eye fa-fw"></i>
+                                             {{0+quizItem.views}}
+                                    </span>
+                                 </td>
+                                 <td>
+                                    <span ng-show="hasQuestions(quizItem)" uib-tooltip="{{'homepage.tooltip.questions' | translate}}">
+                                       <i class="fa fa-question-circle fa-fw"></i>
+                                             {{quizItem | countQuestionsOnLesson }}
+                                    </span>
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td>
+                                    <span uib-tooltip="{{'quizItems.createdOn' | translate}}">
+                                         <i class="fa fa-calendar"></i>
+                                             {{quizItem | mongoIdToTimestamp | date:'d-MMM-yyyy'}}
+                                    </span>
+                                 </td>
+                                 <td colspan="2">
+                                     <span ng-show="!!quizItem.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
+                                           <i class="fa fa-book fa-fw"></i>
+                                                 {{quizItem.subject && ('filters.subjects.' + quizItem.subject | translate)}}
+                                     </span>
+                                 </td>
+                             </tr>
+                         </table>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      </div>
+     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            this is for the checkbox, status:
+            <input type="checkbox">
+      </div>
+</div> <!--end of mobile view-->

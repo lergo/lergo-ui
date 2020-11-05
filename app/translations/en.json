@@ -126,6 +126,8 @@
         "manageRoles": "Manage Roles",
         "manageUsers": "Manage Users",
         "parents": "Parents",
+        "playlists": "Playlists",
+        "playlistRprts": "Playlist Reports",
         "profile": "Profile",
         "privacy": "Privacy and Terms",
         "questions": "Questions",
@@ -168,6 +170,7 @@
     "newInvite": "New Invite",
     "resendValidationEmail": "Resend validation email",
     "showLesson": "Display Lesson",
+    "showPlaylist": "Display Playlist",
     "signup": "Signup",
     "signupSubmit": "SIGNUP",
     "submit": "Submit"
@@ -561,12 +564,16 @@
     "addCoverPageHint": "To add your cover image to lesson please paste here the image URL.",
     "addQuestion": "Add Questions to Quiz",
     "addQuestionFromAll": "from all questions",
+    "age": "Age",
+    "allLessons": "All Lessons",
     "areYouReady": "Are you ready to start learning?",
     "available": "Available Lessons",
+    "createNewLesson": "Create New Lesson",
     "comment": "Comments",
     "continueLesson": "Continue Lesson",
     "create": "Create New Lesson",
     "createdOn": "created on",
+    "createdBy": "Created by",
     "description": "Lesson Description",
     "edit": {
       "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
@@ -616,8 +623,10 @@
         }
       }
     },
+    "index": "index",
     "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
     "inviteSuccessText": "Copy the link below to invite a student to the lesson",
+    "language": "language",
     "lessonCompleted": "You have completed the lesson",
     "lessonReport": "Lesson Report",
     "letsContinue": "OK! Let's Continue",
@@ -646,6 +655,7 @@
     "slideURL": "Presentation URL",
     "slideURLHelpText": "Insert the URL of the Google Slides presentation here.",
     "startLesson": "Start Lesson",
+    "subject": "subject",
     "tags": "Tags",
     "tooltip": {
       "comment": "Comments",
@@ -789,6 +799,297 @@
     "redirect": "For all lessons",
     "placeholder": "Enter code",
     "enter": "Enter"
+  },
+
+  "playlistRprt": {
+    "answer": {
+      "stat": "{{avgCorrectPercentage | number:0}} % Correct ({{correct}} of {{count}} correct responses)"
+    },
+    "classSummary": "Class PlaylistRprt Summary",
+    "completed": "has completed the playlist",
+    "correctQuestions": {
+      "one": "Correct Answer",
+      "other": "Correct Answers",
+      "zero": "."
+    },
+    "CreatePlaylistFromWrongQuestions": "Create quiz from incorrect answers",
+    "date": "Date",
+    "description": "Playlist Description",
+    "detailedPlaylistRprt": "Detailed PlaylistRprt",
+    "details": {
+      "hint": "Note: The questions in this section are ordered according to their level of difficulty for the students."
+    },
+    "did": {
+      "not": {
+        "finish": "Did not finish"
+      }
+    },
+    "error": {
+      "while": {
+        "updating": "Error while updating playlistRprt"
+      }
+    },
+    "header": {
+      "classPlaylistRprt": "To Class PlaylistRprt",
+      "individualPlaylistRprts": "To Student PlaylistRprts"
+    },
+    "incomplete": "Incomplete",
+    "playlistStep": {
+      "practiceMode": {
+        "false": "No",
+        "hint": {
+          "1": "The correct answer was presented to the student after 1 try / 1 incorrect answer. The question was then presented again until the student entered a correct answer.",
+          "2": "Whenever the student had 2 incorrect tries / answers, the correct answer was presented to him, before moving on to next question. "
+        },
+        "showCorrectAns": {
+          "one": "The correct answer was shown after 1 try / incorrect answer.",
+          "other": "The correct answer was shown after 2 tries / incorrect answers."
+        },
+        "title": "Practice Mode",
+        "true": "Yes",
+        "try": {
+          "one": "try",
+          "other": "tries",
+          "zero": "try"
+        }
+      }
+    },
+    "playlistSteps": "Playlist Steps",
+    "missing": {
+      "info": "Missing information"
+    },
+    "nextPlaylist": "Recommended Next Playlist",
+    "notCompletedTitle": "has not yet completed the playlist",
+    "openQuestions": {
+      "one": "Open Question",
+      "other": "Open Questions",
+      "zero": "."
+    },
+    "playlistsInPlaylist": {
+      "one": "Playlist in Playlist",
+      "other": "Different Playlists in Playlist",
+      "zero": " There are no Playlists in this playlist"
+    },
+    "playlistsInQuiz": {
+      "one": "Playlist in Quiz",
+      "other": "Different Playlists in Quiz",
+      "zero": " ."
+    },
+    "playlistSteps": "Playlist Steps",
+    "priorPlaylist": "Recommended Previous Playlist",
+    "questionPerDifficulty": "Questions per Difficulty",
+    "questionsInPlaylist": {
+      "one": "Question in Playlist",
+      "other": "Different Questions in Playlist",
+      "zero": " There are no questions in this playlist"
+    },
+    "questionsInQuiz": {
+      "one": "Question in Quiz",
+      "other": "Different Questions in Quiz",
+      "zero": " ."
+    },
+    "recommendation": "Recommendations",
+    "saved": {
+      "successfully": "PlaylistRprt saved successfully"
+    },
+    "studentSummary": "Student PlaylistRprt Summary",
+    "summary": "PlaylistRprt Summary",
+    "summaryHint": "The playlistRprt is made of {{count}} complete student playlistRprts.",
+    "wrongQuestions": {
+      "one": "Incorrect Answer",
+      "other": "Incorrect Answers",
+      "zero": "."
+    }
+  },
+  
+  "playlistIntro": {
+    "action": {
+      "preview": {
+        "title": "Preview"
+      }
+    },
+    "copiedFromPlaylist": "Playlist was originally copied from playlist",
+    "copiedFromPlaylistBy": "by",
+    "copiedFromPlaylists": "Some of the content of this playlist were orignially copied from"
+  },
+  "PlaylistPreview": {
+    "detailHeader": "Preview of lessons in Playlist",
+    "header": {
+      "title": "Playlist Preview"
+    }
+  },
+  "playlistPreview": {
+    "detailHeader": "Preview of Lessons in Playlist",
+    "header": {
+      "title": "Playlist Preview"
+    }
+  },
+  
+  "playlists": {
+    "addAdminComment": "Add Admin comment",
+    "addCoverPage": "Add cover image for playlist intro",
+    "addAdminCommentPlaceholder": "Admin Comment",
+    "addCoverPageHint": "To add your cover image to playlist please paste here the image URL.",
+    "addLesson": "Add a Lesson",
+    "addQuestion": "Add Questions to Quiz",
+    "addQuestionFromAll": "from all questions",
+    "areYouReady": "Are you ready to start learning?",
+    "available": "Available Playlists",
+    "comment": "Comments",
+    "continuePlaylist": "Continue Playlist",
+    "create": "Create New Playlist",
+    "createdOn": "created on",
+    "description": "Playlist Description",
+    "edit": {
+      "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
+      "noPermissionsTitle": "You don't have permissions to edit this."
+    },
+    "embedPlaylist": "Embed",
+    "embedPlaylistTitle": "Copy the code below to embed playlist on your webpage or blog",
+    "error": {
+      "invalidName": "Playlist name is a required field. Please fill it out before adding a step to the playlist."
+    },
+    "filter": "Filter Playlists",
+    "filters": {
+      "labels": {
+        "age range": "Age Range",
+        "language": "Language",
+        "subject": "Subject",
+        "pagination": "Return to previous page"
+      }
+    },
+    "genericVideosPost": " The list will open in a new tab.",
+    "genericVideosPre": "For a list of generic animated videos please",
+    "invalidCoverPageLink": "Please make sure to upload image to your google drive and share link here",
+    "invalidLink": "Please paste a valid link for Wikipedia, Wikibooks or Wiktionary",
+    "invitePlaylist": {
+      "class": {
+        "help": "Invite CLASS: To generate a PIN number or link to the invite, please enter your class name and press submit.",
+        "msg": "Invite Class",
+        "name": "Class name",
+        "noteMessage": "You will receive your students playlist reports upon completion of each playlist.",
+        "noteTitle": "Note",
+        "pinHint": "(students to enter it at lergo.it).",
+        "success": {
+          "help": "To invite your CLASS to the playlist, students should enter PIN code at www.lergo.it - or- copy and give students the invite link.",
+          "invite": "Link to Playlist Invite"
+        }
+      },
+      "name": "Playlist name",
+      "student": {
+        "help": "Invite STUDENT: To generate a link for the invite please enter student's first name and press submit.",
+        "msg": "Invite Student",
+        "name": "Student name",
+        "noteMessage": "You will receive your kid's/student's playlist report upon completion of playlist.",
+        "noteTitle": " Note",
+        "pinHint": "(students to enter it at lergo.it).",
+        "success": {
+          "help": "To invite your STUDENT to the playlist, student should enter PIN code at www.lergo.it - or- copy and give student the invite link.",
+          "invite": "Link to playlist invite"
+        }
+      }
+    },
+    "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a playlist.",
+    "inviteSuccessText": "Copy the link below to invite a student to the playlist",
+    "playlistCompleted": "You have completed the playlist",
+    "playlistReport": "Playlist Report",
+    "letsContinue": "OK! Let's Continue",
+    "letsGo": "Let's LerGO!",
+    "likedPlaylists": "Liked Playlists",
+    "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like playlists.",
+    "myPlaylists": "My Playlists",
+    "name": "Playlist Name",
+    "noPlaylists": "To create a new playlist please click on \"Create New Playlist\".",
+    "note": "Note",
+    "noteMessage": "You will receive your kid's/student's playlist report upon completion of playlist.",
+    "practiceNotAvailable": "Please signup or login to LerGO. Only registered users can use this feature.",
+    "practiseWrongQuestion": "Practice Mistakes",
+    "readLess": "Read Less",
+    "readMore": "Read More",
+    "recommenedNextPlaylist": "Recommended Next Playlist",
+    "recommenedNextPlaylistText": "Copy and paste here the URL/link that appears when you press \"share\" on the playlist intro/details page.",
+    "recommenedPriorPlaylist": "Recommended Previous Playlist",
+    "recommenedPriorPlaylistText": "Copy and paste here the URL/link that appears when you press \"share\" on the playlist intro/details page.",
+    "reportAbuseNotAvailable": "To flag playlist or report abuse please login or register to LerGO. Alternately, you can also use the Report Abuse button at the footer below.",
+    "restart": "Start Over",
+    "seeReport": "See Report",
+    "sharePlaylist": "Share",
+    "sharePlaylistTitle": "Copy the link below to share playlist with friends",
+    "slideURL": "Presentation URL",
+    "slideURLHelpText": "Insert the URL of the Google Slides presentation here.",
+    "startPlaylist": "Start Playlist",
+    "tags": "Tags",
+    "tooltip": {
+      "comment": "Comments",
+      "copy": "Copy Playlist",
+      "delete": "Delete Playlist",
+      "edit": "Edit Playlist",
+      "go": "go to playlist",
+      "invite": "invite students",
+      "like": "like this playlist",
+      "liked": "you liked this playlist",
+      "preview": "Preview Playlist",
+      "restart": "Start again",
+      "share": "share with friends",
+      "start": "start playlist"
+    },
+    "total": "Total",
+    "videoURL": "Video URL",
+    "videoURLHelpText": "Insert the URL of the YouTube video here.",
+    "welcome": "Welcome to lergo",
+    "wikiLink": "Wikipedia Wikibooks Wiktionary",
+    "wikiLinkText": "Paste wikipedia / wikibooks / wiktionary link here",
+    "wikiLinkTitle": "Wikipedia"
+  },
+
+
+  "playlists1" : {
+    "create": "Create New Playlist",
+    "filter": "Filter Playlists",
+    "myPlaylists": "My Playlists",
+    "likedPlaylists": "Liked Playlists",
+    "total": "total"
+  },
+  "playlistRprts": {
+    "class": "Class",
+    "click": {
+      "nextPlaylist": "Link to lesson",
+      "priorPlaylist": "Link to lesson",
+      "step": "Link to presentation",
+      "video": "Link to video"
+    },
+    "correct": "Correct",
+    "correctAvg": "Class average",
+    "correctPercentage": "% Correct",
+    "duration": "Duration",
+    "filter": "Filter P-Report",
+    "header": {
+      "className": "Class PlaylistRprt"
+    },
+    "hintAgg": {
+      "one": "Watched hint : {{hintUsedBy}} of {{total}} student ",
+      "other": "Watched hint : {{hintUsedBy}} of {{total}} students"
+    },
+    "myPlaylistRprts": "My P-Reports",
+    "stepCorrectAvg": "{{percentage | number:0}} % correct (average)",
+    "student": "Student",
+    "studentCount": "# PlaylistRprts",
+    "subject": "Subject",
+    "summary": {
+      "correctPercentage": "{{percentage | number:0}} % correct",
+      "duration": "Playlist Duration",
+      "durationAvg": "Average duration"
+    },
+    "takenAt": "Taken at",
+    "tooltip": {
+      "go": "go to lesson's playlistRprt"
+    },
+    "total": "Total",
+    "type": {
+      "class": "Class playlistRprts",
+      "mine": "Playlists done by me",
+      "students": "Student playlistRprts"
+    }
   },
   "popular": "Popular",
   "powered": {
@@ -1048,6 +1349,17 @@
       "other": "Open Questions",
       "zero": "."
     },
+    "lessonsInPlaylist": {
+      "one": "Lesson in Playlist",
+      "other": "Different Lessons in Playlist",
+      "zero": " There are no Lessons in this playlist"
+    },
+    "lessonsInQuiz": {
+      "one": "Lesson in Quiz",
+      "other": "Different Lessons in Quiz",
+      "zero": " ."
+    },
+    "playlistSteps": "Playlist Steps",
     "priorLesson": "Recommended Previous Lesson",
     "questionPerDifficulty": "Questions per Difficulty",
     "questionsInLesson": {
@@ -1198,6 +1510,7 @@
     "display": "Display Step",
     "invalidSlideURL": "Please enter valid URL for Google Slides presentation.",
     "invalidURL": "Please enter valid URL of YouTube video.",
+    "lesson": "Add lessons to playlist",
     "noMoreQuestions": "Let's Go to Next Step",
     "presentation": {
       "hint": "Make sure to change the \"share\" settings of the presentation to \"on - anyone with the link\": click on \"share\" and then click on  \"advanced\" and then select \"change\" re who has access."

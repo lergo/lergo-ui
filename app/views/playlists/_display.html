@@ -1,0 +1,19 @@
+<div ng-show="loaded && showSteps() && hasNextStep() " class="next-step" ng-cloak>
+    <div ng-include="'/views/playlists/_stepDisplay.html'"></div>
+</div>
+written in  in _display.html?
+<!-- <div ng-show="!loaded" class="loading">
+    <div>
+        <i class="fa fa-cog fa-spin"></i>
+    </div>
+</div> -->
+
+
+<div ng-repeat="les in lessons">
+    <div style="border: 2px solid blue">
+        <lesson-preview quiz-item="lessons[les._id]"></lesson-preview>
+    </div>
+</div>
+
+
+

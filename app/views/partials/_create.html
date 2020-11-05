@@ -1,8 +1,8 @@
 <div>
     <div class="base-layout" id="create">
-        <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 d-margin-rtl">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-margin-rtl">
             <ul class="d-top30 nav nav-tabs hidden-sm hidden-xs">
-                <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <li ng-repeat="section in sections" ng-class="{'active' : isActive(section)}" class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <a href="#!/user/create/{{section.id}}">
                         <i class="{{section.icon}}"></i>
                         {{'baseLayout.header.links.' + section.id | translate}}
