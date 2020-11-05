@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoClient, $location, $rootScope) {
+angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoClient, $location, $rootScope, $uibModal) {
 
 	$scope.showLoginPage = false;
 
@@ -62,6 +62,20 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 			}
 		});
 	};
+	$scope.openModal = function () {
+		$uibModal.open({
+		  templateUrl: 'views/modal.html',
+		  controller: function ($scope, $uibModalInstance) {
+			$scope.ok = function () {
+			  $uibModalInstance.close();
+			};
+		  
+			$scope.cancel = function () {
+			  $uibModalInstance.dismiss('cancel');
+			};
+		  }
+		});
+	  };
 
 
 });
