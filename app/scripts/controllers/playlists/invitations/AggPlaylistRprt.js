@@ -42,7 +42,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsAggPlaylistRprtCtrl',
             return '/views/playlists/invitations/playlistRprt/steps/_' + step.type + '.html';
         };
 
-        $scope.redirectToIndividualPlaylistRprts = function () {
+        /* $scope.redirectToIndividualPlaylistRprts = function () {
             $location.path('/user/create/playlistRprts').search({
                 playlistRprtType: 'students',
                 'lergoFilter.playlistRprtClass': $scope.playlistRprt.data.invitee.class,
@@ -52,5 +52,5 @@ angular.module('lergoApp').controller('PlaylistsInvitationsAggPlaylistRprtCtrl',
                 })
             });
         };
-        $window.scrollTo(0, 0);
+        $window.scrollTo(0, 0); */
     });
