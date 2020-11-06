@@ -112,7 +112,7 @@
                                               <ul class="dropdown-menu overidePositionInherit dropdown-align" uib-dropdown role="menu" aria-labelledby="single-button">
                                                  <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
                                                  <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
-                                                 <a show-anonymous href="" tooltip-placement="bottom" tooltip-trigger="'outsideClick'" 
+                                                 <a class="popover-template-class" show-anonymous href="" tooltip-placement="bottom" tooltip-trigger="'outsideClick'" 
                                                  uib-tooltip-template="'views/lessons/signupTemplates/createSignupTemplate.html'"
                                                  tabindex="0">{{
                                                                 'baseLayout.header.links.create'| translate }} </a></li>
@@ -148,7 +148,7 @@
                                         </div>
                                         <li role="menuitem"><a href="#!/user/homepage">{{ 'baseLayout.header.links.learn'| translate }}</a></li>
                                         <li role="menuitem"><a show-logged-in href="#!/user/create/lessons">{{ 'baseLayout.header.links.create'| translate }} </a>
-                                            <a show-anonymous href="" tooltip-placement="bottom" tooltip-trigger="'outsideClick'"
+                                            <a class="popover-template-class" show-anonymous href="" tooltip-placement="bottom" tooltip-trigger="'outsideClick'"
                                             uib-tooltip-template="'views/lessons/signupTemplates/inviteSignupTemplate.html'"
                                             tabindex="0">{{'baseLayout.header.links.create'| translate }}
                                             </a>

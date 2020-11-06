@@ -25,10 +25,11 @@ time, mark, audio, video {
 /*prevent overflow of mobile view*/
 /*body, html { overflow-x:hidden; }*/
 
-.tooltip-inner {
+/* popover-template-class differentiates between information and warning popovers */
+.popover-template-class + .tooltip > .tooltip-inner {
+    background-color:rgb(255, 255, 255); 
     color: rgb(148,148,148);
-    font-size: 12px;
-    background-color: rgb(255, 255, 255);
+    font-size: 15px;
     border: 2px rgb(148,148,148);
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
     text-align: left;
@@ -46,7 +47,17 @@ time, mark, audio, video {
             margin: 10px 0;
             padding: 0px !important;
         }
+} 
+.rtl {
+    .popover-template-class + .tooltip >.tooltip-inner {
+        text-align: right;
+        h1 {
+            text-align: left;
+        } 
     }
+}
+
+
 .tooltip.in { 
     opacity: 1!important;
 }
