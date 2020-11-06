@@ -88,8 +88,8 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                 return !!invitation;
             };
 
-/* jshint ignore:start */
-            var inviteArray = [];
+
+            /* var inviteArray = [];
             var lessonId;
             var lessonInvite = {};
             async function lessonInviteFunction() {
@@ -133,8 +133,7 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                         });
                     });        
                 
-            };
-            /* jshint ignore:end */
+            }; */
 
             $scope.isValid = function(){
                 if ( isStudentMode() ){
