@@ -205,7 +205,6 @@ label.btn.btn-link {
         margin: auto;
     }
     .search-mobile {
-        display: inline-block;
         font-size: 14px;
         color: darkgrey;
         position: relative;
@@ -262,7 +261,6 @@ input.form-control.search-input {
 }*/
 
 #simple-dropdown1 {
-    display: inline-block;
     padding: 11px 14px 6px 12px;
     color: white;
     font-size: 1em;
@@ -272,6 +270,33 @@ input.form-control.search-input {
         background-color: rgba(0, 0, 0, 0.3)
     }
 }
+#createSignupTemplate {
+   a { 
+        font-size: 14px;
+        padding: 0 10px; color:#337ab7;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+#flagSignupTemplate {
+    a { 
+         font-size: 14px;
+         padding: 0 10px;
+     }
+ }
+ #inviteSignupTemplate {
+    a { 
+         font-size: 14px;
+         padding: 0 10px;
+     }
+ }
+ #likeSignupTemplate {
+    a { 
+         font-size: 14px;
+         padding: 0 10px;
+     }
+ }
 
 .dropdown-align {
     margin-left: 62px;
@@ -514,7 +539,6 @@ input.form-control.search-input {
 
         .page-content-titles {
             .page-content-titles-actions {
-                display: inline-block;
                 float: left;
                 margin-top: 20px;
                 margin-bottom: -5px;
