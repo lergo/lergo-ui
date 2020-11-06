@@ -48,6 +48,14 @@ time, mark, audio, video {
             padding: 0px !important;
         }
 } 
+.rtl {
+    .popover-template-class + .tooltip >.tooltip-inner {
+        text-align: right;
+        h1 {
+            text-align: left;
+        } 
+    }
+}
 
 
 .tooltip.in { 
