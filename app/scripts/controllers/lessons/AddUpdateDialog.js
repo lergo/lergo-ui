@@ -88,18 +88,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				}
 			}
 			$scope.sections = [ {
-				id : 'createNewLesson',
-				controller : 'LessonsUpdateCtrl',
-				tooltip : $filter('translate')('lessons.createNewLesson'),
-				page : 'views/lessons/_update.html',
-				isCreate : true,
-				add : function(item) {
-					addItem(item, false);
-				},
-				addClose : function(item) {
-					addItem(item, true);
-				}
-			}, {
+				
 				id : 'myLessons',
 				controller : 'LessonsPlaylistsIndexCtrl',
 				tooltip : $filter('translate')('lessons.selectMyLessons'),
@@ -149,7 +138,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			};
 
 			$scope.currentSection = _.find($scope.sections, function(section) {
-				return 'createNewLesson' === section.id;
+				return 'myLessons' === section.id;
 			});
 
             // function isCreateNewLessonSection (){
