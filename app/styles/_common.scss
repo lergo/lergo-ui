@@ -25,7 +25,56 @@ time, mark, audio, video {
 /*prevent overflow of mobile view*/
 /*body, html { overflow-x:hidden; }*/
 
+.tooltip-inner {
+    color: rgb(148,148,148);
+    font-size: 12px;
+    background-color: rgb(255, 255, 255);
+    border: 2px rgb(148,148,148);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    text-align: left;
+    max-width: 240px;
+    padding: 10px;
 
+        p { 
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: right; 
+            padding-bottom: 5px;
+        }
+        hr {
+            margin: 10px 0;
+            padding: 0px !important;
+        }
+    }
+.tooltip.in { 
+    opacity: 1!important;
+}
+/* Hide arrow */
+.tooltip.top .tooltip-arrow {
+	border-top-color:white;
+}
+.tooltip.top-left .tooltip-arrow {
+	border-top-color:white;
+}
+.tooltip.top-right .tooltip-arrow {
+	border-top-color:white;
+}
+.tooltip.right .tooltip-arrow {
+	border-right-color: white;
+}
+.tooltip.left .tooltip-arrow {
+	border-left-color: white;
+}
+.tooltip.bottom .tooltip-arrow {
+	border-bottom-color: white;
+}
+.tooltip.bottom-left .tooltip-arrow {
+	border-bottom-color: white;
+}
+.tooltip.bottom-right .tooltip-arrow {
+	border-bottom-color: white;
+}
 .lergo-tab-content {
    border-bottom: 1px solid #ddd;
 }
@@ -640,6 +689,12 @@ $COLOR_19: #2a6496 !default;
 .rtl {
     .popover {
         text-align: right;
+    }
+    .tooltip-inner {
+        text-align: right;
+        h1 {
+            text-align: left;
+        } 
     }
 }
 

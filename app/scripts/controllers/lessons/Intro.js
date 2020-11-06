@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsIntroCtrl',
-    function ($scope, $routeParams, LergoClient, $location, $uibModal, DisplayRoleService, $log, $rootScope, LergoTranslate, $window, $filter) {
+    function ($scope, $routeParams, LergoClient, $location, $uibModal, DisplayRoleService, $log, $rootScope, LergoTranslate, $window, $filter, $sce) {
         $window.scrollTo(0, 0);
         var lessonId = $routeParams.lessonId;
         var invitationId = $routeParams.invitationId;
@@ -10,6 +10,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
 
         $scope.shareSection = 'link';
 
+        $scope.htmlPopover = $sce.trustAsHtml('<a href="#!/public/session/signup">signup</a>');
 
         function redirectToInvitation() {
 
