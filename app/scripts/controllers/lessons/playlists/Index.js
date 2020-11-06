@@ -69,8 +69,10 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 		};
 		var getLessonsPromise = null;
 		if ($scope.lessonToLoad === $scope.LessonTypeToLoad.all) {
+			queryObj.filter.public = { $exists : 1 };
             getLessonsPromise = LessonsService.getPublicLessons(queryObj);
 		} else if ($scope.lessonToLoad === $scope.LessonTypeToLoad.liked) {
+			queryObj.filter.public = { $exists : 1 };
 			getLessonsPromise = LergoClient.userData.getLikedLessons(queryObj);
 		} else {
 			getLessonsPromise = LergoClient.userData.getLessons(queryObj);
