@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoClient, $location, $rootScope, $uibModal) {
+angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoClient, $location, $rootScope) {
 
 	$scope.showLoginPage = false;
 
@@ -62,59 +62,5 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 			}
 		});
 	};
-	$scope.openModal = function () {
-		$uibModal.open({
-		  templateUrl: 'views/modal.html',
-		  controller: function ($scope, $uibModalInstance) {
-			$scope.ok = function () {
-			  $uibModalInstance.close();
-			};
-		  
-			$scope.cancel = function () {
-			  $uibModalInstance.dismiss('cancel');
-			};
-			$scope.createLesson = function() {
-				console.log('are we trying to create a lessons');
-			  $scope.createLessonBtnDisable=true;
-			  LergoClient.lessons.create().then(function(result) {
-				  var lesson = result.data;
-				  $scope.errorMessage = null;
-				  $location.path('/user/lessons/' + lesson._id + '/update');
-			  }, function(result) {
-				  $scope.errorMessage = 'Error in creating Lesson : ' + result.data.message;
-				  $log.error($scope.errorMessage);
-				  $scope.createLessonBtnDisable=false;
-			  });
-			};
-			$scope.createPlaylist = function() {
-				console.log('are we trying to create a playlist');
-			  $scope.createLessonBtnDisable=true;
-			  LergoClient.playlists.create().then(function(result) {
-				  var playlist = result.data;
-				  $scope.errorMessage = null;
-				  $location.path('/user/playlists/' + playlist._id + '/update');
-			  }, function(result) {
-				  $scope.errorMessage = 'Error in creating playlist : ' + result.data.message;
-				  $log.error($scope.errorMessage);
-				  $scope.createLessonBtnDisable=false;
-			  });
-		  	};  
-		  }
-		});
-	  };
-	  $scope.create = function() {
-		  console.log('are we trying to create a lessons');
-        $scope.createLessonBtnDisable=true;
-		LergoClient.lessons.create().then(function(result) {
-			var lesson = result.data;
-			$scope.errorMessage = null;
-			$location.path('/user/lessons/' + lesson._id + '/update');
-		}, function(result) {
-			$scope.errorMessage = 'Error in creating Lesson : ' + result.data.message;
-			$log.error($scope.errorMessage);
-            $scope.createLessonBtnDisable=false;
-		});
-	};
+
 });
-
-
