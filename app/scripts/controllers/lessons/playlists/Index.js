@@ -29,10 +29,12 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 	};
 
 	$scope.createNewLesson = function() {
-         $scope.createLessonBtnDisable=true;
+		 $scope.createLessonBtnDisable=true;
+		 console.log('..............LergoTranslate.getLanguageObject().name', LergoTranslate.getLanguageObject().name);
 		 LessonsService.createLesson({
 	 		'language' : LergoTranslate.getLanguageObject().name
 	 		}).then(function(result) {
+				 console.log('------the result.data is', result.data);
 	 		$scope.errorMessage = null;
 	 		$location.path('/user/lessons/' + result.data._id + '/update');
 	 		}, function(result) {
