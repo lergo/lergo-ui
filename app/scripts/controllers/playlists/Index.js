@@ -127,6 +127,10 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		}
 		return null;
 	};
+	$scope.lessonIsDone = function(lesson) {
+		lesson.isComplete = !lesson.isComplete;
+		console.log('this lesson has been complete:', lesson.name, lesson.isComplete);
+	};
 
 
 });
