@@ -187,37 +187,32 @@ angular.module('lergoApp').controller('LessonsUpdateCtrl',
 
             }
         }
-        if ($routeParams.lessonId) {
-            LergoClient.lessons.getById($routeParams.lessonId).then(function (result) {
-                console.log('the $routeParams.lessonId should exist yet', $routeParams.lessonId);
-                $scope.lesson = result.data;
-                $scope.errorMessage = null;
-                $scope.$watch('lesson', saveLesson.onValueChange, true);
-                $scope.$watch('lesson.nextLesson', updateNextLesson);
-                $scope.$watch('lesson.priorLesson', updatePriorLesson);
-                $scope.$watch('lesson.adminComment', updateAdminComment);
-                $scope.$watch('lesson.wikiLink', updateWikiLink);
-                if (!$scope.lesson.tags) {
-                    $scope.lesson.tags = [];
-                }
-                if (!$scope.lesson.language) {
-                    $scope.lesson.language = LergoTranslate.getLanguageObject().name;
-                }
-    
-                // AdminCommentOpen
-                $scope.isAdminCommentOpen = !!$scope.lesson.adminComment || !!$scope.lesson.adminRating;
-    
-                // Advance option should be open is any of the below properties are defined/non-empty
-                $scope.isAdvOptOpen = !!$scope.lesson.nextLesson || !!$scope.lesson.priorLesson || !!$scope.lesson.coverPage || !!$scope.lesson.wikiLink;
-    
-            }, function (result) {
-                console.log('this is the place with the error message result', result.data);
-                $scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
-                $log.error($scope.errorMessage);
-            });
-        }
-        
-        
+
+        LergoClient.lessons.getById($routeParams.lessonId).then(function (result) {
+            $scope.lesson = result.data;
+            $scope.errorMessage = null;
+            $scope.$watch('lesson', saveLesson.onValueChange, true);
+            $scope.$watch('lesson.nextLesson', updateNextLesson);
+            $scope.$watch('lesson.priorLesson', updatePriorLesson);
+            $scope.$watch('lesson.adminComment', updateAdminComment);
+            $scope.$watch('lesson.wikiLink', updateWikiLink);
+            if (!$scope.lesson.tags) {
+                $scope.lesson.tags = [];
+            }
+            if (!$scope.lesson.language) {
+                $scope.lesson.language = LergoTranslate.getLanguageObject().name;
+            }
+
+            // AdminCommentOpen
+            $scope.isAdminCommentOpen = !!$scope.lesson.adminComment || !!$scope.lesson.adminRating;
+
+            // Advance option should be open is any of the below properties are defined/non-empty
+            $scope.isAdvOptOpen = !!$scope.lesson.nextLesson || !!$scope.lesson.priorLesson || !!$scope.lesson.coverPage || !!$scope.lesson.wikiLink;
+
+        }, function (result) {
+            $scope.errorMessage = 'Error in fetching Lesson by id : ' + result.data.message;
+            $log.error($scope.errorMessage);
+        });
 
 
         $scope.stepTypes = [{
