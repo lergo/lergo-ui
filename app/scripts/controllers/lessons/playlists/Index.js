@@ -28,6 +28,21 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 		});
 	};
 
+	// $scope.createNewLesson = function() {
+    //     $scope.createLessonBtnDisable=true;
+	// 	LessonsService.createLesson({
+	// 		'language' : LergoTranslate.getLanguageObject().name
+	// 	}).then(function(result) {
+	// 		$scope.errorMessage = null;
+	// 		$location.path('/user/lessons/' + result.data._id + '/update');
+	// 	}, function(result) {
+	// 		$scope.error = result.data;
+	// 		$scope.errorMessage = 'Error in creating lessons : ' + result.data.message;
+	// 		$log.error($scope.errorMessage);
+    //         $scope.createLessonBtnDisable=false;
+	// 	});
+	// };
+
 	$scope.$watch('lessonTypeFormAddQuizPopup', function(newValue) {
 		if (!!newValue) {
 			$scope.load(newValue.value);
@@ -57,7 +72,6 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 			queryObj.filter.public = { $exists : 1 };
             getLessonsPromise = LessonsService.getPublicLessons(queryObj);
 		} else if ($scope.lessonToLoad === $scope.LessonTypeToLoad.liked) {
-			queryObj.filter.public = { $exists : 1 };
 			getLessonsPromise = LergoClient.userData.getLikedLessons(queryObj);
 		} else {
 			getLessonsPromise = LergoClient.userData.getLessons(queryObj);
