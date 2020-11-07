@@ -121,5 +121,12 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		}
 		return null;
 	};
-	
+	$scope.getLessonObject = function (item) {
+		if ($scope.quizItemsData.hasOwnProperty(item)) {
+			return $scope.quizItemsData[item];
+		}
+		return null;
+	};
+
+
 });
