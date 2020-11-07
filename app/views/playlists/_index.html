@@ -40,22 +40,28 @@
                             <div class=" hidden-sm hidden-xs">
                                 <div filter-is-active="lessonsFilterOpts" section="playlists"></div>
                             </div>
+                           
                             <div class="table-responsive"style="border: 1px solid #FAFAFA"> <!--without a style, iPad does not show content!-->
-                                <table class="table   " ng-show="  playlists.length > 0">
+                                <table class="table" ng-show="playlists.length > 0">
                                 <thead>
                                 <tr style="font-weight: bold">
-                                    <td class="col1">{{ 'lessons.name' | translate }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <!-- <td>{{ 'questions.language' | translate}}</td> -->
+                                    <td class="col-lg-9 col-md-9 col-sm-9 col-xs-9">{{ 'lessons.name' | translate }}</td>
+                                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Done</td>
                                 </tr>
                                 </thead>
                                 <tbody> 
-                                    
+                                    whereAmI; {{whereAmI}}  
                                 <tr ng-repeat="item in playlistToShow.steps[0].quizItems">
                                     <td class="name" dir="auto">
                                         <a  ng-href="#!/user/lessons/{{item}}/intro">{{getLesson(item)}} </a>
                                     </td>
+                                    <td>
+                                        <input type="checkbox" ng-model="getLessonObject(item).selected"/>
+                                    </td>
+                                    <td>
+                                    {{getLessonObject(item).selected}}
+                                    </td>
+                                
                                     <!-- <td >{{play.subject && ('filters.subjects.' + play.subject | translate) ||""}}</td>
                                     <td >{{play.age &&('+'+ play.age) || ""}}</td> -->
                                 </tr>
