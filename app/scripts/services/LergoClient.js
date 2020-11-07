@@ -3,7 +3,7 @@
 angular.module('lergoApp').service('LergoClient',
 		function LergoClient($http, $log, UsersService, QuestionsService, LikesService, LergoErrorsService, PlaylistsService, LessonsService,
                              FaqsService,
-                             LessonsInvitationsService, PlaylistsInvitationsService, UserDataService, ReportsService, PlaylistRprtsService, AbuseReports, RolesService) {
+                             LessonsInvitationsService, PlaylistsInvitationsService, UserDataService, ReportsService, PlaylistRprtsService, AbuseReports, RolesService, CompletesService) {
 			// AngularJS will instantiate a singleton by calling "new" on this
 			// function
 
@@ -73,6 +73,7 @@ angular.module('lergoApp').service('LergoClient',
 			// get user's lessons, get user's data.. not like UsersService..
 			this.userData = UserDataService;
 			this.likes = LikesService;
+			this.completes = CompletesService;
 			this.reports = ReportsService;
 			this.playlistRprts = PlaylistRprtsService;
 			this.abuseReports=AbuseReports;

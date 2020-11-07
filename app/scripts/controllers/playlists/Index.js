@@ -121,6 +121,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		}
 		return null;
 	};
+	// jeff: used for lessonIsDone
 	$scope.getLessonObject = function (item) {
 		if ($scope.quizItemsData.hasOwnProperty(item)) {
 			return $scope.quizItemsData[item];
@@ -129,6 +130,16 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	};
 	$scope.lessonIsDone = function(lesson) {
 		lesson.isComplete = !lesson.isComplete;
+		
+		if (lesson.isComplete) {
+			LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
+                $scope.lessonIsComplete = result.data;
+            });
+		} else {
+			LergoClient.completes.deleteLessonIsComplete(lesson).then(function () {
+                $scope.lessonIsComplete = null;
+            });
+		}
 		console.log('this lesson has been complete:', lesson.name, lesson.isComplete);
 	};
 
