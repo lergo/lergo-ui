@@ -28,7 +28,7 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 		});
 	};
 
-	$scope.createNewLesson = function() {
+	/* $scope.createNewLesson = function() {
          $scope.createLessonBtnDisable=true;
 		 LessonsService.createLesson({
 	 		'language' : LergoTranslate.getLanguageObject().name
@@ -41,7 +41,7 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 	 		$log.error($scope.errorMessage);
             $scope.createLessonBtnDisable=false;
  		});
-	 };
+	 }; */
 
 	$scope.$watch('lessonTypeFormAddQuizPopup', function(newValue) {
 		if (!!newValue) {
