@@ -30,7 +30,7 @@ angular.module('lergoApp')
 
 
         function createLessonIsComplete(itemType, item) {
-            return $http.post('/backend/isCompletes/' + itemType + '/' + item._id + '/create');
+            return $http.post('/backend/completes/' + itemType + '/' + item._id + '/create');
         } 
 
         this.lessonIsComplete = function (item) {
@@ -38,7 +38,7 @@ angular.module('lergoApp')
         };
 
         function deleteLessonIsComplete(itemType, item){
-            return $http.post('/backend/isCompletes/' + itemType + '/' + item._id + '/delete');
+            return $http.post('/backend/completes/' + itemType + '/' + item._id + '/delete');
         }
 
 

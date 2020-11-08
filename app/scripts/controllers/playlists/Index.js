@@ -132,6 +132,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		lesson.isComplete = !lesson.isComplete;
 		
 		if (lesson.isComplete) {
+			console.log('the lessons is ',lesson);
 			LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
                 $scope.lessonIsComplete = result.data;
             });
