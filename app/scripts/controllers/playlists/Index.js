@@ -128,6 +128,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		}
 		return null;
 	};
+	$scope.startingState = 'false';
 	$scope.lessonIsDone = function(lesson) {
 		lesson.isComplete = !lesson.isComplete;
 		
