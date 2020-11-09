@@ -50,12 +50,12 @@
                                 </tr>
                                 </thead>
                                 <tbody> 
-                                <tr ng-repeat="item in playlistToShow.steps[0].quizItems">
+                                <tr ng-repeat="lesson in playlistLessonArray">
                                     <td class="name" dir="auto">
-                                        <a  ng-href="#!/user/lessons/{{item}}/intro">{{getLesson(item)}} </a>
+                                        <a  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
                                     </td>
                                     <td>
-                                        <input type="checkbox" ng-checked='{{startingState}}' ng-click="lessonIsDone(getLessonObject(item))"/>
+                                        <input type="checkbox" ng-checked='{{startingState}}' ng-click="lessonIsDone(lesson)"/>
                                     </td>
                                 
                                     <!-- <td >{{play.subject && ('filters.subjects.' + play.subject | translate) ||""}}</td>

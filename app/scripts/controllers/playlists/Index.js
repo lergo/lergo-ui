@@ -163,15 +163,10 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		}
 		return null;
 	};
-	// jeff: used for lessonIsDone
-	$scope.getLessonObject = function (item) {
-		if ($scope.quizItemsData.hasOwnProperty(item)) {
-			return $scope.quizItemsData[item];
-		}
-		return null;
-	};
+
 	$scope.startingState = 'false';
 	$scope.lessonIsDone = function(lesson) {
+		console.log('.............the lesson.isComplete', lesson.isComplete);
 		lesson.isComplete = !lesson.isComplete;
 		if (lesson.isComplete) {
 			LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
