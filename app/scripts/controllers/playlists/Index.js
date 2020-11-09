@@ -36,14 +36,36 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		LergoClient.lessons.findLessonsById(list)
 		.then(function (result) {
 			var newObj = {};
+			$scope.playlistLessonArray =[];
 			for (var i = 0; i < result.data.length; i++) {
 				newObj[result.data[i]._id] = result.data[i];
+				$scope.playlistLessonArray.push(result.data[i]);
 			}
+			console.log('the playlistLessonArray is', $scope.playlistLessonArray);
 			$scope.quizItemsData = newObj;
 		})
 		.then(LergoClient.userData.getCompletedLessons(queryObj)
 		.then(function(result) {
 			$scope.myCompletedLessons = result.data.data;
+			var myCompletedLessonsIdArray = [];
+			console.log('')
+			for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
+				console.log('$scope.myCompletedLessons._id', $scope.myCompletedLessons[j]._id)
+				myCompletedLessonsIdArray.push($scope.myCompletedLessons[j]._id);
+			}
+
+			console.log('myCompletedLessonsIdArray ',myCompletedLessonsIdArray);
+	
+			for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
+				if (myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
+					$scope.playlistLessonArray[k].selected = true;
+					console.log($scope.playlistLessonArray[k].name,  ' is YES completed');
+				} else {
+					$scope.playlistLessonArray[k].selected = false;
+					console.log($scope.playlistLessonArray[k].name,  ' is NOT completed');
+				}
+			}
+			console.log('the arrays of ids of completed lessons is' , $scope.myCompletedLessons);
 			$log.info('All ', $scope.myCompletedLessons.length,' of my Completed Lessons fetched successfully',  );
 		}))
 		.catch(function(err) {
