@@ -19,18 +19,38 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	};
 
 	$scope.playlistToShow = $scope.playlists;
+
+	// Jeff: we need to have the users completed lessons ( get them all, it's the easiest approach to start with)
 	$scope.GetRowIndex = function (index) {
+		var queryObj = {
+			'filter' : _.merge({}, $scope.playlistsFilter),
+			'sort' : {
+				'lastUpdate' : -1
+			},
+			'dollar_page' : $scope.filterPage
+		};
 		$scope.playlistToShow = $scope.playlists[index];
+		// list is an array of lesson_id's belonging to the specified playlist
 		var list = $scope.playlistToShow.steps[0].quizItems;
-		LergoClient.lessons.findLessonsById(list).then(function (result) {
+		console.log('the number  of lessons in a playlist is: ', list.length);
+		LergoClient.lessons.findLessonsById(list)
+		.then(function (result) {
 			var newObj = {};
 			for (var i = 0; i < result.data.length; i++) {
 				newObj[result.data[i]._id] = result.data[i];
 			}
 			$scope.quizItemsData = newObj;
-		});
+		})
+		.then(LergoClient.userData.getCompletedLessons(queryObj)
+		.then(function(result) {
+			$scope.myCompletedLessons = result.data.data;
+			$log.info('All ', $scope.myCompletedLessons.length,' of my Completed Lessons fetched successfully',  );
+		}))
+		.catch(function(err) {
+			console.log('Handle error', err); 
+		})	
 	};
-	// this needs to run with the array of lessons from the playlist	
+	
 	
  
 	$scope.load = function(playlistToLoad) {
@@ -131,9 +151,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	$scope.startingState = 'false';
 	$scope.lessonIsDone = function(lesson) {
 		lesson.isComplete = !lesson.isComplete;
-		
 		if (lesson.isComplete) {
-			console.log('the lessons is ',lesson);
 			LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
                 $scope.lessonIsComplete = result.data;
             });

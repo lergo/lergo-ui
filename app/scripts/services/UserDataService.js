@@ -39,6 +39,16 @@ angular.module('lergoApp').service('UserDataService', function UserDataService($
 			}
 		});
 	};
+	this.getCompletedLessons = function(queryObj) {
+		return $http({
+			'method' : 'GET',
+			'url' : '/backend/user/me/completed/lessons',
+			'params' : {
+				'query' : queryObj
+			}
+		});
+	};
+ 
 	this.getQuestions = function(queryObj) {
 		return $http({
 			'method' : 'GET',
