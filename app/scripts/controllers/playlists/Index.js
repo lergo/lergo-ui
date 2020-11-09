@@ -58,10 +58,10 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	
 			for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
 				if (myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
-					$scope.playlistLessonArray[k].selected = true;
+					$scope.playlistLessonArray[k].isComplete = true;
 					console.log($scope.playlistLessonArray[k].name,  ' is YES completed');
 				} else {
-					$scope.playlistLessonArray[k].selected = false;
+					$scope.playlistLessonArray[k].isComplete = false;
 					console.log($scope.playlistLessonArray[k].name,  ' is NOT completed');
 				}
 			}
@@ -164,7 +164,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		return null;
 	};
 
-	$scope.startingState = 'false';
+
 	$scope.lessonIsDone = function(lesson) {
 		console.log('.............the lesson.isComplete', lesson.isComplete);
 		lesson.isComplete = !lesson.isComplete;

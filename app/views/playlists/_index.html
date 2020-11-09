@@ -55,8 +55,9 @@
                                         <a  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
                                     </td>
                                     <td>
-                                        <input type="checkbox" ng-checked='{{startingState}}' ng-click="lessonIsDone(lesson)"/>
+                                        <input type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
                                     </td>
+                                    <td>{{lesson.isComplete}}</td>
                                 
                                     <!-- <td >{{play.subject && ('filters.subjects.' + play.subject | translate) ||""}}</td>
                                     <td >{{play.age &&('+'+ play.age) || ""}}</td> -->
