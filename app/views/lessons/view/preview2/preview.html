@@ -1,5 +1,5 @@
 <div class="row row-nested top10 quiz">
-    <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="col-md-12 col-sm-12 col-xs-12"> 
         <div class="row row-nested top10">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <p dir="auto" class="lergo-h4" ng-show="!isFillInTheBlanks()">{{quizItem.lesson}}</p>
@@ -21,6 +21,7 @@
             <div quiz-item-media quiz-item="quizItem" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 img-small"></div>
         </div>
         lergo-ui/app/views/lessons/view/preview2/preview.html
+        {{whereAmI}}
         <div ng-show="!isFillInTheBlanks()" class="row row-nested top10">
             <div ng-include="getLessonTemplate()" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
         </div>

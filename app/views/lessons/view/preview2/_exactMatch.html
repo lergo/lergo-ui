@@ -1,4 +1,4 @@
-<!--Nothing to display as answer-->
+<!--Nothing to display as answer--> 
 <!-- <div>
    <label style='color:rgb(32, 18, 156) ;font-size: 20px'> quizItem name: {{quizItem.name}}</label>
    <p> quizItem subject: {{quizItem.subject}}</p>
@@ -8,6 +8,7 @@
 <div> <!--start of mobile view of quizItems-->
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             /views/lessons/view/preview2/_exactMatch.html
+            jeff1{{whereAmiI}}
          <div class="homepage-desktop">
              <div >
                  <div class="lessons-desktop">
@@ -76,7 +77,9 @@
      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
       </div>
      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            this is for the checkbox, status:
-            <input type="checkbox">
+            checkbox whereAmiI _exactMatch.htm {{whereAmI}}
+            <td>
+               <input type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
+            </td>
       </div>
 </div> <!--end of mobile view-->

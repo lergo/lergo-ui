@@ -17,7 +17,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		'showTags' : true,
 		'showSearchText' : true
 	};
-
+ 
 	$scope.playlistToShow = $scope.playlists;
 
 	// Jeff: we need to have the users completed lessons to highlight the completed lessons in the playlist

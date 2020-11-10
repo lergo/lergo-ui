@@ -87,7 +87,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
         $scope.isLiked = function () {
             return !!$scope.playlistLike;
         };
-        
+         
         $scope.previewPlaylist = function () {
 
             // persistScroll();
@@ -102,7 +102,11 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 },
                 lessons: function () {
                     return $scope.lessons;
+                },
+                whereAmiI: function () {
+                    return $scope.whereAmiI
                 }
+
             };
             var modelInstance = $uibModal.open(modelContent);
             modelInstance.result.then(function () {
@@ -111,6 +115,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 //  scrollToPersistPosition();
             });
         };
+        $scope.whereAmiI = 'intro.js'
 
         $scope.preview = function () {
             redirectToPreview();
