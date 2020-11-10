@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window, localStorageService) {
+angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window, localStorageService, LergoTranslate, $uibModal) {
 	// enum
 	$scope.PlaylistTypeToLoad = {
 		user : 'myPlaylists',
@@ -20,8 +20,9 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 
 	$scope.playlistToShow = $scope.playlists;
 
-	// Jeff: we need to have the users completed lessons ( get them all, it's the easiest approach to start with)
+	// Jeff: we need to have the users completed lessons to highlight the completed lessons in the playlist
 	$scope.GetRowIndex = function (index) {
+		
 		var queryObj = {
 			'filter' : _.merge({}, $scope.playlistsFilter),
 			'sort' : {
@@ -66,6 +67,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 					console.log($scope.playlistLessonArray[k].name,  ' is NOT completed');
 				}
 			}
+			openLessonDisplay(result.data, false);
 			console.log('the arrays of ids of completed lessons is' , $scope.myCompletedLessons);
 			$log.info('All ', $scope.myCompletedLessons.length,' of my Completed Lessons fetched successfully',  );
 		}))
@@ -181,57 +183,45 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		console.log('this lesson has been complete:', lesson.name, lesson.isComplete);
 	};
 
-	// creating a modal to show the lessons in the playlist, based on Update.js where we open a model to add a lesson
-	// function openLessonDialog(step, quizItem, isUpdate) {
-	// 	persistScroll();
-	// 	var modelContent = {};
-	// 	modelContent.templateUrl = 'views/lessons/addCreateUpdateDialog.html';
-	// 	modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
-	// 	modelContent.backdrop = 'static';
-	// 	modelContent.controller = 'LessonsAddUpdateDialogCtrl';
-	// 	modelContent.resolve = {
-	// 		playlistOverrideLesson: function () {
-	// 			return playlistOverrideLessonAndReopenDialog;
-	// 		},
-	// 		quizItem: function () {
-	// 			return quizItem;
-	// 		},
-	// 		isUpdate: function () {
-	// 			return isUpdate;
-	// 		},
-	// 		addItemToQuiz: function () {
-	// 			return addItemToQuiz;
-	// 		},
-	// 		step: function () {
-	// 			return step;
-	// 		}
-	// 	};
-	// 	var modelInstance = $uibModal.open(modelContent);
-	// 	modelInstance.result.then(function () {
-	// 		scrollToPersistPosition();
-	// 	}, function () {
-	// 		scrollToPersistPosition();
-	// 	});
-	// }
-	// $scope.addCreateQuestion = function (step) {
-	// 	$scope.addQuestionBtnDisable = true;
-	// 	QuestionsService.createQuestion({
-	// 		'subject': $scope.playlist.subject,
-	// 		'age': $scope.playlist.age,
-	// 		'language': $scope.playlist.language,
-	// 		'tags': $scope.playlist.tags
-	// 	}).then(function (result) {
-	// 		$scope.errorMessage = null;
-	// 		openLessonDialog(step, result.data, false);
-	// 		$scope.addQuestionBtnDisable = false;
+	// creating a modal to show the lessons in the playlist, based on Update.js where we open a model to add a lesson//
+	function openLessonDisplay(quizItem, isUpdate) {
+		persistScroll();
+		var modelContent = {};
+		modelContent.templateUrl = 'views/playlist/showPlaylistLessons.html';
+		modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
+		modelContent.backdrop = 'static';
+		modelContent.controller = 'PlaylistsIndexCtrl';
+		modelContent.resolve = {
+			// playlistOverrideLesson: function () {
+			// 	return playlistOverrideLessonAndReopenDialog;
+			// },
+			// quizItem: function () {
+			// 	return quizItem;
+			// },
+			// isUpdate: function () {
+			// 	return isUpdate;
+			// },
+			// addItemToQuiz: function () {
+			// 	return addItemToQuiz;
+			// }
+		};
+		var modelInstance = $uibModal.open(modelContent);
+		modelInstance.result.then(function () {
+			scrollToPersistPosition();
+		}, function () {
+			scrollToPersistPosition();
+		});
+	}
+
+	// $scope.showLessons = function () {
+	// 		openLessonDisplay(result.data, false);
 	// 	}, function (result) {
 	// 		$scope.error = result.data;
 	// 		$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
 	// 		$log.error($scope.errorMessage);
-	// 		$scope.addQuestionBtnDisable = false;
 	// 	});
 	// };
-
-
+ 
+ 
 
 });
