@@ -44,6 +44,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 			console.log('the playlistLessonArray is', $scope.playlistLessonArray);
 			$scope.quizItemsData = newObj;
 		})
+
 		.then(LergoClient.userData.getCompletedLessons(queryObj)
 		.then(function(result) {
 			$scope.myCompletedLessons = result.data.data;
@@ -53,7 +54,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 				console.log('$scope.myCompletedLessons._id', $scope.myCompletedLessons[j]._id)
 				myCompletedLessonsIdArray.push($scope.myCompletedLessons[j]._id);
 			}
-
+ 
 			console.log('myCompletedLessonsIdArray ',myCompletedLessonsIdArray);
 	
 			for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
@@ -179,6 +180,58 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		}
 		console.log('this lesson has been complete:', lesson.name, lesson.isComplete);
 	};
+
+	// creating a modal to show the lessons in the playlist, based on Update.js where we open a model to add a lesson
+	// function openLessonDialog(step, quizItem, isUpdate) {
+	// 	persistScroll();
+	// 	var modelContent = {};
+	// 	modelContent.templateUrl = 'views/lessons/addCreateUpdateDialog.html';
+	// 	modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
+	// 	modelContent.backdrop = 'static';
+	// 	modelContent.controller = 'LessonsAddUpdateDialogCtrl';
+	// 	modelContent.resolve = {
+	// 		playlistOverrideLesson: function () {
+	// 			return playlistOverrideLessonAndReopenDialog;
+	// 		},
+	// 		quizItem: function () {
+	// 			return quizItem;
+	// 		},
+	// 		isUpdate: function () {
+	// 			return isUpdate;
+	// 		},
+	// 		addItemToQuiz: function () {
+	// 			return addItemToQuiz;
+	// 		},
+	// 		step: function () {
+	// 			return step;
+	// 		}
+	// 	};
+	// 	var modelInstance = $uibModal.open(modelContent);
+	// 	modelInstance.result.then(function () {
+	// 		scrollToPersistPosition();
+	// 	}, function () {
+	// 		scrollToPersistPosition();
+	// 	});
+	// }
+	// $scope.addCreateQuestion = function (step) {
+	// 	$scope.addQuestionBtnDisable = true;
+	// 	QuestionsService.createQuestion({
+	// 		'subject': $scope.playlist.subject,
+	// 		'age': $scope.playlist.age,
+	// 		'language': $scope.playlist.language,
+	// 		'tags': $scope.playlist.tags
+	// 	}).then(function (result) {
+	// 		$scope.errorMessage = null;
+	// 		openLessonDialog(step, result.data, false);
+	// 		$scope.addQuestionBtnDisable = false;
+	// 	}, function (result) {
+	// 		$scope.error = result.data;
+	// 		$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
+	// 		$log.error($scope.errorMessage);
+	// 		$scope.addQuestionBtnDisable = false;
+	// 	});
+	// };
+
 
 
 });
