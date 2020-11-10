@@ -59,7 +59,8 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 					$scope.playlistLessonArray[k].isComplete = false;
 				}
 			}
-			openLessonDisplay(result.data, false);
+			// This is where I wanted to cause the modal to open 
+			// openLessonDisplay(result.data, false);  
 			$log.info('All ', $scope.myCompletedLessons.length,' of my Completed Lessons fetched successfully',  );
 		}))
 		.catch(function(err) {
@@ -186,8 +187,11 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		modelContent.backdrop = 'static';
 		modelContent.controller = 'PlaylistsIndexCtrl';
 		modelContent.resolve = {
-			playlistLessonArray: function () {
-				return playlistLessonArray;
+			function () {
+				return { playlistToShow : 'foo'}
+			},
+			function () {
+				return { playlistLessonArray : $scope.playlistLessonArray};
 			}
 			// quizItem: function () {
 			// 	return quizItem;
