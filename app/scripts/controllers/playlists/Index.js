@@ -33,7 +33,6 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		$scope.playlistToShow = $scope.playlists[index];
 		// list is an array of lesson_id's belonging to the specified playlist
 		var list = $scope.playlistToShow.steps[0].quizItems;
-		console.log('the number  of lessons in a playlist is: ', list.length);
 		LergoClient.lessons.findLessonsById(list)
 		.then(function (result) {
 			var newObj = {};
@@ -42,7 +41,6 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 				newObj[result.data[i]._id] = result.data[i];
 				$scope.playlistLessonArray.push(result.data[i]);
 			}
-			console.log('the playlistLessonArray is', $scope.playlistLessonArray);
 			$scope.quizItemsData = newObj;
 		})
 
@@ -50,25 +48,18 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		.then(function(result) {
 			$scope.myCompletedLessons = result.data.data;
 			var myCompletedLessonsIdArray = [];
-			console.log('')
 			for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
-				console.log('$scope.myCompletedLessons._id', $scope.myCompletedLessons[j]._id)
 				myCompletedLessonsIdArray.push($scope.myCompletedLessons[j]._id);
 			}
- 
-			console.log('myCompletedLessonsIdArray ',myCompletedLessonsIdArray);
 	
 			for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
 				if (myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
 					$scope.playlistLessonArray[k].isComplete = true;
-					console.log($scope.playlistLessonArray[k].name,  ' is YES completed');
 				} else {
 					$scope.playlistLessonArray[k].isComplete = false;
-					console.log($scope.playlistLessonArray[k].name,  ' is NOT completed');
 				}
 			}
 			openLessonDisplay(result.data, false);
-			console.log('the arrays of ids of completed lessons is' , $scope.myCompletedLessons);
 			$log.info('All ', $scope.myCompletedLessons.length,' of my Completed Lessons fetched successfully',  );
 		}))
 		.catch(function(err) {
@@ -169,7 +160,6 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 
 
 	$scope.lessonIsDone = function(lesson) {
-		console.log('.............the lesson.isComplete', lesson.isComplete);
 		lesson.isComplete = !lesson.isComplete;
 		if (lesson.isComplete) {
 			LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
@@ -180,10 +170,14 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
                 $scope.lessonIsComplete = null;
             });
 		}
-		console.log('this lesson has been complete:', lesson.name, lesson.isComplete);
 	};
 
+	function playlistLessonArray() {
+		console.log('.....................this is the playlistLessonArray');
+		return $scope.playlistLessonArray
+	}
 	// creating a modal to show the lessons in the playlist, based on Update.js where we open a model to add a lesson//
+	// copying from: lergo-ui/app/scripts/controllers/playlists/Update.js
 	function openLessonDisplay(quizItem, isUpdate) {
 		persistScroll();
 		var modelContent = {};
@@ -192,9 +186,9 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		modelContent.backdrop = 'static';
 		modelContent.controller = 'PlaylistsIndexCtrl';
 		modelContent.resolve = {
-			// playlistOverrideLesson: function () {
-			// 	return playlistOverrideLessonAndReopenDialog;
-			// },
+			playlistLessonArray: function () {
+				return playlistLessonArray;
+			}
 			// quizItem: function () {
 			// 	return quizItem;
 			// },
@@ -212,16 +206,4 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 			scrollToPersistPosition();
 		});
 	}
-
-	// $scope.showLessons = function () {
-	// 		openLessonDisplay(result.data, false);
-	// 	}, function (result) {
-	// 		$scope.error = result.data;
-	// 		$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
-	// 		$log.error($scope.errorMessage);
-	// 	});
-	// };
- 
- 
-
 });
