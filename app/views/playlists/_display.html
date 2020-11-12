@@ -11,7 +11,7 @@
 <!-- <div ng-repeat="lesson in lessons"> -->
 
  
-<div ng-repeat="lesson in playlistLessonArray">
+<!-- <div ng-repeat="lesson in playlistLessonArray"> -->
     <!-- two options - using the directive, or just showing the question title -->
     <!-- <div style="border: 2px solid blue">
         <td >
@@ -19,13 +19,32 @@
         </td>
         <lesson-preview quiz-item="lesson"></lesson-preview>
     </div> -->
-    <td class="name" dir="auto">
-            <a ng-class="{'disabled':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
-        </td>
-        <td>
-            <input type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
-        </td>
-</div> 
+    <div class="table-responsive"style="border: 1px solid #FAFAFA"> 
+        <table class="table" ng-show="playlistLessonArray.length > 0">
+            <thead>
+                <tr style="font-weight: bold">
+                    <td class="col-lg-9 col-md-9 col-sm-9 col-xs-9">{{ 'lessons.name' | translate }}</td>
+                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Done</td>
+                 </tr>
+            </thead>
+                <tbody> 
+                    <tr ng-repeat="lesson in playlistLessonArray">
+                    <td class="name" dir="auto">
+                        <a ng-class="{'disabled':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
+                    </td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+
+
+
+
+
+<!-- </div>  -->
 
 <!-- <div>
         <div id="playlistsIndex" load-filter-and-paging="loadPlaylists()">
@@ -62,24 +81,24 @@
                                
                                 <div class="table-responsive"style="border: 1px solid #FAFAFA"> 
                                     <table class="table" ng-show="playlists.length > 0">
-                                    <thead>
-                                    <tr style="font-weight: bold">
-                                        <td class="col-lg-9 col-md-9 col-sm-9 col-xs-9">{{ 'lessons.name' | translate }}</td>
-                                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Done</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody> 
-                                    <tr ng-repeat="lesson in playlistLessonArray">
-                                        <td class="name" dir="auto">
-                                            <a ng-class="{'disabled':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
-                                        </td>
+                                        <thead>
+                                            <tr style="font-weight: bold">
+                                                <td class="col-lg-9 col-md-9 col-sm-9 col-xs-9">{{ 'lessons.name' | translate }}</td>
+                                                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Done</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody> 
+                                            <tr ng-repeat="lesson in playlistLessonArray">
+                                                <td class="name" dir="auto">
+                                                    <a ng-class="{'disabled':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
+                                                </td>
 
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
