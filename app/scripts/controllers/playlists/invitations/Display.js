@@ -160,7 +160,6 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 $scope.playlistLessonArray.push(item);
 
             }
-            console.log('$scope.playlistLessonArray', $scope.playlistLessonArray);
             $scope.showPlaylistLessons();
         }, function (result) {
             if (result.status) { // playlist invitation might not be found if was temporary. temporary playlists are deleted on finish. (@see Write.js 'endPlaylist' event)
@@ -362,7 +361,6 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             };
             LergoClient.userData.getCompletedLessons(queryObj)
             .then(function(result) {
-                console.log('..................did I get result?', result);
                 $scope.myCompletedLessons = result.data.data;
                 var myCompletedLessonsIdArray = [];
                 for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
@@ -371,11 +369,9 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         
                 for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
                     if (myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
-                        console.log('updating isComplete to true');
                         $scope.playlistLessonArray[k].isComplete = true;
                     } else {
                         $scope.playlistLessonArray[k].isComplete = false;
-                        console.log('updating isComplete to false');
                     }
                 }
             })
