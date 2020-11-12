@@ -220,23 +220,22 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         $scope.whereAmI = 'Display.js 216'; 
 
         var playlistLikeWatch = null;
-        // $scope.$watch('playlist', function (newValue) {
-        //     if (!!newValue) {
-        //         // get my like - will decide if I like this playlist or not
-        //         LergoClient.likes.getMyPlaylistLike($scope.playlist).then(function (result) {
-        //             $scope.playlistLike = result.data;
-        //         });
-
-        //         if (playlistLikeWatch === null) {
-        //             playlistLikeWatch = $scope.$watch('playlistLike', function () {
-        //                 // get count of likes for playlist
-        //                 LergoClient.likes.countPlaylistLikes($scope.playlist).then(function (result) {
-        //                     $scope.playlistLikes = result.data.count;
-        //                 });
-        //             });
-        //         }
-        //     }
-        // });
+        $scope.$watch('playlist', function (newValue) {
+            if (!!newValue) {
+                // get my like - will decide if I like this playlist or not
+                LergoClient.likes.getMyPlaylistLike($scope.playlist).then(function (result) {
+                    $scope.playlistLike = result.data;
+                });
+                if (playlistLikeWatch === null) {
+                    playlistLikeWatch = $scope.$watch('playlistLike', function () {
+                        // get count of likes for playlist
+                        LergoClient.likes.countPlaylistLikes($scope.playlist).then(function (result) {
+                            $scope.playlistLikes = result.data.count;
+                        });
+                    });
+                }
+            }
+        });
 
         $scope.likePlaylist = function () {
             $log.info('liking playlist');
