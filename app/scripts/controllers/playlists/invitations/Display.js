@@ -217,7 +217,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             }
         }
 
-        $scope.whereAmI = 'Display.js 216'; 
+        $scope.whereAmI = 'Display.js 216';
 
         var playlistLikeWatch = null;
         $scope.$watch('playlist', function (newValue) {
@@ -333,10 +333,10 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
     
     // New code copied from /playlists/Index.js to display the lessons in a playlist with a checkbox
 
-	$scope.PlaylistTypeToLoad = {
-		user : 'myPlaylists',
-		liked : 'likedPlaylists'
-	};
+        $scope.PlaylistTypeToLoad = {
+            user : 'myPlaylists',
+            liked : 'likedPlaylists'
+        };
 	// var Filter = {};
 	// $scope.filterPage = {};
 	// $scope.totalResults = 0;
@@ -349,147 +349,145 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 	// 	'showSearchText' : true
 	// };
   
-	$scope.playlistToShow = $scope.playlists;
+        $scope.playlistToShow = $scope.playlists;
 
-	// Jeff: we need to have the users completed lessons to highlight the completed lessons in the playlist
-	$scope.showPlaylistLessons = function () {
-        var queryObj = {
-			'filter' : _.merge({}, $scope.playlistsFilter),
-			'sort' : {
-				'lastUpdate' : -1
-            },
-			'dollar_page' : $scope.filterPage
-		};
-        console.log('.................................activating the showPlaylistLesson function line 344 and queryObj', queryObj)
-		LergoClient.userData.getCompletedLessons(queryObj)
-		.then(function(result) {
-            console.log('..................did I get result?', result);
-			$scope.myCompletedLessons = result.data.data;
-			var myCompletedLessonsIdArray = [];
-			for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
-				myCompletedLessonsIdArray.push($scope.myCompletedLessons[j]._id);
-			}
-	
-			for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
-				if (myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
-                    console.log('updating isComplete to true');
-					$scope.playlistLessonArray[k].isComplete = true;
-				} else {
-                    $scope.playlistLessonArray[k].isComplete = false;
-                    console.log('updating isComplete to false');
-				}
-			}
-			$log.info('All ', $scope.myCompletedLessons.length,' of my Completed Lessons fetched successfully',  );
-		})
-		.catch(function(err) {
-			console.log('Handle error', err); 
-		})	
-	};
+        // Jeff: we need to have the users completed lessons to highlight the completed lessons in the playlist
+        $scope.showPlaylistLessons = function () {
+            var queryObj = {
+                'filter' : _.merge({}, $scope.playlistsFilter),
+                'sort' : {
+                    'lastUpdate' : -1
+                },
+                'dollar_page' : $scope.filterPage
+            };
+            LergoClient.userData.getCompletedLessons(queryObj)
+            .then(function(result) {
+                console.log('..................did I get result?', result);
+                $scope.myCompletedLessons = result.data.data;
+                var myCompletedLessonsIdArray = [];
+                for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
+                    myCompletedLessonsIdArray.push($scope.myCompletedLessons[j]._id);
+                }
+        
+                for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
+                    if (myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
+                        console.log('updating isComplete to true');
+                        $scope.playlistLessonArray[k].isComplete = true;
+                    } else {
+                        $scope.playlistLessonArray[k].isComplete = false;
+                        console.log('updating isComplete to false');
+                    }
+                }
+            })
+            .catch(function(err) {
+                console.log('Handle error', err);
+            });
+        };
 	
 	
  
-	$scope.load = function(playlistToLoad) {
-		var oldValue = localStorageService.get('playlistToLoad');
-		if (oldValue !== playlistToLoad) {
-			localStorageService.set('playlistToLoad', playlistToLoad);
-			$scope.filterPage.current = 1;
-			$scope.filterPage.updatedLast = new Date().getTime();
-		}
-	};
+        $scope.load = function(playlistToLoad) {
+            var oldValue = localStorageService.get('playlistToLoad');
+            if (oldValue !== playlistToLoad) {
+                localStorageService.set('playlistToLoad', playlistToLoad);
+                $scope.filterPage.current = 1;
+                $scope.filterPage.updatedLast = new Date().getTime();
+            }
+        };
 
-	$scope.loadPlaylists = function() {
-		$log.info('loading playlists');
+        $scope.loadPlaylists = function() {
+            $log.info('loading playlists');
 
-		var queryObj = {
-			'filter' : _.merge({}, $scope.playlistsFilter),
-			'sort' : {
-				'lastUpdate' : -1
-			},
-			'dollar_page' : $scope.filterPage
-		};
-		$scope.playlistToLoad = localStorageService.get('playlistToLoad');
-		var getPlaylistsPromise = null;
-		if ($scope.playlistToLoad === $scope.PlaylistTypeToLoad.liked) {
-			getPlaylistsPromise = LergoClient.userData.getLikedPlaylists(queryObj);
-		} else {
-			getPlaylistsPromise = LergoClient.userData.getPlaylists(queryObj);
-			$scope.playlistToLoad = $scope.PlaylistTypeToLoad.user;
-		}
+            var queryObj = {
+                'filter' : _.merge({}, $scope.playlistsFilter),
+                'sort' : {
+                    'lastUpdate' : -1
+                },
+                'dollar_page' : $scope.filterPage
+            };
+            $scope.playlistToLoad = localStorageService.get('playlistToLoad');
+            var getPlaylistsPromise = null;
+            if ($scope.playlistToLoad === $scope.PlaylistTypeToLoad.liked) {
+                getPlaylistsPromise = LergoClient.userData.getLikedPlaylists(queryObj);
+            } else {
+                getPlaylistsPromise = LergoClient.userData.getPlaylists(queryObj);
+                $scope.playlistToLoad = $scope.PlaylistTypeToLoad.user;
+            }
 
-		getPlaylistsPromise.then(function(result) {
-			$scope.playlists = result.data.data;
-			$scope.filterPage.count = result.data.count; // number of playlists
-			// after filtering
-			// .. changing
-			// pagination.
-			$scope.totalResults = result.data.total;
-			$scope.errorMessage = null;
-			$log.info('Playlist fetched successfully');
-			scrollToPersistPosition();
-		}, function(result) {
-			$scope.errorMessage = 'Error in fetching Playlists : ' + result.data.message;
-			$log.error($scope.errorMessage);
-		});
-	};
-
-	$scope.create = function() {
-        $scope.createPlaylistBtnDisable=true;
-		LergoClient.playlists.create().then(function(result) {
-			var playlist = result.data;
-			$scope.errorMessage = null;
-			$location.path('/user/playlists/' + playlist._id + '/update');
-		}, function(result) {
-			$scope.errorMessage = 'Error in creating Playlist : ' + result.data.message;
-			$log.error($scope.errorMessage);
-            $scope.createPlaylistBtnDisable=false;
-		});
-	};
-
-	var path = $location.path();
-	$scope.$on('$locationChangeStart', function() {
-		persistScroll($scope.filterPage.current);
-	});
-
-	$scope.$watch('filterPage.current', function(newValue, oldValue) {
-		if (!!oldValue) {
-
-			persistScroll(oldValue);
-		}
-	});
-	function persistScroll(pageNumber) {
-		if (!$rootScope.scrollPosition) {
-			$rootScope.scrollPosition = {};
-		}
-		$rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
-	}
-	function scrollToPersistPosition() {
-		var scrollY = 0;
-		if (!!$rootScope.scrollPosition) {
-			scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
-		}
-		$window.scrollTo(0, scrollY);
-	}
-	$scope.quizItemsData = {};
-	$scope.getLesson = function (item) {
-		if ($scope.quizItemsData.hasOwnProperty(item)) {
-			return $scope.quizItemsData[item].name;
-		}
-		return null;
-	};
-
-
-	$scope.lessonIsDone = function(lesson) {
-		lesson.isComplete = !lesson.isComplete;
-		if (lesson.isComplete) {
-			LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
-                $scope.lessonIsComplete = result.data;
+            getPlaylistsPromise.then(function(result) {
+                $scope.playlists = result.data.data;
+                $scope.filterPage.count = result.data.count; // number of playlists
+                // after filtering
+                // .. changing
+                // pagination.
+                $scope.totalResults = result.data.total;
+                $scope.errorMessage = null;
+                $log.info('Playlist fetched successfully');
+                scrollToPersistPosition();
+            }, function(result) {
+                $scope.errorMessage = 'Error in fetching Playlists : ' + result.data.message;
+                $log.error($scope.errorMessage);
             });
-		} else {
-			LergoClient.completes.deleteLessonIsComplete(lesson).then(function () {
-                $scope.lessonIsComplete = null;
+        };
+
+        $scope.create = function() {
+            $scope.createPlaylistBtnDisable=true;
+            LergoClient.playlists.create().then(function(result) {
+                var playlist = result.data;
+                $scope.errorMessage = null;
+                $location.path('/user/playlists/' + playlist._id + '/update');
+            }, function(result) {
+                $scope.errorMessage = 'Error in creating Playlist : ' + result.data.message;
+                $log.error($scope.errorMessage);
+                $scope.createPlaylistBtnDisable=false;
             });
-		}
-	};
+        };
+
+        var path = $location.path();
+        $scope.$on('$locationChangeStart', function() {
+            persistScroll($scope.filterPage.current);
+        });
+
+        $scope.$watch('filterPage.current', function(newValue, oldValue) {
+            if (!!oldValue) {
+
+                persistScroll(oldValue);
+            }
+        });
+        function persistScroll(pageNumber) {
+            if (!$rootScope.scrollPosition) {
+                $rootScope.scrollPosition = {};
+            }
+            $rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
+        }
+        function scrollToPersistPosition() {
+            var scrollY = 0;
+            if (!!$rootScope.scrollPosition) {
+                scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
+            }
+            $window.scrollTo(0, scrollY);
+        }
+        $scope.quizItemsData = {};
+        $scope.getLesson = function (item) {
+            if ($scope.quizItemsData.hasOwnProperty(item)) {
+                return $scope.quizItemsData[item].name;
+            }
+            return null;
+        };
+
+
+        $scope.lessonIsDone = function(lesson) {
+            lesson.isComplete = !lesson.isComplete;
+            if (lesson.isComplete) {
+                LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
+                    $scope.lessonIsComplete = result.data;
+                });
+            } else {
+                LergoClient.completes.deleteLessonIsComplete(lesson).then(function () {
+                    $scope.lessonIsComplete = null;
+                });
+            }
+        };
 	
 
- });
+    });

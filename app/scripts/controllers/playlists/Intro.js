@@ -102,9 +102,6 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 },
                 lessons: function () {
                     return $scope.lessons;
-                },
-                whereAmiI: function () {
-                    return $scope.whereAmiI
                 }
 
             };
@@ -115,7 +112,6 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 //  scrollToPersistPosition();
             });
         };
-        $scope.whereAmiI = 'intro.js'
 
         $scope.preview = function () {
             redirectToPreview();

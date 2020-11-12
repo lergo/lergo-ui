@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window, localStorageService, LergoTranslate, $uibModal) {
+angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window, localStorageService) {
 	// enum
 	$scope.PlaylistTypeToLoad = {
 		user : 'myPlaylists',
@@ -59,15 +59,11 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 					$scope.playlistLessonArray[k].isComplete = false;
 				}
 			}
-			// This is where I wanted to cause the modal to open 
-			// openLessonDisplay(result.data, false);  
-			$log.info('All ', $scope.myCompletedLessons.length,' of my Completed Lessons fetched successfully',  );
 		}))
 		.catch(function(err) {
-			console.log('Handle error', err); 
-		})	
+			console.log('Handle error', err);
+		});
 	};
-	
 	
  
 	$scope.load = function(playlistToLoad) {
@@ -172,42 +168,4 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
             });
 		}
 	};
-
-	function playlistLessonArray() {
-		console.log('.....................this is the playlistLessonArray');
-		return $scope.playlistLessonArray
-	}
-	// creating a modal to show the lessons in the playlist, based on Update.js where we open a model to add a lesson//
-	// copying from: lergo-ui/app/scripts/controllers/playlists/Update.js
-	function openLessonDisplay(quizItem, isUpdate) {
-		persistScroll();
-		var modelContent = {};
-		modelContent.templateUrl = 'views/playlist/showPlaylistLessons.html';
-		modelContent.windowClass = 'question-bank-dialog ' + LergoTranslate.getDirection();
-		modelContent.backdrop = 'static';
-		modelContent.controller = 'PlaylistsIndexCtrl';
-		modelContent.resolve = {
-			function () {
-				return { playlistToShow : 'foo'}
-			},
-			function () {
-				return { playlistLessonArray : $scope.playlistLessonArray};
-			}
-			// quizItem: function () {
-			// 	return quizItem;
-			// },
-			// isUpdate: function () {
-			// 	return isUpdate;
-			// },
-			// addItemToQuiz: function () {
-			// 	return addItemToQuiz;
-			// }
-		};
-		var modelInstance = $uibModal.open(modelContent);
-		modelInstance.result.then(function () {
-			scrollToPersistPosition();
-		}, function () {
-			scrollToPersistPosition();
-		});
-	}
 });
