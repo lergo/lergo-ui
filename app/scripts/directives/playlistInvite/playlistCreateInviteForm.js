@@ -89,7 +89,7 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
             };
 
 
-            /* var inviteArray = [];
+            var inviteArray = [];
             var lessonId;
             var lessonInvite = {};
             async function lessonInviteFunction() {
@@ -133,7 +133,7 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(Le
                         });
                     });        
                 
-            }; */
+            };
 
             $scope.isValid = function(){
                 if ( isStudentMode() ){
