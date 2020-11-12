@@ -11,13 +11,18 @@
 <!-- <div ng-repeat="lesson in lessons"> -->
  
 <div ng-repeat="lesson in playlistLessonArray">
-    <div style="border: 2px solid blue">
-       <!-- [_display.html1 {{whereAmI}} ]   -->
+    <!-- <div style="border: 2px solid blue">
         <td >
                 <input style="float: right" type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
         </td>
         <lesson-preview quiz-item="lesson"></lesson-preview>
-    </div>
+    </div> -->
+    <td class="name" dir="auto">
+            <a ng-class="{'disabled':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
+        </td>
+        <td>
+            <input type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
+        </td>
 </div> 
 
 <!-- <div>
