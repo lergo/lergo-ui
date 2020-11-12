@@ -1,4 +1,4 @@
-<div class="row row-nested top10 quiz">
+<div class="row row-nested top10 quiz"> 
     <div class="col-md-12 col-sm-12 col-xs-12"> 
         <div class="row row-nested top10">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -25,7 +25,10 @@
         <div ng-show="!isFillInTheBlanks()" class="row row-nested top10">
             <div ng-include="getLessonTemplate()" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
         </div>
+        <!-- <td>
+                <input type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
+            </td> -->
         <br/>
     </div>
 
-</div>
+</div> 

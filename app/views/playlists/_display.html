@@ -9,14 +9,21 @@ written in  in _display.html?
 </div> -->
 
 <!-- this code can replace the code below to show images etc via the directive -->
-<!-- <div ng-repeat="les in lessons">
+<!-- <div ng-repeat="lesson in lessons"> -->
+ 
+<div ng-repeat="lesson in playlistLessonArray">
     <div style="border: 2px solid blue">
-        {{whereAmI}} 
-        <lesson-preview quiz-item="lessons[les._id]"></lesson-preview>
+       [_display.html1 {{whereAmI}} ]  
+        <td >
+                <input style="float: right" type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
+        </td>
+        <td>{{lesson.isComplete}}</td>
+        <!-- <lesson-preview quiz-item="lessons[lesson._id]" whereAmiI="{{whereAmI}}"></lesson-preview> -->
+        <lesson-preview quiz-item="lesson" whereAmiI="{{whereAmI}}"></lesson-preview>
     </div>
-</div>  -->
+</div> 
 
-<div>
+<!-- <div>
         <div id="playlistsIndex" load-filter-and-paging="loadPlaylists()">
             <br/>
     
@@ -113,6 +120,6 @@ written in  in _display.html?
                 </div>
             <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
         </div>
-    </div>
+    </div> -->
 
-
+ 

@@ -153,11 +153,15 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             if (!items) {
                 return;
             }
+            $scope.playlistLessonArray = [];
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
                 $scope.lessons[item._id] = item;
+                $scope.playlistLessonArray.push(item);
 
             }
+            console.log('$scope.playlistLessonArray', $scope.playlistLessonArray);
+            $scope.showPlaylistLessons();
         }, function (result) {
             if (result.status) { // playlist invitation might not be found if was temporary. temporary playlists are deleted on finish. (@see Write.js 'endPlaylist' event)
                // incase the invitation is deleted and user tries to "start over" or "continue playlist"
@@ -213,25 +217,26 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             }
         }
 
-        $scope.whereAmI = 'Display.js'; 
-        var playlistLikeWatch = null;
-        $scope.$watch('playlist', function (newValue) {
-            if (!!newValue) {
-                // get my like - will decide if I like this playlist or not
-                LergoClient.likes.getMyPlaylistLike($scope.playlist).then(function (result) {
-                    $scope.playlistLike = result.data;
-                });
+        $scope.whereAmI = 'Display.js 216'; 
 
-                if (playlistLikeWatch === null) {
-                    playlistLikeWatch = $scope.$watch('playlistLike', function () {
-                        // get count of likes for playlist
-                        LergoClient.likes.countPlaylistLikes($scope.playlist).then(function (result) {
-                            $scope.playlistLikes = result.data.count;
-                        });
-                    });
-                }
-            }
-        });
+        var playlistLikeWatch = null;
+        // $scope.$watch('playlist', function (newValue) {
+        //     if (!!newValue) {
+        //         // get my like - will decide if I like this playlist or not
+        //         LergoClient.likes.getMyPlaylistLike($scope.playlist).then(function (result) {
+        //             $scope.playlistLike = result.data;
+        //         });
+
+        //         if (playlistLikeWatch === null) {
+        //             playlistLikeWatch = $scope.$watch('playlistLike', function () {
+        //                 // get count of likes for playlist
+        //                 LergoClient.likes.countPlaylistLikes($scope.playlist).then(function (result) {
+        //                     $scope.playlistLikes = result.data.count;
+        //                 });
+        //             });
+        //         }
+        //     }
+        // });
 
         $scope.likePlaylist = function () {
             $log.info('liking playlist');
@@ -333,48 +338,33 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 		user : 'myPlaylists',
 		liked : 'likedPlaylists'
 	};
-	$scope.playlistsFilter = {};
-	$scope.filterPage = {};
-	$scope.totalResults = 0;
-	$scope.playlistsFilterOpts = {
-		'showSubject' : true,
-		'showLanguage' : true,
-		'showAge' : true,
-		'showViews' : true,
-		'showTags' : true,
-		'showSearchText' : true
-	};
- 
+	// var Filter = {};
+	// $scope.filterPage = {};
+	// $scope.totalResults = 0;
+	// var FilterOpts = {
+	// 	'showSubject' : true,
+	// 	'showLanguage' : true,
+	// 	'showAge' : true,
+	// 	'showViews' : true,
+	// 	'showTags' : true,
+	// 	'showSearchText' : true
+	// };
+  
 	$scope.playlistToShow = $scope.playlists;
 
 	// Jeff: we need to have the users completed lessons to highlight the completed lessons in the playlist
-	$scope.GetRowIndex = function (index) {
-        
-		
-		var queryObj = {
+	$scope.showPlaylistLessons = function () {
+        var queryObj = {
 			'filter' : _.merge({}, $scope.playlistsFilter),
 			'sort' : {
 				'lastUpdate' : -1
-			},
+            },
 			'dollar_page' : $scope.filterPage
 		};
-        $scope.playlistToShow = $scope.playlists[index];
-        console.log('the $scope.playlistToShow is', $scope.playlistToShow);
-		// list is an array of lesson_id's belonging to the specified playlist
-		var list = $scope.playlistToShow.steps[0].quizItems;
-		LergoClient.lessons.findLessonsById(list)
-		.then(function (result) {
-			var newObj = {};
-			$scope.playlistLessonArray =[];
-			for (var i = 0; i < result.data.length; i++) {
-				newObj[result.data[i]._id] = result.data[i];
-				$scope.playlistLessonArray.push(result.data[i]);
-			}
-			$scope.quizItemsData = newObj;
-		})
-
-		.then(LergoClient.userData.getCompletedLessons(queryObj)
+        console.log('.................................activating the showPlaylistLesson function line 344 and queryObj', queryObj)
+		LergoClient.userData.getCompletedLessons(queryObj)
 		.then(function(result) {
+            console.log('..................did I get result?', result);
 			$scope.myCompletedLessons = result.data.data;
 			var myCompletedLessonsIdArray = [];
 			for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
@@ -383,15 +373,15 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 	
 			for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
 				if (myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
+                    console.log('updating isComplete to true');
 					$scope.playlistLessonArray[k].isComplete = true;
 				} else {
-					$scope.playlistLessonArray[k].isComplete = false;
+                    $scope.playlistLessonArray[k].isComplete = false;
+                    console.log('updating isComplete to false');
 				}
 			}
-			// This is where I wanted to cause the modal to open 
-			// openLessonDisplay(result.data, false);  
 			$log.info('All ', $scope.myCompletedLessons.length,' of my Completed Lessons fetched successfully',  );
-		}))
+		})
 		.catch(function(err) {
 			console.log('Handle error', err); 
 		})	
