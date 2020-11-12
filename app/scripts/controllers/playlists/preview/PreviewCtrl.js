@@ -3,9 +3,8 @@
  */
 
 'use strict';
-function playlistPreviewctrl($scope, playlist, lessons, whereAmiI, $uibModalInstance) {
+function playlistPreviewctrl($scope, playlist, lessons, $uibModalInstance) {
     $scope.playlist = playlist;
-    $scope.whereAmiI = whereAmiI;
     $scope.lessons = {};
     _.forEach(lessons,function (q){
         {
@@ -19,5 +18,5 @@ function playlistPreviewctrl($scope, playlist, lessons, whereAmiI, $uibModalInst
 }
 
 
-angular.module('lergoApp').controller('PlaylistPreviewCtrl', ['$scope', 'playlist', 'lessons', 'whereAmiI', '$uibModalInstance',playlistPreviewctrl]);
+angular.module('lergoApp').controller('PlaylistPreviewCtrl', ['$scope', 'playlist', 'lessons', '$uibModalInstance',playlistPreviewctrl]);
  
