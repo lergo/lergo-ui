@@ -14,12 +14,23 @@
  */
 angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $log, LergoTranslate, ContinuousSave, LergoClient ) {
 
+    function init() {
+        stopWatch();
+        LergoClient.faqs.list(LergoTranslate.getLanguage()).then(function (result) {
+            if (!result.data) { // need to create
+                return LergoClient.faqs.create({locale: LergoTranslate.getLanguage()});
+            }else{
+                return result;
+            }
+        }).then( function(result){
+            $scope.faq = result.data;
+            startWatch();
+        }, function(){
+            toastr.error('failed getting faq','failed');
+        });
+    }
+
     var watcher = null;
-    var saveContent = new ContinuousSave({
-        'saveFn' : function(value) {
-            return LergoClient.faqs.update(value);
-        }
-    });
     function startWatch(){
         if ( watcher !== null){
             $log.error('watcher exists!!!');
@@ -38,24 +49,15 @@ angular.module('lergoApp').controller('FaqIndexCtrl', function($scope, $log, Ler
             watcher(); // stops watching: http://stackoverflow.com/questions/13651578/how-to-unwatch-an-expression
         }
     }
-    function init() {
-        stopWatch();
-        LergoClient.faqs.list(LergoTranslate.getLanguage()).then(function (result) {
-            if (!result.data) { // need to create
-                return LergoClient.faqs.create({locale: LergoTranslate.getLanguage()});
-            }else{
-                return result;
-            }
-        }).then( function(result){
-            $scope.faq = result.data;
-            startWatch();
-        }, function(){
-            toastr.error('failed getting faq','failed');
-        });
-    }
 
 
     init();
+
+    var saveContent = new ContinuousSave({
+        'saveFn' : function(value) {
+            return LergoClient.faqs.update(value);
+        }
+    });
 
 
 
