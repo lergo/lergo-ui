@@ -18,7 +18,6 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                     getWrongLesson(value);
                 }
                 return LergoClient.playlistRprts.update(value).then(function (result) {
-                    console.log('this is the playlistRprts update value ', value);
                     if (finished) {
                         if (errorWhileSaving) {
                             toastr.success($filter('translate')('playlistRprt.saved.successfully'));

@@ -15,7 +15,6 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
         function redirectToInvitation() {
 
             if (!$scope.playlist.temporary) {
-                console.log('the routeparams is:' ,$routeParams );
                 $location.path('/public/playlists/invitations/' + invitationId + '/display').search({
                     playlistId: $scope.playlist._id,
                     playlistRprtId: $routeParams.playlistRprtId,
@@ -49,7 +48,6 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
             if (!!newValue) {
                 // get my like - will decide if I like this playlist or not
                 LergoClient.likes.getMyPlaylistLike($scope.playlist).then(function (result) {
-                    console.log('this is playlistLike...',result.data);
                     $scope.playlistLike = result.data;
                 });
 
@@ -191,7 +189,6 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
             } else if (!invitationId) { // prepared invitation
                 LergoClient.playlistsInvitations.createAnonymous(playlistId).then(function (result) {
                     invitationId = result.data._id;
-                    console.log('the invitationId is', invitationId );
                     redirectToInvitation();
                 });
             } else { // anonymous invitation

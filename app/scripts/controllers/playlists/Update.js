@@ -342,7 +342,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             if (!!newValue && newValue.length > 0) {
                 $log.info('quizItems changed');
                 LergoClient.lessons.findLessonsById(newValue).then(function (result) {
-                    console.log('the new value is ',newValue);
                     var newObj = {};
                     for (var i = 0; i < result.data.length; i++) {
                         newObj[result.data[i]._id] = result.data[i];
