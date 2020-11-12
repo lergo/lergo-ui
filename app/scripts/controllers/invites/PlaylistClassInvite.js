@@ -2,48 +2,48 @@
 
 /**
  * @ngdoc function
- * @name lergoApp.controller:ClassInviteCtrl
+ * @name lergoApp.controller:PlaylistClassInviteCtrl
  * @description
- * # ClassInviteCtrl
+ * # PlaylistClassInviteCtrl
  * Controller of the lergoApp
  */
 angular.module('lergoApp')
-    .controller('ClassInviteCtrl', function ($window, $scope, LergoClient, $routeParams, $log, LergoTranslate, $rootScope , $location, ShareService ) {
+    .controller('PlaylistClassInviteCtrl', function ($window, $scope, LergoClient, $routeParams, $log, LergoTranslate, $rootScope , $location, ShareService ) {
         $window.scrollTo(0, 0);
 
-        $scope.classInvite = {};
+        $scope.playlistClassInvite = {};
         var invitation;
         var playlistId = $routeParams.playlistId;
 
         LergoClient.playlistsInvitations.get($routeParams.invitationId).then(function( result ){
             invitation = result.data;
-            $scope.classInvite.className = invitation.invitee.class;
+            $scope.playlistClassInvite.className = invitation.invitee.class;
         }).then(function(){
             LergoClient.users.findUsersById([invitation.inviter]).then(function (result) {
                 var user = result.data[0];
-                $scope.classInvite.username = user.username;
+                $scope.playlistClassInvite.username = user.username;
             });
         });
 
         LergoClient.playlists.getById(playlistId).then(function (result) {
-            $scope.classInvite.playlistName = result.data.name;
+            $scope.playlistClassInvite.playlistName = result.data.name;
             $rootScope.lergoLanguage = LergoTranslate.setLanguageByName(result.data.language);
         });
 
-        $scope.createReportFromClassInvite = function () {
-            $scope.classInvite.error = null;
-            ShareService.setInvitee($scope.classInvite.studentName);
-            LergoClient.playlistRprts.createFromInvitation(invitation, {invitee: {name: $scope.classInvite.studentName}})
+        $scope.createReportFromPlaylistClassInvite = function () {
+            $scope.playlistClassInvite.error = null;
+            ShareService.setInvitee($scope.playlistClassInvite.studentName);
+            LergoClient.playlistRprts.createFromInvitation(invitation, {invitee: {name: $scope.playlistClassInvite.studentName}})
                 .then(function success(result) {
                     $log.info('invite is ready');
-                    $scope.classInvite.data = result.data;
+                    $scope.playlistClassInvite.data = result.data;
                     $location.path('/public/playlistRprts/' + playlistId + '/intro').search({
                         playlistId: playlistId,
                         invitationId: invitation._id,
                         reportId: result.data._id
                     });
                 }, function error(result) {
-                    $scope.classInvite.error = result.data;
+                    $scope.playlistClassInvite.error = result.data;
                 });
         };
 
