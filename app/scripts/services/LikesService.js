@@ -49,6 +49,10 @@ angular.module('lergoApp')
             return createLike('question', item);
         };
 
+        this.likePlaylist = function (item) {
+            return createLike('playlist', item);
+        };
+
         function deleteLike(itemType, item){
             return $http.post('/backend/likes/' + itemType + '/' + item._id + '/delete');
         }
@@ -60,6 +64,10 @@ angular.module('lergoApp')
 
         this.deleteQuestionLike = function(item){
             return deleteLike('question',item);
+        };
+
+        this.deletePlaylistLike = function( item ){
+            return deleteLike('playlist', item);
         };
 
     });

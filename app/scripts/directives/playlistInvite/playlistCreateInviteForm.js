@@ -13,185 +13,186 @@
  *
  */
 
-angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(LergoClient, $routeParams, $log){
+angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(){
+//angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(LergoClient, $routeParams, $log){
 
-    return {
-        restrict: 'A',
-        scope:{
-            mode: '@playlistCreateInviteFormItem',
-            copied: '@'
-        },
-        templateUrl: 'inline_playlistCreateInviteFormItem.html',
-        link: function($scope){
-            var invitation = null;
-            var playlistId = $routeParams.playlistId;
-            var user = null;
-            var invite = null;
-            $log.info('using');
+    // return {
+    //     restrict: 'A',
+    //     scope:{
+    //         mode: '@playlistCreateInviteFormItem',
+    //         copied: '@'
+    //     },
+    //     templateUrl: 'inline_playlistCreateInviteFormItem.html'
+//         link: function($scope){
+//             var invitation = null;
+//             var playlistId = $routeParams.playlistId;
+//             var user = null;
+//             var invite = null;
+//             $log.info('using');
 
-            $scope.newInvite = function(){
-                invitation = null;
-                $scope.invitationName = null;
-                invite = {
-                    'playlistId' : playlistId,
-                    'invitee' : {}
-                };
-            };
+//             $scope.newInvite = function(){
+//                 invitation = null;
+//                 $scope.invitationName = null;
+//                 invite = {
+//                     'playlistId' : playlistId,
+//                     'invitee' : {}
+//                 };
+//             };
 
-            $scope.newInvite();
+//             $scope.newInvite();
 
-            LergoClient.isLoggedIn(true).then(function( result ){
-                user = result.data.user;
-                return result;
-            });
+//             LergoClient.isLoggedIn(true).then(function( result ){
+//                 user = result.data.user;
+//                 return result;
+//             });
 
-            function isClassMode (){
-                return $scope.mode === 'class';
-            }
+//             function isClassMode (){
+//                 return $scope.mode === 'class';
+//             }
 
-            function isStudentMode(){
-                return $scope.mode === 'student';
-            }
+//             function isStudentMode(){
+//                 return $scope.mode === 'student';
+//             }
 
-            $scope.$watch('invitationName', function(newValue){
-                if ( isClassMode() ){
-                    invite.invitee.class = newValue;
+//             $scope.$watch('invitationName', function(newValue){
+//                 if ( isClassMode() ){
+//                     invite.invitee.class = newValue;
 
-                }else if ( isStudentMode() ){
-                    invite.invitee.name = newValue;
-                }
-            });
+//                 }else if ( isStudentMode() ){
+//                     invite.invitee.name = newValue;
+//                 }
+//             });
 
-            $scope.getLink = function(){
-                if ( !invitation ){
-                    return;
-                }
-                if ( isStudentMode()){
-                    return LergoClient.playlistsInvitations.getLink(invitation);
-                }
-                if ( isClassMode()) {
-                    return window.location.origin + '/index.html#!/public/playlists/' + playlistId + '/classInvite?invitationId=' + invitation._id;
-                }
-                return '';
-            };
+//             $scope.getLink = function(){
+//                 if ( !invitation ){
+//                     return;
+//                 }
+//                 if ( isStudentMode()){
+//                     return LergoClient.playlistsInvitations.getLink(invitation);
+//                 }
+//                 if ( isClassMode()) {
+//                     return window.location.origin + '/index.html#!/public/playlists/' + playlistId + '/classInvite?invitationId=' + invitation._id;
+//                 }
+//                 return '';
+//             };
 
-            $scope.getPin = function(){
-                if ( !invitation ){
-                    return;
-                }
-                return invitation.pin;
-            };
-
-
-
-            $scope.isSuccess = function(){
-                return !!invitation;
-            };
+//             $scope.getPin = function(){
+//                 if ( !invitation ){
+//                     return;
+//                 }
+//                 return invitation.pin;
+//             };
 
 
-            var inviteArray = [];
-            var lessonId;
-            var lessonInvite = {};
-            async function lessonInviteFunction() {
-                for (lessonId of lessonsArray) {
-                    lessonInvite = {
-                        'invitee': { 'name' : invite.invitee },
-                        'lessonId': lessonId
-                    }
-                // wait for this to resolve and after that move to next lesson
-                let result = await LergoClient.lessonsInvitations.create(lessonId, lessonInvite);
-                var lessonInvitationId = result.data._id;
+
+//             $scope.isSuccess = function(){
+//                 return !!invitation;
+//             };
+
+
+//             var inviteArray = [];
+//             var lessonId;
+//             var lessonInvite = {};
+//             async function lessonInviteFunction() {
+//                 for (lessonId of lessonsArray) {
+//                     lessonInvite = {
+//                         'invitee': { 'name' : invite.invitee },
+//                         'lessonId': lessonId
+//                     }
+//                 // wait for this to resolve and after that move to next lesson
+//                 let result = await LergoClient.lessonsInvitations.create(lessonId, lessonInvite);
+//                 var lessonInvitationId = result.data._id;
                 
-                var  playlistLessonInvitation = { 
-                    'lesson' : { 'lessonId' : lessonId },
-                    'invitationId' : lessonInvitationId
-                } 
+//                 var  playlistLessonInvitation = { 
+//                     'lesson' : { 'lessonId' : lessonId },
+//                     'invitationId' : lessonInvitationId
+//                 } 
             
-                inviteArray.push(playlistLessonInvitation)
-                console.log('the inviteArray is :', inviteArray) 
-                }           
-            }
+//                 inviteArray.push(playlistLessonInvitation)
+//                 console.log('the inviteArray is :', inviteArray) 
+//                 }           
+//             }
 
-            invite.lessonInvitation = [];
-            var lessonsArray = [];
-            $scope.sendInvite = function () {
+//             invite.lessonInvitation = [];
+//             var lessonsArray = [];
+//             $scope.sendInvite = function () {
 
-                $scope.createError = false;
-                $log.info('inviting');
-                console.log(' the playlist invite is ', invite);
-                // creating and adding an invitation for each lesson in the playlist
-                    LergoClient.playlists.getById( invite.playlistId).then(function(result){
-                        lessonsArray = result.data.steps[0].quizItems;
-                        // for each lesson make an invitation and get the invitationId
-                        lessonInviteFunction().then(function() {
-                            invite.lessonInvitation = inviteArray;
-                            return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
-                                invitation = result.data;
-                            }, function () {
-                                $scope.createError = true;
-                            });
-                        });
-                    });        
+//                 $scope.createError = false;
+//                 $log.info('inviting');
+//                 console.log(' the playlist invite is ', invite);
+//                 // creating and adding an invitation for each lesson in the playlist
+//                     LergoClient.playlists.getById( invite.playlistId).then(function(result){
+//                         lessonsArray = result.data.steps[0].quizItems;
+//                         // for each lesson make an invitation and get the invitationId
+//                         lessonInviteFunction().then(function() {
+//                             invite.lessonInvitation = inviteArray;
+//                             return LergoClient.playlistsInvitations.create($routeParams.playlistId, invite).then(function (result) {
+//                                 invitation = result.data;
+//                             }, function () {
+//                                 $scope.createError = true;
+//                             });
+//                         });
+//                     });        
                 
-            };
+//             };
 
-            $scope.isValid = function(){
-                if ( isStudentMode() ){
-                    return !!invite.invitee.name;
-                }else if ( isClassMode()){
-                    return !!invite.invitee.class;
-                }
-                return false;
-            };
+//             $scope.isValid = function(){
+//                 if ( isStudentMode() ){
+//                     return !!invite.invitee.name;
+//                 }else if ( isClassMode()){
+//                     return !!invite.invitee.class;
+//                 }
+//                 return false;
+//             };
 
-            $scope.enterPressed = function(){
-                if ( $scope.isSuccess() ) {
-                    $scope.newInvite();
-                } else if ( !!$scope.isValid()) {
-                    $scope.sendInvite();
-                }
-            };
-        }
-    };
-});
+//             $scope.enterPressed = function(){
+//                 if ( $scope.isSuccess() ) {
+//                     $scope.newInvite();
+//                 } else if ( !!$scope.isValid()) {
+//                     $scope.sendInvite();
+//                 }
+//             };
+//         }
+//     };
+// });
 
-angular.module('lergoApp').directive('playlistCreateInviteForm', function() {
-    return {
-        restrict: 'A',
-        templateUrl: 'views/playlists/intro/_inviteForm.html',
-        scope: {
-            'onClose' : '&'
-        },
-        link: function($scope/*,element,attrs*/){
+// angular.module('lergoApp').directive('playlistCreateInviteForm', function() {
+//     return {
+//         restrict: 'A',
+//         templateUrl: 'views/playlists/intro/_inviteForm.html',
+//         scope: {
+//             'onClose' : '&'
+//         },
+//         link: function($scope/*,element,attrs*/){
 
-            var Modes = {
-                CLASS: 'class',
-                STUDENT: 'student'
-            };
+//             var Modes = {
+//                 CLASS: 'class',
+//                 STUDENT: 'student'
+//             };
 
-            $scope.mode = Modes.CLASS;
+//             $scope.mode = Modes.CLASS;
 
-            $scope.setMode = function( mode ){
-                $scope.mode = mode;
-            };
+//             $scope.setMode = function( mode ){
+//                 $scope.mode = mode;
+//             };
 
-            $scope.setClassMode = function(){
-                $scope.setMode(Modes.CLASS);
-            };
+//             $scope.setClassMode = function(){
+//                 $scope.setMode(Modes.CLASS);
+//             };
 
-            $scope.setStudentMode = function(){
-                $scope.setMode(Modes.STUDENT);
-            };
+//             $scope.setStudentMode = function(){
+//                 $scope.setMode(Modes.STUDENT);
+//             };
 
-            $scope.isClassMode = function(){
-                return $scope.mode === Modes.CLASS;
-            };
+//             $scope.isClassMode = function(){
+//                 return $scope.mode === Modes.CLASS;
+//             };
 
-            $scope.isStudentMode = function(){
-                return $scope.mode === Modes.STUDENT;
-            };
-        }
-    };
+//             $scope.isStudentMode = function(){
+//                 return $scope.mode === Modes.STUDENT;
+//             };
+//         }
+//     };
 });
 
 /*jeff: added this directive to separate between the invite before the
