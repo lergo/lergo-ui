@@ -50,10 +50,11 @@
                                 <table class="table   " ng-show="lessons.length > 0">
                                 <thead>
                                 <tr style="font-weight: bold">
-                                    <td class="col1">{{ 'name' | translate }}</td>
+                                    <td>{{ 'name' | translate }}</td>
                                     <td>{{ 'questions.subject' | translate}}</td>
                                     <td>{{ 'questions.age' | translate}}</td>
                                     <td>{{ 'questions.language' | translate}}</td>
+                                    <td>{{'lessons.createdOn' | translate}}</td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -67,6 +68,7 @@
                                     <td >{{les.subject && ('filters.subjects.' + les.subject | translate) ||""}}</td>
                                     <td >{{les.age &&('+'+ les.age) || ""}}</td>
                                     <td >{{les.language && ('filters.languages.' + les.language | translate) || ""}}</td>
+                                    <td >{{les.createdAt | date:'MMMd,yyyy'}}</td>
                                 </tr>
                                 </tbody>
                             </table>

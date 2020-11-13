@@ -30,6 +30,17 @@
     "sections": {
       "lergoFeedbackUrl": "https://docs.google.com/forms/d/1EWBSsbLsBtWLu8-3Q-D3X12COQXvGYQPu08LLOONAiA/viewform "
     },
+    "usage": "How to use Lergo",
+    "usageKeys": {
+      "desc": "This is a key - needs to be put in phraseApp 'about.usageKeys.desc",
+      "here": "here",
+      "faq": "- Frequently asked questions - click ",
+      "youtube": "- YouTube playlist -click ",
+      "lergoLessons": "- LerGO lessons -click ",
+      "support": "For suport please contact ",
+      "title": "How to use Lergo",
+      "underConstruction": "This page is under construction. In the meantime, here are important resources for you to learn how to use lerGO."
+    },
     "webinar": "Webinar"
   },
   "abuseReport": {
@@ -132,6 +143,7 @@
         "reports": "Reports",
         "roles": "Roles",
         "teachers": "Teachers",
+        "usage": "How to use Lergo",
         "users": "Users"
       },
       "logout": "Logout",
@@ -395,6 +407,8 @@
       "physicalEducation": "Physical Education",
       "physics": "Physics",
       "psychometric": "Psychometric",
+      "reading": "Reading",
+      "readingComprehension": "Reading Comprehension",
       "roadSafety": "Road Safety",
       "science": "Science",
       "signlanguage": "Sign Language",
@@ -838,6 +852,9 @@
       "emptySelection": "No questions were added because none were selected, please select questions and then press \"add\"."
     },
     "addExplanation": "Add Text Explanation",
+    "addExplanationForMediaTemplate" : "this is the explanation for adding media",
+    "addMediaExplanationForTemplate" : "this is the explanation of how to add media explanation",
+    "addExplanationForVideoMedia" : "this is the explanation for adding video",
     "addExplanationMedia": "Add Media Explanation",
     "addExplanationPerAnswerFill": "Please add explanation here for a specific wrong answer.",
     "addHint": "Add Hint",
@@ -898,6 +915,7 @@
       "russian": "Russian"
     },
     "lessonUsed": "Lessons Used",
+    "linkToVideo": "Link to video",
     "likedQuestions": "Liked Questions",
     "longAnswer": "Long Answer (a paragraph)",
     "media": {

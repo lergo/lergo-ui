@@ -1,0 +1,18 @@
+<div class="usage" ng-init="scrollUp()">
+    <div class="title">{{'about.usageKeys.title' | translate}}</div>
+    <!-- <div class="desc">{{'about.usageKeys.desc' | translate}}</div> -->
+    <div class="desc">{{'about.usageKeys.underConstruction' | translate}}</div>
+    <ul ng-show="$root.lergoLanguage!=='he'">
+        <li class="desc">{{'about.usageKeys.faq' | translate}}<a href="https://www.lergo.org/index.html#!/public/about/faq?lergoLanguage=en" target="_blank">{{'about.usageKeys.here' | translate}}</a></li>
+    </ul>
+    <ul ng-show="$root.lergoLanguage==='he'">
+        <li class="desc">{{'about.usageKeys.faq' | translate}}<a href="https://www.lergo.org/index.html#!/public/about/faq" target="_blank">{{'about.usageKeys.here' | translate}}</a></li>
+        <li class="desc">{{'about.usageKeys.youtube' | translate}}<a href="https://www.youtube.com/playlist?list=PLjhb4WHQ7mkhU5Zuu9B9aSH95nTgdvCUp" target="_blank">{{'about.usageKeys.here' | translate}}</a></li>
+        <li class="desc">{{'about.usageKeys.lergoLessons' | translate}}<a href="https://www.lergo.org/index.html#!/public/homepage?lergoLanguage=he&lergoFilter.filterLanguage=%22hebrew%22&lergoFilter.model.subject=%22lergo%22" target="_blank">{{'about.usageKeys.here' | translate}}</a></li>
+    </ul>
+    
+    <div class="desc">{{'about.usageKeys.support' | translate}}<a href="mailto:support@lergo.org">support@lergo.org</a></div>
+    
+    
+</div>
+

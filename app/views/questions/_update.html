@@ -93,7 +93,13 @@
             <table class=" lergo-table lergo-form">
                 <tbody>
                 <tr>
-                    <td style="width: 15%">{{ 'questions.addMedia' | translate }}</td>
+                    <td style="width: 15%">{{ 'questions.addMedia' | translate }}
+                        <a class="btn-link popover-template-class"
+                            uib-tooltip-template="'views/questions/helpTemplates/addMediaTemplate.html'"
+                            tooltip-placement="top" tooltip-trigger="'outsideClick'" tabindex="0">
+                             <i class="fa fa-question-circle "></i>
+                        </a>
+                    </td>
                     <td style="width: 10%">
                         <select ng-model="quizItem.media.type"
                                 ng-options="m as ('questions.media.' + m | translate) for m in ['audio','image']">
@@ -133,7 +139,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 15%">{{ 'questions.addExplanationMedia' | translate }}</td>
+                    <td style="width: 15%">{{ 'questions.addExplanationMedia' | translate }}
+                        <a class="btn-link popover-template-class"
+                            uib-tooltip-template="'views/questions/helpTemplates/addMediaExplanationTemplate.html'"
+                            tooltip-placement="top" tooltip-trigger="'outsideClick'" tabindex="0">
+                             <i class="fa fa-question-circle "></i>
+                        </a>
+                    </td>
                     <td style="width: 10%">
                         <select ng-model="quizItem.explanationMedia.type"
                                 ng-options="m as ('questions.media.' + m | translate) for m in ['audio','image','video']">

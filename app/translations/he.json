@@ -23,6 +23,17 @@
     "sections": {
       "lergoFeedbackUrl": "https://docs.google.com/a/lergo.org/forms/d/1kOd7eM26OP19wfLW3YknBfyhd4vmxhznKsW5vsbPccg/viewform"
     },
+    "usage": "כיצד להשתמש ב- Lergo",
+    "usageKeys": {
+      "desc": "This is a key - needs to be put in phraseApp 'about.usageKeys.desc",
+      "here": " פה ",
+      "faq": "- שאלות נפוצות - לחץ ",
+      "youtube": "- פלייליסט של YouTube - לחץ ",
+      "lergoLessons": "- שיעורי LerGO - לחץ ",
+      "support": "לקבלת תמיכה אנא צרו קשר",
+      "title": "כיצד להשתמש ב- Lergo",
+      "underConstruction": "דף זה נמצא בבנייה. בינתיים, הנה משאבים חשובים שתוכלו ללמוד כיצד להשתמש ב- lerGO. "
+    },
     "webinar": "וובינר"
   },
   "abuseReport": {
@@ -362,7 +373,8 @@
       "science": "מדע",
       "signlanguage": "שפת הסימנים",
       "spelling": "איות",
-      "sustainability": "קיימות"
+      "sustainability": "קיימות",
+      "technology": "טֶכנוֹלוֹגִיָה"
     },
     "testrahul": "מבחןרהול",
     "to": "עד"
