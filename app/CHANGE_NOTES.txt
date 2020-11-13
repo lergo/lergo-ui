@@ -1,4 +1,4 @@
-
+lergo-ui fix(bug - lessonTitleImage not working with local reference) and increasing size of template for bubble
 lergo-ui implement multitude of small changes suggested by GilaKiss: replace lesson font-awesome with image, add uib-popover-templates
      with links and some other minor pages
 lergo-ui implementing "uib-tooltop-template" to replace popover for non logged in users and
