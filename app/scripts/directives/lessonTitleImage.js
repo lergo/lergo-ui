@@ -4,7 +4,7 @@ angular.module('lergoApp')
     .directive('lessonTitleImage', function (LergoClient) {
         return {
             template: '<img class="img-responsive" ng-show="!!img" ng-src="{{img}}" width="100%" />' +
-            '<i ng-show="!img" class="fa fa-university"></i>',
+            '<img class="img-responsive" ng-show="!img" ng-src="https://lergo-images.s3-eu-west-1.amazonaws.com/lergoLogoBlackAndWhite.png" width="100%" />',
             restrict: 'A',
             scope: {
                 'lesson': '='
@@ -14,7 +14,7 @@ angular.module('lergoApp')
                 scope.$watch('lesson', function () {
                     scope.img = LergoClient.lessons.getTitleImage(scope.lesson);
                 });
-
+ 
             }
         };
     });

@@ -97,7 +97,7 @@
 
                                 <div class="simple-dropdown">
                                         <span uib-dropdown on-toggle="toggled(open)"  >
-                                              <a href id="simple-dropdown1" uib-dropdown-toggle>
+                                              <a href id="three-bar-dropdown" uib-dropdown-toggle>
                                                 <i style="padding: 0 40px" class="fa fa-bars fa-2x" aria-hidden="true"></i>
                                               </a>
                                               <ul class="dropdown-menu overidePositionInherit dropdown-align" uib-dropdown role="menu" aria-labelledby="single-button">
@@ -112,7 +112,9 @@
                                                  <li role="menuitem"><a href="#!/public/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
                                                  <li role="menuitem"><a href="#!/public/about/overview">{{'baseLayout.footer.about' | translate }}</a></li>
                                                  <li role="menuitem"><a href="#!/user/Privacy">{{ 'baseLayout.header.links.' + 'Privacy'.toLowerCase() | translate }}</a></li>
-                                                  <li class="divider"></li>
+                                                 <li role="menuitem"><a href="#!/public/about/usage">{{ 'baseLayout.header.links.' + 'Usage'.toLowerCase() | translate }}</a></li>
+                                                 <li role="menuitem"><a href="#!/public/about/contact">{{'baseLayout.footer.contact' | translate }}</a></li>
+                                                 <li class="divider"></li>
                                                  <div>
                                                      <li role="menuitem">
                                                          <div class="btn-group" style="padding-left: 14px;">
@@ -148,6 +150,8 @@
                                         <li role="menuitem"><a href="#!/user/Teachers">{{ 'baseLayout.header.links.' + 'Teachers'.toLowerCase() | translate }}</a></li>
                                         <li role="menuitem"><a href="#!/public/about/contribute">{{ 'baseLayout.header.links.contribute'| translate }} </a></li>
                                         <li role="menuitem"><a href="#!/public/about/overview">{{'baseLayout.footer.about' | translate }}</a></li>
+                                        <li role="menuitem"><a href="#!/public/about/usage">{{ 'baseLayout.header.links.' + 'Usage'.toLowerCase() | translate }}</a></li>
+                                        <li role="menuitem"><a href="#!/public/about/contact">{{'baseLayout.footer.contact' | translate }}</a></li>
                                         <li role="menuitem"><a href="#!/user/Privacy">{{ 'baseLayout.header.links.' + 'Privacy'.toLowerCase() | translate }}</a></li>
                                         <li admin-section="misc.userCanSeeKitchenSink">
                                             <a href="#!/public/kitchenSink">{{'baseLayout.footer.kitchenSink' | translate}}</a>

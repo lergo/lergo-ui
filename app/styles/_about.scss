@@ -220,6 +220,26 @@
     .webinar {
         margin: 0 15px;
     }
+    .usage {
+        margin: 0 15px;
+        .title {
+            font-size: 20px;
+            color: rgb(6, 54, 95);
+            line-height: 40px;
+            font-weight: bold;
+            text-align: justify;
+        }
+        .desc {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .icons {
+            a {
+                margin: 10px;
+            }
+        }
+    }
 }
 .homepage-overview { // mobile stats on "about"
     .page-content-width-overview {
