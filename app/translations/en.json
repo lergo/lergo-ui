@@ -1071,7 +1071,8 @@
     "filter": "Filter Playlists",
     "myPlaylists": "My Playlists",
     "likedPlaylists": "Liked Playlists",
-    "total": "total"
+    "total": "total",
+    "chooseTab": "Click on a tab to start choosing lessons"
   },
   "playlistRprts": {
     "class": "Class",
