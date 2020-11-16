@@ -1,24 +1,8 @@
 <div ng-show="loaded && showSteps() && hasNextStep() " class="next-step" ng-cloak>
     <div ng-include="'/views/playlists/_stepDisplay.html'"></div>
 </div>
-<!-- <div ng-show="!loaded" class="loading">
-    <div>
-        <i class="fa fa-cog fa-spin"></i>
-    </div>
-</div> -->
-
-<!-- this code can replace the code below to show images etc via the directive -->
-<!-- <div ng-repeat="lesson in lessons"> -->
-
- 
-<!-- <div ng-repeat="lesson in playlistLessonArray"> -->
-    <!-- two options - using the directive, or just showing the question title -->
-    <!-- <div style="border: 2px solid blue">
-        <td >
-                <input style="float: right" type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
-        </td>
-        <lesson-preview quiz-item="lesson"></lesson-preview>
-    </div> -->
+<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 dpadleftRight37">
     <div class="table-responsive"style="border: 1px solid #FAFAFA"> 
         <table class="table" ng-show="playlistLessonArray.length > 0">
             <thead>
@@ -39,110 +23,4 @@
                 </tbody>
         </table>
     </div>
-
-
-
-
-
-<!-- </div>  -->
-
-<!-- <div>
-        <div id="playlistsIndex" load-filter-and-paging="loadPlaylists()">
-            <br/>
-    
-                <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
-                                    <div>
-                                        <div class="filter-playlists lergo-h1-orig hidden-sm hidden-xs">{{ '  playlists.filter' | translate }}</div>
-                                        <div lergo-filter   model="playlistsFilter" on-change="loadPlaylists()" opts="playlistsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" ></div>
-                            </div>
-                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                <div>
-                                    <div>
-                                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
-                                            <div class="my-playlists lergo-h1-orig" >
-                                                <div class="btn-group mobile-leftRight15" uib-dropdown dropdown-append-to-body>
-                                                
-                                                </div>
-                                                <div>playlist name:</div> 
-                                                <a  ng-href="#!/user/playlists/{{playlistToShow._id}}/intro">{{playlistToShow.name}}</a>
-                                               
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" hidden-sm hidden-xs">
-                                    <div filter-is-active="lessonsFilterOpts" section="playlists"></div>
-                                </div>
-                               
-                                <div class="table-responsive"style="border: 1px solid #FAFAFA"> 
-                                    <table class="table" ng-show="playlists.length > 0">
-                                        <thead>
-                                            <tr style="font-weight: bold">
-                                                <td class="col-lg-9 col-md-9 col-sm-9 col-xs-9">{{ 'lessons.name' | translate }}</td>
-                                                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Done</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody> 
-                                            <tr ng-repeat="lesson in playlistLessonArray">
-                                                <td class="name" dir="auto">
-                                                    <a ng-class="{'disabled':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
-                                                </td>
-                                                <td>
-                                                    <input type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
-                                                </td>
-
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                <div class="col-border-bottom col-lg-3 col-md-3 col-sm-12 col-xs-12" >
-                                    <div class="create" >
-                                        <button ng-click="createPlaylistBtnDisable || create()" class="btn btn-start"  ng-disabled="createPlaylistBtnDisable">
-                                             <i ng-show="createPlaylistBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
-                                                    {{ 'playlists.create' | translate }}
-                                        </button>
-                                    </div>
-                                </div>
-                                <div style="height: 37px;"></div>
-                                    <div class="table-responsive"style="border: 1px solid #FAFAFA"> 
-                                        <table class="table   " ng-show="  playlists.length > 0">
-                                        <thead>
-                                        <tr style="font-weight: bold">
-                                            <td class="col1">{{ 'playlists.name' | translate }}</td>
-                                            <td class="col1">index</td>
-                                            <td class="col1">{{ 'lessons.subject' | translate }}</td>
-                                            <td class="col1">{{ 'lessons.age' | translate }}</td>
-                                        </tr>
-                                        </thead>
-                                        <tbody> 
-                                        <tr ng-repeat="list in playlists track by $index">
-                                            <td class="name" dir="auto">
-                                                <a ng-click="GetRowIndex($index)">{{list.name }} </a>
-                                              
-                                            </td>
-                                            <td> {{$index}}</td>
-                                            <td >{{list.subject && ('filters.subjects.' + list.subject | translate) ||""}}</td>
-                                            <td >{{list.age &&('+'+ list.age) || ""}}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <div class="page-content-body text-center" ng-hide="!!  playlists ||   playlists.length != 0">
-                    <span class="alert alert-warning font-medium" >{{'  playlists.noLessons' | translate}}</span>
-                </div>
-            <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
-        </div>
-    </div> -->
-
- 
+<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
