@@ -440,7 +440,10 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 
         var path = $location.path();
         $scope.$on('$locationChangeStart', function() {
-            persistScroll($scope.filterPage.current);
+            if ($scope.filterPage) {
+                persistScroll($scope.filterPage.current);
+            }
+            
         });
 
         $scope.$watch('filterPage.current', function(newValue, oldValue) {
