@@ -60,9 +60,9 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
                 LergoClient.lessons.delete(report.data.lesson._id);
             }
         }
-        LergoClient.completes.lessonIsComplete(report.data.lesson).then(function (result) {
-            $log.info("lesson marked as complete");
-        })
+        LergoClient.completes.lessonIsComplete(report.data.lesson).then(function () {
+            $log.info('lesson marked as complete');
+        });
     });
 
     // data is step
