@@ -20,50 +20,51 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
  
 	$scope.playlistToShow = $scope.playlists;
 
-	// Jeff: we need to have the users completed lessons to highlight the completed lessons in the playlist
-	$scope.GetRowIndex = function (index) {
-		
-		var queryObj = {
-			'filter' : _.merge({}, $scope.playlistsFilter),
-			'sort' : {
-				'lastUpdate' : -1
-			},
-			'dollar_page' : $scope.filterPage
-		};
-		$scope.playlistToShow = $scope.playlists[index];
-		// list is an array of lesson_id's belonging to the specified playlist
-		var list = $scope.playlistToShow.steps[0].quizItems;
-		LergoClient.lessons.findLessonsById(list)
-		.then(function (result) {
-			var newObj = {};
-			$scope.playlistLessonArray =[];
-			for (var i = 0; i < result.data.length; i++) {
-				newObj[result.data[i]._id] = result.data[i];
-				$scope.playlistLessonArray.push(result.data[i]);
-			}
-			$scope.quizItemsData = newObj;
-		})
+	console.log('............................this shows that we are using lergo-ui/app/scripts/controllers/playlists/Index.js');
 
-		.then(LergoClient.userData.getCompletedLessons(queryObj)
-		.then(function(result) {
-			$scope.myCompletedLessons = result.data.data;
-			var myCompletedLessonsIdArray = [];
-			for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
-				myCompletedLessonsIdArray.push($scope.myCompletedLessons[j]._id);
-			}
+	// Jeff: we need to have the users completed lessons to highlight the completed lessons in the playlist
+	// $scope.GetRowIndex = function (index) {
+		
+	// 	var queryObj = {
+	// 		'filter' : _.merge({}, $scope.playlistsFilter),
+	// 		'sort' : {
+	// 			'lastUpdate' : -1
+	// 		},
+	// 		'dollar_page' : $scope.filterPage
+	// 	};
+	// 	$scope.playlistToShow = $scope.playlists[index];
+	// 	var list = $scope.playlistToShow.steps[0].quizItems;
+	// 	LergoClient.lessons.findLessonsById(list)
+	// 	.then(function (result) {
+	// 		var newObj = {};
+	// 		$scope.playlistLessonArray =[];
+	// 		for (var i = 0; i < result.data.length; i++) {
+	// 			newObj[result.data[i]._id] = result.data[i];
+	// 			$scope.playlistLessonArray.push(result.data[i]);
+	// 		}
+	// 		$scope.quizItemsData = newObj;
+	// 	})
+
+	// 	.then(LergoClient.userData.getCompletedLessons(queryObj)
+	// 	.then(function(result) {
+	// 		$scope.myCompletedLessons = result.data.data;
+	// 		var myCompletedLessonsIdArray = [];
+	// 		for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
+	// 			myCompletedLessonsIdArray.push($scope.myCompletedLessons[j]._id);
+	// 		}
 	
-			for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
-				if (myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
-					$scope.playlistLessonArray[k].isComplete = true;
-				} else {
-					$scope.playlistLessonArray[k].isComplete = false;
-				}
-			}
-		}))
-		.catch(function(err) {
-			console.log('Handle error', err);
-		});
-	};
+	// 		for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
+	// 			if (myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
+	// 				$scope.playlistLessonArray[k].isComplete = true;
+	// 			} else {
+	// 				$scope.playlistLessonArray[k].isComplete = false;
+	// 			}
+	// 		}
+	// 	}))
+	// 	.catch(function(err) {
+	// 		console.log('Handle error', err);
+	// 	});
+	// };
 	
  
 	$scope.load = function(playlistToLoad) {
@@ -156,16 +157,16 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	};
 
 
-	$scope.lessonIsDone = function(lesson) {
-		lesson.isComplete = !lesson.isComplete;
-		if (lesson.isComplete) {
-			LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
-                $scope.lessonIsComplete = result.data;
-            });
-		} else {
-			LergoClient.completes.deleteLessonIsComplete(lesson).then(function () {
-                $scope.lessonIsComplete = null;
-            });
-		}
-	};
+	// $scope.lessonIsDone = function(lesson) {
+	// 	lesson.isComplete = !lesson.isComplete;
+	// 	if (lesson.isComplete) {
+	// 		LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
+    //             $scope.lessonIsComplete = result.data;
+    //         });
+	// 	} else {
+	// 		LergoClient.completes.deleteLessonIsComplete(lesson).then(function () {
+    //             $scope.lessonIsComplete = null;
+    //         });
+	// 	}
+	// };
 });
