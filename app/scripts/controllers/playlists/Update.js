@@ -40,6 +40,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         }, true);
 
         $scope.displayStep = function (step) {
+            console.log(' the step isn "display step" is ', step);
             $location.path('/user/playlists/step/display').search('data', JSON.stringify(step));
         };
 
@@ -205,13 +206,13 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             $log.error($scope.errorMessage);
         });
 
-
+ 
         $scope.stepTypes = [{
             'id': 'video',
             'label': 'Video'
         }, {
-            'id': 'quiz',
-            'label': 'Quiz'
+            'id': 'lesson',
+            'label': 'Lesson'
         }, {
             'id': 'slide',
             'label': 'Slide'
@@ -227,6 +228,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         };
 
         $scope.addStep = function (playlist, $index) {
+            console.log('playlist, $index typeof($index)', playlist, $index, typeof($index));
             addStepClicked = true;
             if (!playlist.steps) {
                 playlist.steps = [];
@@ -240,6 +242,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             if (typeof($index) === 'number') {
                 playlist.steps.splice($index, 0, step); //  http://stackoverflow.com/a/586189/1068746
             } else {
+                console.log('the step is: ',step);
                 playlist.steps.push(step);
             }
         };
@@ -296,6 +299,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         };
 
         $scope.getStepViewByType = function (step) {
+            step.type = 'quiz';  // for playlist we only want to use _quiz.html
             var type = 'none';
             if (!!step && !!step.type) {
                 type = step.type;
@@ -441,4 +445,10 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         }, function (newValue) {
             $scope.popoverState = newValue;
         }, true);
+
+        $scope.isStepValid = function (step) {
+            if (step) {
+                return true;
+            }
+        }
     });
