@@ -208,20 +208,9 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
  
         $scope.stepTypes = [{
-            'id': 'video',
-            'label': 'Video'
-        }, {
             'id': 'lesson',
             'label': 'Lesson'
-        }, {
-            'id': 'slide',
-            'label': 'Slide'
         }];
-
-        // $scope.stepTypes = [{
-        //     'id': 'lesson',
-        //     'label': 'Lessons'
-        // }]
 
         $scope.getPlaylistIntroLink = function (playlist) {
             return LergoClient.playlists.getIntroLink(playlist);
@@ -446,9 +435,9 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             $scope.popoverState = newValue;
         }, true);
 
-        $scope.isStepValid = function (step) {
+        $scope.isStepValid = function (step) { // adding this isStepValid is true to enable the Display Step
             if (step) {
                 return true;
             }
-        }
+        };
     });
