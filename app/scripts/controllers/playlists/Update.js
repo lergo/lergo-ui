@@ -290,7 +290,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         };
 
         $scope.getStepViewByType = function (step) {
-            step.type = 'quiz';  // for playlist we only want to use _quiz.html
             var type = 'none';
             if (!!step && !!step.type) {
                 type = step.type;

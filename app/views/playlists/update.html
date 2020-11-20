@@ -164,20 +164,12 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <a href="" ng-click="moveStepUp($index)" ng-show="!$first" class="fa fa-arrow-up"></a>
                                         <a href="" ng-click="moveStepDown($index)" ng-show="!$last" class="fa fa-arrow-down"></a>
-                                        <a ng-click="deleteStep(step)" href="">
+                                        <!-- <a ng-click="deleteStep(step)" href="">
                                             <i class="fa fa-trash-o"></i>
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
-                                <br/>
-                                <div class="row">
-                                    <div dir="auto" class="col-md-2 col-sm-12 col-xs-12">
-                                        {{ 'steps.title' | translate }}
-                                    </div>
-                                    <div class="col-md-10 col-sm-12 col-xs-12">
-                                        <input dir="auto" ng-model="step.title"/>
-                                    </div>
-                                </div>
+                                <div class="lergo-h1">{{'lessons.inPlaylist' | translate}}</div> 
                                 <div ng-include="getStepViewByType(step)"></div>
                             </div>
                             <div save-status="saveStatus" class="row top30 status-save"></div>
