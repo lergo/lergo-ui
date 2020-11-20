@@ -178,29 +178,7 @@
                                         <input dir="auto" ng-model="step.title"/>
                                     </div>
                                 </div>
-                                <br/>
-                                <div class="row">
-                                    <!-- <div class="col-md-2 col-sm-12 col-xs-12">
-                                        <p>{{ 'steps.type' | translate }}
-                                            <sup>
-                                                <a uib-popover="{{'steps.typeHint' | translate}}" class="fa fa-question-circle"
-                                                   popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
-                                                   style="text-decoration: none"></a>
-                                            </sup>
-                                        </p> 
-                                    </div> -->
-                                    <!-- <div class=" col-lg-10 col-md-10 col-sm-4 col-xs-4">
-                                        <select ng-model="step.type"
-                                                ng-options="t.id as ('steps.' + t.id | translate) for t in stepTypes">
-                                        </select>
-                                    </div> -->
-                                </div>
-                                <div class="row" ng-include="getStepViewByType(step)"></div>
-                                <!-- <div class="row top20">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 button-align">
-                                        <button class="btn" ng-click="displayStep(step)" ng-disabled="!isStepValid(step)">{{ 'steps.display' | translate }}</button>
-                                    </div>
-                                </div> -->
+                                <div ng-include="getStepViewByType(step)"></div>
                             </div>
                             <div save-status="saveStatus" class="row top30 status-save"></div>
                             <div></div>
@@ -212,7 +190,7 @@
                                 <button style=" font-size: 13px" class="btn" ng-click="done('showPlaylist')" ng-disabled="saveButtonDisabled()">
                                     {{'button.showPlaylist' | translate }}
                                 </button>
-                                <span class="pop-up-hint add-step-button">
+                                <span ng-show="!playlist.steps" class="pop-up-hint add-step-button">
                                     <button style=" font-size: 13px" class="btn btn-start" ng-click="addStep(playlist)"
                                             ng-disabled="saveButtonDisabled()">{{ 'steps.add' | translate }}
                                     </button>
