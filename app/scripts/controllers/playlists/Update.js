@@ -415,6 +415,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
         $scope.$on('$locationChangeStart', function (event) { // guy -
             // TODO - consider using route change instead.
+            console.log('event', event);
             persistScroll();
         });
 
