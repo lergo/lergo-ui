@@ -24,18 +24,18 @@
         <table class="lergo-table" ng-show="playlistLessonArray.length > 0">
             <thead>
                 <tr style="font-weight: bold">
-                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{ 'lessons.name' | translate }}</td>
-                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></td>
-                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Done</td>
+                    <td class="col-lg-7 col-md-7 col-sm-6 col-xs-6">{{ 'lessons.name' | translate }}</td>
+                    <td class="col-lg-4 col-md-4 col-sm-3 col-xs-3"></td>
+                    <td class="col-lg-1 col-md-3 col-sm-3 col-xs-3">{{'filters.status.complete' | translate }}</td>
                  </tr>
             </thead>
                 <tbody> 
                     <tr ng-repeat="lesson in playlistLessonArray">
-                    <td class="name  col-lg-6 col-md-6 col-sm-6 col-xs-6" dir="auto">
+                    <td class="name  col-lg-7 col-md-7 col-sm-6 col-xs-6" dir="auto">
                         <a ng-class=" {'complete':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
                     </td>
-                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></td>
-                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+                    <td class="col-lg-4 col-md-4 col-sm-3 col-xs-3"></td>
+                    <td class="col-lg-1 col-md-1 col-sm-3 col-xs-3 ">
                         <input ng-class="{'complete':!!lesson.isComplete}" type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
                     </td>
                     </tr>
