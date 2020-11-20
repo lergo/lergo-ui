@@ -39,11 +39,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             $scope.saveStatus = newValue;
         }, true);
 
-        // $scope.displayStep = function (step) {
-        //     console.log(' the step isn "display step" is ', step);
-        //     $location.path('/user/playlists/step/display').search('data', JSON.stringify(step));
-        // };
-
         $scope.saveButtonDisabled = function () {
             return $scope.isSaving() || !$scope.playlist || !$scope.playlist.name;
         };
@@ -217,7 +212,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         };
 
         $scope.addStep = function (playlist, $index) {
-            console.log('playlist, $index typeof($index)', playlist, $index, typeof($index));
             addStepClicked = true;
             if (!playlist.steps) {
                 playlist.steps = [];
@@ -232,7 +226,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             if (typeof($index) === 'number') {
                 playlist.steps.splice($index, 0, step); //  http://stackoverflow.com/a/586189/1068746
             } else {
-                console.log('the step is: ',step);
                 playlist.steps.push(step);
             }
             $scope.getStepViewByType(step);
@@ -422,7 +415,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
         $scope.$on('$locationChangeStart', function (event) { // guy -
             // TODO - consider using route change instead.
-            console.log('event',event);
             persistScroll();
         });
 

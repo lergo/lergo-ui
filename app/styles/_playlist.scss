@@ -1,0 +1,472 @@
+.playlist {
+    .collapsible.lergo-h1{
+        font-size:20px;
+    }
+    .pad-percent {
+        padding-top: 0px;
+    }
+    .pad-clock {
+        padding-top: 0px;
+    }
+    .redo-buttons {
+        font-size: 22px;
+        * {
+            color: #F7941E;
+        }
+
+        & > span {
+            margin: 5px;
+        }
+        .restart {
+            &, * {
+                color: #8CC63F;
+            }
+        }
+        .reports{
+            &, * {
+                color: #337ab7;
+            }
+        }
+        .popover .popover-content {
+            width: 220px;
+        }
+    }
+    .lergo-h1 {
+        font-size: 20px;
+    }
+    hr {
+        margin: 10px;
+        border-top: 2px solid #C0C0C0;
+    }
+    .image {
+        float: left;
+        width: 100%;
+        height: 190px;
+        background-color: #949494;
+        text-align: center;
+        border-radius: 10px;
+        padding: 10px;
+        .user {
+            margin-top: 30px;
+            color: #91cfff;
+            .fa-user {.header {
+            .header-name {
+                .class-header.lergo-h1 {
+                    font-size: 25px;
+                }
+            }
+        }
+                font-size: 120px;
+            }
+        }
+        .cap {
+            margin-top: -155px;
+            color: #296CA1;
+            .fa-graduation-cap {
+                font-size: 70px;
+            }
+        }
+    }
+    .image-agg {
+        float: left;
+        width: 100%;
+        height: 190px;
+        background-color: #949494;
+        text-align: center;
+        border-radius: 10px;
+        padding: 10px;
+        .user {
+            margin-top: 25px;
+            color: #91cfff;
+            .fa-users {
+                font-size: 150px;
+            }
+        }
+        .cap {
+            margin-top: -50px;
+            color: #296CA1;
+            .fa-graduation-cap {
+                font-size: 90px;
+            }
+        }
+        .cap-small-first {
+            margin-top: -180px;
+            margin-left: -95px;
+            color: #296CA1;
+            .fa-graduation-cap {
+                font-size: 50px;
+            }
+        }
+        .cap-small-last {
+            margin-top: -91px;
+            margin-left: 95px;
+            color: #296CA1;
+            .fa-graduation-cap {
+                font-size: 50px;
+            }
+        }
+
+    }
+    .header {
+        height: inherit;
+        min-height: 220px;
+        padding: 10px;
+        background-color: #EFEFEF;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        margin-top: 40px;
+        .header-name {
+            .class-header.lergo-h1 {
+                font-size: 20px;
+            }
+        }
+        .lergo-h4 {
+            font-size: 18px;
+            color: #949494;
+        }
+        .lergo-h1 {
+            white-space: normal;
+            text-align: center;
+        }
+        .header-name {
+            text-align: center;
+            border: 3px solid blue;
+            border-radius: 10px;
+            padding: 30px;
+            display: inline-block;
+            vertical-align: top;
+            .class-name {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+        .header-desc {
+            min-height: 120px;
+        }
+    }
+    .summary{
+        overflow-y: auto;
+        padding: 1px 10px 7px 10px;
+        background-color: #EFEFEF;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        .lergo-h1 {
+            font-size: 15px;
+            white-space: normal;
+        }
+    }
+    .step {
+        padding: 1px 10px 7px;
+        .lergo-h1 {
+            font-size: 15px;
+            white-space: normal;
+            text-align: left;
+        }
+        background-color: #EFEFEF;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        .icon {
+            width: 5%;
+        }
+        .title {
+            width: 20%;
+        }
+        .description {
+            .bg-success {
+                margin: 5px;
+            }
+            .bg-warning {
+                margin: 5px;
+            }
+            .bg-primary {
+                margin: 5px;
+            }
+
+
+
+        }
+    }
+    .no-underline {
+        text-decoration: none;
+    }
+
+    .underline{
+        text-decoration: underline;
+    }
+    .inline-table {
+        display: inline-table;
+    }
+    .recommendation {
+        /*padding: 1px 10px 20px;*/
+        padding: 12px 10px 14px;
+        .lergo-h1 {
+            font-size: 15px;
+            white-space: normal;
+        }
+        background-color: #EFEFEF;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+    .details {
+        .detail {
+            background-color: #EFEFEF;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 10px;
+            .quiz {
+                padding: 5px;
+                border-radius: 10px;
+                .quiz-correct {
+                    border: 2px solid mediumseagreen;
+                    border-radius: 10px;
+                }
+                .quiz-wrong {
+                    border: 2px solid #ee9a00;
+                    border-radius: 10px;
+                }
+                .quiz-open {
+                    border: 2px solid royalblue;
+                    border-radius: 10px;
+                }
+                .wrong {
+                    color: firebrick;
+                }
+                .correct {
+                    color: mediumseagreen;
+                }
+                .bold {
+                    font-weight: bold;
+                }
+                .specific-explanation {
+                    display: block;
+                    font-weight: bold;
+                }
+                .bg-success {
+                    text-align: inherit;
+                }
+                .bg-warning {
+                    text-align: inherit;
+                }
+                .bg-primary {
+                    text-align: inherit;
+                }
+                .quiz-answer {
+                    padding: 10px;
+                }
+                .help-text {
+                    font-style: italic;
+                    color: #949494;
+                    padding: 10px;
+                }
+                .question-media {
+                    padding-left: 10px;
+                }
+                .duration {
+                    float: right;
+                }
+            }
+        }
+    }
+    .playlist-numbers {
+        font-size: 14px;
+    }
+}
+
+.rtl {
+    .playlist {
+        .details {
+            .detail {
+                .quiz {
+                    .duration {
+                        float: left;
+                    }
+                }
+            }
+        }
+        .collapsible.lergo-h1{
+                font-size:25px;
+        }
+        .summary{
+            .lergo-h1{
+                font-size:18px;
+            }
+        }
+        .step{
+            .lergo-h1{
+                font-size:18px;
+            }
+        }
+        .recommendation{
+            .lergo-h1{
+                font-size:18px;
+            }
+        }
+        .header {
+            .header-name {
+                .class-header.lergo-h1 {
+                    font-size: 25px;
+                }
+            }
+        }
+        .redo-buttons {
+            font-size: 24px;
+        }
+        .pad-percent {
+            padding-top: 1px;
+        }
+        .pad-clock {
+            padding-top: 2px;
+        }
+    }
+}
+
+.lergo-embed-mode {
+    #content {
+        .playlist {
+            margin: 0;
+            .image {
+                display: none;
+            }
+
+            .playlist-quiz-summary-item {
+                padding: 2px;
+                white-space: nowrap;
+            }
+
+            .recommendation .description a {
+                width: 250px;
+                overflow-x: hidden;
+                display: block;
+                text-overflow: ellipsis;
+            }
+
+            .header {
+                .header-name {
+                    width: auto;
+                }
+                .header-desc {
+                    margin-top: 10px;
+                    width: auto;
+                }
+            }
+
+            .redo-buttons {
+                position: static;
+                margin-top: 10px;
+            }
+
+            .quiz-step-playlist-view {
+                .playlist-quiz-question-header .duration {
+                    display: block;
+                    float: none;
+                }
+            }
+        }
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media screen and (min-width : 320px) and (max-width : 480px) {
+    .playlist .details .detail .quiz .duration {
+        float: unset;
+    }
+    .rtl {
+        .playlist {
+            .details {
+                .detail {
+                    .quiz {
+                        .duration {
+                            float: unset;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .playlist {
+        .lergo-h1 {
+            font-size: 18px;
+        }
+        .header {
+            margin-top: 0px;
+            .lergo-h4 {
+                font-size: 18px;
+            }
+            .header-desc {
+                min-height: 10px;
+            }
+        }
+
+        .summary{
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+        .step {
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+        .recommendation {
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+        .redo-buttons {
+            .popover .popover-content {
+                width: 290px;
+            }
+        }
+
+    }
+    .rtl .playlist {
+
+        .lergo-h1 {
+            font-size: 20px;
+        }
+        .header {
+            .lergo-h4 {
+                font-size: 18px;
+            }
+        }
+        .summary{
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+        .step {
+            .lergo-h1 {
+                font-size: 15px;
+            }
+        }
+        .recommendation {
+            .lergo-h1 {
+                font-size: 15px;
+            }
+
+        }
+        .collapsible.lergo-h1{
+            font-size:20px;
+        }
+        .header {
+            .header-name {
+                .class-header.lergo-h1 {
+                    font-size: 25px;
+                }
+            }
+        }
+        .pad-percent {
+            padding-top: 3px;
+        }
+    }
+    .rtl {
+        .header-name {
+            float: unset;
+        }
+    }
+
+}
+

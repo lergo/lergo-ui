@@ -109,7 +109,6 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(){
 //                 } 
             
 //                 inviteArray.push(playlistLessonInvitation)
-//                 console.log('the inviteArray is :', inviteArray) 
 //                 }           
 //             }
 
@@ -119,7 +118,6 @@ angular.module('lergoApp').directive('playlistCreateInviteFormItem', function(){
 
 //                 $scope.createError = false;
 //                 $log.info('inviting');
-//                 console.log(' the playlist invite is ', invite);
 //                 // creating and adding an invitation for each lesson in the playlist
 //                     LergoClient.playlists.getById( invite.playlistId).then(function(result){
 //                         lessonsArray = result.data.steps[0].quizItems;

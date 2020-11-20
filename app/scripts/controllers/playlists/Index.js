@@ -20,8 +20,6 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
  
 	$scope.playlistToShow = $scope.playlists;
 
-	console.log('............................this shows that we are using lergo-ui/app/scripts/controllers/playlists/Index.js');
-
 	// Jeff: we need to have the users completed lessons to highlight the completed lessons in the playlist
 	// $scope.GetRowIndex = function (index) {
 		
