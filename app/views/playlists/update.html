@@ -180,21 +180,20 @@
                                 </div>
                                 <br/>
                                 <div class="row">
-                                    <div class="col-md-2 col-sm-12 col-xs-12">
+                                    <!-- <div class="col-md-2 col-sm-12 col-xs-12">
                                         <p>{{ 'steps.type' | translate }}
                                             <sup>
-                                                <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
                                                 <a uib-popover="{{'steps.typeHint' | translate}}" class="fa fa-question-circle"
                                                    popover-placement="top"  popover-trigger="'outsideClick'" tabindex="0"
                                                    style="text-decoration: none"></a>
                                             </sup>
-                                        </p>
-                                    </div>
-                                    <div class=" col-lg-10 col-md-10 col-sm-4 col-xs-4">
+                                        </p> 
+                                    </div> -->
+                                    <!-- <div class=" col-lg-10 col-md-10 col-sm-4 col-xs-4">
                                         <select ng-model="step.type"
                                                 ng-options="t.id as ('steps.' + t.id | translate) for t in stepTypes">
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="row" ng-include="getStepViewByType(step)"></div>
                                 <div class="row top20">

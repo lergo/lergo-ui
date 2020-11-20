@@ -207,10 +207,10 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         });
 
  
-        $scope.stepTypes = [{
-            'id': 'lesson',
-            'label': 'Lesson'
-        }];
+        // $scope.stepTypes = [{
+        //     'id': 'lesson',
+        //     'label': 'Lesson'
+        // }];
 
         $scope.getPlaylistIntroLink = function (playlist) {
             return LergoClient.playlists.getIntroLink(playlist);
@@ -225,7 +225,8 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
             var step = {
                 'testMode': 'False',
-                'retBefCrctAns': 1
+                'retBefCrctAns': 1,
+                'type':'quiz' 
             };
 
             if (typeof($index) === 'number') {
@@ -234,6 +235,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 console.log('the step is: ',step);
                 playlist.steps.push(step);
             }
+            $scope.getStepViewByType(step);
         };
         $scope.moveStepUp = function (index) {
             var temp = $scope.playlist.steps[index - 1];
