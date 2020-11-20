@@ -2,27 +2,45 @@
     <div ng-include="'/views/playlists/_stepDisplay.html'"></div>
 </div>
 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
-<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 dpadleftRight37">
-    <div dir="auto" class="lergo-h1" style="padding: 12px">{{  'playlists.invitePlaylist.name' | translate }}: {{playlist.name}}</div>
+<div class="playlist">
+<div class=" col-lg-8 col-md-8 col-sm-12 col-xs-12 dpadleftRight37">
+    <div class="header">
+        <div class="header-name">
+                <div dir="auto" class="lergo-h1">{{playlist.name}}</div>
+                <div dir="auto" class="lergo-h1" style="padding: 12px">{{'description' | translate}}</div>
+                <div>
+                    <div ng-show="!!playlist.description" class="lergo-h2">
+                        <div class="col-lg-2 col-md-2"></div>
+                                <div class=" header-name  col-lg-8 col-md-8 col-sm-12 col-xs-12" > {{ playlist.description }}</div>
+                                <br>
+                        <div class="col-lg-2 col-md-2"></div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    
     <div class="table-responsive"style="border: 1px solid #FAFAFA"> 
         
-        <table class="table" ng-show="playlistLessonArray.length > 0">
+        <table class="lergo-table" ng-show="playlistLessonArray.length > 0">
             <thead>
                 <tr style="font-weight: bold">
-                    <td class="col-lg-9 col-md-9 col-sm-9 col-xs-9">{{ 'lessons.name' | translate }}</td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{ 'lessons.name' | translate }}</td>
+                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></td>
                     <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Done</td>
                  </tr>
             </thead>
                 <tbody> 
                     <tr ng-repeat="lesson in playlistLessonArray">
-                    <td class="name" dir="auto">
-                        <a ng-class="{'complete':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
+                    <td class="name  col-lg-6 col-md-6 col-sm-6 col-xs-6" dir="auto">
+                        <a ng-class=" {'complete':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
                     </td>
-                    <td>
+                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></td>
+                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
                         <input ng-class="{'complete':!!lesson.isComplete}" type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
                     </td>
                     </tr>
                 </tbody>
         </table>
+    </div>
     </div>
 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
