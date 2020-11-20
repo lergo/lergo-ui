@@ -1,7 +1,12 @@
 {
   "about": {
     "keyContributors": "المساهمون الرئيسيون",
-    "lergoFeedback": "ردود الفعل"
+    "lergoFeedback": "ردود الفعل",
+    "privacy": "الخصوصية وشروط الاستخدام",
+    "usageKeys": {
+      "lergoLessons": " "
+    },
+    "webinar": "تسجيل الويبينار"
   },
   "abuseReport": {
     "reason": {
@@ -23,7 +28,7 @@
       "blog": "منتدى",
       "contact": "اتصل بنا",
       "copyright": "לרגו - למד בעצמך (ע\"ר)",
-      "copyrightMsg": "למעט איפה שצוין אחרת, כל הזכויות שמורות.",
+      "copyrightMsg": "למעט היכן שצוין אחרת, כל הזכויות שמורות.",
       "feedback": "أرسل ملاحظاتك ",
       "homepage": "الصفحة  الرئيسية\n",
       "kitchenSink": "بالوعة المطبخ",
@@ -34,7 +39,8 @@
       "text2": "CC BY-NC-SA 4.0",
       "text3": "قد تنطبق شروط إضافية. باستخدام هذا الموقع، فإنك  / توافق ",
       "text4": "على شروط وسياسات الخصوصية لارغو",
-      "text5": "ليرجو هو مبادرة تعليمية غير ربحية.  ليرجو- تعلم بنفسك."
+      "text5": "ليرجو هو مبادرة تعليمية غير ربحية.  ليرجو- تعلم بنفسك.",
+      "webinar": "تسجيل الويبينار"
     },
     "header": {
       "links": {
@@ -43,8 +49,13 @@
         "invites": "دعوات",
         "learn": "لنتعلم",
         "lessons": "دروس",
+        "logout": "تسجيل الخروج",
+        "manageAbuseReports": "Manage Abuse Report",
+        "manageLessons": "Manage Lessons",
         "manageRoles": "إدارة الأدوار",
+        "manageUsers": "Manage Users",
         "parents": "الاهل",
+        "privacy": "الخصوصية وشروط الاستخدام",
         "profile": "الملف الشخصي",
         "questions": "أسئلة",
         "reports": "تقارير",
@@ -55,12 +66,18 @@
       "searchPlaceholder": "ما هو الموضوع الذي ترغب بدراسته؟",
       "searchUnderConstruction": "יכולת חיפוש תחת בנייה... בינתיים, נא להשתמש בכפתורי סינון למטה.",
       "siteLanguage": "لغة الموقع"
+    },
+    "navbar": {
+      "desktopPin": " ضع كود اللعبة",
+      "enterPin": " ضع كود",
+      "searchLesson": "بحث الدرس"
     }
   },
   "button": {
     "forgotPassword": "نسيت كلمة المرور؟",
     "login": "دخول",
     "newInvite": "دعوة جديدة",
+    "or": "-- او --",
     "resendValidationEmail": "إعادة إرسال البريد الإلكتروني والتحقق من صحته .",
     "showLesson": "عرض",
     "signup": "تسجيل",
@@ -77,6 +94,9 @@
   },
   "clickHere": "انقر هنا. ",
   "congratulations": "هنيئا لكم ",
+  "cookieConsent": {
+    "text1": "يستخدم هذا الموقع ملفات تعريف الارتباط لضمان حصولك على أفضل تجربة على موقعنا. باستخدام هذا الموقع ، فإنك تقبل هذا الاستخدام ، وكذلك تقبل شروط الاستخدام وسياسة الخصوصية لدى LerGO."
+  },
   "copy": "نسخة",
   "delete": "حذف",
   "description": "الوصف",
@@ -111,6 +131,7 @@
       "reportLesson": "تقارير مرشح من قبل الدرس"
     },
     "labels": {
+      "age": "سن",
       "ageRange": "مجموعة الجيل",
       "correctPercentage": "النطاق الصحيح٪",
       "createdBy": "التي أنشأتها",
@@ -137,23 +158,30 @@
     },
     "subjects": {
       "arabic": "العربية",
-      "hebrewHsl" :" العبرية للعربية",
       "art": "فن",
       "biology": "علم الاحياء",
       "chemistry": "كيمياء",
       "computers": "أجهزة الكمبيوتر",
       "english": "الانجليزية",
+      "financialEducation": "التعليم المالي",
       "geography": "جغرافيا",
       "geometry": "علم الهندسة",
       "grammar": "قواعد ",
+      "hebrewHsl": "العبرية للعربية",
       "history": "تاريخ",
       "holidays": "العطل",
       "language": "اللغة",
+      "literature": "الأدب",
       "math": "الرياضيات",
       "music": "موسيقى",
+      "other": "أخر",
       "physics": "فيزياء",
+      "psychometric": "السيكومتري",
+      "roadSafety": "الحذر والأمان",
       "science": "العلم",
-      "spelling": "هجاء"
+      "spelling": "هجاء",
+      "sustainability": "الاستدامة",
+      "technology": "تكنولوجيا"
     },
     "to": "حتى"
   },
@@ -166,6 +194,7 @@
   "homepage": {
     "andCounting": "والعد ...",
     "create": "خلق",
+    "createLessons": "إنشاء درس",
     "createYourOwn": "انتاج دروس خاصة بك",
     "free": "هذا مجانيّ",
     "lessons": "دروس",
@@ -183,8 +212,12 @@
   "input": {
     "confirmPassword": "تأكيد كلمة المرور",
     "email": "البريد الإلكتروني",
+    "emailConfirm": "البريد الإلكتروني تأكيد.",
     "fullName": "الاسم الكامل",
+    "gpdrOptIn": "أوافق على شروط الاستخدام وسياسة الخصوصية في LerGO وتلقي تحديثات البريد الإلكتروني من LerGO.",
+    "learnMore": "أعرف أكثر",
     "password": "كلمة السر",
+    "passwordConfirm": "تأكيد كلمة المرور",
     "username": "اسم المستخدم"
   },
   "invitations": {
@@ -228,6 +261,7 @@
     "copiedFromLessonBy": "بواسطة"
   },
   "lessonPreview": {
+    "detailHeader": "لمحة عن الأسئلة في الدرس",
     "header": {
       "title": "معاينة الدرس"
     }
@@ -241,6 +275,8 @@
     "create": "إنشاء الدرس جديد",
     "createdOn": "تم انتاجه ب",
     "description": "وصف الدرس",
+    "embedLesson": "تضمين درس",
+    "embedLessonTitle": "يرجى نسخ الكود أدناه لتضمين الدرس على موقعك أو مدونتك.",
     "error": {
       "invalidName": "שם שיעור הוא שדה דרוש. יש למלא אותו לפני הוספת שלב לשיעור."
     },
@@ -256,7 +292,9 @@
     "genericVideosPre": "الى قائمة الرسوم المتحركة عام (لمحة عن الدرس، نهاية ..) ",
     "inviteLesson": {
       "student": {
-        "success": "انسخ الرابط أدناه لدعوة الطالب إلى الدرس."
+        "success": {
+          "invite": "انسخ الرابط أدناه لدعوة الطالب إلى الدرس."
+        }
       }
     },
     "inviteSuccessText": "انقل الرابط لدعوة الطالب الى الدرس",
@@ -296,11 +334,13 @@
     },
     "total": "مجموع",
     "videoURL": "رابط الفيديو",
-    "videoURLHelpText": "ادخل رابط الفيديو منYouTube هنا"
+    "videoURLHelpText": "ادخل رابط الفيديو منYouTube هنا",
+    "welcome": "مرحبًا بكم في Lergo",
+    "wikiLink": "ويكيبيديا",
+    "wikiLinkTitle": "ويكيبيديا"
   },
   "lessons_": {
-    "inviteLesson": "دعوة للدرس",
-    "inviteLessonHelpText": ""
+    "inviteLesson": "دعوة للدرس"
   },
   "like": "مذهل",
   "liked": "احب",
@@ -308,13 +348,14 @@
   "loginPage": {
     "login": "دخول",
     "password": "كلمة السر",
+    "retypeEmail": "إعادة إدخال الايميل.",
+    "retypePassword": "أعد إدخال كلمة السر.",
     "signup": "تسجيل",
     "username": "اسم المستخدم"
   },
   "manage": {
     "users": {
       "edit": {
-        "email": "",
         "roles": "الأدوار",
         "username": "اسم المستخدم"
       },
@@ -333,6 +374,11 @@
   "overview": {
     "title": "نظرة عامة"
   },
+  "pin": {
+    "enter": "دخول",
+    "placeholder": "ضع كود",
+    "redirect": " جميع الدروس"
+  },
   "popular": "مشهور",
   "preview": "عرض",
   "previewQuestion": "عرض",
@@ -340,11 +386,13 @@
     "edit": {
       "title": "انقر لتعديل الملف الشخصي"
     },
-    "lesson": "الدروس",
+    "lesson": "دروس",
+    "lessonCreated": "الدروس",
     "ph": {
       "shortIntro": "باختصار مقدمة"
     },
-    "questionCreated": "أسئلة مكون",
+    "question": "اسئله",
+    "questionCreated": "اسئله",
     "save": {
       "title": "انقر لحفظ الملف الشخصي"
     }
@@ -462,12 +510,33 @@
     "date": "التاريخ",
     "description": "وصف الدرس",
     "detailedReport": "التقرير المفصل",
+    "details": {
+      "hint": "ملاحظة: تم ترتيب الأسئلة في هذا القسم بحيث تظهر أصعب الأسئلة أولاً."
+    },
     "lessonSteps": "مراحل الدرس",
     "nextLesson": "الدرس المفضل التالي",
     "notCompletedTitle": "لم يكمل الدرس",
+    "openQuestions": {
+      "one": "سؤال مفتوح",
+      "other": "أسئلة مفتوحة",
+      "zero": "."
+    },
     "priorLesson": "الدرس المفضل السابق",
+    "questionsInLesson": {
+      "one": "سؤال",
+      "other": "أسئلة مختلفة",
+      "zero": "لا توجد أسئلة في هذا الدرس"
+    },
+    "questionsInQuiz": {
+      "one": "سؤال في الاختبار",
+      "other": "أسئلة مختلفة في الاختبار"
+    },
     "recommendation": "توصيات",
+    "studentSummary": "ملخص تقرير الدرس",
     "summary": "تقرير موجز"
+  },
+  "reportAbuse": {
+    "title": "الإبلاغ عن سوء استخدام "
   },
   "reports": {
     "class": "درجة",
@@ -517,6 +586,7 @@
       "message": "أشكركم على الاشتراك في lergo. وبعد دقائق قليلة سوف تتلقى بريد الكتروني للتحقق من LerGO. الرجاء التأكد من البريد الإلكتروني الخاص بك عن طريق النقر على الرابط والذهاب من هناك اتصال lergo."
     },
     "error": {
+      "checkRequired": "هذا الحقل مطلوب للتسجيل.",
       "confPasswordRequired": "مطلوب لتأكيد كلمة السر",
       "invalidChar": "يمكن أن تحتوي على اسم المستخدم فقط الأرقام والحروف، أو التسطير.",
       "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح.",
