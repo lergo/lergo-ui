@@ -1,3 +1,4 @@
+lergo-ui bug(fix) _playlist.scss had code interfering with playlist images
 lergo-ui and lergo-ri 'merging with nov-playlist - first release of mvp playlist'
 lergo-ui adding "usage" and "contact us" to mobile drop-down
 lergo-ui fix(bug - lessonTitleImage not working with local reference) and increasing size of template for bubble
