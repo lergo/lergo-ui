@@ -7,6 +7,27 @@ angular.module('lergoApp').directive('quizItemMedia', function($sce) {
 			'quizItem' : '='
 		},
 		link : function postLink($scope/* , $element , attrs */) {
+
+			function isValidImage(url) {
+				return !!url;
+
+			}
+
+			function isValidAudio(url) {
+				return !!url;
+
+			}
+
+			function isValid(media) {
+				if (!media) {
+					return false;
+				}
+				if (media.type === 'image') {
+					return isValidImage(media.imageUrl);
+				} else if (media.type === 'audio') {
+					return isValidAudio(media.audioUrl);
+				}
+			}
 			$scope.getUrl = function(url) {
 				return $sce.trustAsResourceUrl(url);
 
@@ -19,26 +40,6 @@ angular.module('lergoApp').directive('quizItemMedia', function($sce) {
 				}
 				return 'views/questions/view/media/_' + type + '.html';
 			};
-			function isValid(media) {
-				if (!media) {
-					return false;
-				}
-				if (media.type === 'image') {
-					return isValidImage(media.imageUrl);
-				} else if (media.type === 'audio') {
-					return isValidAudio(media.audioUrl);
-				}
-			}
-
-			function isValidImage(url) {
-				return !!url;
-
-			}
-
-			function isValidAudio(url) {
-				return !!url;
-
-			}
 		},
 		template : '<div ng-include=getMediaTemplate()></div>'
 	};

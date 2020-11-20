@@ -1,0 +1,43 @@
+<div class="base-layout" id="playlistClassInvite" ng-init="scrollUp()">
+    <div style="height: 1px"></div>
+    <div class="class-invite-content lergo-body-tile">
+        <form ng-submit="createInvite()">
+        <div ng-show="!playlistClassInvite.data">
+            <div class="lergo-form">
+                <div class="instructions-title section">
+                    {{ 'playlistClassInvite.welcome' | translate }}
+                </div>
+                <div class="instructions-details section">
+                    {{ 'playlistClassInvite.instructions' | translate }}
+                </div>
+                <div class="section horizontal">
+                    <div class="label">  {{ 'playlistClassInvite.playlistName' | translate }}   </div>
+                    <div class="input">  {{playlistClassInvite.playlistName}}</div>
+                </div>
+                <div class="section horizontal">
+                    <div class="label"> {{ 'playlistClassInvite.teacherName' | translate }}  </div>
+                    <div class="input"> {{playlistClassInvite.username}} </div>
+                </div>
+                <div class="section horizontal">
+                    <div class="label"> {{ 'playlistClassInvite.className' | translate }}  </div>
+                    <div class="input"> {{playlistClassInvite.className}} </div>
+                </div>
+                <div class="section horizontal">
+                    <div class="label">  {{ 'playlistClassInvite.studentName' | translate }}  </div>
+                    <div class="input"> <input type="text" ng-model="playlistClassInvite.studentName" autofocus/></div>
+                </div>
+                <div class="section horizontal">
+                    <div class="label">&nbsp;</div>
+                    <div class="input">
+                        <button ng-disabled="!playlistClassInvite.studentName" class="btn"
+                                ng-click="createReportFromPlaylistClassInvite()"> {{ 'playlistClassInvite.start' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        </form>
+    </div>
+</div>

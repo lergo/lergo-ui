@@ -1,0 +1,44 @@
+<div class="lergo-form report">
+    <br>
+    <br>
+	<p ng-show="!submit" class="lergo-h4">{{'reportAbuse.title'| translate}}</p>
+	<p ng-show="!!submit" class="lergo-h4">{{'reportAbuse.thanks'| translate}}</p>
+	<button class="btn-link close-button" ng-click="setActiveAction()">X</button>
+	<div class="container" ng-show="!submit" style="max-width: 500px">
+		<div class="options">
+			<input type="radio" ng-model="abuseReport.reason" value="infringesRights" />
+			{{'abuseReport.reason.infringesRights'|translate}}
+		</div>
+		<div class="options">
+			<input type="radio" ng-model="abuseReport.reason" value="notEducational" />
+			{{'abuseReport.reason.notEducational'|translate}}
+		</div>
+		<div class="options">
+			<input type="radio" ng-model="abuseReport.reason" value="notAppropriate" />
+			{{'abuseReport.reason.notAppropriate'|translate}}
+		</div>
+		<div class="comment" ng-show="!!abuseReport.reason">
+			{{'abuseReport.comments'|translate}}
+			<textarea ng-model="abuseReport.comment"></textarea>
+		</div>
+		<div class="button">
+			<button ng-disabled="!abuseReport.reason" class="btn" ng-click="submitAbuseReport()">{{ 'button.submit' | translate }}</button>
+		</div>
+		<div>
+			<span class="lergo-h4">{{'playlists.note' | translate}}:</span>
+			{{'abuseReport.noteMessage' | translate}}
+		</div>
+	</div>
+	<div class="container" ng-show="!!submit" style="max-width: 500px">
+		<div>
+			<div class="bold">{{'abuseReport.issueReported'|translate}}</div>
+			{{'abuseReport.reason.'+abuseReport.reason| translate}}
+		</div>
+		<br />
+		<div ng-show="!!abuseReport.comment">
+			<div class="bold">{{'abuseReport.addComments'|translate}}</div>
+			{{abuseReport.comment}}
+		</div>
+		<br />
+	</div>
+</div>

@@ -1,0 +1,44 @@
+#classInvite{
+.class-invite-content{
+    border:3px solid $LERGO_MENU_GRAY_TITLE;
+
+}
+    .label{
+        text-align:left;
+        width:150px;
+        color:$LERGO_MENU_GRAY_TITLE;
+    }
+    .input{
+        max-width:50%;
+    }
+    .lergo-body-tile{
+        padding:40px;
+    }
+
+    .instructions-title{
+        text-align:center;
+        font-size:25px;
+    }
+
+    .instructions-details{
+        padding: 0 20px;
+    }
+
+    .horizontal{
+        padding: 0 60px;
+        .input{
+            vertical-align: middle;
+            max-width:200px;
+//            overflow:hidden;
+//            text-overflow:ellipsis;
+            word-break: break-word;
+        }
+    }
+}
+
+.rtl #classInvite{
+    .label {
+        text-align: right;
+
+    }
+}

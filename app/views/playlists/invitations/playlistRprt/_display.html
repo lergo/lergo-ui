@@ -1,0 +1,7 @@
+<div>
+        from:lergo-directives/playlistRprtView.js
+<div ng-repeat="step in playlist.steps track by $index" >
+    
+    <div class="playlist-step" ng-include="getStepViewByType(step)"></div>
+</div>
+</div>

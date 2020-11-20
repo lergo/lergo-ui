@@ -2,13 +2,17 @@
 
 angular.module('lergoApp')
     .service('LikesService', function LikesService($http) {
-
+ 
         function getLike(itemType, item) {
             return $http.get('/backend/user/me/likes/' + itemType + '/' + item._id);
         }
 
         this.getMyLessonLike = function (item) {
             return getLike('lesson', item);
+        };
+
+        this.getMyPlaylistLike = function (item) {
+            return getLike('playlist', item);
         };
 
         this.getMyQuestionLike = function (item) {
@@ -22,6 +26,10 @@ angular.module('lergoApp')
 
         this.countLessonLikes = function (item) {
             return countLikes('lesson', item);
+        };
+
+        this.countPlaylistLikes = function (item) {
+            return countLikes('playlist', item);
         };
 
         this.countQuestionLikes = function (item) {
@@ -41,6 +49,10 @@ angular.module('lergoApp')
             return createLike('question', item);
         };
 
+        this.likePlaylist = function (item) {
+            return createLike('playlist', item);
+        };
+
         function deleteLike(itemType, item){
             return $http.post('/backend/likes/' + itemType + '/' + item._id + '/delete');
         }
@@ -52,6 +64,10 @@ angular.module('lergoApp')
 
         this.deleteQuestionLike = function(item){
             return deleteLike('question',item);
+        };
+
+        this.deletePlaylistLike = function( item ){
+            return deleteLike('playlist', item);
         };
 
     });

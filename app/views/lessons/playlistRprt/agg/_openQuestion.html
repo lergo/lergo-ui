@@ -1,0 +1,18 @@
+<div class="quiz-open">
+    <div ng-include="'views/questions/report/agg/partial/_questionHeader.html'"></div>
+	<div class="question-media img-small  " quiz-item-media quiz-item="quizItem"></div>
+	<div class="quiz-answer">
+        <div class="bold">{{'questions.yourAnswer'|translate}}</div>
+        <div class="question-media img-small  " quiz-item-media quiz-item="quizItem"></div>
+        <div> {{'questions.types.openQuestion' | translate}}</div>
+		<div ng-show="!!quizItem.explanation">
+			<br>
+			<div class="bold">{{'explanation'|translate}}</div>
+			<div dir="auto">{{quizItem.explanation}}</div>
+		</div>
+		<div ng-show="!!quizItem.explanationMedia">
+			<br>
+			<div quiz-item-explanation-media class="img-small"   quiz-item="quizItem"></div>
+		</div>
+	</div>
+</div>

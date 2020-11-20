@@ -2,7 +2,8 @@
 
 angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location,  $window) {
 
-    $window.scrollTo(0, 0);
+	$window.scrollTo(0, 0);
+	var path = $location.path();
 
 	$scope.loaded = false;
 	$scope.lessonsFilter = {
@@ -44,6 +45,23 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			},
 			'dollar_page' : $scope.filterPage
 		};
+		// jeff: this was the merge conflict that I removed!
+		function scrollToPersistPosition() {
+			var scrollY = 0;
+			if (!!$rootScope.scrollPosition) {
+				scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
+			}
+			$window.scrollTo(0, scrollY);
+		}
+		// LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
+		// 	$scope.lessons = result.data.data;
+		// 	$scope.filterPage.count = result.data.count; // the number of
+		// 	// lessons found
+		// 	// after filtering
+		// 	// them.
+		// 	scrollToPersistPosition();
+		// 	$scope.loaded = true;
+		// });
 		
 		// Jeff mustHaveUndefined  for homepage loading with only language filter
 		// Jeff getPublicHomePageLessons is used to access and save the homepage in redis cache
@@ -93,10 +111,20 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		return window.location.origin + '/#!/public/lessons/' + lesson._id + '/share';
 	};
 
-	var path = $location.path();
+
+	function persistScroll(pageNumber) {
+		if (!$rootScope.scrollPosition) {
+			$rootScope.scrollPosition = {};
+		}
+		$rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
+	}
+
+	
 	$scope.$on('$locationChangeStart', function() {
 		persistScroll($scope.filterPage.current);
 	});
+
+	
 
 	$scope.$watch('filterPage.current', function(newValue, oldValue) {
 		if (!!oldValue) {
@@ -104,18 +132,5 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			persistScroll(oldValue);
 		}
 	});
-	function persistScroll(pageNumber) {
-		if (!$rootScope.scrollPosition) {
-			$rootScope.scrollPosition = {};
-		}
-		$rootScope.scrollPosition[path + ':page:' + pageNumber] = $window.scrollY;
-	}
-	function scrollToPersistPosition() {
-		var scrollY = 0;
-		if (!!$rootScope.scrollPosition) {
-			scrollY = $rootScope.scrollPosition[path + ':page:' + $scope.filterPage.current] || 0;
-		}
-		$window.scrollTo(0, scrollY);
-	}
 
 });

@@ -49,12 +49,22 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'views/lessons/invitations/display.html',
         controller: 'LessonsInvitationsDisplayCtrl',
         reloadOnSearch: false
+    }).when('/public/playlists/invitations/:invitationId/display', {
+        templateUrl: 'views/playlists/invitations/display.html',
+        controller: 'PlaylistsInvitationsDisplayCtrl',
+        reloadOnSearch: false
     }).when('/:role/lessons/:lessonId/intro', {
         templateUrl: 'views/lessons/intro.html',
         controller: 'LessonsIntroCtrl'
+    }).when('/:role/playlists/:playlistId/intro', {
+        templateUrl: 'views/playlists/intro.html',
+        controller: 'PlaylistsIntroCtrl'
     }).when('/:role/lessons/:lessonId/classInvite', {
         templateUrl: 'views/invites/classInvite.html',
         controller: 'ClassInviteCtrl'
+    }).when('/:role/playlists/:playlistId/classInvite', {
+        templateUrl: 'views/invites/playlistClassInvite.html',
+        controller: 'PlaylistClassInviteCtrl'
     }).when('/lessons/invite/pin', {
         templateUrl: 'views/invites/pinInvite.html',
         controller: 'PinInviteCtrl'
@@ -70,6 +80,12 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/public/lessons/reports/agg/:reportId/display', {
         templateUrl: 'views/lessons/invitations/aggReport.html',
         controller: 'LessonsInvitationsAggReportCtrl'
+    }).when('/public/playlists/playlistRprts/:playlistRprtId/display', {
+        templateUrl: 'views/playlists/invitations/playlistRprt.html',
+        controller: 'PlaylistsInvitationsPlaylistRprtCtrl'
+    }).when('/public/playlists/playlistRprts/agg/:playlistRprtId/display', {
+        templateUrl: 'views/playlists/invitations/aggPlaylistRprt.html',
+        controller: 'PlaylistsInvitationsAggPlaylistRprtCtrl'
     }).when('/user/questions/:questionId/update', {
         templateUrl: 'views/questions/update.html',
         controller: 'QuestionsUpdateCtrl',
@@ -85,6 +101,10 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
     }).when('/user/lessons/:lessonId/update', {
         templateUrl: 'views/lessons/update.html',
         controller: 'LessonsUpdateCtrl',
+        reloadOnSearch: false
+    }).when('/user/playlists/:playlistId/update', {
+        templateUrl: 'views/playlists/update.html',
+        controller: 'PlaylistsUpdateCtrl',
         reloadOnSearch: false
     }).when('/user/lessons/:lessonId/invitations', {
         templateUrl: 'views/lessons/invitations/create.html',

@@ -1,0 +1,17 @@
+<div class="modal-header">
+   <!--  <h3 class="modal-title">Hello</h3> -->
+</div>
+<!-- <div create-new-lesson></div> -->
+<button ng-click="createLesson(); cancel()" class="btn btn-start ng-binding" >
+    <i class="fa fa-circle-o-notch fa-spin ng-hide" aria-hidden="true"></i>
+    {{'homepage.createLessons' | translate}}
+</button>
+
+<button ng-click="createPlaylist(); cancel()" class="btn btn-start ng-binding" >
+    <i class="fa fa-circle-o-notch fa-spin ng-hide" aria-hidden="true"></i>
+    {{'playlists.create' | translate}}
+</button>
+<div class="modal-footer">
+   <!--  <button class="btn btn-primary" type="button" ng-click="ok()">OK</button> -->
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,100 @@
+<div>
+    <div id="playlistRprtIndex" load-filter-and-paging="loadPlaylistRprts()">
+        <br/>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div>
+                            <div class="filter-playlistRprts lergo-h1-orig  hidden-sm hidden-xs">{{ 'playlistRprts.filter' | translate }}</div>
+                            <div lergo-filter   model="playlistRprtsFilter" on-change="loadPlaylistRprts()" opts="playlistRprtsFilterOpts"
+                                 on-load="filterLoaded()" playlistRprt-type="playlistRprtsPage.playlistRprtType">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12">
+                        <div class="my-playlistRprts lergo-h1-orig">
+                                {{ 'playlistRprts.myPlaylistRprts' | translate }} [ {{ 'playlistRprts.total' | translate }}:
+                                {{systemStats.myPlaylistRprts + + systemStats.myInvitedPlaylistRprts }} ]
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 col-border-bottom">
+                        <div class="select-playlistRprt">
+                                <!-- LERGO-457-->
+                            <select class="playlistRprt-type-selection" ng-model="playlistRprtsPage.playlistRprtType"
+                                    ng-options="repType.id as ( 'playlistRprts.type.' + repType.id | translate ) for repType in playlistRprtTypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="hidden-sm hidden-xs" filter-is-active="playlistRprtsFilterOpts" section="playlistRprts"></div>
+                        <div class="table-responsive" style="border: 1px solid #FAFAFA"> <!--without a style, iPad does not show content!-->
+                            <table class="table">
+                                <thead>
+                                <tr style="font-weight: bold">
+                                    <td class="checkbox-dropdown">
+                                        <div class="playlists-dropdown">
+                                            <div class="btn-group" uib-dropdown>
+                                                <input type="checkbox" ng-click="selectAll($event)" ng-model="playlistRprtsPage.selectAll">
+                                                <button type="button" class="btn-link" uib-dropdown-toggle>
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu overidePositionInherit dropdown-mobile" role="menu">
+                                                    <li>
+                                                        <a style="outline: none;" class="btn-link"
+                                                           ng-click="createPlaylistFromWrongLessons()">{{'playlistRprt.CreatePlaylistFromWrongLessons'|translate}}</a>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li>
+                                                        <a style="outline: none;" class="btn-link delete-menu" ng-click="deletePlaylistRprts()">{{'delete'|translate}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{ 'name' | translate }}</td>
+                                    <td ng-show="showStudentCountColumn()">{{'playlistRprts.studentCount' | translate}}</td>
+                                    <td ng-show="showStudentColumn()">{{ 'playlistRprts.student' | translate}}</td>
+                                    <td ng-show="showClassColumn()">{{ 'playlistRprts.class' | translate}}</td>
+                                    <td>{{ 'playlistRprts.correctPercentage' | translate }}</td>
+                                    <td>{{ 'playlistRprts.takenAt' | translate}}</td>
+                                    <td>{{ 'playlistRprts.subject' | translate}}</td>
+                                    <td>{{ 'playlistRprts.duration'|translate}}</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="playlistRprt in playlistRprts |orderBy:'-lastUpdate'">
+                                    <td>
+                                        <input type="checkbox" style="margin-left: 5px;" ng-model="playlistRprt.selected">
+                                    </td>
+                                    <td class="name" dir="auto">
+                                        <a ng-show="!!playlistRprt.data.playlist.name && playlistRprt.data.playlist.name.trim().length > 0"
+                                           uib-tooltip="{{'playlistRprts.tooltip.go' | translate}}"
+                                           ng-href="{{getPlaylistRprtLink(playlistRprt._id)}}">{{ getPlaylistRprtName(playlistRprt) }}</a>
+                                    </td>
+                                    <td ng-show="showStudentCountColumn()">{{playlistRprt.count}}</td>
+                                    <td ng-show="showStudentColumn()">{{playlistRprt.data.invitee.name}}</td>
+                                    <td ng-show="showClassColumn()">{{playlistRprt.data.invitee.class}}</td>
+                                    <td >{{playlistRprt.correctPercentage | number:0 }}</td>
+                                    <td >{{playlistRprt.lastUpdate| date:'medium'}}</td>
+                                    <td >{{playlistRprt.data.playlist.subject && ('filters.subjects.' + playlistRprt.data.playlist.subject
+                                        | translate) ||""}}
+                                    </td>
+                                    <td>
+                                        <span ng-show="isCompleted(playlistRprt)">{{playlistRprt.duration|duration}}</span>
+                                        <span ng-show="!isCompleted(playlistRprt)">{{'playlistRprt.incomplete' | translate}}</span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+            </div>
+        </div>
+        <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadPlaylistRprts()" on-load="pagingLoaded()"></div>
+    </div>
+</div>
+

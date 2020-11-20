@@ -24,10 +24,13 @@
 @import "./translations";
 @import "./lesson";
 @import "./report";
+@import "./playlistRprt";
 @import "./lessonIntro";
+@import "./playlistIntro";
 @import "./underConstruction";
 @import "./create";
 @import "./createLessonPage";
+@import "./createPlaylistPage";
 @import "./questionPreview";
 @import "./helperContent";
 @import "./reportIndex";
@@ -40,8 +43,11 @@
 @import "./filterIsActive";
 @import "./goToMyLessonsDemo";
 @import "./classInvite";
+@import "./playlistClassInvite";
 @import "./toastrDirectionSupport";
 @import "./lessonPreview";
+@import "./playlistPreview";
+@import "./playlist";
 @import "./inviteAfter";
 @import "./pinInvite";
 @import "./pagination";

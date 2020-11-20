@@ -1,0 +1,36 @@
+<div class="lesson-step-video" ng-init="scrollUp()">
+    <span class="back-button-alignment-video hidden-sm hidden-xs" ng-show="currentUrl" >
+                <span class="angle-eng">
+                    <a  ng-click="goBack()"><span class="back-button"><i class="fa fa-angle-left fa-2x"></i>&nbsp {{'lesson.back' | translate}} &nbsp</span></a>
+                </span>
+                <span class="angle-heb">
+                    <a  ng-click="goBack()"><span class="back-button">&nbsp {{'lesson.back' | translate}} &nbsp<i class="fa fa-angle-left fa-2x "></i></span></a>
+                </span>
+            </span>
+    <div style="height: 12px" class="hidden-lg hidden-md"></div>
+    <div class="lesson-step-title lergo-h1">{{step.title}}</div>
+    <div style="height: 7px" class="hidden-lg hidden-md"></div>
+    <div class="lesson-step-video-content">
+        <div  class="embed-responsive embed-responsive-16by9">
+            <div class="hidden-sm hidden-xs">
+                <iframe width="{{videoSize.width}}" height="{{videoSize.height}}" ng-src="{{getYoutubeEmbedSource(step)}}"
+                        frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+            <div class="hidden-lg hidden-md">
+                <iframe class="lesson-step-video-embed" ng-src="{{getYoutubeEmbedSourceNoAutoPlay(step)}}"
+                        frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div ng-show="hasNextStep()" class="text-center">
+        <button ng-click="continueBtnDisable || nextStep()" class="btn" ng-disabled="continueBtnDisable">
+            <i ng-show="continueBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+            {{ 'lessons.letsContinue' | translate }}
+        </button>
+    </div>
+</div>
+

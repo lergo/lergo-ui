@@ -11,6 +11,15 @@ angular.module('lergoApp').service('UserDataService', function UserDataService($
 			}
 		});
 	};
+	this.getPlaylists = function(queryObj) {
+		return $http({
+			'method' : 'GET',
+			'url' : '/backend/user/me/playlists',
+			'params' : {
+				'query' : queryObj
+			}
+		});
+	};
 
 	this.getLikedLessons = function(queryObj) {
 		return $http({
@@ -21,6 +30,25 @@ angular.module('lergoApp').service('UserDataService', function UserDataService($
 			}
 		});
 	};
+	this.getLikedPlaylists = function(queryObj) {
+		return $http({
+			'method' : 'GET',
+			'url' : '/backend/user/me/liked/playlists',
+			'params' : {
+				'query' : queryObj
+			}
+		});
+	};
+	this.getCompletedLessons = function(queryObj) {
+		return $http({
+			'method' : 'GET',
+			'url' : '/backend/user/me/completed/lessons',
+			'params' : {
+				'query' : queryObj
+			}
+		});
+	};
+ 
 	this.getQuestions = function(queryObj) {
 		return $http({
 			'method' : 'GET',
@@ -51,6 +79,15 @@ angular.module('lergoApp').service('UserDataService', function UserDataService($
 			}
 		});
 	};
+	this.getPlaylistRprts = function(queryObj) {
+		return $http({
+			'method' : 'GET',
+			'url' : '/backend/user/me/playlistRprts',
+			'params' : {
+				'query' : queryObj
+			}
+		});
+	};
 
 	this.getStudentsReports = function(queryObj) {
 		return $http({
@@ -62,11 +99,31 @@ angular.module('lergoApp').service('UserDataService', function UserDataService($
 
 		});
 	};
+	this.getStudentsPlaylistRprts = function(queryObj) {
+		return $http({
+			'method' : 'GET',
+			'url' : '/backend/user/me/studentsPlaylistReports',
+			'params' : {
+				'query' : queryObj
+			}
+
+		});
+	};
 
     this.getClassReports = function(queryObj) {
         return $http({
             'method' : 'GET',
             'url' : '/backend/user/me/classReports',
+            'params' : {
+                'query' : queryObj
+            }
+        });
+	};
+	
+	this.getClassPlaylistRprts = function(queryObj) {
+        return $http({
+            'method' : 'GET',
+            'url' : '/backend/user/me/classPlaylistRprts',
             'params' : {
                 'query' : queryObj
             }

@@ -63,5 +63,4 @@ angular.module('lergoApp').controller('LoginCtrl', function($scope, $log, LergoC
 		});
 	};
 
-
 });

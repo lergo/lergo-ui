@@ -1,0 +1,31 @@
+<div class="quiz-open">
+	<div class="bg-primary" class="quiz">
+		<span dir="auto" class="inline-table">{{quizItem.question}}</span>
+		<span dir="auto" class="inline-table">({{'questions.openQuestion'|translate}})</span>
+		<div class="duration">
+			<span ng-show="quizItem.isHintUsed">
+				<span dir="auto" class="inline-table"> {{'questions.hintWatched' | translate}} </span>
+				<span dir="auto" class="inline-table"> : {{quizItem.hint | limitTo:20}} | </span>
+			</span>
+			<span class="inline-table">
+				<i class="fa fa-clock-o"></i>
+				{{quizItem.duration | duration}}
+			</span>
+		</div>
+	</div>
+	<div dir="auto" ng-show="!!quizItem.helpText" class="help-text">{{quizItem.helpText}}</div>
+	<div class="question-media img-small  " quiz-item-media quiz-item="quizItem"></div>
+	<div class="quiz-answer">
+		<div class="bold">{{'questions.yourAnswer'|translate}}</div>
+		<div dir="auto" class="questions-exact-match">{{quizItem.userAnswer}}</div>
+		<div ng-show="!!quizItem.explanation">
+			<br>
+			<div class="bold">{{'explanation'|translate}}</div>
+			<div dir="auto">{{quizItem.explanation}}</div>
+		</div>
+		<div ng-show="!!quizItem.explanationMedia">
+			<br>
+			<div quiz-item-explanation-media class="img-small"   quiz-item="quizItem"></div>
+		</div>
+	</div>
+</div>
