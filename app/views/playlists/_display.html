@@ -1,26 +1,27 @@
 <div ng-show="loaded && showSteps() && hasNextStep() " class="next-step" ng-cloak>
     <div ng-include="'/views/playlists/_stepDisplay.html'"></div>
 </div>
-<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+<!-- <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div> -->
 <div class="playlist">
-<div class=" col-lg-8 col-md-8 col-sm-12 col-xs-12 dpadleftRight37">
+<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 dpadleftRight37">
     <div class="header">
         <div class="header-name">
-                <div dir="auto" class="lergo-h1">{{playlist.name}}</div>
+            <div dir="auto" class="lergo-h1">{{playlist.name}}</div>
+            <div ng-show='{{!!playlist.description}}'>
                 <div dir="auto" class="lergo-h1" style="padding: 12px">{{'description' | translate}}</div>
-                <div>
-                    <div ng-show="!!playlist.description" class="lergo-h2">
-                        <div class="col-lg-2 col-md-2"></div>
-                                <div class=" header-name  col-lg-8 col-md-8 col-sm-12 col-xs-12" > {{ playlist.description }}</div>
-                                <br>
-                        <div class="col-lg-2 col-md-2"></div>
-                    </div>
+                <div  class="lergo-h2">
+                    <div class="col-lg-2 col-md-2"></div>
+                    <div class=" header-name  col-lg-8 col-md-8 col-sm-12 col-xs-12" > {{ playlist.description }}</div>
+                    <br>
+                    <div class="col-lg-2 col-md-2"></div>
                 </div>
-                </div>
+            </div>
         </div>
-    
-    <div class="table-responsive"style="border: 1px solid #FAFAFA"> 
-        
+    </div>
+ </div>
+ <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div> 
+ <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">  
+    <div class="table-responsive">   
         <table class="lergo-table" ng-show="playlistLessonArray.length > 0">
             <thead>
                 <tr style="font-weight: bold">
@@ -42,5 +43,6 @@
                 </tbody>
         </table>
     </div>
-    </div>
-<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+</div>
+<div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+
