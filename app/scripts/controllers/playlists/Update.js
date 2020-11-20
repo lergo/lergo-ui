@@ -39,10 +39,10 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             $scope.saveStatus = newValue;
         }, true);
 
-        $scope.displayStep = function (step) {
-            console.log(' the step isn "display step" is ', step);
-            $location.path('/user/playlists/step/display').search('data', JSON.stringify(step));
-        };
+        // $scope.displayStep = function (step) {
+        //     console.log(' the step isn "display step" is ', step);
+        //     $location.path('/user/playlists/step/display').search('data', JSON.stringify(step));
+        // };
 
         $scope.saveButtonDisabled = function () {
             return $scope.isSaving() || !$scope.playlist || !$scope.playlist.name;
