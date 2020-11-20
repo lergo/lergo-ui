@@ -226,7 +226,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             var step = {
                 'testMode': 'False',
                 'retBefCrctAns': 1,
-                'type':'quiz' 
+                'type':'quiz'
             };
 
             if (typeof($index) === 'number') {
