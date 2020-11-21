@@ -28,7 +28,7 @@
                         <div>
                             <a href="" ng-show="!!invitation" class="lergo-lesson-show-report" ng-click="showReport()">
                                 <!-- guy : this should not be a link. should be a button. but css is gone, and change would be too big.see LERGO-576 -->
-                                <i class="fa fa-bar-chart-o"></i>
+                                <i style="color: black; font-size: 25px" class="fa fa-bar-chart-o"></i>
                                 {{ 'lessons.lessonReport' | translate }}
                             </a>
                         </div>
@@ -42,7 +42,7 @@
                     <td rowspan="2">
                         <a href="" ng-show="!lesson.temporary" class="btn-link" ng-click="startBtnDisable || startLesson()"
                            ng-disabled="startBtnDisable">
-                            <i style="font-size: 35px; color: #8CC63F;" class="fa fa-repeat "></i>
+                            <i style="font-size: 25px; color: #8CC63F;" class="fa fa-repeat "></i>
                         </a>
                     </td>
                     <td>
@@ -54,11 +54,11 @@
                     <td rowspan="2" ng-show="wrongQuestions.length>0">
                         <a href="" show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
                            ng-disabled="practiseBtnDisable">
-                            <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat"></i>
+                            <i style="font-size: 25px; color: #F7941E;" class="fa fa-repeat"></i>
                         </a>
                         <a show-anonymous href="" ng-click="practiseBtnDisable || practiceMistakesAnon()"
                             ng-disabled="practiseBtnDisable">
-                            <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
+                            <i style="font-size: 25px; color: #F7941E;" class="fa fa-repeat "></i>
                         </a>
                     </td>
                     
@@ -73,21 +73,21 @@
                         </a>
                     </td>
                     <td rowspan="2" ng-show="isPlaylist()">
-                            <a href="" show-logged-in ng-click=" practiseBtnDisable ||backToPlaylist()"
+                            <a href="" show-logged-in ng-click="backToPlaylist()"
                                ng-disabled="practiseBtnDisable">
-                                <i style="font-size: 35px; color: #F7941E;" class="fas fa-list"></i>
+                                <i style="font-size: 25px; color: black;" class="fas fa-list"></i>
                             </a>
-                            <a show-anonymous href="" ng-click="practiseBtnDisable || BacktoPlaylist()"
+                            <a show-anonymous href="" ng-click="BacktoPlaylist()"
                                 ng-disabled="practiseBtnDisable">
-                                <i style="font-size: 35px; color: #F7941E;" class="fas fa-list "></i>
+                                <i style="font-size: 25px; color: black;" class="fas fa-list "></i>
                             </a>
                     </td>
                     <td ng-show="isPlaylist()">
-                            <a show-logged-in href="" ng-click="practiseBtnDisable || backToPlaylist()"
+                            <a show-logged-in href="" ng-click="backToPlaylist()"
                                 ng-disabled="practiseBtnDisable">
                                 {{'lessons.returnToPlaylist' | translate}}
                             </a>
-                            <a show-anonymous href="" ng-click="practiseBtnDisable || backToPlaylist()"
+                            <a show-anonymous href="" ng-click="backToPlaylist()"
                                 ng-disabled="practiseBtnDisable">
                                 {{'lessons.returnToPlaylist' | translate}}
                             </a>
@@ -185,11 +185,11 @@
                 <span  ng-show="wrongQuestions.length>0">
                     <a href="" show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
                        ng-disabled="practiseBtnDisable">
-                       <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat"></i>
+                       <i style="font-size: 25px; color: #F7941E;" class="fa fa-repeat"></i>
                     </a>
                     <a show-anonymous href="" ng-click="practiseBtnDisable || practiceMistakesAnon()"
                         ng-disabled="practiseBtnDisable">
-                        <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
+                        <i style="font-size: 25px; color: #F7941E;" class="fa fa-repeat "></i>
                     </a>
                 </span>
                 <span ng-show="wrongQuestions.length>0">
