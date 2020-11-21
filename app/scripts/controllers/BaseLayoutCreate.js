@@ -14,12 +14,12 @@ angular.module('lergoApp').controller('BaseLayoutCreateCtrl', function($scope, $
         include : 'views/reports/_index.html'
     }, {
         id : 'lessons',
-        icon : 'fa fa-university',
+        icon : 'fas fa-chalkboard',
         controller : 'LessonsIndexCtrl',
         include : 'views/lessons/_index.html'
 	}, {
         id : 'playlists',
-        icon : 'fa fa-university',
+        icon : 'fas fa-list',
         controller : 'PlaylistsIndexCtrl',
         include : 'views/playlists/_index.html'
     }, {
