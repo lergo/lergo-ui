@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
-    function ($window, $scope, $filter, LergoClient, QuestionsService, LessonsService, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope, ShareService) {
+    function ($window, $scope, $filter, LergoClient, QuestionsService, LessonsService, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope, ShareService, localStorageService) {
         $window.scrollTo(0, 0);
         $log.info('loading invitation');
         var errorWhileSaving = false;
@@ -298,5 +298,20 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                 $location.path('/public/lessons/reports/' + $scope.report._id + '/display').replace();
             }
         };
+
+        $scope.isPlaylist = function() {
+            if (localStorageService.get('playlistUrl')) {
+                console.log('the get playlist is', true, localStorageService.get('playlistUrl') )
+                return true;
+            } else {
+                console.log('the get playlist is', false, localStorageService.get('playlistUrl'))
+                return false;
+            }
+        }
+        $scope.backToPlaylist = function() {
+            var url = localStorageService.get('playlistUrl');
+            localStorageService.remove('playlistUrl');
+            $location.path(url);
+        }
 
     });

@@ -61,6 +61,7 @@
                             <i style="font-size: 35px; color: #F7941E;" class="fa fa-repeat "></i>
                         </a>
                     </td>
+                    
                     <td ng-show="wrongQuestions.length>0">
                         <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
                             ng-disabled="practiseBtnDisable">
@@ -71,6 +72,27 @@
                             {{'lessons.practiseWrongQuestion' | translate}}
                         </a>
                     </td>
+                    <td rowspan="2" ng-show="isPlaylist()">
+                            <a href="" show-logged-in ng-click=" practiseBtnDisable ||backToPlaylist()"
+                               ng-disabled="practiseBtnDisable">
+                                <i style="font-size: 35px; color: #F7941E;" class="fas fa-list"></i>
+                            </a>
+                            <a show-anonymous href="" ng-click="practiseBtnDisable || BacktoPlaylist()"
+                                ng-disabled="practiseBtnDisable">
+                                <i style="font-size: 35px; color: #F7941E;" class="fas fa-list "></i>
+                            </a>
+                    </td>
+                    <td ng-show="isPlaylist()">
+                            <a show-logged-in href="" ng-click="practiseBtnDisable || backToPlaylist()"
+                                ng-disabled="practiseBtnDisable">
+                                {{'lessons.returnToPlaylist' | translate}}
+                            </a>
+                            <a show-anonymous href="" ng-click="practiseBtnDisable || backToPlaylist()"
+                                ng-disabled="practiseBtnDisable">
+                                {{'lessons.returnToPlaylist' | translate}}
+                            </a>
+                        </td>
+                    
                 </tr>
             </table>
         </div>

@@ -214,8 +214,16 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 }).replace();
             }
         }
-
-        $scope.whereAmI = 'Display.js 216';
+        // jeff: save the current location in localStorage to be used to return to the playlist after 
+        // finishing the lesson or report
+        $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+            var localUrl = absOldUrl.substring(absOldUrl.lastIndexOf('!') + 1,absOldUrl.lastIndexOf('?') );
+            if (absNewUrl.includes('lesson')) {
+                localStorageService.set('playlistUrl', localUrl);
+            } else {
+                localStorageService.remove('playlistUrl');
+            }
+         });
 
         var playlistLikeWatch = null;
         $scope.$watch('playlist', function (newValue) {
