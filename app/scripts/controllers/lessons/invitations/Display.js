@@ -301,10 +301,8 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
 
         $scope.isPlaylist = function() {
             if (localStorageService.get('playlistUrl')) {
-                console.log('the get playlist is', true, localStorageService.get('playlistUrl') )
                 return true;
             } else {
-                console.log('the get playlist is', false, localStorageService.get('playlistUrl'))
                 return false;
             }
         }
