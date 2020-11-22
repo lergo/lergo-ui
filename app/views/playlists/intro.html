@@ -243,7 +243,7 @@
                                                                 <span class="title-lesson"> {{q.lesson | limitTo :50}} </span>
                                                             </div>
                                                             <div ng-show="!!lessonsFromOthers[q._id]">
-                                                                <div class="summary"> {{o.name}} created by
+                                                                <div class="summary"> {{lessonsFromOthers[q._id].name}} created by
                                                                     {{lessonsFromOthers[q._id].userDetails.username}}
                                                                 </div>
                                                             </div>
