@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
-    function ($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope, ShareService) {
+    function ($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope, ShareService, localStorageService) {
         $log.info('loading');
         LergoClient.reports.getById($routeParams.reportId).then(function (result) {
             $scope.report = result.data;
@@ -50,7 +50,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
                 }).replace();
             }
         }
-
+ 
         $scope.showClassReport = function () {
 
             var report = $scope.report;
@@ -126,5 +126,17 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
                 }
             });
         }
-    })
-;
+        $scope.isPlaylist = function() {
+            if (localStorageService.get('playlistUrl')) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        $scope.backToPlaylist = function() {
+            var url = localStorageService.get('playlistUrl');
+            localStorageService.remove('playlistUrl');
+            $location.path(url);
+        };
+    });
+
