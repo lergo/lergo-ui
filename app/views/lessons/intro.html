@@ -244,7 +244,7 @@
                                                             <span class="title-question"> {{q.question | limitTo :50}} </span>
                                                         </div>
                                                         <div ng-show="!!questionsFromOthers[q._id]">
-                                                            <div class="summary">Question created by
+                                                            <div class="summary">{{ 'questions.CreatedBy'| translate}}
                                                                 {{questionsFromOthers[q._id].userDetails.username}}
                                                             </div>
                                                         </div>
