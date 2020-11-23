@@ -223,7 +223,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             } else {
                 localStorageService.remove('playlistUrl');
             }
-         });
+        });
 
         var playlistLikeWatch = null;
         $scope.$watch('playlist', function (newValue) {

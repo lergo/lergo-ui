@@ -305,11 +305,10 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             } else {
                 return false;
             }
-        }
+        };
         $scope.backToPlaylist = function() {
             var url = localStorageService.get('playlistUrl');
             localStorageService.remove('playlistUrl');
             $location.path(url);
-        }
-
+        };
     });

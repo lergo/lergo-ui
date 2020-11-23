@@ -161,7 +161,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 var id = newValue.substring(0, newValue.lastIndexOf('/'));
                 id = id.substring(id.lastIndexOf('/') + 1);
                 $scope.playlist.priorPlaylistId = id;
-
             }
         }
 
@@ -172,7 +171,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 var id = newValue.substring(0, newValue.lastIndexOf('/'));
                 id = id.substring(id.lastIndexOf('/') + 1);
                 $scope.playlist.wikiLinkId = id;
-
             }
         }
 
@@ -200,12 +198,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             $scope.errorMessage = 'Error in fetching Playlist by id : ' + result.data.message;
             $log.error($scope.errorMessage);
         });
-
- 
-        // $scope.stepTypes = [{
-        //     'id': 'lesson',
-        //     'label': 'Lesson'
-        // }];
 
         $scope.getPlaylistIntroLink = function (playlist) {
             return LergoClient.playlists.getIntroLink(playlist);
@@ -406,19 +398,28 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             });
         };
 
-
-        
-
-        // $scope.isPlaylistInvalid = function () {
-        //     return !!$scope.playlist && !$scope.playlist.name;
-        // };
+        $scope.isPlaylistInvalid = function () {
+            return !!$scope.playlist && !$scope.playlist.name;
+        };
 
         $scope.$on('$locationChangeStart', function (event) { // guy -
             // TODO - consider using route change instead.
-            console.log('event', event);
             persistScroll();
+            if ($scope.isPlaylistInvalid()) {
+                var answer = confirm($filter('translate')('deletePlaylist.Confirm'));
+                if (!answer) {
+                    event.preventDefault();
+                } else {
+                    LergoClient.playlists.delete($scope.playlist._id).then(function () {
+                        $scope.errorMessage = null;
+                        $log.info('Playlist deleted sucessfully');
+                    }, function (result) {
+                        $scope.errorMessage = 'Error in deleting Playlist : ' + result.data.message;
+                        $log.error($scope.errorMessage);
+                    });
+                }
+            }
         });
-
         $scope.$watch(function () {
             var lang = LergoTranslate.getLanguageObj();
             return {
