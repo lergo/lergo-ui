@@ -72,6 +72,7 @@
                         </a>
                     </div>
                 </div>
+
                 <div class="redo-buttons" ng-show="!showClassReport()">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right bottom-padding25">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -98,8 +99,15 @@
                                 <i class="fa fa-repeat "> {{'lessons.continueLesson' | translate}}</i>
                             </a>
                         </span>
+                        
                     </div>
                 </div>
+                 <!-- back to playlist -->
+                <span class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-show="isPlaylist()">
+                    <a href="" ng-click="backToPlaylist()">
+                        <i class="fas fa-list d-padBot10 m-right mpad-bot5" style="font-size: 20px; color: black;""> {{'lessons.returnToPlaylist' | translate}}</i>
+                    </a>
+                </span>
             </div>
         </div>
         <!--Report Summary-->
