@@ -17,7 +17,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 header-name ">
                 <div ng-show="!!report.data.invitee.name">
 
-                    <div><span class="lergo-h1">{{report.data.invitee.name}}</span><span class="class-name">{{report.data.invitee.class}}</span>
+                    <div><span class="lergo-h1"> {{ report.data.invitee.name }}</span><span class="class-name">{{report.data.invitee.class}}</span>
                     </div>
                     <div class="lergo-h4" ng-show="isCompleted(report)">{{'report.completed'|translate}}:</div>
                     <div class="lergo-h4" ng-show="!isCompleted(report)">{{'report.notCompletedTitle'|translate}}:</div>
