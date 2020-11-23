@@ -956,6 +956,7 @@
   },
   
   "playlists": {
+    "add": "Add to Playlist",
     "addAdminComment": "Add Admin comment",
     "addCoverPage": "Add cover image for playlist intro",
     "addAdminCommentPlaceholder": "Admin Comment",
