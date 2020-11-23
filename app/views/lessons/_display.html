@@ -6,7 +6,7 @@
         <i class="fa fa-cog fa-spin"></i>
     </div>
 </div>
-
+ 
 <div class="hidden-sm hidden-xs">
     <div ng-show="loaded && !hasNextStep() && lesson.steps.length>0" class="done-step">
         <div class="congrats">
@@ -32,7 +32,7 @@
                                 {{ 'lessons.lessonReport' | translate }}
                             </a>
                         </div>
-                        <div class="recmmonded" ng-show="!!lesson.nextLessonId">
+                        <div class="recommendation" ng-show="!!lesson.nextLessonId">
                             <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
                                 <i class="fas  fa-chalkboard"></i>
                                 {{ 'lessons.recommenedNextLesson' | translate }}
