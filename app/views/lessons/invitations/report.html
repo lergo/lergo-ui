@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="redo-buttons" ng-show="!showClassReport()">
+                <div class="redo-buttons" style="font-size: 20px" ng-show="!showClassReport()">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right bottom-padding25">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <a ng-click="startLesson()" ng-show="!report.data.lesson.temporary"
@@ -100,9 +100,9 @@
                             </a>
                         </span>
                          <!-- back to playlist -->
-                        <span class="col-lg-4 col-md-4 col-sm-12 col-xs-12" ng-show="isPlaylist()" >
+                        <span class="playlist col-lg-4 col-md-4 col-sm-12 col-xs-12" ng-show="isPlaylist()" >
                             <a href="" ng-click="backToPlaylist()">
-                                <i class="fas fa-list " style="font-size: 20px; color: black;"> {{'lessons.returnToPlaylist' | translate}}</i>
+                                <i class="fas fa-list "> {{'lessons.returnToPlaylist' | translate}}</i>
                             </a>
                         </span>
                     </div>
