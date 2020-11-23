@@ -1025,6 +1025,9 @@
     },
     "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a playlist.",
     "inviteSuccessText": "Copy the link below to invite a student to the playlist",
+    "preview" : {
+      "title" : "Playlist Title"
+    },
     "playlistCompleted": "You have completed the playlist",
     "playlistReport": "Playlist Report",
     "letsContinue": "OK! Let's Continue",
