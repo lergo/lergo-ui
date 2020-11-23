@@ -249,6 +249,10 @@
     "goToMyLessons": {
       "intro": "To go back to your lesson to edit or display it, go to your \"username\" and click on \"Lessons\". Alternately you can click on Create in top menu.  After clicking on your  lesson title, use \"pen\" icon to edit lesson, \"share\" to share your lesson, \"start\" to play your lesson, and \"invite\" to invite a student to a lesson.",
       "title": "Where are the lessons I created stored?"
+    },
+    "goToMyPlaylists": {
+      "intro": "To go back to your playlist to edit or display it, go to your \"username\" and click on \"Playlists\". Alternately you can click on Create in top menu.  After clicking on your  playlist title, use \"pen\" icon to edit playlist, \"share\" to share your playlist,  and \"start\" to play your playlist.",
+      "title": "Where are the playlists I created stored?"
     }
   },
   "description": "Description",
