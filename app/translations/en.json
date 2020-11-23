@@ -1296,6 +1296,8 @@
   },
   "quiz": {
     "addQuestionHint": "Click here to create new questions or to add questions from question banks (\"my questions\" or \"all questions\").",
+    "addLessonHint": "Click here to create new lessons or to add lessonss from lessons banks (\"my lessons\" or \"all lessons\").",
+    
     "allowRetry": "Repeat question if answer is incorrect",
     "practiseMode": "Practice Mode",
     "retryQuestionHint": "Click this option to repeat questions when student's answers are incorrect",
