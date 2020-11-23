@@ -73,26 +73,15 @@
                         </a>
                     </td>
                     <td rowspan="2" ng-show="isPlaylist()">
-                            <a href="" show-logged-in ng-click="backToPlaylist()"
-                               ng-disabled="practiseBtnDisable">
-                                <i style="font-size: 25px; color: black;" class="fas fa-list"></i>
-                            </a>
-                            <a show-anonymous href="" ng-click="BacktoPlaylist()"
-                                ng-disabled="practiseBtnDisable">
-                                <i style="font-size: 25px; color: black;" class="fas fa-list "></i>
-                            </a>
+                        <a href="" ng-click="BacktoPlaylist()">
+                            <i style="font-size: 25px; color: black;" class="fas fa-list "></i>
+                        </a>
                     </td>
                     <td ng-show="isPlaylist()">
-                            <a show-logged-in href="" ng-click="backToPlaylist()"
-                                ng-disabled="practiseBtnDisable">
+                            <a href="" ng-click="backToPlaylist()">
                                 {{'lessons.returnToPlaylist' | translate}}
                             </a>
-                            <a show-anonymous href="" ng-click="backToPlaylist()"
-                                ng-disabled="practiseBtnDisable">
-                                {{'lessons.returnToPlaylist' | translate}}
-                            </a>
-                        </td>
-                    
+                    </td>
                 </tr>
             </table>
         </div>
