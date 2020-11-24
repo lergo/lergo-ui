@@ -368,7 +368,6 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             };
             LergoClient.userData.getCompletedLessons(queryObj)
             .then(function(result) {
-                console.log(queryObj)
                 $scope.myCompletedLessons = result.data.data;
                 var myCompletedLessonsIdArray = [];
                 for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
@@ -508,12 +507,10 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             getCompletesPromise.then(function(result) {
                 $scope.completes = result.data.data;
                 $log.info('Completes fetched successfully');
-                }, function(result) {
+            }, function(result) {
                 $scope.errorMessage = 'Error in fetching Completes : ' + result.data.message;
-                    $log.error($scope.errorMessage);
+                $log.error($scope.errorMessage);
             });
             return  lesson.createdAt;
-        }
-	
-
+        };
     });
