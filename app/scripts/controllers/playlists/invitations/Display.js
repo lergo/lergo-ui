@@ -1,5 +1,5 @@
 'use strict';
- 
+  
 angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
     function ($window, $scope, $filter, LergoClient, LessonsService, PlaylistsService, localStorageService, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSavePlaylistRprts, $rootScope) {
         $window.scrollTo(0, 0);
@@ -368,6 +368,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             };
             LergoClient.userData.getCompletedLessons(queryObj)
             .then(function(result) {
+                console.log(queryObj)
                 $scope.myCompletedLessons = result.data.data;
                 var myCompletedLessonsIdArray = [];
                 for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
@@ -494,6 +495,25 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 });
             }
         };
+
+        $scope.myCompletes = function(lesson) {
+            var queryObj = {
+                'filter' : _.merge({}, $scope.playlistsFilter),
+                'sort' : {
+                    'lastUpdate' : -1
+                },
+                'dollar_page' : $scope.filterPage
+            };
+            getCompletesPromise = LergoClient.userData.getCompletes(queryObj);
+            getCompletesPromise.then(function(result) {
+                $scope.completes = result.data.data;
+                $log.info('Completes fetched successfully');
+                }, function(result) {
+                $scope.errorMessage = 'Error in fetching Completes : ' + result.data.message;
+                    $log.error($scope.errorMessage);
+            });
+            return  lesson.createdAt;
+        }
 	
 
     });
