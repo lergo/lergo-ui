@@ -160,6 +160,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 
             }
             $scope.showPlaylistLessons();
+            $scope.myCompletes();
         }, function (result) {
             if (result.status) { // playlist invitation might not be found if was temporary. temporary playlists are deleted on finish. (@see Write.js 'endPlaylist' event)
                // incase the invitation is deleted and user tries to "start over" or "continue playlist"
@@ -487,10 +488,12 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             if (lesson.isComplete) {
                 LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
                     $scope.lessonIsComplete = result.data;
+                    $scope.myCompletes();
                 });
             } else {
                 LergoClient.completes.deleteLessonIsComplete(lesson).then(function () {
                     $scope.lessonIsComplete = null;
+                    $scope.myCompletes();
                 });
             }
         };
@@ -503,14 +506,12 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 },
                 'dollar_page' : $scope.filterPage
             };
-            var getCompletesPromise = LergoClient.userData.getCompletes(queryObj);
-            getCompletesPromise.then(function(result) {
+            LergoClient.userData.getCompletes(queryObj).then(function(result) {
                 $scope.completes = result.data.data;
-                $log.info('Completes fetched successfully');
+                $log.info('Completes fetched successfully', result.data.data);
             }, function(result) {
                 $scope.errorMessage = 'Error in fetching Completes : ' + result.data.message;
                 $log.error($scope.errorMessage);
             });
-            return  lesson.createdAt;
         };
     });
