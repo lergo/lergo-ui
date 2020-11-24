@@ -504,7 +504,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 },
                 'dollar_page' : $scope.filterPage
             };
-            getCompletesPromise = LergoClient.userData.getCompletes(queryObj);
+            var getCompletesPromise = LergoClient.userData.getCompletes(queryObj);
             getCompletesPromise.then(function(result) {
                 $scope.completes = result.data.data;
                 $log.info('Completes fetched successfully');
