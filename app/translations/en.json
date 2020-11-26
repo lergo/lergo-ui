@@ -234,6 +234,9 @@
   "deleteLessons": {
     "Confirm": "Are you sure you want to delete selected lessons? This action cannot be undone."
   },
+  "deletePlaylist": {
+    "Confirm": "For the playlist to be created and saved, you must fill at least the Name field. By leaving this page without filling this field, all changes will be lost."
+  },
   "deleteQuestion": {
     "Confirm": "For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost."
   },
@@ -249,6 +252,10 @@
     "goToMyLessons": {
       "intro": "To go back to your lesson to edit or display it, go to your \"username\" and click on \"Lessons\". Alternately you can click on Create in top menu.  After clicking on your  lesson title, use \"pen\" icon to edit lesson, \"share\" to share your lesson, \"start\" to play your lesson, and \"invite\" to invite a student to a lesson.",
       "title": "Where are the lessons I created stored?"
+    },
+    "goToMyPlaylists": {
+      "intro": "To go back to your playlist to edit or display it, go to your \"username\" and click on \"Playlists\". Alternately you can click on Create in top menu.  After clicking on your  playlist title, use \"pen\" icon to edit playlist, \"share\" to share your playlist,  and \"start\" to play your playlist.",
+      "title": "Where are the playlists I created stored?"
     }
   },
   "description": "Description",
@@ -593,6 +600,7 @@
       "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
       "noPermissionsTitle": "You don't have permissions to edit this."
     },
+    "editSummary": "Edit Summary",
     "embedLesson": "Embed",
     "embedLessonTitle": "Copy the code below to embed lesson on your webpage or blog",
     "error": {
@@ -664,6 +672,7 @@
     "recommenedPriorLessonText": "Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
     "reportAbuseNotAvailable": "To flag lesson or report abuse please login or register to LerGO. Alternately, you can also use the Report Abuse button at the footer below.",
     "restart": "Start Over",
+    "returnToPlaylist": "To Playlist",
     "seeReport": "See Report",
     "shareLesson": "Share",
     "shareLessonTitle": "Copy the link below to share lesson with friends",
@@ -950,6 +959,7 @@
   },
   
   "playlists": {
+    "add": "Add to Playlist",
     "addAdminComment": "Add Admin comment",
     "addCoverPage": "Add cover image for playlist intro",
     "addAdminCommentPlaceholder": "Admin Comment",
@@ -1015,6 +1025,9 @@
     },
     "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a playlist.",
     "inviteSuccessText": "Copy the link below to invite a student to the playlist",
+    "preview" : {
+      "title" : "Playlist Title"
+    },
     "playlistCompleted": "You have completed the playlist",
     "playlistReport": "Playlist Report",
     "letsContinue": "OK! Let's Continue",
@@ -1289,6 +1302,8 @@
   },
   "quiz": {
     "addQuestionHint": "Click here to create new questions or to add questions from question banks (\"my questions\" or \"all questions\").",
+    "addLessonHint": "Click here to create new lessons or to add lessonss from lessons banks (\"my lessons\" or \"all lessons\").",
+    
     "allowRetry": "Repeat question if answer is incorrect",
     "practiseMode": "Practice Mode",
     "retryQuestionHint": "Click this option to repeat questions when student's answers are incorrect",

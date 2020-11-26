@@ -9,7 +9,8 @@
         padding-top: 0px;
     }
     .redo-buttons {
-        font-size: 22px;
+        font-size: 20px;
+        text-align: center;
         * {
             color: #F7941E;
         }
@@ -22,6 +23,12 @@
                 color: #8CC63F;
             }
         }
+        .playlist {
+            &, * {
+                color:black;
+                text-align: center;
+            }
+        }
         .reports{
             &, * {
                 color: #337ab7;
@@ -31,6 +38,7 @@
             width: 220px;
         }
     }
+    
     .lergo-h1 {
         font-size: 20px;
     }
@@ -309,7 +317,7 @@
             }
         }
         .redo-buttons {
-            font-size: 24px;
+            font-size: 22px;
         }
         .pad-percent {
             padding-top: 1px;

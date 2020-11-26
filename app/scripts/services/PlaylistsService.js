@@ -1,5 +1,5 @@
 'use strict';
-
+ 
 angular.module('lergoApp').service('PlaylistsService',
     function PlaylistsService($http, $sce, $q, $window, VideoService, $log, $filter) {
 

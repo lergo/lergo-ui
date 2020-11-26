@@ -16,7 +16,7 @@ angular.module('lergoApp')
 
                 $scope.sections = [{
                     'id': 'lessons',
-                    icon: 'fa fa-university',
+                    icon: 'fas  fa-chalkboard',
                     'url' : '#!/admin/homepage/lessons',
                     'permission' : '!!lessons'
 

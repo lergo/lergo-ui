@@ -49,7 +49,7 @@
                                                 {{0+playlist.views}}
                                             </span>
                                              <span class="stats-button" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
-                                                <i class="fa fa-lesson-circle fa-fw"></i>
+                                                <i class="fa fa-chalkboard fa-fw"></i>
                                                 {{ playlist | countLessonsOnPlaylist }}
                                             </span>
                                             <span class="stats-button" uib-tooltip="{{'homepage.tooltip.likes' | translate}}">
@@ -184,7 +184,7 @@
                                                         
                                                         <div class="recmmonded" ng-if="!!playlist.nextPlaylistId">
                                                                 <a ng-href="#!/public/playlists/{{playlist.nextPlaylistId}}/intro">
-                                                                    <i class="fa fa-university"></i>
+                                                                    <i class="fas  fa-list"></i>
                                                                     {{ 'playlists.recommenedNextPlaylist' | translate }}
                                                                 </a>
                                                                 <br>
@@ -193,7 +193,7 @@
                                                        
                                                         <div class="recmmonded" ng-if="!!playlist.priorPlaylistId">
                                                                 <a ng-href="#!/public/playlists/{{playlist.priorPlaylistId}}/intro">
-                                                                    <i class="fa fa-university"></i>
+                                                                    <i class="fas  fa-list"></i>
                                                                     {{'playlists.recommenedPriorPlaylist' | translate}}
                                                                 </a>
                                                                 <br>
@@ -243,7 +243,7 @@
                                                                 <span class="title-lesson"> {{q.lesson | limitTo :50}} </span>
                                                             </div>
                                                             <div ng-show="!!lessonsFromOthers[q._id]">
-                                                                <div class="summary">Lesson created by
+                                                                <div class="summary"> {{lessonsFromOthers[q._id].name}} {{ 'lessons.createdBy' | translate}}
                                                                     {{lessonsFromOthers[q._id].userDetails.username}}
                                                                 </div>
                                                             </div>
@@ -253,9 +253,9 @@
                                                             <div ng-show="!!lessonsWeCopied[q._id]">
                                                                 <div ng-repeat="o in lessonsWeCopied[q._id].originals track by $index">
                                                                     <div class="summary">
-                                                                        Copied from
+                                                                        Copied from:
                                                                         <span lesson-read-link lesson="o"></span>
-                                                                        by {{o.userDetails.username}}
+                                                                        {{o.name}} by {{o.userDetails.username}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -342,7 +342,7 @@
                                                     {{0+playlist.views}}
                                                 </span>
                                                 <span class="stats-button" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
-                                                    <i class="fa fa-lesson-circle fa-fw"></i>
+                                                    <i class="fas fa-chalkboard"></i>
                                                     {{ playlist | countLessonsOnPlaylist }}
                                                 </span>
                                             <span class="stats-button" uib-tooltip="{{'homepage.tooltip.likes' | translate}}">
@@ -509,7 +509,7 @@
                                                             <div class="recmmonded" ng-if="!!playlist.nextPlaylistId">
                                                                     <br>
                                                                     <a ng-href="#!/public/playlists/{{playlist.nextPlaylistId}}/intro">
-                                                                        <i class="fa fa-university"></i>
+                                                                        <i class="fas  fa-list"></i>
                                                                         {{ 'playlists.recommenedNextPlaylist' | translate }}
                                                                     </a>
                                                             </div>
@@ -517,7 +517,7 @@
                                                             <div class="recmmonded" ng-if="!!playlist.priorPlaylistId">
                                                                     <br>
                                                                     <a ng-href="#!/public/playlists/{{playlist.priorPlaylistId}}/intro">
-                                                                        <i class="fa fa-university"></i>
+                                                                        <i class="fas  fa-list"></i>
                                                                         {{'playlists.recommenedPriorPlaylist' | translate}}
                                                                     </a>
                                                             </div>
@@ -562,7 +562,7 @@
                                                                 <span class="title-lesson"> {{q.lesson | limitTo :50}} </span>
                                                             </div>
                                                             <div ng-show="!!lessonsFromOthers[q._id]">
-                                                                <div class="summary">Lesson created by
+                                                                <div class="summary">{{ 'lessons.createdBy' | translate}}
                                                                     {{lessonsFromOthers[q._id].userDetails.username}}
                                                                 </div>
                                                             </div>
