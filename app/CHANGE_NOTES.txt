@@ -1,3 +1,4 @@
+lergo-ui fixing promise bug in getting completes
 lergo-ui and ri working on playlist, fixing comments and adding date for completion
 lergo-ui bug(fix) _playlist.scss had code interfering with playlist images
 lergo-ui and lergo-ri 'merging with nov-playlist - first release of mvp playlist'

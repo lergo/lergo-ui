@@ -138,6 +138,22 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         // todo: technically we don't need to build playlist invitation anymore..
         // todo: we should build the playlistRprt instead since all data is on the playlistRprt and display the data from there.
         // todo: the display will still be for playlist invitation, but the data should come from playlistRprt. (this resolves ambiguity regarding display for playlistRprt.. there's only one).
+        function getMyCompletes() {
+            var queryObj = {
+                'filter' : _.merge({}, $scope.playlistsFilter),
+                'sort' : {
+                    'lastUpdate' : -1
+                },
+                'dollar_page' : $scope.filterPage
+            };
+            LergoClient.userData.getCompletes(queryObj).then(function(result) {
+                $scope.completes = result.data.data;
+            }, function(result) {
+                    $scope.errorMessage = 'Error in fetching Completes : ' + result.data.message;
+                    $log.error($scope.errorMessage);
+                });
+        }
+        
         LergoClient.playlistsInvitations.build($routeParams.invitationId, true, false).then(function (result) {
             $scope.invitation = result.data;
             $scope.playlist = result.data.playlist;
@@ -160,7 +176,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 
             }
             $scope.showPlaylistLessons();
-            $scope.myCompletes();
+            $scope.completes = getMyCompletes();
         }, function (result) {
             if (result.status) { // playlist invitation might not be found if was temporary. temporary playlists are deleted on finish. (@see Write.js 'endPlaylist' event)
                // incase the invitation is deleted and user tries to "start over" or "continue playlist"
@@ -337,24 +353,13 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 
     // *****************************************************************************************************************************
     // *****************************************************************************************************************************   
-    
-    // New code copied from /playlists/Index.js to display the lessons in a playlist with a checkbox
 
+
+    // New code copied from /playlists/Index.js to display the lessons in a playlist with a checkbox
         $scope.PlaylistTypeToLoad = {
             user : 'myPlaylists',
             liked : 'likedPlaylists'
         };
-	// var Filter = {};
-	// $scope.filterPage = {};
-	// $scope.totalResults = 0;
-	// var FilterOpts = {
-	// 	'showSubject' : true,
-	// 	'showLanguage' : true,
-	// 	'showAge' : true,
-	// 	'showViews' : true,
-	// 	'showTags' : true,
-	// 	'showSearchText' : true
-	// };
   
         $scope.playlistToShow = $scope.playlists;
 
@@ -370,25 +375,27 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             LergoClient.userData.getCompletedLessons(queryObj)
             .then(function(result) {
                 $scope.myCompletedLessons = result.data.data;
+               
             }).then(function() {
-                $scope.myCompletes();
-            }).then(function () {
-                $scope.myCompletedLessonsIdArray = [];
-                for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
-                    $scope.myCompletedLessonsIdArray.push($scope.myCompletedLessons[j]._id);
-                }
-                for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
-                    if ($scope.myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
-                        $scope.playlistLessonArray[k].isComplete = true;
-                        for (var l = 0; l < $scope.completes.length; l++) {
-                            if ($scope.completes[l].itemId === $scope.playlistLessonArray[k]._id) {
-                                $scope.playlistLessonArray[k].dateCompleted = dateFromObjectId($scope.completes[l]._id);
-                            }
-                        }
-                    } else {
-                        $scope.playlistLessonArray[k].isComplete = false;
+                LergoClient.userData.getCompletes(queryObj).then(function(result) {
+                    $scope.completes = result.data.data;
+                    $scope.myCompletedLessonsIdArray = [];
+                    for (var j = 0; j < $scope.myCompletedLessons.length; j++) {
+                        $scope.myCompletedLessonsIdArray.push($scope.myCompletedLessons[j]._id);
                     }
-                }
+                    for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
+                        if ($scope.myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
+                            $scope.playlistLessonArray[k].isComplete = true;
+                            for (var l = 0; l < $scope.completes.length; l++) {
+                                if ($scope.completes[l].itemId === $scope.playlistLessonArray[k]._id) {
+                                    $scope.playlistLessonArray[k].dateCompleted = dateFromObjectId($scope.completes[l]._id);
+                                }
+                            }
+                        } else {
+                            $scope.playlistLessonArray[k].isComplete = false;
+                        }
+                    }
+                });
             })
             .catch(function(err) {
                 console.log('Handle error', err);
@@ -499,34 +506,16 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             if (lesson.isComplete) {
                 LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
                     $log.debug(result);
-                    $scope.myCompletes();
+                    getMyCompletes();
                 }).then(function() {
                         $scope.showPlaylistLessons();
                     });
             } else {
                 LergoClient.completes.deleteLessonIsComplete(lesson).then(function () {
-                    $scope.myCompletes();
+                    getMyCompletes();
                 }).then(function () {
                     $scope.showPlaylistLessons();
                 });
             }
-        };
-
-        $scope.myCompletes = function() {
-            var queryObj = {
-                'filter' : _.merge({}, $scope.playlistsFilter),
-                'sort' : {
-                    'lastUpdate' : -1
-                },
-                'dollar_page' : $scope.filterPage
-            };
-            LergoClient.userData.getCompletes(queryObj).then(function(result) {
-                $scope.completes = result.data.data;
-                //$log.info($scope.completes.length,' Completes fetched successfully');
-
-            }, function(result) {
-                $scope.errorMessage = 'Error in fetching Completes : ' + result.data.message;
-                $log.error($scope.errorMessage);
-            });
         };
     });
