@@ -386,9 +386,11 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                     for (var k = 0; k < $scope.playlistLessonArray.length; k++ ) {
                         if ($scope.myCompletedLessonsIdArray.includes($scope.playlistLessonArray[k]._id) ) {
                             $scope.playlistLessonArray[k].isComplete = true;
-                            for (var l = 0; l < $scope.completes.length; l++) {
-                                if ($scope.completes[l].itemId === $scope.playlistLessonArray[k]._id) {
-                                    $scope.playlistLessonArray[k].dateCompleted = dateFromObjectId($scope.completes[l]._id);
+                            if (!!$scope.completes) {
+                                for (var l = 0; l < $scope.completes.length; l++) {
+                                    if ($scope.completes[l].itemId === $scope.playlistLessonArray[k]._id) {
+                                        $scope.playlistLessonArray[k].dateCompleted = dateFromObjectId($scope.completes[l]._id);
+                                    }
                                 }
                             }
                         } else {
