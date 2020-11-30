@@ -696,6 +696,10 @@
       "start": "start lesson"
     },
     "total": "Total",
+    "update": {
+      "title" : "Welcome to Playlist",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque suscipit vestibulum neque, sit amet scelerisque elit laoreet nec. Aliquam vitae congue nisi, nec faucibus lectus. Suspendisse vitae mauris interdum, varius libero eu, ornare lacus. In at"
+    },
     "videoURL": "Video URL",
     "videoURLHelpText": "Insert the URL of the YouTube video here.",
     "welcome": "Welcome to lergo",
