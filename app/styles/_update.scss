@@ -3,3 +3,22 @@
         text-align: right
     }
 }
+
+.playlist-update {
+    
+    border-top: 100px  solid #00A2E8;
+    border-bottom: 100px  solid #00A2E8;
+    border-left: 100px  solid #00A2E8;
+    border-right: 100px  solid #00A2E8;
+    border-radius: 10px;
+    .box-height {
+        height: 200px;
+    }
+    .title {
+        font-size: 40px;
+    }
+    .description {
+        font-size: 25px;
+        // max-width: 500px;
+    }
+}
