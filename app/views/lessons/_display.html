@@ -47,7 +47,7 @@
                             {{'lessons.restart' | translate}}
                         </a>
                     </td>
-                    <td rowspan="2" ng-show="wrongQuestions.length>0">
+                    <td rowspan="2" ng-show="hasPracticeMistakes()">
                         <a href="" show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
                            ng-disabled="practiseBtnDisable">
                             <i style="font-size: 25px; color: #F7941E;" class="fa fa-repeat"></i>
@@ -58,7 +58,7 @@
                         </a>
                     </td>
                     
-                    <td ng-show="wrongQuestions.length>0">
+                    <td ng-show="hasPracticeMistakes()">
                         <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
                             ng-disabled="practiseBtnDisable">
                             {{'lessons.practiseWrongQuestion' | translate}}
@@ -178,7 +178,7 @@
                    ng-disabled="startBtnDisable">
                     {{'lessons.restart' | translate}}
                 </a>
-                <span  ng-show="wrongQuestions.length>0">
+                <span  ng-show="hasPracticeMistakes()">
                     <a href="" show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
                        ng-disabled="practiseBtnDisable">
                        <i style="font-size: 25px; color: #F7941E;" class="fa fa-repeat"></i>
@@ -188,7 +188,7 @@
                         <i style="font-size: 25px; color: #F7941E;" class="fa fa-repeat "></i>
                     </a>
                 </span>
-                <span ng-show="wrongQuestions.length>0">
+                <span ng-show="hasPracticeMistakes()">
                     <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
                        ng-disabled="practiseBtnDisable">
                                 {{'lessons.practiseWrongQuestion' | translate}}
