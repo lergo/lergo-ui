@@ -46,17 +46,17 @@
                     </div>
                 </div>
                 <div class="redo-buttons " ng-show="showClassReport()">
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 reports" ng-show="showClassReport()">
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 reports" ng-show="showClassReport()">
                         <a href="" ng-click="redirectToClassReport()">
                             <i class="fa fa-bar-chart d-padBot15 mpad-bot5"> {{'report.header.classReport' | translate}}</i>
                         </a>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 restart" ng-show="!report.data.lesson.temporary">
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 restart" ng-show="!report.data.lesson.temporary">
                         <a href="" ng-click="startLesson()">
                             <i class="fa fa-repeat d-padBot10 m-right mpad-bot5 d-padr15" style="white-space: nowrap" > {{'lessons.restart' | translate}}</i>
                         </a>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 practiceMistake" ng-show="wrongQuestions.length>0">
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 practiceMistake" ng-show="wrongQuestions.length>0">
                         <a show-logged-in href="" ng-click="practiseBtnDisable || practiceMistakes()"
                             ng-disabled="practiseBtnDisable">
                             <i class="fa fa-repeat d-padBot10 m-right mpad-bot5" style="white-space: nowrap;"> {{'lessons.practiseWrongQuestion' | translate}}</i>
@@ -66,7 +66,7 @@
                             <i class="fa fa-repeat d-padBot10 m-right mpad-bot5" style="white-space: nowrap;"> {{'lessons.practiseWrongQuestion' | translate}}</i>
                         </a>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pull-right" ng-show="showContinueLesson()">
+                    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 pull-right" ng-show="showContinueLesson()">
                         <a class="btn-link" href="{{continueLessonUrl(report)}}">
                             <i class="fa fa-repeat d-padBot10 "> {{'lessons.continueLesson' | translate}}</i>
                         </a>
@@ -75,14 +75,14 @@
 
                 <div class="redo-buttons" style="font-size: 20px" ng-show="!showClassReport()">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right bottom-padding25">
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                             <a ng-click="startLesson()" ng-show="!report.data.lesson.temporary"
                                class="restart no-underline">
                                 <i class="fa fa-repeat mpad-bot5 d-padr15" style="white-space: nowrap"> {{'lessons.restart' | translate}}</i>
                             </a>
                         </div>
                         <span ng-show="wrongQuestions.length>0" class="practiceMistake">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                 <a show-logged-in ng-click="practiseBtnDisable || practiceMistakes()"
                                    ng-disabled="practiseBtnDisable">
                                     <i class="fa fa-repeat mpad-bot5 " style="white-space: nowrap;"> {{'lessons.practiseWrongQuestion' | translate}}</i>
@@ -93,18 +93,24 @@
                                 </a>
                             </div>
                         </span>
-                        <span class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <span class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
                             <a class="btn-link continue-lesson" href="{{continueLessonUrl(report)}}"
                                ng-show="showContinueLesson()">
                                 <i class="fa fa-repeat "> {{'lessons.continueLesson' | translate}}</i>
                             </a>
                         </span>
+                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
                          <!-- back to playlist -->
-                        <span class="playlist col-lg-4 col-md-4 col-sm-12 col-xs-12" ng-show="isPlaylist()" >
-                            <a href="" ng-click="backToPlaylist()">
-                                <i class="fas fa-list "> {{'lessons.returnToPlaylist' | translate}}</i>
-                            </a>
-                        </span>
+                        <div class="row">
+                            <br><br>
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+                            <div class="playlist col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-show="isPlaylist()" >
+                                <a href="" ng-click="backToPlaylist()">
+                                    <i class="fas fa-list "> {{'lessons.returnToPlaylist' | translate}}</i>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+                        </div>
                     </div>
                 </div>
             </div>
