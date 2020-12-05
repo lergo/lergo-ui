@@ -243,7 +243,7 @@
                                                                 <span class="title-lesson"> {{q.lesson | limitTo :50}} </span>
                                                             </div>
                                                             <div ng-show="!!lessonsFromOthers[q._id]">
-                                                                <div class="summary"> {{lessonsFromOthers[q._id].name}} {{ 'lessons.createdBy' | translate}}
+                                                                <div class="summary"> {{ 'lessons.lesson' | translate }} {{lessonsFromOthers[q._id].name}} {{ 'lessons.createdBy' | translate}}
                                                                     {{lessonsFromOthers[q._id].userDetails.username}}
                                                                 </div>
                                                             </div>
@@ -253,9 +253,9 @@
                                                             <div ng-show="!!lessonsWeCopied[q._id]">
                                                                 <div ng-repeat="o in lessonsWeCopied[q._id].originals track by $index">
                                                                     <div class="summary">
-                                                                        Copied from:
+                                                                        {{ 'lessons.copiedFrom' | translate }}
                                                                         <span lesson-read-link lesson="o"></span>
-                                                                        {{o.name}} by {{o.userDetails.username}}
+                                                                        {{o.name}} {{'lessons.by' | translate}} {{o.userDetails.username}}
                                                                     </div>
                                                                 </div>
                                                             </div>
