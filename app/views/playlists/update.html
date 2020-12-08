@@ -184,11 +184,11 @@
                                 </button>
                                 <span ng-show="!playlist.steps" class="pop-up-hint add-step-button">
                                     <button style=" font-size: 13px" class="btn btn-start" ng-click="addStep(playlist)"
-                                            ng-disabled="saveButtonDisabled()">{{ 'steps.add' | translate }}
+                                            ng-disabled="saveButtonDisabled()">{{ 'playlistStep.add' | translate }}
                                     </button>
                                     <span class="hidden-xs">
                                         <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
-                                        <button uib-popover="{{'steps.addHint' | translate}}"
+                                        <button uib-popover="{{'playlistStep.addHint' | translate}}"
                                                 popover-is-open="popoverState.open"
                                                 popover-placement="{{popoverState.position}}"  popover-trigger="'outsideClick'"
                                                 tabindex="0"></button>

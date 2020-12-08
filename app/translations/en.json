@@ -875,6 +875,7 @@
     },
     "incomplete": "Incomplete",
     "playlistStep": {
+      "addHint": "To add lessons to playlist click on 'Add Lessons'",
       "practiceMode": {
         "false": "No",
         "hint": {
@@ -894,7 +895,6 @@
         }
       }
     },
-    "playlistSteps": "Playlist Steps",
     "missing": {
       "info": "Missing information"
     },
@@ -964,7 +964,10 @@
       "title": "Playlist Preview"
     }
   },
-  
+  "playlistStep": {
+    "add" : "Add Lessons",
+    "addHint" :"To add lessons to playlist click on 'Add Lessons'"
+  },
   "playlists": {
     "add": "Add to Playlist",
     "addAdminComment": "Add Admin comment",
