@@ -60,20 +60,20 @@
                                         <div class="details">
                                             <div dir="auto" class="name">{{ playlist.name|limitTo:160 }}</div>
                                             <div class="properties">
-                                            <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
-                                                 <a ng-href="#!/public/{{playlist.user.username}}/profile">
-                                                     <i class="fa fa-user"></i>
-                                                     <span> {{playlist.user.username}}</span>
-                                                 </a>
-                                            </span>
-                                            <span uib-tooltip="{{'playlists.createdOn' | translate}}">
-                                                <i class="fa fa-calendar"></i>
-                                                <span>{{playlist | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
-                                            </span>
-                                            <span ng-show="!!playlist.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
-                                                <i class="fa fa-book"></i>
-                                                <span>{{'filters.subjects.' + playlist.subject | translate}}</span>
-                                            </span>
+                                                <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
+                                                    <a ng-href="#!/public/{{playlist.user.username}}/profile">
+                                                        <i class="fa fa-user"></i>
+                                                        <span> {{playlist.user.username}}</span>
+                                                    </a>
+                                                </span>
+                                                <span uib-tooltip="{{'playlists.createdOn' | translate}}">
+                                                    <i class="fa fa-calendar"></i>
+                                                    <span>{{playlist | mongoIdToTimestamp | date:'d-MMM-yyyy'}}</span>
+                                                </span>
+                                                <span ng-show="!!playlist.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
+                                                    <i class="fa fa-book"></i>
+                                                    <span>{{'filters.subjects.' + playlist.subject | translate}}</span>
+                                                </span>
                                             </div>
                                             <div class="action-items">
                                                 <div class="action-item">
@@ -164,7 +164,6 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-    
                                             </div>
                                             <div class="forms">
                                                 <div ng-show="isActiveAction(actionItems.SHARE)"
@@ -178,28 +177,24 @@
                                                 <pre dir="auto" ng-show="!more">{{ filteredDescription =(playlist.description| limitTo:320 | multilineEllipsis) }}</pre>
                                                 <div ng-show="!!more">
                                                     <pre dir="auto">{{ playlist.description}}</pre>
-                                                    
                                                     <div class="read-more" style="text-align: center">
                                                         <hr class="dashes">
-                                                        
                                                         <div class="recmmonded" ng-if="!!playlist.nextPlaylistId">
-                                                                <a ng-href="#!/public/playlists/{{playlist.nextPlaylistId}}/intro">
-                                                                    <i class="fas  fa-list"></i>
+                                                            <a ng-href="#!/public/playlists/{{playlist.nextPlaylistId}}/intro">
+                                                                <i class="fas  fa-list"></i>
                                                                     {{ 'playlists.recommenedNextPlaylist' | translate }}
-                                                                </a>
-                                                                <br>
-                                                                <br>
+                                                            </a>
+                                                            <br>
+                                                            <br>
                                                         </div>
-                                                       
                                                         <div class="recmmonded" ng-if="!!playlist.priorPlaylistId">
-                                                                <a ng-href="#!/public/playlists/{{playlist.priorPlaylistId}}/intro">
-                                                                    <i class="fas  fa-list"></i>
+                                                            <a ng-href="#!/public/playlists/{{playlist.priorPlaylistId}}/intro">
+                                                                <i class="fas  fa-list"></i>
                                                                     {{'playlists.recommenedPriorPlaylist' | translate}}
-                                                                </a>
-                                                                <br>
-                                                                <br>
+                                                            </a>
+                                                            <br>
+                                                            <br>
                                                         </div>
-                                        
                                                         <div class="recmmonded" ng-if="!!playlist.wikiLink">
                                                             <a ng-href="{{playlist.wikiLink}}" target="_blank">
                                                                     <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
@@ -208,8 +203,7 @@
                                                             <br>
                                                             <br>
                                                          </div>
-                                                    </div>
-                                                     
+                                                    </div> 
                                                     <div class="edit-summary" ng-show="showEditSummary()">
                                                         <br/>
                                                         <span class="title">{{'lessons.editSummary'|translate}}</span>
@@ -217,21 +211,21 @@
                                                         <br/>
                                                         <!-- show copy of playlist -->
                                                         <div ng-show="copyOfItems.length > 0">
-                                                    <span ng-show="copyOfItems.length === 1" ng-repeat="item in copyOfItems">
-                                                        {{ 'playlistIntro.copiedFromPlaylist' | translate}}
-                                                        <span playlist-intro-link playlist="item">{{item.name}}</span>
-                                                        {{ 'playlistIntro.copiedFromPlaylistBy' | translate }} {{item.userDetails.username }}
-                                                    </span>
-                                                            <span ng-show="copyOfItems.length > 1">
-                                                        {{ 'playlistIntro.copiedFromPlaylists' | translate }}
-                                                        <ul>
-                                                            <li ng-repeat="item in copyOfItems track by $index">
+                                                            <span ng-show="copyOfItems.length === 1" ng-repeat="item in copyOfItems">
+                                                                {{ 'playlistIntro.copiedFromPlaylist' | translate}}
                                                                 <span playlist-intro-link playlist="item">{{item.name}}</span>
-                                                                {{ 'playlistIntro.copiedFromPlaylistBy' | translate }}
-                                                                {{item.userDetails.username }}
-                                                            </li>
-                                                        </ul>
-                                                    </span>
+                                                                {{ 'playlistIntro.copiedFromPlaylistBy' | translate }} {{item.userDetails.username }}
+                                                            </span>
+                                                            <span ng-show="copyOfItems.length > 1">
+                                                            {{ 'playlistIntro.copiedFromPlaylists' | translate }}
+                                                                <ul>
+                                                                    <li ng-repeat="item in copyOfItems track by $index">
+                                                                        <span playlist-intro-link playlist="item">{{item.name}}</span>
+                                                                        {{ 'playlistIntro.copiedFromPlaylistBy' | translate }}
+                                                                        {{item.userDetails.username }}
+                                                                    </li>
+                                                                </ul>
+                                                            </span>
                                                             <br/>
                                                         </div>
                                                         <br />
