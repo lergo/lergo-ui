@@ -237,7 +237,7 @@
                                                                 <span class="title-lesson"> {{q.lesson | limitTo :50}} </span>
                                                             </div>
                                                             <div ng-show="!!lessonsFromOthers[q._id]">
-                                                                <div class="summary"> {{ 'lessons.lesson' | translate }} {{lessonsFromOthers[q._id].name}} {{ 'lessons.createdBy' | translate}}
+                                                                <div class="summary"> {{ 'lessons.lesson' | translate }}  <a href="#!/public/lessons/{{lessonsFromOthers[q._id]._id}}/intro">{{lessonsFromOthers[q._id].name}}</a> {{ 'lessons.createdBy' | translate}}
                                                                     {{lessonsFromOthers[q._id].userDetails.username}}
                                                                 </div>
                                                             </div>
@@ -249,7 +249,7 @@
                                                                     <div class="summary">
                                                                         {{ 'lessons.copiedFrom' | translate }}
                                                                         <span lesson-read-link lesson="o"></span>
-                                                                        {{o.name}} {{'lessons.by' | translate}} {{o.userDetails.username}}
+                                                                        <a href="#!/public/lessons/{{o._id}}/intro">{{o.name}}</a>  {{'lessons.by' | translate}} {{o.userDetails.username}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -556,7 +556,7 @@
                                                                 <span class="title-lesson"> {{q.lesson | limitTo :50}} </span>
                                                             </div>
                                                             <div ng-show="!!lessonsFromOthers[q._id]">
-                                                                <div class="summary"> {{ 'lessons.lesson' | translate }} {{lessonsFromOthers[q._id].name}} {{ 'lessons.createdBy' | translate}}
+                                                                <div class="summary"> {{ 'lessons.lesson' | translate }} <a href="#!/public/lessons/{{lessonsFromOthers[q._id]._id}}/intro"></a>{{lessonsFromOthers[q._id].name}} {{ 'lessons.createdBy' | translate}}
                                                                     {{lessonsFromOthers[q._id].userDetails.username}}
                                                                 </div>
                                                             </div>
@@ -568,7 +568,7 @@
                                                                     <div class="summary">
                                                                         {{ 'lessons.copiedFrom' | translate }}
                                                                         <span lesson-read-link lesson="o"></span>
-                                                                        {{o.name}} {{'lessons.by' | translate}} {{o.userDetails.username}}
+                                                                        <a href="#!/public/lessons/{{o._id}}/intro">{{o.name}}</a> {{'lessons.by' | translate}} {{o.userDetails.username}}
                                                                     </div>
                                                                 </div>
                                                             </div>
