@@ -374,4 +374,4 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
             }
         });
 
-});
+    });
