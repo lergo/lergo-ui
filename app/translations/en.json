@@ -831,6 +831,9 @@
     "placeholder": "Enter code",
     "enter": "Enter"
   },
+  "playlist" : {
+    "header" : "Playlist"
+  },
   "playlistClassInvite": {
     "className": "Class",
     "instructions": "Note: To to get to playlist, please enter your first name and then click on \"Go to Playlist\".",
