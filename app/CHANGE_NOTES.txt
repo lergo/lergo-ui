@@ -1,3 +1,4 @@
+lergo-ui working on playlist - implementing most items in Feedback 27-11-2020
 lergo-ui fixing promise bug in getting completes
 lergo-ui and ri working on playlist, fixing comments and adding date for completion
 lergo-ui bug(fix) _playlist.scss had code interfering with playlist images

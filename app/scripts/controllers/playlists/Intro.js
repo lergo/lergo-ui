@@ -304,10 +304,18 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 }
                 LergoClient.lessons.findLessonsById(lessonsId).then(function (result) {
                     $scope.lessons = result.data;
-                    $scope.lessonsWithSummary = _.filter(result.data, 'summary');
+                    angular.forEach($scope.lessons, function(lesson) {
+                        if (!lesson.username ) {
+                            LergoClient.users.findUsersById(lesson.userId).then(function (result) {
+                                lesson.username = result.data[0].username;
+                            });
+                        }
+                    });
+                    $scope.lessonsWithSummary = _.filter($scope.lessons, 'summary');
                     giveCreditToLessonsWeUseFromOthers($scope.lessons);
                     giveCreditToLessonsWeCopied($scope.lessons);
                 });
+
             }
         }
 

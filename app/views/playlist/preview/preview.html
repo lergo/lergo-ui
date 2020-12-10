@@ -12,13 +12,15 @@
                         <div playlist-title-image playlist="playlist"></div>
 
                     </div>
-                    <div class="col-md-4 col-sm-12 col-xs-12 header-name ">
-                        <div>
-                            <div class="sub-title">{{'playlists.preview.title' | translate}}</div>
-                            <br/>
-                        </div>
-                        <div class="title">
-                            {{playlist.name| limitTo:40}}
+                    <div class="col-md-4 col-sm-12 col-xs-12" style="padding: 0 5px">
+                        <div class="header-name">
+                            <div>
+                                <div class="sub-title">{{'playlists.preview.title' | translate}}</div>
+                                <br/>
+                            </div>
+                            <div class="title">
+                                {{playlist.name| limitTo:40}}
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12">

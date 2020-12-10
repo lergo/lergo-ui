@@ -275,6 +275,11 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                     $scope.wrongQuestions.push(answer.quizItemId);
                 }
             });
+            if ( $scope.wrongQuestions.length > 0 ) {
+                localStorageService.set('hasPracticeMistakes', $scope.wrongQuestions);
+            } else {
+                localStorageService.remove('hasPracticeMistakes');
+            }
         }
 
         $scope.practiceMistakesAnon = function () {
@@ -311,4 +316,14 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             localStorageService.remove('playlistUrl');
             $location.path(url);
         };
+        $scope.hasPracticeMistakes = function() {
+            if (localStorageService.get('hasPracticeMistakes')) {
+                $scope.wrongQuestions = localStorageService.get('hasPracticeMistakes');
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+
     });

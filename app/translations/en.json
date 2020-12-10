@@ -589,9 +589,11 @@
     "allLessons": "All Lessons",
     "areYouReady": "Are you ready to start learning?",
     "available": "Available Lessons",
+    "by": "by",
     "createNewLesson": "Playlist Landing Page",
     "comment": "Comments",
     "continueLesson": "Continue Lesson",
+    "copiedFrom": "Copied from", 
     "create": "Create New Lesson",
     "createdOn": "created on",
     "createdBy": "Created by",
@@ -650,6 +652,7 @@
     "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
     "inviteSuccessText": "Copy the link below to invite a student to the lesson",
     "language": "language",
+    "lesson": "Lesson",
     "lessonCompleted": "You have completed the lesson",
     "lessonReport": "Lesson Report",
     "letsContinue": "OK! Let's Continue",
@@ -696,6 +699,10 @@
       "start": "start lesson"
     },
     "total": "Total",
+    "update": {
+      "title" : "Welcome to Playlist",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque suscipit vestibulum neque, sit amet scelerisque elit laoreet nec. Aliquam vitae congue nisi, nec faucibus lectus. Suspendisse vitae mauris interdum, varius libero eu, ornare lacus. In at"
+    },
     "videoURL": "Video URL",
     "videoURLHelpText": "Insert the URL of the YouTube video here.",
     "welcome": "Welcome to lergo",
@@ -824,6 +831,9 @@
     "placeholder": "Enter code",
     "enter": "Enter"
   },
+  "playlist" : {
+    "header" : "Playlist"
+  },
   "playlistClassInvite": {
     "className": "Class",
     "instructions": "Note: To to get to playlist, please enter your first name and then click on \"Go to Playlist\".",
@@ -868,6 +878,7 @@
     },
     "incomplete": "Incomplete",
     "playlistStep": {
+      "addHint": "To add lessons to playlist click on 'Add Lessons'",
       "practiceMode": {
         "false": "No",
         "hint": {
@@ -887,7 +898,6 @@
         }
       }
     },
-    "playlistSteps": "Playlist Steps",
     "missing": {
       "info": "Missing information"
     },
@@ -957,7 +967,10 @@
       "title": "Playlist Preview"
     }
   },
-  
+  "playlistStep": {
+    "add" : "Add Lessons",
+    "addHint" :"To add lessons to playlist click on 'Add Lessons'"
+  },
   "playlists": {
     "add": "Add to Playlist",
     "addAdminComment": "Add Admin comment",
