@@ -17,7 +17,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             window.history.back();
         };
 
-
+ 
         $scope.subjects = LergoFilterService.subjects;
         $scope.adminRatings = LergoFilterService.adminRatings;
         var addStepClicked = false;
@@ -219,6 +219,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 playlist.steps.splice($index, 0, step); //  http://stackoverflow.com/a/586189/1068746
             } else {
                 playlist.steps.push(step);
+                $scope.addCreateQuestion(step);
             }
             $scope.getStepViewByType(step);
         };
