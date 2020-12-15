@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsIntroCtrl',
-    function ($scope, $routeParams, LergoClient, $location, $uibModal, DisplayRoleService, $log, $rootScope, LergoTranslate, $window, $filter, $sce) {
+    function ($scope, $routeParams, LergoClient, $location, $uibModal, DisplayRoleService, $log, $rootScope, LergoTranslate, $window, $filter, $sce, localStorageService) {
         $window.scrollTo(0, 0);
         var lessonId = $routeParams.lessonId;
         var invitationId = $routeParams.invitationId;
@@ -33,6 +33,10 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
         }
 
         $scope.copyLesson = function () {
+            if( localStorageService.get('playlistUrl')) {
+                $log.info('removing playlistUrl from localStorageService');
+                localStorageService.remove('playlistUrl');
+            }
             $scope.copyBtnDisable = true;
             $scope.copyLessonPromise = LergoClient.lessons.copyLesson(lessonId);
             $scope.copyLessonPromise.then(function (result) {
