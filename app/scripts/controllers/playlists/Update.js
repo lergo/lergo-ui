@@ -217,7 +217,6 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
             if (typeof($index) === 'number') {
                 playlist.steps.splice($index, 0, step); //  http://stackoverflow.com/a/586189/1068746
-
             } else {
                 playlist.steps.push(step);
                 $scope.addCreateQuestion(step);
