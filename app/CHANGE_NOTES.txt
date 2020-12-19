@@ -1,3 +1,4 @@
+lergo-ui working on playlist - implementing most items in Feedback 12-12-2020
 lergo-ui working on playlist - implementing most items in Feedback 27-11-2020
 lergo-ui fixing promise bug in getting completes
 lergo-ui and ri working on playlist, fixing comments and adding date for completion

@@ -81,9 +81,9 @@
                 </tr>
             </table>
 
-            <table>
+            <table class="lergo-table">
                 <tr>
-                    <td ng-show="!isPlaylist()" rowspan="2" class="recommendation" ng-show="!!lesson.nextLessonId">
+                    <td rowspan="2" ng-show="!!lesson.nextLessonId">
                             <a ng-href="#!/public/lessons/{{lesson.nextLessonId}}/intro">
                                 <i class="fas  fa-chalkboard"></i>
                                 {{ 'lessons.recommenedNextLesson' | translate }}
