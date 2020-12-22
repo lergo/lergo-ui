@@ -1,3 +1,4 @@
+lergo-ri Revert "bug(fix) allowing prerender of publicPlaylists"
 lergo-ui and ri  working on playlist - implementingFeedback 18-12-2020 and adding public/playlist to prerender in ri
 lergo-ui working on playlist - implementing most items in Feedback 12-12-2020 and adding public/playlist to prerender in ri
 lergo-ui working on playlist - implementing most items in Feedback 27-11-2020
