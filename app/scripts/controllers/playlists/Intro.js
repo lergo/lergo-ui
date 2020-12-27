@@ -9,7 +9,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
         var preview = !!$routeParams.preview;
         var autoPlay = $routeParams.autoPlay;
 
-        $scope.shareSection = 'link';
+        $scope.shareSection = 'embed';
 
 
         function redirectToInvitation() {

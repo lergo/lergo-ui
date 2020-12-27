@@ -5,7 +5,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         $window.scrollTo(0, 0);
         $log.info('loading invitation');
         var errorWhileSaving = false;
-        $scope.shareSection = 'link';
+        $scope.shareSection = 'embed';
         var updateChange = new ContinuousSavePlaylistRprts({
 
             'saveFn': function (value) {
