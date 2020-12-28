@@ -236,7 +236,6 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
             var localUrl = absOldUrl.substring(absOldUrl.lastIndexOf('!') + 1,absOldUrl.lastIndexOf('?') );
             var lessonUrl = absNewUrl.substring(absNewUrl.lastIndexOf('lessons/') + 8,absNewUrl.lastIndexOf('lessons/') + 16 );
-            console.log('......Display.js.................the lessonUrl is', lessonUrl);
             if (absNewUrl.includes('lesson')) {
                 localStorageService.set('playlistUrl', localUrl);
                 localStorageService.set('playlistLesson', lessonUrl);
