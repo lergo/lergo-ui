@@ -30,7 +30,7 @@
                 <tbody> 
                 <tr ng-repeat="lesson in playlistLessonArray">
                     <td class="name" dir="auto">
-                        <a ng-class="{'disabled':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
+                        <a ng-class="{'disabled':!!lesson.isComplete}"  ng-href="#!/public/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
                     </td>
                     <td>
                         <input type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>

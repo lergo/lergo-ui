@@ -64,7 +64,7 @@
                 <tbody> 
                     <tr ng-repeat="lesson in playlistLessonArray">
                     <td class="name  col-lg-7 col-md-7 col-sm-6 col-xs-6" dir="auto">
-                        <a ng-class=" {'complete':!!lesson.isComplete}"  ng-href="#!/user/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
+                        <a ng-class=" {'complete':!!lesson.isComplete}"  ng-href="#!/public/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
                     </td>
                     <td ng-class="{'complete':!!lesson.isComplete}" class="col-lg-4 col-md-4 col-sm-3 col-xs-3">{{ lesson.dateCompleted |date:'medium'  }} </td>
                     <td class="col-lg-1 col-md-1 col-sm-3 col-xs-3 ">
