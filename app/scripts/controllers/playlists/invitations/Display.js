@@ -5,7 +5,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         $window.scrollTo(0, 0);
         $log.info('loading invitation');
         var errorWhileSaving = false;
-        $scope.shareSection = 'link';
+        $scope.shareSection = 'embed';
         var updateChange = new ContinuousSavePlaylistRprts({
 
             'saveFn': function (value) {
@@ -231,14 +231,18 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 }).replace();
             }
         }
-        // jeff: save the current location in localStorage to be used to return to the playlist after 
+        // jeff: save the current location as playlistUrl along with the lesson as lessonUrl in localStorage to be used to check and return to the playlist after 
         // finishing the lesson or report
         $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
             var localUrl = absOldUrl.substring(absOldUrl.lastIndexOf('!') + 1,absOldUrl.lastIndexOf('?') );
+            var lessonUrl = absNewUrl.substring(absNewUrl.lastIndexOf('lessons/') + 8,absNewUrl.lastIndexOf('lessons/') + 16 );
             if (absNewUrl.includes('lesson')) {
                 localStorageService.set('playlistUrl', localUrl);
+                localStorageService.set('playlistLesson', lessonUrl);
             } else {
                 localStorageService.remove('playlistUrl');
+                localStorageService.remove('playlistLesson');
+
             }
         });
 

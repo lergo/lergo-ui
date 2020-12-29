@@ -305,7 +305,9 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
         };
 
         $scope.isPlaylist = function() {
-            if (localStorageService.get('playlistUrl')) {
+            var absUrl = $location.absUrl();
+            var lessonId = absUrl.substring(absUrl.lastIndexOf('?') + 10,absUrl.lastIndexOf('?') + 18 );
+            if (localStorageService.get('playlistUrl') && localStorageService.get('playlistLesson') && localStorageService.get('playlistLesson') === lessonId ) {
                 return true;
             } else {
                 return false;
@@ -314,6 +316,7 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
         $scope.backToPlaylist = function() {
             var url = localStorageService.get('playlistUrl');
             localStorageService.remove('playlistUrl');
+            localStorageService.remove('playlistLesson');
             $location.path(url);
         };
         $scope.hasPracticeMistakes = function() {
