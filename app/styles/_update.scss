@@ -24,3 +24,20 @@
         text-align: center;
     }
 }
+.playlist-update-mobile {
+    
+    border: 20px  solid #00A2E8;
+    border-radius: 2px;
+    background-color: lightgrey;
+    padding-bottom: 20px;
+    overflow: auto;
+
+    .title {
+        font-size: 30px;
+        text-align: center;
+    }
+    .description {
+        font-size: 18px;
+        text-align: center;
+    }
+}

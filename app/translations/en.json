@@ -17,31 +17,29 @@
     "keyContributors": "Key Contributors",
     "keyFunders": "Key Funders List",
     "keyFundersPictures": "Funders Picture Collage",
-    "keyLessonCreators": "Key Lesson Creators",
+    "keyLessonCreators": "Key Lesson Creators Cloud",
+    "lergoFeedback": "User Feedback",
     "lessonCreators": {
-      "desc1": "LerGO's site is the first community site of people working together to build and share high quality and interactive online lessons for kids. Since LerGO is 100% user generated we are incredibly greatful for all of you who are creating lessons for LerGO! Thanks to every one of you for every single lesson you created! ",
-      "desc2": "\n Our special thanks goes out to our top lesson creators - you are amazing!",
-      "thanks": "The Lergo Team",
+      "desc1": "LerGO's site is the first community site of people working together to build and share high quality and interactive online lessons for kids. Since LerGO is 100% user generated we are incredibly grateful for all of you who are creating lessons for LerGO. Thanks to every one of you for every single lesson you created!",
+      "desc2": "Our special thanks goes out to our top lesson creators - you are amazing!",
+      "thanks": "The LerGO Team",
       "title": "Key Lesson Creators Cloud"
     },
-    "lergoFeedback": "Feedback",
     "overview": "Overview",
     "privacy": "Privacy and Terms",
     "sections": {
       "lergoFeedbackUrl": "https://docs.google.com/forms/d/1EWBSsbLsBtWLu8-3Q-D3X12COQXvGYQPu08LLOONAiA/viewform "
     },
-    "usage": "How to use Lergo",
+    "usage": "How to use LerGO",
     "usageKeys": {
-      "desc": "This is a key - needs to be put in phraseApp 'about.usageKeys.desc",
-      "here": "here",
       "faq": "- Frequently asked questions - click ",
-      "youtube": "- YouTube playlist -click ",
-      "lergoLessons": "- LerGO lessons -click ",
-      "support": "For suport please contact ",
-      "title": "How to use Lergo",
-      "underConstruction": "This page is under construction. In the meantime, here are important resources for you to learn how to use lerGO."
+      "here": "here.",
+      "support": "For support, please contact ",
+      "title": "How to use LerGO",
+      "underConstruction": "This page is under construction. In the meantime, here are important resources for you to learn how to use LerGO. ",
+      "youtube": "YouTube Playlist - click "
     },
-    "webinar": "Webinar"
+    "webinar": "Webinar Registration"
   },
   "abuseReport": {
     "addComments": "Additional details:",
@@ -58,7 +56,7 @@
   "add": "Add to quiz",
   "addClose": "Add and Close",
   "admin": {
-    "adminComments": "Admin Comments",
+    "adminComments": "Editor Comments",
     "allLessons": "All Lessons",
     "by": "By",
     "byCreated": "Lesson created by",
@@ -67,35 +65,36 @@
     "comments": "Comments",
     "created": "Created",
     "emailHasBeenSent": "Email Sent",
-    "emailHasNotBeenSent": "Email Not Sent",
-    "emailSent": "Email",
+    "emailHasNotBeenSent": "Email not sent",
+    "emailSent": "Email Sent",
     "flaggedLesson": "Flagged Lesson Reports",
+    "lessons": "# Ls",
     "lessonName": "Lesson Name",
     "makePrivate": "Unpublish",
     "makePublic": "Publish",
     "public": "Public",
     "publicCount": "Public Lessons",
     "publicFrom": "Public From",
-    "questions": "# Q.",
+    "questions": "# Qs",
     "report": "Report",
     "status": "Status",
-    "users" : {
-      "byDays": "User by days",
-      "newUsers": "New Users",
-      "download": "download new users"
+    "users": {
+      "byDays": "number of days",
+      "download": "Download",
+      "newUsers": "Export Users"
     },
     "views": "# Views"
   },
+  "adminComments": "Editor Comments",
   "advancedOptions": "Advanced options",
-  "adminComments": "Admin comments",
   "AlexanderNelles": {
     "desg": "Head of Assisted Channels Capabilities @ Vodafone Germany"
   },
   "AlinaColton": {
-    "desg": "Teacher & Educator"
+    "desg": "Teacher and Educator"
   },
   "AmnonLevav": {
-    "desg": "Co-founder & Mng Dir @ SIT"
+    "desg": "Co-founder and Mng Dir @ SIT"
   },
   "apply": "Apply",
   "AvnerAlgom": {
@@ -113,19 +112,19 @@
       "feedback": "Send Feedback",
       "homepage": "Homepage",
       "kitchenSink": "Kitchen Sink",
-      "problem": "Report Problem",
       "privacyAndTerms": "Privacy and Terms",
+      "problem": "Report Problem",
       "suggest": "Suggest Lesson",
-      "text1": "Text of questions & exercises is available under the",
+      "text1": "Text of questions and exercises is available under the",
       "text2": "Creative Commons Attribution-NonCommercial-ShareAlike License",
       "text3": "additional terms may apply. By using this site, you agree to the",
       "text4": "Terms of Use and Privacy Policy",
       "text5": "LerGO is an open source EdTech venture of LerGO-Educate Yourself (R.A), a registered nonprofit organisation",
-      "webinar": "Register to webinar"
+      "webinar": "Webinar"
     },
     "header": {
       "links": {
-        "abuseReports": "Flagged Reports",
+        "abuseReports": "Flagged Lessons",
         "contribute": "Contribute",
         "create": "Create",
         "invites": "Invites",
@@ -138,19 +137,18 @@
         "manageUsers": "Manage Users",
         "parents": "Parents",
         "playlists": "Playlists",
-        "playlistRprts": "Playlist Reports",
-        "profile": "Profile",
         "privacy": "Privacy and Terms",
+        "profile": "Profile",
         "questions": "Questions",
         "reports": "Reports",
         "roles": "Roles",
         "teachers": "Teachers",
-        "usage": "How to use Lergo",
+        "usage": "How to use LerGO",
         "users": "Users"
       },
       "logout": "Logout",
       "searchPlaceholder": "Enter one word from lesson title to search.",
-      "searchPlaceholderMobile": "Search Lesson",
+      "searchPlaceholderMobile": "Enter one word from lesson title to search.",
       "searchReset": "Clear search",
       "searchUnderConstruction": "Search feature under construction... for now, please use the filters below.",
       "searchWord": "Enter a word to search (from title, description of lesson), use filters below to filter results per age, views, subject, etc.  Click  on X to clear search.",
@@ -160,36 +158,32 @@
       }
     },
     "navbar": {
-      "pinHelp":"what's this",
-      "pinHelpText": "Did your teacher give you a PIN code for a lesson? If so, click on 'Enter Lesson PIN' and you will be routed to your lesson. Otherwise, you can choose any other lesson in LerGO. Have fun :)",
       "desktopPin": "Enter Lesson PIN",
       "enterPin": "Enter PIN",
+      "mobileSearchCancel": "Cancel",
       "openMenu": "Menu",
+      "pinHelp": "מה זה?",
+      "pinHelpText": "Has your teacher given you a PIN code for a lesson? If so, click on \"Enter Lesson PIN\" and you will be routed to your lesson. Otherwise, you can choose any other lesson in LerGO. Have fun :)",
       "searchLesson": "Search Lesson",
-      "updates": "Updates",
-      "mobileSearchCancel" : "Cancel"
+      "updates": "Updates"
     }
   },
   "busy": {
     "message": "Please wait ..."
   },
   "button": {
-    "alreadyHaveAccount": "Already have an account?",
-    "createNewAccount": "Create new account",
-    "or":"or",
+    "alreadyHaveAccount": "Already have a LerGO account?",
+    "createNewAccount": "Create New Account",
     "forgotPassword": "Forgot password?",
     "login": "Login",
     "newInvite": "New Invite",
+    "or": "-- or --",
     "resendValidationEmail": "Resend validation email",
     "showLesson": "Display Lesson",
     "showPlaylist": "Display Playlist",
     "signup": "Signup",
-    "signupSubmit": "SIGNUP",
+    "signupSubmit": "Sign Up",
     "submit": "Submit"
-  },
-  "cookieConsent": {
-    "text1": "This site uses cookies to ensure you get the best experience on our website.By using this website you accept this use, as well as accept LerGO’s Terms of Use and Privacy Policy.  ",
-    "text2": "By using this website you accept this use, as well as accept LerGO’s Terms of Use and Privacy Policy"
   },
   "cancel": "Close",
   "changePassword": {
@@ -216,10 +210,13 @@
     "desc": "We would not have made it this far without the hard work, generous help and continuous encouragement of LerGO's team of contributors, volunteers and advisory board members (you guys rock!):",
     "title": "Key Contributors"
   },
+  "cookieConsent": {
+    "text1": "This site uses cookies to ensure you get the best experience on our website. By using this site you accept this use, as well as accept LerGO’s Terms of Use and Privacy Policy."
+  },
   "copy": "Copy",
   "createNotAvailable": "Please signup or login to LerGO. Only registered users can create content.",
   "DanielSirkin": {
-    "desg": "Cinema & TV Dir. & Screenwriter"
+    "desg": "Cinema and TV Dir. and Screenwriter"
   },
   "delete": "Delete",
   "deleteIntro": {
@@ -229,16 +226,16 @@
     "Confirm": "Are you sure you want to delete this invite? This action cannot be undone."
   },
   "deleteLesson": {
-    "Confirm": "For the lesson to be created and saved, you must fill at least the Name field. By leaving this page without filling this field, all changes will be lost."
+    "Confirm": "For the lesson to be created and saved, you must fill at least the 'Name' field. By clicking OK without filling this field, the lesson will be erased. Click 'Cancel' to fill the 'name' of lesson field."
   },
   "deleteLessons": {
     "Confirm": "Are you sure you want to delete selected lessons? This action cannot be undone."
   },
   "deletePlaylist": {
-    "Confirm": "For the playlist to be created and saved, you must fill at least the Name field. By leaving this page without filling this field, all changes will be lost."
+    "Confirm": "To save this playlist you must enter \"Playlist Name\" . Pressing on OK without filling out this field will lead to deletion of the lesson. Press Cancel to go back to enter \"Playlist Name\""
   },
   "deleteQuestion": {
-    "Confirm": "For the question to be created and saved, you must fill at least the Question field, Question Type and define a Correct Answer. By leaving this page without filling these fields, all changes will be lost."
+    "Confirm": "For the question to be created and saved, you must fill at least the Question field, Question Type and define Correct Answer/s. By clicking \"OK\" without filling these fields, the question will be erased. Click \"Cancel\" to continue editing the question."
   },
   "deleteReports": {
     "Confirm": "Are you sure you want to delete the marked reports? This action cannot be undone. "
@@ -247,14 +244,14 @@
     "confirm": "Are you sure you want to delete the step: #{0} ? This action cannot be undone."
   },
   "demos": {
-    "dontShowAgain": "OK, got it. Please don't show this tip again.",
+    "dontShowAgain": "OK, don't show this tip again.",
     "gotIt": "OK, got it!",
     "goToMyLessons": {
-      "intro": "To go back to your lesson to edit or display it, go to your \"username\" and click on \"Lessons\". Alternately you can click on Create in top menu.  After clicking on your  lesson title, use \"pen\" icon to edit lesson, \"share\" to share your lesson, \"start\" to play your lesson, and \"invite\" to invite a student to a lesson.",
+      "intro": "To go back to your lesson to edit or display it, go to your \"username\" and click on \"Lessons\".  After clicking on your  lesson title, use \"pen\" icon to edit lesson, \"share\" to share your lesson, \"start\" to play your lesson, and \"invite\" to invite a student or class to a lesson.",
       "title": "Where are the lessons I created stored?"
     },
     "goToMyPlaylists": {
-      "intro": "To go back to your playlist to edit or display it, go to your \"username\" and click on \"Playlists\". Alternately you can click on Create in top menu.  After clicking on your  playlist title, use \"pen\" icon to edit playlist, \"share\" to share your playlist,  and \"start\" to play your playlist.",
+      "intro": "To go back to your Playlist to edit it or display it, go to your \"username\" and click on \"Playlists\". After clicking on the title of your playlist, use \"pen\" icon to edit it, and use \"share\" to share the playlist, and \"start\" to play the playlist. ",
       "title": "Where are the playlists I created stored?"
     }
   },
@@ -275,15 +272,15 @@
       "desg": "VP @ Arab College of Education"
     },
     "JeffreyLevy": {
-      "desg": "Physicist & HiTech Executive"
+      "desg": "Physicist and HiTech Executive"
     },
     "ZviPaltiel": {
-      "desg": "Educator & Physicist"
+      "desg": "Educator and Physicist"
     }
   },
   "edit": "Edit",
   "EladMeshulam": {
-    "desg": "Digital Media Professional & Analyst"
+    "desg": "Digital Media Professional and Analyst"
   },
   "email": "Email",
   "EranWagner": {
@@ -295,7 +292,7 @@
   "explanationImage": "Explanation with Image",
   "explanationVideo": "Explanation with Video",
   "EyalChen": {
-    "desg": "VP Product & Technology @ WebsPlanet"
+    "desg": "VP Product and Technology @ WebsPlanet"
   },
   "facebookShare": "Share to Facebook",
   "faq": {
@@ -317,6 +314,10 @@
         "msg": "Lessons are filtered.",
         "resetAction": "Click here to view all lessons."
       },
+      "playlists": {
+        "msg": "Playlists are filtered.",
+        "resetAction": "Click here to view all playlists."
+      },
       "questions": {
         "msg": "Questions are filtered.",
         "resetAction": "Click here to view all questions."
@@ -331,6 +332,17 @@
     "actions": {
       "clear": "Clear Filters"
     },
+    "adminRatings": {
+      "a": "PPT not shared",
+      "all": "All Ratings",
+      "b": "Email Sent re Share PPT",
+      "c": "Issues with Content",
+      "d": "Not to publish",
+      "e": "Problem re Lesson Cover",
+      "f": "F Rating",
+      "g": "Problem re Pics in Qs",
+      "h": "Lesson Fixed n Shared"
+    },
     "age": {
       "error": "Maximum age should be greater than minimum age"
     },
@@ -339,25 +351,27 @@
       "reportLesson": "Filter Reports by Lesson"
     },
     "labels": {
+      "adminRating": "Editor Rating",
       "age": "Age",
       "ageRange": "Age Range",
       "correctPercentage": "% Correct Range",
       "createdBy": "Created By",
-      "createdByAll": "Created By All",
+      "createdByAll": "Created By (all)",
       "doneByStudent": "Student",
       "doneByStudentClassname": "Class",
       "duration": "Duration (in seconds)",
       "hasQuestions": "Has Questions",
-      "noAdminComment": "No Admin Comment",
-      "noAdminCommentEmailSent": "No Email Sent",
-      "isNotCopyOf": "Is not a Copy",
+      "isCopyOf": "Copied Lessons",
+      "isNotCopyOf": "Original Lessons",
       "language": "Language",
-      "adminRating": "Admin Rating",
-      "removeCreatedBy": "Remove Createdby",
-      "removeSubject" : "Remove Subject",
+      "noAdminComment": "No Editor Comments",
+      "noAdminCommentEmailSent": "Email not sent",
+      "removeCreatedBy": "Without Creator/s",
+      "removeSubject": "Without Subject/s",
       "reportedBy": "Reported By",
+      "reset": "Clear filter",
       "roles": "Role",
-      "search": "Min Users public lessons",
+      "search": "Num of Published Lessons",
       "status": "Status",
       "subject": "Subject",
       "tags": "Tags",
@@ -371,17 +385,6 @@
       "hebrew": "Hebrew",
       "other": "Other",
       "russian": "Russian"
-    },
-    "adminRatings": {
-      "all": "All",
-      "a": "A",
-      "b": "B",
-      "c": "C",
-      "d": "D",
-      "e": "E",
-      "f": "F",
-      "g": "G",
-      "h": "H"
     },
     "status": {
       "complete": "Complete",
@@ -400,12 +403,12 @@
       "chemistry": "Chemistry",
       "citizenship": "Citizenship",
       "computers": "Computers",
-      "english": "English",
+      "english": "English - ESL",
       "financialEducation": "Financial Education",
       "geography": "Geography",
       "geometry": "Geometry",
       "grammar": "Grammar",
-      "hebrewHsl": "Hebrew-HSL",
+      "hebrewHsl": "Hebrew - HSL",
       "history": "History",
       "holidays": "Holidays",
       "language": "Language",
@@ -417,14 +420,14 @@
       "physicalEducation": "Physical Education",
       "physics": "Physics",
       "psychometric": "Psychometric",
-      "reading": "Reading",
-      "readingComprehension": "Reading Comprehension",
+      "reading": "reading",
+      "readingComprehension": "Reading Comp.",
       "roadSafety": "Road Safety",
       "science": "Science",
       "signlanguage": "Sign Language",
       "spelling": "Spelling",
       "sustainability": "Sustainability",
-       "technology": "Technology"
+      "technology": "Technology"
     },
     "testrahul": "testrahul",
     "to": "To"
@@ -449,40 +452,41 @@
     "desg": "Software Consultant"
   },
   "GilShai": {
-    "desg": "Co-founder & COO CloudEndure"
+    "desg": "Co-founder and COO CloudEndure"
   },
   "GioraShaked": {
-    "desg": "Founder & CEO of Hisense Medical"
+    "desg": "Founder and CEO of Hisense Medical"
   },
   "GuyBrill": {
-    "desg": "Former EVP Elbit & Mgmt Consultant"
+    "desg": "Former EVP Elbit and Mgmt Consultant"
   },
   "GuyMograby": {
-    "desg": "UX/UI Software Developer & Blogger"
+    "desg": "UX/UI Software Developer and Blogger"
   },
   "HaggiHochberger": {
     "desg": "Director,Innovation Partnership Program @ Amdocs"
   },
   "helperContent": {
     "add": "Click to add Contents",
+    "hintsAndVideos": "For important tips and video on how to create a LerGO - click here!",
     "important": "Important",
     "tips": "Tips",
     "title": "Title",
-    "videoUrl": "Video Url",
-    "hintsAndVideos": "For important tips and short video on how to create a LerGO - click here!"
+    "videoUrl": "Video Url"
   },
   "hint": "Hint",
   "homepage": {
     "andCounting": "and counting...",
     "create": "create",
     "createLessons": "Create Lesson",
-    "createYourOwn": "Create Your Own Lesson",
+    "createYourOwn": "Create a LerGO Lesson",
     "exploreLessons": "Explore Lessons",
     "free": "it's free!",
     "lessons": "lessons",
     "questions": "questions",
     "start": "start",
     "tooltip": {
+      "lessons": "number of lessons in playlist",
       "likes": "number of likes",
       "questions": "number of questions",
       "searchReset": "Clear search",
@@ -495,14 +499,14 @@
   },
   "infringesRights": "it infringes his/her right.",
   "input": {
+    "changePassword": "Change Password",
     "confirmNewPassword": "Confirm New Password",
     "confirmPassword": "confirm password",
-    "changePassword": "CHANGE PASSWORD",
     "email": "email",
     "emailConfirm": "Confirm Email",
     "enterNewPassword": "Enter New Password",
     "fullName": "full name",
-    "gpdrOptIn": " I agree to the terms of use and privacy policy of lergo and to receiving updates by email from LerGO",
+    "gpdrOptIn": " I agree to the terms of use and privacy policy of LerGO and to receiving LerGO’s email updates.",
     "learnMore": "Learn more",
     "password": "password",
     "passwordConfirm": "Confirm password",
@@ -513,14 +517,14 @@
     "create": "Create New Invite",
     "createdSuccessfully": "We created your invitation",
     "error": "Error sending invitation :(",
-    "linkCopied": "Link copied to clipboard",
-    "pinCopied": "PIN Code was  copied to clipboard",
+    "linkCopied": "Link copied to clipboard.",
+    "pinCopied": "PIN Number copied to clipboard.",
     "sending": "Sending invite, please wait...",
     "sent": "Invitation successfully sent"
   },
   "invite": "Invite",
   "invites": {
-    "classInvite": "Class",
+    "classInvite": "Class Invite",
     "emailNotification": "Email Notifications",
     "emailNotificationOff": "Turn off email notifications",
     "emailNotificationOn": "Turn on email notifications",
@@ -530,8 +534,8 @@
     "markAsDone": "Mark as done",
     "markAsUndone": "Mark as undone",
     "myInvites": "My Invites",
-    "studentOrClass": "Student / Class",
-    "studentInvite": "Student",
+    "studentInvite": "Student Invite",
+    "studentOrClass": "Invite Type",
     "tooltip": {
       "go": "Click here to play the lesson."
     }
@@ -543,10 +547,11 @@
     "ru": "Russian"
   },
   "lergo": {
-    "description": "LerGO is a new nonprofit EdTech venture aimed at providing free, high quality & interactive online lessons for all children, anywhere, at any time. This will be made possible through LerGO's open source cloud platform, which leverages the goodwill of the community, enabling contributors to easily create animated & interactive lessons. Kids will use these lessons as a free alternative to private tutoring/lessons, to self-learn all school subjects, enjoyably and at their own pace. LerGO was founded by Nava Levy and is being operated by the  NGO LerGO - Educate Yourself (R.A.) through volunteers. With its beta site based in Israel, LerGO already includes thousands of interactive lessons and activities that include tens of thousands questions which you can already use with your kids or students today. These lessons were created entirely by volunteers: teachers, parents, NGOs and also good students.  We need your help to create more lessons as well as to distribute these lessons to teachers, parents and kids. Thank you!",
+    "description": "LerGO is a nonprofit EdTech venture aimed at providing free, high quality and interactive online lessons for all children, anywhere, at any time. This will be made possible through LerGO's open source cloud platform, which leverages the goodwill of the community, enabling contributors to easily create animated and interactive lessons. Kids will use these lessons as a free alternative to private tutoring/lessons, to self-learn all school subjects, enjoyably and at their own pace. LerGO was founded by Nava Levy and is being operated by the  NGO LerGO - Educate Yourself (R.A.) through volunteers. With its beta site based in Israel, LerGO already includes thousands of interactive lessons and activities that include tens of thousands questions which you can already use with your kids or students today. These lessons were created entirely by volunteers: teachers, parents, NGOs and also good students.  We need your help to create more lessons as well as to distribute these lessons to teachers, parents and kids. Thank you!",
     "title": "LerGO - Educate Yourself"
   },
   "lesson": {
+    "back": "Back to edit lesson",
     "createdBy": "created by",
     "practice": {
       "step": {
@@ -558,9 +563,7 @@
       "header": {
         "title": "Lesson Preview (2)"
       }
-    },
-    "shuffleLessons": "Shuffle Lessons",
-    "back": "back to edit lesson"
+    }
   },
   "lessonIntro": {
     "action": {
@@ -579,9 +582,9 @@
     }
   },
   "lessons": {
-    "addAdminComment": "Add Admin comment",
+    "addAdminComment": "Add Editor Comment",
+    "addAdminCommentPlaceholder": "Here you can add a free text comment.",
     "addCoverPage": "Add cover image for lesson intro",
-    "addAdminCommentPlaceholder": "Admin Comment",
     "addCoverPageHint": "To add your cover image to lesson please paste here the image URL.",
     "addQuestion": "Add Questions to Quiz",
     "addQuestionFromAll": "from all questions",
@@ -589,14 +592,14 @@
     "allLessons": "All Lessons",
     "areYouReady": "Are you ready to start learning?",
     "available": "Available Lessons",
-    "by": "by",
-    "createNewLesson": "Playlist Landing Page",
+    "by": "by ",
     "comment": "Comments",
     "continueLesson": "Continue Lesson",
-    "copiedFrom": "Copied from", 
+    "copiedFrom": "Lesson copied from ",
     "create": "Create New Lesson",
-    "createdOn": "created on",
     "createdBy": "Created by",
+    "createdOn": "Created on",
+    "createNewLesson": "How to Create Playlist",
     "description": "Lesson Description",
     "edit": {
       "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
@@ -613,21 +616,21 @@
       "labels": {
         "age range": "Age Range",
         "language": "Language",
-        "subject": "Subject",
-        "pagination": "Return to previous page"
+        "pagination": "Back to previous page",
+        "subject": "Subject"
       }
     },
     "genericVideosPost": " The list will open in a new tab.",
     "genericVideosPre": "For a list of generic animated videos please",
-    "inPlaylist": "Lessons in playlist",
-    "invalidCoverPageLink": "Please make sure to upload image to your google drive and share link here",
-    "invalidLink": "Please paste a valid link for Wikipedia, Wikibooks or Wiktionary",
+    "inPlaylist": "Lessons in Playlist",
+    "invalidCoverPageLink": "Please don't use a direct link to image, but download the image to your computer and upload it to your google drive, change share settings and then paste link here.",
+    "invalidLink": "Invalid link: please enter relevant valid link to related term in Wikipedia or Wikibooks or Wiktionary. ",
     "inviteLesson": {
       "class": {
         "help": "Invite CLASS: To generate a PIN number or link to the invite, please enter your class name and press submit.",
         "msg": "Invite Class",
-        "name": "Class name",
-        "noteMessage": "You will receive your students lesson reports upon completion of each lesson.",
+        "name": "Class Name",
+        "noteMessage": "You will receive links to class report and to students reports of lesson upon completion of lesson by 1st student.",
         "noteTitle": "Note",
         "pinHint": "(students to enter it at lergo.it).",
         "success": {
@@ -638,7 +641,7 @@
       "student": {
         "help": "Invite STUDENT: To generate a link for the invite please enter student's first name and press submit.",
         "msg": "Invite Student",
-        "name": "Student name",
+        "name": "Student Name",
         "noteMessage": "You will receive your kid's/student's lesson report upon completion of lesson.",
         "noteTitle": " Note",
         "pinHint": "(students to enter it at lergo.it).",
@@ -648,11 +651,10 @@
         }
       }
     },
-    "index": "index",
     "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a lesson.",
     "inviteSuccessText": "Copy the link below to invite a student to the lesson",
-    "language": "language",
-    "lesson": "Lesson",
+    "language": "Language",
+    "lesson": "Lesson ",
     "lessonCompleted": "You have completed the lesson",
     "lessonReport": "Lesson Report",
     "letsContinue": "OK! Let's Continue",
@@ -661,18 +663,18 @@
     "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like lessons.",
     "myLessons": "My Lessons",
     "name": "Lesson Name",
-    "noLessons": "To create a new lesson please click on \"Create New Lesson\".",
+    "noLessons": "To create a new lesson please click on the above yellow button \"Create New Lesson\".",
     "note": "Note",
     "noteMessage": "You will receive your kid's/student's lesson report upon completion of lesson.",
     "practiceNotAvailable": "Please signup or login to LerGO. Only registered users can use this feature.",
     "practiseWrongQuestion": "Practice Mistakes",
     "readLess": "Read Less",
     "readMore": "Read More",
-    "recommendedLesson" : "Only SHARE links to Lergo can be used here.",
+    "recommendedLesson": "This is not a link to lesson in LerGO - please insert a link/ URL to a lesson in LerGO only.",
     "recommenedNextLesson": "Recommended Next Lesson",
-    "recommenedNextLessonText": "Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
+    "recommenedNextLessonText": "Place the URL/link for the relevant LerGO lesson (link under 'share button') .",
     "recommenedPriorLesson": "Recommended Previous Lesson",
-    "recommenedPriorLessonText": "Copy and paste here the URL/link that appears when you press \"share\" on the lesson intro/details page.",
+    "recommenedPriorLessonText": "Place the URL/link for the relevant LerGO lesson (link under 'share button') .",
     "reportAbuseNotAvailable": "To flag lesson or report abuse please login or register to LerGO. Alternately, you can also use the Report Abuse button at the footer below.",
     "restart": "Start Over",
     "returnToPlaylist": "To Playlist",
@@ -682,7 +684,7 @@
     "slideURL": "Presentation URL",
     "slideURLHelpText": "Insert the URL of the Google Slides presentation here.",
     "startLesson": "Start Lesson",
-    "subject": "subject",
+    "subject": "Subject",
     "tags": "Tags",
     "tooltip": {
       "comment": "Comments",
@@ -700,15 +702,14 @@
     },
     "total": "Total",
     "update": {
-      "title" : "Welcome to Playlist",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque suscipit vestibulum neque, sit amet scelerisque elit laoreet nec. Aliquam vitae congue nisi, nec faucibus lectus. Suspendisse vitae mauris interdum, varius libero eu, ornare lacus. In at"
+      "description": "To add lessons that were created by you, choose tab \"my lessons\". To add lessons from all lessons, choose tab \"all lessons\",  to add lessons that were liked by you, choose tab \"liked lessons\".",
+      "title": "How to create playlist"
     },
     "videoURL": "Video URL",
     "videoURLHelpText": "Insert the URL of the YouTube video here.",
-    "welcome": "Welcome to lergo",
-    "wikiLink": "Wikipedia Wikibooks Wiktionary",
-    "wikiLinkText": "Paste wikipedia / wikibooks / wiktionary link here",
-    "wikiLinkTitle": "Wikipedia"
+    "welcome": "Welcome to LerGO!",
+    "wikiLink": "Here you can enter relevant link to Wikipedia , Wikibooks or Wiktionary.",
+    "wikiLinkTitle": "Link to Wikipedia "
   },
   "lessons_": {
     "inviteLesson": "Invite to lesson",
@@ -730,16 +731,16 @@
   },
   "loading": "Loading...",
   "login": {
+    "emailAlreadyExists": "This email already exists  - you already have a LerGO account",
     "invalidUsername": "WRONG USERNAME OR PASSWORD, PLEASE TRY AGAIN",
-    "usernameAlreadyExists": "Username already taken by another user, try again with a different username.",
-    "emailAlreadyExists": "This email is used, you probably already have an account",
+    "usernameAlreadyExists": "Username is already taken by another user (try again with different username)",
     "userNotValidated": "User's email has not been validated"
   },
   "loginPage": {
     "login": "Login",
     "password": "Password",
-    "retypeEmail": "Please retype email",
-    "retypePassword": "Please retype password",
+    "retypeEmail": "Please retype email.",
+    "retypePassword": "Please retype password.",
     "signup": "Signup",
     "username": "Username"
   },
@@ -747,7 +748,7 @@
     "desg": "Animator"
   },
   "MaisaElshiekh": {
-    "desg": "Teacher & Educator"
+    "desg": "Teacher and Educator"
   },
   "MalcolmFinn": {
     "desg": "Advocate"
@@ -767,10 +768,10 @@
         "count": "Total",
         "myUsers": "My Users",
         "tableTitles": {
+          "date": "Date",
           "email": "Email",
           "username": "Username",
-          "validated": "Email Validated",
-          "date": "Signup Date"
+          "validated": "Email Validated"
         },
         "tooltip": {
           "go": "Edit User"
@@ -788,7 +789,7 @@
     "desg": "RVP,Amdocs Canadian Managed Services @ Amdocs"
   },
   "MiraCohen": {
-    "desg": "Teacher & Educator"
+    "desg": "Teacher and Educator"
   },
   "MotiShatner": {
     "desg": "Founder BSharpC"
@@ -799,7 +800,7 @@
   "NadavStark": {
     "desg": "Online Learning @ TAU"
   },
-  "name": "Name",
+  "name": "Lesson Name",
   "new": "New",
   "next": "Next",
   "nextQuestion": "Continue",
@@ -817,7 +818,7 @@
     "desg": "SaaS Infra Architecture Specialist"
   },
   "overview": {
-    "desc": "LerGO is a non-profit open source EdTech venture dedicated to self education and reducing the social gap. Our goal is to provide every child with free access to high quality and interactive online lessons. This will be made possible via LerGO's cloud platform that leverages the goodwill of the community, enabling it to easily create educational content. Kids can use these lessons to self learn all school subjects, enjoyably and at their own pace. LerGO was founded by Nava Levy and is being operated by the  NGO LerGO - Educate Yourself (R.A.) through volunteers. LerGO features today hundreds of lessons and thousands of questions which you can already use with your kids or students today. These lessons were created entirely by volunteers: teachers, parents, NGOs and also good students.  We need your help to create more lessons as well as to distribute these lessons to teachers, parents and kids. Thank you!",
+    "desc": "LerGO is a non-profit EdTech venture dedicated to self education and reducing the social gap. Our goal is to provide every child with free access to high quality and interactive online lessons. This will be made possible via LerGO's cloud platform that leverages the goodwill of the community, enabling it to easily create educational content. Kids can use these lessons to self learn all school subjects, enjoyably and at their own pace. LerGO was founded by Nava Levy and is being operated by the  NGO LerGO - Educate Yourself (R.A.) through volunteers. LerGO features today hundreds of lessons and thousands of questions which you can already use with your kids or students today. These lessons were created entirely by volunteers: teachers, parents, NGOs and also good students.  We need your help to create more lessons as well as to distribute these lessons to teachers, parents and kids. Thank you!",
     "title": "Overview"
   },
   "parents": {
@@ -826,321 +827,74 @@
     }
   },
   "pin": {
-    "number" : "PIN Number",
-    "redirect": "For all lessons",
+    "enter": "Enter",
+    "number": "PIN Number",
     "placeholder": "Enter code",
-    "enter": "Enter"
+    "redirect": "For all lessons"
   },
-  "playlist" : {
-    "header" : "Playlist"
+  "playlist": {
+    "header": "**Playlist**"
   },
-  "playlistClassInvite": {
-    "className": "Class",
-    "instructions": "Note: To to get to playlist, please enter your first name and then click on \"Go to Playlist\".",
-    "playlistName": "Playlist",
-    "start": "Go to Playlist",
-    "studentName": "student",
-    "teacherName": "Teacher",
-    "welcome": "Welcome to LerGO"
-  },
-
-  "playlistRprt": {
-    "answer": {
-      "stat": "{{avgCorrectPercentage | number:0}} % Correct ({{correct}} of {{count}} correct responses)"
-    },
-    "classSummary": "Class PlaylistRprt Summary",
-    "completed": "has completed the playlist",
-    "correctQuestions": {
-      "one": "Correct Answer",
-      "other": "Correct Answers",
-      "zero": "."
-    },
-    "CreatePlaylistFromWrongQuestions": "Create quiz from incorrect answers",
-    "date": "Date",
-    "description": "Playlist Description",
-    "detailedPlaylistRprt": "Detailed PlaylistRprt",
-    "details": {
-      "hint": "Note: The questions in this section are ordered according to their level of difficulty for the students."
-    },
-    "did": {
-      "not": {
-        "finish": "Did not finish"
-      }
-    },
-    "error": {
-      "while": {
-        "updating": "Error while updating playlistRprt"
-      }
-    },
-    "header": {
-      "classPlaylistRprt": "To Class PlaylistRprt",
-      "individualPlaylistRprts": "To Student PlaylistRprts"
-    },
-    "incomplete": "Incomplete",
-    "playlistStep": {
-      "addHint": "To add lessons to playlist click on 'Add Lessons'",
-      "practiceMode": {
-        "false": "No",
-        "hint": {
-          "1": "The correct answer was presented to the student after 1 try / 1 incorrect answer. The question was then presented again until the student entered a correct answer.",
-          "2": "Whenever the student had 2 incorrect tries / answers, the correct answer was presented to him, before moving on to next question. "
-        },
-        "showCorrectAns": {
-          "one": "The correct answer was shown after 1 try / incorrect answer.",
-          "other": "The correct answer was shown after 2 tries / incorrect answers."
-        },
-        "title": "Practice Mode",
-        "true": "Yes",
-        "try": {
-          "one": "try",
-          "other": "tries",
-          "zero": "try"
-        }
-      }
-    },
-    "missing": {
-      "info": "Missing information"
-    },
-    "nextPlaylist": "Recommended Next Playlist",
-    "notCompletedTitle": "has not yet completed the playlist",
-    "openQuestions": {
-      "one": "Open Question",
-      "other": "Open Questions",
-      "zero": "."
-    },
-    "playlistsInPlaylist": {
-      "one": "Playlist in Playlist",
-      "other": "Different Playlists in Playlist",
-      "zero": " There are no Playlists in this playlist"
-    },
-    "playlistsInQuiz": {
-      "one": "Playlist in Quiz",
-      "other": "Different Playlists in Quiz",
-      "zero": " ."
-    },
-    "playlistSteps": "Playlist Steps",
-    "priorPlaylist": "Recommended Previous Playlist",
-    "questionPerDifficulty": "Questions per Difficulty",
-    "questionsInPlaylist": {
-      "one": "Question in Playlist",
-      "other": "Different Questions in Playlist",
-      "zero": " There are no questions in this playlist"
-    },
-    "questionsInQuiz": {
-      "one": "Question in Quiz",
-      "other": "Different Questions in Quiz",
-      "zero": " ."
-    },
-    "recommendation": "Recommendations",
-    "saved": {
-      "successfully": "PlaylistRprt saved successfully"
-    },
-    "studentSummary": "Student PlaylistRprt Summary",
-    "summary": "PlaylistRprt Summary",
-    "summaryHint": "The playlistRprt is made of {{count}} complete student playlistRprts.",
-    "wrongQuestions": {
-      "one": "Incorrect Answer",
-      "other": "Incorrect Answers",
-      "zero": "."
-    }
-  },
-  
   "playlistIntro": {
     "action": {
       "preview": {
         "title": "Preview"
       }
-    },
-    "copiedFromPlaylist": "Playlist was originally copied from playlist",
-    "copiedFromPlaylistBy": "by",
-    "copiedFromPlaylists": "Some of the content of this playlist were orignially copied from"
-  },
-  "PlaylistPreview": {
-    "detailHeader": "Preview of lessons in Playlist",
-    "header": {
-      "title": "Playlist Preview"
     }
   },
   "playlistPreview": {
     "detailHeader": "Preview of Lessons in Playlist",
     "header": {
-      "title": "Playlist Preview"
+      "title\r\n": "Playlist Preview"
     }
-  },
-  "playlistStep": {
-    "add" : "Add Lessons",
-    "addHint" :"To add lessons to playlist click on 'Add Lessons'"
   },
   "playlists": {
     "add": "Add to Playlist",
-    "addAdminComment": "Add Admin comment",
-    "addCoverPage": "Add cover image for playlist intro",
-    "addAdminCommentPlaceholder": "Admin Comment",
-    "addCoverPageHint": "To add your cover image to playlist please paste here the image URL.",
-    "addLesson": "Add a Lesson",
-    "addQuestion": "Add Questions to Quiz",
-    "addQuestionFromAll": "from all questions",
-    "areYouReady": "Are you ready to start learning?",
-    "available": "Available Playlists",
-    "comment": "Comments",
-    "continuePlaylist": "Continue Playlist",
+    "addCoverPage": "Add cover image to playlist",
+    "addCoverPageHint": "Add link to image here (after you uploaded it to Google Drive and shared it).",
+    "addLesson": "Add Lessons to Playlist",
     "create": "Create New Playlist",
     "createdOn": "created on",
     "description": "Playlist Description",
-    "edit": {
-      "noPermissionsDescription": "Please note that you don't have permissions to edit this item in LerGO.",
-      "noPermissionsTitle": "You don't have permissions to edit this."
-    },
-    "embedPlaylist": "Embed",
+    "embedPlaylist": "Embed Playlist",
     "embedPlaylistTitle": "Copy the code below to embed playlist on your webpage or blog",
     "error": {
-      "invalidName": "Playlist name is a required field. Please fill it out before adding a step to the playlist."
+      "invalidName": "Playlist name is a required field. "
     },
     "filter": "Filter Playlists",
-    "filters": {
-      "labels": {
-        "age range": "Age Range",
-        "language": "Language",
-        "subject": "Subject",
-        "pagination": "Return to previous page"
-      }
-    },
-    "genericVideosPost": " The list will open in a new tab.",
-    "genericVideosPre": "For a list of generic animated videos please",
-    "invalidCoverPageLink": "Please make sure to upload image to your google drive and share link here",
-    "invalidLink": "Please paste a valid link for Wikipedia, Wikibooks or Wiktionary",
-    "invitePlaylist": {
-      "class": {
-        "help": "Invite CLASS: To generate a PIN number or link to the invite, please enter your class name and press submit.",
-        "msg": "Invite Class",
-        "name": "Class name",
-        "noteMessage": "You will receive your students playlist reports upon completion of each playlist.",
-        "noteTitle": "Note",
-        "pinHint": "(students to enter it at lergo.it).",
-        "success": {
-          "help": "To invite your CLASS to the playlist, students should enter PIN code at www.lergo.it - or- copy and give students the invite link.",
-          "invite": "Link to Playlist Invite"
-        }
-      },
-      "name": "Playlist name",
-      "student": {
-        "help": "Invite STUDENT: To generate a link for the invite please enter student's first name and press submit.",
-        "msg": "Invite Student",
-        "name": "Student name",
-        "noteMessage": "You will receive your kid's/student's playlist report upon completion of playlist.",
-        "noteTitle": " Note",
-        "pinHint": "(students to enter it at lergo.it).",
-        "success": {
-          "help": "To invite your STUDENT to the playlist, student should enter PIN code at www.lergo.it - or- copy and give student the invite link.",
-          "invite": "Link to playlist invite"
-        }
-      }
-    },
-    "inviteNotAvailable": "Please signup or login to LerGO. Only registered users can invite students to a playlist.",
-    "inviteSuccessText": "Copy the link below to invite a student to the playlist",
-    "preview" : {
-      "title" : "Playlist Title"
-    },
-    "playlistCompleted": "You have completed the playlist",
-    "playlistReport": "Playlist Report",
-    "letsContinue": "OK! Let's Continue",
-    "letsGo": "Let's LerGO!",
     "likedPlaylists": "Liked Playlists",
-    "likeNotAvailable": "Please signup or login to LerGO. Only registered users can like playlists.",
     "myPlaylists": "My Playlists",
     "name": "Playlist Name",
-    "noPlaylists": "To create a new playlist please click on \"Create New Playlist\".",
     "note": "Note",
-    "noteMessage": "You will receive your kid's/student's playlist report upon completion of playlist.",
-    "practiceNotAvailable": "Please signup or login to LerGO. Only registered users can use this feature.",
-    "practiseWrongQuestion": "Practice Mistakes",
+    "preview": {
+      "title": "Playlist Preview"
+    },
     "readLess": "Read Less",
     "readMore": "Read More",
-    "recommenedNextPlaylist": "Recommended Next Playlist",
-    "recommenedNextPlaylistText": "Copy and paste here the URL/link that appears when you press \"share\" on the playlist intro/details page.",
+    "recommenedNextPlaylist": "Recommended Next Playlist\n",
+    "recommenedNextPlaylistText": "Place the URL/link for the relevant LerGO playlist  (link under \"share\").",
     "recommenedPriorPlaylist": "Recommended Previous Playlist",
-    "recommenedPriorPlaylistText": "Copy and paste here the URL/link that appears when you press \"share\" on the playlist intro/details page.",
-    "reportAbuseNotAvailable": "To flag playlist or report abuse please login or register to LerGO. Alternately, you can also use the Report Abuse button at the footer below.",
-    "restart": "Start Over",
-    "seeReport": "See Report",
-    "sharePlaylist": "Share",
-    "sharePlaylistTitle": "Copy the link below to share playlist with friends",
-    "slideURL": "Presentation URL",
-    "slideURLHelpText": "Insert the URL of the Google Slides presentation here.",
+    "recommenedPriorPlaylistText": "Place the URL/link of the relevant LerGO playlist (link under \"share\" button).",
+    "sharePlaylist": "Share Playlist",
+    "sharePlaylistTitle": "Copy the link below to share playlist with friends.",
     "startPlaylist": "Start Playlist",
-    "tags": "Tags",
     "tooltip": {
-      "comment": "Comments",
       "copy": "Copy Playlist",
       "delete": "Delete Playlist",
       "edit": "Edit Playlist",
-      "go": "go to playlist",
-      "invite": "invite students",
-      "like": "like this playlist",
-      "liked": "you liked this playlist",
+      "go": "Go to playlist",
+      "like": "Like this Playlist",
       "preview": "Preview Playlist",
-      "restart": "Start again",
-      "share": "share with friends",
-      "start": "start playlist"
+      "share": "Share Playlist",
+      "start": "Start Playlist"
     },
     "total": "Total",
-    "videoURL": "Video URL",
-    "videoURLHelpText": "Insert the URL of the YouTube video here.",
-    "welcome": "Welcome to lergo",
-    "wikiLink": "Wikipedia Wikibooks Wiktionary",
-    "wikiLinkText": "Paste wikipedia / wikibooks / wiktionary link here",
-    "wikiLinkTitle": "Wikipedia"
+    "wikiLink": "Here you can enter relevant link to Wikipedia, Wikibooks or Wiktionary.",
+    "wikiLinkTitle\r\n": "Link to Wikipedia"
   },
-
-
-  "playlists1" : {
-    "create": "Create New Playlist",
-    "filter": "Filter Playlists",
-    "myPlaylists": "My Playlists",
-    "likedPlaylists": "Liked Playlists",
-    "total": "total",
-    "chooseTab": "Click on a tab to start choosing lessons"
-  },
-  "playlistRprts": {
-    "class": "Class",
-    "click": {
-      "nextPlaylist": "Link to lesson",
-      "priorPlaylist": "Link to lesson",
-      "step": "Link to presentation",
-      "video": "Link to video"
-    },
-    "correct": "Correct",
-    "correctAvg": "Class average",
-    "correctPercentage": "% Correct",
-    "duration": "Duration",
-    "filter": "Filter P-Report",
-    "header": {
-      "className": "Class PlaylistRprt"
-    },
-    "hintAgg": {
-      "one": "Watched hint : {{hintUsedBy}} of {{total}} student ",
-      "other": "Watched hint : {{hintUsedBy}} of {{total}} students"
-    },
-    "myPlaylistRprts": "My P-Reports",
-    "stepCorrectAvg": "{{percentage | number:0}} % correct (average)",
-    "student": "Student",
-    "studentCount": "# PlaylistRprts",
-    "subject": "Subject",
-    "summary": {
-      "correctPercentage": "{{percentage | number:0}} % correct",
-      "duration": "Playlist Duration",
-      "durationAvg": "Average duration"
-    },
-    "takenAt": "Taken at",
-    "tooltip": {
-      "go": "go to lesson's playlistRprt"
-    },
-    "total": "Total",
-    "type": {
-      "class": "Class playlistRprts",
-      "mine": "Playlists done by me",
-      "students": "Student playlistRprts"
-    }
+  "playlistStep": {
+    "add": "Add lessons to playlist",
+    "addHint": "Click here to add lessons to playlist that you created or lessons that were created by others."
   },
   "popular": "Popular",
   "powered": {
@@ -1150,17 +904,12 @@
   },
   "preview": "Preview",
   "previewQuestion": "Preview",
-  "privacy": {
-     "teaser": {
-        "url": "https://docs.google.com/forms/d/1n4ddLylSr7Tx8qh09M7A-GAMx-6ShIDVxS-DD1mcKhY/viewform"
-     }
-  },
   "Prof": {
     "ArielRubinstein": {
-      "desg": "TAU & NYU"
+      "desg": "TAU and NYU"
     },
     "DavidPassig": {
-      "desg": "Futurist,Tech & Edu BGU"
+      "desg": "Futurist,Tech and Edu BGU"
     },
     "DoritRavid": {
       "desg": "School of Edu @ TAU"
@@ -1190,13 +939,12 @@
       "emptySelection": "No questions were added because none were selected, please select questions and then press \"add\"."
     },
     "addExplanation": "Add Text Explanation",
-    "addExplanationForMediaTemplate" : "this is the explanation for adding media",
-    "addMediaExplanationForTemplate" : "this is the explanation of how to add media explanation",
-    "addExplanationForVideoMedia" : "this is the explanation for adding video",
+    "addExplanationForMediaTemplate": "To add media of Audio or Image, please upload the image to your Google Drive, then change share setting and then paste the link in LerGO. See here a video tutorial explaining that.",
     "addExplanationMedia": "Add Media Explanation",
     "addExplanationPerAnswerFill": "Please add explanation here for a specific wrong answer.",
     "addHint": "Add Hint",
     "addMedia": "Add Media",
+    "addMediaExplanationForTemplate": "To add media of Audio or Image, please upload the image to your Google Drive, then change share setting and then paste the link in LerGO. See here a video tutorial explaining that.",
     "addQuestionsToQuiz": "Add questions to quiz",
     "age": "Age",
     "allQuestions": "All Questions",
@@ -1214,6 +962,7 @@
     "correctAnswerFilled": "You are correct!",
     "correctAnswers": "Correct Answer(s)",
     "createdBy": "Created by",
+    "CreatedBy": "The question was created by",
     "createNew": "Create New Question",
     "createNewQuestion": "Create New",
     "disableShuffling": "Disable Shuffling",
@@ -1249,12 +998,12 @@
     "languages": {
       "arabic": "Arabic",
       "english": "English",
-      "hebrew": "Hebrew",
+      "hebrew": "Hebrew - HSL",
       "russian": "Russian"
     },
     "lessonUsed": "Lessons Used",
-    "linkToVideo": "Link to video",
     "likedQuestions": "Liked Questions",
+    "linkToVideo": "To the Video Tutorial",
     "longAnswer": "Long Answer (a paragraph)",
     "media": {
       "audio": "Audio",
@@ -1283,7 +1032,7 @@
     "subject": "Subject",
     "subjects": {
       "biology": "Biology",
-      "english": "English",
+      "english": "English - ESL",
       "grammar": "Grammar",
       "math": "Math",
       "science": "Science",
@@ -1314,9 +1063,8 @@
     "yourAnswers": "Student's Answer(s)"
   },
   "quiz": {
+    "addLessonHint": "Click here to add lessons to playlist (from \"my lessons\", \"all lessons\" or \"liked lessons\").",
     "addQuestionHint": "Click here to create new questions or to add questions from question banks (\"my questions\" or \"all questions\").",
-    "addLessonHint": "Click here to create new lessons or to add lessonss from lessons banks (\"my lessons\" or \"all lessons\").",
-    
     "allowRetry": "Repeat question if answer is incorrect",
     "practiseMode": "Practice Mode",
     "retryQuestionHint": "Click this option to repeat questions when student's answers are incorrect",
@@ -1330,8 +1078,7 @@
   "quizItem": {
     "answer": {
       "False": "False",
-      "True": "True",
-      "undefined": "undefined"
+      "True": "True"
     }
   },
   "RabbiYaronLevy": {
@@ -1346,7 +1093,7 @@
     "answer": {
       "stat": "{{avgCorrectPercentage | number:0}} % Correct ({{correct}} of {{count}} correct responses)"
     },
-    "classSummary": "Class Report Summary",
+    "classSummary": "Report Summary",
     "completed": "has completed the lesson",
     "correctQuestions": {
       "one": "Correct Answer",
@@ -1375,6 +1122,9 @@
       "individualReports": "To Student Reports"
     },
     "incomplete": "Incomplete",
+    "lessonsInQuiz": {
+      "other": "Lessons in Playlist"
+    },
     "lessonStep": {
       "practiceMode": {
         "false": "No",
@@ -1406,17 +1156,7 @@
       "other": "Open Questions",
       "zero": "."
     },
-    "lessonsInPlaylist": {
-      "one": "Lesson in Playlist",
-      "other": "Different Lessons in Playlist",
-      "zero": " There are no Lessons in this playlist"
-    },
-    "lessonsInQuiz": {
-      "one": "Lesson in Quiz",
-      "other": "Different Lessons in Quiz",
-      "zero": " ."
-    },
-    "playlistSteps": "Playlist Steps",
+    "playlistSteps": "Lessons in Playlist",
     "priorLesson": "Recommended Previous Lesson",
     "questionPerDifficulty": "Questions per Difficulty",
     "questionsInLesson": {
@@ -1508,7 +1248,7 @@
   },
   "root": {
     "page": {
-      "description": "LerGO is a new nonprofit open source venture dedicated to kids self education."
+      "description": "LerGO is a nonprofit EdTech venture dedicated to kids self education."
     }
   },
   "RutiArazi": {
@@ -1521,14 +1261,14 @@
     "desg": "Computer Programming Student"
   },
   "SashaGilenson": {
-    "desg": "CEO & Founder of Evolven Software"
+    "desg": "CEO and Founder of Evolven Software"
   },
   "save": "Save",
   "saved": "Saved",
   "saving": "Saving",
   "saving...": "Saving...",
   "ShalomPassy": {
-    "desg": "former COO of TimeToKnow & Senior Consultant"
+    "desg": "former COO of TimeToKnow and Senior Consultant"
   },
   "share": "Share",
   "ShiraPaz-Greenberg": {
@@ -1547,12 +1287,12 @@
       "message": "Thank you for signing in! You will soon receive a verification email from LerGO. Please verify your email by clicking on the link and proceed from there to login into LerGO."
     },
     "error": {
+      "checkRequired": "This field is required for registration.",
       "confPasswordRequired": "Confirm password is required.",
-      "checkRequired": "Confirm checkbox is required",
       "emailMismatch": "Emails do not match",
       "invalidChar": "Username should only contain alphanumeric characters and underscore.",
       "invalidEmail": "Enter valid email.",
-      "maxLength": "Username should contain less than 21 characters",
+      "maxLength": "Username must be less than 20 characters long.",
       "minLength": "Username should contain at least 3 characters.",
       "nameRequired": "Name is required.",
       "passwordMismatch": "Confirm password does not match the password.",
@@ -1567,7 +1307,6 @@
     "display": "Display Step",
     "invalidSlideURL": "Please enter valid URL for Google Slides presentation.",
     "invalidURL": "Please enter valid URL of YouTube video.",
-    "lesson": "Add lessons to playlist",
     "noMoreQuestions": "Let's Go to Next Step",
     "presentation": {
       "hint": "Make sure to change the \"share\" settings of the presentation to \"on - anyone with the link\": click on \"share\" and then click on  \"advanced\" and then select \"change\" re who has access."
@@ -1586,6 +1325,9 @@
     "math": "Math",
     "spelling": "Spelling"
   },
+  "support@lergo": {
+    "org": "support@lergo.org ."
+  },
   "tagHint": "Separate tags by commas",
   "tags": "Tags",
   "tagSection": {
@@ -1599,7 +1341,7 @@
     "desg": "Waze,Co-founder HumanClick"
   },
   "TanyaEpstein": {
-    "desg": "Co-founder Clarizen & Applango"
+    "desg": "Co-founder Clarizen and Applango"
   },
   "teachers": {
     "teaser": {
@@ -1634,9 +1376,9 @@
     "desg": "Operations Executive"
   },
   "YossiBen-Shoshan": {
-    "desg": "Director R&D @ Dell"
+    "desg": "Director R+D @ Dell"
   },
   "ZeevRavid": {
-    "desg": "Branding,former CEO Y&R Israel"
+    "desg": "Branding,former CEO Y+R Israel"
   }
 }

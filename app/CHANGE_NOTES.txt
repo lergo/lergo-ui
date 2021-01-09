@@ -1,3 +1,4 @@
+lergo-ui working on playlist - implementing feedback from January 2nd 2021
 lergo-ri lowering express-throttle to burts: 5 rate:  3/m to prevent realstaging from crashing
 lergo-ui working on playlist - implementing feedback 28-12-2020
 lergo-ri Revert "bug(fix) allowing prerender of publicPlaylists"

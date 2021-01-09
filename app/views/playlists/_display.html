@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>    
-</div>
+</div> 
 <!-- ending the code taken from playlist/preview/preview.html -->
 <div class="playlist">
  <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div> 
@@ -56,18 +56,20 @@
         <table class="lergo-table" ng-show="playlistLessonArray.length > 0">
             <thead>
                 <tr style="font-weight: bold">
-                    <td class="col-lg-7 col-md-7 col-sm-6 col-xs-6">{{ 'lessons.name' | translate }}</td>
-                    <td class="col-lg-4 col-md-4 col-sm-3 col-xs-3">Date Completed</td>
+                    <td class="col-lg-7 col-md-7 col-sm-5 col-xs-5">{{ 'lessons.name' | translate }}</td>
+                    <td class="col-lg-1 col-md-1 col-sm-1 col-xs-1">{{ 'admin.questions' | translate }}</td>
+                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Date Completed</td>
                     <td class="col-lg-1 col-md-3 col-sm-3 col-xs-3">{{'filters.status.complete' | translate }}</td>
                  </tr>
             </thead>
                 <tbody> 
                     <tr ng-repeat="lesson in playlistLessonArray">
-                    <td class="name  col-lg-7 col-md-7 col-sm-6 col-xs-6" dir="auto">
-                        <a ng-class=" {'complete':!!lesson.isComplete}"  ng-href="#!/public/lessons/{{lesson._id}}/intro">{{lesson.name}} </a>
+                    <td class="col-lg-7 col-md-7 col-sm-5 col-xs-5 name" dir="auto">
+                        <a ng-class=" {'complete':!!lesson.isComplete}"  ng-href="#!/public/lessons/{{lesson._id}}/intro"><i class="fa fa-play-circle-o"></i> {{lesson.name}} </a>
                     </td>
-                    <td ng-class="{'complete':!!lesson.isComplete}" class="col-lg-4 col-md-4 col-sm-3 col-xs-3">{{ lesson.dateCompleted |date:'medium'  }} </td>
-                    <td class="col-lg-1 col-md-1 col-sm-3 col-xs-3 ">
+                    <td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" ng-class="{'complete':!!lesson.isComplete}" >{{lesson | countQuestionsOnLesson }} </td>
+                    <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3" ng-class="{'complete':!!lesson.isComplete}" >{{ lesson.dateCompleted |date:'medium'  }} </td>
+                    <td class="col-lg-1 col-md-3 col-sm-3 col-xs-3 ">
                         <input ng-class="{'complete':!!lesson.isComplete}" type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
                     </td>
                     </tr>

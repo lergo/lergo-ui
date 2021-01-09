@@ -129,7 +129,7 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
         $scope.isPlaylist = function() {
             var absUrl = $location.absUrl();
             var lessonId = absUrl.substring(absUrl.lastIndexOf('?') + 10,absUrl.lastIndexOf('?') + 18 );
-            if (localStorageService.get('playlistUrl') && localStorageService.get('playlistLesson') && localStorageService.get('playlistLesson' === lessonId )) {
+            if (localStorageService.get('playlistUrl') && localStorageService.get('playlistLesson') && localStorageService.get('playlistLesson') === lessonId ) {
                 return true;
             } else {
                 return false;

@@ -198,6 +198,18 @@
                       {{'lessons.practiseWrongQuestion' | translate}}
                      </a>
                 </span>
+                <div class="text-center top20">
+                    <span rowspan="2" ng-show="isPlaylist()">
+                        <a href="" ng-click="backToPlaylist()">
+                            <i style="font-size: 25px; color: black;" class="fas fa-list "></i>
+                        </a>
+                    </span>
+                    <span ng-show="isPlaylist()">
+                            <a href="" ng-click="backToPlaylist()">
+                                {{'lessons.returnToPlaylist' | translate}}
+                            </a>
+                    </span>
+                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="text-center top20">
