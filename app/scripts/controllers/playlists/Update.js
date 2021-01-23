@@ -340,13 +340,13 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         };
 
 
-        $scope.removeItemFromQuiz = function (item, step) {
+        $scope.removeItemFromPlaylist = function (item, step) {
             if (!!step.lessonItems && step.lessonItems.length > 0 && step.lessonItems.indexOf(item) >= 0) {
                 step.lessonItems.splice(step.lessonItems.indexOf(item), 1);
             }
         };
 
-        $scope.moveQuizItemUp = function (index, step) {
+        $scope.moveLessonItemUp = function (index, step) {
             if (!!step.lessonItems) {
                 var temp = step.lessonItems[index - 1];
                 if (temp) {
@@ -355,7 +355,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 }
             }
         };
-        $scope.moveQuizItemDown = function (index, step) {
+        $scope.moveLessonItemDown = function (index, step) {
             if (!!step.lessonItems) {
                 var temp = step.lessonItems[index + 1];
                 if (temp) {
