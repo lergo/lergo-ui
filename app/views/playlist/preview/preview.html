@@ -59,7 +59,7 @@
                             <div class="col-lg-3 col-md-7-col col-sm-7 col-xs-7">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                     <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
-                                    <i ng-show="!!step.quizItems" class="fa fa-lesson-circle"></i>
+                                    <i ng-show="!!step.lessonItems" class="fa fa-lesson-circle"></i>
                                     <i ng-show="!!step.slideURL" class="fa fa-television "></i>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -69,8 +69,8 @@
                             <div class="col-lg-9 col-md-5 col-sm-5 col-xs-5 mfont-size13 mpadding2">
                                 <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}" target="_blank">
                                     {{'reports.click.video' | translate}}</a>
-                                <span ng-show="!!step.quizItems">
-                                     <ng-pluralize count="step.quizItems.length" when="{
+                                <span ng-show="!!step.lessonItems">
+                                     <ng-pluralize count="step.lessonItems.length" when="{
                                             '0': '{{ &quot;report.lessonsInQuiz.zero&quot; | translate}}',
                                             'one':'{} {{ &quot;report.lessonsInQuiz.one&quot; | translate}}',
                                             'other':'{} {{ &quot;report.lessonsInQuiz.other&quot; | translate}}'}">
@@ -141,9 +141,9 @@
                     <hr/>
                     <div uib-collapse="!!detailCollapsed" class="detail row">
                         <div class="row row-nested" ng-repeat="step in playlist.steps" style="margin: 10px 15px 15px 15px;">
-                            <div ng-if="!!step.quizItems" class="col-md-12 col-sm-12 col-xs-12">
+                            <div ng-if="!!step.lessonItems" class="col-md-12 col-sm-12 col-xs-12">
                                 <div dir="auto" class="collapsible">{{step.title}}</div>
-                                <div ng-repeat="id in step.quizItems">
+                                <div ng-repeat="id in step.lessonItems">
                                     <lesson-preview quiz-item="lessons[id]"></lesson-preview>
                                 </div>
                                 <br/>

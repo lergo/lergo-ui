@@ -6,7 +6,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsAggPlaylistRprtCtrl',
         LergoClient.playlistRprts.getClassPlaylistRprtById($routeParams.playlistRprtId).then(function (result) {
             $scope.playlistRprt = result.data;
 
-            var openQueestions = _.filter($scope.playlistRprt.data.quizItems, function (item) {
+            var openQueestions = _.filter($scope.playlistRprt.data.lessonItems, function (item) {
                 return item.type === 'openLesson';
             });
             $scope.openLessonCount = openQueestions.length;

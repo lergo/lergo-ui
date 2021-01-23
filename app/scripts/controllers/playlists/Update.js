@@ -59,8 +59,8 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         }
 
         function addItemToQuiz(item, step) {
-            step.quizItems = step.quizItems || [];
-            if (step.quizItems.indexOf(item._id) < 0) {
+            step.lessonItems = step.lessonItems || [];
+            if (step.lessonItems.indexOf(item._id) < 0) {
                 if (!$scope.playlist.subject) {
                     $scope.playlist.subject = item.subject;
                 }
@@ -73,7 +73,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 if (!$scope.playlist.tags || $scope.playlist.tags.length === 0) {
                     $scope.playlist.tags = item.tags;
                 }
-                step.quizItems.push(item._id);
+                step.lessonItems.push(item._id);
             }
         }
 
@@ -81,7 +81,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             $log.info('in playlist controller, overriding lesson');
             LergoClient.lessons.overrideQuestion($scope.playlist._id, lessonIdToOverride).then(function (result) {
                 if (!!callback) {
-                    callback(result.data.quizItem._id);
+                    callback(result.data.lessonItem._id);
                 }
                 $scope.playlist = result.data.playlist;
             }, function (result) {
@@ -91,19 +91,19 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
         // this is a wrapper to 'playlistOverrideQuestion' which will, after
         // playlist update
-        // list on quizItemsData change ONCE and reopens the dialog
+        // list on lessonItemsData change ONCE and reopens the dialog
         function playlistOverrideLessonAndReopenDialog(step, lessonIdToOverride) {
             playlistOverrideLesson(lessonIdToOverride, function (newQuizItemId) {
 
                 // first - lets watch
                 // http://stackoverflow.com/a/13652152/1068746
-                var unregister = $scope.$watch('quizItemsData', function () {
-                    if (!$scope.quizItemsData.hasOwnProperty(newQuizItemId)) {
+                var unregister = $scope.$watch('lessonItemsData', function () {
+                    if (!$scope.lessonItemsData.hasOwnProperty(newQuizItemId)) {
                         return; // wait for it to exist ;
                     }
 
                     try {
-                        $scope.openLessonDialog(step, $scope.quizItemsData[newQuizItemId], false);
+                        $scope.openLessonDialog(step, $scope.lessonItemsData[newQuizItemId], false);
                     } finally {
                         unregister();
                     }
@@ -111,7 +111,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             });
         }
 
-        function openLessonDialog(step, quizItem, isUpdate) {
+        function openLessonDialog(step, lessonItem, isUpdate) {
             persistScroll();
             var modelContent = {};
             modelContent.templateUrl = 'views/lessons/addCreateUpdateDialog.html';
@@ -122,8 +122,8 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 playlistOverrideLesson: function () {
                     return playlistOverrideLessonAndReopenDialog;
                 },
-                quizItem: function () {
-                    return quizItem;
+                lessonItem: function () {
+                    return lessonItem;
                 },
                 isUpdate: function () {
                     return isUpdate;
@@ -212,7 +212,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             var step = {
                 'testMode': 'False',
                 'retBefCrctAns': 1,
-                'type':'quiz'
+                'type':'lesson'
             };
 
             if (typeof($index) === 'number') {
@@ -283,12 +283,12 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             return 'views/playlist/steps/_' + type + '.html';
         };
 
-        var quizItemsWatch = [];
-        $scope.quizItemsData = {};
+        var lessonItemsWatch = [];
+        $scope.lessonItemsData = {};
 
         $scope.getLesson = function (item) {
-            if ($scope.quizItemsData.hasOwnProperty(item)) {
-                return $scope.quizItemsData[item].name;
+            if ($scope.lessonItemsData.hasOwnProperty(item)) {
+                return $scope.lessonItemsData[item].name;
             }
             return null;
         };
@@ -298,35 +298,35 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         });
 
         /**
-         * watch questions in step. iterates over all steps of type 'quiz'
-         * and turns the quizItems arrays to a single array *
+         * watch questions in step. iterates over all steps of type lesson
+         * and turns the lessonItems arrays to a single array *
          */
         $scope.$watch(function () {
             if (!$scope.playlist) {
-                return quizItemsWatch;
+                return lessonItemsWatch;
             }
-            quizItemsWatch.splice(0, quizItemsWatch.length);
+            lessonItemsWatch.splice(0, lessonItemsWatch.length);
             if (!!$scope.playlist.steps) {
                 $scope.playlist.steps.forEach(function (step) {
-                    if (!!step.quizItems && step.quizItems.length > 0) {
-                        step.quizItems.forEach(function (quizItem) {
-                            if (quizItemsWatch.indexOf(quizItem) < 0) {
-                                quizItemsWatch.push(quizItem);
+                    if (!!step.lessonItems && step.lessonItems.length > 0) {
+                        step.lessonItems.forEach(function (lessonItem) {
+                            if (lessonItemsWatch.indexOf(lessonItem) < 0) {
+                                lessonItemsWatch.push(lessonItem);
                             }
                         });
                     }
                 });
             }
-            return quizItemsWatch;
+            return lessonItemsWatch;
         }, function (newValue) {
             if (!!newValue && newValue.length > 0) {
-                $log.info('quizItems changed');
+                $log.info('lessonItems changed');
                 LergoClient.lessons.findLessonsById(newValue).then(function (result) {
                     var newObj = {};
                     for (var i = 0; i < result.data.length; i++) {
                         newObj[result.data[i]._id] = result.data[i];
                     }
-                    $scope.quizItemsData = newObj;
+                    $scope.lessonItemsData = newObj;
                 });
             }
         }, true);
@@ -341,37 +341,37 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
 
 
         $scope.removeItemFromQuiz = function (item, step) {
-            if (!!step.quizItems && step.quizItems.length > 0 && step.quizItems.indexOf(item) >= 0) {
-                step.quizItems.splice(step.quizItems.indexOf(item), 1);
+            if (!!step.lessonItems && step.lessonItems.length > 0 && step.lessonItems.indexOf(item) >= 0) {
+                step.lessonItems.splice(step.lessonItems.indexOf(item), 1);
             }
         };
 
         $scope.moveQuizItemUp = function (index, step) {
-            if (!!step.quizItems) {
-                var temp = step.quizItems[index - 1];
+            if (!!step.lessonItems) {
+                var temp = step.lessonItems[index - 1];
                 if (temp) {
-                    step.quizItems[index - 1] = step.quizItems[index];
-                    step.quizItems[index] = temp;
+                    step.lessonItems[index - 1] = step.lessonItems[index];
+                    step.lessonItems[index] = temp;
                 }
             }
         };
         $scope.moveQuizItemDown = function (index, step) {
-            if (!!step.quizItems) {
-                var temp = step.quizItems[index + 1];
+            if (!!step.lessonItems) {
+                var temp = step.lessonItems[index + 1];
                 if (temp) {
-                    step.quizItems[index + 1] = step.quizItems[index];
-                    step.quizItems[index] = temp;
+                    step.lessonItems[index + 1] = step.lessonItems[index];
+                    step.lessonItems[index] = temp;
                 }
             }
 
         };
 
-        $scope.openUpdateQuestion = function (step, quizItemId) {
-            QuestionsService.getPermissions(quizItemId).then(function (result) {
+        $scope.openUpdateQuestion = function (step, lessonItemId) {
+            QuestionsService.getPermissions(lessonItemId).then(function (result) {
 
                 var canEditOrCopy = result.data.canEdit || isOwnerOfPlaylist();
-                if ($scope.quizItemsData.hasOwnProperty(quizItemId) && canEditOrCopy) {
-                    openLessonDialog(step, $scope.quizItemsData[quizItemId], true);
+                if ($scope.lessonItemsData.hasOwnProperty(lessonItemId) && canEditOrCopy) {
+                    openLessonDialog(step, $scope.lessonItemsData[lessonItemId], true);
                 }
 
                 if (!canEditOrCopy) {

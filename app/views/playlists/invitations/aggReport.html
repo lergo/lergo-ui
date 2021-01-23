@@ -89,7 +89,7 @@
                         <span class="bold mpadding2">
                             {{'reports.summary.correctPercentage' | translate:{percentage:report.correctPercentage} }}
                         </span>
-                        (<ng-pluralize count="report.data.quizItems.length" when="{
+                        (<ng-pluralize count="report.data.lessonItems.length" when="{
                             '0': '{{ &quot;report.lessonsInPlaylist.zero&quot; | translate}}',
                             'one': '{} {{ &quot;report.lessonsInPlaylist.one&quot; | translate}}',
                             'other': '{} {{ &quot;report.lessonsInPlaylist.other&quot; | translate}}'}">
@@ -135,7 +135,7 @@
                     <div class="col-lg-3 col-md-5 col-sm-5 col-xs-5">
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                             <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
-                            <i ng-show="!!step.quizItems" class="fa fa-lesson-circle"></i>
+                            <i ng-show="!!step.lessonItems" class="fa fa-lesson-circle"></i>
                             <i ng-show="!!step.slideURL" class="fa fa-television "></i>
                         </div>
                         <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-10  padding-leftRight2">
@@ -145,9 +145,9 @@
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 mfont-size13 mpadding2">
                         <a ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                             {{'reports.click.video' | translate}}</a>
-                        <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+                        <span ng-show="!!step.lessonItems" ng-init="$parent.getAnswerStats(step.lessonItems)">
                             <span>
-                               <ng-pluralize count="step.quizItems.length" when="{
+                               <ng-pluralize count="step.lessonItems.length" when="{
                                     '0': '{{ &quot;report.lessonsInQuiz.zero&quot; | translate}}',
                                     'one':'{} {{ &quot;report.lessonsInQuiz.one&quot; | translate}}',
                                      'other':'{} {{ &quot;report.lessonsInQuiz.other&quot; | translate}}'}">
@@ -240,7 +240,7 @@
             </div>
             <hr/>
             <div uib-collapse="!!detailCollapsed" class="detail">
-                <agg-report-view answers="report.answers" quiz-items="report.data.quizItems"></agg-report-view>
+                <agg-report-view answers="report.answers" quiz-items="report.data.lessonItems"></agg-report-view>
             </div>
         </div>
     </div>

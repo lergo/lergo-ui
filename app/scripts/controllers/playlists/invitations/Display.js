@@ -42,11 +42,11 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             }
         });
 
-        $scope.isValid = function(quizItem) {
-            if (!quizItem || !quizItem.type) {
+        $scope.isValid = function(lessonItem) {
+            if (!lessonItem || !lessonItem.type) {
                 return false;
             }
-            return LessonsService.getTypeById(quizItem.type).isValid(quizItem);
+            return LessonsService.getTypeById(lessonItem.type).isValid(lessonItem);
         };
 
         function initializePlaylistRprt(invitation) {
@@ -57,19 +57,19 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
              *      then check that each step is valid - remove locally and on dB
             */
             // var steps = invitation.playlist.steps;
-            // var quizItems = invitation.quizItems;
-            // for (var k = quizItems.length -1; k >= 0; k--) {
-            //     if ($scope.isValid(quizItems[k])) {
-            //         $log.debug('valid quizItem');
+            // var lessonItems = invitation.lessonItems;
+            // for (var k = lessonItems.length -1; k >= 0; k--) {
+            //     if ($scope.isValid(lessonItems[k])) {
+            //         $log.debug('valid lessonItem');
             //     } else {
-            //         var illegalId = quizItems[k]._id;
-            //         quizItems.splice(quizItems.indexOf(illegalId), 1);
+            //         var illegalId = lessonItems[k]._id;
+            //         lessonItems.splice(lessonItems.indexOf(illegalId), 1);
             //         for (var i = steps.length -1; i >= 0; i--) {
-            //             if (steps[i].quizItems) {
-            //                 for (var j = steps[i].quizItems.length -1; j >= 0; j--) {
-            //                     var lessonId = steps[i].quizItems[j];
+            //             if (steps[i].lessonItems) {
+            //                 for (var j = steps[i].lessonItems.length -1; j >= 0; j--) {
+            //                     var lessonId = steps[i].lessonItems[j];
             //                     if (lessonId === illegalId){
-            //                         steps[i].quizItems.splice(steps[i].quizItems.indexOf(illegalId), 1);
+            //                         steps[i].lessonItems.splice(steps[i].lessonItems.indexOf(illegalId), 1);
             //                         $log.info('fixing playlist locally');
             //                         $log.info('updating fixed playlist on Db');
             //                         LergoClient.playlists.fix(invitation.playlist);
@@ -164,7 +164,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             $scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="600" frameBorder="0"></iframe>';
 
             initializePlaylistRprt($scope.invitation);
-            var items = result.data.quizItems;
+            var items = result.data.quizItems || result.data.lessonItems; // code was refactored changing quizItem to lessonItem
             if (!items) {
                 return;
             }
@@ -298,7 +298,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             $scope.wrongLessons = [];
             angular.forEach(playlistRprt.answers, function (answer) {
                 if (!answer.checkAnswer.correct) {
-                    $scope.wrongLessons.push(answer.quizItemId);
+                    $scope.wrongLessons.push(answer.lessonItemId);
                 }
             });
         }
@@ -314,7 +314,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         //             playlist.subject = playlistRprt.data.playlist.subject;
         //             playlist.steps = [];
         //             var stepsWithoutRetry = _.filter(playlistRprt.data.playlist.steps, function (s) {
-        //                 if (s.type === 'quiz') {
+        //                 if (s.type === lesson) {
         //                     return !s.retryLesson;
         //                 }
         //             });
@@ -323,8 +323,8 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         //             playlist.lastUpdate = new Date().getTime();
         //             playlist.temporary = true;
         //             var step = {
-        //                 'type': 'quiz',
-        //                 'quizItems': [],
+        //                 'type': lesson,
+        //                 'lessonItems': [],
         //                 'testMode': 'False',
         //                 'shuffleLesson': true,
         //                 retryLesson: stepsWithoutRetry.length === 0
@@ -335,7 +335,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         //             // because we don't support repeating same lesson in the same quiz.
         //             // the answers model in StepDisplay assumes uniqueness.
         //
-        //             playlist.steps[0].quizItems = _.uniq($scope.wrongLessons);
+        //             playlist.steps[0].lessonItems = _.uniq($scope.wrongLessons);
         //             LergoClient.playlists.update(playlist).then(function () {
         //                 $scope.startPlaylist(playlist._id);
         //                 $scope.practiseBtnDisable = false;
@@ -498,10 +498,10 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             }
             $window.scrollTo(0, scrollY);
         }
-        $scope.quizItemsData = {};
+        $scope.lessonItemsData = {};
         $scope.getLesson = function (item) {
-            if ($scope.quizItemsData.hasOwnProperty(item)) {
-                return $scope.quizItemsData[item].name;
+            if ($scope.lessonItemsData.hasOwnProperty(item)) {
+                return $scope.lessonItemsData[item].name;
             }
             return null;
         };

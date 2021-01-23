@@ -105,7 +105,7 @@ angular.module('lergoApp').controller('PlaylistRprtsIndexCtrl',
 
             var queryObj = {
                 'filter': _.merge({}, $scope.playlistRprtsFilter),
-                'projection': {'data.quizItems': 0},
+                'projection': {'data.lessonItems': 0},
                 'sort': {
                     'lastUpdate': -1
                 },
@@ -140,8 +140,8 @@ angular.module('lergoApp').controller('PlaylistRprtsIndexCtrl',
                 playlist.description = '';
                 playlist.lastUpdate = new Date().getTime();
                 var step = {
-                    'type': 'quiz',
-                    'quizItems': [],
+                    'type': 'lesson',
+                    'lessonItems': [],
                     'retBefCrctAns': 1,
                     'title': $filter('translate')('playlist.practice.step.title')
                 };
@@ -171,8 +171,8 @@ angular.module('lergoApp').controller('PlaylistRprtsIndexCtrl',
         function getWrongLessons(answers, playlist) {
             angular.forEach(answers, function (answer) {
                 if (!answer.checkAnswer.correct) {
-                    if (playlist.steps[0].quizItems.indexOf(answer.quizItemId) === -1) {
-                        playlist.steps[0].quizItems.push(answer.quizItemId);
+                    if (playlist.steps[0].lessonItems.indexOf(answer.lessonItemId) === -1) {
+                        playlist.steps[0].lessonItems.push(answer.lessonItemId);
                     }
                 }
             });

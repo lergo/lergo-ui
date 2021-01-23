@@ -16,7 +16,7 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
 
     if (!!$routeParams.data) {
         $scope.step = JSON.parse($routeParams.data);
-        shuffleFilter($scope.step.quizItems, !$scope.step.shuffleLesson);
+        shuffleFilter($scope.step.lessonItems, !$scope.step.shuffleLesson);
     }
 
     function currentIndex() {
@@ -61,25 +61,25 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
 
         // guy - do not use 'hasOwnProperty' as scope might not have the
         // property, but there is such a value.
-        if (!!$scope.step && !!$scope.step.quizItems && !$scope.lessons) {
-            LergoClient.lessons.findLessonsById($scope.step.quizItems).then(function (result) {
+        if (!!$scope.step && !!$scope.step.lessonItems && !$scope.lessons) {
+            LergoClient.lessons.findLessonsById($scope.step.lessonItems).then(function (result) {
                 var lessons = {};
                 for (var i in result.data) {
                     lessons[result.data[i]._id] = result.data[i];
                 }
                 $scope.lessons = lessons;
-                $scope.nextQuizItem();
+                $scope.nextLessonItem();
             });
         }
     }
 
     $scope.$watch('step', reload);
-    $scope.getQuizItemTemplate = function () {
+    $scope.getLessonItemTemplate = function () {
         if (!!$scope.lessons) {
-            if (!!$scope.quizItem && !$scope.quizItem.startTime) {
-                $scope.quizItem.startTime = new Date().getTime();
+            if (!!$scope.lessonItem && !$scope.lessonItem.startTime) {
+                $scope.lessonItem.startTime = new Date().getTime();
             }
-            return !!$scope.quizItem && 'views/lessons/view/_exactMatch.html';
+            return !!$scope.lessonItem && 'views/lessons/view/_exactMatch.html';
         }
         return '';
     };
@@ -92,24 +92,24 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
     $scope.checkAnswer = function () {
 
         $scope.submitBtnDisable = true;
-        var quizItem = $scope.quizItem;
+        var lessonItem = $scope.lessonItem;
 
         // we use a flag because no other property is eligible
         // `userAnswer` does not necessarily exist , nor exists only after submission..
-        quizItem.submitted = true; // a flag to know if submitted
+        lessonItem.submitted = true; // a flag to know if submitted
 
-        var duration = Math.max(0, new Date().getTime() - quizItem.startTime);
+        var duration = Math.max(0, new Date().getTime() - lessonItem.startTime);
         // using max with 0 just in case something went wrong and startTime >
         // endTime.. LERGO-468
-        LergoClient.lessons.checkAnswer(quizItem).then(function (result) {
-            $scope.answers[quizItem._id] = result.data;
+        LergoClient.lessons.checkAnswer(lessonItem).then(function (result) {
+            $scope.answers[lessonItem._id] = result.data;
             $rootScope.$broadcast('lessonAnswered', {
-                'userAnswer': quizItem.userAnswer,
+                'userAnswer': lessonItem.userAnswer,
                 'checkAnswer': result.data,
-                'quizItemId': quizItem._id,
-                'quizItemType': quizItem.type,
+                'lessonItemId': lessonItem._id,
+                'lessonItemType': lessonItem.type,
                 'duration': duration,
-                'isHintUsed': !!quizItem.isHintUsed
+                'isHintUsed': !!lessonItem.isHintUsed
             });
 
             if (!isTestMode() && result.data.correct) {
@@ -118,14 +118,14 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
 
             // see lergo-576 and documentation below . this line has to be
             // before we switch to next item
-            var isSameType = $scope.quizItem.type === $scope.getNextQuizItemDry().type;
+            var isSameType = $scope.lessonItem.type === $scope.getNextLessonItemDry().type;
 
-            if ($scope.hasNextQuizItem() && (isTestMode() || result.data.correct) && !$scope.showNextLesson()) {
+            if ($scope.hasNextLessonItem() && (isTestMode() || result.data.correct) && !$scope.showNextLesson()) {
                 if (isTestMode()) {
-                    $scope.nextQuizItem();
+                    $scope.nextLessonItem();
                 } else {
                     $timeout(function () {
-                        $scope.nextQuizItem();
+                        $scope.nextLessonItem();
                     }, 1000);
                 }
 
@@ -172,11 +172,11 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
             // to make it easier for reading we broke it down to cases
             if (isTestMode()) {
 
-                if (!$scope.hasNextQuizItem() || isSameType) {
+                if (!$scope.hasNextLessonItem() || isSameType) {
                     $scope.updateProgressPercent();
                 }
             } else {
-                if (!$scope.step.retryLesson || result.data.correct || ((isSameType || !$scope.hasNextQuizItem()) && (defaultRetries() > 0 && !$scope.retriesLeft()))) {
+                if (!$scope.step.retryLesson || result.data.correct || ((isSameType || !$scope.hasNextLessonItem()) && (defaultRetries() > 0 && !$scope.retriesLeft()))) {
                     $scope.updateProgressPercent();
                 }
             }
@@ -187,8 +187,8 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
     };
 
 
-    $scope.getQuizItem = function () {
-        return $scope.quizItem && $scope.quizItem._id;
+    $scope.getLessonItem = function () {
+        return $scope.lessonItem && $scope.lessonItem._id;
     };
 
     /**
@@ -201,13 +201,13 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
      *
      * @returns {boolean}
      */
-    $scope.isQuizDone = function () {
+    $scope.isLessonDone = function () {
 
-        if (!StepService.isQuizStep($scope.step)) { // return true if not quiz.
+        if (!StepService.isLessonStep($scope.step)) { // return true if not quiz.
             return true;
         }
         var answer = $scope.getAnswer();
-        var allLessonsWereAnswered = !$scope.hasNextQuizItem() && answer;
+        var allLessonsWereAnswered = !$scope.hasNextLessonItem() && answer;
         if (isTestMode()) {
             return allLessonsWereAnswered;
         } else {
@@ -217,8 +217,8 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
     };
 
     $scope.getAnswer = function () {
-        var quizItem = $scope.quizItem;
-        return !!quizItem && $scope.answers.hasOwnProperty(quizItem._id) ? $scope.answers[quizItem._id] : null;
+        var lessonItem = $scope.lessonItem;
+        return !!lessonItem && $scope.answers.hasOwnProperty(lessonItem._id) ? $scope.answers[lessonItem._id] : null;
     };
 
     /**
@@ -241,9 +241,9 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
             return false;
         } else if (!$scope.getAnswer()) {
             return false;
-        } else if (LergoClient.lessons.isOpenLesson($scope.quizItem)) {
-            return !!$scope.quizItem.explanation;
-        } else if ($scope.quizItem.explanationMedia && !!$scope.quizItem.explanationMedia.type) {
+        } else if (LergoClient.lessons.isOpenLesson($scope.lessonItem)) {
+            return !!$scope.lessonItem.explanation;
+        } else if ($scope.lessonItem.explanationMedia && !!$scope.lessonItem.explanationMedia.type) {
             return false;
         } else if ($scope.getAnswer().expMessage.length <= 0) {
             return false;
@@ -272,13 +272,13 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
             return false;
         } else if (!$scope.getAnswer()) {
             return false;
-        } else if (!$scope.quizItem) {
+        } else if (!$scope.lessonItem) {
             return false;
-        } else if (!$scope.quizItem.explanationMedia) {
+        } else if (!$scope.lessonItem.explanationMedia) {
             return false;
-        } else if (!$scope.quizItem.explanationMedia.type) {
+        } else if (!$scope.lessonItem.explanationMedia.type) {
             return false;
-        } else if (LergoClient.lessons.isOpenLesson($scope.quizItem)) {
+        } else if (LergoClient.lessons.isOpenLesson($scope.lessonItem)) {
             return true;
         } else {
             return !$scope.getAnswer().correct && ( $scope.canShowCrctAns() || !$scope.retriesLeft());
@@ -302,11 +302,11 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         }
     };
 
-    $scope.nextQuizItem = function () {
+    $scope.nextLessonItem = function () {
         window.scrollTo(0,68);
         $log.info('next');
-        if (!!$scope.quizItem) {
-            localStorageService.remove($scope.quizItem._id + '-retries');
+        if (!!$scope.lessonItem) {
+            localStorageService.remove($scope.lessonItem._id + '-retries');
         }
         $scope.stepDisplay.showHint = false;
 
@@ -314,20 +314,20 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
             return;
         }
 
-        var quizItem = null;
-        if (!!$scope.step && !!$scope.step.quizItems) {
-            if ($scope.step.quizItems.length > currentIndex()) {
-                quizItem = $scope.step.quizItems[currentIndex()];
-                $scope.quizItem = $scope.lessons[quizItem];
-            } else if ($scope.step.quizItems.length === currentIndex()) {
+        var lessonItem = null;
+        if (!!$scope.step && !!$scope.step.lessonItems) {
+            if ($scope.step.lessonItems.length > currentIndex()) {
+                lessonItem = $scope.step.lessonItems[currentIndex()];
+                $scope.lessonItem = $scope.lessons[lessonItem];
+            } else if ($scope.step.lessonItems.length === currentIndex()) {
                 try {
-                    quizItem = $scope.step.quizItems[currentIndex() - 1];
-                    $scope.quizItem = $scope.lessons[quizItem];
+                    lessonItem = $scope.step.lessonItems[currentIndex() - 1];
+                    $scope.lessonItem = $scope.lessons[lessonItem];
                 } catch (e) {
                     $log.error('failed handling scenario where last lesson was answered', e);
                 }
             }
-            localStorageService.set($scope.quizItem._id + '-retries', defaultRetries());
+            localStorageService.set($scope.lessonItem._id + '-retries', defaultRetries());
         }
     };
 
@@ -337,8 +337,8 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
      * simply gets the next quiz item. does not change the state of the page
      * @returns {*}
      */
-    $scope.getNextQuizItemDry = function () {
-        if (!$scope.hasNextQuizItem()) {
+    $scope.getNextLessonItemDry = function () {
+        if (!$scope.hasNextLessonItem()) {
             return {
                 'type': null
             };
@@ -347,7 +347,7 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         try {
 
             // please note - current index represents the next item..
-            return $scope.lessons[$scope.step.quizItems[currentIndex()]];
+            return $scope.lessons[$scope.step.lessonItems[currentIndex()]];
         } catch (e) {
 
         }
@@ -372,17 +372,17 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         if (isTestMode() || !$scope.getAnswer()) {
             return false;
         }
-        var isOpenLesson = LergoClient.lessons.isOpenLesson($scope.quizItem);
-        var hasExplanation = LergoClient.lessons.hasExplanation($scope.quizItem);
-        var hasNextQuizItem = $scope.hasNextQuizItem();
-        if (isOpenLesson && hasExplanation && hasNextQuizItem) {
+        var isOpenLesson = LergoClient.lessons.isOpenLesson($scope.lessonItem);
+        var hasExplanation = LergoClient.lessons.hasExplanation($scope.lessonItem);
+        var hasNextLessonItem = $scope.hasNextLessonItem();
+        if (isOpenLesson && hasExplanation && hasNextLessonItem) {
             return true;
         }
         var repeatLesson = $scope.step.retryLesson && (defaultRetries() === 0 || $scope.retriesLeft());
-        return (repeatLesson || hasNextQuizItem) && !$scope.getAnswer().correct;
+        return (repeatLesson || hasNextLessonItem) && !$scope.getAnswer().correct;
     };
 
-    $scope.hasNextQuizItem = function () {
+    $scope.hasNextLessonItem = function () {
         return !!$scope.step && !!$scope.lessons && currentIndex() < _.size($scope.lessons);
     };
 
@@ -434,11 +434,11 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         }
     }
 
-    $scope.getCorrectAnswers = function (quizItem) {
-        if (!quizItem || !quizItem.type || !LergoClient.lessons.getTypeById(quizItem.type).answers(quizItem)) {
+    $scope.getCorrectAnswers = function (lessonItem) {
+        if (!lessonItem || !lessonItem.type || !LergoClient.lessons.getTypeById(lessonItem.type).answers(lessonItem)) {
             return '';
         }
-        return LergoClient.lessons.getTypeById(quizItem.type).answers(quizItem);
+        return LergoClient.lessons.getTypeById(lessonItem.type).answers(lessonItem);
     };
 
     $scope.$watch('step', function (newValue, oldValue) {
@@ -448,7 +448,7 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
     });
 
     $scope.updateProgressPercent = function () {
-        if (!$scope.step || !$scope.step.quizItems || $scope.step.quizItems.length < 1) {
+        if (!$scope.step || !$scope.step.lessonItems || $scope.step.lessonItems.length < 1) {
             $scope.progressPercentage = 0;
         } else {
             // guy - count percentage by counting the answers. not current
@@ -458,10 +458,10 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         }
     };
 
-    $scope.enterPressed = function (quizItem) {
-        if (!$scope.getAnswer(quizItem) && $scope.canSubmit(quizItem)) {
+    $scope.enterPressed = function (lessonItem) {
+        if (!$scope.getAnswer(lessonItem) && $scope.canSubmit(lessonItem)) {
             $scope.checkAnswer();
-        } else if ($scope.getAnswer(quizItem) && !$scope.isQuizDone()) {
+        } else if ($scope.getAnswer(lessonItem) && !$scope.isLessonDone()) {
             $scope.retryOrNext();
         }
     };
@@ -478,17 +478,17 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         document.getElementById(id).focus();
     };
 
-    $scope.canSubmit = function (quizItem) {
-        if (!quizItem && !quizItem.type) {
+    $scope.canSubmit = function (lessonItem) {
+        if (!lessonItem && !lessonItem.type) {
             return false;
         }
-        return LergoClient.lessons.getTypeById(quizItem.type).canSubmit(quizItem);
+        return LergoClient.lessons.getTypeById(lessonItem.type).canSubmit(lessonItem);
     };
 
-    $scope.getFillIntheBlankSize = function (quizItem, index) {
-        if (!quizItem.blanks || !quizItem.blanks.type || quizItem.blanks.type === 'auto') {
-            if (!!quizItem.answer[index]) {
-                var answer = quizItem.answer[index].split(';');
+    $scope.getFillIntheBlankSize = function (lessonItem, index) {
+        if (!lessonItem.blanks || !lessonItem.blanks.type || lessonItem.blanks.type === 'auto') {
+            if (!!lessonItem.answer[index]) {
+                var answer = lessonItem.answer[index].split(';');
                 var maxLength = 0;
                 for (var i = 0; i < answer.length; i++) {
                     if (answer[i].length > maxLength) {
@@ -497,15 +497,15 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
                 }
                 return maxLength * 10 + 20;
             }
-        } else if (quizItem.blanks.type === 'custom') {
-            quizItem.blanks.size = !!quizItem.blanks.size ? quizItem.blanks.size : 4;
-            return quizItem.blanks.size * 10 + 20;
+        } else if (lessonItem.blanks.type === 'custom') {
+            lessonItem.blanks.size = !!lessonItem.blanks.size ? lessonItem.blanks.size : 4;
+            return lessonItem.blanks.size * 10 + 20;
         }
     };
-    $scope.hintUsed = function (quizItem) {
+    $scope.hintUsed = function (lessonItem) {
         $timeout(function() {
             if ($scope.stepDisplay.showHint) {
-                quizItem.isHintUsed = true;
+                lessonItem.isHintUsed = true;
             }
         });
     };
@@ -518,21 +518,21 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
         audio.play();
     }
 
-    $scope.isCorrectFillInTheBlanks = function (quizItem, index) {
+    $scope.isCorrectFillInTheBlanks = function (lessonItem, index) {
 
-        var userAnswer = quizItem.userAnswer[index];
+        var userAnswer = lessonItem.userAnswer[index];
         if (!userAnswer) {
             return false;
         }
-        if (quizItem.answer[index].split(';').indexOf(userAnswer) === -1) {
+        if (lessonItem.answer[index].split(';').indexOf(userAnswer) === -1) {
             return false;
         } else {
             return true;
         }
     };
 
-    $scope.isMultiChoiceMultiAnswer = function (quizItem) {
-        var correctAnswers = _.filter(quizItem.options, 'checked');
+    $scope.isMultiChoiceMultiAnswer = function (lessonItem) {
+        var correctAnswers = _.filter(lessonItem.options, 'checked');
         return correctAnswers.length > 1;
     };
 
@@ -541,7 +541,7 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
             return step.retryLesson;
         }
         else {
-            return step.retryLesson && localStorageService.get($scope.quizItem._id + '-retries') > 0;
+            return step.retryLesson && localStorageService.get($scope.lessonItem._id + '-retries') > 0;
         }
     }
 
@@ -551,38 +551,38 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
      * to next item.
      */
     $scope.retryOrNext = function () {
-        if (shouldRetry($scope.step) && !LergoClient.lessons.isOpenLesson($scope.quizItem)) {
+        if (shouldRetry($scope.step) && !LergoClient.lessons.isOpenLesson($scope.lessonItem)) {
             $scope.tryAgain();
         } else {
-            $scope.nextQuizItem();
+            $scope.nextLessonItem();
         }
     };
 
     $scope.retriesLeft = function () {
-        if (!$scope.quizItem) {
+        if (!$scope.lessonItem) {
             return false;
         }
-        return localStorageService.get($scope.quizItem._id + '-retries') > 0;
+        return localStorageService.get($scope.lessonItem._id + '-retries') > 0;
     };
 
     $scope.tryAgain = function () {
         window.scrollTo(0,68);
         $log.info('trying again');
-        var quizItem = $scope.quizItem;
-        var retriesLeft = localStorageService.get(quizItem._id + '-retries');
-        localStorageService.set(quizItem._id + '-retries', retriesLeft - 1);
+        var lessonItem = $scope.lessonItem;
+        var retriesLeft = localStorageService.get(lessonItem._id + '-retries');
+        localStorageService.set(lessonItem._id + '-retries', retriesLeft - 1);
 
-        if (!!quizItem.options) {
-            quizItem.options.isShuffled = false;
-            _.each(quizItem.options, function (option) {
+        if (!!lessonItem.options) {
+            lessonItem.options.isShuffled = false;
+            _.each(lessonItem.options, function (option) {
                 option.userAnswer = false;
             });
         }
-        delete $scope.answers[quizItem._id];
-        quizItem.startTime = new Date().getTime();
+        delete $scope.answers[lessonItem._id];
+        lessonItem.startTime = new Date().getTime();
         $scope.updateProgressPercent();
-        quizItem.userAnswer = null;
-        quizItem.submitted = false;
+        lessonItem.userAnswer = null;
+        lessonItem.submitted = false;
     };
     /**
      * @description
@@ -590,8 +590,8 @@ var PlaylistsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, 
      * Whether a quiz step
      * @returns {boolean}
      */
-    $scope.isQuizStep = function () {
-        return StepService.isQuizStep($scope.step);
+    $scope.isLessonStep = function () {
+        return StepService.isLessonStep($scope.step);
     };
 
     $scope.canShowCrctAns = function () {

@@ -28,7 +28,7 @@ angular.module('lergoApp').controller('PlaylistsDisplayCtrl',
 
     // for quiz steps, we also put "answers" on the scope in case user refreshes the page etc.
     function updateLessonsAnswers(){
-        if ( !!$scope.step && !!$scope.step.quizItems && $scope.answers ){
+        if ( !!$scope.step && !!$scope.step.lessonItems && $scope.answers ){
 
             if ( !!$scope.playlistRprt && !isNaN(parseInt($scope.currentStepIndex,10))  ){
                 $scope.answers = PlaylistRprtsService.getAnswersByQuizItemId( $scope.playlistRprt, parseInt($scope.currentStepIndex,10) );
@@ -47,7 +47,7 @@ angular.module('lergoApp').controller('PlaylistsDisplayCtrl',
                 updateLessonsAnswers();
 
 				if (!!$scope.step) {
-					shuffleLessonsFilter( { 'array' : $scope.step.quizItems, 'disabled' : !$scope.step.shuffleLesson , 'playlistRprt' : $scope.playlistRprt , 'stepIndex' : $scope.currentStepIndex } );
+					shuffleLessonsFilter( { 'array' : $scope.step.lessonItems, 'disabled' : !$scope.step.shuffleLesson , 'playlistRprt' : $scope.playlistRprt , 'stepIndex' : $scope.currentStepIndex } );
 				}
 			} else {
 				$scope.step = null;

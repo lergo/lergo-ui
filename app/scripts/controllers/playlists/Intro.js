@@ -297,7 +297,7 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
             if (!!$scope.playlist && !!$scope.playlist.steps) {
 
                 for (var i = 0; i < $scope.playlist.steps.length; i++) {
-                    var items = $scope.playlist.steps[i].quizItems;
+                    var items = $scope.playlist.steps[i].lessonItems;
                     if (!!items && angular.isArray(items)) {
                         lessonsId.push.apply(lessonsId, items);
                     }

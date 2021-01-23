@@ -31,7 +31,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	// 		'dollar_page' : $scope.filterPage
 	// 	};
 	// 	$scope.playlistToShow = $scope.playlists[index];
-	// 	var list = $scope.playlistToShow.steps[0].quizItems;
+	// 	var list = $scope.playlistToShow.steps[0].lessonItems;
 	// 	LergoClient.lessons.findLessonsById(list)
 	// 	.then(function (result) {
 	// 		var newObj = {};
@@ -40,7 +40,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	// 			newObj[result.data[i]._id] = result.data[i];
 	// 			$scope.playlistLessonArray.push(result.data[i]);
 	// 		}
-	// 		$scope.quizItemsData = newObj;
+	// 		$scope.lessonItemsData = newObj;
 	// 	})
 
 	// 	.then(LergoClient.userData.getCompletedLessons(queryObj)
@@ -146,10 +146,10 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 		}
 		$window.scrollTo(0, scrollY);
 	}
-	$scope.quizItemsData = {};
+	$scope.lessonItemsData = {};
 	$scope.getLesson = function (item) {
-		if ($scope.quizItemsData.hasOwnProperty(item)) {
-			return $scope.quizItemsData[item].name;
+		if ($scope.lessonItemsData.hasOwnProperty(item)) {
+			return $scope.lessonItemsData[item].name;
 		}
 		return null;
 	};

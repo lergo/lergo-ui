@@ -99,7 +99,7 @@ var PlaylistsPlaylistRprtWriteCtrl = function ($scope, PlaylistRprtWriteService,
 
     // the idea is we always keep data without changing it.
     // when the playlistRprt is done, playlist should look like playlist,
-    // quizItems should be ids,
+    // lessonItems should be ids,
     // lessons should be the object for the quiz items..
     // just like in DB...
     // the playlistRprt only adds the answers the user game and whether they are right
@@ -112,7 +112,7 @@ var PlaylistsPlaylistRprtWriteCtrl = function ($scope, PlaylistRprtWriteService,
         // find answer
         // in case user answered a lesson, and then changed the answer, we
         // will need to find the answer again
-        var answer = PlaylistRprtsService.getAnswerToQuizItem(playlistRprt, data.quizItemId, stepIndex);
+        var answer = PlaylistRprtsService.getAnswerToQuizItem(playlistRprt, data.lessonItemId, stepIndex);
 
         if (!answer) { // add if not exists
             answer = {};
@@ -121,8 +121,8 @@ var PlaylistsPlaylistRprtWriteCtrl = function ($scope, PlaylistRprtWriteService,
             // update the answer
             _.merge(answer, {
                 'stepIndex': stepIndex,
-                'quizItemId': data.quizItemId,
-                'quizItemType': data.quizItemType,
+                'lessonItemId': data.lessonItemId,
+                'lessonItemType': data.lessonItemType,
                 'userAnswer': data.userAnswer,
                 'checkAnswer': data.checkAnswer,
                 'isHintUsed': data.isHintUsed,
@@ -146,8 +146,8 @@ var PlaylistsPlaylistRprtWriteCtrl = function ($scope, PlaylistRprtWriteService,
         var numberOfLessons = 0;
         var promises = [];
         angular.forEach(playlistRprt.data.playlist.steps, function (step) {
-            if (step.type === 'quiz' && !!step.quizItems) {
-                angular.forEach(step.quizItems, function (q) {
+            if (step.type === 'lesson' && !!step.lessonItems) {
+                angular.forEach(step.lessonItems, function (q) {
                     var d = $q.defer();
                     var lessonPromise = LergoClient.lessons.getLessonById(q);
                     lessonPromise.then(function (lesson) {
@@ -162,9 +162,9 @@ var PlaylistsPlaylistRprtWriteCtrl = function ($scope, PlaylistRprtWriteService,
         });
 
         $q.all(promises).then(function () {
-            if (!!playlistRprt.data.quizItems && numberOfLessons > 0) {
+            if (!!playlistRprt.data.lessonItems && numberOfLessons > 0) {
                 var correctAnswers = _.filter(playlistRprt.answers, function (answer) {
-                    return answer.quizItemType !== 'openLesson' && answer.checkAnswer.correct === true;
+                    return answer.lessonItemType !== 'openLesson' && answer.checkAnswer.correct === true;
                 });
                 playlistRprt.correctPercentage = Math.round((correctAnswers.length * 100) / numberOfLessons);
             }

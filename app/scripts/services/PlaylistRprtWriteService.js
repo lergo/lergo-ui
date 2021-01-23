@@ -11,20 +11,20 @@ angular.module('lergoApp')
                 var finishedStepIndex = Math.floor(data.old);
                 var oldStep = playlistRprt.data.playlist.steps[finishedStepIndex];
                 var oldDuration = playlistRprt.stepDurations[finishedStepIndex];
-                if (!!oldStep && oldStep.type === 'quiz' && !!oldDuration) {
+                if (!!oldStep && oldStep.type === 'lesson' && !!oldDuration) {
 
-                    // LERGO-457 - quiz step duration should be the sum of durations per answer.
-                    $log.info('calculating duration for quiz');
+                    // LERGO-457 - lesson step duration should be the sum of durations per answer.
+                    $log.info('calculating duration for lesson');
 
                     var answers = _.filter(playlistRprt.answers, {'stepIndex': finishedStepIndex});
                     // calculate end time by counting the duration on each answer..
-                    var quizDuration = _.reduce(answers, function (num, obj/*, index, list*/) {
+                    var lessonDuration = _.reduce(answers, function (num, obj/*, index, list*/) {
                         return num + obj.duration + _.reduce(obj.retries, function(num,retry){ // support retries for question
                             return num+retry.duration;
                         },0);
                     }, 0);
 
-                    oldDuration.endTime = oldDuration.startTime + quizDuration;
+                    oldDuration.endTime = oldDuration.startTime + lessonDuration;
                 } else if (!!oldDuration) {
 
                     oldDuration.endTime = new Date().getTime();

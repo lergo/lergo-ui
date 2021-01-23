@@ -35,15 +35,15 @@
  *
  */
 angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
-		function($scope, $uibModalInstance, quizItem, playlistOverrideLesson, LergoClient, LessonsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
+		function($scope, $uibModalInstance, lessonItem, playlistOverrideLesson, LergoClient, LessonsService, isUpdate, $controller, step, addItemToQuiz, $log, $filter) {
 
-			$scope.quizItem = quizItem;
+			$scope.lessonItem = lessonItem;
 			// this object will be updated by child scope
 			// LessonsUpdateCtrl.
 			$scope.permissions = {};
 			$scope.isModal = true;
 			$scope.isCreate = false;
-			$scope.quizItem = quizItem;
+			$scope.lessonItem = lessonItem;
 			$scope.isUpdate = isUpdate;
 			$scope.lessonTypeFormAddQuizPopup = {
 				value : 'myLessons'
@@ -51,9 +51,9 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			var items = [];
 			$scope.$on('lessonsLoaded', function(event, data) {
 				items = data.items;
-				if (!!step && !!step.quizItems) {
+				if (!!step && !!step.lessonItems) {
 					_.each(items, function(q) {
-						if (step.quizItems.indexOf(q._id) !== -1) {
+						if (step.lessonItems.indexOf(q._id) !== -1) {
 							q.alreadyAdded = true;
 						}
 					});
@@ -78,12 +78,12 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 					$scope.cancel();
 				} else {
 					LessonsService.createLesson({
-						'subject' : $scope.quizItem.subject,
-						'age' : $scope.quizItem.age,
-						'language' : $scope.quizItem.language,
-						'tags' : $scope.quizItem.tags
+						'subject' : $scope.lessonItem.subject,
+						'age' : $scope.lessonItem.age,
+						'language' : $scope.lessonItem.language,
+						'tags' : $scope.lessonItem.tags
 					}).then(function(result) {
-						$scope.quizItem = result.data;
+						$scope.lessonItem = result.data;
 					});
 				}
 			}
@@ -168,10 +168,10 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				return $scope.currentSection.page;
 			};
 
-			/* remove deleted lesson from all quizItems in all playlists */
+			/* remove deleted lesson from all lessonItems in all playlists */
 			// function getPlaylistWhoUseThisLessonAndRemoveLesson(lessonId) {
 			// 		var playlistsWhoUseThisLesson = null;
-			// 		LergoClient.playlists.getPlaylistsWhoUseThisLesson(lessonId || $scope.quizItem._id).then(function (result) {
+			// 		LergoClient.playlists.getPlaylistsWhoUseThisLesson(lessonId || $scope.lessonItem._id).then(function (result) {
 			// 			playlistsWhoUseThisLesson = result.data;
 			// 			$log.info('AddUpdateDialog: usage of this lesson in playlists is ',playlistsWhoUseThisLesson.length);
 			// 			if (playlistsWhoUseThisLesson.length === 0) {
@@ -180,8 +180,8 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 			// 			} else {
 			// 				angular.forEach(playlistsWhoUseThisLesson, function(playlist) {
 			// 					for (var i in playlist.steps ) {
-			// 						if (playlist.steps[i].quizItems && playlist.steps[i].quizItems.indexOf(lessonId) !== -1) {
-			// 							playlist.steps[i].quizItems.splice(playlist.steps[i].quizItems.indexOf(lessonId), 1);
+			// 						if (playlist.steps[i].lessonItems && playlist.steps[i].lessonItems.indexOf(lessonId) !== -1) {
+			// 							playlist.steps[i].lessonItems.splice(playlist.steps[i].lessonItems.indexOf(lessonId), 1);
 			// 							LergoClient.playlists.update(playlist);
 			// 						}
 			// 					}
@@ -214,7 +214,7 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				return !!playlistOverrideLesson &&
 				// we should have a parent's function to
 				// complete the task
-				!!$scope.quizItem && !!$scope.quizItem._id &&
+				!!$scope.lessonItem && !!$scope.lessonItem._id &&
 				// we should have an item to override
 				!!$scope.permissions &&
 				// we should have permissions from backend
@@ -232,8 +232,8 @@ angular.module('lergoApp').controller('LessonsAddUpdateDialogCtrl',
 				playlistOverrideLesson(step, item._id);
 			};
 
-			$scope.isValid = function(quizItem) {
-				if (!quizItem) {
+			$scope.isValid = function(lessonItem) {
+				if (!lessonItem) {
 					return false;
 				}
 			};

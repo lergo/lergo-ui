@@ -131,7 +131,7 @@
                                 {{playlistRprt.correctPercentage}}
                                     </span>
                                 (
-                                <ng-pluralize count="playlistRprt.data.quizItems.length" when="{
+                                <ng-pluralize count="playlistRprt.data.lessonItems.length" when="{
                                     '0': '{{ &quot;playlistRprt.questionsInPlaylist.zero&quot; | translate}}',
                                     'one': '{} {{ &quot;playlistRprt.questionsInPlaylist.one&quot; | translate}}',
                                     'other': '{} {{ &quot;playlistRprt.questionsInPlaylist.other&quot; | translate}}'}">
@@ -184,7 +184,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                     <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
-                                    <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
+                                    <i ng-show="!!step.lessonItems" class="fa fa-question-circle"></i>
                                     <i ng-show="!!step.slideURL" class="fa fa-television "></i>
                                 </div>
                                 <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-10  padding-leftRight2">
@@ -197,9 +197,9 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                                         {{'playlistRprts.click.video' | translate}}</a>
-                                    <span ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+                                    <span ng-show="!!step.lessonItems" ng-init="$parent.getAnswerStats(step.lessonItems)">
                                     <span class="inline-table playlistRprt-numbers">
-                                         <ng-pluralize count="step.quizItems.length" when="{
+                                         <ng-pluralize count="step.lessonItems.length" when="{
                                                 '0': '{{ &quot;playlistRprt.questionsInQuiz.zero&quot; | translate}}',
                                                 'one':'{} {{ &quot;playlistRprt.questionsInQuiz.one&quot; | translate}}',
                                                 'other':'{} {{ &quot;playlistRprt.questionsInQuiz.other&quot; | translate}}'}">
@@ -228,7 +228,7 @@
                                     <i ngShow="!!playlistRprt.stepDurations[$index]" class="fa fa-clock-o">
                                         &nbsp;<span class="playlistRprt-numbers"> {{playlistRprt.stepDurations[$index]|duration}}</span>
                                     </i>
-                                    <a ng-show="!!step.quizItems && step.retryQuestion && step.testMode === 'False'"
+                                    <a ng-show="!!step.lessonItems && step.retryQuestion && step.testMode === 'False'"
                                        ng-click="stepDetail=!stepDetail">
                                         <i ng-show="!stepDetail" class="fa fa-plus-square"></i>
                                         <i ng-show="!!stepDetail" class="fa fa-minus-square"></i>
@@ -277,7 +277,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                     <i ng-show="!!step.videoUrl" class="fa fa-video-camera"></i>
-                                    <i ng-show="!!step.quizItems" class="fa fa-question-circle"></i>
+                                    <i ng-show="!!step.lessonItems" class="fa fa-question-circle"></i>
                                     <i ng-show="!!step.slideURL" class="fa fa-television "></i>
                                 </div>
                                 <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-10  padding-leftRight2">
@@ -292,10 +292,10 @@
                                         <a class="inline-table" ng-show="!!step.videoUrl" ng-href="{{step.videoUrl}}">
                                             {{'playlistRprts.click.video' | translate}}</a>
                                         </div>
-                                        <div ng-show="!!step.quizItems" ng-init="$parent.getAnswerStats(step.quizItems)">
+                                        <div ng-show="!!step.lessonItems" ng-init="$parent.getAnswerStats(step.lessonItems)">
     
                                     <div class="inline-table playlistRprt-numbers">
-                                         <ng-pluralize count="step.quizItems.length" when="{
+                                         <ng-pluralize count="step.lessonItems.length" when="{
                                                 '0': '{{ &quot;playlistRprt.questionsInQuiz.zero&quot; | translate}}',
                                                 'one':'{} {{ &quot;playlistRprt.questionsInQuiz.one&quot; | translate}}',
                                                 'other':'{} {{ &quot;playlistRprt.questionsInQuiz.other&quot; | translate}}'}">
@@ -324,7 +324,7 @@
                                         <i ngShow="!!playlistRprt.stepDurations[$index]" class="fa fa-clock-o">
                                             &nbsp;<span class="playlistRprt-numbers"> {{playlistRprt.stepDurations[$index]|duration}}</span>
                                         </i>
-                                        <a ng-show="!!step.quizItems && step.retryQuestion && step.testMode === 'False'"
+                                        <a ng-show="!!step.lessonItems && step.retryQuestion && step.testMode === 'False'"
                                            ng-click="stepDetail=!stepDetail">
                                             <i ng-show="!stepDetail" class="fa fa-plus-square"></i>
                                             <i ng-show="!!stepDetail" class="fa fa-minus-square"></i>
@@ -416,12 +416,12 @@
                         </a>
                     </div>
                     <hr/>
-                    <!-- {{playlistRprt.data.quizItems}} -->
+                    <!-- {{playlistRprt.data.lessonItems}} -->
                 <h1>I am here</h1>
                     <!-- {{playlistRprt.data.playlist}} -->
                     <div uib-collapse="!!detailCollapsed" class="detail">
                         <div playlist-rprt-view playlist="playlistRprt.data.playlist" answers="playlistRprt.answers"
-                             quiz-items="playlistRprt.data.quizItems">do we see this</div>
+                             quiz-items="playlistRprt.data.lessonItems">do we see this</div>
                     </div>
                 </div>
             </div>

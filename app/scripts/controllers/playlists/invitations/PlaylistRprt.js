@@ -108,7 +108,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsPlaylistRprtCtrl',
             $scope.wrongLessons = [];
             angular.forEach(playlistRprt.answers, function (answer) {
                 if (!answer.checkAnswer.correct) {
-                    $scope.wrongLessons.push(answer.quizItemId);
+                    $scope.wrongLessons.push(answer.lessonItemId);
                 }
             });
         }

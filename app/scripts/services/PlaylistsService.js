@@ -128,7 +128,7 @@ angular.module('lergoApp').service('PlaylistsService',
         this.countLessons = function (item) {
             try {
                 return _.sumBy(item.steps, function (step) {
-                    return step.type === 'quiz' ? _.size(step.quizItems) : 0;
+                    return step.type === 'lesson' ? _.size(step.lessonItems) : 0;
                 });
             } catch (e) {
                 return 0;
@@ -169,7 +169,7 @@ angular.module('lergoApp').service('PlaylistsService',
                     playlist.subject = PlaylistRprt.data.playlist.subject;
                     playlist.steps = [];
                     var stepsWithoutRetry = _.filter(PlaylistRprt.data.playlist.steps, function (s) {
-                        if (s.type === 'quiz') {
+                        if (s.type === 'lesson') {
                             return !s.retryLesson;
                         }
                     });
@@ -177,15 +177,15 @@ angular.module('lergoApp').service('PlaylistsService',
                     playlist.lastUpdate = new Date().getTime();
                     playlist.temporary = true;
                     var step = {
-                        'type': 'quiz',
-                        'quizItems': [],
+                        'type': 'lesson',
+                        'lessonItems': [],
                         'testMode': 'False',
                         'retBefCrctAns': 1,
                         'shuffleLesson': true,
                         retryLesson: stepsWithoutRetry.length === 0
                     };
                     playlist.steps.push(step);
-                    playlist.steps[0].quizItems = _.uniq(wrongLessons);
+                    playlist.steps[0].lessonItems = _.uniq(wrongLessons);
                     self.update(playlist).then(function () {
                         resolve(playlist);
                     });

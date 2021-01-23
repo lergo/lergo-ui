@@ -1,13 +1,13 @@
 <div class="row row-nested top20" id="quizUpdate">
 <div class="row row-nested top20">
-    <div class="row row-nested top10" ng-repeat="item in step.quizItems">
+    <div class="row row-nested top10" ng-repeat="item in step.lessonItems">
         <div dir="auto" class="col-lg-9 col-md-9 col-sm-10 col-xs-10 open-update">
             <a href="" ng-click="openUpdateQuestion(step,item)">{{getLesson(item)}}</a>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
             <div class="move-quiz">
-                <a href="" ng-click="moveQuizItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
-                <a href="" ng-click="moveQuizItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
+                <a href="" ng-click="movelessonItemUp($index,step)" ng-show="!$first" class="fa fa-arrow-up"></a>
+                <a href="" ng-click="movelessonItemDown($index,step)" ng-show="!$last" class="fa fa-arrow-down"></a>
                 <a href="" ng-click="removeItemFromQuiz( item, step )">X</a>
             </div>
         </div>

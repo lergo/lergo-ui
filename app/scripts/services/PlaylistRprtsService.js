@@ -96,15 +96,15 @@ angular.module('lergoApp')
          * find an existing answer for specific lesson in specific step identified by index.
          *
          * @param playlistRprt the playlistRprt
-         * @param quizItemId id of quizItem we want answer for
+         * @param lessonItemId id of lessonItem we want answer for
          * @param stepIndex the step identified by index in playlist steps.
          * @returns {null|object} null if no answer, otherwise returns the answer
          */
         //
         //
-        this.getAnswerToQuizItem = function (playlistRprt, quizItemId, stepIndex) {
+        this.getAnswerToQuizItem = function (playlistRprt, lessonItemId, stepIndex) {
             var result = _.find(playlistRprt.answers, function (item) {
-                return (item.quizItemId === quizItemId) && (item.stepIndex === stepIndex);
+                return (item.lessonItemId === lessonItemId) && (item.stepIndex === stepIndex);
             });
             if (!result) {
                 return null; // make sure to return null, and not any other value like undefined
@@ -113,17 +113,17 @@ angular.module('lergoApp')
         };
 
         /**
-         * turns list of answers for specific step to a map of quizItemId and the answer.
+         * turns list of answers for specific step to a map of lessonItemId and the answer.
          *
          * @param playlistRprt the playlistRprt
          * @param stepIndex step we are interested in
-         * @returns {object} a map between quiz item id, and the answer
+         * @returns {object} a map between lesson item id, and the answer
          */
         this.getAnswersByQuizItemId = function (playlistRprt, stepIndex) {
             var result = {};
             _.each(playlistRprt.answers, function (item) {
                 if (item.stepIndex === stepIndex) {
-                    result[item.quizItemId] = item;
+                    result[item.lessonItemId] = item;
                 }
             });
             return result;
