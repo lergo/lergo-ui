@@ -1,4 +1,4 @@
-lergo-ri refactoring playlist model:  changing words quiz and quizItems to lesson and lessonItems
+lergo-ri refactoring playlist model:  changing words quiz and quizItems to lesson and lessonItems 
 lergo-ui refactoring playlist: change words quiz, quizItems to lesson, lessonItems
 lergo-ui working on playlist - implementing feedback from January 2nd 2021
 lergo-ri lowering express-throttle to burts: 5 rate:  3/m to prevent realstaging from crashing
