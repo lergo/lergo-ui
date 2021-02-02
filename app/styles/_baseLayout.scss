@@ -473,7 +473,7 @@ input.form-control.search-input {
 /** guy - "base-layout" will trigger the directive. so we alias it to base-layout-class to use the class without the directive*/
 .container, .base-layout, .base-layout-class {
     &:not(.base-layout-modal) {
-        height: 100%;
+        height: 5%; /* jeff - 2021: was 100% and prerender was not placed correctly - now a placeholder */
     }
     .add-create {
         width: 964px;

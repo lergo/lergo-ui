@@ -1,3 +1,4 @@
+lergo-ui bug(prerender scss placement)fix
 lergo-ri implementing redis caching for prerender, replacing self made caching
 lergo-ui bug(playlist arrows) - fixed
 lergo-ri refactoring playlist model:  changing words quiz and quizItems to lesson and lessonItems 
