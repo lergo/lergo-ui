@@ -263,6 +263,11 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                     $log.info('Starting practice mistakes');
                     $scope.startLesson(lesson._id);
                     $scope.practiseBtnDisable = false;
+                    // if this is practiceMistakes of a playlist lesson we must update the localstorage 
+                    // the new lessonId
+                    if (localStorageService.get('playlistUrl') && localStorageService.get('playlistLesson')) {
+                        localStorageService.set('playlistLesson',lesson._id.substring(0,8) );
+                    }
                 }, function () {
                     $log.error('Error in creating Practise Lesson');
                     $scope.practiseBtnDisable = false;
@@ -289,6 +294,11 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                     $log.info('Starting practice mistakes for Anon');
                     $scope.startLesson(lesson._id);
                     $scope.practiseBtnDisable = false;
+                    // if this is practiceMistakes of a playlist lesson we must update the localstorage 
+                    // the new lessonId
+                    if (localStorageService.get('playlistUrl') && localStorageService.get('playlistLesson')) {
+                        localStorageService.set('playlistLesson',lesson._id.substring(0,8) );
+                    }
                 }, function () {
                     $log.error('Error in creating Practise Lesson');
                     $scope.practiseBtnDisable = false;

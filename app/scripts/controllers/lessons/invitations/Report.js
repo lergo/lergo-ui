@@ -3,6 +3,26 @@
 angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
     function ($scope, $log, LergoClient, $routeParams, LergoTranslate, $location, $filter, $rootScope, ShareService, localStorageService) {
         $log.info('loading');
+        function getWrongQuestion(report) {
+            $scope.wrongQuestions = [];
+            angular.forEach(report.answers, function (answer) {
+                if (!answer.checkAnswer.correct) {
+                    $scope.wrongQuestions.push(answer.quizItemId);
+                }
+            });
+        }
+        function redirectToInvitation(lessonId, invId) {
+            // in case of temporary lesson we don't want to remember history
+            if (!$scope.report.data.lesson.temporary) {
+                $location.path('/public/lessons/invitations/' + invId + '/display').search({
+                    lessonId: lessonId
+                });
+            } else {
+                $location.path('/public/lessons/invitations/' + invId + '/display').search({
+                    lessonId: lessonId
+                }).replace();
+            }
+        }
         LergoClient.reports.getById($routeParams.reportId).then(function (result) {
             $scope.report = result.data;
             if ($scope.report.data.invitee && $scope.report.data.invitee.name) {
@@ -38,18 +58,6 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
                 });
             }
         };
-        function redirectToInvitation(lessonId, invId) {
-            // in case of temporary lesson we don't want to remember history
-            if (!$scope.report.data.lesson.temporary) {
-                $location.path('/public/lessons/invitations/' + invId + '/display').search({
-                    lessonId: lessonId
-                });
-            } else {
-                $location.path('/public/lessons/invitations/' + invId + '/display').search({
-                    lessonId: lessonId
-                }).replace();
-            }
-        }
  
         $scope.showClassReport = function () {
 
@@ -102,6 +110,11 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
                 function (lesson) {
                     $scope.startLesson(lesson._id);
                     $scope.practiseBtnDisable = false;
+                    // if this is practiceMistakes of a playlist lesson we must update the localstorage 
+                    // the new lessonId
+                    if (localStorageService.get('playlistUrl') && localStorageService.get('playlistLesson')) {
+                        localStorageService.set('playlistLesson',lesson._id.substring(0,8) );
+                    }
                 }, function () {
                     $log.error('Error in creating Practise Lesson');
                     $scope.practiseBtnDisable = false;
@@ -113,20 +126,19 @@ angular.module('lergoApp').controller('LessonsInvitationsReportCtrl',
                 function (lesson) {
                     $scope.startLesson(lesson._id);
                     $scope.practiseBtnDisable = false;
+                    // if this is practiceMistakes of a playlist lesson we must update the localstorage 
+                    // the new lessonId
+                    if (localStorageService.get('playlistUrl') && localStorageService.get('playlistLesson')) {
+                        localStorageService.set('playlistLesson',lesson._id.substring(0,8) );
+                    }
                 }, function () {
                     $log.error('Error in creating Practise Lesson');
                     $scope.practiseBtnDisable = false;
                 });
         };
-        function getWrongQuestion(report) {
-            $scope.wrongQuestions = [];
-            angular.forEach(report.answers, function (answer) {
-                if (!answer.checkAnswer.correct) {
-                    $scope.wrongQuestions.push(answer.quizItemId);
-                }
-            });
-        }
+    
         $scope.isPlaylist = function() {
+
             var absUrl = $location.absUrl();
             var lessonId = absUrl.substring(absUrl.lastIndexOf('?') + 10,absUrl.lastIndexOf('?') + 18 );
             if (localStorageService.get('playlistUrl') && localStorageService.get('playlistLesson') && localStorageService.get('playlistLesson') === lessonId ) {

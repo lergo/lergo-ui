@@ -134,10 +134,6 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 }
             }
         });
-
-        // todo: technically we don't need to build playlist invitation anymore..
-        // todo: we should build the playlistRprt instead since all data is on the playlistRprt and display the data from there.
-        // todo: the display will still be for playlist invitation, but the data should come from playlistRprt. (this resolves ambiguity regarding display for playlistRprt.. there's only one).
         function getMyCompletes() {
             var queryObj = {
                 'filter' : _.merge({}, $scope.playlistsFilter),
@@ -168,13 +164,25 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             if (!items) {
                 return;
             }
+            $scope.createByArray = [];
             $scope.playlistLessonArray = [];
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
                 $scope.lessons[item._id] = item;
                 $scope.playlistLessonArray.push(item);
-
+                $scope.createByArray.push( item.userId);
             }
+            var users = {};
+            LergoClient.users.findUsersById($scope.createByArray).then(function(result) {
+				result.data.forEach(function(user) {
+                    users[user._id] = user;
+                });
+                for (var k = 0; k < $scope.playlistLessonArray.length; k++) {
+                    var createdbyId = $scope.playlistLessonArray[k].userId;
+                    $scope.playlistLessonArray[k].user = users[createdbyId];
+                }
+            });
+            
             $scope.showPlaylistLessons();
             $scope.completes = getMyCompletes();
         }, function (result) {

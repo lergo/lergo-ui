@@ -1,3 +1,5 @@
+lergo-ui multiple minor upgrades for playlist (bold question on click, show createdby in playlist, improve
+return to playlist after practice mistake and more)
 lergo-ui bug(prerender scss placement)fix
 lergo-ri implementing redis caching for prerender, replacing self made caching
 lergo-ui bug(playlist arrows) - fixed
