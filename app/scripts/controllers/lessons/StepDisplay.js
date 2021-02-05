@@ -1,11 +1,16 @@
 'use strict';
 
 var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $routeParams, $timeout, $sce,
-                                       LergoClient, shuffleFilter, localStorageService, $window) {
+                                       LergoClient, shuffleFilter, localStorageService, $window ) {
     $log.info('showing step');
 
     // used to fix bug where hint stays open when switching between questions.
     $scope.stepDisplay = {showHint: false};
+
+    $scope.isBold = true;
+    $scope.toggleBold = function(){
+        $scope.isBold = !$scope.isBold;
+    };
 
     $window.scrollTo(0, 0);
     var audio = new Audio('../audio/correctanswer.mp3');
@@ -72,7 +77,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
             });
         }
     }
-
+    $scope.place = 'I am at stepDisplay.js';
     $scope.$watch('step', reload);
     $scope.getQuizItemTemplate = function () {
         if (!!$scope.questions) {
@@ -90,7 +95,7 @@ var LessonsStepDisplayCtrl = function ($scope, $rootScope, StepService, $log, $r
     };
 
     $scope.checkAnswer = function () {
-
+        $scope.isBold = true;
         $scope.submitBtnDisable = true;
         var quizItem = $scope.quizItem;
 
