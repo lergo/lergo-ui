@@ -62,6 +62,8 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
         }
         LergoClient.completes.lessonIsComplete(report.data.lesson).then(function () {
             $log.info('lesson marked as complete');
+        }, function(error) {
+            console.log(error.data);
         });
     });
 

@@ -49,8 +49,9 @@ angular.module('lergoApp').controller('PlaylistsIntroCtrl',
                 // get my like - will decide if I like this playlist or not
                 LergoClient.likes.getMyPlaylistLike($scope.playlist).then(function (result) {
                     $scope.playlistLike = result.data;
-                });
-
+                }, function(error) {
+                        console.log(error.data);
+                    });
                 if (playlistLikeWatch === null) {
                     playlistLikeWatch = $scope.$watch('playlistLike', function countLikes() {
                         // get count of likes for playlist

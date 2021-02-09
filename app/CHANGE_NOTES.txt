@@ -1,3 +1,4 @@
+lergo-ui handle the "possibly unhandled rejection" for Likes and Completes
 lergo-ui bug(fix - previous build with click for bold did not reset on every question)
 lergo-ui multiple minor upgrades for playlist (bold question on click, show createdby in playlist, improve
 return to playlist after practice mistake and more)

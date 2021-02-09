@@ -53,8 +53,9 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
                 // get my like - will decide if I like this lesson or not
                 LergoClient.likes.getMyLessonLike($scope.lesson).then(function (result) {
                     $scope.lessonLike = result.data;
+                }, function(error) {
+                    console.log(error.data);
                 });
-
                 if (lessonLikeWatch === null) {
                     lessonLikeWatch = $scope.$watch('lessonLike', function countLikes() {
                         // get count of likes for lesson

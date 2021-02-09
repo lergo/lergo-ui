@@ -101,7 +101,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
 
                 $controller('PlaylistsDisplayCtrl', {
                     $scope: $scope
-                }); // display should be initialized here, we should not show playlist
+                }); //     display should be initialized here, we should not show playlist
                 // before we can playlistRprt.
                 $rootScope.$broadcast('startPlaylist', invitation);
             }
@@ -260,7 +260,9 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 // get my like - will decide if I like this playlist or not
                 LergoClient.likes.getMyPlaylistLike($scope.playlist).then(function (result) {
                     $scope.playlistLike = result.data;
-                });
+                }, function(error) {
+                        console.log(error.data);
+                    });
                 if (playlistLikeWatch === null) {
                     playlistLikeWatch = $scope.$watch('playlistLike', function () {
                         // get count of likes for playlist
@@ -314,7 +316,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
         // function createPlaylistFromWrongLessons() {
         //     if ($scope.wrongLessons.length > 0) {
         //         var playlistRprt = $scope.playlistRprt;
-        //         LergoClient.playlists.create().then(function (result) {
+        //             LergoClient.playlists.create().then(function (result) {
         //             var playlist = result.data;
         //             playlist.name = $filter('translate')('playlist.practice.title') + playlistRprt.data.playlist.name;
         //
@@ -523,13 +525,18 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                     getMyCompletes();
                 }).then(function() {
                         $scope.showPlaylistLessons();
+                    }, function(error) {
+                        console.log(error.data);
                     });
             } else {
                 LergoClient.completes.deleteLessonIsComplete(lesson).then(function () {
                     getMyCompletes();
                 }).then(function () {
                     $scope.showPlaylistLessons();
-                });
+                }, function(error) {
+                        console.log(error.data);
+                    });
+
             }
         };
     });
