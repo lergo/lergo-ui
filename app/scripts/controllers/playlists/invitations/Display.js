@@ -404,6 +404,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                                 for (var l = 0; l < $scope.completes.length; l++) {
                                     if ($scope.completes[l].itemId === $scope.playlistLessonArray[k]._id) {
                                         $scope.playlistLessonArray[k].dateCompleted = dateFromObjectId($scope.completes[l]._id);
+                                        $scope.playlistLessonArray[k].score = $scope.completes[l].itemScore;
                                     }
                                 }
                             }
@@ -516,10 +517,21 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             return null;
         };
 
-
+        $scope.lessonStatusUpdate = function(lesson) {
+            if (lesson.isComplete) {
+                LergoClient.completes.deleteLessonIsComplete(lesson).then(function () {
+                    // removing the complete from the database
+                }).then(function () {
+                    $scope.showPlaylistLessons();
+                }, function(error) {
+                        console.log(error.data);
+                    });
+            }
+        };
         $scope.lessonIsDone = function(lesson) {
             lesson.isComplete = !lesson.isComplete;
             if (lesson.isComplete) {
+                lesson.score = '-';
                 LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
                     $log.debug(result);
                     getMyCompletes();

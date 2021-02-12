@@ -60,11 +60,8 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
                 LergoClient.lessons.delete(report.data.lesson._id);
             }
         }
-        LergoClient.completes.lessonIsComplete(report.data.lesson).then(function () {
-            $log.info('lesson marked as complete');
-        }, function(error) {
-            console.log(error.data);
-        });
+        calculateCorrectPercentage(report);
+            
     });
 
     // data is step
@@ -176,10 +173,19 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
                     return answer.quizItemType !== 'openQuestion' && answer.checkAnswer.correct === true;
                 });
                 report.correctPercentage = Math.round((correctAnswers.length * 100) / numberOfQuestions);
+                $log.info('evaluating correctPercentage');
             }
+            
 
-            $log.info('new correct percentage is : ');
-
+        }).then(function() {
+            if (report.finished) {
+                report.data.lesson.score = report.correctPercentage;
+                LergoClient.completes.lessonIsComplete(report.data.lesson).then(function () {
+                    $log.info('lesson marked as complete');
+                }, function(error) {
+                    console.log(error.data);
+                });
+            }
         });
     }
 };

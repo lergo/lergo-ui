@@ -1,3 +1,4 @@
+lergo-ri and ui adding score to playlist view, removing deprecated "delete" and adding error handling to likes and completes'
 lergo-ui handle the "possibly unhandled rejection" for Likes and Completes
 lergo-ui bug(fix - previous build with click for bold did not reset on every question)
 lergo-ui multiple minor upgrades for playlist (bold question on click, show createdby in playlist, improve

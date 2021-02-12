@@ -59,6 +59,7 @@
                     <td class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{ 'lessons.name' | translate }}</td>
                     <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">{{ 'lessons.createdBy' | translate }}</td>
                     <td class="col-lg-1 col-md-1 col-sm-1 col-xs-1">{{ 'admin.questions' | translate }}</td>
+                    <td show-logged-in class="col-lg-1 col-md-1 col-sm-1 col-xs-1">{{ 'lessons.score' | translate }}</td>
                     <td show-logged-in class="col-lg-3 col-md-3 col-sm-3 col-xs-3">{{ 'lessons.completeDate' | translate }}</td>
                     <td show-logged-in class="col-lg-1 col-md-1 col-sm-1 col-xs-1">{{'filters.status.complete' | translate }}</td>
                  </tr>
@@ -66,12 +67,13 @@
                 <tbody> 
                     <tr ng-repeat="lesson in playlistLessonArray">
                     <td class="col-lg-5 col-md-7 col-sm-5 col-xs-5 name" dir="auto">
-                        <a ng-class=" {'complete':!!lesson.isComplete}"  ng-href="#!/public/lessons/{{lesson._id}}/intro"><i class="fa fa-play-circle-o"></i> {{lesson.name}} </a>
+                        <a ng-class=" {'complete':!!lesson.isComplete}" ng-click="lessonStatusUpdate(lesson)"  ng-href="#!/public/lessons/{{lesson._id}}/intro"><i class="fa fa-play-circle-o"></i> {{lesson.name}} </a>
                     </td>
                     <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                      {{lesson.user.username}}
                     </td>
                     <td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" ng-class="{'complete':!!lesson.isComplete}" >{{lesson | countQuestionsOnLesson }} </td>
+                    <td show-logged-in class="col-lg-1 col-md-1 col-sm-1 col-xs-1" >{{ lesson.score }} </td>
                     <td show-logged-in class="col-lg-3 col-md-3 col-sm-3 col-xs-3" ng-class="{'complete':!!lesson.isComplete}" >{{ lesson.dateCompleted |date:'medium'  }} </td>
                     <td show-logged-in class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">
                         <input ng-class="{'complete':!!lesson.isComplete}" type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>
