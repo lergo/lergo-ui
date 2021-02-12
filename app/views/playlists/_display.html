@@ -60,6 +60,7 @@
                     <td >{{ 'lessons.createdBy' | translate }}</td>
                     <td >{{ 'admin.questions' | translate }}</td>
                     <td show-logged-in >{{ 'lessons.score' | translate }}</td>
+                    <td show-logged-in > {{ ' report.link' | translate}}</td>
                     <td show-logged-in >{{ 'lessons.completeDate' | translate }}</td>
                     <td show-logged-in >{{'filters.status.complete' | translate }}</td>
                  </tr>
@@ -74,6 +75,9 @@
                     </td>
                     <td  ng-class="{'complete':!!lesson.isComplete}" >{{lesson | countQuestionsOnLesson }} </td>
                     <td show-logged-in >{{ lesson.score }} </td>
+                    <td class= name dir="auto">
+                        <a ng-show="lesson.isComplete" ng-class=" {'complete':!!lesson.isComplete}"  href="#!/public/lessons/reports/{{lesson.reportId}}/display"><i class="fa fa-bar-chart-o fa-lg"></i> </a>
+                    </td>
                     <td show-logged-in  ng-class="{'complete':!!lesson.isComplete}" >{{ lesson.dateCompleted |date:'medium'  }} </td>
                     <td show-logged-in >
                         <input ng-class="{'complete':!!lesson.isComplete}" type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>

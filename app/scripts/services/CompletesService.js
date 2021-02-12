@@ -30,7 +30,7 @@ angular.module('lergoApp')
 
 
         function createLessonIsComplete(itemType, item) {
-            return $http.post('/backend/completes/' + itemType + '/' + item._id + '/' + item.score + '/create');
+            return $http.post('/backend/completes/' + itemType + '/' + item._id + '/' + item.score + '/' + item.reportId + '/create');
         }
 
         this.lessonIsComplete = function (item) {

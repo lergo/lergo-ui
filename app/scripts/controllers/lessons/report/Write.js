@@ -180,6 +180,7 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
         }).then(function() {
             if (report.finished) {
                 report.data.lesson.score = report.correctPercentage;
+                report.data.lesson.reportId = report._id;
                 LergoClient.completes.lessonIsComplete(report.data.lesson).then(function () {
                     $log.info('lesson marked as complete');
                 }, function(error) {

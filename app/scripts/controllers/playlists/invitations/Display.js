@@ -405,6 +405,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                                     if ($scope.completes[l].itemId === $scope.playlistLessonArray[k]._id) {
                                         $scope.playlistLessonArray[k].dateCompleted = dateFromObjectId($scope.completes[l]._id);
                                         $scope.playlistLessonArray[k].score = $scope.completes[l].itemScore;
+                                        $scope.playlistLessonArray[k].reportId = $scope.completes[l].itemReportId;
                                     }
                                 }
                             }

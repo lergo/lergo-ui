@@ -1,3 +1,4 @@
+lergo-ri and ui adding report link to playlist view
 lergo-ui fixing table layout of playlist for hebrew
 lergo-ri and ui adding score to playlist view, removing deprecated "delete" and adding error handling to likes and completes'
 lergo-ui handle the "possibly unhandled rejection" for Likes and Completes
