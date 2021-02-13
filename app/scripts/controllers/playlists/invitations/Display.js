@@ -522,8 +522,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             if (lesson.isComplete) {
                 LergoClient.completes.deleteLessonIsComplete(lesson).then(function () {
                     // removing the complete from the database
-                }).then(function () {
-                    $scope.showPlaylistLessons();
+                    $log.info('removing complete from database');
                 }, function(error) {
                         console.log(error.data);
                     });
@@ -533,6 +532,9 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             lesson.isComplete = !lesson.isComplete;
             if (lesson.isComplete) {
                 lesson.score = '-';
+                // this is equivelent to null, but will not give an error when converting to objectId
+                // this same value is checked in the view, so null report will not show a link
+                lesson.reportId = '6026fa600000000000000000';
                 LergoClient.completes.lessonIsComplete(lesson).then(function (result) {
                     $log.debug(result);
                     getMyCompletes();

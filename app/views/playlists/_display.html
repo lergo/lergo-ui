@@ -75,8 +75,8 @@
                     </td>
                     <td  ng-class="{'complete':!!lesson.isComplete}" >{{lesson | countQuestionsOnLesson }} </td>
                     <td show-logged-in >{{ lesson.score }} </td>
-                    <td class= name dir="auto">
-                        <a ng-show="lesson.isComplete" ng-class=" {'complete':!!lesson.isComplete}"  href="#!/public/lessons/reports/{{lesson.reportId}}/display"><i class="fa fa-bar-chart-o fa-lg"></i> </a>
+                    <td class= name >
+                        <a  ng-show="lesson.isComplete && lesson.reportId !== '6026fa600000000000000000'" ng-class=" {'complete':!!lesson.isComplete}"  href="#!/public/lessons/reports/{{lesson.reportId}}/display"><i class="fa fa-bar-chart-o fa-lg"></i> </a>
                     </td>
                     <td show-logged-in  ng-class="{'complete':!!lesson.isComplete}" >{{ lesson.dateCompleted |date:'medium'  }} </td>
                     <td show-logged-in >

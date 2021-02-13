@@ -1259,4 +1259,8 @@ all-rtl-float-right {
     }
 }
 
-
+// for aligning font awesome
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    width: 100%;
+}
