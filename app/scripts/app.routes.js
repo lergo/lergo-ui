@@ -183,9 +183,6 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         'params': {
             'activeTab': 'abuseReports'
         }
-    }).when('/disqus/:disqus_identifier', {
-        controller: 'DisqusPageCtrl',
-        templateUrl: 'views/disqusPage.html'
     }).when('/public/contribute', {
         templateUrl: 'views/partials/_contribute.html'
     }).when('errors/notFound', {
