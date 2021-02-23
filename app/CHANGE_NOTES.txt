@@ -1,3 +1,4 @@
+lergo-ui fix(mobile lesson intro is hidden) 
 lergo-ui lergo-ri  remove DISQUS and all references
 lergo-ui bug(fix checking checkbox in playlist using fixed reportId instead of null)
 lergo-ri bug: need to remove reportId from the findOne projections
