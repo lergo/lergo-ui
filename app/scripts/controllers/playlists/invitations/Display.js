@@ -66,7 +66,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             //         lessonItems.splice(lessonItems.indexOf(illegalId), 1);
             //         for (var i = steps.length -1; i >= 0; i--) {
             //             if (steps[i].lessonItems) {
-            //                 for (var j = steps[i].lessonItems.length -1; j >= 0; j--) {
+            //var items = result.data.quizItems                 for (var j = steps[i].lessonItems.length -1; j >= 0; j--) {
             //                     var lessonId = steps[i].lessonItems[j];
             //                     if (lessonId === illegalId){
             //                         steps[i].lessonItems.splice(steps[i].lessonItems.indexOf(illegalId), 1);
@@ -87,7 +87,7 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             //         $log.info('deleting invalid step locally ',l);
             //         steps.splice(l, 1);
             //         $log.info('removing step on Db');
-            //         LergoClient.playlists.fix(invitation.playlist);
+            //var items = result.data.quizItems         LergoClient.playlists.fix(invitation.playlist);
             //     }
             // }
            
@@ -160,7 +160,8 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
             $scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="600" frameBorder="0"></iframe>';
 
             initializePlaylistRprt($scope.invitation);
-            var items = result.data.quizItems || result.data.lessonItems; // code was refactored changing quizItem to lessonItem
+            // the items are the full lessons, but in the native order, not the order we want
+            var items = result.data.quizItems || result.data.lessonItems; // mongo was refactored changing quizItem to lessonItem
             if (!items) {
                 return;
             }
@@ -172,6 +173,14 @@ angular.module('lergoApp').controller('PlaylistsInvitationsDisplayCtrl',
                 $scope.playlistLessonArray.push(item);
                 $scope.createByArray.push( item.userId);
             }
+
+            // we need to order the playlistLessonArray according to the $scope.playlist
+            //https://stackoverflow.com/questions/28719795/lodash-sort-collection-based-on-external-array/28719938
+            var myPlaylist = $scope.playlist.steps[0].lessonItems;
+            var sortedCollection = _.sortBy($scope.playlistLessonArray, function(item){
+                return myPlaylist.indexOf(item._id);
+            });
+            $scope.playlistLessonArray = sortedCollection;
             var users = {};
             LergoClient.users.findUsersById($scope.createByArray).then(function(result) {
 				result.data.forEach(function(user) {

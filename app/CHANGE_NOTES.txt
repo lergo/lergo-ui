@@ -1,3 +1,5 @@
+lergo-ui and ri - adding willExpireOn to Completes, bug-fix( two emails sent for student report)
+    bug-fix( playlist lessons not in correct order)
 lergo-ui fix(mobile lesson intro is hidden) 
 lergo-ui lergo-ri  remove DISQUS and all references
 lergo-ui bug(fix checking checkbox in playlist using fixed reportId instead of null)

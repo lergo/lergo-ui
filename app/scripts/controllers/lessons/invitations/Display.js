@@ -149,7 +149,6 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             $scope.lesson = result.data.lesson;
             $scope.lesson.image = LergoClient.lessons.getTitleImage($scope.lesson);
             $scope.questions = {};
-
             $scope.shareLink = LergoClient.lessons.getShareLink($scope.lesson);
             $scope.embedCode = '<iframe src="' + $scope.shareLink + '" height="900" width="600" frameBorder="0"></iframe>';
 

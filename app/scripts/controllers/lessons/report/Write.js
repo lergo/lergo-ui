@@ -60,7 +60,13 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
                 LergoClient.lessons.delete(report.data.lesson._id);
             }
         }
-        calculateCorrectPercentage(report);
+        report.data.lesson.score = report.correctPercentage;
+        report.data.lesson.reportId = report._id;
+        LergoClient.completes.lessonIsComplete(report.data.lesson).then(function () {
+            $log.info('lesson complete marked as complete');
+        }, function(error) {
+                console.log(error.data);
+            });
             
     });
 
@@ -173,20 +179,9 @@ var LessonsReportWriteCtrl = function ($scope, ReportWriteService, ReportsServic
                     return answer.quizItemType !== 'openQuestion' && answer.checkAnswer.correct === true;
                 });
                 report.correctPercentage = Math.round((correctAnswers.length * 100) / numberOfQuestions);
-                $log.info('evaluating correctPercentage');
+                $log.info('evaluating correctPercentage', report.correctPercentage);
             }
             
-
-        }).then(function() {
-            if (report.finished) {
-                report.data.lesson.score = report.correctPercentage;
-                report.data.lesson.reportId = report._id;
-                LergoClient.completes.lessonIsComplete(report.data.lesson).then(function () {
-                    $log.info('lesson marked as complete');
-                }, function(error) {
-                    console.log(error.data);
-                });
-            }
         });
     }
 };
