@@ -1,3 +1,4 @@
+lergo-ui adding playlist helper content
 lergo-ui and ri - adding willExpireOn to Completes, bug-fix( two emails sent for student report)
     bug-fix( playlist lessons not in correct order)
 lergo-ui fix(mobile lesson intro is hidden) 
