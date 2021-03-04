@@ -164,6 +164,11 @@
                             </ng-pluralize>
                             )
                         </div>
+                        <hr>
+                        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 "></div>
+                        <div  class="col-lg-9 col-md-9 col-sm-7 col-xs-7 ">
+                            <i style="font-size: 14px;" ng-show="reportStats.openQuestions">{{'reports.hasOpenQuestion'|translate}}</i>
+                        </div>
                     </div>
                         <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 pad-topBot7" >
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -248,14 +253,14 @@
                         </div>
                         <div  class=" top15">
                             <div uib-collapse="!stepDetail" class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="pad-top20">
-                                    <span>
+                                <div class="pad-top20" style="font-size: 14px;">
+                                    <i>
                                         <ng-pluralize count="step.retBefCrctAns" when="{
                                             '0': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.zero&quot; | translate}}',
                                             'one': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.one&quot; | translate}}',
                                             'other': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.other&quot; | translate}}'}">
                                         </ng-pluralize>
-                                    </span>
+                                    </i>
                                     <sup>
                                         <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
                                         <a uib-popover="{{'report.lessonStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"
@@ -345,13 +350,13 @@
                             <div  class=" top15">
                                 <div uib-collapse="!stepDetail" class="col-md-12 col-sm-12 col-xs-12">
                                     <div>
-                                    <span>
+                                    <i>
                                         <ng-pluralize count="step.retBefCrctAns" when="{
                                             '0': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.zero&quot; | translate}}',
                                             'one': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.one&quot; | translate}}',
                                             'other': '{{ &quot;report.lessonStep.practiceMode.showCorrectAns.other&quot; | translate}}'}">
                                         </ng-pluralize>
-                                    </span>
+                                    </i>
                                         <sup>
                                             <!--  tabindex = 0 is use to fix focus trigger problem in google chrome -->
                                             <a uib-popover="{{'report.lessonStep.practiceMode.hint.'+step.retBefCrctAns|translate}}"

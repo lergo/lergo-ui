@@ -1,5 +1,5 @@
 'use strict';
-
+ 
 angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($scope, LessonsService, LergoClient, TagsService, $location, $log, localStorageService, $rootScope, $window) {
 	// enum
 	$scope.LessonTypeToLoad = {
@@ -16,6 +16,7 @@ angular.module('lergoApp').controller('LessonsPlaylistsIndexCtrl', function($sco
 		showSubject : true,
 		showLanguage : true,
 		showAge : true,
+		showViews: true,
 		showSearchText : true,
 		showTags : true,
 		showCreatedBy : localStorageService.get('lessonTypeToLoad') === $scope.LessonTypeToLoad.all

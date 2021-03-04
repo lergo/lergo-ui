@@ -1,3 +1,7 @@
+lergo-ui adding 8 features: playlist view order, filter by number of views choosing lessons and questions, adding 
+createdBy in lessons for playlist and lesson view, comment that report grade can change with open question, 
+title in playlist returns user to playlist intro, bold can be clicked off in fillInTheBlanks, edit playlist shows
+popup view of lesson
 lergo-ui adding playlist helper content
 lergo-ui and ri - adding willExpireOn to Completes, bug-fix( two emails sent for student report)
     bug-fix( playlist lessons not in correct order)

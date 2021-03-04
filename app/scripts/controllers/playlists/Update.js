@@ -2,7 +2,7 @@
 
 angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
     function ($scope, $log, LergoClient, $location, $routeParams, ContinuousSave, LergoFilterService, $uibModal,
-        TagsService, QuestionsService, PlaylistsService, $rootScope, $window, $filter, LergoTranslate, $translate)
+        TagsService, QuestionsService, PlaylistsService, $rootScope, $window, $filter, LergoTranslate)
          {
         $window.scrollTo(0, 0);
 
@@ -42,7 +42,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         $scope.saveButtonDisabled = function () {
             return $scope.isSaving() || !$scope.playlist || !$scope.playlist.name;
         };
-
+        
         function persistScroll() {
             if (!$rootScope.scrollPosition) {
                 $rootScope.scrollPosition = {};
@@ -365,21 +365,47 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
             }
 
         };
+        $scope.previewLesson = function (item) {
+            $scope.lesson = $scope.lessonItemsData[item];
+            var questionsId = [];
+            if (!!$scope.lesson && !!$scope.lesson.steps) {
 
-        $scope.openUpdateQuestion = function (step, lessonItemId) {
-            QuestionsService.getPermissions(lessonItemId).then(function (result) {
-
-                var canEditOrCopy = result.data.canEdit || isOwnerOfPlaylist();
-                if ($scope.lessonItemsData.hasOwnProperty(lessonItemId) && canEditOrCopy) {
-                    openLessonDialog(step, $scope.lessonItemsData[lessonItemId], true);
+                for (var i = 0; i < $scope.lesson.steps.length; i++) {
+                    var items = $scope.lesson.steps[i].quizItems;
+                    if (!!items && angular.isArray(items)) {
+                        questionsId.push.apply(questionsId, items);
+                    }
                 }
-
-                if (!canEditOrCopy) {
-                    toastr.error($translate.instant('playlists.edit.noPermissionsDescription'), $translate.instant('playlists.edit.noPermissionsTitle'));
-                }
-            });
-
+                LergoClient.questions.findQuestionsById(questionsId).then(function (result) {
+                    $scope.questions = result.data;
+                    $scope.questionsWithSummary = _.filter(result.data, 'summary');
+                   /*  giveCreditToQuestionsWeUseFromOthers($scope.questions);
+                    giveCreditToQuestionsWeCopied($scope.questions); */
+                }).then(function() {
+                    var modelContent = {};
+                    modelContent.templateUrl = 'views/lesson/preview/preview.html';
+                    modelContent.windowClass = 'lesson-preview-dialog ' + LergoTranslate.getDirection();
+                    modelContent.backdrop = 'static';
+                    modelContent.controller = 'LessonPreviewCtrl';
+                    modelContent.resolve = {
+                        lesson: function () {
+                            $scope.lesson = $scope.lessonItemsData[item];
+                            return $scope.lesson;
+                        },
+                        questions: function () {
+                            return $scope.questions;
+                        }
+                    };
+                    var modelInstance = $uibModal.open(modelContent);
+                    modelInstance.result.then(function () {
+                        //   scrollToPersistPosition();
+                    }, function () {
+                        //  scrollToPersistPosition();
+                    });
+                });
+            }
         };
+
         $scope.addCreateQuestion = function (step) {
             $scope.addQuestionBtnDisable = true;
             QuestionsService.createQuestion({

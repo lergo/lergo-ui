@@ -1203,6 +1203,7 @@
     "correctPercentage": "% Correct",
     "duration": "Duration",
     "filter": "Filter Reports",
+    "hasOpenQuestion": "Please note, the final grade may depend on the grading of the open question",
     "header": {
       "className": "Class Report"
     },

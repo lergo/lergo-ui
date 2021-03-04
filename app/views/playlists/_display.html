@@ -20,9 +20,9 @@
                         <span class="sub-title">{{'playlist.header' | translate | uppercase }}</spans>
                         <br><br>
                     </div>
-                    <div class="title">
+                    <a class="title" ng-href="#!/public/playlists/{{playlist._id}}/intro">
                         {{playlist.name| limitTo:40}}
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden-sm hidden-xs" ng-show="!!playlist.description">
@@ -59,8 +59,8 @@
                     <td >{{ 'lessons.name' | translate }}</td>
                     <td >{{ 'lessons.createdBy' | translate }}</td>
                     <td >{{ 'admin.questions' | translate }}</td>
-                    <td show-logged-in >{{ 'lessons.score' | translate }}</td>
                     <td show-logged-in > {{ ' report.link' | translate}}</td>
+                    <td show-logged-in >{{ 'lessons.score' | translate }}</td>
                     <td show-logged-in >{{ 'lessons.completeDate' | translate }}</td>
                     <td show-logged-in >{{'filters.status.complete' | translate }}</td>
                  </tr>
@@ -74,10 +74,10 @@
                      {{lesson.user.username}}
                     </td>
                     <td  ng-class="{'complete':!!lesson.isComplete}" >{{lesson | countQuestionsOnLesson }} </td>
-                    <td show-logged-in >{{ lesson.score }} </td>
                     <td class= name >
                         <a  ng-show="lesson.isComplete && lesson.reportId !== '6026fa600000000000000000'" ng-class=" {'complete':!!lesson.isComplete}"  href="#!/public/lessons/reports/{{lesson.reportId}}/display"><i class="fa fa-bar-chart-o fa-lg"></i> </a>
                     </td>
+                    <td show-logged-in >{{ lesson.score }} </td> 
                     <td show-logged-in  ng-class="{'complete':!!lesson.isComplete}" >{{ lesson.dateCompleted |date:'medium'  }} </td>
                     <td show-logged-in >
                         <input ng-class="{'complete':!!lesson.isComplete}" type="checkbox" ng-checked="lesson.isComplete" ng-click="lessonIsDone(lesson)"/>

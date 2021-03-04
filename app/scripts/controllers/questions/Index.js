@@ -15,6 +15,7 @@ angular.module('lergoApp').controller('QuestionsIndexCtrl', function($scope, Que
 		showSubject : true,
 		showLanguage : true,
 		showAge : true,
+		showViews: true,
 		showSearchText : true,
 		showTags : true,
 		showCreatedBy : localStorageService.get('questionTypeToLoad') === $scope.QuestionTypeToLoad.all
