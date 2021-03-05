@@ -1,3 +1,4 @@
+lergo-ui reverting adding createdBy to liked lessons in lessons
 lergo-ui adding 8 features: playlist view order, filter by number of views choosing lessons and questions, adding 
 createdBy in lessons for playlist and lesson view, comment that report grade can change with open question, 
 title in playlist returns user to playlist intro, bold can be clicked off in fillInTheBlanks, edit playlist shows
