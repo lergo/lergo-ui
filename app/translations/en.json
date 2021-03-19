@@ -857,6 +857,7 @@
     "addLesson": "Add Lessons to Playlist",
     "create": "Create New Playlist",
     "createdOn": "created on",
+    "createPlaylistForLesson": "name a new playlist for this lesson",
     "description": "Playlist Description",
     "embedPlaylist": "Embed Playlist",
     "embedPlaylistTitle": "Copy the code below to embed playlist on your webpage or blog",
@@ -880,6 +881,8 @@
     "sharePlaylist": "Share Playlist",
     "sharePlaylistTitle": "Copy the link below to share playlist with friends.",
     "startPlaylist": "Start Playlist",
+    "save" : "Save",
+    "savedTo": "Saved to Favorites",
     "tooltip": {
       "copy": "Copy Playlist",
       "delete": "Delete Playlist",

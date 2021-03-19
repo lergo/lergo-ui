@@ -1,5 +1,5 @@
-<!-- this code is identical to lesson code with lesson / Lesson changed to playlist / Playlist -->
-<div> 
+<!-- this code is identical to playlistson code with playlistson / Lesson changed to playlist / Playlist -->
+<div>  
         <div id="playlistsIndex" load-filter-and-paging="loadPlaylists()">
             <br/>
                 <div class="container">
@@ -51,24 +51,24 @@
                                     <thead>
                                     <tr style="font-weight: bold">
                                         <td class="col1">{{ 'playlists.name' | translate }}</td>
-                                        <td>{{ 'admin.lessons' | translate}}</td>
+                                        <td>{{ 'admin.playlistsons' | translate}}</td>
                                         <td>{{ 'questions.subject' | translate}}</td>
                                         <td>{{ 'questions.age' | translate}}</td>
                                         <td>{{ 'questions.language' | translate}}</td>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat="les in playlists |orderBy:'-lastUpdate'">
+                                    <tr ng-repeat="playlist in playlists |orderBy:'-lastUpdate'">
                                         <td class="name" dir="auto">
-                                            <a ng-show="!!les.name && les.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'playlists.tooltip.go' | translate}}" ng-href="#!/user/playlists/{{les._id}}/intro">{{
-                                                les.name }}</a>
-                                            <a ng-show="!les.name || les.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'playlists.tooltip.go' | translate}}" ng-href="#!/user/playlists/{{les._id}}/intro">[
+                                            <a ng-show="!!playlist.name && playlist.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'playlists.tooltip.go' | translate}}" ng-href="#!/user/playlists/{{playlist._id}}/intro">{{
+                                                playlist.name }}</a>
+                                            <a ng-show="!playlist.name || playlist.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'playlists.tooltip.go' | translate}}" ng-href="#!/user/playlists/{{playlist._id}}/intro">[
                                                 no title ]</a>
                                         </td>
-                                        <td >{{les | countLessonsOnPlaylist}}</td>
-                                        <td >{{les.subject && ('filters.subjects.' + les.subject | translate) ||""}}</td> 
-                                        <td >{{les.age &&('+'+ les.age) || ""}}</td>
-                                        <td >{{les.language && ('filters.languages.' + les.language | translate) || ""}}</td>
+                                        <td >{{playlist | countLessonsOnPlaylist}}</td>
+                                        <td >{{playlist.subject && ('filters.subjects.' + playlist.subject | translate) ||""}}</td> 
+                                        <td >{{playlist.age &&('+'+ playlist.age) || ""}}</td>
+                                        <td >{{playlist.language && ('filters.languages.' + playlist.language | translate) || ""}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

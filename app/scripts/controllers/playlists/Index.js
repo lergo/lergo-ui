@@ -31,7 +31,7 @@ angular.module('lergoApp').controller('PlaylistsIndexCtrl', function($scope, $lo
 	};
 
 	$scope.loadPlaylists = function() {
-		$log.info('loading playlists');
+		$log.info('loading playlists..');
 
 		var queryObj = {
 			'filter' : _.merge({}, $scope.playlistsFilter),

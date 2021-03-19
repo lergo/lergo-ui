@@ -25,6 +25,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         $scope.languages = LergoFilterService.languages;
         var savePlaylist = new ContinuousSave({
             'saveFn': function (value) {
+                $log.info('update playlist database');
                 return LergoClient.playlists.update(value);
             }
         });
@@ -34,6 +35,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         };
 
         $scope.$watch(function () {
+            //console.log('while we are saving, lets see the savePlaylist.getStatus() ', savePlaylist.getStatus());
             return savePlaylist.getStatus();
         }, function (newValue) {
             $scope.saveStatus = newValue;
@@ -59,6 +61,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
         }
 
         function addItemToQuiz(item, step) {
+            $log.info('adding lesson to playlist');
             step.lessonItems = step.lessonItems || [];
             if (step.lessonItems.indexOf(item._id) < 0) {
                 if (!$scope.playlist.subject) {
@@ -405,7 +408,7 @@ angular.module('lergoApp').controller('PlaylistsUpdateCtrl',
                 });
             }
         };
-
+        // This code, which should be to create a new lesson for playlist is not used.
         $scope.addCreateQuestion = function (step) {
             $scope.addQuestionBtnDisable = true;
             QuestionsService.createQuestion({

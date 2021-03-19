@@ -70,6 +70,7 @@
     "emailSent": "אמייל נשלח",
     "flaggedLesson": "דוחות של שיעורים מדווחים",
     "lessonName": "שם שיעור",
+    "lessons": "מס' שיעורים",
     "makePrivate": "לא לפרסם",
     "makePublic": "לפרסם",
     "public": "פורסם",
@@ -187,7 +188,7 @@
   },
   "cancel": "לסגור",
   "changePassword": {
-    "error": "הייתה בעיה בשינוי הסיסמה",
+    "error": "בעיה בשינוי הסיסמה: אישור הסיסמה לא תואם את הסיסמה החדשה - נא לנסות שוב.",
     "signup": "הצטרפות",
     "success": "הסיסמה שונתה בהצלחה"
   },
@@ -551,7 +552,6 @@
       },
       "title": "תרגול טעויות של: "
     },
-    "score": "% נכון",
     "Preview": {
       "header": {
         "title": "הצצה מקדימה (2)"
@@ -575,6 +575,9 @@
     }
   },
   "lessons": {
+    "add": {
+      "emptySelection": "לא סומנו שיעורים - כדי להוסיף שיעורים לפלייליסט יש לסמן אותם קודם."
+    },
     "addAdminComment": "הוספת הערות עורך",
     "addAdminCommentPlaceholder": "כאן אפשר להוסיף הערות כטקסט חופשי.",
     "addCoverPage": "הוספת תמונת שער לשיעור",
@@ -587,7 +590,7 @@
     "available": "שיעורים זמינים",
     "by": "נוצר ע\"י",
     "comment": "תגובות",
-    "completeDate": "הושלם ב",
+    "completeDate": "הושלם  ב",
     "continueLesson": "המשך שיעור",
     "copiedFrom": "השיעור הועתק מ",
     "create": "ליצירת שיעור חדש",
@@ -835,7 +838,9 @@
       "preview": {
         "title": "הצצה"
       }
-    }
+    },
+    "copiedFromPlaylist": "הפלייליסט הועתק במקור מהפלייליסט ",
+    "copiedFromPlaylistBy": "שהוכן ע\"י"
   },
   "playlistPreview": {
     "detailHeader": "הצצה לשיעורים שבפלייליסט",
@@ -850,6 +855,7 @@
     "addLesson": "הוספת שיעורים לפלייליסט",
     "create": "ליצירת פלייליסט חדש",
     "createdOn": "נוצר ב",
+    "createPlaylistForLesson": "צור רשימת השמעה חדשה",
     "description": "תיאור פלייליסט",
     "embedPlaylist": "להטמיע פלייליסט",
     "embedPlaylistTitle": "נא להעתיק את הקוד להלן כדי להטמיע את הפלייליסט באתר או בבלוג שלך.",
@@ -870,6 +876,8 @@
     "recommenedNextPlaylistText": "נא להזין את הקישור לפייליסט המתאים בלרגו (הקישור מכפתור \"שיתוף\").",
     "recommenedPriorPlaylist": "הפלייליסט המומלץ הקודם",
     "recommenedPriorPlaylistText": "נא להזין את הקישור לפייליסט המתאים בלרגו (הקישור מכפתור \"שיתוף\").",
+    "save": "לשמור",
+    "savedTo": "נשמר למועדפים",
     "sharePlaylist": "לשתף בפלייליסט",
     "sharePlaylistTitle": "נא להעתיק את הקישור כדי לשתף את הפלייליסט עם חברים.",
     "startPlaylist": "התחלת פלייליסט",
@@ -1117,7 +1125,6 @@
       "individualReports": "לדוחות תלמידים"
     },
     "incomplete": "לא הושלם",
-    "link": "דוח שיעור",
     "lessonsInQuiz": {
       "other": "שיעורים בפלייליסט"
     },
@@ -1142,6 +1149,7 @@
       }
     },
     "lessonSteps": "שלבי השיעור",
+    "link": "דוח שיעור",
     "missing": {
       "info": "חסר מידע"
     },
@@ -1195,6 +1203,7 @@
     "correctPercentage": "% נכון",
     "duration": "משך",
     "filter": "לסינון הדוחות",
+    "hasOpenQuestion": "ייתכן  ש % נכון אינו סופי כי יש בחידון שאלות פתוחות.",
     "header": {
       "className": "דוח כיתה"
     },

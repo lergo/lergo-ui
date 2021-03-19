@@ -177,3 +177,28 @@
     }
 }
 
+.playlist-addLesson-dialog .modal-dialog {
+   width:25%;
+    //min-width: 320px;
+    min-height: 600%;
+    .modal-content {
+        .modal-header{
+            padding: 0px;
+        }
+        .modal-body {
+            height: 400px;
+            overflow-y: auto;
+        }
+        .modal-footer {
+            padding: 5px 15px;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .playlist-addLesson-dialog .modal-dialog .modal-content .modal-body {
+        padding-left: 30px;
+        padding-right: 30px
+    }
+}
+

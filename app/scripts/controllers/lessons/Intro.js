@@ -110,6 +110,30 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
             });
         };
 
+        $scope.addToPlaylist = function () {
+            // persistScroll();
+            $scope.likeLesson();
+            var modelContent = {};
+            $scope.lesson.showAddToPlaylist = true;
+            modelContent.templateUrl = 'views/playlists/addLesson.html';
+            modelContent.windowClass = 'playlist-addLesson-dialog ' + LergoTranslate.getDirection();
+            modelContent.backdrop = 'static';
+            modelContent.controller = 'PlaylistsAddLessonCtrl';
+            modelContent.resolve = {
+                lesson: function () {
+                    return $scope.lesson;
+                }
+
+                
+            };
+            var modelInstance = $uibModal.open(modelContent);
+            modelInstance.result.then(function () {
+                //   scrollToPersistPosition();
+            }, function () {
+                //  scrollToPersistPosition();
+            });
+        };
+
         $scope.preview = function () {
             redirectToPreview();
         };
@@ -364,5 +388,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
                 $location.path('/errors/notFound');
             }
         });
+
+        
 
     });

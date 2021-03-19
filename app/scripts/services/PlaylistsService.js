@@ -9,6 +9,11 @@ angular.module('lergoApp').service('PlaylistsService',
             return $http.post('/backend/playlists/create');
         };
 
+        this.createToAddLesson = function (playlist) {
+            console.log(' saving this playlist: ',playlist);
+            return $http.post('/backend/playlists/createToAddlesson', playlist);
+        };
+
         // will get all playlists - including private.
         // if user not allowed, will return 400.
         // to get user's playlists, use UserDataService
