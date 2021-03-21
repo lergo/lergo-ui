@@ -857,10 +857,12 @@
     "addLesson": "Add Lessons to Playlist",
     "create": "Create New Playlist",
     "createdOn": "created on",
-    "createPlaylistForLesson": "name a new playlist for this lesson",
+    "createOnly": "CREATE",
+    "createPlaylistForLesson": "Enter playlist name",
     "description": "Playlist Description",
     "embedPlaylist": "Embed Playlist",
     "embedPlaylistTitle": "Copy the code below to embed playlist on your webpage or blog",
+    "enterName": "Name",
     "error": {
       "invalidName": "Playlist name is a required field. "
     },
@@ -883,6 +885,7 @@
     "startPlaylist": "Start Playlist",
     "save" : "Save",
     "savedTo": "Saved to Favorites",
+    "saveToPlaylists": "Save to Playlists",
     "tooltip": {
       "copy": "Copy Playlist",
       "delete": "Delete Playlist",

@@ -1,11 +1,15 @@
-<div class="modal-header text-right"> 
+<div class="modal-header "> 
     <!-- I don't know how to get playlist to load without this filter code -->
-    <div class="hidden-md hidden-lg hidden-sm hidden-xs">
+    <div ng-show="false">
         <div lergo-filter   model="playlistsFilter" on-change="loadPlaylists()" opts="playlistsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
     </div>
-    <button class="btn btn-link btn-lg btn-close-preview" type="button" ng-click="cancel()">
-        <i class="fa fa-close"></i>
-    </button>
+    <div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 35px; padding:0px 30px">{{'playlists.add' | translate}}</div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
+            <button class="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-link btn-lg btn-close-preview" style="padding-top: 30px; padding-bottom: 5px; " type="button" ng-click="cancel()">
+                <i class="fa fa-close"></i>
+            </button>
+    </div>
 </div>
 <div class="modal-body" id="modal-body">
     <div id="playlistsIndex" load-filter-and-paging="loadPlaylists()">
@@ -30,23 +34,19 @@
             <div class="table-responsive"style="border: 1px solid #FAFAFA"> 
                 <table class="table   " ng-show="playlists.length > 0">
                     <thead>
-                        <tr>
-                            <td class="col1">{{ 'playlists.name' | translate }}</td>
-                            <td>{{'playlists.add' | translate}}</td>
-                        </tr>
                         <tr ng-show='addNewPlaylistVisible && lesson.showAddToPlaylist'>
-                            <td>{{'playlists.savedTo' | translate}}</td>
                             <td><input type="checkbox" ng-click="changeLikeStatus()" ng-model="lesson.AddedToFavorite" class="ng-pristine ng-valid ng-empty ng-touched"></td>
+                            <td>{{'playlists.savedTo' | translate}}</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="playlist in playlists |orderBy:'-lastUpdate'">
-                            <td class="name" dir="auto">
-                                <a ng-show="!playlist.name || playlist.name.trim().length <= 0" tooltip-placement="bottom" uib-tooltip="{{'playlists.tooltip.go' | translate}}" ng-href="#!/user/playlists/{{playlist._id}}/intro">[no title ]</a>                  
-                                <a ng-class="{'disabled':!!playlist.alreadyAdded}" ng-show="!!playlist.name && playlist.name.trim().length > 0" tooltip-placement="bottom" uib-tooltip="{{'playlists.tooltip.go' | translate}}" ng-href="#!/user/playlists/{{playlist._id}}/intro">{{playlist.name }}</a>   
+                            <td>
+                                <input ng-disabled="changeSavedToPlaylistDisabled" type="checkbox" ng-click="changeSavedToPlaylist(playlist)" ng-model="playlist.selected" class="ng-pristine ng-valid ng-empty ng-touched">
                             </td>
                             <td>
-                                <input ng-disabled="!!playlist.alreadyAdded" type="checkbox" ng-model="playlist.selected" class="ng-pristine ng-valid ng-empty ng-touched">
+                                <a  style="color:#333333" ng-show="!playlist.name || playlist.name.trim().length <= 0" >[no title ]</a>                  
+                                <a  style="color:#333333" ng-show="!!playlist.name && playlist.name.trim().length > 0" >{{playlist.name }}</a>   
                             </td>
                         </tr>
                     </tbody>
@@ -55,34 +55,34 @@
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
             <div class="page-content-body text-center" ng-hide="!!playlists || playlists.length != 0">
                 <span class="alert alert-warning font-medium" >{{'playlists.noPlaylists' | translate}}</span>
-            </div>
-            <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadPlaylists()" on-load="pagingLoaded()"></div>
+            </div >
+            <div ng-show="false" lergo-paging class="textAlignCenter" page="filterPage" on-change="loadPlaylists()" on-load="pagingLoaded()"></div>
         </div>
     </div>
 </div>
 <div class="clearfix">
-        <div class="modal-footer col-lg-4 col-md-6 col-sm-12 col-xs-12" >
-            <button style="margin-left: 15px; margin-right: 15px"  class="btn small-btn" ng-click="addLessonBtnDisable || addLessonToPlaylist()"
-                    ng-disabled="addLessonBtnDisable">
-                <i ng-show="addLessonBtnDisable" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
-                {{'playlists.save' | translate }}
-            </button>
-        </div>
         <div>
-            <div class="collapsible modal-footer col-lg-8 col-md-6 col-sm-12 col-xs-12" >
-                <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed">
-                <i class="fa" ng-class="{'fa-plus-square':summaryCollapsed,'fa-minus-square':!summaryCollapsed}">
+            <div style="padding: 20px 30px" class="collapsible modal-footer" >
+                <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed" >
+                <i class="fa" ng-class="{'fa-plus':summaryCollapsed,'fa-minus':!summaryCollapsed}">
                 </i>
                 {{'playlists.create'|translate}} 
             </a>
             </div>
         </div>
         <div uib-collapse="!!summaryCollapsed">
-            &nbsp
-            <div style="text-align: center; ">
-                <input style="font-size: 18px; padding: 5px 15px;" type="text" placeholder="{{'playlists.createPlaylistForLesson' |translate }}" ng-model="newPlaylist.name" on-enter="createPlaylistWhenSavingLesson()" class="ng-pristine ng-valid ng-empty ng-touched">
+
+            <div style="padding: 0px 20px">
+                <label style="padding:5px 4px">{{'playlists.enterName' | translate}}</label>
+                <input id="enterNameToPlaylist" style="display: block; font-size: 16px; padding: 5px 4px; border-bottom: 1px solid black; border-top: 2px; border-left: 2px;border-right: 2px;" type="text" placeholder="{{'playlists.createPlaylistForLesson' |translate }}" ng-model="newPlaylist.name" on-enter="createPlaylistWhenSavingLesson()" class="ng-pristine ng-valid ng-empty ng-touched" >
             </div>
-            &nbsp
+
+            &nbsp;
+            &nbsp;
+            <button  class=" btn small-btn" style="margin: 15px 5px;" ng-click="createPlaylistWhenSavingLesson()">{{'playlists.createOnly' | translate}}</button>
+            &nbsp;
+            &nbsp;
+
     
     <!-- <div class="modal-footer col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <button class="btn small-btn" ng-click="cancel()">{{'cancel' |translate}}</button>

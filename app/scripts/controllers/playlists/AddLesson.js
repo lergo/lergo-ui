@@ -1,6 +1,6 @@
 
 'use strict';
-function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoClient, $location, $rootScope, $window, localStorageService) {
+function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoClient, $location, $rootScope, $window, localStorageService, $timeout) {
 	$scope.lesson = lesson;
 	$scope.summaryCollapsed = true;
 
@@ -45,7 +45,8 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 				'lastUpdate' : -1
 			},
 			'dollar_page' : $scope.filterPage
-        };
+		};
+		$scope.filterPage.size = 100;  // we don't want pagination 
 		$scope.playlistToLoad = localStorageService.get('playlistToLoad');
 		var getPlaylistsPromise = null;
 		if ($scope.playlistToLoad === $scope.PlaylistTypeToLoad.liked) {
@@ -54,16 +55,16 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 			getPlaylistsPromise = LergoClient.userData.getPlaylists(queryObj);
 			$scope.playlistToLoad = $scope.PlaylistTypeToLoad.user;
 		}
-
 		getPlaylistsPromise.then(function(result) {
             $scope.playlists = result.data.data;
             angular.forEach($scope.playlists, function(playlist) {
-                playlist.alreadyAdded = false;
-                var lessonsArray =  playlist.steps[0].lessonItems;
+				// playlist.alreadyAdded = false;
+				playlist.selected = false;
+				var lessonsArray =  playlist.steps[0].lessonItems;
                 angular.forEach(lessonsArray, function( lesson ) {
                     if (lesson === $scope.lesson._id) {
-                       
-                        playlist.alreadyAdded = true;
+						// playlist.alreadyAdded = true;
+						playlist.selected = true;
                     }
                 });
             });
@@ -80,6 +81,8 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 			$log.error($scope.errorMessage);
 		});
 	};
+	
+
 	$scope.addNewPlaylistVisible = true;
 	$scope.lesson.AddedToFavorite = true;
 	$scope.createPlaylistWhenSavingLesson = function() {
@@ -101,12 +104,11 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 			]
 		}).then(function (result) {
 			$scope.errorMessage = null;
-			console.log('need to place the name input here', result);
-			//openLessonDialog(step, result.data, false);
+			$log.debug(result.data.message);
 			$scope.createPlaylistBtnDisable = false;
 		}, function (result) {
 			$scope.error = result.data;
-			$scope.errorMessage = 'Error in creating questions : ' + result.data.message;
+			$scope.errorMessage = 'Error in creating playlist : ' + result.data.message;
 			$log.error($scope.errorMessage);
 			$scope.createPlaylistBtnDisable = false;
 		});
@@ -126,20 +128,6 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 		}
 	};
 
-	// $scope.likeLesson = function () {
-	// 	$log.info('liking lesson');
-	// 	LergoClient.likes.likeLesson($scope.lesson).then(function (result) {
-	// 		$scope.lessonLike = result.data;
-	// 	});
-	// };
-
-	// $scope.unlikeLesson = function () {
-	// 	$log.info('unliking lesson');
-	// 	LergoClient.likes.deleteLessonLike($scope.lesson).then(function () {
-	// 		$scope.lessonLike = null;
-	// 	});
-	// };
-
 	var path = $location.path();
 	$scope.$on('$locationChangeStart', function() {
 		persistScroll($scope.filterPage.current);
@@ -151,6 +139,14 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 			persistScroll(oldValue);
 		}
 	});
+
+	function removeItemOnce(arr, value) {
+		var index = arr.indexOf(value);
+		if (index > -1) {
+		    arr.splice(index, 1);
+		}
+		return arr;
+	}
 	function persistScroll(pageNumber) {
 		if (!$rootScope.scrollPosition) {
 			$rootScope.scrollPosition = {};
@@ -170,26 +166,37 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 			return $scope.lessonItemsData[item].name;
 		}
 		return null;
-    };
-
-    
-    $scope.addLessonToPlaylist = function() {
-        $log.info('lesson added to playlist');
-            // lessons should be added in the ascending order of data e.g lesson created first should come first
-        $scope.selectedPlaylist = _.sortBy(_.filter($scope.playlists, 'selected'),'lastUpdate');
-        angular.forEach($scope.selectedPlaylist, function(playlist) {
-            playlist.steps[0].lessonItems.push(lesson._id);
-            LergoClient.playlists.update(playlist);
-            playlist.selected = false;
-            playlist.alreadyAdded = true;
-        });
-        if ($scope.selectedPlaylist.length > 0  ) {
-            $scope.cancel();
+	};
+	$scope.changeSavedToPlaylist = function(playlist) {
+		$scope.changeSavedToPlaylistDisabled = true;
+		if (playlist.selected) {
+			playlist.steps[0].lessonItems.push(lesson._id);
+			toastr.success('lesson added to playlist');
+			$log.info('adding lesson to playlist');
+		} else {
+			removeItemOnce(playlist.steps[0].lessonItems, lesson._id);
+			toastr.success('lesson removed from playlist');
+			$log.info('lesson removed from playlist');
+		}
+		LergoClient.playlists.update(playlist).then(function() {
+			$scope.changeSavedToPlaylistDisabled = false;
+		});
+	};
+	// autofocus not working properly in control of partial view when added
+    // through ngInclude this is a hook to get the desired behaviour
+    function focusOn(id) {
+        var element = document.getElementById(id);
+        if (!!element) {
+			$timeout(function() {
+				element.focus();
+			});
         }
-    };
-
+	}
+	$scope.$watch('summaryCollapsed', function() {
+			focusOn('enterNameToPlaylist');
+		});
 
 }
 
 
-angular.module('lergoApp').controller('PlaylistsAddLessonCtrl', ['$scope', 'lesson','$uibModalInstance', '$log', 'LergoClient', '$location', '$rootScope', '$window', 'localStorageService',playlistsAddlessonctrl]);
+angular.module('lergoApp').controller('PlaylistsAddLessonCtrl', ['$scope', 'lesson','$uibModalInstance', '$log', 'LergoClient', '$location', '$rootScope', '$window', 'localStorageService', '$timeout',playlistsAddlessonctrl]);

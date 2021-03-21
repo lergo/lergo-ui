@@ -855,10 +855,12 @@
     "addLesson": "הוספת שיעורים לפלייליסט",
     "create": "ליצירת פלייליסט חדש",
     "createdOn": "נוצר ב",
-    "createPlaylistForLesson": "צור רשימת השמעה חדשה",
+    "createOnly": "לִיצוֹר",
+    "createPlaylistForLesson": " הזן את שם הפלייליסט  ",
     "description": "תיאור פלייליסט",
     "embedPlaylist": "להטמיע פלייליסט",
     "embedPlaylistTitle": "נא להעתיק את הקוד להלן כדי להטמיע את הפלייליסט באתר או בבלוג שלך.",
+    "enterName": "שם",
     "error": {
       "invalidName": "שם לפלייססט הוא שדה דרוש. "
     },
@@ -878,6 +880,7 @@
     "recommenedPriorPlaylistText": "נא להזין את הקישור לפייליסט המתאים בלרגו (הקישור מכפתור \"שיתוף\").",
     "save": "לשמור",
     "savedTo": "נשמר למועדפים",
+    "saveToPlaylists": "שמור בפלייליסטים",
     "sharePlaylist": "לשתף בפלייליסט",
     "sharePlaylistTitle": "נא להעתיק את הקישור כדי לשתף את הפלייליסט עם חברים.",
     "startPlaylist": "התחלת פלייליסט",
