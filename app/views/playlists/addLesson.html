@@ -4,11 +4,11 @@
         <div lergo-filter   model="playlistsFilter" on-change="loadPlaylists()" opts="playlistsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
     </div>
     <div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 35px; padding:0px 30px">{{'playlists.add' | translate}}</div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
-            <button class="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-link btn-lg btn-close-preview" style="padding-top: 30px; padding-bottom: 5px; " type="button" ng-click="cancel()">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 playlistAdd-add">{{'playlists.add' | translate}}</div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
+        <button class="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-link btn-lg" type="button" ng-click="cancel()">
                 <i class="fa fa-close"></i>
-            </button>
+        </button>
     </div>
 </div>
 <div class="modal-body" id="modal-body">
@@ -22,8 +22,8 @@
                     </button>
                     <ul class="dropdown-menu overidePositionInherit" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
                         <li>
-                            <a class="btn-link" style="outline: none;" ng-click="load(PlaylistTypeToLoad.user)">{{'playlists.myPlaylists'|translate}}</a>
-                            <a class="btn-link" style="outline: none;" ng-click="load(PlaylistTypeToLoad.liked)">{{'playlists.likedPlaylists'|translate}}</a>
+                            <a class="btn-link playlistAdd-no-outline" ng-click="load(PlaylistTypeToLoad.user)">{{'playlists.myPlaylists'|translate}}</a>
+                            <a class="btn-link playlistAdd-no-outline"  ng-click="load(PlaylistTypeToLoad.liked)">{{'playlists.likedPlaylists'|translate}}</a>
                         </li>                                        
                     </ul>
                 </div>[ {{ 'playlists.total' | translate }}: {{filterPage.count}} ]</div>
@@ -31,7 +31,7 @@
             <div class=" hidden-sm hidden-xs">
                 <!-- <div filter-is-active="playlistsFilterOpts" section="playlists"></div> -->
             </div>
-            <div class="table-responsive"style="border: 1px solid #FAFAFA"> 
+            <div class="table-responsive playlistAdd-table-border" > 
                 <table class="table   " ng-show="playlists.length > 0">
                     <thead>
                         <tr ng-show='addNewPlaylistVisible && lesson.showAddToPlaylist'>
@@ -45,8 +45,8 @@
                                 <input ng-disabled="changeSavedToPlaylistDisabled" type="checkbox" ng-click="changeSavedToPlaylist(playlist)" ng-model="playlist.selected" class="ng-pristine ng-valid ng-empty ng-touched">
                             </td>
                             <td>
-                                <a  style="color:#333333" ng-show="!playlist.name || playlist.name.trim().length <= 0" >[no title ]</a>                  
-                                <a  style="color:#333333" ng-show="!!playlist.name && playlist.name.trim().length > 0" >{{playlist.name }}</a>   
+                                <a class="playlistAdd-color"  ng-show="!playlist.name || playlist.name.trim().length <= 0" >[no title ]</a>                  
+                                <a class="playlistAdd-color"  ng-show="!!playlist.name && playlist.name.trim().length > 0" >{{playlist.name }}</a>   
                             </td>
                         </tr>
                     </tbody>
@@ -62,7 +62,7 @@
 </div>
 <div class="clearfix">
         <div>
-            <div style="padding: 20px 30px" class="collapsible modal-footer" >
+            <div class="collapsible modal-footer" >
                 <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed" >
                 <i class="fa" ng-class="{'fa-plus':summaryCollapsed,'fa-minus':!summaryCollapsed}">
                 </i>
@@ -71,15 +71,14 @@
             </div>
         </div>
         <div uib-collapse="!!summaryCollapsed">
-
-            <div style="padding: 0px 20px">
-                <label style="padding:5px 4px">{{'playlists.enterName' | translate}}</label>
-                <input id="enterNameToPlaylist" style="display: block; font-size: 16px; padding: 5px 4px; border-bottom: 1px solid black; border-top: 2px; border-left: 2px;border-right: 2px;" type="text" placeholder="{{'playlists.createPlaylistForLesson' |translate }}" ng-model="newPlaylist.name" on-enter="createPlaylistWhenSavingLesson()" class="ng-pristine ng-valid ng-empty ng-touched" >
+            <div class = "playlistAdd-summaryCollapsed">
+                <label>{{'playlists.enterName' | translate}}</label>
+                <input class="ng-pristine ng-valid ng-empty ng-touched" id="enterNameToPlaylist" type="text" placeholder="{{'playlists.createPlaylistForLesson' |translate }}" ng-model="newPlaylist.name" on-enter="createPlaylistWhenSavingLesson()"  >
             </div>
 
             &nbsp;
             &nbsp;
-            <button  class=" btn small-btn" style="margin: 15px 5px;" ng-click="createPlaylistWhenSavingLesson()">{{'playlists.createOnly' | translate}}</button>
+            <button  class=" btn small-btn playlistAdd-button" ng-click="createPlaylistWhenSavingLesson()">{{'playlists.createOnly' | translate}}</button>
             &nbsp;
             &nbsp;
 

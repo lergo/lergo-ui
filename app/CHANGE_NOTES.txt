@@ -1,3 +1,4 @@
+lergo-ui moving styles to scss
 lergo ui implementing all the feedback from 'Build 19-March-2021'
 lergo-ui and lergo-ri adding add to playlist from lesson intro
 lergo-ui reverting adding createdBy to liked lessons in lessons

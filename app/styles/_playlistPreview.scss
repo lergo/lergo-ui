@@ -184,16 +184,56 @@
     .modal-content {
         .modal-header{
             padding: 0px;
+            button {
+                padding-top: 30px;
+                padding-bottom: 5px; 
+            }
         }
         .modal-body {
             height: 375px;
             overflow-y: auto;
         }
         .modal-footer {
-            padding: 5px 15px;
+            padding: 15px 30px;
         }
     }
 }
+.playlistAdd-add {
+    margin-top: 35px; 
+    padding:0px 30px
+}
+
+.playlistAdd-no-outline {
+    outline: none;
+}
+.playlistAdd-table-border {
+    border: 1px solid #FAFAFA;
+}
+.playlistAdd-color {
+    color:#333333;
+}
+.playlistAdd-collapsable {
+    padding: 20px 30px
+}
+.playlistAdd-summaryCollapsed {
+    padding: 0px 20px;
+    input {
+        display: block; 
+        font-size: 16px; 
+        padding: 5px 4px; 
+        border-bottom: 1px solid black; 
+        border-top: 2px; 
+        border-left: 2px;
+        border-right: 2px; 
+    }
+    label {
+        padding:5px 4px
+    }
+}
+.playlistAdd-button {
+    margin: 15px 5px;
+}
+
 
 @media screen and (min-width: 1024px) {
     .playlist-addLesson-dialog .modal-dialog .modal-content .modal-body {
