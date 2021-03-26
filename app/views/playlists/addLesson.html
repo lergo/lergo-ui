@@ -1,14 +1,12 @@
-<div class="modal-header "> 
-    <!-- I don't know how to get playlist to load without this filter code -->
-    <div ng-show="false">
-        <div lergo-filter   model="playlistsFilter" on-change="loadPlaylists()" opts="playlistsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
-    </div>
-    <div>
+<div class="modal-header ">  
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 playlistAdd-add">{{'playlists.add' | translate}}</div>
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
         <button class="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-link btn-lg" type="button" ng-click="cancel()">
                 <i class="fa fa-close"></i>
         </button>
+    <!-- I don't know how to get playlist to load without this filter code -->
+    <div ng-show="false">
+        <div lergo-filter   model="playlistsFilter" on-change="loadPlaylists()" opts="playlistsFilterOpts" on-load="filterLoaded()" is-active="filterIsActive"></div>
     </div>
 </div>
 <div class="modal-body" id="modal-body">
@@ -61,14 +59,16 @@
     </div>
 </div>
 <div class="clearfix">
-        <div>
             <div class="collapsible modal-footer" >
-                <a href="" class="no-underline" ng-click="summaryCollapsed=!summaryCollapsed" >
-                <i class="fa" ng-class="{'fa-plus':summaryCollapsed,'fa-minus':!summaryCollapsed}">
-                </i>
-                {{'playlists.create'|translate}} 
-            </a>
-            </div>
+                <a href="" class="no-underline  col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-click="summaryCollapsed=!summaryCollapsed" >
+                    <i class="fa" ng-class="{'fa-plus':summaryCollapsed,'fa-minus':!summaryCollapsed}">
+                    </i>
+                    {{'playlists.create'|translate}} 
+                </a>
+            
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>   
+            <button  class="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn medium-btn" ng-click="cancel()">{{'cancel' |translate}}</button>
+        </div>
         </div>
         <div uib-collapse="!!summaryCollapsed">
             <div class = "playlistAdd-summaryCollapsed">
@@ -78,14 +78,14 @@
 
             &nbsp;
             &nbsp;
-            <button  class=" btn small-btn playlistAdd-button" ng-click="createPlaylistWhenSavingLesson()">{{'playlists.createOnly' | translate}}</button>
+            <button  class=" btn medium-btn playlistAdd-button" ng-click="createPlaylistWhenSavingLesson()">{{'playlists.createOnly' | translate}}</button>
             &nbsp;
             &nbsp;
 
     
     <!-- <div class="modal-footer col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <button class="btn small-btn" ng-click="cancel()">{{'cancel' |translate}}</button>
-    </div>-->
+    </div> -->
     </div>
 </div>
 

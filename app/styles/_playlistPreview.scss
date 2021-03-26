@@ -179,13 +179,14 @@
 
 .playlist-addLesson-dialog .modal-dialog {
    width:30%;
-    //min-width: 320px;
+    min-width: 320px;
     min-height: 600%;
     .modal-content {
         .modal-header{
+            min-height: 50px;
             padding: 0px;
             button {
-                padding-top: 30px;
+                padding-top: 15px;
                 padding-bottom: 5px; 
             }
         }
@@ -195,11 +196,18 @@
         }
         .modal-footer {
             padding: 15px 30px;
+            // button {
+            //     font-size: 18px;
+            // }
+            a {
+                padding-bottom: 5px;
+                padding-top: 2px;
+            }
         }
     }
 }
 .playlistAdd-add {
-    margin-top: 35px; 
+    margin-top: 18px; 
     padding:0px 30px
 }
 

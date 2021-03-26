@@ -117,12 +117,14 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 	$scope.changeLikeStatus = function() {
 		if ($scope.lesson.AddedToFavorite) {
 			LergoClient.likes.likeLesson($scope.lesson).then(function (result) {
+				toastr.success('lesson added to Liked Lessons');
 				$log.info('liking lesson');
 				$scope.lessonLike = result.data;
 			});
 		} else {
 			LergoClient.likes.deleteLessonLike($scope.lesson).then(function () {
 				$log.info('unliking lesson');
+				toastr.success('lesson removed from Liked Lessons');
 				$scope.lessonLike = null;
 			});
 		}
