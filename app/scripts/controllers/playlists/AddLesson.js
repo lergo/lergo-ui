@@ -7,34 +7,12 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
     $scope.cancel = function () {
         $uibModalInstance.dismiss();
     };
-    $scope.PlaylistTypeToLoad = {
-		user : 'myPlaylists',
-		liked : 'likedPlaylists'
-	};
 	$scope.playlistsFilter = {};
 	$scope.filterPage = {};
 	$scope.totalResults = 0;
     $scope.playlistsFilterOpts = { };
-    // {
-	// 	'showSubject' : true,
-	// 	'showLanguage' : true,
-	// 	'showAge' : true,
-	// 	'showViews' : true,
-	// 	'showTags' : true,
-	// 	'showSearchText' : true
-	// };
  
 	$scope.playlistToShow = $scope.playlists;
-
- 
-	$scope.load = function(playlistToLoad) {
-		var oldValue = localStorageService.get('playlistToLoad');
-		if (oldValue !== playlistToLoad) {
-			localStorageService.set('playlistToLoad', playlistToLoad);
-			$scope.filterPage.current = 1;
-			$scope.filterPage.updatedLast = new Date().getTime();
-		}
-	};
 
 	$scope.loadPlaylists = function() {
 		$log.info('loading playlists..');
@@ -47,14 +25,9 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 			'dollar_page' : $scope.filterPage
 		};
 		$scope.filterPage.size = 100;  // we don't want pagination 
-		$scope.playlistToLoad = localStorageService.get('playlistToLoad');
 		var getPlaylistsPromise = null;
-		if ($scope.playlistToLoad === $scope.PlaylistTypeToLoad.liked) {
-			getPlaylistsPromise = LergoClient.userData.getLikedPlaylists(queryObj);
-		} else {
-			getPlaylistsPromise = LergoClient.userData.getPlaylists(queryObj);
-			$scope.playlistToLoad = $scope.PlaylistTypeToLoad.user;
-		}
+		getPlaylistsPromise = LergoClient.userData.getPlaylists(queryObj);
+		$scope.playlistToLoad = $scope.myPlaylists;
 		getPlaylistsPromise.then(function(result) {
             $scope.playlists = result.data.data;
             angular.forEach($scope.playlists, function(playlist) {
@@ -120,12 +93,18 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 				toastr.success('lesson added to Liked Lessons');
 				$log.info('liking lesson');
 				$scope.lessonLike = result.data;
+			}, function(error){
+				$log.error(error.data);
+				toastr.error('error liking lesson');
 			});
 		} else {
 			LergoClient.likes.deleteLessonLike($scope.lesson).then(function () {
 				$log.info('unliking lesson');
 				toastr.success('lesson removed from Liked Lessons');
 				$scope.lessonLike = null;
+			}, function(error){
+				$log.error(error.data);
+				toastr.error('error unliking lesson');
 			});
 		}
 	};
@@ -169,20 +148,32 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 		}
 		return null;
 	};
+
 	$scope.changeSavedToPlaylist = function(playlist) {
 		$scope.changeSavedToPlaylistDisabled = true;
 		if (playlist.selected) {
 			playlist.steps[0].lessonItems.push(lesson._id);
-			toastr.success('lesson added to playlist');
-			$log.info('adding lesson to playlist');
+			LergoClient.playlists.update(playlist).then(function(result) {
+				$scope.changeSavedToPlaylistDisabled = false;
+				toastr.success('lesson added to playlist');
+				$log.info('adding lesson to playlist',result.statusText);
+			}, function(error){
+				$log.error(error.data);
+				toastr.error('error adding lesson to playlist');
+			});
+			
 		} else {
 			removeItemOnce(playlist.steps[0].lessonItems, lesson._id);
-			toastr.success('lesson removed from playlist');
-			$log.info('lesson removed from playlist');
+			LergoClient.playlists.update(playlist).then(function(result) {
+				$scope.changeSavedToPlaylistDisabled = false;
+				toastr.success('lesson removed from playlist');
+				$log.info('lesson removed from playlist',result.statusText);
+			}, function(error){
+				$log.error(error.data);
+				toastr.error('error removing lesson to playlist');
+			});
 		}
-		LergoClient.playlists.update(playlist).then(function() {
-			$scope.changeSavedToPlaylistDisabled = false;
-		});
+		
 	};
 	// autofocus not working properly in control of partial view when added
     // through ngInclude this is a hook to get the desired behaviour

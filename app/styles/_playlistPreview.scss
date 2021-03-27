@@ -196,16 +196,20 @@
         }
         .modal-footer {
             padding: 15px 30px;
-            // button {
-            //     font-size: 18px;
-            // }
+            button {
+                font-size:15px;
+                padding: 5px;
+                border-radius: 7px;
+                }
+            }
             a {
                 padding-bottom: 5px;
-                padding-top: 2px;
+                padding-top: 5px;
             }
+
         }
-    }
 }
+
 .playlistAdd-add {
     margin-top: 18px; 
     padding:0px 30px
@@ -240,6 +244,13 @@
 }
 .playlistAdd-button {
     margin: 15px 5px;
+    border-radius: 7px;
+    font-size: 14px;
+    padding: 5px;
+    &:hover {
+        padding: 5px;
+    }
+    
 }
 
 
@@ -249,4 +260,3 @@
         padding-right: 30px
     }
 }
-

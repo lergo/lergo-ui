@@ -243,14 +243,18 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
             $log.info('liking lesson');
             LergoClient.likes.likeLesson($scope.lesson).then(function (result) {
                 $scope.lessonLike = result.data;
-            });
+            }, function(error){
+				$log.error(error.data);
+			});
         };
 
         $scope.unlikeLesson = function () {
             $log.info('unliking lesson');
             LergoClient.likes.deleteLessonLike($scope.lesson).then(function () {
                 $scope.lessonLike = null;
-            });
+            }, function(error){
+				$log.error(error.data);
+			});
         };
 
         $scope.isLiked = function () {

@@ -446,12 +446,17 @@
                                             <div class="col-xs-3 col-like"> <!--5 - like-->
                                              <div class="action-item">
                                                   <div show-logged-in>
-                                                      <!-- <button class="btn-link" ng-click="likeLesson()"
+                                                    <button class="btn-link" ng-click="addToPlaylist()"
+                                                        uib-tooltip="{{'playlists.save' | translate}}">
+                                                        <i class="fas fa-list"></i>
+                                                        {{'playlists.save' | translate}}
+                                                    </button>
+                                                     <!-- <button class="btn-link" ng-click="likeLesson()"
                                                               uib-tooltip="{{'lessons.tooltip.like' | translate}}" ng-show="!isLiked()">
                                                           <i class="fa fa-heart-o "></i>
                                                           {{'like' | translate}}
-                                                      </button> -->
-                                                      <!-- <div class="btn-group" uib-dropdown ng-show="!!isLiked()">
+                                                      </button>
+                                                      <div class="btn-group" uib-dropdown ng-show="!!isLiked()">
                                                           <button class="btn-link" uib-dropdown-toggle>
                                                               <i class="fa fa-heart-o "></i>
                                                               {{'liked' | translate}}
@@ -463,8 +468,11 @@
                                                                       'unlike' | translate }}</a>
                                                               </li>
                                                           </ul>
-                                                      </div>
-                                                  </div> -->
+                                                      </div> -->
+
+
+
+                                                  </div>
                                                   <div show-anonymous>
                                                       <button class="btn-link popover-template-class"
                                                       uib-tooltip-template="'views/lessons/signupTemplates/likeSignupTemplate.html'"

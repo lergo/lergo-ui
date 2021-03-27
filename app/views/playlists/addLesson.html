@@ -1,7 +1,7 @@
 <div class="modal-header ">  
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 playlistAdd-add">{{'playlists.add' | translate}}</div>
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
-        <button class="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-link btn-lg" type="button" ng-click="cancel()">
+        <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 playlistAdd-add">{{'playlists.add' | translate}}</div>
+        <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1"></div>
+        <button class="col-lg-3 col-md-3 col-sm-3 col-xs-3 btn btn-link btn-lg" type="button" ng-click="cancel()">
                 <i class="fa fa-close"></i>
         </button>
     <!-- I don't know how to get playlist to load without this filter code -->
@@ -12,20 +12,6 @@
 <div class="modal-body" id="modal-body">
     <div id="playlistsIndex" load-filter-and-paging="loadPlaylists()">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" >
-            <div class="my-playlists lergo-h1" >
-                <div class="btn-group mobile-leftRight15" uib-dropdown dropdown-append-to-body>
-                    <button id="btn-append-to-body" type="button" class="btn-link" uib-dropdown-toggle style="color: #5fb9ff; text-decoration: none">
-                        <span class="fa fa-caret-down"></span>
-                        <span class="lergo-h1 d-padBot15">{{('playlists.'+ playlistToLoad |translate)}} </span>
-                    </button>
-                    <ul class="dropdown-menu overidePositionInherit" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
-                        <li>
-                            <a class="btn-link playlistAdd-no-outline" ng-click="load(PlaylistTypeToLoad.user)">{{'playlists.myPlaylists'|translate}}</a>
-                            <a class="btn-link playlistAdd-no-outline"  ng-click="load(PlaylistTypeToLoad.liked)">{{'playlists.likedPlaylists'|translate}}</a>
-                        </li>                                        
-                    </ul>
-                </div>[ {{ 'playlists.total' | translate }}: {{filterPage.count}} ]</div>
-            </div>
             <div class=" hidden-sm hidden-xs">
                 <!-- <div filter-is-active="playlistsFilterOpts" section="playlists"></div> -->
             </div>
@@ -60,14 +46,14 @@
 </div>
 <div class="clearfix">
             <div class="collapsible modal-footer" >
-                <a href="" class="no-underline  col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-click="summaryCollapsed=!summaryCollapsed" >
+                <a href="" class="no-underline  col-lg-6 col-md-6 col-sm-8 col-xs-8" ng-click="summaryCollapsed=!summaryCollapsed" >
                     <i class="fa" ng-class="{'fa-plus':summaryCollapsed,'fa-minus':!summaryCollapsed}">
                     </i>
                     {{'playlists.create'|translate}} 
                 </a>
             
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>   
-            <button  class="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn medium-btn" ng-click="cancel()">{{'cancel' |translate}}</button>
+            <div class="col-lg-4 col-md-4 col-sm-1 col-xs-1"></div>   
+            <button  class="col-lg-2 col-md-2 col-sm-3 col-xs-3 btn" ng-click="cancel()">{{'cancel' |translate}}</button>
         </div>
         </div>
         <div uib-collapse="!!summaryCollapsed">
@@ -75,17 +61,9 @@
                 <label>{{'playlists.enterName' | translate}}</label>
                 <input class="ng-pristine ng-valid ng-empty ng-touched" id="enterNameToPlaylist" type="text" placeholder="{{'playlists.createPlaylistForLesson' |translate }}" ng-model="newPlaylist.name" on-enter="createPlaylistWhenSavingLesson()"  >
             </div>
-
-            &nbsp;
-            &nbsp;
-            <button  class=" btn medium-btn playlistAdd-button" ng-click="createPlaylistWhenSavingLesson()">{{'playlists.createOnly' | translate}}</button>
-            &nbsp;
-            &nbsp;
-
-    
-    <!-- <div class="modal-footer col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <button class="btn small-btn" ng-click="cancel()">{{'cancel' |translate}}</button>
-    </div> -->
+            &nbsp;&nbsp;
+            <button class="btn btn-sm playlistAdd-button" ng-disabled="!newPlaylist.name" ng-click="createPlaylistWhenSavingLesson()">{{'playlists.createOnly' | translate}}</button>
+            &nbsp;&nbsp;
     </div>
 </div>
 
