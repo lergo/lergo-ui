@@ -90,21 +90,21 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 	$scope.changeLikeStatus = function() {
 		if ($scope.lesson.AddedToFavorite) {
 			LergoClient.likes.likeLesson($scope.lesson).then(function (result) {
-				toastr.success('lesson added to Liked Lessons');
+				toastr.success('Lesson added to Liked Lessons');
 				$log.info('liking lesson');
 				$scope.lessonLike = result.data;
 			}, function(error){
 				$log.error(error.data);
-				toastr.error('error liking lesson');
+				toastr.error('Error liking lesson');
 			});
 		} else {
 			LergoClient.likes.deleteLessonLike($scope.lesson).then(function () {
 				$log.info('unliking lesson');
-				toastr.success('lesson removed from Liked Lessons');
+				toastr.success('Lesson removed from Liked Lessons');
 				$scope.lessonLike = null;
 			}, function(error){
 				$log.error(error.data);
-				toastr.error('error unliking lesson');
+				toastr.error('Error unliking lesson');
 			});
 		}
 	};
@@ -155,22 +155,22 @@ function playlistsAddlessonctrl($scope, lesson,$uibModalInstance, $log, LergoCli
 			playlist.steps[0].lessonItems.push(lesson._id);
 			LergoClient.playlists.update(playlist).then(function(result) {
 				$scope.changeSavedToPlaylistDisabled = false;
-				toastr.success('lesson added to playlist');
+				toastr.success('Lesson added to playlist');
 				$log.info('adding lesson to playlist',result.statusText);
 			}, function(error){
 				$log.error(error.data);
-				toastr.error('error adding lesson to playlist');
+				toastr.error('Error adding lesson to playlist');
 			});
 			
 		} else {
 			removeItemOnce(playlist.steps[0].lessonItems, lesson._id);
 			LergoClient.playlists.update(playlist).then(function(result) {
 				$scope.changeSavedToPlaylistDisabled = false;
-				toastr.success('lesson removed from playlist');
+				toastr.success('Lesson removed from playlist');
 				$log.info('lesson removed from playlist',result.statusText);
 			}, function(error){
 				$log.error(error.data);
-				toastr.error('error removing lesson to playlist');
+				toastr.error('Error removing lesson to playlist');
 			});
 		}
 		

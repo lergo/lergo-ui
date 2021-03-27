@@ -118,7 +118,7 @@
                                                         <i class="fa fa-envelope "></i>
                                                         {{'invite' | translate}}
                                                     </button>
-                                                    
+                                                     
                                                     <a href="" show-anonymous class="btn-link"
                                                        uib-popover="{{'playlists.inviteNotAvailable' | translate}}" popover-placement="top"
                                                        popover-trigger="'outsideClick'"
@@ -359,7 +359,7 @@
                                                 </div>
                                             </div>
                                             <div class="row row-nested action-items">
-                                                <div class="col-xs-3"> <!--4 - abuse-->
+                                                <div class="col-xs-4"> <!--4 - abuse-->
                                                     <div class="action-item">
                                                         <div class="abuse-chevron-mobile btn-group" uib-dropdown ng-click="$event.stopPropagation()">
                                                             <button class="btn-link" uib-dropdown-toggle>
@@ -386,7 +386,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-3 hide-hebrew"> <!--1-start-->
+                                                <div class="col-xs-4 hide-hebrew"> <!--1-start-->
                                                     <div class="action-item">
                                                         <button class="btn-link" ng-click="startPlaylist()"
                                                                 uib-tooltip="{{'playlists.tooltip.start' | translate}}">
@@ -411,7 +411,7 @@
                                                         </a>
                                                     </div>
                                                 </div> -->
-                                                <div class="col-xs-3"> <!--3 - share-->
+                                                <div class="col-xs-4"> <!--3 - share-->
                                                     <div class="action-item">
                                                         <button class="btn-link" ng-click="setActiveAction(actionItems.SHARE)"
                                                                 uib-tooltip="{{'playlists.tooltip.share' | translate}}">
@@ -420,7 +420,7 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-3 hide-english"> <!--1-start-->
+                                                <div class="col-xs-4 hide-english"> <!--1-start-->
                                                     <div class="action-item">
                                                         <button class="btn-link" ng-click="startPlaylist()"
                                                                 uib-tooltip="{{'playlists.tooltip.start' | translate}}">
@@ -429,7 +429,7 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-3 col-like"> <!--5 - like-->
+                                                <div class="col-xs-4 col-like"> <!--5 - like-->
                                                     <div class="action-item">
                                                         <div show-logged-in>
                                                             <button class="btn-link" ng-click="likePlaylist()"
@@ -460,7 +460,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-3 col-preview"> <!-- preview -->
+                                                <div class="col-xs-4 col-preview"> <!-- preview -->
                                                     <div class="action-item" show-logged-in ng-show="!isInvitationLink()">
                                                         <button class="btn-link" ng-click="previewPlaylist()"
                                                                 uib-tooltip="{{'playlists.tooltip.preview' | translate}}">
