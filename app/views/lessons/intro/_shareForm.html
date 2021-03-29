@@ -4,7 +4,9 @@
 			| translate}}</p>
 		<p class="lergo-h4 share-section-link lesson-action-panel-link" ng-click="shareSection = 'embed'; copied = false" ng-class="{'active' : shareSection === 'embed'}">{{'lessons.embedLesson'
 			| translate}}</p>
-		<button class="btn-link close-button" ng-click="setActiveAction()"><span class="fa fa-times"></span></button>
+		<button class="btn-link close-button" ng-click="setActiveAction()">
+			<span class="fa fa-times"></span>
+		</button>
 	</div>
 	<div class="share-link action-link">
         <div class="links-facebook">
@@ -27,5 +29,4 @@
 			<textarea ng-model="embedCode" readonly select-all-text-on-click="link"></textarea>
 		</div>
 	</div>
-</div>
 </div>
