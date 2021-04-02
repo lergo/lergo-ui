@@ -1,3 +1,5 @@
+lergo-ui adding overlay image for playlist images, adding createdBy to lessons, 
+    changing "like" to "addToPlaylist in Congrates
 lergo-ui refactoring _shareForm.html and removing redundant \div
 lergo-ui refactoring intro.html and maybe removing one closing div
 lergo-ui tweaks

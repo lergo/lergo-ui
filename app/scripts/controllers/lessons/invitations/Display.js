@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
-    function ($window, $scope, $filter, LergoClient, QuestionsService, LessonsService, LergoTranslate, $location, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope, ShareService, localStorageService) {
+    function ($window, $scope, $filter, LergoClient, QuestionsService, LessonsService, LergoTranslate, $location, $uibModal, $routeParams, $log, $controller, ContinuousSaveReports, $rootScope, ShareService, localStorageService) {
         $window.scrollTo(0, 0);
         $log.info('loading invitation');
         var errorWhileSaving = false;
@@ -238,6 +238,28 @@ angular.module('lergoApp').controller('LessonsInvitationsDisplayCtrl',
                 }
             }
         });
+
+        $scope.addToPlaylist = function () {
+            // persistScroll();
+            $scope.likeLesson();
+            var modelContent = {};
+            $scope.lesson.showAddToPlaylist = true;
+            modelContent.templateUrl = 'views/playlists/addLesson.html';
+            modelContent.windowClass = 'playlist-addLesson-dialog ' + LergoTranslate.getDirection();
+            modelContent.backdrop = 'static';
+            modelContent.controller = 'PlaylistsAddLessonCtrl';
+            modelContent.resolve = {
+                lesson: function () {
+                    return $scope.lesson;
+                }
+            };
+            var modelInstance = $uibModal.open(modelContent);
+            modelInstance.result.then(function () {
+                //   scrollToPersistPosition();
+            }, function () {
+                //  scrollToPersistPosition();
+            });
+        };
 
         $scope.likeLesson = function () {
             $log.info('liking lesson');

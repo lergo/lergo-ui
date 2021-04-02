@@ -3,8 +3,7 @@
 angular.module('lergoApp')
     .directive('playlistTitleImage', function (LergoClient) {
         return {
-            template: '<img class="img-responsive" ng-show="!!img" ng-src="{{img}}" width="100%" />' +
-            '<img class="img-responsive" ng-show="!img" ng-src="https://lergo-images.s3-eu-west-1.amazonaws.com/lergo+default+image++-+playlist+rev8+right+smaller+smooth+angles.png" width="100%" />',
+            templateUrl: 'views/directives/_playlistImage.html',
             restrict: 'A',
             scope: {
                 'playlist': '='

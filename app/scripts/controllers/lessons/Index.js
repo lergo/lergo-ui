@@ -1,5 +1,5 @@
 'use strict';
-
+ 
 angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log, LergoClient, $location, $rootScope, $window, localStorageService) {
 	// enum
 	$scope.LessonTypeToLoad = {
@@ -47,6 +47,15 @@ angular.module('lergoApp').controller('LessonsIndexCtrl', function($scope, $log,
 
 		getLessonsPromise.then(function(result) {
 			$scope.lessons = result.data.data;
+			LergoClient.users.findUsersById(_.map($scope.lessons, 'userId')).then(function (result) {
+				var createdByUser = result.data;
+                // turn list of users to map
+                var usersById = _.keyBy(createdByUser, '_id');
+                _.each($scope.lessons, function (l) {
+                        l.createdBy = usersById[l.userId].username;
+					});
+			});
+
 			$scope.filterPage.count = result.data.count; // number of lessons
 			// after filtering
 			// .. changing
