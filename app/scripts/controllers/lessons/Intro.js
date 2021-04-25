@@ -380,7 +380,8 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
             $scope.lesson = result.data;
             $rootScope.page = {
                 'title': $scope.lesson.name,
-                'description': $scope.lesson.description
+                'description': $scope.lesson.description,
+                'image': $scope.lesson.coverPage,
             };
             loadQuestions();
             LergoTranslate.setLanguageByName($scope.lesson.language);
