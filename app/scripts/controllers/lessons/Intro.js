@@ -381,7 +381,7 @@ angular.module('lergoApp').controller('LessonsIntroCtrl',
             $rootScope.page = {
                 'title': $scope.lesson.name,
                 'description': $scope.lesson.description,
-                'image': $scope.lesson.coverPage,
+                'image': LergoClient.lessons.getTitleImage($scope.lesson),
             };
             loadQuestions();
             LergoTranslate.setLanguageByName($scope.lesson.language);
