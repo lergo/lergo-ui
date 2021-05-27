@@ -459,7 +459,7 @@
                                             </div>
                                             <div class="row"></div>
                                             <div class="description">
-                                                <pre dir="auto" ng-if="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>
+                                                <pre dir="auto" ng-show="!more">{{ filteredDescription =(lesson.description| limitTo:320 | multilineEllipsis) }}</pre>
                                                 <div ng-show="!!more || {{!!lesson.wikiLink}} || {{!!lesson.nextLessonId}} || {{!!lesson.priorLessonId}}">
                                                     <hr class="dashes">
                                                     <pre dir="auto">{{ lesson.description}}</pre>
