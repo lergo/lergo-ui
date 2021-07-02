@@ -5,8 +5,9 @@ angular.module('lergoApp')
 
         // jeff: when user clicks on link to change password, the previous password will be validated
         // this prevents the unpleasant situation that users forget the unvalidated password, and it 'loops'
+        // but we don't want to log the user in (as we do with regular validation)
         $scope.validationInProgress = true;
-        $http.post('/backend/users/' + $routeParams._id + '/validate', { 'hmac': $routeParams.hmac}).then(function () {
+        $http.post('/backend/users/' + $routeParams._id + '/validatePriorToPasswordChange', { 'hmac': $routeParams.hmac}).then(function () {
             $scope.validated = true;
             $scope.validationInProgress = false;
         }, function () {
