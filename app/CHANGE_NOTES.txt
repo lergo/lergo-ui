@@ -1,3 +1,4 @@
+lergo-ri improving the change-password redis test to insure it works for change password with hmac
 lergo-ui and ri improving change-password
 lergo-ui adding overlay image for playlist images, adding createdBy to lessons, 
     changing "like" to "addToPlaylist in Congrates
