@@ -8,6 +8,7 @@ before_install:
   - 'gem install compass'
   - 'export DISPLAY=:99.0'
   - 'export CHROME_BIN=chromium-browser'
-before_script:
-  - 'npm install -g bower grunt-cli'
-  - 'bower install'
+install:
+  - npm install
+  - npm install -g bower grunt-cli
+  - bower install
