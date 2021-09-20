@@ -1,3 +1,5 @@
+lergo-ri bug(fix) playlist needs to be able to find get all the Completes of the user, but was limited to 100. 
+    limit = 0 makes it unlimited
 lergo-ri improving the change-password redis test to insure it works for change password with hmac
 lergo-ui and ri improving change-password
 lergo-ui adding overlay image for playlist images, adding createdBy to lessons, 
