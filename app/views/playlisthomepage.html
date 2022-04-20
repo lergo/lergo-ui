@@ -1,5 +1,5 @@
 
-<div  class="base-layout" load-filter-and-paging="loadLessons()" ng-init="scrollUp()">
+<div  class="base-layout" load-filter-and-paging="loadPlaylists()" ng-init="scrollUp()">
     <div> <!-- for css padding lergo-604 -->
         <div ng-show="!loaded">
             <div class="loading">
@@ -17,17 +17,17 @@
                                     <div style="height: 112px">
                                         <div class = "welcome">{{'lessons.welcome' | translate}}</div>
                                         <button type="button">
-                                            <a style="color:black;" href="#!/lessons/invite/pin">{{'baseLayout.navbar.desktopPin' | translate}}
+                                            <a style="color:black;" href="#!/playlists/invite/pin">{{'baseLayout.navbar.desktopPin' | translate}}
                                             </a>
                                         </button>
                                         <a ng-show="baseLayout.language == 'he'" uib-popover="{{'baseLayout.navbar.pinHelpText' | translate}}"   popover-placement="top" popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none">{{'baseLayout.navbar.pinHelp' | translate}}</a>
-                                        <a ng-show="baseLayout.language != 'he'" uib-popover="{{'baseLayout.navbar.pinHelpText' | translate}}" class="fa fa-question-circle" popover-placement="auto bottom" popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none"></a>
+                                        <a ng-show="baseLayout.language != 'he'" uib-popover="{{'baseLayout.navbar.pinHelpText' | translate}}" class="fa fa-lesson-circle" popover-placement="auto bottom" popover-trigger="'outsideClick'" tabindex="0" style="text-decoration: none"></a>
                                         <div style="height: 5px;"></div>
                                     </div>
-                                    <div class="filter-heading lergo-h0">{{ 'lessons.filter' | translate }}</div>
+                                    <div class="filter-heading lergo-h0">{{ 'playlists.filter' | translate }}</div>
                                 </div>
                                 <div>
-                                    <div lergo-filter   model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>
+                                    <div lergo-filter   model="playlistsFilter" on-change="loadPlaylists()" opts="playlistsFilterOpts" on-load="filterLoaded()"></div>
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
@@ -39,13 +39,13 @@
                                 <div statistics-banner class="page-content-width">
                                     <div class="article-header page-content-body">
                                         <div class="stats-wrapper">
+                                            <div class="stats-playlists">
+                                                <div class="amount">{{systemStats.playlistsCount}}</div>
+                                                <div class="type">{{ 'homepage.playlists' | translate }}</div>
+                                            </div>
                                             <div class="stats-lessons">
                                                 <div class="amount">{{systemStats.lessonsCount-900}}</div>
                                                 <div class="type">{{ 'homepage.lessons' | translate }}</div>
-                                            </div>
-                                            <div class="stats-questions">
-                                                <div class="amount">{{systemStats.questionsCount}}</div>
-                                                <div class="type">{{ 'homepage.questions' | translate }}</div>
                                             </div>
                                             <div class="and-counting item">
                                                 <span>{{ 'homepage.andCounting' | translate }}</span>
@@ -62,24 +62,22 @@
                         <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12">
                            <div class="text-desktop col-lg-12 col-md-12 hidden-sm hidden-xs">
                                 <span class="lergo-h0"  >{{'featured' | translate}}</span>
-                                <span class="lergo-h0"  >LESSONS</span>
                            </div>
-
                            <div class="hidden-lg hidden-md">
                                <button type="button" class="navbar-toggle mobile-filter-button-r">
-                                   <a style="color:black;" href="#!/lessons/invite/pin">{{'baseLayout.navbar.enterPin' | translate}}
+                                   <a style="color:black;" href="#!/playlists/invite/pin">{{'baseLayout.navbar.enterPin' | translate}}
                                    </a>
                                </button>
                                <div class="m-push-down"></div>
-                                    <div class="lergo-filter-mobile"  lergo-filter   model="lessonsFilter" on-change="loadLessons()" opts="lessonsFilterOpts" on-load="filterLoaded()"></div>
+                                    <div class="lergo-filter-mobile"  lergo-filter   model="playlistsFilter" on-change="loadPlaylists()" opts="playlistsFilterOpts" on-load="filterLoaded()"></div>
                            </div>
-                           <div class="hidden-lg hidden-md"> <!--start of mobile view of lessons-->
+                           <div class="hidden-lg hidden-md"> <!--start of mobile view of playlists-->
                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                     <div class="homepage">
                                         <div class="lessons">
-                                            <div class="lesson-mobile" ng-repeat="lesson in lessons ">
-                                                <div class="age-limit age-limit-{{lesson.age}}">
-                                                    <div class="value">{{lesson.age}}+</div>
+                                            <div class="lesson-mobile" ng-repeat="playlist in playlists ">
+                                                <div class="age-limit age-limit-{{playlist.age}}">
+                                                    <div class="value">{{playlist.age}}+</div>
                                                     <div class="units">
                                                         <i class="fa fa-arrow-up"></i>
                                                         {{'homepage.years'|translate}}
@@ -87,15 +85,15 @@
                                                 </div>
                                                 <!-- age limit -->
                                                 <div class="image">
-                                                    <a href="#!/public/lessons/{{lesson._id}}/intro">
-                                                        <div lesson-title-image lesson="lesson"></div>
+                                                    <a href="#!/public/playlists/{{playlist._id}}/intro">
+                                                        <div playlist-title-image playlist="playlist"></div>
                                                     </a>
                                                 </div>
                                                 <div dir="auto" class="title">
                                                     <br>
-                                                    <a href="#!/public/lessons/{{lesson._id}}/intro">
-                                                        <span uib-tooltip="{{lesson.name}}">{{ lesson.name|limitTo:60 }}</span>
-                                                        <span ng-show="lesson.name.length >60">...</span>
+                                                    <a href="#!/public/playlists/{{playlist._id}}/intro">
+                                                        <span uib-tooltip="{{playlist.name}}">{{ playlist.name|limitTo:60 }}</span>
+                                                        <span ng-show="playlist.name.length >60">...</span>
                                                     </a>
                                                 </div>
                                                 <div class="stats">
@@ -104,33 +102,33 @@
                                                             <td>
                                                               <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
                                                                     <i class="fa fa-user fa-fw"></i>
-                                                                        {{lesson.user.username | limitTo: 8 | lowercase}}
+                                                                        {{playlist.user.username | limitTo: 8 | lowercase}}
                                                               </span>
                                                             </td>
                                                             <td>
                                                                <span uib-tooltip="{{'homepage.tooltip.views' | translate}}">
                                                                   <i class="fa fa-eye fa-fw"></i>
-                                                                        {{0+lesson.views}}
+                                                                        {{0+playlist.views}}
                                                                </span>
                                                             </td>
                                                             <td>
-                                                               <span ng-show="hasQuestions(lesson)" uib-tooltip="{{'homepage.tooltip.questions' | translate}}">
-                                                                  <i class="fa fa-question-circle fa-fw"></i>
-                                                                        {{lesson | countQuestionsOnLesson }}
+                                                               <span ng-show="hasLessons(playlist)" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
+                                                                  <i class="fa fa-lesson-circle fa-fw"></i>
+                                                                        {{playlist | countLessonsOnPlaylist }}
                                                                </span>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                               <span uib-tooltip="{{'lessons.createdOn' | translate}}">
+                                                               <span uib-tooltip="{{'playlists.createdOn' | translate}}">
                                                                     <i class="fa fa-calendar"></i>
-                                                                        {{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}
+                                                                        {{playlist | mongoIdToTimestamp | date:'d-MMM-yyyy'}}
                                                                </span>
                                                             </td>
                                                             <td colspan="2">
-                                                                <span ng-show="!!lesson.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
+                                                                <span ng-show="!!playlist.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
                                                                       <i class="fa fa-book fa-fw"></i>
-                                                                            {{lesson.subject && ('filters.subjects.' + lesson.subject | translate)}}
+                                                                            {{playlist.subject && ('filters.subjects.' + playlist.subject | translate)}}
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -144,11 +142,11 @@
 
                            <div class="hidden-sm hidden-xs"> <!--start of desktop view-->
                                 <div class="homepage-desktop">
-                                     <div filter-is-active="lessonsFilterOpts" section="lessons"></div>
+                                     <div filter-is-active="playlistsFilterOpts" section="playlists"></div>
                                         <div class="lessons-desktop">
-                                            <div class="lesson-desktop" ng-repeat="lesson in lessons ">
-                                                    <div class="age-limit age-limit-{{lesson.age}}">
-                                                        <div class="value">{{lesson.age}}+</div>
+                                            <div class="lesson-desktop" ng-repeat="playlist in playlists ">
+                                                    <div class="age-limit age-limit-{{playlist.age}}">
+                                                        <div class="value">{{playlist.age}}+</div>
                                                         <div class="units">
                                                             <i class="fa fa-arrow-up"></i>
                                                             {{'homepage.years'|translate}}
@@ -156,14 +154,14 @@
                                                     </div>
                                                     <!-- age limit -->
                                                     <div class="image">
-                                                        <a href="#!/public/lessons/{{lesson._id}}/intro">
-                                                            <div lesson-title-image lesson="lesson"></div>
+                                                        <a href="#!/public/playlists/{{playlist._id}}/intro">
+                                                            <div playlist-title-image playlist="playlist"></div>
                                                         </a>
                                                     </div>
                                                     <div dir="auto" class="title">
-                                                        <a href="#!/public/lessons/{{lesson._id}}/intro">
-                                                            <span uib-tooltip="{{lesson.name}}">{{ lesson.name|limitTo:40 }}</span>
-                                                            <span ng-show="lesson.name.length >40">...</span>
+                                                        <a href="#!/public/playlists/{{playlist._id}}/intro">
+                                                            <span uib-tooltip="{{playlist.name}}">{{ playlist.name|limitTo:40 }}</span>
+                                                            <span ng-show="playlist.name.length >40">...</span>
                                                         </a>
                                                     </div>
                                                     <div class="stats-desktop">
@@ -172,33 +170,33 @@
                                                                 <td>
 											<span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
 												<i class="fa fa-user fa-fw"></i>
-												{{lesson.user.username | limitTo: 8 | lowercase}}
+												{{playlist.user.username | limitTo: 8 | lowercase}}
 											</span>
 										</td>
 										<td>
 											<span uib-tooltip="{{'homepage.tooltip.views' | translate}}">
 												<i class="fa fa-eye fa-fw"></i>
-												{{0+lesson.views}}
+												{{0+playlist.views}}
 											</span>
 										</td>
 										<td>
-											<span ng-show="hasQuestions(lesson)" uib-tooltip="{{'homepage.tooltip.questions' | translate}}">
-												<i class="fa fa-question-circle fa-fw"></i>
-												{{lesson | countQuestionsOnLesson }}
+											<span ng-show="hasLessons(playlist)" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
+												<i class="fa fa-lesson-circle fa-fw"></i>
+												{{playlist | countLessonsOnPlaylist }}
 											</span>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<span uib-tooltip="{{'lessons.createdOn' | translate}}">
+											<span uib-tooltip="{{'playlists.createdOn' | translate}}">
 												<i class="fa fa-calendar"></i>
-												{{lesson | mongoIdToTimestamp | date:'d-MMM-yyyy'}}
+												{{playlist | mongoIdToTimestamp | date:'d-MMM-yyyy'}}
 											</span>
 										</td>
 										<td colspan="2">
-											<span ng-show="!!lesson.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
+											<span ng-show="!!playlist.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
 												<i class="fa fa-book fa-fw"></i>
-												{{lesson.subject && ('filters.subjects.' + lesson.subject | translate)}}
+												{{playlist.subject && ('filters.subjects.' + playlist.subject | translate)}}
 											</span>
 										</td>
 									</tr>
@@ -213,7 +211,7 @@
 			</div>
 				</div>
 			    </div>
-			<div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
+			<div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadPlaylists()" on-load="pagingLoaded()"></div>
 		    </div>
 	    </div>
     </div>

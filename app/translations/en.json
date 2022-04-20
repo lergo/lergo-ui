@@ -58,6 +58,7 @@
   "admin": {
     "adminComments": "Editor Comments",
     "allLessons": "All Lessons",
+    "allPlaylists": "ALL Playlists",
     "by": "By",
     "byCreated": "Lesson created by",
     "byReported": "Reported By",
@@ -75,6 +76,8 @@
     "public": "Public",
     "publicCount": "Public Lessons",
     "publicFrom": "Public From",
+    "playlists": "#Pls",
+    "playlistsPublicCount": "Public Playlists",
     "questions": "# Qs",
     "report": "Report",
     "status": "Status",
@@ -361,8 +364,9 @@
       "doneByStudentClassname": "Class",
       "duration": "Duration (in seconds)",
       "hasQuestions": "Has Questions",
+      "toHomepage": "To Lessons",
       "isCopyOf": "Copied Lessons",
-      "isNotCopyOf": "Original Lessons",
+      "isNotCopyOf": "Original Lesson",
       "language": "Language",
       "noAdminComment": "No Editor Comments",
       "noAdminCommentEmailSent": "Email not sent",
@@ -372,8 +376,10 @@
       "reset": "Clear filter",
       "roles": "Role",
       "search": "Num of Published Lessons",
+      "playlistSearch": "Num of Published Playlists",
       "status": "Status",
       "subject": "Subject",
+      "toPlaylist": "To Playlists",
       "tags": "Tags",
       "text": "Text",
       "views": "# of views"
@@ -483,6 +489,7 @@
     "exploreLessons": "Explore Lessons",
     "free": "it's free!",
     "lessons": "lessons",
+    "playlists": "playlists",
     "questions": "questions",
     "start": "start",
     "tooltip": {
@@ -837,6 +844,7 @@
   "playlist": {
     "header": "**Playlist**"
   },
+  "playlistName": "Playlist Name",
   "playlistIntro": {
     "action": {
       "preview": {

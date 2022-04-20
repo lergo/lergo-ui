@@ -1,32 +1,32 @@
 'use strict';
 
-angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location,  $window) {
+angular.module('lergoApp').controller('PlaylistHomepageCtrl', function($scope, LergoClient, TagsService, $rootScope, $filter, $log, $routeParams, $location,  $window) {
 
 	$window.scrollTo(0, 0);
 	var path = $location.path();
 
 	$scope.loaded = false;
-	$scope.lessonsFilter = {
+	$scope.playlistsFilter = {
 		'public' : {
 			'dollar_exists' : 1
 		}
 	};
 	$scope.filterPage = {};
-	$scope.lessonsFilterOpts = {
+	$scope.playlistsFilterOpts = {
         'showSubject': true,
         'showLanguage': true,
         'showAge': true,
         'showViews': true,
         'showTags': true,
 		'showCreatedBy': true,
-		'showPlaylistPage': true
+		'showLessonPage': true
 	};
 
 	$scope.thisRoute = $routeParams.search;
 
-	$scope.loadLessons = function() {
+	$scope.loadPlaylists = function() {
 
-		$log.info('loading lessons');
+		$log.info('loading playlists');
 
 		var searchFilter = {};
 		if (!!$routeParams.search) {
@@ -35,12 +35,12 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			};
 		}
 
-        $scope.hasQuestions = function(lesson){
-            return LergoClient.lessons.countQuestions(lesson) > 0;
+        $scope.hasQuestions = function(playlist){
+            return LergoClient.playlists.countQuestions(playlist) > 0;
         };
 
 		var queryObj = {
-			'filter' : _.merge(searchFilter, $scope.lessonsFilter),
+			'filter' : _.merge(searchFilter, $scope.playlistsFilter),
 			'sort' : {
 				'lastUpdate' : -1
 			},
@@ -54,10 +54,10 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 			}
 			$window.scrollTo(0, scrollY);
 		}
-		// LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
-		// 	$scope.lessons = result.data.data;
+		// LergoClient.playlists.getPublicPlaylists(queryObj).then(function(result) {
+		// 	$scope.playlists = result.data.data;
 		// 	$scope.filterPage.count = result.data.count; // the number of
-		// 	// lessons found
+		// 	// playlists found
 		// 	// after filtering
 		// 	// them.
 		// 	scrollToPersistPosition();
@@ -65,7 +65,7 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		// });
 		
 		// Jeff mustHaveUndefined  for homepage loading with only language filter
-		// Jeff getPublicHomePageLessons is used to access and save the homepage in redis cache
+		// Jeff getPublicHomePagePlaylists is used to access and save the homepage in redis cache
 		var mustHaveUndefined = !queryObj.filter.hasOwnProperty('tags.label') &&
 		queryObj.filter.subject		=== undefined &&
 		queryObj.filter.age			=== undefined &&
@@ -76,20 +76,20 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		if (mustHaveUndefined) {
 			$log.info('using redis cache for homepage');
 			// will be used exclusively for homepage loading - which will be cached 
-			LergoClient.lessons.getPublicHomepageLessons(queryObj).then(function(result) {
-				$scope.lessons = result.data.data;
+			LergoClient.playlists.getPublicHomepagePlaylists(queryObj).then(function(result) {
+				$scope.playlists = result.data.data;
 				$scope.filterPage.count = result.data.count; // the number of
-				// lessons found
+				// playlists found
 				// after filtering
 				// them.
 				scrollToPersistPosition();
 				$scope.loaded = true;
 			});
 		} else {
-			LergoClient.lessons.getPublicLessons(queryObj).then(function(result) {
-				$scope.lessons = result.data.data;
+			LergoClient.playlists.getPublicPlaylists(queryObj).then(function(result) {
+				$scope.playlists = result.data.data;
 				$scope.filterPage.count = result.data.count; // the number of
-				// lessons found
+				// playlists found
 				// after filtering
 				// them.
 				scrollToPersistPosition();
@@ -108,8 +108,8 @@ angular.module('lergoApp').controller('HomepageCtrl', function($scope, LergoClie
 		};
 	});
 
-	$scope.absoluteShareLink = function(lesson) {
-		return window.location.origin + '/#!/public/lessons/' + lesson._id + '/share';
+	$scope.absoluteShareLink = function(playlist) {
+		return window.location.origin + '/#!/public/playlists/' + playlist._id + '/share';
 	};
 
 

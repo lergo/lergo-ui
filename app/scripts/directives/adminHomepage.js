@@ -35,6 +35,11 @@ angular.module('lergoApp')
                     'icon' : 'fa fa-user',
                     'url' : '#!/manage/users',
                     'permission' : 'users.userCanPatchUsers'
+                }, {
+                    'id' : 'playlists',
+                    'icon' : 'fas fa-list',
+                    'url' : '#!/admin/homepage/playlists',
+                    'permission' : '!!lessons'
                 }
 
                 ];

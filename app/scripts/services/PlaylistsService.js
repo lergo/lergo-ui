@@ -93,6 +93,17 @@ angular.module('lergoApp').service('PlaylistsService',
             });
         };
 
+        this.getPublicHomepagePlaylists = function (queryObj) {
+            if (!queryObj) {
+                throw new Error('you should at least have {"public" : { "exists" : 1 } } ');
+            }
+            return $http({
+                'method': 'GET',
+                'url': '/backend/public/homepagePlaylists',
+                'params': {'query': JSON.stringify(queryObj)} /* stringify the queryObj as it contains $ signs which angular filters out */
+            });
+        };
+
         this.copyPlaylist = function (id) {
             return $http.post('/backend/playlists/' + id + '/copy');
         };

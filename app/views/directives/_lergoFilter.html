@@ -246,6 +246,27 @@
                         </div>
                 </span>
 
+                <!-- playlist homepage -->
+                <span ng-show="!!opts.showPlaylistPage">
+                    <div class="label">{{'filters.labels.toPlaylist' | translate }}</div>
+                    <div class="filter-playlist-button"> 
+                        <span>              
+                            <a style="color:rgb(51,51,51);" href="#!/public/playlisthomepage" class="ng-binding">Go to playlists
+                            </a> 
+                        </span>                      
+                    </div>
+                </span>
+                
+                <!-- lesson homepage -->
+                <span ng-show="!!opts.showLessonPage">
+                    <div class="label">{{'filters.labels.toHomepage' | translate }}</div>
+                    <div class="filter-playlist-button"> 
+                        <span>              
+                            <a style="color:rgb(51,51,51);" href="#!/public/homepage" class="ng-binding">Go to lessons
+                        </span>                      
+                    </div>
+	            </span>
+
                 <div ng-show="!!opts.showCreatedByAll" class='container-fluid'>
                     <div class="label">{{'filters.labels.createdByAll' | translate}}</div>
                     <div class="input">

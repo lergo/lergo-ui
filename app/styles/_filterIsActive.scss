@@ -102,6 +102,16 @@
     background: $LERGO_INPUT_BACKGROUND;
 }
 
+.filter-playlist-button {
+    max-width: 220px;
+    background: $LERGO_INPUT_BACKGROUND;
+    padding: 7px;
+    border: 1px solid #CECECE;
+    border-radius: 5px;
+    font-size: 16px;
+    
+}
+
 .filter-buttons-double {
     max-width: 60px;
     background: $LERGO_INPUT_BACKGROUND;

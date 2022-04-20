@@ -90,6 +90,10 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'views/questions/update.html',
         controller: 'QuestionsUpdateCtrl',
         reloadOnSearch: false
+    }).when('/public/playlisthomepage', {
+        templateUrl: 'views/playlisthomepage.html',
+        controller: 'PlaylistHomepageCtrl',
+        reloadOnSearch: false
     }).when('/public/homepage', {
         templateUrl: 'views/homepage.html',
         controller: 'HomepageCtrl',
@@ -176,6 +180,15 @@ angular.module('lergoApp').config(function ($routeProvider, $locationProvider) {
         'params': {
             'activeTab': 'lessons'
         }
+        
+    }).when('/admin/homepage/playlists', {
+        templateUrl: 'views/admin/playlists/_index.html',
+        controller: 'AdminPlaylistIndexCtrl',
+        reloadOnSearch: false,
+        'params': {
+            'activeTab': 'playlists'
+        }
+        
     }).when('/admin/homepage/abuseReports', {
         templateUrl: 'views/admin/abuseReports/_index.html',
         controller: 'AdminAbuseReportIndexCtrl',

@@ -1,0 +1,99 @@
+
+<div load-filter-and-paging="loadPlaylists()" admin-homepage>
+    <div class="admin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                    <div class="lergo-h1 filter-playlists hidden-sm hidden-xs"  >{{ 'reports.filter' | translate }}</div>
+                    <div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="loadLessons()" on-load="filterLoaded()"></div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="lergo-h1 admin-playlists">{{ 'admin.allPlaylists' | translate }} [ {{ 'playlists.total' | translate }}: {{systemStats.playlistsCount}} ; {{'admin.public'|translate}}:
+                    {{ systemStats.publicPlaylistsCount}} ]
+                </div>
+                <label>{{ 'filters.labels.playlistSearch' | translate }} :</label>
+                <input  style="width:30px" type='text' ng-model='publicCountSearch'>
+                <a href="" style=" padding: 3px" ng-click='resetPublicCountSearch()'>X</a>
+
+                <div class="table-responsive" id="publicCountSearchResults">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <td class="checkbox-dropdown">
+                            <span class="admin-publish" admin-section="playlists.userCanPublish || playlists.userCanUnpublish || playlists.userCanDelete">
+                                <div class="btn-group" uib-dropdown>
+                                    <input type="checkbox" ng-change="selectAll()" ng-model="manageLessons.allSelected">
+                                    <button type="button" class="btn-link" uib-dropdown-toggle>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+
+                                        <li admin-section="playlists.userCanPublish">
+                                            <a  style="outline: none;" class="btn-link" ng-click="makePublic()">{{'admin.makePublic'|translate}}</a>
+                                        </li>
+                                        <li admin-section="playlists.userCanUnpublish">
+                                            <a  style="outline: none;" class="btn-link" ng-click="makePrivate()">{{'admin.makePrivate'|translate}}</a>
+                                        </li>
+                                        <li admin-section="playlists.userEmailSent">
+                                            <a  style="outline: none;" class="btn-link" ng-click="emailHasBeenSent()">{{'admin.emailHasBeenSent'|translate}}</a>
+                                        </li>
+                                        <li admin-section="playlists.userEmailNotSent">
+                                            <a  style="outline: none;" class="btn-link" ng-click="emailHasNotBeenSent()">{{'admin.emailHasNotBeenSent'|translate}}</a>
+                                        </li>
+                                        <li class="divider" admin-section="playlists.userCanDelete"></li>
+                                        <li admin-section="playlists.userCanDelete">
+                                            <a  style="outline: none;" class="btn-link" ng-click="deleteLesson()">{{'delete'|translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </span>
+                            </td>
+                            <td class="col-width-mobile" > {{'playlistName'|translate}}</td>
+                            <td>{{'admin.by'|translate}}</td>
+                            <td>{{'admin.playlistsPublicCount'|translate}}</td>
+                            <td>{{'admin.views'|translate}}</td>
+                            <td>{{'admin.questions'|translate}}</td>
+                            <td>{{'admin.created'|translate}}</td>
+                            <td>{{'admin.publicFrom'|translate}}</td>
+                            <td class="col-width-mobile" >{{'admin.adminComments'|translate}}</td>
+                            <td>{{'admin.emailSent'|translate}}</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                           <!--  <tr ng-repeat="l in playlists  | filter: { publicCount:'!!'}"> -->
+                        <tr ng-repeat="l in playlists  | filter:greaterThan('publicCount',publicCountSearch)">
+                            <td>
+                                <input type="checkbox" style="margin-left: 5px;" ng-model="l.selected">
+                            </td>
+                            <td dir="auto" style="width: 200px; white-space: normal">
+                                <a ng-show="!!l.name && l.name.trim().length > 0" uib-tooltip="{{'playlists.tooltip.go' | translate}}" ng-href="#!/user/playlists/{{l._id}}/intro">{{
+                                    l.name }}</a>
+                                <a ng-show="!l.name || l.name.trim().length <= 0" uib-tooltip="{{'playlists.tooltip.go' | translate}}" ng-href="#!/user/playlists/{{l._id}}/intro">[ no
+                                    title ]</a>
+                            </td>
+                            <td>
+                                <a href="mailto:{{getUser(l).email}}">{{getUser(l).username}}</a>
+                            </td>
+                            <td>{{l.publicCount}}</td>
+                            <td>{{l.views}}</td>
+                            <td>{{ l | countLessonsOnPlaylist }}</td>
+                            <td>{{l.createdAt | date:'d-MMM-yy HH:mm'}}</td>
+                            <td>{{l.public | date:'d-MMM-yy HH:mm'  }}</td>
+                            <td style="width: 200px; white-space: normal">{{ l.adminComment}} <br> {{l.adminCommentTimeStamp | date:'d-MMM-yy HH:mm'  }}</td>
+                            <td>{{l.adminCommentEmailSent | date:'d-MMM-yy HH:mm' }}</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                   </div>
+                </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+        </div>
+    </div>
+    <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadLessons()" on-load="pagingLoaded()"></div>
+    </div>
+</div>
+
+
