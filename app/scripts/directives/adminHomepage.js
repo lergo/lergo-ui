@@ -21,6 +21,12 @@ angular.module('lergoApp')
                     'permission' : '!!lessons'
 
                 }, {
+                    'id': 'playlists',
+                    icon: 'fas fa-list',
+                    'url' : '#!/admin/homepage/playlists',
+                    'permission' : '!!lessons'
+
+                }, {
                     'id': 'abuseReports',
                     icon: 'fa fa-flag',
                     'url' : '#!/admin/homepage/abuseReports',
@@ -35,11 +41,6 @@ angular.module('lergoApp')
                     'icon' : 'fa fa-user',
                     'url' : '#!/manage/users',
                     'permission' : 'users.userCanPatchUsers'
-                }, {
-                    'id' : 'playlists',
-                    'icon' : 'fas fa-list',
-                    'url' : '#!/admin/homepage/playlists',
-                    'permission' : '!!lessons'
                 }
 
                 ];

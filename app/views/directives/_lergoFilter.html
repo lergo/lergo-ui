@@ -57,13 +57,21 @@
                     </div>
                 </span>
 
-               <!--  isCopyOf: for admin use -->
+               <!--  isCopyOf: for admin use lessons -->
                <span ng-show="!!opts.showIsCopyOf">
                     <div class="label">{{'filters.labels.isNotCopyOf' | translate }}</div>
                         <div class="input">
                             <input type="checkbox" ng-model="isCopyOf"/>
                         </div>
                 </span>
+
+                <!--  isCopyOf: for admin use playlists -->
+               <span ng-show="!!opts.showIsCopyOfPlaylist">
+                <div class="label">{{'filters.labels.isNotCopyOfPlaylist' | translate }}</div>
+                    <div class="input">
+                        <input type="checkbox" ng-model="isCopyOfPlaylist"/>
+                    </div>
+            </span>
 
                <!--  hasAdminComment: for admin use -->
                 <span ng-show="!!opts.showHasAdminComment">
@@ -251,7 +259,7 @@
                     <div class="label">{{'filters.labels.toPlaylist' | translate }}</div>
                     <div class="filter-playlist-button"> 
                         <span>              
-                            <a style="color:rgb(51,51,51);" href="#!/public/playlisthomepage" class="ng-binding">Go to playlists
+                            <a style="color:rgb(51,51,51);" href="#!/public/playlisthomepage" class="ng-binding">{{'filters.labels.goToPlaylists' | translate }}
                             </a> 
                         </span>                      
                     </div>
@@ -262,7 +270,7 @@
                     <div class="label">{{'filters.labels.toHomepage' | translate }}</div>
                     <div class="filter-playlist-button"> 
                         <span>              
-                            <a style="color:rgb(51,51,51);" href="#!/public/homepage" class="ng-binding">Go to lessons
+                            <a style="color:rgb(51,51,51);" href="#!/public/homepage" class="ng-binding">{{'filters.labels.goToLessons' | translate }}
                         </span>                      
                     </div>
 	            </span>

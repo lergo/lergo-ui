@@ -5,12 +5,12 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                    <div class="lergo-h1 filter-playlists hidden-sm hidden-xs"  >{{ 'reports.filter' | translate }}</div>
-                    <div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="loadLessons()" on-load="filterLoaded()"></div>
+                    <div class="lergo-h1 filter-lessons hidden-sm hidden-xs"  >{{ 'reports.filter' | translate }}</div>
+                    <div lergo-filter model="adminFilter" opts="adminFilterOpts" on-change="loadPlaylists()" on-load="filterLoaded()"></div>
                 </div>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <div class="lergo-h1 admin-playlists">{{ 'admin.allPlaylists' | translate }} [ {{ 'playlists.total' | translate }}: {{systemStats.playlistsCount}} ; {{'admin.public'|translate}}:
+                <div class="lergo-h1 admin-lessons">{{ 'admin.allPlaylists' | translate }} [ {{ 'playlists.total' | translate }}: {{systemStats.playlistsCount}} ; {{'admin.public'|translate}}:
                     {{ systemStats.publicPlaylistsCount}} ]
                 </div>
                 <label>{{ 'filters.labels.playlistSearch' | translate }} :</label>
@@ -54,7 +54,7 @@
                             <td>{{'admin.by'|translate}}</td>
                             <td>{{'admin.playlistsPublicCount'|translate}}</td>
                             <td>{{'admin.views'|translate}}</td>
-                            <td>{{'admin.questions'|translate}}</td>
+                            <td>{{'admin.lessons'|translate}}</td>
                             <td>{{'admin.created'|translate}}</td>
                             <td>{{'admin.publicFrom'|translate}}</td>
                             <td class="col-width-mobile" >{{'admin.adminComments'|translate}}</td>
