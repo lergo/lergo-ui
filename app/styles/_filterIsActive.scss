@@ -104,11 +104,12 @@
 
 .filter-playlist-button {
     max-width: 220px;
-    background: $LERGO_INPUT_BACKGROUND;
     padding: 7px;
-    border: 1px solid #CECECE;
+    border: 3px solid #CECECE;
     border-radius: 5px;
     font-size: 16px;
+    background: $COLOR_13;
+
     
 }
 
