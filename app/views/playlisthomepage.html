@@ -56,8 +56,6 @@
                             </div>
                             <div class="d-push-down"></div>
                         </div>
-
-
                     <div class="row fix">
                         <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12">
                            <div class="text-desktop col-lg-12 col-md-12 hidden-sm hidden-xs">
@@ -69,13 +67,21 @@
                                    </a>
                                </button>
                                <div class="m-push-down"></div>
-                                    <div class="lergo-filter-mobile"  lergo-filter   model="playlistsFilter" on-change="loadPlaylists()" opts="playlistsFilterOpts" on-load="filterLoaded()"></div>
+                               <div class="lergo-filter-mobile"  lergo-filter   model="playlistsFilter" on-change="loadPlaylists()" opts="playlistsFilterOpts" on-load="filterLoaded()"></div>
                            </div>
                            <div class="hidden-lg hidden-md"> <!--start of mobile view of playlists-->
                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                     <div class="homepage">
                                         <div class="lessons">
                                             <div class="lesson-mobile" ng-repeat="playlist in playlists ">
+                                                <div class="num-lessons">
+                                                    <div class="units">
+                                                        <span class="stats-button" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
+                                                            <!-- <i class="fa fa-chalkboard fa-fw"></i> -->
+                                                            {{ playlist | countLessonsOnPlaylist }}
+                                                        </span>
+                                                    </div>
+                                                </div>
                                                 <div class="age-limit age-limit-{{playlist.age}}">
                                                     <div class="value">{{playlist.age}}+</div>
                                                     <div class="units">
@@ -99,6 +105,12 @@
                                                 <div class="stats">
                                                     <table class="stats-table">
                                                         <tr>
+                                                            <td>
+                                                                <span class="stats-button" uib-tooltip="{{'homepage.tooltip.views' | translate}}">
+                                                                    <i class="fa fa-eye fa-fw"></i>
+                                                                    {{0+playlist.views}}
+                                                                </span>
+                                                            </td>
                                                             <td>
                                                               <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
                                                                     <i class="fa fa-user fa-fw"></i>
@@ -145,74 +157,86 @@
                                      <div filter-is-active="playlistsFilterOpts" section="playlists"></div>
                                         <div class="lessons-desktop">
                                             <div class="lesson-desktop" ng-repeat="playlist in playlists ">
-                                                    <div class="age-limit age-limit-{{playlist.age}}">
-                                                        <div class="value">{{playlist.age}}+</div>
-                                                        <div class="units">
-                                                            <i class="fa fa-arrow-up"></i>
-                                                            {{'homepage.years'|translate}}
-                                                        </div>
+                                                <div class="num-lessons">
+                                                    <div class="units">
+                                                        <span class="stats-button" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
+                                                            <!-- <i class="fa fa-chalkboard fa-fw"></i> -->
+                                                            {{ playlist | countLessonsOnPlaylist }}
+                                                        </span>
                                                     </div>
-                                                    <!-- age limit -->
-                                                    <div class="image">
-                                                        <a href="#!/public/playlists/{{playlist._id}}/intro">
-                                                            <div playlist-title-image playlist="playlist"></div>
-                                                        </a>
+                                                </div>
+
+                                                <div class="age-limit age-limit-{{playlist.age}}">
+                                                    <div class="value">{{playlist.age}}+</div>
+                                                    <div class="units">
+                                                        <i class="fa fa-arrow-up"></i>
+                                                        {{'homepage.years'|translate}}
                                                     </div>
-                                                    <div dir="auto" class="title">
-                                                        <a href="#!/public/playlists/{{playlist._id}}/intro">
-                                                            <span uib-tooltip="{{playlist.name}}">{{ playlist.name|limitTo:40 }}</span>
-                                                            <span ng-show="playlist.name.length >40">...</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="stats-desktop">
-                                                        <table class="stats-table">
-                                                            <tr>
-                                                                <td>
-											<span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
-												<i class="fa fa-user fa-fw"></i>
-												{{playlist.user.username | limitTo: 8 | lowercase}}
-											</span>
-										</td>
-										<td>
-											<span uib-tooltip="{{'homepage.tooltip.views' | translate}}">
-												<i class="fa fa-eye fa-fw"></i>
-												{{0+playlist.views}}
-											</span>
-										</td>
-										<td>
-											<span ng-show="hasLessons(playlist)" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
-												<i class="fa fa-lesson-circle fa-fw"></i>
-												{{playlist | countLessonsOnPlaylist }}
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span uib-tooltip="{{'playlists.createdOn' | translate}}">
-												<i class="fa fa-calendar"></i>
-												{{playlist | mongoIdToTimestamp | date:'d-MMM-yyyy'}}
-											</span>
-										</td>
-										<td colspan="2">
-											<span ng-show="!!playlist.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
-												<i class="fa fa-book fa-fw"></i>
-												{{playlist.subject && ('filters.subjects.' + playlist.subject | translate)}}
-											</span>
-										</td>
-									</tr>
-								</table>
-							</div>
-                           </div>
-                         </div>
-                       </div>
-                    </div>
-				 </div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
-			</div>
-				</div>
-			    </div>
-			<div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadPlaylists()" on-load="pagingLoaded()"></div>
-		    </div>
-	    </div>
+                                                </div>
+
+
+                                                <!-- age limit -->
+                                                <div class="image">
+                                                    <a href="#!/public/playlists/{{playlist._id}}/intro">
+                                                        <div playlist-title-image playlist="playlist"></div>
+                                                    </a>
+                                                </div>
+                                                <div dir="auto" class="title">
+                                                    <a href="#!/public/playlists/{{playlist._id}}/intro">
+                                                        <span uib-tooltip="{{playlist.name}}">{{ playlist.name|limitTo:40 }}</span>
+                                                        <span ng-show="playlist.name.length >40">...</span>
+                                                    </a>
+                                                </div>
+                                                <div class="stats-desktop">
+                                                <table class="stats-table">
+                                                    <tr>
+                                                        <td>
+                                                            <span uib-tooltip="{{'homepage.tooltip.user' | translate}}">
+                                                                <i class="fa fa-user fa-fw"></i>
+                                                                {{playlist.user.username | limitTo: 8 | lowercase}}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span uib-tooltip="{{'homepage.tooltip.views' | translate}}">
+                                                                <i class="fa fa-eye fa-fw"></i>
+                                                                {{0+playlist.views}}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="stats-button" uib-tooltip="{{'homepage.tooltip.lessons' | translate}}">
+                                                                <i class="fa fa-chalkboard fa-fw"></i>
+                                                                {{ playlist | countLessonsOnPlaylist }}
+                                                            </span>
+                                                        </td>    
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span uib-tooltip="{{'playlists.createdOn' | translate}}">
+                                                                <i class="fa fa-calendar"></i>
+                                                                {{playlist | mongoIdToTimestamp | date:'d-MMM-yyyy'}}
+                                                            </span>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <span ng-show="!!playlist.subject" uib-tooltip="{{'homepage.tooltip.subject' | translate}}">
+                                                                <i class="fa fa-book fa-fw"></i>
+                                                                {{playlist.subject && ('filters.subjects.' + playlist.subject | translate)}}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
+			                </div>
+				        </div>
+			        </div>
+			        <div lergo-paging class="textAlignCenter" page="filterPage" on-change="loadPlaylists()" on-load="pagingLoaded()"></div>
+		        </div>
+	        </div>
+        </div>
     </div>
 </div>

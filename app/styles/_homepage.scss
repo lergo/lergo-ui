@@ -415,6 +415,45 @@
         }
     }
 }
+
+.lesson-desktop .num-lessons {
+  width: 60px;
+  z-index: 10;
+  position: absolute;
+  margin-top: 105px;
+  margin-left: 155px;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.rtl .lesson-desktop .num-lessons {
+  margin-top: 100px;
+  margin-right: 33px;
+  margin-left: unset;
+}
+
+.lesson-mobile .num-lessons {
+  width: 60px;
+  z-index: 10;
+  position: absolute;
+  margin-top: 125px;
+  margin-left: 275px;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.rtl .lesson-mobile .num-lessons {
+  margin-top: 120px;
+  margin-right: 65px;
+  margin-left: unset;
+}
+
 .sidebar-desktop {
     margin-top: 57px;
     padding-bottom: 5px;

@@ -1,3 +1,4 @@
+lergo-ui fix minor bugs: admin paging, number of lessons and icon on playlist, and spacing
 lergo-ui adding keys and fixing spacing / auto update on admin playlist
 lergo-ri and ui playlist - add homepage for playlist and admin for playlist
 lergo-ri bug(fix) playlist needs to be able to find get all the Completes of the user, but was limited to 100. 
