@@ -30,7 +30,7 @@
     "grunt-contrib-htmlmin": "~2.3.0",
     "grunt-contrib-jshint": "~0.6.5",
     "grunt-contrib-uglify": "~2.2.0",
-    "grunt-contrib-watch": "~1.0.0",
+    "grunt-contrib-watch": "~1.1.0",
     "grunt-google-cdn": "~0.4.3",
     "grunt-html2js": "~0.3.8",
     "grunt-karma": "^3.0.2",
