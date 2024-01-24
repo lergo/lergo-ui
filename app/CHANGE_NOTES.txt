@@ -1,3 +1,4 @@
+lergo-ui change linkconverter for google to thumbnail for http and https
 lergo-ui remove lesson count on mobile playlist overlay, fix lesson count and add space between icon and number
 lergo-ui fix minor bugs: admin paging, number of lessons and icon on playlist, and spacing
 lergo-ui adding keys and fixing spacing / auto update on admin playlist
